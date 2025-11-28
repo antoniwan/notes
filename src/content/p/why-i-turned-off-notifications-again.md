@@ -4,6 +4,7 @@ description: A morning realization about notifications, doom-scrolling, and choo
 pubDate: '2025-11-28T20:30:00.000Z'
 language:
   - en
+heroImage: /images/2025/on-doom-scrolling.avif
 category:
   - integration-growth
   - parenting
@@ -22,7 +23,7 @@ tags:
   - mental-health
   - self-reflection
 draft: false
-featured: false
+featured: true
 published: true
 showComments: true
 ---
