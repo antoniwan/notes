@@ -1,6 +1,6 @@
 ---
 title: Why I Turned Off Notifications Again
-description: A morning realization about notifications, doom-scrolling, and choosing presence over feeds. Why the first moments of the day matter.
+description: A morning realization about notifications, doom-scrolling, and choosing presence over feeds.
 pubDate: '2025-11-28T20:30:00.000Z'
 language:
   - en
