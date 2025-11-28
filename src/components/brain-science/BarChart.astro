@@ -97,7 +97,9 @@ const chartData = {
       }
 
       if (!canvas || !container) {
-        console.error(`Chart elements not found for id "${id}"`);
+        if (import.meta.env.DEV && typeof console !== 'undefined') {
+          console.error(`Chart elements not found for id "${id}"`);
+        }
         if (container) {
           container.style.display = 'none';
         }
@@ -105,7 +107,9 @@ const chartData = {
       }
 
       if (!chartData || !chartData.labels || !chartData.datasets) {
-        console.error('Chart data not found or invalid:', chartData);
+        if (import.meta.env.DEV && typeof console !== 'undefined') {
+          console.error('Chart data not found or invalid:', chartData);
+        }
         container.style.display = 'none';
         return;
       }
@@ -113,13 +117,17 @@ const chartData = {
       const { labels, datasets, yAxisLabel, xAxisLabel, stacked } = chartData;
 
       if (!labels || !Array.isArray(labels) || labels.length === 0) {
-        console.warn('Chart labels are empty or invalid');
+        if (import.meta.env.DEV && typeof console !== 'undefined') {
+          console.warn('Chart labels are empty or invalid');
+        }
         container.style.display = 'none';
         return;
       }
 
       if (!datasets || !Array.isArray(datasets) || datasets.length === 0) {
-        console.warn('Chart datasets are empty or invalid');
+        if (import.meta.env.DEV && typeof console !== 'undefined') {
+          console.warn('Chart datasets are empty or invalid');
+        }
         container.style.display = 'none';
         return;
       }
@@ -130,14 +138,18 @@ const chartData = {
       );
 
       if (!hasValidData) {
-        console.warn('Chart datasets contain no valid data');
+        if (import.meta.env.DEV && typeof console !== 'undefined') {
+          console.warn('Chart datasets contain no valid data');
+        }
         container.style.display = 'none';
         return;
       }
 
       const ctx = canvas.getContext('2d');
       if (!ctx) {
-        console.error('Could not get 2d context from canvas');
+        if (import.meta.env.DEV && typeof console !== 'undefined') {
+          console.error('Could not get 2d context from canvas');
+        }
         container.style.display = 'none';
         return;
       }
@@ -269,7 +281,9 @@ const chartData = {
         loadingEl.style.display = 'none';
       }
     } catch (err) {
-      console.error('Failed to initialize chart:', err);
+      if (import.meta.env.DEV && typeof console !== 'undefined') {
+        console.error('Failed to initialize chart:', err);
+      }
       const container = document.getElementById(`chart-container-${id}`);
       const loadingEl = document.getElementById(`chart-loading-${id}`);
 
@@ -295,8 +309,8 @@ const chartData = {
 
   // Error handler for chart initialization
   function handleChartError(error) {
-    // Error handling - console will be stripped in production via terser
-    if (typeof console !== 'undefined' && console.error) {
+    // Only log errors in development mode
+    if (import.meta.env.DEV && typeof console !== 'undefined' && console.error) {
       console.error('Failed to initialize chart:', error);
     }
   }

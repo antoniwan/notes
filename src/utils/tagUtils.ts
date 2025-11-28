@@ -6,6 +6,3 @@ export {
   getRecommendedTags,
   getTagWeight,
 } from './tagProcessing';
-
-// Legacy compatibility - keeping the old function name
-export { getTagWeight } from '../data/tags';

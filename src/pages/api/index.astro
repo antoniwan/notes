@@ -89,8 +89,9 @@ import { SITE_TITLE } from '../../consts';
               class="overflow-x-auto rounded border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg))] p-4 text-sm"><code>{`// Get a random quote
 const response = await fetch('/api/quotes');
 const data = await response.json();
-console.log(data.quote.text);
-console.log(\`By \${data.quote.author}\`);`}</code></pre>
+// Display the quote
+const quoteText = data.quote.text;
+const quoteAuthor = \`By \${data.quote.author}\`;`}</code></pre>
           </div>
           <div>
             <h4 class="mb-2 font-medium text-[rgb(var(--color-text))]">Python/Requests</h4>

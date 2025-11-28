@@ -136,8 +136,8 @@
             try {
               callback(postSlug, isRead, readData);
             } catch (error) {
-              // Error handling - console will be stripped in production via terser
-              if (typeof console !== 'undefined' && console.error) {
+              // Only log errors in development mode
+              if (import.meta.env.DEV && typeof console !== 'undefined' && console.error) {
                 console.error('Error in read state subscriber:', error);
               }
             }
@@ -147,8 +147,8 @@
           try {
             callback();
           } catch (error) {
-            // Error handling - console will be stripped in production via terser
-            if (typeof console !== 'undefined' && console.error) {
+            // Only log errors in development mode
+            if (import.meta.env.DEV && typeof console !== 'undefined' && console.error) {
               console.error('Error in all-state subscriber:', error);
             }
           }

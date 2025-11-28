@@ -27,9 +27,6 @@ export default defineConfig({
     smartypants: true,
     gfm: true,
     remarkPlugins: [remarkReadingTime],
-    rehypePlugins: [
-      // Removed rehype-image-size as it is not used
-    ],
   },
   // Enable built-in prefetch with optimized settings
   prefetch: {
