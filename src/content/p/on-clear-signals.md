@@ -40,41 +40,49 @@ I've curated my environment — almost unknowingly — by setting up boundaries 
 
 If you don't know what a clean signal is:
 
-To me, a clean signal is any communication — words, gestures, sounds, movement, touch, whatever — that connects the person sending it and the person receiving it, and both bodies go, "Yeah, I get you." That’s it. No decoding. No translating. No acting.
+To me, a clean signal is any communication — words, gestures, posture, sounds, movement, touch, whatever — where both bodies just go, “Yeah, I get you.” No decoding. No guessing. No emotional gymnastics.
 
-The 2-year-old is instinct incarnate. Pure raw signal. My 5-year-old is sincerity with legs. Chaotic but real AF. When safe. When she doesn’t feel safe, she closes up — clean and consistent. The dogs? Walking truth. Breath, weight, micro-movements. No stories, no spinning. Just organism-to-organism honesty. If there’s food, there are no passions or factions or sides — just dominance hierarchies like nature intended. My girlfriend and I work on our communication weekly because we know this is what will make our busy lives actually function.
+The 2-year-old is instinct incarnate. Pure raw signal.
+My 5-year-old is sincerity with legs — chaotic but real AF. When she feels safe, she’s open. When she doesn’t, she closes up. Both are clean. Consistent.
 
-Nothing here strategizes around me or performs for me or talks to “the role” I used to play (as if we were objects frozen in time… wild). Everything meets me directly. Because their signals are clean, mine stay clean too. My attention lands without friction. My patience stretches without effort. My presence sharpens without me trying.
+The dogs? Walking truth. Breath, weight, micro-movements, no story, no narrative, no hidden agenda. If there’s food, there's no politics — just honest dominance hierarchies like nature intended.
 
-And I realized: I’m not becoming healthier only because I’m working on myself (I am, but that’s not the point). I’m becoming healthier because the environment is honest enough that my real nature shows up without armor.
+My girlfriend and I talk weekly about communication because that's the only way our very real, very busy lives actually function. She meets me where I am; I meet her where she is. No performance. No pretending.
+
+And here's the thing I hadn't admitted out loud until today:
+I’m not becoming healthier just because I'm doing the inner work (I am, but that’s not the point). I'm becoming healthier because the environment is honest enough that my real nature shows up without armor.
 
 There’s a loop, simple and undeniable:
 
 #### **clean signal → clean response → real connection**
 
-And now I see how far that loop has spread. Dating felt off because the signals were muddy. Friendships collapsed because the signals contradicted themselves. I’ve walked away from jobs, partnerships, invitations — not out of drama, but out of clarity. Ambiguity now feels like laziness. Like disrespect. Like background radiation my nervous system refuses to tolerate.
+And suddenly I see how far that loop has spread through every corner of my life.
 
-It’s not even conscious. It’s reflex. My body rejects ambiguity before a single thought forms. Maybe that’s bias, maybe that’s trauma, maybe that’s wisdom. I’m still figuring it out. But patterns don’t lie: clean signals hit the body different. They land well. They have “that energy.”
+Dating felt off because the signals were muddy.
+Friendships collapsed because the signals contradicted themselves.
+I’ve walked away from jobs, partnerships, invitations — not out of drama, but out of clarity. Out of an exhausted nervous system refusing to spend one more unit of energy decoding other people’s confusion.
 
-So then I thought about adults who frequently speak in half-signals… cling to old versions of you… project their shit and call it connection… talk around the truth instead of through it. Peacekeeping? Cowardice? Who knows… want access, not presence.
+Ambiguity now feels like someone else making their confusion my job.
+And my body says no before my mouth even knows why. And maybe some of that is bias. Maybe trauma. Maybe wisdom. Probably all three. But patterns don’t lie: clean signals land differently. They hit the body with that “I can breathe here” energy.
 
-Or maybe this only applies to the adults I have access to. Or maybe it’s universal to unhealed adults. I don’t know.
+Then I thought about adults — the chronic half-signal people. The ones who want access to you, not presence with you. The ones who freeze you in an old version of yourself because updating their internal file is too expensive. The ones who wrap everything in politeness and avoidance. Peacekeeping? Cowardice? Habit? Who knows.
 
-I *do* know that once you start respecting yourself, you lose the ability to translate for people. Something in the body says no — before logic, before empathy scripts, before the “be understanding” scaffolding boots up.
-
-There is something beautiful about no longer shrinking or pretending or offering or bending. You stop negotiating with silence. You stop offering clarity to people who treat clarity like confrontation. You stop bending your emotional availability around someone else’s inability to show up.
+All I know is: once you start respecting yourself, you lose the ability to translate for people. Something in the body shuts the door before the empathy scripts even load.
+There’s a strange beauty in no longer shrinking or bending or explaining. You stop negotiating with silence. You stop offering clarity to people who treat clarity as confrontation. You stop contorting your emotional availability around someone else’s inability to show up.
 
 It’s energy conservation.
 
-Most unclear relationships don’t explode.  
-They just… evaporate. Quiet.
+And most unclear relationships don’t explode — they fade like bad reception. Static. Pause. Silence. And then one day you look up and realize you haven’t heard from them in months… and your life didn’t change at all.
 
-No betrayals, no villain arcs. Just the slow collapse of something that only survived because you kept performing. Once you stop performing, the truth arrives. Like my main phone number. Call forward broken for four months. Never noticed.
+Like my main phone number.
+Call-forward broken for four months.
+Never noticed. I only realized because a cousin confronted me.
+I apologized, explained, gave him the correct number.
+He never used it.
+Judgment? Curiosity? Gossip? A drive-by vulnerability check?
+No fucking clue.
+Still love you, primo.
 
-I only realized because a cousin confronted me. I apologized, explained, gave him the correct number. He never used it. Judgment? Curiosity? Gossip? No fucking clue. Still love you, primo.
+My body did file that intereaction under unclear, and that’s enough for me now to discard it because ambiguity is expensive.
 
-And I don’t actually care. My body already filed it under “unclear.” That’s enough for me now.
-
-Ambiguity is expensive. Confusion costs energy to decipher. Muddy signals drain the exact parts of me I’ve spent years rebuilding.
-
-So that dead phone number? Maybe not an accident. Maybe not a glitch. Maybe a metaphor with teeth.
+From this point forward, it's all about clean and clear signals. The bar is set there.
