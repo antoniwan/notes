@@ -59,12 +59,8 @@ export default defineConfig({
         usePolling: true,
         interval: 100,
       },
-      hmr: {
-        // Ensure HMR works properly
-        protocol: 'ws',
-        host: 'localhost',
-        port: 4321,
-      },
+      // Let Vite auto-detect HMR settings
+      hmr: true,
     },
     build: {
       cssMinify: true,
