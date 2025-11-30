@@ -1,12 +1,12 @@
 ---
 title: On Clear Signals
-description: A reflection on clean signals in relationships, authenticity, and how clarity becomes a minimum requirement once you've tasted it.
+description: Explores the energy cost of ambiguity and the body's response to mixed messages.
 pubDate: '2025-11-30T14:30:00.000Z'
 language:
   - en
+heroImage: /images/2025/broken-signals.avif
 category:
   - integration-growth
-  - parenting
   - psychology
 tags:
   - authenticity
@@ -16,15 +16,11 @@ tags:
   - self-reflection
   - personal-growth
   - connection
-  - presence
-  - parenting
-  - family-dynamics
-  - consciousness
-  - healing
-  - truth
   - clarity
   - honesty
-  - vulnerability
+  - energy-conservation
+  - ambiguity
+  - presence
   - letting-go
 draft: false
 featured: true
