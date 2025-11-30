@@ -78,20 +78,9 @@ It’s energy conservation.
 Most unclear relationships don’t explode.  
 They just… evaporate. Quiet.
 
-No betrayals, no villain arcs. Just the slow collapse of something that only survived because you kept performing. Once you stop performing, the truth arrives.
+No betrayals, no villain arcs. Just the slow collapse of something that only survived because you kept performing. Once you stop performing, the truth arrives. Like my main phone number. Call forward broken for four months. Never noticed.
 
-Like my main phone number.  
-Call forward broken for four months.  
-Never noticed.
-
-I only realized because a cousin confronted me. I apologized, explained, gave him the correct number.
-
-He never used it.
-
-So… why ask?
-
-Judgment? Curiosity? Gossip?  
-No fucking clue. Still love you, primo.
+I only realized because a cousin confronted me. I apologized, explained, gave him the correct number. He never used it. Judgment? Curiosity? Gossip? No fucking clue. Still love you, primo.
 
 And I don’t actually care. My body already filed it under “unclear.” That’s enough for me now.
 
