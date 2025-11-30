@@ -34,145 +34,73 @@ showComments: true
 
 Some months ago I did something stupid, or maybe it was perfect. I got myself a couple of commercial phone numbers for the new brand identity I'm building — freelancing, retailing, a little ecosystem of work that finally feels like me — and I tried to set up call-forwarding from my personal number. I've had that number forever. The whole point was to pay for redirection so I didn't have to carry two phones. Easy.
 
-Except it never worked. For months. And I didn't notice. Not once. My "main" number — the one tied to my entire life history — was basically unplugged for four straight months (still is). And the only reason I found out wasn't because someone checked in, worried, missed me, insisted on hearing my voice. It was because **one** blood relative confronted me about it.
+Except it never worked. For months. And I didn't notice. Not once. My "main" number (the one tied to my entire life history) was basically unplugged for four straight months (still is). And the only reason I found out wasn't because someone checked in, worried, missed me, insisted on hearing my voice. It was because one blood relative confronted me about it.
 
-No one else reached out.  
-
-No friend. 
-
-No "close" people.  
-
+No one else reached out.
+No friend.
+No "close" people.
 Nobody.
-
 *Maybe just Matias. Mati is always Mati. I love you, Mati.*
 
 So the truth was simple: my number died, and the world didn't blink.
 
-I sat with that for days. Not dramatically — more like I was letting the data arrange itself. Letting my ego metabolize whatever this was without forcing a narrative.
+I sat with that for days. Not dramatically — more like I let the data assemble itself. Let my ego metabolize whatever this was without forcing a narrative.
 
-Fast-forward to today, another morning in a full house: kids running around, dogs being honest mammals, Z moving through her rituals, the constant flow of noise and movement that makes a day feel like a day. I'm cooking, regulating one kid while responding to the other, side-eyeing the dogs as they communicate in posture and breath, thinking about my estranged 20-year-old stepson's silence… and suddenly the pattern hits me in the chest.
+✨
 
-**Everything alive in this house gives me clean signals.** I've carefully made sure to keep close, only, people, animals, and environments that give me clean clear signals! It's the effortful thing to do, no?!
+Fast-forward to this morning, another day in a full house: kids running around, dogs being honest mammals, Z moving through her rituals, the constant flow of noise and motion that makes a day feel like a day. I'm cooking, regulating one kid while responding to the other, side-eyeing the dogs as they speak in posture and breath, thinking about my estranged 20-year-old stepson's silence… and suddenly the pattern hits me clean:
 
-That's the whole thing.
+### *"Everything alive in this house gives me clean signals."*
 
-That's the shift I hadn't named.
+I've curated my environment, almost unknowingly by setting up boundaries for myself and my belonging and becoming, around only beings and contexts that give me clean signal. It's the effortful thing to do, no?
 
-The 2-year-old is instinct in its purest form — raw, unfiltered, fast, direct.
+By the way, if you have no fucking clue what is a *clean signal*: To me, a clean signal is any communication, verbal or non-verbal (actions, movement, sound, touch, gift, etcetera) that connects both the person who communicates and whoever receives the message and the message is understood by those involved. 
 
-My 5-year-old is sincerity-in-motion, chaotic but real. She doesn't know how to pretend. She tells the truth even when she doesn't have the vocabulary for it.
 
-The dogs are walking honesty. They communicate through weight distribution, breath, attention, micro-movements. No performance. No stories. No outdated versions of me projected onto my face.
+- The 2-year-old I'm meeting as part of my new relationships is instinct in its purest form: raw, unfiltered, direct.
+- My 5-year-old is sincerity-in-motion, chaotic but real AF
+- The dogs are walking honesty: breath, weight, micro-movements, all signal, no story. We can learn much from the reaction of blindly loyal organisms.
 
-Nothing here strategizes around me.  
+Nothing here, nobody strategizes around me or performs for me or talks to "the role" I used to play (as if we people were objects frozen in time... wild!). Our bodies can feel this, it's instinct.
 
-Nothing performs for me.  
+The people and environment I'm keeping around meets me directly. And because its signal is clean, mine is clean. My attention lands without friction, and my patience stretches without effort, and my presence sharpens without me trying.
 
-Nothing talks to "the role" I used to play.
-
-They meet me directly.  
-
-And because their signal is clean, mine becomes clean.
-
-My attention lands without friction.  
-
-My patience stretches without effort.  
-
-My presence sharpens without me trying.
-
-I become the version of myself that doesn't need armor — not because I'm "working on myself," but because this environment is honest enough to pull my real nature forward.
+So yeah, I'm becoming an integrated version of myself that doesn't need armor and not because I'm "working on myself," but because the environment is honest enough to pull the real nature out of me.
 
 There's a biological loop here:
 
-**clean signal → clean response → real connection**
+#### **clean signal → clean response → real connection**
 
-And today I realized how far this loop has spread into my life. How much it has shaped my decisions *without me noticing*. Dating felt off because the signals were muddy. Friendships collapsed because the signals contradicted themselves. I've walked away from jobs, partnerships, invitations — not out of drama, but because the signals were unclear. Ambiguity now feels like laziness. Like disrespect. Like background radiation my nervous system refuses to tolerate.
+And now I see how far that loop has spread. How much it's shaped my decisions without me noticing. Dating felt off because the signals were muddy. Friendships collapsed because the signals contradicted themselves. I've walked away from jobs, partnerships, invitations not out of drama, but out of clarity. Ambiguity now feels like laziness. Like disrespect. Like background radiation my nervous system refuses to tolerate. Like unwanted noise.
 
-Once you've lived with clean signals long enough, adult communication becomes almost unreadable.
+By the way, it's not even me-me rejecting ambiguity, my body just cringes automatically without having to produce a single concious or intentional thought. It's practiced reflex? This is something I'm still working on because personal bias is real, and I'm not infallible. But the patterns are there, clean and clear signals feel straight to the body, they land well, they have "that energy" we enjoy. "I like their energy" vibe.
 
-Adults speak in half-signals.  
+Let's see if this lands with you. I think once you've lived with clean signals long enough, adult communication becomes almost unreadable:
 
-Adults cling to outdated versions of you.  
+- Adults speak in half-signals...
+- Adults cling to outdated versions of you
+- Adults project unto you
+- Adults talk around the truth instead of through it... peace-keeping? cowardice? i don't know which is worse.
+- Adults want access, not presence.
+- Adults want the version of you that made their life easier, even if he died years ago.
 
-Adults talk around the truth instead of through it.  
+Or hey, maybe this only applies to the adults I have access to. Or maybe it applies to any and all unhealed adults.
 
-Adults want access, not presence.  
+And here’s the part that surprised me the most: once you start respecting yourself, you literally lose the ability to translate for people. Something in the body says no, and that no comes before the thought. Before the logic. Before the “I should use empathy” scaffolding kick in.
 
-Adults want the version of you that made their life easier, even if he died years ago.
+There's something beautiful when you stop shrinking or pretending or negotiating or offering or bending. You stop negotiating with silence. You stop offering clarity to people who treat clarity like confrontation. You stop bending your emotional availability around someone else’s inability to show up. When you think about it, this is all about energy conversation.
 
-Or perhaps this only applies to the adults *I have access to...* Or perhaps this applies to any and all *unhealed adult*...
+I observe that many of these relationships that exist without a clear sygnals (communication) don’t explode. They just… evaporate without betrayal, dramatic exits, villain arcs. Nothing dude. They just dissapear. Just a quiet collapse of something that clearly depended on you performing the role for it to exist at all. Once you stop playing the role, or roles assigned to you by others, the connection reveals itself as a habit perhaps, or the reciprocity or lack of it becomes too obvious and loud, that familiar pattern two humans kept repeating without noticing the meaning had died years ago and you can't run away from it anymore.
 
-And when you start respecting yourself — quietly, internally — something in you refuses to translate anymore.
+Take my cousin — the one who “confronted” me about the dead number.
+I replied. Gave him my new number. He never used it so I beg to wonder why he asked me about it... what was the veredict, the judgement, the idea. Why I did why or the what or... wait... I don't really care because I don't fuck with unclear comunication anymore. This is the gift i'm trying to give you.
 
-You stop shrinking yourself to remain legible to their nostalgia, decoding sentences that weren't meant to be understood, bending your emotional availability around somebody else's absence and simply **most adults just fade out with this clarity...** 
+**Clean signal → connection**
+**Murky signal → exhaustion**
 
-Not with a fight.  
+I think ambiguity is expensive because confusion costs energy to decipher or try to understand. Muddy signals drain the exact parts of me I’ve spent years literally rebuilding with emotional scaffolding.
 
-Not with betrayal.  
+So that dead phone number? Perhaps it was not an accident or a glitch or a dumb ass mistake (it was, it is, i still haven't fixed it) but a metaphor with teeth.
 
-Just… dissolution.
-
-When you stop performing the role, the entire relationship collapses. Because it was never a relationship — it was a habit. Perhaps only a role, some faint tradition, this is just the way things have been like. I say, fuck no, the signals are extra clear.
-
-Take my cousin's one example. He "confronted" me about the dead number.  
-
-I told him, "No, the number just stopped working. Thanks for letting me know."  
-
-He never replied again.
-
-Another unclear signal.  
-
-Another nothing.  
-
-And that's exactly what it was: nothing.
-
-The silence didn't hurt.  
-
-It just clarified!
-
-And meanwhile, the living beings in my orbit keep showing up with their honesty... dead simple honesty, really...
-
-A toddler tugging at my attention without a single ulterior motive.  
-
-A 5-year-old who softens the moment I soften.  
-
-A 20-year-old piecing adulthood together through proximity.  
-
-Dogs who co-regulate with me faster than most adults regulate themselves.  
-
-A partner who, when she's present, speaks with a directness that feels like home.  
-
-And myself — finally reachable. By me.
-
-So yeah, here's where it all landed for me:
-
-**Once you're surrounded by clean signals, you understand how expensive murky ones actually are.**
-
-A relationship that requires translation is not only a relationship — it's freaking labor.  
-
-A relationship that requires an internal interpreter trains you to distrust yourself!!!
-
-A relationship that depends on you wearing an old costume is not alive!!!!
-
-Once you taste clarity — real clarity — you stop apologizing for needing it.
-
-The number being dead for four months wasn't a mistake.  
-
-It was a metaphor.
-
-**People who want to be in your life will find you.**  
-
-**People who don't will vanish the moment the convenience disappears.**
-
-Not personal.  
-
-Just physics.
-
-Clean signal → connection.  
-
-Murky signal → absence.
-
-And when you stop covering the absence with effort, the absence stays empty.
-
-So yeah... a life where people meet you as you are, not as a role, isn't a preference. Clear signals are now a minimum requirement for my relationships.
-
+Because what I ultimately learned is that people who want to reach you will reach you, a pretty clear signal. Clear signals are beautiful. Clean signals aren’t a luxury anymore. They’re the minimum requirement for belonging in my life.
+Period.
