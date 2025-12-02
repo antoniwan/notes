@@ -19,7 +19,7 @@ const { posts, initialCount = 6, loadMoreCount = 6 } = Astro.props;
     {
       posts.map((post, index) => (
         <div class={`post-item ${index < initialCount ? 'visible' : 'hidden'}`} data-index={index}>
-          <PostCard post={post} />
+          <PostCard post={post} featured={post.data.featured} />
         </div>
       ))
     }
