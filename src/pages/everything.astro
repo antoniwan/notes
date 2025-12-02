@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import LazyPosts from '../components/LazyPosts.astro';
+import ViewToggle from '../components/ViewToggle.astro';
 import { getCollection } from 'astro:content';
 
 // Get all published posts
@@ -20,7 +21,10 @@ const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDa
 >
   {
     sortedPosts.length > 0 ? (
-      <LazyPosts posts={sortedPosts} initialCount={12} loadMoreCount={12} />
+      <>
+        <ViewToggle defaultView="grid" />
+        <LazyPosts posts={sortedPosts} initialCount={12} loadMoreCount={12} />
+      </>
     ) : (
       <div class="py-16 text-center md:py-20">
         <div class="mx-auto max-w-md space-y-3">

@@ -1,0 +1,140 @@
+---
+interface Props {
+  defaultView?: 'grid' | 'list';
+}
+
+const { defaultView = 'grid' } = Astro.props;
+---
+
+<div class="view-toggle-container mb-6 flex items-center justify-end gap-2" id="view-toggle-container">
+  <button
+    class="view-toggle-btn grid-view-btn rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg))] px-4 py-2 text-sm font-medium text-[rgb(var(--color-text))] transition-colors duration-200 hover:bg-[rgb(var(--color-bg-alt))] focus:outline-none focus:ring-2 focus:ring-[rgb(var(--color-primary))] focus:ring-offset-2"
+    data-view="grid"
+    aria-label="Grid view"
+    title="Grid view"
+  >
+    <span aria-hidden="true">⊞</span>
+    <span class="ml-1 hidden sm:inline">Grid</span>
+  </button>
+  <button
+    class="view-toggle-btn list-view-btn rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg))] px-4 py-2 text-sm font-medium text-[rgb(var(--color-text))] transition-colors duration-200 hover:bg-[rgb(var(--color-bg-alt))] focus:outline-none focus:ring-2 focus:ring-[rgb(var(--color-primary))] focus:ring-offset-2"
+    data-view="list"
+    aria-label="List view"
+    title="List view"
+  >
+    <span aria-hidden="true">☰</span>
+    <span class="ml-1 hidden sm:inline">List</span>
+  </button>
+</div>
+
+<script>
+  const STORAGE_KEY = 'everything-view-mode';
+
+  function setActiveView(view: 'grid' | 'list', container: HTMLElement) {
+    const buttons = container.querySelectorAll('.view-toggle-btn');
+    
+    buttons.forEach((btn) => {
+      const btnView = (btn as HTMLElement).dataset.view;
+      if (btnView === view) {
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+      } else {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-pressed', 'false');
+      }
+    });
+
+    // Dispatch custom event for LazyPosts to listen to
+    window.dispatchEvent(
+      new CustomEvent('viewModeChange', {
+        detail: { viewMode: view },
+      }),
+    );
+
+    // Save to localStorage
+    try {
+      localStorage.setItem(STORAGE_KEY, view);
+    } catch (e) {
+      // Ignore localStorage errors
+    }
+  }
+
+  function getStoredView(): 'grid' | 'list' {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored === 'grid' || stored === 'list') {
+        return stored;
+      }
+    } catch (e) {
+      // Ignore localStorage errors
+    }
+    return defaultView;
+  }
+
+  function initializeViewToggle() {
+    const container = document.getElementById('view-toggle-container');
+    if (!container) return;
+
+    const buttons = container.querySelectorAll('.view-toggle-btn');
+    
+    // Set up button click handlers
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const view = (btn as HTMLElement).dataset.view as 'grid' | 'list';
+        if (view) {
+          setActiveView(view, container);
+        }
+      });
+    });
+
+    // Initialize with stored view or default
+    const initialView = getStoredView();
+    setActiveView(initialView, container);
+  }
+
+  // Initialize on DOM load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeViewToggle);
+  } else {
+    initializeViewToggle();
+  }
+</script>
+
+<style>
+  .view-toggle-container {
+    overflow: visible;
+  }
+
+  .view-toggle-btn {
+    position: relative;
+    overflow: visible;
+    z-index: 1;
+  }
+
+  .view-toggle-btn.active {
+    background: rgb(var(--color-primary));
+    color: white;
+    border-color: rgb(var(--color-primary));
+  }
+
+  .view-toggle-btn.active:hover {
+    background: rgb(var(--color-primary-hover));
+    border-color: rgb(var(--color-primary-hover));
+  }
+
+  .view-toggle-btn:focus {
+    z-index: 2;
+  }
+
+  @media (max-width: 640px) {
+    .view-toggle-container {
+      justify-content: center;
+    }
+
+    .view-toggle-btn {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.875rem;
+    }
+  }
+</style>
+

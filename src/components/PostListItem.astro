@@ -1,0 +1,151 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
+import { calculateReadingTimeFromMarkdown } from '../utils/readingTime';
+import { categories } from '../data/categories';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { data } = post;
+
+// Calculate reading time from post content
+const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
+
+// Get primary category name
+function getCategoryName(categoryIds: string[] | undefined): string | null {
+  if (!categoryIds || categoryIds.length === 0) return null;
+  const category = categories.find((cat) => cat.id === categoryIds[0]);
+  return category ? category.name : categoryIds[0];
+}
+
+const categoryName = getCategoryName(data.category);
+---
+
+<tr
+  class="post-list-item group border-b border-[rgb(var(--color-border))]/20 transition-colors duration-200 hover:bg-[rgb(var(--color-bg-alt))]"
+  data-post-slug={post.id}
+  data-post-date={data.pubDate.valueOf()}
+  data-post-title={data.title.toLowerCase()}
+  data-reading-time={readingTime ? parseInt(readingTime.replace(/\D/g, '')) || 0 : 0}
+  data-category={categoryName || ''}
+  data-featured={data.featured ? '1' : '0'}
+>
+  <!-- Title -->
+  <td class="post-title-cell py-3 pl-4 pr-2">
+    <a
+      href={`/p/${post.id}/`}
+      class="post-list-title block font-semibold text-[rgb(var(--color-text))] transition-colors duration-200 hover:text-[rgb(var(--color-primary))]"
+    >
+      {data.title}
+    </a>
+  </td>
+
+  <!-- Date -->
+  <td class="post-date-cell py-3 px-2 text-sm text-[rgb(var(--color-text-muted))]">
+    <FormattedDate date={data.pubDate} format="short" />
+  </td>
+
+  <!-- Reading Time -->
+  <td
+    class="reading-time-cell py-3 px-2 text-sm text-[rgb(var(--color-text-muted))]"
+    data-original-reading-time={readingTime || ''}
+  >
+    {readingTime || '—'}
+  </td>
+
+  <!-- Category -->
+  <td class="post-category-cell py-3 px-2 text-sm text-[rgb(var(--color-text-muted))]">
+    {categoryName || '—'}
+  </td>
+
+  <!-- Featured -->
+  <td class="post-featured-cell py-3 px-2 text-center">
+    {data.featured && (
+      <span
+        class="text-base font-semibold text-[rgb(var(--color-primary))]"
+        role="img"
+        aria-label="Featured post"
+        title="Featured post"
+      >
+        🫀
+      </span>
+    )}
+  </td>
+</tr>
+
+<script>
+  // ReadStateService is initialized by ReadStateServiceInit component in BaseLayout
+  // Get the singleton instance
+  const readStateService = (window as any).ReadStateService?.getInstance();
+
+  // Update read state for all post list items
+  function updateReadState() {
+    if (!readStateService) return; // Exit early if service not available
+
+    document.querySelectorAll('.post-list-item').forEach((row) => {
+      const rowEl = row as HTMLElement;
+      const postSlug = rowEl.getAttribute('data-post-slug');
+      const readingTimeCell = rowEl.querySelector('.reading-time-cell');
+
+      if (postSlug && readingTimeCell) {
+        const isRead = readStateService.isRead(postSlug);
+
+        if (isRead) {
+          // Replace reading time with "Read" for read posts
+          readingTimeCell.textContent = 'Read';
+        } else {
+          // Restore original reading time for unread posts
+          const originalReadingTime = readingTimeCell.getAttribute('data-original-reading-time');
+          if (originalReadingTime) {
+            readingTimeCell.textContent = originalReadingTime;
+          } else {
+            readingTimeCell.textContent = '—';
+          }
+        }
+      }
+    });
+  }
+
+  // Subscribe to all read state changes (only if service is available)
+  let unsubscribe: (() => void) | null = null;
+  if (readStateService) {
+    unsubscribe = readStateService.subscribeToAll(() => {
+      updateReadState();
+    });
+
+    // Initial update
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', updateReadState);
+    } else {
+      updateReadState();
+    }
+  }
+
+  // Cleanup on page unload
+  window.addEventListener('beforeunload', () => {
+    if (unsubscribe) {
+      unsubscribe();
+    }
+  });
+</script>
+
+<style>
+  .post-list-item {
+    cursor: pointer;
+  }
+
+  .post-list-item:hover .post-list-title {
+    text-decoration: underline;
+  }
+
+  /* Respect reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .post-list-item {
+      transition: none !important;
+    }
+  }
+</style>
+
