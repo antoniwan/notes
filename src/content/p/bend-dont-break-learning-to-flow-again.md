@@ -37,7 +37,7 @@ tags:
   - philosophy
   - psychology
 draft: false
-featured: true
+featured: false
 published: true
 showComments: true
 ---

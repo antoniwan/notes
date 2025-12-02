@@ -25,7 +25,7 @@ tags:
   - responsibility
   - transformation
 draft: false
-featured: true
+featured: false
 published: true
 showComments: true
 ---

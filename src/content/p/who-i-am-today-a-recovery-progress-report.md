@@ -26,7 +26,7 @@ tags:
   - emotional-regulation
   - self-awareness
 draft: false
-featured: true
+featured: false
 published: true
 showComments: true
 translationGroup: recovery-progress-report
