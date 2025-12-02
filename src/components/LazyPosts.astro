@@ -215,12 +215,47 @@ const { posts, initialCount = 6, loadMoreCount = 6 } = Astro.props;
       });
     }
 
+    syncGridItemsVisibility() {
+      if (!this.postsGrid || !this.loadMoreBtn) return;
+
+      // Get the current count from the button's dataset
+      const currentCount = parseInt(this.loadMoreBtn.dataset.currentCount || this.initialCount.toString());
+      const postItems = this.postsGrid.querySelectorAll('.post-item');
+
+      // Show all items up to the current count
+      postItems.forEach((item, index) => {
+        const itemEl = item as HTMLElement;
+        if (index < currentCount) {
+          itemEl.classList.remove('hidden');
+          itemEl.classList.add('visible');
+        } else {
+          itemEl.classList.add('hidden');
+          itemEl.classList.remove('visible', 'fade-in');
+        }
+      });
+
+      // Update progress indicator to reflect current state
+      const totalPosts = parseInt(this.loadMoreBtn.dataset.totalPosts || '0');
+      this.updateProgressIndicator(currentCount, totalPosts);
+
+      // Show/hide load more container based on whether all posts are loaded
+      if (this.loadMoreContainer) {
+        if (currentCount >= totalPosts) {
+          this.loadMoreContainer.style.display = 'none';
+        } else {
+          this.loadMoreContainer.style.display = '';
+        }
+      }
+    }
+
     switchView(viewMode: 'grid' | 'list') {
       this.currentView = viewMode;
 
       if (viewMode === 'grid') {
         this.postsGrid?.classList.remove('hidden');
         this.postsList?.classList.add('hidden');
+        // Sync grid items visibility with current count when switching to grid view
+        this.syncGridItemsVisibility();
       } else {
         this.postsGrid?.classList.add('hidden');
         this.postsList?.classList.remove('hidden');
