@@ -3,7 +3,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import yaml from 'js-yaml';
+import { parseFrontmatter } from './utils/frontmatter.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -62,21 +62,6 @@ const FIELD_ORDER = [
   'translationGroup',
   'keywords',
 ];
-
-function parseFrontmatter(content) {
-  // More robust regex to match YAML frontmatter
-  const frontmatterMatch = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
-  if (!frontmatterMatch) return null;
-
-  try {
-    const frontmatterText = frontmatterMatch[1];
-    const frontmatter = yaml.load(frontmatterText);
-    return frontmatter || {};
-  } catch (error) {
-    console.error('Error parsing YAML frontmatter:', error.message);
-    return null;
-  }
-}
 
 function auditPost(filePath) {
   const content = fs.readFileSync(filePath, 'utf8');

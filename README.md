@@ -1,6 +1,6 @@
 # Notes
 
-[![Version](https://img.shields.io/badge/version-4.15.0-blue.svg)](https://github.com/antoniwan/notes/releases)
+[![Version](https://img.shields.io/badge/version-4.16.0-blue.svg)](https://github.com/antoniwan/notes/releases)
 
 A personal notes site exploring fatherhood, masculinity, culture, and modern collapse through raw reflections on thinking, consciousness, and the soft heart inside the hard world.
 
@@ -195,7 +195,7 @@ language: ["es"]
 ### 📚 **Content & Navigation**
 
 - **Search Functionality** - Intelligent content discovery across 60+ writings
-- **Highlights System** - Curated featured posts displayed on homepage via `highlights.json` configuration
+- **Highlights System** - Automatically displays the latest 9 featured posts on the homepage, sorted by publication date
 - **Everything Page** - Complete chronological archive of all posts with lazy loading (12 posts per load)
 - **Guided Path** - Seasonal reading experience with chapter progress tracking
 - **Breadcrumb Navigation** - Clear page hierarchy and location awareness
