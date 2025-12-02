@@ -6,7 +6,7 @@ A personal notes site exploring fatherhood, masculinity, culture, and modern col
 
 ## Overview
 
-- **60+ writings** exploring personal growth, consciousness, and modern life
+- **66 writings** exploring personal growth, consciousness, and modern life
 - **10 content categories** covering fatherhood, psychology, politics, and more
 - **Multilingual system** with translation linking (English/Spanish)
 - **Dark mode** with system preference detection
@@ -18,11 +18,11 @@ A personal notes site exploring fatherhood, masculinity, culture, and modern col
 
 ## Tech Stack
 
-- **Astro 5.15.3** - Static site generator
-- **TypeScript 5.8.3** - Type-safe development
-- **Tailwind CSS 3.4.0** - Utility-first CSS
+- **Astro 5.16.2** - Static site generator
+- **TypeScript 5.9.3** - Type-safe development
+- **Tailwind CSS 3.4.18** - Utility-first CSS
 - **MDX** - Markdown with JSX support
-- **Sharp 0.33.5** - Image optimization
+- **Sharp 0.34.5** - Image optimization
 - **Reading Time Plugin** - Automatic reading time calculation using remark plugin
 - **Giscus** - GitHub Discussions-based comments
 - **Vercel** - Deployment platform
@@ -32,8 +32,8 @@ A personal notes site exploring fatherhood, masculinity, culture, and modern col
 ```bash
 git clone https://github.com/antoniwan/notes.git
 cd notes
-npm install
-npm run dev
+pnpm install
+pnpm run dev
 ```
 
 Visit `http://localhost:4321` to view the site.
@@ -42,17 +42,16 @@ Visit `http://localhost:4321` to view the site.
 
 | Command                              | Action                                  |
 | ------------------------------------ | --------------------------------------- |
-| `npm run dev`                        | Start development server                |
-| `npm run build`                      | Build for production                    |
-| `npm run preview`                    | Preview production build                |
-| `npm run setup-comments`             | Setup Giscus comment system             |
-| `npm run generate-favicons`          | Generate favicon assets                 |
-| `npm run validate-feeds`             | Validate RSS and JSON feeds             |
-| `npm run audit-frontmatter`          | Audit frontmatter consistency           |
-| `npm run standardize-frontmatter`    | Standardize frontmatter format          |
-| `npm run remove-legacy-reading-time` | Remove legacy reading time fields       |
-| `npm run validate-structured-data`   | Validate structured data implementation |
-| `npm run fix:hr-spacing`             | Fix horizontal rule spacing in content  |
+| `pnpm run dev`                        | Start development server                |
+| `pnpm run build`                      | Build for production                    |
+| `pnpm run preview`                    | Preview production build                |
+| `pnpm run setup-comments`             | Setup Giscus comment system             |
+| `pnpm run generate-favicons`          | Generate favicon assets                 |
+| `pnpm run validate-feeds`             | Validate RSS and JSON feeds             |
+| `pnpm run audit-frontmatter`          | Audit frontmatter consistency           |
+| `pnpm run standardize-frontmatter`    | Standardize frontmatter format          |
+| `pnpm run remove-legacy-reading-time` | Remove legacy reading time fields       |
+| `pnpm run fix:hr-spacing`             | Fix horizontal rule spacing in content  |
 
 ## Project Structure
 
@@ -60,9 +59,9 @@ Visit `http://localhost:4321` to view the site.
 notes/
 ├── public/                 # Static assets
 ├── src/
-│   ├── components/        # UI components (34 Astro components)
+│   ├── components/        # UI components (39 Astro components)
 │   ├── config/            # Configuration files (storage, giscus, assets)
-│   ├── content/p/         # Blog posts (63 markdown files)
+│   ├── content/p/         # Blog posts (66 markdown files)
 │   ├── data/              # Categories, navigation, tags, and quotes
 │   ├── layouts/           # Page layouts (BaseLayout, BlogLayout, etc.)
 │   ├── pages/             # Route components
@@ -194,7 +193,7 @@ language: ["es"]
 
 ### 📚 **Content & Navigation**
 
-- **Search Functionality** - Intelligent content discovery across 60+ writings
+- **Search Functionality** - Intelligent content discovery across 66 writings
 - **Highlights System** - Automatically displays the latest 9 featured posts on the homepage, sorted by publication date
 - **Everything Page** - Complete chronological archive of all posts with lazy loading (12 posts per load)
 - **Guided Path** - Seasonal reading experience with chapter progress tracking
