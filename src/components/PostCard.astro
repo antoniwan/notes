@@ -8,9 +8,10 @@ interface Props {
   post: CollectionEntry<'blog'>;
   featured?: boolean;
   compact?: boolean;
+  showFeaturedIndicator?: boolean;
 }
 
-const { post, featured = false, compact = false } = Astro.props;
+const { post, featured = false, compact = false, showFeaturedIndicator = true } = Astro.props;
 const { data } = post;
 
 // Calculate reading time from post content
@@ -73,7 +74,7 @@ const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
             }
           </span>
           {
-            featured && (
+            featured && showFeaturedIndicator && (
               <>
                 <span aria-hidden="true">•</span>
                 <span
