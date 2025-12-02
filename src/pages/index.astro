@@ -19,7 +19,7 @@ const highlights = await getHighlights();
   <div class="postcards-grid grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
     {
       highlights.map((post) => (
-        <PostCard post={post} featured={post.data.featured} />
+        <PostCard post={post} featured={post.data.featured} showFeaturedIndicator={false} />
       ))
     }
   </div>

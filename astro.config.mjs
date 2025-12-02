@@ -73,10 +73,28 @@ export default defineConfig({
       },
       rollupOptions: {
         output: {
-          manualChunks: {
+          manualChunks(id) {
             // Split vendor chunks for better caching
-            vendor: ['astro', '@astrojs/mdx'],
-            utils: ['date-fns', 'reading-time'],
+            if (id.includes('node_modules')) {
+              // Core Astro dependencies
+              if (id.includes('astro') || id.includes('@astrojs')) {
+                return 'vendor-astro';
+              }
+              // Date utilities
+              if (id.includes('date-fns')) {
+                return 'vendor-date';
+              }
+              // NLP and analysis libraries
+              if (id.includes('compromise') || id.includes('sentiment')) {
+                return 'vendor-nlp';
+              }
+              // Other vendor dependencies
+              return 'vendor';
+            }
+            // Split brain-science utilities into separate chunk
+            if (id.includes('brainScience') || id.includes('brain-science')) {
+              return 'brain-science';
+            }
           },
         },
       },

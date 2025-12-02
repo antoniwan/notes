@@ -1,6 +1,7 @@
 ---
 import { categories } from '../data/categories';
 import { calculateReadingTimeFromMarkdown } from '../utils/readingTime';
+import { formatRelativeReadTimeShort } from '../utils/relativeReadTime.client';
 
 export interface Props {
   posts: any[];
@@ -18,25 +19,6 @@ function getCategoryName(categoryIds: string[] | undefined): string | null {
   return category ? category.name : categoryIds[0];
 }
 
-// Helper function to format relative time
-function formatRelativeTime(dateString: string): string {
-  const now = new Date();
-  const readDate = new Date(dateString);
-  const diffInMs = now.getTime() - readDate.getTime();
-  const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
-  const diffInHours = Math.floor(diffInMs / (1000 * 60 * 60));
-  const diffInMinutes = Math.floor(diffInMs / (1000 * 60));
-
-  if (diffInDays > 0) {
-    return diffInDays === 1 ? 'Read a day ago' : `Read ${diffInDays} days ago`;
-  } else if (diffInHours > 0) {
-    return diffInHours === 1 ? 'Read an hour ago' : `Read ${diffInHours} hours ago`;
-  } else if (diffInMinutes > 0) {
-    return diffInMinutes === 1 ? 'Read a minute ago' : `Read ${diffInMinutes} minutes ago`;
-  } else {
-    return 'Read just now';
-  }
-}
 ---
 
 <div class="book-chapter">
@@ -109,38 +91,7 @@ function formatRelativeTime(dateString: string): string {
   // Get the singleton instance
   const readStateService = (window as any).ReadStateService?.getInstance();
 
-  // Format relative read time (short format for Guided Path)
-  function formatRelativeTime(dateString: string): string {
-    const now = new Date();
-    const readDate = new Date(dateString);
-    const diffInMs = now.getTime() - readDate.getTime();
-    const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
-    const diffInHours = Math.floor(diffInMs / (1000 * 60 * 60));
-    const diffInMinutes = Math.floor(diffInMs / (1000 * 60));
-
-    if (diffInDays > 0) {
-      if (diffInDays === 1) {
-        return 'Read a day ago';
-      } else if (diffInDays < 7) {
-        return `Read ${diffInDays} days ago`;
-      } else if (diffInDays < 30) {
-        const weeks = Math.floor(diffInDays / 7);
-        return weeks === 1 ? 'Read a week ago' : `Read ${weeks} weeks ago`;
-      } else if (diffInDays < 365) {
-        const months = Math.floor(diffInDays / 30);
-        return months === 1 ? 'Read a month ago' : `Read ${months} months ago`;
-      } else {
-        const years = Math.floor(diffInDays / 365);
-        return years === 1 ? 'Read a year ago' : `Read ${years} years ago`;
-      }
-    } else if (diffInHours > 0) {
-      return diffInHours === 1 ? 'Read an hour ago' : `Read ${diffInHours} hours ago`;
-    } else if (diffInMinutes > 0) {
-      return diffInMinutes === 1 ? 'Read a minute ago' : `Read ${diffInMinutes} minutes ago`;
-    } else {
-      return 'Read just now';
-    }
-  }
+  // formatRelativeReadTimeShort is imported at the top of the file from relativeReadTime.client
 
   function updateIndicators(): void {
     if (!readStateService) return; // Exit early if service not available
@@ -158,7 +109,7 @@ function formatRelativeTime(dateString: string): string {
 
         if (readData) {
           iconElement.textContent = '✅';
-          textElement.textContent = formatRelativeTime(readData.readAt);
+          textElement.textContent = formatRelativeReadTimeShort(readData.readAt);
           statusElement.classList.add('read');
           // Hide reading time for read posts
           if (readingTimeElement) {
