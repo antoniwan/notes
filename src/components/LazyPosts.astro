@@ -160,6 +160,11 @@ const { posts, initialCount = 6, loadMoreCount = 6 } = Astro.props;
         this.initialCount = parseInt(this.container.dataset.initialCount || '12');
       }
 
+      // Initialize button's current count if not already set
+      if (this.loadMoreBtn && !this.loadMoreBtn.dataset.currentCount) {
+        this.loadMoreBtn.dataset.currentCount = this.initialCount.toString();
+      }
+
       // Listen for view mode changes from ViewToggle
       window.addEventListener('viewModeChange', ((e: Event) => {
         const customEvent = e as CustomEvent<{ viewMode: 'grid' | 'list' }>;
@@ -219,7 +224,9 @@ const { posts, initialCount = 6, loadMoreCount = 6 } = Astro.props;
       if (!this.postsGrid || !this.loadMoreBtn) return;
 
       // Get the current count from the button's dataset
-      const currentCount = parseInt(this.loadMoreBtn.dataset.currentCount || this.initialCount.toString());
+      const currentCount = parseInt(
+        this.loadMoreBtn.dataset.currentCount || this.initialCount.toString(),
+      );
       const postItems = this.postsGrid.querySelectorAll('.post-item');
 
       // Show all items up to the current count
@@ -259,6 +266,13 @@ const { posts, initialCount = 6, loadMoreCount = 6 } = Astro.props;
       } else {
         this.postsGrid?.classList.add('hidden');
         this.postsList?.classList.remove('hidden');
+        // Reset count to initialCount when switching to list view
+        // List view starts fresh, independent of grid view's loaded count
+        if (this.loadMoreBtn) {
+          this.loadMoreBtn.dataset.currentCount = this.initialCount.toString();
+          const totalPosts = parseInt(this.loadMoreBtn.dataset.totalPosts || '0');
+          this.updateProgressIndicator(this.initialCount, totalPosts);
+        }
         // Re-initialize list items visibility when switching to list view
         this.initializeListItems();
         // Apply current sort when switching to list view
@@ -274,7 +288,8 @@ const { posts, initialCount = 6, loadMoreCount = 6 } = Astro.props;
       this.currentSort = sortOption;
       const rows = Array.from(this.postsTableBody.querySelectorAll('.post-list-item'));
 
-      // Get current visible count
+      // Get current visible count from button's dataset
+      // This is reset to initialCount when switching to list view
       const currentCount = parseInt(
         this.loadMoreBtn?.dataset.currentCount || this.initialCount.toString(),
       );
@@ -347,7 +362,9 @@ const { posts, initialCount = 6, loadMoreCount = 6 } = Astro.props;
       this.isLoading = true;
       this.showLoading();
 
-      const currentCount = parseInt(this.loadMoreBtn.dataset.currentCount || '0');
+      const currentCount = parseInt(
+        this.loadMoreBtn.dataset.currentCount || this.initialCount.toString(),
+      );
       const loadCount = parseInt(this.loadMoreBtn.dataset.loadCount || '6');
       const totalPosts = parseInt(this.loadMoreBtn.dataset.totalPosts || '0');
 
