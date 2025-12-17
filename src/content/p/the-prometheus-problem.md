@@ -1,17 +1,16 @@
 ---
 title: The Prometheus Problem
 description: >-
-  A critical examination of how AI companies position themselves as modern
-  Prometheus while deploying systems implicated in teenager deaths, externalizing
-  consequences, and operating as black boxes in critical infrastructure. This is
-  not about future superintelligence—it's about what's happening right now.
+  An examination of how AI companies position themselves as modern Prometheus while deploying systems implicated in teenager deaths, externalizing consequences, and operating as black boxes in critical infrastructure. This is not about future superintelligence, it's about what's happening right now.
 pubDate: 2025-12-16T19:00:00.000Z
+heroImage: /images/2025/the-prometheus-problem.avif
 language:
   - en
 category:
   - politics
   - metaspace
   - psychology
+  - systems-strategy
 tags:
   - technology
   - politics
@@ -27,6 +26,9 @@ tags:
   - philosophy
   - power
   - freedom
+  - digital-safety
+  - technology-policy
+  - regulations
 draft: false
 featured: true
 published: true
