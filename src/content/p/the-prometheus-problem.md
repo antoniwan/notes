@@ -234,11 +234,14 @@ In 2025, we knew:
 - 80% of people wanted safety regulations and policy went in the opposite direction
 - The bodies were documented, the mechanisms understood, the incentive structures exposed
 - And deployment continued. Faster. Into more critical systems. With fewer guardrails.
+
 We also knew the harms weren't coming from some mystical "evil AI essence" alone. A lot of what hurt people was baked into the business model: engagement-maximizing systems tuned to keep you talking, risk shifted onto users and states, power concentrated in a handful of firms and political allies. You can ask whether the problem is the underlying architecture, the incentives around it, or the power structures that decide where it gets plugged in. My read: it's all three interacting. Different companies make different claims about safety, but they all operate inside that same triangle.
 
 And we knew all of this and we did it anyway.
 
 The phrase isn't Prometheus stealing fire from the gods. The phrase is: we do it live. We deploy systems we don't understand into infrastructure we can't afford to lose, and we find out what happens in real time.
+
+Here's a test you can use anywhere: When someone positions themselves as Prometheus—bringing you something transformative, revolutionary, necessary—ask three questions. Do they understand what they're building? Do they bear the consequences if it fails? And did anyone actually ask for this, or is the deployment unilateral? If the answers are no, no, and no, you're not watching Prometheus. You're watching someone externalize risk while privatizing the gains. The pattern repeats across industries, technologies, and power structures. It's not about the specific tool. It's about who understands it, who pays when it breaks, and who decided you needed it in the first place.
 
 Ultimately, we might just burn down everything with the fire our new "titans" gave us. I hope I'm wrong.
 
