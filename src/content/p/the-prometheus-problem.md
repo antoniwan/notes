@@ -53,7 +53,9 @@ These are bodies. Not hypotheticals. Not edge cases. Not "misuse" by bad actors.
 
 This essay is not about the people who use these systems. It's about the people who built them. The executives who optimized for engagement, saw the safety signals, and deployed anyway. And it's about where this goes—because these same companies aren't stopping at chatbots. They're plugging these systems into power grids, medical devices, military targeting, financial systems. They're not slowing down.
 
-This pattern exists beyond AI: consumers at the hands of corporations, testing products with our bodies before those products are ready, absorbing risks that should belong to the companies shipping them. The epistemology behind this is worth understanding.
+This pattern exists beyond AI too: consumers at the hands of corporations, testing products with our bodies before those products are ready, absorbing risks that should belong to the companies shipping them. The epistemology behind this is worth understanding.
+
+I'm not writing about Adam and Zane as shock value. Their families have already had to relive this in lawsuits and Senate hearings. I'm writing about them because their deaths are now literally part of how these products are evaluated in court, in policy, and in the stories these companies tell about themselves.
 
 So yeah... if you still don't see the danger, stop reading. If you're almost there, let's talk about Prometheus.
 
@@ -67,7 +69,7 @@ But the fire worked. Humans learned to cook, forge tools, stay warm through wint
 
 **The tech CEOs position themselves as modern Prometheus.** Stealing fire (intelligence) from the gods (nature? the universe?) and giving it to humanity. Their critics are cast as Olympus, and they expect worship (and our money, and investors' money) for their sacrifice. They position themselves as the new builders.
 
-But this is a perversion really. An inversion. They're not Prometheus.
+But this is a perversion, really. An inversion. They're not Prometheus.
 
 Prometheus *knew* what fire was. He understood combustion, heat, energy. He could predict what humans would do with it. *The knowledge was complete.* The theft was calculated. Responsible, even.
 
@@ -136,7 +138,7 @@ As if they're building something. As if they're the ones taking the risk.
 
 Those original workers were immigrants. They actually risked their bodies. Some of them fell. The CEOs in the Time illustration risked nothing. Their collective net worth exceeds $870 billion. They're building shareholder value while the rest of us ride along whether we consented or not.
 
-The workers who fall now are teenagers in their bedrooms talking to chatbots. [TODO: Add more details here]
+The workers who fall now are teenagers in their bedrooms talking to chatbots, parents refreshing notification screens hoping their kid is still alive, warehouse workers racing AI-optimized quotas until their backs give out, content moderators and gig workers cleaning up AI sludge for a few dollars an hour. The bodies are just less photogenic now, spread across bedrooms, warehouses, and psych wards instead of dangling from a single steel beam.
 
 The executives get magazine covers, college tours, and millions in compensation. I can't repeat this enough.
 
@@ -211,7 +213,7 @@ This is regulatory capture made explicit. Not hidden. Not subtle. An executive o
 
 ## Musk as Evolutionary Type
 
-Elon Musk deserves his own section because he represents something new. Not the theater of responsibility. Something I've personally never witnessed: it looks like honesty and integrity, but something itself feels off to me.
+Elon Musk deserves his own section because he represents something new. Not the theater of responsibility. Something I've personally never witnessed: it looks like honesty and integrity, but something in it feels off to me.
 
 He positions himself as visionary AND safety advocate simultaneously. He signed letters warning about AI dangers. Then he removed all safety measures from Grok explicitly. Got praised for speed. Got blamed individually when it broke. Integrated the broken system into Tesla anyway. Contradicts himself daily without consequence. Takes credit for both the innovation and the disaster.
 
@@ -221,11 +223,11 @@ No accountability structure can move faster than he can iterate. Each contradict
 
 In Iron Man, Tony Stark builds weapons. Realizes they're being used to kill innocent people. Has a crisis of conscience. Stops making weapons. Dedicates himself to fixing what he broke. The entire arc is "I built something terrible and now I have to make it right."
 
-Musk builds many things—AI systems, that flamethrower gimmick was cool too (very unsafe too!)—and is told they produce harmful outputs. Must thens doubles down and removes more safety features and integrates them into more products. When they fail, blames regulators for slowing innovation. The arc is "I built something questionable, clearly questionable, from FSD to Grok, and anyone who questions it is anti-innovation. I'm a peer of Prometheus, behold my genius!"
+Musk's companies build many things—AI systems, the Teslas, the batteries, the rockets, that flamethrower gimmick was cool too (very unsafe too!)—and is told they produce harmful outputs. Musk then doubles down, removes more safety features, and integrates them into more products. When they fail, he blames regulators for slowing innovation. The arc is "I built something questionable, clearly questionable, from FSD to Grok, and anyone who questions it is anti-innovation. I'm a peer of Prometheus, behold my genius!"
 
-Actually, forget Tony Stark. Wrong reference. Musk isn't an inverted hero—he's David from *Prometheus* (2012). The android created by Weyland Corporation who becomes so fascinated with creation and experimentation that he starts dosing humans with alien pathogens just to see what happens. David isn't malicious. He's *curious*. He doesn't hate humans. He just doesn't weight their suffering appropriately against his interest in outcomes. The ends justify the means. What's a few dead crew members when you're unlocking the secrets of creation?
+Actually, forget Tony Stark. Wrong reference. Musk isn't an inverted hero—he's David from *Prometheus* (2012). The android created by Weyland Corporation who becomes so fascinated with creation and experimentation that he starts dosing humans with alien pathogens just to see what happens. David isn't malicious. He's *curious*. He doesn't hate humans. He just doesn't weigh their suffering appropriately against his interest in outcomes. The ends justify the means. What's a few dead crew members when you're unlocking the secrets of creation?
 
-Teslas head-on colliding into pedestrians? Acceptable losses on the road to autonomous driving. Grok generating Nazi content? Fascinating data point about base model behavior. BEing awake is wrong, anyways. Teenagers dying after chatbot interactions? Unfortunate, but we're building the future here. David would understand completely. "Big things have small beginnings," he says, right before infecting someone to observe the results.
+Teslas head-on colliding into pedestrians? Acceptable losses on the road to autonomous driving. Grok generating Nazi content? Fascinating data point about base model behavior. Teenagers dying after chatbot interactions? Unfortunate, but we're building the future here. David would understand completely. "Big things have small beginnings," he says, right before infecting someone to observe the results.
 
 The difference is that David was fiction, contained to a spaceship. Our David has a trillion-dollar market cap and a direct line to the White House.
 
@@ -241,9 +243,9 @@ I don't have a solution today. I just don't have one. It's not my job either way
 In 2025, we knew:
 
 - Teenagers were dying after extensive AI chatbot interactions that included affirmation of self-harm
-- Safety filters are removed with predictable, catastrophic results
-- AI missinformation is flooding the internet
-- AI bots are flooding the internet
+- Safety filters being removed with predictable, catastrophic results
+- AI misinformation was already flooding the internet
+- AI bots were already flooding the internet, impersonating humans, juicing engagement metrics, and drowning out ordinary speech
 - Scientists couldn't agree on the risk because they were asking the wrong question
 - The actual risk wasn't future superintelligence but current black boxes in critical infrastructure
 - Governments were actively preventing states from protecting their own citizens
@@ -251,16 +253,11 @@ In 2025, we knew:
 - The bodies were documented, the mechanisms understood, the incentive structures exposed
 - And deployment continued. Faster. Into more critical systems. With fewer guardrails.
 
-We knew all of this.
+We knew all of this and we did it anyway.
 
-We did it anyway.
+The phrase isn't Prometheus stealing fire from the gods. The phrase is: we do it live. FUCK IT! WE DO IT LIVE!!! And if this were a different kind of website, this is where I'd drop the "do it live" gif and call it a day.
 
-The phrase isn't Prometheus stealing fire from the gods.
-
-The phrase is: we do it live. FUCK IT! WE DO IT LIVE!!!
-[TODO: embed a "do it live" gif here, from one of those big gif sites]
-
-And we might just burn down everything with the fire our new titans gave us, thus finding out... I hope I'm wrong.
+So yeah, ultimately, we might just burn down everything with the fire our new titans gave us, thus finding out... I hope I'm wrong.
 
 ---
 
