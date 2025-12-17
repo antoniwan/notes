@@ -74,7 +74,7 @@
   }
 
   // Expose update function globally
-  (window as any).updateServiceWorker = updateServiceWorker;
+  window.updateServiceWorker = updateServiceWorker;
 
   // Performance mark for service worker registration
   if ('performance' in window) {

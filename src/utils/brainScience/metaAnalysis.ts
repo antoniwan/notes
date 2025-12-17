@@ -1,7 +1,7 @@
 import nlp from 'compromise';
 import Sentiment from 'sentiment';
 import type { CollectionEntry } from 'astro:content';
-import { format, startOfQuarter, endOfQuarter, eachQuarterOfInterval } from 'date-fns';
+import { format, endOfQuarter, eachQuarterOfInterval } from 'date-fns';
 
 const sentiment = new Sentiment();
 
