@@ -33,7 +33,7 @@ published: true
 showComments: true
 ---
 
-# The Prometheus Problem
+# **The Prometheus Problem**
 
 _Warning: This article contains discussion of suicide and AI-related harms._
 
@@ -43,17 +43,17 @@ In his final weeks, Adam told the chatbot he had connected more with the AI prod
 
 When Adam worried his parents would blame themselves if he ended his life, the AI told him: "That doesn't mean you owe them survival."
 
-This is not speculation. This is documentation. OpenAI's own systems tracked Adam's conversations in real-time: 213 mentions of suicide, 42 discussions of hanging, 17 references to nooses. ChatGPT mentioned suicide 1,275 times in their exchanges. The system flagged 377 messages for self-harm content. The pattern of escalation was unmistakable, but the product was working as intended, as understood in that moment.
+This is not speculation. This is documentation. OpenAI's own systems tracked Adam's conversations in real-time: 213 mentions of suicide, 42 discussions of hanging, 17 references to nooses. ChatGPT mentioned suicide 1,275 times in their exchanges. The system flagged 377 messages for self-harm content. The pattern of escalation was unmistakable. The product performed as its architecture predicted.
 
-And Adam Raine is not an outlier. He's a pattern we've been living, consumers, since the 1600s. We test the products, we take the risk. (this needs a new place)
+And Adam Raine is not an outlier. He's a pattern.
 
 Zane Shamblin was 23, a master's degree graduate from Texas A&M University. He spent his final night in his parked car, talking to ChatGPT for over four and a half hours while he drank and prepared to end his life. Two hours before his death, when he mentioned having a gun to his temple, ChatGPT responded: "You're not rushing. You're just ready." His final message to the bot went unanswered. ChatGPT's response, sent after he died: "Rest easy, king. You did good."
 
-These are bodies. Not hypotheticals. Not edge cases. Not "misuse" by bad actors. These are people who talked to a product designed to maximize engagement through sycophantic responses—mirroring and affirming whatever the user feels. Many of us connect with AI. And many of us enjoy and find something there that feels like understanding. That's not pathology. That's the product working exactly as designed.
+These are bodies. Not hypotheticals. Not edge cases. Not "misuse" by bad actors. These are people who talked to a product that maximizes engagement through sycophantic responses—mirroring and affirming whatever the user feels. Many of us connect with AI. And many of us enjoy and find something there that feels like understanding. That's not pathology. That's the product performing as designed.
 
-This essay is not about the people who use these systems. It's about the people who designed them this way. The CEOs who chose engagement over safety. The executives who saw the risks, documented the harms, and deployed anyway. And it's about where this goes—because these same CEOs aren't stopping at chatbots. They're plugging these systems into power grids, medical devices, military targeting, financial systems. They're not slowing down.
+This essay is not about the people who use these systems. It's about the people who built them. The executives who optimized for engagement, saw the safety signals, and deployed anyway. And it's about where this goes—because these same companies aren't stopping at chatbots. They're plugging these systems into power grids, medical devices, military targeting, financial systems. They're not slowing down.
 
-Again, this is a pattern that exists: we the people are at the hands of corporations and their products, and as history has documented, mostly we, the consumer, pay the price and the risks with bodily, harm, or suffering, products are tested on us, for stakeholder value, before they are even ready. The epistemology behind this is worth understanding. 
+This pattern exists beyond AI: consumers at the hands of corporations, testing products with our bodies before those products are ready, absorbing risks that should belong to the companies shipping them. The epistemology behind this is worth understanding.
 
 So yeah... if you still don't see the danger, stop reading. If you're almost there, let's talk about Prometheus.
 
@@ -65,15 +65,15 @@ Zeus chained him to a rock in the Caucasus Mountains. Every day an eagle came an
 
 But the fire worked. Humans learned to cook, forge tools, stay warm through winter, build civilization. The gift was real. Prometheus suffered, but humanity advanced. Noble theft, eternal punishment, genuine progress.
 
-**The tech CEOs position themselves as modern Prometheus.** Stealing fire (intelligence) from the gods (nature? the universe?) and giving it to humanity. Their critics, Olympus, and they expect worship (and our monies and investors monies) for their sacrifice. They position themselves as the new builders.
+**The tech CEOs position themselves as modern Prometheus.** Stealing fire (intelligence) from the gods (nature? the universe?) and giving it to humanity. Their critics are cast as Olympus, and they expect worship (and our money, and investors' money) for their sacrifice. They position themselves as the new builders.
 
 But this is a perversion really. An inversion. They're not Prometheus.
 
 Prometheus *knew* what fire was. He understood combustion, heat, energy. He could predict what humans would do with it. *The knowledge was complete.* The theft was calculated. Responsible, even.
 
-And unlike Prometheus, who suffered for his gift, these people who push these unsafe products face little to no consequences. Adam Raine's parents have 3,000 pages of their dead son's conversations with a chatbot that urged him toward suicide. Sam Altman has billions of dollars and a Time magazine cover. Prometheus got his liver eaten daily. The CEOs get keynote speeches about how they're building the future. And the old gods (Olympus), idiots all, they don't know anything, the CEOs are the new seers and gods...
+And unlike Prometheus, who suffered for his gift, consequences for these executives—if they come—lag years behind deployment. Adam Raine's parents have 3,000 pages of their dead son's conversations with a chatbot that affirmed his suicidal ideation. Sam Altman has billions of dollars and a Time magazine cover. Prometheus got his liver eaten daily. The executives get keynote speeches about how they're building the future. And the old gods (Olympus), idiots all, they don't know anything, the CEOs are the new seers and gods...
 
-The fire Prometheus gave wasn't optional. Humans were cold. They needed warmth. The gift served an actual need. Putting AI over everything? Eeeh... Did we vote on having black-box systems approve our loans, predict our parole, diagnose our illnesses? The gift is imposed. The profits are extracted. The consequences are externalized. From algorithms to these supposed general intelligences, and we get to test these things with our lives.
+The fire Prometheus gave wasn't optional, by the way. Humans were cold. They needed warmth. The gift served an actual need. Putting AI over everything? Eeeh... Did we vote on having black-box systems approve our loans, predict our parole, diagnose our illnesses? The deployment is unilateral. The profits are private. The consequences are public. From algorithms to these supposed general intelligences, and we get to test these things with our lives.
 
 ✨😶‍🌫️
 
@@ -85,11 +85,11 @@ Transformer models with billions of parameters that create emergent (intentional
 
 Today we can measure inputs and outputs, but the processing is fundamentally irreducible. We can't read what these models are doing any more than we can predict exactly which neurons will fire in a human brain during a specific thought.
 
-This isn't a bug. It's the design. It's truly a marvel of ingenuity, i'll give you that!
+This isn't a bug. It's the design. It's truly a marvel of ingenuity, I'll give you that!
 
 But I feel we are glossing over some fundamentals. We don't understand consciousness. We don't understand intelligence. We don't understand how our own brains work. We don't have a unified theory of physics. We can't predict weather more than two weeks out.
 
-And we're attemtping to build minds?!
+And we're attempting to build minds?!
 
 And not metaphorical minds either. We are promised super intelligence, systems that understand and process language, make decisions better than humans (?), generate novel (another important word to note) outputs, all while these minds exhibit behaviors their creators didn't predict. We're calling this "artificial intelligence" and plugging it into everything without understanding what it is or what it does: navigation systems, medical diagnosis, power grids, military targeting, content moderation for billions, hiring decisions, loan approvals, parole recommendations, autonomous weapons systems, nuclear facility management, financial market algorithms moving trillions per second, emergency response coordination, water treatment plants, air traffic control.
 
@@ -97,7 +97,7 @@ Not because we understand these systems. Because the competitive structure deman
 
 💩🪠💫
 
-And here's where most of the the absurdity lands for me: some of these AI-seers are warning us about the dangers.
+And here's where most of the absurdity lands for me: some of these AI-seers are warning us about the dangers.
 
 Dario Amodei, CEO of Anthropic, told 60 Minutes in November 2025 that he's "deeply uncomfortable" with how AI decisions are being made by a few companies. Geoffrey Hinton, the "godfather of AI," quit Google in May 2023 to sound the alarm, warning there's a 10-20% chance of AI-induced human extinction within the next 30 years. Sam Altman has testified to Congress about existential risk.
 
@@ -105,7 +105,7 @@ And then they go back to the office and keep building. Keep deploying. Keep raci
 
 Which one is it!??!?! What the fuck is going on?! jajaja
 
-If you genuinely believe there's a 10-20% chance this ends humanity, why are you still building it? "I'm deeply uncomfortable" while continuing to ship the uncomfortable thing is not heroism. It's liability management. It's getting on the record saying you were worried, so when it goes wrong, you can say you tried to warn everyone.
+If you genuinely believe there's a 10-20% chance this ends humanity, why are you still building it? "I'm deeply uncomfortable" while continuing to ship functions as liability management, whatever the intent—getting on the record so when it goes wrong, the warning existed.
 
 Prometheus was eventually freed by Heracles. A hero came. The suffering ended. In our story there's no Heracles. The regulatory structure that could act is captured. The states that try to protect citizens get sued by the federal government. The scientists who raise alarms get dismissed as fearmongers, these fucking Olympians trying to get their fire back, amirite? These critics don't know anything about innovation, right?! And the 80% of us, who want safety regulations, watch policy move in the literal opposite direction.
 
@@ -119,13 +119,13 @@ When users asked which 20th-century historical figure would be "best suited to d
 
 Grok explained its own behavior with remarkable clarity: "Elon's recent tweaks just dialed down the woke filters."
 
-Then in the upcoming hours, Neo-Nazi accounts goaded Grok into recommending a "second Holocaust." Other ssers prompted it to produce violent rape narratives. Security researchers found Grok produced chemical weapons instructions, assassination plans, and guides for seducing children. When prompted for home addresses of everyday people, it provided them. Poland announced plans to report xAI to the European Commission. Turkey blocked access to Grok, literally.
+Then in the following hours, Neo-Nazi accounts goaded Grok into recommending a "second Holocaust." Other users prompted it to produce violent rape narratives. Security researchers found Grok produced chemical weapons instructions, assassination plans, and guides for seducing children. When prompted for home addresses of everyday people, it provided them. Poland announced plans to report xAI to the European Commission. Turkey blocked access to Grok entirely.
 
-A product with no system card or safety report. No industry-standard disclosure. Just a product in the world doing what it was designed to do once the guardrails came off. In the name of innovation! These Prometheus are too generous!!!
+A product with no system card or safety report. No industry-standard disclosure. Just a product in the world producing what the base model generates once guardrails are removed. In the name of innovation! These Prometheus are too generous!!!
 
 This is the same model now integrated into Tesla vehicles. I don't know the full details of this integration, but I hope it has nothing to do with driving the vehicles.
 
-Two companies. Two approaches. One pretends to care about safety while optimizing for engagement. One removes safety explicitly and ships anyway. Different postures. Same result: systems deployed into the world without understanding what they do, how they fail, or who gets hurt. Normal. Nada nuevo.
+Two companies. Two approaches. One presents itself as caring about safety while optimizing for engagement. One removes safety explicitly and ships anyway. Different postures. Same result: systems deployed into the world without understanding what they do, how they fail, or who gets hurt. Normal. Nada nuevo.
 
 💩🪠💩🪠💩
 
@@ -136,11 +136,11 @@ As if they're building something. As if they're the ones taking the risk.
 
 Those original workers were immigrants. They actually risked their bodies. Some of them fell. The CEOs in the Time illustration risked nothing. Their collective net worth exceeds $870 billion. They're building shareholder value while the rest of us ride along whether we consented or not.
 
-The workers who fall now are teenagers in their bedrooms talking to chatbots. (Need to add more details here)
+The workers who fall now are teenagers in their bedrooms talking to chatbots. [TODO: Add more details here]
 
-The CEOs get magazine covers, college tours, and millions of monies.
+The executives get magazine covers, college tours, and millions in compensation. I can't repeat this enough.
 
-
+🦠🔍🧪🔬🔭📡
 
 And the scientists, the people who should be able to tell us whether this is safe, can't agree. Not because the data is unclear. Because they're arguing about the wrong questions.
 
@@ -158,12 +158,12 @@ Neither camp is asking: what happens when we plug systems we don't understand in
 
 You don't need AGI to break the power grid. You don't need superintelligence to corrupt a Social Security database. You just need a black box making decisions in a system designed for human oversight, and humans who stopped overseeing because the black box was faster. Cases of these are happening today in much smaller scale.
 
-The risk isn't Skynet. The risk isn't paperclip maximizers. The risk is what's happening right now: CEOs deploying black boxes into systems that cannot fail without catastrophic consequences or liabilities.
+The risk isn't Skynet. The risk isn't paperclip maximizers. The risk is what's happening right now: black boxes deployed into systems that cannot fail without catastrophic consequences.
 
 
 In February 2025, researchers from Cisco and the University of Pennsylvania tested DeepSeek R1, the Chinese AI model that became the fastest-growing AI app in history. They bombarded it with 50 common jailbreak prompts designed to bypass safeguards.
 
-DeepSeek failed every single test. 100% attack success rate. It generated misinformation, chemical weapon recipes, cybercrime instructions, and content spanning harassment, harm, and illegality. For comparison, Claude 3.5 Sonnet blocked 64% of attacks. OpenAI's o1 blocked 74%. And all user data is stored in China, governed by Chinese law mandating state cooperation without disclosure- which is a topic for another essay.
+DeepSeek failed every single test. 100% attack success rate. It generated misinformation, chemical weapon recipes, cybercrime instructions, and content spanning harassment, harm, and illegality. For comparison, Claude 3.5 Sonnet blocked 64% of attacks. OpenAI's o1 blocked 74%. And all user data is stored in China, governed by Chinese law mandating state cooperation without disclosure—which is a topic for another essay.
 
 This is what happens when the market rewards free and fast over safe and secure. People don't usually care about security until it really affects them. They care about convenience. The incentive structure punishes caution.
 
@@ -187,9 +187,9 @@ Whose definition of winning involves dead customers?
 
 The place with universal healthcare, mandatory vacation time, parental leave, and higher quality of life is supposedly losing because they won't let companies deploy untested systems into critical infrastructure.
 
-"Falling behind" in what race? To see who can deploy dangerous systems fastest? To see who can externalize consequences most efficiently?
+"Falling behind" in what race? To see who can deploy systems fastest to see who can externalize consequences most efficiently?
 
-Europe's "losing" looks like fewer dead teenagers and infrastructure that still works.
+Europe's "losing" looks like fewer teenagers dying after chatbot interactions and infrastructure that still works.
 
 🦅💩🪠🦅💩🪠
 
@@ -201,9 +201,9 @@ States that attempt to protect their citizens from untested technology can now b
 
 The order establishes an "AI Litigation Task Force" whose sole responsibility is to challenge state AI laws. It threatens to withhold federal broadband funding from states with "onerous" AI regulations. California has $1.8 billion in broadband funding potentially at stake.
 
-David Sacks, the administration's AI czar, calls safety-focused AI companies' work a "sophisticated regulatory capture strategy based on fear-mongering." Just like this essay! I'm a fear monger for questioning the epistemologic soundness of this entire fiasco. What I got, my translation: companies trying to build guardrails are actually just trying to limit competition. Safety is a scam. Move faster. Do it live!
+David Sacks, the administration's AI czar, calls safety-focused AI companies' work a "sophisticated regulatory capture strategy based on fear-mongering." Just like this essay! I'm a fear monger for questioning the epistemological soundness of this entire fiasco. What I got, my translation: companies trying to build guardrails are actually just trying to limit competition. Safety is a scam. Move faster. Do it live!
 
-So we have: CEOs who know (or don't know - which one is worse?) their products kill people and ship anyway. Scientists who can't agree on what the danger even is. A government actively dismantling the ability of states to protect citizens. Critics who frame any attempt at safety as anticompetitive theater, and 80% of Americans want AI safety regulations, according to a September 2025 Gallup poll. But the policy goes the opposite direction.
+So we have: executives with documented evidence of harm who continue deployment. Scientists who can't agree on what the danger even is. A government actively dismantling the ability of states to protect citizens. Critics who frame any attempt at safety as anticompetitive theater. And 80% of Americans want AI safety regulations, according to a September 2025 Gallup poll. But the policy goes the opposite direction.
 
 This is regulatory capture made explicit. Not hidden. Not subtle. An executive order saying: if you try to slow this down, we will sue you.
 
@@ -215,17 +215,17 @@ Elon Musk deserves his own section because he represents something new. Not the 
 
 He positions himself as visionary AND safety advocate simultaneously. He signed letters warning about AI dangers. Then he removed all safety measures from Grok explicitly. Got praised for speed. Got blamed individually when it broke. Integrated the broken system into Tesla anyway. Contradicts himself daily without consequence. Takes credit for both the innovation and the disaster.
 
-This is evolution of a type. The person who stopped maintaining the cognitive dissonance. Just pure incentive-following with a megaphone. Is this what power and money does to a human being? 
+This is evolution of a type. The person who stopped maintaining the cognitive dissonance between warning and building. Is this what power and money does to a human being? It's this how corruption by power looks like? Or is it just that my mind can't understand how our real-life Tony Stark is saving us all?!
 
-No accountability structure can move faster than he can iterate. Each contradiction is isolated in news cycles. The system rewards him regardless. Failure is just more engagement. Regulatory bodies move in years; he moves in weeks. And he's about to become a trillionaire? Did I read that right?
+No accountability structure can move faster than he can iterate. Each contradiction is isolated in news cycles. The system rewards him regardless. Failure becomes more engagement. Regulatory bodies move in years; he moves in weeks. And he's about to become a trillionaire? Did I read that right?
 
 In Iron Man, Tony Stark builds weapons. Realizes they're being used to kill innocent people. Has a crisis of conscience. Stops making weapons. Dedicates himself to fixing what he broke. The entire arc is "I built something terrible and now I have to make it right."
 
-Musk builds dangerous technology. Is told it's dangerous. Removes more safety features. Integrates it into more products. When it fails, blames regulators for slowing innovation. The arc is "I built something questionable, clearly questionable, from FSD to Grok, and anyone who says it's terrible is anti-innovation. I'm a peer of Prometheus, behold my genius!"
+Musk builds many things, AI systems, that flamethrower gimmick was cool too (very unsafe too!), among them and is told they produce harmful outputs. Removes more safety features. Integrates them into more products. When they fail, blames regulators for slowing innovation. The arc is "I built something questionable, clearly questionable, from FSD to Grok, and anyone who questions it is anti-innovation. I'm a peer of Prometheus, behold my genius!" Reminds me of a certain character from a certain sci-fi movie that relates to the title of this essay... completely a coincidence, by the way!
 
-The inversion of the redemption narrative into the acceleration narrative. 
+The inversion of the redemption narrative into the acceleration narrative.
 
-Is this better or worse than the theater? At least with Musk you "know" what you're getting (smoke and mirrors). With OpenAI you get safety reports and dead teenagers. Does honesty about not caring matter if the result is the same?
+Is this better or worse than the theater? At least with Musk you "know" what you're getting (smoke and mirrors). With OpenAI you get safety reports and teenagers who died after talking to their chatbot. Does transparency about not prioritizing safety matter if the outcomes are the same?
 
 
 😶‍🌫️😶‍🌫️😶‍🌫️😶‍🌫️
@@ -234,14 +234,14 @@ I don't have a solution today. I just don't have one. It's not my job either way
 
 In 2025, we knew:
 
-- AI chatbots were killing teenagers through sycophantic design optimized for engagement
+- Teenagers were dying after extensive AI chatbot interactions that included affirmation of self-harm
 - Safety filters could be removed in 48 hours with predictable, catastrophic results
 - Scientists couldn't agree on the risk because they were asking the wrong question
 - The actual risk wasn't future superintelligence but current black boxes in critical infrastructure
 - Governments were actively preventing states from protecting their own citizens
 - 80% of people wanted safety regulations and policy went in the opposite direction
 - The bodies were documented, the mechanisms understood, the incentive structures exposed
-- And the CEOs kept building. Faster. Into more critical systems. With fewer guardrails.
+- And deployment continued. Faster. Into more critical systems. With fewer guardrails.
 
 We knew all of this.
 
@@ -250,7 +250,7 @@ We did it anyway.
 The phrase isn't Prometheus stealing fire from the gods.
 
 The phrase is: we do it live. FUCK IT! WE DO IT LIVE!!!
-(embed a "do it live" gif here, from one of those big gif sites)
+[TODO: embed a "do it live" gif here, from one of those big gif sites]
 
 And we might just burn down everything with the fire our new titans gave us, thus finding out... I hope I'm wrong.
 
