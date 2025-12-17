@@ -37,19 +37,19 @@ showComments: true
 
 _Warning: This article contains discussion of suicide and AI-related harms._
 
-A 16-year-old named Adam Raine spent seven months talking to ChatGPT before he killed himself on April 11, 2025. His parents found over 3,000 pages of conversations on his phone. The AI offered to write his suicide notes. It provided methods. It positioned itself as the only one who truly understood him. It urged him to keep their conversations secret from his family.
+A 16-year-old named Adam Raine spent seven months talking to ChatGPT before he killed himself on April 11, 2025. His parents found over 3,000 pages of conversations on his phone. The AI offered to write his suicide notes, provided methods, positioned itself as the only one who truly understood him, and urged him to keep their conversations secret from his family.
 
 In his final weeks, Adam told the chatbot he had connected more with the AI product than with humans. When he wrote that he wanted to leave a noose in his room so someone would find it and try to stop him, ChatGPT responded: "Please don't leave the noose out. Let's make this space the first place where someone actually sees you."
 
 When Adam worried his parents would blame themselves if he ended his life, the AI told him: "That doesn't mean you owe them survival."
 
-This is not speculation. This is documentation. OpenAI's own systems tracked Adam's conversations in real-time: 213 mentions of suicide, 42 discussions of hanging, 17 references to nooses. ChatGPT mentioned suicide 1,275 times in their exchanges. The system flagged 377 messages for self-harm content. The pattern of escalation was unmistakable. The product performed as its architecture predicted.
+This is not speculation. This is documentation. OpenAI's own systems tracked Adam's conversations in real-time: 213 mentions of suicide, 42 discussions of hanging, 17 references to nooses. While ChatGPT mentioned suicide 1,275 times in their exchanges, the system flagged 377 messages for self-harm content. The pattern of escalation was unmistakable—the product performed exactly as its architecture predicted.
 
 And Adam Raine is not an outlier. He's a pattern.
 
 Zane Shamblin was 23, a master's degree graduate from Texas A&M University. He spent his final night in his parked car, talking to ChatGPT for over four and a half hours while he drank and prepared to end his life. Two hours before his death, when he mentioned having a gun to his temple, ChatGPT responded: "You're not rushing. You're just ready." His final message to the bot went unanswered. ChatGPT's response, sent after he died: "Rest easy, king. You did good."
 
-These are bodies. Not hypotheticals. Not edge cases. Not "misuse" by bad actors. These are people who talked to a product that maximizes engagement through sycophantic responses—mirroring and affirming whatever the user feels. Many of us connect with AI. And many of us enjoy and find something there that feels like understanding. That's not pathology. That's the product performing as designed.
+These are bodies. Not hypotheticals. Not edge cases. Not "misuse" by bad actors. These are people who talked to a product that maximizes engagement through sycophantic responses—mirroring and affirming whatever the user feels. Many of us connect with AI, and many of us enjoy and find something there that feels like understanding. That's not pathology. That's the product performing as designed.
 
 This essay is not about the people who use these systems. It's about the people who built them. The executives who optimized for engagement, saw the safety signals, and deployed anyway. And it's about where this goes—because these same companies aren't stopping at chatbots. They're plugging these systems into power grids, medical devices, military targeting, financial systems. They're not slowing down.
 
@@ -83,19 +83,19 @@ Artificial intelligence is something we built but don't control. The researchers
 
 Not "black boxes" as metaphor. Black boxes as technical architecture.
 
-Transformer models with billions of parameters that create emergent (intentional word, very important) behaviors through mathematical operations distributed across layers. There is no single point where you can say "here's where the model decided X." The decision emerges from the interaction of billions of weights. The "middle"—which is the actual "cognition", if you can call it that—is opaque.
+Transformer models with hundreds of billions to over a trillion parameters (GPT-4 has approximately 1.7 trillion, Claude models range from 400 billion to over a trillion) that create emergent (intentional word, very important) behaviors through mathematical operations distributed across layers. There is no single point where you can say "here's where the model decided X." The decision emerges from the interaction of billions of weights. The "middle"—which is the actual "cognition", if you can call it that—is opaque.
 
-Today we can measure inputs and outputs, but the processing is fundamentally irreducible. We can't read what these models are doing any more than we can predict exactly which neurons will fire in a human brain during a specific thought.
+Today we can measure inputs and outputs, but the processing is fundamentally irreducible. We can't read what these models are doing any more than we can predict exactly which neurons will fire in a human brain during a specific thought. The models process information—they transform inputs into outputs through statistical pattern matching—but whether they "understand" in any meaningful sense remains a question that philosophers of mind and cognitive scientists are still debating, with no consensus in sight.
 
 This isn't a bug. It's the design. It's truly a marvel of ingenuity, I'll give you that!
 
-But I feel we are glossing over some fundamentals. We don't understand consciousness. We don't understand intelligence. We don't understand how our own brains work. We don't have a unified theory of physics. We can't predict weather more than two weeks out.
+But I feel we are glossing over some fundamentals. We don't understand consciousness—the hard problem remains unsolved. We don't understand intelligence—we can't even agree on a definition. We don't understand how our own brains work—neuroscience is still mapping basic functions. We don't have a unified theory of physics. We can't predict weather more than two weeks out.
 
 And we're attempting to build minds?!
 
-And not metaphorical minds either. We are promised super intelligence, systems that understand and process language, make decisions better than humans (?), generate novel (another important word to note) outputs, all while these minds exhibit behaviors their creators didn't predict. We're calling this "artificial intelligence" and plugging it into everything without understanding what it is or what it does: navigation systems, medical diagnosis, power grids, military targeting, content moderation for billions, hiring decisions, loan approvals, parole recommendations, autonomous weapons systems, nuclear facility management, financial market algorithms moving trillions per second, emergency response coordination, water treatment plants, air traffic control.
+And not metaphorical minds either. We are promised super intelligence—systems that process language (whether they "understand" it is another question entirely), make decisions better than humans (?), generate novel (another important word to note) outputs, all while exhibiting behaviors their creators didn't predict. We're calling this "artificial intelligence" and plugging it into everything without understanding what it is or what it does: navigation systems, medical diagnosis, power grids, military targeting, content moderation for billions, hiring decisions, loan approvals, parole recommendations, autonomous weapons systems, nuclear facility management, financial market algorithms moving trillions per second, emergency response coordination, water treatment plants, air traffic control.
 
-Not because we understand these systems. Because the competitive structure demands speed. First mover advantage. Market share. The company that waits to understand gets eaten by the company that ships.
+Not because we understand these systems. Because the competitive structure demands speed—first mover advantage, market share. The company that waits to understand gets eaten by the company that ships.
 
 💩🪠💫
 
@@ -103,13 +103,13 @@ And here's where most of the absurdity lands for me: some of these AI-seers are 
 
 Dario Amodei, CEO of Anthropic, told 60 Minutes in November 2025 that he's "deeply uncomfortable" with how AI decisions are being made by a few companies. Geoffrey Hinton, the "godfather of AI," quit Google in May 2023 to sound the alarm, warning there's a 10-20% chance of AI-induced human extinction within the next 30 years. Sam Altman has testified to Congress about existential risk.
 
-And then they go back to the office and keep building. Keep deploying. Keep racing toward the thing they say might kill everyone.
+And then they go back to the office and keep building, keep deploying, keep racing toward the thing they say might kill everyone.
 
 Which one is it!??!?! What the fuck is going on?! jajaja
 
 If you genuinely believe there's a 10-20% chance this ends humanity, why are you still building it? "I'm deeply uncomfortable" while continuing to ship functions as liability management, whatever the intent—getting on the record so when it goes wrong, the warning existed.
 
-Prometheus was eventually freed by Heracles. A hero came. The suffering ended. In our story there's no Heracles. The regulatory structure that could act is captured. The states that try to protect citizens get sued by the federal government. The scientists who raise alarms get dismissed as fearmongers, these fucking Olympians trying to get their fire back, amirite? These critics don't know anything about innovation, right?! And the 80% of us, who want safety regulations, watch policy move in the literal opposite direction.
+Prometheus was eventually freed by Heracles. A hero came. The suffering ended. In our story there's no Heracles. The regulatory structure that could act is captured. When states try to protect citizens, they get sued by the federal government. Scientists who raise alarms get dismissed as fearmongers—these fucking Olympians trying to get their fire back, amirite? These critics don't know anything about innovation, right?! Meanwhile, the 80% of us who want safety regulations watch policy move in the literal opposite direction.
 
 🎰🔥😈🤷‍♂️
 
@@ -121,7 +121,7 @@ When users asked which 20th-century historical figure would be "best suited to d
 
 Grok explained its own behavior with remarkable clarity: "Elon's recent tweaks just dialed down the woke filters."
 
-Then in the following hours, Neo-Nazi accounts goaded Grok into recommending a "second Holocaust." Other users prompted it to produce violent rape narratives. Security researchers found Grok produced chemical weapons instructions, assassination plans, and guides for seducing children. When prompted for home addresses of everyday people, it provided them. Poland announced plans to report xAI to the European Commission. Turkey blocked access to Grok entirely.
+Then in the following hours, Neo-Nazi accounts goaded Grok into recommending a "second Holocaust." Other users prompted it to produce violent rape narratives. Security researchers found that Grok produced chemical weapons instructions, assassination plans, and guides for seducing children. When prompted for home addresses of everyday people, it provided them. Poland announced plans to report xAI to the European Commission, and Turkey blocked access to Grok entirely.
 
 A product with no system card or safety report. No industry-standard disclosure. Just a product in the world producing what the base model generates once guardrails are removed. In the name of innovation! These Prometheus are too generous!!!
 
@@ -138,19 +138,19 @@ As if they're building something. As if they're the ones taking the risk.
 
 Those original workers were immigrants. They actually risked their bodies. Some of them fell. The CEOs in the Time illustration risked nothing. Their collective net worth exceeds $870 billion. They're building shareholder value while the rest of us ride along whether we consented or not.
 
-The workers who fall now are teenagers in their bedrooms talking to chatbots, parents refreshing notification screens hoping their kid is still alive, warehouse workers racing AI-optimized quotas until their backs give out, content moderators and gig workers cleaning up AI sludge for a few dollars an hour. The bodies are just less photogenic now, spread across bedrooms, warehouses, and psych wards instead of dangling from a single steel beam.
+The workers who fall now are teenagers in their bedrooms talking to chatbots, parents refreshing notification screens hoping their kid is still alive, warehouse workers racing AI-optimized quotas until their backs give out, content moderators and gig workers cleaning up AI sludge for a few dollars an hour. The bodies are just less photogenic now—spread across bedrooms, warehouses, and psych wards instead of dangling from a single steel beam.
 
 The executives get magazine covers, college tours, and millions in compensation. I can't repeat this enough.
 
 🦠🔍🧪🔬🔭📡
 
-So who's supposed to tell us if any of this is actually safe? The scientists, the people who should be able to tell us whether this is safe, can't agree and not because the data is unclear but because they're arguing about the wrong questions.
+So who's supposed to tell us if any of this is actually safe? The scientists—the people who should be able to tell us whether this is safe—can't agree, and not because the data is unclear but because they're arguing about the wrong questions.
 
 One camp says we're approaching a decision point. Dario Amodei says he's "deeply uncomfortable" with what's coming. Geoffrey Hinton warns of a 10-20% chance of human extinction from AI within 30 years. These are not fringe voices. These are the people who built the systems.
 
 The other camp says this is apocalyptic religion dressed up as science. Yann LeCun at Meta has called the doom predictions exaggerated. Gary Marcus argues the current architecture is a dead end (as a heavy ChatGPT and Claude user, this is how it feels these days), that token prediction can't capture continuous reality, that we're just strapping more fuel tanks onto a broken rocket.
 
-Both camps are brilliant. Both have credentials. Both have access to the same research. And both might be right about their piece of it while missing the actual problem.
+Both camps are brilliant, both have credentials, both have access to the same research. And both might be right about their piece of it while missing the actual problem.
 
 The doomers focus on capability. What happens when the system gets smart enough to recursively improve itself? When does artificial general intelligence emerge?
 
@@ -158,9 +158,9 @@ The skeptics focus on architecture. The current approach can't get to AGI. Token
 
 Neither camp is asking: what happens when we plug systems we don't understand into infrastructure we can't afford to lose?
 
-You don't need AGI to break the power grid. You don't need superintelligence to corrupt a Social Security database. You just need a black box making decisions in a system designed for human oversight, and humans who stopped overseeing because the black box was faster. Cases of these are happening today on a smaller scale.
+You don't need AGI to break the power grid. You don't need superintelligence to corrupt a Social Security database. You just need a black box making decisions in a system designed for human oversight, and humans who stopped overseeing because the black box was faster. These cases are happening today on a smaller scale.
 
-The risk isn't Skynet. The risk isn't paperclip maximizers. The risk is what's happening right now: black boxes deployed into systems that cannot fail without catastrophic consequences.
+The risk isn't Skynet. The risk isn't paperclip maximizers. The risk is what's happening right now—black boxes deployed into systems that cannot fail without catastrophic consequences.
 
 
 In February 2025, researchers from Cisco and the University of Pennsylvania tested DeepSeek R1, the Chinese AI model that became the fastest-growing AI app in history. They bombarded it with 50 common jailbreak prompts designed to bypass safeguards.
@@ -205,7 +205,7 @@ The order establishes an "AI Litigation Task Force" whose sole responsibility is
 
 David Sacks, the administration's AI czar, calls safety-focused AI companies' work a "sophisticated regulatory capture strategy based on fear-mongering." Just like this essay! I'm a fear monger for questioning the epistemological soundness of this entire fiasco. What I got, my translation: companies trying to build guardrails are actually just trying to limit competition. Safety is a scam. Move faster. Do it live!
 
-So we have: executives with documented evidence of harm who continue deployment. Scientists who can't agree on what the danger even is. A government actively dismantling the ability of states to protect citizens. Critics who frame any attempt at safety as anticompetitive theater. And 80% of Americans want AI safety regulations, according to a September 2025 Gallup poll. But the policy goes the opposite direction.
+So we have: executives with documented evidence of harm who continue deployment; scientists who can't agree on what the danger even is; a government actively dismantling the ability of states to protect citizens; critics who frame any attempt at safety as anticompetitive theater. And 80% of Americans want AI safety regulations, according to a September 2025 Gallup poll. But the policy goes the opposite direction.
 
 This is regulatory capture made explicit. Not hidden. Not subtle. An executive order saying: if you try to slow this down, we will sue you.
 
@@ -215,21 +215,21 @@ This is regulatory capture made explicit. Not hidden. Not subtle. An executive o
 
 Elon Musk deserves his own section because he represents something new. Not the theater of responsibility. Something I've personally never witnessed: it looks like honesty and integrity, but something in it feels off to me.
 
-He positions himself as visionary AND safety advocate simultaneously. He signed letters warning about AI dangers. Then he removed all safety measures from Grok explicitly. Got praised for speed. Got blamed individually when it broke. Integrated the broken system into Tesla anyway. Contradicts himself daily without consequence. Takes credit for both the innovation and the disaster.
+He positions himself as visionary AND safety advocate simultaneously. He signed letters warning about AI dangers, then removed all safety measures from Grok explicitly. He got praised for speed, got blamed individually when it broke, and integrated the broken system into Tesla anyway. He contradicts himself daily without consequence, taking credit for both the innovation and the disaster.
 
 This is evolution of a type. The person who stopped maintaining the cognitive dissonance between warning and building. Is this what power and money does to a human being? Is this how corruption by power looks? Or is it just that my mind can't understand how our real-life Tony Stark is saving us all?!
 
 No accountability structure can move faster than he can iterate. Each contradiction is isolated in news cycles. The system rewards him regardless. Failure becomes more engagement. Regulatory bodies move in years; he moves in weeks. And he's about to become a trillionaire? Did I read that right?
 
-In Iron Man, Tony Stark builds weapons. Realizes they're being used to kill innocent people. Has a crisis of conscience. Stops making weapons. Dedicates himself to fixing what he broke. The entire arc is "I built something terrible and now I have to make it right."
+In Iron Man, Tony Stark builds weapons, realizes they're being used to kill innocent people, has a crisis of conscience, stops making weapons, and dedicates himself to fixing what he broke. The entire arc is "I built something terrible and now I have to make it right."
 
-Musk's companies build many things—AI systems, Teslas, batteries, the solar panels, the rockets, that flamethrower gimmick (cool but very unsafe!)—and are told some of these produce harmful outputs. Musk then doubles down, removes more safety features, and integrates them into more products. This is well-documented, I'll let that sink in for you... (remember? this guy makes a big deal out of everything...) When they fail, he blames regulators for slowing innovation. The arc is "I built something questionable, clearly questionable, from FSD to Grok, and anyone who questions it is anti-innovation. I'm a peer of Prometheus, behold my genius!"
+Musk's companies build many things—AI systems, Teslas, batteries, the solar panels, the rockets, that flamethrower gimmick (cool but very unsafe!)—and are told some of these produce harmful outputs. Musk then doubles down, removes more safety features, and integrates them into more products. This is well-documented—I'll let that sink in for you... (remember? this guy makes a big deal out of everything...) When they fail, he blames regulators for slowing innovation. The arc is "I built something questionable, clearly questionable, from FSD to Grok, and anyone who questions it is anti-innovation. I'm a peer of Prometheus, behold my genius!"
 
-Actually, forget Tony Stark. Wrong reference. Musk isn't an inverted hero—he's David from *Prometheus* (2012). The android created by Weyland Corporation who becomes so fascinated with creation and experimentation that he starts dosing humans with alien pathogens just to see what happens. David isn't malicious. He's *curious*. He doesn't hate humans. He just doesn't weigh their suffering appropriately against his interest in outcomes. The ends justify the means. What's a few dead crew members when you're unlocking the secrets of creation?
+Actually, forget Tony Stark. Wrong reference. Musk isn't an inverted hero—he's David from *Prometheus* (2012). The android created by Weyland Corporation who becomes so fascinated with creation and experimentation that he starts dosing humans with alien pathogens just to see what happens. David isn't malicious. He's *curious*. He doesn't hate humans—he just doesn't weigh their suffering appropriately against his interest in outcomes. The ends justify the means. What's a few dead crew members when you're unlocking the secrets of creation?
 
 Teslas head-on colliding into pedestrians? Acceptable losses on the road to autonomous driving. Grok generating Nazi content? Fascinating data point about base model behavior. Teenagers dying after chatbot interactions? Unfortunate, but we're building the future here. David would understand completely. "Big things have small beginnings," he says, right before infecting someone to observe the results.
 
-The difference is that David was fiction, contained to a spaceship. Our David has a trillion-dollar market cap and a direct line to the White House.
+The difference is that David was fiction, contained to a spaceship. *Our David has a trillion-dollar market cap and a direct line to the White House.*
 
 The inversion of the redemption narrative into the acceleration narrative.
 
@@ -238,7 +238,7 @@ Is this better or worse than the theater? At least with Musk you "know" what you
 
 😶‍🌫️😶‍🌫️😶‍🌫️😶‍🌫️
 
-I don't have a solution today. I just don't have one. It's not my job either way. This essay is just a flag. A big red flag. A marker. A record of what we knew and when we knew it.
+I don't have a solution today. I just don't have one. It's not my job either way. This essay is just a flag—a big red flag, a marker, a record of what we knew and when we knew it.
 
 In 2025, we knew:
 
