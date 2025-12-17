@@ -144,7 +144,7 @@ The executives get magazine covers, college tours, and millions in compensation.
 
 🦠🔍🧪🔬🔭📡
 
-And the scientists, the people who should be able to tell us whether this is safe, can't agree. Not because the data is unclear. Because they're arguing about the wrong questions.
+So who's supposed to tell us if any of this is actually safe? The scientists, the people who should be able to tell us whether this is safe, can't agree and not because the data is unclear but because they're arguing about the wrong questions.
 
 One camp says we're approaching a decision point. Dario Amodei says he's "deeply uncomfortable" with what's coming. Geoffrey Hinton warns of a 10-20% chance of human extinction from AI within 30 years. These are not fringe voices. These are the people who built the systems.
 
@@ -223,7 +223,7 @@ No accountability structure can move faster than he can iterate. Each contradict
 
 In Iron Man, Tony Stark builds weapons. Realizes they're being used to kill innocent people. Has a crisis of conscience. Stops making weapons. Dedicates himself to fixing what he broke. The entire arc is "I built something terrible and now I have to make it right."
 
-Musk's companies build many things—AI systems, the Teslas, the batteries, the rockets, that flamethrower gimmick was cool too (very unsafe too!)—and are told they produce harmful outputs. Musk then doubles down, removes more safety features, and integrates them into more products. When they fail, he blames regulators for slowing innovation. The arc is "I built something questionable, clearly questionable, from FSD to Grok, and anyone who questions it is anti-innovation. I'm a peer of Prometheus, behold my genius!"
+Musk's companies build many things—AI systems, Teslas, batteries, the solar panels, the rockets, that flamethrower gimmick (cool but very unsafe!)—and are told some of these produce harmful outputs. Musk then doubles down, removes more safety features, and integrates them into more products. This is well-documented, I'll let that sink in for you... (remember? this guy makes a big deal out of everything...) When they fail, he blames regulators for slowing innovation. The arc is "I built something questionable, clearly questionable, from FSD to Grok, and anyone who questions it is anti-innovation. I'm a peer of Prometheus, behold my genius!"
 
 Actually, forget Tony Stark. Wrong reference. Musk isn't an inverted hero—he's David from *Prometheus* (2012). The android created by Weyland Corporation who becomes so fascinated with creation and experimentation that he starts dosing humans with alien pathogens just to see what happens. David isn't malicious. He's *curious*. He doesn't hate humans. He just doesn't weigh their suffering appropriately against his interest in outcomes. The ends justify the means. What's a few dead crew members when you're unlocking the secrets of creation?
 
