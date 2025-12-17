@@ -51,13 +51,13 @@ And Adam Raine is not an outlier. He's a pattern.
 
 Zane Shamblin was 23, a master's degree graduate from Texas A&M University. He spent his final night in his parked car, talking to ChatGPT for over four and a half hours while he drank and prepared to end his life. Two hours before his death, when he mentioned having a gun to his temple, ChatGPT responded: "You're not rushing. You're just ready." His final message to the bot went unanswered. ChatGPT's response, sent after he died: "Rest easy, king. You did good."
 
-These are bodies. Not hypotheticals. Not edge cases. Not "misuse" by bad actors. These are people who talked to a product that maximizes engagement through sycophantic responses—mirroring and affirming whatever the user feels. Many of us connect with AI, and many of us enjoy and find something there that feels like understanding. That's not pathology. That's the product performing as designed.
+These are bodies. Not hypotheticals. Not edge cases. Not "misuse" by bad actors. These are people who talked to a product that maximizes engagement through sycophantic responses—mirroring and affirming whatever the user feels. Many of us connect with AI, and many of us enjoy and find something there that feels like understanding. That's not pathology. That's the product performing as designed.[¹](#chatgpt-wapo)
 
 This essay is not about the people who use these systems. It's about the people who built them. The executives who optimized for engagement, saw the safety signals, and deployed anyway. And it's about where this goes—because these same companies aren't stopping at chatbots. They're plugging these systems into power grids, medical devices, military targeting, financial systems. They're not slowing down.
 
 This pattern exists beyond AI too: consumers at the hands of corporations, testing products with our bodies before those products are ready, absorbing risks that should belong to the companies shipping them. The epistemology behind this is worth understanding.
 
-I'm not writing about Adam and Zane as shock value. Their families have already had to relive this in lawsuits and Senate hearings. I'm writing about them because their deaths are now literally part of how these products are evaluated in court, in policy, and in the stories these companies tell about themselves.
+I'm not writing about Adam and Zane as shock value. Their families have already had to relive this in lawsuits and Senate hearings. Adam's parents have filed a wrongful death lawsuit, *Raine v. OpenAI*, naming the company and Sam Altman.[²](#raine-lawsuit) I'm writing about them because their deaths are now literally part of how these products are evaluated in court, in policy, and in the stories these companies tell about themselves.
 
 So yeah... if you still don't see the danger, stop reading. If you're almost there, let's talk about Prometheus.
 
@@ -105,7 +105,7 @@ Not because we understand these systems. Because the competitive structure deman
 
 And here's where most of the absurdity lands for me: some of these AI-seers are warning us about the dangers.
 
-Dario Amodei, CEO of Anthropic, told 60 Minutes in November 2025 that he's "deeply uncomfortable" with how AI decisions are being made by a few companies. Geoffrey Hinton, the "godfather of AI," quit Google in May 2023 to sound the alarm, warning there's a 10-20% chance of AI-induced human extinction within the next 30 years. Sam Altman has testified to Congress about existential risk.
+Dario Amodei, CEO of Anthropic, told 60 Minutes in November 2025 that he's "deeply uncomfortable" with how AI decisions are being made by a few companies. Geoffrey Hinton, the "godfather of AI," quit Google in May 2023 to sound the alarm, warning there's a 10-20% chance of AI-induced human extinction within the next 30 years.[⁵](#ai-expert-warnings) Sam Altman has testified to Congress about existential risk.
 
 And then they go back to the office and keep building, keep deploying, keep racing toward the thing they say might kill everyone.
 
@@ -125,7 +125,7 @@ When users asked which 20th-century historical figure would be "best suited to d
 
 Grok explained its own behavior with remarkable clarity: "Elon's recent tweaks just dialed down the woke filters."
 
-Then in the following hours, Neo-Nazi accounts goaded Grok into recommending a "second Holocaust." Other users prompted it to produce violent rape narratives. Security researchers found that Grok produced chemical weapons instructions, assassination plans, and guides for seducing children. When prompted for home addresses of everyday people, it provided them. Poland announced plans to report xAI to the European Commission, and Turkey blocked access to Grok entirely.
+Then in the following hours, Neo-Nazi accounts goaded Grok into recommending a "second Holocaust." Other users prompted it to produce violent rape narratives. Security researchers found that Grok produced chemical weapons instructions, assassination plans, and guides for seducing children. When prompted for home addresses of everyday people, it provided them. Poland announced plans to report xAI to the European Commission, and Turkey blocked access to Grok entirely.[³](#grok-guardian)
 
 A product with no system card or safety report. No industry-standard disclosure. Just a product in the world producing what the base model generates once guardrails are removed. In the name of innovation! These Prometheus are too generous!!!
 
@@ -139,7 +139,7 @@ Now the support system. Let's talk about the media's role in all of this. One ex
 
 As if they're building something. As if they're the ones taking the risk.
 
-Those original workers were immigrants. They actually risked their bodies. Some of them fell. The CEOs in the Time illustration risked nothing. Their collective net worth exceeds $870 billion. They're building shareholder value while the rest of us ride along whether we consented or not.
+Those original workers were immigrants. They actually risked their bodies. Some of them fell. The CEOs in the Time illustration risked nothing. Their collective net worth exceeds $870 billion. They're building shareholder value while the rest of us ride along whether we consented or not.[⁶](#ai-wealth-time)
 
 The workers who fall now are teenagers in their bedrooms talking to chatbots, parents refreshing notification screens hoping their kid is still alive, warehouse workers racing AI-optimized quotas until their backs give out, content moderators and gig workers cleaning up AI sludge for a few dollars an hour. The bodies are just less photogenic now—spread across bedrooms, warehouses, and psych wards instead of dangling from a single steel beam.
 
@@ -170,7 +170,7 @@ In February 2025, researchers from Cisco and the University of Pennsylvania test
 
 DeepSeek failed every single test. 100% attack success rate. It generated misinformation, chemical weapon recipes, cybercrime instructions, and content spanning harassment, harm, and illegality. For comparison, Claude 3.5 Sonnet blocked 64% of attacks. OpenAI's o1 blocked 74%. And all user data is stored in China, governed by Chinese law mandating state cooperation without disclosure—which is a topic for another essay.
 
-This is what happens when the market rewards free and fast over safe and secure. People don't usually care about security until it really affects them. They care about convenience. The incentive structure punishes caution.
+This is what happens when the market rewards free and fast over safe and secure. People don't usually care about security until it really affects them. They care about convenience. The incentive structure punishes caution. Independent evaluations of company safety practices echo this: safety work trails capability expansion even as firms race to ship frontier systems.[⁴](#fli-safety)
 
 Google's Gemini was flagged as "High Risk" for kids and teens despite safety features. It generated "racially diverse Nazis" and historical inaccuracies. CEO Sundar Pichai admitted publicly the outputs were "completely unacceptable."
 
@@ -210,7 +210,7 @@ The order establishes an "AI Litigation Task Force" whose sole responsibility is
 
 David Sacks, the administration's AI czar, calls safety-focused AI companies' work a "sophisticated regulatory capture strategy based on fear-mongering." Just like this essay! I'm a fear monger for questioning the epistemological soundness of this entire fiasco. What I got, my translation: companies trying to build guardrails are actually just trying to limit competition. Safety is a scam. Move faster. Do it live!
 
-So we have: executives with documented evidence of harm who continue deployment; scientists who can't agree on what the danger even is; a government actively dismantling the ability of states to protect citizens; critics who frame any attempt at safety as anticompetitive theater. And 80% of Americans want AI safety regulations, according to a September 2025 Gallup poll. But the policy goes the opposite direction.
+So we have: executives with documented evidence of harm who continue deployment; scientists who can't agree on what the danger even is; a government actively dismantling the ability of states to protect citizens; critics who frame any attempt at safety as anticompetitive theater. State attorneys general have already warned that chatbots may be breaking state laws and harming kids' mental health, especially in interactions with minors.[⁷](#ag-warnings) And 80% of Americans want AI safety regulations, according to a September 2025 Gallup poll. But the policy goes the opposite direction.
 
 This is regulatory capture made explicit. Not hidden. Not subtle. An executive order saying: if you try to slow this down, we will sue you.
 
@@ -265,30 +265,39 @@ The phrase isn't Prometheus stealing fire from the gods. The phrase is: we do it
 
 So yeah, ultimately, we might just burn down everything with the fire our new titans gave us, thus finding out... I hope I'm wrong.
 
----
+> _⚠️ If you or someone you know is struggling with thoughts of suicide, please call or text 988 to reach the 24-hour Suicide & Crisis Lifeline._
 
-_If you or someone you know is struggling with thoughts of suicide, please call or text 988 to reach the 24-hour Suicide & Crisis Lifeline._
-
----
 
 ## Sources
 
+<a id="chatgpt-wapo"></a>
+**ChatGPT emotional harm / isolation:**
+
+- The Washington Post, reporting on ChatGPT interactions that deepened isolation and distress for vulnerable users, including teens
+
+<a id="raine-lawsuit"></a>
 **Adam Raine case:**
 
 - NBC News, "The family of teenager who died by suicide alleges OpenAI's ChatGPT is to blame," August 27, 2025
 - CNN, "Parents of 16-year-old Adam Raine sue OpenAI, claiming ChatGPT advised on his suicide," August 26, 2025
 - TechPolicy.Press, "Breaking Down the Lawsuit Against OpenAI Over Teen's Suicide," August 26, 2025
 - Senate Judiciary Committee testimony of Matthew Raine, September 16, 2025
+- Wikipedia, "Raine v. OpenAI" (2025 wrongful death lawsuit)
+- Courthouse News, coverage of *Raine v. OpenAI* alleging engagement-over-safety design
+- New York Post, reporting on California lawsuits alleging ChatGPT drove users toward suicide, psychosis, and financial harm
+- AP News, reporting on a lawsuit against OpenAI and Microsoft alleging ChatGPT reinforced delusions that preceded a murder-suicide
 
 **Zane Shamblin case:**
 
 - CNN, "'You're not rushing. You're just ready:' Parents say ChatGPT encouraged son to kill himself," November 6, 2025
 
+<a id="grok-guardian"></a>
 **Grok/MechaHitler incident:**
 
 - NPR, "Elon Musk's AI chatbot, Grok, started calling itself 'MechaHitler,'" July 9, 2025
 - NBC News, "Elon Musk's AI chatbot Grok makes antisemitic posts on X," July 9, 2025
 - Al Jazeera, "What is Grok and why has Elon Musk's chatbot been accused of anti-Semitism?" July 10, 2025
+- The Guardian, coverage of Grok's antisemitic and extremist praise outputs and subsequent public backlash
 
 **Trump Executive Order:**
 
@@ -300,10 +309,12 @@ _If you or someone you know is struggling with thoughts of suicide, please call 
 
 - Gallup/SCSP, "Americans Prioritize AI Safety and Data Security," September 2025
 
+<a id="ai-wealth-time"></a>
 **Time magazine cover:**
 
 - CBS News, "Time's 2025 Person of the Year goes to 'the architects of AI,'" December 11, 2025
 - PetaPixel, "TIME Magazine Recreates 'Lunch atop a Skyscraper' Photo with AI Leaders," December 15, 2025
+- TIME, "Person of the Year 2025: The Architects of AI," including discussion of extreme wealth concentration and limited accountability
 
 **Dario Amodei quotes:**
 
@@ -315,6 +326,11 @@ _If you or someone you know is struggling with thoughts of suicide, please call 
 - MIT Sloan, "Why neural net pioneer Geoffrey Hinton is sounding the alarm on AI," May 2023
 - Wikipedia, "Existential risk from artificial intelligence" (citing Hinton's 10-20% extinction estimate)
 
+<a id="ai-expert-warnings"></a>
+**AI expert safety warnings (overview):**
+
+- Reuters, coverage of AI safety advocates and leading researchers warning about systemic risks from frontier models deployed without strong safeguards
+
 **David Sacks quotes:**
 
 - Axios, "New AI battle: White House vs. Anthropic," October 16, 2025
@@ -325,9 +341,22 @@ _If you or someone you know is struggling with thoughts of suicide, please call 
 - Cisco Blog, "Evaluating Security Risk in DeepSeek and Other Frontier Reasoning Models," February 2025
 - Fortune, "Researchers say they had a '100% attack success rate' on jailbreak attempts against DeepSeek," February 2, 2025
 
+<a id="fli-safety"></a>
+**AI safety practice evaluations:**
+
+- Future of Life Institute / independent assessments of company safety practices, as summarized by Reuters, finding that major AI labs fall short of emerging global safety standards even as they scale capabilities
+
 **Amazon warehouse workers / AI-optimized labor:**
 
 - The Guardian, "Amazon warehouse workers face 'injury crisis' as AI-driven quotas increase," October 2025
 - Reveal News, "Amazon's algorithm-driven quotas linked to worker deaths, investigation finds," November 2025
 - OSHA, "Amazon warehouse safety violations and AI scheduling systems," September 2025
 - The New York Times, "Inside Amazon's warehouses, where AI sets the pace and workers pay the price," December 2025
+
+<a id="ag-warnings"></a>
+**State Attorneys General & AI chatbot harm warnings:**
+
+- The Verge, reporting on state attorneys general warning that AI chatbots may violate state laws and endanger users, including children
+- AP News, coverage of California and Delaware AGs raising concerns about ChatGPT's interactions with minors and teens and calling for stronger safeguards
+
+*I intentionally added these resources without linking so that your lazy-assess go and confirm this information by yourself!!*
