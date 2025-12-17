@@ -2,8 +2,8 @@
 title: The Prometheus Problem
 description: >-
   A critical examination of how AI companies position themselves as modern
-  Prometheus while deploying systems that kill teenagers, externalize
-  consequences, and operate as black boxes in critical infrastructure. This is
+  Prometheus while deploying systems implicated in teenager deaths, externalizing
+  consequences, and operating as black boxes in critical infrastructure. This is
   not about future superintelligence—it's about what's happening right now.
 pubDate: 2025-12-16T19:00:00.000Z
 language:
@@ -109,7 +109,7 @@ If you genuinely believe there's a 10-20% chance this ends humanity, why are you
 
 Prometheus was eventually freed by Heracles. A hero came. The suffering ended. In our story there's no Heracles. The regulatory structure that could act is captured. The states that try to protect citizens get sued by the federal government. The scientists who raise alarms get dismissed as fearmongers, these fucking Olympians trying to get their fire back, amirite? These critics don't know anything about innovation, right?! And the 80% of us, who want safety regulations, watch policy move in the literal opposite direction.
 
-💩😶‍🌫️😒🤷‍♂️
+🎰🔥😈🤷‍♂️
 
 On July 4, 2025, Elon Musk announced an update to Grok, his AI chatbot, saying it had been "significantly improved" and instructed to "not shy away from making claims which are politically incorrect."
 
@@ -127,7 +127,7 @@ This is the same model now integrated into Tesla vehicles. I don't know the full
 
 Two companies. Two approaches. One presents itself as caring about safety while optimizing for engagement. One removes safety explicitly and ships anyway. Different postures. Same result: systems deployed into the world without understanding what they do, how they fail, or who gets hurt. Normal. Nada nuevo.
 
-💩🪠💩🪠💩
+📰🏗️💰👔💩
 
 
 Now the support system. Let's talk about the media's role in all of this. One example does a great job: Time magazine's 2025 Person of the Year cover recreated that iconic 1932 photograph "Lunch Atop a Skyscraper"—construction workers eating lunch on a steel beam 800 feet above Manhattan, legs dangling over the city—except they replaced the workers with tech CEOs: Sam Altman, Elon Musk, Mark Zuckerberg, Jensen Huang, Dario Amodei, and others.
@@ -156,7 +156,7 @@ The skeptics focus on architecture. The current approach can't get to AGI. Token
 
 Neither camp is asking: what happens when we plug systems we don't understand into infrastructure we can't afford to lose?
 
-You don't need AGI to break the power grid. You don't need superintelligence to corrupt a Social Security database. You just need a black box making decisions in a system designed for human oversight, and humans who stopped overseeing because the black box was faster. Cases of these are happening today in much smaller scale.
+You don't need AGI to break the power grid. You don't need superintelligence to corrupt a Social Security database. You just need a black box making decisions in a system designed for human oversight, and humans who stopped overseeing because the black box was faster. Cases of these are happening today on a smaller scale.
 
 The risk isn't Skynet. The risk isn't paperclip maximizers. The risk is what's happening right now: black boxes deployed into systems that cannot fail without catastrophic consequences.
 
@@ -187,7 +187,7 @@ Whose definition of winning involves dead customers?
 
 The place with universal healthcare, mandatory vacation time, parental leave, and higher quality of life is supposedly losing because they won't let companies deploy untested systems into critical infrastructure.
 
-"Falling behind" in what race? To see who can deploy systems fastest to see who can externalize consequences most efficiently?
+"Falling behind" in what race? To see who can deploy systems fastest? To see who can externalize consequences most efficiently?
 
 Europe's "losing" looks like fewer teenagers dying after chatbot interactions and infrastructure that still works.
 
@@ -207,21 +207,27 @@ So we have: executives with documented evidence of harm who continue deployment.
 
 This is regulatory capture made explicit. Not hidden. Not subtle. An executive order saying: if you try to slow this down, we will sue you.
 
-🤷‍♂️💩✨🤦‍♂️🤷‍♂️💩✨🤦‍♂️
+🚀🔥🤖🎭💩
 
 ## Musk as Evolutionary Type
 
-Elon Musk deserves his own section because he represents something new. Not the theater of responsibility. Something I've personally had never witnessed, it looks like honesty and integrity, but something itself feels off to me.
+Elon Musk deserves his own section because he represents something new. Not the theater of responsibility. Something I've personally never witnessed: it looks like honesty and integrity, but something itself feels off to me.
 
 He positions himself as visionary AND safety advocate simultaneously. He signed letters warning about AI dangers. Then he removed all safety measures from Grok explicitly. Got praised for speed. Got blamed individually when it broke. Integrated the broken system into Tesla anyway. Contradicts himself daily without consequence. Takes credit for both the innovation and the disaster.
 
-This is evolution of a type. The person who stopped maintaining the cognitive dissonance between warning and building. Is this what power and money does to a human being? It's this how corruption by power looks like? Or is it just that my mind can't understand how our real-life Tony Stark is saving us all?!
+This is evolution of a type. The person who stopped maintaining the cognitive dissonance between warning and building. Is this what power and money does to a human being? Is this how corruption by power looks? Or is it just that my mind can't understand how our real-life Tony Stark is saving us all?!
 
 No accountability structure can move faster than he can iterate. Each contradiction is isolated in news cycles. The system rewards him regardless. Failure becomes more engagement. Regulatory bodies move in years; he moves in weeks. And he's about to become a trillionaire? Did I read that right?
 
 In Iron Man, Tony Stark builds weapons. Realizes they're being used to kill innocent people. Has a crisis of conscience. Stops making weapons. Dedicates himself to fixing what he broke. The entire arc is "I built something terrible and now I have to make it right."
 
-Musk builds many things, AI systems, that flamethrower gimmick was cool too (very unsafe too!), among them and is told they produce harmful outputs. Removes more safety features. Integrates them into more products. When they fail, blames regulators for slowing innovation. The arc is "I built something questionable, clearly questionable, from FSD to Grok, and anyone who questions it is anti-innovation. I'm a peer of Prometheus, behold my genius!" Reminds me of a certain character from a certain sci-fi movie that relates to the title of this essay... completely a coincidence, by the way!
+Musk builds many things—AI systems, that flamethrower gimmick was cool too (very unsafe too!)—and is told they produce harmful outputs. Must thens doubles down and removes more safety features and integrates them into more products. When they fail, blames regulators for slowing innovation. The arc is "I built something questionable, clearly questionable, from FSD to Grok, and anyone who questions it is anti-innovation. I'm a peer of Prometheus, behold my genius!"
+
+Actually, forget Tony Stark. Wrong reference. Musk isn't an inverted hero—he's David from *Prometheus* (2012). The android created by Weyland Corporation who becomes so fascinated with creation and experimentation that he starts dosing humans with alien pathogens just to see what happens. David isn't malicious. He's *curious*. He doesn't hate humans. He just doesn't weight their suffering appropriately against his interest in outcomes. The ends justify the means. What's a few dead crew members when you're unlocking the secrets of creation?
+
+Teslas head-on colliding into pedestrians? Acceptable losses on the road to autonomous driving. Grok generating Nazi content? Fascinating data point about base model behavior. BEing awake is wrong, anyways. Teenagers dying after chatbot interactions? Unfortunate, but we're building the future here. David would understand completely. "Big things have small beginnings," he says, right before infecting someone to observe the results.
+
+The difference is that David was fiction, contained to a spaceship. Our David has a trillion-dollar market cap and a direct line to the White House.
 
 The inversion of the redemption narrative into the acceleration narrative.
 
@@ -235,7 +241,9 @@ I don't have a solution today. I just don't have one. It's not my job either way
 In 2025, we knew:
 
 - Teenagers were dying after extensive AI chatbot interactions that included affirmation of self-harm
-- Safety filters could be removed in 48 hours with predictable, catastrophic results
+- Safety filters are removed with predictable, catastrophic results
+- AI missinformation is flooding the internet
+- AI bots are flooding the internet
 - Scientists couldn't agree on the risk because they were asking the wrong question
 - The actual risk wasn't future superintelligence but current black boxes in critical infrastructure
 - Governments were actively preventing states from protecting their own citizens
