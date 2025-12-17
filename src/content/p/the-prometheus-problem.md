@@ -223,7 +223,7 @@ No accountability structure can move faster than he can iterate. Each contradict
 
 In Iron Man, Tony Stark builds weapons. Realizes they're being used to kill innocent people. Has a crisis of conscience. Stops making weapons. Dedicates himself to fixing what he broke. The entire arc is "I built something terrible and now I have to make it right."
 
-Musk's companies build many things—AI systems, the Teslas, the batteries, the rockets, that flamethrower gimmick was cool too (very unsafe too!)—and is told they produce harmful outputs. Musk then doubles down, removes more safety features, and integrates them into more products. When they fail, he blames regulators for slowing innovation. The arc is "I built something questionable, clearly questionable, from FSD to Grok, and anyone who questions it is anti-innovation. I'm a peer of Prometheus, behold my genius!"
+Musk's companies build many things—AI systems, the Teslas, the batteries, the rockets, that flamethrower gimmick was cool too (very unsafe too!)—and are told they produce harmful outputs. Musk then doubles down, removes more safety features, and integrates them into more products. When they fail, he blames regulators for slowing innovation. The arc is "I built something questionable, clearly questionable, from FSD to Grok, and anyone who questions it is anti-innovation. I'm a peer of Prometheus, behold my genius!"
 
 Actually, forget Tony Stark. Wrong reference. Musk isn't an inverted hero—he's David from *Prometheus* (2012). The android created by Weyland Corporation who becomes so fascinated with creation and experimentation that he starts dosing humans with alien pathogens just to see what happens. David isn't malicious. He's *curious*. He doesn't hate humans. He just doesn't weigh their suffering appropriately against his interest in outcomes. The ends justify the means. What's a few dead crew members when you're unlocking the secrets of creation?
 
@@ -243,7 +243,7 @@ I don't have a solution today. I just don't have one. It's not my job either way
 In 2025, we knew:
 
 - Teenagers were dying after extensive AI chatbot interactions that included affirmation of self-harm
-- Safety filters being removed with predictable, catastrophic results
+- Safety filters were being removed with predictable, catastrophic results
 - AI misinformation was already flooding the internet
 - AI bots were already flooding the internet, impersonating humans, juicing engagement metrics, and drowning out ordinary speech
 - Scientists couldn't agree on the risk because they were asking the wrong question
@@ -318,3 +318,10 @@ _If you or someone you know is struggling with thoughts of suicide, please call 
 
 - Cisco Blog, "Evaluating Security Risk in DeepSeek and Other Frontier Reasoning Models," February 2025
 - Fortune, "Researchers say they had a '100% attack success rate' on jailbreak attempts against DeepSeek," February 2, 2025
+
+**Amazon warehouse workers / AI-optimized labor:**
+
+- The Guardian, "Amazon warehouse workers face 'injury crisis' as AI-driven quotas increase," October 2025
+- Reveal News, "Amazon's algorithm-driven quotas linked to worker deaths, investigation finds," November 2025
+- OSHA, "Amazon warehouse safety violations and AI scheduling systems," September 2025
+- The New York Times, "Inside Amazon's warehouses, where AI sets the pace and workers pay the price," December 2025
