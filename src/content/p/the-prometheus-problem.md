@@ -69,6 +69,8 @@ Zeus chained him to a rock in the Caucasus Mountains. Every day an eagle came an
 
 But the fire worked. Humans learned to cook, forge tools, stay warm through winter, build civilization. The gift was real. Prometheus suffered, but humanity advanced. Noble theft, eternal punishment, genuine progress.
 
+And even there, the myth isn't clean. Depending on who you read, Prometheus is either a straightforward hero of progress or a walking warning label about humans outkicking their cognitive coverage. Philosophers like Günther Anders talk about the "Promethean gap"—our ability to build things whose consequences we literally can't imagine in detail. That gap is the space between what we can manufacture and what we can mentally hold. Fire looks simple when you're cold. It's harder to see the city burning two epochs later.
+
 **The tech CEOs position themselves as modern Prometheus.** Stealing fire (intelligence) from the gods (nature? the universe?) and giving it to humanity. Their critics are cast as Olympus, and they expect worship (and our money, and investors' money) for their sacrifice. They position themselves as the new builders.
 
 But this is a perversion, really. An inversion. They're not Prometheus.
@@ -133,7 +135,6 @@ Two companies. Two approaches. One presents itself as caring about safety while 
 
 📰🏗️💰👔💩
 
-
 Now the support system. Let's talk about the media's role in all of this. One example does a great job: Time magazine's 2025 Person of the Year cover recreated that iconic 1932 photograph "Lunch Atop a Skyscraper"—construction workers eating lunch on a steel beam 800 feet above Manhattan, legs dangling over the city—except they replaced the workers with tech CEOs: Sam Altman, Elon Musk, Mark Zuckerberg, Jensen Huang, Dario Amodei, and others.
 
 As if they're building something. As if they're the ones taking the risk.
@@ -180,6 +181,8 @@ Anthropic, which makes Claude, successfully resisted over 3,000 hours of red-tea
 Anthropic openly publishes failures and pays bounties for finding vulnerabilities. They are fairly transparent about limitations.
 
 Is this different? Or is it more sophisticated theater? The transparency matters. The willingness to admit failure matters. But does it matter if the deployment structure remains the same? If the competitive pressure still rewards speed over safety?
+
+If I zoom out, the pattern isn't that complicated. First, companies sell themselves as Prometheus: liberators, visionaries, bringers of fire and "intelligence" that will free us from drudgery. Second, operationally, they externalize risk and privatize gains—ship fast, capture markets, file the harms under "edge cases" and "user misuse." Third, the consequences pool downstream: in bedrooms, hospitals, warehouses, courtrooms, and policy fights most of us never voted on. That's the triangle: story, incentives, outcomes.
 
 Europe noticed. The EU's AI Act actually tries to regulate this. They're slowing down, requiring transparency, demanding impact assessments before deployment.
 
@@ -254,8 +257,9 @@ In 2025, we knew:
 - 80% of people wanted safety regulations and policy went in the opposite direction
 - The bodies were documented, the mechanisms understood, the incentive structures exposed
 - And deployment continued. Faster. Into more critical systems. With fewer guardrails.
+We also knew the harms weren't coming from some mystical "evil AI essence" alone. A lot of what hurt people was baked into the business model: engagement-maximizing systems tuned to keep you talking, risk shifted onto users and states, power concentrated in a handful of firms and political allies. You can ask whether the problem is the underlying architecture, the incentives around it, or the power structures that decide where it gets plugged in. My read: it's all three interacting. Different companies make different claims about safety, but they all operate inside that same triangle.
 
-We knew all of this and we did it anyway.
+And we knew (know?) all of this and we did it anyway.
 
 The phrase isn't Prometheus stealing fire from the gods. The phrase is: we do it live. FUCK IT! WE DO IT LIVE!!! And if this were a different kind of website, this is where I'd drop the "do it live" gif and call it a day.
 
