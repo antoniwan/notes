@@ -84,7 +84,7 @@ export interface StreakMetrics {
  */
 export async function getBrainSciencePosts(): Promise<CollectionEntry<'blog'>[]> {
   const posts = await getCollection('blog', ({ data }) => {
-    return import.meta.env.PROD ? !data.draft && data.published : true;
+    return import.meta.env.PROD ? !data.draft && data.published !== false : true;
   });
   return posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 }

@@ -379,7 +379,12 @@ const vulnerabilityConfidenceChart = {
   datasets: [
     {
       label: 'Average Score',
-      data: [emotionalPatterns.avgVulnerabilityScore, emotionalPatterns.avgConfidenceScore],
+      data: [
+        isNaN(emotionalPatterns.avgVulnerabilityScore)
+          ? 0
+          : emotionalPatterns.avgVulnerabilityScore,
+        isNaN(emotionalPatterns.avgConfidenceScore) ? 0 : emotionalPatterns.avgConfidenceScore,
+      ],
       backgroundColor: ['rgba(236, 72, 153, 0.6)', 'rgba(34, 197, 94, 0.6)'],
       borderColor: ['rgb(236, 72, 153)', 'rgb(34, 197, 94)'],
     },
@@ -391,12 +396,22 @@ const wordCountEmotionalScatter = {
   datasets: [
     {
       label: 'Word Count vs Emotional Intensity',
-      data: contentAnalysis.map((post) => ({
-        x: post.wordCount,
-        y: post.emotionalIntensity,
-      })),
-      backgroundColor: 'rgba(var(--color-accent), 0.6)',
-      borderColor: 'rgb(var(--color-accent))',
+      data: contentAnalysis
+        .filter((post) => {
+          const validWordCount =
+            typeof post.wordCount === 'number' && post.wordCount > 0 && !isNaN(post.wordCount);
+          const validIntensity =
+            typeof post.emotionalIntensity === 'number' &&
+            post.emotionalIntensity >= 0 &&
+            !isNaN(post.emotionalIntensity);
+          return validWordCount && validIntensity;
+        })
+        .map((post) => ({
+          x: post.wordCount,
+          y: post.emotionalIntensity,
+        })),
+      backgroundColor: 'rgba(59, 130, 246, 0.6)', // Will be overridden by theme colors
+      borderColor: 'rgb(59, 130, 246)', // Will be overridden by theme colors
     },
   ],
 };
@@ -484,7 +499,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
             datasets={[
               {
                 label: 'Emotional Intensity',
-                data: emotionalIntensityTimeSeries.map((q) => q.value),
+                data: emotionalIntensityTimeSeries.map((q) => (isNaN(q.value) ? 0 : q.value)),
                 borderColor: 'rgb(236, 72, 153)',
                 backgroundColor: 'rgba(236, 72, 153, 0.1)',
               },
@@ -706,12 +721,12 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
                   >
                 </p>
                 <p>
-                  <strong class="text-[rgb(var(--color-text))]">Threshold:</strong> >5 = emotionally
-                  intense post
+                  <strong class="text-[rgb(var(--color-text))]">Threshold:</strong> >5 = emotionally intense
+                  post
                 </p>
                 <p>
-                  <strong class="text-[rgb(var(--color-text))]">Keywords:</strong> love, hate, fear,
-                  joy, sadness, anger, peace, anxiety, hope, despair, gratitude, frustration
+                  <strong class="text-[rgb(var(--color-text))]">Keywords:</strong> love, hate, fear, joy,
+                  sadness, anger, peace, anxiety, hope, despair, gratitude, frustration
                 </p>
               </div>
             </div>

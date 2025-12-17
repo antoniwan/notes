@@ -16,13 +16,22 @@ interface Props {
 
 const { id, datasets, title, xAxisLabel, yAxisLabel, showRegressionLine = false } = Astro.props;
 
-// Serialize data for script
-const chartData = {
-  datasets,
-  xAxisLabel: xAxisLabel || '',
-  yAxisLabel: yAxisLabel || '',
-  showRegressionLine,
-};
+// Serialize data for script - ensure it's JSON-serializable
+const chartData = JSON.parse(
+  JSON.stringify({
+    datasets: datasets.map((ds) => ({
+      label: ds.label || '',
+      data: ds.data || [],
+      backgroundColor: ds.backgroundColor || 'rgba(59, 130, 246, 0.6)',
+      borderColor: ds.borderColor || 'rgb(59, 130, 246)',
+      pointRadius: ds.pointRadius,
+    })),
+    xAxisLabel: xAxisLabel || '',
+    yAxisLabel: yAxisLabel || '',
+    showRegressionLine: Boolean(showRegressionLine),
+  }),
+);
+const isDev = import.meta.env.DEV;
 ---
 
 <div class="mb-6">
@@ -51,7 +60,7 @@ const chartData = {
   </div>
 </div>
 
-<script define:vars={{ id, chartData }}>
+<script define:vars={{ id, chartData, isDev }}>
   async function initChart() {
     try {
       // Wait for DOM to be ready
@@ -103,7 +112,7 @@ const chartData = {
       }
 
       if (!chartData || !chartData.datasets) {
-        if (import.meta.env.DEV && typeof console !== 'undefined') {
+        if (isDev && typeof console !== 'undefined') {
           console.error('Chart data not found or invalid:', chartData);
         }
         container.style.display = 'none';
@@ -113,7 +122,7 @@ const chartData = {
       const { datasets, xAxisLabel, yAxisLabel, showRegressionLine } = chartData;
 
       if (!datasets || !Array.isArray(datasets) || datasets.length === 0) {
-        if (import.meta.env.DEV && typeof console !== 'undefined') {
+        if (isDev && typeof console !== 'undefined') {
           console.warn('Chart datasets are empty or invalid');
         }
         container.style.display = 'none';
@@ -121,10 +130,24 @@ const chartData = {
       }
 
       // Check if datasets have valid data
-      const hasValidData = datasets.some((ds) => Array.isArray(ds.data) && ds.data.length > 0);
+      const hasValidData = datasets.some((ds) => {
+        if (!Array.isArray(ds.data) || ds.data.length === 0) return false;
+        // For scatter charts, check that data points have valid x and y values
+        return ds.data.some((point) => {
+          if (typeof point === 'object' && point !== null) {
+            return (
+              typeof point.x === 'number' &&
+              typeof point.y === 'number' &&
+              !isNaN(point.x) &&
+              !isNaN(point.y)
+            );
+          }
+          return false;
+        });
+      });
 
       if (!hasValidData) {
-        if (import.meta.env.DEV && typeof console !== 'undefined') {
+        if (isDev && typeof console !== 'undefined') {
           console.warn('Chart datasets contain no valid data');
         }
         container.style.display = 'none';
@@ -133,7 +156,7 @@ const chartData = {
 
       const ctx = canvas.getContext('2d');
       if (!ctx) {
-        if (import.meta.env.DEV && typeof console !== 'undefined') {
+        if (isDev && typeof console !== 'undefined') {
           console.error('Could not get 2d context from canvas');
         }
         container.style.display = 'none';
@@ -171,36 +194,46 @@ const chartData = {
       // Calculate regression line if requested
       let regressionDatasets = [...datasets];
       if (showRegressionLine && datasets.length > 0 && datasets[0].data.length > 0) {
-        const points = datasets[0].data;
-        const xValues = points.map((p) => p.x);
-        const yValues = points.map((p) => p.y);
+        const points = datasets[0].data.filter(
+          (p) => typeof p.x === 'number' && typeof p.y === 'number' && !isNaN(p.x) && !isNaN(p.y),
+        );
 
-        // Simple linear regression
-        const n = points.length;
-        const sumX = xValues.reduce((a, b) => a + b, 0);
-        const sumY = yValues.reduce((a, b) => a + b, 0);
-        const sumXY = points.reduce((sum, p) => sum + p.x * p.y, 0);
-        const sumXX = xValues.reduce((sum, x) => sum + x * x, 0);
+        if (points.length >= 2) {
+          const xValues = points.map((p) => p.x);
+          const yValues = points.map((p) => p.y);
 
-        const slope = (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX);
-        const intercept = (sumY - slope * sumX) / n;
+          // Simple linear regression
+          const n = points.length;
+          const sumX = xValues.reduce((a, b) => a + b, 0);
+          const sumY = yValues.reduce((a, b) => a + b, 0);
+          const sumXY = points.reduce((sum, p) => sum + p.x * p.y, 0);
+          const sumXX = xValues.reduce((sum, x) => sum + x * x, 0);
 
-        const minX = Math.min(...xValues);
-        const maxX = Math.max(...xValues);
-        const regressionLine = [
-          { x: minX, y: slope * minX + intercept },
-          { x: maxX, y: slope * maxX + intercept },
-        ];
+          const denominator = n * sumXX - sumX * sumX;
+          if (denominator !== 0 && !isNaN(denominator)) {
+            const slope = (n * sumXY - sumX * sumY) / denominator;
+            const intercept = (sumY - slope * sumX) / n;
 
-        regressionDatasets.push({
-          label: 'Regression Line',
-          data: regressionLine,
-          borderColor: 'rgba(220, 38, 38, 0.8)', // Red
-          backgroundColor: 'transparent',
-          pointRadius: 0,
-          borderWidth: 2,
-          borderDash: [5, 5],
-        });
+            if (!isNaN(slope) && !isNaN(intercept)) {
+              const minX = Math.min(...xValues);
+              const maxX = Math.max(...xValues);
+              const regressionLine = [
+                { x: minX, y: slope * minX + intercept },
+                { x: maxX, y: slope * maxX + intercept },
+              ];
+
+              regressionDatasets.push({
+                label: 'Regression Line',
+                data: regressionLine,
+                borderColor: 'rgba(220, 38, 38, 0.8)', // Red
+                backgroundColor: 'transparent',
+                pointRadius: 0,
+                borderWidth: 2,
+                borderDash: [5, 5],
+              });
+            }
+          }
+        }
       }
 
       // Apply consistent colors to datasets
@@ -319,7 +352,7 @@ const chartData = {
         loadingEl.style.display = 'none';
       }
     } catch (err) {
-      if (import.meta.env.DEV && typeof console !== 'undefined') {
+      if (isDev && typeof console !== 'undefined') {
         console.error('Failed to initialize chart:', err);
       }
       const container = document.getElementById(`chart-container-${id}`);
@@ -348,7 +381,7 @@ const chartData = {
   // Error handler for chart initialization
   function handleChartError(error: unknown) {
     // Only log errors in development mode
-    if (import.meta.env.DEV && typeof console !== 'undefined' && console.error) {
+    if (isDev && typeof console !== 'undefined' && console.error) {
       console.error('Failed to initialize chart:', error);
     }
   }

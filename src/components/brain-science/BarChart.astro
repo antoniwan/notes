@@ -17,14 +17,27 @@ interface Props {
 
 const { id, labels, datasets, title, yAxisLabel, xAxisLabel, stacked = false } = Astro.props;
 
-// Serialize data for script
-const chartData = {
-  labels,
-  datasets,
-  yAxisLabel: yAxisLabel || '',
-  xAxisLabel: xAxisLabel || '',
-  stacked,
-};
+// Serialize data for script - ensure it's JSON-serializable
+const chartData = JSON.parse(
+  JSON.stringify({
+    labels: labels || [],
+    datasets: datasets.map((ds) => ({
+      label: ds.label || '',
+      data: ds.data || [],
+      backgroundColor: Array.isArray(ds.backgroundColor)
+        ? ds.backgroundColor
+        : ds.backgroundColor || 'rgba(59, 130, 246, 0.6)',
+      borderColor: Array.isArray(ds.borderColor)
+        ? ds.borderColor
+        : ds.borderColor || 'rgb(59, 130, 246)',
+      borderWidth: ds.borderWidth,
+    })),
+    yAxisLabel: yAxisLabel || '',
+    xAxisLabel: xAxisLabel || '',
+    stacked: Boolean(stacked),
+  }),
+);
+const isDev = import.meta.env.DEV;
 ---
 
 <div class="mb-6">
@@ -53,7 +66,7 @@ const chartData = {
   </div>
 </div>
 
-<script define:vars={{ id, chartData }}>
+<script define:vars={{ id, chartData, isDev }}>
   async function initChart() {
     try {
       // Wait for DOM to be ready
@@ -97,7 +110,7 @@ const chartData = {
       }
 
       if (!canvas || !container) {
-        if (import.meta.env.DEV && typeof console !== 'undefined') {
+        if (isDev && typeof console !== 'undefined') {
           console.error(`Chart elements not found for id "${id}"`);
         }
         if (container) {
@@ -107,7 +120,7 @@ const chartData = {
       }
 
       if (!chartData || !chartData.labels || !chartData.datasets) {
-        if (import.meta.env.DEV && typeof console !== 'undefined') {
+        if (isDev && typeof console !== 'undefined') {
           console.error('Chart data not found or invalid:', chartData);
         }
         container.style.display = 'none';
@@ -117,7 +130,7 @@ const chartData = {
       const { labels, datasets, yAxisLabel, xAxisLabel, stacked } = chartData;
 
       if (!labels || !Array.isArray(labels) || labels.length === 0) {
-        if (import.meta.env.DEV && typeof console !== 'undefined') {
+        if (isDev && typeof console !== 'undefined') {
           console.warn('Chart labels are empty or invalid');
         }
         container.style.display = 'none';
@@ -125,7 +138,7 @@ const chartData = {
       }
 
       if (!datasets || !Array.isArray(datasets) || datasets.length === 0) {
-        if (import.meta.env.DEV && typeof console !== 'undefined') {
+        if (isDev && typeof console !== 'undefined') {
           console.warn('Chart datasets are empty or invalid');
         }
         container.style.display = 'none';
@@ -138,7 +151,7 @@ const chartData = {
       );
 
       if (!hasValidData) {
-        if (import.meta.env.DEV && typeof console !== 'undefined') {
+        if (isDev && typeof console !== 'undefined') {
           console.warn('Chart datasets contain no valid data');
         }
         container.style.display = 'none';
@@ -147,7 +160,7 @@ const chartData = {
 
       const ctx = canvas.getContext('2d');
       if (!ctx) {
-        if (import.meta.env.DEV && typeof console !== 'undefined') {
+        if (isDev && typeof console !== 'undefined') {
           console.error('Could not get 2d context from canvas');
         }
         container.style.display = 'none';
@@ -281,7 +294,7 @@ const chartData = {
         loadingEl.style.display = 'none';
       }
     } catch (err) {
-      if (import.meta.env.DEV && typeof console !== 'undefined') {
+      if (isDev && typeof console !== 'undefined') {
         console.error('Failed to initialize chart:', err);
       }
       const container = document.getElementById(`chart-container-${id}`);
@@ -310,7 +323,7 @@ const chartData = {
   // Error handler for chart initialization
   function handleChartError(error) {
     // Only log errors in development mode
-    if (import.meta.env.DEV && typeof console !== 'undefined' && console.error) {
+    if (isDev && typeof console !== 'undefined' && console.error) {
       console.error('Failed to initialize chart:', error);
     }
   }

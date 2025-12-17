@@ -425,12 +425,22 @@ const wordCountEmotionalScatter = {
   datasets: [
     {
       label: 'Word Count vs Emotional Intensity',
-      data: contentAnalysis.map((post) => ({
-        x: post.wordCount,
-        y: post.emotionalIntensity,
-      })),
-      backgroundColor: 'rgba(var(--color-accent), 0.6)',
-      borderColor: 'rgb(var(--color-accent))',
+      data: contentAnalysis
+        .filter((post) => {
+          const validWordCount =
+            typeof post.wordCount === 'number' && post.wordCount > 0 && !isNaN(post.wordCount);
+          const validIntensity =
+            typeof post.emotionalIntensity === 'number' &&
+            post.emotionalIntensity >= 0 &&
+            !isNaN(post.emotionalIntensity);
+          return validWordCount && validIntensity;
+        })
+        .map((post) => ({
+          x: post.wordCount,
+          y: post.emotionalIntensity,
+        })),
+      backgroundColor: 'rgba(59, 130, 246, 0.6)', // Will be overridden by theme colors
+      borderColor: 'rgb(59, 130, 246)', // Will be overridden by theme colors
     },
   ],
 };
@@ -445,10 +455,19 @@ const complexityDayScatter = {
   datasets: [
     {
       label: 'Complexity vs Day of Week',
-      data: contentAnalysis.map((post) => ({
-        x: post.dayOfWeek,
-        y: post.fleschScore,
-      })),
+      data: contentAnalysis
+        .filter((post) => {
+          const validDay = post.dayOfWeek >= 0 && post.dayOfWeek <= 6;
+          const validScore =
+            typeof post.fleschScore === 'number' &&
+            !isNaN(post.fleschScore) &&
+            isFinite(post.fleschScore);
+          return validDay && validScore;
+        })
+        .map((post) => ({
+          x: post.dayOfWeek,
+          y: post.fleschScore,
+        })),
       backgroundColor: 'rgba(147, 51, 234, 0.6)',
       borderColor: 'rgb(147, 51, 234)',
     },
@@ -461,13 +480,13 @@ const dayOfWeekBarChart = {
   datasets: [
     {
       label: 'Productivity',
-      data: patterns.dayOfWeekPatterns.map((d) => d.productivity),
+      data: patterns.dayOfWeekPatterns.map((d) => (isNaN(d.productivity) ? 0 : d.productivity)),
       backgroundColor: 'rgba(59, 130, 246, 0.6)',
       borderColor: 'rgb(59, 130, 246)',
     },
     {
       label: 'Avg Word Count',
-      data: patterns.dayOfWeekPatterns.map((d) => d.avgWordCount),
+      data: patterns.dayOfWeekPatterns.map((d) => (isNaN(d.avgWordCount) ? 0 : d.avgWordCount)),
       backgroundColor: 'rgba(34, 197, 94, 0.6)',
       borderColor: 'rgb(34, 197, 94)',
     },
@@ -480,13 +499,13 @@ const seasonalBarChart = {
   datasets: [
     {
       label: 'Creativity',
-      data: patterns.seasonalPatterns.map((s) => s.creativity),
+      data: patterns.seasonalPatterns.map((s) => (isNaN(s.creativity) ? 0 : s.creativity)),
       backgroundColor: 'rgba(147, 51, 234, 0.6)',
       borderColor: 'rgb(147, 51, 234)',
     },
     {
       label: 'Avg Complexity',
-      data: patterns.seasonalPatterns.map((s) => s.avgComplexity),
+      data: patterns.seasonalPatterns.map((s) => (isNaN(s.avgComplexity) ? 0 : s.avgComplexity)),
       backgroundColor: 'rgba(236, 72, 153, 0.6)',
       borderColor: 'rgb(236, 72, 153)',
     },
@@ -499,13 +518,15 @@ const creativeCycleChart = {
   datasets: [
     {
       label: 'Avg Word Count',
-      data: cycleAnalysis.map((c) => c.avgWordCount),
+      data: cycleAnalysis.map((c) => (isNaN(c.avgWordCount) ? 0 : c.avgWordCount)),
       backgroundColor: 'rgba(59, 130, 246, 0.6)',
       borderColor: 'rgb(59, 130, 246)',
     },
     {
       label: 'Avg Emotional Intensity',
-      data: cycleAnalysis.map((c) => c.avgEmotionalIntensity),
+      data: cycleAnalysis.map((c) =>
+        isNaN(c.avgEmotionalIntensity) ? 0 : c.avgEmotionalIntensity,
+      ),
       backgroundColor: 'rgba(236, 72, 153, 0.6)',
       borderColor: 'rgb(236, 72, 153)',
     },

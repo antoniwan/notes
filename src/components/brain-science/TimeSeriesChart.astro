@@ -15,12 +15,21 @@ interface Props {
 
 const { id, labels, datasets, title, yAxisLabel } = Astro.props;
 
-// Serialize data for script
-const chartData = {
-  labels,
-  datasets,
-  yAxisLabel: yAxisLabel || '',
-};
+// Serialize data for script - ensure it's JSON-serializable
+const chartData = JSON.parse(
+  JSON.stringify({
+    labels: labels || [],
+    datasets: datasets.map((ds) => ({
+      label: ds.label || '',
+      data: ds.data || [],
+      borderColor: ds.borderColor || 'rgb(59, 130, 246)',
+      backgroundColor: ds.backgroundColor || 'rgba(59, 130, 246, 0.1)',
+      borderWidth: ds.borderWidth,
+    })),
+    yAxisLabel: yAxisLabel || '',
+  }),
+);
+const isDev = import.meta.env.DEV;
 ---
 
 <div class="mb-6">
@@ -49,7 +58,7 @@ const chartData = {
   </div>
 </div>
 
-<script define:vars={{ id, chartData }}>
+<script define:vars={{ id, chartData, isDev }}>
   async function initChart() {
     try {
       // Wait for DOM to be ready
@@ -87,7 +96,7 @@ const chartData = {
       const canvas = document.getElementById(id);
 
       if (!canvas || !container) {
-        if (import.meta.env.DEV && typeof console !== 'undefined') {
+        if (isDev && typeof console !== 'undefined') {
           console.error(`Chart elements not found for id "${id}"`);
         }
         if (container) {
@@ -103,7 +112,7 @@ const chartData = {
       }
 
       if (!chartData || !chartData.labels || !chartData.datasets) {
-        if (import.meta.env.DEV && typeof console !== 'undefined') {
+        if (isDev && typeof console !== 'undefined') {
           console.error('Chart data not found or invalid:', chartData);
         }
         container.style.display = 'none';
@@ -113,7 +122,7 @@ const chartData = {
       const { labels, datasets, yAxisLabel } = chartData;
 
       if (!labels || !Array.isArray(labels) || labels.length === 0) {
-        if (import.meta.env.DEV && typeof console !== 'undefined') {
+        if (isDev && typeof console !== 'undefined') {
           console.warn('Chart labels are empty or invalid');
         }
         container.style.display = 'none';
@@ -121,21 +130,32 @@ const chartData = {
       }
 
       if (!datasets || !Array.isArray(datasets) || datasets.length === 0) {
-        if (import.meta.env.DEV && typeof console !== 'undefined') {
+        if (isDev && typeof console !== 'undefined') {
           console.warn('Chart datasets are empty or invalid');
         }
         container.style.display = 'none';
         return;
       }
 
-      // Check if datasets have valid data
-      const hasValidData = datasets.some(
-        (ds) => Array.isArray(ds.data) && ds.data.length > 0 && ds.data.some((val) => val != null),
-      );
+      // Check if datasets have valid data and match label length
+      const hasValidData = datasets.some((ds) => {
+        if (!Array.isArray(ds.data) || ds.data.length === 0) return false;
+        // Ensure data array length matches labels length for time series charts
+        if (ds.data.length !== labels.length) {
+          if (isDev && typeof console !== 'undefined') {
+            console.warn(
+              `Dataset "${ds.label}" data length (${ds.data.length}) doesn't match labels length (${labels.length})`,
+            );
+          }
+          return false;
+        }
+        // Check that data contains valid numeric values
+        return ds.data.some((val) => typeof val === 'number' && !isNaN(val) && isFinite(val));
+      });
 
       if (!hasValidData) {
-        if (import.meta.env.DEV && typeof console !== 'undefined') {
-          console.warn('Chart datasets contain no valid data');
+        if (isDev && typeof console !== 'undefined') {
+          console.warn('Chart datasets contain no valid data or length mismatch');
         }
         container.style.display = 'none';
         return;
@@ -143,7 +163,7 @@ const chartData = {
 
       const ctx = canvas.getContext('2d');
       if (!ctx) {
-        if (import.meta.env.DEV && typeof console !== 'undefined') {
+        if (isDev && typeof console !== 'undefined') {
           console.error('Could not get 2d context from canvas');
         }
         container.style.display = 'none';
@@ -270,7 +290,7 @@ const chartData = {
         loadingEl.style.display = 'none';
       }
     } catch (err) {
-      if (import.meta.env.DEV && typeof console !== 'undefined') {
+      if (isDev && typeof console !== 'undefined') {
         console.error('Failed to initialize chart:', err);
       }
       const container = document.getElementById(`chart-container-${id}`);
@@ -299,7 +319,7 @@ const chartData = {
   // Error handler for chart initialization
   function handleChartError(error) {
     // Only log errors in development mode
-    if (import.meta.env.DEV && typeof console !== 'undefined' && console.error) {
+    if (isDev && typeof console !== 'undefined' && console.error) {
       console.error('Failed to initialize chart:', error);
     }
   }

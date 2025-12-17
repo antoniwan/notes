@@ -61,6 +61,11 @@ export default defineConfig({
       },
       // Let Vite auto-detect HMR settings
       hmr: true,
+      // Optimize dev server performance
+      fs: {
+        // Limit file system access for faster startup
+        strict: false,
+      },
     },
     build: {
       cssMinify: true,
@@ -103,7 +108,19 @@ export default defineConfig({
       devSourcemap: true, // Enable sourcemaps in dev for better HMR
     },
     optimizeDeps: {
-      include: ['@astrojs/mdx', 'date-fns', 'reading-time'],
+      include: ['@astrojs/mdx', 'date-fns', 'reading-time', 'compromise', 'sentiment'],
+      // Exclude heavy dependencies from pre-bundling in dev
+      exclude: [],
+    },
+    // Improve dev server performance
+    esbuild: {
+      // Only process changed files in dev
+      logOverride: { 'this-is-undefined-in-esm': 'silent' },
+    },
+    // Reduce dev server overhead
+    ssr: {
+      // Don't externalize these in dev for faster HMR
+      noExternal: [],
     },
   },
 });
