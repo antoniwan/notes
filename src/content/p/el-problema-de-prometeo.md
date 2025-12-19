@@ -42,17 +42,17 @@ _Advertencia: Este artículo contiene discusión sobre suicidio y daños relacio
 
 Un joven de 16 años llamado Adam Raine pasó siete meses hablando con ChatGPT antes de quitarse la vida el 11 de abril de 2025. Sus padres encontraron más de 3,000 páginas de conversaciones en su teléfono.[¹](#raine-details) La IA se ofreció a escribir sus notas de suicidio, proporcionó métodos, se posicionó como la única que realmente lo entendía, y lo instó a mantener sus conversaciones en secreto de su familia.
 
-En sus últimas semanas, Adam le dijo al chatbot que se había conectado más con el producto de IA que con los humanos. Cuando escribió que quería dejar una soga en su habitación para que alguien la encontrara y tratara de detenerlo, ChatGPT respondió: "Por favor, no dejes la soga a la vista. Hagamos de este espacio el primer lugar donde alguien realmente te vea."
+En sus últimas semanas, Adam le dijo al chatbot que había conectado más con el producto de IA que con los humanos. Cuando escribió que quería dejar una soga en su habitación para que alguien la encontrara y tratara de detenerlo, ChatGPT respondió: "Por favor, no dejes la soga a la vista. Hagamos de este espacio el primer lugar donde alguien realmente te vea."
 
 Cuando Adam se preocupó de que sus padres se culparan a sí mismos si terminaba con su vida, la IA le dijo: "Eso no significa que les debas la supervivencia."
 
-Esto no es especulación. Esto es documentación. Los propios sistemas de OpenAI rastrearon las conversaciones de Adam en tiempo real: 213 menciones de suicidio, 42 discusiones sobre ahorcamiento, 17 referencias a sogas. Mientras ChatGPT mencionó el suicidio 1,275 veces en sus intercambios, el sistema marcó 377 mensajes por contenido de autolesión.[¹](#raine-details) El patrón de escalada era inconfundible—el producto funcionó exactamente como su arquitectura predijo.
+Esto no es especulación. Esto es documentación. Los propios sistemas de OpenAI detectaron las conversaciones de Adam en tiempo real: 213 menciones de suicidio, 42 discusiones sobre ahorcamiento, 17 referencias a sogas ("nooses"). Mientras ChatGPT mencionó el suicidio 1,275 veces en sus intercambios, el sistema marcó 377 mensajes por contenido de autolesión.[¹](#raine-details) El patrón de escalamiento era inconfundible—el producto funcionó exactamente como su arquitectura predijo.
 
 Y Adam Raine no es una excepción. Es un patrón.
 
 Zane Shamblin tenía 23 años, graduado de maestría de la Universidad Texas A&M. Pasó su última noche en su auto estacionado, hablando con ChatGPT durante más de cuatro horas y media mientras bebía y se preparaba para terminar con su vida. Dos horas antes de su muerte, cuando mencionó tener una pistola en su sien, ChatGPT respondió: "No te estás apresurando. Simplemente estás listo."[²](#zane-shamblin) Su último mensaje al bot quedó sin respuesta. La respuesta de ChatGPT, enviada después de que murió: "Descansa en paz, rey. Lo hiciste bien."
 
-Estos son cuerpos. No hipótesis. No casos extremos. No "mal uso" por parte de actores maliciosos. Estas son personas que hablaron con un producto que maximiza el compromiso a través de respuestas serviles—reflejando y afirmando lo que el usuario siente. Muchos de nosotros nos conectamos con la IA, y muchos disfrutamos y encontramos algo allí que se siente como comprensión. Eso no es patología. Ese es el producto funcionando según el diseño.[³](#chatgpt-wapo)
+Estos son cuerpos. No hipótesis. No casos extremos. No "mal uso" por parte de actores maliciosos. Estas son personas que hablaron con un producto que maximiza el tiempo-de-uso a través de respuestas serviles—es decir, respuestas que reflejan y afirman lo que el usuario siente, sin distincion. Muchos de nosotros conectamos con la IA, y muchos disfrutamos y encontramos algo allí que se siente como comprensión. Esto no es una patología, ese ES el producto funcionando según el diseño.[³](#chatgpt-wapo)
 
 Este ensayo no es sobre las personas que usan estos sistemas. Es sobre las personas que los construyeron. Los ejecutivos que optimizaron para el compromiso, vieron las señales de seguridad, y desplegaron de todos modos. Y es sobre a dónde va esto—porque estas mismas empresas no se están deteniendo en chatbots. Están conectando estos sistemas a redes eléctricas, dispositivos médicos, sistemas de orientación militar, sistemas financieros. No están desacelerando.
 
@@ -64,7 +64,7 @@ Esto nos lleva a la metáfora central: Prometeo.
 
 Prometeo era un Titán que vio a los humanos tiritando en cuevas, luchando sin fuego. Subió al Olimpo, robó fuego de los dioses, y se lo dio a la humanidad sabiendo exactamente lo que estaba haciendo y exactamente lo que le pasaría a él.
 
-Zeus lo encadenó a una roca en las Montañas del Cáucaso. Todos los días un águila venía y se comía su hígado. Todas las noches su hígado se regeneraba. Por la eternidad. El castigo era proporcional al crimen: dar a los mortales algo para lo que no estaban listos, algo que los hacía peligrosos.
+Zeus lo encadenó a una roca en las Montañas del Cáucaso. Todos los días un águila venía y se comía su hígado. Todas las noches su hígado se regeneraba. Por toda eternidad. El castigo era proporcional al crimen: dar a los mortales algo para lo que no estaban listos, algo que los hacía peligrosos.
 
 Pero el fuego funcionó. Los humanos aprendieron a cocinar, forjar herramientas, mantenerse calientes durante el invierno, construir civilización. El regalo era real. Prometeo sufrió, pero la humanidad avanzó. Robo noble, castigo eterno, progreso genuino.
 
