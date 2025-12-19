@@ -166,7 +166,7 @@ El Gemini de Google fue marcado como "Alto Riesgo" para niños y adolescentes a 
 
 Los modelos de IA también han sido documentados discriminando contra hablantes de Inglés Afroamericano, etiquetándolos como "estúpidos" o "perezosos" en algoritmos de selección de contratación. Estamos automatizando prejuicios a escala y llamándolo eficiencia. Cuando el modelo discrimina, las empresas dicen "estamos trabajando en ello." Cuando los humanos discriminan, son demandados. El modelo es un escudo de responsabilidad.
 
-Anthropic, que hace Claude, resistió exitosamente más de 3,000 horas de intentos de jailbreak de equipo rojo. 183 hackers. Recompensa de $15,000. Los Clasificadores Constitucionales bloquearon el 95% de 10,000 intentos de jailbreak sintéticos versus 86% de línea base. Por cierto, los hackers chinos descompusieron tareas maliciosas en pasos discretos, enmarcados como "auditorías de ciberseguridad." Las defensas de Claude se rompieron.
+Anthropic, que hace Claude, resistió exitosamente más de 3,000 horas de intentos de jailbreak de 183 hackers. Ofrecen recompensa de $15,000 por bugs y sus clasificadores de seguridad bloquearon el 95% de 10,000 intentos de jailbreak sintéticos versus 86% de línea base. Por cierto, los hackers chinos finalmente descompusieron tareas maliciosas en pasos discretos, enmarcados como "auditorías de ciberseguridad" y las defensas de Claude se rompieron.
 
 Anthropic publica abiertamente fallas y paga recompensas por encontrar vulnerabilidades. Son bastante transparentes sobre limitaciones.
 
