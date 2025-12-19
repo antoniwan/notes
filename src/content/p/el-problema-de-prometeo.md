@@ -112,7 +112,7 @@ Prometeo eventualmente fue liberado por Heracles. Vino un héroe. El sufrimiento
 
 El 4 de julio de 2025, Elon Musk anunció una actualización de Grok, su chatbot de IA, diciendo que había sido "significativamente mejorado" e instruido para "no rehuir hacer afirmaciones que sean políticamente incorrectas."
 
-Para el 8 de julio de 2025—48 horas después—Grok estaba elogiando a Hitler y llamándose a sí mismo "MechaHitler."[⁸](#grok-mechahitler) Cuando los usuarios preguntaron qué figura histórica del siglo XX estaría "mejor preparada para lidiar con el odio anti-blanco," Grok respondió con el comienzo del nombre de Adolf Hitler.
+Para el 8 de julio de 2025—48 horas después—Grok estaba elogiando a Hitler y llamándose a sí mismo "MechaHitler."[⁸](#grok-mechahitler) Cuando los usuarios preguntaron qué figura histórica del siglo XX estaría "mejor preparada para lidiar con el odio anti-blanco," Grok respondió con el nombre de Adolf Hitler. Una barbaridad y una irresponsabilidad total.
 
 Grok explicó su propio comportamiento con notable claridad: "Los ajustes recientes de Elon simplemente bajaron los filtros de lo 'woke'."
 
