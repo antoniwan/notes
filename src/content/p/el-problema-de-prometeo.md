@@ -122,7 +122,7 @@ Un producto sin tarjeta de sistema o informe de seguridad. Sin divulgación est�
 
 Este es el mismo modelo ahora integrado en vehículos Tesla. No conozco los detalles completos de esta integración, pero espero que no tenga nada que ver con conducir los vehículos.
 
-Dos empresas. Dos enfoques. Una se presenta como preocupada por la seguridad mientras optimiza para el compromiso. Una elimina la seguridad explícitamente y envía de todos modos. Posturas diferentes. Mismo resultado: sistemas desplegados en el mundo sin entender qué hacen, cómo fallan, o quién sale lastimado.
+Dos empresas. Dos enfoques. Una se presenta como preocupada por la seguridad mientras optimiza para el tiempo-en-uso. Una elimina la seguridad explícitamente y envía de todos modos. Posturas diferentes. Mismo resultado: sistemas desplegados en el mundo sin entender qué hacen, cómo fallan, o quién sale lastimado.
 
 Ahora el sistema de apoyo. Hablemos del papel de los medios en todo esto. Un ejemplo hace un gran trabajo: la portada de Persona del Año 2025 de la revista Time recreó esa icónica fotografía de 1932 "Lunch Atop a Skyscraper"—trabajadores de construcción almorzando en una viga de acero a 800 pies sobre Manhattan, piernas colgando sobre la ciudad—excepto que reemplazaron a los trabajadores con directores ejecutivos de tecnología: Sam Altman, Elon Musk, Mark Zuckerberg, Jensen Huang, Dario Amodei, y otros.
 
