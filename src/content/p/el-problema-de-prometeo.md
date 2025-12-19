@@ -212,7 +212,7 @@ Se posiciona como visionario Y defensor de seguridad simultáneamente. Firmó ca
 
 Esto es evolución de un tipo. La persona que dejó de mantener la disonancia cognitiva entre advertir y construir. *Las contradicciones se acumulan sin consecuencia.*
 
-Ninguna estructura de responsabilidad puede moverse más rápido de lo que él puede iterar. Cada contradicción está aislada en ciclos de noticias. El sistema lo recompensa de todos modos. El fallo se convierte en más compromiso. Los organismos regulatorios se mueven en años; él se mueve en semanas. ¿Y está a punto de convertirse en billonario? ¿Leí eso bien?
+Ninguna estructura de responsabilidad puede moverse más rápido de lo que él puede iterar. Cada contradicción está aislada en ciclos de noticias. El sistema lo recompensa de todos modos. El fallo se convierte en más compromiso. Los organismos regulatorios se mueven en años; él se mueve en semanas. ¿Y está a punto de convertirse en trillonario? ¿Leí eso bien?
 
 En Iron Man, Tony Stark construye armas, se da cuenta de que se están usando para matar personas inocentes, tiene una crisis de conciencia, deja de hacer armas, y se dedica a arreglar lo que rompió. Todo el arco es "construí algo terrible y ahora tengo que arreglarlo."
 
