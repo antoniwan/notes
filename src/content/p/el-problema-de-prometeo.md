@@ -98,7 +98,7 @@ Y estamos intentando construir mentes.
 
 Y no mentes metafóricas tampoco. Se nos promete superinteligencia—sistemas que procesan lenguaje (si lo "entienden" es otra pregunta completamente), toman decisiones que pretenden exceder el juicio humano, generan salidas novedosas, todo mientras exhiben comportamientos que sus creadores no predijeron. Estamos llamando a esto "inteligencia artificial" y conectándolo a todo sin entender qué es o qué hace: sistemas de navegación, diagnóstico médico, redes eléctricas, orientación militar, moderación de contenido para miles de millones, decisiones de contratación, aprobaciones de préstamos, recomendaciones de libertad condicional, sistemas de armas autónomas, gestión de instalaciones nucleares, algoritmos de mercados financieros moviendo billones por segundo, coordinación de respuesta de emergencia, plantas de tratamiento de agua, control de tráfico aéreo.
 
-No porque entendamos estos sistemas sino porque la estructura competitiva exige velocidad—ventaja del primero en moverse, participación de mercado. La empresa que espera a entender es devorada por la empresa que envía.
+No porque entendamos estos sistemas sino porque la estructura competitiva exige velocidad—ventaja del primero en moverse, participación de mercado. La empresa que espera a entender es devorada por la empresa que envía. This is the American way...
 
 Y aquí es donde la mayor parte del absurdo aterriza para mí: algunos de estos videntes de IA nos están advirtiendo sobre los peligros.
 
