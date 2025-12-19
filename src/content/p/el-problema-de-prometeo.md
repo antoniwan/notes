@@ -82,7 +82,7 @@ El fuego que Prometeo dio no era opcional. Los humanos tenían frío. Necesitaba
 
 La inteligencia artificial es algo que construimos pero no controlamos. Los investigadores dicen esto abiertamente. Los modelos son cajas negras.
 
-No "cajas negras" como metáfora. Cajas negras como arquitectura técnica.
+No "cajas negras" como metáfora. Cajas negras como arquitectura técnica. Muy impresionante.
 
 Modelos de transformadores con cientos de miles de millones a más de un billón de parámetros (GPT-4 tiene aproximadamente 1.7 billones, los modelos Claude oscilan entre 400 mil millones y más de un billón) que crean comportamientos emergentes (palabra intencional, muy importante) a través de operaciones matemáticas distribuidas en capas. No hay un solo punto donde puedas decir "aquí es donde el modelo decidió X." La decisión emerge de la interacción de miles de millones de pesos. El "medio"—que es la "cognición" real, si puedes llamarlo así—es opaco.
 
