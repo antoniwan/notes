@@ -33,6 +33,7 @@ draft: false
 featured: true
 published: true
 showComments: true
+translationGroup: the-prometheus-problem
 ---
 
 # **The Prometheus Problem**
