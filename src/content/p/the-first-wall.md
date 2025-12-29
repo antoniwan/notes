@@ -34,13 +34,13 @@ My partner is breastfeeding our son, and I can't do that for him. That's it. Tha
 
 I've spent my entire life doing whatever I want. Not as a rebellious posture or some kind of lifestyle brand, but as a lived fact. I decided early that autonomy was the only thing that mattered, and I built my entire operating system around it. I've moved cross-country very young. I've quit dream jobs. I've refused big money in favor of my values. Hyper-independent. Pathologically lonely by others' accounts. I logged thousands of hours across dozens of domains, all feeding the same belief: I do what I want.
 
-But I can't breastfeed my son. *Duh, Antonio!!!*
+But I can't breastfeed my son.
 
 My son is four days old and I want to feed him from my body and I cannot. Not "it's hard" or "I need to learn how" or "I need a better strategy." Just no. Biology says no. Physics says no. Reality says no, and there's no amount of hours I can log to change it.
 
 It makes me feel impotent in a way I've never felt before.
 
-Here's context that makes this sharper: My daughter wasn't breastfed. I bottled-fed her as mom recovered from the hard labors of bringing you into this world and i also suspect my five-year-old daughter has always preferred me. I've been the primary attachment, the one she wants when she's hurt or scared or happy. So I know I can be that person for a child. I have evidence that fatherhood isn't about what you can't do. It's about what you show up for.
+My daughter wasn't breastfed. I bottle-fed her while her mom recovered from the hard labor of birth. From the start, I was the one with the bottle, the one she reached for. I suspect she's always preferred me. I've been the primary attachment, the one she wants when she's hurt or scared or happy. So I know I can be that person for a child. I have evidence that fatherhood isn't about what you can't do. It's about what you show up for.
 
 But with my son, during these first critical days when bonding is chemical and physical and primal, there's this fundamental connection I'm locked out of. I can hold him, rock him, change him, talk to him, love him with everything I have. But I can't nourish him from my body. I can't give him what he needs most in the way he needs it most.
 
@@ -61,5 +61,7 @@ And maybe that's what fatherhood actually is. Not the menu I selected from, but 
 He's in my arms right now, actually. Four days old, asleep against my chest while I figure out how to say all this. The wall is still there. But so am I.
 
 ---
+
+💩✨💩
 
 Hey Gino Andre, if you're reading this: I cannot wait to love you how you have deserved all this time. I have done my best for you and with you, but my best today has much more capacity than I've ever had. I have your baby brother and sister to thank for that. I love you.
