@@ -64,4 +64,4 @@ He's in my arms right now, actually. Four days old, asleep against my chest whil
 
 💩✨💩
 
-Hey Gino Andre, if you're reading this: I cannot wait to love you how you have deserved all this time. I have done my best for you and with you, but my best today has much more capacity than I've ever had. I have your baby brother and sister to thank for that. I love you.
+Gino Andre, if you're reading this, I cannot wait to love you how you have deserved all this time. I have done my best for you and with you, but my best today has much more capacity than I've ever had. I have your baby brother and sister to thank for that. I love you.
