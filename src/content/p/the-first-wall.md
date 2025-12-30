@@ -1,7 +1,7 @@
 ---
 title: 'The First Wall'
 description: >-
-  A father reflects on encountering biological limits in parenting and how absolute
+  A reflection on encountering biological limits in parenting and how absolute
   boundaries challenge beliefs about autonomy and capability.
 pubDate: '2025-12-29T22:50:00.000Z'
 language:
