@@ -27,6 +27,7 @@ draft: false
 featured: true
 published: true
 showComments: true
+translationGroup: the-first-wall
 ---
 
 I'm 39 years old and I'm feeling jealousy for the first time. Not the petty kind, not about someone else's success or possessions. Real jealousy, the kind that sits in your chest like a low fire you can't put out.
