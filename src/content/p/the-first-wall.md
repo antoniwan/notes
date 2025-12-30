@@ -6,6 +6,7 @@ description: >-
 pubDate: '2025-12-29T22:50:00.000Z'
 language:
   - en
+heroImage: /images/2025/hands-touching-each-other.avif
 category:
   - parenting
   - integration-growth
@@ -23,7 +24,7 @@ tags:
   - emotional-health
   - family-dynamics
 draft: false
-featured: false
+featured: true
 published: true
 showComments: true
 ---
