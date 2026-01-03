@@ -5,7 +5,7 @@ import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL, AUTHOR } from '../consts';
 export async function GET(context) {
   const posts = await getCollection('blog');
   const publishedPosts = posts.filter(
-    (post) => !post.data.draft && post.data.published !== false && post.data.pubDate <= new Date(),
+    (post) => !post.data.draft && post.data.published !== false,
   );
 
   // Sort by publication date (newest first)
