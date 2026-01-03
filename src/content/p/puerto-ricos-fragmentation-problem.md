@@ -47,32 +47,28 @@ Tolls increased again January 1st, 2026, with hikes across PR-22, PR-52, PR-5, P
 
 The percent of debt to personal income is almost 90%—a ratio where anything above 50% indicates financial distress (Consolidated Credit, 2025). Six out of ten people who seek financial advisory services express feeling overwhelmed by debt. "People are no longer able to make ends meet, and they're using credit cards as part of their income to maintain certain levels of consumption" (Washington Journal Puerto Rico, 2025).
 
+And healthcare isn't just becoming unaffordable—the doctors are leaving. Puerto Rico loses nearly **400 physicians annually** to the mainland, where family doctors earn an average of $237,000 compared to $194,307 on the island (JAMA Health Forum, 2024). Between 2010 and 2012, more than 4,000 health professionals—approximately 9% of the healthcare workforce—migrated to the U.S. mainland (Urban Institute, 2021). The ones who stay face longer wait times, reduced services, and the same exhaustion that keeps everyone else from engaging politically.
+
 So yeah—jump on the Tacoma, post the beach pic, and let's talk archetypes.
 
 ## The Salaried Professionals
 
-If you're a salaried professional in Puerto Rico, you are almost certainly underpaid to the point that political engagement becomes inherited instead of examined.
+If you're a salaried professional in Puerto Rico, you are almost certainly underpaid to the point that political engagement becomes inherited instead of examined. The old **voto íntegro** system made this easy. In 2012, the PNP pulled 47% of its votes straight-ticket. The PPD got 46%. That's **93% of voters marking one X** under their family's color. Straight-ticket voting was the default for over 96% of voters.
 
-The old **voto íntegro** system made this easy. In 2012, the PNP pulled 47% of its votes straight-ticket. The PPD got 46%. 
+Here's a concrete example from one of the hardest working women I've ever met: A Director of Sales at the largest cornmeal manufacturer on the island—a billion-dollar company, by the way—making **under $70k**. I have stories like this, professionals of all sorts, in all verticals, and it's mostly the same story.
 
-That's **93% of voters marking one X** under their family's color. Straight-ticket voting was the default for over 96% of voters.
-
-Here's a concrete example from one of the hardest working women I've ever met:  
-A Director of Sales at the largest cornmeal manufacturer on the island—a billion-dollar company, by the way—making **under $70k**.
-
-Executive responsibility. Entry-level mainland pay.
+Executive responsibility with entry-level mainland pay.
 
 If you live here, you *know* this isn't rare. You know *exactly* who and what I'm talking about.
 
 Y'all work 50+ hour weeks and commute through toll roads that cost $35–40 a month minimum.  Then, again, pay double the mainland electricity rate.
 
-By the time election season comes around, they're cooked.
+By the time election season comes around, they're cooked because exhaustion isn't a side effect. It's the mechanism that foments they mark one X. Go home. Keep the machine moving because they don't have the energy to fight the machine. Rajamos la papeleta! Yay!
 
-Exhaustion isn't a side effect. It's the mechanism.
+By the way, about **22% of these households pay credit card late fees**. These aren't irresponsible people. These are professionals drowning inside a cost structure designed to bleed them slowly.
 
-So they mark one X. Go home. Keep the machine moving because they don't have the energy to fight the machine.
+ > I was one of these, but the colonized in me was too strong, so I left to chase money in the mainland.
 
-About **22% of households pay credit card late fees**. These aren't irresponsible people. These are professionals drowning inside a cost structure designed to bleed them slowly.
 
 ## The Welfare Class
 
@@ -91,8 +87,8 @@ When the power goes out, these are the people who die first.
 
 Seven years after María, Puerto Rico still doesn't have an integrated system to identify people who depend on electricity to survive.
 
-> **Note:** I'm not qualified to speak *for* this group.  
-> My father grew up an orphan in Santurce. I didn't.  
+> I'm not qualified to speak *for* this group.  
+> My father grew up in poverty as an orphan in Santurce but I didn't.  
 > What I know is secondhand. What I *do* know is that they are the most exploited and the most disposable when infrastructure fails. Their story deserves a first-person voice.
 
 ## The Affluent (Los Apellidos)
@@ -200,6 +196,8 @@ Grokipedia. (2025b). List of political parties in Puerto Rico. https://grokipedi
 
 International Women's Media Foundation. (n.d.). Puerto Rico after 'Roe'. https://www.iwmf.org/reporting/puerto-rico-after-roe/
 
+JAMA Health Forum. (2024). Puerto Rico faces severe healthcare crisis amidst funding shortages. https://jamanetwork.com/journals/jama-health-forum/fullarticle/2835584
+
 Metro Puerto Rico. (2026, January 2). Suben los peajes: Estas son las autopistas con nuevas tarifas en Puerto Rico. https://www.metro.pr/noticias/2026/01/02/aumentan-los-peajes-en-puerto-rico-estas-son-las-nuevas-tarifas-que-entran-en-vigor/
 
 National Institute of Standards and Technology. (2025, July). NIST shares preliminary findings from Hurricane Maria investigation. https://www.nist.gov/news-events/news/2025/07/nist-shares-preliminary-findings-hurricane-maria-investigation
@@ -227,6 +225,8 @@ The Meteor. (2025, August 13). Is the last abortion haven in the Caribbean closi
 The Watchers. (2025, September 20). Impact of prolonged power outage on excess deaths in Puerto Rico after Hurricane Maria. https://watchers.news/epicenter/hurricane-maria-puerto-rico-blackout-excess-deaths-disaster-resilience/
 
 TurboDebt. (2025). Puerto Rico debt relief: Debt settlement and consolidation. https://www.turbodebt.com/areas-we-serve/puerto-rico-debt-relief
+
+Urban Institute. (2021). Environmental scan of Puerto Rico's health care infrastructure. https://www.urban.org/sites/default/files/publication/87016/2001051-environmental-scan-of-puerto-ricos-health-care-infrastructure_0.pdf
 
 Washington Journal Puerto Rico. (2025, October 6). $18.2 billion in the first quarter: Puerto Rican household debt grows. https://www.wjournalpr.com/business/18-2-billion-in-the-first-quarter-puerto-rican-household-debt-grows/article_ba7799f9-7d6d-4b37-8359-76bc606bf3a9.html
 
