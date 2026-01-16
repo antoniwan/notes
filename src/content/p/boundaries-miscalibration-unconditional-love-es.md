@@ -91,7 +91,7 @@ Sin defensa, sin contrafactuales, sin exigencias de reparación inmediata ni pre
 
 El espacio más inmediato donde puedo aplicar estos aprendizajes es la crianza de mis hijos menores.
 
-Cuando mi hijo de cinco años muestra señales de desregulación, hago explícito que el amor no es contingente al estado de ánimo ni al comportamiento. Uso lenguaje simple, de forma repetida:
+Cuando mi hija de cinco años muestra señales de desregulación, hago explícito que el amor no es contingente al estado de ánimo ni al comportamiento. Uso lenguaje simple, de forma repetida:
 
 - Hay cosas que no me gustan, pero tú siempre me gustas.
 - Mi amor no es una recompensa ni un castigo.
