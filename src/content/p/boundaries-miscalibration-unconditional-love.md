@@ -32,7 +32,7 @@ published: true
 showComments: true
 ---
 
-This essay documents a set of mistakes, the reasoning that led to them, and the recalibration that followed. The intent is not self-exoneration, but accuracy and precision. For clarity. And if others can avoid repeating these errors by reading this, the exercise has value.
+This essay documents a set of mistakes, the reasoning that led to them, and the recalibration that followed. The intent is not self-exoneration, but accuracy and precision, in the interest of clarity. And if others can avoid repeating these errors by reading this, the exercise has value.
 
 ✨
 
@@ -50,7 +50,7 @@ I had two main drivers.
 
 This can look like many things: hanging up a call abruptly, intentionally pulling away or severing contact with someone in a heated manner, subtle provocations framed as validation or testing. The pattern is speed over resolution. That perception of threat felt detonating, and it demanded a _hasty solution_.
 
-**Second: boundary conflation.** I treated boundaries and emotional force as the same thing but they are not. A boundary is a limit one imposes unto oneself. For me, it was a matter of self-respect. Force is another dimension. not physical force, but emotional finality, heat, and scorched-earth framing. It is a delivery system. I can apply my boundaries with proportionate force, or not, but suffer the consequences. That nuance matters, but I did not catch the boundary-versus-force distinction until after the fact. Another way to think about this is mixing up _necessity_ with _intensity_.
+**Second: boundary conflation.** I treated boundaries and emotional force as the same thing but they are not. A boundary is a limit one imposes unto oneself. For me, it was a matter of self-respect. Force is another dimension. Not physical force, but emotional finality, heat, and scorched-earth framing. It is a delivery system. I can apply my boundaries with proportionate force, or not, but suffer the consequences. That nuance matters, but I did not catch the boundary-versus-force distinction until after the fact. Another way to think about this is mixing up _necessity_ with _intensity_.
 
 In retrospect, I was protecting myself with the theoretical tools I had, but those tools were shaped by fatigue, prior harm, and limited bandwidth. I had done the theory: cognitive work, therapy, journaling. But theory is not practice. En el calentón, in the heat of the moment, theory either holds or collapses.
 
@@ -88,8 +88,8 @@ The most obvious surface area now for me to put these learnings into practice is
 
 When my five-year-old now shows signs of dysregulation, I make explicit that love is not contingent on mood or behavior. I use simple language, repeatedly:
 
-- There are things I don’t like, but I always like you.
-- My love is not a reward or a punishment.
+- There are things I don’t like, but I always like you
+- My love is not a reward or a punishment
 
 The observable result is immediate softening and regulation. Sometimes cooperation. This clarified something for me: my children do not test limits to defy authority; they test to verify our attachment and its qualities.
 
@@ -99,7 +99,7 @@ In short, the biggest mistake I made was failing to separate limits from perceiv
 
 So yeah, if you are setting boundaries:
 
-- Do not assume force equals effectiveness.
+- Do not assume force equals effectiveness
 - Ask whether you are enforcing a limit or discharging accumulated heat
 - Act from self-respect, but balance it with care, with warmth
 - Slow down, slow the fuck down
@@ -111,7 +111,7 @@ So yeah, if you are setting boundaries:
 
 - Love is not conditional
 - Boundaries do not negate care
-- Limits and warmth are not mutually exclusive.
+- Limits and warmth are not mutually exclusive
 
 ## Integration Check
 
