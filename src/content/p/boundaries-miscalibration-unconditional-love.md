@@ -30,6 +30,7 @@ draft: false
 featured: true
 published: true
 showComments: true
+translationGroup: boundaries-miscalibration-unconditional-love
 ---
 
 This essay documents a set of mistakes, the reasoning that led to them, and the recalibration that followed. The intent is not self-exoneration but accuracy and precision, in the interest of clarity. And if others can avoid repeating these errors by reading this, the exercise has value.
