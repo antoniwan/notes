@@ -57,7 +57,7 @@ Trataba los límites y la fuerza emocional como si fueran lo mismo, pero no lo s
 
 Puedo aplicar mis límites con fuerza proporcionada o no hacerlo, pero asumir las consecuencias. Ese matiz importa. No capté plenamente la distinción entre límite y fuerza hasta después de los hechos. Otra forma de pensarlo es haber confundido *necesidad* con *intensidad*.
 
-En retrospectiva, me estaba protegiendo con las herramientas teóricas que tenía disponibles, pero esas herramientas estaban moldeadas por fatiga, daño previo y ancho de banda limitado. Había hecho el trabajo teórico: esfuerzo cognitivo, terapia, escritura reflexiva. Pero la teoría no es práctica. En el calor del momento, la teoría se sostiene o colapsa.
+En retrospectiva, me estaba protegiendo con las herramientas teóricas que tenía disponibles, pero esas herramientas estaban moldeadas por fatiga, daño previo y ancho de banda limitado. Había hecho el trabajo teórico: esfuerzo cognitivo, terapia, escritura reflexiva. Pero la teoría no es práctica. En el calor del momento, en el calentón, la teoría se sostiene o colapsa.
 
 Mi capacidad explica mi comportamiento, pero no excusa el daño.
 
