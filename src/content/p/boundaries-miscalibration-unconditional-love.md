@@ -55,7 +55,7 @@ In retrospect, I was protecting myself with the tools I had. Those tools were sh
 
 My capacity explains my behavior. It does not excuse the damage.
 
-From the outside, the approach can reasonably look like scorched earth. I only felt the full effects after the dust settled. My family is healthier and safer now, and I am a softer person than before, but that does not negate the fact that I misapplied force at key moments. One could argue, Hey, if there was damage, if collateral happened and people were burnt, how is it possible that your family and your environment is safer? We'll see.
+From the outside, the approach can reasonably look like scorched earth. I only felt the full effects after the dust settled. My family is healthier and safer now, and I am a softer person than before, but that does not negate the fact that I misapplied force at key moments. One could reasonably ask: if damage occurred, if people were burned, how can it also be true that my family and environment are safer? I am still watching that tension.
 
 After the fact, I briefly adopted a faulty frame, a totalizing explanation:
 
@@ -82,7 +82,6 @@ This led to a clean internal statement, without justification clauses:
 > **I protected myself, and I caused damage I regret.**
 
 No defense. No counterfactuals and no demand for repair or extra pressure. That can come later, but this is not about that. That sentence is now sufficient because it is accurate. It holds under pressure and scrutiny.
-
 
 When my five-year-old now shows signs of dysregulation, I make explicit that love is not contingent on mood or behavior. I used simple language, repeatedly:
 
@@ -118,3 +117,15 @@ I do not need to punish myself to acknowledge harm. I do not need to rewrite his
 Most damage comes not from having values, but from misapplying them under load. This matters especially in periods of high volatility, when emotion, speed, and fear distort judgment.
 
 Precision is not cold. It is stabilizing.
+
+There were things that worked, even inside failure.
+
+First, I noticed the damage instead of rationalizing it. That matters. Many people double down on outcomes and call the costs “necessary.” I didn’t.
+
+Second, I did not outsource responsibility to intention. I separated what I meant from what landed, and I stayed with the impact.
+
+Third, I resisted global self-condemnation. I rejected the frame that I am “the problem” in favor of identifying specific errors under specific constraints. That kept me engaged instead of frozen.
+
+Finally, I tested the recalibration in real time. I did not keep this insight theoretical. I applied it with my child, where feedback is immediate and unfiltered.
+
+These strengths do not erase the mistakes. They explain why repair and integration were possible at all.
