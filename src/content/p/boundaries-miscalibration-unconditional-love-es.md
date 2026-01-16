@@ -35,6 +35,8 @@ translationGroup: boundaries-miscalibration-unconditional-love
 
 Este ensayo documenta un conjunto de errores, el razonamiento que los produjo y la recalibración que siguió. La intención no es la autoexoneración, sino la precisión, en servicio de la claridad. Si otras personas pueden evitar repetir estos errores al leerlo, el ejercicio tiene valor.
 
+✨
+
 Establecí límites necesarios durante un período de alto estrés y percepción elevada de amenaza. Los límites en sí estaban justificados; la forma en que los impuse no lo estuvo. En retrospectiva, pude haberlos establecido de una manera más saludable y proporcional.
 
 Usé fuerza excesiva. Por fuerza no me refiero a agresión física, sino a intensidad emocional, velocidad y finalidad. El resultado fue daño colateral, incluida una ruptura relacional que no necesitaba ser tan severa como terminó siendo.
