@@ -33,7 +33,7 @@ showComments: true
 translationGroup: boundaries-miscalibration-unconditional-love
 ---
 
-Este ensayo documenta un conjunto de errores, el razonamiento que los produjo y la recalibración que siguió. La intención no es la autoexoneración, sino la precisión, en servicio de la claridad. Si otras personas pueden evitar repetir estos errores al leerlo, el ejercicio tiene valor.
+Este ensayo documenta un conjunto de errores, el razonamiento que los produjo y la recalibración que siguió. La intención no es la autoexoneración, sino la precisión, en servicio de la claridad.
 
 ✨
 
