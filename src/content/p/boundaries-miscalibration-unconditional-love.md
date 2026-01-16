@@ -32,92 +32,89 @@ published: true
 showComments: true
 ---
 
-This is a record of mistakes I made, why I made them, and how I recalibrated. I am not trying to excuse myself. I want to be accurate and useful. If this helps someone avoid the same errors, it is worth it.
+This essay documents a set of mistakes, the reasoning that led to them, and the recalibration that followed. The intent is not self-exoneration, but accuracy. If others can avoid repeating these errors by reading this, the exercise has value.
 
-## 1. What I Did
 
-I set boundaries during a high-stress season. The boundaries were needed. The way I enforced them was not.
+I set necessary boundaries during a period of high stress and elevated threat perception. The boundaries themselves were justified but the way I enforced them was not. In hindsight, I could have set these boundaries in a healthier and more proportionate way.
 
-I used too much emotional force. Not physical force, but final words, heat, and a scorched-earth tone. That caused damage I did not need to cause.
+I used excessive force. Not physical force, but emotional finality, heat, and scorched-earth framing. The result was collateral damage including relational rupture that did not need to be as severe as it became.
 
-I chose speed over calibration. I ended things fast, shut down nuance, and acted like urgency was the only safe option. Some of that was necessary. Some of it was not.
+More broadly, I defaulted to _decisiveness_ over calibration. I compressed time, nuance, and relational context in favor of rapid _closure_. This was not limited to a single interaction. It showed up as a string of abrupt exits, rigid framing, and an intolerance for ambiguity once my internal threshold was crossed.
 
-Short term, things felt better. Long term, the collateral damage showed up.
+In all of this, I acted within my capacity at the time, and I got what I wanted, or at least what I thought I wanted. Life felt objectively better in the immediate aftermath. That relief made the changes feel necessary. But what feels better in the short term does not necessarily remain better once the dust settles and collateral damage becomes visible.
 
-## 2. Why I Did It
+I had two main drivers.
 
-Two drivers were at play.
+**First: threat compression.** Under sustained pressure, I collapsed nuance in favor of speed and safety. When the nervous system is overloaded, “end it decisively” feels safer than “hold complexity.”
 
-**Threat compression.** Under pressure, I collapsed nuance in favor of safety. When your nervous system is overloaded, “end it now” feels safer than “hold complexity.”
+This can look like hanging up a call. Avoiding places where you feel unwelcome. Intentionally pulling away or severing contact with someone. But the pattern was the same: speed over resolution. That perception of threat was detonating, it required a _hasted solution_. 
 
-**Boundary conflation.** I treated boundaries and emotional force as the same thing. They are not. A boundary is a limit. Force is a delivery style. I confused necessity with intensity.
+**Second: boundary conflation.** I treated boundaries and emotional force as the same thing but they are not. A boundary is a limit one imposes unto onself. For me, it was a matter of self-respect. And force, is another dimention, it is a delivery system. I can apply my boundaries with proportionate force, or not, but suffer the consequences. That nuance matters, but I didn't catch it until after the fact. I also confused necessity with intensity, which made the situation more volatile.
 
-I was protecting myself with the tools I had. Those tools were shaped by fatigue, prior harm, and limited bandwidth. That explains my behavior. It does not erase the harm.
+In retrospect, I was protecting myself with the tools I had. Those tools were shaped by fatigue, prior harm, and limited bandwidth. I had done the theory: cognitive work, therapy, journaling. But theory is not practice. En el calentón, in the heat of the moment, theory either holds or collapses.
 
-## 3. The Faulty Frame I Used
+My capacity explains my behavior. It does not excuse the damage.
 
-After the fact, I briefly believed this:
+From the outside, the approach can reasonably look like scorched earth. I only felt the full effects after the dust settled. My family is healthier and safer now, and I am a softer person than before, but that does not negate the fact that I misapplied force at key moments. One could argue, Hey, if there was damage, if collateral happened and people were burnt, how is it possible that your family and your environment is safer? We'll see.
+
+After the fact, I briefly adopted a faulty frame, a totalizing explanation:
 
 > **If I were a better parent, a better person, this would not have happened this way.**
 
-That sounds honest, but it is inaccurate. It reduces a complex outcome to a single cause so I can keep a sense of control. That trades truth for a neat story.
+This frame feels honest, but it is inaccurate. It can masquerade as insight, but it is a sidestep. It collapses a multi-variable outcome into a single actor in order to preserve coherence and control. That move trades truth for narrative simplicity.
+
+I am glad I noticed this pattern.
 
 A more accurate statement is:
 
 > **I made specific mistakes, in specific seasons, under specific constraints, and those mistakes mattered.**
 
-Precision matters because vague guilt blocks integration.
+Precision matters because vague guilt prevents integration and specific responsibility allows it. You cannot and won't be able to make yourself healthier, and therefore your environment, by shaming yourself. Precision softens and sharpens the blow, and the insight and learnings.
 
-## 4. The Reframe That Helped
+I separated:
 
-The reframe was not self-forgiveness. It was about clearer definitions. I separated:
-
-- **Boundaries** from **heat**
+- **Boundaries** from **heat (temperature, attitude, activation)**
 - **Intent** from **impact**
-- **Capacity then** from **ideal behavior in hindsight**
+- **Capacity at the time** from **ideal behavior in hindsight**
 
-That led to a simple sentence with no excuses:
+This led to a clean internal statement, without justification clauses:
 
 > **I protected myself, and I caused damage I regret.**
 
-That sentence holds under pressure. It is accurate.
+No defense. No counterfactuals and no demand for repair or extra pressure. That can come later, but this is not about that. That sentence is now sufficient because it is accurate. It holds under pressure and scrutiny.
 
-## 5. Parenting as a Live Test
 
-I saw this clearly in parenting.
-
-When my five-year-old showed dysregulation, I repeated simple lines:
+When my five-year-old now shows signs of dysregulation, I make explicit that love is not contingent on mood or behavior. I used simple language, repeatedly:
 
 - There are things I don’t like, but I always like you.
 - My love is not a reward or a punishment.
 
-The result was immediate softening.
+The observable result is immediate softening and regulation. Sometimes cooperation. And for me this gave me the idea that children do not test limits to defy authority and they test you to verify or certify the attachment and its qualities, how it's shaped. 
 
-Children do not test limits to defy authority. They test to verify attachment. When limits feel paired with abandonment, escalation follows. When limits are paired with steady presence, regulation follows.
+When I put my boundaries up in the past and did not consider how these could be perceived or even actually paired with abandonment threat, even without intention (we talked about this earlier), escalation would follow. It's so obvious now. And when my boundaries are paired with presence and warmth, when my boundaries are shaped the way I want our attachment to look like, regulation followed.
 
-My earlier mistake was mixing limits with abandonment signals.
+In short, the biggest mistake I made was failing to separate limits from perceived abandonment and other repercussions. That mistake was costly.
 
-## 6. What I Would Tell Others
-
-If you are setting boundaries:
+So yeah, if you are setting boundaries:
 
 - Do not assume force equals effectiveness.
-- Ask yourself if you are enforcing a limit or discharging heat.
+- Ask whether you are enforcing a limit or discharging accumulated heat
+- Act from self-respect, but balance it with care, with warmth
+- Slow down, slow the fuck down
+- Replace global or "broad statement" self-sentencing with specific inventory
+- Evidence matters. Where there is no evidence, there is often noise
+- Precision reduces distortion
+- Precision requires active listening
+- Presicion requires honesty in internal systems. It requires coherent definitions of words, values, and intent
 
-If you are feeling global guilt:
+- Love is not conditional
+- Boundaries do not negate care
+- Limits and warmth are not mutually exclusive.
 
-- Replace vague self-sentencing with specific inventory.
-- Evidence matters. If you do not have evidence, it may be noise.
-- Precision reduces distortion.
+## Integration Check
 
-Love is not conditional. We should show care right after limits. We can set boundaries and still treat people with love.
+I do not need to punish myself to acknowledge harm. I do not need to rewrite history to live with it. The lesson is not “be softer” or “be harder.” It is “be precise,” and apply that precision with care.
 
-## 7. Integration Check
+Most damage comes not from having values, but from misapplying them under load. This matters especially in periods of high volatility, when emotion, speed, and fear distort judgment.
 
-I do not need to punish myself to admit harm. I do not need to rewrite history to live with it.
-
-The lesson is not “be softer” or “be harder.” It is “be precise,” and pair precision with love and care.
-
-Most damage does not come from values themselves. It comes from misapplying them under load.
-
-Good luck.
+Precision is not cold. It is stabilizing.
