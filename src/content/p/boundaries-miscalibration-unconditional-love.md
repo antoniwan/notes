@@ -4,7 +4,7 @@ description: "A simple reflection on setting boundaries, misusing emotional forc
 pubDate: '2026-01-16T13:50:00.000Z'
 language:
   - en
-heroImage: /images/empathy.avif
+heroImage: /images/2025/light-and-shadow.avif
 category:
   - integration-growth
   - psychology
@@ -27,7 +27,7 @@ keywords:
   - parenting
   - self-reflection
 draft: false
-featured: false
+featured: true
 published: true
 showComments: true
 ---
