@@ -45,15 +45,15 @@ In all of this, I acted within my capacity at the time, and I got what I wanted,
 
 I had two main drivers.
 
-**First: threat compression.** Under sustained pressure, I collapsed nuance in favor of speed and safety. When the nervous system is overloaded, “end it decisively” feels safer than “hold complexity.”
+**First: threat compression.** Under sustained pressure, I collapsed nuance in favor of speed and safety. When the nervous system is overloaded, “end it decisively” feels safer than “hold complexity” bypassing nuance and possibly emphathy in the process.
 
-This can look like hanging up a call. Avoiding places where you feel unwelcome. Intentionally pulling away or severing contact with someone. But the pattern was the same: speed over resolution. That perception of threat was detonating, it required a _hasted solution_. 
+This can look like many things: hanging up a call abruptly, intentionally pulling away or severing contact with someone in a heated manner, thoughtful provocations as validation or testing. The pattern is speed over resolution. That perception of threat felt detonating, and it demanded a _hasty solution_.
 
-**Second: boundary conflation.** I treated boundaries and emotional force as the same thing but they are not. A boundary is a limit one imposes unto onself. For me, it was a matter of self-respect. And force, is another dimention, it is a delivery system. I can apply my boundaries with proportionate force, or not, but suffer the consequences. That nuance matters, but I didn't catch it until after the fact. I also confused necessity with intensity, which made the situation more volatile.
+**Second: boundary conflation.** I treated boundaries and emotional force as the same thing but they are not. A boundary is a limit one imposes unto oneself. For me, it was a matter of self-respect. Force is another dimension. It is a delivery system. I can apply my boundaries with proportionate force, or not, but suffer the consequences. That nuance matters, but I did not catch the boundary-versus-force distinction until after the fact. Another way to think about this is mixing up _necessity_ with _intensity_.
 
-In retrospect, I was protecting myself with the tools I had. Those tools were shaped by fatigue, prior harm, and limited bandwidth. I had done the theory: cognitive work, therapy, journaling. But theory is not practice. En el calentón, in the heat of the moment, theory either holds or collapses.
+In retrospect, I was protecting myself with theoretical tools I had but those tools were shaped by fatigue, prior harm, limited bandwidth, and who knows what else. I had done the theory: cognitive work, therapy, journaling. But theory is not practice. En el calentón, in the heat of the moment, theory either holds or collapses.
 
-My capacity explains my behavior. It does not excuse the damage.
+My capacity explains my behavior but does not excuse the damage.
 
 From the outside, the approach can reasonably look like scorched earth. I only felt the full effects after the dust settled. My family is healthier and safer now, and I am a softer person than before, but that does not negate the fact that I misapplied force at key moments. One could reasonably ask: if damage occurred, if people were burned, how can it also be true that my family and environment are safer? I am still watching that tension.
 
@@ -69,7 +69,7 @@ A more accurate statement is:
 
 > **I made specific mistakes, in specific seasons, under specific constraints, and those mistakes mattered.**
 
-Precision matters because vague guilt prevents integration and specific responsibility allows it. You cannot and won't be able to make yourself healthier, and therefore your environment, by shaming yourself. Precision softens and sharpens the blow, and the insight and learnings.
+Precision matters because vague guilt prevents integration and specific responsibility allows it. You cannot and will not make yourself healthier, and therefore your environment, by shaming yourself. Precision softens and sharpens the blow, and clarifies the insight.
 
 I separated:
 
@@ -81,16 +81,18 @@ This led to a clean internal statement, without justification clauses:
 
 > **I protected myself, and I caused damage I regret.**
 
-No defense. No counterfactuals and no demand for repair or extra pressure. That can come later, but this is not about that. That sentence is now sufficient because it is accurate. It holds under pressure and scrutiny.
+No defense or counterfactuals (counters) and no demand for repair or extra pressure. That can come later, but this is not about that. That sentence is now sufficient because it is accurate. It holds under pressure and scrutiny.
 
-When my five-year-old now shows signs of dysregulation, I make explicit that love is not contingent on mood or behavior. I used simple language, repeatedly:
+The most obvious surface area now for me to put these learnings into practice is parenting my younger children.
+
+When my five-year-old now shows signs of dysregulation, I make explicit that love is not contingent on mood or behavior. I use simple language, repeatedly:
 
 - There are things I don’t like, but I always like you.
 - My love is not a reward or a punishment.
 
-The observable result is immediate softening and regulation. Sometimes cooperation. And for me this gave me the idea that children do not test limits to defy authority and they test you to verify or certify the attachment and its qualities, how it's shaped. 
+The observable result is immediate softening and regulation. Sometimes cooperation. This clarified something for me: my children do not test limits to defy authority; they test to verify our attachment and its qualities.
 
-When I put my boundaries up in the past and did not consider how these could be perceived or even actually paired with abandonment threat, even without intention (we talked about this earlier), escalation would follow. It's so obvious now. And when my boundaries are paired with presence and warmth, when my boundaries are shaped the way I want our attachment to look like, regulation followed.
+When I put my boundaries up in the past and did not consider how these could be perceived or even actually paired with abandonment threat, even without intention (we talked about _intent_ earlier), escalation would follow. It's so obvious now. And when my boundaries are paired with presence and warmth, when my boundaries are shaped the way I want our attachment to look, regulation follows.
 
 In short, the biggest mistake I made was failing to separate limits from perceived abandonment and other repercussions. That mistake was costly.
 
@@ -104,19 +106,13 @@ So yeah, if you are setting boundaries:
 - Evidence matters. Where there is no evidence, there is often noise
 - Precision reduces distortion
 - Precision requires active listening
-- Presicion requires honesty in internal systems. It requires coherent definitions of words, values, and intent
+- Precision requires honesty in internal systems. It requires coherent definitions of words, values, and intent
 
 - Love is not conditional
 - Boundaries do not negate care
 - Limits and warmth are not mutually exclusive.
 
 ## Integration Check
-
-I do not need to punish myself to acknowledge harm. I do not need to rewrite history to live with it. The lesson is not “be softer” or “be harder.” It is “be precise,” and apply that precision with care.
-
-Most damage comes not from having values, but from misapplying them under load. This matters especially in periods of high volatility, when emotion, speed, and fear distort judgment.
-
-Precision is not cold. It is stabilizing.
 
 There were things that worked, even inside failure.
 
@@ -126,6 +122,12 @@ Second, I did not outsource responsibility to intention. I separated what I mean
 
 Third, I resisted global self-condemnation. I rejected the frame that I am “the problem” in favor of identifying specific errors under specific constraints. That kept me engaged instead of frozen.
 
-Finally, I tested the recalibration in real time. I did not keep this insight theoretical. I applied it with my child, where feedback is immediate and unfiltered.
+Finally, I tested the recalibration in real time. I did not keep this insight theoretical. I apply it now with my children and partner, where feedback is immediate and unfiltered.
 
 These strengths do not erase the mistakes. They explain why repair and integration were possible at all.
+
+I do not need to punish myself to acknowledge harm. I do not need to rewrite history to live with it. The lesson is not “be softer” or “be harder.” It is “be precise,” and apply that precision with care.
+
+Most damage comes not from having values, but from misapplying them under load. This matters especially in periods of high volatility, when emotion, speed, and fear distort judgment.
+
+Precision is not cold. It is stabilizing.
