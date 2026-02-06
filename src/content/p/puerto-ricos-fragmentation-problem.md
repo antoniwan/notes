@@ -32,7 +32,7 @@ showComments: true
 # Notes on Puerto Rico, Sin Pie Forzao'
 ## La Colonia Más Antigua
 
-This is improvisation. Sin pie forzao', como los trovadores. It's the first time I write about Puerto Rico. The place I was born. Our beautiful island. The oldest colony in the modern world.
+This is improvisation. *Sin pie forzao'*, como los trovadores. It's the first time I write about Puerto Rico. The place I was born. Our beautiful island. The oldest colony in the modern world.
 
 I acknowledge that I'm writing this from privilege. Parental leave with my newborn beside me. I heard Roy Brown's "Boricua en la Luna" and something inside me clicked. I needed to write about Puerto Rico.
 
@@ -42,7 +42,7 @@ My parents live here. My ex-wife lives here. My 5-year-old daughter lives here. 
 
 I graduated from Colegio San Antonio in Río Piedras. I went to the Universidad de Puerto Rico, Recinto de Río Piedras, but eventually after disillusionment after disillusion I left to work chasing the money bags. The American Dream. I got it actually, I made and got my own American dream, then lost it, then got it again, then lost it again. Most of us aren't that lucky. We boricua, we work hard and struggle hard.
 
-> If something here tightens your stomach or pisses you off a little, good. That reaction is data. Trust it. I'm not asking you to agree with me. I'm asking you to notice.
+> If something here tightens your stomach or pisses you off a little, good. That reaction is data. Trust it. I'm not asking you to agree with me. I'm asking you to *notice*.
 
 ---
 
@@ -50,7 +50,7 @@ I graduated from Colegio San Antonio in Río Piedras. I went to the Universidad 
 
 Puerto Rico's median household income is **$25,096**. The U.S.A. mainland sits at **$78,538**. This means that about **~43% of Puerto Rico residents live in poverty**, the highest rate of any U.S. jurisdiction. Mississippi, the poorest state, is under 20%.
 
-Electricity costs **34 cents per kWh**. Mainland average is about **14 cents**. That's nearly **2.5× the price** for a grid that has collapsed repeatedly under private management (Hey Luma!).
+Electricity costs **34 cents per kWh**. Mainland average is about **14 cents**. That's nearly **2.5× the price** for a grid that has collapsed repeatedly under private management (_Hey Luma!_).
 
 Tolls increased again January 1st, 2026, with hikes across PR-22, PR-52, PR-5, PR-20, PR-53, PR-66 and the Puente Teodoro Moscoso (Metro Puerto Rico, 2026). Traveling round-trip on the José de Diego highway from San Juan to Hatillo now costs $13.60, up from $12.40 (Primera Hora, 2025).
 
@@ -58,7 +58,7 @@ The percent of debt to personal income is almost 90%—a ratio where anything ab
 
 And healthcare isn't just becoming unaffordable—the doctors are leaving. Puerto Rico loses nearly **400 physicians annually** to the mainland, where family doctors earn an average of $237,000 compared to $194,307 on the island (JAMA Health Forum, 2024). Between 2010 and 2012, more than 4,000 health professionals—approximately 9% of the healthcare workforce—migrated to the U.S. mainland (Urban Institute, 2021). The ones who stay face longer wait times, reduced services, and the same exhaustion that keeps everyone else from engaging politically.
 
-Education is following the same pattern. The Universidad de Puerto Rico, the island's only public university system and the source of 80% of all higher education R&D in Puerto Rico (Grupo CNE, 2021), has had its budget slashed by 47% since the Junta de Control Fiscal arrived (Rumbo Alterno, 2024). The Ley 2 de 1966 guaranteed UPR 9.6% of the general fund. That formula was frozen in 2015 under the PPD and gutted from 2017 under the PNP and the JCF (Momento Crítico, 2022). In a single cuatrienio, UPR lost $127 million in Department of Education contracts that shifted to private institutions (Diálogo UPR). Meanwhile, administrators of the Sistema Ana G. Méndez have publicly expressed interest in buying UPR campuses like Utuado, Aguadilla, and Ponce (Bandera, 2014). Former governor Pedro Rosselló worked for Ana G. Méndez while his son pushed online education privatization proposals that would funnel public students into private hands (Bandera, 2021). The system is a family dynasty—founded by Ana G. Méndez, passed to her son, now run by her grandson José F. Méndez Méndez, whose 2024 total compensation exceeded $1.35 million at a nonprofit institution running a $10.7 million deficit (ProPublica, 2024). You defund the public university, starve its contracts, then position the private one to absorb what's left. This is not neglect, this is literally the business plan, remember they want a Puerto Rico without puertorricans (needs reference!).
+Education is following the same pattern. The Universidad de Puerto Rico, the island's only public university system and the source of 80% of all higher education R&D in Puerto Rico (Grupo CNE, 2021), has had its budget slashed by 47% since the Junta de Control Fiscal arrived (Rumbo Alterno, 2024). The Ley 2 de 1966 guaranteed UPR 9.6% of the general fund. That formula was frozen in 2015 under the PPD and gutted from 2017 under the PNP and the JCF (Momento Crítico, 2022). In a single cuatrienio, UPR lost $127 million in Department of Education contracts that shifted to private institutions (Diálogo UPR). Meanwhile, administrators of the Sistema Ana G. Méndez have publicly expressed interest in buying UPR campuses like Utuado, Aguadilla, and Ponce (Bandera, 2014). Former governor Pedro Rosselló worked for Ana G. Méndez while his son pushed online education privatization proposals that would funnel public students into private hands (Bandera, 2021). The system is a family dynasty—founded by Ana G. Méndez, passed to her son, now run by her grandson José F. Méndez Méndez, whose 2024 total compensation exceeded $1.35 million at a nonprofit institution running a $10.7 million deficit (ProPublica, 2024). You defund the public university, starve its contracts, then position the private one to absorb what's left. This is not neglect. This is the business plan. "There is an attempt to have a Puerto Rico without Puerto Ricans," as Dr. Marisol LeBrón put it (Borgen Magazine, 2025). In Ricardo Rosselló's leaked Telegram chat, his publicist Edwin Miranda wrote it even more plainly: "I saw the future. It's so wonderful, there are no Puerto Ricans" (¡Presente! Media, 2024). Education is just the quietest front.
 
 Those fancy cars you see? They're financed. Puerto Ricans carry **$1,300 more** in auto debt than mainland Americans on average, while earning **55% of mainland hourly wages**. The Tacoma isn't wealth. It's a seven-year loan at 84 months. The BMW isn't prosperity. It's the visible half of a debt-to-income ratio approaching 90%.
 
@@ -80,7 +80,7 @@ Here's another: A public school teacher on the island made **$1,750 a month** as
 
 Executive responsibility with entry-level mainland pay.
 
-If you live here, you know this isn't rare. You know exactly who and what I'm talking about.
+If you live here, you _know_ this isn't rare. You know _exactly_ who and what I'm talking about.
 
 Y'all work 50+ hour weeks and commute through toll roads that cost $35–40 a month minimum. Then, again, pay double the mainland electricity rate.
 
@@ -100,7 +100,7 @@ This group is exploited for votes and federal assistance dollars, often without 
 
 **They live genuinely hard lives.** IMHO, these people live in HARD-MODE difficulty.
 
-Consumer culture becomes the only accessible form of agency when you are surviving like this. Jordans. Cash for _verse cabrón_. A moment of dignity. I get it. The cruelty isn't how they spend. The cruelty is that consumption is the only dignity the system offers while stripping healthcare, education, and mobility.
+Consumer culture becomes the only accessible form of agency when you are surviving like this. Jordans. Cash for _verse cabrón_. A moment of dignity. I get it. The cruelty isn't how they spend. The cruelty is that consumption is the _only_ dignity the system offers while stripping healthcare, education, and mobility.
 
 And no, our people aren't all housed either. In 2024, average home prices on the island increased by **15%**, with the typical home now costing **$221,824**. Puerto Rican families earn only **61% of the income needed to qualify for a mortgage** (Reason Foundation, 2025). Among extremely low-income renters, **86% experience severe cost burdens**, meaning they spend more than half their income just keeping a roof (National Low Income Housing Coalition, 2025). The official point-in-time count found **2,096 homeless individuals** in 2024 (San Juan Daily Star, 2024), but those numbers don't capture the families doubled up with relatives, the people sleeping in cars, or the post-María displaced who never came back. The real number is worse. It always is.
 
@@ -108,7 +108,7 @@ When the power goes out, these are the people who die first.
 
 Seven years after María, Puerto Rico still doesn't have an integrated system to identify people who depend on electricity to survive.
 
-> I'm not qualified to speak for this group. My father grew up in poverty as an orphan in Santurce but I didn't. What I know is secondhand. What I do know is that they are the most exploited and the most disposable when infrastructure fails. Their story deserves a first-person voice.
+> I'm not qualified to speak _for_ this group. My father grew up in poverty as an orphan in Santurce but I didn't. What I know is secondhand. What I _do_ know is that they are the most exploited and the most disposable when infrastructure fails. Their story deserves a first-person voice.
 
 ---
 
@@ -172,7 +172,7 @@ Their abstention doesn't just cost them morally. It costs them economically. Eve
 
 ## The Conscious Ones (Los Pelús)
 
-The people who understand imperial law, historical patterns, colonial economics. Marginalized precisely because their analysis threatens the bipartisan machinery. They build their own infrastructure out of necessity. These are the professors, philosophers, community leaders, los Tito Kayak, las Lola Rodriguez de Tió. These are our real leaders, the community.
+The people who understand imperial law, historical patterns, colonial economics. Marginalized _precisely_ because their analysis threatens the bipartisan machinery. They build their own infrastructure out of necessity. These are the professors, philosophers, community leaders, los Tito Kayak, las Lola Rodriguez de Tió. These are our real leaders, the community.
 
 They see everything clearly and can change almost nothing except their own environment, around them. Y cuidao', porque la policia no protege a la comunidad, protege el capital.
 
@@ -224,6 +224,10 @@ Now what are you going to do with it?
 
 Associated Press. (2025, December 14). Puerto Rico governor signs bill that critics say will restrict access to public information. _The Washington Post_. https://www.washingtonpost.com/world/2025/12/14/puerto-rico-access-public-information-law-63/
 
+Bandera. (2014). Defendamos la educación pública en la UPR. https://www.bandera.org/defendamos-la-educacion-publica-en-la-upr/
+
+Bandera. (2021, July 12). La instrucción en línea: La nueva privatización de la educación pública. https://www.bandera.org/la-instruccion-en-linea-la-nueva-privatizacion-de-la-educacion-publica/
+
 Borgen Magazine. (2025, November 26). Layers of gentrification in Puerto Rico. https://www.borgenmagazine.com/gentrification-in-puerto-rico/
 
 Catalyst Planet. (2025, May 5). Tax incentives drive gentrification in Puerto Rico. https://www.catalystplanet.com/travel-and-social-action-stories/tax-incentives-drive-gentrification-in-puerto-rico
@@ -238,11 +242,15 @@ Consolidated Credit. (2025). Debt relief Puerto Rico: Debt settlement and consol
 
 Consumer Financial Protection Bureau. (2023). Financial struggles in Puerto Rico bite deeper than the rest of the United States. https://www.consumerfinance.gov/about-us/blog/financial-struggles-in-puerto-rico-bite-deeper-than-the-rest-of-the-united-states/
 
+Diálogo UPR. (n.d.). UPR pierde contratos millonarios con el Departamento de Educación. https://dialogo.upr.edu/upr-pierde-contratos-millonarios-con-el-departamento-de-educacion/
+
 El Nuevo Día. (2025). Ajuste anual de tarifas de peajes entrará en vigor en enero de 2026. https://www.elnuevodia.com/noticias/locales/notas/ajuste-anual-de-tarifas-de-peajes-entrara-en-vigor-en-enero-de-2026-cuanto-tendras-que-pagar-adicional/
 
 Grokipedia. (2025a). Proyecto Dignidad. https://grokipedia.com/page/Proyecto_Dignidad
 
 Grokipedia. (2025b). List of political parties in Puerto Rico. https://grokipedia.com/page/List_of_political_parties_in_Puerto_Rico
+
+Grupo CNE. (2021, August 16). El rol de la UPR en el desarrollo económico de Puerto Rico: Investigación y desarrollo. https://grupocne.org/2021/08/16/el-rol-de-la-upr-en-el-desarrollo-economico-de-puerto-rico-investigacion-y-desarrollo/
 
 IFES Election Guide. (2024). Country profile: Puerto Rico. https://www.electionguide.org/countries/id/175/
 
@@ -255,6 +263,8 @@ Latino Rebels. (2022, January 25). Act 60 brings people into Puerto Rico and pus
 MacroTrends. (2023). Puerto Rico labor force participation rate 1990–2024. https://www.macrotrends.net/global-metrics/countries/pri/puerto-rico/labor-force-participation-rate
 
 Metro Puerto Rico. (2026, January 2). Suben los peajes: Estas son las autopistas con nuevas tarifas en Puerto Rico. https://www.metro.pr/noticias/2026/01/02/aumentan-los-peajes-en-puerto-rico-estas-son-las-nuevas-tarifas-que-entran-en-vigor/
+
+Momento Crítico. (2022, September 5). Sobre el desmantelamiento de la Universidad de Puerto Rico. https://www.momentocritico.org/post/sobre-el-desmantelamiento-de-la-universidad-de-puerto-rico
 
 National Institute of Standards and Technology. (2025, July). NIST shares preliminary findings from Hurricane Maria investigation. https://www.nist.gov/news-events/news/2025/07/nist-shares-preliminary-findings-hurricane-maria-investigation
 
@@ -272,13 +282,19 @@ PMC. (2025). Disaster governance, energy insecurity, and public health in rural 
 
 PolitiFact. (2022, July 14). Ask PolitiFact: What's up with Puerto Rico's electricity bills? https://www.politifact.com/article/2022/jul/14/ask-politifact-whats-puerto-ricos-electricity-bill/
 
+¡Presente! Media. (2024, May 2). "A Puerto Rico without Puerto Ricans?" https://www.presentemedia.org/stories/nbspa-puerto-rico-without-puerto-ricans
+
 Primera Hora. (2025, December 31). Con el Año Nuevo llega el aumento en los peajes. https://www.primerahora.com/noticias/gobierno-politica/notas/con-el-ano-nuevo-llega-el-aumento-en-los-peajes/
+
+ProPublica. (2024). Nonprofit Explorer: Sistema Universitario Ana G Mendez Incorporado (EIN 66-0201206). https://projects.propublica.org/nonprofits/organizations/660201206
 
 Reason Foundation. (2025, April 21). Puerto Rico's housing crisis is no accident—it's by design. https://reason.org/commentary/puerto-ricos-housing-crisis-is-no-accident-its-by-design/
 
 Refworld. (2012). Freedom in the World 2012 - Puerto Rico. https://www.refworld.org/reference/annualreport/freehou/2012/en/88083
 
 ReVista (Harvard). (2024). Gentrification in Puerto Rico: The impact on displacement and local livelihoods. https://revista.drclas.harvard.edu/gentrification-in-puerto-rico-the-impact-on-displacement-and-local-livelihoods/
+
+Rumbo Alterno. (2024, August 30). La Universidad de Puerto Rico y la quiebra. https://rumboalterno.net/2024/08/la-universidad-de-puerto-rico-y-la-quiebra/
 
 The Invading Sea. (2025, February 16). Puerto Rico must not be left in the dark. https://www.theinvadingsea.com/2025/02/16/puerto-rico-power-outages-hurricane-maria-electric-grid-solar-climate-resilience-infrastructure/
 
