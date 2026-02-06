@@ -42,7 +42,7 @@ My parents live here. My ex-wife lives here. My 5-year-old daughter lives here. 
 
 I graduated from Colegio San Antonio in Río Piedras. I went to the Universidad de Puerto Rico, Recinto de Río Piedras, but eventually after disillusionment after disillusion I left to work chasing the money bags. The American Dream. I got it actually, I made and got my own American dream, then lost it, then got it again, then lost it again. Most of us aren't that lucky. We boricua, we work hard and struggle hard.
 
-> If something here tightens your stomach or pisses you off a little, good. That reaction is data. Trust it. I'm not asking you to agree with me. I'm asking you to *notice*.
+> If something here tightens your stomach or pisses you off a little, good. That reaction is data. Trust it. I'm not asking you to agree with me. I'm asking you to notice.
 
 ---
 
@@ -50,7 +50,7 @@ I graduated from Colegio San Antonio in Río Piedras. I went to the Universidad 
 
 Puerto Rico's median household income is **$25,096**. The U.S.A. mainland sits at **$78,538**. This means that about **~43% of Puerto Rico residents live in poverty**, the highest rate of any U.S. jurisdiction. Mississippi, the poorest state, is under 20%.
 
-Electricity costs **34 cents per kWh**. Mainland average is about **14 cents**. That's nearly **2.5× the price** for a grid that has collapsed repeatedly under private management (_Hey Luma!_).
+Electricity costs **34 cents per kWh**. Mainland average is about **14 cents**. That's nearly **2.5× the price** for a grid that has collapsed repeatedly under private management (Hey Luma!).
 
 Tolls increased again January 1st, 2026, with hikes across PR-22, PR-52, PR-5, PR-20, PR-53, PR-66 and the Puente Teodoro Moscoso (Metro Puerto Rico, 2026). Traveling round-trip on the José de Diego highway from San Juan to Hatillo now costs $13.60, up from $12.40 (Primera Hora, 2025).
 
@@ -80,7 +80,7 @@ Here's another: A public school teacher on the island made **$1,750 a month** as
 
 Executive responsibility with entry-level mainland pay.
 
-If you live here, you _know_ this isn't rare. You know _exactly_ who and what I'm talking about.
+If you live here, you know this isn't rare. You know exactly who and what I'm talking about.
 
 Y'all work 50+ hour weeks and commute through toll roads that cost $35–40 a month minimum. Then, again, pay double the mainland electricity rate.
 
@@ -100,7 +100,7 @@ This group is exploited for votes and federal assistance dollars, often without 
 
 **They live genuinely hard lives.** IMHO, these people live in HARD-MODE difficulty.
 
-Consumer culture becomes the only accessible form of agency when you are surviving like this. Jordans. Cash for _verse cabrón_. A moment of dignity. I get it. The cruelty isn't how they spend. The cruelty is that consumption is the _only_ dignity the system offers while stripping healthcare, education, and mobility.
+Consumer culture becomes the only accessible form of agency when you are surviving like this. Jordans. Cash for _verse cabrón_. A moment of dignity. I get it. The cruelty isn't how they spend. The cruelty is that consumption is the only dignity the system offers while stripping healthcare, education, and mobility.
 
 And no, our people aren't all housed either. In 2024, average home prices on the island increased by **15%**, with the typical home now costing **$221,824**. Puerto Rican families earn only **61% of the income needed to qualify for a mortgage** (Reason Foundation, 2025). Among extremely low-income renters, **86% experience severe cost burdens**, meaning they spend more than half their income just keeping a roof (National Low Income Housing Coalition, 2025). The official point-in-time count found **2,096 homeless individuals** in 2024 (San Juan Daily Star, 2024), but those numbers don't capture the families doubled up with relatives, the people sleeping in cars, or the post-María displaced who never came back. The real number is worse. It always is.
 
@@ -108,7 +108,7 @@ When the power goes out, these are the people who die first.
 
 Seven years after María, Puerto Rico still doesn't have an integrated system to identify people who depend on electricity to survive.
 
-> I'm not qualified to speak _for_ this group. My father grew up in poverty as an orphan in Santurce but I didn't. What I know is secondhand. What I _do_ know is that they are the most exploited and the most disposable when infrastructure fails. Their story deserves a first-person voice.
+> I'm not qualified to speak for this group. My father grew up in poverty as an orphan in Santurce but I didn't. What I know is secondhand. What I do know is that they are the most exploited and the most disposable when infrastructure fails. Their story deserves a first-person voice.
 
 ---
 
@@ -172,7 +172,7 @@ Their abstention doesn't just cost them morally. It costs them economically. Eve
 
 ## The Conscious Ones (Los Pelús)
 
-The people who understand imperial law, historical patterns, colonial economics. Marginalized _precisely_ because their analysis threatens the bipartisan machinery. They build their own infrastructure out of necessity. These are the professors, philosophers, community leaders, los Tito Kayak, las Lola Rodriguez de Tió. These are our real leaders, the community.
+The people who understand imperial law, historical patterns, colonial economics. Marginalized precisely because their analysis threatens the bipartisan machinery. They build their own infrastructure out of necessity. These are the professors, philosophers, community leaders, los Tito Kayak, las Lola Rodriguez de Tió. These are our real leaders, the community.
 
 They see everything clearly and can change almost nothing except their own environment, around them. Y cuidao', porque la policia no protege a la comunidad, protege el capital.
 
