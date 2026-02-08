@@ -27,7 +27,7 @@ keywords:
   - parenting
   - self-reflection
 draft: false
-featured: true
+featured: false
 published: true
 showComments: true
 translationGroup: boundaries-miscalibration-unconditional-love
