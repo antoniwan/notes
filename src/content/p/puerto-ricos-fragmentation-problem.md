@@ -38,13 +38,11 @@ I acknowledge that I'm writing this from privilege. Parental leave with my newbo
 
 Puerto Rico, for me, is the only toxic relationship you are permitted to have as a Boricua.
 
-My parents live here. My ex-wife lives here. My 5-year-old daughter lives here. My partner's family lives here. My sister lives here. So when I talk about Puerto Rico, this isn't academic. I'm watching Puerto Rico's government and infrastructure grind the people I love in real time. I see criminality and gore left, right, and center. If you're reading this from the island, you probably know worse situations and cases than I do.
+My parents live here. My ex-wife lives here. My 5-year-old daughter lives here. My partner's family lives here. My sister lives here. Many dear friends still live in Puerto Rico. So when I talk about Puerto Rico, this isn't academic. I'm watching Puerto Rico's government and infrastructure grind the people I love in real time. I see criminality and gore left, right, and center (on the TV, yes! they don't even censor stuff in the island, but the taboo topics are plenty!). If you're reading this from the island, you probably know worse situations and cases than I do.
 
 I graduated from Colegio San Antonio in Río Piedras. I went to the Universidad de Puerto Rico, Recinto de Río Piedras, but eventually after disillusionment after disillusion I left to work chasing the money bags. The American Dream. I got it actually, I made and got my own American dream, then lost it, then got it again, then lost it again. Most of us aren't that lucky. We boricua, we work hard and struggle hard.
 
-> If something here tightens your stomach or pisses you off a little, good. That reaction is data. Trust it. I'm not asking you to agree with me. I'm asking you to *notice*.
-
----
+If something here tightens your stomach or pisses you off a little, good. That reaction is data. Trust it. I'm not asking you to agree with me. I'm asking you to *notice*.
 
 ## The Baseline
 
@@ -58,9 +56,9 @@ The percent of debt to personal income is almost 90%—a ratio where anything ab
 
 And healthcare isn't just becoming unaffordable—the doctors are leaving. Puerto Rico loses nearly **400 physicians annually** to the mainland, where family doctors earn an average of $237,000 compared to $194,307 on the island (JAMA Health Forum, 2024). Between 2010 and 2012, more than 4,000 health professionals—approximately 9% of the healthcare workforce—migrated to the U.S. mainland (Urban Institute, 2021). The ones who stay face longer wait times, reduced services, and the same exhaustion that keeps everyone else from engaging politically.
 
-Education is following the same pattern. The Universidad de Puerto Rico, the island's only public university system and the source of 80% of all higher education R&D in Puerto Rico (Grupo CNE, 2021), has had its budget slashed by 47% since the Junta de Control Fiscal arrived (Rumbo Alterno, 2024). The Ley 2 de 1966 guaranteed UPR 9.6% of the general fund. That formula was frozen in 2015 under the PPD and gutted from 2017 under the PNP and the JCF (Momento Crítico, 2022). In a single cuatrienio, UPR lost $127 million in Department of Education contracts that shifted to private institutions (Diálogo UPR). Meanwhile, administrators of the Sistema Ana G. Méndez have publicly expressed interest in buying UPR campuses like Utuado, Aguadilla, and Ponce (Bandera, 2014). Former governor Pedro Rosselló worked for Ana G. Méndez while his son pushed online education privatization proposals that would funnel public students into private hands (Bandera, 2021). The system is a family dynasty—founded by Ana G. Méndez, passed to her son, now run by her grandson José F. Méndez Méndez, whose 2024 total compensation exceeded $1.35 million at a nonprofit institution running a $10.7 million deficit (ProPublica, 2024). You defund the public university, starve its contracts, then position the private one to absorb what's left. This is not neglect. This is the business plan. "There is an attempt to have a Puerto Rico without Puerto Ricans," as Dr. Marisol LeBrón put it (Borgen Magazine, 2025). In Ricardo Rosselló's leaked Telegram chat, his publicist Edwin Miranda wrote it even more plainly: "I saw the future. It's so wonderful, there are no Puerto Ricans" (¡Presente! Media, 2024). Education is just the quietest front.
+Education is following the same pattern. The Universidad de Puerto Rico, the island's only public university system and the source of 80% of all higher education R&D in Puerto Rico (Grupo CNE, 2021), has had its budget slashed by 47% since the Junta de Control Fiscal arrived (Rumbo Alterno, 2024). The Ley 2 de 1966 guaranteed UPR 9.6% of the general fund. That formula was frozen in 2015 under the PPD and gutted from 2017 under the PNP and the JCF (Momento Crítico, 2022). In a single cuatrienio, UPR lost $127 million in Department of Education contracts that shifted to private institutions (Diálogo UPR). Meanwhile, administrators of the Sistema Ana G. Méndez have publicly expressed interest in buying UPR campuses like Utuado, Aguadilla, and Ponce (Bandera, 2014). Former governor Pedro Rosselló worked for Ana G. Méndez while his son pushed online education privatization proposals that would funnel public students into private hands (Bandera, 2021). The system is a family dynasty—founded by Ana G. Méndez, passed to her son, now run by her grandson José F. Méndez Méndez, whose 2024 total compensation exceeded $1.35 million at a nonprofit institution running a $10.7 million deficit (ProPublica, 2024). You defund the public university, starve its contracts, then position the private one to absorb what's left. This is not neglect, it is literally the business plan, and apparently it's not even overt, this is public knowledge nowadays. "There is an attempt to have a Puerto Rico without Puerto Ricans," as Dr. Marisol LeBrón put it (Borgen Magazine, 2025). In Ricardo Rosselló's leaked Telegram chat, his publicist Edwin Miranda wrote it even more plainly: "I saw the future. It's so wonderful, there are no Puerto Ricans" (¡Presente! Media, 2024).
 
-Those fancy cars you see? They're financed. Puerto Ricans carry **$1,300 more** in auto debt than mainland Americans on average, while earning **55% of mainland hourly wages**. The Tacoma isn't wealth. It's a seven-year loan at 84 months. The BMW isn't prosperity. It's the visible half of a debt-to-income ratio approaching 90%.
+Those fancy cars you see when you visit? They're mostly financed. Puerto Ricans carry **$1,300 more** in auto debt than mainland Americans on average, while earning **55% of mainland hourly wages**. The Tacoma isn't wealth. It's a seven-year loan at 84 months. The BMW isn't prosperity. It's the visible half of a debt-to-income ratio approaching 90%.
 
 Are we the biggest spenders in the USA? No. But we might be the most leveraged ones. Private consumption accounts for **80% of Puerto Rico's GDP**, compared to ~68% on the mainland. We have the largest shopping mall in the Caribbean, 2.1 million square feet of retail, in a territory where 43% live in poverty and the median household income is $25,096.
 
@@ -68,37 +66,31 @@ Congressional testimony called it what it is: "high levels of private consumptio
 
 So yeah—jump on the Tacoma, post the beach pic, and let's talk archetypes.
 
----
-
 ## The Salaried Professionals
 
-If you're a salaried professional in Puerto Rico, you are almost certainly underpaid to the point that political engagement becomes inherited instead of examined. The old **voto íntegro** system made this easy. In 2012, the PNP pulled 47% of its votes straight-ticket. The PPD got 46%. That's **93% of voters marking one X** under their family's color. Straight-ticket voting was the default for over 96% of voters.
+If you're a salaried professional in Puerto Rico, you are almost certainly underpaid to the point that political engagement becomes inherited instead of examined. How your parents vote is probably how you vote. If you are always exhausted the old **voto íntegro** system made it easy to stay superficial in politics. In 2012, the PNP pulled 47% of its votes straight-ticket. The PPD got 46%. That's **93% of voters marking one X** under their family's color. Straight-ticket voting was the default for over 96% of voters.
 
 Here's a concrete example from one of the hardest working women I've ever met: A Director of Sales at the largest cornmeal manufacturer on the island—a billion-dollar company, by the way—making **under $70k**. I have stories like this, professionals of all sorts, in all verticals, and it's mostly the same story.
 
 Here's another: A public school teacher on the island made **$1,750 a month** as their base salary for **13 years straight**. No adjustments for inflation. No cost-of-living increases. The same $21,000 annual floor while electricity doubled and groceries climbed. It took 70% of teachers walking out in 2022 to force a temporary $1,000 monthly increase. Meanwhile, the U.S. mainland average teacher salary sits at **$72,030**. Even Mississippi, the lowest-paying state, averages $47,000.
 
-Executive responsibility with entry-level mainland pay.
-
-If you live here, you _know_ this isn't rare. You know _exactly_ who and what I'm talking about.
+Executive responsibility with entry-level mainland pay is basically the vibe, the norm. If you live here, you _know_ this isn't rare. You know _exactly_ who and what I'm talking about. 
 
 Y'all work 50+ hour weeks and commute through toll roads that cost $35–40 a month minimum. Then, again, pay double the mainland electricity rate.
 
-By the time election season comes around, they're cooked because exhaustion isn't a side effect. It's the mechanism that ensures they mark one X. Go home. Keep the machine moving because they don't have the energy to fight the machine. Rajamos la papeleta! Yay!
+By the time election season comes around, Salaried professionals are cooked because exhaustion isn't a side effect. It's the mechanism that ensures they mark one X. Go home. Keep the machine moving because they don't have the energy to fight the machine. Rajamos la papeleta! Yay!
 
 By the way, about **22% of these households pay credit card late fees**. These aren't irresponsible people. These are professionals drowning inside a cost structure designed to bleed them slowly.
 
 > I was one of these, but the colonized in me was too strong, so I left to chase money in the mainland.
 
----
-
 ## The Welfare Class
 
-This group is exploited for votes and federal assistance dollars, often without full visibility into how the extraction works. The finesse in these matters, this is where our politicians spend all their energy, not on actual meaningful work, in PR (public relations) and the welfare class eats that shit up like sandwichitos de mezcla.
+This group, the "welfare class", is exploited for votes and federal assistance dollars, often without full visibility into how the extraction works. The finesse in these matters, this is where our politicians spend all their energy, not on actual meaningful work, in PR (public relations) and the welfare class eats that shit up like sandwichitos de mezcla. Oh and the other "classes" talk so much shit about these, "los cuponeros son el problema", it's so missguided!
 
 1.4 million people in Puerto Rico live below the federal poverty line. Almost one-in-five reports foregoing medical treatment because of cost (Consumer Financial Protection Bureau, 2023).
 
-**They live genuinely hard lives.** IMHO, these people live in HARD-MODE difficulty.
+**They live genuinely hard lives.** IMHO, our people live in HARD-MODE difficulty.
 
 Consumer culture becomes the only accessible form of agency when you are surviving like this. Jordans. Cash for _verse cabrón_. A moment of dignity. I get it. The cruelty isn't how they spend. The cruelty is that consumption is the _only_ dignity the system offers while stripping healthcare, education, and mobility.
 
@@ -109,8 +101,6 @@ When the power goes out, these are the people who die first.
 Seven years after María, Puerto Rico still doesn't have an integrated system to identify people who depend on electricity to survive.
 
 > I'm not qualified to speak _for_ this group. My father grew up in poverty as an orphan in Santurce but I didn't. What I know is secondhand. What I _do_ know is that they are the most exploited and the most disposable when infrastructure fails. Their story deserves a first-person voice.
-
----
 
 ## The Affluent (Los Apellidos)
 
@@ -210,13 +200,13 @@ If the cliques remain intact, the infrastructure will keep failing, and people w
 
 And here's the thing: this is only what I know about. This is only what made it into the news, what the investigative journalists uncovered, what my family and friends on the island tell me when we talk. This is the visible layer.
 
-In December 2025, Governor González Colón signed Act 156, a law restricting public access to government documents. The new legislation doubles the time agencies have to respond to information requests, allows the government to classify information as confidential without judicial review, and eliminates privacy protections for people who request records (Associated Press, 2025; Centro de Periodismo Investigativo, 2025c). The same government that failed to track who depends on electricity to survive now gets to decide what you're allowed to know about how it operates.
+I personally have a beautiful childhood and a very fun upbringing, up to college when I started discernment and working that I realized and always felt something was off. All my fond memories with friends and family, our culture, Puerto Rico is truly the island of enchanentment, i miss our people i miss our food, i don't miss the collective perceived ignorance or nonchalancy to politics and the general collective imperative of human dignity that i've grown to love and share. It's a truly melancholic feeling and our politicians really, their actions and voting, makes me not enjoy or think about going back to live in Puerto Rico, a long dream of mine.
 
-I have no idea what's coming next for our island. None of us do. That's the point.
+In December 2025, Governor González Colón signed Act 156, a law restricting public access to government documents. The new legislation doubles the time agencies have to respond to information requests, allows the government to classify information as confidential without judicial review, and eliminates privacy protections for people who request records (Associated Press, 2025; Centro de Periodismo Investigativo, 2025c). The same government that failed to track who depends on electricity to survive now gets to decide what you're allowed to know about how it operates. 
 
-I told you at the top: if something here tightened your stomach, that reaction is data.
+I have no idea what's coming next for our island. None of us do and I think that's the point, for so much talk about winning and chest-thumping you would think our beautiful island would be thriving but it just feels as if it's hostage to its own government who are clearly governing against the interest of the collective and for the invisible oligrach class... In the same vein, you got boricuas arguing other boricuas that people are leaving the island for X, Y, and Z reasons, many using their own morals to argue, but all the numbers point out to one simple vector: they want us gone from the island, and in my case, it worked! I dream of coming back to a healthier island someday, I don't know if this will be possible under the current path. As it stands today, it feels just, and historically, as if Puerto Rico is just a playground for a select class we know nothing about... ruled by invisible forces that extract from us... wild stuff but the numbers don't lie. You know how politics say "follow the money!"
 
-Now what are you going to do with it?
+I told you at the top: if something here tightened your stomach, that reaction is data. Now what are you going to do with it?
 
 ---
 
