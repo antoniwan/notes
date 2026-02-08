@@ -96,6 +96,14 @@ Consumer culture becomes the only accessible form of agency when you are survivi
 
 And no, our people aren't all housed either. In 2024, average home prices on the island increased by **15%**, with the typical home now costing **$221,824**. Puerto Rican families earn only **61% of the income needed to qualify for a mortgage** (Reason Foundation, 2025). Among extremely low-income renters, **86% experience severe cost burdens**, meaning they spend more than half their income just keeping a roof (National Low Income Housing Coalition, 2025). The official point-in-time count found **2,096 homeless individuals** in 2024 (San Juan Daily Star, 2024), but those numbers don't capture the families doubled up with relatives, the people sleeping in cars, or the post-María displaced who never came back. The real number is worse. It always is.
 
+And let's talk about the **caseríos públicos**—Puerto Rico's 328 public housing projects where roughly **100,000 people** live (Centro de Periodismo Investigativo, 2022). These aren't just housing. They're open-air laboratories for what happens when you concentrate poverty, underfund maintenance for decades, then blame the residents for the decay. 
+
+After María, entire projects flooded from rivers that hadn't been managed properly for years. Buildings got condemned from earthquake damage that revealed structural problems nobody bothered fixing. **1,169 housing units are currently on the demolition list**, with **492 families still living in them** (Centro de Periodismo Investigativo, 2022). People are literally living in buildings scheduled for demolition. Not being relocated. Not being given options. Just living there while the government decides what's profitable.
+
+The plan? Tear down the caseríos and build "mixed-income" developments. Sounds progressive until you see the numbers. When they demolished Las Gladiolas and built Renaissance Square in Hato Rey, they promised housing for 125 families. **Only 12 of the original families** made it into the new complex (Centro de Periodismo Investigativo, 2022). The rest? Scattered. Displaced. Erased from neighborhoods they'd lived in for generations.
+
+This is gentrification with a wrecking ball. The caseríos get stigmatized as dangerous, left to rot through deliberate neglect, then cleared for developments that price out everyone who used to live there. And the people in the caseríos? They know exactly what's happening. They're not stupid. They're just powerless against a system that sees them as inventory to be relocated rather than people with roots.
+
 When the power goes out, these are the people who die first.
 
 Seven years after María, Puerto Rico still doesn't have an integrated system to identify people who depend on electricity to survive.
@@ -157,6 +165,40 @@ These are the people who will inherit the debt, the blackouts, the toll hikes, a
 And yet they have convinced themselves that non-participation is a form of protest rather than permission. Every election they skip is a vote for continuity. Not symbolically. Literally. Compliance without the dignity of knowing or admitting it.
 
 Their abstention doesn't just cost them morally. It costs them economically. Every politician who wins on low turnout has zero incentive to address youth unemployment, student debt, or the brain drain that sends their friends to Orlando and Houston. The less they vote, the less they matter to the people writing the budgets. The math is simple and brutal.
+
+---
+
+## The Business Owners (Los Conectados)
+
+Small businesses make up **99.7% of all business establishments in Puerto Rico**. In 2017, **54% of firms reported revenue decreases** while operating expenses increased (Federal Reserve Bank of New York, 2018). After María, **77% of small businesses** reported direct losses from the hurricanes. By 2020, the island's labor department was estimating that **20-30% of small businesses would close permanently** (Puerto Rico 51st, 2021).
+
+Businesses in Puerto Rico open and close like a revolving door. Not because entrepreneurs lack hustle—boricuas work their asses off—but because the game is rigged from the permit office to the procurement process.
+
+The business permit procedure is consistently identified as one of the main obstacles. It got so bad that in June 2023, **the Supreme Court ruled that existing permit regulations were null and void** (GEM Global Entrepreneurship Monitor, 2023). The governor had to enact emergency regulations. Think about that. The system was so broken it was declared unconstitutional.
+
+But permits are just the visible dysfunction. The real story is who gets to survive.
+
+If you're **connected**—if you have the right apellido, if you know the right politician, if you went to school with someone's cousin who sits on the municipal board—your business has a shot. Maybe you get the waste management contract. Maybe you get the asphalt deal. Maybe your invoices get paid on time while everyone else waits months.
+
+If you're not connected? Good fucking luck.
+
+In the last six months of 2021-2022, **the FBI arrested 6 of Puerto Rico's 78 mayors for public corruption**—all for the same thing: taking bribes in exchange for government contracts. Same two companies kept coming up: trash and asphalt. One photo showed the mayor of Guaynabo, one of the island's most important cities, accepting an envelope of cash from a contractor (NPR, 2022).
+
+The former education secretary and the former head of the Health Insurance Administration were arrested for steering **$15.5 million in contracts** to politically connected friends (NPR, 2019). Government contracting isn't just big business in Puerto Rico—it's **$4.4 billion or 20% of the annual budget** (University of Illinois, 2024).
+
+Under the guise of fighting corruption, the Puerto Rican government has spent **more than $787 million** on "anti-corruption and fraud prevention" since 2018 (University of Illinois, 2024). They outsourced anti-corruption work to private companies. Let that sink in. They created an entire industry around preventing corruption—and that industry is itself corrupt, awarding contracts to connected firms who profit from the appearance of oversight.
+
+This isn't business. This is extraction with a business license.
+
+For every boricua entrepreneur grinding 60-hour weeks at their colmado, their auto shop, their restaurant, there's a connected contractor getting paid 90 days early while everyone else waits 6 months for municipal invoices. For every small business that closes because they couldn't navigate the permit maze, there's a cousin of a senator whose LLC just got another no-bid contract.
+
+Benjamin Torres Gotay, columnist for El Nuevo Día, described it perfectly: Puerto Ricans increasingly feel that "the government is no more than a piñata that corrupt interests can come and pillage" (NPR, 2022).
+
+And the thing that breaks my heart? The entrepreneurs keep trying. **One in five adults in Puerto Rico is currently starting or running a new business**—fourth highest in their economic bracket, tenth highest globally (GEM, 2023). **One in four adults** expects to start a business in the next three years.
+
+That's not naivety. That's survival. When formal employment pays $25,096 median household income and the lights go out every few months, entrepreneurship isn't a choice—it's the only move left.
+
+But without connections, most of these businesses won't make it past year five. Not because the idea was bad. Not because they didn't work hard enough. Because the system only sustains the connected while everyone else gets bled dry by permits, bribes, and a procurement process designed to extract from the island rather than build it.
 
 ---
 
@@ -222,6 +264,8 @@ Borgen Magazine. (2025, November 26). Layers of gentrification in Puerto Rico. h
 
 Catalyst Planet. (2025, May 5). Tax incentives drive gentrification in Puerto Rico. https://www.catalystplanet.com/travel-and-social-action-stories/tax-incentives-drive-gentrification-in-puerto-rico
 
+Centro de Periodismo Investigativo. (2022, May). Increasingly uncertain securing a place to live in public housing in Puerto Rico. https://periodismoinvestigativo.com/2022/05/increasingly-uncertain-securing-a-place-to-live-in-public-housing-in-puerto-rico/
+
 Centro de Periodismo Investigativo. (2024a). Inside Puerto Rico's party faithful: Where the heart of political die-hards beats on. https://periodismoinvestigativo.com/2024/10/puerto-rico-political-parties-supporters/
 
 Centro de Periodismo Investigativo. (2024b). Health Department refuses to create the list of patients vulnerable during blackouts. https://periodismoinvestigativo.com/2024/08/electricity-dependent-list-blackouts/
@@ -235,6 +279,10 @@ Consumer Financial Protection Bureau. (2023). Financial struggles in Puerto Rico
 Diálogo UPR. (n.d.). UPR pierde contratos millonarios con el Departamento de Educación. https://dialogo.upr.edu/upr-pierde-contratos-millonarios-con-el-departamento-de-educacion/
 
 El Nuevo Día. (2025). Ajuste anual de tarifas de peajes entrará en vigor en enero de 2026. https://www.elnuevodia.com/noticias/locales/notas/ajuste-anual-de-tarifas-de-peajes-entrara-en-vigor-en-enero-de-2026-cuanto-tendras-que-pagar-adicional/
+
+Federal Reserve Bank of New York. (2018). 2018 Puerto Rico Small Business Survey. https://www.newyorkfed.org/outreach-and-education/puerto-rico/small-business-survey-2018
+
+GEM Global Entrepreneurship Monitor. (2023). Entrepreneurship in Puerto Rico. https://www.gemconsortium.org/economy-profiles/puerto-rico-2/policy
 
 Grokipedia. (2025a). Proyecto Dignidad. https://grokipedia.com/page/Proyecto_Dignidad
 
@@ -268,6 +316,10 @@ Newsweek. (2025, April 18). Puerto Rico blackout updates: Officials face backlas
 
 NotiCel. (2020, November 10). PIP y MVC avanzan en el voto íntegro, mientras PPD y PNP se estancan. https://www.noticel.com/elecciones/gobierno/ahora/top-stories/20201110/pip-y-mvc-avanzan-en-el-voto-integro-mientras-ppd-y-mnp-se-estancan/
 
+NPR. (2019, July 11). FBI arrests former top Puerto Rico officials in government corruption scandal. https://www.npr.org/2019/07/11/740596170/fbi-arrests-former-top-puerto-rico-officials-in-government-corruption-scandal
+
+NPR. (2022, May 12). In Puerto Rico, the arrests of elected officials worsen trust in government. https://www.npr.org/2022/05/12/1098585366/in-puerto-rico-the-arrests-of-elected-officials-worsen-trust-in-government
+
 PMC. (2025). Disaster governance, energy insecurity, and public health in rural Puerto Rico: How communities resist political abandonment. https://pmc.ncbi.nlm.nih.gov/articles/PMC12289668/
 
 PolitiFact. (2022, July 14). Ask PolitiFact: What's up with Puerto Rico's electricity bills? https://www.politifact.com/article/2022/jul/14/ask-politifact-whats-puerto-ricos-electricity-bill/
@@ -277,6 +329,8 @@ PolitiFact. (2022, July 14). Ask PolitiFact: What's up with Puerto Rico's electr
 Primera Hora. (2025, December 31). Con el Año Nuevo llega el aumento en los peajes. https://www.primerahora.com/noticias/gobierno-politica/notas/con-el-ano-nuevo-llega-el-aumento-en-los-peajes/
 
 ProPublica. (2024). Nonprofit Explorer: Sistema Universitario Ana G Mendez Incorporado (EIN 66-0201206). https://projects.propublica.org/nonprofits/organizations/660201206
+
+Puerto Rico 51st. (2021, January 7). Small business in Puerto Rico. https://www.pr51st.com/small-business-in-puerto-rico/
 
 Reason Foundation. (2025, April 21). Puerto Rico's housing crisis is no accident—it's by design. https://reason.org/commentary/puerto-ricos-housing-crisis-is-no-accident-its-by-design/
 
@@ -299,6 +353,8 @@ Time. (2021, April 19). How Puerto Ricans are fighting back against outsiders us
 Trading Economics. (2025). Puerto Rico labor force participation rate. https://tradingeconomics.com/puerto-rico/labor-force-participation-rate
 
 TurboDebt. (2025). Puerto Rico debt relief: Debt settlement and consolidation. https://www.turbodebt.com/areas-we-serve/puerto-rico-debt-relief
+
+University of Illinois. (2024, June 24). Study: Puerto Rico's anti-corruption laws promoted fraud by outsourcing government services. https://las.illinois.edu/news/2024-06-24/study-puerto-ricos-anti-corruption-laws-promoted-fraud-outsourcing-government
 
 Urban Institute. (2021). Environmental scan of Puerto Rico's health care infrastructure. https://www.urban.org/sites/default/files/publication/87016/2001051-environmental-scan-of-puerto-ricos-health-care-infrastructure_0.pdf
 
