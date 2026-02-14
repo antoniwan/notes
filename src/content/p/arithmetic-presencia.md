@@ -34,7 +34,8 @@ is the only language that matters
 when words fail in the space between.
 This is not a consolation.
 This is the spine of it.
-Estar lejos de ti es como no tener aire,
+Mi luna, Mia Luna,
+estar lejos de ti es como no tener aire,
 and yet the lungs keep working.
 Muscle memory of love
 does not require proximity to function.
