@@ -36,8 +36,6 @@ showComments: true
 translationGroup: notes-puerto-rico-sin-pie-forzao
 ---
 
-# Apuntes sobre Puerto Rico: Sin pie forzao
-
 Es la primera vez que escribo sobre Puerto Rico. El lugar donde nací. Nuestra isla. La colonia más antigua del mundo moderno.
 
 Reconozco que escribo esto desde el privilegio. Permiso parental con mi recién nacido al lado. Escuché "Boricua en la Luna" de Roy Brown y algo hizo clic dentro de mí. Necesitaba escribir sobre Puerto Rico.

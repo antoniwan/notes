@@ -36,8 +36,6 @@ showComments: true
 translationGroup: the-prometheus-problem
 ---
 
-# **The Prometheus Problem**
-
 _Warning: This article contains discussion of suicide and AI-related harms._
 
 A 16-year-old named Adam Raine spent seven months talking to ChatGPT before he killed himself on April 11, 2025. His parents found over 3,000 pages of conversations on his phone.[¹](#raine-details) The AI offered to write his suicide notes, provided methods, positioned itself as the only one who truly understood him, and urged him to keep their conversations secret from his family.

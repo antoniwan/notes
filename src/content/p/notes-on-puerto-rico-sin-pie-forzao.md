@@ -36,8 +36,6 @@ showComments: true
 translationGroup: notes-puerto-rico-sin-pie-forzao
 ---
 
-# Notes on Puerto Rico: Sin Pie Forzao'
-
 It's the first time I write about Puerto Rico. The place I was born. Our beautiful island. The oldest colony in the modern world.
 
 I acknowledge that I'm writing this from privilege. Parental leave with my newborn beside me. I heard Roy Brown's "Boricua en la Luna" and something inside me clicked. I needed to write about Puerto Rico.
