@@ -38,7 +38,7 @@ translationGroup: notes-puerto-rico-sin-pie-forzao
 
 It's the first time I write about Puerto Rico. The place I was born. Our beautiful island. The oldest colony in the modern world.
 
-I acknowledge that I'm writing this from privilege. Parental leave with my newborn beside me. I heard Roy Brown's "Boricua en la Luna" and something inside me clicked. I needed to write about Puerto Rico.
+I acknowledge that I'm writing this from privilege. Parental leave with my newborn beside me. I heard Roy Brown's <a href="https://youtu.be/3KxdtFey7qE?si=3aI2T7cyDxgsSPru&t=18" target="_blank" rel="noopener">"Boricua en la Luna"</a> and something inside me clicked. I needed to write about Puerto Rico.
 
 Puerto Rico, for me, is the only toxic relationship you are permitted to have as a Boricua.
 

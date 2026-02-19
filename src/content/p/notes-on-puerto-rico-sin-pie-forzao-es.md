@@ -1,8 +1,8 @@
 ---
-title: "Apuntes sobre Puerto Rico: Sin pie forzao"
+title: "Apuntes sobre Puerto Rico: Sin pie forzao'"
 description: >-
   Un ensayo-memoria sobre Puerto Rico: economía, gobernanza y sociedad—pobreza,
-  deuda, salud, educación, corrupción—desde un boricua que escribe desde la diáspora.
+  deuda, salud, educación, corrupción—de un boricua que escribe desde la diáspora.
 pubDate: '2026-02-19T02:45:00.000Z'
 language:
   - es
@@ -38,7 +38,7 @@ translationGroup: notes-puerto-rico-sin-pie-forzao
 
 Es la primera vez que escribo sobre Puerto Rico. El lugar donde nací. Nuestra isla. La colonia más antigua del mundo moderno.
 
-Reconozco que escribo esto desde el privilegio. Permiso parental con mi recién nacido al lado. Escuché "Boricua en la Luna" de Roy Brown y algo hizo clic dentro de mí. Necesitaba escribir sobre Puerto Rico.
+Reconozco que escribo esto desde el privilegio. "Parental leave" con mi recién nacido al lado. Escuché <a href="https://youtu.be/3KxdtFey7qE?si=3aI2T7cyDxgsSPru&t=18" target="_blank" rel="noopener">"Boricua en la Luna"</a> de Roy Brown y algo hizo clic dentro de mí. Necesitaba escribir sobre Puerto Rico.
 
 Puerto Rico, para mí, es la única relación tóxica que se nos permite tener como boricua.
 
