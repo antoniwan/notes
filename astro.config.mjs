@@ -55,11 +55,9 @@ export default defineConfig({
   vite: {
     server: {
       watch: {
-        // Enable polling for better file watching on Windows
-        usePolling: true,
-        interval: 100,
+        // Polling can break HMR on macOS; use native events for hot-reload
+        usePolling: false,
       },
-      // Let Vite auto-detect HMR settings
       hmr: true,
       // Optimize dev server performance
       fs: {
