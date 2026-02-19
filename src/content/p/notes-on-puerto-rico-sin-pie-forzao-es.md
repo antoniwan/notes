@@ -33,6 +33,7 @@ draft: false
 featured: false
 published: true
 showComments: true
+translationGroup: notes-puerto-rico-sin-pie-forzao
 ---
 
 # Apuntes sobre Puerto Rico: Sin pie forzao

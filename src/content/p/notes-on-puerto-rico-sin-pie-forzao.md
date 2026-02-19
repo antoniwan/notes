@@ -33,6 +33,7 @@ draft: false
 featured: true
 published: true
 showComments: true
+translationGroup: notes-puerto-rico-sin-pie-forzao
 ---
 
 # Notes on Puerto Rico: Sin Pie Forzao'
