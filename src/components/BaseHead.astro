@@ -74,13 +74,7 @@ const updatedDateISO = updatedDate?.toISOString();
   type="font/woff2"
   crossorigin
 />
-<link
-  rel="preload"
-  href="https://fonts.gstatic.com/s/lora/v35/0QI6MX1D_JOuGQbT0gvTJPa787weuxJFkqX.ttf"
-  as="font"
-  type="font/truetype"
-  crossorigin
-/>
+<!-- Lora is loaded via the Google Fonts stylesheet below; TTF preload removed (gstatic URL was 404) -->
 
 <!-- Critical Resource Preloading -->
 {heroImage && <link rel="preload" href={heroImage} as="image" />}
