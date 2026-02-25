@@ -39,22 +39,25 @@ The project is a well-structured Astro blog with sensible defaults (static prere
 
 ### 1.2 Duplicated storage constants — ✅ FIXED
 
-**Locations:**  
-- `src/config/storage.ts` — source of truth for `STORAGE_KEYS`, `STORAGE_EVENTS`, `TIMING`  
+**Locations:**
+
+- `src/config/storage.ts` — source of truth for `STORAGE_KEYS`, `STORAGE_EVENTS`, `TIMING`
 - `src/components/ReadStateServiceInit.astro` — inline script duplicates the same constants with comment “match src/config/storage.ts”
 
 **Issue:** Changing a key or timing in `config/storage.ts` does not update the inline script. Read state can break or diverge (e.g. different key names, different delays).
 
-**Fix:**  
-- Do not duplicate: either inject constants at build time (e.g. `define:vars` from a shared module used only in that script’s context) or ship a tiny shared script that defines the constants and is loaded before the inline script.  
+**Fix:**
+
+- Do not duplicate: either inject constants at build time (e.g. `define:vars` from a shared module used only in that script’s context) or ship a tiny shared script that defines the constants and is loaded before the inline script.
 - Prefer a single source of truth in `config/storage.ts` and one way to expose it to the client (e.g. one small client bundle or inline JSON from server).
 
 ---
 
 ### 1.3 Reading time computed twice; remark value ignored — ✅ FIXED
 
-**Locations:**  
-- `remark-reading-time.mjs` — sets `data.astro.frontmatter.minutesRead` during content load.  
+**Locations:**
+
+- `remark-reading-time.mjs` — sets `data.astro.frontmatter.minutesRead` during content load.
 - `src/pages/p/[...slug].astro` — now uses `post.data.minutesRead ?? calculateReadingTimeFromMarkdown(post.body)` and passes it as `minutesRead` to BlogLayout.
 
 **Was:** Reading time was computed in the remark plugin and again in the page; the remark value was never used.
@@ -71,37 +74,42 @@ The project is a well-structured Astro blog with sensible defaults (static prere
 
 **Issue:** SearchBar is used in Header, which is in BaseLayout. Every prerendered page that uses BaseLayout runs this component and thus `getCollection('blog')`. At 372 pages this means 372 (or 744 if two SearchBar instances) collection fetches. At 10× scale this multiplies. Astro may dedupe within a build, but the pattern is “component-level data fetch for global data,” which is fragile and unclear.
 
-**Recommendation:**  
-- Move blog (and any other) search data to a single place: e.g. a layout or a shared data module that runs once per build.  
-- Pass search index (or minimal post list) into Header/SearchBar as props or via a shared build-time payload (e.g. a JSON fragment or a script tag generated once).  
+**Recommendation:**
+
+- Move blog (and any other) search data to a single place: e.g. a layout or a shared data module that runs once per build.
+- Pass search index (or minimal post list) into Header/SearchBar as props or via a shared build-time payload (e.g. a JSON fragment or a script tag generated once).
 - Keep SearchBar as a presentational + client-search component that receives data instead of calling `getCollection`.
 
 ---
 
 ### 2.2 Centralize category ID → name resolution
 
-**Locations:**  
-- `src/pages/p/[...slug].astro`: `categories.find((cat) => cat.id === post.data.category![0])?.name ?? ...`  
+**Locations:**
+
+- `src/pages/p/[...slug].astro`: `categories.find((cat) => cat.id === post.data.category![0])?.name ?? ...`
 - `src/components/Chapter.astro`: local `getCategoryName(categoryIds)` doing the same.
 
 **Issue:** Two places resolve category id → display name. Adding categories or changing logic requires edits in multiple files.
 
-**Recommendation:**  
-- Add `getCategoryName(id: string | undefined): string | null` (and optionally `getCategoryNameFromIds(ids: string[] | undefined)`) in `src/utils/categoryUtils.ts` or `src/data/categories.ts`.  
+**Recommendation:**
+
+- Add `getCategoryName(id: string | undefined): string | null` (and optionally `getCategoryNameFromIds(ids: string[] | undefined)`) in `src/utils/categoryUtils.ts` or `src/data/categories.ts`.
 - Use it in `[...slug].astro`, Chapter.astro, and anywhere else that needs category display names.
 
 ---
 
 ### 2.3 Single implementation for relative read time
 
-**Locations:**  
-- `src/utils/relativeReadTime.ts` (server/codegen)  
+**Locations:**
+
+- `src/utils/relativeReadTime.ts` (server/codegen)
 - `src/utils/relativeReadTime.client.ts` (client; used by BlogLayout and Chapter)
 
 **Issue:** Same logic in two files. Comment in one says it’s for “client-side”; the other is for server. If you change wording or rules (e.g. “yesterday” vs “1 day ago”), both must be updated.
 
-**Recommendation:**  
-- Keep one implementation (e.g. in `relativeReadTime.ts`) with pure functions.  
+**Recommendation:**
+
+- Keep one implementation (e.g. in `relativeReadTime.ts`) with pure functions.
 - For client, either: (a) import that module in a client bundle (no DOM/Node APIs), or (b) generate a small client-only wrapper that re-exports or duplicates only if the main module pulls in Node-only code. Prefer (a) so there is a single implementation.
 
 ---
@@ -112,8 +120,9 @@ The project is a well-structured Astro blog with sensible defaults (static prere
 
 **Issue:** Every page that renders DefaultImage runs this. With many posts and cards, this is repeated filesystem access during build.
 
-**Recommendation:**  
-- Resolve default cover list once at build: e.g. in a top-level layout or in `src/data/` / a Vite plugin that exposes `defaultCoverImages: string[]`.  
+**Recommendation:**
+
+- Resolve default cover list once at build: e.g. in a top-level layout or in `src/data/` / a Vite plugin that exposes `defaultCoverImages: string[]`.
 - Pass the list (or a chosen URL) into DefaultImage as a prop so the component is pure and the FS read is single-purpose and cacheable.
 
 ---
@@ -140,8 +149,9 @@ The project is a well-structured Astro blog with sensible defaults (static prere
 
 **Assessment:** Static-first is good. Client JS is confined to features that need it (search, read state, theme, image modal). No unnecessary islands.
 
-**Recommendations:**  
-- Lazy-load or conditionally load PerformanceMonitor (e.g. only in dev or behind a flag) so production does not pay for CWV collection if you don’t use it.  
+**Recommendations:**
+
+- Lazy-load or conditionally load PerformanceMonitor (e.g. only in dev or behind a flag) so production does not pay for CWV collection if you don’t use it.
 - Ensure SearchBar script is loaded only when the search UI is visible (e.g. when the user opens the search panel) if the bundle size becomes a concern.
 
 ---
@@ -150,8 +160,9 @@ The project is a well-structured Astro blog with sensible defaults (static prere
 
 **Observation:** `brain-science/meta.astro` took ~28s in the sampled build; other brain-science pages also run compromise/sentiment and heavy analysis. `manualChunks` already isolates `vendor-nlp` and `brain-science`; the cost is build time and memory, not client bundle.
 
-**Recommendations:**  
-- Consider caching: e.g. write computed metrics to `src/content/.brain-science-cache/` or a similar JSON artifact and reuse across builds until content or config changes.  
+**Recommendations:**
+
+- Consider caching: e.g. write computed metrics to `src/content/.brain-science-cache/` or a similar JSON artifact and reuse across builds until content or config changes.
 - If you add more NLP or analytics pages, move to a “compute once, consume everywhere” pipeline (e.g. a script that runs after content sync and writes JSON; pages read JSON only).
 
 ---
@@ -160,8 +171,9 @@ The project is a well-structured Astro blog with sensible defaults (static prere
 
 **Current:** Sharp via `astro/assets`; `DefaultImage` uses plain `<img>` with `sizes` and `loading`/`fetchpriority`. Hero in BlogLayout uses raw `<img>` or DefaultImage, not `<Image>`.
 
-**Recommendations:**  
-- Use Astro’s `<Image>` (or the same image pipeline) for hero images in BlogLayout when `heroImage` is set, so you get srcset and optimized formats.  
+**Recommendations:**
+
+- Use Astro’s `<Image>` (or the same image pipeline) for hero images in BlogLayout when `heroImage` is set, so you get srcset and optimized formats.
 - Keep DefaultImage as-is for the random default covers, but ensure default images are optimized (e.g. pre-generated sizes/AVIF) so that non-Image usage is still fast.
 
 ---
@@ -178,15 +190,15 @@ The project is a well-structured Astro blog with sensible defaults (static prere
 
 ### 4.1 Dependencies
 
-| Package        | Current use | Recommendation |
-|----------------|------------|-----------------|
-| **js-yaml**    | Only in `scripts/` (e.g. `standardize-frontmatter.js`, `scripts/utils/frontmatter.js`). Not used in app runtime. | Move to **devDependencies**. |
-| **compromise** | brain-science pages + `utils/brainScience/metaAnalysis.ts`. | Keep in dependencies; already in vendor-nlp chunk. |
-| **sentiment**  | brain-science (insights, metaAnalysis, metrics). | Keep; same as above. |
-| **reading-time** | remark plugin + `utils/readingTime.ts` (and indirectly in many components). | Keep. |
-| **mdast-util-to-string** | remark-reading-time only. | Keep. |
-| **date-fns**   | Used in layouts and brain-science. | Keep. |
-| **sharp**      | Astro image service. | Keep. |
+| Package                  | Current use                                                                                                      | Recommendation                                     |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| **js-yaml**              | Only in `scripts/` (e.g. `standardize-frontmatter.js`, `scripts/utils/frontmatter.js`). Not used in app runtime. | Move to **devDependencies**.                       |
+| **compromise**           | brain-science pages + `utils/brainScience/metaAnalysis.ts`.                                                      | Keep in dependencies; already in vendor-nlp chunk. |
+| **sentiment**            | brain-science (insights, metaAnalysis, metrics).                                                                 | Keep; same as above.                               |
+| **reading-time**         | remark plugin + `utils/readingTime.ts` (and indirectly in many components).                                      | Keep.                                              |
+| **mdast-util-to-string** | remark-reading-time only.                                                                                        | Keep.                                              |
+| **date-fns**             | Used in layouts and brain-science.                                                                               | Keep.                                              |
+| **sharp**                | Astro image service.                                                                                             | Keep.                                              |
 
 **Unused in app code:** None clearly unused. `@astrojs/vercel` is required for the adapter; `@vercel/analytics` and `@vercel/speed-insights` are used in BaseLayout.
 
@@ -198,11 +210,12 @@ The project is a well-structured Astro blog with sensible defaults (static prere
 
 **Current:** `strict: true`, `strictNullChecks: true` in tsconfig. Good. `Window.ReadStateService` is declared in `src/env.d.ts` for client scripts that use the read-state singleton.
 
-**`any` usage:**  
-- `types/layout.ts`: `posts?: any[]`, `currentPost?: any`, `allPosts?: any[]` — replace with `CollectionEntry<'blog'>[]` and `CollectionEntry<'blog'>` where appropriate.  
-- `SearchBar.astro`, `guided-path.astro`, `StructuredData.astro`, `structuredData.ts`, `localStorageFeatures.ts`, etc. — many `any` types for events, schemas, and storage.  
+**`any` usage:**
 
-**Recommendation:** Replace layout and collection-related `any` with proper types first (biggest maintainability win). Then gradually tighten StructuredData, SearchBar result types, and storage/event types.
+- `types/layout.ts`: now uses `CollectionEntry<'blog'>[]` for `posts`/`allPosts` and `CollectionEntry<'blog'>` for `currentPost`.
+- `SearchBar.astro`, `guided-path.astro`, `StructuredData.astro`, `structuredData.ts`, `localStorageFeatures.ts`, etc. — still use `any` for some events, schemas, and storage.
+
+**Recommendation:** Layout and collection-related `any` have been replaced with proper types. Next step (optional, lower priority) is to gradually tighten StructuredData, SearchBar result types, and storage/event types.
 
 ---
 
@@ -234,10 +247,11 @@ The project is a well-structured Astro blog with sensible defaults (static prere
 
 **Methodology:** Tailwind with `@layer base/components/utilities`; design tokens in `global.css` (CSS vars for colors, animation, typography). `tailwind.config.js` extends with same tokens and typography plugin.
 
-**Findings:**  
-- No global leakage observed; theme uses class or data attributes.  
-- Duplication: color and timing values exist in both `global.css` and `tailwind.config.js` (e.g. primary/accent/highlight scales). Acceptable for Tailwind integration; document that theme edits may need to touch both.  
-- `.prose * { max-width: 100% !important; }` is broad; keep only if you’ve verified it doesn’t break components.  
+**Findings:**
+
+- No global leakage observed; theme uses class or data attributes.
+- Duplication: color and timing values exist in both `global.css` and `tailwind.config.js` (e.g. primary/accent/highlight scales). Acceptable for Tailwind integration; document that theme edits may need to touch both.
+- `.prose * { max-width: 100% !important; }` is broad; keep only if you’ve verified it doesn’t break components.
 - Image modal and `.a-poem` are in global.css; consider moving to a component-scoped style or a small “overrides” file to keep global.css for tokens and base only.
 
 **Fonts (current):** `src/styles/fonts.css` defines only Open Sans locally (woff2). Lora and Source Serif Pro have no local `@font-face`; they are loaded solely via the Google Fonts stylesheet in BaseHead.astro to avoid 404s when gstatic URLs change.
@@ -248,10 +262,11 @@ The project is a well-structured Astro blog with sensible defaults (static prere
 
 ## 6. Build & Tooling
 
-**Astro config:**  
-- Integrations: MDX, sitemap, Tailwind — all justified.  
-- Prefetch: `prefetchAll: false`, `defaultStrategy: 'hover'` — good.  
-- Image: Sharp, `inlineStylesheets: 'auto'`, Vite `manualChunks` and terser — good.  
+**Astro config:**
+
+- Integrations: MDX, sitemap, Tailwind — all justified.
+- Prefetch: `prefetchAll: false`, `defaultStrategy: 'hover'` — good.
+- Image: Sharp, `inlineStylesheets: 'auto'`, Vite `manualChunks` and terser — good.
 - `vite.optimizeDeps.include` lists MDX, date-fns, reading-time, compromise, sentiment — fine for dev.
 
 **Testing:** No test runner or tests found. For a blog, optional; if you add forms or critical client logic, add Vitest or similar and run in CI.
@@ -262,8 +277,8 @@ The project is a well-structured Astro blog with sensible defaults (static prere
 
 ## 7. Optional Enhancements (Low Priority)
 
-- **RSS/JSON feed:** `feed.json.js` and `rss.xml.js` use `post.body`; ensure they don’t expose raw markdown if you want HTML only (or intentionally expose markdown).  
-- **404 and test-theme:** Keep or remove `test-theme.astro` from production routes if it’s only for local dev.  
+- **RSS/JSON feed:** `feed.json.js` and `rss.xml.js` use `post.body`; ensure they don’t expose raw markdown if you want HTML only (or intentionally expose markdown).
+- **404 and test-theme:** Keep or remove `test-theme.astro` from production routes if it’s only for local dev.
 - **Documentation:** `docs/performance-optimization.md` exists; add a short “Architecture” section (e.g. in README or `docs/ARCHITECTURE.md`) describing layout hierarchy, where data is loaded (layout vs page vs component), and the read-state / search data flow so future contributors know the intended patterns.
 
 ---
@@ -277,26 +292,26 @@ The project is a well-structured Astro blog with sensible defaults (static prere
 5. ~~**Move search data out of SearchBar**~~ — **Done.** `getSearchData()` in `src/data/searchIndex.ts`; BaseLayout fetches once and passes to Header → SearchBar as `searchData` prop.
 6. ~~**Single relative-read-time implementation**~~ — **Done.** One shared module (`relativeReadTime.ts`) with client wrapper re-exporting the same functions.
 7. ~~**DefaultImage: resolve default covers once**~~ — **Done.** `getDefaultCoverUrls()` in `src/data/defaultCovers.ts`; DefaultImage imports it so readdirSync runs once per build.
-8. **Replace layout `any` types** — Use `CollectionEntry<'blog'>` and typed arrays for posts/currentPost/allPosts.
-9. **Add ESLint + CI** — Format check + lint + `astro check` in CI.
+8. ~~**Replace layout `any` types**~~ — **Done.** `BaseLayoutProps` and `BlogLayoutProps` use `CollectionEntry<'blog'>` and typed arrays for `posts`, `currentPost`, and `allPosts`.
+9. ~~**Add ESLint + CI**~~ — **Done.** ESLint configured with `eslint-plugin-astro`; CI workflow runs format check, `astro check`, and lint on pushes and PRs.
 10. **Optional: cache brain-science metrics** — Persist NLP results between builds to reduce rebuild time.
 
 ---
 
 ## Summary Table
 
-| Area                | Severity   | Status | Action |
-|---------------------|-----------|--------|--------|
-| TOC bug             | Critical  | Done   | Markdown heading extraction; TOC wired to structured data |
-| Storage constants   | Critical  | Done   | Single source; injected via define:vars |
-| Reading time        | High      | Done   | Use remark `minutesRead`; fallback in [...slug].astro only when absent |
-| SearchBar data      | High      | Done   | getSearchData() in layout; pass to SearchBar as props |
-| Category name       | Medium    | Done   | Centralized in categoryUtils; used in [...slug], Chapter |
-| relativeReadTime    | Medium    | Done   | Single implementation shared between server and client |
-| DefaultImage FS     | Medium    | Done   | getDefaultCoverUrls() in data layer; DefaultImage uses it |
-| TypeScript `any`    | Medium    | Open   | Tighten layout and collection types |
-| ESLint/CI           | Low       | Open   | Add and run in CI |
-| Brain-science cache| Low       | Open   | Optional build-time cache |
+| Area                | Severity | Status | Action                                                                                                                                 |
+| ------------------- | -------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------- |
+| TOC bug             | Critical | Done   | Markdown heading extraction; TOC wired to structured data                                                                              |
+| Storage constants   | Critical | Done   | Single source; injected via define:vars                                                                                                |
+| Reading time        | High     | Done   | Use remark `minutesRead`; fallback in [...slug].astro only when absent                                                                 |
+| SearchBar data      | High     | Done   | getSearchData() in layout; pass to SearchBar as props                                                                                  |
+| Category name       | Medium   | Done   | Centralized in categoryUtils; used in [...slug], Chapter                                                                               |
+| relativeReadTime    | Medium   | Done   | Single implementation shared between server and client                                                                                 |
+| DefaultImage FS     | Medium   | Done   | getDefaultCoverUrls() in data layer; DefaultImage uses it                                                                              |
+| TypeScript `any`    | Medium   | Done   | Layout props now typed with `CollectionEntry<'blog'>`; remaining `any` usage in search/structured-data code can be tightened gradually |
+| ESLint/CI           | Low      | Done   | ESLint configured; CI runs format check, `astro check`, and lint                                                                       |
+| Brain-science cache | Low      | Open   | Optional build-time cache                                                                                                              |
 
 **Other changes reflected:** Fonts (Lora, Source Serif Pro) no longer have local @font-face; client script fixes (ReadStateServiceInit, BlogLayout module); `Window.ReadStateService` typed in env.d.ts.
 

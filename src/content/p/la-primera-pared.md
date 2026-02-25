@@ -67,4 +67,3 @@ Está en mis brazos ahora mismo, de hecho. Cuatro días de nacido, dormido contr
 💩✨💩
 
 Gino Andre, si estás leyendo esto, no puedo esperar a amarte como te has merecido todo este tiempo. He hecho mi mejor esfuerzo por ti y contigo, pero mi mejor esfuerzo hoy tiene mucha más capacidad de la que he tenido. Tengo a tu hermanito y hermanita que agradecer por eso. Te amo.
-

@@ -5,7 +5,11 @@ interface Props {
   placeholder?: string;
 }
 
-const { searchData, class: className = '', placeholder = 'Search writings, pages...' } = Astro.props;
+const {
+  searchData,
+  class: className = '',
+  placeholder = 'Search writings, pages...',
+} = Astro.props;
 
 // Generate unique ID for this search instance
 const searchId = `search-${Math.random().toString(36).substr(2, 9)}`;

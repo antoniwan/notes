@@ -5,15 +5,69 @@ import { calculateTagStats } from '../utils/tagProcessing';
 
 /** Static list of pages for search (no blog fetch needed). */
 const PAGE_SEARCH_DATA = [
-  { type: 'page', id: 'about', title: 'About', description: 'Learn more about the author and this site', url: '/about/' },
-  { type: 'page', id: 'brain-science', title: 'Brain Science', description: 'Analytics and insights about writing patterns, themes, and growth', url: '/brain-science/' },
-  { type: 'page', id: 'brain-science-topics', title: 'Brain Science - Topics', description: 'Analysis of topics and themes across all writings', url: '/brain-science/topics/' },
-  { type: 'page', id: 'brain-science-patterns', title: 'Brain Science - Patterns', description: 'Writing patterns and frequency analysis', url: '/brain-science/patterns/' },
-  { type: 'page', id: 'brain-science-evolution', title: 'Brain Science - Evolution', description: 'How writing and thinking has evolved over time', url: '/brain-science/evolution/' },
-  { type: 'page', id: 'brain-science-insights', title: 'Brain Science - Insights', description: 'Key insights and discoveries from the writing journey', url: '/brain-science/insights/' },
-  { type: 'page', id: 'brain-science-cadence', title: 'Brain Science - Cadence', description: 'Writing rhythm and consistency analysis', url: '/brain-science/cadence/' },
-  { type: 'page', id: 'brain-science-meta', title: 'Brain Science - Meta', description: 'Meta-analysis of the site and its impact', url: '/brain-science/meta/' },
-  { type: 'page', id: 'tag-management', title: 'Tag Management', description: 'Organize and manage tags across all writings', url: '/tag-management/' },
+  {
+    type: 'page',
+    id: 'about',
+    title: 'About',
+    description: 'Learn more about the author and this site',
+    url: '/about/',
+  },
+  {
+    type: 'page',
+    id: 'brain-science',
+    title: 'Brain Science',
+    description: 'Analytics and insights about writing patterns, themes, and growth',
+    url: '/brain-science/',
+  },
+  {
+    type: 'page',
+    id: 'brain-science-topics',
+    title: 'Brain Science - Topics',
+    description: 'Analysis of topics and themes across all writings',
+    url: '/brain-science/topics/',
+  },
+  {
+    type: 'page',
+    id: 'brain-science-patterns',
+    title: 'Brain Science - Patterns',
+    description: 'Writing patterns and frequency analysis',
+    url: '/brain-science/patterns/',
+  },
+  {
+    type: 'page',
+    id: 'brain-science-evolution',
+    title: 'Brain Science - Evolution',
+    description: 'How writing and thinking has evolved over time',
+    url: '/brain-science/evolution/',
+  },
+  {
+    type: 'page',
+    id: 'brain-science-insights',
+    title: 'Brain Science - Insights',
+    description: 'Key insights and discoveries from the writing journey',
+    url: '/brain-science/insights/',
+  },
+  {
+    type: 'page',
+    id: 'brain-science-cadence',
+    title: 'Brain Science - Cadence',
+    description: 'Writing rhythm and consistency analysis',
+    url: '/brain-science/cadence/',
+  },
+  {
+    type: 'page',
+    id: 'brain-science-meta',
+    title: 'Brain Science - Meta',
+    description: 'Meta-analysis of the site and its impact',
+    url: '/brain-science/meta/',
+  },
+  {
+    type: 'page',
+    id: 'tag-management',
+    title: 'Tag Management',
+    description: 'Organize and manage tags across all writings',
+    url: '/tag-management/',
+  },
 ];
 
 /**

@@ -91,4 +91,3 @@ The way out is pretty simple. All of this reeks of external validation and I'm m
 4. **Do I care enough to fix this? Or do I walk away from the entire pattern?**
 
 And right now… after writing all this… the latter feels stronger. I don't know what that says about me yet. But I'm listening.
-

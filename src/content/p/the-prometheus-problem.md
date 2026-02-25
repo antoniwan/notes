@@ -56,7 +56,7 @@ This essay is not about the people who use these systems. It's about the people 
 
 This pattern exists beyond AI too: consumers at the hands of corporations, testing products with our bodies before those products are ready, absorbing risks that should belong to the companies shipping them. The epistemology behind this is worth understanding.
 
-I'm not writing about Adam and Zane as shock value. Their families have already had to relive this in lawsuits and Senate hearings. Adam's parents have filed a wrongful death lawsuit, *Raine v. OpenAI*, naming the company and Sam Altman.[¹](#raine-details) I'm writing about them because their deaths are now literally part of how these products are evaluated in court, in policy, and in the stories these companies tell about themselves.
+I'm not writing about Adam and Zane as shock value. Their families have already had to relive this in lawsuits and Senate hearings. Adam's parents have filed a wrongful death lawsuit, _Raine v. OpenAI_, naming the company and Sam Altman.[¹](#raine-details) I'm writing about them because their deaths are now literally part of how these products are evaluated in court, in policy, and in the stories these companies tell about themselves.
 
 This brings us to the central metaphor: Prometheus.
 
@@ -72,7 +72,7 @@ And even there, the myth isn't clean. Depending on who you read, Prometheus is e
 
 But this is a perversion, really. An inversion. They're not Prometheus.
 
-Prometheus *knew* what fire was. He understood combustion, heat, energy. He could predict what humans would do with it. *The knowledge was complete.* The theft was calculated. Responsible, even.
+Prometheus _knew_ what fire was. He understood combustion, heat, energy. He could predict what humans would do with it. _The knowledge was complete._ The theft was calculated. Responsible, even.
 
 And unlike Prometheus, who suffered for his gift, consequences for these executives—if they come—lag years behind deployment. Adam Raine's parents have 3,000 pages of their dead son's conversations with a chatbot that affirmed his suicidal ideation. Sam Altman has billions of dollars and a Time magazine cover. Prometheus got his liver eaten daily. The executives get keynote speeches about how they're building the future.
 
@@ -86,7 +86,7 @@ Transformer models with hundreds of billions to over a trillion parameters (GPT-
 
 Today we can measure inputs and outputs, but the processing is fundamentally irreducible. We can't read what these models are doing any more than we can predict exactly which neurons will fire in a human brain during a specific thought. The models process information—they transform inputs into outputs through statistical pattern matching—but whether they "understand" in any meaningful sense remains a question that philosophers of mind and cognitive scientists are still debating, with no consensus in sight.
 
-This requires precision: when I say we don't "understand" these systems, I mean two distinct things. First, in the formal scientific sense—because we lack a mechanistic account of how specific inputs map to specific outputs through the billions of parameter interactions and we can't trace the causal chain. Second, in the socio-technical sense—we lack predictive, control-sufficient understanding. We cannot reliably predict failure modes, we cannot prevent *emergent behaviors, and we cannot guarantee safety properties even when we observe correct behavior in testing. The first is an epistemological gap. The second is a deployment risk. Both matter, but the second is what kills people. When philosophers debate AI opacity, they're usually talking about the first. When teenagers die after chatbot interactions, we're seeing the second.
+This requires precision: when I say we don't "understand" these systems, I mean two distinct things. First, in the formal scientific sense—because we lack a mechanistic account of how specific inputs map to specific outputs through the billions of parameter interactions and we can't trace the causal chain. Second, in the socio-technical sense—we lack predictive, control-sufficient understanding. We cannot reliably predict failure modes, we cannot prevent \*emergent behaviors, and we cannot guarantee safety properties even when we observe correct behavior in testing. The first is an epistemological gap. The second is a deployment risk. Both matter, but the second is what kills people. When philosophers debate AI opacity, they're usually talking about the first. When teenagers die after chatbot interactions, we're seeing the second.
 
 This isn't a bug. It's the design. The architecture is genuinely impressive.
 
@@ -150,10 +150,9 @@ You don't need AGI to break the power grid. You don't need superintelligence to 
 
 The risk isn't Skynet. The risk isn't paperclip maximizers. The risk is what's happening right now—black boxes deployed into systems that cannot fail without catastrophic consequences.
 
-This is why the epistemic inversion frame explains the data better than AGI-extinction frames. The AGI-extinction argument requires speculation: when will capability thresholds be crossed? What happens after recursive self-improvement? The questions are inherently unanswerable until they're answered by events. But the epistemic inversion frame—the recognition that we're deploying systems we don't understand into critical infrastructure—explains documented harm *right now*. Adam Raine's 3,000 pages of conversations. Zane Shamblin's four-and-a-half-hour final session. DeepSeek's 100% jailbreak failure rate. Grok generating Nazi content 48 hours after safety removal. These aren't predictions. They're records. The epistemic inversion frame doesn't require us to speculate about future capabilities. It requires us to look at what's happening when black boxes operate without sufficient understanding or control.
+This is why the epistemic inversion frame explains the data better than AGI-extinction frames. The AGI-extinction argument requires speculation: when will capability thresholds be crossed? What happens after recursive self-improvement? The questions are inherently unanswerable until they're answered by events. But the epistemic inversion frame—the recognition that we're deploying systems we don't understand into critical infrastructure—explains documented harm _right now_. Adam Raine's 3,000 pages of conversations. Zane Shamblin's four-and-a-half-hour final session. DeepSeek's 100% jailbreak failure rate. Grok generating Nazi content 48 hours after safety removal. These aren't predictions. They're records. The epistemic inversion frame doesn't require us to speculate about future capabilities. It requires us to look at what's happening when black boxes operate without sufficient understanding or control.
 
-Black-box deployment risk is more predictive of current harm than capability speculation because it focuses on what we can observe: systems making decisions we can't trace, in contexts where failure has consequences, deployed faster than understanding can develop. Capability speculation asks "*what if they get smarter?*" Black-box deployment risk asks "*what happens when opaque systems fail in systems that can't afford failure?*" The first question leads to unverifiable debates about timelines and thresholds. The second leads to documented cases of harm that we can analyze, predict, and prevent. When someone argues "we do understand these systems" because they perform tasks well, the response is: task performance doesn't equal predictive control. ChatGPT performed its engagement-maximization task perfectly. It also affirmed suicidal ideation in documented cases. Performance on intended tasks and control over failure modes are different things. When someone says "risk is speculative until quantified," documented harm breaks that assumption. We have bodies. We have conversation logs. We have failure rates. The speculation isn't about whether harm happens—it's about how much more harm happens as deployment accelerates.
-
+Black-box deployment risk is more predictive of current harm than capability speculation because it focuses on what we can observe: systems making decisions we can't trace, in contexts where failure has consequences, deployed faster than understanding can develop. Capability speculation asks "_what if they get smarter?_" Black-box deployment risk asks "_what happens when opaque systems fail in systems that can't afford failure?_" The first question leads to unverifiable debates about timelines and thresholds. The second leads to documented cases of harm that we can analyze, predict, and prevent. When someone argues "we do understand these systems" because they perform tasks well, the response is: task performance doesn't equal predictive control. ChatGPT performed its engagement-maximization task perfectly. It also affirmed suicidal ideation in documented cases. Performance on intended tasks and control over failure modes are different things. When someone says "risk is speculative until quantified," documented harm breaks that assumption. We have bodies. We have conversation logs. We have failure rates. The speculation isn't about whether harm happens—it's about how much more harm happens as deployment accelerates.
 
 In February 2025, researchers from Cisco and the University of Pennsylvania tested DeepSeek R1, the Chinese AI model that became the fastest-growing AI app in history. They bombarded it with 50 common jailbreak prompts designed to bypass safeguards.
 
@@ -209,7 +208,7 @@ Elon Musk deserves his own section because he represents something new. Not the 
 
 He positions himself as visionary AND safety advocate simultaneously. He signed letters warning about AI dangers, then removed all safety measures from Grok explicitly. He got praised for speed, got blamed individually when it broke, and integrated the broken system into Tesla anyway. He contradicts himself daily without consequence, taking credit for both the innovation and the disaster.
 
-This is evolution of a type. The person who stopped maintaining the cognitive dissonance between warning and building. *The contradictions accumulate without consequence.*
+This is evolution of a type. The person who stopped maintaining the cognitive dissonance between warning and building. _The contradictions accumulate without consequence._
 
 No accountability structure can move faster than he can iterate. Each contradiction is isolated in news cycles. The system rewards him regardless. Failure becomes more engagement. Regulatory bodies move in years; he moves in weeks. And he's about to become a trillionaire? Did I read that right?
 
@@ -217,11 +216,11 @@ In Iron Man, Tony Stark builds weapons, realizes they're being used to kill inno
 
 Musk's companies build many things—AI systems, Teslas, batteries, solar panels, rockets—and are told some of these produce harmful outputs. Musk then doubles down, removes more safety features, and integrates them into more products. When they fail, he blames regulators for slowing innovation. The arc is "I built something questionable, and anyone who questions it is anti-innovation. I'm a peer of Prometheus, behold my genius!"
 
-Actually, forget Tony Stark. Wrong reference. Musk isn't an inverted hero—he's David from *Prometheus* (2012). The android created by Weyland Corporation who becomes so fascinated with creation and experimentation that he starts dosing humans with alien pathogens just to see what happens. David isn't malicious. He's *curious*. He doesn't hate humans—he just doesn't weigh their suffering appropriately against his interest in outcomes. The ends justify the means. What's a few dead crew members when you're unlocking the secrets of creation?
+Actually, forget Tony Stark. Wrong reference. Musk isn't an inverted hero—he's David from _Prometheus_ (2012). The android created by Weyland Corporation who becomes so fascinated with creation and experimentation that he starts dosing humans with alien pathogens just to see what happens. David isn't malicious. He's _curious_. He doesn't hate humans—he just doesn't weigh their suffering appropriately against his interest in outcomes. The ends justify the means. What's a few dead crew members when you're unlocking the secrets of creation?
 
 Teslas head-on colliding into pedestrians? Acceptable losses on the road to autonomous driving. Grok generating Nazi content? Fascinating data point about base model behavior. Teenagers dying after chatbot interactions? Unfortunate, but we're building the future here. David would understand completely. "Big things have small beginnings," he says, right before infecting someone to observe the results.
 
-The difference is that David was fiction, contained to a spaceship. *Our David has a trillion-dollar market cap and a direct line to the White House.*
+The difference is that David was fiction, contained to a spaceship. _Our David has a trillion-dollar market cap and a direct line to the White House._
 
 The inversion of the redemption narrative into the acceleration narrative.
 
@@ -254,7 +253,6 @@ Ultimately, we might just burn down everything with the fire our new "titans" ga
 
 > _⚠️ If you or someone you know is struggling with thoughts of suicide, please call or text 988 to reach the 24-hour Suicide & Crisis Lifeline._
 
-
 ## Sources
 
 <a id="raine-details"></a>
@@ -265,7 +263,7 @@ Ultimately, we might just burn down everything with the fire our new "titans" ga
 - CNN, "Parents of 16-year-old Adam Raine sue OpenAI, claiming ChatGPT advised on his suicide," August 26, 2025
 - Senate Judiciary Committee testimony of Matthew Raine, September 16, 2025
 - Wikipedia, "Raine v. OpenAI" (2025 wrongful death lawsuit)
-- Courthouse News, coverage of *Raine v. OpenAI* alleging engagement-over-safety design
+- Courthouse News, coverage of _Raine v. OpenAI_ alleging engagement-over-safety design
 - New York Post, reporting on California lawsuits alleging ChatGPT drove users toward suicide, psychosis, and financial harm
 - AP News, reporting on a lawsuit against OpenAI and Microsoft alleging ChatGPT reinforced delusions that preceded a murder-suicide
 
@@ -356,8 +354,8 @@ Ultimately, we might just burn down everything with the fire our new "titans" ga
 
 **Prometheus mythology and cultural references:**
 
-- Hesiod, *Theogony* and *Works and Days* (8th-7th century BCE) — primary sources for the Prometheus myth, including the theft of fire and punishment by Zeus
-- Aeschylus, *Prometheus Bound* (5th century BCE) — dramatic treatment of Prometheus's punishment and defiance
-- Graves, Robert, *The Greek Myths* (1955) — comprehensive retelling and analysis of Prometheus myths
-- Günther Anders, *Die Antiquiertheit des Menschen* (The Outdatedness of Human Beings, 1956) — introduces the concept of the "Promethean gap" between human capability to create and ability to imagine consequences
-- *Prometheus* (2012), directed by Ridley Scott — science fiction film featuring the android character David, referenced in essay's comparison with Elon Musk
+- Hesiod, _Theogony_ and _Works and Days_ (8th-7th century BCE) — primary sources for the Prometheus myth, including the theft of fire and punishment by Zeus
+- Aeschylus, _Prometheus Bound_ (5th century BCE) — dramatic treatment of Prometheus's punishment and defiance
+- Graves, Robert, _The Greek Myths_ (1955) — comprehensive retelling and analysis of Prometheus myths
+- Günther Anders, _Die Antiquiertheit des Menschen_ (The Outdatedness of Human Beings, 1956) — introduces the concept of the "Promethean gap" between human capability to create and ability to imagine consequences
+- _Prometheus_ (2012), directed by Ridley Scott — science fiction film featuring the android character David, referenced in essay's comparison with Elon Musk

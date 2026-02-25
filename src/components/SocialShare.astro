@@ -10,13 +10,7 @@ interface Props {
   className?: string;
 }
 
-const {
-  title,
-  description = '',
-  url = '',
-  variant = 'floating',
-  className = ''
-} = Astro.props;
+const { title, description = '', url = '', variant = 'floating', className = '' } = Astro.props;
 
 // Get the current URL - prioritize passed URL, fallback to current page
 // Ensure we always have a full URL with domain
@@ -31,68 +25,30 @@ if (!currentUrl.startsWith('http')) {
 const platforms = generateShareUrls(title, currentUrl, description);
 ---
 
-<!-- Floating Action Button (Mobile) -->
-{variant === 'floating' && (
-  <div class="fixed bottom-6 right-6 z-40 md:hidden">
-    <button
-      id="share-fab"
-      class="flex items-center justify-center w-14 h-14 bg-[rgb(var(--color-accent))] text-white rounded-full shadow-lg hover:bg-[rgb(var(--color-accent-hover))] focus:outline-none focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:ring-offset-2 theme-transition"
-      aria-label="Share this writing"
-    >
-      <span class="text-xl">📤</span>
-    </button>
-    
-    <!-- Share Menu -->
-    <div
-      id="share-menu"
-      class="absolute bottom-16 right-0 hidden bg-[rgb(var(--color-bg))] border border-[rgb(var(--color-border))] rounded-lg shadow-lg p-2 min-w-[200px]"
-    >
-      <div class="space-y-1">
-        {platforms.map(platform => (
-          <button
-            class={`w-full flex items-center gap-3 px-3 py-2 rounded-md text-left text-sm hover:bg-[rgb(var(--color-bg-alt))] theme-transition ${platform.color}`}
-            data-platform={platform.name.toLowerCase()}
-            data-url={platform.url}
-            data-action={platform.action}
-          >
-            <span class="text-base">{platform.icon}</span>
-            <span>{platform.name}</span>
-          </button>
-        ))}
-      </div>
-    </div>
-  </div>
-)}
-
-<!-- Compact Share Button (Tablet) -->
-{variant === 'horizontal' && (
-  <div class="hidden md:block lg:hidden my-8">
-    <div class="relative">
-              <button
-          id="horizontal-share-toggle"
-          class="flex items-center gap-2 px-4 py-2 bg-[rgb(var(--color-bg-alt))] rounded-lg border border-[rgb(var(--color-border))] hover:bg-[rgb(var(--color-bg-alt))]/80 theme-transition"
-          aria-label="Share this writing"
-        >
-        <span class="text-base">📤</span>
-        <span class="text-sm font-medium">Share</span>
-        <svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-        </svg>
-      </button>
-      
-      <!-- Share Menu -->
-      <div
-        id="horizontal-share-menu"
-        class="absolute top-full left-0 mt-2 hidden bg-[rgb(var(--color-bg))] border border-[rgb(var(--color-border))] rounded-lg shadow-lg p-2 min-w-[200px] z-10"
+{/* Floating Action Button (Mobile) */}
+{
+  variant === 'floating' && (
+    <div class="fixed bottom-6 right-6 z-40 md:hidden">
+      <button
+        id="share-fab"
+        class="theme-transition flex h-14 w-14 items-center justify-center rounded-full bg-[rgb(var(--color-accent))] text-white shadow-lg hover:bg-[rgb(var(--color-accent-hover))] focus:outline-none focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:ring-offset-2"
+        aria-label="Share this writing"
       >
-        <div class="grid grid-cols-2 gap-1">
-          {platforms.map(platform => (
+        <span class="text-xl">📤</span>
+      </button>
+
+      {/* Share Menu */}
+      <div
+        id="share-menu"
+        class="absolute bottom-16 right-0 hidden min-w-[200px] rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg))] p-2 shadow-lg"
+      >
+        <div class="space-y-1">
+          {platforms.map((platform) => (
             <button
-              class={`flex items-center gap-2 px-3 py-2 rounded-md text-sm hover:bg-[rgb(var(--color-bg-alt))] theme-transition ${platform.color}`}
+              class={`theme-transition flex w-full items-center gap-3 rounded-md px-3 py-2 text-left text-sm hover:bg-[rgb(var(--color-bg-alt))] ${platform.color}`}
               data-platform={platform.name.toLowerCase()}
               data-url={platform.url}
               data-action={platform.action}
-              aria-label={`Share on ${platform.name}`}
             >
               <span class="text-base">{platform.icon}</span>
               <span>{platform.name}</span>
@@ -101,35 +57,45 @@ const platforms = generateShareUrls(title, currentUrl, description);
         </div>
       </div>
     </div>
-  </div>
-)}
+  )
+}
 
-<!-- Compact Share Button (Desktop) -->
-{variant === 'vertical' && (
-  <div class="hidden lg:block">
-    <div class="sticky top-8 space-y-3">
+{/* Compact Share Button (Tablet) */}
+{
+  variant === 'horizontal' && (
+    <div class="my-8 hidden md:block lg:hidden">
       <div class="relative">
         <button
-          id="vertical-share-toggle"
-          class="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left text-sm bg-[rgb(var(--color-bg-alt))] hover:bg-[rgb(var(--color-bg-alt))]/80 theme-transition"
+          id="horizontal-share-toggle"
+          class="theme-transition flex items-center gap-2 rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] px-4 py-2 hover:bg-[rgb(var(--color-bg-alt))]/80"
           aria-label="Share this writing"
         >
           <span class="text-base">📤</span>
-          <span class="flex-1">Share this!</span>
-          <svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          <span class="text-sm font-medium">Share</span>
+          <svg
+            class="h-4 w-4 transition-transform"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            />
           </svg>
         </button>
-        
-        <!-- Share Menu -->
+
+        {/* Share Menu */}
         <div
-          id="vertical-share-menu"
-          class="absolute top-full left-0 mt-2 hidden bg-[rgb(var(--color-bg))] border border-[rgb(var(--color-border))] rounded-lg shadow-lg p-2 min-w-[200px] z-10"
+          id="horizontal-share-menu"
+          class="absolute left-0 top-full z-10 mt-2 hidden min-w-[200px] rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg))] p-2 shadow-lg"
         >
-          <div class="space-y-1">
-            {platforms.map(platform => (
+          <div class="grid grid-cols-2 gap-1">
+            {platforms.map((platform) => (
               <button
-                class={`w-full flex items-center gap-3 px-3 py-2 rounded-md text-left text-sm hover:bg-[rgb(var(--color-bg-alt))] theme-transition ${platform.color}`}
+                class={`theme-transition flex items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-[rgb(var(--color-bg-alt))] ${platform.color}`}
                 data-platform={platform.name.toLowerCase()}
                 data-url={platform.url}
                 data-action={platform.action}
@@ -143,20 +109,76 @@ const platforms = generateShareUrls(title, currentUrl, description);
         </div>
       </div>
     </div>
-  </div>
-)}
+  )
+}
 
-<!-- Simple Share Button -->
-{variant === 'button' && (
-  <button
-    id="share-button"
-    class={`inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[rgb(var(--color-bg-alt))] text-[rgb(var(--color-text))] hover:bg-[rgb(var(--color-bg-alt))]/80 focus:outline-none focus:ring-2 focus:ring-[rgb(var(--color-accent))] theme-transition ${className}`}
-    aria-label="Share this writing"
-  >
-    <span class="text-base">📤</span>
-    <span class="text-sm font-medium">Share</span>
-  </button>
-)}
+{/* Compact Share Button (Desktop) */}
+{
+  variant === 'vertical' && (
+    <div class="hidden lg:block">
+      <div class="sticky top-8 space-y-3">
+        <div class="relative">
+          <button
+            id="vertical-share-toggle"
+            class="theme-transition flex w-full items-center gap-3 rounded-lg bg-[rgb(var(--color-bg-alt))] px-3 py-2 text-left text-sm hover:bg-[rgb(var(--color-bg-alt))]/80"
+            aria-label="Share this writing"
+          >
+            <span class="text-base">📤</span>
+            <span class="flex-1">Share this!</span>
+            <svg
+              class="h-4 w-4 transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+
+          {/* Share Menu */}
+          <div
+            id="vertical-share-menu"
+            class="absolute left-0 top-full z-10 mt-2 hidden min-w-[200px] rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg))] p-2 shadow-lg"
+          >
+            <div class="space-y-1">
+              {platforms.map((platform) => (
+                <button
+                  class={`theme-transition flex w-full items-center gap-3 rounded-md px-3 py-2 text-left text-sm hover:bg-[rgb(var(--color-bg-alt))] ${platform.color}`}
+                  data-platform={platform.name.toLowerCase()}
+                  data-url={platform.url}
+                  data-action={platform.action}
+                  aria-label={`Share on ${platform.name}`}
+                >
+                  <span class="text-base">{platform.icon}</span>
+                  <span>{platform.name}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+{/* Simple Share Button */}
+{
+  variant === 'button' && (
+    <button
+      id="share-button"
+      class={`theme-transition inline-flex items-center gap-2 rounded-lg bg-[rgb(var(--color-bg-alt))] px-4 py-2 text-[rgb(var(--color-text))] hover:bg-[rgb(var(--color-bg-alt))]/80 focus:outline-none focus:ring-2 focus:ring-[rgb(var(--color-accent))] ${className}`}
+      aria-label="Share this writing"
+    >
+      <span class="text-base">📤</span>
+      <span class="text-sm font-medium">Share</span>
+    </button>
+  )
+}
 
 <script>
   // Share functionality
@@ -164,12 +186,12 @@ const platforms = generateShareUrls(title, currentUrl, description);
     // Handle floating FAB
     const shareFab = document.getElementById('share-fab');
     const shareMenu = document.getElementById('share-menu');
-    
+
     if (shareFab && shareMenu) {
       shareFab.addEventListener('click', () => {
         shareMenu.classList.toggle('hidden');
       });
-      
+
       // Close menu when clicking outside
       document.addEventListener('click', (e) => {
         if (!shareFab.contains(e.target as Node) && !shareMenu.contains(e.target as Node)) {
@@ -177,23 +199,28 @@ const platforms = generateShareUrls(title, currentUrl, description);
         }
       });
     }
-    
+
     // Handle horizontal share toggle
     const horizontalToggle = document.getElementById('horizontal-share-toggle');
     const horizontalMenu = document.getElementById('horizontal-share-menu');
-    
+
     if (horizontalToggle && horizontalMenu) {
       horizontalToggle.addEventListener('click', () => {
         horizontalMenu.classList.toggle('hidden');
         const arrow = horizontalToggle.querySelector('svg');
         if (arrow) {
-          arrow.style.transform = horizontalMenu.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+          arrow.style.transform = horizontalMenu.classList.contains('hidden')
+            ? 'rotate(0deg)'
+            : 'rotate(180deg)';
         }
       });
-      
+
       // Close menu when clicking outside
       document.addEventListener('click', (e) => {
-        if (!horizontalToggle.contains(e.target as Node) && !horizontalMenu.contains(e.target as Node)) {
+        if (
+          !horizontalToggle.contains(e.target as Node) &&
+          !horizontalMenu.contains(e.target as Node)
+        ) {
           horizontalMenu.classList.add('hidden');
           const arrow = horizontalToggle.querySelector('svg');
           if (arrow) {
@@ -202,23 +229,28 @@ const platforms = generateShareUrls(title, currentUrl, description);
         }
       });
     }
-    
+
     // Handle vertical share toggle
     const verticalToggle = document.getElementById('vertical-share-toggle');
     const verticalMenu = document.getElementById('vertical-share-menu');
-    
+
     if (verticalToggle && verticalMenu) {
       verticalToggle.addEventListener('click', () => {
         verticalMenu.classList.toggle('hidden');
         const arrow = verticalToggle.querySelector('svg');
         if (arrow) {
-          arrow.style.transform = verticalMenu.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+          arrow.style.transform = verticalMenu.classList.contains('hidden')
+            ? 'rotate(0deg)'
+            : 'rotate(180deg)';
         }
       });
-      
+
       // Close menu when clicking outside
       document.addEventListener('click', (e) => {
-        if (!verticalToggle.contains(e.target as Node) && !verticalMenu.contains(e.target as Node)) {
+        if (
+          !verticalToggle.contains(e.target as Node) &&
+          !verticalMenu.contains(e.target as Node)
+        ) {
           verticalMenu.classList.add('hidden');
           const arrow = verticalToggle.querySelector('svg');
           if (arrow) {
@@ -227,18 +259,18 @@ const platforms = generateShareUrls(title, currentUrl, description);
         }
       });
     }
-    
+
     // Handle all share buttons
     const shareButtons = document.querySelectorAll('[data-platform]');
-    
-    shareButtons.forEach(button => {
+
+    shareButtons.forEach((button) => {
       button.addEventListener('click', async (e) => {
         e.preventDefault();
-        
+
         const platform = (button as HTMLElement).dataset.platform;
         const url = (button as HTMLElement).dataset.url;
         const action = (button as HTMLElement).dataset.action;
-        
+
         if (action === 'copy') {
           // Use the current page URL for copying
           const pageUrl = window.location.href;
@@ -247,12 +279,12 @@ const platforms = generateShareUrls(title, currentUrl, description);
         } else if (url && url !== '#') {
           window.open(url, '_blank', 'noopener,noreferrer');
         }
-        
+
         // Close all menus
         closeAllMenus();
       });
     });
-    
+
     // Handle native share button
     const nativeShareButton = document.getElementById('share-button');
     if (nativeShareButton) {
@@ -261,8 +293,9 @@ const platforms = generateShareUrls(title, currentUrl, description);
           try {
             await navigator.share({
               title: document.title,
-              text: document.querySelector('meta[name="description"]')?.getAttribute('content') || '',
-              url: window.location.href
+              text:
+                document.querySelector('meta[name="description"]')?.getAttribute('content') || '',
+              url: window.location.href,
             });
           } catch (err) {
             // Share cancelled or failed
@@ -276,12 +309,12 @@ const platforms = generateShareUrls(title, currentUrl, description);
       });
     }
   }
-  
+
   function closeAllMenus() {
     const shareMenu = document.getElementById('share-menu');
     const horizontalMenu = document.getElementById('horizontal-share-menu');
     const verticalMenu = document.getElementById('vertical-share-menu');
-    
+
     if (shareMenu) {
       shareMenu.classList.add('hidden');
     }
@@ -300,7 +333,7 @@ const platforms = generateShareUrls(title, currentUrl, description);
       }
     }
   }
-  
+
   async function copyToClipboard(text: string) {
     try {
       await navigator.clipboard.writeText(text);
@@ -314,25 +347,26 @@ const platforms = generateShareUrls(title, currentUrl, description);
       document.body.removeChild(textArea);
     }
   }
-  
+
   function showToast(message: string) {
     // Create toast notification
     const toast = document.createElement('div');
-    toast.className = 'fixed bottom-20 left-1/2 transform -translate-x-1/2 bg-[rgb(var(--color-bg))] border border-[rgb(var(--color-border))] text-[rgb(var(--color-text))] px-4 py-2 rounded-lg shadow-lg z-50 theme-transition';
+    toast.className =
+      'fixed bottom-20 left-1/2 transform -translate-x-1/2 bg-[rgb(var(--color-bg))] border border-[rgb(var(--color-border))] text-[rgb(var(--color-text))] px-4 py-2 rounded-lg shadow-lg z-50 theme-transition';
     toast.textContent = message;
-    
+
     document.body.appendChild(toast);
-    
+
     // Remove after 3 seconds
     setTimeout(() => {
       toast.remove();
     }, 3000);
   }
-  
+
   // Initialize when DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializeShare);
   } else {
     initializeShare();
   }
-</script> 
+</script>

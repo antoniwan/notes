@@ -1,6 +1,6 @@
 ---
-title: "On Boundaries, Miscalibration, and Relearning Unconditional Love"
-description: "A simple reflection on setting boundaries, misusing emotional force, and relearning how to pair limits with steady love."
+title: 'On Boundaries, Miscalibration, and Relearning Unconditional Love'
+description: 'A simple reflection on setting boundaries, misusing emotional force, and relearning how to pair limits with steady love.'
 pubDate: '2026-01-16T13:50:00.000Z'
 language:
   - en
@@ -39,7 +39,7 @@ This essay documents a set of mistakes, the reasoning that led to them, and the 
 
 I set necessary boundaries during a period of high stress and elevated threat perception. The boundaries themselves were justified but the way I enforced them was not. In hindsight, I could have set these boundaries in a healthier and more proportionate way.
 
-I used excessive force. By force, I mean emotional intensity, speed, and finality, not aggression. The result was collateral damage including relational rupture that did not need to be as severe as it became. 
+I used excessive force. By force, I mean emotional intensity, speed, and finality, not aggression. The result was collateral damage including relational rupture that did not need to be as severe as it became.
 
 More broadly, I defaulted to _decisiveness_ over calibration. I compressed time, nuance, and relational context in favor of rapid _closure_. This was not limited to a single interaction. It showed up as a string of abrupt exits, rigid framing, and an intolerance for ambiguity once my internal threshold was crossed.
 

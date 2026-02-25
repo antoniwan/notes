@@ -26,8 +26,7 @@ const { post, allPosts } = Astro.props;
 const { Content } = await render(post);
 
 // Use reading time from remark plugin when present; otherwise compute from body
-const minutesRead =
-  post.data.minutesRead ?? calculateReadingTimeFromMarkdown(post.body || '');
+const minutesRead = post.data.minutesRead ?? calculateReadingTimeFromMarkdown(post.body || '');
 
 // Auto-generate keywords from tags and categories
 const keywords = generateKeywords(post.data.tags || [], post.data.category || []);

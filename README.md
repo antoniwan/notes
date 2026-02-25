@@ -1,6 +1,6 @@
 # Notes
 
-[![Version](https://img.shields.io/badge/version-4.18.0-blue.svg)](https://github.com/antoniwan/notes/releases)
+[![Version](https://img.shields.io/badge/version-4.18.1-blue.svg)](https://github.com/antoniwan/notes/releases)
 
 A personal notes site: essays and notes on fatherhood, masculinity, culture, and modern life. Raw reflections on thinking, consciousness, and the soft heart inside the hard world.
 
@@ -39,24 +39,24 @@ Open `http://localhost:4321`.
 
 ## Available Scripts
 
-| Command | Action |
-|--------|--------|
-| `npm run dev` | Start development server |
-| `npm run build` | Production build |
-| `npm run preview` | Preview production build |
-| `npm run generate-favicons` | Generate favicon assets |
-| `npm run validate-feeds` | Validate RSS and JSON feeds |
-| `npm run audit-frontmatter` | Audit frontmatter consistency |
-| `npm run standardize-frontmatter` | Standardize frontmatter format |
-| `npm run remove-legacy-reading-time` | Remove legacy reading time fields |
-| `npm run validate-structured-data` | Validate structured data implementation |
-| `npm run fix:hr-spacing` | Fix horizontal rule spacing in content |
-| `npm run format` | Format with Prettier |
-| `npm run format:check` | Check formatting |
-| `npm run analyze` | Build then run Vercel static-build |
-| `npm run lighthouse` | Run Lighthouse on localhost (dev server must be up) |
-| `npm run performance` | Build and analyze |
-| `npm run audit-performance` | Build then Lighthouse performance-only JSON report |
+| Command                              | Action                                              |
+| ------------------------------------ | --------------------------------------------------- |
+| `npm run dev`                        | Start development server                            |
+| `npm run build`                      | Production build                                    |
+| `npm run preview`                    | Preview production build                            |
+| `npm run generate-favicons`          | Generate favicon assets                             |
+| `npm run validate-feeds`             | Validate RSS and JSON feeds                         |
+| `npm run audit-frontmatter`          | Audit frontmatter consistency                       |
+| `npm run standardize-frontmatter`    | Standardize frontmatter format                      |
+| `npm run remove-legacy-reading-time` | Remove legacy reading time fields                   |
+| `npm run validate-structured-data`   | Validate structured data implementation             |
+| `npm run fix:hr-spacing`             | Fix horizontal rule spacing in content              |
+| `npm run format`                     | Format with Prettier                                |
+| `npm run format:check`               | Check formatting                                    |
+| `npm run analyze`                    | Build then run Vercel static-build                  |
+| `npm run lighthouse`                 | Run Lighthouse on localhost (dev server must be up) |
+| `npm run performance`                | Build and analyze                                   |
+| `npm run audit-performance`          | Build then Lighthouse performance-only JSON report  |
 
 ## Project Structure
 
@@ -148,15 +148,15 @@ Defined in `src/data/categories.ts`. Examples: Art & Expression, Culture, DIY & 
 
 ## Documentation
 
-| Doc | Description |
-|-----|-------------|
-| [Frontmatter spec](docs/frontmatter-spec.md) | Post frontmatter format |
-| [Comments setup](docs/comments-setup.md) | Remark42 configuration |
-| [Quotes API](docs/quotes-api.md) | Quotes endpoint |
-| [Multilingual setup](docs/multilingual-setup.md) | Translation linking |
-| [Structured data](docs/structured-data-optimization.md) | Schema.org implementation |
-| [Performance](docs/performance-optimization.md) | Performance notes |
-| [Technical audit](docs/TECHNICAL-AUDIT.md) | Codebase audit (point-in-time) |
+| Doc                                                     | Description                    |
+| ------------------------------------------------------- | ------------------------------ |
+| [Frontmatter spec](docs/frontmatter-spec.md)            | Post frontmatter format        |
+| [Comments setup](docs/comments-setup.md)                | Remark42 configuration         |
+| [Quotes API](docs/quotes-api.md)                        | Quotes endpoint                |
+| [Multilingual setup](docs/multilingual-setup.md)        | Translation linking            |
+| [Structured data](docs/structured-data-optimization.md) | Schema.org implementation      |
+| [Performance](docs/performance-optimization.md)         | Performance notes              |
+| [Technical audit](docs/TECHNICAL-AUDIT.md)              | Codebase audit (point-in-time) |
 
 ## License
 

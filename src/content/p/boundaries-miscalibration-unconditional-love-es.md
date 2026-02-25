@@ -1,6 +1,6 @@
 ---
-title: "Sobre Límites, Descalibración y Reaprender el Amor Incondicional"
-description: "Una reflexión sencilla sobre el establecimiento de límites, el mal uso de la fuerza emocional y el reaprendizaje de cómo emparejar límites con amor constante."
+title: 'Sobre Límites, Descalibración y Reaprender el Amor Incondicional'
+description: 'Una reflexión sencilla sobre el establecimiento de límites, el mal uso de la fuerza emocional y el reaprendizaje de cómo emparejar límites con amor constante.'
 pubDate: '2026-01-16T13:50:00.000Z'
 language:
   - es
@@ -41,7 +41,7 @@ Establecí límites necesarios durante un período de alto estrés y percepción
 
 Usé fuerza excesiva. Por fuerza no me refiero a agresión física, sino a intensidad emocional, velocidad y finalidad. El resultado fue daño colateral, incluida una ruptura relacional que no necesitaba ser tan severa como terminó siendo.
 
-De forma más amplia, privilegié la *decisión* sobre la calibración. Comprimí tiempo, matiz y realidad relacional a favor de un *cierre* rápido. Esto no se limitó a una sola interacción. Se manifestó como salidas abruptas, encuadres rígidos e intolerancia a la ambigüedad una vez que mi umbral interno fue cruzado.
+De forma más amplia, privilegié la _decisión_ sobre la calibración. Comprimí tiempo, matiz y realidad relacional a favor de un _cierre_ rápido. Esto no se limitó a una sola interacción. Se manifestó como salidas abruptas, encuadres rígidos e intolerancia a la ambigüedad una vez que mi umbral interno fue cruzado.
 
 En todo esto, actué dentro de mi capacidad en ese momento y obtuve lo que quería, o al menos lo que creí querer. La vida se sintió objetivamente mejor en las consecuencias inmediatas. Ese alivio hizo que los cambios parecieran necesarios. Sin embargo, lo que se siente mejor a corto plazo no necesariamente permanece mejor una vez que el polvo se asienta y el daño colateral se vuelve visible.
 
@@ -50,18 +50,18 @@ Identifico dos impulsores principales.
 **Primero: compresión de amenaza.**  
 Bajo presión sostenida, colapsé el matiz a favor de la velocidad y la seguridad. Cuando el sistema nervioso está sobrecargado, "cerrarlo de forma decisiva" se siente más seguro que "sostener la complejidad", aun cuando eso implique pasar por alto el matiz y, en ocasiones, la empatía.
 
-Esto puede tomar muchas formas: colgar una llamada de manera abrupta, retirarse intencionalmente, cortar contacto con alguien de forma acalorada, o incluso provocaciones sutiles enmarcadas como validación o prueba. El patrón es velocidad sobre resolución. Esa percepción de amenaza resultaba detonante y exigía una *solución apresurada*.
+Esto puede tomar muchas formas: colgar una llamada de manera abrupta, retirarse intencionalmente, cortar contacto con alguien de forma acalorada, o incluso provocaciones sutiles enmarcadas como validación o prueba. El patrón es velocidad sobre resolución. Esa percepción de amenaza resultaba detonante y exigía una _solución apresurada_.
 
 **Segundo: confusión de límites.**  
-Trataba los límites y la fuerza emocional como si fueran lo mismo, pero no lo son. Un límite es una restricción que uno se impone a sí mismo. En mi caso, era una cuestión de autorrespeto. La fuerza es otra dimensión. No fuerza física, sino finalidad emocional, temperatura y encuadre de *scorched earth*. Es un sistema de entrega.
+Trataba los límites y la fuerza emocional como si fueran lo mismo, pero no lo son. Un límite es una restricción que uno se impone a sí mismo. En mi caso, era una cuestión de autorrespeto. La fuerza es otra dimensión. No fuerza física, sino finalidad emocional, temperatura y encuadre de _scorched earth_. Es un sistema de entrega.
 
-Puedo aplicar mis límites con fuerza proporcionada o no hacerlo, pero asumir las consecuencias. Ese matiz importa. No capté plenamente la distinción entre límite y fuerza hasta después de los hechos. Otra forma de pensarlo es haber confundido *necesidad* con *intensidad*.
+Puedo aplicar mis límites con fuerza proporcionada o no hacerlo, pero asumir las consecuencias. Ese matiz importa. No capté plenamente la distinción entre límite y fuerza hasta después de los hechos. Otra forma de pensarlo es haber confundido _necesidad_ con _intensidad_.
 
 En retrospectiva, me estaba protegiendo con las herramientas teóricas que tenía disponibles, pero esas herramientas estaban moldeadas por fatiga, daño previo y ancho de banda limitado. Había hecho el trabajo teórico: esfuerzo cognitivo, terapia, escritura reflexiva. Pero la teoría no es práctica. En el calor del momento, en el calentón, la teoría se sostiene o colapsa.
 
 Mi capacidad explica mi comportamiento, pero no excusa el daño.
 
-Desde fuera, el enfoque puede razonablemente verse como *scorched earth*. Solo sentí sus efectos completos después de que el polvo se asentó. Mi familia está hoy más saludable y más segura, y yo soy una persona más suave que antes, pero eso no niega que mal apliqué fuerza en momentos clave. Es razonable preguntarse: si hubo daño, si personas resultaron quemadas, ¿cómo puede ser también cierto que mi familia y mi entorno son ahora más seguros? Esa tensión aún la estoy observando.
+Desde fuera, el enfoque puede razonablemente verse como _scorched earth_. Solo sentí sus efectos completos después de que el polvo se asentó. Mi familia está hoy más saludable y más segura, y yo soy una persona más suave que antes, pero eso no niega que mal apliqué fuerza en momentos clave. Es razonable preguntarse: si hubo daño, si personas resultaron quemadas, ¿cómo puede ser también cierto que mi familia y mi entorno son ahora más seguros? Esa tensión aún la estoy observando.
 
 Después de los hechos, adopté brevemente un encuadre defectuoso, una explicación totalizante:
 

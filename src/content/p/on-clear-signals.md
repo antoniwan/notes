@@ -36,7 +36,7 @@ I've curated my environment — almost unknowingly — by setting up boundaries 
 
 If you don't know what a clean signal is:
 
-*To me*, a clean signal is any communication — words, gestures, posture, sounds, movement, touch, whatever — where both bodies just go, “Yeah, I get you.” No decoding. No guessing. No emotional gymnastics.
+_To me_, a clean signal is any communication — words, gestures, posture, sounds, movement, touch, whatever — where both bodies just go, “Yeah, I get you.” No decoding. No guessing. No emotional gymnastics.
 
 The 2-year-old is instinct incarnate. Pure raw signal. My 5-year-old is sincerity with legs — chaotic but real AF. When she feels safe, she's open. When she doesn't, she closes up. Both are clean. Both are consistent. The dogs? Walking truth. Breath, weight, micro-movements, no story, no narrative, no hidden agenda. If there’s food, there's no politics — just honest dominance hierarchies like nature intended. My girlfriend meets me where I am; I meet her where she is. No performance. No pretending.
 
@@ -50,9 +50,9 @@ Dating felt off because the signals were muddy. Friendships collapsed because th
 
 Ambiguity now feels like someone else making their confusion my job. And my body says no before my mouth even knows why. Maybe that's bias. Maybe trauma. Maybe wisdom. Probably all three. But patterns don’t lie: clean signals land differently. They hit the body with that “I can breathe here” energy.
 
-Then on top of everything I thought about most adults I interact with — the chronic half-signal people. The ones who want access to you, not presence with you. The ones who freeze you in an old version of yourself because updating their internal file is too expensive. The ones who wrap everything in politeness and avoidance. Peacekeeping? Cowardice? Habit? *Who the fuck knows*.
+Then on top of everything I thought about most adults I interact with — the chronic half-signal people. The ones who want access to you, not presence with you. The ones who freeze you in an old version of yourself because updating their internal file is too expensive. The ones who wrap everything in politeness and avoidance. Peacekeeping? Cowardice? Habit? _Who the fuck knows_.
 
-I *do know* that once you start respecting yourself, you lose the ability to translate for people. Something in the body shuts the door before the empathy scripts even load.
+I _do know_ that once you start respecting yourself, you lose the ability to translate for people. Something in the body shuts the door before the empathy scripts even load.
 
 There's a strange beauty in no longer shrinking or bending or explaining. You stop negotiating with silence and stop offering clarity to people who treat clarity as confrontation. You stop contorting your emotional availability around someone else’s inability to show up. That's no longer viable or sustainable for the quality of life we want.
 

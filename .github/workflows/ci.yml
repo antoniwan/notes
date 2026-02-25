@@ -32,9 +32,11 @@ jobs:
       - name: Run format check
         run: pnpm run format:check
 
+      - name: Run Astro check
+        run: pnpm run check
+
       - name: Run ESLint
         run: pnpm run lint
 
       - name: Build project
         run: pnpm run build
-

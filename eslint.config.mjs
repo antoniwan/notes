@@ -9,5 +9,3 @@ export default [
   // Astro + JavaScript/TypeScript recommended rules for .astro files and scripts
   ...eslintPluginAstro.configs.recommended,
 ];
-
-

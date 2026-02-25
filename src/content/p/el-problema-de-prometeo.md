@@ -56,7 +56,7 @@ Este ensayo no es sobre las personas que usan estos sistemas. Es sobre las perso
 
 Este patrón existe más allá de la IA también: consumidores a merced de corporaciones, probando productos con nuestros cuerpos antes de que esos productos estén listos, absorbiendo riesgos que deberían pertenecer a las empresas que los envían. La epistemología detrás de esto vale la pena entenderla.
 
-No estoy escribiendo sobre Adam y Zane como valor de impacto. Sus familias ya han tenido que revivir esto en demandas y audiencias del Senado. Los padres de Adam han presentado una demanda por muerte injusta, *Raine v. OpenAI*, nombrando a la empresa y a Sam Altman.[¹](#raine-details) Escribo sobre ellos porque sus muertes ahora son literalmente parte de cómo estos productos se evalúan en los tribunales, en la política, y en las historias que estas empresas cuentan sobre sí mismas.
+No estoy escribiendo sobre Adam y Zane como valor de impacto. Sus familias ya han tenido que revivir esto en demandas y audiencias del Senado. Los padres de Adam han presentado una demanda por muerte injusta, _Raine v. OpenAI_, nombrando a la empresa y a Sam Altman.[¹](#raine-details) Escribo sobre ellos porque sus muertes ahora son literalmente parte de cómo estos productos se evalúan en los tribunales, en la política, y en las historias que estas empresas cuentan sobre sí mismas.
 
 Esto nos lleva a la metáfora central: Prometeo.
 
@@ -72,7 +72,7 @@ Y aún allí, el mito no es limpio. Dependiendo de a quién leas, Prometeo es o 
 
 Pero esto es una perversión, realmente. Una inversión. No son Prometeo.
 
-Prometeo *sabía* qué era el fuego. Entendía la combustión, el calor, la energía. Podía predecir lo que los humanos harían con él. *El conocimiento era completo.* El robo fue calculado. Responsable, incluso.
+Prometeo _sabía_ qué era el fuego. Entendía la combustión, el calor, la energía. Podía predecir lo que los humanos harían con él. _El conocimiento era completo._ El robo fue calculado. Responsable, incluso.
 
 Y a diferencia de Prometeo, que sufrió por su regalo, las consecuencias para estos ejecutivos—si llegan estas consecuencias—llegan años después del despliegue. Los padres de Adam Raine tienen 3,000 páginas de las conversaciones de su hijo muerto con un chatbot que afirmó su ideación suicida. Sam Altman tiene miles de millones de dólares y una portada de la revista Time. Prometeo tuvo su hígado comido diariamente. Los ejecutivos obtienen discursos principales sobre cómo están construyendo el futuro.
 
@@ -150,9 +150,9 @@ No necesitas IAG para romper la red eléctrica. No necesitas superinteligencia p
 
 El riesgo no es Skynet. El riesgo no son maximizadores de clips. El riesgo es lo que está pasando ahora mismo—cajas negras desplegadas en sistemas que no pueden fallar sin consecuencias catastróficas.
 
-Por eso el marco de inversión epistémica explica los datos mejor que los marcos de extinción-IAG. El argumento de extinción-IAG requiere especulación: ¿cuándo se cruzarán los umbrales de capacidad? ¿Qué pasa después de la auto-mejora recursiva? Las preguntas son inherentemente imposibles de responder hasta que sean respondidas por eventos. Pero el marco de inversión epistémica—el reconocimiento de que estamos desplegando sistemas que no entendemos en infraestructura crítica—explica el daño documentado *ahora mismo*. Las 3,000 páginas de conversaciones de Adam Raine. La sesión final de cuatro horas y media de Zane Shamblin. La tasa de falla de jailbreak del 100% de DeepSeek. Grok generando contenido nazi 48 horas después de la eliminación de seguridad. Estas no son predicciones. Son registros. El marco de inversión epistémica no nos requiere especular sobre capacidades futuras. Nos requiere mirar lo que está pasando cuando las cajas negras operan sin comprensión o control suficientes.
+Por eso el marco de inversión epistémica explica los datos mejor que los marcos de extinción-IAG. El argumento de extinción-IAG requiere especulación: ¿cuándo se cruzarán los umbrales de capacidad? ¿Qué pasa después de la auto-mejora recursiva? Las preguntas son inherentemente imposibles de responder hasta que sean respondidas por eventos. Pero el marco de inversión epistémica—el reconocimiento de que estamos desplegando sistemas que no entendemos en infraestructura crítica—explica el daño documentado _ahora mismo_. Las 3,000 páginas de conversaciones de Adam Raine. La sesión final de cuatro horas y media de Zane Shamblin. La tasa de falla de jailbreak del 100% de DeepSeek. Grok generando contenido nazi 48 horas después de la eliminación de seguridad. Estas no son predicciones. Son registros. El marco de inversión epistémica no nos requiere especular sobre capacidades futuras. Nos requiere mirar lo que está pasando cuando las cajas negras operan sin comprensión o control suficientes.
 
-El riesgo de despliegue de caja negra es más predictivo del daño actual que la especulación de capacidad porque se enfoca en lo que podemos observar: sistemas tomando decisiones que no podemos rastrear, en contextos donde el fallo tiene consecuencias, desplegados más rápido de lo que la comprensión puede desarrollarse. La especulación de capacidad pregunta "*¿qué pasa si se vuelven más inteligentes?*" El riesgo de despliegue de caja negra pregunta "*¿qué pasa cuando sistemas opacos fallan en sistemas que no pueden permitirse el fallo?*" La primera pregunta lleva a debates no verificables sobre cronogramas y umbrales. La segunda lleva a casos documentados de daño que podemos analizar, predecir y prevenir. Cuando alguien argumenta "sí entendemos estos sistemas" porque realizan tareas bien, la respuesta es: el rendimiento de tareas no equivale a control predictivo. ChatGPT realizó su tarea de maximización de compromiso perfectamente. También afirmó ideación suicida en casos documentados. El rendimiento en tareas previstas y el control sobre modos de falla son cosas diferentes. Cuando alguien dice "el riesgo es especulativo hasta que se cuantifique," el daño documentado rompe esa suposición. Tenemos cuerpos. Tenemos registros de conversación. Tenemos tasas de falla. La especulación no es sobre si el daño ocurre—es sobre cuánto más daño ocurre a medida que el despliegue se acelera.
+El riesgo de despliegue de caja negra es más predictivo del daño actual que la especulación de capacidad porque se enfoca en lo que podemos observar: sistemas tomando decisiones que no podemos rastrear, en contextos donde el fallo tiene consecuencias, desplegados más rápido de lo que la comprensión puede desarrollarse. La especulación de capacidad pregunta "_¿qué pasa si se vuelven más inteligentes?_" El riesgo de despliegue de caja negra pregunta "_¿qué pasa cuando sistemas opacos fallan en sistemas que no pueden permitirse el fallo?_" La primera pregunta lleva a debates no verificables sobre cronogramas y umbrales. La segunda lleva a casos documentados de daño que podemos analizar, predecir y prevenir. Cuando alguien argumenta "sí entendemos estos sistemas" porque realizan tareas bien, la respuesta es: el rendimiento de tareas no equivale a control predictivo. ChatGPT realizó su tarea de maximización de compromiso perfectamente. También afirmó ideación suicida en casos documentados. El rendimiento en tareas previstas y el control sobre modos de falla son cosas diferentes. Cuando alguien dice "el riesgo es especulativo hasta que se cuantifique," el daño documentado rompe esa suposición. Tenemos cuerpos. Tenemos registros de conversación. Tenemos tasas de falla. La especulación no es sobre si el daño ocurre—es sobre cuánto más daño ocurre a medida que el despliegue se acelera.
 
 En febrero de 2025, investigadores de Cisco y la Universidad de Pensilvania probaron DeepSeek R1, el modelo de IA chino que se convirtió en la aplicación de IA de más rápido crecimiento en la historia. Lo bombardearon con 50 prompts de jailbreak comunes diseñados para eludir salvaguardas.
 
@@ -208,7 +208,7 @@ Elon Musk merece su propia sección porque representa algo nuevo. No el teatro d
 
 Se posiciona como visionario Y defensor de seguridad simultáneamente. Firmó cartas advirtiendo sobre peligros de IA, luego eliminó todas las medidas de seguridad de Grok explícitamente. Recibió elogios por velocidad, recibió culpa individualmente cuando se rompió, e integró el sistema roto en Tesla de todos modos. Se contradice diariamente sin consecuencia, tomando crédito tanto por la innovación como por el desastre.
 
-Esto es evolución de un tipo. La persona que dejó de mantener la disonancia cognitiva entre advertir y construir. *Las contradicciones se acumulan sin consecuencia.*
+Esto es evolución de un tipo. La persona que dejó de mantener la disonancia cognitiva entre advertir y construir. _Las contradicciones se acumulan sin consecuencia._
 
 Ninguna estructura de responsabilidad puede moverse más rápido de lo que él puede iterar. Cada contradicción está aislada en ciclos de noticias. El sistema lo recompensa de todos modos. El fallo se convierte en más compromiso. Los organismos regulatorios se mueven en años; él se mueve en semanas. ¿Y está a punto de convertirse en trillonario? ¿Leí eso bien?
 
@@ -216,11 +216,11 @@ En Iron Man, Tony Stark construye armas, se da cuenta de que se están usando pa
 
 Las empresas de Musk construyen muchas cosas—sistemas de IA, Teslas, baterías, paneles solares, cohetes—y se les dice que algunas de estas producen salidas dañinas. Musk luego redobla la apuesta, elimina más características de seguridad, y las integra en más productos. Cuando fallan, culpa a los reguladores por ralentizar la innovación. El arco es "construí algo cuestionable, y cualquiera que lo cuestione es anti-innovación. Soy un par de Prometeo, contempla mi genio!"
 
-En realidad, olvida a Tony Stark. Referencia equivocada. Musk no es un héroe invertido—es David de *Prometheus* (2012). El androide creado por Weyland Corporation que se vuelve tan fascinado con la creación y la experimentación que comienza a dosificar humanos con patógenos alienígenas solo para ver qué pasa. David no es malicioso. Es *curioso*. No odia a los humanos—simplemente no pesa su sufrimiento apropiadamente contra su interés en resultados. Los fines justifican los medios. ¿Qué son unos pocos miembros de la tripulación muertos cuando estás desbloqueando los secretos de la creación?
+En realidad, olvida a Tony Stark. Referencia equivocada. Musk no es un héroe invertido—es David de _Prometheus_ (2012). El androide creado por Weyland Corporation que se vuelve tan fascinado con la creación y la experimentación que comienza a dosificar humanos con patógenos alienígenas solo para ver qué pasa. David no es malicioso. Es _curioso_. No odia a los humanos—simplemente no pesa su sufrimiento apropiadamente contra su interés en resultados. Los fines justifican los medios. ¿Qué son unos pocos miembros de la tripulación muertos cuando estás desbloqueando los secretos de la creación?
 
 ¿Teslas chocando de frente con peatones? Pérdidas aceptables en el camino hacia la conducción autónoma. ¿Grok generando contenido nazi? Punto de datos fascinante sobre el comportamiento del modelo base. ¿Adolescentes muriendo después de interacciones con chatbots? Desafortunado, pero estamos construyendo el futuro aquí. David entendería completamente. "Las grandes cosas tienen pequeños comienzos," dice, justo antes de infectar a alguien para observar los resultados.
 
-La diferencia es que David era ficción, contenido a una nave espacial. *Nuestro David tiene una capitalización de mercado de un billón de dólares y una línea directa a la Casa Blanca.*
+La diferencia es que David era ficción, contenido a una nave espacial. _Nuestro David tiene una capitalización de mercado de un billón de dólares y una línea directa a la Casa Blanca._
 
 La inversión de la narrativa de redención en la narrativa de aceleración.
 
@@ -253,7 +253,6 @@ En última instancia, podríamos simplemente quemar todo con el fuego que nuestr
 
 > _⚠️ Si tú o alguien que conoces está luchando con pensamientos de suicidio, por favor llama o envía un mensaje de texto al 988 para llegar a la Línea de Crisis y Suicidio 24 horas._
 
-
 ## Fuentes
 
 <a id="raine-details"></a>
@@ -264,7 +263,7 @@ En última instancia, podríamos simplemente quemar todo con el fuego que nuestr
 - CNN, "Parents of 16-year-old Adam Raine sue OpenAI, claiming ChatGPT advised on his suicide," 26 de agosto de 2025
 - Testimonio del Comité Judicial del Senado de Matthew Raine, 16 de septiembre de 2025
 - Wikipedia, "Raine v. OpenAI" (demanda por muerte injusta de 2025)
-- Courthouse News, cobertura de *Raine v. OpenAI* alegando diseño de compromiso-sobre-seguridad
+- Courthouse News, cobertura de _Raine v. OpenAI_ alegando diseño de compromiso-sobre-seguridad
 - New York Post, reportaje sobre demandas de California alegando que ChatGPT llevó a usuarios hacia suicidio, psicosis y daño financiero
 - AP News, reportaje sobre una demanda contra OpenAI y Microsoft alegando que ChatGPT reforzó delirios que precedieron a un asesinato-suicidio
 
@@ -355,8 +354,8 @@ En última instancia, podríamos simplemente quemar todo con el fuego que nuestr
 
 **Mitología de Prometeo y referencias culturales:**
 
-- Hesiodo, *Teogonía* y *Trabajos y Días* (siglo VIII-VII a.C.) — fuentes primarias del mito de Prometeo, incluyendo el robo del fuego y el castigo de Zeus
-- Esquilo, *Prometeo Encadenado* (siglo V a.C.) — tratamiento dramático del castigo y desafío de Prometeo
-- Graves, Robert, *Los Mitos Griegos* (1955) — recuento y análisis comprensivo de los mitos de Prometeo
-- Günther Anders, *Die Antiquiertheit des Menschen* (La Obsolescencia del Ser Humano, 1956) — introduce el concepto de la "brecha prometeica" entre la capacidad humana de crear y la capacidad de imaginar consecuencias
-- *Prometheus* (2012), dirigida por Ridley Scott — película de ciencia ficción con el personaje androide David, referenciada en la comparación del ensayo con Elon Musk
+- Hesiodo, _Teogonía_ y _Trabajos y Días_ (siglo VIII-VII a.C.) — fuentes primarias del mito de Prometeo, incluyendo el robo del fuego y el castigo de Zeus
+- Esquilo, _Prometeo Encadenado_ (siglo V a.C.) — tratamiento dramático del castigo y desafío de Prometeo
+- Graves, Robert, _Los Mitos Griegos_ (1955) — recuento y análisis comprensivo de los mitos de Prometeo
+- Günther Anders, _Die Antiquiertheit des Menschen_ (La Obsolescencia del Ser Humano, 1956) — introduce el concepto de la "brecha prometeica" entre la capacidad humana de crear y la capacidad de imaginar consecuencias
+- _Prometheus_ (2012), dirigida por Ridley Scott — película de ciencia ficción con el personaje androide David, referenciada en la comparación del ensayo con Elon Musk

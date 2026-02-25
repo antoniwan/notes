@@ -28,4 +28,3 @@ https://creativecommons.org/licenses/by-nc-sa/4.0/
 ---
 
 **Note:** This license applies to content only. For code licensing, please see the [LICENSE](LICENSE) file (MIT License).
-

@@ -65,9 +65,7 @@ const structuredData = generateStructuredData({
   minutesRead,
   category,
   tags,
-  tableOfContents: Array.isArray(tableOfContents)
-    ? tableOfContents.length > 0
-    : !!tableOfContents,
+  tableOfContents: Array.isArray(tableOfContents) ? tableOfContents.length > 0 : !!tableOfContents,
   hasComments,
   featured,
   draft,

@@ -305,7 +305,7 @@
     margin: 1.5rem 0;
   }
 
-  pre>code {
+  pre > code {
     @apply bg-transparent p-0 text-sm;
   }
 
@@ -352,7 +352,6 @@
 
 /* Component layer for reusable patterns */
 @layer components {
-
   /* Enhanced typography utilities for better hierarchy */
   .text-heading {
     @apply text-2xl font-bold leading-tight tracking-tight md:text-3xl lg:text-4xl;
@@ -366,16 +365,36 @@
     animation: fade-up 0.3s ease forwards;
   }
 
-  .animate-fade-up-delay-1 { animation-delay: 0.05s; }
-  .animate-fade-up-delay-2 { animation-delay: 0.1s; }
-  .animate-fade-up-delay-3 { animation-delay: 0.15s; }
-  .animate-fade-up-delay-4 { animation-delay: 0.2s; }
-  .animate-fade-up-delay-5 { animation-delay: 0.25s; }
-  .animate-fade-up-delay-6 { animation-delay: 0.3s; }
-  .animate-fade-up-delay-7 { animation-delay: 0.35s; }
-  .animate-fade-up-delay-8 { animation-delay: 0.4s; }
-  .animate-fade-up-delay-9 { animation-delay: 0.45s; }
-  .animate-fade-up-delay-10 { animation-delay: 0.5s; }
+  .animate-fade-up-delay-1 {
+    animation-delay: 0.05s;
+  }
+  .animate-fade-up-delay-2 {
+    animation-delay: 0.1s;
+  }
+  .animate-fade-up-delay-3 {
+    animation-delay: 0.15s;
+  }
+  .animate-fade-up-delay-4 {
+    animation-delay: 0.2s;
+  }
+  .animate-fade-up-delay-5 {
+    animation-delay: 0.25s;
+  }
+  .animate-fade-up-delay-6 {
+    animation-delay: 0.3s;
+  }
+  .animate-fade-up-delay-7 {
+    animation-delay: 0.35s;
+  }
+  .animate-fade-up-delay-8 {
+    animation-delay: 0.4s;
+  }
+  .animate-fade-up-delay-9 {
+    animation-delay: 0.45s;
+  }
+  .animate-fade-up-delay-10 {
+    animation-delay: 0.5s;
+  }
 
   /* Button utilities */
   .btn-primary {
@@ -574,7 +593,9 @@
 
 .image-modal .close-btn:focus {
   outline: none;
-  box-shadow: 0 0 0 2px rgb(var(--color-bg)), 0 0 0 4px rgb(var(--color-accent));
+  box-shadow:
+    0 0 0 2px rgb(var(--color-bg)),
+    0 0 0 4px rgb(var(--color-accent));
 }
 
 /* Prose images: full width, contained, clickable for modal */
