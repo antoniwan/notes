@@ -43,13 +43,13 @@ const categoryName =
     ? categories.find((cat) => cat.id === post.data.category![0])?.name || post.data.category![0]
     : null;
 
-// Generate table of contents from headings
-const headings = post.body?.match(/<h[2-3][^>]*>.*?<\/h[2-3]>/g) || [];
-const tableOfContents = headings.map((heading) => {
-  const text = heading.replace(/<[^>]+>/g, '');
-  const level = parseInt(heading.match(/<h([2-3])/)?.[1] || '2');
-  const slug = text.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-  return { text, slug, level };
+// Generate table of contents from markdown headings (post.body is raw markdown, not HTML)
+const headingRegex = /^(#{2,3})\s+(.+)$/gm;
+const tableOfContents = [...(post.body?.matchAll(headingRegex) ?? [])].map(([, hashes, text]) => {
+  const level = hashes.length;
+  const trimmedText = (text || '').trim();
+  const slug = trimmedText.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  return { text: trimmedText, slug, level };
 });
 
 // Get translation data

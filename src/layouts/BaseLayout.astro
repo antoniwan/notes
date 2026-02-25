@@ -38,6 +38,7 @@ const {
   hasComments = false,
   featured = false,
   draft = false,
+  tableOfContents,
 } = Astro.props;
 
 // Auto-generate keywords if not provided
@@ -61,7 +62,9 @@ const structuredData = generateStructuredData({
   minutesRead,
   category,
   tags,
-  tableOfContents: false, // You can make this dynamic based on content
+  tableOfContents: Array.isArray(tableOfContents)
+    ? tableOfContents.length > 0
+    : !!tableOfContents,
   hasComments,
   featured,
   draft,

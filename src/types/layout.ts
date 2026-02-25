@@ -19,7 +19,13 @@ export interface BaseLayoutProps {
   structuredDataIdentifier?: string;
   posts?: any[]; // For category/tag pages
   // Enhanced structured data options
-  tableOfContents?: boolean;
+  tableOfContents?:
+    | boolean
+    | {
+        level: number;
+        text: string;
+        slug: string;
+      }[];
   hasComments?: boolean;
   featured?: boolean;
   draft?: boolean;

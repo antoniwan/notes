@@ -264,6 +264,7 @@ const postSlug = postId; // Alias for backward compatibility in template
           <div
             class="prose prose-lg max-w-none prose-headings:scroll-mt-20"
             transition:name="page-content"
+            data-post-slug={postSlug}
           >
             <slot />
           </div>
@@ -400,15 +401,18 @@ const postSlug = postId; // Alias for backward compatibility in template
   </Container>
 </BaseLayout>
 
-<script define:vars={{ postSlug }}>
+<script>
   import { formatRelativeReadTime } from '../utils/relativeReadTime.client';
+
+  // Read slug from DOM (set on main content wrapper) so this script can stay a module
+  const postSlug = document.querySelector('[data-post-slug]')?.getAttribute('data-post-slug');
 
   // ReadStateService is initialized by ReadStateServiceInit component in BaseLayout
   // Get the singleton instance
   const readStateService = window.ReadStateService?.getInstance();
 
   function updateReadStatus() {
-    if (!readStateService) return; // Exit early if service not available
+    if (!postSlug || !readStateService) return; // Exit early if slug or service not available
     const readData = readStateService.getReadData(postSlug);
 
     // Reading time sections (both desktop and mobile)

@@ -8,9 +8,10 @@
  * Include this component in your base layout to ensure the service
  * is available before any components try to use it.
  */
+const isDev = import.meta.env.DEV;
 ---
 
-<script is:inline>
+<script is:inline define:vars={{ isDev }}>
   // Initialize ReadStateService singleton - shared across all components
   // This ensures the service is only initialized once, even if multiple components load
   (function () {
@@ -137,7 +138,7 @@
               callback(postSlug, isRead, readData);
             } catch (error) {
               // Only log errors in development mode
-              if (import.meta.env.DEV && typeof console !== 'undefined' && console.error) {
+              if (isDev && typeof console !== 'undefined' && console.error) {
                 console.error('Error in read state subscriber:', error);
               }
             }
@@ -148,7 +149,7 @@
             callback();
           } catch (error) {
             // Only log errors in development mode
-            if (import.meta.env.DEV && typeof console !== 'undefined' && console.error) {
+            if (isDev && typeof console !== 'undefined' && console.error) {
               console.error('Error in all-state subscriber:', error);
             }
           }

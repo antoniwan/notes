@@ -1,6 +1,7 @@
 # Technical Audit: Notes (Astro Blog)
 
 **Date:** February 2025  
+**Last updated:** February 2025 (audit refreshed to reflect current state)  
 **Scope:** Architecture, dependencies, performance, code quality, content layer, styling, build/tooling, maintainability  
 **Assumption:** Codebase scales to ~10× current content volume (~80 posts → 800+).
 
@@ -8,34 +9,30 @@
 
 ---
 
+## Updates since original audit (current state)
+
+- **TOC bug (1.1) — FIXED.** Table of contents is now derived from markdown headings (`/^#{2,3}\s+(.+)$/gm`) in `src/pages/p/[...slug].astro`. TOC data is passed to BlogLayout and into BaseLayout; structured data receives a boolean (has TOC) and adds `hasPart` for the article schema when the TOC is non-empty. There is still no in-page TOC UI; the data is used for JSON-LD only.
+- **Fonts.** Local `@font-face` in `src/styles/fonts.css` now only defines Open Sans. Lora and Source Serif Pro were removed to avoid 404s when gstatic URLs change; both are loaded solely via the Google Fonts stylesheet in BaseHead.astro.
+- **Client scripts.** ReadStateServiceInit no longer uses `import.meta` in its inline script (uses `define:vars={{ isDev }}` from frontmatter). BlogLayout’s read-state script no longer uses `define:vars`; it reads `postSlug` from the DOM (`data-post-slug` on the main content wrapper) so the script can stay a proper ES module and use `import`.
+- **Types.** `Window.ReadStateService` is declared in `src/env.d.ts`. `BaseLayoutProps.tableOfContents` accepts either a boolean or the TOC array shape for structured data.
+
+---
+
 ## Executive Summary
 
-The project is a well-structured Astro blog with sensible defaults (static prerender, Tailwind, content collections, Vercel adapter). **Structural health is good** with clear separation of layouts, components, and content. Several issues will compound at scale: **duplicated data fetching** (SearchBar, repeated `getCollection`), **duplicated logic** (reading time, relative time, category resolution, storage constants), **one critical bug** (table of contents always empty), **missing tooling** (no ESLint), and **heavy client-side and build-time work** (NLP on every brain-science page, `readdirSync` per DefaultImage). Dependency hygiene is mostly good; a few packages are misplaced or only used in scripts. Addressing the critical and structural items below will keep the codebase maintainable and performant as it grows.
+The project is a well-structured Astro blog with sensible defaults (static prerender, Tailwind, content collections, Vercel adapter). **Structural health is good** with clear separation of layouts, components, and content. The **critical TOC bug is fixed**. Remaining items that will compound at scale: **duplicated data fetching** (SearchBar, repeated `getCollection`), **duplicated logic** (reading time, relative time, category resolution, storage constants), **missing tooling** (no ESLint), and **heavy client-side and build-time work** (NLP on every brain-science page, `readdirSync` per DefaultImage). Dependency hygiene is mostly good; a few packages are misplaced or only used in scripts. Addressing the remaining structural items below will keep the codebase maintainable and performant as it grows.
 
-**Overall health: B+** — Solid foundation; targeted refactors will raise it to A.
+**Overall health: B+** — Solid foundation; one critical bug resolved; targeted refactors will raise it to A.
 
 ---
 
 ## 1. Critical Issues (Must Fix)
 
-### 1.1 Table of contents is always empty (bug)
+### 1.1 Table of contents — ✅ FIXED
 
-**Location:** `src/pages/p/[...slug].astro` (lines 46–52)
+**Was:** TOC was built with an HTML regex on `post.body`, which is raw markdown in Astro content collections, so the regex never matched and TOC was always empty.
 
-**Issue:** TOC is derived with an HTML regex on `post.body`:
-
-```js
-const headings = post.body?.match(/<h[2-3][^>]*>.*?<\/h[2-3]>/g) || [];
-```
-
-In Astro content collections, `entry.body` is **raw markdown**, not HTML. So this regex never matches (e.g. `## Title` is not `<h2>...</h2>`), and `tableOfContents` is always `[]`.
-
-**Fix:** Either:
-
-- Parse markdown headings, e.g. `post.body?.match(/^#{2,3}\s+(.+)$/gm)` and derive `text`, `level`, and `slug` from the capture group; or
-- Use the result of `render()` if Astro exposes a headings list (e.g. from `@astrojs/mdx` or remark); then pass that into BlogLayout instead of building TOC from `post.body` with an HTML regex.
-
-**Impact:** Any UI that uses `tableOfContents` (e.g. in-page TOC) is currently non-functional.
+**Current:** In `src/pages/p/[...slug].astro`, TOC is derived from markdown headings with `/^(#{2,3})\s+(.+)$/gm`; `text`, `level`, and `slug` are derived and passed to BlogLayout. BaseLayout converts the TOC array to a boolean and passes it to `generateStructuredData`, so the article schema gets `hasPart` (Table of Contents) when the post has headings. There is no in-page TOC UI yet; the data is used for JSON-LD only.
 
 ---
 
@@ -139,7 +136,7 @@ In Astro content collections, `entry.body` is **raw markdown**, not HTML. So thi
 
 **Current:** No `client:load` / `client:visible` / `client:idle` on components. Client JS comes from:
 
-- Inline scripts in BaseLayout (image modal, FOUC), ReadStateServiceInit, BlogLayout (read-status/relative time), Chapter (read state + progress), PerformanceMonitor, etc.
+- Inline scripts in BaseLayout (image modal, FOUC), ReadStateServiceInit (no `import.meta` in inline script; uses `define:vars` for dev flag), BlogLayout (read-status/relative time; script is a module, reads `postSlug` from DOM), Chapter (read state + progress), PerformanceMonitor, etc.
 - `relativeReadTime.client.ts` imported in BlogLayout and Chapter (bundled).
 - SearchBar (script bundled; build shows ~9.43 kB for `SearchBar.astro_astro_type_script_index_0_lang.*.js`).
 
@@ -201,7 +198,7 @@ In Astro content collections, `entry.body` is **raw markdown**, not HTML. So thi
 
 ### 4.2 TypeScript and `any`
 
-**Current:** `strict: true`, `strictNullChecks: true` in tsconfig. Good.
+**Current:** `strict: true`, `strictNullChecks: true` in tsconfig. Good. `Window.ReadStateService` is declared in `src/env.d.ts` for client scripts that use the read-state singleton.
 
 **`any` usage:**  
 - `types/layout.ts`: `posts?: any[]`, `currentPost?: any`, `allPosts?: any[]` — replace with `CollectionEntry<'blog'>[]` and `CollectionEntry<'blog'>` where appropriate.  
@@ -245,6 +242,8 @@ In Astro content collections, `entry.body` is **raw markdown**, not HTML. So thi
 - `.prose * { max-width: 100% !important; }` is broad; keep only if you’ve verified it doesn’t break components.  
 - Image modal and `.a-poem` are in global.css; consider moving to a component-scoped style or a small “overrides” file to keep global.css for tokens and base only.
 
+**Fonts (current):** `src/styles/fonts.css` defines only Open Sans locally (woff2). Lora and Source Serif Pro have no local `@font-face`; they are loaded solely via the Google Fonts stylesheet in BaseHead.astro to avoid 404s when gstatic URLs change.
+
 **Recommendation:** Optional: add a one-line comment at the top of `global.css` listing which files define theme tokens (e.g. `global.css`, `tailwind.config.js`) so future edits don’t miss one.
 
 ---
@@ -273,7 +272,7 @@ In Astro content collections, `entry.body` is **raw markdown**, not HTML. So thi
 
 ## 8. Refactoring Roadmap (Ordered by Leverage)
 
-1. **Fix TOC** — Use markdown heading regex or render() headings so TOC works (critical bug).
+1. ~~**Fix TOC**~~ — **Done.** Markdown heading regex in `[...slug].astro`; TOC wired into structured data.
 2. **Unify storage constants** — Single source of truth for ReadStateService keys/events/timing (prevents subtle bugs).
 3. **Use remark `minutesRead` in post page** — Remove duplicate reading-time calculation in `[...slug].astro` and prefer `post.data.minutesRead` where available.
 4. **Centralize category name resolution** — One helper (e.g. in `categoryUtils` or `data/categories`); use in [...slug], Chapter, and anywhere else.
@@ -288,17 +287,19 @@ In Astro content collections, `entry.body` is **raw markdown**, not HTML. So thi
 
 ## Summary Table
 
-| Area              | Severity   | Action |
-|-------------------|-----------|--------|
-| TOC bug           | Critical  | Fix heading extraction (markdown or render()) |
-| Storage constants | Critical  | Single source; no inline duplicate |
-| Reading time      | High      | Use remark `minutesRead`; avoid double compute |
-| SearchBar data    | High      | Fetch once; pass as props |
-| Category name     | Medium    | Centralize in categoryUtils / data |
-| relativeReadTime  | Medium    | Single implementation |
-| DefaultImage FS   | Medium    | Resolve default list once at build |
-| TypeScript `any`  | Medium    | Tighten layout and collection types |
-| ESLint/CI         | Low       | Add and run in CI |
-| Brain-science cache | Low    | Optional build-time cache |
+| Area                | Severity   | Status | Action |
+|---------------------|-----------|--------|--------|
+| TOC bug             | Critical  | Done   | Markdown heading extraction; TOC wired to structured data |
+| Storage constants   | Critical  | Open   | Single source; no inline duplicate |
+| Reading time        | High      | Open   | Use remark `minutesRead`; avoid double compute |
+| SearchBar data      | High      | Open   | Fetch once; pass as props |
+| Category name       | Medium    | Open   | Centralize in categoryUtils / data |
+| relativeReadTime    | Medium    | Open   | Single implementation |
+| DefaultImage FS     | Medium    | Open   | Resolve default list once at build |
+| TypeScript `any`    | Medium    | Open   | Tighten layout and collection types |
+| ESLint/CI           | Low       | Open   | Add and run in CI |
+| Brain-science cache| Low       | Open   | Optional build-time cache |
+
+**Other changes reflected:** Fonts (Lora, Source Serif Pro) no longer have local @font-face; client script fixes (ReadStateServiceInit, BlogLayout module); `Window.ReadStateService` typed in env.d.ts.
 
 This audit should be re-run after major refactors or when doubling content or adding new feature areas.
