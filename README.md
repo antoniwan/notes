@@ -24,7 +24,7 @@ A personal notes site exploring fatherhood, masculinity, culture, and modern col
 - **MDX** - Markdown with JSX support
 - **Sharp 0.33.5** - Image optimization
 - **Reading Time Plugin** - Automatic reading time calculation using remark plugin
-- **Giscus** - GitHub Discussions-based comments
+- **Remark42** - Self-hosted comments with social login
 - **Vercel** - Deployment platform
 
 ## Quick Start
@@ -45,7 +45,6 @@ Visit `http://localhost:4321` to view the site.
 | `npm run dev`                        | Start development server                |
 | `npm run build`                      | Build for production                    |
 | `npm run preview`                    | Preview production build                |
-| `npm run setup-comments`             | Setup Giscus comment system             |
 | `npm run generate-favicons`          | Generate favicon assets                 |
 | `npm run validate-feeds`             | Validate RSS and JSON feeds             |
 | `npm run audit-frontmatter`          | Audit frontmatter consistency           |
@@ -61,7 +60,7 @@ notes/
 ├── public/                 # Static assets
 ├── src/
 │   ├── components/        # UI components (34 Astro components)
-│   ├── config/            # Configuration files (storage, giscus, assets)
+│   ├── config/            # Configuration files (storage, comments, assets)
 │   ├── content/p/         # Blog posts (63 markdown files)
 │   ├── data/              # Categories, navigation, tags, and quotes
 │   ├── layouts/           # Page layouts (BaseLayout, BlogLayout, etc.)
@@ -221,7 +220,7 @@ language: ["es"]
 
 - **Image Optimization** - WebP conversion with clickable modals and image rotators
 - **RSS/JSON Feeds** - Full content syndication with enhanced metadata
-- **Comments System** - Privacy-focused Giscus integration
+- **Comments System** - Privacy-focused Remark42 integration with social login
 - **Social Sharing** - Multi-platform sharing (Twitter, BlueSky, Facebook, Threads, LinkedIn)
 - **Internal API** - Stoic quotes system for enhanced user experience
 - **Multilingual Support** - Translation linking with Puerto Rico flag for Spanish 🇵🇷

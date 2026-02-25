@@ -51,6 +51,8 @@ const { class: className = '' } = Astro.props;
 </button>
 
 <script>
+  import { THEME_CHANGE_EVENT } from '../utils/themeEvents';
+
   // Enhanced theme toggle function
   function setTheme(theme: 'dark' | 'light') {
     const root = document.documentElement;
@@ -66,7 +68,7 @@ const { class: className = '' } = Astro.props;
     }
 
     // Dispatch custom event for other components that might need to know about theme changes
-    window.dispatchEvent(new CustomEvent('themechange', { detail: { theme } }));
+    window.dispatchEvent(new CustomEvent(THEME_CHANGE_EVENT, { detail: { theme } }));
   }
 
   // Toggle theme function

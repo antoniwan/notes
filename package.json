@@ -13,7 +13,6 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "setup-comments": "node scripts/setup-comments.js",
     "generate-favicons": "node scripts/generate-favicons.js",
     "validate-feeds": "node scripts/validate-feeds.js",
     "audit-frontmatter": "node scripts/audit-frontmatter.js",

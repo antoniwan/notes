@@ -1,161 +1,203 @@
 ---
-interface Props {
-  title?: string;
-  theme?: 'light' | 'dark' | 'auto';
-  repo: string;
-  repoId: string;
-  category: string;
-  categoryId: string;
-  mapping?: string;
-  strict?: boolean;
-  reactionsEnabled?: boolean;
-  emitMetadata?: boolean;
-  inputPosition?: 'top' | 'bottom';
-  lang?: string;
-  loading?: 'lazy' | 'eager';
-}
+import { commentsConfig } from '../config/comments';
+import { generateCanonicalUrl } from '../utils/seo';
 
-const {
-  title,
-  theme = 'auto',
-  repo,
-  repoId,
-  category,
-  categoryId,
-  mapping = 'title',
-  strict = false,
-  reactionsEnabled = true,
-  emitMetadata = false,
-  inputPosition = 'bottom',
-  lang = 'en',
-  loading = 'lazy',
-} = Astro.props;
-
-// Get the current page URL and title for mapping
-const currentUrl = Astro.url.href;
-const currentPath = Astro.url.pathname;
-const currentTitle = Astro.props.title || 'Untitled';
+const pageUrl = generateCanonicalUrl(Astro.url.pathname);
+const { host, siteId } = commentsConfig;
 ---
 
 <div class="comments-section mt-12 pt-8">
   <h2 class="mb-6 text-2xl font-bold text-[rgb(var(--color-text))]">💬 Join the Conversation</h2>
   <p class="text-body-muted mb-8">
     Share your thoughts, ask questions, or simply let me know what resonated with you. I read and
-    respond to every comment personally.
+    respond to every comment personally. Sign in with your favorite social account to participate.
   </p>
 
-  <div class="giscus-container overflow-hidden rounded-lg bg-[rgb(var(--color-bg))]">
-    <div id="giscus-fallback" class="hidden p-8 text-center text-[rgb(var(--color-text-muted))]">
-      <p>Comments are loading...</p>
-      <p class="mt-2 text-sm">
-        If comments don't appear, you can
-        <a
-          href="https://github.com/antoniwan/notes/discussions"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="link"
-        >
-          join the discussion on GitHub
-        </a>
+  <div
+    id="comments-container"
+    class="remark42-container overflow-hidden rounded-lg bg-[rgb(var(--color-bg))]"
+    data-host={host}
+    data-site-id={siteId}
+    data-page-url={pageUrl}
+  >
+    <div id="remark42"></div>
+    <noscript>
+      <p class="p-8 text-center text-[rgb(var(--color-text-muted))]">
+        Please enable JavaScript to view comments.
       </p>
-      <p class="mt-4 text-xs text-[rgb(var(--color-text-muted))]">
-        First-time visitors: A discussion thread will be created automatically when you comment.
-      </p>
-    </div>
-    <script
-      src="https://giscus.app/client.js"
-      data-repo={repo}
-      data-repo-id={repoId}
-      data-category={category}
-      data-category-id={categoryId}
-      data-mapping={mapping}
-      data-strict={strict}
-      data-reactions-enabled={reactionsEnabled}
-      data-emit-metadata={emitMetadata}
-      data-input-position={inputPosition}
-      data-lang={lang}
-      data-loading={loading}
-      data-theme={theme}
-      crossorigin="anonymous"
-      async
-      onerror="document.getElementById('giscus-fallback').classList.remove('hidden')"></script>
+    </noscript>
   </div>
 </div>
 
 <script>
-  // Theme detection and Giscus theme synchronization
-  function updateGiscusTheme() {
-    const isDark = document.documentElement.classList.contains('dark');
-    const giscusFrame = document.querySelector('iframe[src*="giscus.app"]') as HTMLIFrameElement;
+  import type { Remark42Instance } from '../types/comments';
+  import { createRemark42Instance, whenRemark42Ready } from '../utils/remark42.client';
+  import { THEME_CHANGE_EVENT } from '../utils/themeEvents';
 
-    if (giscusFrame && giscusFrame.contentWindow) {
+  // Store the current Remark42 instance so we can destroy it on SPA navigation
+  let remark42Instance: Remark42Instance | null = null;
+
+  // Store the lazy-load observer so we can disconnect it on navigation (avoids leak when user never scrolls to comments)
+  let lazyLoadObserver: IntersectionObserver | null = null;
+
+  function initRemark42() {
+    // Always destroy any existing instance on navigation, even if the new page has no comments.
+    // This prevents keeping an instance alive that's still attached to DOM nodes removed by Astro.
+    if (window.REMARK42 && remark42Instance) {
       try {
-        giscusFrame.contentWindow.postMessage(
-          { giscus: { setConfig: { theme: isDark ? 'dark' : 'light' } } },
-          'https://giscus.app',
-        );
-      } catch (error) {
-        // Failed to update Giscus theme
+        remark42Instance.destroy();
+      } catch {
+        // Instance may already be torn down
       }
+      remark42Instance = null;
     }
-  }
 
-  // Wait for Giscus to load before trying to update theme
-  function waitForGiscus() {
-    const giscusFrame = document.querySelector('iframe[src*="giscus.app"]') as HTMLIFrameElement;
-    if (giscusFrame && giscusFrame.contentWindow) {
-      // Wait a bit more to ensure Giscus is fully initialized
-      setTimeout(() => {
-        updateGiscusTheme();
-      }, 200);
+    // Disconnect any previous lazy-load observer to avoid leaking one per navigation (view transitions)
+    if (lazyLoadObserver) {
+      lazyLoadObserver.disconnect();
+      lazyLoadObserver = null;
+    }
+
+    const container = document.getElementById('comments-container');
+    if (!container) return;
+
+    const host = container.dataset.host;
+    const siteId = container.dataset.siteId;
+    const pageUrl = container.dataset.pageUrl ?? window.location.href;
+
+    if (!host || !siteId) return;
+
+    const node = document.getElementById('remark42');
+    if (!node) return;
+
+    if (window.REMARK42) {
+      remark42Instance = createRemark42Instance(node, host, siteId, pageUrl);
+      return;
+    }
+
+    // Script not loaded yet: load it, then create instance when REMARK42 is ready
+    function loadScript() {
+      const scriptEl = document.querySelector(`script[src="${host}/web/embed.js"]`);
+      if (scriptEl) {
+        whenRemark42Ready(() => {
+          const cont = document.getElementById('comments-container');
+          const el = document.getElementById('remark42');
+          const h = cont?.dataset.host;
+          const sid = cont?.dataset.siteId;
+          const url = cont?.dataset.pageUrl ?? window.location.href;
+          if (!el || !h || !sid) return;
+          if (remark42Instance) {
+            try {
+              remark42Instance.destroy();
+            } catch {}
+            remark42Instance = null;
+          }
+          remark42Instance = createRemark42Instance(el, h, sid, url);
+        });
+        return;
+      }
+
+      // Remark42 embed.js reads window.remark_config on load; set it so they don't throw (reading 'host' of undefined)
+      window.remark_config = {
+        host,
+        site_id: siteId,
+        url: pageUrl,
+      };
+
+      const script = document.createElement('script');
+      script.src = `${host}/web/embed.js`;
+      script.async = true;
+      script.defer = true;
+      script.onload = () => {
+        whenRemark42Ready(() => {
+          const cont = document.getElementById('comments-container');
+          const el = document.getElementById('remark42');
+          const h = cont?.dataset.host;
+          const sid = cont?.dataset.siteId;
+          const url = cont?.dataset.pageUrl ?? window.location.href;
+          if (!el || !h || !sid) return;
+          remark42Instance = createRemark42Instance(el, h, sid, url);
+        });
+      };
+      document.head.appendChild(script);
+    }
+
+    // Lazy load: only load when comments section is near the viewport
+    if ('IntersectionObserver' in window) {
+      lazyLoadObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && lazyLoadObserver) {
+              loadScript();
+              lazyLoadObserver.disconnect();
+              lazyLoadObserver = null;
+            }
+          });
+        },
+        { rootMargin: '200px' },
+      );
+      lazyLoadObserver.observe(container);
     } else {
-      // Retry after a short delay
-      setTimeout(waitForGiscus, 100);
+      loadScript();
     }
   }
 
-  // Initialize theme on load
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      // Wait a bit for Giscus script to load
-      setTimeout(waitForGiscus, 500);
-    });
-  } else {
-    setTimeout(waitForGiscus, 500);
+  // Theme sync: update Remark42 when theme changes
+  function updateRemark42Theme() {
+    const isDark = document.documentElement.classList.contains('dark');
+    const theme = isDark ? 'dark' : 'light';
+
+    if (window.REMARK42) {
+      try {
+        window.REMARK42.changeTheme(theme);
+      } catch {
+        // Remark42 not ready yet
+      }
+    }
   }
 
-  // Listen for theme changes via custom event (from ThemeToggle)
-  window.addEventListener('themechange', (event: Event) => {
-    setTimeout(updateGiscusTheme, 200);
-  });
+  // Register theme and navigation listeners only once to avoid leaks when this script
+  // re-runs on each Astro view transition (new listeners would stack and fire repeatedly).
+  const win = window as Window & { __commentsListenersInstalled?: boolean };
+  if (!win.__commentsListenersInstalled) {
+    win.__commentsListenersInstalled = true;
 
-  // Also listen for DOM class changes as a fallback
-  const observer = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-      if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-        setTimeout(updateGiscusTheme, 200); // Small delay to ensure DOM is updated
-      }
+    window.addEventListener(THEME_CHANGE_EVENT, () => {
+      setTimeout(updateRemark42Theme, 100);
     });
-  });
 
-  observer.observe(document.documentElement, {
-    attributes: true,
-    attributeFilter: ['class'],
-  });
+    const themeObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+          setTimeout(updateRemark42Theme, 100);
+        }
+      });
+    });
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+
+    // Re-initialize on every view transition; relies on Astro's astro:page-load (no re-init on plain full reload).
+    document.addEventListener('astro:page-load', initRemark42);
+  }
+
+  // Also initialize on regular page load for non-view-transition navigation
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initRemark42);
+  } else {
+    initRemark42();
+  }
 </script>
 
 <style>
-  /* Ensure proper theme switching */
-  :global(.giscus) {
-    background: transparent !important;
+  /* Remark42 container styling */
+  :global(#remark42) {
+    min-height: 100px;
   }
 
-  /* Dark mode adjustments - using the site's dark class system */
-  :global(.dark .giscus) {
+  /* Ensure Remark42 respects dark mode */
+  :global(.dark #remark42) {
     color-scheme: dark;
-  }
-
-  :global(.giscus:not(.dark)) {
-    color-scheme: light;
   }
 </style>
