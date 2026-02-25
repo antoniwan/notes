@@ -1,3 +1,5 @@
+import type { CollectionEntry } from 'astro:content';
+
 export interface BaseLayoutProps {
   title: string;
   description?: string;
@@ -17,7 +19,7 @@ export interface BaseLayoutProps {
   // Structured data specific
   structuredDataType?: 'website' | 'article' | 'category' | 'tag';
   structuredDataIdentifier?: string;
-  posts?: any[]; // For category/tag pages
+  posts?: CollectionEntry<'blog'>[]; // For category/tag pages
   // Enhanced structured data options
   tableOfContents?:
     | boolean
@@ -59,6 +61,6 @@ export interface BlogLayoutProps extends BaseLayoutProps {
   }[];
   showComments?: boolean;
   translationData?: TranslationData;
-  currentPost?: any; // Current blog post for related posts
-  allPosts?: any[]; // All posts for finding related content
+  currentPost?: CollectionEntry<'blog'>; // Current blog post for related posts
+  allPosts?: CollectionEntry<'blog'>[]; // All posts for finding related content
 }
