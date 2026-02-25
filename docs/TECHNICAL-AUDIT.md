@@ -275,7 +275,7 @@ The project is a well-structured Astro blog with sensible defaults (static prere
 3. ~~**Use remark `minutesRead` in post page**~~ — **Done.** `[...slug].astro` uses `post.data.minutesRead ?? calculateReadingTimeFromMarkdown(post.body)`.
 4. ~~**Centralize category name resolution**~~ — **Done.** `getCategoryName` and `getCategoryNameFromIds` in `src/utils/categoryUtils.ts`; used in [...slug].astro and Chapter.astro.
 5. ~~**Move search data out of SearchBar**~~ — **Done.** `getSearchData()` in `src/data/searchIndex.ts`; BaseLayout fetches once and passes to Header → SearchBar as `searchData` prop.
-6. **Single relative-read-time implementation** — One module, used from server and client where appropriate.
+6. ~~**Single relative-read-time implementation**~~ — **Done.** One shared module (`relativeReadTime.ts`) with client wrapper re-exporting the same functions.
 7. **DefaultImage: resolve default covers once** — Build-time list passed as prop to avoid repeated readdirSync.
 8. **Replace layout `any` types** — Use `CollectionEntry<'blog'>` and typed arrays for posts/currentPost/allPosts.
 9. **Add ESLint + CI** — Format check + lint + `astro check` in CI.
@@ -292,7 +292,7 @@ The project is a well-structured Astro blog with sensible defaults (static prere
 | Reading time        | High      | Done   | Use remark `minutesRead`; fallback in [...slug].astro only when absent |
 | SearchBar data      | High      | Done   | getSearchData() in layout; pass to SearchBar as props |
 | Category name       | Medium    | Done   | Centralized in categoryUtils; used in [...slug], Chapter |
-| relativeReadTime    | Medium    | Open   | Single implementation |
+| relativeReadTime    | Medium    | Done   | Single implementation shared between server and client |
 | DefaultImage FS     | Medium    | Open   | Resolve default list once at build |
 | TypeScript `any`    | Medium    | Open   | Tighten layout and collection types |
 | ESLint/CI           | Low       | Open   | Add and run in CI |
