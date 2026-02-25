@@ -16,7 +16,9 @@ interface MetaAnalysisCache {
 const CACHE_DIR = path.join(process.cwd(), 'src', 'data', '.brain-science-cache');
 const CACHE_FILE = path.join(CACHE_DIR, 'meta-analysis.json');
 
-function buildPostsSignature(posts: CollectionEntry<'blog'>[]): MetaAnalysisCache['postsSignature'] {
+function buildPostsSignature(
+  posts: CollectionEntry<'blog'>[],
+): MetaAnalysisCache['postsSignature'] {
   return posts
     .map((post) => ({
       id: post.id,
@@ -24,7 +26,7 @@ function buildPostsSignature(posts: CollectionEntry<'blog'>[]): MetaAnalysisCach
       pubDate:
         post.data.pubDate instanceof Date
           ? post.data.pubDate.toISOString()
-          : post.data.pubDate ?? null,
+          : (post.data.pubDate ?? null),
     }))
     .sort((a, b) => a.id.localeCompare(b.id));
 }
@@ -78,4 +80,3 @@ export function saveMetaAnalysisCache(
     // If cache writing fails for any reason, ignore and continue with fresh analyses
   }
 }
-

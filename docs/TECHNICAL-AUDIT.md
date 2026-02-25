@@ -311,7 +311,7 @@ The project is a well-structured Astro blog with sensible defaults (static prere
 | DefaultImage FS     | Medium   | Done   | getDefaultCoverUrls() in data layer; DefaultImage uses it                                                                              |
 | TypeScript `any`    | Medium   | Done   | Layout props now typed with `CollectionEntry<'blog'>`; remaining `any` usage in search/structured-data code can be tightened gradually |
 | ESLint/CI           | Low      | Done   | ESLint configured; CI runs format check, `astro check`, and lint                                                                       |
-| Brain-science cache | Low      | Done   | Build-time JSON cache for meta-analysis metrics; reused across builds when post signatures match                                      |
+| Brain-science cache | Low      | Done   | Build-time JSON cache for meta-analysis metrics; reused across builds when post signatures match                                       |
 
 **Other changes reflected:** Fonts (Lora, Source Serif Pro) no longer have local @font-face; client script fixes (ReadStateServiceInit, BlogLayout module); `Window.ReadStateService` typed in env.d.ts.
 
