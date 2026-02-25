@@ -143,8 +143,12 @@ const searchDataJson = JSON.stringify(searchData);
 
       // Focus events
       this.input?.addEventListener('focus', () => {
-        if (this.input?.value.trim()) {
+        const hasQuery = !!this.input?.value.trim();
+        if (hasQuery) {
           this.showResults();
+          if (this.clearBtn) {
+            this.clearBtn.classList.toggle('hidden', !hasQuery);
+          }
         }
       });
 
@@ -478,6 +482,10 @@ const searchDataJson = JSON.stringify(searchData);
     hideResults() {
       if (this.results) {
         this.results.classList.add('hidden');
+      }
+      // Hide clear button when closing results without navigating
+      if (this.clearBtn) {
+        this.clearBtn.classList.add('hidden');
       }
     }
 
