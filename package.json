@@ -1,7 +1,7 @@
 {
   "name": "notes blog",
   "type": "module",
-  "version": "4.16.9",
+  "version": "4.17.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/antoniwan/notes.git"
