@@ -1,7 +1,6 @@
 ---
 import { getCategoryNameFromIds } from '../utils/categoryUtils';
 import { calculateReadingTimeFromMarkdown } from '../utils/readingTime';
-import { formatRelativeReadTimeShort } from '../utils/relativeReadTime.client';
 
 export interface Props {
   posts: any[];
@@ -80,41 +79,40 @@ const { posts, chapterTitle, chapterId, defaultExpanded = true } = Astro.props;
 
 <script>
   // ReadStateService is initialized by ReadStateServiceInit component in BaseLayout
-  // Get the singleton instance
-  const readStateService = (window as any).ReadStateService?.getInstance();
+  // Get the singleton instance (typed as any for client script)
+  const readStateService: any = (window as any).ReadStateService?.getInstance
+    ? (window as any).ReadStateService.getInstance()
+    : undefined;
 
-  // formatRelativeReadTimeShort is imported at the top of the file from relativeReadTime.client
-
-  function updateIndicators(): void {
+  function updateIndicators() {
     if (!readStateService) return; // Exit early if service not available
 
     document.querySelectorAll('.read-status').forEach((statusElement) => {
-      const postSlug = (statusElement as HTMLElement).dataset.postSlug;
-      const iconElement = statusElement.querySelector('.status-icon') as HTMLElement;
-      const textElement = statusElement.querySelector('.status-text') as HTMLElement;
+      const statusEl = statusElement as HTMLElement;
+      const postSlug = statusEl.dataset.postSlug;
+      const iconElement = statusEl.querySelector('.status-icon') as HTMLElement | null;
+      const textElement = statusEl.querySelector('.status-text') as HTMLElement | null;
 
-      if (postSlug) {
-        const readData = readStateService.getReadData(postSlug);
-        const readingTimeElement = document.querySelector(
-          `.reading-time[data-post-slug="${postSlug}"]`,
-        ) as HTMLElement;
+      if (!postSlug || !iconElement || !textElement) return;
 
-        if (readData) {
-          iconElement.textContent = '✅';
-          textElement.textContent = formatRelativeReadTimeShort(readData.readAt);
-          statusElement.classList.add('read');
-          // Hide reading time for read posts
-          if (readingTimeElement) {
-            readingTimeElement.style.display = 'none';
-          }
-        } else {
-          iconElement.textContent = '⭕';
-          textElement.textContent = 'Unread';
-          statusElement.classList.remove('read');
-          // Show reading time for unread posts
-          if (readingTimeElement) {
-            readingTimeElement.style.display = 'inline';
-          }
+      const isRead = readStateService.isRead(postSlug);
+      const readingTimeElement = document.querySelector(
+        `.reading-time[data-post-slug="${postSlug}"]`,
+      ) as HTMLElement | null;
+
+      if (isRead) {
+        iconElement.textContent = '✅';
+        textElement.textContent = 'Read';
+        statusEl.classList.add('read');
+        if (readingTimeElement) {
+          readingTimeElement.style.display = 'none';
+        }
+      } else {
+        iconElement.textContent = '⭕';
+        textElement.textContent = 'Unread';
+        statusEl.classList.remove('read');
+        if (readingTimeElement) {
+          readingTimeElement.style.display = 'inline';
         }
       }
     });
@@ -123,9 +121,10 @@ const { posts, chapterTitle, chapterId, defaultExpanded = true } = Astro.props;
     updateChapterProgress();
   }
 
-  function updateChapterProgress(): void {
+  function updateChapterProgress() {
     document.querySelectorAll('.chapter-progress').forEach((progressElement) => {
-      const chapterId = (progressElement as HTMLElement).dataset.chapterId;
+      const progressEl = progressElement as HTMLElement;
+      const chapterId = progressEl.dataset.chapterId;
       if (!chapterId) return;
 
       const chapterContent = document.getElementById(`chapter-${chapterId}`);
@@ -139,22 +138,22 @@ const { posts, chapterTitle, chapterId, defaultExpanded = true } = Astro.props;
       const percentage = totalPosts > 0 ? Math.round((readCount / totalPosts) * 100) : 0;
 
       // Update progress bar
-      const progressFill = progressElement.querySelector('.progress-fill') as HTMLElement;
+      const progressFill = progressEl.querySelector('.progress-fill') as HTMLElement | null;
       if (progressFill) {
         progressFill.style.width = `${percentage}%`;
       }
 
       // Update progress text
-      const progressText = progressElement.querySelector('.progress-text') as HTMLElement;
+      const progressText = progressEl.querySelector('.progress-text') as HTMLElement | null;
       if (progressText) {
         progressText.textContent = `${percentage}%`;
       }
 
       // Add completion class for styling
       if (percentage === 100) {
-        progressElement.classList.add('completed');
+        progressEl.classList.add('completed');
       } else {
-        progressElement.classList.remove('completed');
+        progressEl.classList.remove('completed');
       }
     });
   }
@@ -165,41 +164,47 @@ const { posts, chapterTitle, chapterId, defaultExpanded = true } = Astro.props;
       this.init();
     }
 
-    private init(): void {
+    init(): void {
       // Add click handlers to chapter headers
       document.querySelectorAll('.chapter-header').forEach((header) => {
-        header.addEventListener('click', (e) => {
+        const headerEl = header as HTMLElement;
+        headerEl.addEventListener('click', (e) => {
           e.preventDefault();
-          this.toggleChapter(header as HTMLElement);
+          this.toggleChapter(headerEl);
         });
-
-        // Keyboard support can be added later if needed
       });
     }
 
-    private toggleChapter(header: HTMLElement): void {
+    toggleChapter(header: HTMLElement): void {
       const isExpanded = header.getAttribute('aria-expanded') === 'true';
       const contentId = header.getAttribute('aria-controls');
-      const content = document.getElementById(contentId!);
-      const icon = header.querySelector('.expand-icon') as HTMLElement;
+      if (!contentId) return;
+
+      const content = document.getElementById(contentId);
+      const icon = header.querySelector('.expand-icon') as HTMLElement | null;
+      if (!icon) return;
 
       if (isExpanded) {
         // Collapse
         header.setAttribute('aria-expanded', 'false');
-        content?.classList.add('collapsed');
+        if (content) content.classList.add('collapsed');
         icon.style.transform = 'rotate(0deg)';
       } else {
         // Expand
         header.setAttribute('aria-expanded', 'true');
-        content?.classList.remove('collapsed');
+        if (content) content.classList.remove('collapsed');
         icon.style.transform = 'rotate(180deg)';
       }
     }
   }
 
-  // Subscribe to read state changes (only if service is available)
-  let unsubscribe: (() => void) | null = null;
-  let chapterManager: ChapterManager;
+  let unsubscribe = null;
+  let chapterManager = null;
+
+  function initChapterFeatures() {
+    chapterManager = new ChapterManager();
+    updateIndicators();
+  }
 
   if (readStateService) {
     unsubscribe = readStateService.subscribeToAll(() => {
@@ -208,13 +213,9 @@ const { posts, chapterTitle, chapterId, defaultExpanded = true } = Astro.props;
 
     // Initial update
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => {
-        updateIndicators();
-        chapterManager = new ChapterManager();
-      });
+      document.addEventListener('DOMContentLoaded', initChapterFeatures);
     } else {
-      updateIndicators();
-      chapterManager = new ChapterManager();
+      initChapterFeatures();
     }
   } else {
     // Initialize chapter manager even if service not available
@@ -229,7 +230,7 @@ const { posts, chapterTitle, chapterId, defaultExpanded = true } = Astro.props;
 
   // Cleanup on page unload
   window.addEventListener('beforeunload', () => {
-    if (unsubscribe) {
+    if (typeof unsubscribe === 'function') {
       unsubscribe();
     }
   });

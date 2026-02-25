@@ -1,6 +1,6 @@
 # Notes
 
-[![Version](https://img.shields.io/badge/version-4.18.1-blue.svg)](https://github.com/antoniwan/notes/releases)
+[![Version](https://img.shields.io/badge/version-4.18.2-blue.svg)](https://github.com/antoniwan/notes/releases)
 
 A personal notes site: essays and notes on fatherhood, masculinity, culture, and modern life. Raw reflections on thinking, consciousness, and the soft heart inside the hard world.
 

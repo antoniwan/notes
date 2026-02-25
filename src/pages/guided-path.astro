@@ -212,29 +212,26 @@ const sortedChapters = nonEmptyChapters.sort(
 
   // Total progress tracking
   class TotalProgressTracker {
-    private boundPostReadHandler: () => void;
-    private boundClearedHandler: () => void;
-    private boundDataUpdatedHandler: (event: any) => void;
-    private boundStorageHandler: (event: any) => void;
-    private storageKey = STORAGE_KEY;
-    private fallbackKey = FALLBACK_KEY;
-
     constructor() {
+      this.storageKey = STORAGE_KEY;
+      this.fallbackKey = FALLBACK_KEY;
+
       this.boundPostReadHandler = this.handlePostRead.bind(this);
       this.boundClearedHandler = this.handleClearedPosts.bind(this);
       this.boundDataUpdatedHandler = this.handleDataUpdated.bind(this);
       this.boundStorageHandler = this.handleStorageChange.bind(this);
+
       this.init();
     }
 
-    private updateTotalProgress(): void {
-      const totalProgressFill = document.getElementById('total-progress-fill') as HTMLElement;
-      const totalProgressText = document.getElementById('total-progress-text') as HTMLElement;
-      const totalPostsElement = document.getElementById('total-posts') as HTMLElement;
-      const readPostsElement = document.getElementById('read-posts') as HTMLElement;
-      const remainingPostsElement = document.getElementById('remaining-posts') as HTMLElement;
-      const completedChaptersElement = document.getElementById('completed-chapters') as HTMLElement;
-      const completionMessage = document.getElementById('completion-message') as HTMLElement;
+    updateTotalProgress() {
+      const totalProgressFill = document.getElementById('total-progress-fill');
+      const totalProgressText = document.getElementById('total-progress-text');
+      const totalPostsElement = document.getElementById('total-posts');
+      const readPostsElement = document.getElementById('read-posts');
+      const remainingPostsElement = document.getElementById('remaining-posts');
+      const completedChaptersElement = document.getElementById('completed-chapters');
+      const completionMessage = document.getElementById('completion-message');
 
       if (!totalProgressFill || !totalProgressText) return;
 
@@ -253,7 +250,7 @@ const sortedChapters = nonEmptyChapters.sort(
       totalProgressFill.style.width = `${percentage}%`;
 
       // Update text elements
-      if (totalProgressText) totalProgressText.textContent = `${percentage}%`;
+      totalProgressText.textContent = `${percentage}%`;
       if (totalPostsElement) totalPostsElement.textContent = totalPosts.toString();
       if (readPostsElement) readPostsElement.textContent = readCount.toString();
       if (remainingPostsElement) remainingPostsElement.textContent = remainingCount.toString();
@@ -276,29 +273,29 @@ const sortedChapters = nonEmptyChapters.sort(
       }
     }
 
-    private handlePostRead(): void {
+    handlePostRead() {
       setTimeout(() => this.updateTotalProgress(), CROSS_TAB_DELAY);
     }
 
-    private handleClearedPosts(): void {
+    handleClearedPosts() {
       setTimeout(() => this.updateTotalProgress(), CROSS_TAB_DELAY);
     }
 
-    private handleDataUpdated(event: any): void {
+    handleDataUpdated(event) {
       // React to immediate data updates from same tab
-      if (event.detail?.type === 'post-read') {
+      if (event.detail && event.detail.type === 'post-read') {
         setTimeout(() => this.updateTotalProgress(), SAME_TAB_DELAY);
       }
     }
 
-    private handleStorageChange(event: any): void {
+    handleStorageChange(event) {
       // React to localStorage changes from other tabs/windows
       if (event.key === this.storageKey || event.key === this.fallbackKey) {
         setTimeout(() => this.updateTotalProgress(), CROSS_TAB_DELAY);
       }
     }
 
-    private init(): void {
+    init() {
       // Update on page load
       this.updateTotalProgress();
 
@@ -313,7 +310,7 @@ const sortedChapters = nonEmptyChapters.sort(
       window.addEventListener('reading-data-updated', this.boundDataUpdatedHandler);
     }
 
-    cleanup(): void {
+    cleanup() {
       window.removeEventListener('post-read', this.boundPostReadHandler);
       window.removeEventListener('read-posts-cleared', this.boundClearedHandler);
       window.removeEventListener('storage', this.boundStorageHandler);
@@ -322,7 +319,7 @@ const sortedChapters = nonEmptyChapters.sort(
   }
 
   // Initialize when DOM is ready
-  let totalProgressTracker: TotalProgressTracker;
+  let totalProgressTracker = null;
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
