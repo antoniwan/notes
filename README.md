@@ -81,6 +81,10 @@ notes/
 └── astro.config.mjs
 ```
 
+### Architecture & folder conventions
+
+- **Feature-specific components**: Components that belong to a specific feature area (for example `brain-science`) live under `src/components/<feature>/` and are only imported by pages in the matching route segment (for example `src/pages/brain-science/`). Shared, reusable UI lives at the root of `src/components/` and can be imported anywhere. This keeps feature internals from leaking into unrelated routes and helps avoid circular dependencies as new features are added.
+
 ## Content Management
 
 ### Blog posts
