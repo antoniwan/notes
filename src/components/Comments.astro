@@ -108,15 +108,19 @@ const { host, siteId } = commentsConfig;
       const scriptEl = document.querySelector(`script[src="${host}/web/embed.js"]`);
       if (scriptEl) {
         whenRemark42Ready(() => {
+          const cont = document.getElementById('comments-container');
           const el = document.getElementById('remark42');
-          if (!el || !host || !siteId) return;
+          const h = cont?.dataset.host;
+          const sid = cont?.dataset.siteId;
+          const url = cont?.dataset.pageUrl ?? window.location.href;
+          if (!el || !h || !sid) return;
           if (remark42Instance) {
             try {
               remark42Instance.destroy();
             } catch {}
             remark42Instance = null;
           }
-          remark42Instance = createRemark42Instance(el, host, siteId, pageUrl);
+          remark42Instance = createRemark42Instance(el, h, sid, url);
         });
         return;
       }
@@ -134,9 +138,13 @@ const { host, siteId } = commentsConfig;
       script.defer = true;
       script.onload = () => {
         whenRemark42Ready(() => {
+          const cont = document.getElementById('comments-container');
           const el = document.getElementById('remark42');
-          if (!el || !host || !siteId) return;
-          remark42Instance = createRemark42Instance(el, host, siteId, pageUrl);
+          const h = cont?.dataset.host;
+          const sid = cont?.dataset.siteId;
+          const url = cont?.dataset.pageUrl ?? window.location.href;
+          if (!el || !h || !sid) return;
+          remark42Instance = createRemark42Instance(el, h, sid, url);
         });
       };
       document.head.appendChild(script);
