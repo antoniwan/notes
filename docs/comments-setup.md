@@ -1,65 +1,72 @@
 # Comments Setup
 
-Setup for the Giscus comment system using GitHub Discussions.
+Setup for the Remark42 comment system — a self-hosted, privacy-focused comment engine with social login support.
+
+## Overview
+
+Remark42 replaces the previous GitHub-based comment system with a universal one. Visitors can sign in with Google, Twitter/X, Facebook, GitHub, Apple, Discord, Telegram, and more.
+
+## Prerequisites
+
+You need a running Remark42 instance. Options:
+
+- **Railway** (recommended): One-click deploy at [railway.com](https://railway.app)
+- **Fly.io**: Deploy a lightweight container
+- **VPS**: Any small server running Docker
 
 ## Setup Steps
 
-### 1. Enable GitHub Discussions
+### 1. Deploy Remark42
 
-1. Go to your GitHub repository: `https://github.com/your-username/blog`
-2. Click on **Settings** tab
-3. Scroll down to **Features** section
-4. Check the box for **Discussions**
-5. Click **Save**
+Follow the [official Remark42 installation guide](https://remark42.com/docs/getting-started/installation/) to deploy your instance.
 
-### 2. Create a Discussion Category
+Key environment variables for your Remark42 server:
 
-1. Go to the **Discussions** tab in your repository
-2. Click **Categories** in the sidebar
-3. Click **New category**
-4. Create a category called "Comments"
-5. Set it as a **Discussion** type
-6. Make it **Public** so visitors can comment
-7. Click **Create category**
-
-### 3. Get Your Repository Information
-
-1. Go to [giscus.app](https://giscus.app)
-2. Enter your repository: `your-username/blog`
-3. Select the "Comments" category you just created
-4. Choose your preferred mapping (recommended: **pathname**)
-5. Copy the configuration values
-
-### 4. Update Configuration
-
-Edit `src/config/giscus.ts` and replace the placeholder values:
-
-```typescript
-export const giscusConfig = {
-  // Your GitHub repository in the format "username/repository"
-  repo: 'your-username/blog',
-
-  // Repository ID - get this from giscus.app
-  repoId: 'YOUR_ACTUAL_REPO_ID',
-
-  // Category name for discussions
-  category: 'Comments',
-
-  // Category ID - get this from giscus.app
-  categoryId: 'YOUR_ACTUAL_CATEGORY_ID',
-
-  // ... rest of the config
-};
+```env
+REMARK_URL=https://comments.yoursite.com
+SITE=notes-antoniwan
+SECRET=your-secret-key
+AUTH_GOOGLE_CID=your-google-client-id
+AUTH_GOOGLE_CSEC=your-google-client-secret
+AUTH_TWITTER_CID=your-twitter-client-id
+AUTH_TWITTER_CSEC=your-twitter-client-secret
+AUTH_FACEBOOK_CID=your-facebook-client-id
+AUTH_FACEBOOK_CSEC=your-facebook-client-secret
+AUTH_GITHUB_CID=your-github-client-id
+AUTH_GITHUB_CSEC=your-github-client-secret
 ```
 
-### 5. Install Giscus App (optional)
+### 2. Configure Social Login Providers
 
-1. Go to [giscus.app](https://giscus.app)
-2. Click **Install giscus** button
-3. This will install the Giscus app to your repository
-4. This enables automatic discussion creation and better integration
+For each social login you want to enable, create an OAuth app with that provider:
 
-## Disable Comments on specific posts
+- **Google**: [Google Cloud Console](https://console.cloud.google.com/) > APIs & Services > Credentials
+- **Twitter/X**: [Twitter Developer Portal](https://developer.twitter.com/)
+- **Facebook**: [Meta for Developers](https://developers.facebook.com/)
+- **GitHub**: [GitHub Developer Settings](https://github.com/settings/developers)
+
+Set the OAuth callback URL to: `https://comments.yoursite.com/auth/<provider>/callback`
+
+### 3. Configure Environment Variables
+
+Set these environment variables in your Vercel project (or `.env` file for local dev):
+
+```env
+PUBLIC_REMARK42_HOST=https://comments.yoursite.com
+PUBLIC_REMARK42_SITE_ID=notes-antoniwan
+```
+
+The `PUBLIC_` prefix is required because these values are used client-side in the browser.
+
+### 4. Test Locally
+
+```bash
+npm run dev
+```
+
+Visit any blog post and scroll to the comments section. The Remark42 widget will load lazily when it comes into view.
+
+## Disable Comments on Specific Posts
 
 Add `showComments: false` to the frontmatter of any post:
 
@@ -72,11 +79,14 @@ showComments: false
 ---
 ```
 
-## Configuration options
+## Configuration
 
-- **mapping**: Mapping strategy (`pathname`, `url`, `title`, `og:title`)
-- **strict**: Create discussions only when explicitly configured
-- **reactionsEnabled**: Enable or disable reactions
-- **inputPosition**: `top` or `bottom`
-- **lang**: Interface language
-- **loading**: `lazy` or `eager`
+The comment system configuration lives in `src/config/comments.ts`. It reads from environment variables with sensible defaults for local development.
+
+## Features
+
+- **Lazy loading**: Comments script only loads when the section scrolls into view (IntersectionObserver with 200px margin)
+- **Theme sync**: Automatically follows the site's dark/light mode toggle
+- **Social login**: Google, Twitter/X, Facebook, GitHub, Apple, Discord, Telegram
+- **Anonymous comments**: Optional — configurable in your Remark42 instance
+- **Privacy-focused**: Self-hosted, no tracking, no ads

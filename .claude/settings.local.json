@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run build:*)",
+      "WebFetch(domain:remark42-production-7df4.up.railway.app)"
+    ]
+  }
+}

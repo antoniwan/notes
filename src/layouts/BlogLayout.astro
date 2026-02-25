@@ -10,7 +10,6 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 import SocialShare from '../components/SocialShare.astro';
 import LanguageToggle from '../components/LanguageToggle.astro';
 import { generateCanonicalUrl } from '../utils/seo';
-import { giscusConfig } from '../config/giscus';
 import type { BlogLayoutProps } from '../types/layout';
 
 interface Props extends BlogLayoutProps {}
@@ -392,24 +391,7 @@ const postSlug = postId; // Alias for backward compatibility in template
           </div>
 
           {/* Comments */}
-          {
-            showComments && (
-              <Comments
-                repo={giscusConfig.repo}
-                repoId={giscusConfig.repoId}
-                category={giscusConfig.category}
-                categoryId={giscusConfig.categoryId}
-                mapping={giscusConfig.mapping}
-                strict={giscusConfig.strict}
-                reactionsEnabled={giscusConfig.reactionsEnabled}
-                emitMetadata={giscusConfig.emitMetadata}
-                inputPosition={giscusConfig.inputPosition}
-                theme={giscusConfig.theme}
-                lang={giscusConfig.lang}
-                loading={giscusConfig.loading}
-              />
-            )
-          }
+          {showComments && <Comments />}
 
           <RelatedPosts currentPost={rest.currentPost} allPosts={rest.allPosts} />
         </main>
