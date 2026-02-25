@@ -2,8 +2,7 @@
 // Enhanced DefaultImage component with performance optimizations
 // This provides variety for posts without specific hero images
 
-import { readdirSync } from 'fs';
-import { join } from 'path';
+import { getDefaultCoverUrls } from '../data/defaultCovers';
 
 interface Props {
   alt?: string;
@@ -23,19 +22,8 @@ const {
   priority = false,
 } = Astro.props;
 
-// Dynamically read default cover images from the directory
-const defaultCoversDir = join(process.cwd(), 'public', 'images', 'default_covers');
-let defaultImages: string[] = [];
-
-try {
-  const files = readdirSync(defaultCoversDir);
-  defaultImages = files
-    .filter((file) => /\.(avif|webp|jpg|jpeg|png)$/i.test(file))
-    .map((file) => `/images/default_covers/${file}`);
-} catch (error) {
-  // Fallback to single default image if directory doesn't exist
-  defaultImages = ['/images/default.avif'];
-}
+// Use build-time list from data layer (resolved once per build)
+const defaultImages = getDefaultCoverUrls();
 
 // Select a random image from the array
 // If a seed is provided, use it for consistent randomization
