@@ -88,25 +88,35 @@ const { host, siteId } = commentsConfig;
       return;
     }
 
-    // Script not loaded yet: load it, then create instance on REMARK42::ready
+    // When REMARK42 is ready (now or later), create the instance. Handles race where
+    // embed.js sets REMARK42 and dispatches REMARK42::ready before our onload/listener runs.
+    function whenRemark42Ready(cb: () => void) {
+      if (window.REMARK42) {
+        cb();
+        return;
+      }
+      window.addEventListener(
+        'REMARK42::ready',
+        cb,
+        { once: true },
+      );
+    }
+
+    // Script not loaded yet: load it, then create instance when REMARK42 is ready
     function loadScript() {
       const scriptEl = document.querySelector(`script[src="${host}/web/embed.js"]`);
       if (scriptEl) {
-        window.addEventListener(
-          'REMARK42::ready',
-          () => {
-            const el = document.getElementById('remark42');
-            if (!el || !host || !siteId) return;
-            if (remark42Instance) {
-              try {
-                remark42Instance.destroy();
-              } catch {}
-              remark42Instance = null;
-            }
-            remark42Instance = createRemark42Instance(el, host, siteId, pageUrl);
-          },
-          { once: true },
-        );
+        whenRemark42Ready(() => {
+          const el = document.getElementById('remark42');
+          if (!el || !host || !siteId) return;
+          if (remark42Instance) {
+            try {
+              remark42Instance.destroy();
+            } catch {}
+            remark42Instance = null;
+          }
+          remark42Instance = createRemark42Instance(el, host, siteId, pageUrl);
+        });
         return;
       }
 
@@ -122,15 +132,11 @@ const { host, siteId } = commentsConfig;
       script.async = true;
       script.defer = true;
       script.onload = () => {
-        window.addEventListener(
-          'REMARK42::ready',
-          () => {
-            const el = document.getElementById('remark42');
-            if (!el || !host || !siteId) return;
-            remark42Instance = createRemark42Instance(el, host, siteId, pageUrl);
-          },
-          { once: true },
-        );
+        whenRemark42Ready(() => {
+          const el = document.getElementById('remark42');
+          if (!el || !host || !siteId) return;
+          remark42Instance = createRemark42Instance(el, host, siteId, pageUrl);
+        });
       };
       document.head.appendChild(script);
     }
