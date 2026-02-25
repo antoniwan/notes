@@ -124,8 +124,8 @@ const structuredData = generateStructuredData({
     <BackToTop />
     <Analytics />
 
-    <!-- Performance Monitoring -->
-    <PerformanceMonitor />
+    <!-- Performance Monitoring (development only) -->
+    {import.meta.env.DEV && <PerformanceMonitor />}
 
     <!-- Service Worker Registration -->
     <ServiceWorkerRegistration />
