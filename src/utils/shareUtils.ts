@@ -12,21 +12,26 @@ export function generateShareUrls(
   url: string,
   description: string = '',
 ): SharePlatform[] {
-  const encodedTitle = encodeURIComponent(title);
+  // Prefer the page's meta description as the primary share text,
+  // falling back to the title if no description is provided.
+  const shareText = description || title;
+  const encodedShareText = encodeURIComponent(shareText);
   const encodedUrl = encodeURIComponent(url);
-  const encodedDescription = encodeURIComponent(description);
 
   return [
     {
       name: 'Twitter',
       icon: '🐦',
-      url: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`,
+      // Twitter/X: use the description (or title) as the main share text,
+      // and include the URL separately so cards still generate correctly.
+      url: `https://twitter.com/intent/tweet?text=${encodedShareText}&url=${encodedUrl}`,
       color: 'hover:bg-blue-500/10 hover:text-blue-500',
     },
     {
       name: 'BlueSky',
       icon: '🌀',
-      url: `https://bsky.app/intent/compose?text=${encodeURIComponent(`${title}\n\n${url}`)}`,
+      // BlueSky: compose text that leads with the description, then the URL.
+      url: `https://bsky.app/intent/compose?text=${encodeURIComponent(`${shareText}\n\n${url}`)}`,
       color: 'hover:bg-sky-500/10 hover:text-sky-500',
     },
     {
@@ -38,7 +43,8 @@ export function generateShareUrls(
     {
       name: 'Threads',
       icon: '🧵',
-      url: `https://www.threads.net/intent/post?text=${encodeURIComponent(`${title}\n\n${url}`)}`,
+      // Threads: same pattern as BlueSky – description first, then URL.
+      url: `https://www.threads.net/intent/post?text=${encodeURIComponent(`${shareText}\n\n${url}`)}`,
       color: 'hover:bg-black/10 hover:text-black dark:hover:bg-white/10 dark:hover:text-white',
     },
     {
