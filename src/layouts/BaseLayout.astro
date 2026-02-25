@@ -35,6 +35,9 @@ const {
   structuredDataIdentifier,
   posts = [],
   postId,
+  hasComments = false,
+  featured = false,
+  draft = false,
 } = Astro.props;
 
 // Auto-generate keywords if not provided
@@ -59,9 +62,9 @@ const structuredData = generateStructuredData({
   category,
   tags,
   tableOfContents: false, // You can make this dynamic based on content
-  hasComments: false, // You can make this dynamic if you track comments
-  featured: false, // You can make this dynamic based on frontmatter
-  draft: false, // You can make this dynamic based on frontmatter
+  hasComments,
+  featured,
+  draft,
 });
 ---
 

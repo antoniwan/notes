@@ -30,29 +30,15 @@ const { host, siteId } = commentsConfig;
 </div>
 
 <script>
+  import type { Remark42Instance } from '../types/comments';
+  import { createRemark42Instance, whenRemark42Ready } from '../utils/remark42.client';
+  import { THEME_CHANGE_EVENT } from '../utils/themeEvents';
+
   // Store the current Remark42 instance so we can destroy it on SPA navigation
-  let remark42Instance: { destroy: () => void } | null = null;
+  let remark42Instance: Remark42Instance | null = null;
 
   // Store the lazy-load observer so we can disconnect it on navigation (avoids leak when user never scrolls to comments)
   let lazyLoadObserver: IntersectionObserver | null = null;
-
-  function createRemark42Instance(
-    node: HTMLElement,
-    host: string,
-    siteId: string,
-    pageUrl: string,
-  ) {
-    const isDark = document.documentElement.classList.contains('dark');
-    const config = {
-      host,
-      site_id: siteId,
-      url: pageUrl,
-      theme: isDark ? 'dark' : 'light',
-      components: ['embed'],
-      no_footer: false,
-    };
-    return window.REMARK42!.createInstance({ node, ...config });
-  }
 
   function initRemark42() {
     // Always destroy any existing instance on navigation, even if the new page has no comments.
@@ -87,20 +73,6 @@ const { host, siteId } = commentsConfig;
     if (window.REMARK42) {
       remark42Instance = createRemark42Instance(node, host, siteId, pageUrl);
       return;
-    }
-
-    // When REMARK42 is ready (now or later), create the instance. Handles race where
-    // embed.js sets REMARK42 and dispatches REMARK42::ready before our onload/listener runs.
-    function whenRemark42Ready(cb: () => void) {
-      if (window.REMARK42) {
-        cb();
-        return;
-      }
-      window.addEventListener(
-        'REMARK42::ready',
-        cb,
-        { once: true },
-      );
     }
 
     // Script not loaded yet: load it, then create instance when REMARK42 is ready
@@ -190,7 +162,7 @@ const { host, siteId } = commentsConfig;
   if (!win.__commentsListenersInstalled) {
     win.__commentsListenersInstalled = true;
 
-    window.addEventListener('themechange', () => {
+    window.addEventListener(THEME_CHANGE_EVENT, () => {
       setTimeout(updateRemark42Theme, 100);
     });
 
@@ -206,6 +178,7 @@ const { host, siteId } = commentsConfig;
       attributeFilter: ['class'],
     });
 
+    // Re-initialize on every view transition; relies on Astro's astro:page-load (no re-init on plain full reload).
     document.addEventListener('astro:page-load', initRemark42);
   }
 

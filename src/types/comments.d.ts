@@ -1,4 +1,5 @@
 // Remark42 Comments System Types
+// Theme sync contract: Comments listens for THEME_CHANGE_EVENT on window; theme state from document.documentElement.classList.contains('dark'). See utils/themeEvents.ts.
 
 export interface CommentsConfig {
   host: string;
