@@ -7,11 +7,6 @@ export interface CommentsConfig {
   components?: readonly string[];
 }
 
-export interface CommentsProps {
-  pageId?: string;
-  theme?: 'light' | 'dark';
-}
-
 // Remark42 instance returned by createInstance (has destroy method)
 export interface Remark42Instance {
   destroy: () => void;

@@ -2,7 +2,9 @@
 // Remark42 is a self-hosted, privacy-focused comment system with social login support.
 // You need a running Remark42 instance — see docs/comments-setup.md for deployment instructions.
 
-export const commentsConfig = {
+import type { CommentsConfig } from '../types/comments';
+
+export const commentsConfig: CommentsConfig = {
   // Remark42 server host URL (no trailing slash)
   host: import.meta.env.PUBLIC_REMARK42_HOST || 'https://remark42-production-7df4.up.railway.app',
 
