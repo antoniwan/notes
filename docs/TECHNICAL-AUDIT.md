@@ -51,18 +51,15 @@ The project is a well-structured Astro blog with sensible defaults (static prere
 
 ---
 
-### 1.3 Reading time computed twice; remark value ignored
+### 1.3 Reading time computed twice; remark value ignored — ✅ FIXED
 
 **Locations:**  
 - `remark-reading-time.mjs` — sets `data.astro.frontmatter.minutesRead` during content load.  
-- `src/pages/p/[...slug].astro` — calls `calculateReadingTimeFromMarkdown(post.body)` and passes it as `minutesRead` to BlogLayout.
+- `src/pages/p/[...slug].astro` — now uses `post.data.minutesRead ?? calculateReadingTimeFromMarkdown(post.body)` and passes it as `minutesRead` to BlogLayout.
 
-**Issue:** Reading time is computed in the remark plugin and again in the page. The remark value (`post.data.minutesRead`) is never used; the page overwrites it. Duplicate work and two sources of truth.
+**Was:** Reading time was computed in the remark plugin and again in the page; the remark value was never used.
 
-**Fix:**  
-- Use `post.data.minutesRead` from the collection (remark plugin) when present.  
-- Pass `minutesRead={post.data.minutesRead ?? readingTime}` (or drop the local calculation for this page).  
-- In components that only have `post.body` (e.g. Chapter, PostCard, RelatedPosts, FeaturedWritingsRotator), keep using `calculateReadingTimeFromMarkdown(post.body)` or, where the entry comes from the collection, prefer `post.data.minutesRead` when available to avoid re-parsing.
+**Current:** The post page prefers `post.data.minutesRead` from the collection and only falls back to `calculateReadingTimeFromMarkdown(post.body)` when absent. Single source of truth for the post page; no duplicate computation there. Components (Chapter, PostCard, RelatedPosts, FeaturedWritingsRotator) still use `calculateReadingTimeFromMarkdown(post.body)`; they can be updated later to prefer `post.data.minutesRead` when the entry is a collection entry.
 
 ---
 
@@ -275,7 +272,7 @@ The project is a well-structured Astro blog with sensible defaults (static prere
 
 1. ~~**Fix TOC**~~ — **Done.** Markdown heading regex in `[...slug].astro`; TOC wired into structured data.
 2. ~~**Unify storage constants**~~ — **Done.** Constants injected via `define:vars` from `config/storage.ts` into ReadStateServiceInit.astro.
-3. **Use remark `minutesRead` in post page** — Remove duplicate reading-time calculation in `[...slug].astro` and prefer `post.data.minutesRead` where available.
+3. ~~**Use remark `minutesRead` in post page**~~ — **Done.** `[...slug].astro` uses `post.data.minutesRead ?? calculateReadingTimeFromMarkdown(post.body)`.
 4. **Centralize category name resolution** — One helper (e.g. in `categoryUtils` or `data/categories`); use in [...slug], Chapter, and anywhere else.
 5. **Move search data out of SearchBar** — Fetch blog (and related) data once at layout/build level; pass into SearchBar as props or shared payload (scales with page count).
 6. **Single relative-read-time implementation** — One module, used from server and client where appropriate.
@@ -292,7 +289,7 @@ The project is a well-structured Astro blog with sensible defaults (static prere
 |---------------------|-----------|--------|--------|
 | TOC bug             | Critical  | Done   | Markdown heading extraction; TOC wired to structured data |
 | Storage constants   | Critical  | Done   | Single source; injected via define:vars |
-| Reading time        | High      | Open   | Use remark `minutesRead`; avoid double compute |
+| Reading time        | High      | Done   | Use remark `minutesRead`; fallback in [...slug].astro only when absent |
 | SearchBar data      | High      | Open   | Fetch once; pass as props |
 | Category name       | Medium    | Open   | Centralize in categoryUtils / data |
 | relativeReadTime    | Medium    | Open   | Single implementation |

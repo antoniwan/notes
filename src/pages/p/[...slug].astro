@@ -25,8 +25,9 @@ interface Props {
 const { post, allPosts } = Astro.props;
 const { Content } = await render(post);
 
-// Calculate reading time from post content
-const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
+// Use reading time from remark plugin when present; otherwise compute from body
+const minutesRead =
+  post.data.minutesRead ?? calculateReadingTimeFromMarkdown(post.body || '');
 
 // Auto-generate keywords from tags and categories
 const keywords = generateKeywords(post.data.tags || [], post.data.category || []);
@@ -62,7 +63,7 @@ const translationData = await getTranslationData(post, allPosts);
   pubDate={post.data.pubDate}
   updatedDate={post.data.updatedDate}
   heroImage={post.data.heroImage}
-  minutesRead={readingTime}
+  minutesRead={minutesRead}
   tags={post.data.tags}
   category={post.data.category}
   categoryName={categoryName}
