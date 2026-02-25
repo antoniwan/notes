@@ -55,6 +55,17 @@ const { host, siteId } = commentsConfig;
   }
 
   function initRemark42() {
+    // Always destroy any existing instance on navigation, even if the new page has no comments.
+    // This prevents keeping an instance alive that's still attached to DOM nodes removed by Astro.
+    if (window.REMARK42 && remark42Instance) {
+      try {
+        remark42Instance.destroy();
+      } catch {
+        // Instance may already be torn down
+      }
+      remark42Instance = null;
+    }
+
     // Disconnect any previous lazy-load observer to avoid leaking one per navigation (view transitions)
     if (lazyLoadObserver) {
       lazyLoadObserver.disconnect();
@@ -72,16 +83,6 @@ const { host, siteId } = commentsConfig;
 
     const node = document.getElementById('remark42');
     if (!node) return;
-
-    // SPA: destroy previous instance so comments match the current page (Remark42 SPA docs)
-    if (window.REMARK42 && remark42Instance) {
-      try {
-        remark42Instance.destroy();
-      } catch {
-        // Instance may already be torn down
-      }
-      remark42Instance = null;
-    }
 
     if (window.REMARK42) {
       remark42Instance = createRemark42Instance(node, host, siteId, pageUrl);
