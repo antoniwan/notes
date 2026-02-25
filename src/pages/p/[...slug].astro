@@ -6,7 +6,7 @@ import { generateKeywords, generateImageAlt } from '../../utils/seo';
 import { getTranslationData } from '../../utils/translationUtils';
 import { calculateReadingTimeFromMarkdown } from '../../utils/readingTime';
 import { AUTHOR } from '../../consts';
-import { categories } from '../../data/categories';
+import { getCategoryNameFromIds } from '../../utils/categoryUtils';
 
 export const prerender = true;
 
@@ -39,10 +39,7 @@ const imageAlt = generateImageAlt(post.data.title);
 const author = post.data.author || AUTHOR.name;
 
 // Get category name from category ID
-const categoryName =
-  post.data.category && post.data.category.length > 0
-    ? categories.find((cat) => cat.id === post.data.category![0])?.name || post.data.category![0]
-    : null;
+const categoryName = getCategoryNameFromIds(post.data.category);
 
 // Generate table of contents from markdown headings (post.body is raw markdown, not HTML)
 const headingRegex = /^(#{2,3})\s+(.+)$/gm;

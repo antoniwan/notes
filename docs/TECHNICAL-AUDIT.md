@@ -273,7 +273,7 @@ The project is a well-structured Astro blog with sensible defaults (static prere
 1. ~~**Fix TOC**~~ — **Done.** Markdown heading regex in `[...slug].astro`; TOC wired into structured data.
 2. ~~**Unify storage constants**~~ — **Done.** Constants injected via `define:vars` from `config/storage.ts` into ReadStateServiceInit.astro.
 3. ~~**Use remark `minutesRead` in post page**~~ — **Done.** `[...slug].astro` uses `post.data.minutesRead ?? calculateReadingTimeFromMarkdown(post.body)`.
-4. **Centralize category name resolution** — One helper (e.g. in `categoryUtils` or `data/categories`); use in [...slug], Chapter, and anywhere else.
+4. ~~**Centralize category name resolution**~~ — **Done.** `getCategoryName` and `getCategoryNameFromIds` in `src/utils/categoryUtils.ts`; used in [...slug].astro and Chapter.astro.
 5. **Move search data out of SearchBar** — Fetch blog (and related) data once at layout/build level; pass into SearchBar as props or shared payload (scales with page count).
 6. **Single relative-read-time implementation** — One module, used from server and client where appropriate.
 7. **DefaultImage: resolve default covers once** — Build-time list passed as prop to avoid repeated readdirSync.
@@ -291,7 +291,7 @@ The project is a well-structured Astro blog with sensible defaults (static prere
 | Storage constants   | Critical  | Done   | Single source; injected via define:vars |
 | Reading time        | High      | Done   | Use remark `minutesRead`; fallback in [...slug].astro only when absent |
 | SearchBar data      | High      | Open   | Fetch once; pass as props |
-| Category name       | Medium    | Open   | Centralize in categoryUtils / data |
+| Category name       | Medium    | Done   | Centralized in categoryUtils; used in [...slug], Chapter |
 | relativeReadTime    | Medium    | Open   | Single implementation |
 | DefaultImage FS     | Medium    | Open   | Resolve default list once at build |
 | TypeScript `any`    | Medium    | Open   | Tighten layout and collection types |
