@@ -1,7 +1,8 @@
 ---
 import { commentsConfig } from '../config/comments';
+import { generateCanonicalUrl } from '../utils/seo';
 
-const pageUrl = Astro.url.pathname;
+const pageUrl = generateCanonicalUrl(Astro.url.pathname);
 const { host, siteId } = commentsConfig;
 ---
 
