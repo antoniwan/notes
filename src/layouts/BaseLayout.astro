@@ -8,6 +8,7 @@ import StructuredData from '../components/StructuredData.astro';
 import PerformanceMonitor from '../components/PerformanceMonitor.astro';
 import ServiceWorkerRegistration from '../components/ServiceWorkerRegistration.astro';
 import ReadStateServiceInit from '../components/ReadStateServiceInit.astro';
+import { getSearchData } from '../data/searchIndex';
 import { SITE_TITLE, SITE_DESCRIPTION, AUTHOR } from '../consts';
 import { generateKeywords, generateImageAlt } from '../utils/seo';
 import { generateStructuredData } from '../utils/structuredData';
@@ -16,6 +17,8 @@ import Analytics from '@vercel/analytics/astro';
 import type { BaseLayoutProps } from '../types/layout';
 
 interface Props extends BaseLayoutProps {}
+
+const searchData = await getSearchData();
 
 const {
   title,
@@ -104,7 +107,7 @@ const structuredData = generateStructuredData({
     >
 
     <ReadStateServiceInit />
-    <Header />
+    <Header searchData={searchData} />
     <ReadingProgress postId={postId} />
 
     <main

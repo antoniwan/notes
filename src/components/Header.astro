@@ -5,6 +5,12 @@ import ThemeToggle from './ThemeToggle.astro';
 import MobileNav from './MobileNav.astro';
 import SearchBar from './SearchBar.astro';
 import Container from './Container.astro';
+
+interface Props {
+  searchData: unknown[];
+}
+
+const { searchData } = Astro.props;
 ---
 
 <header
@@ -23,7 +29,7 @@ import Container from './Container.astro';
 
       <!-- Search Bar (Desktop) - More Prominent -->
       <div class="mx-8 hidden max-w-md flex-1 xl:block">
-        <SearchBar />
+        <SearchBar searchData={searchData} />
       </div>
 
       <!-- Right Side Actions -->
@@ -50,7 +56,7 @@ import Container from './Container.astro';
 
     <!-- Mobile/Tablet Search Bar (Hidden by default) -->
     <div id="mobile-search-container" class="hidden pb-4 xl:hidden">
-      <SearchBar />
+      <SearchBar searchData={searchData} />
     </div>
   </Container>
 </header>

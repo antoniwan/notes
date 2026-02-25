@@ -274,7 +274,7 @@ The project is a well-structured Astro blog with sensible defaults (static prere
 2. ~~**Unify storage constants**~~ — **Done.** Constants injected via `define:vars` from `config/storage.ts` into ReadStateServiceInit.astro.
 3. ~~**Use remark `minutesRead` in post page**~~ — **Done.** `[...slug].astro` uses `post.data.minutesRead ?? calculateReadingTimeFromMarkdown(post.body)`.
 4. ~~**Centralize category name resolution**~~ — **Done.** `getCategoryName` and `getCategoryNameFromIds` in `src/utils/categoryUtils.ts`; used in [...slug].astro and Chapter.astro.
-5. **Move search data out of SearchBar** — Fetch blog (and related) data once at layout/build level; pass into SearchBar as props or shared payload (scales with page count).
+5. ~~**Move search data out of SearchBar**~~ — **Done.** `getSearchData()` in `src/data/searchIndex.ts`; BaseLayout fetches once and passes to Header → SearchBar as `searchData` prop.
 6. **Single relative-read-time implementation** — One module, used from server and client where appropriate.
 7. **DefaultImage: resolve default covers once** — Build-time list passed as prop to avoid repeated readdirSync.
 8. **Replace layout `any` types** — Use `CollectionEntry<'blog'>` and typed arrays for posts/currentPost/allPosts.
@@ -290,7 +290,7 @@ The project is a well-structured Astro blog with sensible defaults (static prere
 | TOC bug             | Critical  | Done   | Markdown heading extraction; TOC wired to structured data |
 | Storage constants   | Critical  | Done   | Single source; injected via define:vars |
 | Reading time        | High      | Done   | Use remark `minutesRead`; fallback in [...slug].astro only when absent |
-| SearchBar data      | High      | Open   | Fetch once; pass as props |
+| SearchBar data      | High      | Done   | getSearchData() in layout; pass to SearchBar as props |
 | Category name       | Medium    | Done   | Centralized in categoryUtils; used in [...slug], Chapter |
 | relativeReadTime    | Medium    | Open   | Single implementation |
 | DefaultImage FS     | Medium    | Open   | Resolve default list once at build |
