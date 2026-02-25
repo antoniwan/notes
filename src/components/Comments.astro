@@ -33,6 +33,9 @@ const { host, siteId } = commentsConfig;
   // Store the current Remark42 instance so we can destroy it on SPA navigation
   let remark42Instance: { destroy: () => void } | null = null;
 
+  // Store the lazy-load observer so we can disconnect it on navigation (avoids leak when user never scrolls to comments)
+  let lazyLoadObserver: IntersectionObserver | null = null;
+
   function createRemark42Instance(
     node: HTMLElement,
     host: string,
@@ -52,6 +55,12 @@ const { host, siteId } = commentsConfig;
   }
 
   function initRemark42() {
+    // Disconnect any previous lazy-load observer to avoid leaking one per navigation (view transitions)
+    if (lazyLoadObserver) {
+      lazyLoadObserver.disconnect();
+      lazyLoadObserver = null;
+    }
+
     const container = document.getElementById('comments-container');
     if (!container) return;
 
@@ -121,18 +130,19 @@ const { host, siteId } = commentsConfig;
 
     // Lazy load: only load when comments section is near the viewport
     if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver(
+      lazyLoadObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            if (entry.isIntersecting) {
+            if (entry.isIntersecting && lazyLoadObserver) {
               loadScript();
-              observer.disconnect();
+              lazyLoadObserver.disconnect();
+              lazyLoadObserver = null;
             }
           });
         },
         { rootMargin: '200px' },
       );
-      observer.observe(container);
+      lazyLoadObserver.observe(container);
     } else {
       loadScript();
     }
