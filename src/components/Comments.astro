@@ -169,27 +169,30 @@ const { host, siteId } = commentsConfig;
     }
   }
 
-  // Listen for theme changes from ThemeToggle component
-  window.addEventListener('themechange', () => {
-    setTimeout(updateRemark42Theme, 100);
-  });
+  // Register theme and navigation listeners only once to avoid leaks when this script
+  // re-runs on each Astro view transition (new listeners would stack and fire repeatedly).
+  const win = window as Window & { __commentsListenersInstalled?: boolean };
+  if (!win.__commentsListenersInstalled) {
+    win.__commentsListenersInstalled = true;
 
-  // MutationObserver fallback for theme detection
-  const observer = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-      if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-        setTimeout(updateRemark42Theme, 100);
-      }
+    window.addEventListener('themechange', () => {
+      setTimeout(updateRemark42Theme, 100);
     });
-  });
 
-  observer.observe(document.documentElement, {
-    attributes: true,
-    attributeFilter: ['class'],
-  });
+    const themeObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+          setTimeout(updateRemark42Theme, 100);
+        }
+      });
+    });
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
 
-  // Initialize on page load (supports Astro view transitions)
-  document.addEventListener('astro:page-load', initRemark42);
+    document.addEventListener('astro:page-load', initRemark42);
+  }
 
   // Also initialize on regular page load for non-view-transition navigation
   if (document.readyState === 'loading') {
