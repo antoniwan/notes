@@ -294,7 +294,7 @@ The project is a well-structured Astro blog with sensible defaults (static prere
 7. ~~**DefaultImage: resolve default covers once**~~ — **Done.** `getDefaultCoverUrls()` in `src/data/defaultCovers.ts`; DefaultImage imports it so readdirSync runs once per build.
 8. ~~**Replace layout `any` types**~~ — **Done.** `BaseLayoutProps` and `BlogLayoutProps` use `CollectionEntry<'blog'>` and typed arrays for `posts`, `currentPost`, and `allPosts`.
 9. ~~**Add ESLint + CI**~~ — **Done.** ESLint configured with `eslint-plugin-astro`; CI workflow runs format check, `astro check`, and lint on pushes and PRs.
-10. **Optional: cache brain-science metrics** — Persist NLP results between builds to reduce rebuild time.
+10. ~~**Optional: cache brain-science metrics**~~ — **Done.** NLP/meta-analysis results are cached to JSON in `src/data/.brain-science-cache/meta-analysis.json` and reused across builds when post content and dates are unchanged.
 
 ---
 
@@ -311,7 +311,7 @@ The project is a well-structured Astro blog with sensible defaults (static prere
 | DefaultImage FS     | Medium   | Done   | getDefaultCoverUrls() in data layer; DefaultImage uses it                                                                              |
 | TypeScript `any`    | Medium   | Done   | Layout props now typed with `CollectionEntry<'blog'>`; remaining `any` usage in search/structured-data code can be tightened gradually |
 | ESLint/CI           | Low      | Done   | ESLint configured; CI runs format check, `astro check`, and lint                                                                       |
-| Brain-science cache | Low      | Open   | Optional build-time cache                                                                                                              |
+| Brain-science cache | Low      | Done   | Build-time JSON cache for meta-analysis metrics; reused across builds when post signatures match                                      |
 
 **Other changes reflected:** Fonts (Lora, Source Serif Pro) no longer have local @font-face; client script fixes (ReadStateServiceInit, BlogLayout module); `Window.ReadStateService` typed in env.d.ts.
 

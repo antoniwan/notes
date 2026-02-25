@@ -2,6 +2,7 @@ import nlp from 'compromise';
 import Sentiment from 'sentiment';
 import type { CollectionEntry } from 'astro:content';
 import { format, endOfQuarter, eachQuarterOfInterval } from 'date-fns';
+import { loadMetaAnalysisCache, saveMetaAnalysisCache } from './cache';
 
 const sentiment = new Sentiment();
 
@@ -392,7 +393,14 @@ export function analyzeWritingPhilosophy(post: CollectionEntry<'blog'>): Writing
 export function analyzeAllWritingPhilosophy(
   posts: CollectionEntry<'blog'>[],
 ): WritingPhilosophyAnalysis[] {
-  return posts.map((post) => analyzeWritingPhilosophy(post));
+  const cached = loadMetaAnalysisCache(posts);
+  if (cached) {
+    return cached;
+  }
+
+  const analyses = posts.map((post) => analyzeWritingPhilosophy(post));
+  saveMetaAnalysisCache(posts, analyses);
+  return analyses;
 }
 
 /**
