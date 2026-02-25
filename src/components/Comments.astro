@@ -30,21 +30,17 @@ const { host, siteId } = commentsConfig;
 </div>
 
 <script>
-  function initRemark42() {
-    const container = document.getElementById('comments-container');
-    if (!container) return;
+  // Store the current Remark42 instance so we can destroy it on SPA navigation
+  let remark42Instance: { destroy: () => void } | null = null;
 
-    const host = container.dataset.host;
-    const siteId = container.dataset.siteId;
-    const pageUrl = container.dataset.pageUrl;
-
-    if (!host || !siteId) return;
-
-    // Detect current theme
+  function createRemark42Instance(
+    node: HTMLElement,
+    host: string,
+    siteId: string,
+    pageUrl: string,
+  ) {
     const isDark = document.documentElement.classList.contains('dark');
-
-    // Set Remark42 config on window
-    window.remark_config = {
+    const config = {
       host,
       site_id: siteId,
       url: pageUrl,
@@ -52,16 +48,74 @@ const { host, siteId } = commentsConfig;
       components: ['embed'],
       no_footer: false,
     };
+    return window.REMARK42!.createInstance({ node, ...config });
+  }
 
-    // Load embed script
+  function initRemark42() {
+    const container = document.getElementById('comments-container');
+    if (!container) return;
+
+    const host = container.dataset.host;
+    const siteId = container.dataset.siteId;
+    const pageUrl = container.dataset.pageUrl ?? window.location.href;
+
+    if (!host || !siteId) return;
+
+    const node = document.getElementById('remark42');
+    if (!node) return;
+
+    // SPA: destroy previous instance so comments match the current page (Remark42 SPA docs)
+    if (window.REMARK42 && remark42Instance) {
+      try {
+        remark42Instance.destroy();
+      } catch {
+        // Instance may already be torn down
+      }
+      remark42Instance = null;
+    }
+
+    if (window.REMARK42) {
+      remark42Instance = createRemark42Instance(node, host, siteId, pageUrl);
+      return;
+    }
+
+    // Script not loaded yet: load it, then create instance on REMARK42::ready
     function loadScript() {
-      // Prevent double-loading
-      if (document.querySelector(`script[src="${host}/web/embed.js"]`)) return;
+      const scriptEl = document.querySelector(`script[src="${host}/web/embed.js"]`);
+      if (scriptEl) {
+        window.addEventListener(
+          'REMARK42::ready',
+          () => {
+            const el = document.getElementById('remark42');
+            if (!el || !host || !siteId) return;
+            if (remark42Instance) {
+              try {
+                remark42Instance.destroy();
+              } catch {}
+              remark42Instance = null;
+            }
+            remark42Instance = createRemark42Instance(el, host, siteId, pageUrl);
+          },
+          { once: true },
+        );
+        return;
+      }
 
       const script = document.createElement('script');
       script.src = `${host}/web/embed.js`;
       script.async = true;
       script.defer = true;
+      script.onload = () => {
+        window.addEventListener(
+          'REMARK42::ready',
+          () => {
+            const el = document.getElementById('remark42');
+            if (!el || !host || !siteId) return;
+            remark42Instance = createRemark42Instance(el, host, siteId, pageUrl);
+          },
+          { once: true },
+        );
+      };
       document.head.appendChild(script);
     }
 
@@ -80,7 +134,6 @@ const { host, siteId } = commentsConfig;
       );
       observer.observe(container);
     } else {
-      // Fallback for browsers without IntersectionObserver
       loadScript();
     }
   }
