@@ -1,7 +1,7 @@
 {
   "name": "notes blog",
   "type": "module",
-  "version": "4.17.0",
+  "version": "4.17.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/antoniwan/notes.git"
@@ -19,6 +19,7 @@
     "standardize-frontmatter": "node scripts/standardize-frontmatter.js",
     "remove-legacy-reading-time": "node scripts/remove-legacy-reading-time.js",
     "fix:hr-spacing": "node scripts/fix-hr-spacing.mjs",
+    "validate-structured-data": "node scripts/validate-structured-data.js",
     "analyze": "astro build && npx @astrojs/vercel/static-build",
     "lighthouse": "npx lighthouse http://localhost:4321 --output=html --output-path=./lighthouse-report.html",
     "performance": "npm run build && npm run analyze",

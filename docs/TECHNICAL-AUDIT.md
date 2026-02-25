@@ -4,6 +4,8 @@
 **Scope:** Architecture, dependencies, performance, code quality, content layer, styling, build/tooling, maintainability  
 **Assumption:** Codebase scales to ~10× current content volume (~80 posts → 800+).
 
+> **Note:** This is a point-in-time audit. The codebase may have changed since; some findings may already be addressed or outdated.
+
 ---
 
 ## Executive Summary

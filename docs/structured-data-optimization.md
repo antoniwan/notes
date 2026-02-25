@@ -1,10 +1,10 @@
-# Structured Data Optimization for Search Engine Discoverability
+# Structured Data Optimization
 
-This document outlines the comprehensive structured data implementation in the Blog project, designed to maximize search engine discoverability and improve SEO performance.
+This document describes the structured data implementation in the Notes project: Schema.org JSON-LD output for search discoverability.
 
 ## Overview
 
-Our structured data implementation follows Schema.org standards and Google's structured data guidelines to provide search engines with rich, contextual information about our content. This enables better search results, featured snippets, and enhanced user experience.
+Structured data follows Schema.org and common search-engine guidelines. It provides machines with explicit types and fields (site, organization, author, articles, breadcrumbs, FAQ where applicable). Impact on rankings or visibility depends on search engines and content; this doc is a reference for what the project emits.
 
 ## Current Implementation
 
