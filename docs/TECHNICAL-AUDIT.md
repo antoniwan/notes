@@ -12,6 +12,7 @@
 ## Updates since original audit (current state)
 
 - **TOC bug (1.1) — FIXED.** Table of contents is now derived from markdown headings (`/^#{2,3}\s+(.+)$/gm`) in `src/pages/p/[...slug].astro`. TOC data is passed to BlogLayout and into BaseLayout; structured data receives a boolean (has TOC) and adds `hasPart` for the article schema when the TOC is non-empty. There is still no in-page TOC UI; the data is used for JSON-LD only.
+- **Storage constants (1.2) — FIXED.** ReadStateServiceInit.astro no longer duplicates STORAGE_KEYS, STORAGE_EVENTS, or TIMING; it imports from `src/config/storage.ts` and injects them via `define:vars`.
 - **Fonts.** Local `@font-face` in `src/styles/fonts.css` now only defines Open Sans. Lora and Source Serif Pro were removed to avoid 404s when gstatic URLs change; both are loaded solely via the Google Fonts stylesheet in BaseHead.astro.
 - **Client scripts.** ReadStateServiceInit no longer uses `import.meta` in its inline script (uses `define:vars={{ isDev }}` from frontmatter). BlogLayout’s read-state script no longer uses `define:vars`; it reads `postSlug` from the DOM (`data-post-slug` on the main content wrapper) so the script can stay a proper ES module and use `import`.
 - **Types.** `Window.ReadStateService` is declared in `src/env.d.ts`. `BaseLayoutProps.tableOfContents` accepts either a boolean or the TOC array shape for structured data.
@@ -36,7 +37,7 @@ The project is a well-structured Astro blog with sensible defaults (static prere
 
 ---
 
-### 1.2 Duplicated storage constants (maintenance risk)
+### 1.2 Duplicated storage constants — ✅ FIXED
 
 **Locations:**  
 - `src/config/storage.ts` — source of truth for `STORAGE_KEYS`, `STORAGE_EVENTS`, `TIMING`  
@@ -273,7 +274,7 @@ The project is a well-structured Astro blog with sensible defaults (static prere
 ## 8. Refactoring Roadmap (Ordered by Leverage)
 
 1. ~~**Fix TOC**~~ — **Done.** Markdown heading regex in `[...slug].astro`; TOC wired into structured data.
-2. **Unify storage constants** — Single source of truth for ReadStateService keys/events/timing (prevents subtle bugs).
+2. ~~**Unify storage constants**~~ — **Done.** Constants injected via `define:vars` from `config/storage.ts` into ReadStateServiceInit.astro.
 3. **Use remark `minutesRead` in post page** — Remove duplicate reading-time calculation in `[...slug].astro` and prefer `post.data.minutesRead` where available.
 4. **Centralize category name resolution** — One helper (e.g. in `categoryUtils` or `data/categories`); use in [...slug], Chapter, and anywhere else.
 5. **Move search data out of SearchBar** — Fetch blog (and related) data once at layout/build level; pass into SearchBar as props or shared payload (scales with page count).
@@ -290,7 +291,7 @@ The project is a well-structured Astro blog with sensible defaults (static prere
 | Area                | Severity   | Status | Action |
 |---------------------|-----------|--------|--------|
 | TOC bug             | Critical  | Done   | Markdown heading extraction; TOC wired to structured data |
-| Storage constants   | Critical  | Open   | Single source; no inline duplicate |
+| Storage constants   | Critical  | Done   | Single source; injected via define:vars |
 | Reading time        | High      | Open   | Use remark `minutesRead`; avoid double compute |
 | SearchBar data      | High      | Open   | Fetch once; pass as props |
 | Category name       | Medium    | Open   | Centralize in categoryUtils / data |

@@ -8,32 +8,19 @@
  * Include this component in your base layout to ensure the service
  * is available before any components try to use it.
  */
+import { STORAGE_KEYS, STORAGE_EVENTS, TIMING } from '../config/storage.js';
+
 const isDev = import.meta.env.DEV;
 ---
 
-<script is:inline define:vars={{ isDev }}>
+<script is:inline define:vars={{ isDev, STORAGE_KEYS, STORAGE_EVENTS, TIMING }}>
   // Initialize ReadStateService singleton - shared across all components
   // This ensures the service is only initialized once, even if multiple components load
   (function () {
     // Return early if already initialized (prevents duplicate initialization)
     if (window.ReadStateService) return;
 
-    // Constants - match src/config/storage.ts
-    const STORAGE_KEYS = {
-      READ_POSTS: 'blog-read-posts-v1.0',
-      READ_POSTS_LEGACY: 'blog-read-posts',
-    };
-
-    const STORAGE_EVENTS = {
-      POST_READ: 'post-read',
-      READ_POSTS_CLEARED: 'read-posts-cleared',
-      READING_DATA_UPDATED: 'reading-data-updated',
-    };
-
-    const TIMING = {
-      CROSS_TAB_UPDATE_DELAY: 100,
-      SAME_TAB_UPDATE_DELAY: 50,
-    };
+    // STORAGE_KEYS, STORAGE_EVENTS, TIMING injected from src/config/storage.ts (single source of truth)
 
     class ReadStateService {
       static instance = null;
