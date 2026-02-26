@@ -1,11 +1,5 @@
-import {
-  SITE_TITLE,
-  SITE_DESCRIPTION,
-  SITE_URL,
-  AUTHOR,
-  SEO_CONFIG,
-  SEO_KEYWORDS,
-} from '../consts';
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL, AUTHOR, SEO_CONFIG, SEO_KEYWORDS } from '../consts';
+import { SOCIAL_IMAGE_MANIFEST } from '../data/socialImageManifest';
 
 // Simplified SEO configuration interface
 export interface SEOConfig {
@@ -44,11 +38,17 @@ export function generateCanonicalUrl(path: string): string {
   return new URL(path, SITE_URL).href;
 }
 
-// Generate image URL with proper heroImage prioritization
+// Generate image URL for social/meta tags, with proper heroImage prioritization.
+// Uses a build-time manifest to map AVIF (and other) originals to social-safe JPEG/PNG variants.
 export function generateImageUrl(heroImage?: string): string {
   // Priority: heroImage > default social image
-  const imagePath = heroImage || SEO_CONFIG.defaultImage;
-  return new URL(imagePath, SITE_URL).href;
+  const originalPath = heroImage || SEO_CONFIG.defaultImage;
+
+  // If we have a generated social-safe variant for this path, prefer it.
+  // Keys are web paths like "/foo/bar.avif".
+  const socialPath = SOCIAL_IMAGE_MANIFEST[originalPath] || originalPath;
+
+  return new URL(socialPath, SITE_URL).href;
 }
 
 // Detect Open Graph type

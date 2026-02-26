@@ -1,7 +1,7 @@
 {
   "name": "notes blog",
   "type": "module",
-  "version": "4.18.5",
+  "version": "4.19.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/antoniwan/notes.git"
@@ -10,9 +10,10 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "node scripts/generate-social-images.js && astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "generate-social-images": "node scripts/generate-social-images.js",
     "generate-favicons": "node scripts/generate-favicons.js",
     "validate-feeds": "node scripts/validate-feeds.js",
     "audit-frontmatter": "node scripts/audit-frontmatter.js",
