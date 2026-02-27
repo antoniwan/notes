@@ -9,6 +9,7 @@ export interface Translation {
 export interface Props {
   translations: Translation[];
   currentPath: string;
+  currentLanguage?: string;
 }
 
 const { translations, currentPath } = Astro.props;
