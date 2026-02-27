@@ -115,7 +115,7 @@ export function createTagData(
  * Categorize tags by Maslow's hierarchy
  */
 export function categorizeTags(tagCounts: Record<string, number>): {
-  categorized: Array<TagCategory & { tags: TagStats[] }>;
+  categorized: Array<Omit<TagCategory, 'tags'> & { tags: TagStats[] }>;
   uncategorized: TagStats[];
 } {
   const maxCount = Math.max(...Object.values(tagCounts));
@@ -136,6 +136,8 @@ export function categorizeTags(tagCounts: Record<string, number>): {
 
   return { categorized, uncategorized };
 }
+
+export { getTagWeight };
 
 /**
  * Get related tags for a specific tag

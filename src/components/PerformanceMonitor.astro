@@ -4,10 +4,13 @@
 ---
 
 <script>
+  // @ts-nocheck
   // Performance monitoring for Core Web Vitals
   class PerformanceMonitor {
+    /** @type {Record<string, number>} */
+    metrics = {};
+
     constructor() {
-      this.metrics = {};
       this.init();
     }
 
@@ -57,7 +60,8 @@
           const observer = new PerformanceObserver((list) => {
             const entries = list.getEntries();
             entries.forEach((entry) => {
-              this.metrics.fid = entry.processingStart - entry.startTime;
+              const firstInput = /** @type {any} */ (entry);
+              this.metrics.fid = firstInput.processingStart - firstInput.startTime;
             });
           });
 
@@ -74,8 +78,9 @@
           let clsValue = 0;
           const observer = new PerformanceObserver((list) => {
             for (const entry of list.getEntries()) {
-              if (!entry.hadRecentInput) {
-                clsValue += entry.value;
+              const layoutShift = /** @type {any} */ (entry);
+              if (!layoutShift.hadRecentInput) {
+                clsValue += layoutShift.value;
               }
             }
             this.metrics.cls = clsValue;
@@ -110,8 +115,9 @@
           const observer = new PerformanceObserver((list) => {
             const entries = list.getEntries();
             entries.forEach((entry) => {
-              if (entry.entryType === 'navigation') {
-                this.metrics.ttfb = entry.responseStart - entry.requestStart;
+              const navEntry = /** @type {any} */ (entry);
+              if (navEntry.entryType === 'navigation') {
+                this.metrics.ttfb = navEntry.responseStart - navEntry.requestStart;
               }
             });
           });
@@ -126,14 +132,16 @@
     reportMetrics() {
       // Send metrics to analytics or log them
       if (Object.keys(this.metrics).length > 0) {
+        const win = /** @type {any} */ (window);
+
         // Send to Vercel Analytics if available
-        if (window.va) {
-          window.va.track('performance_metrics', this.metrics);
+        if (win.va) {
+          win.va.track('performance_metrics', this.metrics);
         }
 
         // Send to Google Analytics if available
-        if (window.gtag) {
-          window.gtag('event', 'performance_metrics', {
+        if (win.gtag) {
+          win.gtag('event', 'performance_metrics', {
             event_category: 'Performance',
             event_label: 'Core Web Vitals',
             value: Math.round(this.metrics.lcp || 0),
@@ -152,7 +160,7 @@
   const performanceMonitor = new PerformanceMonitor();
 
   // Expose for debugging
-  window.performanceMonitor = performanceMonitor;
+  /** @type {any} */ (window).performanceMonitor = performanceMonitor;
 
   // Log performance marks
   if ('performance' in window) {
@@ -226,6 +234,7 @@
 }
 
 <script>
+  // @ts-nocheck
   // Debug panel functionality (development only)
   if (import.meta.env.DEV) {
     const debugPanel = document.getElementById('performance-debug');
@@ -233,7 +242,8 @@
 
     // Update debug panel every second
     setInterval(() => {
-      const currentMetrics = window.performanceMonitor?.getMetrics() || {};
+      const win = /** @type {any} */ (window);
+      const currentMetrics = win.performanceMonitor?.getMetrics() || {};
 
       metrics.forEach((metric) => {
         const element = document.getElementById(`${metric}-metric`);

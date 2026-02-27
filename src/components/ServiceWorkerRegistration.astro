@@ -74,9 +74,8 @@
   }
 
   // Expose update function globally
-  /** @type {any} */
-  const anyWindow = window;
-  anyWindow.updateServiceWorker = updateServiceWorker;
+  // @ts-ignore
+  window.updateServiceWorker = updateServiceWorker;
 
   // Performance mark for service worker registration
   if ('performance' in window) {

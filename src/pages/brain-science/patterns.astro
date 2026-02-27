@@ -121,7 +121,32 @@ const contentAnalysis = posts.map((post) => {
 });
 
 // Pattern analysis
-const patterns = {
+const patterns: {
+  dayOfWeekPatterns: Array<{
+    day: number;
+    name: string;
+    shortName: string;
+    postCount: number;
+    avgWordCount: number;
+    avgEmotionalIntensity: number;
+    productivity: number;
+    productivityGrade?: string;
+    wordCountGrade?: string;
+    emotionalGrade?: string;
+  }>;
+  seasonalPatterns: Array<{
+    month: number;
+    name: string;
+    shortName: string;
+    postCount: number;
+    avgWordCount: number;
+    avgComplexity: number;
+    creativity: number;
+    creativityGrade?: string;
+    wordCountGrade?: string;
+    complexityGrade?: string;
+  }>;
+} = {
   // Day of week patterns
   dayOfWeekPatterns: [0, 1, 2, 3, 4, 5, 6].map((dayNum) => {
     const dayName = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][
@@ -861,7 +886,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                       {day.avgWordCount}
                     </span>
                     <span
-                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(day.wordCountGrade)}`}
+                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(day.wordCountGrade!)}`}
                       title={`Grade: ${day.wordCountGrade} (${day.avgWordCount} words)`}
                     >
                       {day.wordCountGrade}
@@ -880,7 +905,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                       {day.avgEmotionalIntensity}
                     </span>
                     <span
-                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(day.emotionalGrade)}`}
+                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(day.emotionalGrade!)}`}
                       title={`Grade: ${day.emotionalGrade} (${day.avgEmotionalIntensity} intensity)`}
                     >
                       {day.emotionalGrade}
@@ -891,13 +916,13 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                   <span class="text-sm text-[rgb(var(--color-text-muted))]">Productivity:</span>
                   <div class="flex items-center gap-2">
                     <span
-                      class={`text-sm font-medium ${getGradeColor(day.productivityGrade)}`}
+                      class={`text-sm font-medium ${getGradeColor(day.productivityGrade!)}`}
                       title={`Productivity score: ${day.productivity} (avg words × post count)`}
                     >
                       {day.productivity}
                     </span>
                     <span
-                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(day.productivityGrade)}`}
+                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(day.productivityGrade!)}`}
                       title={`Grade: ${day.productivityGrade} (${day.productivity} productivity)`}
                     >
                       {day.productivityGrade}
@@ -947,7 +972,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                       {month.avgWordCount}
                     </span>
                     <span
-                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(month.wordCountGrade)}`}
+                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(month.wordCountGrade!)}`}
                       title={`Grade: ${month.wordCountGrade} (${month.avgWordCount} words)`}
                     >
                       {month.wordCountGrade}
@@ -964,7 +989,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                       {month.avgComplexity}
                     </span>
                     <span
-                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(month.complexityGrade)}`}
+                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(month.complexityGrade!)}`}
                       title={`Grade: ${month.complexityGrade} (${month.avgComplexity} complexity)`}
                     >
                       {month.complexityGrade}
@@ -975,13 +1000,13 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                   <span class="text-sm text-[rgb(var(--color-text-muted))]">Creativity:</span>
                   <div class="flex items-center gap-2">
                     <span
-                      class={`text-sm font-medium ${getGradeColor(month.creativityGrade)}`}
+                      class={`text-sm font-medium ${getGradeColor(month.creativityGrade!)}`}
                       title={`Creativity score: ${month.creativity} (avg words × complexity)`}
                     >
                       {month.creativity}
                     </span>
                     <span
-                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(month.creativityGrade)}`}
+                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(month.creativityGrade!)}`}
                       title={`Grade: ${month.creativityGrade} (${month.creativity} creativity)`}
                     >
                       {month.creativityGrade}
@@ -1031,7 +1056,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                       {cycle.avgWordCount}
                     </span>
                     <span
-                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(cycle.wordCountGrade)}`}
+                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(cycle.wordCountGrade!)}`}
                       title={`Grade: ${cycle.wordCountGrade} (${cycle.avgWordCount} words)`}
                     >
                       {cycle.wordCountGrade}
@@ -1050,7 +1075,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                       {cycle.avgEmotionalIntensity}
                     </span>
                     <span
-                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(cycle.emotionalGrade)}`}
+                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(cycle.emotionalGrade!)}`}
                       title={`Grade: ${cycle.emotionalGrade} (${cycle.avgEmotionalIntensity} intensity)`}
                     >
                       {cycle.emotionalGrade}
@@ -1067,7 +1092,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                       {cycle.avgComplexity}
                     </span>
                     <span
-                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(cycle.complexityGrade)}`}
+                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(cycle.complexityGrade!)}`}
                       title={`Grade: ${cycle.complexityGrade} (${cycle.avgComplexity} complexity)`}
                     >
                       {cycle.complexityGrade}
@@ -1121,13 +1146,13 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                 <div class="text-right">
                   <div class="flex items-center justify-end gap-2">
                     <span
-                      class={`text-sm font-medium ${getGradeColor(wordCountGrade)}`}
+                      class={`text-sm font-medium ${getGradeColor(wordCountGrade!)}`}
                       title={`Average word count when tags "${combo}" are combined`}
                     >
                       {data.avgWordCount}
                     </span>
                     <span
-                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(wordCountGrade)}`}
+                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(wordCountGrade!)}`}
                       title={`Grade: ${wordCountGrade} (${data.avgWordCount} avg words)`}
                     >
                       {wordCountGrade}
@@ -1183,13 +1208,13 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                 <div class="text-right">
                   <div class="flex items-center justify-end gap-2">
                     <span
-                      class={`text-sm font-medium ${getGradeColor(wordCountGrade)}`}
+                      class={`text-sm font-medium ${getGradeColor(wordCountGrade!)}`}
                       title={`${post.wordCount} words in this post`}
                     >
                       {post.wordCount}
                     </span>
                     <span
-                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(wordCountGrade)}`}
+                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(wordCountGrade!)}`}
                       title={`Grade: ${wordCountGrade} (${post.wordCount} words)`}
                     >
                       {wordCountGrade}

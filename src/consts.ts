@@ -18,6 +18,7 @@ export interface SocialLinks {
   bluesky: string;
   buildsSoftware: string;
   strongHands: string;
+  twitter: string;
 }
 
 export interface SEOConfig {
@@ -57,6 +58,7 @@ export const SOCIAL_LINKS: SocialLinks = {
   bluesky: 'https://bsky.app/profile/antoniwan.online',
   buildsSoftware: 'https://builds.software',
   strongHands: 'https://stronghandssoftheart.com',
+  twitter: 'https://twitter.com/antoniwan',
 };
 
 // SEO Configuration

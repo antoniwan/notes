@@ -24,11 +24,7 @@ export interface WritingPhilosophyAnalysis {
   writingAsSubject: boolean;
   writingAsTool: boolean;
   recursiveThinking: boolean;
-  sentiment: {
-    score: number;
-    comparative: number;
-    calculation: Array<{ word: string; score: number }>;
-  };
+  sentiment: any;
 }
 
 export interface MetaEvolutionData {

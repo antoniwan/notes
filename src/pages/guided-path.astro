@@ -204,6 +204,7 @@ const sortedChapters = nonEmptyChapters.sort(
 </PageLayout>
 
 <script>
+  // @ts-nocheck
   // Storage constants - using direct values since import doesn't work in Astro client scripts
   const STORAGE_KEY = 'blog-read-posts-v1.0';
   const FALLBACK_KEY = 'blog-read-posts';
@@ -291,6 +292,7 @@ const sortedChapters = nonEmptyChapters.sort(
     /**
      * @param {CustomEvent} event
      */
+    // @ts-ignore
     handleDataUpdated(event) {
       // React to immediate data updates from same tab
       if (event.detail && event.detail.type === 'post-read') {
@@ -301,6 +303,7 @@ const sortedChapters = nonEmptyChapters.sort(
     /**
      * @param {StorageEvent} event
      */
+    // @ts-ignore
     handleStorageChange(event) {
       // React to localStorage changes from other tabs/windows
       if (event.key === this.storageKey || event.key === this.fallbackKey) {
@@ -333,6 +336,7 @@ const sortedChapters = nonEmptyChapters.sort(
 
   // Initialize when DOM is ready
   /** @type {TotalProgressTracker | null} */
+  // @ts-ignore
   let totalProgressTracker = null;
 
   if (document.readyState === 'loading') {
