@@ -137,19 +137,17 @@ const postSlug = postId; // Alias for backward compatibility in template
                       <span class="text-[rgb(var(--color-accent))]">📅</span>
                       <FormattedDate date={pubDate} format="long" />
                     </time>
-                    {
-                      updatedDate && updatedDate.getTime() !== pubDate?.getTime() && (
-                        <time
-                          datetime={updatedDate.toISOString()}
-                          class="mt-1 flex items-center gap-2 text-sm leading-relaxed text-[rgb(var(--color-text-muted))]"
-                        >
-                          <span class="text-[rgb(var(--color-accent))]">🔄</span>
-                          <span>
-                            Updated on <FormattedDate date={updatedDate} format="long" />
-                          </span>
-                        </time>
-                      )
-                    }
+                    {updatedDate && updatedDate.getTime() !== pubDate?.getTime() && (
+                      <time
+                        datetime={updatedDate.toISOString()}
+                        class="mt-1 flex items-center gap-2 text-sm leading-relaxed text-[rgb(var(--color-text-muted))]"
+                      >
+                        <span class="text-[rgb(var(--color-accent))]">🔄</span>
+                        <span>
+                          Updated on <FormattedDate date={updatedDate} format="long" />
+                        </span>
+                      </time>
+                    )}
                   </div>
                 )
               }
@@ -288,19 +286,17 @@ const postSlug = postId; // Alias for backward compatibility in template
                     <span class="text-[rgb(var(--color-accent))]">📅</span>
                     <FormattedDate date={pubDate} format="long" />
                   </time>
-                  {
-                    updatedDate && updatedDate.getTime() !== pubDate?.getTime() && (
-                      <time
-                        datetime={updatedDate.toISOString()}
-                        class="mt-1 flex items-center gap-2 text-sm leading-relaxed text-[rgb(var(--color-text-muted))]"
-                      >
-                        <span class="text-[rgb(var(--color-accent))]">🔄</span>
-                        <span>
-                          Updated on <FormattedDate date={updatedDate} format="long" />
-                        </span>
-                      </time>
-                    )
-                  }
+                  {updatedDate && updatedDate.getTime() !== pubDate?.getTime() && (
+                    <time
+                      datetime={updatedDate.toISOString()}
+                      class="mt-1 flex items-center gap-2 text-sm leading-relaxed text-[rgb(var(--color-text-muted))]"
+                    >
+                      <span class="text-[rgb(var(--color-accent))]">🔄</span>
+                      <span>
+                        Updated on <FormattedDate date={updatedDate} format="long" />
+                      </span>
+                    </time>
+                  )}
                 </div>
               )
             }
