@@ -5,7 +5,8 @@
       "WebFetch(domain:remark42-production-7df4.up.railway.app)",
       "WebFetch(domain:remark42.com)",
       "WebFetch(domain:agrunev.com)",
-      "WebFetch(domain:cld.sh)"
+      "WebFetch(domain:cld.sh)",
+      "WebFetch(domain:notes.antoniwan.online)"
     ]
   }
 }

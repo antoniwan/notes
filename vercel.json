@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/remark42/:path*",
+      "destination": "https://remark42-production-7df4.up.railway.app/:path*"
+    }
+  ]
+}
