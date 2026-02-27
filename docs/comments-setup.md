@@ -23,7 +23,7 @@ Follow the [official Remark42 installation guide](https://remark42.com/docs/gett
 Key environment variables for your Remark42 server:
 
 ```env
-REMARK_URL=https://comments.yoursite.com
+REMARK_URL=https://notes.antoniwan.online/api/remark42
 SITE=notes-antoniwan
 SECRET=your-secret-key
 AUTH_GOOGLE_CID=your-google-client-id
@@ -45,14 +45,14 @@ For each social login you want to enable, create an OAuth app with that provider
 - **Facebook**: [Meta for Developers](https://developers.facebook.com/)
 - **GitHub**: [GitHub Developer Settings](https://github.com/settings/developers)
 
-Set the OAuth callback URL to: `https://comments.yoursite.com/auth/<provider>/callback`
+Set the OAuth callback URL to: `https://yoursite.com/api/remark42/auth/<provider>/callback`
 
 ### 3. Configure Environment Variables
 
 Set these environment variables in your Vercel project (or `.env` file for local dev):
 
 ```env
-PUBLIC_REMARK42_HOST=https://comments.yoursite.com
+PUBLIC_REMARK42_HOST=https://yoursite.com/api/remark42
 PUBLIC_REMARK42_SITE_ID=notes-antoniwan
 ```
 

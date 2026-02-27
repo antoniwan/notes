@@ -10,7 +10,7 @@ function normalizeHost(url: string): string {
 }
 
 const rawHost =
-  import.meta.env.PUBLIC_REMARK42_HOST || 'https://remark42-production-7df4.up.railway.app';
+  import.meta.env.PUBLIC_REMARK42_HOST || 'https://notes.antoniwan.online/api/remark42';
 
 export const commentsConfig: CommentsConfig = {
   // Remark42 server host URL (normalized, no trailing slash)
