@@ -34,6 +34,7 @@ export interface ReadingAnalytics {
   totalTimeSpent: number;
   devicePreference: 'mobile' | 'desktop' | 'tablet';
   timeOfDayPreference: 'morning' | 'afternoon' | 'evening' | 'night';
+  lastReadDate: string;
 }
 
 class LocalStorageManager {
@@ -124,7 +125,7 @@ class LocalStorageManager {
       localStorage.setItem(key, value);
       return true;
     } catch (error) {
-      if (error.name === 'QuotaExceededError') {
+      if (error instanceof DOMException && error.name === 'QuotaExceededError') {
         this.handleStorageQuotaExceeded();
         try {
           localStorage.setItem(key, value);
@@ -388,6 +389,7 @@ class LocalStorageManager {
       totalTimeSpent: 0,
       devicePreference: 'desktop',
       timeOfDayPreference: 'afternoon',
+      lastReadDate: '',
     };
   }
 

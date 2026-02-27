@@ -71,7 +71,7 @@ Here is the part I'm still figuring out. I live this work. People soften around 
 
 I am still calibrating. When to sit with a feeling. When to act. And when I act, how much intensity to bring. That calibration is the actual work — not arriving at some final state of calm, but getting better at reading the data and choosing the response. That is what integration gives you. Not peace as a permanent condition, but **the power to choose where your energy goes**.
 
-The instinct to pathologize emotions is understandable. Feelings cause trouble — in relationships, in careers, in courtrooms, at the Costco/Aldi parking queue. But feelings are also the source of everything that matters. To eliminate the emotional life is to eliminate the human one.
+The instinct to pathologize emotions is understandable — we learn early that feelings cause problems. In relationships, careers, courtrooms, the Costco/Aldi parking queue. So we treat them like threats to be managed, neutralized, filed away. But feelings are also where everything that matters comes from. Kill the emotional life and you kill the human one.
 
 This third road is narrower than liberation or repression. It requires self-knowledge, practice, and a tolerance for sitting with uncomfortable internal states without rushing to resolve them. It requires learning that discomfort is survivable. That a feeling can be _metabolized_ — felt, witnessed, understood, and then released or chosen — until it stops having autonomous power over behavior. It becomes data. Information about what matters, what threatens, what pulls, what has been survived.
 

@@ -113,7 +113,7 @@ const sortedCategories = await getSortedCategories();
               )}
               {item.dropdown && item.href !== '/category/' && (
                 <div class="ml-4 space-y-1">
-                  {item.dropdown.items.map((dropdownItem) => (
+                  {(item.dropdown.items ?? []).map((dropdownItem) => (
                     <a
                       href={dropdownItem.href}
                       class="theme-transition flex items-center gap-3 rounded-lg px-4 py-3 text-lg text-[rgb(var(--color-text-muted))] hover:bg-[rgb(var(--color-bg-alt))]"

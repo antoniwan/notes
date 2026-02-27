@@ -379,7 +379,7 @@ const isDev = import.meta.env.DEV;
   }
 
   // Error handler for chart initialization
-  function handleChartError(error: unknown) {
+  function handleChartError(error) {
     // Only log errors in development mode
     if (isDev && typeof console !== 'undefined' && console.error) {
       console.error('Failed to initialize chart:', error);

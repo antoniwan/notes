@@ -212,6 +212,13 @@ const sortedChapters = nonEmptyChapters.sort(
 
   // Total progress tracking
   class TotalProgressTracker {
+    storageKey;
+    fallbackKey;
+    boundPostReadHandler;
+    boundClearedHandler;
+    boundDataUpdatedHandler;
+    boundStorageHandler;
+
     constructor() {
       this.storageKey = STORAGE_KEY;
       this.fallbackKey = FALLBACK_KEY;
@@ -281,6 +288,9 @@ const sortedChapters = nonEmptyChapters.sort(
       setTimeout(() => this.updateTotalProgress(), CROSS_TAB_DELAY);
     }
 
+    /**
+     * @param {CustomEvent} event
+     */
     handleDataUpdated(event) {
       // React to immediate data updates from same tab
       if (event.detail && event.detail.type === 'post-read') {
@@ -288,6 +298,9 @@ const sortedChapters = nonEmptyChapters.sort(
       }
     }
 
+    /**
+     * @param {StorageEvent} event
+     */
     handleStorageChange(event) {
       // React to localStorage changes from other tabs/windows
       if (event.key === this.storageKey || event.key === this.fallbackKey) {
@@ -319,6 +332,7 @@ const sortedChapters = nonEmptyChapters.sort(
   }
 
   // Initialize when DOM is ready
+  /** @type {TotalProgressTracker | null} */
   let totalProgressTracker = null;
 
   if (document.readyState === 'loading') {

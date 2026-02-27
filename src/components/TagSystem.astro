@@ -41,7 +41,8 @@ const {
 } = Astro.props;
 
 // Convert tags array to tagStats if needed
-const finalTagStats = tagStats.length > 0 ? tagStats : tags.map((tag) => ({ tag, count: 1 }));
+const finalTagStats: Array<{ tag: string; count: number; size?: number }> =
+  tagStats.length > 0 ? tagStats : tags.map((tag) => ({ tag, count: 1 }));
 ---
 
 {
