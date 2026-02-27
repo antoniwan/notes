@@ -123,7 +123,7 @@ const postSlug = postId; // Alias for backward compatibility in template
 
             {/* Post Metadata */}
             <div class="space-y-6" style="line-height: 1.6;">
-              {/* Publication Date */}
+              {/* Publication Date (with optional Updated on line) */}
               {
                 pubDate && (
                   <div class="space-y-2">
@@ -137,24 +137,19 @@ const postSlug = postId; // Alias for backward compatibility in template
                       <span class="text-[rgb(var(--color-accent))]">📅</span>
                       <FormattedDate date={pubDate} format="long" />
                     </time>
-                  </div>
-                )
-              }
-
-              {/* Updated Date */}
-              {
-                updatedDate && updatedDate.getTime() !== pubDate?.getTime() && (
-                  <div class="space-y-2">
-                    <h3 class="text-xs font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
-                      Updated
-                    </h3>
-                    <time
-                      datetime={updatedDate.toISOString()}
-                      class="flex items-center gap-2 text-base leading-relaxed text-[rgb(var(--color-text))]"
-                    >
-                      <span class="text-[rgb(var(--color-accent))]">🔄</span>
-                      <FormattedDate date={updatedDate} format="long" />
-                    </time>
+                    {
+                      updatedDate && updatedDate.getTime() !== pubDate?.getTime() && (
+                        <time
+                          datetime={updatedDate.toISOString()}
+                          class="mt-1 flex items-center gap-2 text-sm leading-relaxed text-[rgb(var(--color-text-muted))]"
+                        >
+                          <span class="text-[rgb(var(--color-accent))]">🔄</span>
+                          <span>
+                            Updated on <FormattedDate date={updatedDate} format="long" />
+                          </span>
+                        </time>
+                      )
+                    }
                   </div>
                 )
               }
@@ -279,7 +274,7 @@ const postSlug = postId; // Alias for backward compatibility in template
 
           {/* Mobile-only metadata - shown after content on mobile */}
           <div class="mt-12 space-y-6 border-t border-[rgb(var(--color-border))] pt-8 lg:hidden">
-            {/* Publication Date */}
+            {/* Publication Date (with optional Updated on line) */}
             {
               pubDate && (
                 <div class="space-y-2">
@@ -293,24 +288,19 @@ const postSlug = postId; // Alias for backward compatibility in template
                     <span class="text-[rgb(var(--color-accent))]">📅</span>
                     <FormattedDate date={pubDate} format="long" />
                   </time>
-                </div>
-              )
-            }
-
-            {/* Updated Date */}
-            {
-              updatedDate && updatedDate.getTime() !== pubDate?.getTime() && (
-                <div class="space-y-2">
-                  <h3 class="text-xs font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
-                    Updated
-                  </h3>
-                  <time
-                    datetime={updatedDate.toISOString()}
-                    class="flex items-center gap-2 text-base leading-relaxed text-[rgb(var(--color-text))]"
-                  >
-                    <span class="text-[rgb(var(--color-accent))]">🔄</span>
-                    <FormattedDate date={updatedDate} format="long" />
-                  </time>
+                  {
+                    updatedDate && updatedDate.getTime() !== pubDate?.getTime() && (
+                      <time
+                        datetime={updatedDate.toISOString()}
+                        class="mt-1 flex items-center gap-2 text-sm leading-relaxed text-[rgb(var(--color-text-muted))]"
+                      >
+                        <span class="text-[rgb(var(--color-accent))]">🔄</span>
+                        <span>
+                          Updated on <FormattedDate date={updatedDate} format="long" />
+                        </span>
+                      </time>
+                    )
+                  }
                 </div>
               )
             }
