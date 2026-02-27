@@ -4,6 +4,7 @@ description: >-
   Feelings are not instructions—they are information. On integration as the third
   option between suppression and indulgence, and why the space between feeling and action is where character lives.
 pubDate: '2026-02-22T23:28:00.000Z'
+updatedDate: '2026-02-27T16:00:00.000Z'
 language:
   - en
 heroImage: /images/2026/in-my-feelings.avif
