@@ -279,10 +279,6 @@ const sortedChapters = nonEmptyChapters.sort(
       setTimeout(() => this.updateTotalProgress(), CROSS_TAB_DELAY);
     }
 
-    /**
-     * @param {CustomEvent} event
-     */
-    // @ts-ignore
     handleDataUpdated(event) {
       // React to immediate data updates from same tab
       if (event.detail && event.detail.type === 'post-read') {
@@ -290,10 +286,6 @@ const sortedChapters = nonEmptyChapters.sort(
       }
     }
 
-    /**
-     * @param {StorageEvent} event
-     */
-    // @ts-ignore
     handleStorageChange(event) {
       // React to localStorage changes from other tabs/windows
       if (event.key === this.storageKey || event.key === this.fallbackKey) {
@@ -325,8 +317,6 @@ const sortedChapters = nonEmptyChapters.sort(
   }
 
   // Initialize when DOM is ready
-  /** @type {TotalProgressTracker | null} */
-  // @ts-ignore
   let totalProgressTracker = null;
 
   if (document.readyState === 'loading') {

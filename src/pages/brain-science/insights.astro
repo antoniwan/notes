@@ -4,19 +4,10 @@ import BrainScienceLayout from '../../components/brain-science/BrainScienceLayou
 import TimeSeriesChart from '../../components/brain-science/TimeSeriesChart.astro';
 import BarChart from '../../components/brain-science/BarChart.astro';
 import ScatterChart from '../../components/brain-science/ScatterChart.astro';
-import {
-  getBrainSciencePosts,
-  calculateMonthlyPosts,
-  calculateBaseMetrics,
-} from '../../utils/brainScience/data';
+import { getBrainSciencePosts } from '../../utils/brainScience/data';
 import { MASLOW_CATEGORIES } from '../../data/tags';
 import { format, eachQuarterOfInterval, endOfQuarter } from 'date-fns';
-import {
-  generateDynamicInsights,
-  calculateObjectiveMetrics,
-  scoreToLetterGrade,
-  letterGradeToColor,
-} from '../../utils/insightGenerator';
+import { generateDynamicInsights, calculateObjectiveMetrics } from '../../utils/insightGenerator';
 import { BRAIN_SCIENCE_PAGES } from '../../data/brainScience';
 import { correlation } from '../../utils/brainScience/statistics';
 
@@ -335,12 +326,6 @@ const emotionalPatterns = {
 };
 
 // Prepare time series data for emotional intensity over time
-const baseMetrics = calculateBaseMetrics(posts);
-const monthlyPosts = calculateMonthlyPosts(
-  posts,
-  baseMetrics.firstPostDate,
-  baseMetrics.lastPostDate,
-);
 const sortedContentAnalysis = contentAnalysis.sort((a, b) => a.date.valueOf() - b.date.valueOf());
 
 // Group by quarter for emotional intensity trend
@@ -959,7 +944,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
           knowledgeAreas
             .sort((a, b) => Math.abs(b.expansionRate) - Math.abs(a.expansionRate))
             .slice(0, 10)
-            .map((area, index) => (
+            .map((area) => (
               <div class="flex items-center justify-between rounded-lg bg-[rgb(var(--color-bg))] p-4">
                 <div class="flex items-center gap-4">
                   <div
@@ -1206,7 +1191,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
         {/* Dynamic Insights */}
         <div class="space-y-2">
           {
-            insights.map((insight, index) => (
+            insights.map((insight) => (
               <div class={`flex items-center gap-2 ${insight.color}`}>
                 <span class="text-sm">
                   {insight.type === 'positive'

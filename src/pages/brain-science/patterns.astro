@@ -4,14 +4,8 @@ import BrainScienceLayout from '../../components/brain-science/BrainScienceLayou
 import BarChart from '../../components/brain-science/BarChart.astro';
 import ScatterChart from '../../components/brain-science/ScatterChart.astro';
 import { getBrainSciencePosts } from '../../utils/brainScience/data';
-import { getTagWeight } from '../../data/tags';
 import { format, getDay, getMonth } from 'date-fns';
-import {
-  generateDynamicInsights,
-  calculateObjectiveMetrics,
-  scoreToLetterGrade,
-  letterGradeToColor,
-} from '../../utils/insightGenerator';
+import { generateDynamicInsights, calculateObjectiveMetrics } from '../../utils/insightGenerator';
 import { BRAIN_SCIENCE_PAGES } from '../../data/brainScience';
 import { correlation } from '../../utils/brainScience/statistics';
 
@@ -45,9 +39,6 @@ function getGradeColor(grade: string): string {
 
 // Get all published posts
 const posts = await getBrainSciencePosts();
-
-// Sort posts by date
-const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 // Content analysis
 const contentAnalysis = posts.map((post) => {
@@ -339,20 +330,6 @@ const correlations = {
   })(),
 };
 
-// Momentum patterns
-const momentumPatterns = creativeCycles.reduce(
-  (acc, post) => {
-    const momentum = post.momentum;
-    const bucket = Math.floor(momentum / 500) * 500;
-    if (!acc[bucket]) {
-      acc[bucket] = [];
-    }
-    acc[bucket].push(post);
-    return acc;
-  },
-  {} as Record<number, typeof creativeCycles>,
-);
-
 // Pattern insights
 const patternInsights = [
   {
@@ -428,7 +405,7 @@ const insightData = {
   ...objectiveMetrics,
 };
 
-const { insights, summary, balancedAnalysis } = generateDynamicInsights(insightData, 'patterns');
+const { insights, summary } = generateDynamicInsights(insightData, 'patterns');
 
 // Prepare scatter plot for word count vs emotional intensity
 const wordCountEmotionalScatter = {
@@ -1225,7 +1202,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
         {/* Dynamic Insights */}
         <div class="space-y-2">
           {
-            insights.map((insight, index) => (
+            insights.map((insight) => (
               <div class={`flex items-center gap-2 ${insight.color}`}>
                 <span class="text-sm">
                   {insight.type === 'positive'

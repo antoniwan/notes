@@ -107,7 +107,7 @@ const searchDataJson = JSON.stringify(searchData);
   </div>
 </div>
 
-<script define:vars={{ searchDataJson }}>
+<script define:vars={{ searchDataJson }} is:inline>
   // Make search data globally available
   window.searchData = JSON.parse(searchDataJson);
 </script>

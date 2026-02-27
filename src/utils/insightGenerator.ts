@@ -514,7 +514,6 @@ export function calculateObjectiveMetrics(posts: CollectionEntry<'blog'>[]): {
 
   // Calculate challenge and improvement areas using configurable thresholds
   const challengeAreas = calculateChallengeAreas(
-    posts,
     postingRegularity,
     qualityVariance,
     sentimentAnalysis,

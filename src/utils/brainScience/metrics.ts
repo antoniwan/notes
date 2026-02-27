@@ -255,7 +255,6 @@ export function calculateQualityVariance(posts: CollectionEntry<'blog'>[]): numb
  * Calculate challenge areas based on configurable thresholds
  */
 export function calculateChallengeAreas(
-  posts: CollectionEntry<'blog'>[],
   postingRegularity: number,
   qualityVariance: number,
   sentimentAnalysis: { positive: number; negative: number; neutral: number; mixed: number },

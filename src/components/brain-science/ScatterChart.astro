@@ -60,7 +60,7 @@ const isDev = import.meta.env.DEV;
   </div>
 </div>
 
-<script define:vars={{ id, chartData, isDev }}>
+<script define:vars={{ id, chartData, isDev }} is:inline>
   async function initChart() {
     try {
       // Wait for DOM to be ready

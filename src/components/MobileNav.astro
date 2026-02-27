@@ -243,14 +243,14 @@ const sortedCategories = await getSortedCategories();
             await navigator.clipboard.writeText(pageUrl);
             showToast('Link copied to clipboard!');
           } catch (err) {
-            // Fallback for older browsers
+            // Fallback for older browsers where the Clipboard API isn't available.
+            // We select the text and prompt the user to use their keyboard to copy.
             const textArea = document.createElement('textarea');
             textArea.value = pageUrl;
             document.body.appendChild(textArea);
             textArea.select();
-            document.execCommand('copy');
             document.body.removeChild(textArea);
-            showToast('Link copied to clipboard!');
+            showToast('Link ready — press Ctrl+C to copy.');
           }
         }
       });

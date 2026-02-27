@@ -68,17 +68,6 @@ const tagBarChart = {
   ],
 };
 
-// Calculate content complexity using compromise.js
-const avgWordCount = baseMetrics.averageWordsPerPost;
-const avgSentenceLength =
-  posts.length > 0
-    ? posts.reduce((sum, post) => {
-        const content = post.body || '';
-        const sentences = content.split(/[.!?]+/).filter((s) => s.trim().length > 0);
-        return sum + (sentences.length > 0 ? content.split(/\s+/).length / sentences.length : 0);
-      }, 0) / posts.length
-    : 0;
-
 // Get page info
 const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'index');
 ---

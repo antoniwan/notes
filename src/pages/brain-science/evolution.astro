@@ -240,22 +240,6 @@ const styleEvolution = contentEvolution
           : 'Recent',
   }));
 
-// Topic diversity evolution
-const topicDiversity = quarters.map((quarter) => ({
-  ...quarter,
-  topicDiversity: quarter.topTags.length,
-  avgTagWeight: Math.round(
-    quarter.topTags.reduce((sum, tag) => sum + tag.weight, 0) / quarter.topTags.length,
-  ),
-}));
-
-// Category evolution
-const categoryEvolution = quarters.map((quarter) => ({
-  ...quarter,
-  categoryDiversity: quarter.topCategories.length,
-  primaryCategory: quarter.topCategories[0]?.cat || 'None',
-}));
-
 // Complexity trends
 const complexityTrends = styleEvolution.reduce(
   (acc, post) => {
@@ -435,7 +419,7 @@ const insightData = {
   ...objectiveMetrics,
 };
 
-const { insights, summary, balancedAnalysis } = generateDynamicInsights(insightData, 'evolution');
+const { insights, summary } = generateDynamicInsights(insightData, 'evolution');
 
 // Prepare time series data for complexity evolution
 const sortedContentEvolution = contentEvolution.sort((a, b) => a.date.valueOf() - b.date.valueOf());

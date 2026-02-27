@@ -221,7 +221,7 @@ const existingTags = getAllTags();
   </Container>
 </BaseLayout>
 
-<script define:vars={{ existingTags }}>
+<script define:vars={{ existingTags }} is:inline>
   // Client-side script to fetch and display the quote
 
   let retryCount = 0;
