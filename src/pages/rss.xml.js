@@ -2,7 +2,7 @@ import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL, AUTHOR } from '../consts';
 
-export async function GET(context) {
+export async function GET() {
   const posts = await getCollection('blog');
   const publishedPosts = posts.filter(
     (post) => !post.data.draft && post.data.published !== false && post.data.pubDate <= new Date(),

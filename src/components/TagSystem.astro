@@ -19,10 +19,6 @@ interface Props {
   // Layout options
   layout?: 'cloud' | 'list' | 'display';
   className?: string;
-
-  // Interaction options
-  clickable?: boolean;
-  showIcons?: boolean;
 }
 
 const {
@@ -36,8 +32,6 @@ const {
   compact = false,
   layout = 'display',
   className = '',
-  clickable = true,
-  showIcons = true,
 } = Astro.props;
 
 // Convert tags array to tagStats if needed

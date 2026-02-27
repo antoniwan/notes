@@ -12,7 +12,7 @@ const {
 } = Astro.props;
 
 // Generate unique ID for this search instance
-const searchId = `search-${Math.random().toString(36).substr(2, 9)}`;
+const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
 
 // Serialize search data for client-side use
 const searchDataJson = JSON.stringify(searchData);
@@ -115,7 +115,6 @@ const searchDataJson = JSON.stringify(searchData);
 <script>
   // Search functionality
   class SearchBar {
-    private searchId: string;
     private input: HTMLInputElement | null;
     private results: HTMLElement | null;
     private resultsList: HTMLElement | null;
@@ -126,7 +125,6 @@ const searchDataJson = JSON.stringify(searchData);
     private isSearching = false;
 
     constructor(searchId: string) {
-      this.searchId = searchId;
       this.input = document.getElementById(searchId) as HTMLInputElement;
       this.results = document.getElementById(`${searchId}-results`) as HTMLElement;
       this.resultsList = document.getElementById(`${searchId}-results-list`) as HTMLElement;

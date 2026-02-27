@@ -4,7 +4,7 @@ import PageHeader from '../components/PageHeader.astro';
 import TagDisplay from '../components/TagDisplay.astro';
 import Container from '../components/Container.astro';
 import { getCollection } from 'astro:content';
-import { calculateTagStats, sortTagsByImportance } from '../utils/tagProcessing';
+import { calculateTagStats } from '../utils/tagProcessing';
 
 // Get all posts
 const posts = await getCollection('blog', ({ data }) => {
@@ -28,7 +28,6 @@ const sortedTags = Object.entries(tagCounts).sort(([tagA, countA], [tagB, countB
 // Calculate statistics
 const avgTagsPerPost = totalTagInstances / posts.length;
 const postsWithManyTags = posts.filter((post) => (post.data.tags?.length || 0) > 10).length;
-const postsWithFewTags = posts.filter((post) => (post.data.tags?.length || 0) <= 3).length;
 
 // Get top tags by frequency
 const topTags = sortedTags.slice(0, 20);

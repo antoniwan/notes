@@ -14,11 +14,9 @@ async function generateFavicons() {
     // Read the SVG file
     const svgBuffer = fs.readFileSync(svgPath);
 
-    // Generate favicon.ico (16x16, 32x32, 48x48)
+    // Generate favicon.ico (32x32)
     console.log('Generating favicon.ico...');
-    const favicon16 = await sharp(svgBuffer).resize(16, 16).png().toBuffer();
     const favicon32 = await sharp(svgBuffer).resize(32, 32).png().toBuffer();
-    const favicon48 = await sharp(svgBuffer).resize(48, 48).png().toBuffer();
 
     // Create ICO file (simplified - in production you'd want a proper ICO library)
     // For now, we'll create a 32x32 PNG as favicon.ico

@@ -23,7 +23,7 @@ const hasMoreTags = showMoreIndicator && tags.length > maxVisible;
 const remainingCount = tags.length - maxVisible;
 
 // Simplified color system
-const getTagColor = (tag: string, variant: string) => {
+const getTagColor = (variant: string) => {
   const colors = {
     default:
       'bg-[rgb(var(--color-accent))]/10 border-[rgb(var(--color-accent))]/20 text-[rgb(var(--color-accent))] hover:bg-[rgb(var(--color-accent))]/20',
@@ -32,12 +32,6 @@ const getTagColor = (tag: string, variant: string) => {
     bordered:
       'bg-transparent border-[rgb(var(--color-accent))]/30 text-[rgb(var(--color-accent))] hover:bg-[rgb(var(--color-accent))]/10',
   };
-
-  // Use tag name to consistently assign colors
-  const hash = tag.split('').reduce((a, b) => {
-    a = (a << 5) - a + b.charCodeAt(0);
-    return a & a;
-  }, 0);
 
   return colors[variant as keyof typeof colors];
 };
@@ -48,7 +42,7 @@ const getTagColor = (tag: string, variant: string) => {
     visibleTags.map((tag) => (
       <a
         href={`/tag/${tag}/`}
-        class={`tag-item inline-flex items-center gap-1.5 ${compact ? 'px-2.5 py-1 text-sm' : 'px-3 py-1.5 text-base'} interactive-button rounded-full border font-medium focus:outline-none focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:ring-offset-1 ${getTagColor(tag, variant)}`}
+        class={`tag-item inline-flex items-center gap-1.5 ${compact ? 'px-2.5 py-1 text-sm' : 'px-3 py-1.5 text-base'} interactive-button rounded-full border font-medium focus:outline-none focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:ring-offset-1 ${getTagColor(variant)}`}
       >
         <span class="tag-icon" aria-hidden="true">
           🏷️
@@ -60,7 +54,7 @@ const getTagColor = (tag: string, variant: string) => {
   {
     hasMoreTags && (
       <span
-        class={`more-indicator inline-flex items-center gap-1 ${compact ? 'px-2.5 py-1 text-sm' : 'px-3 py-1.5 text-base'} rounded-full border font-medium ${getTagColor('more', variant)}`}
+        class={`more-indicator inline-flex items-center gap-1 ${compact ? 'px-2.5 py-1 text-sm' : 'px-3 py-1.5 text-base'} rounded-full border font-medium ${getTagColor(variant)}`}
       >
         <span aria-hidden="true">⋯</span>
         <span>+{remainingCount} more</span>

@@ -199,10 +199,9 @@ const { posts, chapterTitle, chapterId, defaultExpanded = true } = Astro.props;
   }
 
   let unsubscribe = null;
-  let chapterManager = null;
 
   function initChapterFeatures() {
-    chapterManager = new ChapterManager();
+    new ChapterManager();
     updateIndicators();
   }
 
@@ -221,10 +220,10 @@ const { posts, chapterTitle, chapterId, defaultExpanded = true } = Astro.props;
     // Initialize chapter manager even if service not available
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', () => {
-        chapterManager = new ChapterManager();
+        new ChapterManager();
       });
     } else {
-      chapterManager = new ChapterManager();
+      new ChapterManager();
     }
   }
 

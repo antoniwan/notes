@@ -12,32 +12,6 @@ const __dirname = path.dirname(__filename);
 // Path to blog posts
 const postsDir = path.join(__dirname, '../src/content/p');
 
-// Official frontmatter specification
-const OFFICIAL_FRONTMATTER = {
-  // Required fields
-  title: 'string',
-  description: 'string',
-  pubDate: 'date',
-  language: 'array',
-
-  // Optional fields (in order)
-  updatedDate: 'date',
-  heroImage: 'string',
-  category: 'array',
-  subcategory: 'string',
-  tags: 'array',
-  readingTime: 'number',
-  draft: 'boolean',
-  featured: 'boolean',
-  published: 'boolean',
-  showComments: 'boolean',
-  author: 'string',
-  authorImage: 'string',
-  authorBio: 'string',
-  translationGroup: 'string',
-  keywords: 'array',
-};
-
 // Field order for consistent frontmatter
 const FIELD_ORDER = [
   'title',

@@ -8,11 +8,10 @@ export interface Translation {
 
 export interface Props {
   translations: Translation[];
-  currentLanguage: string;
   currentPath: string;
 }
 
-const { translations, currentLanguage, currentPath } = Astro.props;
+const { translations, currentPath } = Astro.props;
 
 // Filter out current post and sort by language
 const otherTranslations = translations
