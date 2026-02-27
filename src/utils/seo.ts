@@ -1,4 +1,11 @@
-import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL, AUTHOR, SEO_CONFIG, SEO_KEYWORDS } from '../consts';
+import {
+  SITE_TITLE,
+  SITE_DESCRIPTION,
+  SITE_URL,
+  AUTHOR,
+  SEO_CONFIG,
+  SEO_KEYWORDS,
+} from '../consts';
 import { SOCIAL_IMAGE_MANIFEST } from '../data/socialImageManifest';
 
 // Simplified SEO configuration interface
