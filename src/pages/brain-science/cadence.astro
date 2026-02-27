@@ -29,11 +29,9 @@ const posts = await getBrainSciencePosts();
 const baseMetrics = calculateBaseMetrics(posts);
 const firstPostDate = baseMetrics.firstPostDate;
 const lastPostDate = baseMetrics.lastPostDate;
-const sortedPosts = [...posts].sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 // Use shared utilities for calculations
 const monthlyPosts = calculateMonthlyPosts(posts, firstPostDate, lastPostDate);
-const weeklyPosts = calculateWeeklyPosts(posts, firstPostDate, lastPostDate);
 const dayOfWeekStats = calculateDayOfWeekStats(posts);
 const monthOfYearStats = calculateMonthOfYearStats(posts);
 const streakMetrics = calculateStreakMetrics(posts);
@@ -557,7 +555,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
               ✅ Strengths
             </h3>
             <div class="space-y-3">
-              {balancedAnalysis.strengths.map((insight, index) => (
+              {balancedAnalysis.strengths.map((insight) => (
                 <div class="border-b border-[rgb(var(--color-border))] py-3 last:border-b-0">
                   <div class="text-sm text-[rgb(var(--color-text))]" set:html={insight.text} />
                 </div>
@@ -575,7 +573,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
               ❌ Challenges
             </h3>
             <div class="space-y-3">
-              {balancedAnalysis.challenges.map((insight, index) => (
+              {balancedAnalysis.challenges.map((insight) => (
                 <div class="border-b border-[rgb(var(--color-border))] py-3 last:border-b-0">
                   <div class="text-sm text-[rgb(var(--color-text))]" set:html={insight.text} />
                 </div>
@@ -593,7 +591,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
               ℹ️ Objective Metrics
             </h3>
             <div class="space-y-3">
-              {balancedAnalysis.neutral.map((insight, index) => (
+              {balancedAnalysis.neutral.map((insight) => (
                 <div class="border-b border-[rgb(var(--color-border))] py-3 last:border-b-0">
                   <div class="text-sm text-[rgb(var(--color-text))]" set:html={insight.text} />
                 </div>
@@ -615,7 +613,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
         {/* Dynamic Insights */}
         <div class="space-y-2">
           {
-            insights.map((insight, index) => (
+            insights.map((insight) => (
               <div class={`flex items-center gap-2 ${insight.color}`}>
                 <span class="text-sm">
                   {insight.type === 'positive'

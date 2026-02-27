@@ -7,7 +7,6 @@ import {
   eachWeekOfInterval,
   getDay,
   getMonth,
-  differenceInDays,
 } from 'date-fns';
 import { getTagWeight, MASLOW_CATEGORIES } from '../../data/tags';
 import { categories } from '../../data/categories';

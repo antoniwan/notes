@@ -395,7 +395,7 @@ export function generateHowToSchema(options: {
 }
 
 // Auto-detect FAQ content from markdown and generate schema
-export function autoDetectFAQSchema(content: string, title: string): any | null {
+export function autoDetectFAQSchema(content: string): any | null {
   // Look for common FAQ patterns in markdown
   const faqPatterns = [
     // Q&A format with ## or ### headers
@@ -550,7 +550,7 @@ export function generateEnhancedStructuredData(
 
   // If we have content and it's an article, try to auto-detect FAQ content
   if (options.content && options.type === 'article') {
-    const faqSchema = autoDetectFAQSchema(options.content, options.title);
+    const faqSchema = autoDetectFAQSchema(options.content);
     if (faqSchema) {
       // If baseSchemas is an array, add FAQ schema to it
       if (Array.isArray(baseSchemas)) {

@@ -1,6 +1,5 @@
 import type { CollectionEntry } from 'astro:content';
 import {
-  TAG_WEIGHTS,
   MASLOW_CATEGORIES,
   getTagWeight,
   getTagCategory,
@@ -82,7 +81,7 @@ export function getRecommendedTags(
 
   // Sort by frequency and weight
   const sortedRelatedTags = Object.entries(relatedTagCounts)
-    .sort(([tagA, countA], [tagB, countB]) => {
+    .sort(([tagA], [tagB]) => {
       const weightA = getTagWeight(tagA);
       const weightB = getTagWeight(tagB);
       return weightB - weightA;

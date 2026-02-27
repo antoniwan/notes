@@ -14,7 +14,6 @@ import {
   calculateGrowthPosts,
   calculateEmotionalPosts,
   calculateMonthlyPosts,
-  prepareTimeSeriesData,
 } from '../../utils/brainScience/data';
 import {
   calculateObjectiveMetrics,
@@ -22,8 +21,6 @@ import {
   letterGradeToColor,
 } from '../../utils/insightGenerator';
 import { BRAIN_SCIENCE_PAGES } from '../../data/brainScience';
-import { format } from 'date-fns';
-import nlp from 'compromise';
 
 // Get all published posts
 const posts = await getBrainSciencePosts();

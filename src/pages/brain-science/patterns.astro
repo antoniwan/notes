@@ -4,8 +4,7 @@ import BrainScienceLayout from '../../components/brain-science/BrainScienceLayou
 import BarChart from '../../components/brain-science/BarChart.astro';
 import ScatterChart from '../../components/brain-science/ScatterChart.astro';
 import { getBrainSciencePosts } from '../../utils/brainScience/data';
-import { categories } from '../../data/categories';
-import { getTagWeight, MASLOW_CATEGORIES } from '../../data/tags';
+import { getTagWeight } from '../../data/tags';
 import { format, getDay, getMonth } from 'date-fns';
 import {
   generateDynamicInsights,
@@ -14,7 +13,6 @@ import {
   letterGradeToColor,
 } from '../../utils/insightGenerator';
 import { BRAIN_SCIENCE_PAGES } from '../../data/brainScience';
-import nlp from 'compromise';
 import { correlation } from '../../utils/brainScience/statistics';
 
 // Grade translation function - converts numerical scores to letter grades
@@ -354,19 +352,6 @@ const momentumPatterns = creativeCycles.reduce(
   },
   {} as Record<number, typeof creativeCycles>,
 );
-
-const momentumStats = Object.entries(momentumPatterns)
-  .map(([bucket, posts]) => ({
-    bucket: parseInt(bucket),
-    postCount: posts.length,
-    avgEmotionalIntensity: Math.round(
-      posts.reduce((sum, post) => sum + post.emotionalIntensity, 0) / posts.length,
-    ),
-    avgComplexity: Math.round(
-      posts.reduce((sum, post) => sum + post.fleschScore, 0) / posts.length,
-    ),
-  }))
-  .sort((a, b) => a.bucket - b.bucket);
 
 // Pattern insights
 const patternInsights = [

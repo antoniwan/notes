@@ -267,7 +267,6 @@ const platforms = generateShareUrls(title, currentUrl, description);
       button.addEventListener('click', async (e) => {
         e.preventDefault();
 
-        const platform = (button as HTMLElement).dataset.platform;
         const url = (button as HTMLElement).dataset.url;
         const action = (button as HTMLElement).dataset.action;
 

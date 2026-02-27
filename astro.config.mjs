@@ -88,7 +88,7 @@ export default defineConfig({
                 return 'vendor-date';
               }
               // NLP and analysis libraries
-              if (id.includes('compromise') || id.includes('sentiment')) {
+              if (id.includes('sentiment')) {
                 return 'vendor-nlp';
               }
               // Other vendor dependencies
@@ -106,7 +106,7 @@ export default defineConfig({
       devSourcemap: true, // Enable sourcemaps in dev for better HMR
     },
     optimizeDeps: {
-      include: ['@astrojs/mdx', 'date-fns', 'reading-time', 'compromise', 'sentiment'],
+      include: ['@astrojs/mdx', 'date-fns', 'reading-time', 'sentiment'],
       // Exclude heavy dependencies from pre-bundling in dev
       exclude: [],
     },

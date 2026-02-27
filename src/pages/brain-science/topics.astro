@@ -6,7 +6,7 @@ import BarChart from '../../components/brain-science/BarChart.astro';
 import { getBrainSciencePosts } from '../../utils/brainScience/data';
 import { categories } from '../../data/categories';
 import { getTagWeight, MASLOW_CATEGORIES, getTagCategory, getTagMetadata } from '../../data/tags';
-import { format, eachQuarterOfInterval, startOfQuarter, endOfQuarter } from 'date-fns';
+import { format } from 'date-fns';
 import {
   generateDynamicInsights,
   calculateObjectiveMetrics,
@@ -14,7 +14,6 @@ import {
   letterGradeToColor,
 } from '../../utils/insightGenerator';
 import { BRAIN_SCIENCE_PAGES } from '../../data/brainScience';
-import nlp from 'compromise';
 
 // Get all published posts
 const posts = await getBrainSciencePosts();
@@ -42,25 +41,6 @@ const topTags = Object.entries(tagFrequency)
     category: getTagCategory(tag),
     metadata: getTagMetadata(tag),
   }));
-
-// Category analysis
-const categoryFrequency = posts.reduce(
-  (acc, post) => {
-    post.data.category?.forEach((cat) => {
-      acc[cat] = (acc[cat] || 0) + 1;
-    });
-    return acc;
-  },
-  {} as Record<string, number>,
-);
-
-const categoryStats = categories
-  .map((category) => ({
-    ...category,
-    count: categoryFrequency[category.id] || 0,
-    percentage: Math.round(((categoryFrequency[category.id] || 0) / posts.length) * 100),
-  }))
-  .filter((cat) => cat.count > 0);
 
 // Maslow hierarchy analysis
 const maslowAnalysis = MASLOW_CATEGORIES.map((category) => {

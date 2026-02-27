@@ -23,9 +23,6 @@ const mostSelfAware = getMostSelfAwarePosts(posts, 10);
 const writingAboutWriting = getWritingAboutWritingPosts(posts);
 const metaMetrics = calculateMetaMetrics(posts);
 
-// Sort by date for timeline
-const sortedAnalyses = allAnalyses.sort((a, b) => a.postDate.valueOf() - b.postDate.valueOf());
-
 // Prepare chart data for evolution - filter out invalid data and ensure arrays match
 const validEvolutionData = evolutionData.filter((q) => q.postCount > 0);
 const evolutionLabels = validEvolutionData.map((q) => q.label);
@@ -37,19 +34,9 @@ const evolutionMetaFrequency = validEvolutionData.map((q) => {
   const freq = isNaN(q.metaLanguageFrequency) ? 0 : q.metaLanguageFrequency;
   return typeof freq === 'number' && isFinite(freq) ? freq : 0;
 });
-const evolutionSentiment = validEvolutionData.map((q) => {
-  const sent = isNaN(q.avgSentiment) ? 0 : q.avgSentiment * 10;
-  return typeof sent === 'number' && isFinite(sent) ? sent : 0;
-});
 
 // Get page info
 const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'meta');
-
-// Calculate insights
-const totalMetaPatterns = allAnalyses.reduce((sum, a) => sum + a.metaLanguagePatterns.length, 0);
-const recursiveThinkingPosts = allAnalyses.filter((a) => a.recursiveThinking);
-const writingAsSubjectPosts = allAnalyses.filter((a) => a.writingAsSubject);
-const writingAsToolPosts = allAnalyses.filter((a) => a.writingAsTool);
 
 // Group meta patterns by type
 const patternTypes = allAnalyses.reduce(

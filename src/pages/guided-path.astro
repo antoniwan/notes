@@ -1,6 +1,5 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
-import Container from '../components/Container.astro';
 import Chapter from '../components/Chapter.astro';
 import BackToTop from '../components/BackToTop.astro';
 import { getCollection } from 'astro:content';
@@ -19,15 +18,6 @@ interface SeasonalChapter {
   startDate: Date;
   endDate: Date;
   posts: any[];
-}
-
-// Helper function to determine season based on date
-function getSeason(date: Date): string {
-  const month = date.getMonth();
-  if (month >= 2 && month <= 4) return 'Spring';
-  if (month >= 5 && month <= 7) return 'Summer';
-  if (month >= 8 && month <= 10) return 'Fall';
-  return 'Winter';
 }
 
 // Helper function to get season start and end dates

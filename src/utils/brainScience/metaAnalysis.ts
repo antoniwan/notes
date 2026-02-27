@@ -1,7 +1,6 @@
-import nlp from 'compromise';
 import Sentiment from 'sentiment';
 import type { CollectionEntry } from 'astro:content';
-import { format, endOfQuarter, eachQuarterOfInterval } from 'date-fns';
+import { endOfQuarter, eachQuarterOfInterval } from 'date-fns';
 import { loadMetaAnalysisCache, saveMetaAnalysisCache } from './cache';
 
 const sentiment = new Sentiment();
@@ -117,7 +116,7 @@ function isGenuineSelfReflection(phrase: string, sentence: string): boolean {
 /**
  * Check if a phrase indicates meta-cognition (thinking about thinking)
  */
-function isMetaCognition(phrase: string, sentence: string): boolean {
+function isMetaCognition(sentence: string): boolean {
   const lower = sentence.toLowerCase();
 
   // Strong meta-cognition indicators
@@ -137,7 +136,7 @@ function isMetaCognition(phrase: string, sentence: string): boolean {
 /**
  * Check if a phrase indicates recursive thinking (thinking about thinking about thinking)
  */
-function isRecursiveThinking(phrase: string, sentence: string): boolean {
+function isRecursiveThinking(sentence: string): boolean {
   const lower = sentence.toLowerCase();
 
   // Strong recursive thinking indicators
@@ -178,7 +177,6 @@ function isRecursiveThinking(phrase: string, sentence: string): boolean {
 export function detectMetaLanguage(content: string, title: string): MetaLanguagePattern[] {
   const patterns: MetaLanguagePattern[] = [];
   const seenPhrases = new Set<string>(); // For deduplication
-  const doc = nlp(content);
   const sentences = content.split(/[.!?]+/).filter((s) => s.trim().length > 10);
 
   // Writing-about-writing patterns (more precise)
@@ -251,7 +249,7 @@ export function detectMetaLanguage(content: string, title: string): MetaLanguage
 
     metaCognitionPhrases.forEach((phrase) => {
       if (sentence.toLowerCase().includes(phrase)) {
-        if (isMetaCognition(phrase, sentence)) {
+        if (isMetaCognition(sentence)) {
           const normalized = sentence.trim().toLowerCase().substring(0, 100);
           if (!seenPhrases.has(normalized)) {
             seenPhrases.add(normalized);
@@ -282,7 +280,7 @@ export function detectMetaLanguage(content: string, title: string): MetaLanguage
 
     recursivePhrases.forEach((phrase) => {
       if (sentence.toLowerCase().includes(phrase)) {
-        if (isRecursiveThinking(phrase, sentence)) {
+        if (isRecursiveThinking(sentence)) {
           const normalized = sentence.trim().toLowerCase().substring(0, 100);
           if (!seenPhrases.has(normalized)) {
             seenPhrases.add(normalized);
@@ -300,7 +298,6 @@ export function detectMetaLanguage(content: string, title: string): MetaLanguage
   });
 
   // Check title for meta-indicators (only if title is clearly meta)
-  const titleLower = title.toLowerCase();
   const titleMetaIndicators = [
     /writing (about|on|and)/i,
     /(thoughts|thinking|reflection|meta) (on|about|and)/i,

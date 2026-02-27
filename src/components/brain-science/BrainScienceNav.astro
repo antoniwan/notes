@@ -8,10 +8,6 @@ interface Props {
 
 const { currentPage, showNavLinks = true } = Astro.props;
 
-// Get current page info
-const currentPageInfo = BRAIN_SCIENCE_PAGES.find((page) => page.path === currentPage);
-const isIndexPage = currentPage === '/brain-science';
-
 // Get all pages for navigation
 const allPages = BRAIN_SCIENCE_PAGES;
 ---

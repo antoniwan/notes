@@ -24,7 +24,7 @@ const posts = await getCollection('blog', ({ data }) => {
 });
 
 // Get tag statistics
-const { totalPosts, relatedTags, category } = getTagStatistics(tag, posts);
+const { totalPosts, relatedTags } = getTagStatistics(tag, posts);
 
 // Filter posts by tag and sort by date
 const tagPosts = posts

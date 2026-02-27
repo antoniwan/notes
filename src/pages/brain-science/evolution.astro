@@ -4,25 +4,10 @@ import BrainScienceLayout from '../../components/brain-science/BrainScienceLayou
 import TimeSeriesChart from '../../components/brain-science/TimeSeriesChart.astro';
 import BarChart from '../../components/brain-science/BarChart.astro';
 import { getBrainSciencePosts } from '../../utils/brainScience/data';
-import { categories } from '../../data/categories';
-import { getTagWeight, MASLOW_CATEGORIES } from '../../data/tags';
-import {
-  format,
-  startOfMonth,
-  endOfMonth,
-  eachMonthOfInterval,
-  eachQuarterOfInterval,
-  startOfQuarter,
-  endOfQuarter,
-} from 'date-fns';
-import {
-  generateDynamicInsights,
-  calculateObjectiveMetrics,
-  scoreToLetterGrade,
-  letterGradeToColor,
-} from '../../utils/insightGenerator';
+import { getTagWeight } from '../../data/tags';
+import { endOfQuarter, eachQuarterOfInterval } from 'date-fns';
+import { generateDynamicInsights, calculateObjectiveMetrics } from '../../utils/insightGenerator';
 import { BRAIN_SCIENCE_PAGES } from '../../data/brainScience';
-import nlp from 'compromise';
 
 // Get all published posts
 const posts = await getBrainSciencePosts();
@@ -1102,7 +1087,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
         {/* Dynamic Insights */}
         <div class="space-y-2">
           {
-            insights.map((insight, index) => (
+            insights.map((insight) => (
               <div class={`flex items-center gap-2 ${insight.color}`}>
                 <span class="text-sm">
                   {insight.type === 'positive'

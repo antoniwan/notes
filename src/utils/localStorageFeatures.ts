@@ -1,12 +1,5 @@
 // Clever local storage features for the blog
-import {
-  STORAGE_KEYS,
-  STORAGE_EVENTS,
-  STORAGE_VERSION,
-  dispatchClearEvents,
-  getAllReadPostsKeys,
-  isReadPostsKey,
-} from '../config/storage.js';
+import { STORAGE_KEYS, dispatchClearEvents, isReadPostsKey } from '../config/storage.js';
 
 export interface UserPreferences {
   theme: 'light' | 'dark' | 'auto';
@@ -38,7 +31,6 @@ export interface ReadingAnalytics {
 }
 
 class LocalStorageManager {
-  private readonly STORAGE_VERSION = STORAGE_VERSION;
   private readonly PREFERENCES_KEY = STORAGE_KEYS.PREFERENCES;
   private readonly SESSION_KEY = STORAGE_KEYS.SESSION;
   private readonly ANALYTICS_KEY = STORAGE_KEYS.ANALYTICS;
