@@ -19,6 +19,7 @@ export interface SocialLinks {
   buildsSoftware: string;
   strongHands: string;
   twitter: string;
+  threads: string;
 }
 
 export interface SEOConfig {
@@ -59,6 +60,7 @@ export const SOCIAL_LINKS: SocialLinks = {
   buildsSoftware: 'https://builds.software',
   strongHands: 'https://stronghandssoftheart.com',
   twitter: 'https://twitter.com/antoniwan',
+  threads: 'https://www.threads.com/@_antoniwan',
 };
 
 // SEO Configuration
