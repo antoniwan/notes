@@ -899,7 +899,7 @@ export const books: Book[] = [
     status: 'to-read',
   },
   {
-    title: "The Book of Virtues for Young People",
+    title: 'The Book of Virtues for Young People',
     author: 'William J. Bennett',
     shelf: 'Miscellaneous',
     status: 'to-read',
@@ -912,4 +912,3 @@ export const libraryStats = {
   currentlyReadingCount: books.filter((book) => book.status === 'in-progress').length,
   toReadCount: books.filter((book) => book.status === 'to-read').length,
 };
-
