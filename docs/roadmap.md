@@ -140,7 +140,52 @@ I am not promising timelines here. This is a **directional map**, not a contract
 
 ---
 
-## 4. Future idea parking lot
+## 4. Library of sources (books)
+
+- **Status**: Idea
+- **Goal**: Give readers an honest view of the books that shape these notes: which ones I own, which I’ve read end‑to‑end, and which I mostly use as references or have only skimmed.
+
+### What this actually means
+
+- A dedicated **“Library” page** that:
+  - Lists books I actually have on my shelves / in my Kindle, not an aspirational list.
+  - Groups them into rough buckets:
+    - **Read fully** (cover to cover; core influences).
+    - **In progress / partially read**.
+    - **Reference / skimmed** (I dip into specific chapters or ideas).
+  - For each book:
+    - Basic metadata (title, author, category/topic).
+    - A short **“how I use this”** note: foundational, occasional reference, one‑chapter wonder, etc.
+    - Optional link out to the book (non‑spammy; no growth‑hack copy).
+- Surface this page from:
+  - The **About** page.
+  - Maybe footer / nav as “Library” if it earns the space.
+  - Optionally from posts that mention a book (“From my library” link).
+
+### Why it matters
+
+- Readers can see **what they’re stepping into**: which thinkers, traditions, and texts sit behind the notes.
+- It makes my **sources of knowledge and bias explicit**, which builds more trust than pretending ideas appear from nowhere.
+- It’s a simple way to **recommend genuinely helpful books** without turning the site into a recommendation engine.
+- It gives curious readers a **next step** beyond the site itself: “if you liked this note, here’s what to read in the real world.”
+
+### Shape and constraints
+
+- The page should feel like a **curated shelf**, not a Goodreads clone:
+  - No star ratings.
+  - No endless carousels.
+  - Focus on **why this book matters to me**, not generic blurbs.
+- Buckets should stay **coarse and honest** (read / partial / reference) instead of fake‑precision progress tracking.
+- Avoid automations that invite **performative reading** (no “X books this year” counters).
+- Keep it **manually curated** so adding a book is an intentional act, not a firehose.
+
+### Open questions
+
+- Do I want to expose **non‑book sources** (long‑form essays, papers, lectures) on the same page or keep it strictly books?
+- Should posts be able to **declare related books** in frontmatter so the library can show “Referenced in: …” for each title?
+- Am I comfortable adding **affiliate links** here, or do I want this page to stay affiliate‑free for trust/clarity?
+
+## 5. Future idea parking lot
 
 This section is intentionally rough. Quick lines only; details come later.
 
