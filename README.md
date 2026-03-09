@@ -155,6 +155,7 @@ Defined in `src/data/categories.ts`. Examples: Art & Expression, Culture, DIY & 
 | Doc                                                     | Description                    |
 | ------------------------------------------------------- | ------------------------------ |
 | [Frontmatter spec](docs/frontmatter-spec.md)            | Post frontmatter format        |
+| [Roadmap](docs/roadmap.md)                              | Upcoming features and ideas    |
 | [Comments setup](docs/comments-setup.md)                | Remark42 configuration         |
 | [Quotes API](docs/quotes-api.md)                        | Quotes endpoint                |
 | [Multilingual setup](docs/multilingual-setup.md)        | Translation linking            |
