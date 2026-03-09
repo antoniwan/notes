@@ -1,0 +1,168 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { books } from '../../data/library';
+
+const shelves = Array.from(new Set(books.map((book) => book.shelf))).sort((a, b) =>
+  a.localeCompare(b),
+);
+---
+
+<PageLayout
+  title="Book Library (for reference)"
+  description="A simple, honest list of the books on my shelves — shared for reference, not as a reading challenge."
+  path="/library/books"
+>
+  <section>
+    <h2>All books</h2>
+    <p>
+      This library exists purely as a reference: books I own, books I&apos;ve read, and books I dip
+      into when I need a specific idea. Use the filters to slice by status, shelf, or search by
+      title and author.
+    </p>
+
+    <div class="library-filters">
+      <label>
+        <span>Status</span>
+        <select id="library-status-filter">
+          <option value="">All</option>
+          <option value="in-progress">Currently reading</option>
+          <option value="read">Read</option>
+          <option value="to-read">Reference</option>
+        </select>
+      </label>
+
+      <label>
+        <span>Shelf</span>
+        <select id="library-shelf-filter">
+          <option value="">All</option>
+          {shelves.map((shelf) => <option value={shelf}>{shelf}</option>)}
+        </select>
+      </label>
+
+      <label class="library-search">
+        <span>Search</span>
+        <input
+          id="library-search-input"
+          type="search"
+          placeholder="Search by title or author"
+          inputmode="search"
+        />
+      </label>
+    </div>
+
+    <table aria-label="Library of books">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Shelf</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="library-table-body">
+        {
+          books.map((book) => (
+            <tr
+              data-status={book.status}
+              data-shelf={book.shelf}
+              data-title={book.title.toLowerCase()}
+              data-author={book.author.toLowerCase()}
+            >
+              <td>{book.title}</td>
+              <td>{book.author}</td>
+              <td>{book.shelf}</td>
+              <td>
+                {book.status === 'read'
+                  ? 'Read'
+                  : book.status === 'in-progress'
+                    ? 'Currently reading'
+                    : 'Reference / not read completely'}
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </section>
+</PageLayout>
+
+<script>
+  // @ts-nocheck
+  function initLibraryFilters() {
+    const statusSelect = document.getElementById('library-status-filter');
+    const shelfSelect = document.getElementById('library-shelf-filter');
+    const searchInput = document.getElementById('library-search-input');
+    const tableBody = document.getElementById('library-table-body');
+
+    if (!statusSelect || !shelfSelect || !searchInput || !tableBody) return;
+
+    const rows = Array.from(tableBody.querySelectorAll('tr'));
+
+    function applyFilters() {
+      const status = statusSelect.value;
+      const shelf = shelfSelect.value;
+      const query = searchInput.value.trim().toLowerCase();
+
+      rows.forEach((row) => {
+        const rowStatus = row.getAttribute('data-status') || '';
+        const rowShelf = row.getAttribute('data-shelf') || '';
+        const title = row.getAttribute('data-title') || '';
+        const author = row.getAttribute('data-author') || '';
+
+        let visible = true;
+
+        if (status && rowStatus !== status) visible = false;
+        if (shelf && rowShelf !== shelf) visible = false;
+        if (query && !title.includes(query) && !author.includes(query)) visible = false;
+
+        row.style.display = visible ? '' : 'none';
+      });
+    }
+
+    statusSelect.addEventListener('change', applyFilters);
+    shelfSelect.addEventListener('change', applyFilters);
+    searchInput.addEventListener('input', applyFilters);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLibraryFilters);
+  } else {
+    initLibraryFilters();
+  }
+</script>
+
+<style>
+  .library-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: flex-end;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .library-filters label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+    color: rgb(var(--color-text-muted));
+  }
+
+  .library-filters select,
+  .library-filters input[type='search'] {
+    max-width: 16rem;
+  }
+
+  @media (max-width: 640px) {
+    .library-filters {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .library-filters select,
+    .library-filters input[type='search'] {
+      width: 100%;
+      max-width: none;
+    }
+  }
+</style>
