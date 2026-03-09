@@ -15,7 +15,7 @@ I am not promising timelines here. This is a **directional map**, not a contract
 
 ## 1. Formalized TLDRs for notes
 
-- **Status**: Idea / Exploring  
+- **Status**: Idea / Exploring
 - **Goal**: Give readers a short, standalone summary of each note that can live on its own and still be true.
 
 ### What this actually means
@@ -55,7 +55,7 @@ I am not promising timelines here. This is a **directional map**, not a contract
 
 ## 2. “Click to listen” – Audio version of notes
 
-- **Status**: Idea  
+- **Status**: Idea
 - **Goal**: Let people **listen** to a note instead of (or while) reading it, with one simple, obvious control.
 
 ### What this actually means
@@ -100,7 +100,7 @@ I am not promising timelines here. This is a **directional map**, not a contract
 
 ## 3. Notifications for new notes (email or push)
 
-- **Status**: Idea  
+- **Status**: Idea
 - **Goal**: Let people who genuinely care about these notes **opt in** to hearing about new work, without turning the site into a growth‑hack machine.
 
 ### What this actually means
@@ -147,4 +147,3 @@ This section is intentionally rough. Quick lines only; details come later.
 - Better **content maps** (visual overviews of themes and how notes connect).
 - Gentle **“related ideas”** surfacing from TLDRs and tags, without feeling like a recommendation engine.
 - More **reader‑friendly export** options (e.g., clean print/PDF for certain notes or series).
-

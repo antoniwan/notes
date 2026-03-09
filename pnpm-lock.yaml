@@ -17,7 +17,7 @@ importers:
     dependencies:
       '@astrojs/mdx':
         specifier: 4.3.13
-        version: 4.3.13(astro@5.17.3(@types/node@24.10.1)(@vercel/functions@2.2.13)(jiti@1.21.7)(rollup@4.59.0)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))
+        version: 4.3.13(astro@5.18.0(@types/node@24.10.1)(@vercel/functions@2.2.13)(jiti@1.21.7)(rollup@4.59.0)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))
       '@astrojs/rss':
         specifier: 4.0.15
         version: 4.0.15
@@ -26,10 +26,10 @@ importers:
         version: 3.7.0
       '@astrojs/tailwind':
         specifier: ^6.0.2
-        version: 6.0.2(astro@5.17.3(@types/node@24.10.1)(@vercel/functions@2.2.13)(jiti@1.21.7)(rollup@4.59.0)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))(tailwindcss@3.4.19(yaml@2.8.2))
+        version: 6.0.2(astro@5.18.0(@types/node@24.10.1)(@vercel/functions@2.2.13)(jiti@1.21.7)(rollup@4.59.0)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))(tailwindcss@3.4.19(yaml@2.8.2))
       '@astrojs/vercel':
         specifier: ^9.0.4
-        version: 9.0.4(astro@5.17.3(@types/node@24.10.1)(@vercel/functions@2.2.13)(jiti@1.21.7)(rollup@4.59.0)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))(rollup@4.59.0)
+        version: 9.0.4(astro@5.18.0(@types/node@24.10.1)(@vercel/functions@2.2.13)(jiti@1.21.7)(rollup@4.59.0)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))(rollup@4.59.0)
       '@tailwindcss/aspect-ratio':
         specifier: ^0.4.2
         version: 0.4.2(tailwindcss@3.4.19(yaml@2.8.2))
@@ -40,8 +40,8 @@ importers:
         specifier: ^1.3.1
         version: 1.3.1
       astro:
-        specifier: 5.17.3
-        version: 5.17.3(@types/node@24.10.1)(@vercel/functions@2.2.13)(jiti@1.21.7)(rollup@4.59.0)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2)
+        specifier: 5.18.0
+        version: 5.18.0(@types/node@24.10.1)(@vercel/functions@2.2.13)(jiti@1.21.7)(rollup@4.59.0)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2)
       date-fns:
         specifier: ^4.1.0
         version: 4.1.0
@@ -1903,10 +1903,10 @@ packages:
       }
     engines: { node: ^18.18.0 || ^20.9.0 || >=21.1.0 }
 
-  astro@5.17.3:
+  astro@5.18.0:
     resolution:
       {
-        integrity: sha512-69dcfPe8LsHzklwj+hl+vunWUbpMB6pmg35mACjetxbJeUNNys90JaBM8ZiwsPK689SAj/4Zqb1ayaANls9/MA==,
+        integrity: sha512-CHiohwJIS4L0G6/IzE1Fx3dgWqXBCXus/od0eGUfxrZJD2um2pE7ehclMmgL/fXqbU7NfE1Ze2pq34h2QaA6iQ==,
       }
     engines: { node: 18.20.8 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0' }
     hasBin: true
@@ -5375,12 +5375,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@4.3.13(astro@5.17.3(@types/node@24.10.1)(@vercel/functions@2.2.13)(jiti@1.21.7)(rollup@4.59.0)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))':
+  '@astrojs/mdx@4.3.13(astro@5.18.0(@types/node@24.10.1)(@vercel/functions@2.2.13)(jiti@1.21.7)(rollup@4.59.0)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))':
     dependencies:
       '@astrojs/markdown-remark': 6.3.10
       '@mdx-js/mdx': 3.1.1
       acorn: 8.15.0
-      astro: 5.17.3(@types/node@24.10.1)(@vercel/functions@2.2.13)(jiti@1.21.7)(rollup@4.59.0)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2)
+      astro: 5.18.0(@types/node@24.10.1)(@vercel/functions@2.2.13)(jiti@1.21.7)(rollup@4.59.0)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2)
       es-module-lexer: 1.7.0
       estree-util-visit: 2.0.0
       hast-util-to-html: 9.0.5
@@ -5409,9 +5409,9 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 3.25.76
 
-  '@astrojs/tailwind@6.0.2(astro@5.17.3(@types/node@24.10.1)(@vercel/functions@2.2.13)(jiti@1.21.7)(rollup@4.59.0)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))(tailwindcss@3.4.19(yaml@2.8.2))':
+  '@astrojs/tailwind@6.0.2(astro@5.18.0(@types/node@24.10.1)(@vercel/functions@2.2.13)(jiti@1.21.7)(rollup@4.59.0)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))(tailwindcss@3.4.19(yaml@2.8.2))':
     dependencies:
-      astro: 5.17.3(@types/node@24.10.1)(@vercel/functions@2.2.13)(jiti@1.21.7)(rollup@4.59.0)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2)
+      astro: 5.18.0(@types/node@24.10.1)(@vercel/functions@2.2.13)(jiti@1.21.7)(rollup@4.59.0)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2)
       autoprefixer: 10.4.24(postcss@8.5.6)
       postcss: 8.5.6
       postcss-load-config: 4.0.2(postcss@8.5.6)
@@ -5431,14 +5431,14 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/vercel@9.0.4(astro@5.17.3(@types/node@24.10.1)(@vercel/functions@2.2.13)(jiti@1.21.7)(rollup@4.59.0)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))(rollup@4.59.0)':
+  '@astrojs/vercel@9.0.4(astro@5.18.0(@types/node@24.10.1)(@vercel/functions@2.2.13)(jiti@1.21.7)(rollup@4.59.0)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))(rollup@4.59.0)':
     dependencies:
       '@astrojs/internal-helpers': 0.7.5
       '@vercel/analytics': 1.6.1
       '@vercel/functions': 2.2.13
       '@vercel/nft': 0.30.4(rollup@4.59.0)
       '@vercel/routing-utils': 5.3.2
-      astro: 5.17.3(@types/node@24.10.1)(@vercel/functions@2.2.13)(jiti@1.21.7)(rollup@4.59.0)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2)
+      astro: 5.18.0(@types/node@24.10.1)(@vercel/functions@2.2.13)(jiti@1.21.7)(rollup@4.59.0)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2)
       esbuild: 0.25.12
       tinyglobby: 0.2.15
     transitivePeerDependencies:
@@ -6287,7 +6287,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  astro@5.17.3(@types/node@24.10.1)(@vercel/functions@2.2.13)(jiti@1.21.7)(rollup@4.59.0)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2):
+  astro@5.18.0(@types/node@24.10.1)(@vercel/functions@2.2.13)(jiti@1.21.7)(rollup@4.59.0)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2):
     dependencies:
       '@astrojs/compiler': 2.13.1
       '@astrojs/internal-helpers': 0.7.5
@@ -6296,7 +6296,7 @@ snapshots:
       '@capsizecss/unpack': 4.0.0
       '@oslojs/encoding': 1.1.0
       '@rollup/pluginutils': 5.3.0(rollup@4.59.0)
-      acorn: 8.15.0
+      acorn: 8.16.0
       aria-query: 5.3.2
       axobject-query: 4.1.0
       boxen: 8.0.1
