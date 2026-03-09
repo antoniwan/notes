@@ -142,7 +142,7 @@ I am not promising timelines here. This is a **directional map**, not a contract
 
 ## 4. Library of sources (books)
 
-- **Status**: Idea
+- **Status**: Shipped (live on site)
 - **Goal**: Give readers an honest view of the books that shape these notes: which ones I own, which I’ve read end‑to‑end, and which I mostly use as references or have only skimmed.
 
 ### What this actually means
@@ -185,7 +185,49 @@ I am not promising timelines here. This is a **directional map**, not a contract
 - Should posts be able to **declare related books** in frontmatter so the library can show “Referenced in: …” for each title?
 - Am I comfortable adding **affiliate links** here, or do I want this page to stay affiliate‑free for trust/clarity?
 
-## 5. Future idea parking lot
+## 5. Structured sources in frontmatter
+
+- **Status**: Idea
+- **Goal**: Move the “Sources” for each note into a dedicated frontmatter field so I can surface influences and references consistently across the site, not just at the bottom of individual posts.
+
+### What this actually means
+
+- Introduce a `sources` (or similar) frontmatter field on posts:
+  - Likely an **array of structured entries** (book, article, paper, podcast, etc.).
+  - Each entry can hold: title, creator (author/speaker), type, optional URL, and a short “why this matters here” note.
+- In posts:
+  - Replace or augment the current ad‑hoc “Sources” section with data from this field.
+  - Keep the tone personal and honest; this is where I say how I actually used the source, not just cite it academically.
+- Site‑wide:
+  - Add a **central “Sources” view** (or extend the Library page) that aggregates sources across notes:
+    - Filterable by type (books, essays, research, talks, etc.).
+    - Shows which notes each source appears in (“Referenced in: …”).
+  - Connect with the **Library of books**:
+    - When a source is a book that also lives in the Library, link them together instead of duplicating data.
+
+### Why it matters
+
+- Makes my **influences and references transparent and navigable**, not buried in footers.
+- Lets curious readers **trace ideas back to their roots** and go deeper on specific thinkers or works.
+- Creates a **bridge between posts and the Library page**, so the site feels like one coherent knowledge graph instead of isolated essays.
+- Encourages better **source hygiene and humility**: I’m less likely to present a borrowed idea as entirely my own when I have a canonical place to credit it.
+
+### Shape and constraints
+
+- Keep the frontmatter schema **simple enough to maintain by hand**; this should not feel like filling out a citation form.
+- Prioritize **signal over completeness**:
+  - Include sources that genuinely shaped the note or are helpful for readers.
+  - Skip automatic dumping of every casual reference.
+- Avoid turning this into a **gamified metric** (no “most‑cited source” leaderboards).
+- Design the central Sources view to feel like a **map of influences**, not a sterile bibliography.
+
+### Open questions
+
+- Do sources live in **one place per translation group** (e.g., only on the primary language), or are they duplicated/translated?
+- How should I represent **non‑text sources** (conversations, lived experiences, unnamed influences) without forcing them into a rigid schema?
+- Should I allow “site‑wide sources” (things that influence the whole project) distinct from **per‑note sources**, and surface those differently?
+
+## 6. Future idea parking lot
 
 This section is intentionally rough. Quick lines only; details come later.
 
