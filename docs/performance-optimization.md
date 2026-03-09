@@ -131,15 +131,15 @@ This document outlines the comprehensive performance optimizations implemented f
 #### Lighthouse CI
 
 ```bash
-npm run lighthouse
-npm run audit-performance
+pnpm run lighthouse
+pnpm run audit-performance
 ```
 
 #### Build Analysis
 
 ```bash
-npm run analyze
-npm run performance
+pnpm run analyze
+pnpm run performance
 ```
 
 ### Monitoring in Development

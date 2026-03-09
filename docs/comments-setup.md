@@ -61,7 +61,7 @@ The `PUBLIC_` prefix is required because these values are used client-side in th
 ### 4. Test Locally
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 Visit any blog post and scroll to the comments section. The Remark42 widget will load lazily when it comes into view.

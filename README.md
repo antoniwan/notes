@@ -31,32 +31,34 @@ A personal notes site: essays and notes on fatherhood, masculinity, culture, and
 ```bash
 git clone https://github.com/antoniwan/notes.git
 cd notes
-npm install
-npm run dev
+pnpm install
+pnpm run dev
 ```
 
 Open `http://localhost:4321`.
 
 ## Available Scripts
 
-| Command                              | Action                                              |
-| ------------------------------------ | --------------------------------------------------- |
-| `npm run dev`                        | Start development server                            |
-| `npm run build`                      | Production build                                    |
-| `npm run preview`                    | Preview production build                            |
-| `npm run generate-favicons`          | Generate favicon assets                             |
-| `npm run validate-feeds`             | Validate RSS and JSON feeds                         |
-| `npm run audit-frontmatter`          | Audit frontmatter consistency                       |
-| `npm run standardize-frontmatter`    | Standardize frontmatter format                      |
-| `npm run remove-legacy-reading-time` | Remove legacy reading time fields                   |
-| `npm run validate-structured-data`   | Validate structured data implementation             |
-| `npm run fix:hr-spacing`             | Fix horizontal rule spacing in content              |
-| `npm run format`                     | Format with Prettier                                |
-| `npm run format:check`               | Check formatting                                    |
-| `npm run analyze`                    | Build then run Vercel static-build                  |
-| `npm run lighthouse`                 | Run Lighthouse on localhost (dev server must be up) |
-| `npm run performance`                | Build and analyze                                   |
-| `npm run audit-performance`          | Build then Lighthouse performance-only JSON report  |
+> **Note:** The project uses **pnpm** as the primary package manager. The commands below assume pnpm; if you prefer `npm` or `yarn`, adjust accordingly.
+
+| Command                               | Action                                              |
+| ------------------------------------- | --------------------------------------------------- |
+| `pnpm run dev`                        | Start development server                            |
+| `pnpm run build`                      | Production build                                    |
+| `pnpm run preview`                    | Preview production build                            |
+| `pnpm run generate-favicons`          | Generate favicon assets                             |
+| `pnpm run validate-feeds`             | Validate RSS and JSON feeds                         |
+| `pnpm run audit-frontmatter`          | Audit frontmatter consistency                       |
+| `pnpm run standardize-frontmatter`    | Standardize frontmatter format                      |
+| `pnpm run remove-legacy-reading-time` | Remove legacy reading time fields                   |
+| `pnpm run validate-structured-data`   | Validate structured data implementation             |
+| `pnpm run fix:hr-spacing`             | Fix horizontal rule spacing in content              |
+| `pnpm run format`                     | Format with Prettier                                |
+| `pnpm run format:check`               | Check formatting                                    |
+| `pnpm run analyze`                    | Build then run Vercel static-build                  |
+| `pnpm run lighthouse`                 | Run Lighthouse on localhost (dev server must be up) |
+| `pnpm run performance`                | Build and analyze                                   |
+| `pnpm run audit-performance`          | Build then Lighthouse performance-only JSON report  |
 
 ## Project Structure
 
