@@ -6,6 +6,7 @@ description: >-
 pubDate: '2024-10-04T18:40:28.388Z'
 language:
   - en
+heroImage: '/images/2026/simplicity.avif'
 category:
   - integration-growth
   - parenting
@@ -28,10 +29,6 @@ showComments: true
 ---
 
 On Feeling Whole Without Owning Much<br>Or, _On Simplicity and Peace of Mind…_
-
-![](https://cdn-images-1.medium.com/max/2560/0*YTuxa_pcFxXQ8EMD)
-
-<small>Photo by [동석 김](https://unsplash.com/@arr?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)</small>
 
 Sometimes, I wonder how I can be so content and at peace while possessing so little. Am I so broken that I conform to whatever happens to me? _I feel lost AF, only momentarily…_
 
@@ -60,6 +57,10 @@ I have so many tools. So much privilege in my experiences. I use mental abstract
 Or is our world broken for making us believe we need so much more than the basics — good food, good company, hugs, friendships, hobbies, time off, time to do nothing, time to learn shit that matters?
 
 I wonder if I’m broken because I don’t want to conquer the world. Or maybe… maybe I _am_ conquering my world. And that’s OK.
+
+![](https://cdn-images-1.medium.com/max/2560/0*YTuxa_pcFxXQ8EMD)
+
+<small>Photo by [동석 김](https://unsplash.com/@arr?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)</small>
 
 I’m confused momentarily. Then it hits me like a truck: Comparing myself to the so-called conquerors of the world was fucking up my perspective. Maybe comparison itself is one of our biggest diseases.
 
