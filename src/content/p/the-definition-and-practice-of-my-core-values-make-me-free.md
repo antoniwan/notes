@@ -6,6 +6,7 @@ description: >-
 pubDate: '2024-04-29T13:22:16.829Z'
 language:
   - en
+heroImage: /images/2026/practice-values.jpg
 category:
   - psychology
   - metaspace

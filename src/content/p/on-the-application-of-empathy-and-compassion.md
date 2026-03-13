@@ -6,6 +6,7 @@ description: >-
 pubDate: '2024-09-15T14:11:07.796Z'
 language:
   - en
+heroImage: /images/2026/empathy-and-compassion.avif
 category:
   - psychology
   - integration-growth
