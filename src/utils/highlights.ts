@@ -16,9 +16,7 @@ const HIGHLIGHT_PREDICATE = ({ data }: { data: CollectionEntry<'blog'>['data'] }
  */
 export async function getHighlights(): Promise<CollectionEntry<'blog'>[]> {
   const highlightedPosts = await getCollection('blog', HIGHLIGHT_PREDICATE);
-  return highlightedPosts.sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-  );
+  return highlightedPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 }
 
 /**

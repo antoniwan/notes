@@ -44,44 +44,46 @@ for (const [catId, list] of Object.entries(postsByCategory)) {
       </p>
     </div>
 
-    {availableCategories.length > 0 && (
-      <div class="highlights-filters" aria-label="Filter highlights by category" role="toolbar">
-        <button
-          type="button"
-          class="filter-chip is-active"
-          data-filter="all"
-          aria-label="Show all highlights"
-          aria-pressed="true"
-        >
-          All
-        </button>
-        {availableCategories.map((category, index) => (
+    {
+      availableCategories.length > 0 && (
+        <div class="highlights-filters" aria-label="Filter highlights by category" role="toolbar">
           <button
             type="button"
-            class="filter-chip"
-            class:list={{ 'is-extra': index >= PRIMARY_CATEGORY_LIMIT }}
-            data-filter={category.id}
-            data-category-name={category.name}
-            aria-label={`Show posts in ${category.name}`}
-            aria-pressed="false"
+            class="filter-chip is-active"
+            data-filter="all"
+            aria-label="Show all highlights"
+            aria-pressed="true"
           >
-            {category.icon && <span aria-hidden="true">{category.icon}</span>}
-            <span>{category.name}</span>
+            All
           </button>
-        ))}
-        {availableCategories.length > PRIMARY_CATEGORY_LIMIT && (
-          <button
-            type="button"
-            class="filter-chip filter-chip--more"
-            data-toggle-more
-            aria-label="Show more categories"
-            aria-expanded="false"
-          >
-            More
-          </button>
-        )}
-      </div>
-    )}
+          {availableCategories.map((category, index) => (
+            <button
+              type="button"
+              class="filter-chip"
+              class:list={{ 'is-extra': index >= PRIMARY_CATEGORY_LIMIT }}
+              data-filter={category.id}
+              data-category-name={category.name}
+              aria-label={`Show posts in ${category.name}`}
+              aria-pressed="false"
+            >
+              {category.icon && <span aria-hidden="true">{category.icon}</span>}
+              <span>{category.name}</span>
+            </button>
+          ))}
+          {availableCategories.length > PRIMARY_CATEGORY_LIMIT && (
+            <button
+              type="button"
+              class="filter-chip filter-chip--more"
+              data-toggle-more
+              aria-label="Show more categories"
+              aria-expanded="false"
+            >
+              More
+            </button>
+          )}
+        </div>
+      )
+    }
   </header>
 
   <p class="highlights-status" data-highlights-status>
@@ -91,41 +93,50 @@ for (const [catId, list] of Object.entries(postsByCategory)) {
   <div class="highlights-container" data-highlights-container data-active-view="all">
     <!-- All: same UI as filtered views (all use PostCard) -->
     <div class="highlights-masonry highlights-view" data-view="all" aria-hidden="false">
-      {allSlots.map((slot) => (
-        <div
-          class="masonry-item"
-          class:list={[`span-${slot.span}`]}
-          style={`grid-row: ${slot.rowIndex + 1}; grid-column: ${slot.colStart} / span ${slot.span};`}
-        >
-          <PostCard post={slot.post} featured={slot.post.data.featured || slot.post.data.highlight} showFeaturedIndicator={false} />
-        </div>
-      ))}
-    </div>
-    <!-- One grid per category, same structure so styling is identical -->
-    {Object.entries(categorySlots).map(([catId, slots]) => (
-      <div
-        class="highlights-masonry highlights-view"
-        data-view={catId}
-        aria-hidden="true"
-        hidden
-      >
-        {slots.map((slot) => (
+      {
+        allSlots.map((slot) => (
           <div
             class="masonry-item"
             class:list={[`span-${slot.span}`]}
             style={`grid-row: ${slot.rowIndex + 1}; grid-column: ${slot.colStart} / span ${slot.span};`}
           >
-            <PostCard post={slot.post} featured={slot.post.data.featured || slot.post.data.highlight} showFeaturedIndicator={false} />
+            <PostCard
+              post={slot.post}
+              featured={slot.post.data.featured || slot.post.data.highlight}
+              showFeaturedIndicator={false}
+            />
           </div>
-        ))}
-      </div>
-    ))}
+        ))
+      }
+    </div>
+    <!-- One grid per category, same structure so styling is identical -->
+    {
+      Object.entries(categorySlots).map(([catId, slots]) => (
+        <div class="highlights-masonry highlights-view" data-view={catId} aria-hidden="true" hidden>
+          {slots.map((slot) => (
+            <div
+              class="masonry-item"
+              class:list={[`span-${slot.span}`]}
+              style={`grid-row: ${slot.rowIndex + 1}; grid-column: ${slot.colStart} / span ${slot.span};`}
+            >
+              <PostCard
+                post={slot.post}
+                featured={slot.post.data.featured || slot.post.data.highlight}
+                showFeaturedIndicator={false}
+              />
+            </div>
+          ))}
+        </div>
+      ))
+    }
   </div>
 </section>
 
 <script define:vars={{ viewCounts }}>
   const container = document.querySelector('[data-highlights-container]');
-  const filterButtons = Array.from(document.querySelectorAll('.highlights-filters .filter-chip[data-filter]'));
+  const filterButtons = Array.from(
+    document.querySelectorAll('.highlights-filters .filter-chip[data-filter]'),
+  );
   const moreToggle = document.querySelector('[data-toggle-more]');
   const statusEl = document.querySelector('[data-highlights-status]');
 
@@ -138,12 +149,17 @@ for (const [catId, list] of Object.entries(postsByCategory)) {
 
     if (container) container.setAttribute('data-active-view', filter);
 
-    const categoryName = filter === 'all' ? 'All categories' : (document.querySelector(`.filter-chip[data-filter="${filter}"]`)?.dataset?.categoryName || filter);
+    const categoryName =
+      filter === 'all'
+        ? 'All categories'
+        : document.querySelector(`.filter-chip[data-filter="${filter}"]`)?.dataset?.categoryName ||
+          filter;
     const count = viewCounts && viewCounts[filter] != null ? viewCounts[filter] : 0;
     if (statusEl) {
-      statusEl.textContent = count === 0
-        ? `No highlights in ${categoryName}`
-        : `Showing ${count} highlight${count === 1 ? '' : 's'} (${categoryName})`;
+      statusEl.textContent =
+        count === 0
+          ? `No highlights in ${categoryName}`
+          : `Showing ${count} highlight${count === 1 ? '' : 's'} (${categoryName})`;
     }
 
     // aria-hidden for a11y
@@ -327,7 +343,9 @@ for (const [catId, list] of Object.entries(postsByCategory)) {
 
   .masonry-item {
     min-width: 0;
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
   }
 
   /* Same height per row: grid rows stretch, cards fill cell and use flex so content area grows */

@@ -8,13 +8,13 @@ import type { CollectionEntry } from 'astro:content';
  * (e.g. 8/4 → 7/5) so the layout feels more balanced when one column is highlighted.
  */
 const ROW_TYPES: number[][] = [
-  [6, 6],       // 2 equal
-  [7, 5],       // 2 emphasis left (slightly reduced)
-  [5, 7],       // 2 emphasis right (slightly reduced)
-  [4, 4, 4],    // 3 equal
-  [6, 3, 3],    // 3 emphasis 1st
-  [3, 6, 3],    // 3 emphasis 2nd
-  [3, 3, 6],    // 3 emphasis 3rd
+  [6, 6], // 2 equal
+  [7, 5], // 2 emphasis left (slightly reduced)
+  [5, 7], // 2 emphasis right (slightly reduced)
+  [4, 4, 4], // 3 equal
+  [6, 3, 3], // 3 emphasis 1st
+  [3, 6, 3], // 3 emphasis 2nd
+  [3, 3, 6], // 3 emphasis 3rd
 ];
 
 export interface LayoutSlot {
