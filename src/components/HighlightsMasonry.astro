@@ -3,7 +3,6 @@ import type { CollectionEntry } from 'astro:content';
 import PostCard from './PostCard.astro';
 import { categories } from '../data/categories';
 import { buildHighlightsLayout, type LayoutSlot } from '../utils/highlightsLayout';
-import { calculateReadingTimeFromMarkdown } from '../utils/readingTime';
 
 interface Props {
   posts: CollectionEntry<'blog'>[];
@@ -24,26 +23,15 @@ const PRIMARY_CATEGORY_LIMIT = 5;
 // Desktop layout: only specific row types (2 equal, 2 emphasis, 3 equal, 3 emphasis 1st/2nd/3rd)
 const allSlots = buildHighlightsLayout(posts);
 
-function serializePost(p: CollectionEntry<'blog'>) {
-  return {
-    id: p.id,
-    title: p.data.title,
-    description: p.data.description || '',
-    pubDate: p.data.pubDate instanceof Date ? p.data.pubDate.toISOString() : String(p.data.pubDate),
-    heroImage: p.data.heroImage || '',
-    imageAlt: p.data.imageAlt || p.data.title,
-    readingTime: calculateReadingTimeFromMarkdown(p.body || ''),
-  };
-}
-
-// Payload for client: per-category layout + serialized posts (so we can render up to 12 per category)
-const payload: Record<string, { layout: { rowIndex: number; colStart: number; span: number }[]; posts: ReturnType<typeof serializePost>[] }> = {};
+// Counts per view for status text (no HTML injection: every view is server-rendered with PostCard)
+const viewCounts: Record<string, number> = { all: posts.length };
 for (const [catId, list] of Object.entries(postsByCategory)) {
-  const layout = buildHighlightsLayout(list);
-  payload[catId] = {
-    layout: layout.map((s) => ({ rowIndex: s.rowIndex, colStart: s.colStart, span: s.span })),
-    posts: list.map(serializePost),
-  };
+  viewCounts[catId] = list.length;
+}
+// Pre-build category slots for server render (same layout as "All", but per category)
+const categorySlots: Record<string, LayoutSlot[]> = {};
+for (const [catId, list] of Object.entries(postsByCategory)) {
+  categorySlots[catId] = buildHighlightsLayout(list);
 }
 ---
 
@@ -100,98 +88,46 @@ for (const [catId, list] of Object.entries(postsByCategory)) {
     Showing {posts.length} highlights (All categories)
   </p>
 
-  <div class="highlights-masonry" data-highlights-grid>
-    {allSlots.map((slot) => (
+  <div class="highlights-container" data-highlights-container data-active-view="all">
+    <!-- All: same UI as filtered views (all use PostCard) -->
+    <div class="highlights-masonry highlights-view" data-view="all" aria-hidden="false">
+      {allSlots.map((slot) => (
+        <div
+          class="masonry-item"
+          class:list={[`span-${slot.span}`]}
+          style={`grid-row: ${slot.rowIndex + 1}; grid-column: ${slot.colStart} / span ${slot.span};`}
+        >
+          <PostCard post={slot.post} featured={slot.post.data.featured || slot.post.data.highlight} showFeaturedIndicator={false} />
+        </div>
+      ))}
+    </div>
+    <!-- One grid per category, same structure so styling is identical -->
+    {Object.entries(categorySlots).map(([catId, slots]) => (
       <div
-        class="masonry-item"
-        class:list={[`span-${slot.span}`]}
-        style={`grid-row: ${slot.rowIndex + 1}; grid-column: ${slot.colStart} / span ${slot.span};`}
-        data-filter-set="all"
+        class="highlights-masonry highlights-view"
+        data-view={catId}
+        aria-hidden="true"
+        hidden
       >
-        <PostCard post={slot.post} featured={slot.post.data.featured || slot.post.data.highlight} showFeaturedIndicator={false} />
+        {slots.map((slot) => (
+          <div
+            class="masonry-item"
+            class:list={[`span-${slot.span}`]}
+            style={`grid-row: ${slot.rowIndex + 1}; grid-column: ${slot.colStart} / span ${slot.span};`}
+          >
+            <PostCard post={slot.post} featured={slot.post.data.featured || slot.post.data.highlight} showFeaturedIndicator={false} />
+          </div>
+        ))}
       </div>
     ))}
   </div>
 </section>
 
-<script define:vars={{ payload }}>
-  function formatDate(iso) {
-    try {
-      const d = new Date(iso);
-      return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-    } catch {
-      return '';
-    }
-  }
-
-  function buildCardHTML(post) {
-    const url = `/p/${post.id}/`;
-    const alt = post.imageAlt || post.title;
-    const imgHtml = post.heroImage
-      ? `<img src="${escapeHtml(post.heroImage)}" alt="${escapeHtml(alt)}" loading="lazy" />`
-      : `<div class="h-full w-full bg-[rgb(var(--color-bg-alt))]" aria-hidden="true"></div>`;
-
-    // Structure closely mirrors PostCard so "All" vs filtered layouts match
-    return `
-<article class="interactive-card group relative overflow-hidden rounded-lg" role="article" data-post-slug="${escapeHtml(
-      post.id,
-    )}">
-  <div class="read-indicator" data-post-slug="${escapeHtml(post.id)}">
-    <span class="read-dot"></span>
-  </div>
-  <div class="image-container relative overflow-hidden rounded-t-lg">
-    ${imgHtml}
-  </div>
-  <div class="relative p-3 sm:p-4 md:p-5">
-    <div class="space-y-3">
-      <header class="space-y-2">
-        <div class="text-body-muted flex items-center gap-1.5 text-xs leading-relaxed">
-          <span>${formatDate(post.pubDate)}</span>
-          ${
-            post.readingTime
-              ? `<span class="reading-time-display" data-post-slug="${escapeHtml(
-                  post.id,
-                )}" data-original-reading-time="${escapeHtml(
-                  post.readingTime,
-                )}"><span aria-hidden="true">•</span><span>${escapeHtml(
-                  post.readingTime,
-                )}</span></span>`
-              : ''
-          }
-        </div>
-        <h2 class="postcard-title text-base leading-tight text-[rgb(var(--color-text))] sm:text-lg md:text-xl" id="postcard-title-${escapeHtml(
-          post.id,
-        )}">
-          <a href="${escapeHtml(url)}" class="block" style="font-weight: 700 !important;">
-            ${escapeHtml(post.title)}
-          </a>
-        </h2>
-      </header>
-      ${
-        post.description
-          ? `<p class="postcard-description text-body-muted mt-2 line-clamp-2 text-sm leading-relaxed sm:text-base md:line-clamp-2">${escapeHtml(
-              post.description,
-            )}</p>`
-          : ''
-      }
-    </div>
-  </div>
-</article>`;
-  }
-
-  function escapeHtml(s) {
-    if (!s) return '';
-    const div = document.createElement('div');
-    div.textContent = s;
-    return div.innerHTML;
-  }
-
-  const grid = document.querySelector('[data-highlights-grid]');
+<script define:vars={{ viewCounts }}>
+  const container = document.querySelector('[data-highlights-container]');
   const filterButtons = Array.from(document.querySelectorAll('.highlights-filters .filter-chip[data-filter]'));
   const moreToggle = document.querySelector('[data-toggle-more]');
   const statusEl = document.querySelector('[data-highlights-status]');
-
-  let savedAllHTML = '';
 
   function applyFilter(filter) {
     filterButtons.forEach((btn) => {
@@ -200,38 +136,26 @@ for (const [catId, list] of Object.entries(postsByCategory)) {
       btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
     });
 
+    if (container) container.setAttribute('data-active-view', filter);
+
     const categoryName = filter === 'all' ? 'All categories' : (document.querySelector(`.filter-chip[data-filter="${filter}"]`)?.dataset?.categoryName || filter);
-
-    if (filter === 'all') {
-      if (savedAllHTML) {
-        grid.innerHTML = savedAllHTML;
-      }
-      if (statusEl) statusEl.textContent = `Showing ${grid.querySelectorAll('.masonry-item').length} highlights (${categoryName})`;
-      return;
+    const count = viewCounts && viewCounts[filter] != null ? viewCounts[filter] : 0;
+    if (statusEl) {
+      statusEl.textContent = count === 0
+        ? `No highlights in ${categoryName}`
+        : `Showing ${count} highlight${count === 1 ? '' : 's'} (${categoryName})`;
     }
 
-    const data = payload && payload[filter];
-    if (!data || !data.posts.length) {
-      if (statusEl) statusEl.textContent = `No highlights in ${categoryName}`;
-      grid.innerHTML = `<div class="highlights-empty" style="grid-column: 1 / -1; padding: 3rem; text-align: center; color: rgb(var(--color-text-muted));">No highlights in this category yet.</div>`;
-      return;
-    }
-
-    const { layout, posts: categoryPosts } = data;
-    let html = '';
-    layout.forEach((slot, i) => {
-      const post = categoryPosts[i];
-      if (!post) return;
-      const card = buildCardHTML(post);
-      html += `<div class="masonry-item span-${slot.span}" data-filter-set="${escapeHtml(filter)}" style="grid-row: ${slot.rowIndex + 1}; grid-column: ${slot.colStart} / span ${slot.span};">${card}</div>`;
+    // aria-hidden for a11y
+    container?.querySelectorAll('.highlights-view').forEach((view) => {
+      const viewId = view.getAttribute('data-view');
+      view.setAttribute('aria-hidden', viewId !== filter ? 'true' : 'false');
+      if (viewId !== filter) view.hidden = true;
+      else view.hidden = false;
     });
-    grid.innerHTML = html;
-    if (statusEl) statusEl.textContent = `Showing ${categoryPosts.length} highlights (${categoryName})`;
   }
 
-  if (grid && filterButtons.length) {
-    savedAllHTML = grid.innerHTML;
-
+  if (container && filterButtons.length) {
     filterButtons.forEach((btn) => {
       btn.addEventListener('click', () => {
         applyFilter(btn.dataset.filter || 'all');
@@ -372,6 +296,14 @@ for (const [catId, list] of Object.entries(postsByCategory)) {
     color: rgb(var(--color-text-muted));
   }
 
+  /* Only the active view is visible; all views use the same grid + PostCard so UI is identical */
+  .highlights-view {
+    display: grid;
+  }
+  .highlights-view[hidden] {
+    display: none !important;
+  }
+
   /* Desktop: 12-column grid, only allowed row patterns. Mobile: single column. */
   .highlights-masonry {
     display: grid;
@@ -398,10 +330,22 @@ for (const [catId, list] of Object.entries(postsByCategory)) {
     transition: opacity 0.2s ease, transform 0.2s ease;
   }
 
-  /* Taller, uniform image height in highlights so all cards feel consistent (desktop only) */
+  /* Same height per row: grid rows stretch, cards fill cell and use flex so content area grows */
   @media (min-width: 768px) {
-    .highlights-masonry article.interactive-card .image-container {
-      height: 14rem;
+    .highlights-masonry .masonry-item {
+      display: flex;
+    }
+    .highlights-masonry .masonry-item article.interactive-card {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-height: 0;
+    }
+    .highlights-masonry article.interactive-card > .relative {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
     }
   }
 
@@ -413,7 +357,7 @@ for (const [catId, list] of Object.entries(postsByCategory)) {
     }
   }
 
-  .group:hover {
+  .highlights-masonry .group:hover {
     box-shadow: 0 4px 12px -2px rgb(0 0 0 / 0.15);
     border-color: rgb(var(--color-primary) / 0.3);
   }

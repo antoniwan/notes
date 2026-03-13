@@ -18,7 +18,7 @@ tags:
   - bilingual
   - personal-growth
 draft: false
-featured: false
+featured: true
 published: true
 showComments: true
 ---
