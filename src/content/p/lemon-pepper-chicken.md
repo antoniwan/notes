@@ -6,6 +6,7 @@ description: >-
 pubDate: '2025-05-02'
 language:
   - en
+heroImage: /images/2026/lemon-pepper-chicken-tais.avif
 category:
   - diy-creation
   - learning-projects

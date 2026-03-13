@@ -27,7 +27,6 @@ published: true
 showComments: true
 ---
 
-
 **_One_. Cognitive bandwidth surges.**<br> That background hum of comparison, performance, and constant input? Gone. You start thinking clearer. Ideas land faster. Space opens up where noise used to live.
 
 **_Two_. Time becomes yours again.**<br> You realize how much time you _actually_ have — and how sacred it is. Routines deepen. Focus sharpens. You start moving with rhythm, not reaction.
@@ -42,7 +41,7 @@ showComments: true
 
 <small>Photo by [Beth Macdonald](https://unsplash.com/@elsbethcat?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)</small>
 
-*That’s the theory anyway.*
+_That’s the theory anyway._
 
 I just hit delete on Meta — Instagram, Threads, Facebook — and I’m walking this path in real time. No filters. No performance. _Just presence_. I’ll document the whole thing over at Bluesky: 👉 [https://bsky.app/profile/antoniwan.online](https://bsky.app/profile/antoniwan.online)
 

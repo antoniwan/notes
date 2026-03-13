@@ -6,6 +6,7 @@ description: >-
 pubDate: '2024-07-31T13:49:32.330Z'
 language:
   - en
+heroImage: /images/2026/sharpen-your-tools.jpg
 category:
   - integration-growth
   - psychology

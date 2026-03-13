@@ -6,6 +6,7 @@ description: >-
 pubDate: '2025-05-02T08:00:00.000Z'
 language:
   - en
+heroImage: /images/2026/fasting-hurts.avif
 category:
   - integration-growth
   - learning-projects
