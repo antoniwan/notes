@@ -1,7 +1,6 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
-import { books, libraryStats } from '../data/library';
-import type { Book } from '../data/library';
+import { books } from '../data/library';
 
 const readBooks = books.filter((book) => book.status === 'read');
 const inProgressBooks = books.filter((book) => book.status === 'in-progress');
@@ -10,28 +9,6 @@ const toReadBooks = books.filter((book) => book.status === 'to-read');
 const shelves = Array.from(new Set(books.map((book) => book.shelf))).sort((a, b) =>
   a.localeCompare(b),
 );
-
-function groupByShelf(list: Book[]) {
-  const map = new Map<string, Book[]>();
-
-  for (const book of list) {
-    if (!map.has(book.shelf)) {
-      map.set(book.shelf, []);
-    }
-    map.get(book.shelf)!.push(book);
-  }
-
-  return Array.from(map.entries())
-    .map(([shelf, items]) => ({
-      shelf,
-      books: items.sort((a, b) => a.title.localeCompare(b.title)),
-    }))
-    .sort((a, b) => a.shelf.localeCompare(b.shelf));
-}
-
-const readShelves = groupByShelf(readBooks);
-const inProgressShelves = groupByShelf(inProgressBooks);
-const toReadShelves = groupByShelf(toReadBooks);
 ---
 
 <PageLayout

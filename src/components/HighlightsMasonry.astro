@@ -132,7 +132,7 @@ for (const [catId, list] of Object.entries(postsByCategory)) {
   </div>
 </section>
 
-<script define:vars={{ viewCounts }}>
+<script is:inline define:vars={{ viewCounts }}>
   const container = document.querySelector('[data-highlights-container]');
   const filterButtons = Array.from(
     document.querySelectorAll('.highlights-filters .filter-chip[data-filter]'),
