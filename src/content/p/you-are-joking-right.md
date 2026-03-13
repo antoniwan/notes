@@ -6,6 +6,7 @@ description: >-
 pubDate: '2025-04-08T13:20:17.106Z'
 language:
   - en
+heroImage: '/images/2026/oh-fuck.avif'
 category:
   - psychology
   - metaspace
@@ -27,10 +28,6 @@ published: true
 showComments: true
 ---
 
-![](https://cdn-images-1.medium.com/max/2560/0*BQJenuJis7weGzho)
-
-<small>Photo by [nikko macaspac](https://unsplash.com/@nikkotations?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)</small>
-
 Inner work is an ongoing process, and there’s some shame involved. Still, the focus should be on awareness, acceptance, and improvement. There should be no shame involved, but it’s hard. Fucking up is hard when one has a conscience.
 
 This writing is about my latest fuck-up, which leads to the possible discovery of a significant vulnerability or flaw in my character, which, if confirmed, means I have been fucking up so much in my entire life in so many ways and will require intense and immediate shadow work, patching, reparations, crying, and only the Universe knows what. I’m not worried about this; I’m just so blindsided. By my ego? I was blindsided — correction. Now, I’m grateful for the opportunity for growth.
@@ -50,6 +47,10 @@ Unbeknownst to them and independent of whatever happens to us, this person will 
 So many moments in my life come to mind where people around me told me things, insinuations, some direct, other indirect, felt, emotions, motions, messages, and communications that I dismissed, intentionally or unintentionally.
 
 “You are joking, right?” The pattern, the shield, the blind spot. The path I must walk now to understand, accept, feel, learn, heal, practice, and stop doing this nonsense looks fun. More work. The work never ends. I’m going to stop here for now. Sharing is caring.
+
+![](https://cdn-images-1.medium.com/max/2560/0*BQJenuJis7weGzho)
+
+<small>Photo by [nikko macaspac](https://unsplash.com/@nikkotations?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)</small>
 
 ---
 
