@@ -7,6 +7,7 @@ description: >-
 pubDate: '2025-05-01T18:16:00.000Z'
 language:
   - en
+heroImage: '/images/2026/friendly-ai.avif'
 category:
   - systems-strategy
   - integration-growth
