@@ -1,6 +1,5 @@
 import eslintPluginAstro from 'eslint-plugin-astro';
 
-/** @type {import('eslint').Linter.FlatConfig[]} */
 export default [
   {
     // Ignore build output, dependencies, and complex brain-science pages

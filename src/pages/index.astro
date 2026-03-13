@@ -1,10 +1,10 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
-import PostCard from '../components/PostCard.astro';
-import { getHighlights } from '../utils/highlights';
+import HighlightsMasonry from '../components/HighlightsMasonry.astro';
+import { getHighlights, getHighlightsByCategory } from '../utils/highlights';
 
-// Get dynamic highlights (latest 9 featured posts)
 const highlights = await getHighlights();
+const highlightsByCategory = await getHighlightsByCategory();
 ---
 
 <PageLayout
@@ -14,15 +14,7 @@ const highlights = await getHighlights();
   structuredDataType="website"
   showTitle={false}
 >
-  <h2 class="highlights-heading">Highlights</h2>
-
-  <div class="postcards-grid grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
-    {
-      highlights.map((post) => (
-        <PostCard post={post} featured={post.data.featured} showFeaturedIndicator={false} />
-      ))
-    }
-  </div>
+  <HighlightsMasonry posts={highlights} postsByCategory={highlightsByCategory} />
 
   <p class="mt-8">
     If those highlights landed for you, the rest is yours to explore. Start with context, follow a

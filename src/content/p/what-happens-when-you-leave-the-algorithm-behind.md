@@ -4,6 +4,7 @@ description: Leaving Meta. Reclaiming time, clarity, and creativity.
 pubDate: '2025-04-30T12:52:40.726Z'
 language:
   - en
+heroImage: /images/2026/escaping-the-feeds.avif
 category:
   - diy-creation
   - metaspace
@@ -21,13 +22,10 @@ tags:
   - self-improvement
 draft: false
 featured: false
+highlight: true
 published: true
 showComments: true
 ---
-
-![](https://cdn-images-1.medium.com/max/2560/0*WZdrSeBiQJUenlXR)
-
-<small>Photo by [Beth Macdonald](https://unsplash.com/@elsbethcat?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)</small>
 
 **_One_. Cognitive bandwidth surges.**<br> That background hum of comparison, performance, and constant input? Gone. You start thinking clearer. Ideas land faster. Space opens up where noise used to live.
 
@@ -39,7 +37,11 @@ showComments: true
 
 **_Five_. Your relationships change.**<br> The people who matter will call. The rest will fade. You begin attracting those who _see_, not just those who _scroll_.
 
-<hr class="section-divider">That’s the theory anyway.
+![](https://cdn-images-1.medium.com/max/2560/0*WZdrSeBiQJUenlXR)
+
+<small>Photo by [Beth Macdonald](https://unsplash.com/@elsbethcat?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)</small>
+
+_That’s the theory anyway._
 
 I just hit delete on Meta — Instagram, Threads, Facebook — and I’m walking this path in real time. No filters. No performance. _Just presence_. I’ll document the whole thing over at Bluesky: 👉 [https://bsky.app/profile/antoniwan.online](https://bsky.app/profile/antoniwan.online)
 

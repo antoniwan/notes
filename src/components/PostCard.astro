@@ -38,7 +38,7 @@ const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
       data.heroImage ? (
         <img
           src={data.heroImage}
-          alt={data.title}
+          alt={data.imageAlt || data.title}
           class="h-32 w-full object-cover object-center md:h-40"
           loading="lazy"
         />
@@ -344,7 +344,7 @@ const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
   /* Responsive image heights */
   @media (min-width: 768px) {
     article.interactive-card .image-container {
-      height: 10rem; /* 160px - compact height for desktop */
+      height: 22rem;
     }
   }
 

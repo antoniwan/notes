@@ -7,6 +7,7 @@ description: >-
 pubDate: 2025-04-01T00:00:00.000Z
 language:
   - en
+heroImage: /images/2026/control.avif
 category:
   - politics
   - psychology
@@ -25,13 +26,14 @@ tags:
   - healing
 draft: false
 featured: false
+highlight: true
 published: true
 showComments: true
 ---
 
 ## 🧠 If Your Politics Obsess Over Control, You're Not Well
 
-Originally published April 1, 2025 – Updated July 2, 2025
+Originally published April 1, 2025 – Updated March 12, 2026
 
 > "You are not fighting evil. You are losing to your own sickness."  
 > — Me, watching the news again

@@ -7,6 +7,7 @@ description: >-
 pubDate: '2024-06-03T17:27:29.382Z'
 language:
   - en
+heroImage: /images/2026/the-abyss.avif
 category:
   - metaspace
   - psychology
@@ -45,6 +46,7 @@ tags:
   - self-discovery
 draft: false
 featured: false
+highlight: true
 published: true
 showComments: true
 ---

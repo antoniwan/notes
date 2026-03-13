@@ -247,6 +247,11 @@
       "pubDate": "2024-05-14T00:00:00.000Z"
     },
     {
+      "id": "rolling-back-main-and-why-you-shouldnt-have-to",
+      "bodyLength": 31456,
+      "pubDate": "2026-03-09T16:30:00.000Z"
+    },
+    {
       "id": "season-of-becoming",
       "bodyLength": 1273,
       "pubDate": "2025-11-06T12:00:00.000Z"
@@ -383,6 +388,48 @@
     }
   ],
   "analyses": [
+    {
+      "postTitle": "Rolling Back Main (And Why You Shouldn't Have to)",
+      "postSlug": "rolling-back-main-and-why-you-shouldnt-have-to",
+      "postDate": "2026-03-09T16:30:00.000Z",
+      "metaLanguageCount": 1,
+      "metaLanguagePatterns": [
+        {
+          "phrase": "writing",
+          "type": "writing-about-writing",
+          "context": "sentence",
+          "sentence": "When I write code myself, I have to think the implementation into existence",
+          "confidence": 0.9
+        }
+      ],
+      "selfAwarenessScore": 6,
+      "writingAsSubject": true,
+      "writingAsTool": false,
+      "recursiveThinking": false,
+      "sentiment": {
+        "score": 0,
+        "comparative": 0,
+        "calculation": [],
+        "tokens": [
+          "when",
+          "i",
+          "write",
+          "code",
+          "myself",
+          "i",
+          "have",
+          "to",
+          "think",
+          "the",
+          "implementation",
+          "into",
+          "existence"
+        ],
+        "words": [],
+        "positive": [],
+        "negative": []
+      }
+    },
     {
       "postTitle": "The Feeling Is Not the Problem",
       "postSlug": "the-feeling-is-not-the-problem",

@@ -31,6 +31,7 @@ const blog = defineCollection({
     // Optional fields
     updatedDate: dateSchema.optional(),
     heroImage: z.string().optional(),
+    imageAlt: z.string().optional(),
     category: z.array(z.enum(validCategoryIds as [string, ...string[]])).optional(),
     subcategory: z.string().optional(),
     tags: z.array(z.string()).optional(),
@@ -49,6 +50,7 @@ const blog = defineCollection({
     authorImage: z.string().optional(),
     authorBio: z.string().optional(),
     featured: z.boolean().optional().default(false),
+    highlight: z.boolean().optional().default(false),
 
     // Translation group for multilingual posts
     translationGroup: z.string().optional(),
