@@ -232,4 +232,3 @@ Each entry below is a suggested Midjourney prompt for generating a 16:9 social/O
 
 **Prompt**  
 “flat vector illustration of a family holding hands inside a glowing shield made of overlapping app icons and padlock symbols, modern UI-inspired shapes, bilingual-friendly with **no text**, bright but soft colors, clean minimal style, 16:9 social image”
-

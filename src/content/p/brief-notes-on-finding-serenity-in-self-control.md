@@ -36,7 +36,6 @@ I’m aware this could very well be my past trauma manifesting and some process 
 
 And to be extra precise, I do genuinely believe sexual intimacy or carnal desires are part of our natural life after all; it’s honest and essential for our lives and development as healthy human beings.
 
-
 ![](https://cdn-images-1.medium.com/max/800/0*C5b_lUwsLZ12xFSD)
 
 <small>Photo by [Joshua Earle](https://unsplash.com/@joshuaearle?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)</small>
