@@ -6,6 +6,7 @@ description: >-
 pubDate: '2024-05-07'
 language:
   - en
+heroImage: /images/2026/notes-on-respect.avif
 category:
   - integration-growth
 tags:
