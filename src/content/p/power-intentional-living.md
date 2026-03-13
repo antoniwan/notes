@@ -7,7 +7,7 @@ description: >-
 pubDate: '2024-03-25T14:15:00.000Z'
 language:
   - en
-heroImage: ''
+heroImage: /images/2026/value-roads.avif
 category:
   - psychology
   - integration-growth
