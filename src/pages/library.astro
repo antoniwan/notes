@@ -2,10 +2,6 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import { books } from '../data/library';
 
-const readBooks = books.filter((book) => book.status === 'read');
-const inProgressBooks = books.filter((book) => book.status === 'in-progress');
-const toReadBooks = books.filter((book) => book.status === 'to-read');
-
 const shelves = Array.from(new Set(books.map((book) => book.shelf))).sort((a, b) =>
   a.localeCompare(b),
 );
