@@ -264,6 +264,7 @@ The project is a well-structured Astro blog with sensible defaults (static prere
 
 **Astro config:**
 
+- Astro 6 with the experimental queued renderer enabled (`experimental.queuedRendering.enabled = true`) for more memory-efficient builds as content grows.
 - Integrations: MDX, sitemap, Tailwind — all justified.
 - Prefetch: `prefetchAll: false`, `defaultStrategy: 'hover'` — good.
 - Image: Sharp, `inlineStylesheets: 'auto'`, Vite `manualChunks` and terser — good.

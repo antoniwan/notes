@@ -10,6 +10,11 @@ import { remarkReadingTime } from './remark-reading-time.mjs';
 // https://astro.build/config
 export default defineConfig({
   site: SITE_URL,
+  experimental: {
+    queuedRendering: {
+      enabled: true,
+    },
+  },
   fonts: [
     {
       name: 'Open Sans',

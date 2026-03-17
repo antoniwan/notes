@@ -18,7 +18,7 @@ A personal notes site: essays and notes on fatherhood, masculinity, culture, and
 
 ## Tech Stack
 
-- **Astro 5.17** – static site generator
+- **Astro 6.0.5** – static site generator (with experimental queued rendering enabled)
 - **TypeScript 5.9** – type-safe development
 - **Tailwind CSS 3.4** – utility-first CSS
 - **MDX** – Markdown with JSX
