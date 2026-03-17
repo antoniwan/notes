@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
@@ -10,6 +10,40 @@ import { remarkReadingTime } from './remark-reading-time.mjs';
 // https://astro.build/config
 export default defineConfig({
   site: SITE_URL,
+  fonts: [
+    {
+      name: 'Open Sans',
+      cssVariable: '--font-sans',
+      provider: fontProviders.google(),
+      weights: [300, 400, 500, 600, 700, 800],
+      styles: ['normal', 'italic'],
+      subsets: ['latin'],
+    },
+    {
+      name: 'Lora',
+      cssVariable: '--font-heading',
+      provider: fontProviders.google(),
+      weights: [400, 500, 600, 700],
+      styles: ['normal', 'italic'],
+      subsets: ['latin'],
+    },
+    {
+      name: 'Source Serif 4',
+      cssVariable: '--font-serif',
+      provider: fontProviders.google(),
+      weights: [300, 400, 600, 700, 900],
+      styles: ['normal', 'italic'],
+      subsets: ['latin'],
+    },
+    {
+      name: 'Fira Code',
+      cssVariable: '--font-mono',
+      provider: fontProviders.google(),
+      weights: [300, 400, 500, 600, 700],
+      styles: ['normal'],
+      subsets: ['latin'],
+    },
+  ],
   integrations: [
     mdx(),
     sitemap(),

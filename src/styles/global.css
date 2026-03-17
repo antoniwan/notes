@@ -1,5 +1,3 @@
-@import './fonts.css';
-
 /*
   Enhanced Theme System
   =====================
@@ -20,15 +18,6 @@
 /* Custom base styles */
 @layer base {
   :root {
-    /* Font families */
-    --font-sans:
-      'Open Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-      Cantarell, 'Helvetica Neue', sans-serif;
-    --font-serif: 'Source Serif Pro', Georgia, Cambria, 'Times New Roman', Times, serif;
-    --font-mono:
-      'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
-      'Courier New', monospace;
-
     /* Light theme colors - Serious & Professional */
     --color-bg: 255 255 255;
     --color-bg-alt: 249 250 251;
@@ -117,7 +106,7 @@
   h4,
   h5,
   h6 {
-    font-family: 'Lora', Georgia, Cambria, 'Times New Roman', Times, serif;
+    font-family: var(--font-heading);
     @apply font-bold text-[rgb(var(--color-text))];
   }
 
