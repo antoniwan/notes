@@ -133,7 +133,7 @@ async function handleStaticAsset(request) {
       return response;
     })
     .catch((error) => {
-      if (DEBUG) console.log('Background revalidation failed:', request.url);
+      if (DEBUG) console.log('Background revalidation failed:', request.url, error);
       return null;
     });
 
