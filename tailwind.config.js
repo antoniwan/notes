@@ -1,3 +1,7 @@
+import typography from '@tailwindcss/typography';
+import forms from '@tailwindcss/forms';
+import aspectRatio from '@tailwindcss/aspect-ratio';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
@@ -361,11 +365,7 @@ export default {
   future: {
     hoverOnlyWhenSupported: true,
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/aspect-ratio'),
-  ],
+  plugins: [typography, forms, aspectRatio],
   // Optimize for production
   ...(process.env.NODE_ENV === 'production'
     ? {

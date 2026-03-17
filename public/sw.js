@@ -3,9 +3,9 @@
 
 const DEBUG = self.location.hostname === 'localhost' || self.location.hostname === '127.0.0.1';
 
-const CACHE_NAME = 'blog-v2';
-const STATIC_CACHE = 'static-v2';
-const DYNAMIC_CACHE = 'dynamic-v2';
+const CACHE_NAME = 'blog-v3';
+const STATIC_CACHE = 'static-v3';
+const DYNAMIC_CACHE = 'dynamic-v3';
 
 // Files to cache immediately
 const STATIC_FILES = [
@@ -119,35 +119,45 @@ async function handleApiRequest(request) {
   }
 }
 
-// Handle static assets
+// Handle static assets — stale-while-revalidate: serve from cache instantly,
+// but always fetch a fresh copy in the background to keep the cache current.
 async function handleStaticAsset(request) {
   const cache = await caches.open(STATIC_CACHE);
   const cachedResponse = await cache.match(request);
 
+  const networkFetch = fetch(request)
+    .then((response) => {
+      if (response.ok) {
+        cache.put(request, response.clone());
+      }
+      return response;
+    })
+    .catch((error) => {
+      if (DEBUG) console.log('Background revalidation failed:', request.url, error);
+      return null;
+    });
+
   if (cachedResponse) {
-    // Return cached version immediately
+    // Serve cached version immediately; network fetch updates cache in background
     return cachedResponse;
   }
 
-  try {
-    // Fetch from network and cache
-    const response = await fetch(request);
-    if (response.ok) {
-      cache.put(request, response.clone());
-    }
-    return response;
-  } catch (error) {
-    // Return offline response for critical assets
-    if (request.url.includes('/styles/') || request.url.includes('/fonts/')) {
-      return new Response('/* Offline - styles not available */', {
-        status: 200,
-        statusText: 'OK',
-        headers: { 'Content-Type': 'text/css' },
-      });
-    }
-
-    throw error;
+  // Nothing in cache — wait for the network
+  const networkResponse = await networkFetch;
+  if (networkResponse) {
+    return networkResponse;
   }
+
+  // Offline fallback for styles/fonts
+  if (request.url.includes('/styles/') || request.url.includes('/fonts/')) {
+    return new Response('/* Offline - styles not available */', {
+      status: 200,
+      statusText: 'OK',
+      headers: { 'Content-Type': 'text/css' },
+    });
+  }
+
+  throw new Error('Network unavailable and no cache for: ' + request.url);
 }
 
 // Handle page requests

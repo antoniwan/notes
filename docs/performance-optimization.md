@@ -102,7 +102,7 @@ This document outlines the comprehensive performance optimizations implemented f
 - Implement code splitting for vendor chunks
 - Remove console logs in production
 - Enable view transitions for better UX
- - Enable experimental queued rendering (`experimental.queuedRendering.enabled = true`) to use Astro's newer queue-based renderer for more efficient builds on large content sets.
+- Enable experimental queued rendering (`experimental.queuedRendering.enabled = true`) to use Astro's newer queue-based renderer for more efficient builds on large content sets.
 
 #### Vite Optimizations
 
