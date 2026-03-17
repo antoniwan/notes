@@ -8,6 +8,7 @@ description: >-
 pubDate: 2025-05-01T00:00:00.000Z
 language:
   - es
+heroImage: /images/guia-padres.jpg
 category:
   - parenting
   - systems-strategy
