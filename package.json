@@ -1,7 +1,7 @@
 {
   "name": "notes blog",
   "type": "module",
-  "version": "5.8.0",
+  "version": "5.9.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/antoniwan/notes.git"
@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "node scripts/generate-social-images.js && astro build",
+    "build": "node scripts/generate-social-images.js && node scripts/update-sw-version.js && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "generate-social-images": "node scripts/generate-social-images.js",

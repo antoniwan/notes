@@ -33,7 +33,7 @@ const { class: className = '' } = Astro.props;
   </svg>
 </button>
 
-<script>
+<script is:inline>
   const backToTop = document.getElementById('back-to-top');
   let isVisible = false;
   let ticking = false;
