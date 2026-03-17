@@ -34,54 +34,55 @@ const { class: className = '' } = Astro.props;
 </button>
 
 <script is:inline>
-  const backToTop = document.getElementById('back-to-top');
-  let isVisible = false;
-  let ticking = false;
+  if (typeof window !== 'undefined') {
+    window.addEventListener('DOMContentLoaded', () => {
+      const backToTop = document.getElementById('back-to-top');
+      if (!backToTop) return;
 
-  function toggleBackToTop() {
-    if (!backToTop) return;
+      let isVisible = false;
+      let ticking = false;
 
-    const shouldBeVisible = window.scrollY > 300;
+      function toggleBackToTop() {
+        const shouldBeVisible = window.scrollY > 300;
 
-    if (shouldBeVisible !== isVisible) {
-      if (shouldBeVisible) {
-        backToTop.classList.remove('opacity-0', 'invisible', 'translate-y-4');
-        backToTop.classList.add('opacity-100', 'visible', 'translate-y-0');
-        // Add entrance animation
-        backToTop.style.animation = 'fade-in 0.3s ease-out';
-      } else {
-        backToTop.classList.add('opacity-0', 'invisible', 'translate-y-4');
-        backToTop.classList.remove('opacity-100', 'visible', 'translate-y-0');
-        backToTop.style.animation = '';
+        if (shouldBeVisible !== isVisible) {
+          if (shouldBeVisible) {
+            backToTop.classList.remove('opacity-0', 'invisible', 'translate-y-4');
+            backToTop.classList.add('opacity-100', 'visible', 'translate-y-0');
+            backToTop.style.animation = 'fade-in 0.3s ease-out';
+          } else {
+            backToTop.classList.add('opacity-0', 'invisible', 'translate-y-4');
+            backToTop.classList.remove('opacity-100', 'visible', 'translate-y-0');
+            backToTop.style.animation = '';
+          }
+          isVisible = shouldBeVisible;
+        }
+
+        ticking = false;
       }
-      isVisible = shouldBeVisible;
-    }
 
-    ticking = false;
+      function throttledToggle() {
+        if (!ticking) {
+          window.requestAnimationFrame(toggleBackToTop);
+          ticking = true;
+        }
+      }
+
+      function scrollToTop() {
+        if ('scrollBehavior' in document.documentElement.style) {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+          });
+        } else {
+          window.scrollTo(0, 0);
+        }
+      }
+
+      window.addEventListener('scroll', throttledToggle, { passive: true });
+      backToTop.addEventListener('click', scrollToTop);
+    });
   }
-
-  function throttledToggle() {
-    if (!ticking) {
-      window.requestAnimationFrame(toggleBackToTop);
-      ticking = true;
-    }
-  }
-
-  function scrollToTop() {
-    // Check if smooth scrolling is supported
-    if ('scrollBehavior' in document.documentElement.style) {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
-    } else {
-      // Fallback for older browsers
-      window.scrollTo(0, 0);
-    }
-  }
-
-  window.addEventListener('scroll', throttledToggle, { passive: true });
-  backToTop?.addEventListener('click', scrollToTop);
 </script>
 
 <style>
