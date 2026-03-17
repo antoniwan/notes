@@ -60,22 +60,7 @@ const updatedDateISO = updatedDate?.toISOString();
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="viewport-height" content="100vh" />
 
-<!-- Performance Optimizations -->
-<link
-  rel="preload"
-  href="https://fonts.gstatic.com/s/opensans/v40/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjZ0B4gaVI.woff2"
-  as="font"
-  type="font/woff2"
-  crossorigin
-/>
-<link
-  rel="preload"
-  href="https://fonts.gstatic.com/s/opensans/v40/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsg-1x4gaVI.woff2"
-  as="font"
-  type="font/woff2"
-  crossorigin
-/>
-<!-- Lora is loaded via the Google Fonts stylesheet below; TTF preload removed (gstatic URL was 404) -->
+<!-- Font preloading handled by Astro Fonts API -->
 
 <!-- Critical Resource Preloading -->
 {heroImage && <link rel="preload" href={heroImage} as="image" />}
