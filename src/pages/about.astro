@@ -1,5 +1,8 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
+import { getLetterboxdConfig } from '../config/letterboxd';
+
+const letterboxd = getLetterboxdConfig();
 ---
 
 <PageLayout
@@ -117,6 +120,17 @@ import PageLayout from '../layouts/PageLayout.astro';
       <li>
         📚 <a href="/library/books">Book library (for reference)</a> — the shelves behind these notes
       </li>
+      {
+        letterboxd.profileUrl && (
+          <li>
+            🎬{' '}
+            <a href={letterboxd.profileUrl} target="_blank" rel="noopener noreferrer">
+              Letterboxd
+            </a>{' '}
+            — film diary and reviews
+          </li>
+        )
+      }
     </ul>
 
     <p class="animate-fade-up-delay-10 animate-fade-up">

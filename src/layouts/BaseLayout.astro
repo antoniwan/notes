@@ -42,6 +42,7 @@ const {
   featured = false,
   draft = false,
   tableOfContents,
+  mediaReview,
 } = Astro.props;
 
 // Auto-generate keywords if not provided
@@ -69,6 +70,7 @@ const structuredData = generateStructuredData({
   hasComments,
   featured,
   draft,
+  mediaReview,
 });
 ---
 

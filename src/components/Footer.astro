@@ -3,6 +3,9 @@ import { SITE_TITLE, SOCIAL_LINKS } from '../consts';
 import Logo from './Logo.astro';
 import Container from './Container.astro';
 import pkg from '../../package.json';
+import { getLetterboxdConfig } from '../config/letterboxd';
+
+const letterboxd = getLetterboxdConfig();
 ---
 
 <footer
@@ -114,6 +117,19 @@ import pkg from '../../package.json';
             <span class="text-lg">🌳</span>
             <span>Links Forest</span>
           </a>
+          {
+            letterboxd.profileUrl && (
+              <a
+                href={letterboxd.profileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="link-muted flex items-center gap-2 text-sm leading-relaxed md:text-base"
+              >
+                <span class="text-lg">🎬</span>
+                <span>Letterboxd</span>
+              </a>
+            )
+          }
         </nav>
       </div>
     </div>

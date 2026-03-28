@@ -1,0 +1,76 @@
+---
+import DefaultImage from '../DefaultImage.astro';
+
+interface Props {
+  postTitle: string;
+  workTitle: string;
+  mediaType: 'film' | 'tv';
+  releaseYear: number;
+  seasonLabel?: string;
+  heroImage?: string;
+  imageAlt?: string;
+}
+
+const { postTitle, workTitle, mediaType, releaseYear, seasonLabel, heroImage, imageAlt } =
+  Astro.props;
+
+const label = mediaType === 'film' ? 'Film' : 'TV';
+const alt = imageAlt?.trim() || `Poster for ${workTitle} (${releaseYear})`;
+const showPostTitleEyebrow = postTitle.trim() !== workTitle.trim();
+---
+
+<div class="media-review-hero flex flex-col items-center gap-6 text-center md:gap-8">
+  <div class="w-full max-w-[240px] shrink-0 sm:max-w-[280px]">
+    {
+      heroImage ? (
+        <img
+          src={heroImage}
+          alt={alt}
+          class="aspect-[2/3] w-full rounded-xl border border-[rgb(var(--color-border))]/40 object-cover shadow-xl"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          width="560"
+          height="840"
+        />
+      ) : (
+        <DefaultImage
+          alt={alt}
+          className="aspect-[2/3] w-full rounded-xl border border-[rgb(var(--color-border))]/40 object-cover shadow-xl"
+          loading="eager"
+          priority={true}
+        />
+      )
+    }
+  </div>
+
+  <div class="max-w-2xl space-y-3">
+    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[rgb(var(--color-primary))]">
+      {label} review
+    </p>
+    <h1
+      class="font-heading text-3xl font-bold leading-tight text-[rgb(var(--color-text))] sm:text-4xl md:text-5xl"
+      transition:name="page-title"
+    >
+      {workTitle}
+    </h1>
+    {
+      showPostTitleEyebrow && (
+        <p class="text-body-muted text-base leading-relaxed md:text-lg">{postTitle}</p>
+      )
+    }
+    <p class="text-body-muted text-sm md:text-base">
+      <span class="font-medium text-[rgb(var(--color-text))]">{releaseYear}</span>
+      {
+        seasonLabel && (
+          <>
+            <span class="mx-2 text-[rgb(var(--color-text-muted))]/60" aria-hidden="true">
+              ·
+            </span>
+            <span>{seasonLabel}</span>
+          </>
+        )
+      }
+    </p>
+  </div>
+</div>

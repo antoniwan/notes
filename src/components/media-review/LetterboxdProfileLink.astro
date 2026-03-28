@@ -1,0 +1,24 @@
+---
+interface Props {
+  profileUrl?: string;
+}
+
+const { profileUrl } = Astro.props;
+const url = profileUrl?.trim();
+---
+
+{
+  url && (
+    <p class="text-body-muted text-center text-sm md:text-left">
+      <a
+        href={url}
+        class="inline-flex items-center gap-2 font-medium text-[rgb(var(--color-primary))] underline-offset-2 hover:underline"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span aria-hidden="true">🎬</span>
+        Letterboxd profile
+      </a>
+    </p>
+  )
+}

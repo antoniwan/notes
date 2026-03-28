@@ -1,4 +1,12 @@
 import type { CollectionEntry } from 'astro:content';
+import type { LetterboxdFeedItem } from '../utils/letterboxdRss';
+
+export interface MediaReviewStructuredMeta {
+  workTitle: string;
+  mediaType: 'film' | 'tv';
+  releaseYear: number;
+  seasonLabel?: string;
+}
 
 export interface BaseLayoutProps {
   title: string;
@@ -35,6 +43,8 @@ export interface BaseLayoutProps {
   showTitle?: boolean; // Whether to show the H1 title in PageHeader (default: true)
   // Reading progress
   postId?: string; // Astro's native post.id for reading progress tracking
+  /** When set, adds Schema.org Review + Movie/TVSeries alongside BlogPosting. */
+  mediaReview?: MediaReviewStructuredMeta;
 }
 
 export interface Translation {
@@ -63,4 +73,14 @@ export interface BlogLayoutProps extends BaseLayoutProps {
   translationData?: TranslationData;
   currentPost?: CollectionEntry<'blog'>; // Current blog post for related posts
   allPosts?: CollectionEntry<'blog'>[]; // All posts for finding related content
+}
+
+export interface MediaReviewLayoutProps extends BlogLayoutProps {
+  workTitle: string;
+  mediaType: 'film' | 'tv';
+  releaseYear: number;
+  seasonLabel?: string;
+  trailerUrl?: string;
+  letterboxdFeedItems?: LetterboxdFeedItem[];
+  letterboxdProfileUrl?: string;
 }

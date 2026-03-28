@@ -37,6 +37,12 @@ export const categories: Category[] = [
     icon: '📚',
   },
   {
+    id: 'media-reviews',
+    name: 'Media Reviews',
+    description: 'Film and TV notes — what landed, what didn’t, and why it matters',
+    icon: '🎬',
+  },
+  {
     id: 'metaspace',
     name: 'Metaspace',
     description: 'Reflections on the journey itself — the why, the how, the code of life',

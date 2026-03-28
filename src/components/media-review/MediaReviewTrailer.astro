@@ -1,0 +1,64 @@
+---
+import { getYouTubeNocookieEmbedUrl } from '../../utils/youtubeTrailer';
+
+interface Props {
+  trailerUrl?: string;
+  workTitle: string;
+}
+
+const { trailerUrl, workTitle } = Astro.props;
+const raw = trailerUrl?.trim();
+if (!raw) {
+  return null;
+}
+
+const embedUrl = getYouTubeNocookieEmbedUrl(raw);
+let externalHref: string | null = null;
+if (!embedUrl) {
+  try {
+    new URL(raw);
+    externalHref = raw;
+  } catch {
+    return null;
+  }
+}
+
+const iframeTitle = `Trailer: ${workTitle}`;
+---
+
+<section
+  class="mt-10 border-t border-[rgb(var(--color-border))]/30 pt-10"
+  aria-labelledby="media-trailer-heading"
+>
+  <h2
+    id="media-trailer-heading"
+    class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl"
+  >
+    Trailer
+  </h2>
+  {
+    embedUrl ? (
+      <div class="aspect-video relative w-full overflow-hidden rounded-xl border border-[rgb(var(--color-border))]/40 bg-black shadow-lg">
+        <iframe
+          class="absolute inset-0 h-full w-full"
+          src={embedUrl}
+          title={iframeTitle}
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+        />
+      </div>
+    ) : (
+      <p class="text-body-muted text-sm md:text-base">
+        <a
+          href={externalHref!}
+          class="text-[rgb(var(--color-primary))] underline-offset-2 hover:underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Watch the trailer (external)
+        </a>
+      </p>
+    )
+  }
+</section>

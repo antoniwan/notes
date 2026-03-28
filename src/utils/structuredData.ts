@@ -31,6 +31,13 @@ export interface StructuredDataOptions {
   hasComments?: boolean;
   featured?: boolean;
   draft?: boolean;
+  /** Adds Review + Movie/TVSeries when type is article. */
+  mediaReview?: {
+    workTitle: string;
+    mediaType: 'film' | 'tv';
+    releaseYear: number;
+    seasonLabel?: string;
+  };
 }
 
 // Generate enhanced structured data with improved SEO
@@ -53,6 +60,7 @@ export function generateStructuredData(options: StructuredDataOptions) {
     hasComments = false,
     featured = false,
     draft = false,
+    mediaReview,
   } = options;
 
   const url = generateCanonicalUrl(path);
@@ -221,6 +229,31 @@ export function generateStructuredData(options: StructuredDataOptions) {
     };
 
     schemas.push(articleSchema);
+
+    if (mediaReview) {
+      const itemType = mediaReview.mediaType === 'film' ? 'Movie' : 'TVSeries';
+      const itemReviewed: Record<string, unknown> = {
+        '@type': itemType,
+        name: mediaReview.workTitle,
+      };
+      if (mediaReview.mediaType === 'tv' && mediaReview.seasonLabel) {
+        itemReviewed.description = mediaReview.seasonLabel;
+      }
+      schemas.push({
+        '@context': 'https://schema.org',
+        '@type': 'Review',
+        itemReviewed,
+        reviewBody: description,
+        author: {
+          '@type': 'Person',
+          name: AUTHOR.name,
+          url: AUTHOR.url,
+        },
+        datePublished: pubDate.toISOString(),
+        url,
+        inLanguage: 'en-US',
+      });
+    }
 
     // Add breadcrumb schema for blog posts
     const breadcrumbSchema = {

@@ -7,7 +7,7 @@ A personal notes site: essays and notes on fatherhood, masculinity, culture, and
 ## Overview
 
 - **~75 posts** in `src/content/p/` (Markdown/MDX)
-- **10 content categories** (e.g. Parenting, Psychology, Politics, Metaspace)
+- **11 content categories** (e.g. Parenting, Psychology, Media reviews, Metaspace)
 - **Bilingual content** with translation linking (English/Spanish)
 - **Dark/light mode** with system preference detection
 - **Responsive layout** for mobile and desktop
@@ -128,7 +128,20 @@ Reading time is computed by a remark plugin at build time and exposed as `minute
 
 ### Categories
 
-Defined in `src/data/categories.ts`. Examples: Art & Expression, Culture, DIY & Creation, Integration & Growth, Learning Projects, Metaspace, Parenting, Politics, Psychology, Systems & Strategy.
+Defined in `src/data/categories.ts`. Examples: Art & Expression, Culture, DIY & Creation, Integration & Growth, Learning Projects, Media reviews, Metaspace, Parenting, Politics, Psychology, Systems & Strategy.
+
+### Media reviews (film & TV)
+
+Posts can set `template: media-review` with `mediaType`, `workTitle`, `releaseYear`, optional `seasonLabel`, `heroImage` (poster), and optional `trailerUrl`. YouTube trailers embed with **youtube-nocookie** and **no autoplay**. See [docs/frontmatter-spec.md](docs/frontmatter-spec.md).
+
+### Letterboxd (optional)
+
+Set these in `.env` / Vercel (both optional; leave unset to hide Letterboxd UI):
+
+| Variable                 | Purpose                                                                                                                            |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `LETTERBOXD_PROFILE_URL` | Plain link on the footer, About page, and media review pages.                                                                      |
+| `LETTERBOXD_RSS_URL`     | Public RSS URL; at build time, recent items render **only** on media review posts. About and the footer never show the RSS widget. |
 
 ## Features
 
@@ -142,7 +155,7 @@ Defined in `src/data/categories.ts`. Examples: Art & Expression, Culture, DIY & 
 - **Comments** – Remark42 (self-hosted); requires setup
 - **RSS/JSON** – Feeds for syndication
 - **Quotes API** – `GET /api/quotes` for random Stoic quotes (see [docs/quotes-api.md](docs/quotes-api.md))
-- **Structured data** – Schema.org types (e.g. WebSite, Organization, Person, BlogPosting, BreadcrumbList, FAQ where applicable). See [docs/structured-data-optimization.md](docs/structured-data-optimization.md).
+- **Structured data** – Schema.org types (e.g. WebSite, Organization, Person, BlogPosting, Review/Movie/TVSeries on media reviews, BreadcrumbList, FAQ where applicable). See [docs/structured-data-optimization.md](docs/structured-data-optimization.md).
 
 ## API
 

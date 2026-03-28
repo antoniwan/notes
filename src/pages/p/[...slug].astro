@@ -1,12 +1,15 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
 import BlogLayout from '../../layouts/BlogLayout.astro';
+import MediaReviewLayout from '../../layouts/MediaReviewLayout.astro';
 import { render } from 'astro:content';
 import { generateKeywords, generateImageAlt } from '../../utils/seo';
 import { getTranslationData } from '../../utils/translationUtils';
 import { calculateReadingTimeFromMarkdown } from '../../utils/readingTime';
 import { AUTHOR } from '../../consts';
 import { getCategoryNameFromIds } from '../../utils/categoryUtils';
+import { getLetterboxdConfig } from '../../config/letterboxd';
+import { getLetterboxdFeedItems } from '../../utils/letterboxdRss';
 
 export const prerender = true;
 
@@ -31,8 +34,20 @@ const minutesRead = post.data.minutesRead ?? calculateReadingTimeFromMarkdown(po
 // Auto-generate keywords from tags and categories
 const keywords = generateKeywords(post.data.tags || [], post.data.category || []);
 
-// Auto-generate image alt text
-const imageAlt = generateImageAlt(post.data.title);
+const isMediaReview = post.data.template === 'media-review';
+
+const letterboxdConfig = getLetterboxdConfig();
+const letterboxdFeedItems =
+  isMediaReview && letterboxdConfig.rssUrl
+    ? await getLetterboxdFeedItems(letterboxdConfig.rssUrl)
+    : [];
+
+// Auto-generate image alt text (poster-focused for media reviews)
+const imageAlt =
+  post.data.imageAlt?.trim() ||
+  (isMediaReview && post.data.workTitle
+    ? generateImageAlt(post.data.workTitle)
+    : generateImageAlt(post.data.title));
 
 // Use author from post data or fall back to default author from consts
 const author = post.data.author || AUTHOR.name;
@@ -53,25 +68,61 @@ const tableOfContents = [...(post.body?.matchAll(headingRegex) ?? [])].map(([, h
 const translationData = await getTranslationData(post, allPosts);
 ---
 
-<BlogLayout
-  title={post.data.title}
-  description={post.data.description}
-  pubDate={post.data.pubDate}
-  updatedDate={post.data.updatedDate}
-  heroImage={post.data.heroImage}
-  minutesRead={minutesRead}
-  tags={post.data.tags}
-  category={post.data.category}
-  categoryName={categoryName}
-  path={`/p/${post.id}`}
-  imageAlt={imageAlt}
-  author={author}
-  keywords={keywords}
-  tableOfContents={tableOfContents}
-  showComments={post.data.showComments}
-  translationData={translationData}
-  currentPost={post}
-  allPosts={allPosts}
->
-  <Content />
-</BlogLayout>
+{
+  isMediaReview ? (
+    <MediaReviewLayout
+      title={post.data.title}
+      description={post.data.description}
+      pubDate={post.data.pubDate}
+      updatedDate={post.data.updatedDate}
+      heroImage={post.data.heroImage}
+      minutesRead={minutesRead}
+      tags={post.data.tags}
+      category={post.data.category}
+      categoryName={categoryName}
+      path={`/p/${post.id}`}
+      imageAlt={imageAlt}
+      author={author}
+      keywords={keywords}
+      tableOfContents={tableOfContents}
+      showComments={post.data.showComments}
+      translationData={translationData}
+      currentPost={post}
+      allPosts={allPosts}
+      featured={post.data.featured}
+      draft={post.data.draft}
+      workTitle={post.data.workTitle!}
+      mediaType={post.data.mediaType!}
+      releaseYear={post.data.releaseYear!}
+      seasonLabel={post.data.seasonLabel}
+      trailerUrl={post.data.trailerUrl}
+      letterboxdFeedItems={letterboxdFeedItems}
+      letterboxdProfileUrl={letterboxdConfig.profileUrl}
+    >
+      <Content />
+    </MediaReviewLayout>
+  ) : (
+    <BlogLayout
+      title={post.data.title}
+      description={post.data.description}
+      pubDate={post.data.pubDate}
+      updatedDate={post.data.updatedDate}
+      heroImage={post.data.heroImage}
+      minutesRead={minutesRead}
+      tags={post.data.tags}
+      category={post.data.category}
+      categoryName={categoryName}
+      path={`/p/${post.id}`}
+      imageAlt={imageAlt}
+      author={author}
+      keywords={keywords}
+      tableOfContents={tableOfContents}
+      showComments={post.data.showComments}
+      translationData={translationData}
+      currentPost={post}
+      allPosts={allPosts}
+    >
+      <Content />
+    </BlogLayout>
+  )
+}

@@ -1,0 +1,434 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Comments from '../components/Comments.astro';
+import RelatedPosts from '../components/RelatedPosts.astro';
+import Container from '../components/Container.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SocialShare from '../components/SocialShare.astro';
+import LanguageToggle from '../components/LanguageToggle.astro';
+import MediaReviewHero from '../components/media-review/MediaReviewHero.astro';
+import MediaReviewTrailer from '../components/media-review/MediaReviewTrailer.astro';
+import LetterboxdRecent from '../components/media-review/LetterboxdRecent.astro';
+import LetterboxdProfileLink from '../components/media-review/LetterboxdProfileLink.astro';
+import { generateCanonicalUrl } from '../utils/seo';
+import type { MediaReviewLayoutProps } from '../types/layout';
+
+interface Props extends MediaReviewLayoutProps {}
+
+const {
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  heroImage,
+  minutesRead,
+  tags,
+  category,
+  categoryName,
+  path,
+  imageAlt,
+  author,
+  keywords,
+  tableOfContents,
+  showComments = true,
+  translationData,
+  workTitle,
+  mediaType,
+  releaseYear,
+  seasonLabel,
+  trailerUrl,
+  letterboxdFeedItems = [],
+  letterboxdProfileUrl,
+  ...rest
+} = Astro.props;
+
+const canonical = path || generateCanonicalUrl(Astro.url.pathname);
+const postId = rest.currentPost?.id || '';
+const postSlug = postId;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  updatedDate={updatedDate}
+  heroImage={heroImage}
+  minutesRead={minutesRead}
+  tags={tags}
+  category={category}
+  path={canonical}
+  imageAlt={imageAlt}
+  author={author}
+  keywords={keywords}
+  type="article"
+  structuredDataType="article"
+  tableOfContents={tableOfContents}
+  hasComments={showComments}
+  featured={rest.featured}
+  draft={rest.draft}
+  postId={postId}
+  mediaReview={{ workTitle, mediaType, releaseYear, seasonLabel }}
+  {...rest}
+>
+  <Container>
+    <div class="py-6 md:py-8 lg:py-12">
+      <div class="mb-6 hidden md:block">
+        <Breadcrumbs
+          items={[
+            { label: 'Home', href: '/' },
+            ...(categoryName && category && category.length > 0
+              ? [{ label: categoryName, href: `/category/${category[0]}/` }]
+              : []),
+            { label: title },
+          ]}
+          class="text-sm"
+        />
+      </div>
+
+      <div class="mb-8 text-center lg:hidden">
+        {
+          description && (
+            <p class="text-body-muted mx-auto max-w-xl text-base leading-relaxed">{description}</p>
+          )
+        }
+      </div>
+
+      <div class="lg:grid lg:grid-cols-4 lg:gap-8 xl:gap-12">
+        <aside class="hidden lg:col-span-1 lg:block">
+          <div class="sticky top-8 space-y-8 pt-4">
+            <div
+              class="space-y-3 rounded-xl border border-[rgb(var(--color-border))]/25 bg-[rgb(var(--color-bg-alt))]/40 p-4"
+            >
+              <p
+                class="text-xs font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]"
+              >
+                In this review
+              </p>
+              <p class="text-lg font-bold leading-snug text-[rgb(var(--color-text))]">
+                {workTitle}
+              </p>
+              {description && <p class="text-body-muted text-sm leading-relaxed">{description}</p>}
+            </div>
+
+            <SocialShare
+              title={title}
+              description={description}
+              url={canonical}
+              variant="vertical"
+            />
+
+            <div class="space-y-6" style="line-height: 1.6;">
+              {
+                pubDate && (
+                  <div class="space-y-2">
+                    <h2 class="text-xs font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
+                      Published
+                    </h2>
+                    <time
+                      datetime={pubDate.toISOString()}
+                      class="flex items-center gap-2 text-base leading-relaxed text-[rgb(var(--color-text))]"
+                    >
+                      <span class="text-[rgb(var(--color-accent))]">📅</span>
+                      <FormattedDate date={pubDate} format="long" />
+                    </time>
+                    {updatedDate && updatedDate.getTime() !== pubDate?.getTime() && (
+                      <time
+                        datetime={updatedDate.toISOString()}
+                        class="mt-1 flex items-center gap-2 text-sm leading-relaxed text-[rgb(var(--color-text-muted))]"
+                      >
+                        <span class="text-[rgb(var(--color-accent))]">🔄</span>
+                        <span>
+                          Updated on <FormattedDate date={updatedDate} format="long" />
+                        </span>
+                      </time>
+                    )}
+                  </div>
+                )
+              }
+
+              {
+                minutesRead && (
+                  <div
+                    class="reading-time-section space-y-2"
+                    data-post-slug={postSlug}
+                    data-original-reading-time={minutesRead}
+                  >
+                    <h2 class="text-xs font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
+                      Reading time
+                    </h2>
+                    <div class="flex items-center gap-2 text-base leading-relaxed text-[rgb(var(--color-text))]">
+                      <span class="reading-time-icon text-[rgb(var(--color-accent))]">⏱️</span>
+                      <span class="reading-time-value">{minutesRead}</span>
+                    </div>
+                  </div>
+                )
+              }
+
+              {
+                categoryName && category && category.length > 0 && (
+                  <div class="space-y-2">
+                    <h2 class="text-xs font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
+                      Category
+                    </h2>
+                    <div class="flex items-center gap-2 text-base leading-relaxed">
+                      <span class="text-[rgb(var(--color-accent))]">📁</span>
+                      <a
+                        href={`/category/${category[0]}/`}
+                        class="theme-transition text-[rgb(var(--color-text))] hover:text-[rgb(var(--color-accent))]"
+                      >
+                        {categoryName}
+                      </a>
+                    </div>
+                  </div>
+                )
+              }
+
+              {
+                tags && tags.length > 0 && (
+                  <div class="space-y-2">
+                    <h2 class="text-xs font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
+                      Tags
+                    </h2>
+                    <div class="flex flex-wrap gap-1 text-sm">
+                      {tags.map((tag) => (
+                        <a
+                          href={`/tag/${tag}/`}
+                          class="text-[rgb(var(--color-accent))] transition-colors hover:text-[rgb(var(--color-accent))]/80 hover:underline"
+                        >
+                          #{tag}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )
+              }
+            </div>
+          </div>
+        </aside>
+
+        <main class="lg:col-span-3">
+          <div
+            class="mb-8 rounded-2xl border border-l-[6px] border-[rgb(var(--color-border))]/30 border-l-[rgb(var(--color-primary))]/70 bg-[rgb(var(--color-bg-alt))]/35 px-4 py-8 shadow-sm md:px-8 md:py-10"
+          >
+            <MediaReviewHero
+              postTitle={title}
+              workTitle={workTitle}
+              mediaType={mediaType}
+              releaseYear={releaseYear}
+              seasonLabel={seasonLabel}
+              heroImage={heroImage}
+              imageAlt={imageAlt}
+            />
+            <div class="mt-8">
+              <LetterboxdProfileLink profileUrl={letterboxdProfileUrl} />
+            </div>
+            <MediaReviewTrailer trailerUrl={trailerUrl} workTitle={workTitle} />
+            <LetterboxdRecent items={letterboxdFeedItems} profileUrl={letterboxdProfileUrl} />
+          </div>
+
+          {
+            translationData?.hasTranslations && (
+              <LanguageToggle
+                translations={translationData.translations}
+                currentLanguage={translationData.currentLanguage}
+                currentPath={translationData.currentPath}
+              />
+            )
+          }
+
+          <div
+            class="prose prose-lg max-w-none prose-headings:scroll-mt-20"
+            transition:name="page-content"
+            data-post-slug={postSlug}
+          >
+            <slot />
+          </div>
+
+          <SocialShare
+            title={title}
+            description={description}
+            url={canonical}
+            variant="horizontal"
+          />
+
+          <div class="mt-12 space-y-6 border-t border-[rgb(var(--color-border))] pt-8 lg:hidden">
+            {
+              pubDate && (
+                <div class="space-y-2">
+                  <h2 class="text-xs font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
+                    Published
+                  </h2>
+                  <time
+                    datetime={pubDate.toISOString()}
+                    class="flex items-center gap-2 text-base leading-relaxed text-[rgb(var(--color-text))]"
+                  >
+                    <span class="text-[rgb(var(--color-accent))]">📅</span>
+                    <FormattedDate date={pubDate} format="long" />
+                  </time>
+                  {updatedDate && updatedDate.getTime() !== pubDate?.getTime() && (
+                    <time
+                      datetime={updatedDate.toISOString()}
+                      class="mt-1 flex items-center gap-2 text-sm leading-relaxed text-[rgb(var(--color-text-muted))]"
+                    >
+                      <span class="text-[rgb(var(--color-accent))]">🔄</span>
+                      <span>
+                        Updated on <FormattedDate date={updatedDate} format="long" />
+                      </span>
+                    </time>
+                  )}
+                </div>
+              )
+            }
+
+            {
+              minutesRead && (
+                <div
+                  class="reading-time-section space-y-2"
+                  data-post-slug={postSlug}
+                  data-original-reading-time={minutesRead}
+                >
+                  <h2 class="text-xs font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
+                    Reading time
+                  </h2>
+                  <div class="flex items-center gap-2 text-base leading-relaxed text-[rgb(var(--color-text))]">
+                    <span class="reading-time-icon text-[rgb(var(--color-text))]">⏱️</span>
+                    <span class="reading-time-value">{minutesRead}</span>
+                  </div>
+                </div>
+              )
+            }
+
+            {
+              categoryName && category && category.length > 0 && (
+                <div class="space-y-2">
+                  <h2 class="text-xs font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
+                    Category
+                  </h2>
+                  <div class="flex items-center gap-2 text-base leading-relaxed">
+                    <span class="text-[rgb(var(--color-accent))]">📁</span>
+                    <a
+                      href={`/category/${category[0]}/`}
+                      class="theme-transition text-[rgb(var(--color-text))] hover:text-[rgb(var(--color-accent))]"
+                    >
+                      {categoryName}
+                    </a>
+                  </div>
+                </div>
+              )
+            }
+
+            {
+              tags && tags.length > 0 && (
+                <div class="space-y-2">
+                  <h2 class="text-xs font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
+                    Tags
+                  </h2>
+                  <div class="flex flex-wrap gap-1 text-sm">
+                    {tags.map((tag) => (
+                      <a
+                        href={`/tag/${tag}/`}
+                        class="text-[rgb(var(--color-accent))] transition-colors hover:text-[rgb(var(--color-accent))]/80 hover:underline"
+                      >
+                        #{tag}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )
+            }
+
+            {
+              author && (
+                <div class="space-y-2">
+                  <h2 class="text-xs font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
+                    Author
+                  </h2>
+                  <div class="flex items-center gap-2 text-base leading-relaxed text-[rgb(var(--color-text))]">
+                    <span class="text-[rgb(var(--color-accent))]">✍️</span>
+                    <span>{author}</span>
+                  </div>
+                </div>
+              )
+            }
+          </div>
+
+          {showComments && <Comments />}
+
+          <RelatedPosts currentPost={rest.currentPost} allPosts={rest.allPosts} />
+        </main>
+      </div>
+    </div>
+  </Container>
+</BaseLayout>
+
+<script>
+  import { formatRelativeReadTime } from '../utils/relativeReadTime.client';
+
+  const postSlug = document.querySelector('[data-post-slug]')?.getAttribute('data-post-slug');
+  const readStateService = window.ReadStateService?.getInstance();
+
+  function updateReadStatus() {
+    if (!postSlug || !readStateService) return;
+    const readData = readStateService.getReadData(postSlug);
+    const readingTimeSections = document.querySelectorAll(
+      `.reading-time-section[data-post-slug="${postSlug}"]`,
+    );
+
+    if (readData) {
+      const relativeTime = formatRelativeReadTime(readData.readAt);
+      readingTimeSections.forEach((section) => {
+        const timeValueElement = section.querySelector('.reading-time-value');
+        const iconElement = section.querySelector('.reading-time-icon');
+        if (timeValueElement) {
+          timeValueElement.textContent = relativeTime;
+          timeValueElement.setAttribute('datetime', readData.readAt);
+        }
+        if (iconElement) {
+          iconElement.textContent = '✓';
+          iconElement.classList.remove(
+            'text-[rgb(var(--color-accent))]',
+            'text-[rgb(var(--color-text))]',
+          );
+          iconElement.classList.add('text-[rgb(34,197,94)]');
+        }
+      });
+    } else {
+      readingTimeSections.forEach((section) => {
+        const originalReadingTime = section.getAttribute('data-original-reading-time');
+        const timeValueElement = section.querySelector('.reading-time-value');
+        const iconElement = section.querySelector('.reading-time-icon');
+        if (timeValueElement && originalReadingTime) {
+          timeValueElement.textContent = originalReadingTime;
+          timeValueElement.removeAttribute('datetime');
+        }
+        if (iconElement) {
+          iconElement.textContent = '⏱️';
+          iconElement.classList.remove('text-[rgb(34,197,94)]');
+          const isMobile = section.closest('.lg\\:hidden');
+          if (isMobile) {
+            iconElement.classList.add('text-[rgb(var(--color-text))]');
+          } else {
+            iconElement.classList.add('text-[rgb(var(--color-accent))]');
+          }
+        }
+      });
+    }
+  }
+
+  let unsubscribe: (() => void) | null = null;
+  if (readStateService) {
+    unsubscribe = readStateService.subscribeToAll(() => {
+      updateReadStatus();
+    });
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', updateReadStatus);
+    } else {
+      updateReadStatus();
+    }
+  }
+
+  window.addEventListener('beforeunload', () => {
+    if (unsubscribe) unsubscribe();
+  });
+</script>

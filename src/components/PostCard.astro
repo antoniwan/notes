@@ -57,8 +57,18 @@ const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
     <div class="space-y-3">
       <!-- Header with metadata -->
       <header class="space-y-2">
-        <div class="text-body-muted flex items-center gap-1.5 text-xs leading-relaxed">
+        <div class="text-body-muted flex flex-wrap items-center gap-1.5 text-xs leading-relaxed">
           <FormattedDate date={data.pubDate} />
+          {
+            data.template === 'media-review' && data.mediaType && (
+              <>
+                <span aria-hidden="true">•</span>
+                <span class="rounded-full border border-[rgb(var(--color-primary))]/25 bg-[rgb(var(--color-primary))]/10 px-2 py-0.5 font-medium text-[rgb(var(--color-primary))]">
+                  {data.mediaType === 'film' ? 'Film' : 'TV'}
+                </span>
+              </>
+            )
+          }
           <span
             class="reading-time-display"
             data-post-slug={post.id}
@@ -97,6 +107,18 @@ const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
             {data.title}
           </a>
         </h2>
+        {
+          data.template === 'media-review' &&
+            data.workTitle &&
+            data.workTitle.trim() !== data.title.trim() && (
+              <p class="text-body-muted -mt-1 text-xs font-medium sm:text-sm">
+                {data.workTitle}
+                {data.releaseYear != null && (
+                  <span class="text-[rgb(var(--color-text-muted))]"> ({data.releaseYear})</span>
+                )}
+              </p>
+            )
+        }
       </header>
 
       <!-- Description -->

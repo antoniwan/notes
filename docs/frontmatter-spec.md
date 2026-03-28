@@ -70,6 +70,8 @@ Main categories for the post
 category: ['integration-growth', 'learning-projects']
 ```
 
+For film and TV reviews, include **`media-reviews`** (see [Media review template](#media-review-template-media-review-posts)).
+
 ### `subcategory` (string)
 
 Specific subcategory for the post
@@ -146,6 +148,48 @@ To disable comments on a specific post:
 showComments: false
 ```
 
+## Media review template (`media-review` posts)
+
+Use these fields when `template: media-review` so the post renders with the media review layout (poster-led hero, optional trailer, optional Letterboxd activity). Omit `template` (or use any value other than `media-review`) for normal editorial posts.
+
+### Required when `template: media-review`
+
+| Field         | Type                   | Description                                            |
+| ------------- | ---------------------- | ------------------------------------------------------ |
+| `template`    | literal `media-review` | Selects the media review layout.                       |
+| `mediaType`   | `film` or `tv`         | Drives the Film/TV label.                              |
+| `workTitle`   | string                 | Title of the work reviewed (e.g. film or series name). |
+| `releaseYear` | number (integer)       | Primary release year.                                  |
+
+### Optional (media reviews)
+
+| Field         | Type         | Description                                                             |
+| ------------- | ------------ | ----------------------------------------------------------------------- |
+| `seasonLabel` | string       | For TV, e.g. `Season 1`.                                                |
+| `trailerUrl`  | string (URL) | Trailer link; YouTube URLs embed via youtube-nocookie with no autoplay. |
+| `heroImage`   | string       | Poster image path or absolute URL (also used for social preview).       |
+| `imageAlt`    | string       | Poster alt text.                                                        |
+
+### Example (media review)
+
+```yaml
+---
+title: 'Send Help — panic in plain sight'
+description: 'Notes on Send Help (2026): tone, survival comedy, and the third act.'
+pubDate: '2026-03-20T12:00:00.000Z'
+language: ['en']
+template: media-review
+mediaType: film
+workTitle: 'Send Help'
+releaseYear: 2026
+category: ['media-reviews', 'culture']
+tags: ['film', 'review']
+heroImage: '/images/2026/send-help-2026.avif'
+imageAlt: 'Theatrical poster for Send Help (2026)'
+# trailerUrl: 'https://www.youtube.com/watch?v=...'  # optional
+---
+```
+
 ## Complete Example
 
 ```yaml
@@ -174,6 +218,7 @@ showComments: true
 - **diy-creation** - Physical builds and handmade projects
 - **integration-growth** - Personal development and consciousness
 - **learning-projects** - Documentation of skill development
+- **media-reviews** - Film and TV reviews (use with `template: media-review`)
 - **metaspace** - Reflections on the journey itself
 - **parenting** - Family dynamics and child development
 - **politics** - Social structures and power dynamics
