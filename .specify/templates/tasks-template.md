@@ -20,10 +20,13 @@ description: "Task list template for feature implementation"
 
 ## Path Conventions
 
-- **Single project**: `src/`, `tests/` at repository root
+- **Notes (Astro, default):** `src/pages/`, `src/components/` (shared) and
+  `src/components/<feature>/` with `src/pages/<feature>/` for feature areas; content in
+  `src/content/p/`; data in `src/data/`; docs in `docs/`. Align with `.specify/memory/constitution.md`.
+- **Single project (generic)**: `src/`, `tests/` at repository root
 - **Web app**: `backend/src/`, `frontend/src/`
 - **Mobile**: `api/src/`, `ios/src/` or `android/src/`
-- Paths shown below assume single project - adjust based on plan.md structure
+- Paths shown below assume this repo’s layout unless plan.md selects another structure
 
 <!-- 
   ============================================================================

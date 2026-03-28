@@ -31,7 +31,19 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+Verify the plan against `.specify/memory/constitution.md` (Notes blog/platform):
+
+- **Content / feeds / SEO:** If posts, frontmatter, feeds, sitemap, or JSON-LD change, cite
+  `docs/frontmatter-spec.md` and structured-data docs as needed; note which validators apply
+  (`validate-feeds`, `audit-frontmatter`, `validate-structured-data`).
+- **Architecture:** Default remains static-first; any new API routes, SSR-only behavior, or
+  server-persisted reader state MUST be justified and scoped in this plan.
+- **Privacy:** No new third-party trackers or server-side reader tracking without spec disclosure
+  and documentation updates.
+- **Quality gates:** List which commands MUST pass for this feature (`build`, `check`,
+  `format:check`, and content validators when relevant).
+- **Layout:** New route areas SHOULD place feature components under `src/components/<feature>/` and
+  pages under matching `src/pages/<feature>/`.
 
 ## Project Structure
 

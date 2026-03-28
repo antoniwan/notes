@@ -5,6 +5,13 @@
 **Status**: Draft  
 **Input**: User description: "$ARGUMENTS"
 
+<!--
+  Notes platform: Features touching `src/content/p/`, frontmatter, feeds, or Schema.org output
+  MUST align with docs/frontmatter-spec.md and related docs in docs/. See
+  `.specify/memory/constitution.md` for non-negotiable constraints (static-first default, privacy,
+  verification gates).
+-->
+
 ## User Scenarios & Testing *(mandatory)*
 
 <!--
