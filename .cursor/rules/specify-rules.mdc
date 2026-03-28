@@ -1,0 +1,35 @@
+---
+description: Project Development Guidelines
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# notes Development Guidelines
+
+Auto-generated from all feature plans. Last updated: 2026-03-28
+
+## Active Technologies
+
+- TypeScript (strict), Astro 6.x per [constitution](../../.specify/memory/constitution.md) + Astro Content Collections, Zod (`src/content.config.ts`), Tailwind CSS, MDX/Markdown pipeline (001-media-review-template)
+
+## Project Structure
+
+```text
+src/
+tests/
+```
+
+## Commands
+
+npm test && npm run lint
+
+## Code Style
+
+TypeScript (strict), Astro 6.x per [constitution](../../.specify/memory/constitution.md): Follow standard conventions
+
+## Recent Changes
+
+- 001-media-review-template: Added TypeScript (strict), Astro 6.x per [constitution](../../.specify/memory/constitution.md) + Astro Content Collections, Zod (`src/content.config.ts`), Tailwind CSS, MDX/Markdown pipeline
+
+<!-- MANUAL ADDITIONS START -->
+<!-- MANUAL ADDITIONS END -->

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://notes.antoniwan.online/specs/001-media-review-template/contracts/letterboxd-feed-item.schema.json",
+  "title": "LetterboxdFeedItem",
+  "description": "Normalized item after parsing the public Letterboxd RSS feed (build-time). Field names are implementation-facing; RSS source may use title/link/pubDate/description.",
+  "type": "object",
+  "required": ["title", "link"],
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Entry title from RSS item (often film name + activity)."
+    },
+    "link": {
+      "type": "string",
+      "format": "uri",
+      "description": "Permalink to diary entry, review, or list on Letterboxd."
+    },
+    "publishedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Parsed pubDate when available."
+    },
+    "summary": {
+      "type": "string",
+      "description": "Optional short text from description; strip HTML in implementation."
+    }
+  },
+  "additionalProperties": false
+}
