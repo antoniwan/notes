@@ -8,16 +8,26 @@ const profileUrl = import.meta.env.LETTERBOXD_PROFILE_URL ?? 'https://letterboxd
 
 const letterboxdFilms = await fetchLetterboxdRecent(rssUrl, 12);
 
-const topics: { label: string; hint: string; emoji: string }[] = [
+type AboutTopic = {
+  label: string;
+  hint: string;
+  emoji: string;
+  /** Matches `/category/[category]` when set (see `src/data/categories.ts`). */
+  categoryId?: string;
+};
+
+const topics: AboutTopic[] = [
   {
     label: 'Integration & Growth',
     hint: 'From insight to embodiment, from performing to being',
     emoji: '\u{1F9D8}\u{1F3FD}\u{200D}\u{2642}\u{FE0F}',
+    categoryId: 'integration-growth',
   },
   {
     label: 'Parenting',
     hint: 'Presence with my kids, the sacred in the ordinary',
     emoji: '\u{1F468}\u{200D}\u{1F469}\u{200D}\u{1F467}\u{200D}\u{1F466}',
+    categoryId: 'parenting',
   },
   {
     label: 'Love & Revolution',
@@ -28,36 +38,43 @@ const topics: { label: string; hint: string; emoji: string }[] = [
     label: 'Clear Signals',
     hint: 'Honest environments, boundaries, real connection',
     emoji: '\u{1F4E1}',
+    categoryId: 'psychology',
   },
   {
     label: 'Politics & Culture',
     hint: 'Systems that serve people; dignity that need not be earned',
     emoji: '\u{2696}\u{FE0F}',
+    categoryId: 'politics',
   },
   {
     label: 'Psychology',
     hint: "Human behavior, healing, the body's wisdom",
     emoji: '\u{1F9E0}',
+    categoryId: 'psychology',
   },
   {
     label: 'Art & Expression',
     hint: 'Creative soul, truth-telling, aesthetic power',
     emoji: '\u{1F3B5}',
+    categoryId: 'art-expression',
   },
   {
     label: 'Systems & Strategy',
     hint: 'Digital power, code, tools that matter',
     emoji: '\u{1F4BB}',
+    categoryId: 'systems-strategy',
   },
   {
     label: 'DIY & Creation',
     hint: 'Physical builds, handmade goods, crafting',
     emoji: '\u{1F6E0}\u{FE0F}',
+    categoryId: 'diy-creation',
   },
   {
     label: 'Metaspace',
     hint: 'Reflections on the journey itself — the why and how',
     emoji: '\u{1F300}',
+    categoryId: 'metaspace',
   },
 ];
 ---
@@ -128,7 +145,13 @@ const topics: { label: string; hint: string; emoji: string }[] = [
                   {t.emoji}
                 </span>
                 <span class="about-topics__copy">
-                  <span class="about-topics__label">{t.label}</span>
+                  {t.categoryId ? (
+                    <a href={`/category/${t.categoryId}`} class="about-topics__label about-topics__label--link">
+                      {t.label}
+                    </a>
+                  ) : (
+                    <span class="about-topics__label">{t.label}</span>
+                  )}
                   <span class="about-topics__hint">{t.hint}</span>
                 </span>
               </li>
@@ -370,6 +393,26 @@ const topics: { label: string; hint: string; emoji: string }[] = [
     color: rgb(var(--color-text));
   }
 
+  .about-topics__label--link {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--animation-duration-normal) var(--animation-easing-default);
+  }
+
+  .about-topics__label--link:hover {
+    color: rgb(var(--color-accent));
+  }
+
+  .about-topics__label--link:focus {
+    outline: none;
+  }
+
+  .about-topics__label--link:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
   .about-topics__hint {
     color: rgb(var(--color-text-muted));
     font-size: 0.875rem;
@@ -471,7 +514,8 @@ const topics: { label: string; hint: string; emoji: string }[] = [
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .about-links__anchor {
+    .about-links__anchor,
+    .about-topics__label--link {
       transition: none;
     }
   }
