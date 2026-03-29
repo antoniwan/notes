@@ -146,7 +146,10 @@ const topics: AboutTopic[] = [
                 </span>
                 <span class="about-topics__copy">
                   {t.categoryId ? (
-                    <a href={`/category/${t.categoryId}`} class="about-topics__label about-topics__label--link">
+                    <a
+                      href={`/category/${t.categoryId}`}
+                      class="about-topics__label about-topics__label--link"
+                    >
                       {t.label}
                     </a>
                   ) : (
