@@ -13,9 +13,26 @@ I am not promising timelines here. This is a **directional map**, not a contract
 
 ---
 
+## Shipped today (living surface)
+
+This section is a **checkpoint** so the roadmap does not read like the site is only the items below in sections 1–6. For full detail, see [README.md](../README.md).
+
+- **Reading & discovery**: full-text **search** (build-time index), **categories**, **tags** (index, per-tag pages, **tag management** analytics view), **Everything** archive, **Guided Path** (seasonal order; progress in the browser only).
+- **Posts**: automatic **reading time**, **reading progress** (`localStorage`), markdown-derived **table of contents**, **EN/ES** linking via `translationGroup`, **related posts** at the bottom via overlapping tags (“Continue reading”).
+- **Home**: **highlight** masonry for posts marked `featured` or `highlight` in frontmatter.
+- **Brain Science**: multi-page **stats and charts** (cadence, topics, sentiment, etc.).
+- **Library**: dedicated **books** pages (see §4).
+- **Feeds & APIs**: **RSS**, **JSON Feed**, **GET `/api/quotes`**, human-readable **`/api/`** overview.
+- **Quality & distribution**: **Schema.org** where it fits, optional **Remark42** comments, **service worker** for caching (version bumped on build), **Vercel Web Analytics** and **Speed Insights** in the base layout when those products are enabled on Vercel.
+- **About**: curated topic grid; optional **Letterboxd “latest watched”** when `LETTERBOXD_*` env vars are set.
+
+**Not the same as §1 TLDRs:** posts already have a required **`description`** in frontmatter for SEO and cards; there is still no dedicated **`tldr`** field, no TL;DR block on the post, and no sitewide **TLDRs** index page.
+
+---
+
 ## 1. Formalized TLDRs for notes
 
-- **Status**: Idea / Exploring
+- **Status**: Idea / Exploring (unchanged — see “Shipped today” above for what exists today)
 - **Goal**: Give readers a short, standalone summary of each note that can live on its own and still be true.
 
 ### What this actually means
@@ -187,7 +204,7 @@ I am not promising timelines here. This is a **directional map**, not a contract
 
 ## 5. Structured sources in frontmatter
 
-- **Status**: Idea
+- **Status**: Idea (*Sources* today are still **in the note body** — e.g. `## Sources` sections — not a `sources` field in the content schema.)
 - **Goal**: Move the “Sources” for each note into a dedicated frontmatter field so I can surface influences and references consistently across the site, not just at the bottom of individual posts.
 
 ### What this actually means
@@ -233,4 +250,5 @@ This section is intentionally rough. Quick lines only; details come later.
 
 - Better **content maps** (visual overviews of themes and how notes connect).
 - Gentle **“related ideas”** surfacing from TLDRs and tags, without feeling like a recommendation engine.
+  - *Partial today*: post footers already show **tag-overlap related posts** (`RelatedPosts`); this item still covers anything richer (TLDR-driven, curated pairs, softer copy, etc.).
 - More **reader‑friendly export** options (e.g., clean print/PDF for certain notes or series).
