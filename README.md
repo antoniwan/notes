@@ -1,32 +1,41 @@
 # Notes
 
-[![Version](https://img.shields.io/badge/version-5.9.0-blue.svg)](https://github.com/antoniwan/notes/releases)
+[![Version](https://img.shields.io/badge/version-5.13.0-blue.svg)](https://github.com/antoniwan/notes/releases)
 
-A personal notes site: essays and notes on fatherhood, masculinity, culture, and modern life. Raw reflections on thinking, consciousness, and the soft heart inside the hard world.
+Personal writing site: essays and notes on fatherhood, masculinity, culture, and day-to-day life. Some posts are in English, some in Spanish, with links between translations where it applies.
 
-## Overview
+Live site: [notes.antoniwan.online](https://notes.antoniwan.online)
 
-- **~75 posts** in `src/content/p/` (Markdown/MDX)
-- **10 content categories** (e.g. Parenting, Psychology, Politics, Metaspace)
-- **Bilingual content** with translation linking (English/Spanish)
-- **Dark/light mode** with system preference detection
-- **Responsive layout** for mobile and desktop
-- **Structured data** (Schema.org) for search discoverability
-- **Reading progress** with completion detection and optional toast; stored in `localStorage` only
-- **Reading time** computed at build time via a remark plugin
-- **Guided Path** – seasonal reading with progress tracked locally
+## What it includes
 
-## Tech Stack
+- Posts in `src/content/p/` (Markdown and MDX); the file count grows over time
+- **10 categories** (for example Parenting, Psychology, Politics, Metaspace) — see `src/data/categories.ts`
+- **Dark and light theme**, including system preference
+- **Layout** that works on phones and larger screens
+- **Search** in the header (built from a client-side index at build time)
+- **Guided Path** — seasonal reading order; progress stays in the browser only
+- **Everything** — full archive-style list
+- **Tags** — browse by tag; **Tag management** page for analytics-style views
+- **Brain Science** — several pages of writing stats and charts (cadence, topics, sentiment, and similar)
+- **Book library** — static reference data under `/library` and `/library/books`
+- **Reading time** — added at build time by a remark plugin (`minutesRead` in the collection)
+- **Reading progress** on posts — stored in `localStorage` only, not on a server
+- **RSS** (`/rss.xml`) and **JSON Feed** (`/feed.json`)
+- **Random quotes API** — `GET /api/quotes` (Stoic quotes from local data)
+- **Public API** page at `/api/` — human-readable overview of endpoints
+- **Schema.org JSON-LD** on pages where it fits
+- **Comments** — [Remark42](https://remark42.com/) embed when you configure a host (optional; see `docs/comments-setup.md`)
+- **Service worker** — registered for caching; version bumps during `pnpm run build`
+- On **Vercel**: **Web Analytics** and **Speed Insights** components are included in the base layout (they only send data when the site runs on Vercel with those products enabled)
 
-- **Astro 6.0.5** – static site generator (with experimental queued rendering enabled)
-- **TypeScript 5.9** – type-safe development
-- **Tailwind CSS 3.4** – utility-first CSS
-- **MDX** – Markdown with JSX
-- **Sharp** – image optimization
-- **Remark42** – self-hosted comments (optional)
-- **Vercel** – deployment (optional)
+## Stack
 
-## Quick Start
+- [Astro](https://astro.build/) 6 — static output, MDX, `@astrojs/vercel` adapter
+- TypeScript
+- Tailwind CSS
+- Sharp for image work in the build
+
+## Quick start
 
 ```bash
 git clone https://github.com/antoniwan/notes.git
@@ -35,137 +44,83 @@ pnpm install
 pnpm run dev
 ```
 
-Open `http://localhost:4321`.
+Then open `http://localhost:4321`.
 
-## Available Scripts
+This repo expects **pnpm**; you can use npm or yarn if you change commands yourself.
 
-> **Note:** The project uses **pnpm** as the primary package manager. The commands below assume pnpm; if you prefer `npm` or `yarn`, adjust accordingly.
+## Environment variables (optional)
 
-| Command                               | Action                                              |
-| ------------------------------------- | --------------------------------------------------- |
-| `pnpm run dev`                        | Start development server                            |
-| `pnpm run build`                      | Production build                                    |
-| `pnpm run preview`                    | Preview production build                            |
-| `pnpm run generate-favicons`          | Generate favicon assets                             |
-| `pnpm run validate-feeds`             | Validate RSS and JSON feeds                         |
-| `pnpm run audit-frontmatter`          | Audit frontmatter consistency                       |
-| `pnpm run standardize-frontmatter`    | Standardize frontmatter format                      |
-| `pnpm run remove-legacy-reading-time` | Remove legacy reading time fields                   |
-| `pnpm run validate-structured-data`   | Validate structured data implementation             |
-| `pnpm run fix:hr-spacing`             | Fix horizontal rule spacing in content              |
-| `pnpm run format`                     | Format with Prettier                                |
-| `pnpm run format:check`               | Check formatting                                    |
-| `pnpm run analyze`                    | Build then run Vercel static-build                  |
-| `pnpm run lighthouse`                 | Run Lighthouse on localhost (dev server must be up) |
-| `pnpm run performance`                | Build and analyze                                   |
-| `pnpm run audit-performance`          | Build then Lighthouse performance-only JSON report  |
+For production builds of the **About** page, Letterboxd “latest watched” needs RSS URLs. Copy `.env.example` to `.env.local` and set:
 
-## Project Structure
+- `LETTERBOXD_PROFILE_URL`
+- `LETTERBOXD_RSS_URL`
+
+If they are missing, that block on About simply won’t have fresh data (or may be empty depending on fallbacks).
+
+Remark42 uses `PUBLIC_REMARK42_HOST` and `PUBLIC_REMARK42_SITE_ID` when you turn comments on — see `docs/comments-setup.md`.
+
+## Scripts
+
+| Command | What it does |
+| --------|--------------|
+| `pnpm run dev` | Dev server |
+| `pnpm run build` | Generates social images, bumps the service worker version, then `astro build` |
+| `pnpm run preview` | Serves the production build locally |
+| `pnpm run check` | `astro check` (TypeScript / Astro diagnostics) |
+| `pnpm run lint` | ESLint |
+| `pnpm run lint:fix` | ESLint with `--fix` |
+| `pnpm run format` | Prettier write |
+| `pnpm run format:check` | Prettier check |
+| `pnpm run generate-social-images` | OG/social images only |
+| `pnpm run generate-favicons` | Favicon assets |
+| `pnpm run analyze` | Build then Vercel static-build analysis |
+| `pnpm run lighthouse` | Lighthouse HTML report (start dev server first) |
+| `pnpm run performance` | Build + analyze |
+| `pnpm run audit-performance` | Build + Lighthouse performance JSON |
+
+## Project layout
 
 ```text
 notes/
-├── public/                 # Static assets
+├── public/              # Static files (images, service worker, etc.)
+├── scripts/             # generate-social-images, favicons, SW version bump
 ├── src/
-│   ├── components/        # UI (40+ Astro components)
-│   ├── config/            # Storage, comments, assets
-│   ├── content/p/         # Blog posts (Markdown/MDX)
-│   ├── data/              # Categories, nav, tags, quotes
-│   ├── layouts/           # BaseLayout, BlogLayout, etc.
-│   ├── pages/             # Routes
-│   │   ├── api/           # API (e.g. quotes)
-│   │   ├── brain-science/ # Analytics-style pages
-│   │   └── p/             # Post pages
-│   ├── styles/            # Global CSS, fonts
-│   ├── types/             # TypeScript types
-│   └── utils/             # Utilities
-├── scripts/               # Build/content automation
-├── docs/                  # Project documentation
+│   ├── components/      # Astro components (shared + feature folders like brain-science/)
+│   ├── config/          # Comments, storage, assets
+│   ├── content/p/       # Post files (Markdown / MDX)
+│   ├── data/            # Categories, navigation, quotes, tags, etc.
+│   ├── layouts/
+│   ├── pages/           # Routes (blog, category, tag, brain-science, api, …)
+│   ├── styles/
+│   ├── utils/
+│   └── types/
+├── docs/                # Longer how-tos and specs
 └── astro.config.mjs
 ```
 
-### Architecture & folder conventions
+Feature-specific components live under `src/components/<feature>/` when they are only used by matching routes. Shared pieces sit at the top level of `src/components/`.
 
-- **Feature-specific components**: Components that belong to a specific feature area (for example `brain-science`) live under `src/components/<feature>/` and are only imported by pages in the matching route segment (for example `src/pages/brain-science/`). Shared, reusable UI lives at the root of `src/components/` and can be imported anywhere. This keeps feature internals from leaking into unrelated routes and helps avoid circular dependencies as new features are added.
+## Content
 
-## Content Management
+Post frontmatter is documented in [docs/frontmatter-spec.md](docs/frontmatter-spec.md).
 
-### Blog posts
+Translations: same `translationGroup` on each language version; use `featured` so only one version shows in main lists. Details: [docs/multilingual-setup.md](docs/multilingual-setup.md).
 
-Posts use a shared frontmatter format. See [docs/frontmatter-spec.md](docs/frontmatter-spec.md).
+## Documentation in `docs/`
 
-Example:
-
-```yaml
----
-title: 'Post Title'
-description: 'Short description for SEO'
-pubDate: '2025-01-01T00:00:00.000Z'
-language: ['en']
-heroImage: '/images/hero-image.jpg'
-category: ['integration-growth']
-tags: ['tag1', 'tag2']
-featured: true
-translationGroup: 'unique-group-id'
-draft: false
----
-```
-
-### Reading time
-
-Reading time is computed by a remark plugin at build time and exposed as `minutesRead`. No manual field in frontmatter.
-
-### Reading progress
-
-- Completion is considered at ~75% of article content (before comments/footer).
-- Data is stored only in the browser (`localStorage`); no server tracking.
-- Optional toast and cross-tab sync. Config in `src/config/storage.ts`.
-
-### Multilingual content
-
-- Use the same `translationGroup` on both language versions.
-- Set `featured: true` for the primary (e.g. English) and `featured: false` for the other so only one appears in main listings.
-- Language toggles link to the other version. See [docs/multilingual-setup.md](docs/multilingual-setup.md).
-
-### Categories
-
-Defined in `src/data/categories.ts`. Examples: Art & Expression, Culture, DIY & Creation, Integration & Growth, Learning Projects, Metaspace, Parenting, Politics, Psychology, Systems & Strategy.
-
-## Features
-
-- **Theme** – Dark/light with system preference
-- **Search** – Client-side search over posts
-- **Homepage** – Featured posts and highlights
-- **Archive** – Chronological list with lazy loading
-- **Guided Path** – Themed reading path with local progress
-- **Tags** – Filtering and tag analytics (brain-science)
-- **Brain Science** – Writing analytics (insights, evolution, topics, cadence, patterns, meta)
-- **Comments** – Remark42 (self-hosted); requires setup
-- **RSS/JSON** – Feeds for syndication
-- **Quotes API** – `GET /api/quotes` for random Stoic quotes (see [docs/quotes-api.md](docs/quotes-api.md))
-- **Structured data** – Schema.org types (e.g. WebSite, Organization, Person, BlogPosting, BreadcrumbList, FAQ where applicable). See [docs/structured-data-optimization.md](docs/structured-data-optimization.md).
-
-## API
-
-### Quotes
-
-- **Endpoint**: `GET /api/quotes`
-- **Returns**: One random Stoic quote plus metadata.
-- **Docs**: [docs/quotes-api.md](docs/quotes-api.md)
-
-## Documentation
-
-| Doc                                                     | Description                    |
-| ------------------------------------------------------- | ------------------------------ |
-| [Frontmatter spec](docs/frontmatter-spec.md)            | Post frontmatter format        |
-| [Roadmap](docs/roadmap.md)                              | Upcoming features and ideas    |
-| [Comments setup](docs/comments-setup.md)                | Remark42 configuration         |
-| [Quotes API](docs/quotes-api.md)                        | Quotes endpoint                |
-| [Multilingual setup](docs/multilingual-setup.md)        | Translation linking            |
-| [Structured data](docs/structured-data-optimization.md) | Schema.org implementation      |
-| [Performance](docs/performance-optimization.md)         | Performance notes              |
-| [Technical audit](docs/TECHNICAL-AUDIT.md)              | Codebase audit (point-in-time) |
+| File | Topic |
+|------|--------|
+| [frontmatter-spec.md](docs/frontmatter-spec.md) | Post frontmatter |
+| [multilingual-setup.md](docs/multilingual-setup.md) | EN/ES linking |
+| [comments-setup.md](docs/comments-setup.md) | Remark42 |
+| [quotes-api.md](docs/quotes-api.md) | `/api/quotes` |
+| [structured-data-optimization.md](docs/structured-data-optimization.md) | Schema.org |
+| [performance-optimization.md](docs/performance-optimization.md) | Performance notes |
+| [roadmap.md](docs/roadmap.md) | Ideas and backlog |
+| [TECHNICAL-AUDIT.md](docs/TECHNICAL-AUDIT.md) | Older point-in-time audit |
+| [midjourney-og-image-prompts.md](docs/midjourney-og-image-prompts.md) | Image prompt notes |
 
 ## License
 
-- **Content**: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) — see [CONTENT_LICENSE.md](CONTENT_LICENSE.md).
-- **Code**: [MIT](https://opensource.org/licenses/MIT) — see [LICENSE](LICENSE).
+- **Content**: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) — [CONTENT_LICENSE.md](CONTENT_LICENSE.md)
+- **Code**: [MIT](LICENSE)
