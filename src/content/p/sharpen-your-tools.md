@@ -10,7 +10,6 @@ heroImage: /images/2026/sharpen-your-tools.jpg
 category:
   - integration-growth
   - psychology
-  - art-expression
 tags:
   - tools
   - productivity

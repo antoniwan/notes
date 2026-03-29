@@ -6,8 +6,9 @@ language:
   - en
 heroImage: /images/una-nena-poderosa.avif
 category:
-  - metaspace
+  - art-expression
   - integration-growth
+  - parenting
 tags:
   - consciousness
   - inner-child

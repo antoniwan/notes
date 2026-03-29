@@ -9,7 +9,6 @@ language:
 category:
   - integration-growth
   - psychology
-  - art-expression
 tags:
   - mental-health
   - therapy

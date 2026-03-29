@@ -10,7 +10,6 @@ heroImage: /images/the_internet_is_fucking_weird.avif
 category:
   - psychology
   - metaspace
-  - art-expression
 tags:
   - consciousness
   - philosophy
