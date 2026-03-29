@@ -1,0 +1,237 @@
+---
+/**
+ * Random quote from /api/quotes for the 404 page.
+ * Visual language: same left-border callout as Disclaimer + TagDisplay-style topic chips.
+ */
+interface Props {
+  existingTags: string[];
+}
+
+const { existingTags } = Astro.props;
+---
+
+<section
+  class="not-found-quote not-prose theme-transition mt-6 rounded-md border border-[rgb(var(--color-border))] border-l-4 border-l-[rgb(var(--color-primary))] bg-[rgb(var(--color-bg-alt))]/60 shadow-sm md:mt-8"
+  aria-labelledby="nfq-label"
+>
+  <div class="px-4 py-5 md:px-6 md:py-6">
+    <p
+      id="nfq-label"
+      class="mb-4 font-mono text-xs font-semibold uppercase tracking-[0.12em] text-[rgb(var(--color-text-muted))]"
+    >
+      From the archive
+    </p>
+
+    <div id="nfq-loading" class="flex items-center gap-3 py-1">
+      <span
+        class="inline-block h-2 w-2 shrink-0 animate-pulse rounded-full bg-[rgb(var(--color-primary))]"
+        aria-hidden="true"
+      ></span>
+      <p class="m-0 text-sm text-[rgb(var(--color-text-muted))]">Loading quote…</p>
+    </div>
+
+    <div id="nfq-error" class="hidden">
+      <p class="mb-4 mt-0 text-sm text-[rgb(var(--color-text-muted))]">Couldn’t load a quote.</p>
+      <blockquote class="nfq-pullquote">
+        <p class="nfq-quote-text">The obstacle is the way.</p>
+        <footer class="nfq-attribution">
+          <cite>Marcus Aurelius</cite>
+        </footer>
+      </blockquote>
+      <button type="button" id="nfq-retry" class="btn-outline theme-transition mt-5 text-sm">
+        Try again
+      </button>
+    </div>
+
+    <div id="nfq-content" class="hidden">
+      <blockquote class="nfq-pullquote">
+        <p id="nfq-text" class="nfq-quote-text"></p>
+        <footer class="nfq-attribution">
+          <cite id="nfq-author"></cite>
+          <span id="nfq-work" class="nfq-work"></span>
+        </footer>
+      </blockquote>
+
+      <div id="nfq-themes-wrap" class="mt-5 hidden border-t border-[rgb(var(--color-border))]/80 pt-5">
+        <p class="mb-2 mt-0 text-xs font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
+          Related tags
+        </p>
+        <div id="nfq-themes" class="flex flex-wrap gap-1.5"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline define:vars={{ existingTags }}>
+  const SEL = {
+    loading: 'nfq-loading',
+    error: 'nfq-error',
+    content: 'nfq-content',
+    text: 'nfq-text',
+    author: 'nfq-author',
+    work: 'nfq-work',
+    themesWrap: 'nfq-themes-wrap',
+    themes: 'nfq-themes',
+    retry: 'nfq-retry',
+  };
+
+  const TAG_LINK =
+    'nfq-topic theme-transition inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:ring-offset-1 bg-[rgb(var(--color-accent))]/10 border-[rgb(var(--color-accent))]/20 text-[rgb(var(--color-accent))] hover:bg-[rgb(var(--color-accent))]/20';
+  const TAG_STATIC =
+    'nfq-topic inline-flex items-center gap-1 rounded-full border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg))] px-2.5 py-1 text-sm font-medium text-[rgb(var(--color-text-muted))]';
+
+  let retryCount = 0;
+  const maxRetries = 3;
+  const retryDelay = 2000;
+
+  function showLoading() {
+    toggle(SEL.loading, true);
+    toggle(SEL.error, false);
+    toggle(SEL.content, false);
+  }
+
+  function showError() {
+    toggle(SEL.loading, false);
+    toggle(SEL.error, true);
+    toggle(SEL.content, false);
+  }
+
+  function showContent() {
+    toggle(SEL.loading, false);
+    toggle(SEL.error, false);
+    toggle(SEL.content, true);
+  }
+
+  function toggle(id, on) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.toggle('hidden', !on);
+  }
+
+  async function fetchAndDisplayQuote() {
+    try {
+      showLoading();
+
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+      const response = await fetch('/api/quotes', {
+        signal: controller.signal,
+        headers: { Accept: 'application/json', 'Cache-Control': 'no-cache' },
+      });
+
+      clearTimeout(timeoutId);
+
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+      const data = await response.json();
+      const quote = data.quote;
+
+      if (!quote?.text || !quote?.author) throw new Error('Invalid quote');
+
+      const textElement = document.getElementById(SEL.text);
+      const authorElement = document.getElementById(SEL.author);
+      if (textElement) textElement.textContent = quote.text;
+      if (authorElement) authorElement.textContent = quote.author;
+
+      const workElement = document.getElementById(SEL.work);
+      if (workElement) {
+        if (quote.work) {
+          workElement.textContent = quote.book ? `${quote.work} · ${quote.book}` : quote.work;
+          workElement.classList.remove('hidden');
+        } else {
+          workElement.textContent = '';
+          workElement.classList.add('hidden');
+        }
+      }
+
+      const themesWrap = document.getElementById(SEL.themesWrap);
+      const themesEl = document.getElementById(SEL.themes);
+      if (themesEl) themesEl.replaceChildren();
+
+      if (themesEl && quote.themes?.length > 0) {
+        quote.themes.forEach((theme) => {
+          const linked = existingTags.includes(theme);
+          const el = document.createElement(linked ? 'a' : 'span');
+          el.className = linked ? TAG_LINK : TAG_STATIC;
+          if (linked) el.href = `/tag/${encodeURIComponent(theme)}/`;
+
+          const hash = document.createElement('span');
+          hash.textContent = `#${theme}`;
+          el.appendChild(hash);
+
+          themesEl.appendChild(el);
+        });
+        themesWrap?.classList.remove('hidden');
+      } else {
+        themesWrap?.classList.add('hidden');
+      }
+
+      showContent();
+      retryCount = 0;
+    } catch {
+      retryCount++;
+      if (retryCount < maxRetries) {
+        setTimeout(fetchAndDisplayQuote, retryDelay * Math.pow(2, retryCount - 1));
+      } else {
+        showError();
+      }
+    }
+  }
+
+  document.getElementById(SEL.retry)?.addEventListener('click', () => {
+    retryCount = 0;
+    fetchAndDisplayQuote();
+  });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', fetchAndDisplayQuote);
+  } else {
+    fetchAndDisplayQuote();
+  }
+</script>
+
+<style>
+  .not-found-quote .nfq-pullquote {
+    margin: 0;
+    border: none;
+    padding: 0;
+  }
+
+  .not-found-quote .nfq-quote-text {
+    margin: 0 0 1rem;
+    font-family: var(--font-heading);
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.02em;
+    color: rgb(var(--color-text));
+  }
+
+  .not-found-quote .nfq-attribution {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .not-found-quote .nfq-attribution cite {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: rgb(var(--color-accent));
+  }
+
+  .not-found-quote .nfq-attribution cite::before {
+    content: '— ';
+  }
+
+  .not-found-quote .nfq-work {
+    font-size: 0.875rem;
+    color: rgb(var(--color-text-muted));
+  }
+
+  .not-found-quote .nfq-work.hidden {
+    display: none;
+  }
+</style>
