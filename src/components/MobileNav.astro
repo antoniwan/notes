@@ -1,6 +1,11 @@
 ---
 import { mainNavigation } from '../data/navigation';
 import { getSortedCategories } from '../utils/categoryUtils';
+import {
+  dropdownActiveClasses,
+  isMainNavItemActive,
+  isNavDropdownItemActive,
+} from '../utils/navActive';
 
 // Get sorted categories for the mobile navigation
 const sortedCategories = await getSortedCategories();
@@ -58,18 +63,18 @@ const sortedCategories = await getSortedCategories();
     <nav class="space-y-6 p-6" aria-label="Primary navigation">
       {
         mainNavigation.map((item) => {
-          // Check if current path matches this nav item
-          // For category pages, check if pathname starts with /category/
-          const isActive =
-            item.href === '/category/'
-              ? Astro.url.pathname.startsWith('/category/')
-              : Astro.url.pathname === item.href;
+          const isActive = isMainNavItemActive(item.href, Astro.url.pathname);
 
           return (
             <div class="space-y-2">
               <a
                 href={item.href}
-                class="theme-transition flex items-center justify-between rounded-xl px-4 py-4 text-xl font-semibold text-[rgb(var(--color-text))] hover:bg-[rgb(var(--color-bg-alt))]"
+                class:list={[
+                  'theme-transition flex items-center justify-between rounded-xl px-4 py-4 text-xl font-semibold hover:bg-[rgb(var(--color-bg-alt))]',
+                  isActive
+                    ? 'bg-[rgb(var(--color-accent))]/10 text-[rgb(var(--color-accent))]'
+                    : 'text-[rgb(var(--color-text))]',
+                ]}
                 aria-current={isActive ? 'page' : undefined}
               >
                 <span>{item.label}</span>
@@ -91,10 +96,19 @@ const sortedCategories = await getSortedCategories();
               </a>
               {item.dropdown && item.href === '/category/' && (
                 <div class="ml-4 space-y-1">
-                  {sortedCategories.map((category) => (
+                  {sortedCategories.map((category) => {
+                    const catHref = `/category/${category.id}/`;
+                    const subActive = isNavDropdownItemActive(catHref, Astro.url.pathname);
+                    return (
                     <a
-                      href={`/category/${category.id}/`}
-                      class="theme-transition flex items-center justify-between rounded-lg px-4 py-3 text-lg text-[rgb(var(--color-text-muted))] hover:bg-[rgb(var(--color-bg-alt))]"
+                      href={catHref}
+                      class:list={[
+                        'theme-transition flex items-center justify-between rounded-lg px-4 py-3 text-lg hover:bg-[rgb(var(--color-bg-alt))]',
+                        subActive
+                          ? dropdownActiveClasses
+                          : 'text-[rgb(var(--color-text-muted))]',
+                      ]}
+                      aria-current={subActive ? 'page' : undefined}
                     >
                       <div class="flex items-center gap-3">
                         {category.icon && (
@@ -108,15 +122,27 @@ const sortedCategories = await getSortedCategories();
                         {category.postCount}
                       </span>
                     </a>
-                  ))}
+                    );
+                  })}
                 </div>
               )}
               {item.dropdown && item.href !== '/category/' && (
                 <div class="ml-4 space-y-1">
-                  {(item.dropdown.items ?? []).map((dropdownItem) => (
+                  {(item.dropdown.items ?? []).map((dropdownItem) => {
+                    const subActive = isNavDropdownItemActive(
+                      dropdownItem.href,
+                      Astro.url.pathname,
+                    );
+                    return (
                     <a
                       href={dropdownItem.href}
-                      class="theme-transition flex items-center gap-3 rounded-lg px-4 py-3 text-lg text-[rgb(var(--color-text-muted))] hover:bg-[rgb(var(--color-bg-alt))]"
+                      class:list={[
+                        'theme-transition flex items-center gap-3 rounded-lg px-4 py-3 text-lg hover:bg-[rgb(var(--color-bg-alt))]',
+                        subActive
+                          ? dropdownActiveClasses
+                          : 'text-[rgb(var(--color-text-muted))]',
+                      ]}
+                      aria-current={subActive ? 'page' : undefined}
                     >
                       {dropdownItem.icon && (
                         <span class="text-xl" aria-hidden="true">
@@ -125,7 +151,8 @@ const sortedCategories = await getSortedCategories();
                       )}
                       <span>{dropdownItem.label}</span>
                     </a>
-                  ))}
+                    );
+                  })}
                 </div>
               )}
             </div>
