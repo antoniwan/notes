@@ -1,153 +1,528 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
+import LatestWatched from '../components/LatestWatched.astro';
+import { fetchLetterboxdRecent } from '../utils/letterboxd';
+
+const rssUrl = import.meta.env.LETTERBOXD_RSS_URL ?? '';
+const profileUrl = import.meta.env.LETTERBOXD_PROFILE_URL ?? 'https://letterboxd.com/';
+
+const letterboxdFilms = await fetchLetterboxdRecent(rssUrl, 12);
+
+const topics: { label: string; hint: string; emoji: string }[] = [
+  {
+    label: 'Integration & Growth',
+    hint: 'From insight to embodiment, from performing to being',
+    emoji: '\u{1F9D8}\u{1F3FD}\u{200D}\u{2642}\u{FE0F}',
+  },
+  {
+    label: 'Parenting',
+    hint: 'Presence with my kids, the sacred in the ordinary',
+    emoji: '\u{1F468}\u{200D}\u{1F469}\u{200D}\u{1F467}\u{200D}\u{1F466}',
+  },
+  {
+    label: 'Love & Revolution',
+    hint: 'A home rooted in kindness; love as the final revolution',
+    emoji: '\u{1F49C}',
+  },
+  {
+    label: 'Clear Signals',
+    hint: 'Honest environments, boundaries, real connection',
+    emoji: '\u{1F4E1}',
+  },
+  {
+    label: 'Politics & Culture',
+    hint: 'Systems that serve people; dignity that need not be earned',
+    emoji: '\u{2696}\u{FE0F}',
+  },
+  {
+    label: 'Psychology',
+    hint: "Human behavior, healing, the body's wisdom",
+    emoji: '\u{1F9E0}',
+  },
+  {
+    label: 'Art & Expression',
+    hint: 'Creative soul, truth-telling, aesthetic power',
+    emoji: '\u{1F3B5}',
+  },
+  {
+    label: 'Systems & Strategy',
+    hint: 'Digital power, code, tools that matter',
+    emoji: '\u{1F4BB}',
+  },
+  {
+    label: 'DIY & Creation',
+    hint: 'Physical builds, handmade goods, crafting',
+    emoji: '\u{1F6E0}\u{FE0F}',
+  },
+  {
+    label: 'Metaspace',
+    hint: 'Reflections on the journey itself — the why and how',
+    emoji: '\u{1F300}',
+  },
+];
+
+const links: {
+  href: string;
+  emoji: string;
+  label: string;
+  ariaLabel: string;
+  external?: boolean;
+}[] = [
+  {
+    href: 'https://builds.software',
+    emoji: '\u{1F6E0}\u{FE0F}',
+    label: 'Builds.software',
+    ariaLabel: 'Builds.software — technical portfolio',
+    external: true,
+  },
+  {
+    href: 'https://stronghandssoftheart.com',
+    emoji: '\u{1F49C}',
+    label: 'Strong Hands, Soft Heart',
+    ariaLabel: 'Strong Hands, Soft Heart',
+    external: true,
+  },
+  {
+    href: 'https://github.com/antoniwan',
+    emoji: '\u{1F419}',
+    label: 'GitHub',
+    ariaLabel: 'GitHub — open source and code',
+    external: true,
+  },
+  {
+    href: 'https://www.threads.net/@antoniwan',
+    emoji: '\u{1F9F5}',
+    label: 'Threads',
+    ariaLabel: 'Threads',
+    external: true,
+  },
+  {
+    href: 'https://antoniwan.online',
+    emoji: '\u{1F333}',
+    label: 'Links Forest',
+    ariaLabel: 'Links Forest — everything I build online',
+    external: true,
+  },
+  {
+    href: '/library/books',
+    emoji: '\u{1F4DA}',
+    label: 'Book library',
+    ariaLabel: 'Book library — shelves behind these notes',
+  },
+];
 ---
 
 <PageLayout
   title="About Antonio Rodríguez Martínez"
   description="Father. Builder. Learning to be here instead of performing here."
+  path="/about"
+  contentClass="about-shell max-w-none"
 >
-  <!-- Hero Image - Full width, properly contained -->
-  <div class="mb-8 animate-fade-up md:mb-12">
-    <img
-      src="/images/mia-y-yo-anime.avif"
-      alt="Antonio Rodríguez Martínez and his daughter Mia in anime style"
-      class="h-auto w-full rounded-lg object-cover shadow-lg"
-      loading="eager"
-    />
-  </div>
+  <div class="about-columns">
+    <div class="about-columns__main">
+      <figure class="about-hero">
+        <img
+          src="/images/mia-y-yo-anime.avif"
+          alt="Antonio Rodríguez Martínez and his daughter Mia, illustrated in anime style."
+          class="about-hero__img"
+          width={1200}
+          height={675}
+          loading="eager"
+          decoding="async"
+        />
+      </figure>
 
-  <div class="prose prose-lg max-w-none space-y-3 md:space-y-4">
-    <p class="animate-fade-up-delay-1 animate-fade-up">
-      I'm a father, builder, and someone learning to be here instead of performing here.
-    </p>
-
-    <p class="animate-fade-up-delay-2 animate-fade-up">
-      On November 6, 2025, I drew a line in the sand. I realized I'd been performing growth instead
-      of living it — narrating evolution instead of embodying it. I built an identity around insight
-      because it was safer than feeling. Not anymore.
-    </p>
-
-    <p class="animate-fade-up-delay-3 animate-fade-up">
-      Now I'm focused on presence over productivity. Love over outrage. Clear signals over
-      confusion. Integration over articulation. I curate my environment for honesty — people and
-      contexts that let my nervous system heal and real connection flourish.
-    </p>
-
-    <p class="animate-fade-up-delay-4 animate-fade-up">
-      I still build systems — digital, emotional, spiritual, and physical. I'm still a technical
-      program manager and developer. I still run <strong>Strong Hands, Soft Heart</strong>. But
-      those are roles, not identity. What I'm becoming is someone who shows up fully, who chooses
-      presence over feeds, who builds a home rooted in kindness as the ultimate rebellion.
-    </p>
-
-    <p class="animate-fade-up-delay-5 animate-fade-up">
-      On December 25, 2026, my son Andre Antonio was born. Mia made me a father. Andre is showing me
-      I get to keep becoming one — more patient, more present, more willing to sit in the mess
-      without needing to narrate it.
-    </p>
-
-    <p class="animate-fade-up-delay-6 animate-fade-up">
-      These notes document the journey — raw reflections on:
-    </p>
-
-    <ul class="animate-fade-up-delay-7 animate-fade-up">
-      <li>
-        <strong>Integration & Growth</strong> 🧘🏽‍♂️ — moving from insight to embodiment, from performing
-        to being
-      </li>
-      <li>
-        <strong>Parenting</strong> 👨‍👩‍👧‍👦 — presence with my kids, the sacred in the ordinary, time as connection
-      </li>
-      <li>
-        <strong>Love & Revolution</strong> 💜 — building a home rooted in kindness, love as the final
-        revolution
-      </li>
-      <li>
-        <strong>Clear Signals</strong> 📡 — curating honest environments, boundaries, real connection
-      </li>
-      <li>
-        <strong>Politics & Culture</strong> ⚖️ — systems that serve people, dignity that doesn't need
-        to be earned
-      </li>
-      <li>
-        <strong>Psychology</strong> 🧠 — human behavior, healing, the body's wisdom
-      </li>
-      <li>
-        <strong>Art & Expression</strong> 🎵 — creative soul, truth-telling, aesthetic power
-      </li>
-      <li>
-        <strong>Systems & Strategy</strong> 💻 — digital power, code, building tools that matter
-      </li>
-      <li>
-        <strong>DIY & Creation</strong> 🛠️ — physical builds, handmade goods, crafting
-      </li>
-      <li>
-        <strong>Metaspace</strong> 🌀 — reflections on the journey itself, the why and how
-      </li>
-    </ul>
-
-    <h2 class="animate-fade-up-delay-8 animate-fade-up">👇 Links</h2>
-
-    <ul class="animate-fade-up-delay-9 animate-fade-up">
-      <li>
-        🛠 <a href="https://builds.software" target="_blank" rel="noopener noreferrer"
-          >Builds.software</a
-        > — my technical portfolio
-      </li>
-      <li>
-        💜 <a href="https://stronghandssoftheart.com" target="_blank" rel="noopener noreferrer"
-          >Strong Hands, Soft Heart</a
-        > — practical strength, emotional depth, sacred self-reliance
-      </li>
-      <li>
-        🐙 <a href="https://github.com/antoniwan" target="_blank" rel="noopener noreferrer"
-          >GitHub</a
-        > — open source & code
-      </li>
-      <li>
-        🧵 <a href="https://www.threads.net/@antoniwan" target="_blank" rel="noopener noreferrer"
-          >Threads</a
-        > — my social brain
-      </li>
-      <li>
-        🌳 <a href="https://antoniwan.online" target="_blank" rel="noopener noreferrer"
-          >Links Forest</a
-        > — everything I build and everywhere I exist online
-      </li>
-      <li>
-        📚 <a href="/library/books">Book library (for reference)</a> — the shelves behind these notes
-      </li>
-    </ul>
-
-    <p class="animate-fade-up-delay-10 animate-fade-up">
-      I've also built some <strong>meta-tools</strong> to understand my own creative patterns. The <a
-        href="/brain-science"
-        class="text-[rgb(var(--color-accent))] hover:underline">🧠 Brain Science</a
-      > section analyzes my writing cadence, topic evolution, and intellectual journey through data visualization.
-      The <a href="/tag-management" class="text-[rgb(var(--color-accent))] hover:underline"
-        >🏷️ Tag Management</a
-      > page provides insights into how I organize and categorize my thoughts — a window into my mental
-      filing system. I've also created <a
-        href="/api/"
-        class="text-[rgb(var(--color-accent))] hover:underline">💬 API Documentation</a
-      > with development tools including a curated collection of Stoic philosophy quotes for personal
-      use and site integration.
-    </p>
-
-    <div
-      class="card-alt animate-fade-up border-l-4 border-[rgb(var(--color-primary))] p-6"
-      role="complementary"
-      aria-label="Disclaimer"
-    >
-      <div class="mb-3 flex items-center gap-2">
-        <span class="text-xl" aria-hidden="true">🌟</span>
-        <span class="font-semibold">Sacred Disclaimer</span>
+      <div class="about-lead">
+        <p class="about-lead__kicker">In short</p>
+        <p class="about-lead__text">
+          I&apos;m a father, builder, and someone learning to be here instead of performing here.
+        </p>
       </div>
-      <p class="text-body-muted m-0" style="line-height: 1.6;">
-        The wisdom, practices, and digital alchemy shared here flow from personal experience and
-        creative exploration. None of this constitutes medical, legal, psychological, or
-        professional advice. Please consult qualified professionals for such guidance.
-      </p>
+
+      <div class="about-story">
+        <p>
+          On November 6, 2025, I drew a line in the sand. I realized I&apos;d been performing growth
+          instead of living it — narrating evolution instead of embodying it. I built an identity
+          around insight because it was safer than feeling. Not anymore.
+        </p>
+        <p>
+          Now I&apos;m focused on presence over productivity. Love over outrage. Clear signals over
+          confusion. Integration over articulation. I curate my environment for honesty — people and
+          contexts that let my nervous system heal and real connection flourish.
+        </p>
+        <p>
+          I still build systems — digital, emotional, spiritual, and physical. I&apos;m still a
+          technical program manager and developer. I still run <strong
+            >Strong Hands, Soft Heart</strong
+          >. But those are roles, not identity. What I&apos;m becoming is someone who shows up
+          fully, who chooses presence over feeds, who builds a home rooted in kindness as the
+          ultimate rebellion.
+        </p>
+        <p>
+          On December 25, 2025, my son Andre Antonio was born. Mia made me a father. Andre is
+          showing me I get to keep becoming one — more patient, more present, more willing to sit in
+          the mess without needing to narrate it.
+        </p>
+      </div>
+
+      <section class="about-topics" aria-labelledby="about-topics-heading">
+        <h2 id="about-topics-heading" class="about-section-title">What these notes cover</h2>
+        <p class="about-topics__intro">
+          Raw reflections, filed loosely under the themes below — not a curriculum, just a map.
+        </p>
+        <ul class="about-topics__list">
+          {
+            topics.map((t) => (
+              <li class="about-topics__item">
+                <span class="about-topics__emoji" aria-hidden="true">
+                  {t.emoji}
+                </span>
+                <span class="about-topics__copy">
+                  <span class="about-topics__label">{t.label}</span>
+                  <span class="about-topics__hint">{t.hint}</span>
+                </span>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
     </div>
+
+    <aside class="about-columns__rail" aria-label="Site tools, watching, and links">
+      <section class="about-rail__section about-tools" aria-labelledby="about-tools-heading">
+        <h2 id="about-tools-heading" class="about-rail__heading">On this site</h2>
+        <p class="about-tools__text">
+          I built a few <strong>meta-tools</strong> to see my own patterns more clearly.{' '}
+          <a href="/brain-science">Brain Science</a> charts writing cadence and topics over time.{
+            ' '
+          }
+          <a href="/tag-management">Tag management</a> shows how I file ideas. The{' '}
+          <a href="/api/">API docs</a> include Stoic quotes and small utilities I use in the margins.
+        </p>
+      </section>
+
+      <div class="about-rail__section about-rail__watched">
+        <LatestWatched films={letterboxdFilms} profileUrl={profileUrl} />
+      </div>
+    </aside>
   </div>
+
+  <footer class="about-disclaimer">
+    <h2 class="about-disclaimer__title">Disclaimer</h2>
+    <p class="about-disclaimer__text">
+      The wisdom, practices, and digital craft shared here come from personal experience and
+      exploration. None of it is medical, legal, psychological, or professional advice. Please talk
+      to qualified people when you need that kind of guidance.
+    </p>
+  </footer>
 </PageLayout>
+
+<style>
+  .about-shell {
+    padding-bottom: 3rem;
+  }
+
+  .about-hero {
+    margin: 0 0 1.5rem;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .about-hero__img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .about-columns {
+    display: block;
+  }
+
+  @media (min-width: 1024px) {
+    .about-columns {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 22rem);
+      gap: 2.5rem 3rem;
+      align-items: stretch;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .about-columns {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 26rem);
+      gap: 3rem 4rem;
+    }
+  }
+
+  .about-columns__main {
+    min-width: 0;
+  }
+
+  .about-columns__rail {
+    min-width: 0;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgb(var(--color-border) / 0.85);
+    display: flex;
+    flex-direction: column;
+    gap: 2.25rem;
+  }
+
+  @media (min-width: 1024px) {
+    .about-columns__rail {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+      border-left: 1px solid rgb(var(--color-border) / 0.65);
+      padding-left: 2.5rem;
+      gap: 2.5rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .about-columns__rail {
+      padding-left: 3rem;
+      gap: 2.75rem;
+    }
+  }
+
+  /* Shared rail headings (child components don’t receive parent scoped CSS) */
+  :global(.about-rail__heading) {
+    font-family: var(--font-heading);
+    font-size: clamp(1.35rem, 2.5vw, 1.65rem);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    color: rgb(var(--color-text));
+    margin: 0 0 0.5rem;
+  }
+
+  .about-rail__watched {
+    min-width: 0;
+  }
+
+  @media (min-width: 1024px) {
+    .about-links {
+      margin-top: auto;
+      padding-top: 2rem;
+      border-top: 1px solid rgb(var(--color-border) / 0.55);
+    }
+  }
+
+  .about-lead {
+    margin-bottom: 1.75rem;
+  }
+
+  .about-lead__kicker {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgb(var(--color-text-muted));
+    margin: 0 0 0.35rem;
+  }
+
+  .about-lead__text {
+    font-family: var(--font-heading);
+    font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.02em;
+    color: rgb(var(--color-text));
+    margin: 0;
+    max-width: 38rem;
+  }
+
+  .about-story {
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    color: rgb(var(--color-text));
+    max-width: 42rem;
+  }
+
+  .about-story p {
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+  }
+
+  .about-story p:last-child {
+    margin-bottom: 0;
+  }
+
+  .about-section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.25rem, 2.2vw, 1.5rem);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    color: rgb(var(--color-text));
+    margin: 0;
+  }
+
+  .about-topics {
+    margin-top: 2.75rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgb(var(--color-border) / 0.65);
+  }
+
+  .about-topics .about-section-title {
+    margin-bottom: 0.5rem;
+  }
+
+  .about-topics__intro {
+    margin: 0 0 1.25rem;
+    font-size: 1rem;
+    line-height: 1.65;
+    color: rgb(var(--color-text-muted));
+    max-width: 40rem;
+  }
+
+  .about-topics__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    column-count: 1;
+    column-gap: 2rem;
+  }
+
+  @media (min-width: 640px) {
+    .about-topics__list {
+      column-count: 2;
+    }
+  }
+
+  .about-topics__item {
+    break-inside: avoid;
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  .about-topics__emoji {
+    flex-shrink: 0;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    margin-top: 0.1rem;
+  }
+
+  .about-topics__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+  }
+
+  .about-topics__label {
+    font-weight: 600;
+    color: rgb(var(--color-text));
+  }
+
+  .about-topics__hint {
+    color: rgb(var(--color-text-muted));
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .about-links__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .about-links__item {
+    border-bottom: 1px solid rgb(var(--color-border) / 0.4);
+  }
+
+  .about-links__item:last-child {
+    border-bottom: none;
+  }
+
+  .about-links__anchor {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 0;
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--animation-duration-normal) var(--animation-easing-default);
+  }
+
+  .about-links__anchor:hover .about-links__label {
+    color: rgb(var(--color-accent));
+  }
+
+  .about-links__anchor:focus {
+    outline: none;
+  }
+
+  .about-links__anchor:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 2px;
+  }
+
+  .about-links__emoji {
+    flex-shrink: 0;
+    font-size: 1.05rem;
+    line-height: 1;
+    width: 1.5rem;
+    text-align: center;
+  }
+
+  .about-links__label {
+    font-weight: 500;
+    font-size: 0.9375rem;
+    color: rgb(var(--color-text));
+    line-height: 1.4;
+  }
+
+  .about-tools {
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  .about-tools__text {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: rgb(var(--color-text-muted));
+  }
+
+  .about-tools__text :global(a) {
+    color: rgb(var(--color-accent));
+    font-weight: 500;
+  }
+
+  .about-disclaimer {
+    margin-top: 3.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgb(var(--color-border) / 0.85);
+    max-width: 42rem;
+  }
+
+  .about-disclaimer__title {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgb(var(--color-text-muted));
+    margin: 0 0 0.65rem;
+  }
+
+  .about-disclaimer__text {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: rgb(var(--color-text-muted));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .about-links__anchor {
+      transition: none;
+    }
+  }
+</style>

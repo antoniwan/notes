@@ -1,0 +1,237 @@
+---
+import type { LetterboxdWatch } from '../utils/letterboxd';
+
+interface Props {
+  films: LetterboxdWatch[];
+  profileUrl: string;
+}
+
+const { films, profileUrl } = Astro.props;
+
+function starSummary(rating: string | null): { visual: string; a11y: string } | null {
+  if (!rating) return null;
+  const n = parseFloat(rating);
+  if (Number.isNaN(n) || n < 0 || n > 5) return null;
+  const full = Math.floor(n);
+  const frac = n - full;
+  let visual = '\u2605'.repeat(full);
+  if (frac >= 0.25 && frac <= 0.99) visual += '\u00BD';
+  return { visual, a11y: `${n} out of 5 stars` };
+}
+---
+
+{
+  films.length > 0 ? (
+    <section class="about-watched" aria-labelledby="about-watched-heading">
+      <div class="about-watched__intro">
+        <h2 id="about-watched-heading" class="about-rail__heading">
+          Latest things I&apos;ve watched
+        </h2>
+        <p class="about-watched__lede">
+          Pulled from my{' '}
+          <a href={profileUrl} target="_blank" rel="noopener noreferrer">
+            Letterboxd diary
+          </a>
+          — same spirit as the <a href="/library/books">book library</a>: I love movies!!!
+        </p>
+      </div>
+
+      <ul class="about-watched__masonry">
+        {films.map((film) => {
+          const stars = starSummary(film.memberRating);
+          return (
+            <li class="about-watched__item">
+              <a
+                href={film.href}
+                class="about-watched__card"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {film.posterUrl ? (
+                  <img
+                    src={film.posterUrl}
+                    alt=""
+                    width={200}
+                    height={300}
+                    class="about-watched__poster"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : (
+                  <div
+                    class="about-watched__poster about-watched__poster--placeholder"
+                    aria-hidden="true"
+                  />
+                )}
+                <span class="about-watched__meta">
+                  <span class="about-watched__title">{film.filmTitle}</span>
+                  {film.filmYear && <span class="about-watched__year">{film.filmYear}</span>}
+                  {stars && (
+                    <span class="about-watched__stars" aria-label={stars.a11y}>
+                      <span aria-hidden="true">{stars.visual}</span>
+                    </span>
+                  )}
+                  {film.rewatch && <span class="about-watched__rewatch">Rewatch</span>}
+                </span>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+
+      <p class="about-watched__footer">
+        <a href={profileUrl} target="_blank" rel="noopener noreferrer">
+          Full diary on Letterboxd
+        </a>
+      </p>
+    </section>
+  ) : (
+    <section
+      class="about-watched about-watched--empty"
+      aria-labelledby="about-watched-heading-empty"
+    >
+      <h2 id="about-watched-heading-empty" class="about-rail__heading">
+        Latest things I&apos;ve watched
+      </h2>
+      <p class="about-watched__lede">
+        Diary feed could not be loaded (offline build or network). When{' '}
+        <code class="about-watched__code">LETTERBOXD_RSS_URL</code> is set, recent watches appear
+        here — same idea as the <a href="/library/books">book library</a>.{' '}
+        <a href={profileUrl} target="_blank" rel="noopener noreferrer">
+          Open Letterboxd
+        </a>
+        .
+      </p>
+    </section>
+  )
+}
+
+<style>
+  .about-watched__intro {
+    margin-bottom: 1.25rem;
+  }
+
+  .about-watched__lede {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.65;
+    color: rgb(var(--color-text-muted));
+    max-width: 42rem;
+  }
+
+  /* Grid instead of multicol: column-count + balance often leaves large empty depth */
+  .about-watched__masonry {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  @media (min-width: 1024px) {
+    .about-watched__masonry {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+  }
+
+  .about-watched__item {
+    min-width: 0;
+  }
+
+  .about-watched__card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 0;
+    border-bottom: 1px solid rgb(var(--color-border) / 0.65);
+    padding-bottom: 0.75rem;
+    transition:
+      color var(--animation-duration-normal) var(--animation-easing-default),
+      border-color var(--animation-duration-normal) var(--animation-easing-default);
+  }
+
+  .about-watched__card:hover {
+    border-color: rgb(var(--color-accent) / 0.45);
+  }
+
+  .about-watched__card:focus {
+    outline: none;
+  }
+
+  .about-watched__card:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 3px;
+  }
+
+  .about-watched__poster {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 0.5rem;
+    background: rgb(var(--color-bg-alt));
+  }
+
+  .about-watched__poster--placeholder {
+    min-height: 8rem;
+    background: linear-gradient(
+      145deg,
+      rgb(var(--color-bg-alt)) 0%,
+      rgb(var(--color-border) / 0.35) 100%
+    );
+  }
+
+  .about-watched__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    font-size: 0.875rem;
+    line-height: 1.45;
+  }
+
+  .about-watched__title {
+    font-weight: 600;
+    color: rgb(var(--color-text));
+  }
+
+  .about-watched__year {
+    color: rgb(var(--color-text-muted));
+    font-size: 0.8125rem;
+  }
+
+  .about-watched__stars {
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+    color: rgb(var(--color-highlight));
+  }
+
+  .dark .about-watched__stars {
+    color: rgb(var(--color-warning));
+  }
+
+  .about-watched__rewatch {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgb(var(--color-text-muted));
+  }
+
+  .about-watched__footer {
+    margin: 1.25rem 0 0;
+    font-size: 0.9375rem;
+  }
+
+  .about-watched--empty .about-watched__lede {
+    max-width: none;
+  }
+
+  .about-watched__code {
+    font-family: var(--font-mono);
+    font-size: 0.8125em;
+    color: rgb(var(--color-text));
+    word-break: break-all;
+  }
+</style>
