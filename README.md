@@ -32,10 +32,13 @@ A personal notes site: essays and notes on fatherhood, masculinity, culture, and
 git clone https://github.com/antoniwan/notes.git
 cd notes
 pnpm install
+cp .env.example .env.local   # optional: Letterboxd, Remark42 overrides — see table below
 pnpm run dev
 ```
 
 Open `http://localhost:4321`.
+
+**Local environment:** Use `.env.local` for secrets and machine-specific values (gitignored). Copy [`.env.example`](./.env.example) to `.env.local` and set `LETTERBOXD_PROFILE_URL` / `LETTERBOXD_RSS_URL` if you want Letterboxd links and the media-review RSS block locally. Restart the dev server after changing env files.
 
 ## Available Scripts
 
@@ -142,6 +145,8 @@ Set these in `.env` / Vercel (both optional; leave unset to hide Letterboxd UI):
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
 | `LETTERBOXD_PROFILE_URL` | Plain link on the footer, About page, and media review pages.                                                                      |
 | `LETTERBOXD_RSS_URL`     | Public RSS URL; at build time, recent items render **only** on media review posts. About and the footer never show the RSS widget. |
+
+The member RSS feed exposes namespaced fields (e.g. film title, year, rating, rewatch, poster image URL, TMDB movie id). **Genres are not in the feed**; showing them would require a separate catalog API at build time.
 
 ## Features
 

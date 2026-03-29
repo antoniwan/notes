@@ -12,7 +12,7 @@ export interface LetterboxdConfig {
 
 /**
  * Reads optional Letterboxd URLs from the environment (build / SSR).
- * Set in `.env` / Vercel: `LETTERBOXD_PROFILE_URL`, `LETTERBOXD_RSS_URL`.
+ * Set in `.env.local` (local), `.env`, or Vercel: `LETTERBOXD_PROFILE_URL`, `LETTERBOXD_RSS_URL`.
  */
 export function getLetterboxdConfig(): LetterboxdConfig {
   return {

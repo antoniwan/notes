@@ -2,13 +2,13 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://notes.antoniwan.online/specs/001-media-review-template/contracts/letterboxd-feed-item.schema.json",
   "title": "LetterboxdFeedItem",
-  "description": "Normalized item after parsing the public Letterboxd RSS feed (build-time). Field names are implementation-facing; RSS source may use title/link/pubDate/description.",
+  "description": "Normalized item after parsing the public Letterboxd RSS feed (build-time). Maps RSS 2.0 items plus Letterboxd/TMDB namespaces. Genres are not present in the public RSS.",
   "type": "object",
   "required": ["title", "link"],
   "properties": {
     "title": {
       "type": "string",
-      "description": "Entry title from RSS item (often film name + activity)."
+      "description": "RSS item title (often includes stars), fallback display."
     },
     "link": {
       "type": "string",
@@ -17,12 +17,48 @@
     },
     "publishedAt": {
       "type": "string",
-      "format": "date-time",
-      "description": "Parsed pubDate when available."
+      "description": "RSS pubDate string when present."
     },
     "summary": {
       "type": "string",
-      "description": "Optional short text from description; strip HTML in implementation."
+      "description": "Plain text from description (HTML stripped)."
+    },
+    "creator": {
+      "type": "string",
+      "description": "dc:creator when present."
+    },
+    "filmTitle": {
+      "type": "string",
+      "description": "letterboxd:filmTitle"
+    },
+    "filmYear": {
+      "type": "integer",
+      "description": "letterboxd:filmYear"
+    },
+    "memberRating": {
+      "type": "number",
+      "description": "letterboxd:memberRating (0.5 steps); omitted if user logged without stars."
+    },
+    "rewatch": {
+      "type": "boolean",
+      "description": "letterboxd:rewatch Yes/No"
+    },
+    "memberLike": {
+      "type": "boolean",
+      "description": "letterboxd:memberLike Yes/No"
+    },
+    "watchedDate": {
+      "type": "string",
+      "description": "letterboxd:watchedDate YYYY-MM-DD"
+    },
+    "tmdbMovieId": {
+      "type": "integer",
+      "description": "tmdb:movieId — usable for a future TMDB lookup; not used for genre without an API call."
+    },
+    "posterUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "First img src from item description (Letterboxd CDN)."
     }
   },
   "additionalProperties": false

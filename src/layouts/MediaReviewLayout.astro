@@ -224,7 +224,6 @@ const postSlug = postId;
               <LetterboxdProfileLink profileUrl={letterboxdProfileUrl} />
             </div>
             <MediaReviewTrailer trailerUrl={trailerUrl} workTitle={workTitle} />
-            <LetterboxdRecent items={letterboxdFeedItems} profileUrl={letterboxdProfileUrl} />
           </div>
 
           {
@@ -352,6 +351,12 @@ const postSlug = postId;
               )
             }
           </div>
+
+          <LetterboxdRecent
+            items={letterboxdFeedItems}
+            profileUrl={letterboxdProfileUrl}
+            rootClass="not-prose mt-12 rounded-xl border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg-alt))]/30 px-4 py-8 md:px-8 md:py-10"
+          />
 
           {showComments && <Comments />}
 
