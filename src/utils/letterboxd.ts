@@ -30,7 +30,7 @@ function extractPosterFromBlock(block: string): string | null {
 
 export async function fetchLetterboxdRecent(
   rssUrl: string,
-  limit: number
+  limit: number,
 ): Promise<LetterboxdWatch[]> {
   if (!rssUrl?.trim()) return [];
 

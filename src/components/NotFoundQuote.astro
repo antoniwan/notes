@@ -11,7 +11,7 @@ const { existingTags } = Astro.props;
 ---
 
 <section
-  class="not-found-quote not-prose theme-transition mt-6 rounded-md border border-[rgb(var(--color-border))] border-l-4 border-l-[rgb(var(--color-primary))] bg-[rgb(var(--color-bg-alt))]/60 shadow-sm md:mt-8"
+  class="not-found-quote not-prose theme-transition mt-6 rounded-md border border-l-4 border-[rgb(var(--color-border))] border-l-[rgb(var(--color-primary))] bg-[rgb(var(--color-bg-alt))]/60 shadow-sm md:mt-8"
   aria-labelledby="nfq-label"
 >
   <div class="px-4 py-5 md:px-6 md:py-6">
@@ -25,8 +25,7 @@ const { existingTags } = Astro.props;
     <div id="nfq-loading" class="flex items-center gap-3 py-1">
       <span
         class="inline-block h-2 w-2 shrink-0 animate-pulse rounded-full bg-[rgb(var(--color-primary))]"
-        aria-hidden="true"
-      ></span>
+        aria-hidden="true"></span>
       <p class="m-0 text-sm text-[rgb(var(--color-text-muted))]">Loading quote…</p>
     </div>
 
@@ -52,8 +51,13 @@ const { existingTags } = Astro.props;
         </footer>
       </blockquote>
 
-      <div id="nfq-themes-wrap" class="mt-5 hidden border-t border-[rgb(var(--color-border))]/80 pt-5">
-        <p class="mb-2 mt-0 text-xs font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
+      <div
+        id="nfq-themes-wrap"
+        class="mt-5 hidden border-t border-[rgb(var(--color-border))]/80 pt-5"
+      >
+        <p
+          class="mb-2 mt-0 text-xs font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]"
+        >
           Related tags
         </p>
         <div id="nfq-themes" class="flex flex-wrap gap-1.5"></div>

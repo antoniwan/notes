@@ -1,6 +1,6 @@
 # Notes
 
-[![Version](https://img.shields.io/badge/version-5.13.0-blue.svg)](https://github.com/antoniwan/notes/releases)
+[![Version](https://img.shields.io/badge/version-5.13.1-blue.svg)](https://github.com/antoniwan/notes/releases)
 
 Personal writing site: essays and notes on fatherhood, masculinity, culture, and day-to-day life. Some posts are in English, some in Spanish, with links between translations where it applies.
 
@@ -61,22 +61,22 @@ Remark42 uses `PUBLIC_REMARK42_HOST` and `PUBLIC_REMARK42_SITE_ID` when you turn
 
 ## Scripts
 
-| Command | What it does |
-| --------|--------------|
-| `pnpm run dev` | Dev server |
-| `pnpm run build` | Generates social images, bumps the service worker version, then `astro build` |
-| `pnpm run preview` | Serves the production build locally |
-| `pnpm run check` | `astro check` (TypeScript / Astro diagnostics) |
-| `pnpm run lint` | ESLint |
-| `pnpm run lint:fix` | ESLint with `--fix` |
-| `pnpm run format` | Prettier write |
-| `pnpm run format:check` | Prettier check |
-| `pnpm run generate-social-images` | OG/social images only |
-| `pnpm run generate-favicons` | Favicon assets |
-| `pnpm run analyze` | Build then Vercel static-build analysis |
-| `pnpm run lighthouse` | Lighthouse HTML report (start dev server first) |
-| `pnpm run performance` | Build + analyze |
-| `pnpm run audit-performance` | Build + Lighthouse performance JSON |
+| Command                           | What it does                                                                  |
+| --------------------------------- | ----------------------------------------------------------------------------- |
+| `pnpm run dev`                    | Dev server                                                                    |
+| `pnpm run build`                  | Generates social images, bumps the service worker version, then `astro build` |
+| `pnpm run preview`                | Serves the production build locally                                           |
+| `pnpm run check`                  | `astro check` (TypeScript / Astro diagnostics)                                |
+| `pnpm run lint`                   | ESLint                                                                        |
+| `pnpm run lint:fix`               | ESLint with `--fix`                                                           |
+| `pnpm run format`                 | Prettier write                                                                |
+| `pnpm run format:check`           | Prettier check                                                                |
+| `pnpm run generate-social-images` | OG/social images only                                                         |
+| `pnpm run generate-favicons`      | Favicon assets                                                                |
+| `pnpm run analyze`                | Build then Vercel static-build analysis                                       |
+| `pnpm run lighthouse`             | Lighthouse HTML report (start dev server first)                               |
+| `pnpm run performance`            | Build + analyze                                                               |
+| `pnpm run audit-performance`      | Build + Lighthouse performance JSON                                           |
 
 ## Project layout
 
@@ -108,17 +108,17 @@ Translations: same `translationGroup` on each language version; use `featured` s
 
 ## Documentation in `docs/`
 
-| File | Topic |
-|------|--------|
-| [frontmatter-spec.md](docs/frontmatter-spec.md) | Post frontmatter |
-| [multilingual-setup.md](docs/multilingual-setup.md) | EN/ES linking |
-| [comments-setup.md](docs/comments-setup.md) | Remark42 |
-| [quotes-api.md](docs/quotes-api.md) | `/api/quotes` |
-| [structured-data-optimization.md](docs/structured-data-optimization.md) | Schema.org |
-| [performance-optimization.md](docs/performance-optimization.md) | Performance notes |
-| [roadmap.md](docs/roadmap.md) | Ideas and backlog |
-| [TECHNICAL-AUDIT.md](docs/TECHNICAL-AUDIT.md) | Older point-in-time audit |
-| [midjourney-og-image-prompts.md](docs/midjourney-og-image-prompts.md) | Image prompt notes |
+| File                                                                    | Topic                     |
+| ----------------------------------------------------------------------- | ------------------------- |
+| [frontmatter-spec.md](docs/frontmatter-spec.md)                         | Post frontmatter          |
+| [multilingual-setup.md](docs/multilingual-setup.md)                     | EN/ES linking             |
+| [comments-setup.md](docs/comments-setup.md)                             | Remark42                  |
+| [quotes-api.md](docs/quotes-api.md)                                     | `/api/quotes`             |
+| [structured-data-optimization.md](docs/structured-data-optimization.md) | Schema.org                |
+| [performance-optimization.md](docs/performance-optimization.md)         | Performance notes         |
+| [roadmap.md](docs/roadmap.md)                                           | Ideas and backlog         |
+| [TECHNICAL-AUDIT.md](docs/TECHNICAL-AUDIT.md)                           | Older point-in-time audit |
+| [midjourney-og-image-prompts.md](docs/midjourney-og-image-prompts.md)   | Image prompt notes        |
 
 ## License
 

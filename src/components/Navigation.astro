@@ -59,26 +59,26 @@ const sortedCategories = await getSortedCategories();
                     const catHref = `/category/${category.id}/`;
                     const subActive = isNavDropdownItemActive(catHref, Astro.url.pathname);
                     return (
-                    <a
-                      href={catHref}
-                      class:list={[
-                        'text-body-muted transition-fast flex items-center justify-between rounded-md px-3 py-2 text-sm hover:bg-[rgb(var(--color-bg-alt))] hover:text-[rgb(var(--color-accent))]',
-                        { [dropdownActiveClasses]: subActive },
-                      ]}
-                      aria-current={subActive ? 'page' : undefined}
-                    >
-                      <div class="flex items-center gap-3">
-                        {category.icon && (
-                          <span class="text-lg" aria-hidden="true">
-                            {category.icon}
-                          </span>
-                        )}
-                        <span>{category.name}</span>
-                      </div>
-                      <span class="rounded-full bg-[rgb(var(--color-bg-alt))] px-2 py-1 text-xs text-[rgb(var(--color-text-muted))]">
-                        {category.postCount}
-                      </span>
-                    </a>
+                      <a
+                        href={catHref}
+                        class:list={[
+                          'text-body-muted transition-fast flex items-center justify-between rounded-md px-3 py-2 text-sm hover:bg-[rgb(var(--color-bg-alt))] hover:text-[rgb(var(--color-accent))]',
+                          { [dropdownActiveClasses]: subActive },
+                        ]}
+                        aria-current={subActive ? 'page' : undefined}
+                      >
+                        <div class="flex items-center gap-3">
+                          {category.icon && (
+                            <span class="text-lg" aria-hidden="true">
+                              {category.icon}
+                            </span>
+                          )}
+                          <span>{category.name}</span>
+                        </div>
+                        <span class="rounded-full bg-[rgb(var(--color-bg-alt))] px-2 py-1 text-xs text-[rgb(var(--color-text-muted))]">
+                          {category.postCount}
+                        </span>
+                      </a>
                     );
                   })}
                 </div>
@@ -100,21 +100,21 @@ const sortedCategories = await getSortedCategories();
                       Astro.url.pathname,
                     );
                     return (
-                    <a
-                      href={dropdownItem.href}
-                      class:list={[
-                        'text-body-muted transition-fast flex items-center gap-3 rounded-md px-3 py-2 text-sm hover:bg-[rgb(var(--color-bg-alt))] hover:text-[rgb(var(--color-accent))]',
-                        { [dropdownActiveClasses]: subActive },
-                      ]}
-                      aria-current={subActive ? 'page' : undefined}
-                    >
-                      {dropdownItem.icon && (
-                        <span class="text-lg" aria-hidden="true">
-                          {dropdownItem.icon}
-                        </span>
-                      )}
-                      <span>{dropdownItem.label}</span>
-                    </a>
+                      <a
+                        href={dropdownItem.href}
+                        class:list={[
+                          'text-body-muted transition-fast flex items-center gap-3 rounded-md px-3 py-2 text-sm hover:bg-[rgb(var(--color-bg-alt))] hover:text-[rgb(var(--color-accent))]',
+                          { [dropdownActiveClasses]: subActive },
+                        ]}
+                        aria-current={subActive ? 'page' : undefined}
+                      >
+                        {dropdownItem.icon && (
+                          <span class="text-lg" aria-hidden="true">
+                            {dropdownItem.icon}
+                          </span>
+                        )}
+                        <span>{dropdownItem.label}</span>
+                      </a>
                     );
                   })}
                 </div>
