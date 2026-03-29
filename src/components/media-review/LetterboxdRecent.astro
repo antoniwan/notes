@@ -70,10 +70,10 @@ function displayHeadline(item: LetterboxdFeedItem): string {
             >
               {item.posterUrl ? (
                 <div class="relative w-14 shrink-0 overflow-hidden rounded-md border border-[rgb(var(--color-border))]/30 sm:w-16">
-                    <img
-                      src={item.posterUrl}
-                      alt={`Poster: ${item.filmTitle ?? item.title}`}
-                      class="aspect-[2/3] h-full w-full object-cover"
+                  <img
+                    src={item.posterUrl}
+                    alt={`Poster: ${item.filmTitle ?? item.title}`}
+                    class="aspect-[2/3] h-full w-full object-cover"
                     loading="lazy"
                     decoding="async"
                     width="64"
