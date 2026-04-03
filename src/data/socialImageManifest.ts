@@ -16,6 +16,7 @@ export const SOCIAL_IMAGE_MANIFEST: Record<string, string> = {
   '/images/2026/arithmetic.avif': '/social/images/2026/arithmetic-social.jpg',
   '/images/2026/cupey-papi.avif': '/social/images/2026/cupey-papi-social.jpg',
   '/images/2026/in-my-feelings.avif': '/social/images/2026/in-my-feelings-social.jpg',
+  '/images/2026/on-leadership-plus.avif': '/social/images/2026/on-leadership-plus-social.jpg',
   '/images/ai-is-creepy.avif': '/social/images/ai-is-creepy-social.jpg',
   '/images/anime-souls.avif': '/social/images/anime-souls-social.jpg',
   '/images/breathing-deep.avif': '/social/images/breathing-deep-social.jpg',

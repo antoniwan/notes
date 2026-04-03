@@ -197,6 +197,11 @@
       "pubDate": "2024-05-29T14:41:25.408Z"
     },
     {
+      "id": "on-leadership-and-leadership-adjacent-things-april-2026",
+      "bodyLength": 74515,
+      "pubDate": "2026-04-03T17:00:00.000Z"
+    },
+    {
       "id": "on-limits-growth-and-the-meaning-of-my-life",
       "bodyLength": 1990,
       "pubDate": "2024-05-14T00:00:00.000Z"
@@ -245,6 +250,11 @@
       "id": "reflections-from-a-tough-weekend",
       "bodyLength": 2468,
       "pubDate": "2024-05-14T00:00:00.000Z"
+    },
+    {
+      "id": "rolling-back-main-and-why-you-shouldnt-have-to",
+      "bodyLength": 31456,
+      "pubDate": "2026-03-09T16:30:00.000Z"
     },
     {
       "id": "season-of-becoming",
@@ -384,6 +394,122 @@
   ],
   "analyses": [
     {
+      "postTitle": "On Leadership and Leadership-Adjacent Things, April 2026",
+      "postSlug": "on-leadership-and-leadership-adjacent-things-april-2026",
+      "postDate": "2026-04-03T17:00:00.000Z",
+      "metaLanguageCount": 1,
+      "metaLanguagePatterns": [
+        {
+          "phrase": "what i think",
+          "type": "meta-cognition",
+          "context": "sentence",
+          "sentence": "Women in technical organizations learn early that excellence attracts the wrong kind of attention: more labor, more scrutiny, repeated proving so they optimize for execution over recognition and they ",
+          "confidence": 0.85
+        }
+      ],
+      "selfAwarenessScore": 8,
+      "writingAsSubject": false,
+      "writingAsTool": false,
+      "recursiveThinking": false,
+      "sentiment": {
+        "score": 6,
+        "comparative": 0.20689655172413793,
+        "calculation": [
+          {
+            "recognition": 2
+          },
+          {
+            "kind": 2
+          },
+          {
+            "wrong": -2
+          },
+          {
+            "attracts": 1
+          },
+          {
+            "excellence": 3
+          }
+        ],
+        "tokens": [
+          "women",
+          "in",
+          "technical",
+          "organizations",
+          "learn",
+          "early",
+          "that",
+          "excellence",
+          "attracts",
+          "the",
+          "wrong",
+          "kind",
+          "of",
+          "attention",
+          "more",
+          "labor",
+          "more",
+          "scrutiny",
+          "repeated",
+          "proving",
+          "so",
+          "they",
+          "optimize",
+          "for",
+          "execution",
+          "over",
+          "recognition",
+          "and",
+          "they"
+        ],
+        "words": ["recognition", "kind", "wrong", "attracts", "excellence"],
+        "positive": ["recognition", "kind", "attracts", "excellence"],
+        "negative": ["wrong"]
+      }
+    },
+    {
+      "postTitle": "Rolling Back Main (And Why You Shouldn't Have to)",
+      "postSlug": "rolling-back-main-and-why-you-shouldnt-have-to",
+      "postDate": "2026-03-09T16:30:00.000Z",
+      "metaLanguageCount": 1,
+      "metaLanguagePatterns": [
+        {
+          "phrase": "writing",
+          "type": "writing-about-writing",
+          "context": "sentence",
+          "sentence": "When I write code myself, I have to think the implementation into existence",
+          "confidence": 0.9
+        }
+      ],
+      "selfAwarenessScore": 6,
+      "writingAsSubject": true,
+      "writingAsTool": false,
+      "recursiveThinking": false,
+      "sentiment": {
+        "score": 0,
+        "comparative": 0,
+        "calculation": [],
+        "tokens": [
+          "when",
+          "i",
+          "write",
+          "code",
+          "myself",
+          "i",
+          "have",
+          "to",
+          "think",
+          "the",
+          "implementation",
+          "into",
+          "existence"
+        ],
+        "words": [],
+        "positive": [],
+        "negative": []
+      }
+    },
+    {
       "postTitle": "The Feeling Is Not the Problem",
       "postSlug": "the-feeling-is-not-the-problem",
       "postDate": "2026-02-22T23:28:00.000Z",
@@ -505,6 +631,89 @@
       }
     },
     {
+      "postTitle": "Notes on Puerto Rico: Sin Pie Forzao'",
+      "postSlug": "notes-on-puerto-rico-sin-pie-forzao",
+      "postDate": "2026-02-19T02:45:00.000Z",
+      "metaLanguageCount": 2,
+      "metaLanguagePatterns": [
+        {
+          "phrase": "i see",
+          "type": "self-reflection",
+          "context": "sentence",
+          "sentence": "Through media, which is what I can consume nowadays from the USA mainland, most I see is criminality and corruption at all levels of the island, religious commentary about politics, the celebrities, a",
+          "confidence": 0.8
+        },
+        {
+          "phrase": "i wonder",
+          "type": "self-reflection",
+          "context": "sentence",
+          "sentence": "I wonder if we import these ideas from the mainland",
+          "confidence": 0.8
+        }
+      ],
+      "selfAwarenessScore": 13,
+      "writingAsSubject": false,
+      "writingAsTool": false,
+      "recursiveThinking": false,
+      "sentiment": {
+        "score": -3,
+        "comparative": -0.06976744186046512,
+        "calculation": [
+          {
+            "corruption": -3
+          }
+        ],
+        "tokens": [
+          "through",
+          "media",
+          "which",
+          "is",
+          "what",
+          "i",
+          "can",
+          "consume",
+          "nowadays",
+          "from",
+          "the",
+          "usa",
+          "mainland",
+          "most",
+          "i",
+          "see",
+          "is",
+          "criminality",
+          "and",
+          "corruption",
+          "at",
+          "all",
+          "levels",
+          "of",
+          "the",
+          "island",
+          "religious",
+          "commentary",
+          "about",
+          "politics",
+          "the",
+          "celebrities",
+          "a",
+          "i",
+          "wonder",
+          "if",
+          "we",
+          "import",
+          "these",
+          "ideas",
+          "from",
+          "the",
+          "mainland"
+        ],
+        "words": ["corruption"],
+        "positive": [],
+        "negative": ["corruption"]
+      }
+    },
+    {
       "postTitle": "Apuntes sobre Puerto Rico: Sin pie forzao'",
       "postSlug": "notes-on-puerto-rico-sin-pie-forzao-es",
       "postDate": "2026-02-19T02:45:00.000Z",
@@ -614,89 +823,6 @@
         "words": ["leave"],
         "positive": [],
         "negative": ["leave"]
-      }
-    },
-    {
-      "postTitle": "Notes on Puerto Rico: Sin Pie Forzao'",
-      "postSlug": "notes-on-puerto-rico-sin-pie-forzao",
-      "postDate": "2026-02-19T02:45:00.000Z",
-      "metaLanguageCount": 2,
-      "metaLanguagePatterns": [
-        {
-          "phrase": "i see",
-          "type": "self-reflection",
-          "context": "sentence",
-          "sentence": "Through media, which is what I can consume nowadays from the USA mainland, most I see is criminality and corruption at all levels of the island, religious commentary about politics, the celebrities, a",
-          "confidence": 0.8
-        },
-        {
-          "phrase": "i wonder",
-          "type": "self-reflection",
-          "context": "sentence",
-          "sentence": "I wonder if we import these ideas from the mainland",
-          "confidence": 0.8
-        }
-      ],
-      "selfAwarenessScore": 13,
-      "writingAsSubject": false,
-      "writingAsTool": false,
-      "recursiveThinking": false,
-      "sentiment": {
-        "score": -3,
-        "comparative": -0.06976744186046512,
-        "calculation": [
-          {
-            "corruption": -3
-          }
-        ],
-        "tokens": [
-          "through",
-          "media",
-          "which",
-          "is",
-          "what",
-          "i",
-          "can",
-          "consume",
-          "nowadays",
-          "from",
-          "the",
-          "usa",
-          "mainland",
-          "most",
-          "i",
-          "see",
-          "is",
-          "criminality",
-          "and",
-          "corruption",
-          "at",
-          "all",
-          "levels",
-          "of",
-          "the",
-          "island",
-          "religious",
-          "commentary",
-          "about",
-          "politics",
-          "the",
-          "celebrities",
-          "a",
-          "i",
-          "wonder",
-          "if",
-          "we",
-          "import",
-          "these",
-          "ideas",
-          "from",
-          "the",
-          "mainland"
-        ],
-        "words": ["corruption"],
-        "positive": [],
-        "negative": ["corruption"]
       }
     },
     {
@@ -830,119 +956,6 @@
       }
     },
     {
-      "postTitle": "Sobre Límites, Descalibración y Reaprender el Amor Incondicional",
-      "postSlug": "boundaries-miscalibration-unconditional-love-es",
-      "postDate": "2026-01-16T13:50:00.000Z",
-      "metaLanguageCount": 0,
-      "metaLanguagePatterns": [],
-      "selfAwarenessScore": 0,
-      "writingAsSubject": false,
-      "writingAsTool": false,
-      "recursiveThinking": false,
-      "sentiment": {
-        "score": -2,
-        "comparative": -0.02531645569620253,
-        "calculation": [
-          {
-            "no": -1
-          },
-          {
-            "no": -1
-          },
-          {
-            "✨": 1
-          },
-          {
-            "no": -1
-          }
-        ],
-        "tokens": [
-          "este",
-          "ensayo",
-          "documenta",
-          "un",
-          "conjunto",
-          "de",
-          "errores",
-          "el",
-          "razonamiento",
-          "que",
-          "los",
-          "produjo",
-          "y",
-          "la",
-          "recalibración",
-          "que",
-          "siguió",
-          "la",
-          "intención",
-          "no",
-          "es",
-          "la",
-          "autoexoneración",
-          "sino",
-          "la",
-          "precisión",
-          "en",
-          "servicio",
-          "de",
-          "la",
-          "claridad",
-          "✨",
-          "establecí",
-          "límites",
-          "necesarios",
-          "durante",
-          "un",
-          "período",
-          "de",
-          "alto",
-          "estrés",
-          "y",
-          "percepción",
-          "elevada",
-          "de",
-          "amenaza",
-          "los",
-          "límites",
-          "en",
-          "sí",
-          "estaban",
-          "justificados",
-          "la",
-          "forma",
-          "en",
-          "que",
-          "los",
-          "impuse",
-          "no",
-          "lo",
-          "estuvo",
-          "en",
-          "retrospectiva",
-          "pude",
-          "haberlos",
-          "establecido",
-          "de",
-          "una",
-          "manera",
-          "más",
-          "saludable",
-          "y",
-          "proporcional",
-          "usé",
-          "fuerza",
-          "excesiva",
-          "por",
-          "fuerza",
-          "no"
-        ],
-        "words": ["no", "no", "✨", "no"],
-        "positive": ["✨"],
-        "negative": ["no", "no", "no"]
-      }
-    },
-    {
       "postTitle": "On Boundaries, Miscalibration, and Relearning Unconditional Love",
       "postSlug": "boundaries-miscalibration-unconditional-love",
       "postDate": "2026-01-16T13:50:00.000Z",
@@ -1065,6 +1078,119 @@
         "words": ["justified", "threat", "stress", "✨", "clarity", "interest", "mistakes"],
         "positive": ["justified", "✨", "clarity", "interest"],
         "negative": ["threat", "stress", "mistakes"]
+      }
+    },
+    {
+      "postTitle": "Sobre Límites, Descalibración y Reaprender el Amor Incondicional",
+      "postSlug": "boundaries-miscalibration-unconditional-love-es",
+      "postDate": "2026-01-16T13:50:00.000Z",
+      "metaLanguageCount": 0,
+      "metaLanguagePatterns": [],
+      "selfAwarenessScore": 0,
+      "writingAsSubject": false,
+      "writingAsTool": false,
+      "recursiveThinking": false,
+      "sentiment": {
+        "score": -2,
+        "comparative": -0.02531645569620253,
+        "calculation": [
+          {
+            "no": -1
+          },
+          {
+            "no": -1
+          },
+          {
+            "✨": 1
+          },
+          {
+            "no": -1
+          }
+        ],
+        "tokens": [
+          "este",
+          "ensayo",
+          "documenta",
+          "un",
+          "conjunto",
+          "de",
+          "errores",
+          "el",
+          "razonamiento",
+          "que",
+          "los",
+          "produjo",
+          "y",
+          "la",
+          "recalibración",
+          "que",
+          "siguió",
+          "la",
+          "intención",
+          "no",
+          "es",
+          "la",
+          "autoexoneración",
+          "sino",
+          "la",
+          "precisión",
+          "en",
+          "servicio",
+          "de",
+          "la",
+          "claridad",
+          "✨",
+          "establecí",
+          "límites",
+          "necesarios",
+          "durante",
+          "un",
+          "período",
+          "de",
+          "alto",
+          "estrés",
+          "y",
+          "percepción",
+          "elevada",
+          "de",
+          "amenaza",
+          "los",
+          "límites",
+          "en",
+          "sí",
+          "estaban",
+          "justificados",
+          "la",
+          "forma",
+          "en",
+          "que",
+          "los",
+          "impuse",
+          "no",
+          "lo",
+          "estuvo",
+          "en",
+          "retrospectiva",
+          "pude",
+          "haberlos",
+          "establecido",
+          "de",
+          "una",
+          "manera",
+          "más",
+          "saludable",
+          "y",
+          "proporcional",
+          "usé",
+          "fuerza",
+          "excesiva",
+          "por",
+          "fuerza",
+          "no"
+        ],
+        "words": ["no", "no", "✨", "no"],
+        "positive": ["✨"],
+        "negative": ["no", "no", "no"]
       }
     },
     {
