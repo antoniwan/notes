@@ -204,7 +204,7 @@ This section is a **checkpoint** so the roadmap does not read like the site is o
 
 ## 5. Structured sources in frontmatter
 
-- **Status**: Idea (*Sources* today are still **in the note body** — e.g. `## Sources` sections — not a `sources` field in the content schema.)
+- **Status**: Idea (_Sources_ today are still **in the note body** — e.g. `## Sources` sections — not a `sources` field in the content schema.)
 - **Goal**: Move the “Sources” for each note into a dedicated frontmatter field so I can surface influences and references consistently across the site, not just at the bottom of individual posts.
 
 ### What this actually means
@@ -250,5 +250,5 @@ This section is intentionally rough. Quick lines only; details come later.
 
 - Better **content maps** (visual overviews of themes and how notes connect).
 - Gentle **“related ideas”** surfacing from TLDRs and tags, without feeling like a recommendation engine.
-  - *Partial today*: post footers already show **tag-overlap related posts** (`RelatedPosts`); this item still covers anything richer (TLDR-driven, curated pairs, softer copy, etc.).
+  - _Partial today_: post footers already show **tag-overlap related posts** (`RelatedPosts`); this item still covers anything richer (TLDR-driven, curated pairs, softer copy, etc.).
 - More **reader‑friendly export** options (e.g., clean print/PDF for certain notes or series).
