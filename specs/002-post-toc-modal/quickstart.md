@@ -17,6 +17,13 @@
 3. Reuse heading data from `src/pages/p/[...slug].astro`.
 4. Validate the latest leadership post and one long-read post with added headings as needed.
 
+### Current implementation notes
+
+- `PostTocModal.astro` provides the floating trigger and modal UI.
+- `postToc.client.ts` handles open/close state, active-link highlighting, and mobile auto-close on section select.
+- `src/pages/p/[...slug].astro` now generates duplicate-safe heading slugs.
+- `src/content/p/on-leadership-and-leadership-adjacent-things-april-2026.md` includes section headings for TOC validation.
+
 ## 3) Mobile-first acceptance checks
 
 1. On mobile viewport, verify compact `Contents` trigger is visible.

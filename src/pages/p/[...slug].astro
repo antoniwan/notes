@@ -42,12 +42,37 @@ const categoryName = getCategoryNameFromIds(post.data.category);
 
 // Generate table of contents from markdown headings (post.body is raw markdown, not HTML)
 const headingRegex = /^(#{2,3})\s+(.+)$/gm;
-const tableOfContents = [...(post.body?.matchAll(headingRegex) ?? [])].map(([, hashes, text]) => {
-  const level = hashes.length;
-  const trimmedText = (text || '').trim();
-  const slug = trimmedText.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-  return { text: trimmedText, slug, level };
-});
+const slugCounts = new Map<string, number>();
+const toSlug = (value: string) =>
+  value
+    .toLowerCase()
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^\w\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-');
+const withUniqueSlug = (baseSlug: string) => {
+  const count = slugCounts.get(baseSlug) ?? 0;
+  slugCounts.set(baseSlug, count + 1);
+  return count === 0 ? baseSlug : `${baseSlug}-${count}`;
+};
+const tableOfContents = [...(post.body?.matchAll(headingRegex) ?? [])]
+  .map(([, hashes, text]) => {
+    const level = hashes.length;
+    const trimmedText = (text || '').trim();
+    const slug = withUniqueSlug(toSlug(trimmedText));
+    return { text: trimmedText, slug, level };
+  })
+  .filter((item) => item.text.length > 0 && item.slug.length > 0);
+
+if (tableOfContents.length > 0) {
+  tableOfContents.unshift({
+    text: 'Top',
+    slug: 'post-top',
+    level: 1,
+  });
+}
 
 // Get translation data
 const translationData = await getTranslationData(post, allPosts);

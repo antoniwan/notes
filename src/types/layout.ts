@@ -1,5 +1,11 @@
 import type { CollectionEntry } from 'astro:content';
 
+export interface TocItem {
+  level: number;
+  text: string;
+  slug: string;
+}
+
 export interface BaseLayoutProps {
   title: string;
   description?: string;
@@ -21,13 +27,7 @@ export interface BaseLayoutProps {
   structuredDataIdentifier?: string;
   posts?: CollectionEntry<'blog'>[]; // For category/tag pages
   // Enhanced structured data options
-  tableOfContents?:
-    | boolean
-    | {
-        level: number;
-        text: string;
-        slug: string;
-      }[];
+  tableOfContents?: boolean | TocItem[];
   hasComments?: boolean;
   featured?: boolean;
   draft?: boolean;
@@ -54,11 +54,7 @@ export interface TranslationData {
 export interface BlogLayoutProps extends BaseLayoutProps {
   // Blog-specific additional props
   categoryName?: string | null;
-  tableOfContents?: {
-    level: number;
-    text: string;
-    slug: string;
-  }[];
+  tableOfContents?: TocItem[];
   showComments?: boolean;
   translationData?: TranslationData;
   currentPost?: CollectionEntry<'blog'>; // Current blog post for related posts
