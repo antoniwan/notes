@@ -120,7 +120,6 @@ Using Cursor AI in this repo: [docs/cursor-agent-skills.md](docs/cursor-agent-sk
 | [performance-optimization.md](docs/performance-optimization.md)         | Performance notes         |
 | [roadmap.md](docs/roadmap.md)                                           | Ideas and backlog         |
 | [cursor-agent-skills.md](docs/cursor-agent-skills.md)                   | Cursor agent skill guide  |
-| [TECHNICAL-AUDIT.md](docs/TECHNICAL-AUDIT.md)                           | Older point-in-time audit |
 | [midjourney-og-image-prompts.md](docs/midjourney-og-image-prompts.md)   | Image prompt notes        |
 
 ## Private generated materials
