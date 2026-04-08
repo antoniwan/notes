@@ -198,7 +198,7 @@
     },
     {
       "id": "on-leadership-and-leadership-adjacent-things-april-2026",
-      "bodyLength": 74518,
+      "bodyLength": 74718,
       "pubDate": "2026-04-03T17:00:00.000Z"
     },
     {
@@ -631,6 +631,89 @@
       }
     },
     {
+      "postTitle": "Notes on Puerto Rico: Sin Pie Forzao'",
+      "postSlug": "notes-on-puerto-rico-sin-pie-forzao",
+      "postDate": "2026-02-19T02:45:00.000Z",
+      "metaLanguageCount": 2,
+      "metaLanguagePatterns": [
+        {
+          "phrase": "i see",
+          "type": "self-reflection",
+          "context": "sentence",
+          "sentence": "Through media, which is what I can consume nowadays from the USA mainland, most I see is criminality and corruption at all levels of the island, religious commentary about politics, the celebrities, a",
+          "confidence": 0.8
+        },
+        {
+          "phrase": "i wonder",
+          "type": "self-reflection",
+          "context": "sentence",
+          "sentence": "I wonder if we import these ideas from the mainland",
+          "confidence": 0.8
+        }
+      ],
+      "selfAwarenessScore": 13,
+      "writingAsSubject": false,
+      "writingAsTool": false,
+      "recursiveThinking": false,
+      "sentiment": {
+        "score": -3,
+        "comparative": -0.06976744186046512,
+        "calculation": [
+          {
+            "corruption": -3
+          }
+        ],
+        "tokens": [
+          "through",
+          "media",
+          "which",
+          "is",
+          "what",
+          "i",
+          "can",
+          "consume",
+          "nowadays",
+          "from",
+          "the",
+          "usa",
+          "mainland",
+          "most",
+          "i",
+          "see",
+          "is",
+          "criminality",
+          "and",
+          "corruption",
+          "at",
+          "all",
+          "levels",
+          "of",
+          "the",
+          "island",
+          "religious",
+          "commentary",
+          "about",
+          "politics",
+          "the",
+          "celebrities",
+          "a",
+          "i",
+          "wonder",
+          "if",
+          "we",
+          "import",
+          "these",
+          "ideas",
+          "from",
+          "the",
+          "mainland"
+        ],
+        "words": ["corruption"],
+        "positive": [],
+        "negative": ["corruption"]
+      }
+    },
+    {
       "postTitle": "Apuntes sobre Puerto Rico: Sin pie forzao'",
       "postSlug": "notes-on-puerto-rico-sin-pie-forzao-es",
       "postDate": "2026-02-19T02:45:00.000Z",
@@ -740,89 +823,6 @@
         "words": ["leave"],
         "positive": [],
         "negative": ["leave"]
-      }
-    },
-    {
-      "postTitle": "Notes on Puerto Rico: Sin Pie Forzao'",
-      "postSlug": "notes-on-puerto-rico-sin-pie-forzao",
-      "postDate": "2026-02-19T02:45:00.000Z",
-      "metaLanguageCount": 2,
-      "metaLanguagePatterns": [
-        {
-          "phrase": "i see",
-          "type": "self-reflection",
-          "context": "sentence",
-          "sentence": "Through media, which is what I can consume nowadays from the USA mainland, most I see is criminality and corruption at all levels of the island, religious commentary about politics, the celebrities, a",
-          "confidence": 0.8
-        },
-        {
-          "phrase": "i wonder",
-          "type": "self-reflection",
-          "context": "sentence",
-          "sentence": "I wonder if we import these ideas from the mainland",
-          "confidence": 0.8
-        }
-      ],
-      "selfAwarenessScore": 13,
-      "writingAsSubject": false,
-      "writingAsTool": false,
-      "recursiveThinking": false,
-      "sentiment": {
-        "score": -3,
-        "comparative": -0.06976744186046512,
-        "calculation": [
-          {
-            "corruption": -3
-          }
-        ],
-        "tokens": [
-          "through",
-          "media",
-          "which",
-          "is",
-          "what",
-          "i",
-          "can",
-          "consume",
-          "nowadays",
-          "from",
-          "the",
-          "usa",
-          "mainland",
-          "most",
-          "i",
-          "see",
-          "is",
-          "criminality",
-          "and",
-          "corruption",
-          "at",
-          "all",
-          "levels",
-          "of",
-          "the",
-          "island",
-          "religious",
-          "commentary",
-          "about",
-          "politics",
-          "the",
-          "celebrities",
-          "a",
-          "i",
-          "wonder",
-          "if",
-          "we",
-          "import",
-          "these",
-          "ideas",
-          "from",
-          "the",
-          "mainland"
-        ],
-        "words": ["corruption"],
-        "positive": [],
-        "negative": ["corruption"]
       }
     },
     {

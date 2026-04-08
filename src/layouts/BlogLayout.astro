@@ -9,6 +9,7 @@ import DefaultImage from '../components/DefaultImage.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import SocialShare from '../components/SocialShare.astro';
 import LanguageToggle from '../components/LanguageToggle.astro';
+import PostTocModal from '../components/post-toc/PostTocModal.astro';
 import { generateCanonicalUrl } from '../utils/seo';
 import type { BlogLayoutProps } from '../types/layout';
 
@@ -253,6 +254,8 @@ const postSlug = postId; // Alias for backward compatibility in template
             )
           }
 
+          <div id="post-top" aria-hidden="true"></div>
+
           {/* Content */}
           <div
             class="prose prose-lg max-w-none prose-headings:scroll-mt-20"
@@ -261,6 +264,9 @@ const postSlug = postId; // Alias for backward compatibility in template
           >
             <slot />
           </div>
+
+          {/* Floating TOC (shown only when enough headings exist) */}
+          <PostTocModal tableOfContents={tableOfContents} />
 
           {/* Social Share - Tablet Horizontal Bar */}
           <SocialShare
@@ -389,6 +395,7 @@ const postSlug = postId; // Alias for backward compatibility in template
 
 <script>
   import { formatRelativeReadTime } from '../utils/relativeReadTime.client';
+  import '../components/post-toc/postToc.client';
 
   // Read slug from DOM (set on main content wrapper) so this script can stay a module
   const postSlug = document.querySelector('[data-post-slug]')?.getAttribute('data-post-slug');

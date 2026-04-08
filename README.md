@@ -1,6 +1,6 @@
 # Notes
 
-[![Version](https://img.shields.io/badge/version-5.14.0-blue.svg)](https://github.com/antoniwan/notes/releases)
+[![Version](https://img.shields.io/badge/version-5.16.0-blue.svg)](https://github.com/antoniwan/notes/releases)
 
 Personal writing site: essays and notes on fatherhood, masculinity, culture, and day-to-day life. Some posts are in English, some in Spanish, with links between translations where it applies.
 
@@ -20,6 +20,7 @@ Live site: [notes.antoniwan.online](https://notes.antoniwan.online)
 - **Book library** — static reference data under `/library` and `/library/books`
 - **Reading time** — added at build time by a remark plugin (`minutesRead` in the collection)
 - **Reading progress** on posts — stored in `localStorage` only, not on a server
+- **Table of contents on long posts** — floating "Contents" button with section links and a quick "Top" jump
 - **RSS** (`/rss.xml`) and **JSON Feed** (`/feed.json`)
 - **Random quotes API** — `GET /api/quotes` (Stoic quotes from local data)
 - **Public API** page at `/api/` — human-readable overview of endpoints
@@ -110,17 +111,17 @@ Using Cursor AI in this repo: [docs/cursor-agent-skills.md](docs/cursor-agent-sk
 
 ## Documentation in `docs/`
 
-| File                                                                    | Topic                     |
-| ----------------------------------------------------------------------- | ------------------------- |
-| [frontmatter-spec.md](docs/frontmatter-spec.md)                         | Post frontmatter          |
-| [multilingual-setup.md](docs/multilingual-setup.md)                     | EN/ES linking             |
-| [comments-setup.md](docs/comments-setup.md)                             | Remark42                  |
-| [quotes-api.md](docs/quotes-api.md)                                     | `/api/quotes`             |
-| [structured-data-optimization.md](docs/structured-data-optimization.md) | Schema.org                |
-| [performance-optimization.md](docs/performance-optimization.md)         | Performance notes         |
-| [roadmap.md](docs/roadmap.md)                                           | Ideas and backlog         |
-| [cursor-agent-skills.md](docs/cursor-agent-skills.md)                   | Cursor agent skill guide  |
-| [midjourney-og-image-prompts.md](docs/midjourney-og-image-prompts.md)   | Image prompt notes        |
+| File                                                                    | Topic                    |
+| ----------------------------------------------------------------------- | ------------------------ |
+| [frontmatter-spec.md](docs/frontmatter-spec.md)                         | Post frontmatter         |
+| [multilingual-setup.md](docs/multilingual-setup.md)                     | EN/ES linking            |
+| [comments-setup.md](docs/comments-setup.md)                             | Remark42                 |
+| [quotes-api.md](docs/quotes-api.md)                                     | `/api/quotes`            |
+| [structured-data-optimization.md](docs/structured-data-optimization.md) | Schema.org               |
+| [performance-optimization.md](docs/performance-optimization.md)         | Performance notes        |
+| [roadmap.md](docs/roadmap.md)                                           | Ideas and backlog        |
+| [cursor-agent-skills.md](docs/cursor-agent-skills.md)                   | Cursor agent skill guide |
+| [midjourney-og-image-prompts.md](docs/midjourney-og-image-prompts.md)   | Image prompt notes       |
 
 ## Private generated materials
 
