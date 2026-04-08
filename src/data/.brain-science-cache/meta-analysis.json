@@ -197,6 +197,11 @@
       "pubDate": "2024-05-29T14:41:25.408Z"
     },
     {
+      "id": "on-leadership-and-leadership-adjacent-things-april-2026",
+      "bodyLength": 74518,
+      "pubDate": "2026-04-03T17:00:00.000Z"
+    },
+    {
       "id": "on-limits-growth-and-the-meaning-of-my-life",
       "bodyLength": 1990,
       "pubDate": "2024-05-14T00:00:00.000Z"
@@ -389,6 +394,80 @@
   ],
   "analyses": [
     {
+      "postTitle": "On Leadership and Leadership-Adjacent Things, April 2026",
+      "postSlug": "on-leadership-and-leadership-adjacent-things-april-2026",
+      "postDate": "2026-04-03T17:00:00.000Z",
+      "metaLanguageCount": 1,
+      "metaLanguagePatterns": [
+        {
+          "phrase": "what i think",
+          "type": "meta-cognition",
+          "context": "sentence",
+          "sentence": "Women in technical organizations learn early that excellence attracts the wrong kind of attention: more labor, more scrutiny, repeated proving so they optimize for execution over recognition and they ",
+          "confidence": 0.85
+        }
+      ],
+      "selfAwarenessScore": 8,
+      "writingAsSubject": false,
+      "writingAsTool": false,
+      "recursiveThinking": false,
+      "sentiment": {
+        "score": 6,
+        "comparative": 0.20689655172413793,
+        "calculation": [
+          {
+            "recognition": 2
+          },
+          {
+            "kind": 2
+          },
+          {
+            "wrong": -2
+          },
+          {
+            "attracts": 1
+          },
+          {
+            "excellence": 3
+          }
+        ],
+        "tokens": [
+          "women",
+          "in",
+          "technical",
+          "organizations",
+          "learn",
+          "early",
+          "that",
+          "excellence",
+          "attracts",
+          "the",
+          "wrong",
+          "kind",
+          "of",
+          "attention",
+          "more",
+          "labor",
+          "more",
+          "scrutiny",
+          "repeated",
+          "proving",
+          "so",
+          "they",
+          "optimize",
+          "for",
+          "execution",
+          "over",
+          "recognition",
+          "and",
+          "they"
+        ],
+        "words": ["recognition", "kind", "wrong", "attracts", "excellence"],
+        "positive": ["recognition", "kind", "attracts", "excellence"],
+        "negative": ["wrong"]
+      }
+    },
+    {
       "postTitle": "Rolling Back Main (And Why You Shouldn't Have to)",
       "postSlug": "rolling-back-main-and-why-you-shouldnt-have-to",
       "postDate": "2026-03-09T16:30:00.000Z",
@@ -552,89 +631,6 @@
       }
     },
     {
-      "postTitle": "Notes on Puerto Rico: Sin Pie Forzao'",
-      "postSlug": "notes-on-puerto-rico-sin-pie-forzao",
-      "postDate": "2026-02-19T02:45:00.000Z",
-      "metaLanguageCount": 2,
-      "metaLanguagePatterns": [
-        {
-          "phrase": "i see",
-          "type": "self-reflection",
-          "context": "sentence",
-          "sentence": "Through media, which is what I can consume nowadays from the USA mainland, most I see is criminality and corruption at all levels of the island, religious commentary about politics, the celebrities, a",
-          "confidence": 0.8
-        },
-        {
-          "phrase": "i wonder",
-          "type": "self-reflection",
-          "context": "sentence",
-          "sentence": "I wonder if we import these ideas from the mainland",
-          "confidence": 0.8
-        }
-      ],
-      "selfAwarenessScore": 13,
-      "writingAsSubject": false,
-      "writingAsTool": false,
-      "recursiveThinking": false,
-      "sentiment": {
-        "score": -3,
-        "comparative": -0.06976744186046512,
-        "calculation": [
-          {
-            "corruption": -3
-          }
-        ],
-        "tokens": [
-          "through",
-          "media",
-          "which",
-          "is",
-          "what",
-          "i",
-          "can",
-          "consume",
-          "nowadays",
-          "from",
-          "the",
-          "usa",
-          "mainland",
-          "most",
-          "i",
-          "see",
-          "is",
-          "criminality",
-          "and",
-          "corruption",
-          "at",
-          "all",
-          "levels",
-          "of",
-          "the",
-          "island",
-          "religious",
-          "commentary",
-          "about",
-          "politics",
-          "the",
-          "celebrities",
-          "a",
-          "i",
-          "wonder",
-          "if",
-          "we",
-          "import",
-          "these",
-          "ideas",
-          "from",
-          "the",
-          "mainland"
-        ],
-        "words": ["corruption"],
-        "positive": [],
-        "negative": ["corruption"]
-      }
-    },
-    {
       "postTitle": "Apuntes sobre Puerto Rico: Sin pie forzao'",
       "postSlug": "notes-on-puerto-rico-sin-pie-forzao-es",
       "postDate": "2026-02-19T02:45:00.000Z",
@@ -744,6 +740,89 @@
         "words": ["leave"],
         "positive": [],
         "negative": ["leave"]
+      }
+    },
+    {
+      "postTitle": "Notes on Puerto Rico: Sin Pie Forzao'",
+      "postSlug": "notes-on-puerto-rico-sin-pie-forzao",
+      "postDate": "2026-02-19T02:45:00.000Z",
+      "metaLanguageCount": 2,
+      "metaLanguagePatterns": [
+        {
+          "phrase": "i see",
+          "type": "self-reflection",
+          "context": "sentence",
+          "sentence": "Through media, which is what I can consume nowadays from the USA mainland, most I see is criminality and corruption at all levels of the island, religious commentary about politics, the celebrities, a",
+          "confidence": 0.8
+        },
+        {
+          "phrase": "i wonder",
+          "type": "self-reflection",
+          "context": "sentence",
+          "sentence": "I wonder if we import these ideas from the mainland",
+          "confidence": 0.8
+        }
+      ],
+      "selfAwarenessScore": 13,
+      "writingAsSubject": false,
+      "writingAsTool": false,
+      "recursiveThinking": false,
+      "sentiment": {
+        "score": -3,
+        "comparative": -0.06976744186046512,
+        "calculation": [
+          {
+            "corruption": -3
+          }
+        ],
+        "tokens": [
+          "through",
+          "media",
+          "which",
+          "is",
+          "what",
+          "i",
+          "can",
+          "consume",
+          "nowadays",
+          "from",
+          "the",
+          "usa",
+          "mainland",
+          "most",
+          "i",
+          "see",
+          "is",
+          "criminality",
+          "and",
+          "corruption",
+          "at",
+          "all",
+          "levels",
+          "of",
+          "the",
+          "island",
+          "religious",
+          "commentary",
+          "about",
+          "politics",
+          "the",
+          "celebrities",
+          "a",
+          "i",
+          "wonder",
+          "if",
+          "we",
+          "import",
+          "these",
+          "ideas",
+          "from",
+          "the",
+          "mainland"
+        ],
+        "words": ["corruption"],
+        "positive": [],
+        "negative": ["corruption"]
       }
     },
     {

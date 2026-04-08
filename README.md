@@ -106,6 +106,8 @@ Post frontmatter is documented in [docs/frontmatter-spec.md](docs/frontmatter-sp
 
 Translations: same `translationGroup` on each language version; use `featured` so only one version shows in main lists. Details: [docs/multilingual-setup.md](docs/multilingual-setup.md).
 
+Using Cursor AI in this repo: [docs/cursor-agent-skills.md](docs/cursor-agent-skills.md).
+
 ## Documentation in `docs/`
 
 | File                                                                    | Topic                     |
@@ -117,8 +119,13 @@ Translations: same `translationGroup` on each language version; use `featured` s
 | [structured-data-optimization.md](docs/structured-data-optimization.md) | Schema.org                |
 | [performance-optimization.md](docs/performance-optimization.md)         | Performance notes         |
 | [roadmap.md](docs/roadmap.md)                                           | Ideas and backlog         |
+| [cursor-agent-skills.md](docs/cursor-agent-skills.md)                   | Cursor agent skill guide  |
 | [TECHNICAL-AUDIT.md](docs/TECHNICAL-AUDIT.md)                           | Older point-in-time audit |
 | [midjourney-og-image-prompts.md](docs/midjourney-og-image-prompts.md)   | Image prompt notes        |
+
+## Private generated materials
+
+Generated planning/audit reports in `docs/materials/` are intentionally local-only and private. The folder is gitignored (except `docs/materials/.gitkeep`) so these files are not committed or published from this repository.
 
 ## License
 
