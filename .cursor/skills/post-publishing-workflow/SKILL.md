@@ -37,6 +37,11 @@ Ship content updates safely without breaking listings, feeds, or post pages.
 - [ ] Draft/published flags match intent.
 - [ ] Hero image path (if present) resolves to an existing file.
 
+## Repo Style Notes
+- Keep `description` plain, concise, and readable in search previews.
+- Prefer hero image paths under `/images/...` that map to files in `public/images/`.
+- Keep categories/tags aligned with existing repo taxonomy and avoid one-off labels unless intentional.
+
 ## Output Format
 Return:
 1. `Audit findings` (bullets)

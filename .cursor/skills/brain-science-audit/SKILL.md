@@ -27,6 +27,11 @@ Protect analytics feature correctness while containing build-time cost.
    - Consolidate compute-once/read-many flow.
    - Re-run build and compare.
 
+## Regression Rubric
+- Treat as regression if brain-science generation time grows by >15% versus the last known-good run in similar conditions.
+- Treat as regression if build logs show repeated full analysis passes where cached reads should occur.
+- If no prior timing baseline exists, capture one in notes and use it as the next comparison point.
+
 ## Guardrails
 - Avoid moving heavy analysis to client runtime.
 - Keep generated/cache artifacts deterministic and reviewable.

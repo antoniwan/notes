@@ -11,6 +11,7 @@ Ensure changes are merge-ready with the same checks used in project docs and CI.
 ## Gate Commands
 Run in this order:
 
+0. Optional preflight for quick feedback: `pnpm run check`
 1. `pnpm run format:check`
 2. `pnpm run check`
 3. `pnpm run lint`

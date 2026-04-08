@@ -1,39 +1,48 @@
-# Cursor Agent Skills For This Repo
+# Cursor Skills Guide (KISS)
 
-This project now includes custom skills in `.cursor/skills/` so Cursor Agent can apply repeatable workflows automatically.
+Use this guide to run the right Cursor AI skill in the Notes repo.
 
-## Installed Skills
+## What Skills We Have
 
-- `post-publishing-workflow`
-- `multilingual-content-qa`
-- `release-quality-gate`
-- `brain-science-audit`
+- `astro-webmaster-notes` — use for multi-file or architecture-level work.
+- `post-publishing-workflow` — use when editing posts in `src/content/p/`.
+- `multilingual-content-qa` — use for EN/ES translation pairs and toggles.
+- `release-quality-gate` — use before PR or merge.
+- `brain-science-audit` — use when touching brain-science pages/utils.
 
-## Where They Live
+## Where Skills Live
 
+- `.cursor/skills/astro-webmaster-notes/SKILL.md`
 - `.cursor/skills/post-publishing-workflow/SKILL.md`
 - `.cursor/skills/multilingual-content-qa/SKILL.md`
 - `.cursor/skills/release-quality-gate/SKILL.md`
 - `.cursor/skills/brain-science-audit/SKILL.md`
 
-## How To Use
+## How To Use Skills (Simple)
 
-Use natural prompts that include the trigger context. Example prompts:
+- Tell Cursor what changed.
+- Include file paths.
+- Ask for one skill by name.
+- Ask for fixes and verification.
 
-- "I updated a post in `src/content/p/`. Run the post publishing workflow and fix any frontmatter issues."
-- "I added an English and Spanish version of this note. Audit translationGroup and listing behavior."
-- "Run release quality gate for this branch and fix clear failures."
-- "I changed brain-science analysis code. Audit for build-time regressions and cache issues."
+Use prompts like:
 
-## Learning Path (Recommended)
+- "I edited `src/content/p/my-post.md`. Use `post-publishing-workflow` and fix issues."
+- "I added EN and ES versions. Use `multilingual-content-qa` and verify toggles."
+- "Run `release-quality-gate` for this branch and fix clear failures."
+- "I changed `src/pages/brain-science/`. Run `brain-science-audit`."
+- "This touches pages, layouts, and SEO. Use `astro-webmaster-notes`."
 
-1. Start with `post-publishing-workflow` on one edited post.
-2. Run `release-quality-gate` and review how failures are reported/fixed.
-3. Practice `multilingual-content-qa` on one EN/ES pair.
-4. Use `brain-science-audit` only when touching analytics/perf-sensitive areas.
+## Quick Rules
 
-## Notes
+- Be specific. Generic prompts give generic results.
+- Include intent: "fix", "audit", "verify", or "prepare for PR".
+- For bigger changes, start with `astro-webmaster-notes`.
+- For publishing content, always run `post-publishing-workflow`.
+- Before merge, run `release-quality-gate`.
 
-- Skills are guidance, not hardcoded automation. The agent still evaluates context.
-- Best results come from specific prompts with file paths and intent.
-- Keep skill files short and focused; add new skills only for repeated workflows.
+## Honest Notes
+
+- Skills help a lot, but they are not magic.
+- You still need to review the final changes.
+- Keep skill files short and practical.

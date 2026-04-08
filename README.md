@@ -106,6 +106,8 @@ Post frontmatter is documented in [docs/frontmatter-spec.md](docs/frontmatter-sp
 
 Translations: same `translationGroup` on each language version; use `featured` so only one version shows in main lists. Details: [docs/multilingual-setup.md](docs/multilingual-setup.md).
 
+Using Cursor AI in this repo: [docs/cursor-agent-skills.md](docs/cursor-agent-skills.md).
+
 ## Documentation in `docs/`
 
 | File                                                                    | Topic                     |
