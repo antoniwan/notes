@@ -6,14 +6,17 @@ description: Validates and finalizes new or updated posts in this Notes repo, in
 # Post Publishing Workflow
 
 ## Goal
+
 Ship content updates safely without breaking listings, feeds, or post pages.
 
 ## Use This Skill When
+
 - A post in `src/content/p/` is created or edited.
 - Frontmatter was changed.
 - A draft is being promoted to published content.
 
 ## Workflow
+
 1. Identify touched content files under `src/content/p/`.
 2. Validate frontmatter against `docs/frontmatter-spec.md`:
    - Required: `title`, `description`, `pubDate`, `language`
@@ -31,6 +34,7 @@ Ship content updates safely without breaking listings, feeds, or post pages.
    - Final check status
 
 ## Post QA Checklist
+
 - [ ] Description is concise and SEO-friendly.
 - [ ] `language` is valid (`en` or `es` in this repo).
 - [ ] `featured` is intentional (not accidental visibility changes).
@@ -38,12 +42,15 @@ Ship content updates safely without breaking listings, feeds, or post pages.
 - [ ] Hero image path (if present) resolves to an existing file.
 
 ## Repo Style Notes
+
 - Keep `description` plain, concise, and readable in search previews.
 - Prefer hero image paths under `/images/...` that map to files in `public/images/`.
 - Keep categories/tags aligned with existing repo taxonomy and avoid one-off labels unless intentional.
 
 ## Output Format
+
 Return:
+
 1. `Audit findings` (bullets)
 2. `Fixes applied` (bullets)
 3. `Validation results` (exact command pass/fail status)

@@ -6,9 +6,11 @@ description: Audits brain-science pages and analytics pipeline behavior, with fo
 # Brain Science Audit
 
 ## Goal
+
 Protect analytics feature correctness while containing build-time cost.
 
 ## Relevant Areas
+
 - `src/pages/brain-science/`
 - `src/utils/brainScience/`
 - `src/data/.brain-science-cache/`
@@ -16,6 +18,7 @@ Protect analytics feature correctness while containing build-time cost.
 - `docs/TECHNICAL-AUDIT.md`
 
 ## Workflow
+
 1. Identify what changed in brain-science pages/utils.
 2. Verify cache-aware behavior remains intact (no unnecessary full recomputation paths).
 3. Run focused validation:
@@ -28,17 +31,21 @@ Protect analytics feature correctness while containing build-time cost.
    - Re-run build and compare.
 
 ## Regression Rubric
+
 - Treat as regression if brain-science generation time grows by >15% versus the last known-good run in similar conditions.
 - Treat as regression if build logs show repeated full analysis passes where cached reads should occur.
 - If no prior timing baseline exists, capture one in notes and use it as the next comparison point.
 
 ## Guardrails
+
 - Avoid moving heavy analysis to client runtime.
 - Keep generated/cache artifacts deterministic and reviewable.
 - Favor small, traceable changes to analysis logic.
 
 ## Output Format
+
 Return:
+
 1. `Audit scope`
 2. `Performance/correctness findings`
 3. `Fixes applied`

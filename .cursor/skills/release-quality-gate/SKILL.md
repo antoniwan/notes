@@ -6,9 +6,11 @@ description: Runs the Notes project pre-merge quality gate and resolves clear fa
 # Release Quality Gate
 
 ## Goal
+
 Ensure changes are merge-ready with the same checks used in project docs and CI.
 
 ## Gate Commands
+
 Run in this order:
 
 0. Optional preflight for quick feedback: `pnpm run check`
@@ -18,6 +20,7 @@ Run in this order:
 4. `pnpm run build`
 
 ## Workflow
+
 1. Run the gate commands in sequence.
 2. If a command fails:
    - Read the error.
@@ -27,12 +30,15 @@ Run in this order:
 4. Summarize unresolved blockers separately from fixed issues.
 
 ## Fix Strategy
+
 - Prefer source fixes over disabling rules.
 - Keep changes scoped; avoid unrelated refactors.
 - Preserve existing project style and naming.
 
 ## Output Format
+
 Return:
+
 1. `Gate status` with pass/fail per command
 2. `Fixes applied`
 3. `Remaining blockers` (if any)
