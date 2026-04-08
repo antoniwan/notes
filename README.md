@@ -123,6 +123,10 @@ Using Cursor AI in this repo: [docs/cursor-agent-skills.md](docs/cursor-agent-sk
 | [TECHNICAL-AUDIT.md](docs/TECHNICAL-AUDIT.md)                           | Older point-in-time audit |
 | [midjourney-og-image-prompts.md](docs/midjourney-og-image-prompts.md)   | Image prompt notes        |
 
+## Private generated materials
+
+Generated planning/audit reports in `docs/materials/` are intentionally local-only and private. The folder is gitignored (except `docs/materials/.gitkeep`) so these files are not committed or published from this repository.
+
 ## License
 
 - **Content**: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) — [CONTENT_LICENSE.md](CONTENT_LICENSE.md)
