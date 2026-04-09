@@ -88,10 +88,10 @@ As a reader on desktop, tablet, or mobile, I experience consistent sidebar infor
 - **FR-004**: The sidebar MUST preserve existing read-time/read-state behavior and visual status feedback.
 - **FR-005**: The sidebar MUST preserve existing social sharing capability and place it in a lower Actions section after taxonomy/metadata so it does not compete with primary reading context.
 - **FR-006**: The desktop sidebar MUST remain sticky and legible without obscuring main content or causing layout collision.
-- **FR-007**: The mobile metadata block MUST use the same grouping model as desktop (adapted for vertical flow), preserving feature parity.
-- **FR-007a**: On mobile, metadata sections MUST be collapsed by default, include clear section headers, and support tap-to-expand access to details.
+- **FR-007**: The mobile metadata block MUST preserve the same section semantics and ordering as desktop (adapted for vertical flow) so feature parity remains intact.
+- **FR-007a**: On mobile, metadata sections MUST default to collapsed state and provide clear headers with tap-to-expand interaction for progressive disclosure.
 - **FR-008**: The sidebar redesign MUST maintain current publication metadata support (published date, optional updated date, reading time, tags, author where shown).
-- **FR-009**: The redesign MUST avoid introducing additional reader steps to access currently available sidebar actions.
+- **FR-009**: The redesign MUST avoid introducing additional reader steps for core existing actions (reading signals, sharing, and taxonomy access), except intentional progressive disclosure for category overflow and mobile section expansion.
 - **FR-010**: The redesign MUST improve visual legibility through clearer spacing, heading hierarchy, and scannable grouping.
 - **FR-011**: The redesign MUST retain compatibility with existing post content and metadata structure, including posts with multiple categories.
 - **FR-012**: Breadcrumb category treatment MUST remain consistent with the multi-category model by using the first category in frontmatter order as the primary category and preserving access to remaining categories elsewhere in the sidebar.

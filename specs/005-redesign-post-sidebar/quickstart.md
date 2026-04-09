@@ -38,6 +38,20 @@
 - Confirm no loss of existing features (share/read signal/metadata/tags).
 - Verify visual legibility and no overlap/clipping at mobile/tablet/desktop.
 
+### Measurement protocol for SC-001 and SC-004
+
+- **SC-001 protocol**:
+  - Sample size: minimum 10 readers (or all available if fewer than 10).
+  - Task: each reader identifies topic classification and freshness from the sidebar immediately after landing.
+  - Timing: measure from first visual render of sidebar to reader response.
+  - Pass rule: at least 90% of participants answer correctly within 8 seconds.
+- **SC-004 protocol**:
+  - Sample size: same participant set as SC-001 where possible.
+  - Method: side-by-side or sequential blinded comparison of previous vs redesigned sidebar.
+  - Prompt: ask whether redesigned sidebar is more legible and polished.
+  - Pass rule: at least 80% select redesigned sidebar as improved.
+- Record date, sample count, and aggregate outcome in this file during Phase 6 (`T022`).
+
 ## 5) Run quality gates
 
 ```bash

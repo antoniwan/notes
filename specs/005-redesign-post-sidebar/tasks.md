@@ -32,7 +32,7 @@
 - [ ] T004 Define shared sidebar section structure and ordering constants in `src/layouts/BlogLayout.astro` for context, reading signals, taxonomy, actions, and secondary metadata blocks
 - [ ] T005 [P] Implement reusable multi-category mapping helper (including first-category primary rule) in `src/utils/categoryUtils.ts`
 - [ ] T006 [P] Refactor post route category props to support full category list display without losing existing behavior in `src/pages/p/[...slug].astro`
-- [ ] T007 Add shared taxonomy overflow behavior contract comments/notes in `src/layouts/BlogLayout.astro` and align wording with `specs/005-redesign-post-sidebar/contracts/sidebar-behavior-contract.md`
+- [ ] T007 Establish reusable taxonomy overflow state scaffold (collapsed/expanded state model and toggle hooks) in `src/layouts/BlogLayout.astro` aligned with `specs/005-redesign-post-sidebar/contracts/sidebar-behavior-contract.md`
 
 **Checkpoint**: Foundation ready; user story work can begin.
 
@@ -49,7 +49,7 @@
 - [ ] T008 [US1] Reorder desktop sidebar blocks in `src/layouts/BlogLayout.astro` to match required hierarchy (context -> reading signals -> taxonomy -> actions -> secondary metadata)
 - [ ] T009 [US1] Render all assigned categories as linked items in the taxonomy block in `src/layouts/BlogLayout.astro`
 - [ ] T010 [US1] Apply breadcrumb primary-category rule (first category) consistently in `src/layouts/BlogLayout.astro`
-- [ ] T011 [US1] Implement category overflow behavior (first 3 + Show all) in `src/layouts/BlogLayout.astro`
+- [ ] T011 [US1] Apply UX behavior for category overflow (show first 3, render Show all control, reveal full linked set on expand) in `src/layouts/BlogLayout.astro`
 - [ ] T012 [US1] Tune spacing/heading emphasis for context and taxonomy scanability in `src/layouts/BlogLayout.astro`
 
 **Checkpoint**: US1 is independently functional and testable.
@@ -95,7 +95,7 @@
 **Purpose**: Final consistency sweep, contract validation, and release-readiness checks.
 
 - [ ] T021 [P] Run contract checklist validation and record completion evidence in `specs/005-redesign-post-sidebar/contracts/sidebar-behavior-contract.md`
-- [ ] T022 [P] Update implementation notes and verification outcomes in `specs/005-redesign-post-sidebar/quickstart.md`
+- [ ] T022 [P] Record measurable SC evidence (SC-001 and SC-004 sample size, method, and pass/fail results) in `specs/005-redesign-post-sidebar/quickstart.md`
 - [ ] T023 [P] Run formatting gate: `pnpm run format:check`
 - [ ] T024 [P] Run Astro/type validation gate: `pnpm run check`
 - [ ] T025 Run production build gate: `pnpm run build`
