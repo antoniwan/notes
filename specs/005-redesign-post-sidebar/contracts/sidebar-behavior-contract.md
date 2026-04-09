@@ -48,3 +48,27 @@ Define observable behavior and acceptance obligations for the redesigned post si
 
 - All contract obligations above are satisfied on representative post pages.
 - Quality gates pass: `pnpm run format:check`, `pnpm run check`, `pnpm run build`.
+
+## Completion Evidence (2026-04-09)
+
+- Sidebar hierarchy implemented in `src/layouts/BlogLayout.astro` in required order:
+  - post context,
+  - reading signals,
+  - taxonomy,
+  - actions,
+  - secondary metadata.
+- Taxonomy behavior implemented:
+  - full category accessibility,
+  - first-category primary breadcrumb rule,
+  - overflow disclosure (`Show all`) with expanded state.
+- Mobile disclosure behavior implemented:
+  - metadata sections collapsed by default,
+  - visible section headers with tap-to-expand interaction.
+- Feature preservation verified:
+  - read-state and read-time signal behavior retained,
+  - sharing remains available in Actions grouping,
+  - metadata and tag rendering retained.
+- Quality gates passed:
+  - `pnpm run format:check`
+  - `pnpm run check`
+  - `pnpm run build`

@@ -17,9 +17,9 @@
 
 **Purpose**: Prepare implementation guardrails and baseline references for sidebar behavior.
 
-- [ ] T001 Audit current post sidebar and mobile metadata surfaces in `src/layouts/BlogLayout.astro` and `src/pages/p/[...slug].astro`, then record baseline notes in `specs/005-redesign-post-sidebar/quickstart.md`
-- [ ] T002 [P] Confirm category display helper behavior and primary-category assumptions in `src/utils/categoryUtils.ts`; record any helper changes needed in `specs/005-redesign-post-sidebar/research.md`
-- [ ] T003 [P] Confirm contract coverage checklist in `specs/005-redesign-post-sidebar/contracts/sidebar-behavior-contract.md` for hierarchy order, taxonomy overflow, and mobile disclosure
+- [x] T001 Audit current post sidebar and mobile metadata surfaces in `src/layouts/BlogLayout.astro` and `src/pages/p/[...slug].astro`, then record baseline notes in `specs/005-redesign-post-sidebar/quickstart.md`
+- [x] T002 [P] Confirm category display helper behavior and primary-category assumptions in `src/utils/categoryUtils.ts`; record any helper changes needed in `specs/005-redesign-post-sidebar/research.md`
+- [x] T003 [P] Confirm contract coverage checklist in `specs/005-redesign-post-sidebar/contracts/sidebar-behavior-contract.md` for hierarchy order, taxonomy overflow, and mobile disclosure
 
 ---
 
@@ -29,10 +29,10 @@
 
 **⚠️ CRITICAL**: No user story implementation begins until this phase is complete.
 
-- [ ] T004 Define shared sidebar section structure and ordering constants in `src/layouts/BlogLayout.astro` for context, reading signals, taxonomy, actions, and secondary metadata blocks
-- [ ] T005 [P] Implement reusable multi-category mapping helper (including first-category primary rule) in `src/utils/categoryUtils.ts`
-- [ ] T006 [P] Refactor post route category props to support full category list display without losing existing behavior in `src/pages/p/[...slug].astro`
-- [ ] T007 Establish reusable taxonomy overflow state scaffold (collapsed/expanded state model and toggle hooks) in `src/layouts/BlogLayout.astro` aligned with `specs/005-redesign-post-sidebar/contracts/sidebar-behavior-contract.md`
+- [x] T004 Define shared sidebar section structure and ordering constants in `src/layouts/BlogLayout.astro` for context, reading signals, taxonomy, actions, and secondary metadata blocks
+- [x] T005 [P] Implement reusable multi-category mapping helper (including first-category primary rule) in `src/utils/categoryUtils.ts`
+- [x] T006 [P] Refactor post route category props to support full category list display without losing existing behavior in `src/pages/p/[...slug].astro`
+- [x] T007 Establish reusable taxonomy overflow state scaffold (collapsed/expanded state model and toggle hooks) in `src/layouts/BlogLayout.astro` aligned with `specs/005-redesign-post-sidebar/contracts/sidebar-behavior-contract.md`
 
 **Checkpoint**: Foundation ready; user story work can begin.
 
@@ -46,11 +46,11 @@
 
 ### Implementation for User Story 1
 
-- [ ] T008 [US1] Reorder desktop sidebar blocks in `src/layouts/BlogLayout.astro` to match required hierarchy (context -> reading signals -> taxonomy -> actions -> secondary metadata)
-- [ ] T009 [US1] Render all assigned categories as linked items in the taxonomy block in `src/layouts/BlogLayout.astro`
-- [ ] T010 [US1] Apply breadcrumb primary-category rule (first category) consistently in `src/layouts/BlogLayout.astro`
-- [ ] T011 [US1] Apply UX behavior for category overflow (show first 3, render Show all control, reveal full linked set on expand) in `src/layouts/BlogLayout.astro`
-- [ ] T012 [US1] Tune spacing/heading emphasis for context and taxonomy scanability in `src/layouts/BlogLayout.astro`
+- [x] T008 [US1] Reorder desktop sidebar blocks in `src/layouts/BlogLayout.astro` to match required hierarchy (context -> reading signals -> taxonomy -> actions -> secondary metadata)
+- [x] T009 [US1] Render all assigned categories as linked items in the taxonomy block in `src/layouts/BlogLayout.astro`
+- [x] T010 [US1] Apply breadcrumb primary-category rule (first category) consistently in `src/layouts/BlogLayout.astro`
+- [x] T011 [US1] Apply UX behavior for category overflow (show first 3, render Show all control, reveal full linked set on expand) in `src/layouts/BlogLayout.astro`
+- [x] T012 [US1] Tune spacing/heading emphasis for context and taxonomy scanability in `src/layouts/BlogLayout.astro`
 
 **Checkpoint**: US1 is independently functional and testable.
 
@@ -64,10 +64,10 @@
 
 ### Implementation for User Story 2
 
-- [ ] T013 [US2] Keep reading-time/read-state behavior intact while relocating it into the dedicated reading-signals block in `src/layouts/BlogLayout.astro`
-- [ ] T014 [US2] Move social sharing controls to the lower Actions block after taxonomy/metadata in `src/layouts/BlogLayout.astro`
-- [ ] T015 [US2] Preserve tags and secondary metadata rendering while aligning to new section grouping in `src/layouts/BlogLayout.astro`
-- [ ] T016 [US2] Verify no behavior regressions for existing read-state updates and share interactions in `src/layouts/BlogLayout.astro` and `src/components/SocialShare.astro`
+- [x] T013 [US2] Keep reading-time/read-state behavior intact while relocating it into the dedicated reading-signals block in `src/layouts/BlogLayout.astro`
+- [x] T014 [US2] Move social sharing controls to the lower Actions block after taxonomy/metadata in `src/layouts/BlogLayout.astro`
+- [x] T015 [US2] Preserve tags and secondary metadata rendering while aligning to new section grouping in `src/layouts/BlogLayout.astro`
+- [x] T016 [US2] Verify no behavior regressions for existing read-state updates and share interactions in `src/layouts/BlogLayout.astro` and `src/components/SocialShare.astro`
 
 **Checkpoint**: US1 and US2 remain independently functional.
 
@@ -81,10 +81,10 @@
 
 ### Implementation for User Story 3
 
-- [ ] T017 [US3] Implement mobile metadata collapsed-by-default behavior with clear tap-to-expand section headers in `src/layouts/BlogLayout.astro`
-- [ ] T018 [US3] Align mobile section semantics and ordering with desktop hierarchy in `src/layouts/BlogLayout.astro`
-- [ ] T019 [US3] Refine responsive spacing and line-wrapping for long category/tag labels in `src/layouts/BlogLayout.astro`
-- [ ] T020 [US3] Validate language-toggle discoverability and sidebar/mobile metadata coexistence in `src/layouts/BlogLayout.astro`
+- [x] T017 [US3] Implement mobile metadata collapsed-by-default behavior with clear tap-to-expand section headers in `src/layouts/BlogLayout.astro`
+- [x] T018 [US3] Align mobile section semantics and ordering with desktop hierarchy in `src/layouts/BlogLayout.astro`
+- [x] T019 [US3] Refine responsive spacing and line-wrapping for long category/tag labels in `src/layouts/BlogLayout.astro`
+- [x] T020 [US3] Validate language-toggle discoverability and sidebar/mobile metadata coexistence in `src/layouts/BlogLayout.astro`
 
 **Checkpoint**: All user stories are independently functional.
 
@@ -94,11 +94,11 @@
 
 **Purpose**: Final consistency sweep, contract validation, and release-readiness checks.
 
-- [ ] T021 [P] Run contract checklist validation and record completion evidence in `specs/005-redesign-post-sidebar/contracts/sidebar-behavior-contract.md`
-- [ ] T022 [P] Record measurable SC evidence (SC-001 and SC-004 sample size, method, and pass/fail results) in `specs/005-redesign-post-sidebar/quickstart.md`
-- [ ] T023 [P] Run formatting gate: `pnpm run format:check`
-- [ ] T024 [P] Run Astro/type validation gate: `pnpm run check`
-- [ ] T025 Run production build gate: `pnpm run build`
+- [x] T021 [P] Run contract checklist validation and record completion evidence in `specs/005-redesign-post-sidebar/contracts/sidebar-behavior-contract.md`
+- [x] T022 [P] Record measurable SC evidence (SC-001 and SC-004 sample size, method, and pass/fail results) in `specs/005-redesign-post-sidebar/quickstart.md`
+- [x] T023 [P] Run formatting gate: `pnpm run format:check`
+- [x] T024 [P] Run Astro/type validation gate: `pnpm run check`
+- [x] T025 Run production build gate: `pnpm run build`
 
 ---
 

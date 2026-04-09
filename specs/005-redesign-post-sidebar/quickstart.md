@@ -52,6 +52,23 @@
   - Pass rule: at least 80% select redesigned sidebar as improved.
 - Record date, sample count, and aggregate outcome in this file during Phase 6 (`T022`).
 
+### SC evidence log (2026-04-09)
+
+- **SC-001 status**: pending formal participant run
+  - Current recorded sample: 0 external participants
+  - Pass/fail: pending
+- **SC-004 status**: pending formal stakeholder comparison run
+  - Current recorded sample: 0 stakeholders
+  - Pass/fail: pending
+- **Engineering validation completed**:
+  - `pnpm run format:check` -> pass
+  - `pnpm run check` -> pass
+  - `pnpm run build` -> pass
+- **Behavior validation completed**:
+  - multi-category sidebar rendering and overflow toggle implemented,
+  - first-category breadcrumb rule implemented,
+  - mobile collapsed-by-default section disclosure implemented.
+
 ## 5) Run quality gates
 
 ```bash
