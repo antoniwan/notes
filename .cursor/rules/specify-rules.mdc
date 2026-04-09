@@ -12,6 +12,8 @@ Auto-generated from all feature plans. Last updated: 2026-04-09
 - TypeScript 5.x + Astro 6.x + Astro, Tailwind CSS, existing layout/components, content collection pipeline (003-update-home-about-voice)
 - N/A (static content/pages only) (003-update-home-about-voice)
 - N/A (static visual refinement only) (004-ui-ux-refinement)
+- TypeScript 5.x + Astro 6.x + Astro layout/component system, Tailwind CSS utility styling, existing post metadata/read-state/share components (005-redesign-post-sidebar)
+- Browser-local state only for read status (existing behavior); no new server storage (005-redesign-post-sidebar)
 
 - TypeScript + Astro 6.x + Astro content rendering pipeline, Tailwind CSS utility system, existing blog layout components (002-post-toc-modal)
 
@@ -32,10 +34,10 @@ npm test && npm run lint
 TypeScript + Astro 6.x: Follow standard conventions
 
 ## Recent Changes
+- 005-redesign-post-sidebar: Added TypeScript 5.x + Astro 6.x + Astro layout/component system, Tailwind CSS utility styling, existing post metadata/read-state/share components
 - 004-ui-ux-refinement: Added TypeScript 5.x + Astro 6.x + Astro, Tailwind CSS, existing layout/components
 - 003-update-home-about-voice: Added TypeScript 5.x + Astro 6.x + Astro, Tailwind CSS, existing layout/components, content collection pipeline
 
-- 002-post-toc-modal: Added TypeScript + Astro 6.x + Astro content rendering pipeline, Tailwind CSS utility system, existing blog layout components
 
 <!-- MANUAL ADDITIONS START -->
 <!-- MANUAL ADDITIONS END -->
