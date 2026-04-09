@@ -66,7 +66,7 @@ const postSlug = postId; // Alias for backward compatibility in template
   {...rest}
 >
   <Container>
-    <div class="py-6 md:py-8 lg:py-12">
+    <div class="py-8 md:py-10 lg:py-12">
       {/* Breadcrumbs - Hidden on mobile, visible on desktop */}
       <div class="mb-6 hidden md:block">
         <Breadcrumbs
@@ -82,7 +82,7 @@ const postSlug = postId; // Alias for backward compatibility in template
       </div>
 
       {/* Hero Section - Full width on mobile, moves to sidebar on desktop */}
-      <div class="mb-8 md:mb-12 lg:hidden">
+      <div class="mb-10 md:mb-12 lg:hidden">
         <PageHeader
           title={title}
           description={description}
@@ -92,24 +92,21 @@ const postSlug = postId; // Alias for backward compatibility in template
       </div>
 
       {/* Main Layout: Mobile-first, then 75/25 on desktop */}
-      <div class="lg:grid lg:grid-cols-4 lg:gap-8 xl:gap-12">
+      <div class="lg:grid lg:grid-cols-4 lg:gap-10 xl:gap-12">
         {/* Sidebar - Hidden on mobile, visible on desktop */}
         <aside class="hidden lg:col-span-1 lg:block">
-          <div class="sticky top-8 space-y-8 pt-12">
+          <div class="sticky top-8 space-y-8 pt-10">
             {/* Post Title & Description - Only shown in sidebar on desktop */}
             <div class="space-y-2">
               <h1
-                class="mb-6 text-2xl font-bold text-[rgb(var(--color-text))]"
+                class="mb-4 text-2xl font-bold leading-tight text-[rgb(var(--color-text))]"
                 transition:name="page-title"
-                style="line-height: 1.3; margin-bottom: 1.5rem;"
               >
                 {title}
               </h1>
               {
                 description && (
-                  <p class="text-body-muted text-base" style="line-height: 1.6; margin: 0;">
-                    {description}
-                  </p>
+                  <p class="text-body-muted m-0 text-base leading-relaxed">{description}</p>
                 )
               }
             </div>
@@ -123,7 +120,7 @@ const postSlug = postId; // Alias for backward compatibility in template
             />
 
             {/* Post Metadata */}
-            <div class="space-y-6" style="line-height: 1.6;">
+            <div class="space-y-6 leading-relaxed">
               {/* Publication Date (with optional Updated on line) */}
               {
                 pubDate && (
@@ -258,7 +255,7 @@ const postSlug = postId; // Alias for backward compatibility in template
 
           {/* Content */}
           <div
-            class="prose prose-lg max-w-none prose-headings:scroll-mt-20"
+            class="post-prose prose prose-lg prose-headings:scroll-mt-24 prose-p:leading-relaxed prose-p:text-[rgb(var(--color-text))]"
             transition:name="page-content"
             data-post-slug={postSlug}
           >
@@ -420,6 +417,7 @@ const postSlug = postId; // Alias for backward compatibility in template
       readingTimeSections.forEach((section) => {
         const timeValueElement = section.querySelector('.reading-time-value');
         const iconElement = section.querySelector('.reading-time-icon');
+        const headingElement = section.querySelector('h3');
 
         if (timeValueElement) {
           timeValueElement.textContent = relativeTime;
@@ -435,6 +433,11 @@ const postSlug = postId; // Alias for backward compatibility in template
           );
           iconElement.classList.add('text-[rgb(34,197,94)]');
         }
+
+        // Hide the "Reading Time" heading when already read for cleaner flow
+        if (headingElement) {
+          headingElement.classList.add('sr-only');
+        }
       });
     } else {
       // Restore original reading time for unread posts
@@ -442,6 +445,7 @@ const postSlug = postId; // Alias for backward compatibility in template
         const originalReadingTime = section.getAttribute('data-original-reading-time');
         const timeValueElement = section.querySelector('.reading-time-value');
         const iconElement = section.querySelector('.reading-time-icon');
+        const headingElement = section.querySelector('h3');
 
         if (timeValueElement && originalReadingTime) {
           timeValueElement.textContent = originalReadingTime;
@@ -459,6 +463,11 @@ const postSlug = postId; // Alias for backward compatibility in template
           } else {
             iconElement.classList.add('text-[rgb(var(--color-accent))]');
           }
+        }
+
+        // Restore heading for unread posts
+        if (headingElement) {
+          headingElement.classList.remove('sr-only');
         }
       });
     }

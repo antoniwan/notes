@@ -19,11 +19,13 @@ const hasRelatedPosts = relatedPosts.length > 0;
 
 {
   hasRelatedPosts && (
-    <section class="related-posts mt-12 pt-8">
-      <div class="space-y-6">
+    <section class="related-posts mt-14 pt-8">
+      <div class="space-y-7">
         {/* Header */}
         <div class="mb-6">
-          <h2 class="mb-3 text-2xl font-bold text-[rgb(var(--color-text))]">💡 Continue Reading</h2>
+          <h2 class="mb-2 text-2xl font-bold leading-tight text-[rgb(var(--color-text))]">
+            💡 Continue Reading
+          </h2>
           <p class="text-body-muted text-base leading-relaxed">The rest is yours to explore.</p>
         </div>
 
@@ -95,7 +97,6 @@ const hasRelatedPosts = relatedPosts.length > 0;
 
   .post-link:hover {
     background-color: rgb(var(--color-bg-alt));
-    transform: translateX(0.25rem);
   }
 
   .post-number {

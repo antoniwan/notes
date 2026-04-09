@@ -93,10 +93,12 @@
   /* Base styles */
   html {
     @apply font-sans antialiased;
+    text-size-adjust: 100%;
   }
 
   body {
     @apply m-0 flex min-h-screen flex-col bg-[rgb(var(--color-bg))] text-[rgb(var(--color-text))];
+    line-height: var(--leading-normal);
   }
 
   /* Typography */
@@ -111,31 +113,31 @@
   }
 
   h1 {
-    @apply text-4xl font-black tracking-tight md:text-5xl;
-    line-height: 1.2;
-    margin-top: 2.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  h2 {
-    @apply text-3xl font-bold tracking-tight md:text-4xl;
-    line-height: 1.3;
+    @apply text-3xl font-black tracking-tight md:text-4xl lg:text-5xl;
+    line-height: 1.15;
     margin-top: 2rem;
     margin-bottom: 1.25rem;
   }
 
-  h3 {
-    @apply text-2xl font-semibold tracking-tight md:text-3xl;
-    line-height: 1.4;
-    margin-top: 1.75rem;
+  h2 {
+    @apply text-2xl font-bold tracking-tight md:text-3xl;
+    line-height: 1.22;
+    margin-top: 2.25rem;
     margin-bottom: 1rem;
   }
 
-  h4 {
+  h3 {
     @apply text-xl font-semibold tracking-tight md:text-2xl;
-    line-height: 1.5;
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
+    line-height: 1.3;
+    margin-top: 1.8rem;
+    margin-bottom: 0.85rem;
+  }
+
+  h4 {
+    @apply text-lg font-semibold tracking-tight md:text-xl;
+    line-height: 1.35;
+    margin-top: 1.4rem;
+    margin-bottom: 0.65rem;
   }
 
   h5 {
@@ -155,11 +157,10 @@
   /* Global paragraph styles - optimized for readability */
   p {
     @apply text-[rgb(var(--color-text))];
-    line-height: 1.8;
-    margin-top: 1.75rem;
-    margin-bottom: 1.75rem;
-    font-size: 1.125rem;
-    /* 18px for better readability */
+    line-height: 1.72;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.1rem);
   }
 
   blockquote p {
@@ -301,11 +302,11 @@
   /* Lists */
   ul,
   ol {
-    @apply my-6 pl-6;
+    @apply my-5 pl-6;
   }
 
   li {
-    @apply mb-2;
+    @apply mb-2 leading-relaxed;
   }
 
   /* Horizontal rule */
@@ -643,6 +644,16 @@
 .prose * {
   max-width: 100% !important;
   box-sizing: border-box !important;
+}
+
+.post-prose {
+  max-width: 72ch !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.prose :where(h2, h3, h4) {
+  scroll-margin-top: 6rem;
 }
 
 /* Poem block – preserve line breaks, readable line height */
