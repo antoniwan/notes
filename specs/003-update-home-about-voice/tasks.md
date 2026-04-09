@@ -17,9 +17,9 @@
 
 **Purpose**: Prepare implementation guardrails and references before editing page content.
 
-- [ ] T001 Create implementation notes and acceptance checklist in `specs/003-update-home-about-voice/quickstart.md`
-- [ ] T002 [P] Capture baseline homepage/about copy snapshots in `specs/003-update-home-about-voice/research.md`
-- [ ] T003 [P] Confirm masonry guardrail scope and non-edit rule for `src/components/HighlightsMasonry.astro` in `specs/003-update-home-about-voice/contracts/content-voice-contract.md`
+- [ ] T001 Create a pre-change checkpoint commit and record target edit areas in `src/pages/index.astro` and `src/pages/about.astro`
+- [ ] T002 [P] Identify and mark homepage narrative sections to update in `src/pages/index.astro`
+- [ ] T003 [P] Identify and mark About primary narrative sections to update in `src/pages/about.astro`
 
 ---
 
@@ -30,8 +30,8 @@
 **CRITICAL**: No user story work should begin until this phase is complete.
 
 - [ ] T004 Define canonical season-of-execution message anchors in `specs/003-update-home-about-voice/data-model.md`
-- [ ] T005 Define cross-page voice consistency checklist in `specs/003-update-home-about-voice/contracts/content-voice-contract.md`
-- [ ] T006 Define editorial review flow (`Draft` -> `Rewritten` -> `Editorially Reviewed`) in `specs/003-update-home-about-voice/data-model.md`
+- [ ] T005 Establish masonry guardrail verification checklist for homepage edits in `src/pages/index.astro`
+- [ ] T006 Define cross-page acceptance checklist and completion rubric in `specs/003-update-home-about-voice/quickstart.md`
 
 **Checkpoint**: Shared narrative criteria and constraints are ready; user stories can proceed.
 
@@ -96,6 +96,7 @@
 - [ ] T020 [P] Run Astro/type validation in `package.json` via `pnpm run check`
 - [ ] T021 Run production build validation in `package.json` via `pnpm run build`
 - [ ] T022 Perform final contract and quickstart verification pass in `specs/003-update-home-about-voice/quickstart.md`
+- [ ] T023 [P] Update user-visible messaging notes in `README.md` or relevant `docs/` page to reflect homepage/About narrative refresh
 
 ---
 
@@ -121,6 +122,7 @@
 - `T002` and `T003` can run in parallel during Setup.
 - `T015` can be prepared in parallel with late US2 refinements.
 - `T019` and `T020` can run in parallel during final validation.
+- `T023` can run in parallel with final validation after content is finalized.
 
 ---
 

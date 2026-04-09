@@ -81,22 +81,12 @@ As a long-time reader, I want rewritten homepage and About content to still soun
 
 ### Edge Cases
 
-<!--
-  ACTION REQUIRED: The content in this section represents placeholders.
-  Fill them out with the right edge cases.
--->
-
 - What happens when homepage and About copy are updated at different times and become temporarily inconsistent?
 - How is the narrative handled if the message is too long for key page sections and risks reducing readability?
 - What happens when references to specific life details become outdated and require future revision?
 - How is clarity preserved for first-time readers who have not read the longer leadership essays?
 
 ## Requirements _(mandatory)_
-
-<!--
-  ACTION REQUIRED: The content in this section represents placeholders.
-  Fill them out with the right functional requirements.
--->
 
 ### Functional Requirements
 
@@ -117,11 +107,6 @@ As a long-time reader, I want rewritten homepage and About content to still soun
 
 ## Success Criteria _(mandatory)_
 
-<!--
-  ACTION REQUIRED: Define measurable success criteria.
-  These must be technology-agnostic and measurable.
--->
-
 ### Measurable Outcomes
 
 - **SC-001**: 100% of the targeted page sections on homepage and About page are updated to the new season-of-execution message before release.
@@ -130,12 +115,6 @@ As a long-time reader, I want rewritten homepage and About content to still soun
 - **SC-004**: At least 90% of sampled readers report that the About page and homepage feel like they were written in the same voice.
 
 ## Assumptions
-
-<!--
-  ACTION REQUIRED: The content in this section represents placeholders.
-  Fill them out with the right assumptions based on reasonable defaults
-  chosen when the feature description did not specify certain details.
--->
 
 - The masonry homepage layout remains in place; this feature updates messaging content and alignment, not the overall site structure.
 - Homepage visual polish and section-level layout adjustments are in scope as long as masonry behavior and core masonry presentation remain intact.
