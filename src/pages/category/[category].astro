@@ -45,11 +45,22 @@ const secondaryCategoryPosts = categoryPosts
 >
   <Container>
     <Container maxWidth="container" padding="none">
-      {/* Category Header */}
-      <PageHeader
-        title={`${category.icon} ${category.name}`}
-        description={`Browse all writings in the ${category.name} category`}
-      />
+      {/* Category header + browse-all CTA */}
+      <div class="mb-8 md:mb-10">
+        <PageHeader
+          title={`${category.icon} ${category.name}`}
+          description={`Browse all writings in the ${category.name} category`}
+        />
+        <div class="mt-4 md:mt-6">
+          <a
+            href="/category/"
+            class="theme-transition inline-flex items-center gap-2 rounded-full border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg-alt))] px-4 py-2 text-sm font-medium text-[rgb(var(--color-text))] hover:border-[rgb(var(--color-primary))]/40 hover:bg-[rgb(var(--color-primary))]/10 hover:text-[rgb(var(--color-primary))] focus:outline-none focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:ring-offset-1"
+          >
+            <span aria-hidden="true">📂</span>
+            See all categories
+          </a>
+        </div>
+      </div>
 
       {/* Primary Category Posts Section */}
       {

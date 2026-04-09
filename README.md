@@ -1,6 +1,6 @@
 # Notes
 
-[![Version](https://img.shields.io/badge/version-5.18.0-blue.svg)](https://github.com/antoniwan/notes/releases)
+[![Version](https://img.shields.io/badge/version-5.19.0-blue.svg)](https://github.com/antoniwan/notes/releases)
 
 Personal writing site: essays and notes on fatherhood, masculinity, culture, and day-to-day life. Some posts are in English, some in Spanish, with links between translations where it applies.
 
