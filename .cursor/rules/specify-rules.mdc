@@ -6,9 +6,11 @@ alwaysApply: true
 
 # notes Development Guidelines
 
-Auto-generated from all feature plans. Last updated: 2026-04-08
+Auto-generated from all feature plans. Last updated: 2026-04-09
 
 ## Active Technologies
+- TypeScript 5.x + Astro 6.x + Astro, Tailwind CSS, existing layout/components, content collection pipeline (003-update-home-about-voice)
+- N/A (static content/pages only) (003-update-home-about-voice)
 
 - TypeScript + Astro 6.x + Astro content rendering pipeline, Tailwind CSS utility system, existing blog layout components (002-post-toc-modal)
 
@@ -29,6 +31,7 @@ npm test && npm run lint
 TypeScript + Astro 6.x: Follow standard conventions
 
 ## Recent Changes
+- 003-update-home-about-voice: Added TypeScript 5.x + Astro 6.x + Astro, Tailwind CSS, existing layout/components, content collection pipeline
 
 - 002-post-toc-modal: Added TypeScript + Astro 6.x + Astro content rendering pipeline, Tailwind CSS utility system, existing blog layout components
 
