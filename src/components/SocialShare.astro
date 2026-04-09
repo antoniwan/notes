@@ -60,11 +60,10 @@ const platforms = generateShareUrls(title, currentUrl, description);
   )
 }
 
-{/* Compact Share Button (Tablet) */}
+{/* Compact share toggle + menu (tablet main column, or mobile post metadata panel — parent layout controls breakpoint visibility) */}
 {
   variant === 'horizontal' && (
-    <div class="my-8 hidden md:block lg:hidden">
-      <div class="relative">
+    <div class="relative">
         <button
           id="horizontal-share-toggle"
           class="theme-transition flex items-center gap-2 rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] px-4 py-2 hover:bg-[rgb(var(--color-bg-alt))]/80"
@@ -107,7 +106,6 @@ const platforms = generateShareUrls(title, currentUrl, description);
             ))}
           </div>
         </div>
-      </div>
     </div>
   )
 }
