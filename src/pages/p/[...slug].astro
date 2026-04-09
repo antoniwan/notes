@@ -6,7 +6,7 @@ import { generateKeywords, generateImageAlt } from '../../utils/seo';
 import { getTranslationData } from '../../utils/translationUtils';
 import { calculateReadingTimeFromMarkdown } from '../../utils/readingTime';
 import { AUTHOR } from '../../consts';
-import { getCategoryNameFromIds } from '../../utils/categoryUtils';
+import { getCategoryDisplayItems, getCategoryNameFromIds } from '../../utils/categoryUtils';
 
 export const prerender = true;
 
@@ -39,6 +39,7 @@ const author = post.data.author || AUTHOR.name;
 
 // Get category name from category ID
 const categoryName = getCategoryNameFromIds(post.data.category);
+const categoryItems = getCategoryDisplayItems(post.data.category);
 
 // Generate table of contents from markdown headings (post.body is raw markdown, not HTML)
 const headingRegex = /^(#{2,3})\s+(.+)$/gm;
@@ -88,6 +89,7 @@ const translationData = await getTranslationData(post, allPosts);
   tags={post.data.tags}
   category={post.data.category}
   categoryName={categoryName}
+  categoryItems={categoryItems}
   path={`/p/${post.id}`}
   imageAlt={imageAlt}
   author={author}

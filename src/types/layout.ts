@@ -6,6 +6,12 @@ export interface TocItem {
   slug: string;
 }
 
+export interface CategoryDisplayItem {
+  id: string;
+  name: string;
+  icon?: string;
+}
+
 export interface BaseLayoutProps {
   title: string;
   description?: string;
@@ -54,6 +60,7 @@ export interface TranslationData {
 export interface BlogLayoutProps extends BaseLayoutProps {
   // Blog-specific additional props
   categoryName?: string | null;
+  categoryItems?: CategoryDisplayItem[];
   tableOfContents?: TocItem[];
   showComments?: boolean;
   translationData?: TranslationData;
