@@ -417,6 +417,7 @@ const postSlug = postId; // Alias for backward compatibility in template
       readingTimeSections.forEach((section) => {
         const timeValueElement = section.querySelector('.reading-time-value');
         const iconElement = section.querySelector('.reading-time-icon');
+        const headingElement = section.querySelector('h3');
 
         if (timeValueElement) {
           timeValueElement.textContent = relativeTime;
@@ -432,6 +433,11 @@ const postSlug = postId; // Alias for backward compatibility in template
           );
           iconElement.classList.add('text-[rgb(34,197,94)]');
         }
+
+        // Hide the "Reading Time" heading when already read for cleaner flow
+        if (headingElement) {
+          headingElement.classList.add('sr-only');
+        }
       });
     } else {
       // Restore original reading time for unread posts
@@ -439,6 +445,7 @@ const postSlug = postId; // Alias for backward compatibility in template
         const originalReadingTime = section.getAttribute('data-original-reading-time');
         const timeValueElement = section.querySelector('.reading-time-value');
         const iconElement = section.querySelector('.reading-time-icon');
+        const headingElement = section.querySelector('h3');
 
         if (timeValueElement && originalReadingTime) {
           timeValueElement.textContent = originalReadingTime;
@@ -456,6 +463,11 @@ const postSlug = postId; // Alias for backward compatibility in template
           } else {
             iconElement.classList.add('text-[rgb(var(--color-accent))]');
           }
+        }
+
+        // Restore heading for unread posts
+        if (headingElement) {
+          headingElement.classList.remove('sr-only');
         }
       });
     }
