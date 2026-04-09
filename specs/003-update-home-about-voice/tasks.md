@@ -17,7 +17,7 @@
 
 **Purpose**: Prepare implementation guardrails and references before editing page content.
 
-- [ ] T001 Create a pre-change checkpoint commit and record target edit areas in `src/pages/index.astro` and `src/pages/about.astro`
+- [ ] T001 Capture a pre-change baseline note/diff and record target edit areas for `src/pages/index.astro` and `src/pages/about.astro` in `specs/003-update-home-about-voice/quickstart.md`
 - [ ] T002 [P] Identify and mark homepage narrative sections to update in `src/pages/index.astro`
 - [ ] T003 [P] Identify and mark About primary narrative sections to update in `src/pages/about.astro`
 
@@ -30,7 +30,7 @@
 **CRITICAL**: No user story work should begin until this phase is complete.
 
 - [ ] T004 Define canonical season-of-execution message anchors in `specs/003-update-home-about-voice/data-model.md`
-- [ ] T005 Establish masonry guardrail verification checklist for homepage edits in `src/pages/index.astro`
+- [ ] T005 Establish masonry guardrail verification checklist for homepage edits in `specs/003-update-home-about-voice/quickstart.md`
 - [ ] T006 Define cross-page acceptance checklist and completion rubric in `specs/003-update-home-about-voice/quickstart.md`
 
 **Checkpoint**: Shared narrative criteria and constraints are ready; user stories can proceed.
