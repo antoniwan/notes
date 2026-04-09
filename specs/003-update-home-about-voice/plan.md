@@ -60,6 +60,7 @@ src/
 ## Phase 0: Research
 
 Research findings are documented in `specs/003-update-home-about-voice/research.md` and resolve style/scope decisions for:
+
 - voice consistency method,
 - homepage refinement boundaries,
 - acceptance-review approach for non-functional narrative quality.
@@ -67,11 +68,13 @@ Research findings are documented in `specs/003-update-home-about-voice/research.
 ## Phase 1: Design & Contracts
 
 Design artifacts produced:
+
 - `specs/003-update-home-about-voice/data-model.md`
 - `specs/003-update-home-about-voice/contracts/content-voice-contract.md`
 - `specs/003-update-home-about-voice/quickstart.md`
 
 Agent context update step:
+
 - Run `.specify/scripts/bash/update-agent-context.sh cursor-agent`
 
 ## Post-Design Constitution Check
