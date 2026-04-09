@@ -17,10 +17,10 @@
 
 **Purpose**: Prepare feature scope and guardrails before behavior changes
 
-- [ ] T001 Review and lock implementation scope against `specs/006-remake-mobile-nav/spec.md`
-- [ ] T002 Review interaction decisions and edge behavior in `specs/006-remake-mobile-nav/research.md`
+- [X] T001 Review and lock implementation scope against `specs/006-remake-mobile-nav/spec.md`
+- [X] T002 Review interaction decisions and edge behavior in `specs/006-remake-mobile-nav/research.md`
 - [ ] T003 [P] Capture baseline screenshots/video of current mobile menu behavior from `src/components/MobileNav.astro`
-- [ ] T004 [P] Confirm target navigation labels/order source in `src/data/navigation.ts`
+- [X] T004 [P] Confirm target navigation labels/order source in `src/data/navigation.ts`
 
 ---
 
@@ -30,11 +30,11 @@
 
 **CRITICAL**: No user story work should start until this phase is complete.
 
-- [ ] T005 Refactor menu open/close state helpers for single-source state transitions in `src/components/MobileNav.astro`
-- [ ] T006 Add centralized dismiss-reason handling (`close-button`, `overlay-tap`, `escape-key`, `back-action`, `link-selection`) in `src/components/MobileNav.astro`
-- [ ] T007 Implement robust event listener setup/cleanup for Astro page lifecycle in `src/components/MobileNav.astro`
-- [ ] T008 [P] Align mobile trigger and dialog semantics baseline (`aria-expanded`, `aria-controls`, dialog labeling) in `src/components/MobileNav.astro`
-- [ ] T009 [P] Ensure header-level integration points remain compatible with mobile menu lifecycle in `src/components/Header.astro`
+- [X] T005 Refactor menu open/close state helpers for single-source state transitions in `src/components/MobileNav.astro`
+- [X] T006 Add centralized dismiss-reason handling (`close-button`, `overlay-tap`, `escape-key`, `back-action`, `link-selection`) in `src/components/MobileNav.astro`
+- [X] T007 Implement robust event listener setup/cleanup for Astro page lifecycle in `src/components/MobileNav.astro`
+- [X] T008 [P] Align mobile trigger and dialog semantics baseline (`aria-expanded`, `aria-controls`, dialog labeling) in `src/components/MobileNav.astro`
+- [X] T009 [P] Ensure header-level integration points remain compatible with mobile menu lifecycle in `src/components/Header.astro`
 
 **Checkpoint**: Foundation ready for independent user story delivery.
 
@@ -48,12 +48,12 @@
 
 ### Implementation for User Story 1
 
-- [ ] T010 [US1] Enforce v1 destination set (Home, Posts, Brain Science, About, Search) in mobile render path within `src/components/MobileNav.astro`
-- [ ] T011 [P] [US1] Update navigation data mapping to support required destination visibility in `src/data/navigation.ts`
-- [ ] T012 [US1] Ensure selecting any destination closes menu before navigation completes in `src/components/MobileNav.astro`
-- [ ] T013 [US1] Preserve background page state/scroll context when menu is dismissed without navigation in `src/components/MobileNav.astro`
-- [ ] T014 [US1] Implement first Back action to close open menu without leaving current page in `src/components/MobileNav.astro`
-- [ ] T015 [US1] Keep overflow content usable on small viewports (scrollable menu body + stable header actions) in `src/components/MobileNav.astro`
+- [X] T010 [US1] Enforce v1 destination set (Home, Posts, Brain Science, About, Search) in mobile render path within `src/components/MobileNav.astro`
+- [X] T011 [P] [US1] Update navigation data mapping to support required destination visibility in `src/data/navigation.ts`
+- [X] T012 [US1] Ensure selecting any destination closes menu before navigation completes in `src/components/MobileNav.astro`
+- [X] T013 [US1] Preserve background page state/scroll context when menu is dismissed without navigation in `src/components/MobileNav.astro`
+- [X] T014 [US1] Implement first Back action to close open menu without leaving current page in `src/components/MobileNav.astro`
+- [X] T015 [US1] Keep overflow content usable on small viewports (scrollable menu body + stable header actions) in `src/components/MobileNav.astro`
 
 **Checkpoint**: User Story 1 is independently functional and manually testable.
 
@@ -67,11 +67,11 @@
 
 ### Implementation for User Story 2
 
-- [ ] T016 [US2] Improve active-state visibility for current destination in mobile menu items in `src/components/MobileNav.astro`
-- [ ] T017 [P] [US2] Normalize destination labels to unambiguous naming where needed in `src/data/navigation.ts`
-- [ ] T018 [US2] Apply hierarchy styling so Brain Science stays neutral and is not prioritized above Guided Path in `src/components/MobileNav.astro`
-- [ ] T019 [US2] Keep visual treatment aligned with header/navigation design tokens by matching spacing, typography scale, and contrast usage in `src/components/MobileNav.astro`
-- [ ] T020 [US2] Sync shared navigation highlight behavior with desktop logic by updating and reusing active-state helpers in `src/utils/navActive.ts`
+- [X] T016 [US2] Improve active-state visibility for current destination in mobile menu items in `src/components/MobileNav.astro`
+- [X] T017 [P] [US2] Normalize destination labels to unambiguous naming where needed in `src/data/navigation.ts`
+- [X] T018 [US2] Apply hierarchy styling so Brain Science stays neutral and is not prioritized above Guided Path in `src/components/MobileNav.astro`
+- [X] T019 [US2] Keep visual treatment aligned with header/navigation design tokens by matching spacing, typography scale, and contrast usage in `src/components/MobileNav.astro`
+- [X] T020 [US2] Sync shared navigation highlight behavior with desktop logic by updating and reusing active-state helpers in `src/utils/navActive.ts`
 
 **Checkpoint**: User Story 2 works independently while preserving User Story 1 behavior.
 
@@ -85,11 +85,11 @@
 
 ### Implementation for User Story 3
 
-- [ ] T021 [US3] Move focus into menu predictably on open and return focus to trigger on close in `src/components/MobileNav.astro`
-- [ ] T022 [US3] Add/adjust keyboard traversal behavior to prevent background focus escape while menu is open in `src/components/MobileNav.astro`
-- [ ] T023 [US3] Ensure Escape closes menu from any focusable menu control in `src/components/MobileNav.astro`
-- [ ] T024 [P] [US3] Improve control labels and state announcements for assistive technologies in `src/components/MobileNav.astro`
-- [ ] T025 [US3] Validate compatibility between mobile search toggle and menu focus lifecycle in `src/components/Header.astro`
+- [X] T021 [US3] Move focus into menu predictably on open and return focus to trigger on close in `src/components/MobileNav.astro`
+- [X] T022 [US3] Add/adjust keyboard traversal behavior to prevent background focus escape while menu is open in `src/components/MobileNav.astro`
+- [X] T023 [US3] Ensure Escape closes menu from any focusable menu control in `src/components/MobileNav.astro`
+- [X] T024 [P] [US3] Improve control labels and state announcements for assistive technologies in `src/components/MobileNav.astro`
+- [X] T025 [US3] Validate compatibility between mobile search toggle and menu focus lifecycle in `src/components/Header.astro`
 
 **Checkpoint**: User Story 3 is independently functional and accessible behavior is verifiable.
 
@@ -100,7 +100,7 @@
 **Purpose**: Final validation, regression checks, and release-readiness steps
 
 - [ ] T026 [P] Run manual quickstart verification checklist from `specs/006-remake-mobile-nav/quickstart.md`
-- [ ] T027 Run quality gates: `pnpm run lint`, `pnpm run check`, `pnpm run format:check`, `pnpm run build` from repository root
+- [X] T027 Run quality gates: `pnpm run lint`, `pnpm run check`, `pnpm run format:check`, `pnpm run build` from repository root
 - [ ] T028 [P] Perform responsive regression pass for desktop unaffected behavior in `src/components/Header.astro` and `src/components/Navigation.astro`
 - [ ] T029 [P] Perform final accessibility smoke pass for mobile menu interactions in `src/components/MobileNav.astro`
 - [ ] T030 [P] Execute timed navigation validation for SC-001 (10-second target path checks) and document outcomes in `specs/006-remake-mobile-nav/quickstart.md`

@@ -74,6 +74,7 @@ const { searchData } = Astro.props;
     if (!mobileSearchToggle || !mobileSearchContainer) return;
 
     mobileSearchToggle.addEventListener('click', toggleMobileSearch);
+    document.addEventListener('mobile-nav:open-search', openMobileSearchFromNav as EventListener);
   }
 
   function toggleMobileSearch() {
@@ -90,6 +91,18 @@ const { searchData } = Astro.props;
       }
     } else {
       mobileSearchContainer.classList.add('hidden');
+    }
+  }
+
+  function openMobileSearchFromNav() {
+    if (!mobileSearchContainer) return;
+    if (!isSearchVisible) {
+      isSearchVisible = true;
+      mobileSearchContainer.classList.remove('hidden');
+    }
+    const searchInput = mobileSearchContainer.querySelector('input');
+    if (searchInput) {
+      setTimeout(() => searchInput.focus(), 100);
     }
   }
 

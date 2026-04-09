@@ -20,7 +20,7 @@ export const mainNavigation: NavigationItem[] = [
       label: 'Browse Categories',
     },
   },
-  { href: '/everything', label: 'Everything' },
+  { href: '/everything', label: 'Posts' },
   {
     href: '/tag/',
     label: 'Resources',
@@ -34,7 +34,7 @@ export const mainNavigation: NavigationItem[] = [
         },
         {
           href: '/brain-science/',
-          label: 'Writing Insights',
+          label: 'Brain Science',
           icon: '🧠',
         },
         {

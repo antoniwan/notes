@@ -5,10 +5,31 @@ import {
   dropdownActiveClasses,
   isMainNavItemActive,
   isNavDropdownItemActive,
+  normalizePathname,
 } from '../utils/navActive';
 
 // Get sorted categories for the mobile navigation
 const sortedCategories = await getSortedCategories();
+// @ts-ignore Astro is injected in .astro frontmatter runtime.
+const currentPathname = Astro.url.pathname;
+
+const mobilePrimaryNavigation = [
+  { href: '/', label: 'Home' },
+  { href: '/everything', label: 'Posts' },
+  { href: '/about', label: 'About' },
+];
+
+const isPrimaryMobileNavActive = (href: string, pathname: string) => {
+  const p = normalizePathname(pathname);
+  const h = normalizePathname(href);
+  if (h === '/everything') {
+    return p === '/everything' || p.startsWith('/p/');
+  }
+  if (h === '/brain-science') {
+    return p === '/brain-science' || p.startsWith('/brain-science/');
+  }
+  return p === h;
+};
 ---
 
 <!-- Hamburger Button -->
@@ -61,9 +82,50 @@ const sortedCategories = await getSortedCategories();
   <div class="flex-1 overflow-y-auto">
     <!-- Primary Navigation -->
     <nav class="space-y-6 p-6" aria-label="Primary navigation">
+      <div class="space-y-2">
+        <p
+          class="px-2 text-xs font-semibold uppercase tracking-wide text-[rgb(var(--color-text-muted))]"
+        >
+          Core
+        </p>
+        {
+          mobilePrimaryNavigation.map((item) => {
+            const isActive = isPrimaryMobileNavActive(item.href, currentPathname);
+            const isContextual = item.priority === 'contextual';
+            return (
+              <a
+                href={item.href}
+                class:list={[
+                  'theme-transition flex items-center justify-between rounded-xl px-4 py-3 text-lg hover:bg-[rgb(var(--color-bg-alt))]',
+                  isActive
+                    ? 'bg-[rgb(var(--color-accent))]/10 font-semibold text-[rgb(var(--color-accent))]'
+                    : isContextual
+                      ? 'font-medium text-[rgb(var(--color-text-muted))]'
+                      : 'font-semibold text-[rgb(var(--color-text))]',
+                ]}
+                aria-current={isActive ? 'page' : undefined}
+              >
+                <span>{item.label}</span>
+              </a>
+            );
+          })
+        }
+        <button
+          id="mobile-search-nav-action"
+          type="button"
+          class="theme-transition flex w-full items-center justify-between rounded-xl px-4 py-3 text-left text-lg font-semibold text-[rgb(var(--color-text))] hover:bg-[rgb(var(--color-bg-alt))]"
+          aria-label="Open search"
+        >
+          <span>Search</span>
+          <span aria-hidden="true">/</span>
+        </button>
+      </div>
+
+      <div class="border-t border-[rgb(var(--color-border))]"></div>
+
       {
         mainNavigation.map((item) => {
-          const isActive = isMainNavItemActive(item.href, Astro.url.pathname);
+          const isActive = isMainNavItemActive(item.href, currentPathname);
 
           return (
             <div class="space-y-2">
@@ -98,7 +160,7 @@ const sortedCategories = await getSortedCategories();
                 <div class="ml-4 space-y-1">
                   {sortedCategories.map((category) => {
                     const catHref = `/category/${category.id}/`;
-                    const subActive = isNavDropdownItemActive(catHref, Astro.url.pathname);
+                    const subActive = isNavDropdownItemActive(catHref, currentPathname);
                     return (
                       <a
                         href={catHref}
@@ -127,10 +189,7 @@ const sortedCategories = await getSortedCategories();
               {item.dropdown && item.href !== '/category/' && (
                 <div class="ml-4 space-y-1">
                   {(item.dropdown.items ?? []).map((dropdownItem) => {
-                    const subActive = isNavDropdownItemActive(
-                      dropdownItem.href,
-                      Astro.url.pathname,
-                    );
+                    const subActive = isNavDropdownItemActive(dropdownItem.href, currentPathname);
                     return (
                       <a
                         href={dropdownItem.href}
@@ -215,11 +274,166 @@ const sortedCategories = await getSortedCategories();
 </div>
 
 <script>
-  // Optimized mobile navigation with proper cleanup
   let menuButton: HTMLElement | null = null;
   let menu: HTMLElement | null = null;
   let closeButton: HTMLElement | null = null;
+  let searchActionButton: HTMLElement | null = null;
   let isInitialized = false;
+  let hasMenuHistoryEntry = false;
+  let isProgrammaticBack = false;
+
+  function isMenuOpen() {
+    return !!menu && !menu.classList.contains('hidden');
+  }
+
+  function getFocusableElements() {
+    if (!menu) return [];
+    return Array.from(
+      menu.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      ),
+    ).filter((el) => !el.hasAttribute('hidden'));
+  }
+
+  function recordDismissReason(reason: string) {
+    if (menu) {
+      menu.dataset.dismissReason = reason;
+    }
+  }
+
+  function openMenu() {
+    if (!menu || !menuButton || isMenuOpen()) return;
+    menu.classList.remove('hidden');
+    menuButton.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('overflow-hidden');
+    recordDismissReason('open');
+
+    if (!hasMenuHistoryEntry) {
+      history.pushState({ mobileMenu: 'open' }, '', window.location.href);
+      hasMenuHistoryEntry = true;
+    }
+
+    const [firstFocusable] = getFocusableElements();
+    if (firstFocusable) {
+      firstFocusable.focus();
+    }
+  }
+
+  function closeMenu(reason = 'close-button', shouldRestoreFocus = true, syncHistory = true) {
+    if (!menu || !menuButton || !isMenuOpen()) return;
+    menu.classList.add('hidden');
+    menuButton.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('overflow-hidden');
+    recordDismissReason(reason);
+
+    if (syncHistory && hasMenuHistoryEntry && reason !== 'back-action') {
+      isProgrammaticBack = true;
+      history.back();
+    }
+
+    if (shouldRestoreFocus) {
+      menuButton.focus();
+    }
+  }
+
+  function handleOverlayClick(e: Event) {
+    if (e.target === menu) {
+      closeMenu('overlay-tap');
+    }
+  }
+
+  function handlePopState() {
+    if (isProgrammaticBack) {
+      isProgrammaticBack = false;
+      hasMenuHistoryEntry = false;
+      return;
+    }
+
+    if (isMenuOpen()) {
+      hasMenuHistoryEntry = false;
+      closeMenu('back-action', true, false);
+    }
+  }
+
+  function showToast(message: string) {
+    const toast = document.createElement('div');
+    toast.className =
+      'fixed bottom-20 left-1/2 transform -translate-x-1/2 bg-[rgb(var(--color-bg))] border border-[rgb(var(--color-border))] text-[rgb(var(--color-text))] px-4 py-2 rounded-lg shadow-lg z-50 theme-transition';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
+  }
+
+  function trapFocus(event: KeyboardEvent) {
+    const focusables = getFocusableElements();
+    if (!focusables.length) return;
+
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    const active = document.activeElement as HTMLElement | null;
+
+    if (event.shiftKey && active === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && active === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
+  function handleKeydown(e: KeyboardEvent) {
+    if (!isMenuOpen()) return;
+    if (e.key === 'Escape') {
+      closeMenu('escape-key');
+      return;
+    }
+    if (e.key === 'Tab') {
+      trapFocus(e);
+    }
+  }
+
+  function handleSearchAction() {
+    closeMenu('link-selection');
+    document.dispatchEvent(new CustomEvent('mobile-nav:open-search'));
+  }
+
+  function handleCloseButtonClick() {
+    closeMenu('close-button');
+  }
+
+  function handleNavLinkClick() {
+    closeMenu('link-selection', false);
+  }
+
+  async function handleShareClick() {
+    closeMenu('link-selection');
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: document.title,
+          text: document.querySelector('meta[name="description"]')?.getAttribute('content') || '',
+          url: window.location.href,
+        });
+      } catch {
+        // User canceled share.
+      }
+      return;
+    }
+
+    const pageUrl = window.location.href;
+    try {
+      await navigator.clipboard.writeText(pageUrl);
+      showToast('Link copied to clipboard!');
+    } catch {
+      const textArea = document.createElement('textarea');
+      textArea.value = pageUrl;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.body.removeChild(textArea);
+      showToast('Link ready — press Ctrl+C to copy.');
+    }
+  }
 
   function initializeMobileNav() {
     if (isInitialized) return;
@@ -227,134 +441,53 @@ const sortedCategories = await getSortedCategories();
     menuButton = document.getElementById('mobile-menu-button');
     menu = document.getElementById('mobile-menu');
     closeButton = document.getElementById('close-mobile-menu');
+    searchActionButton = document.getElementById('mobile-search-nav-action');
 
     if (!menuButton || !menu || !closeButton) return;
 
-    // Add event listeners
     menuButton.addEventListener('click', openMenu);
-    closeButton.addEventListener('click', closeMenu);
+    closeButton.addEventListener('click', handleCloseButtonClick);
     menu.addEventListener('click', handleOverlayClick);
     document.addEventListener('keydown', handleKeydown);
+    window.addEventListener('popstate', handlePopState);
 
-    // Add click listeners to all navigation links
     const navLinks = menu.querySelectorAll('a');
     navLinks.forEach((link) => {
-      link.addEventListener('click', closeMenu);
+      link.addEventListener('click', handleNavLinkClick);
     });
 
-    // Handle mobile share button
+    if (searchActionButton) {
+      searchActionButton.addEventListener('click', handleSearchAction);
+    }
+
     const mobileShareButton = document.getElementById('mobile-share-button');
     if (mobileShareButton) {
-      mobileShareButton.addEventListener('click', async () => {
-        closeMenu();
-
-        if (navigator.share) {
-          try {
-            await navigator.share({
-              title: document.title,
-              text:
-                document.querySelector('meta[name="description"]')?.getAttribute('content') || '',
-              url: window.location.href,
-            });
-          } catch (err) {
-            // Share cancelled or failed
-          }
-        } else {
-          // Fallback: copy to clipboard
-          const pageUrl = window.location.href;
-          try {
-            await navigator.clipboard.writeText(pageUrl);
-            showToast('Link copied to clipboard!');
-          } catch (err) {
-            // Fallback for older browsers where the Clipboard API isn't available.
-            // We select the text and prompt the user to use their keyboard to copy.
-            const textArea = document.createElement('textarea');
-            textArea.value = pageUrl;
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.body.removeChild(textArea);
-            showToast('Link ready — press Ctrl+C to copy.');
-          }
-        }
-      });
+      mobileShareButton.addEventListener('click', handleShareClick);
     }
 
     isInitialized = true;
-  }
-
-  function openMenu() {
-    if (!menu || !menuButton) return;
-    menu.classList.remove('hidden');
-    menuButton.setAttribute('aria-expanded', 'true');
-    document.body.classList.add('overflow-hidden');
-
-    // Focus first focusable element
-    const firstFocusable = menu.querySelector('a, button, input') as HTMLElement;
-    if (firstFocusable) {
-      firstFocusable.focus();
-    }
-  }
-
-  function closeMenu() {
-    if (!menu || !menuButton) return;
-    menu.classList.add('hidden');
-    menuButton.setAttribute('aria-expanded', 'false');
-    document.body.classList.remove('overflow-hidden');
-    menuButton.focus();
-  }
-
-  function handleOverlayClick(e: Event) {
-    if (e.target === menu) {
-      closeMenu();
-    }
-  }
-
-  function showToast(message: string) {
-    // Create toast notification
-    const toast = document.createElement('div');
-    toast.className =
-      'fixed bottom-20 left-1/2 transform -translate-x-1/2 bg-[rgb(var(--color-bg))] border border-[rgb(var(--color-border))] text-[rgb(var(--color-text))] px-4 py-2 rounded-lg shadow-lg z-50 theme-transition';
-    toast.textContent = message;
-
-    document.body.appendChild(toast);
-
-    // Remove after 3 seconds
-    setTimeout(() => {
-      toast.remove();
-    }, 3000);
-  }
-
-  function handleKeydown(e: KeyboardEvent) {
-    if (e.key === 'Escape' && menu && !menu.classList.contains('hidden')) {
-      closeMenu();
-    }
   }
 
   function cleanup() {
     if (!isInitialized) return;
 
     menuButton?.removeEventListener('click', openMenu);
-    closeButton?.removeEventListener('click', closeMenu);
+    closeButton?.removeEventListener('click', handleCloseButtonClick);
     menu?.removeEventListener('click', handleOverlayClick);
     document.removeEventListener('keydown', handleKeydown);
-
-    // Remove link click listeners
+    window.removeEventListener('popstate', handlePopState);
     const navLinks = menu?.querySelectorAll('a');
-    navLinks?.forEach((link) => {
-      link.removeEventListener('click', closeMenu);
-    });
-
+    navLinks?.forEach((link) => link.removeEventListener('click', handleNavLinkClick));
+    searchActionButton?.removeEventListener('click', handleSearchAction);
     isInitialized = false;
   }
 
-  // Initialize when DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializeMobileNav);
   } else {
     initializeMobileNav();
   }
 
-  // Cleanup on page unload
   window.addEventListener('beforeunload', cleanup);
 </script>
 

@@ -26,6 +26,10 @@ function isUnderResourcesSection(p: string): boolean {
   return false;
 }
 
+function isUnderPostsSection(p: string): boolean {
+  return p === '/everything' || p.startsWith('/p/');
+}
+
 /**
  * Whether the top-level main nav item should show the active state.
  */
@@ -38,6 +42,10 @@ export function isMainNavItemActive(href: string, pathname: string): boolean {
 
   if (href === '/tag/') {
     return isUnderResourcesSection(p);
+  }
+
+  if (href === '/everything') {
+    return isUnderPostsSection(p);
   }
 
   const h = normalizePathname(href);
