@@ -108,6 +108,8 @@
 - [ ] T038 Validate contract alignment with evidence in `specs/007-component-audit-enhancement/contracts/component-audit-contract.md`
 - [ ] T039 Run quality gates and record outputs in `specs/007-component-audit-enhancement/verification/quality-gates.md`
 - [ ] T040 Run quickstart end-to-end validation and log results in `specs/007-component-audit-enhancement/verification/quickstart-validation.md`
+- [ ] T041 [P] Produce FR/SC-to-task evidence matrix in `specs/007-component-audit-enhancement/verification/requirements-traceability.md`
+- [ ] T042 [P] Record user-visible docs delta and update decision log in `specs/007-component-audit-enhancement/verification/docs-delta.md`
 
 ---
 
@@ -175,6 +177,7 @@ Task: "T027 [US2] Implement approved contextual enhancements for shared helper f
 2. Documentation owners split US1 batches (`T014`–`T016`)
 3. Enhancement owners split US2 implementation batches (`T025`/`T026`/`T027`)
 4. QA/verification owners split US3 regression batches (`T031`/`T032`)
+5. Documentation owner handles cross-cutting evidence tasks (`T041`/`T042`)
 
 ---
 
@@ -183,3 +186,4 @@ Task: "T027 [US2] Implement approved contextual enhancements for shared helper f
 - All tasks follow required checklist format with ID, optional `[P]`, story label for user story phases, and explicit file path.
 - Keep behavior-preserving guardrails active: no behavior changes without explicit approval + documented rationale.
 - Update the completion register continuously; do not defer status reconciliation to the end.
+- Treat `T041` and `T042` as recommended polish for audit rigor and reviewer handoff quality.
