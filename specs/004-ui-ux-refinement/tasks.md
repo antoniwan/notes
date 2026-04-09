@@ -67,7 +67,7 @@
 - [x] T013 [P] [US2] Refine homepage layout rhythm and alignment in `src/pages/index.astro` without changing existing interactions/content structure
 - [x] T014 [P] [US2] Refine about-page layout rhythm and alignment in `src/pages/about.astro` without changing existing interactions/content structure
 - [x] T015 [US2] Refine shared page/listing layout consistency in `src/pages/index.astro`, `src/pages/about.astro`, `src/layouts/BlogLayout.astro`, and `src/styles/global.css`
-- [x] T016 [US2] Harmonize component-level spacing/alignment inconsistencies for repeated UI patterns in `src/components/PostCard.astro` and `src/components/RelatedPosts.astro`; update `src/components/post-toc/PostTocModal.astro` only if shared spacing/alignment tokens used by post listings are changed
+- [x] T016 [US2] Harmonize component-level spacing/alignment inconsistencies for repeated UI patterns in `src/components/PostCard.astro` and `src/components/related-posts/RelatedPosts.astro`; update `src/components/post-toc/PostTocModal.astro` only if shared spacing/alignment tokens used by post listings are changed
 
 **Checkpoint**: US2 is independently functional with consistent cross-template rhythm/alignment.
 

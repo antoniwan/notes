@@ -69,7 +69,7 @@ pnpm run build
   - `src/pages/index.astro`
   - `src/pages/about.astro`
   - `src/components/PostCard.astro`
-  - `src/components/RelatedPosts.astro`
+  - `src/components/related-posts/RelatedPosts.astro`
   - `src/components/post-toc/PostTocModal.astro`
 - Quality gates executed successfully:
   - `pnpm run format:check` -> pass

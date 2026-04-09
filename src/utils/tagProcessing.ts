@@ -220,6 +220,15 @@ export function getTagStatistics(
   };
 }
 
+function blogLanguagesOverlap(
+  current: CollectionEntry<'blog'>,
+  candidate: CollectionEntry<'blog'>,
+): boolean {
+  const a = current.data.language;
+  const b = candidate.data.language;
+  return a.some((code) => b.includes(code));
+}
+
 /**
  * Find related posts based on tag similarity, category, and recency
  */
@@ -228,8 +237,13 @@ export function findRelatedPosts(
   allPosts: CollectionEntry<'blog'>[],
   maxCount: number = 3,
 ): CollectionEntry<'blog'>[] {
-  // Filter out the current post and draft posts
-  const availablePosts = allPosts.filter((post) => post.id !== currentPost.id && !post.data.draft);
+  const availablePosts = allPosts.filter(
+    (post) =>
+      post.id !== currentPost.id &&
+      !post.data.draft &&
+      post.data.published !== false &&
+      blogLanguagesOverlap(currentPost, post),
+  );
 
   if (availablePosts.length === 0) return [];
 

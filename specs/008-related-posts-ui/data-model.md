@@ -4,23 +4,23 @@
 
 ### Current article (context)
 
-| Field / concept | Source | Use in feature |
-| ----------------- | ------ | -------------- |
-| Identity | `CollectionEntry<'blog'>.id` | Exclude self from candidates |
-| Language | `data.language: ('en' \| 'es')[]` | Filter candidates (intersection non-empty) |
-| Tags | `data.tags?: string[]` | Scoring: overlap + per-tag weights |
-| Categories | `data.category?: string[]` | Scoring: overlap |
-| Draft | `data.draft` | Current page assumed non-draft public route |
-| Published | `data.published` | Current page assumed public |
+| Field / concept | Source                            | Use in feature                              |
+| --------------- | --------------------------------- | ------------------------------------------- |
+| Identity        | `CollectionEntry<'blog'>.id`      | Exclude self from candidates                |
+| Language        | `data.language: ('en' \| 'es')[]` | Filter candidates (intersection non-empty)  |
+| Tags            | `data.tags?: string[]`            | Scoring: overlap + per-tag weights          |
+| Categories      | `data.category?: string[]`        | Scoring: overlap                            |
+| Draft           | `data.draft`                      | Current page assumed non-draft public route |
+| Published       | `data.published`                  | Current page assumed public                 |
 
 ### Candidate article
 
-| Field / concept | Rule |
-| ---------------- | ---- |
-| Not self | `candidate.id !== current.id` |
-| Public | `candidate.data.draft !== true` AND `candidate.data.published !== false` |
-| Same language | `intersection(candidate.data.language, current.data.language).length > 0` |
-| Scoring inputs | Shared tags, shared categories, candidate `pubDate`, candidate `featured` |
+| Field / concept | Rule                                                                      |
+| --------------- | ------------------------------------------------------------------------- |
+| Not self        | `candidate.id !== current.id`                                             |
+| Public          | `candidate.data.draft !== true` AND `candidate.data.published !== false`  |
+| Same language   | `intersection(candidate.data.language, current.data.language).length > 0` |
+| Scoring inputs  | Shared tags, shared categories, candidate `pubDate`, candidate `featured` |
 
 ### Suggestion list (output)
 

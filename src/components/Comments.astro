@@ -6,7 +6,7 @@ const pageUrl = generateCanonicalUrl(Astro.url.pathname);
 const { host, siteId } = commentsConfig;
 ---
 
-<div class="comments-section mt-12 pt-8">
+<div id="post-comments" class="comments-section scroll-mt-24 mt-12 pt-8" tabindex="-1">
   <h2 class="mb-6 text-2xl font-bold text-[rgb(var(--color-text))]">💬 Join the Conversation</h2>
   <p class="text-body-muted mb-8">
     Share your thoughts, ask questions, or simply let me know what resonated with you. I read and

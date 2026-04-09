@@ -60,52 +60,54 @@ const platforms = generateShareUrls(title, currentUrl, description);
   )
 }
 
-{/* Compact share toggle + menu (tablet main column, or mobile post metadata panel — parent layout controls breakpoint visibility) */}
+{
+  /* Compact share toggle + menu (tablet main column, or mobile post metadata panel — parent layout controls breakpoint visibility) */
+}
 {
   variant === 'horizontal' && (
     <div class="relative">
-        <button
-          id="horizontal-share-toggle"
-          class="theme-transition flex items-center gap-2 rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] px-4 py-2 hover:bg-[rgb(var(--color-bg-alt))]/80"
-          aria-label="Share this writing"
+      <button
+        id="horizontal-share-toggle"
+        class="theme-transition flex items-center gap-2 rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] px-4 py-2 hover:bg-[rgb(var(--color-bg-alt))]/80"
+        aria-label="Share this writing"
+      >
+        <span class="text-base">📤</span>
+        <span class="text-sm font-medium">Share</span>
+        <svg
+          class="h-4 w-4 transition-transform"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
         >
-          <span class="text-base">📤</span>
-          <span class="text-sm font-medium">Share</span>
-          <svg
-            class="h-4 w-4 transition-transform"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
-        </button>
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 9l-7 7-7-7"
+          />
+        </svg>
+      </button>
 
-        {/* Share Menu */}
-        <div
-          id="horizontal-share-menu"
-          class="absolute left-0 top-full z-10 mt-2 hidden min-w-[200px] rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg))] p-2 shadow-lg"
-        >
-          <div class="grid grid-cols-2 gap-1">
-            {platforms.map((platform) => (
-              <button
-                class={`theme-transition flex items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-[rgb(var(--color-bg-alt))] ${platform.color}`}
-                data-platform={platform.name.toLowerCase()}
-                data-url={platform.url}
-                data-action={platform.action}
-                aria-label={`Share on ${platform.name}`}
-              >
-                <span class="text-base">{platform.icon}</span>
-                <span>{platform.name}</span>
-              </button>
-            ))}
-          </div>
+      {/* Share Menu */}
+      <div
+        id="horizontal-share-menu"
+        class="absolute left-0 top-full z-10 mt-2 hidden min-w-[200px] rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg))] p-2 shadow-lg"
+      >
+        <div class="grid grid-cols-2 gap-1">
+          {platforms.map((platform) => (
+            <button
+              class={`theme-transition flex items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-[rgb(var(--color-bg-alt))] ${platform.color}`}
+              data-platform={platform.name.toLowerCase()}
+              data-url={platform.url}
+              data-action={platform.action}
+              aria-label={`Share on ${platform.name}`}
+            >
+              <span class="text-base">{platform.icon}</span>
+              <span>{platform.name}</span>
+            </button>
+          ))}
         </div>
+      </div>
     </div>
   )
 }

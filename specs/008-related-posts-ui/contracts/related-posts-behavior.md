@@ -2,7 +2,7 @@
 
 **Feature**: `008-related-posts-ui`  
 **Spec**: `specs/008-related-posts-ui/spec.md`  
-**Consumers**: Post pages using `BlogLayout` + `RelatedPosts` (`src/components/related-posts/RelatedPosts.astro` when relocated)
+**Consumers**: Post pages using `BlogLayout` + `RelatedPosts` at `src/components/related-posts/RelatedPosts.astro`
 
 ## Preconditions
 

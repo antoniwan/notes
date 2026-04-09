@@ -1,0 +1,84 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { findRelatedPosts } from '../../utils/tagProcessing';
+import { calculateReadingTimeFromMarkdown } from '../../utils/readingTime';
+
+interface Props {
+  currentPost?: CollectionEntry<'blog'>;
+  allPosts?: CollectionEntry<'blog'>[];
+}
+
+const { currentPost, allPosts } = Astro.props;
+
+const relatedPosts = currentPost && allPosts ? findRelatedPosts(currentPost, allPosts, 4) : [];
+const hasRelatedPosts = relatedPosts.length > 0;
+---
+
+{
+  hasRelatedPosts && (
+    <section
+      class="related-posts mt-14 scroll-mt-8 border-t border-[rgb(var(--color-border))] pt-8"
+      aria-labelledby="related-posts-heading"
+    >
+      <div class="space-y-6">
+        <div>
+          <h2
+            id="related-posts-heading"
+            class="mb-2 text-2xl font-bold leading-tight text-[rgb(var(--color-text))]"
+          >
+            💡 Continue Reading
+          </h2>
+          <p class="text-body-muted m-0 text-base leading-relaxed">The rest is yours to explore.</p>
+        </div>
+
+        <ol class="m-0 list-none space-y-3 p-0">
+          {relatedPosts.map((post, index) => {
+            const readingTime =
+              post.data.minutesRead ?? calculateReadingTimeFromMarkdown(post.body || '');
+            return (
+              <li class="rounded-lg">
+                <a
+                  href={`/p/${post.id}`}
+                  class="theme-transition flex items-start gap-2 rounded-lg p-2 text-inherit no-underline hover:bg-[rgb(var(--color-bg-alt))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--color-primary))] focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--color-bg))] motion-reduce:transition-none sm:gap-3 sm:p-3"
+                  data-post-slug={post.id}
+                >
+                  <span class="w-6 shrink-0 pt-0.5 text-sm font-semibold text-[rgb(var(--color-primary))] sm:w-7">
+                    {index + 1}.
+                  </span>
+                  <div class="min-w-0 flex-1">
+                    <span class="block font-semibold leading-snug text-[rgb(var(--color-text))]">
+                      {post.data.title}
+                    </span>
+                    {post.data.description && (
+                      <span class="mt-1 line-clamp-1 block text-sm leading-snug text-[rgb(var(--color-text-muted))] md:line-clamp-2">
+                        {post.data.description}
+                      </span>
+                    )}
+                  </div>
+                  <div class="flex shrink-0 items-center gap-1.5 text-xs text-[rgb(var(--color-text-muted))] sm:text-[0.8125rem]">
+                    {readingTime && <span>{readingTime}</span>}
+                    {post.data.featured && (
+                      <span class="text-base" aria-label="Featured" title="Featured">
+                        🫀
+                      </span>
+                    )}
+                  </div>
+                </a>
+              </li>
+            );
+          })}
+        </ol>
+
+        <div class="pt-1">
+          <a
+            href="/everything"
+            class="theme-transition inline-flex items-center gap-2 rounded-md font-medium text-[rgb(var(--color-accent))] hover:text-[rgb(var(--color-accent))]/80 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--color-accent))] focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--color-bg))] motion-reduce:transition-none"
+          >
+            <span>Browse All Writings</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}
