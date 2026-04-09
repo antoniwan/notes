@@ -13,7 +13,11 @@ const sortedCategories = await getSortedCategories();
 // @ts-ignore Astro is injected in .astro frontmatter runtime.
 const currentPathname = Astro.url.pathname;
 
-const mobilePrimaryNavigation = [
+const mobilePrimaryNavigation: {
+  href: string;
+  label: string;
+  priority?: 'contextual';
+}[] = [
   { href: '/', label: 'Home' },
   { href: '/everything', label: 'Posts' },
   { href: '/about', label: 'About' },

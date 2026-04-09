@@ -2,6 +2,7 @@ import sharp from 'sharp';
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import prettier from 'prettier';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -126,7 +127,10 @@ async function writeManifest(mappings) {
     '',
   ];
 
-  await fs.writeFile(manifestPath, lines.join('\n'), 'utf8');
+  const raw = lines.join('\n');
+  const options = await prettier.resolveConfig(manifestPath);
+  const formatted = await prettier.format(raw, { ...options, filepath: manifestPath });
+  await fs.writeFile(manifestPath, formatted, 'utf8');
 }
 
 async function main() {

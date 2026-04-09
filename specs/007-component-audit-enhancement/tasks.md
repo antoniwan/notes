@@ -17,12 +17,12 @@
 
 **Purpose**: Establish audit artifacts and working structure for the feature.
 
-- [ ] T001 Create audit workspace index in `specs/007-component-audit-enhancement/README.md`
-- [ ] T002 Create initial completion register template in `specs/007-component-audit-enhancement/audit-completion-register.md`
-- [ ] T003 [P] Create component record template in `specs/007-component-audit-enhancement/templates/component-record.md`
-- [ ] T004 [P] Create documentation profile template in `specs/007-component-audit-enhancement/templates/documentation-profile.md`
-- [ ] T005 [P] Create enhancement decision template in `specs/007-component-audit-enhancement/templates/enhancement-decision.md`
-- [ ] T006 [P] Create verification result template in `specs/007-component-audit-enhancement/templates/verification-result.md`
+- [x] T001 Create audit workspace index in `specs/007-component-audit-enhancement/README.md`
+- [x] T002 Create initial completion register template in `specs/007-component-audit-enhancement/audit-completion-register.md`
+- [x] T003 [P] Create component record template in `specs/007-component-audit-enhancement/templates/component-record.md`
+- [x] T004 [P] Create documentation profile template in `specs/007-component-audit-enhancement/templates/documentation-profile.md`
+- [x] T005 [P] Create enhancement decision template in `specs/007-component-audit-enhancement/templates/enhancement-decision.md`
+- [x] T006 [P] Create verification result template in `specs/007-component-audit-enhancement/templates/verification-result.md`
 
 ---
 
@@ -32,12 +32,12 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete.
 
-- [ ] T007 Define production-relevant scope rules in `specs/007-component-audit-enhancement/audit-scope.md`
-- [ ] T008 Identify excluded artifact patterns and rationale in `specs/007-component-audit-enhancement/audit-scope.md`
-- [ ] T009 [P] Build initial component inventory from `src/components/` into `specs/007-component-audit-enhancement/component-inventory.md`
-- [ ] T010 [P] Add layout/shared component inventory candidates from `src/layouts/` and shared usage points into `specs/007-component-audit-enhancement/component-inventory.md`
-- [ ] T011 Reconcile scope + inventory, assign stable `componentId` values, and define deterministic A/B/C batch mapping (including per-batch owner and reviewer) in `specs/007-component-audit-enhancement/component-batches.md`
-- [ ] T012 Seed register with all in-scope component IDs in `specs/007-component-audit-enhancement/audit-completion-register.md`
+- [x] T007 Define production-relevant scope rules in `specs/007-component-audit-enhancement/audit-scope.md`
+- [x] T008 Identify excluded artifact patterns and rationale in `specs/007-component-audit-enhancement/audit-scope.md`
+- [x] T009 [P] Build initial component inventory from `src/components/` into `specs/007-component-audit-enhancement/component-inventory.md`
+- [x] T010 [P] Add layout/shared component inventory candidates from `src/layouts/` and shared usage points into `specs/007-component-audit-enhancement/component-inventory.md`
+- [x] T011 Reconcile scope + inventory, assign stable `componentId` values, and define deterministic A/B/C batch mapping (including per-batch owner and reviewer) in `specs/007-component-audit-enhancement/component-batches.md`
+- [x] T012 Seed register with all in-scope component IDs in `specs/007-component-audit-enhancement/audit-completion-register.md`
 
 **Checkpoint**: Foundation ready; user stories can proceed.
 
@@ -49,14 +49,14 @@
 
 **Independent Test**: Reconcile inventory against in-scope component set and confirm each component has a completed baseline documentation profile.
 
-- [ ] T013 [US1] Create component documentation index in `specs/007-component-audit-enhancement/component-docs/README.md`
-- [ ] T014 [P] [US1] Document baseline purpose/behavior for components listed in batch A from `specs/007-component-audit-enhancement/component-batches.md` into `specs/007-component-audit-enhancement/component-docs/batch-a.md`
-- [ ] T015 [P] [US1] Document baseline purpose/behavior for components listed in batch B from `specs/007-component-audit-enhancement/component-batches.md` into `specs/007-component-audit-enhancement/component-docs/batch-b.md`
-- [ ] T016 [P] [US1] Document baseline purpose/behavior for components listed in batch C from `specs/007-component-audit-enhancement/component-batches.md` into `specs/007-component-audit-enhancement/component-docs/batch-c.md`
-- [ ] T017 [US1] Add supported scenarios and constraints for all components in `specs/007-component-audit-enhancement/component-docs/scenarios-and-constraints.md`
-- [ ] T018 [US1] Record dependencies and usage contexts for all components in `specs/007-component-audit-enhancement/component-docs/dependencies-and-contexts.md`
-- [ ] T019 [US1] Mark `accountedFor`, `documented`, and `understood` statuses in `specs/007-component-audit-enhancement/audit-completion-register.md`
-- [ ] T020 [US1] Run inventory-to-documentation reconciliation and capture evidence in `specs/007-component-audit-enhancement/verification/us1-inventory-reconciliation.md`
+- [x] T013 [US1] Create component documentation index in `specs/007-component-audit-enhancement/component-docs/README.md`
+- [x] T014 [P] [US1] Document baseline purpose/behavior for components listed in batch A from `specs/007-component-audit-enhancement/component-batches.md` into `specs/007-component-audit-enhancement/component-docs/batch-a.md`
+- [x] T015 [P] [US1] Document baseline purpose/behavior for components listed in batch B from `specs/007-component-audit-enhancement/component-batches.md` into `specs/007-component-audit-enhancement/component-docs/batch-b.md`
+- [x] T016 [P] [US1] Document baseline purpose/behavior for components listed in batch C from `specs/007-component-audit-enhancement/component-batches.md` into `specs/007-component-audit-enhancement/component-docs/batch-c.md`
+- [x] T017 [US1] Add supported scenarios and constraints for all components in `specs/007-component-audit-enhancement/component-docs/scenarios-and-constraints.md`
+- [x] T018 [US1] Record dependencies and usage contexts for all components in `specs/007-component-audit-enhancement/component-docs/dependencies-and-contexts.md`
+- [x] T019 [US1] Mark `accountedFor`, `documented`, and `understood` statuses in `specs/007-component-audit-enhancement/audit-completion-register.md`
+- [x] T020 [US1] Run inventory-to-documentation reconciliation and capture evidence in `specs/007-component-audit-enhancement/verification/us1-inventory-reconciliation.md`
 
 **Checkpoint**: User Story 1 is independently complete and verifiable.
 
@@ -68,15 +68,15 @@
 
 **Independent Test**: For selected changed components, compare baseline vs updated behavior evidence and verify no unapproved regressions.
 
-- [ ] T021 [US2] Define enhancement triage rubric in `specs/007-component-audit-enhancement/enhancement-triage-rubric.md`
-- [ ] T022 [P] [US2] Create enhancement decisions for candidate batch A in `specs/007-component-audit-enhancement/enhancement-decisions/batch-a.md`
-- [ ] T023 [P] [US2] Create enhancement decisions for candidate batch B in `specs/007-component-audit-enhancement/enhancement-decisions/batch-b.md`
-- [ ] T024 [US2] Record no-change rationales for non-enhanced components in `specs/007-component-audit-enhancement/enhancement-decisions/no-change-rationales.md`
-- [ ] T025 [US2] Implement approved contextual enhancements for batch A file list from `specs/007-component-audit-enhancement/component-batches.md` across `src/components/` and `src/layouts/`
-- [ ] T026 [P] [US2] Implement approved contextual enhancements for batch B file list from `specs/007-component-audit-enhancement/component-batches.md` across `src/components/` and `src/layouts/`
-- [ ] T027 [P] [US2] Implement approved contextual enhancements for shared helper file list from `specs/007-component-audit-enhancement/component-batches.md` in `src/utils/` and `src/data/`
-- [ ] T028 [US2] Document any stakeholder-approved behavior changes and impact rationale in `specs/007-component-audit-enhancement/approved-behavior-changes.md`
-- [ ] T029 [US2] Capture before/after evidence for changed components in `specs/007-component-audit-enhancement/verification/us2-before-after-evidence.md`
+- [x] T021 [US2] Define enhancement triage rubric in `specs/007-component-audit-enhancement/enhancement-triage-rubric.md`
+- [x] T022 [P] [US2] Create enhancement decisions for candidate batch A in `specs/007-component-audit-enhancement/enhancement-decisions/batch-a.md`
+- [x] T023 [P] [US2] Create enhancement decisions for candidate batch B in `specs/007-component-audit-enhancement/enhancement-decisions/batch-b.md`
+- [x] T024 [US2] Record no-change rationales for non-enhanced components in `specs/007-component-audit-enhancement/enhancement-decisions/no-change-rationales.md`
+- [x] T025 [US2] Implement approved contextual enhancements for batch A file list from `specs/007-component-audit-enhancement/component-batches.md` across `src/components/` and `src/layouts/`
+- [x] T026 [P] [US2] Implement approved contextual enhancements for batch B file list from `specs/007-component-audit-enhancement/component-batches.md` across `src/components/` and `src/layouts/`
+- [x] T027 [P] [US2] Implement approved contextual enhancements for shared helper file list from `specs/007-component-audit-enhancement/component-batches.md` in `src/utils/` and `src/data/`
+- [x] T028 [US2] Document any stakeholder-approved behavior changes and impact rationale in `specs/007-component-audit-enhancement/approved-behavior-changes.md`
+- [x] T029 [US2] Capture before/after evidence for changed components in `specs/007-component-audit-enhancement/verification/us2-before-after-evidence.md`
 
 **Checkpoint**: User Story 2 changes are applied with explicit contextual rationale and evidence.
 
@@ -88,13 +88,13 @@
 
 **Independent Test**: Stakeholder can verify per-component status and rationale from audit artifacts without source code inspection.
 
-- [ ] T030 [US3] Create verification matrix for baseline + cross-context checks in `specs/007-component-audit-enhancement/verification/verification-matrix.md`
-- [ ] T031 [P] [US3] Execute regression verification for changed components batch A in `specs/007-component-audit-enhancement/verification/regression-batch-a.md`
-- [ ] T032 [P] [US3] Execute regression verification for changed components batch B in `specs/007-component-audit-enhancement/verification/regression-batch-b.md`
-- [ ] T033 [US3] Resolve and document verification failures/open issues in `specs/007-component-audit-enhancement/verification/open-issues.md`
-- [ ] T034 [US3] Calculate and publish SC-003 first-run pass-rate metric in `specs/007-component-audit-enhancement/verification/sc-003-first-pass-rate.md`
-- [ ] T035 [US3] Finalize completion register statuses and evidence links in `specs/007-component-audit-enhancement/audit-completion-register.md`
-- [ ] T036 [US3] Produce stakeholder audit summary in `specs/007-component-audit-enhancement/stakeholder-audit-summary.md`
+- [x] T030 [US3] Create verification matrix for baseline + cross-context checks in `specs/007-component-audit-enhancement/verification/verification-matrix.md`
+- [x] T031 [P] [US3] Execute regression verification for changed components batch A in `specs/007-component-audit-enhancement/verification/regression-batch-a.md`
+- [x] T032 [P] [US3] Execute regression verification for changed components batch B in `specs/007-component-audit-enhancement/verification/regression-batch-b.md`
+- [x] T033 [US3] Resolve and document verification failures/open issues in `specs/007-component-audit-enhancement/verification/open-issues.md`
+- [x] T034 [US3] Calculate and publish SC-003 first-run pass-rate metric in `specs/007-component-audit-enhancement/verification/sc-003-first-pass-rate.md`
+- [x] T035 [US3] Finalize completion register statuses and evidence links in `specs/007-component-audit-enhancement/audit-completion-register.md`
+- [x] T036 [US3] Produce stakeholder audit summary in `specs/007-component-audit-enhancement/stakeholder-audit-summary.md`
 
 **Checkpoint**: Full audit is traceable and stakeholder-review ready.
 
@@ -104,12 +104,12 @@
 
 **Purpose**: Final consistency checks, quality gates, and delivery readiness.
 
-- [ ] T037 [P] Normalize terminology across `specs/007-component-audit-enhancement/*.md`
-- [ ] T038 Validate contract alignment with evidence in `specs/007-component-audit-enhancement/contracts/component-audit-contract.md`
-- [ ] T039 Run quality gates and record outputs in `specs/007-component-audit-enhancement/verification/quality-gates.md`
-- [ ] T040 Run quickstart end-to-end validation and log results in `specs/007-component-audit-enhancement/verification/quickstart-validation.md`
-- [ ] T041 [P] Produce FR/SC-to-task evidence matrix in `specs/007-component-audit-enhancement/verification/requirements-traceability.md`
-- [ ] T042 [P] Record user-visible docs delta and update decision log in `specs/007-component-audit-enhancement/verification/docs-delta.md`
+- [x] T037 [P] Normalize terminology across `specs/007-component-audit-enhancement/*.md`
+- [x] T038 Validate contract alignment with evidence in `specs/007-component-audit-enhancement/contracts/component-audit-contract.md`
+- [x] T039 Run quality gates and record outputs in `specs/007-component-audit-enhancement/verification/quality-gates.md`
+- [x] T040 Run quickstart end-to-end validation and log results in `specs/007-component-audit-enhancement/verification/quickstart-validation.md`
+- [x] T041 [P] Produce FR/SC-to-task evidence matrix in `specs/007-component-audit-enhancement/verification/requirements-traceability.md`
+- [x] T042 [P] Record user-visible docs delta and update decision log in `specs/007-component-audit-enhancement/verification/docs-delta.md`
 
 ---
 
