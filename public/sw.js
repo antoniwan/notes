@@ -3,9 +3,10 @@
 
 const DEBUG = self.location.hostname === 'localhost' || self.location.hostname === '127.0.0.1';
 
-const CACHE_NAME = 'blog-v5.17.0';
-const STATIC_CACHE = 'static-v5.17.0';
-const DYNAMIC_CACHE = 'dynamic-v5.17.0';
+const SW_VERSION = new URL(self.location.href).searchParams.get('v') || 'dev';
+const CACHE_NAME = `blog-v${SW_VERSION}`;
+const STATIC_CACHE = `static-v${SW_VERSION}`;
+const DYNAMIC_CACHE = `dynamic-v${SW_VERSION}`;
 
 // Files to cache immediately
 const STATIC_FILES = [

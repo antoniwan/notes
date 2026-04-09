@@ -1,14 +1,16 @@
 ---
 // Service Worker Registration Component
 // Handles service worker installation and updates
+import * as pkg from '../../package.json';
+const swUrl = `/sw.js?v=${encodeURIComponent(pkg.version ?? 'dev')}`;
 ---
 
-<script>
+<script define:vars={{ swUrl }}>
   // Simple Service Worker Registration
   if ('serviceWorker' in navigator) {
     // Register service worker
     navigator.serviceWorker
-      .register('/sw.js', { scope: '/' })
+      .register(swUrl, { scope: '/' })
       .then((registration) => {
         // Check for updates
         registration.addEventListener('updatefound', () => {
