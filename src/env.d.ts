@@ -2,6 +2,7 @@
 
 declare global {
   interface Window {
+    updateServiceWorker?: () => void;
     ReadStateService?: {
       getInstance: () => {
         getReadData: (postSlug: string) => { readAt: string; postSlug: string } | null;

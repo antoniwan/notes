@@ -103,15 +103,15 @@ You **MUST** consider the user input before proceeding (if not empty).
      ```
 
    - Check if Dockerfile\* exists or Docker in plan.md → create/verify .dockerignore
-   - Check if .eslintrc\* exists → create/verify .eslintignore
-   - Check if eslint.config.\* exists → ensure the config's `ignores` entries cover required patterns
+   - **ESLint (flat config)**: If `eslint.config.*` exists (`eslint.config.js`, `.mjs`, or `.cjs`), ensure a top-level config object includes `ignores` with the required glob patterns. Do **not** create `.eslintignore`; ESLint 9+ deprecates it when using flat config—`ignores` in `eslint.config.*` is the source of truth.
+   - **ESLint (legacy only)**: If the project uses `.eslintrc*` and has **no** `eslint.config.*`, create/verify `.eslintignore`, or migrate to flat config (preferred for new work).
    - Check if .prettierrc\* exists → create/verify .prettierignore
    - Check if .npmrc or package.json exists → create/verify .npmignore (if publishing)
    - Check if terraform files (\*.tf) exist → create/verify .terraformignore
    - Check if .helmignore needed (helm charts present) → create/verify .helmignore
 
-   **If ignore file already exists**: Verify it contains essential patterns, append missing critical patterns only
-   **If ignore file missing**: Create with full pattern set for detected technology
+   **If ignore file already exists**: Verify it contains essential patterns, append missing critical patterns only. For ESLint flat config, treat the `ignores` array in `eslint.config.*` as that list (merge missing patterns there, not into a separate `.eslintignore`).
+   **If ignore file missing**: Create with full pattern set for detected technology (for flat ESLint, add/adjust `ignores` in `eslint.config.*` instead of adding `.eslintignore`).
 
    **Common Patterns by Technology** (from plan.md tech stack):
    - **Node.js/JavaScript/TypeScript**: `node_modules/`, `dist/`, `build/`, `*.log`, `.env*`
@@ -131,7 +131,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
    **Tool-Specific Patterns**:
    - **Docker**: `node_modules/`, `.git/`, `Dockerfile*`, `.dockerignore`, `*.log*`, `.env*`, `coverage/`
-   - **ESLint**: `node_modules/`, `dist/`, `build/`, `coverage/`, `*.min.js`
+   - **ESLint (flat config)**: In `eslint.config.*` → `ignores`: e.g. `node_modules/**`, `dist/**`, `build/**`, `coverage/**`, `**/*.min.js`
    - **Prettier**: `node_modules/`, `dist/`, `build/`, `coverage/`, `package-lock.json`, `yarn.lock`, `pnpm-lock.yaml`
    - **Terraform**: `.terraform/`, `*.tfstate*`, `*.tfvars`, `.terraform.lock.hcl`
    - **Kubernetes/k8s**: `*.secret.yaml`, `secrets/`, `.kube/`, `kubeconfig*`, `*.key`, `*.crt`

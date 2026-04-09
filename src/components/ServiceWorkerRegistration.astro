@@ -5,7 +5,7 @@ import * as pkg from '../../package.json';
 const swUrl = `/sw.js?v=${encodeURIComponent(pkg.version ?? 'dev')}`;
 ---
 
-<script define:vars={{ swUrl }}>
+<script is:inline define:vars={{ swUrl }}>
   // Simple Service Worker Registration
   if ('serviceWorker' in navigator) {
     // Register service worker
@@ -75,8 +75,6 @@ const swUrl = `/sw.js?v=${encodeURIComponent(pkg.version ?? 'dev')}`;
     }
   }
 
-  // Expose update function globally
-  // @ts-ignore
   window.updateServiceWorker = updateServiceWorker;
 
   // Performance mark for service worker registration
