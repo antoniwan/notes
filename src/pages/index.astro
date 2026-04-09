@@ -16,11 +16,11 @@ const highlightsByCategory = await getHighlightsByCategory();
 >
   <HighlightsMasonry posts={highlights} postsByCategory={highlightsByCategory} />
 
-  <p class="mt-8">
+  <p class="mt-10 text-[1.06rem] leading-relaxed text-[rgb(var(--color-text-muted))]">
     If those highlights resonate, keep going. Start with context, follow a theme, or read everything
     in sequence.
   </p>
-  <ul>
+  <ul class="my-6 space-y-2">
     <li>
       <a href="/guided-path" class="text-[rgb(var(--color-primary))] hover:underline"
         ><strong>Start Here (Guided Path)</strong></a
@@ -38,7 +38,7 @@ const highlightsByCategory = await getHighlightsByCategory();
     </li>
   </ul>
 
-  <h2>Why this space exists right now</h2>
+  <h2 class="mt-12">Why this space exists right now</h2>
 
   <p>
     This space keeps me accountable to what I claim to value. I use it to document the gap between
@@ -52,82 +52,3 @@ const highlightsByCategory = await getHighlightsByCategory();
     less performance, more practice.
   </p>
 </PageLayout>
-
-<style>
-  /* Ensure proper spacing and typography */
-  .prose h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    margin-top: 0;
-  }
-
-  .prose h2 {
-    font-size: 2rem;
-    font-weight: 600;
-    line-height: 1.3;
-    margin-top: 3rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .prose h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    line-height: 1.4;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-  }
-
-  .prose p {
-    margin-top: 1.75rem;
-    margin-bottom: 1.75rem;
-    line-height: 1.8;
-  }
-
-  .prose ul {
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .prose li {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    line-height: 1.7;
-  }
-
-  .prose a {
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-
-  .prose a:hover {
-    text-decoration: underline;
-  }
-
-  /* Isolate postcard grids from prose spacing */
-  .prose .postcards-grid {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-
-  /* Mobile adjustments */
-  @media (max-width: 768px) {
-    .prose h1 {
-      font-size: 2rem;
-    }
-
-    .prose h2 {
-      font-size: 1.75rem;
-      margin-top: 2rem;
-    }
-
-    /* Extra spacing for Highlights section on mobile */
-    .prose .highlights-heading {
-      margin-top: 3rem;
-    }
-
-    .prose h3 {
-      font-size: 1.25rem;
-    }
-  }
-</style>

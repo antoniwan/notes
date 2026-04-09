@@ -17,10 +17,10 @@
 
 **Purpose**: Build inventory and baseline references before changing styles.
 
-- [ ] T001 Inventory all public-facing templates and record one representative page per template in `specs/004-ui-ux-refinement/data-model.md`
-- [ ] T002 [P] Capture baseline screenshots/notes at mobile, tablet, and desktop for representative pages and store references in `specs/004-ui-ux-refinement/quickstart.md`
-- [ ] T003 [P] Define the visual QA checklist (hierarchy, spacing, alignment, legibility, contrast) in `specs/004-ui-ux-refinement/contracts/visual-refinement-contract.md`
-- [ ] T004 [P] Define SC-002 sampling protocol (sample set size, inclusion rules, and pass-threshold calculation) in `specs/004-ui-ux-refinement/quickstart.md`
+- [x] T001 Inventory all public-facing templates and record one representative page per template in `specs/004-ui-ux-refinement/data-model.md`
+- [x] T002 [P] Capture baseline screenshots/notes at mobile, tablet, and desktop for representative pages and store references in `specs/004-ui-ux-refinement/quickstart.md`
+- [x] T003 [P] Define the visual QA checklist (hierarchy, spacing, alignment, legibility, contrast) in `specs/004-ui-ux-refinement/contracts/visual-refinement-contract.md`
+- [x] T004 [P] Define SC-002 sampling protocol (sample set size, inclusion rules, and pass-threshold calculation) in `specs/004-ui-ux-refinement/quickstart.md`
 
 ---
 
@@ -30,10 +30,10 @@
 
 **CRITICAL**: No user story implementation should begin until this phase is complete.
 
-- [ ] T005 Audit current shared typography/layout surfaces in `src/styles/global.css`, `src/layouts/BlogLayout.astro`, and `src/layouts/BaseLayout.astro`, then document target refinement points in `specs/004-ui-ux-refinement/research.md`
-- [ ] T006 Create/update shared typography role rules (title, headings, body, metadata) in `src/styles/global.css`
-- [ ] T007 Create/update shared spacing rhythm and container alignment rules in `src/styles/global.css` and `src/layouts/BlogLayout.astro`
-- [ ] T008 Validate that foundational style updates do not alter interactions or route/content structure across representative pages
+- [x] T005 Audit current shared typography/layout surfaces in `src/styles/global.css`, `src/layouts/BlogLayout.astro`, and `src/layouts/BaseLayout.astro`, then document target refinement points in `specs/004-ui-ux-refinement/research.md`
+- [x] T006 Create/update shared typography role rules (title, headings, body, metadata) in `src/styles/global.css`
+- [x] T007 Create/update shared spacing rhythm and container alignment rules in `src/styles/global.css` and `src/layouts/BlogLayout.astro`
+- [x] T008 Validate that foundational style updates do not alter interactions or route/content structure across representative pages
 
 **Checkpoint**: Shared design primitives are ready and safe; user stories can proceed.
 
@@ -47,10 +47,10 @@
 
 ### Implementation for User Story 1
 
-- [ ] T009 [US1] Refine long-form typography and hierarchy styling in `src/pages/p/[...slug].astro`, `src/layouts/BlogLayout.astro`, and `src/styles/global.css`
-- [ ] T010 [US1] Improve spacing rhythm between long-form content sections/headings in `src/pages/p/[...slug].astro`; update `src/components/post-toc/PostTocModal.astro` only if post-heading spacing or typography tokens are modified in this story
-- [ ] T011 [US1] Verify long-title/multi-line-heading behavior and update styles in `src/pages/p/[...slug].astro` and `src/layouts/BlogLayout.astro` to prevent collisions/overlap
-- [ ] T012 [US1] Validate WCAG 2.2 AA contrast and text legibility expectations on representative long-form pages
+- [x] T009 [US1] Refine long-form typography and hierarchy styling in `src/pages/p/[...slug].astro`, `src/layouts/BlogLayout.astro`, and `src/styles/global.css`
+- [x] T010 [US1] Improve spacing rhythm between long-form content sections/headings in `src/pages/p/[...slug].astro`; update `src/components/post-toc/PostTocModal.astro` only if post-heading spacing or typography tokens are modified in this story
+- [x] T011 [US1] Verify long-title/multi-line-heading behavior and update styles in `src/pages/p/[...slug].astro` and `src/layouts/BlogLayout.astro` to prevent collisions/overlap
+- [x] T012 [US1] Validate WCAG 2.2 AA contrast and text legibility expectations on representative long-form pages
 
 **Checkpoint**: US1 is independently functional and visually improved for long-form reading.
 
@@ -64,10 +64,10 @@
 
 ### Implementation for User Story 2
 
-- [ ] T013 [P] [US2] Refine homepage layout rhythm and alignment in `src/pages/index.astro` without changing existing interactions/content structure
-- [ ] T014 [P] [US2] Refine about-page layout rhythm and alignment in `src/pages/about.astro` without changing existing interactions/content structure
-- [ ] T015 [US2] Refine shared page/listing layout consistency in `src/pages/index.astro`, `src/pages/about.astro`, `src/layouts/BlogLayout.astro`, and `src/styles/global.css`
-- [ ] T016 [US2] Harmonize component-level spacing/alignment inconsistencies for repeated UI patterns in `src/components/PostCard.astro` and `src/components/RelatedPosts.astro`; update `src/components/post-toc/PostTocModal.astro` only if shared spacing/alignment tokens used by post listings are changed
+- [x] T013 [P] [US2] Refine homepage layout rhythm and alignment in `src/pages/index.astro` without changing existing interactions/content structure
+- [x] T014 [P] [US2] Refine about-page layout rhythm and alignment in `src/pages/about.astro` without changing existing interactions/content structure
+- [x] T015 [US2] Refine shared page/listing layout consistency in `src/pages/index.astro`, `src/pages/about.astro`, `src/layouts/BlogLayout.astro`, and `src/styles/global.css`
+- [x] T016 [US2] Harmonize component-level spacing/alignment inconsistencies for repeated UI patterns in `src/components/PostCard.astro` and `src/components/RelatedPosts.astro`; update `src/components/post-toc/PostTocModal.astro` only if shared spacing/alignment tokens used by post listings are changed
 
 **Checkpoint**: US2 is independently functional with consistent cross-template rhythm/alignment.
 
@@ -81,10 +81,10 @@
 
 ### Implementation for User Story 3
 
-- [ ] T017 [US3] Tune responsive typography and spacing behavior at mobile/tablet/desktop breakpoints in `src/styles/global.css`, `src/pages/index.astro`, `src/pages/about.astro`, and `src/layouts/BlogLayout.astro`
-- [ ] T018 [US3] Resolve edge-case presentation issues (very long headings, sparse pages, wide screens, narrow screens) in `src/pages/p/[...slug].astro`, `src/pages/about.astro`, and `src/pages/index.astro`
-- [ ] T019 [US3] Run full template-by-breakpoint QA matrix and record pass/fail outcomes in `specs/004-ui-ux-refinement/quickstart.md`
-- [ ] T020 [US3] Confirm all representative templates satisfy WCAG 2.2 AA contrast expectations and document final accessibility verification in `specs/004-ui-ux-refinement/contracts/visual-refinement-contract.md`
+- [x] T017 [US3] Tune responsive typography and spacing behavior at mobile/tablet/desktop breakpoints in `src/styles/global.css`, `src/pages/index.astro`, `src/pages/about.astro`, and `src/layouts/BlogLayout.astro`
+- [x] T018 [US3] Resolve edge-case presentation issues (very long headings, sparse pages, wide screens, narrow screens) in `src/pages/p/[...slug].astro`, `src/pages/about.astro`, and `src/pages/index.astro`
+- [x] T019 [US3] Run full template-by-breakpoint QA matrix and record pass/fail outcomes in `specs/004-ui-ux-refinement/quickstart.md`
+- [x] T020 [US3] Confirm all representative templates satisfy WCAG 2.2 AA contrast expectations and document final accessibility verification in `specs/004-ui-ux-refinement/contracts/visual-refinement-contract.md`
 
 **Checkpoint**: US3 is independently functional with cross-device readability and layout quality.
 
@@ -94,11 +94,11 @@
 
 **Purpose**: Final consistency sweep, quality gates, and release readiness.
 
-- [ ] T021 [P] Perform final visual regression sweep across all representative templates and breakpoints; log final notes in `specs/004-ui-ux-refinement/quickstart.md`
-- [ ] T022 [P] Run formatting gate via `pnpm run format:check`
-- [ ] T023 [P] Run Astro/type validation via `pnpm run check`
-- [ ] T024 Run production build gate via `pnpm run build`
-- [ ] T025 Update `specs/004-ui-ux-refinement/contracts/visual-refinement-contract.md` with final completion evidence and sign-off
+- [x] T021 [P] Perform final visual regression sweep across all representative templates and breakpoints; log final notes in `specs/004-ui-ux-refinement/quickstart.md`
+- [x] T022 [P] Run formatting gate via `pnpm run format:check`
+- [x] T023 [P] Run Astro/type validation via `pnpm run check`
+- [x] T024 Run production build gate via `pnpm run build`
+- [x] T025 Update `specs/004-ui-ux-refinement/contracts/visual-refinement-contract.md` with final completion evidence and sign-off
 
 ---
 

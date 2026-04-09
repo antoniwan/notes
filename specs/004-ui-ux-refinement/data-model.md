@@ -45,3 +45,21 @@ This feature does not add runtime-persisted entities. The model below defines de
 
 - `Baseline Captured` -> `Refinement Applied` -> `QA Validated` -> `Ready for Tasks`
 - Transition rule: all public templates must reach `QA Validated` before `Ready for Tasks`.
+
+## Public Template Inventory (Representative QA Set)
+
+- `home` -> `/` (`src/pages/index.astro`)
+- `about` -> `/about` (`src/pages/about.astro`)
+- `post` -> `/p/[...slug]` (`src/pages/p/[...slug].astro`)
+- `everything listing` -> `/everything` (`src/pages/everything.astro`)
+- `category listing` -> `/category` (`src/pages/category/index.astro`)
+- `category detail` -> `/category/[category]` (`src/pages/category/[category].astro`)
+- `tag listing` -> `/tag` (`src/pages/tag/index.astro`)
+- `tag detail` -> `/tag/[tag]` (`src/pages/tag/[tag].astro`)
+- `guided path` -> `/guided-path` (`src/pages/guided-path.astro`)
+- `library` -> `/library` (`src/pages/library.astro`)
+- `library books` -> `/library/books` (`src/pages/library/books.astro`)
+- `tag management` -> `/tag-management` (`src/pages/tag-management.astro`)
+- `brain science landing` -> `/brain-science` (`src/pages/brain-science/index.astro`)
+- `api docs` -> `/api` (`src/pages/api/index.astro`)
+- `not found` -> `/404` (`src/pages/404.astro`)

@@ -31,3 +31,10 @@
 - **Alternatives considered**:
   - Keep accessibility qualitative (rejected: ambiguous QA outcomes).
   - Target AAA universally (rejected: likely over-constraining for this pass).
+
+## Implementation Audit Notes (System-First Targets)
+
+- **Global typography + spacing source**: `src/styles/global.css` is the highest leverage surface for cross-template hierarchy and rhythm updates.
+- **Long-form layout surface**: `src/layouts/BlogLayout.astro` controls post-page structural spacing, metadata rail rhythm, and content column balance.
+- **Homepage + About per-template polish**: `src/pages/index.astro` and `src/pages/about.astro` receive local spacing/alignment refinements while preserving content/interactions.
+- **Repeated card/list modules**: `src/components/PostCard.astro`, `src/components/RelatedPosts.astro`, and `src/components/post-toc/PostTocModal.astro` are tuned to reduce alignment drift across pages.
