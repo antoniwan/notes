@@ -10,7 +10,7 @@ Deliver a full, traceable component audit for production-relevant components, do
 ## Technical Context
 
 **Language/Version**: TypeScript 5.x + Astro 6.x (`.astro` components and project documentation artifacts)  
-**Primary Dependencies**: Astro layout/component system, Tailwind CSS utilities, existing component architecture under `src/components/`  
+**Primary Dependencies**: Astro layout/component system, Tailwind CSS utilities, surfaces under `src/components/`, `src/layouts/`, and shared helpers in `src/utils/` and `src/data/`  
 **Storage**: File-based documentation artifacts under `specs/007-component-audit-enhancement/`; no new runtime persistence  
 **Testing**: `pnpm run lint`, `pnpm run check`, `pnpm run format:check`, `pnpm run build` + component-level regression verification against documented baselines  
 **Target Platform**: Static-first website pages rendered across current supported desktop/mobile browsers  
@@ -84,6 +84,7 @@ specs/
 - Break work into inventory + baseline capture, component documentation completion, enhancement triage/application, regression validation, and completion register sign-off.
 - Map tasks explicitly to FR-001..FR-010 and SC-001..SC-005.
 - Ensure each changed component includes before/after evidence and cross-context regression verification.
+- Close with polish artifacts: requirements traceability matrix (`verification/requirements-traceability.md`, T041) and user-visible docs delta log (`verification/docs-delta.md`, T042).
 
 ## Post-Design Constitution Check
 

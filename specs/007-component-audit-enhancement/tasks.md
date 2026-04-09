@@ -36,7 +36,7 @@
 - [ ] T008 Identify excluded artifact patterns and rationale in `specs/007-component-audit-enhancement/audit-scope.md`
 - [ ] T009 [P] Build initial component inventory from `src/components/` into `specs/007-component-audit-enhancement/component-inventory.md`
 - [ ] T010 [P] Add layout/shared component inventory candidates from `src/layouts/` and shared usage points into `specs/007-component-audit-enhancement/component-inventory.md`
-- [ ] T011 Reconcile scope + inventory, assign stable `componentId` values, and define deterministic A/B/C batch mapping in `specs/007-component-audit-enhancement/component-batches.md`
+- [ ] T011 Reconcile scope + inventory, assign stable `componentId` values, and define deterministic A/B/C batch mapping (including per-batch owner and reviewer) in `specs/007-component-audit-enhancement/component-batches.md`
 - [ ] T012 Seed register with all in-scope component IDs in `specs/007-component-audit-enhancement/audit-completion-register.md`
 
 **Checkpoint**: Foundation ready; user stories can proceed.
