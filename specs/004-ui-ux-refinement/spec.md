@@ -43,11 +43,11 @@ As a reader, I experience consistent alignment and spacing patterns across pages
 
 **Why this priority**: Consistency improves perceived quality and usability, reducing cognitive load when moving between pages.
 
-**Independent Test**: Compare key page types (home, post, about, listing) and verify shared spacing rhythm, alignment behavior, and typographic scale are applied consistently.
+**Independent Test**: Compare representative public-facing templates and verify shared spacing rhythm, alignment behavior, and typographic scale are applied consistently.
 
 **Acceptance Scenarios**:
 
-1. **Given** multiple core page types, **When** a reader navigates between them, **Then** container widths, spacing cadence, and alignment rules appear coherent and predictable.
+1. **Given** multiple representative public-facing templates, **When** a reader navigates between them, **Then** container widths, spacing cadence, and alignment rules appear coherent and predictable.
 2. **Given** page components in the same semantic role, **When** they appear on different pages, **Then** they preserve consistent visual treatment and placement.
 
 ---

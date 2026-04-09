@@ -48,7 +48,7 @@
 ### Implementation for User Story 1
 
 - [ ] T009 [US1] Refine long-form typography and hierarchy styling in `src/pages/p/[...slug].astro`, `src/layouts/BlogLayout.astro`, and `src/styles/global.css`
-- [ ] T010 [US1] Improve spacing rhythm between long-form content sections/headings in `src/pages/p/[...slug].astro` and `src/components/post-toc/PostTocModal.astro` (if impacted)
+- [ ] T010 [US1] Improve spacing rhythm between long-form content sections/headings in `src/pages/p/[...slug].astro`; update `src/components/post-toc/PostTocModal.astro` only if post-heading spacing or typography tokens are modified in this story
 - [ ] T011 [US1] Verify long-title/multi-line-heading behavior and update styles in `src/pages/p/[...slug].astro` and `src/layouts/BlogLayout.astro` to prevent collisions/overlap
 - [ ] T012 [US1] Validate WCAG 2.2 AA contrast and text legibility expectations on representative long-form pages
 
@@ -67,7 +67,7 @@
 - [ ] T013 [P] [US2] Refine homepage layout rhythm and alignment in `src/pages/index.astro` without changing existing interactions/content structure
 - [ ] T014 [P] [US2] Refine about-page layout rhythm and alignment in `src/pages/about.astro` without changing existing interactions/content structure
 - [ ] T015 [US2] Refine shared page/listing layout consistency in `src/pages/index.astro`, `src/pages/about.astro`, `src/layouts/BlogLayout.astro`, and `src/styles/global.css`
-- [ ] T016 [US2] Harmonize component-level spacing/alignment inconsistencies for repeated UI patterns in `src/components/PostCard.astro`, `src/components/RelatedPosts.astro`, and `src/components/post-toc/PostTocModal.astro` (if impacted)
+- [ ] T016 [US2] Harmonize component-level spacing/alignment inconsistencies for repeated UI patterns in `src/components/PostCard.astro` and `src/components/RelatedPosts.astro`; update `src/components/post-toc/PostTocModal.astro` only if shared spacing/alignment tokens used by post listings are changed
 
 **Checkpoint**: US2 is independently functional with consistent cross-template rhythm/alignment.
 
