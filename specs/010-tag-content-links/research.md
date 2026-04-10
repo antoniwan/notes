@@ -38,3 +38,4 @@
 - **Rationale**: Creates an explicit verification target for implementation and future refactors.
 - **Alternatives considered**:
   - No contract document: faster short term but weaker guardrails for deterministic behavior and acceptance checks.
+

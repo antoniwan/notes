@@ -18,7 +18,6 @@ tags:
   - emotional-regulation
   - personal-growth
   - self-reflection
-  - healing
   - bias
   - judgment
   - inner-peace
@@ -26,8 +25,6 @@ tags:
   - self-awareness
   - mindfulness
   - resilience
-  - transformation
-  - philosophy
   - stoicism
 draft: false
 featured: true

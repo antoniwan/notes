@@ -5,10 +5,18 @@ import PageHeader from '../../components/PageHeader.astro';
 import Container from '../../components/Container.astro';
 import { getCollection } from 'astro:content';
 import { getAllUniqueTags, getTagStatistics } from '../../utils/tagProcessing';
+import { canonicalizeTag, normalizeTagInput } from '../../utils/tagVocabulary';
+import { TAG_ALIAS_MAP } from '../../data/tagVocabulary';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  const tags = getAllUniqueTags(posts);
+  const canonicalTags = getAllUniqueTags(posts);
+  const canonicalSet = new Set(canonicalTags);
+  const aliasTags = Object.keys(TAG_ALIAS_MAP).filter(
+    (alias) => canonicalSet.has(TAG_ALIAS_MAP[alias]) && normalizeTagInput(alias) !== TAG_ALIAS_MAP[alias],
+  );
+  const contentFormFallbackTags = ['poems', 'memoir', 'reflection'];
+  const tags = Array.from(new Set([...canonicalTags, ...aliasTags, ...contentFormFallbackTags]));
 
   return tags.map((tag) => ({
     params: { tag },
@@ -17,6 +25,7 @@ export async function getStaticPaths() {
 }
 
 const { tag } = Astro.props;
+const canonicalTag = canonicalizeTag(tag);
 
 // Get all posts
 const posts = await getCollection('blog', ({ data }) => {
@@ -24,27 +33,41 @@ const posts = await getCollection('blog', ({ data }) => {
 });
 
 // Get tag statistics
-const { totalPosts, relatedTags } = getTagStatistics(tag, posts);
+const { totalPosts, relatedTags } = getTagStatistics(canonicalTag, posts);
 
 // Filter posts by tag and sort by date
 const tagPosts = posts
-  .filter((post) => post.data.tags?.includes(tag))
+  .filter((post) =>
+    post.data.tags?.some((rawTag) => canonicalizeTag(rawTag) === canonicalTag),
+  )
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <BaseLayout
-  title={`${tag} - Tag`}
-  description={`Browse all writings tagged with ${tag}`}
-  path={`/tag/${tag}`}
+  title={`${canonicalTag} - Tag`}
+  description={`Browse all writings tagged with ${canonicalTag}`}
+  path={`/tag/${canonicalTag}`}
   structuredDataType="tag"
-  structuredDataIdentifier={tag}
+  structuredDataIdentifier={canonicalTag}
   posts={tagPosts}
 >
   <Container>
     <Container maxWidth="container" padding="none">
       {/* Tag Header with Stats */}
       <div class="mb-8">
-        <PageHeader title={`#${tag}`} description={`Browse all writings tagged with ${tag}`} />
+        <PageHeader
+          title={`#${canonicalTag}`}
+          description={`Browse all writings tagged with ${canonicalTag}`}
+        />
+        <div class="mt-4 md:mt-6">
+          <a
+            href="/tag/"
+            class="theme-transition inline-flex items-center gap-2 rounded-full border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg-alt))] px-4 py-2 text-sm font-medium text-[rgb(var(--color-text))] hover:border-[rgb(var(--color-primary))]/40 hover:bg-[rgb(var(--color-primary))]/10 hover:text-[rgb(var(--color-primary))] focus:outline-none focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:ring-offset-1"
+          >
+            <span aria-hidden="true">🏷️</span>
+            See all tags
+          </a>
+        </div>
 
         {/* Tag Statistics */}
         <div class="mt-6 flex flex-wrap items-center gap-4">
@@ -73,10 +96,30 @@ const tagPosts = posts
         </div>
       </div>
 
+      {/* Tag Posts */}
+      <div class="space-y-6">
+        {
+          tagPosts.length > 0 && (
+            <div class="mb-6 flex items-center justify-between">
+              <h2 class="text-heading text-[rgb(var(--color-text))]">
+                Writings tagged with #{canonicalTag}
+              </h2>
+              <div class="text-base leading-relaxed text-[rgb(var(--color-text-muted))]">
+                Sorted by date
+              </div>
+            </div>
+          )
+        }
+
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+          {tagPosts.map((post) => <PostCard post={post} featured={post.data.featured} />)}
+        </div>
+      </div>
+
       {/* Related Tags */}
       {
         relatedTags.length > 0 && (
-          <div class="mb-8">
+          <div class="mt-8">
             <h3 class="text-subheading mb-4 text-[rgb(var(--color-text))]">Related Tags</h3>
             <div class="flex flex-wrap gap-1.5">
               {relatedTags.map(({ tag: relatedTag, count }: { tag: string; count: number }) => (
@@ -94,26 +137,6 @@ const tagPosts = posts
         )
       }
 
-      {/* Tag Posts */}
-      <div class="space-y-6">
-        {
-          tagPosts.length > 0 && (
-            <div class="mb-6 flex items-center justify-between">
-              <h2 class="text-heading text-[rgb(var(--color-text))]">
-                Writings tagged with #{tag}
-              </h2>
-              <div class="text-base leading-relaxed text-[rgb(var(--color-text-muted))]">
-                Sorted by date
-              </div>
-            </div>
-          )
-        }
-
-        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
-          {tagPosts.map((post) => <PostCard post={post} featured={post.data.featured} />)}
-        </div>
-      </div>
-
       {/* Empty State */}
       {
         tagPosts.length === 0 && (
@@ -124,7 +147,7 @@ const tagPosts = posts
               </div>
               <h3 class="text-subheading mb-2 text-[rgb(var(--color-text))]">No writings found</h3>
               <p class="text-body-large mb-6 leading-relaxed text-[rgb(var(--color-text-muted))]">
-                No writings have been tagged with "#{tag}" yet.
+                No writings have been tagged with "#{canonicalTag}" yet.
               </p>
               <a
                 href="/tag/"

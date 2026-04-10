@@ -16,8 +16,6 @@ tags:
   - spirituality
   - atheism
   - meaning
-  - reflection
-  - personal-growth
   - humanism
   - philosophy
   - consciousness
@@ -27,23 +25,15 @@ tags:
   - purpose
   - existentialism
   - mental-health
-  - emotional-health
   - healing
   - therapy
-  - wellness
-  - self-improvement
-  - growth
   - transformation
   - authenticity
   - truth
-  - power
   - responsibility
   - emotional-intelligence
   - self-awareness
-  - consciousness
-  - healing
   - resilience
-  - self-discovery
 draft: false
 featured: false
 highlight: true

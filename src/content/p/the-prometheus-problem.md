@@ -15,12 +15,10 @@ tags:
   - technology
   - politics
   - social-issues
-  - consciousness
   - truth
   - social-justice
   - systemic-critique
   - fear
-  - control
   - mental-health
   - collective-healing
   - philosophy
@@ -28,7 +26,6 @@ tags:
   - freedom
   - digital-safety
   - technology-policy
-  - regulations
 draft: false
 featured: true
 published: true

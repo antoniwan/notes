@@ -6,6 +6,7 @@ import {
   type TagStats,
   type TagCategory,
 } from '../data/tags';
+import { canonicalizeTag, canonicalizeTags } from './tagVocabulary';
 
 /**
  * Calculate tag statistics across all posts
@@ -15,7 +16,7 @@ export function calculateTagStats(posts: CollectionEntry<'blog'>[]) {
   const tagWeights: Record<string, number> = {};
 
   posts.forEach((post) => {
-    post.data.tags?.forEach((tag) => {
+    canonicalizeTags(post.data.tags).forEach((tag) => {
       tagCounts[tag] = (tagCounts[tag] || 0) + 1;
       tagWeights[tag] = getTagWeight(tag);
     });
@@ -63,16 +64,17 @@ export function getRecommendedTags(
   allPosts: CollectionEntry<'blog'>[],
   maxCount: number = 5,
 ): string[] {
+  const canonicalPostTags = canonicalizeTags(postTags);
   // Get posts with similar tags
   const relatedPosts = allPosts.filter((post) =>
-    post.data.tags?.some((tag) => postTags.includes(tag)),
+    canonicalizeTags(post.data.tags).some((tag) => canonicalPostTags.includes(tag)),
   );
 
   // Count tag frequency in related posts
   const relatedTagCounts: Record<string, number> = {};
   relatedPosts.forEach((post) => {
-    post.data.tags?.forEach((tag) => {
-      if (!postTags.includes(tag)) {
+    canonicalizeTags(post.data.tags).forEach((tag) => {
+      if (!canonicalPostTags.includes(tag)) {
         // Don't include tags already on the post
         relatedTagCounts[tag] = (relatedTagCounts[tag] || 0) + 1;
       }
@@ -146,21 +148,22 @@ export function getRelatedTags(
   posts: CollectionEntry<'blog'>[],
   maxCount: number = 8,
 ): Array<{ tag: string; count: number }> {
+  const canonicalTargetTag = canonicalizeTag(targetTag);
   // Get posts with the target tag
-  const tagPosts = posts.filter((post) => post.data.tags?.includes(targetTag));
+  const tagPosts = posts.filter((post) => canonicalizeTags(post.data.tags).includes(canonicalTargetTag));
 
   // Get all tags from these posts
   const relatedTags = new Set<string>();
   tagPosts.forEach((post) => {
-    post.data.tags?.forEach((tag) => {
-      if (tag !== targetTag) relatedTags.add(tag);
+    canonicalizeTags(post.data.tags).forEach((tag) => {
+      if (tag !== canonicalTargetTag) relatedTags.add(tag);
     });
   });
 
   // Calculate tag counts across all posts
   const tagCounts = posts.reduce(
     (acc, post) => {
-      post.data.tags?.forEach((tag) => {
+      canonicalizeTags(post.data.tags).forEach((tag) => {
         acc[tag] = (acc[tag] || 0) + 1;
       });
       return acc;
@@ -181,7 +184,7 @@ export function getRelatedTags(
 export function getAllUniqueTags(posts: CollectionEntry<'blog'>[]): string[] {
   const tags = new Set<string>();
   posts.forEach((post) => {
-    post.data.tags?.forEach((tag) => tags.add(tag));
+    canonicalizeTags(post.data.tags).forEach((tag) => tags.add(tag));
   });
   return Array.from(tags);
 }
@@ -193,8 +196,9 @@ export function filterPostsByTag(
   posts: CollectionEntry<'blog'>[],
   tag: string,
 ): CollectionEntry<'blog'>[] {
+  const canonicalTag = canonicalizeTag(tag);
   return posts
-    .filter((post) => post.data.tags?.includes(tag))
+    .filter((post) => canonicalizeTags(post.data.tags).includes(canonicalTag))
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 }
 
@@ -209,9 +213,10 @@ export function getTagStatistics(
   relatedTags: Array<{ tag: string; count: number }>;
   category?: TagCategory;
 } {
-  const tagPosts = filterPostsByTag(posts, tag);
-  const relatedTags = getRelatedTags(tag, posts);
-  const category = getTagCategory(tag);
+  const canonicalTag = canonicalizeTag(tag);
+  const tagPosts = filterPostsByTag(posts, canonicalTag);
+  const relatedTags = getRelatedTags(canonicalTag, posts);
+  const category = getTagCategory(canonicalTag);
 
   return {
     totalPosts: tagPosts.length,
@@ -233,13 +238,15 @@ export function findRelatedPosts(
 
   if (availablePosts.length === 0) return [];
 
+  const currentPostTags = canonicalizeTags(currentPost.data.tags);
   // Score posts based on multiple factors
   const scoredPosts = availablePosts.map((post) => {
     let score = 0;
+    const candidateTags = canonicalizeTags(post.data.tags);
 
     // Tag similarity (highest weight)
-    if (currentPost.data.tags && post.data.tags) {
-      const commonTags = currentPost.data.tags.filter((tag) => post.data.tags!.includes(tag));
+    if (currentPostTags.length > 0 && candidateTags.length > 0) {
+      const commonTags = currentPostTags.filter((tag) => candidateTags.includes(tag));
       score += commonTags.length * 10; // 10 points per common tag
 
       // Bonus for high-weight tags

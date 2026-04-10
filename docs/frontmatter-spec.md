@@ -86,6 +86,12 @@ Keywords and topics for the post
 tags: ['nutrition', 'health', 'wellness', 'cooking']
 ```
 
+Tag policy:
+
+- Prefer canonical tags from `docs/tag-vocabulary.md`.
+- Canonical tags use lowercase kebab-case English slugs.
+- Keep tags descriptive and reusable; avoid one-off labels unless they are clearly needed.
+
 ### `readingTime` (removed)
 
 This field has been removed. Reading times are now automatically calculated using the remark plugin.

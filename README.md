@@ -1,6 +1,6 @@
 # Notes
 
-[![Version](https://img.shields.io/badge/version-5.19.0-blue.svg)](https://github.com/antoniwan/notes/releases)
+[![Version](https://img.shields.io/badge/version-5.21.0-blue.svg)](https://github.com/antoniwan/notes/releases)
 
 Personal writing site: essays and notes on fatherhood, masculinity, culture, and day-to-day life. Some posts are in English, some in Spanish, with links between translations where it applies.
 
@@ -105,6 +105,7 @@ Feature-specific components live under `src/components/<feature>/` when they are
 ## Content
 
 Post frontmatter is documented in [docs/frontmatter-spec.md](docs/frontmatter-spec.md).
+Tag governance and usage are documented in [docs/tag-policy.md](docs/tag-policy.md) and [docs/tag-vocabulary.md](docs/tag-vocabulary.md).
 
 Translations: same `translationGroup` on each language version; use `featured` so only one version shows in main lists. Details: [docs/multilingual-setup.md](docs/multilingual-setup.md).
 
@@ -115,6 +116,9 @@ Using Cursor AI in this repo: [docs/cursor-agent-skills.md](docs/cursor-agent-sk
 | File                                                                    | Topic                    |
 | ----------------------------------------------------------------------- | ------------------------ |
 | [frontmatter-spec.md](docs/frontmatter-spec.md)                         | Post frontmatter         |
+| [tag-policy.md](docs/tag-policy.md)                                     | Signal-first tag policy  |
+| [tag-vocabulary.md](docs/tag-vocabulary.md)                             | Canonical vocabulary     |
+| [tag-cleanup-assessment-2026-04-10.md](docs/tag-cleanup-assessment-2026-04-10.md) | Current cleanup audit    |
 | [multilingual-setup.md](docs/multilingual-setup.md)                     | EN/ES linking            |
 | [comments-setup.md](docs/comments-setup.md)                             | Remark42                 |
 | [quotes-api.md](docs/quotes-api.md)                                     | `/api/quotes`            |

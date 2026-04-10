@@ -3,6 +3,7 @@ import { defineCollection } from 'astro:content';
 import { z } from 'astro/zod';
 import { categories } from './data/categories';
 import type { Category } from './data/categories';
+import { canonicalizeTags } from './utils/tagVocabulary';
 
 // Create a list of valid category IDs
 const validCategoryIds = categories.map((cat: Category) => cat.id);
@@ -35,7 +36,7 @@ const blog = defineCollection({
     imageAlt: z.string().optional(),
     category: z.array(z.enum(validCategoryIds as [string, ...string[]])).optional(),
     subcategory: z.string().optional(),
-    tags: z.array(z.string()).optional(),
+    tags: z.array(z.string()).transform(canonicalizeTags).optional(),
     draft: z
       .boolean()
       .optional()

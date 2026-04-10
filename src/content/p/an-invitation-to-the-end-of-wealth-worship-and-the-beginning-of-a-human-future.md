@@ -12,11 +12,9 @@ category:
   - integration-growth
 tags:
   - dignity
-  - worth
-  - society
-  - systems
+  - social-issues
+  - systems-strategy
   - compassion
-  - humanity
   - values
   - social-justice
   - systemic-critique
@@ -24,18 +22,15 @@ tags:
   - consciousness
   - politics
   - culture
-  - authenticity
   - purpose
   - meaning
   - collective-healing
   - revolution
   - love
   - empathy
-  - mental-health
   - self-reflection
   - truth
   - freedom
-  - intentional-living
 featured: true
 published: true
 showComments: true

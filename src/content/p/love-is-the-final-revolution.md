@@ -17,23 +17,18 @@ tags:
   - parenting
   - consciousness
   - healing
-  - transformation
   - values
   - empathy
   - compassion
   - social-justice
   - collective-healing
-  - mental-health
-  - self-care
   - presence
   - mindfulness
   - resilience
-  - authenticity
   - purpose
   - radical-love
   - political-awakening
   - systemic-critique
-  - fear-dissolution
   - love-as-resistance
 draft: false
 featured: true

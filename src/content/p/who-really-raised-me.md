@@ -31,10 +31,8 @@ tags:
   - mentorship
   - values
   - one-punch-man
-  - saitama
   - dragon-ball
   - berserk
-  - samurai-x
 draft: false
 featured: true
 published: true

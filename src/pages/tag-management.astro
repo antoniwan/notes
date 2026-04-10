@@ -5,6 +5,8 @@ import TagDisplay from '../components/TagDisplay.astro';
 import Container from '../components/Container.astro';
 import { getCollection } from 'astro:content';
 import { calculateTagStats } from '../utils/tagProcessing';
+import { PREFERRED_TAGS } from '../data/tagVocabulary';
+const PREFERRED_TAG_SET = new Set<string>(PREFERRED_TAGS as readonly string[]);
 
 // Get all posts
 const posts = await getCollection('blog', ({ data }) => {
@@ -32,6 +34,7 @@ const postsWithManyTags = posts.filter((post) => (post.data.tags?.length || 0) >
 // Get top tags by frequency
 const topTags = sortedTags.slice(0, 20);
 const lowFrequencyTags = sortedTags.filter(([, count]) => count <= 2);
+const nonPreferredTags = sortedTags.filter(([tag]) => !PREFERRED_TAG_SET.has(tag));
 ---
 
 <BaseLayout
@@ -146,6 +149,43 @@ const lowFrequencyTags = sortedTags.filter(([, count]) => count <= 2);
         </div>
       </div>
 
+      <div class="mb-8 grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <div
+          class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] p-6"
+        >
+          <h3 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]">
+            Preferred Vocabulary Coverage
+          </h3>
+          <div class="space-y-3 text-sm text-[rgb(var(--color-text))]">
+            <p>
+              <strong>{totalTags - nonPreferredTags.length}</strong>
+              canonical tags in active use.
+            </p>
+            <p>
+              <strong>{nonPreferredTags.length}</strong>
+              tags currently outside the preferred vocabulary.
+            </p>
+            <p class="text-[rgb(var(--color-text-muted))]">
+              Use this list as a migration queue to normalize long-tail variants and aliases.
+            </p>
+          </div>
+        </div>
+        <div
+          class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] p-6"
+        >
+          <h3 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]">
+            Non-Preferred Tags (Top by frequency)
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            {nonPreferredTags.slice(0, 25).map(([tag, count]) => (
+              <div class="rounded-full border border-[rgb(var(--color-border))]/30 px-3 py-1 text-sm">
+                #{tag} ({count})
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Recommendations */}
       <div
         class="mb-8 rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] p-6"
@@ -164,8 +204,8 @@ const lowFrequencyTags = sortedTags.filter(([, count]) => count <= 2);
           <div class="flex items-start gap-3">
             <span class="mt-0.5 text-[rgb(var(--color-accent))]">🏷️</span>
             <div>
-              <strong>Use consistent tagging:</strong> Standardize tag names and avoid similar tags (e.g.,
-              "self-improvement" vs "self-improvement").
+              <strong>Use consistent tagging:</strong> Standardize tag names and avoid near-duplicates
+              (e.g., "social-issues" vs "social-critique").
             </div>
           </div>
           <div class="flex items-start gap-3">

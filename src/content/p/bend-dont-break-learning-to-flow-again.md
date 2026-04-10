@@ -20,21 +20,13 @@ tags:
   - therapy
   - self-reflection
   - transformation
-  - authenticity
-  - values
-  - parenting
-  - co-parenting
   - trauma
   - emotional-regulation
   - mindfulness
   - presence
-  - perfectionism
-  - analysis-paralysis
-  - emotional-pain
   - resilience
   - adaptability
   - vulnerability
-  - philosophy
   - psychology
 draft: false
 featured: false

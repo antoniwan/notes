@@ -5,23 +5,17 @@ import TagCard from '../../components/TagCard.astro';
 import Container from '../../components/Container.astro';
 import ContentFormPrelude from '../../components/tag/ContentFormPrelude.astro';
 import { getCollection } from 'astro:content';
-import {
-  formatPreludeConnectors,
-  toContentFormPreludeItems,
-} from '../../utils/tag/contentFormTags';
+import { toContentFormPreludeItems } from '../../utils/tag/contentFormTags';
+import { calculateTagStats } from '../../utils/tagProcessing';
+import { canonicalizeTags } from '../../utils/tagVocabulary';
 
 // Get all posts and calculate tag counts
 const posts = await getCollection('blog', ({ data }) => {
   return import.meta.env.PROD ? !data.draft : true;
 });
 
-// Calculate tag counts
-const tagCounts: Record<string, number> = {};
-posts.forEach((post) => {
-  post.data.tags?.forEach((tag) => {
-    tagCounts[tag] = (tagCounts[tag] || 0) + 1;
-  });
-});
+// Calculate tag counts (canonicalized through tag processing helpers)
+const { tagCounts } = calculateTagStats(posts);
 
 // Sort tags by count (most popular first)
 const sortedTagCounts = Object.entries(tagCounts)
@@ -31,7 +25,42 @@ const sortedTagCounts = Object.entries(tagCounts)
 // Get top tags for quick access
 const topTags = sortedTagCounts.slice(0, 12);
 const contentFormPreludeItems = toContentFormPreludeItems(tagCounts);
-const contentFormPreludeConnectors = formatPreludeConnectors(contentFormPreludeItems.length);
+const poemsFromRawTags = posts.reduce((count, post) => {
+  const hasPoemLikeTag =
+    post.data.tags?.some((tag) => {
+      const normalized = tag.trim().toLowerCase();
+      return normalized === 'poem' || normalized === 'poems' || normalized === 'poetry';
+    }) ?? false;
+  return hasPoemLikeTag ? count + 1 : count;
+}, 0);
+
+if (poemsFromRawTags > 0 && !contentFormPreludeItems.some((item) => item.label === 'poems')) {
+  contentFormPreludeItems.push({ label: 'poems', count: poemsFromRawTags, href: '/tag/poems/' });
+  contentFormPreludeItems.sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
+}
+
+const tagNarrativeStats = Object.values(
+  posts.reduce(
+    (acc, post) => {
+      const wordCount = (post.body ?? '').split(/\s+/).filter(Boolean).length;
+      for (const tag of canonicalizeTags(post.data.tags)) {
+        if (!acc[tag]) {
+          acc[tag] = { tag, totalWords: 0, postCount: 0 };
+        }
+        acc[tag].totalWords += wordCount;
+        acc[tag].postCount += 1;
+      }
+      return acc;
+    },
+    {} as Record<string, { tag: string; totalWords: number; postCount: number }>,
+  ),
+)
+  .map((entry) => ({
+    tag: entry.tag,
+    postCount: entry.postCount,
+    averageWords: Math.round(entry.totalWords / entry.postCount),
+  }))
+  .filter((entry) => entry.postCount >= 2);
 ---
 
 <BaseLayout
@@ -51,7 +80,8 @@ const contentFormPreludeConnectors = formatPreludeConnectors(contentFormPreludeI
         contentFormPreludeItems.length > 0 && (
           <ContentFormPrelude
             items={contentFormPreludeItems}
-            connectors={contentFormPreludeConnectors}
+            tagCounts={tagCounts}
+            narrativeStats={tagNarrativeStats}
           />
         )
       }
