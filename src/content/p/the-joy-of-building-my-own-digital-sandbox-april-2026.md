@@ -125,7 +125,7 @@ Referrers: Google (5), Facebook in various forms (about 10 total between mobile 
 
 I want to be clear: I didn't build this site for traffic numbers. 763 visitors in a month is nothing by internet standards but it's not nothing to me. That's 763 times someone landed on something I wrote or built and spent at least a moment with it. I don't know who you are, and I like it that way, but I'm glad you're here.
 
-## How I Use AI Now — The Honest Version
+## How I Use AI Now
 
 Since the original sandbox post, AI went from something I occasionally used to a daily part of how I work on this site.
 
