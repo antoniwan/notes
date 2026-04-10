@@ -54,7 +54,7 @@ I wanted to see my own patterns. How often do I write? What themes keep coming b
 
 ### Guided Path
 
-A curated reading order. You pick where you are, and it walks you through posts in a sequence I chose — thematic, not chronological. Progress is stored in your browser only so that means that no accounts, no tracking for users because I care about your privacy. I think this is a GREAT way to browse and read online content, perhaps I should patent it. Hah!
+A curated reading order. You pick where you are, and it walks you through posts in a sequence I chose — thematic, not chronological. Progress is stored in your browser only, so that means no accounts, no tracking, because I care about your privacy. I think this is a GREAT way to browse and read online content, perhaps I should patent it. Hah!
 
 ### Read/Unread Tracking
 
@@ -76,7 +76,7 @@ Small things I care about: the search bar dynamically filters posts. The footer 
 
 ### Social Sharing
 
-Share buttons for Facebook, Twitter, BlueSky, and Threads. They generate URLs with the post description and the component sits in the sidebar on desktop and in an expandable section on mobile. I don't know who's sharing or if they are sharing, but users are able to do so if they want to.
+Share buttons for Facebook, Twitter, Bluesky, and Threads. They generate URLs with the post description and the component sits in the sidebar on desktop and in an expandable section on mobile. I don't know who's sharing or if they are sharing, but users are able to do so if they want to.
 
 ### Quotes API
 
@@ -115,7 +115,7 @@ I work in [Cursor](https://cursor.sh/), an AI-native IDE, with Claude as the mod
 
 - **Astro Webmaster** — has context about the project's architecture, content pipeline, and layout conventions. I use it when a change spans multiple files.
 - **Brain Science Audit** — focused on the analytics pipeline. Checks build cost and data integrity in the writing-stats pages.
-- **Content Strategy Map** — reads my last 30 posts and produces a topic map with suggested essay ideas based on what I've been writing about.
+- **Content Strategy Map** — reads my last 30 posts and produces a topic map with suggested essay ideas based on what I've been writing about. Curious note: these content strategy map documents that are generated are excluded from the repo because again, privacy, for me, this time!
 - **Multilingual Content QA** — checks that `translationGroup` fields are set correctly and that featured flags and publish states are consistent across language pairs.
 - **Post Publishing Workflow** — validates frontmatter before I publish. Categories exist in the system? Tags follow the canonical vocabulary? Required fields present?
 - **Release Quality Gate** — runs the pre-merge checklist: `pnpm run check`, `build`, `format:check`.
@@ -165,7 +165,7 @@ What I like about spec-kit is that it makes the thinking visible. When I look at
 
 Why keep building this when AI can generate entire websites?
 
-Because my site is 550 commits of specific choices. A reading progress system that stores nothing on a server. A tag vocabulary that got refined over months. A constitution that says "reader privacy is non-negotiable." Bilingual essays that I wrote in both languages because ideas change shape when they cross languages and some writings I simply don't want to write in English, or in Spanish, depending on the materials.
+Because my site is 550 commits of specific choices. A reading progress system that stores nothing on a server. A tag vocabulary that got refined over months. A constitution that says "reader privacy is non-negotiable." Bilingual essays that I wrote in both languages because ideas change shape when they cross languages, and some writings I simply don't want to write in English, or in Spanish, depending on the material.
 
 A lot of that involved AI assistance. But the choices — what to build, what to skip, what principles to hold — those came from me sitting with the project over months, not from a prompt.
 
@@ -179,7 +179,7 @@ The [roadmap](https://github.com/antoniwan/notes/blob/main/docs/roadmap.md) has 
 
 - **TLDRs for posts** — standalone summaries for each piece. A "TLDRs" index page as a compressed idea browser.
 - **Audio versions** — "Click to listen" on posts, starting with browser TTS.
-- **Email notifications** — a way to let people know when something new goes up. I'm kind of conflicted with this feature because I really don't want or care to know who you are and what you are reading from this site and I feel like adding an email subscription opens up that door that I can't close again.
+- **Email notifications** — a way to let people know when something new goes up. I'm kind of conflicted with this feature because I really don't want or care to know who you are and what you are reading from this site, and I feel like adding an email subscription opens up a door that I can't close again.
 - **Structured sources** — moving reading influences into frontmatter so they're browsable and connected to the Library.
 - **More bilingual content** — I want more of my writing to exist in both languages.
 
