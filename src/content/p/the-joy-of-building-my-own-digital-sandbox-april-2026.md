@@ -38,9 +38,9 @@ Last July I wrote about [the joy of building my own digital sandbox](/p/the-joy-
 - **AI pair-programming** adopted as a core workflow, with 6 custom agent skills built for this repo
 - **Spec-driven development** formalized through [github/spec-kit](https://github.com/github/spec-kit)
 
-The commit cadence mirrors my life — bursts of 119 (July) and 107 (November) when I'm on fire, then 9 (October) and 14 (January) when I'm living, parenting, recovering. My son Andre Antonio was born on December 25, 2025. January was 14 commits. That's not a dip in productivity — that's a man holding his newborn. I'm not shipping to a sprint board. I'm shipping to my own internal clock.
+The commit cadence mirrors my life: bursts of 119 (July) and 107 (November) when I'm on fire, then 9 (October) and 14 (January) when I'm living, parenting, recovering. My son Andre Antonio was born on December 25, 2025. January was 14 commits. That's not a dip in productivity — that's a man holding his newborn and his enhanced blended family. It's pretty cool that I'm not shipping to a sprint board and I'm shipping to my own internal clock and life cadence.
 
-This artisanal project remains the most meaningful creative work I do — and the sharpest instrument I have for witnessing myself. The goal is always the same: become what I write, and be as honest through the process as I can.
+This artisanal project remains some of the most meaningful creative work I do and the sharpest instrument I have for witnessing myself because the goal is always the same: become what I write, and be as honest through the process as I can.
 
 ## What I Built
 
@@ -50,15 +50,15 @@ Here's what I built and why.
 
 I built a multi-page section that runs at build time and generates writing statistics about my own posts — cadence charts, topic breakdowns, and consistency tracking. [Chart.js](https://www.chartjs.org/) powers the visualizations, and it all renders as static pages. No server or database.
 
-I wanted to see my own patterns. How often do I write? What themes keep coming back? When do I go quiet? It's probably the most self-indulgent feature on the site. It wasn't as hel
+I wanted to see my own patterns. How often do I write? What themes keep coming back? When do I go quiet? It's probably the most self-indulgent feature on the site. It wasn't as helpful as I thought it would be but it's a good starting point to a much more thorough analysis feature to be built in the future. I'm sure if you forked/cloned the repo and added your own content you could get some good insights into your writing styles and patterns.
 
 ### Guided Path
 
-A curated reading order. You pick where you are, and it walks you through posts in a sequence I chose — thematic, not chronological. Progress is stored in your browser only. No accounts, no tracking.
+A curated reading order. You pick where you are, and it walks you through posts in a sequence I chose — thematic, not chronological. Progress is stored in your browser only so that means that no accounts, no tracking for users because I care about your privacy. I think this is a GREAT way to browse and read online content, perhaps I should patent it. Hah!
 
 ### Read/Unread Tracking
 
-Every post you've read is marked with a subtle visual indicator. Progress is kept in `localStorage`. If you clear your browser, it's gone. That's the point — I don't want your reading data. I just want to help you remember what you've already seen.
+Every post you've read is marked with a subtle visual indicator. Progress is kept in `localStorage`. If you clear your browser, it's gone. And again, that's the point, privacy — I don't want your reading data. I just want to help you remember what you've already seen.
 
 ### The Comments Overhaul
 
@@ -74,11 +74,11 @@ Small things I care about: the search bar dynamically filters posts. The footer 
 
 ### Social Sharing
 
-Share buttons for Twitter, BlueSky, and Threads. They generate URLs with the post description. The component sits in the sidebar on desktop and in an expandable section on mobile.
+Share buttons for Facebook, Twitter, BlueSky, and Threads. They generate URLs with the post description and the component sits in the sidebar on desktop and in an expandable section on mobile. I don't know who's sharing or if they are sharing, but users are able to do so if they want to.
 
 ### Quotes API
 
-A random Stoic quotes API. `GET /api/quotes` returns quotes from Marcus Aurelius, Seneca, and Epictetus. Small feature. Makes me smile.
+A random Stoic quotes API. `GET /api/quotes` returns quotes from Marcus Aurelius, Seneca, and Epictetus. Small feature. Makes me smile and is part of a bigger idea I have for a later time: I want to serve my own important or helpful quotes!
 
 ### Tag Governance
 
@@ -86,11 +86,12 @@ Tags used to be a mess. I'd slap whatever felt right on a post and move on. Now 
 
 ### Performance, Always
 
-Font loading uses proper `<link>` preloads. Images are served in modern formats. The service worker uses version-synced cache names that bust on every build. Social images are generated at build time. No tracking scripts, no third-party widgets.
+Font loading uses proper `<link>` preloads. Images are served in modern formats. The service worker uses version-synced cache names that bust on every build. Social images are generated at build time. No tracking scripts or third-party widgets and still achieving **100 page speed insights** score (According to vercel tooling at least!), so that's very important to me.
+
 
 ## What I've Been Writing About
 
-The code is one half. The writing is the other. Here's what I wrote about, roughly by theme:
+The code is one half and the writing is the other. Here's what I wrote about, roughly by theme:
 
 **Recovery and becoming.** *Who I Am Today: A Recovery Progress Report*. *Season of Becoming* — moving from performing growth to living it. *The Feeling Is Not the Problem* — about what happens when you suppress emotions instead of sitting with them.
 
@@ -98,7 +99,7 @@ The code is one half. The writing is the other. Here's what I wrote about, rough
 
 **Politics and power.** *The Prometheus Problem* — how AI companies externalize consequences. *Notes on Puerto Rico: Sin Pie Forzao* — political analysis of the island's situation. *An Invitation to the End of Wealth Worship* — what comes after treating wealth as religion.
 
-**Craft and building.** *Rolling Back Main (And Why You Shouldn't Have to)* — a post-mortem of trusting AI too much with git. *On Leadership and Leadership-Adjacent Things* — a long essay on leadership as cost, care, and teaching others to lead.
+**Craft and building.** *Rolling Back Main (And Why You Shouldn't Have to)* — a post-mortem of trusting AI too much with git!!! 🫣 *On Leadership and Leadership-Adjacent Things* — a stupidly long (Sorry, not sorry!) essay on leadership as cost, care, and teaching others to lead.
 
 **Grief and letting go.** *The Rhythm of Grief* and *Empathy as a Shield*.
 
@@ -123,17 +124,17 @@ These are project-specific configurations, not generic prompts. They give the AI
 
 AI writes first drafts of code. I review and shape. AI suggests refactors. I decide which ones to take. AI runs quality gates. I decide what to do about the results.
 
-Sometimes the AI fucks up. *Rolling Back Main* exists because I let the AI handle too much without checking. It pushed changes that broke things, and I had to do a manual rollback on `main`. The lesson: **tools amplify both your strengths and your inattention.**
+Sometimes the AI fucks up. *Rolling Back Main* exists because I let the AI handle too much without checking. It pushed changes that broke things, and I had to do a manual rollback on `main`. The lesson: **tools amplify both your strengths and your inattention!**
 
-The collaboration works when I stay involved. When I don't, things break.
+The collaboration works when I stay involved and when I don't, things break. Pretty obvious, but as a solo-developer it exposes the attention gap that otherwise someone else would have exposed to me (or perhaps I wouldn't be this careless at work with others! who knows...).
 
 ## Spec-Kit — How I Learned to Plan Before Building
 
-On March 28, 2026, I adopted [github/spec-kit](https://github.com/github/spec-kit) for this project.
+On March 28, 2026, I adopted [github/spec-kit](https://github.com/github/spec-kit) for this project. I'm still in that testing phase, figuring it out.
 
-Before spec-kit, my process was: get an idea, open a file, start coding, discover edge cases mid-build, refactor, ship something that mostly works. The AI made the chaos faster — more code, more changes, more things that could go wrong.
+Before spec-kit, my process was: get an idea, open a file, start coding, discover edge cases mid-build, refactor, ship something that mostly works and the AI made the chaos faster — more code, more changes, more things that could go wrong. Sometimes I would branch, other times I would commit directly to main but all of that changed when introducing Github's spec-kit because Spec-kit added structure. 
 
-Spec-kit added structure. Here's what it looks like now:
+Here's what it looks like now:
 
 **A project constitution** — five core principles ratified in `.specify/memory/constitution.md`:
 
@@ -143,7 +144,7 @@ Spec-kit added structure. Here's what it looks like now:
 4. **Reader privacy** — reading progress stays in the browser. No third-party analytics without disclosure. Your data is yours.
 5. **Feed integrity** — RSS, JSON Feed, Schema.org, and Open Graph must stay consistent when things change.
 
-**Feature specs** with full artifacts. Every non-trivial feature now gets a `spec.md` (what and why), a `plan.md` (how), a `quickstart.md` (implementation guide), behavior contracts, and requirement checklists. I've shipped six features through this workflow:
+**Feature specs** with full artifacts. Every non-trivial feature now gets a `spec.md` (what and why), a `plan.md` (how), a `quickstart.md` (implementation guide), behavior contracts, and requirement checklists. I've shipped six (?) features through this workflow:
 
 - **002** — Floating Table of Contents for long posts
 - **003** — Homepage and About page voice refresh
@@ -160,13 +161,13 @@ What I like about spec-kit is that it makes the thinking visible. When I look at
 
 Why keep building this when AI can generate entire websites?
 
-Because my site is 550 commits of specific choices. A reading progress system that stores nothing on a server. A tag vocabulary that got refined over months. A constitution that says "reader privacy is non-negotiable." Bilingual essays that I wrote in both languages because ideas change shape when they cross languages.
+Because my site is 550 commits of specific choices. A reading progress system that stores nothing on a server. A tag vocabulary that got refined over months. A constitution that says "reader privacy is non-negotiable." Bilingual essays that I wrote in both languages because ideas change shape when they cross languages and some writings I simply don't want to write in English, or in Spanish, depending on the materials.
 
 A lot of that involved AI assistance. But the choices — what to build, what to skip, what principles to hold — those came from me sitting with the project over months, not from a prompt.
 
-I think there's a difference between "AI-generated" and "AI-assisted." The first produces something generic. The second is a person using tools to build something specific. A woodworker who uses a CNC router still designed the piece and chose the wood. The machine cuts. The human decides.
+I think there's a difference between "AI-generated" and "AI-assisted." The first produces something generic while the second is a person using tools to build something specific. A woodworker who uses a CNC router still designed the piece and chose the wood. The machine cuts but the human decides.
 
-550 commits. Most of them small. All of them mine.
+550 commits. Most of them small and ALL of them mine.
 
 ## What's Next
 
@@ -174,11 +175,11 @@ The [roadmap](https://github.com/antoniwan/notes/blob/main/docs/roadmap.md) has 
 
 - **TLDRs for posts** — standalone summaries for each piece. A "TLDRs" index page as a compressed idea browser.
 - **Audio versions** — "Click to listen" on posts, starting with browser TTS.
-- **Email notifications** — a way to let people know when something new goes up.
+- **Email notifications** — a way to let people know when something new goes up. I'm kind of conflicted with this feature because I really don't want or care to know who you are and what you are reading from this site and I feel like adding an email subscription opens up that door that I can't close again.
 - **Structured sources** — moving reading influences into frontmatter so they're browsable and connected to the Library.
 - **More bilingual content** — I want more of my writing to exist in both languages.
 
-I'm 7 specs into the spec-kit workflow now. Each feature teaches me something about the next one.
+I'm 7 specs into the spec-kit workflow now and each feature teaches me something about the next one. We'll see what else develops from this work.
 
 ---
 
