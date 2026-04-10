@@ -6,7 +6,7 @@ alwaysApply: true
 
 # notes Development Guidelines
 
-Auto-generated from all feature plans. Last updated: 2026-04-09
+Auto-generated from all feature plans. Last updated: 2026-04-10
 
 ## Active Technologies
 - TypeScript 5.x + Astro 6.x + Astro, Tailwind CSS, existing layout/components, content collection pipeline (003-update-home-about-voice)
@@ -16,6 +16,8 @@ Auto-generated from all feature plans. Last updated: 2026-04-09
 - Browser-local state only for read status (existing behavior); no new server storage (005-redesign-post-sidebar)
 - TypeScript 5.x + Astro 6.x (`.astro` components with inline client script) + Astro, Tailwind CSS utility classes, existing navigation data/config, existing nav active-state helpers (006-remake-mobile-nav)
 - N/A (no new persisted state; interaction-only UI state in browser runtime) (006-remake-mobile-nav)
+- TypeScript 5.x in Astro 6.x `.astro` pages/components + Astro content collections (`getCollection`), existing tag UI components (`TagCard`) (010-tag-content-links)
+- N/A (build-time derived metadata only; no persistent state) (010-tag-content-links)
 
 - TypeScript + Astro 6.x + Astro content rendering pipeline, Tailwind CSS utility system, existing blog layout components (002-post-toc-modal)
 
@@ -36,9 +38,9 @@ npm test && npm run lint
 TypeScript + Astro 6.x: Follow standard conventions
 
 ## Recent Changes
+- 010-tag-content-links: Added TypeScript 5.x in Astro 6.x `.astro` pages/components + Astro content collections (`getCollection`), existing tag UI components (`TagCard`)
 - 006-remake-mobile-nav: Added TypeScript 5.x + Astro 6.x (`.astro` components with inline client script) + Astro, Tailwind CSS utility classes, existing navigation data/config, existing nav active-state helpers
 - 005-redesign-post-sidebar: Added TypeScript 5.x + Astro 6.x + Astro layout/component system, Tailwind CSS utility styling, existing post metadata/read-state/share components
-- 004-ui-ux-refinement: Added TypeScript 5.x + Astro 6.x + Astro, Tailwind CSS, existing layout/components
 
 
 <!-- MANUAL ADDITIONS START -->

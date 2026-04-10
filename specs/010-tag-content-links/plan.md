@@ -1,117 +1,69 @@
-# Implementation Plan: [FEATURE]
+# Implementation Plan: Tag Content Links Prelude
 
-**Branch**: `[###-feature-name]` | **Date**: [DATE] | **Spec**: [link]
-**Input**: Feature specification from `/specs/[###-feature-name]/spec.md`
-
-**Note**: This template is filled in by the `/speckit.plan` command. See `.specify/templates/plan-template.md` for the execution workflow.
+**Branch**: `010-tag-content-links` | **Date**: 2026-04-10 | **Spec**: `/specs/010-tag-content-links/spec.md`  
+**Input**: Feature specification from `/specs/010-tag-content-links/spec.md`
 
 ## Summary
 
-[Extract from feature spec: primary requirement + technical approach from research]
+Add a sentence-style prelude above the tags cloud on `src/pages/tag/index.astro` that links only to inferred content-form tags, ordered by descending post count with alphabetical tie-breaking. Classification and display use a canonical writing-form vocabulary with singular/plural normalization and canonical plural labels.
 
 ## Technical Context
 
-<!--
-  ACTION REQUIRED: Replace the content in this section with the technical details
-  for the project. The structure here is presented in advisory capacity to guide
-  the iteration process.
--->
-
-**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]  
-**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]  
-**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]  
-**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]  
-**Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
-**Project Type**: [e.g., library/cli/web-service/mobile-app/compiler/desktop-app or NEEDS CLARIFICATION]  
-**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]  
-**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]  
-**Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
+**Language/Version**: TypeScript 5.x in Astro 6.x `.astro` pages/components  
+**Primary Dependencies**: Astro content collections (`getCollection`), existing tag UI components (`TagCard`)  
+**Storage**: N/A (build-time derived metadata only; no persistent state)  
+**Testing**: `pnpm run check`, `pnpm run build`, `pnpm run format:check`  
+**Target Platform**: Static Astro site pages in modern browsers  
+**Project Type**: Static web application (content-driven blog)  
+**Performance Goals**: No perceptible regression on `/tag`; added logic remains linear with tag/post counts  
+**Constraints**: Static-first architecture, no new API routes, no server-side tracking, preserve existing tag-cloud behavior  
+**Scale/Scope**: Single route enhancement (`/tag`) and related helper/component additions for content-form prelude generation
 
 ## Constitution Check
 
 _GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
-Verify the plan against `.specify/memory/constitution.md` (Notes blog/platform):
+- **Content / feeds / SEO:** No post frontmatter, feeds, sitemap, or JSON-LD contract changes planned. `docs/frontmatter-spec.md` remains unaffected. Feed/structured-data validators are not required for this scope unless implementation expands.
+- **Architecture:** PASS. Change remains static-first and build-time computed in tag page rendering. No SSR-only behavior and no new server endpoints.
+- **Privacy:** PASS. No reader tracking, analytics additions, or server-persisted reader state.
+- **Quality gates:** MUST pass `pnpm run check`, `pnpm run build`, and `pnpm run format:check` before merge.
+- **Layout:** PASS. Route remains in `src/pages/tag/`; new feature-specific UI helper/component should be placed under `src/components/tag/` if extracted from page logic.
 
-- **Content / feeds / SEO:** If posts, frontmatter, feeds, sitemap, or JSON-LD change, cite
-  `docs/frontmatter-spec.md` and structured-data docs as needed; note which validators apply
-  (`validate-feeds`, `audit-frontmatter`, `validate-structured-data`).
-- **Architecture:** Default remains static-first; any new API routes, SSR-only behavior, or
-  server-persisted reader state MUST be justified and scoped in this plan.
-- **Privacy:** No new third-party trackers or server-side reader tracking without spec disclosure
-  and documentation updates.
-- **Quality gates:** List which commands MUST pass for this feature (`build`, `check`,
-  `format:check`, and content validators when relevant).
-- **Layout:** New route areas SHOULD place feature components under `src/components/<feature>/` and
-  pages under matching `src/pages/<feature>/`.
+Post-design re-check (Phase 1): PASS. Planned artifacts and contracts keep the same static-first/privacy constraints with no constitution violations.
 
 ## Project Structure
 
 ### Documentation (this feature)
 
 ```text
-specs/[###-feature]/
-├── plan.md              # This file (/speckit.plan command output)
-├── research.md          # Phase 0 output (/speckit.plan command)
-├── data-model.md        # Phase 1 output (/speckit.plan command)
-├── quickstart.md        # Phase 1 output (/speckit.plan command)
-├── contracts/           # Phase 1 output (/speckit.plan command)
-└── tasks.md             # Phase 2 output (/speckit.tasks command - NOT created by /speckit.plan)
+specs/010-tag-content-links/
+├── plan.md
+├── research.md
+├── data-model.md
+├── quickstart.md
+├── contracts/
+│   └── tag-content-prelude.md
+└── tasks.md
 ```
 
 ### Source Code (repository root)
 
-<!--
-  ACTION REQUIRED: Replace the placeholder tree below with the concrete layout
-  for this feature. Delete unused options and expand the chosen structure with
-  real paths (e.g., apps/admin, packages/something). The delivered plan must
-  not include Option labels.
--->
-
 ```text
-# [REMOVE IF UNUSED] Option 1: Single project (DEFAULT)
 src/
-├── models/
-├── services/
-├── cli/
-└── lib/
-
-tests/
-├── contract/
-├── integration/
-└── unit/
-
-# [REMOVE IF UNUSED] Option 2: Web application (when "frontend" + "backend" detected)
-backend/
-├── src/
-│   ├── models/
-│   ├── services/
-│   └── api/
-└── tests/
-
-frontend/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   └── services/
-└── tests/
-
-# [REMOVE IF UNUSED] Option 3: Mobile + API (when "iOS/Android" detected)
-api/
-└── [same as backend above]
-
-ios/ or android/
-└── [platform-specific structure: feature modules, UI flows, platform tests]
+├── pages/
+│   └── tag/
+│       └── index.astro
+├── components/
+│   ├── TagCard.astro
+│   └── tag/
+│       └── ContentFormPrelude.astro         # planned new feature component (if extracted)
+└── utils/
+    └── tag/
+        └── contentFormTags.ts               # planned normalization/ranking helper (if extracted)
 ```
 
-**Structure Decision**: [Document the selected structure and reference the real
-directories captured above]
+**Structure Decision**: Use the existing single-project Astro structure. Keep route wiring in `src/pages/tag/index.astro`; isolate normalization and prelude rendering into feature-local files under `src/components/tag/` and `src/utils/tag/` when this improves testability and reuse.
 
 ## Complexity Tracking
 
-> **Fill ONLY if Constitution Check has violations that must be justified**
-
-| Violation                  | Why Needed         | Simpler Alternative Rejected Because |
-| -------------------------- | ------------------ | ------------------------------------ |
-| [e.g., 4th project]        | [current need]     | [why 3 projects insufficient]        |
-| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient]  |
+No constitution violations requiring justification.
