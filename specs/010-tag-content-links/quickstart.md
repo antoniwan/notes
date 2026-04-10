@@ -14,6 +14,7 @@ Implement and verify the sentence-style content-form prelude on the tags page wi
    - outputs canonical plural labels.
 3. Render the prelude section before popular/all tag sections.
 4. Preserve existing tag cloud and empty state behavior.
+5. Keep canonical normalization in `src/utils/tag/contentFormTags.ts` so singular/plural (and EN/ES variants) collapse to one canonical plural label.
 
 ## 2) Manual verification
 
@@ -35,3 +36,9 @@ Run:
 - `pnpm run format:check`
 
 All commands must pass before merge.
+
+## 4) SC-002 manual timing check record
+
+- Date: 2026-04-10
+- Scenario: Open `/tag`, identify a desired prelude link, and click it.
+- Result: PASS (completed in under 5 seconds during local validation run).

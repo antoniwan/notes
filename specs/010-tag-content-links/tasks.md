@@ -17,9 +17,9 @@
 
 **Purpose**: Prepare feature-local files and constants for deterministic prelude behavior.
 
-- [ ] T001 Create feature utility directory and files for tag normalization in `src/utils/tag/contentFormTags.ts`
-- [ ] T002 Create feature component file for prelude rendering in `src/components/tag/ContentFormPrelude.astro`
-- [ ] T003 [P] Add canonical writing-form vocabulary constants and variant map in `src/utils/tag/contentFormTags.ts`
+- [x] T001 Create feature utility directory and files for tag normalization in `src/utils/tag/contentFormTags.ts`
+- [x] T002 Create feature component file for prelude rendering in `src/components/tag/ContentFormPrelude.astro`
+- [x] T003 [P] Add canonical writing-form vocabulary constants and variant map in `src/utils/tag/contentFormTags.ts`
 
 ---
 
@@ -29,11 +29,11 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete.
 
-- [ ] T004 Implement tag normalization helper for canonical matching in `src/utils/tag/contentFormTags.ts`
-- [ ] T005 Implement content-form filtering and grouping by canonical label in `src/utils/tag/contentFormTags.ts`
-- [ ] T006 Implement sorting helper (count desc, alphabetical tie-break) in `src/utils/tag/contentFormTags.ts`
-- [ ] T007 Implement sentence grammar formatter for 1/2/N labels in `src/utils/tag/contentFormTags.ts`
-- [ ] T008 Add helper exports and inline usage documentation for prelude pipeline in `src/utils/tag/contentFormTags.ts`
+- [x] T004 Implement tag normalization helper for canonical matching in `src/utils/tag/contentFormTags.ts`
+- [x] T005 Implement content-form filtering and grouping by canonical label in `src/utils/tag/contentFormTags.ts`
+- [x] T006 Implement sorting helper (count desc, alphabetical tie-break) in `src/utils/tag/contentFormTags.ts`
+- [x] T007 Implement sentence grammar formatter for 1/2/N labels in `src/utils/tag/contentFormTags.ts`
+- [x] T008 Add helper exports and inline usage documentation for prelude pipeline in `src/utils/tag/contentFormTags.ts`
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel.
 
@@ -47,10 +47,10 @@
 
 ### Implementation for User Story 1
 
-- [ ] T009 [US1] Integrate content-form prelude data derivation into `src/pages/tag/index.astro` using helpers from `src/utils/tag/contentFormTags.ts`
-- [ ] T010 [US1] Implement `ContentFormPrelude` structure and label rendering in `src/components/tag/ContentFormPrelude.astro`
-- [ ] T011 [US1] Render `ContentFormPrelude` before existing popular/all tag sections in `src/pages/tag/index.astro`
-- [ ] T012 [US1] Implement and verify prelude href generation against existing `/tag/[tag]` route format in `src/components/tag/ContentFormPrelude.astro`
+- [x] T009 [US1] Integrate content-form prelude data derivation into `src/pages/tag/index.astro` using helpers from `src/utils/tag/contentFormTags.ts`
+- [x] T010 [US1] Implement `ContentFormPrelude` structure and label rendering in `src/components/tag/ContentFormPrelude.astro`
+- [x] T011 [US1] Render `ContentFormPrelude` before existing popular/all tag sections in `src/pages/tag/index.astro`
+- [x] T012 [US1] Implement and verify prelude href generation against existing `/tag/[tag]` route format in `src/components/tag/ContentFormPrelude.astro`
 
 **Checkpoint**: User Story 1 is fully functional and independently testable.
 
@@ -64,10 +64,10 @@
 
 ### Implementation for User Story 2
 
-- [ ] T013 [US2] Implement canonical plural label display in prelude rendering logic in `src/components/tag/ContentFormPrelude.astro`
-- [ ] T014 [US2] Apply sentence grammar formatting output from helper pipeline in `src/pages/tag/index.astro`
-- [ ] T015 [P] [US2] Add lightweight style and spacing rules for readable sentence presentation in `src/components/tag/ContentFormPrelude.astro`
-- [ ] T016 [US2] Verify deterministic order is reflected in rendered sentence output in `src/pages/tag/index.astro`
+- [x] T013 [US2] Implement canonical plural label display in prelude rendering logic in `src/components/tag/ContentFormPrelude.astro`
+- [x] T014 [US2] Apply sentence grammar formatting output from helper pipeline in `src/pages/tag/index.astro`
+- [x] T015 [P] [US2] Add lightweight style and spacing rules for readable sentence presentation in `src/components/tag/ContentFormPrelude.astro`
+- [x] T016 [US2] Verify deterministic order is reflected in rendered sentence output in `src/pages/tag/index.astro`
 
 **Checkpoint**: User Stories 1 and 2 both work independently.
 
@@ -81,9 +81,9 @@
 
 ### Implementation for User Story 3
 
-- [ ] T017 [US3] Add guard logic to skip prelude render when derived prelude list is empty in `src/pages/tag/index.astro`
-- [ ] T018 [US3] Ensure singular/plural variants collapse to one canonical entry in `src/utils/tag/contentFormTags.ts`
-- [ ] T019 [US3] Confirm no regressions to existing popular/all tags and empty-state rendering in `src/pages/tag/index.astro`
+- [x] T017 [US3] Add guard logic to skip prelude render when derived prelude list is empty in `src/pages/tag/index.astro`
+- [x] T018 [US3] Ensure singular/plural variants collapse to one canonical entry in `src/utils/tag/contentFormTags.ts`
+- [x] T019 [US3] Confirm no regressions to existing popular/all tags and empty-state rendering in `src/pages/tag/index.astro`
 
 **Checkpoint**: All user stories are independently functional.
 
@@ -93,12 +93,12 @@
 
 **Purpose**: Final consistency, docs, and project quality gates.
 
-- [ ] T020 [P] Update feature documentation notes for tag normalization behavior in `specs/010-tag-content-links/quickstart.md`
-- [ ] T021 Run `pnpm run check` and fix any issues in `src/pages/tag/index.astro`, `src/components/tag/ContentFormPrelude.astro`, and `src/utils/tag/contentFormTags.ts`
-- [ ] T022 Run `pnpm run build` and fix any regressions impacting `/tag` in `src/pages/tag/index.astro`
-- [ ] T023 Run `pnpm run format:check` and format touched files if needed in `src/pages/tag/index.astro`, `src/components/tag/ContentFormPrelude.astro`, and `src/utils/tag/contentFormTags.ts`
-- [ ] T024 [P] Document the new `/tag` prelude behavior and canonical writing-form normalization rules in `docs/` (or `README.md` if no dedicated docs page applies)
-- [ ] T025 Run and record a manual timing check for SC-002 in `specs/010-tag-content-links/quickstart.md` (identify and click intended prelude link in under 5 seconds)
+- [x] T020 [P] Update feature documentation notes for tag normalization behavior in `specs/010-tag-content-links/quickstart.md`
+- [x] T021 Run `pnpm run check` and fix any issues in `src/pages/tag/index.astro`, `src/components/tag/ContentFormPrelude.astro`, and `src/utils/tag/contentFormTags.ts`
+- [x] T022 Run `pnpm run build` and fix any regressions impacting `/tag` in `src/pages/tag/index.astro`
+- [x] T023 Run `pnpm run format:check` and format touched files if needed in `src/pages/tag/index.astro`, `src/components/tag/ContentFormPrelude.astro`, and `src/utils/tag/contentFormTags.ts`
+- [x] T024 [P] Document the new `/tag` prelude behavior and canonical writing-form normalization rules in `docs/` (or `README.md` if no dedicated docs page applies)
+- [x] T025 Run and record a manual timing check for SC-002 in `specs/010-tag-content-links/quickstart.md` (identify and click intended prelude link in under 5 seconds)
 
 ---
 

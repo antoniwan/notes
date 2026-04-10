@@ -16,6 +16,7 @@ Live site: [notes.antoniwan.online](https://notes.antoniwan.online)
 - **Guided Path** — seasonal reading order; progress stays in the browser only
 - **Everything** — full archive-style list
 - **Tags** — browse by tag; **Tag management** page for analytics-style views
+- **Tag prelude links** — `/tag` now shows a sentence-style list of canonical writing-form links (for example essays, notes, poems) above the tag cloud when available
 - **Brain Science** — several pages of writing stats and charts (cadence, topics, sentiment, and similar)
 - **Book library** — static reference data under `/library` and `/library/books`
 - **Reading time** — added at build time by a remark plugin (`minutesRead` in the collection)

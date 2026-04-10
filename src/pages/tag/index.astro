@@ -3,7 +3,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import TagCard from '../../components/TagCard.astro';
 import Container from '../../components/Container.astro';
+import ContentFormPrelude from '../../components/tag/ContentFormPrelude.astro';
 import { getCollection } from 'astro:content';
+import {
+  formatPreludeConnectors,
+  toContentFormPreludeItems,
+} from '../../utils/tag/contentFormTags';
 
 // Get all posts and calculate tag counts
 const posts = await getCollection('blog', ({ data }) => {
@@ -25,6 +30,8 @@ const sortedTagCounts = Object.entries(tagCounts)
 
 // Get top tags for quick access
 const topTags = sortedTagCounts.slice(0, 12);
+const contentFormPreludeItems = toContentFormPreludeItems(tagCounts);
+const contentFormPreludeConnectors = formatPreludeConnectors(contentFormPreludeItems.length);
 ---
 
 <BaseLayout
@@ -39,6 +46,15 @@ const topTags = sortedTagCounts.slice(0, 12);
         title="Tags"
         description="Browse all tags to discover content by topic. Find posts about parenting, mental health, technology, philosophy, and more."
       />
+
+      {
+        contentFormPreludeItems.length > 0 && (
+          <ContentFormPrelude
+            items={contentFormPreludeItems}
+            connectors={contentFormPreludeConnectors}
+          />
+        )
+      }
 
       {/* Popular Tags */}
       {
