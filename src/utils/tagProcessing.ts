@@ -150,7 +150,9 @@ export function getRelatedTags(
 ): Array<{ tag: string; count: number }> {
   const canonicalTargetTag = canonicalizeTag(targetTag);
   // Get posts with the target tag
-  const tagPosts = posts.filter((post) => canonicalizeTags(post.data.tags).includes(canonicalTargetTag));
+  const tagPosts = posts.filter((post) =>
+    canonicalizeTags(post.data.tags).includes(canonicalTargetTag),
+  );
 
   // Get all tags from these posts
   const relatedTags = new Set<string>();

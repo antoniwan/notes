@@ -38,9 +38,7 @@ const CONTENT_FORM_VARIANTS: Record<ContentFormCanonicalLabel, string[]> = {
   stories: ['story', 'stories', 'historia', 'historias'],
 };
 
-const CONTENT_FORM_TARGET_SLUGS: Partial<
-  Record<ContentFormCanonicalLabel, string>
-> = {
+const CONTENT_FORM_TARGET_SLUGS: Partial<Record<ContentFormCanonicalLabel, string>> = {
   memoirs: 'memoir',
   reflections: 'reflection',
 };
@@ -54,9 +52,7 @@ for (const canonical of CONTENT_FORM_CANONICAL_LABELS) {
 
 export const CONTENT_FORM_VARIANT_MAP = Object.freeze(contentFormVariantMap);
 
-export const getCanonicalContentFormLabel = (
-  value: string,
-): ContentFormCanonicalLabel | null => {
+export const getCanonicalContentFormLabel = (value: string): ContentFormCanonicalLabel | null => {
   const normalized = normalizeTagLabel(value);
   return CONTENT_FORM_VARIANT_MAP[normalized] ?? null;
 };

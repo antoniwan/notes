@@ -56,7 +56,7 @@ export const buildPreludeTemplateCandidates = ({
     candidates.push({
       id: 'inner-work',
       weight: 5,
-      prefix: "I keep returning to",
+      prefix: 'I keep returning to',
       tags: innerWork,
       suffix: 'the long road kind.',
     });
@@ -72,7 +72,11 @@ export const buildPreludeTemplateCandidates = ({
     });
   }
 
-  const systems = topTags(tagCounts, ['social-issues', 'politics', 'power', 'systemic-critique'], 3);
+  const systems = topTags(
+    tagCounts,
+    ['social-issues', 'politics', 'power', 'systemic-critique'],
+    3,
+  );
   if (systems.length >= 2) {
     candidates.push({
       id: 'systems',
@@ -136,7 +140,11 @@ export const buildPreludeTemplateCandidates = ({
     tags: mindBodySet,
   });
 
-  const identitySet = topTags(tagCounts, ['authenticity', 'identity', 'self-awareness', 'consciousness'], 3);
+  const identitySet = topTags(
+    tagCounts,
+    ['authenticity', 'identity', 'self-awareness', 'consciousness'],
+    3,
+  );
   addTemplateIfEnoughTags(candidates, {
     id: 'identity',
     weight: 4,
@@ -156,7 +164,11 @@ export const buildPreludeTemplateCandidates = ({
     tags: justiceSet,
   });
 
-  const systemsSet = topTags(tagCounts, ['systems-strategy', 'technology', 'power', 'metaspace'], 3);
+  const systemsSet = topTags(
+    tagCounts,
+    ['systems-strategy', 'technology', 'power', 'metaspace'],
+    3,
+  );
   addTemplateIfEnoughTags(candidates, {
     id: 'systems-thinking',
     weight: 3,

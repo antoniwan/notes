@@ -113,20 +113,20 @@ Using Cursor AI in this repo: [docs/cursor-agent-skills.md](docs/cursor-agent-sk
 
 ## Documentation in `docs/`
 
-| File                                                                    | Topic                    |
-| ----------------------------------------------------------------------- | ------------------------ |
-| [frontmatter-spec.md](docs/frontmatter-spec.md)                         | Post frontmatter         |
-| [tag-policy.md](docs/tag-policy.md)                                     | Signal-first tag policy  |
-| [tag-vocabulary.md](docs/tag-vocabulary.md)                             | Canonical vocabulary     |
+| File                                                                              | Topic                    |
+| --------------------------------------------------------------------------------- | ------------------------ |
+| [frontmatter-spec.md](docs/frontmatter-spec.md)                                   | Post frontmatter         |
+| [tag-policy.md](docs/tag-policy.md)                                               | Signal-first tag policy  |
+| [tag-vocabulary.md](docs/tag-vocabulary.md)                                       | Canonical vocabulary     |
 | [tag-cleanup-assessment-2026-04-10.md](docs/tag-cleanup-assessment-2026-04-10.md) | Current cleanup audit    |
-| [multilingual-setup.md](docs/multilingual-setup.md)                     | EN/ES linking            |
-| [comments-setup.md](docs/comments-setup.md)                             | Remark42                 |
-| [quotes-api.md](docs/quotes-api.md)                                     | `/api/quotes`            |
-| [structured-data-optimization.md](docs/structured-data-optimization.md) | Schema.org               |
-| [performance-optimization.md](docs/performance-optimization.md)         | Performance notes        |
-| [roadmap.md](docs/roadmap.md)                                           | Ideas and backlog        |
-| [cursor-agent-skills.md](docs/cursor-agent-skills.md)                   | Cursor agent skill guide |
-| [midjourney-og-image-prompts.md](docs/midjourney-og-image-prompts.md)   | Image prompt notes       |
+| [multilingual-setup.md](docs/multilingual-setup.md)                               | EN/ES linking            |
+| [comments-setup.md](docs/comments-setup.md)                                       | Remark42                 |
+| [quotes-api.md](docs/quotes-api.md)                                               | `/api/quotes`            |
+| [structured-data-optimization.md](docs/structured-data-optimization.md)           | Schema.org               |
+| [performance-optimization.md](docs/performance-optimization.md)                   | Performance notes        |
+| [roadmap.md](docs/roadmap.md)                                                     | Ideas and backlog        |
+| [cursor-agent-skills.md](docs/cursor-agent-skills.md)                             | Cursor agent skill guide |
+| [midjourney-og-image-prompts.md](docs/midjourney-og-image-prompts.md)             | Image prompt notes       |
 
 ## Private generated materials
 

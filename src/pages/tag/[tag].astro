@@ -13,7 +13,8 @@ export async function getStaticPaths() {
   const canonicalTags = getAllUniqueTags(posts);
   const canonicalSet = new Set(canonicalTags);
   const aliasTags = Object.keys(TAG_ALIAS_MAP).filter(
-    (alias) => canonicalSet.has(TAG_ALIAS_MAP[alias]) && normalizeTagInput(alias) !== TAG_ALIAS_MAP[alias],
+    (alias) =>
+      canonicalSet.has(TAG_ALIAS_MAP[alias]) && normalizeTagInput(alias) !== TAG_ALIAS_MAP[alias],
   );
   const contentFormFallbackTags = ['poems', 'memoir', 'reflection'];
   const tags = Array.from(new Set([...canonicalTags, ...aliasTags, ...contentFormFallbackTags]));
@@ -37,9 +38,7 @@ const { totalPosts, relatedTags } = getTagStatistics(canonicalTag, posts);
 
 // Filter posts by tag and sort by date
 const tagPosts = posts
-  .filter((post) =>
-    post.data.tags?.some((rawTag) => canonicalizeTag(rawTag) === canonicalTag),
-  )
+  .filter((post) => post.data.tags?.some((rawTag) => canonicalizeTag(rawTag) === canonicalTag))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 

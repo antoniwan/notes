@@ -39,7 +39,9 @@ const fallbackTemplates = selectWeightedPreludeTemplates(candidates, 2);
 ---
 
 <section class="mb-6">
-  <ul class="list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-[rgb(var(--color-text-muted))]">
+  <ul
+    class="list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-[rgb(var(--color-text-muted))]"
+  >
     {
       chunks.map((chunk, chunkIndex) => {
         const connectors = toConnectors(chunk.length);
@@ -50,7 +52,10 @@ const fallbackTemplates = selectWeightedPreludeTemplates(candidates, 2);
             {chunk.map((item, itemIndex) => (
               <>
                 <span>{connectors[itemIndex] ?? ', '}</span>
-                <a href={item.href} class="font-medium text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/40 underline-offset-4 hover:text-[rgb(var(--color-accent-hover))]">
+                <a
+                  href={item.href}
+                  class="font-medium text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/40 underline-offset-4 hover:text-[rgb(var(--color-accent-hover))]"
+                >
                   {asHashTag(item.label)}
                 </a>
               </>
@@ -61,25 +66,35 @@ const fallbackTemplates = selectWeightedPreludeTemplates(candidates, 2);
       })
     }
 
-    {fallbackTemplates.map((template) => (
-      <li class="js-prelude-template">
-        {template.prefix}
-        {template.tags.map((tag, index) => (
-          <>
-            <span>{index === 0 ? ' ' : index === template.tags.length - 1 ? ', and ' : ', '}</span>
-            <a href={tagLink(tag)} class="font-medium text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/40 underline-offset-4 hover:text-[rgb(var(--color-accent-hover))]">
-              {asHashTag(tag)}
-            </a>
-          </>
-        ))}
-        {template.suffix ? ` ${template.suffix}` : ''}.
-      </li>
-    ))}
+    {
+      fallbackTemplates.map((template) => (
+        <li class="js-prelude-template">
+          {template.prefix}
+          {template.tags.map((tag, index) => (
+            <>
+              <span>
+                {index === 0 ? ' ' : index === template.tags.length - 1 ? ', and ' : ', '}
+              </span>
+              <a
+                href={tagLink(tag)}
+                class="font-medium text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/40 underline-offset-4 hover:text-[rgb(var(--color-accent-hover))]"
+              >
+                {asHashTag(tag)}
+              </a>
+            </>
+          ))}
+          {template.suffix ? ` ${template.suffix}` : ''}.
+        </li>
+      ))
+    }
     {
       hasPoemsSignal && !fallbackTemplates.some((template) => template.id === 'poems') && (
         <li class="js-prelude-template">
           I have poems too over at{' '}
-          <a href={tagLink('poems')} class="font-medium text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/40 underline-offset-4 hover:text-[rgb(var(--color-accent-hover))]">
+          <a
+            href={tagLink('poems')}
+            class="font-medium text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/40 underline-offset-4 hover:text-[rgb(var(--color-accent-hover))]"
+          >
             {asHashTag('poems')}
           </a>
           .

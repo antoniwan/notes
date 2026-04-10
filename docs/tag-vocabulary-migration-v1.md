@@ -10,26 +10,26 @@ This report captures the initial normalization pass strategy for high-usage tags
 
 ## Priority Alias Mappings
 
-| Existing Tag | Canonical Tag |
-| --- | --- |
-| `consciencia` | `consciousness` |
-| `sanación` / `sanacion` | `healing` |
-| `salud-mental` | `mental-health` |
-| `autenticidad` | `authenticity` |
-| `auto-reflexión` / `auto-reflexion` | `self-reflection` |
-| `transformación` / `transformacion` | `transformation` |
+| Existing Tag                                    | Canonical Tag          |
+| ----------------------------------------------- | ---------------------- |
+| `consciencia`                                   | `consciousness`        |
+| `sanación` / `sanacion`                         | `healing`              |
+| `salud-mental`                                  | `mental-health`        |
+| `autenticidad`                                  | `authenticity`         |
+| `auto-reflexión` / `auto-reflexion`             | `self-reflection`      |
+| `transformación` / `transformacion`             | `transformation`       |
 | `regulación-emocional` / `regulacion-emocional` | `emotional-regulation` |
-| `terapia` | `therapy` |
-| `justicia-social` | `social-justice` |
-| `crítica-sistémica` / `critica-sistemica` | `systemic-critique` |
-| `valores` | `values` |
-| `verdad` | `truth` |
-| `propósito` / `proposito` | `purpose` |
-| `política` / `politica` | `politics` |
-| `escritura` | `writing` |
-| `sociedad` | `social-issues` |
-| `empatía` / `empatia` | `empathy` |
-| `compasión` / `compasion` | `compassion` |
+| `terapia`                                       | `therapy`              |
+| `justicia-social`                               | `social-justice`       |
+| `crítica-sistémica` / `critica-sistemica`       | `systemic-critique`    |
+| `valores`                                       | `values`               |
+| `verdad`                                        | `truth`                |
+| `propósito` / `proposito`                       | `purpose`              |
+| `política` / `politica`                         | `politics`             |
+| `escritura`                                     | `writing`              |
+| `sociedad`                                      | `social-issues`        |
+| `empatía` / `empatia`                           | `empathy`              |
+| `compasión` / `compasion`                       | `compassion`           |
 
 ## Consolidation Targets
 
