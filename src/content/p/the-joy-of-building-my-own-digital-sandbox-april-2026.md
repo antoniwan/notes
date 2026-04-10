@@ -88,7 +88,9 @@ Tags used to be a mess. I'd slap whatever felt right on a post and move on. Now 
 
 ### Performance, Always
 
-Font loading uses proper `<link>` preloads. Images are served in modern formats. The service worker uses version-synced cache names that bust on every build. Social images are generated at build time. No tracking scripts or third-party widgets, and still achieving a **100 PageSpeed Insights** score (according to Vercel tooling, at least), which is important to me.
+Font loading uses proper `<link>` preloads. Images are served in modern formats. The service worker uses version-synced cache names that bust on every build. Social images are generated at build time. No tracking scripts or third-party widgets.
+
+Vercel's Speed Insights shows a **Real Experience Score of 100** right now, based on actual user visits over the last 7 days. The numbers: First Contentful Paint at 0.65s, Largest Contentful Paint at 0.82s, Interaction to Next Paint at 24ms, Cumulative Layout Shift at 0, Time to First Byte at 0.12s. Both the homepage and post pages score 100. No poor scores, no "needs improvement" scores. I care about this because if I'm asking someone to read 3,000 words of my thinking, the least I can do is make sure the page loads fast and doesn't jump around while they're trying to read.
 
 
 ## What I've Been Writing About
@@ -106,6 +108,22 @@ The code is one half and the writing is the other. Here's what I wrote about, ro
 **Grief and letting go.** *The Rhythm of Grief* and *Empathy as a Shield*.
 
 Eight of these posts were published in both English and Spanish, using translation groups that let readers toggle between languages.
+
+## People Are Reading This
+
+I don't run my own analytics. I don't have tracking pixels or cookies or any of that but Vercel includes basic web analytics on the hosting plan, and I looked at the last 30 days for the first time in a while.
+
+**763 visitors. 1,007 page views.**
+
+I don't know who most of these people are. I don't know why 77% of the traffic shows as coming from Singapore — that's probably bots or VPNs or something I don't understand. 15% from the United States, 6% from China, and about 1% from Puerto Rico, which I like because that's home.
+
+What's interesting to me is _what_ people are reading. The most visited post (after the homepage) is *Rolling Back Main* with 14 visitors, followed by the leadership essay with 12. Those are the two posts about building things and making mistakes — the craft posts. People also hit `/tag` (16 visitors), `/tag/breathing` (11), `/tag/childhood` (10), and `/about` (10). That tells me people are browsing, not just landing on one page and leaving. Well, the bounce rate is 86%, so most people _are_ landing and leaving, but some are sticking around and exploring.
+
+Referrers: Google (5), Facebook in various forms (about 10 total between mobile and desktop), GitHub (2), Vercel (2). So people are finding this through search, through social sharing, and through the repo itself. That's cool.
+
+92% desktop, 8% mobile. I didn't expect that split. Most of the layout work I've done recently focused on mobile. Oh well — at least it works well on both!
+
+I want to be clear: I didn't build this site for traffic numbers. 763 visitors in a month is nothing by internet standards but it's not nothing to me. That's 763 times someone landed on something I wrote or built and spent at least a moment with it. I don't know who you are, and I like it that way, but I'm glad you're here.
 
 ## How I Use AI Now — The Honest Version
 
