@@ -40,7 +40,7 @@ Last July I wrote about [the joy of building my own digital sandbox](/p/the-joy-
 
 The commit cadence mirrors my life: bursts of 119 (July) and 107 (November) when I'm on fire, then 9 (October) and 14 (January) when I'm living, parenting, recovering. My son Andre Antonio was born on December 25, 2025. January was 14 commits. That's not a dip in productivity — that's a man holding his newborn and his enhanced blended family. It's pretty cool that I'm not shipping to a sprint board and I'm shipping to my own internal clock and life cadence.
 
-This artisanal project remains some of the most meaningful creative work I do and the sharpest instrument I have for witnessing myself because the goal is always the same: become what I write, and be as honest through the process as I can.
+This artisanal project remains some of the most meaningful creative work I do, and the sharpest instrument I have for witnessing myself, because the goal is always the same: become what I write, and be as honest through the process as I can.
 
 ## What I Built
 
@@ -50,7 +50,7 @@ Here's what I built and why.
 
 I built a multi-page section that runs at build time and generates writing statistics about my own posts — cadence charts, topic breakdowns, and consistency tracking. [Chart.js](https://www.chartjs.org/) powers the visualizations, and it all renders as static pages. No server or database.
 
-I wanted to see my own patterns. How often do I write? What themes keep coming back? When do I go quiet? It's probably the most self-indulgent feature on the site. It wasn't as helpful as I thought it would be but it's a good starting point to a much more thorough analysis feature to be built in the future. I'm sure if you forked/cloned the repo and added your own content you could get some good insights into your writing styles and patterns.
+I wanted to see my own patterns. How often do I write? What themes keep coming back? When do I go quiet? It's probably the most self-indulgent feature on the site. It wasn't as helpful as I thought it would be, but it's a good starting point to a much more thorough analysis feature to be built in the future. I'm sure if you forked/cloned the repo and added your own content, you could get some good insights into your writing styles and patterns.
 
 ### Guided Path
 
@@ -63,6 +63,8 @@ Every post you've read is marked with a subtle visual indicator. Progress is kep
 ### The Comments Overhaul
 
 I replaced [Giscus](https://giscus.app/) (GitHub Discussions–based) with [Remark42](https://remark42.com/), a self-hosted comment system. The integration involved theme synchronization, SPA navigation lifecycle, lazy loading, and managing comment instances across Astro view transitions. I spent more time on comment lifecycle management than I expected.
+
+Remark42 is self-hosted, so I had to learn how to deploy and manage it on [Railway](https://railway.app/). That meant figuring out the platform, setting up the service, configuring environment variables, and keeping it updated. Railway turned out to be a great experience — the deploy workflow is smooth, the dashboard is clear, and the whole thing just works. It was fun learning a new hosting provider, and I'd use it again.
 
 ### The Layout Transformation
 
@@ -86,7 +88,7 @@ Tags used to be a mess. I'd slap whatever felt right on a post and move on. Now 
 
 ### Performance, Always
 
-Font loading uses proper `<link>` preloads. Images are served in modern formats. The service worker uses version-synced cache names that bust on every build. Social images are generated at build time. No tracking scripts or third-party widgets and still achieving **100 page speed insights** score (According to vercel tooling at least!), so that's very important to me.
+Font loading uses proper `<link>` preloads. Images are served in modern formats. The service worker uses version-synced cache names that bust on every build. Social images are generated at build time. No tracking scripts or third-party widgets, and still achieving a **100 PageSpeed Insights** score (according to Vercel tooling, at least), which is important to me.
 
 
 ## What I've Been Writing About
@@ -124,15 +126,17 @@ These are project-specific configurations, not generic prompts. They give the AI
 
 AI writes first drafts of code. I review and shape. AI suggests refactors. I decide which ones to take. AI runs quality gates. I decide what to do about the results.
 
-Sometimes the AI fucks up. *Rolling Back Main* exists because I let the AI handle too much without checking. It pushed changes that broke things, and I had to do a manual rollback on `main`. The lesson: **tools amplify both your strengths and your inattention!**
+Sometimes the AI fucks up. *Rolling Back Main* exists because I let the AI handle too much without checking. It pushed changes that broke things, and I had to do a manual rollback on `main`. The lesson:
 
-The collaboration works when I stay involved and when I don't, things break. Pretty obvious, but as a solo-developer it exposes the attention gap that otherwise someone else would have exposed to me (or perhaps I wouldn't be this careless at work with others! who knows...).
+> Tools amplify both your strengths and your inattention.
+
+The collaboration works when I stay involved, and when I don't, things break. Pretty obvious, but as a solo developer it exposes the attention gap that otherwise someone else would have caught (or perhaps I wouldn't be this careless at work with others — who knows).
 
 ## Spec-Kit — How I Learned to Plan Before Building
 
 On March 28, 2026, I adopted [github/spec-kit](https://github.com/github/spec-kit) for this project. I'm still in that testing phase, figuring it out.
 
-Before spec-kit, my process was: get an idea, open a file, start coding, discover edge cases mid-build, refactor, ship something that mostly works and the AI made the chaos faster — more code, more changes, more things that could go wrong. Sometimes I would branch, other times I would commit directly to main but all of that changed when introducing Github's spec-kit because Spec-kit added structure. 
+Before spec-kit, my process was: get an idea, open a file, start coding, discover edge cases mid-build, refactor, ship something that mostly works. AI made the chaos faster — more code, more changes, more things that could go wrong. Sometimes I would branch, other times I would commit directly to main. All of that changed when I introduced GitHub's spec-kit, because it added structure. The thing even automagically creates feature branches for me!
 
 Here's what it looks like now:
 
@@ -165,9 +169,9 @@ Because my site is 550 commits of specific choices. A reading progress system th
 
 A lot of that involved AI assistance. But the choices — what to build, what to skip, what principles to hold — those came from me sitting with the project over months, not from a prompt.
 
-I think there's a difference between "AI-generated" and "AI-assisted." The first produces something generic while the second is a person using tools to build something specific. A woodworker who uses a CNC router still designed the piece and chose the wood. The machine cuts but the human decides.
+I think there's a difference between "AI-generated" and "AI-assisted." The first produces something generic, while the second is a person using tools to build something specific. A woodworker who uses a CNC router still designed the piece and chose the wood. The machine cuts, but the human decides.
 
-550 commits. Most of them small and ALL of them mine.
+550 commits. Most of them small, and ALL of them mine.
 
 ## What's Next
 
@@ -179,7 +183,7 @@ The [roadmap](https://github.com/antoniwan/notes/blob/main/docs/roadmap.md) has 
 - **Structured sources** — moving reading influences into frontmatter so they're browsable and connected to the Library.
 - **More bilingual content** — I want more of my writing to exist in both languages.
 
-I'm 7 specs into the spec-kit workflow now and each feature teaches me something about the next one. We'll see what else develops from this work.
+I'm 7 specs into the spec-kit workflow now, and each feature teaches me something about the next one. We'll see what else develops from this work.
 
 ---
 
