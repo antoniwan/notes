@@ -38,7 +38,7 @@ Last July I wrote about [the joy of building my own digital sandbox](/p/the-joy-
 - **AI pair-programming** adopted as a core workflow, with 6 custom agent skills built for this repo
 - **Spec-driven development** formalized through [github/spec-kit](https://github.com/github/spec-kit)
 
-The commit cadence mirrors my life: bursts of 119 (July) and 107 (November) when I'm on fire, then 9 (October) and 14 (January) when I'm living, parenting, recovering. My son Andre Antonio was born on December 25, 2025. January was 14 commits. That's not a dip in productivity — that's a man holding his newborn and his enhanced blended family. It's pretty cool that I'm not shipping to a sprint board and I'm shipping to my own internal clock and life cadence.
+The commit cadence mirrors my life: bursts of 119 (July) and 107 (November) when I'm on fire, then 9 (October) and 14 (January) when I'm living, parenting, recovering. My son Andre Antonio was born on December 25, 2025. January was 14 commits. That's not a dip in productivity — that's a man holding his newborn and his enhanced beautiful blended family. It's pretty cool that I'm not shipping to a sprint board and I'm shipping to my own internal clock and life cadence.
 
 This artisanal project remains some of the most meaningful creative work I do, and the sharpest instrument I have for witnessing myself, because the goal is always the same: become what I write, and be as honest through the process as I can.
 
