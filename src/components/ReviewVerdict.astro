@@ -1,0 +1,136 @@
+---
+/**
+ * Editorial score verdict — compact callout floated in body copy (text wraps beside it).
+ * Scores snap to half steps on [0, 10]; each step has a display label (overridable per post).
+ */
+
+const SCALE = 10;
+const TICKS = 21; /* 0, 0.5 … 10 */
+
+/** Default qualifier for snap index 0…20 (score = index / 2). */
+const LABEL_BY_INDEX: readonly string[] = [
+  'Unplayable',
+  'Broken',
+  'Dire',
+  'Terrible',
+  'Awful',
+  'Very poor',
+  'Poor',
+  'Weak',
+  'Mediocre',
+  'Disappointing',
+  'Average',
+  'Okay',
+  'Decent',
+  'Fair',
+  'Good',
+  'Solid',
+  'Very good',
+  'Great',
+  'Excellent',
+  'Almost perfect',
+  'Masterpiece',
+];
+
+interface Props {
+  /** 0–10 in half-point steps (snapped automatically). */
+  score?: number;
+  numerator?: number;
+  denominator?: number;
+  eyebrow?: string;
+  /** Partial overrides keyed by snapped score (e.g. `9`: "Excellent"). */
+  labels?: Partial<Record<number, string>>;
+  /** Side to float (`end` → right in LTR). Mobile stacks full-width. */
+  float?: 'start' | 'end' | 'none';
+  /** Show equivalency out of five under the headline score. */
+  showOutOfFive?: boolean;
+}
+
+const {
+  numerator = 9,
+  denominator = 10,
+  eyebrow = 'Verdict',
+  labels: labelsProp,
+  float: floatSide = 'end',
+  showOutOfFive = true,
+} = Astro.props;
+
+const rawScore =
+  typeof Astro.props.score === 'number'
+    ? Astro.props.score
+    : denominator > 0
+      ? (numerator / denominator) * SCALE
+      : 0;
+
+const snapped = Math.round(Math.min(SCALE, Math.max(0, rawScore)) * 2) / 2;
+const idx = Math.round(snapped * 2);
+
+function scoreLine(s: number): string {
+  const isHalf = Number.isInteger(s * 2) && !Number.isInteger(s);
+  return isHalf ? s.toFixed(1) : String(s);
+}
+
+function formatOutOfFive(score10: number): string | null {
+  const out = score10 / 2;
+  if (Math.abs(out % 1) < 1e-6) {
+    return `${Math.round(out)} / 5`;
+  }
+  if (Math.abs(out % 1 - 0.5) < 1e-6) {
+    const w = Math.floor(out);
+    return w === 0 ? '½ / 5' : `${w}½ / 5`;
+  }
+  return `${out.toFixed(1)} / 5`;
+}
+
+const label =
+  (labelsProp && labelsProp[snapped] !== undefined
+    ? labelsProp[snapped]
+    : LABEL_BY_INDEX[idx]) ?? LABEL_BY_INDEX[Math.min(TICKS - 1, Math.max(0, idx))];
+
+const alternateFive = formatOutOfFive(snapped);
+
+const floatClass =
+  floatSide === 'none'
+    ? ''
+    : floatSide === 'start'
+      ? 'sm:float-left sm:mr-6 sm:text-left rtl:sm:float-right rtl:sm:ml-6 rtl:sm:mr-0'
+      : 'sm:float-right sm:ml-6 sm:text-left rtl:sm:float-left rtl:sm:mr-6 rtl:sm:ml-0';
+
+const headingId = `review-verdict-${String(snapped).replace('.', '-')}`;
+---
+
+<aside
+  id={headingId}
+  class:list={[
+    'review-verdict-float',
+    'not-prose',
+    'float-none',
+    floatClass,
+    'mx-auto mb-6 w-full max-w-[min(13.5rem,calc(100%-0px))]',
+    'shrink-0',
+    'rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))]',
+    'px-4 py-3 shadow-sm sm:mx-0 sm:mb-3 sm:w-[min(13.5rem,calc(100%-0px))]',
+  ]}
+  aria-label={`${eyebrow}: ${scoreLine(snapped)} out of ${SCALE}. ${label}.`}
+>
+  <p class="mb-1 text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[rgb(var(--color-text-muted))]">
+    {eyebrow}
+  </p>
+  <div class="flex flex-wrap items-end gap-x-1.5 gap-y-0" aria-hidden="true">
+    <span class="tabular-nums text-[2.375rem] font-bold leading-none text-[rgb(var(--color-text))]">
+      {scoreLine(snapped)}
+    </span>
+    <span class="pb-1 text-[1.35rem] font-light leading-none text-[rgb(var(--color-text-muted))]">/</span>
+    <span class="tabular-nums text-[1.875rem] font-semibold leading-none text-[rgb(var(--color-accent))]">{SCALE}</span>
+  </div>
+  {
+    showOutOfFive && alternateFive !== null ? (
+      <p class="mt-1 tabular-nums text-xs text-[rgb(var(--color-text-muted))]">{alternateFive}</p>
+    ) : (
+      ''
+    )
+  }
+  <p class="mt-3 border-t border-[rgb(var(--color-border))] pt-2.5 font-serif text-lg font-semibold leading-snug tracking-tight text-[rgb(var(--color-text))]">
+    {label}
+  </p>
+</aside>

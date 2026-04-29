@@ -652,6 +652,16 @@
   margin-right: auto !important;
 }
 
+/* Floated MDX verdict: allow fixed max width alongside .prose * { max-width: 100% } */
+.post-prose .prose aside.review-verdict-float.review-verdict-float {
+  max-width: min(13.5rem, 100%);
+  box-sizing: border-box;
+}
+
+.post-prose .prose aside.review-verdict-float.review-verdict-float * {
+  max-width: none;
+}
+
 .prose :where(h2, h3, h4) {
   scroll-margin-top: 6rem;
 }
