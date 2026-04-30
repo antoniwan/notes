@@ -232,51 +232,52 @@
   )
 }
 
-<script>
-  // @ts-nocheck
-  // Debug panel functionality (development only)
-  if (import.meta.env.DEV) {
-    const debugPanel = document.getElementById('performance-debug');
-    const metrics = ['fcp', 'lcp', 'fid', 'cls', 'ttfb'];
+{
+  import.meta.env.DEV && (
+    <script>
+      // @ts-nocheck
+      const debugPanel = document.getElementById('performance-debug');
+      const metrics = ['fcp', 'lcp', 'fid', 'cls', 'ttfb'];
 
-    // Update debug panel every second
-    setInterval(() => {
-      const win = /** @type {any} */ (window);
-      const currentMetrics = win.performanceMonitor?.getMetrics() || {};
+      // Update debug panel every second
+      setInterval(() => {
+        const win = /** @type {any} */ (window);
+        const currentMetrics = win.performanceMonitor?.getMetrics() || {};
 
-      metrics.forEach((metric) => {
-        const element = document.getElementById(`${metric}-metric`);
-        if (element && currentMetrics[metric] !== undefined) {
-          const value = currentMetrics[metric];
-          let status = 'good';
+        metrics.forEach((metric) => {
+          const element = document.getElementById(`${metric}-metric`);
+          if (element && currentMetrics[metric] !== undefined) {
+            const value = currentMetrics[metric];
+            let status = 'good';
 
-          // Determine status based on Core Web Vitals thresholds
-          if (metric === 'lcp') {
-            if (value > 4000) status = 'poor';
-            else if (value > 2500) status = 'needs-improvement';
-          } else if (metric === 'fcp') {
-            if (value > 3000) status = 'poor';
-            else if (value > 1800) status = 'needs-improvement';
-          } else if (metric === 'fid') {
-            if (value > 300) status = 'poor';
-            else if (value > 100) status = 'needs-improvement';
-          } else if (metric === 'cls') {
-            if (value > 0.25) status = 'poor';
-            else if (value > 0.1) status = 'needs-improvement';
+            // Determine status based on Core Web Vitals thresholds
+            if (metric === 'lcp') {
+              if (value > 4000) status = 'poor';
+              else if (value > 2500) status = 'needs-improvement';
+            } else if (metric === 'fcp') {
+              if (value > 3000) status = 'poor';
+              else if (value > 1800) status = 'needs-improvement';
+            } else if (metric === 'fid') {
+              if (value > 300) status = 'poor';
+              else if (value > 100) status = 'needs-improvement';
+            } else if (metric === 'cls') {
+              if (value > 0.25) status = 'poor';
+              else if (value > 0.1) status = 'needs-improvement';
+            }
+
+            element.textContent = `${metric.toUpperCase()}: ${Math.round(value)}ms`;
+            element.className = `metric ${status}`;
           }
+        });
+      }, 1000);
 
-          element.textContent = `${metric.toUpperCase()}: ${Math.round(value)}ms`;
-          element.className = `metric ${status}`;
+      // Toggle debug panel with Ctrl+Shift+P
+      document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey && e.shiftKey && e.key === 'P') {
+          e.preventDefault();
+          debugPanel?.classList.toggle('visible');
         }
       });
-    }, 1000);
-
-    // Toggle debug panel with Ctrl+Shift+P
-    document.addEventListener('keydown', (e) => {
-      if (e.ctrlKey && e.shiftKey && e.key === 'P') {
-        e.preventDefault();
-        debugPanel?.classList.toggle('visible');
-      }
-    });
-  }
-</script>
+    </script>
+  )
+}

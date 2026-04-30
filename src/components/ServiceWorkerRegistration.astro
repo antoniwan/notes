@@ -195,23 +195,24 @@ const swUrl = `/sw.js?v=${encodeURIComponent(pkg.version ?? 'dev')}`;
   }
 </style>
 
-<script>
-  // Update status indicator in development
-  if (import.meta.env.DEV) {
-    const statusElement = document.getElementById('sw-status');
-    if (statusElement) {
-      setInterval(() => {
-        const controlled = !!navigator.serviceWorker.controller;
-        const status = controlled ? 'active ✓' : 'inactive ✗';
-        statusElement.innerHTML = `SW: ${status}`;
+{
+  import.meta.env.DEV && (
+    <script>
+      const statusElement = document.getElementById('sw-status');
+      if (statusElement) {
+        setInterval(() => {
+          const controlled = !!navigator.serviceWorker.controller;
+          const status = controlled ? 'active ✓' : 'inactive ✗';
+          statusElement.innerHTML = `SW: ${status}`;
 
-        // Color coding
-        if (controlled) {
-          statusElement.style.background = 'rgba(16, 185, 129, 0.8)'; // Green
-        } else {
-          statusElement.style.background = 'rgba(239, 68, 68, 0.8)'; // Red
-        }
-      }, 1000);
-    }
-  }
-</script>
+          // Color coding
+          if (controlled) {
+            statusElement.style.background = 'rgba(16, 185, 129, 0.8)'; // Green
+          } else {
+            statusElement.style.background = 'rgba(239, 68, 68, 0.8)'; // Red
+          }
+        }, 1000);
+      }
+    </script>
+  )
+}
