@@ -92,20 +92,19 @@ Font loading uses proper `<link>` preloads. Images are served in modern formats.
 
 Vercel's Speed Insights shows a **Real Experience Score of 100** right now, based on actual user visits over the last 7 days. The numbers: First Contentful Paint at 0.65s, Largest Contentful Paint at 0.82s, Interaction to Next Paint at 24ms, Cumulative Layout Shift at 0, Time to First Byte at 0.12s. Both the homepage and post pages score 100. No poor scores, no "needs improvement" scores. I care about this because if I'm asking someone to read 3,000 words of my thinking, the least I can do is make sure the page loads fast and doesn't jump around while they're trying to read.
 
-
 ## What I've Been Writing About
 
 The code is one half and the writing is the other. Here's what I wrote about, roughly by theme:
 
-**Recovery and becoming.** *Who I Am Today: A Recovery Progress Report*. *Season of Becoming* — moving from performing growth to living it. *The Feeling Is Not the Problem* — about what happens when you suppress emotions instead of sitting with them.
+**Recovery and becoming.** _Who I Am Today: A Recovery Progress Report_. _Season of Becoming_ — moving from performing growth to living it. _The Feeling Is Not the Problem_ — about what happens when you suppress emotions instead of sitting with them.
 
-**Love, fatherhood, and boundaries.** *Love Is the Final Revolution* — kindness as political act. *On Boundaries, Miscalibration, and Relearning Unconditional Love* — what happens when boundary-setting overcorrects. *The First Wall* and *On Clear Signals* — relationships, signals, walls.
+**Love, fatherhood, and boundaries.** _Love Is the Final Revolution_ — kindness as political act. _On Boundaries, Miscalibration, and Relearning Unconditional Love_ — what happens when boundary-setting overcorrects. _The First Wall_ and _On Clear Signals_ — relationships, signals, walls.
 
-**Politics and power.** *The Prometheus Problem* — how AI companies externalize consequences. *Notes on Puerto Rico: Sin Pie Forzao* — political analysis of the island's situation. *An Invitation to the End of Wealth Worship* — what comes after treating wealth as religion.
+**Politics and power.** _The Prometheus Problem_ — how AI companies externalize consequences. _Notes on Puerto Rico: Sin Pie Forzao_ — political analysis of the island's situation. _An Invitation to the End of Wealth Worship_ — what comes after treating wealth as religion.
 
-**Craft and building.** *Rolling Back Main (And Why You Shouldn't Have to)* — a post-mortem of trusting AI too much with git!!! 🫣 *On Leadership and Leadership-Adjacent Things* — a stupidly long (Sorry, not sorry!) essay on leadership as cost, care, and teaching others to lead.
+**Craft and building.** _Rolling Back Main (And Why You Shouldn't Have to)_ — a post-mortem of trusting AI too much with git!!! 🫣 _On Leadership and Leadership-Adjacent Things_ — a stupidly long (Sorry, not sorry!) essay on leadership as cost, care, and teaching others to lead.
 
-**Grief and letting go.** *The Rhythm of Grief* and *Empathy as a Shield*.
+**Grief and letting go.** _The Rhythm of Grief_ and _Empathy as a Shield_.
 
 Eight of these posts were published in both English and Spanish, using translation groups that let readers toggle between languages.
 
@@ -117,7 +116,7 @@ I don't run my own analytics. I don't have tracking pixels or cookies or any of 
 
 I don't know who most of these people are. I don't know why 77% of the traffic shows as coming from Singapore — that's probably bots or VPNs or something I don't understand. 15% from the United States, 6% from China, and about 1% from Puerto Rico, which I like because that's home.
 
-What's interesting to me is _what_ people are reading. The most visited post (after the homepage) is *Rolling Back Main* with 14 visitors, followed by the leadership essay with 12. Those are the two posts about building things and making mistakes — the craft posts. People also hit `/tag` (16 visitors), `/tag/breathing` (11), `/tag/childhood` (10), and `/about` (10). That tells me people are browsing, not just landing on one page and leaving. Well, the bounce rate is 86%, so most people _are_ landing and leaving, but some are sticking around and exploring.
+What's interesting to me is _what_ people are reading. The most visited post (after the homepage) is _Rolling Back Main_ with 14 visitors, followed by the leadership essay with 12. Those are the two posts about building things and making mistakes — the craft posts. People also hit `/tag` (16 visitors), `/tag/breathing` (11), `/tag/childhood` (10), and `/about` (10). That tells me people are browsing, not just landing on one page and leaving. Well, the bounce rate is 86%, so most people _are_ landing and leaving, but some are sticking around and exploring.
 
 Referrers: Google (5), Facebook in various forms (about 10 total between mobile and desktop), GitHub (2), Vercel (2). So people are finding this through search, through social sharing, and through the repo itself. That's cool.
 
@@ -144,7 +143,7 @@ These are project-specific configurations, not generic prompts. They give the AI
 
 AI writes first drafts of code. I review and shape. AI suggests refactors. I decide which ones to take. AI runs quality gates. I decide what to do about the results.
 
-Sometimes the AI fucks up. *Rolling Back Main* exists because I let the AI handle too much without checking. It pushed changes that broke things, and I had to do a manual rollback on `main`. The lesson:
+Sometimes the AI fucks up. _Rolling Back Main_ exists because I let the AI handle too much without checking. It pushed changes that broke things, and I had to do a manual rollback on `main`. The lesson:
 
 > Tools amplify both your strengths and your inattention.
 
@@ -205,10 +204,10 @@ I'm 7 specs into the spec-kit workflow now, and each feature teaches me somethin
 
 ---
 
-Eight months ago I wrote: *"I fucking love working on my blog."*
+Eight months ago I wrote: _"I fucking love working on my blog."_
 
 It's still true. The tools got better, the process got more structured, and the work kept going — but the feeling is the same. I like building this thing. I like that it's mine.
 
 This is still my art. Code and content together. The shedding, the adding, the crashes, the chaos. 550 commits of a man figuring out what he wants to say and building a machine to say it.
 
-*The whole thing is [open source](https://github.com/antoniwan/notes). Version 5.21.0 and climbing. Come poke around.*
+_The whole thing is [open source](https://github.com/antoniwan/notes). Version 5.21.0 and climbing. Come poke around._
