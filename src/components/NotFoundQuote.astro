@@ -17,7 +17,7 @@ const { existingTags } = Astro.props;
   <div class="px-4 py-5 md:px-6 md:py-6">
     <p
       id="nfq-label"
-      class="mb-4 font-mono text-xs font-semibold uppercase tracking-[0.12em] text-body-muted"
+      class="text-body-muted mb-4 font-mono text-xs font-semibold tracking-[0.12em] uppercase"
     >
       From the archive
     </p>
@@ -26,11 +26,11 @@ const { existingTags } = Astro.props;
       <span
         class="inline-block h-2 w-2 shrink-0 animate-pulse rounded-full bg-[rgb(var(--color-primary))]"
         aria-hidden="true"></span>
-      <p class="m-0 text-sm text-body-muted">Loading quote…</p>
+      <p class="text-body-muted m-0 text-sm">Loading quote…</p>
     </div>
 
     <div id="nfq-error" class="hidden">
-      <p class="mb-4 mt-0 text-sm text-body-muted">Couldn’t load a quote.</p>
+      <p class="text-body-muted mt-0 mb-4 text-sm">Couldn’t load a quote.</p>
       <blockquote class="nfq-pullquote">
         <p class="nfq-quote-text">The obstacle is the way.</p>
         <footer class="nfq-attribution">
@@ -55,9 +55,7 @@ const { existingTags } = Astro.props;
         id="nfq-themes-wrap"
         class="mt-5 hidden border-t border-[rgb(var(--color-border))]/80 pt-5"
       >
-        <p
-          class="mb-2 mt-0 text-xs font-semibold uppercase tracking-wider text-body-muted"
-        >
+        <p class="text-body-muted mt-0 mb-2 text-xs font-semibold tracking-wider uppercase">
           Related tags
         </p>
         <div id="nfq-themes" class="flex flex-wrap gap-1.5"></div>

@@ -42,7 +42,7 @@ const getTagColor = (variant: string) => {
     visibleTags.map((tag) => (
       <a
         href={`/tag/${tag}/`}
-        class={`tag-item inline-flex items-center gap-1.5 ${compact ? 'px-2.5 py-1 text-sm' : 'px-3 py-1.5 text-base'} interactive-button rounded-full border font-medium focus:outline-hidden focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:ring-offset-1 ${getTagColor(variant)}`}
+        class={`tag-item inline-flex items-center gap-1.5 ${compact ? 'px-2.5 py-1 text-sm' : 'px-3 py-1.5 text-base'} interactive-button rounded-full border font-medium focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:ring-offset-1 focus:outline-hidden ${getTagColor(variant)}`}
       >
         <span class="tag-icon" aria-hidden="true">
           🏷️

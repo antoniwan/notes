@@ -62,13 +62,13 @@ const alphabetical = [...withNotes].sort((a, b) => a.name.localeCompare(b.name))
                   <li class="m-0 p-0">
                     <a
                       href={`/category/${category.id}/`}
-                      class="group inline-flex items-baseline gap-1.5 text-base text-[rgb(var(--color-accent))] no-underline transition-colors hover:text-[rgb(var(--color-accent-hover))] hover:underline focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-[rgb(var(--color-accent))] focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--color-bg))]"
+                      class="group inline-flex items-baseline gap-1.5 text-base text-[rgb(var(--color-accent))] no-underline transition-colors hover:text-[rgb(var(--color-accent-hover))] hover:underline focus-visible:ring-2 focus-visible:ring-[rgb(var(--color-accent))] focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--color-bg))] focus-visible:outline-hidden"
                     >
-                      <span aria-hidden="true" class="select-none opacity-90">
+                      <span aria-hidden="true" class="opacity-90 select-none">
                         {category.icon}
                       </span>
                       <span class="font-medium">{category.name}</span>
-                      <span class="text-sm tabular-nums text-body-muted group-hover:text-body-muted">
+                      <span class="text-body-muted group-hover:text-body-muted text-sm tabular-nums">
                         ({postCounts[category.id]})
                       </span>
                     </a>
@@ -94,7 +94,7 @@ const alphabetical = [...withNotes].sort((a, b) => a.name.localeCompare(b.name))
                 Nothing filed yet
               </h2>
               <p
-                class="text-body-large m-0 leading-relaxed text-body-muted"
+                class="text-body-large text-body-muted m-0 leading-relaxed"
                 style="line-height: 1.6;"
               >
                 Categories will populate once drafts are published.

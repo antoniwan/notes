@@ -13,7 +13,7 @@ const { category, postCount, featured = false, compact = false } = Astro.props;
 
 <a
   href={`/category/${category.id}/`}
-  class="interactive-card theme-transition group relative block overflow-hidden rounded-xl border border-[rgb(var(--color-border))]/20 bg-[rgb(var(--color-bg))] hover:border-[rgb(var(--color-accent))]/25 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-[rgb(var(--color-accent))] focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--color-bg))]"
+  class="interactive-card theme-transition group relative block overflow-hidden rounded-xl border border-[rgb(var(--color-border))]/20 bg-[rgb(var(--color-bg))] hover:border-[rgb(var(--color-accent))]/25 focus-visible:ring-2 focus-visible:ring-[rgb(var(--color-accent))] focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--color-bg))] focus-visible:outline-hidden"
   class:list={{
     'category-card-featured': featured,
     'category-card-compact': compact,
@@ -32,14 +32,14 @@ const { category, postCount, featured = false, compact = false } = Astro.props;
 
       <div class="min-w-0 flex-1">
         <h3
-          class="mb-2 mt-0 text-xl font-semibold leading-tight text-[rgb(var(--color-text))] md:text-2xl"
+          class="mt-0 mb-2 text-xl leading-tight font-semibold text-[rgb(var(--color-text))] md:text-2xl"
         >
           {category.name}
         </h3>
 
         {
           !compact && (
-            <p class="text-body-muted mb-4 mt-0 line-clamp-2 text-base leading-relaxed md:text-lg">
+            <p class="text-body-muted mt-0 mb-4 line-clamp-2 text-base leading-relaxed md:text-lg">
               {category.description}
             </p>
           )

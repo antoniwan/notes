@@ -28,10 +28,10 @@ const platforms = generateShareUrls(title, currentUrl, description);
 {/* Floating Action Button (Mobile) */}
 {
   variant === 'floating' && (
-    <div class="fixed bottom-6 right-6 z-40 md:hidden">
+    <div class="fixed right-6 bottom-6 z-40 md:hidden">
       <button
         id="share-fab"
-        class="theme-transition flex h-14 w-14 items-center justify-center rounded-full bg-[rgb(var(--color-accent))] text-white shadow-lg hover:bg-[rgb(var(--color-accent-hover))] focus:outline-hidden focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:ring-offset-2"
+        class="theme-transition flex h-14 w-14 items-center justify-center rounded-full bg-[rgb(var(--color-accent))] text-white shadow-lg hover:bg-[rgb(var(--color-accent-hover))] focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:ring-offset-2 focus:outline-hidden"
         aria-label="Share this writing"
       >
         <span class="text-xl">📤</span>
@@ -40,7 +40,7 @@ const platforms = generateShareUrls(title, currentUrl, description);
       {/* Share Menu */}
       <div
         id="share-menu"
-        class="absolute bottom-16 right-0 hidden min-w-[200px] rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg))] p-2 shadow-lg"
+        class="absolute right-0 bottom-16 hidden min-w-[200px] rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg))] p-2 shadow-lg"
       >
         <div class="space-y-1">
           {platforms.map((platform) => (
@@ -91,7 +91,7 @@ const platforms = generateShareUrls(title, currentUrl, description);
       {/* Share Menu */}
       <div
         id="horizontal-share-menu"
-        class="absolute left-0 top-full z-10 mt-2 hidden min-w-[200px] rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg))] p-2 shadow-lg"
+        class="absolute top-full left-0 z-10 mt-2 hidden min-w-[200px] rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg))] p-2 shadow-lg"
       >
         <div class="grid grid-cols-2 gap-1">
           {platforms.map((platform) => (
@@ -143,7 +143,7 @@ const platforms = generateShareUrls(title, currentUrl, description);
           {/* Share Menu */}
           <div
             id="vertical-share-menu"
-            class="absolute left-0 top-full z-10 mt-2 hidden min-w-[200px] rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg))] p-2 shadow-lg"
+            class="absolute top-full left-0 z-10 mt-2 hidden min-w-[200px] rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg))] p-2 shadow-lg"
           >
             <div class="space-y-1">
               {platforms.map((platform) => (
@@ -171,7 +171,7 @@ const platforms = generateShareUrls(title, currentUrl, description);
   variant === 'button' && (
     <button
       id="share-button"
-      class={`theme-transition inline-flex items-center gap-2 rounded-lg bg-[rgb(var(--color-bg-alt))] px-4 py-2 text-[rgb(var(--color-text))] hover:bg-[rgb(var(--color-bg-alt))]/80 focus:outline-hidden focus:ring-2 focus:ring-[rgb(var(--color-accent))] ${className}`}
+      class={`theme-transition inline-flex items-center gap-2 rounded-lg bg-[rgb(var(--color-bg-alt))] px-4 py-2 text-[rgb(var(--color-text))] hover:bg-[rgb(var(--color-bg-alt))]/80 focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:outline-hidden ${className}`}
       aria-label="Share this writing"
     >
       <span class="text-base">📤</span>

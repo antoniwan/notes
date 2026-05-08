@@ -201,7 +201,7 @@ if (!posts || posts.length === 0) {
 
   /* Content overlay */
   .content-overlay {
-    @apply absolute bottom-0 left-0 right-0 p-4;
+    @apply absolute right-0 bottom-0 left-0 p-4;
   }
 
   .content-wrapper {
@@ -227,11 +227,11 @@ if (!posts || posts.length === 0) {
 
   /* Post title */
   .post-title {
-    @apply text-lg font-bold leading-tight text-white;
+    @apply text-lg leading-tight font-bold text-white;
   }
 
   .title-link {
-    @apply rounded transition-colors duration-200 hover:text-yellow-300 focus:outline-hidden focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-black/50;
+    @apply rounded transition-colors duration-200 hover:text-yellow-300 focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-black/50 focus:outline-hidden;
   }
 
   /* Post description */
@@ -241,12 +241,12 @@ if (!posts || posts.length === 0) {
 
   /* Navigation controls */
   .nav-controls {
-    @apply absolute left-0 right-0 top-1/2 flex -translate-y-1/2 justify-between px-2;
+    @apply absolute top-1/2 right-0 left-0 flex -translate-y-1/2 justify-between px-2;
     z-index: 10;
   }
 
   .nav-btn {
-    @apply rounded-full bg-white/80 p-2 text-gray-600 shadow-xs transition-colors duration-150 hover:bg-white/90 focus:outline-hidden focus:ring-1 focus:ring-yellow-400 dark:bg-gray-800/80 dark:text-gray-300 dark:hover:bg-gray-700/90;
+    @apply rounded-full bg-white/80 p-2 text-gray-600 shadow-xs transition-colors duration-150 hover:bg-white/90 focus:ring-1 focus:ring-yellow-400 focus:outline-hidden dark:bg-gray-800/80 dark:text-gray-300 dark:hover:bg-gray-700/90;
     min-width: 36px;
     min-height: 36px;
     @apply flex items-center justify-center;
@@ -258,7 +258,7 @@ if (!posts || posts.length === 0) {
 
   /* Slide counter */
   .slide-counter {
-    @apply absolute right-2 top-2 rounded bg-black/70 px-2 py-1 text-xs font-medium text-white backdrop-blur-sm;
+    @apply absolute top-2 right-2 rounded bg-black/70 px-2 py-1 text-xs font-medium text-white backdrop-blur-sm;
     z-index: 10;
   }
 
@@ -324,7 +324,7 @@ if (!posts || posts.length === 0) {
     }
 
     .slide-counter {
-      @apply right-3 top-3 px-3 py-1.5 text-sm;
+      @apply top-3 right-3 px-3 py-1.5 text-sm;
     }
   }
 

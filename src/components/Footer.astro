@@ -10,9 +10,7 @@ import pkg from '../../package.json';
   role="contentinfo"
 >
   <!-- Subtle overlay for additional contrast -->
-  <div
-    class="pointer-events-none absolute inset-0 bg-linear-to-t from-black/2 to-transparent"
-  >
+  <div class="pointer-events-none absolute inset-0 bg-linear-to-t from-black/2 to-transparent">
   </div>
 
   <Container class="relative py-12 md:py-16">
@@ -26,7 +24,7 @@ import pkg from '../../package.json';
       <!-- Quick Links -->
       <div>
         <h3
-          class="mb-4 text-lg font-semibold leading-tight text-[rgb(var(--color-text))] md:text-xl"
+          class="mb-4 text-lg leading-tight font-semibold text-[rgb(var(--color-text))] md:text-xl"
         >
           Quick Links
         </h3>
@@ -47,7 +45,7 @@ import pkg from '../../package.json';
       <!-- Resources -->
       <div>
         <h3
-          class="mb-4 text-lg font-semibold leading-tight text-[rgb(var(--color-text))] md:text-xl"
+          class="mb-4 text-lg leading-tight font-semibold text-[rgb(var(--color-text))] md:text-xl"
         >
           Resources
         </h3>
@@ -73,7 +71,7 @@ import pkg from '../../package.json';
       <!-- Connect Section -->
       <div>
         <h3
-          class="mb-4 text-lg font-semibold leading-tight text-[rgb(var(--color-text))] md:text-xl"
+          class="mb-4 text-lg leading-tight font-semibold text-[rgb(var(--color-text))] md:text-xl"
         >
           Connect
         </h3>
@@ -121,10 +119,8 @@ import pkg from '../../package.json';
     <!-- Copyright Section -->
     <div class="mt-8 border-t border-[rgb(var(--color-border))]/30 pt-8 md:mt-12 md:pt-12">
       <div class="flex flex-col items-center justify-between gap-4 md:flex-row">
-        <div
-          class="text-center text-[0.7rem] leading-snug text-body-muted opacity-70 md:text-left"
-        >
-          <p class="mb-0! mt-0! text-[0.7rem]! leading-snug!">
+        <div class="text-body-muted text-center text-[0.7rem] leading-snug opacity-70 md:text-left">
+          <p class="mt-0! mb-0! text-[0.7rem]! leading-snug!">
             © {new Date().getFullYear()}
             {SITE_TITLE}. All rights reserved. Content: <a
               href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
@@ -140,7 +136,7 @@ import pkg from '../../package.json';
 
         <!-- Additional Links -->
         <div
-          class="flex flex-wrap justify-center gap-4 text-[0.7rem] leading-snug text-body-muted md:justify-end"
+          class="text-body-muted flex flex-wrap justify-center gap-4 text-[0.7rem] leading-snug md:justify-end"
         >
           <div class="flex items-center gap-2">
             <a href="/sitemap-index.xml" class="link-muted">Sitemap</a>

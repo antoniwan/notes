@@ -20,7 +20,7 @@ const { items, class: className = '' } = Astro.props;
         <li class="m-0 flex items-center p-0">
           {index > 0 && (
             <svg
-              class="mx-2 h-4 w-4 text-body-muted"
+              class="text-body-muted mx-2 h-4 w-4"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -44,7 +44,7 @@ const { items, class: className = '' } = Astro.props;
             </a>
           ) : (
             <span
-              class="font-medium leading-relaxed text-[rgb(var(--color-text))]"
+              class="leading-relaxed font-medium text-[rgb(var(--color-text))]"
               aria-current="page"
             >
               {item.label}

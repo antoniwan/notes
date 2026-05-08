@@ -24,7 +24,7 @@ const allPages = BRAIN_SCIENCE_PAGES;
           return (
             <a
               href={page.path}
-              class={`whitespace-nowrap rounded-t-lg px-3 py-2 text-sm font-medium transition-colors md:px-4 md:py-2.5 md:text-base ${
+              class={`rounded-t-lg px-3 py-2 text-sm font-medium whitespace-nowrap transition-colors md:px-4 md:py-2.5 md:text-base ${
                 isActive
                   ? 'border-b-2 border-[rgb(var(--color-accent))] bg-[rgb(var(--color-bg-alt))] text-[rgb(var(--color-accent))]'
                   : 'text-body-muted hover:bg-[rgb(var(--color-bg-alt))] hover:text-[rgb(var(--color-text))]'

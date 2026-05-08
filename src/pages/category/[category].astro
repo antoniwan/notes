@@ -54,7 +54,7 @@ const secondaryCategoryPosts = categoryPosts
         <div class="mt-4 md:mt-6">
           <a
             href="/category/"
-            class="theme-transition inline-flex items-center gap-2 rounded-full border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg-alt))] px-4 py-2 text-sm font-medium text-[rgb(var(--color-text))] hover:border-[rgb(var(--color-primary))]/40 hover:bg-[rgb(var(--color-primary))]/10 hover:text-[rgb(var(--color-primary))] focus:outline-hidden focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:ring-offset-1"
+            class="theme-transition inline-flex items-center gap-2 rounded-full border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg-alt))] px-4 py-2 text-sm font-medium text-[rgb(var(--color-text))] hover:border-[rgb(var(--color-primary))]/40 hover:bg-[rgb(var(--color-primary))]/10 hover:text-[rgb(var(--color-primary))] focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:ring-offset-1 focus:outline-hidden"
           >
             <span aria-hidden="true">📂</span>
             See all categories
@@ -87,7 +87,7 @@ const secondaryCategoryPosts = categoryPosts
                 Related {category.name} Writings
               </h2>
               <p
-                class="text-body-large leading-relaxed text-body-muted"
+                class="text-body-large text-body-muted leading-relaxed"
                 style="margin: 0; line-height: 1.6;"
               >
                 Writings that touch on {category.name} as a secondary topic
@@ -106,7 +106,7 @@ const secondaryCategoryPosts = categoryPosts
       {
         categoryPosts.length === 0 && (
           <div class="py-12 text-center">
-            <p class="text-body-large leading-relaxed text-body-muted">
+            <p class="text-body-large text-body-muted leading-relaxed">
               No writings found in this category yet.
             </p>
           </div>

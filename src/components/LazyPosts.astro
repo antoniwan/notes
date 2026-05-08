@@ -29,14 +29,14 @@ const { posts, initialCount = 6, loadMoreCount = 6 } = Astro.props;
     posts.length > initialCount && (
       <div class="load-more-container mt-12 text-center" id="load-more-container">
         <div
-          class="progress-indicator mb-4 text-base leading-relaxed text-body-muted"
+          class="progress-indicator text-body-muted mb-4 text-base leading-relaxed"
           id="progress-indicator"
         >
           Showing {initialCount} of {posts.length} writings (
           {Math.round((initialCount / posts.length) * 100)}% complete)
         </div>
         <button
-          class="load-more-btn rounded-lg bg-[rgb(var(--color-primary))] px-8 py-3 text-base font-medium leading-relaxed text-white transition-colors duration-200 hover:bg-[rgb(var(--color-primary-hover))] focus:outline-hidden focus:ring-2 focus:ring-[rgb(var(--color-primary))] focus:ring-offset-2"
+          class="load-more-btn rounded-lg bg-[rgb(var(--color-primary))] px-8 py-3 text-base leading-relaxed font-medium text-white transition-colors duration-200 hover:bg-[rgb(var(--color-primary-hover))] focus:ring-2 focus:ring-[rgb(var(--color-primary))] focus:ring-offset-2 focus:outline-hidden"
           id="load-more-btn"
           data-total-posts={posts.length}
           data-current-count={initialCount}
@@ -46,9 +46,7 @@ const { posts, initialCount = 6, loadMoreCount = 6 } = Astro.props;
         </button>
         <div class="loading-spinner mt-4 hidden" id="loading-spinner">
           <div class="inline-block h-6 w-6 animate-spin rounded-full border-b-2 border-[rgb(var(--color-primary))]" />
-          <span class="ml-2 text-base leading-relaxed text-body-muted">
-            Loading...
-          </span>
+          <span class="text-body-muted ml-2 text-base leading-relaxed">Loading...</span>
         </div>
       </div>
     )

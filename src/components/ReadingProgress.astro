@@ -8,7 +8,7 @@ const { class: className = '', postId } = Astro.props;
 ---
 
 <div
-  class:list={['fixed left-0 top-0 z-50 h-1 w-full bg-[rgb(var(--color-bg-alt))]', className]}
+  class:list={['fixed top-0 left-0 z-50 h-1 w-full bg-[rgb(var(--color-bg-alt))]', className]}
   role="progressbar"
   aria-label="Reading progress"
   aria-valuemin="0"
@@ -18,7 +18,7 @@ const { class: className = '', postId } = Astro.props;
 >
   <div
     id="reading-progress"
-    class="transition-normal h-full bg-[rgb(var(--color-primary))]"
+    class="h-full bg-[rgb(var(--color-primary))] transition-normal"
     style="width: 0%"
   >
   </div>

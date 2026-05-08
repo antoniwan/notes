@@ -514,30 +514,30 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
       class="mb-6 flex flex-wrap gap-x-10 gap-y-5 border-b border-[rgb(var(--color-border))]/50 pb-6 md:mb-8 md:gap-x-14 md:pb-8"
     >
       <div title="Quarters with published posts (calendar quarters)">
-        <div class="text-2xl font-semibold tabular-nums text-[rgb(var(--color-text))] md:text-3xl">
+        <div class="text-2xl font-semibold text-[rgb(var(--color-text))] tabular-nums md:text-3xl">
           {quarters.length}
         </div>
-        <div class="text-xs text-body-muted">Quarters</div>
+        <div class="text-body-muted text-xs">Quarters</div>
       </div>
       <div title="Mean maturity checklist score (format features in body — heuristic)">
-        <div class="text-2xl font-semibold tabular-nums text-[rgb(var(--color-text))] md:text-3xl">
+        <div class="text-2xl font-semibold text-[rgb(var(--color-text))] tabular-nums md:text-3xl">
           {avgMaturityScore}
         </div>
-        <div class="text-xs text-body-muted">Avg maturity (format)</div>
+        <div class="text-body-muted text-xs">Avg maturity (format)</div>
       </div>
       <div title="Tag categories with positive early→recent growth">
         <div
-          class="text-2xl font-semibold tabular-nums text-green-600 dark:text-green-400 md:text-3xl"
+          class="text-2xl font-semibold text-green-600 tabular-nums md:text-3xl dark:text-green-400"
         >
           {growingTopics.length}
         </div>
-        <div class="text-xs text-body-muted">Tags rising</div>
+        <div class="text-body-muted text-xs">Tags rising</div>
       </div>
       <div title="Tag categories with negative early→recent growth">
-        <div class="text-2xl font-semibold tabular-nums text-red-600 dark:text-red-400 md:text-3xl">
+        <div class="text-2xl font-semibold text-red-600 tabular-nums md:text-3xl dark:text-red-400">
           {decliningTopics.length}
         </div>
-        <div class="text-xs text-body-muted">Tags falling</div>
+        <div class="text-body-muted text-xs">Tags falling</div>
       </div>
     </div>
 
@@ -545,9 +545,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
       class="mb-8 border-b border-dashed border-[rgb(var(--color-border))]/50 pb-4 md:mb-10"
       aria-label="On this page"
     >
-      <div
-        class="mb-2 text-[0.65rem] font-semibold uppercase tracking-wider text-body-muted"
-      >
+      <div class="text-body-muted mb-2 text-[0.65rem] font-semibold tracking-wider uppercase">
         Jump to
       </div>
       <ul class="m-0 flex list-none flex-wrap gap-x-4 gap-y-2 p-0 text-sm">
@@ -619,7 +617,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
           >
             Readability &amp; word-pattern index
           </h2>
-          <p class="mb-4 max-w-3xl text-sm leading-relaxed text-body-muted">
+          <p class="text-body-muted mb-4 max-w-3xl text-sm leading-relaxed">
             Quarterly means from post bodies only. Drift in wording or length—not a score of how
             smart posts are.
           </p>
@@ -628,7 +626,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
             <summary class="cursor-pointer list-none text-sm font-medium text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/25 underline-offset-4 marker:content-none [&::-webkit-details-marker]:hidden">
               How to read the two lines
             </summary>
-            <div class="mt-3 space-y-3 border-l-2 border-[rgb(var(--color-border))]/60 pl-4 text-sm leading-relaxed text-body-muted">
+            <div class="text-body-muted mt-3 space-y-3 border-l-2 border-[rgb(var(--color-border))]/60 pl-4 text-sm leading-relaxed">
               <p class="m-0 flex flex-wrap items-start gap-2">
                 <span
                   class="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-[rgb(147,51,234)]"
@@ -700,7 +698,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
       >
         By period: Early, Middle, Recent
       </h2>
-      <p class="mb-6 max-w-3xl text-sm leading-relaxed text-body-muted">
+      <p class="text-body-muted mb-6 max-w-3xl text-sm leading-relaxed">
         The archive is split into <strong class="font-medium text-[rgb(var(--color-text))]"
           >thirds by publication order</strong
         >. Bar chart and tables use <strong class="font-medium text-[rgb(var(--color-text))]"
@@ -728,9 +726,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
         >
           Signal notes (informal, not significance tests)
         </summary>
-        <p
-          class="mt-3 max-w-3xl text-xs leading-relaxed text-body-muted md:text-sm"
-        >
+        <p class="text-body-muted mt-3 max-w-3xl text-xs leading-relaxed md:text-sm">
           Emphasis tags are for this page only. Counts come from post bodies.
         </p>
         <div class="mt-4 divide-y divide-[rgb(var(--color-border))]/40">
@@ -738,11 +734,9 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
             intellectualInsights.map((insight, index) => (
               <article class="py-5 first:pt-2">
                 <div class="mb-2 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-                  <span class="font-mono text-xs text-body-muted">
-                    {index + 1}.
-                  </span>
+                  <span class="text-body-muted font-mono text-xs">{index + 1}.</span>
                   <span
-                    class={`text-[0.65rem] font-medium uppercase tracking-wide ${
+                    class={`text-[0.65rem] font-medium tracking-wide uppercase ${
                       insight.impact === 'High'
                         ? 'text-green-600 dark:text-green-400'
                         : insight.impact === 'Medium'
@@ -756,26 +750,20 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
                 <p class="mb-2 text-sm font-medium text-[rgb(var(--color-text))]">
                   {insight.insight}
                 </p>
-                <p class="mb-0 text-xs leading-relaxed text-body-muted md:text-sm">
+                <p class="text-body-muted mb-0 text-xs leading-relaxed md:text-sm">
                   {insight.evidence}
                 </p>
-                <p class="mb-0 mt-2 text-xs italic text-body-muted">
-                  {insight.reflection}
-                </p>
+                <p class="text-body-muted mt-2 mb-0 text-xs italic">{insight.reflection}</p>
               </article>
             ))
           }
         </div>
       </details>
 
-      <h3
-        class="mb-1 text-sm font-semibold uppercase tracking-wide text-body-muted"
-      >
+      <h3 class="text-body-muted mb-1 text-sm font-semibold tracking-wide uppercase">
         Per-period means
       </h3>
-      <p
-        class="mb-3 max-w-3xl text-xs leading-relaxed text-body-muted md:text-sm"
-      >
+      <p class="text-body-muted mb-3 max-w-3xl text-xs leading-relaxed md:text-sm">
         One row per third of the archive. Flesch ↑ ≈ simpler wording (approx. syllables).
         Word-pattern Σ = toy composite from word lists + length term.
       </p>
@@ -783,7 +771,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
         <table class="w-full min-w-128 border-collapse text-left text-sm">
           <thead>
             <tr
-              class="border-b-2 border-[rgb(var(--color-border))] text-[0.65rem] font-semibold uppercase tracking-wider text-body-muted"
+              class="text-body-muted border-b-2 border-[rgb(var(--color-border))] text-[0.65rem] font-semibold tracking-wider uppercase"
             >
               <th scope="col" class="py-2 pr-4 font-medium">Period</th>
               <th scope="col" class="py-2 pr-4 text-right font-medium tabular-nums">Posts</th>
@@ -807,14 +795,14 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
                 <tr class="border-b border-[rgb(var(--color-border))]/35 last:border-0">
                   <th
                     scope="row"
-                    class="py-2.5 pr-4 font-medium capitalize text-[rgb(var(--color-text))]"
+                    class="py-2.5 pr-4 font-medium text-[rgb(var(--color-text))] capitalize"
                   >
                     {period.period}
                   </th>
-                  <td class="py-2.5 pr-4 text-right tabular-nums text-[rgb(var(--color-text))]">
+                  <td class="py-2.5 pr-4 text-right text-[rgb(var(--color-text))] tabular-nums">
                     {period.postCount}
                   </td>
-                  <td class="py-2.5 pr-4 text-right tabular-nums text-[rgb(var(--color-text))]">
+                  <td class="py-2.5 pr-4 text-right text-[rgb(var(--color-text))] tabular-nums">
                     {period.avgWordCount}
                   </td>
                   <td
@@ -833,13 +821,13 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
                   >
                     {period.avgComplexity}
                   </td>
-                  <td class="py-2.5 pr-4 text-right tabular-nums text-[rgb(var(--color-text))]">
+                  <td class="py-2.5 pr-4 text-right text-[rgb(var(--color-text))] tabular-nums">
                     {period.avgIntellectualDepth}
                   </td>
-                  <td class="py-2.5 pr-4 text-right tabular-nums text-[rgb(var(--color-text))]">
+                  <td class="py-2.5 pr-4 text-right text-[rgb(var(--color-text))] tabular-nums">
                     {period.avgCuriosityCount}
                   </td>
-                  <td class="py-2.5 text-right tabular-nums text-[rgb(var(--color-text))]">
+                  <td class="py-2.5 text-right text-[rgb(var(--color-text))] tabular-nums">
                     {period.avgWisdomCount}
                   </td>
                 </tr>
@@ -863,7 +851,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
         >
           Tags rising (early → recent)
         </h3>
-        <p class="mb-4 text-xs text-body-muted">
+        <p class="text-body-muted mb-4 text-xs">
           Positive growth rate:
           <code class="rounded-sm bg-[rgb(var(--color-bg-alt))] px-1 font-mono text-[0.65rem]">
             ((recent − early) ÷ early) × 100</code
@@ -874,16 +862,14 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
             growingTopics.map((topic, index) => (
               <div class="flex items-baseline justify-between gap-4 py-2.5 first:pt-0">
                 <div class="min-w-0">
-                  <span class="mr-2 font-mono text-xs text-body-muted">
-                    {index + 1}.
-                  </span>
+                  <span class="text-body-muted mr-2 font-mono text-xs">{index + 1}.</span>
                   <span class="text-sm font-medium text-[rgb(var(--color-text))]">{topic.tag}</span>
-                  <span class="mt-0.5 block text-xs text-body-muted sm:mt-0 sm:inline sm:before:content-['_·_']">
+                  <span class="text-body-muted mt-0.5 block text-xs sm:mt-0 sm:inline sm:before:content-['_·_']">
                     {topic.earlyCount} → {topic.recentCount}
                   </span>
                 </div>
                 <div
-                  class="shrink-0 text-sm font-medium tabular-nums text-green-600 dark:text-green-400"
+                  class="shrink-0 text-sm font-medium text-green-600 tabular-nums dark:text-green-400"
                   title={`Growth rate: ${Math.round(topic.growthRate)}% increase from early to recent`}
                 >
                   +{Math.round(topic.growthRate)}%
@@ -901,7 +887,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
         >
           Tags falling (early → recent)
         </h3>
-        <p class="mb-4 text-xs text-body-muted">
+        <p class="text-body-muted mb-4 text-xs">
           Negative growth rate:
           <code class="rounded-sm bg-[rgb(var(--color-bg-alt))] px-1 font-mono text-[0.65rem]">
             ((recent − early) ÷ early) × 100</code
@@ -912,16 +898,14 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
             decliningTopics.map((topic, index) => (
               <div class="flex items-baseline justify-between gap-4 py-2.5 first:pt-0">
                 <div class="min-w-0">
-                  <span class="mr-2 font-mono text-xs text-body-muted">
-                    {index + 1}.
-                  </span>
+                  <span class="text-body-muted mr-2 font-mono text-xs">{index + 1}.</span>
                   <span class="text-sm font-medium text-[rgb(var(--color-text))]">{topic.tag}</span>
-                  <span class="mt-0.5 block text-xs text-body-muted sm:mt-0 sm:inline sm:before:content-['_·_']">
+                  <span class="text-body-muted mt-0.5 block text-xs sm:mt-0 sm:inline sm:before:content-['_·_']">
                     {topic.earlyCount} → {topic.recentCount}
                   </span>
                 </div>
                 <div
-                  class="shrink-0 text-sm font-medium tabular-nums text-red-600 dark:text-red-400"
+                  class="shrink-0 text-sm font-medium text-red-600 tabular-nums dark:text-red-400"
                   title={`Decline rate: ${Math.round(topic.growthRate)}%`}
                 >
                   {Math.round(topic.growthRate)}%
@@ -941,21 +925,19 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
       >
         Last eight quarters
       </h2>
-      <p
-        class="mb-4 max-w-3xl text-xs leading-relaxed text-body-muted md:text-sm"
-      >
+      <p class="text-body-muted mb-4 max-w-3xl text-xs leading-relaxed md:text-sm">
         Newest-first rows. Body text only for Flesch; syllables are approximated (
         <span class="whitespace-nowrap">higher ≈ simpler</span>).
       </p>
       <div class="overflow-x-auto">
         <table
-          class="w-full min-w-144 border-collapse border-b border-t border-[rgb(var(--color-border))] text-left text-sm"
+          class="w-full min-w-144 border-collapse border-t border-b border-[rgb(var(--color-border))] text-left text-sm"
         >
           <thead>
             <tr
-              class="border-b border-[rgb(var(--color-border))] text-[0.65rem] font-semibold uppercase tracking-wider text-body-muted"
+              class="text-body-muted border-b border-[rgb(var(--color-border))] text-[0.65rem] font-semibold tracking-wider uppercase"
             >
-              <th scope="col" class="whitespace-nowrap px-3 py-2.5">Quarter</th>
+              <th scope="col" class="px-3 py-2.5 whitespace-nowrap">Quarter</th>
               <th scope="col" class="px-3 py-2.5 text-right tabular-nums">Posts</th>
               <th scope="col" class="px-3 py-2.5 text-right tabular-nums">Avg words</th>
               <th scope="col" class="px-3 py-2.5 text-right tabular-nums">Flesch ~</th>
@@ -972,29 +954,29 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
                   <tr class="border-b border-[rgb(var(--color-border))]/50 last:border-0">
                     <th
                       scope="row"
-                      class="whitespace-nowrap px-3 py-2.5 font-medium text-[rgb(var(--color-text))]"
+                      class="px-3 py-2.5 font-medium whitespace-nowrap text-[rgb(var(--color-text))]"
                     >
                       {quarter.label}
                     </th>
-                    <td class="px-3 py-2.5 text-right tabular-nums text-[rgb(var(--color-text))]">
+                    <td class="px-3 py-2.5 text-right text-[rgb(var(--color-text))] tabular-nums">
                       {quarter.posts}
                     </td>
-                    <td class="px-3 py-2.5 text-right tabular-nums text-[rgb(var(--color-text))]">
+                    <td class="px-3 py-2.5 text-right text-[rgb(var(--color-text))] tabular-nums">
                       {quarter.avgWordCount}
                     </td>
                     <td
-                      class="px-3 py-2.5 text-right tabular-nums text-[rgb(var(--color-text))]"
+                      class="px-3 py-2.5 text-right text-[rgb(var(--color-text))] tabular-nums"
                       title="Average Flesch reading ease — higher tends to mean simpler wording (approximate syllables)."
                     >
                       {quarter.avgComplexity}
                     </td>
-                    <td class="px-3 py-2.5 align-top text-xs leading-snug text-body-muted">
+                    <td class="text-body-muted px-3 py-2.5 align-top text-xs leading-snug">
                       {quarter.topTags
                         .slice(0, 4)
                         .map((t) => `${t.tag} (${t.count})`)
                         .join(' · ')}
                     </td>
-                    <td class="px-3 py-2.5 align-top text-xs leading-snug text-body-muted">
+                    <td class="text-body-muted px-3 py-2.5 align-top text-xs leading-snug">
                       {quarter.topCategories
                         .slice(0, 3)
                         .map((c) => `${c.cat} (${c.count})`)
@@ -1020,22 +1002,17 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
       >
         Format &amp; structure checks
       </h2>
-      <p
-        class="mb-4 max-w-3xl text-xs leading-relaxed text-body-muted md:text-sm"
-      >
+      <p class="text-body-muted mb-4 max-w-3xl text-xs leading-relaxed md:text-sm">
         Heuristic checkbox on the Markdown body (not editorial quality). Expression:
       </p>
       <pre
-        class="mb-5 max-w-3xl overflow-x-auto border-l-2 border-[rgb(var(--color-border))]/70 pl-3 font-mono text-[0.7rem] leading-relaxed text-body-muted">(code fences / inline code ? 2 : 0) + (URLs ? 1 : 0) + (images ? 1 : 0) + (blockquotes ? 1 : 0)
+        class="text-body-muted mb-5 max-w-3xl overflow-x-auto border-l-2 border-[rgb(var(--color-border))]/70 pl-3 font-mono text-[0.7rem] leading-relaxed">(code fences / inline code ? 2 : 0) + (URLs ? 1 : 0) + (images ? 1 : 0) + (blockquotes ? 1 : 0)
 + (? in body ? 1 : 0) + (e.g./such as cues ? 1 : 0) + (words &gt; 1000 ? 2 : 0)
 + (word-pattern composite &gt; 10 ? 2 : 0)</pre>
       <table class="w-full max-w-md border-collapse text-sm tabular-nums">
         <tbody>
           <tr class="border-b border-[rgb(var(--color-border))]/35">
-            <td
-              class="py-2 pr-4 text-body-muted"
-              title="Code fences or inline code"
-            >
+            <td class="text-body-muted py-2 pr-4" title="Code fences or inline code">
               Posts with code
             </td>
             <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]">
@@ -1043,18 +1020,13 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
             </td>
           </tr>
           <tr class="border-b border-[rgb(var(--color-border))]/35">
-            <td class="py-2 pr-4 text-body-muted" title="External URLs">
-              Posts with links
-            </td>
+            <td class="text-body-muted py-2 pr-4" title="External URLs"> Posts with links </td>
             <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]">
               {maturityIndicators.filter((post) => post.hasLinks).length}
             </td>
           </tr>
           <tr class="border-b border-[rgb(var(--color-border))]/35">
-            <td
-              class="py-2 pr-4 text-body-muted"
-              title="Question marks in body"
-            >
+            <td class="text-body-muted py-2 pr-4" title="Question marks in body">
               Posts with questions
             </td>
             <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]">
@@ -1062,7 +1034,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
             </td>
           </tr>
           <tr>
-            <td class="py-2 pr-4 text-body-muted" title="Word count > 1000">
+            <td class="text-body-muted py-2 pr-4" title="Word count > 1000">
               Long posts (&gt;1k words)
             </td>
             <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]">
@@ -1093,7 +1065,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
               <span class="text-blue-500">🧠</span>
               Readability & language heuristics
             </h4>
-            <div class="space-y-3 text-sm leading-relaxed text-body-muted">
+            <div class="text-body-muted space-y-3 text-sm leading-relaxed">
               <p>
                 <strong class="text-[rgb(var(--color-text))]">Flesch reading ease per post:</strong>
                 Uses the standard formula<br />
@@ -1133,7 +1105,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
               <span class="text-purple-500">📚</span>
               Knowledge Area Evolution
             </h4>
-            <div class="space-y-3 text-body-muted">
+            <div class="text-body-muted space-y-3">
               <p>
                 <strong class="text-[rgb(var(--color-text))]">Topic Diversity:</strong> Number of distinct
                 knowledge areas
@@ -1162,7 +1134,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
               <span class="text-green-500">🎓</span>
               Maturity Indicators
             </h4>
-            <div class="space-y-3 text-body-muted">
+            <div class="text-body-muted space-y-3">
               <p>
                 <strong class="text-[rgb(var(--color-text))]">Long-form Content:</strong> Posts >1000
                 words / Total posts
@@ -1188,7 +1160,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
               <span class="text-orange-500">📈</span>
               Learning Trajectory
             </h4>
-            <div class="space-y-3 text-body-muted">
+            <div class="text-body-muted space-y-3">
               <p>
                 <strong class="text-[rgb(var(--color-text))]">Quarterly Growth:</strong> Post count and
                 word count per quarter

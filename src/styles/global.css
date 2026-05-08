@@ -39,7 +39,7 @@
 /* Component layer for reusable patterns */
 @utility text-heading {
   /* Enhanced typography utilities for better hierarchy */
-  @apply text-2xl font-bold leading-tight tracking-tight md:text-3xl lg:text-4xl;
+  @apply text-2xl leading-tight font-bold tracking-tight md:text-3xl lg:text-4xl;
 }
 @utility text-body-large {
   @apply text-lg leading-relaxed md:text-xl;
@@ -150,57 +150,33 @@
 
   /* Remove default p margins in search results */
   & p {
-    @apply mb-0 mt-0;
+    @apply mt-0 mb-0;
   }
 }
 @utility search-result-item--keyboard-active {
   /* Keyboard highlight from search input (↑/↓): tint + accent bar, keep normal text colors. */
-  background-color: color-mix(
-    in srgb,
-    rgb(var(--color-accent)) 18%,
-    rgb(var(--color-bg))
-  );
+  background-color: color-mix(in srgb, rgb(var(--color-accent)) 18%, rgb(var(--color-bg)));
   box-shadow: inset 3px 0 0 rgb(var(--color-accent));
   &:hover {
-    background-color: color-mix(
-      in srgb,
-      rgb(var(--color-accent)) 18%,
-      rgb(var(--color-bg))
-    );
+    background-color: color-mix(in srgb, rgb(var(--color-accent)) 18%, rgb(var(--color-bg)));
     box-shadow: inset 3px 0 0 rgb(var(--color-accent));
   }
 
   .dark & {
-    background-color: color-mix(
-      in srgb,
-      rgb(var(--color-accent)) 26%,
-      rgb(var(--color-bg))
-    );
+    background-color: color-mix(in srgb, rgb(var(--color-accent)) 26%, rgb(var(--color-bg)));
   }
 
   .dark &:hover {
-    background-color: color-mix(
-      in srgb,
-      rgb(var(--color-accent)) 26%,
-      rgb(var(--color-bg))
-    );
+    background-color: color-mix(in srgb, rgb(var(--color-accent)) 26%, rgb(var(--color-bg)));
   }
 }
 @utility dark {
   & .search-result-item--keyboard-active {
-    background-color: color-mix(
-      in srgb,
-      rgb(var(--color-accent)) 26%,
-      rgb(var(--color-bg))
-    );
+    background-color: color-mix(in srgb, rgb(var(--color-accent)) 26%, rgb(var(--color-bg)));
   }
 
   & .search-result-item--keyboard-active:hover {
-    background-color: color-mix(
-      in srgb,
-      rgb(var(--color-accent)) 26%,
-      rgb(var(--color-bg))
-    );
+    background-color: color-mix(in srgb, rgb(var(--color-accent)) 26%, rgb(var(--color-bg)));
   }
 
   & .brain-science-content table {
@@ -239,14 +215,14 @@
   @apply min-w-0 flex-1 pt-1;
 }
 @utility search-result-title {
-  @apply mb-1.5 mt-0 text-sm font-semibold leading-tight text-[rgb(var(--color-text))];
+  @apply mt-0 mb-1.5 text-sm leading-tight font-semibold text-[rgb(var(--color-text))];
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
 @utility search-result-description {
-  @apply text-body-muted mb-2.5 mt-0 text-xs leading-relaxed;
+  @apply text-body-muted mt-0 mb-2.5 text-xs leading-relaxed;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -465,14 +441,14 @@
   }
 
   a:focus {
-    @apply outline-hidden ring-2 ring-[rgb(var(--color-accent))] ring-offset-2;
+    @apply ring-2 ring-[rgb(var(--color-accent))] ring-offset-2 outline-hidden;
   }
 
   /* Forms */
   input,
   textarea,
   select {
-    @apply rounded-md border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] px-3 py-2 text-[rgb(var(--color-text))] focus:outline-hidden focus:ring-2 focus:ring-[rgb(var(--color-accent))]/50;
+    @apply rounded-md border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] px-3 py-2 text-[rgb(var(--color-text))] focus:ring-2 focus:ring-[rgb(var(--color-accent))]/50 focus:outline-hidden;
   }
 
   /* Enhanced Tables */
@@ -596,7 +572,7 @@
 
   /* Focus outline */
   :focus-visible {
-    @apply outline-hidden ring-2 ring-[rgb(var(--color-accent))] ring-offset-2;
+    @apply ring-2 ring-[rgb(var(--color-accent))] ring-offset-2 outline-hidden;
   }
 
   .theme-transition {

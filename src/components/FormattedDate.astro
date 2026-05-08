@@ -41,9 +41,6 @@ function getRelativeTime(date: Date): string {
 }
 ---
 
-<time
-  datetime={date.toISOString()}
-  class:list={['theme-transition text-body-muted', className]}
->
+<time datetime={date.toISOString()} class:list={['theme-transition text-body-muted', className]}>
   {format === 'relative' ? getRelativeTime(date) : formatter.format(date)}
 </time>
