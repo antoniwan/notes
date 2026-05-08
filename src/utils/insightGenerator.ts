@@ -252,10 +252,15 @@ export function generateDynamicInsights(
       break;
 
     case 'evolution':
-      // Complexity trend (objective)
+      // Uses Flesch Reading Ease (passed as complexityTrend on evolution page): higher = simpler by formula, not “smarter”
       insights.push({
         type: 'objective',
-        text: `Writing complexity trend: <span class="font-semibold">${data.complexityTrend}</span>`,
+        text:
+          data.complexityTrend === 'stable'
+            ? `Flesch reading ease (formula-based): averages across early vs recent writing are <span class="font-semibold">roughly flat</span>.`
+            : data.complexityTrend === 'increasing'
+              ? `Flesch reading ease: averages <span class="font-semibold">increased</span> toward recent posts (higher = easier wording by this heuristic, not a quality grade).`
+              : `Flesch reading ease: averages <span class="font-semibold">decreased</span> toward recent posts (lower = denser sentences/vocabulary by the same heuristic).`,
         color: 'text-gray-500',
         weight: 4,
         category: 'quality',

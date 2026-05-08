@@ -353,25 +353,25 @@ const avgMaturityScore = Math.round(
   maturityIndicators.reduce((sum, post) => sum + post.maturityScore, 0) / maturityIndicators.length,
 );
 
-// Intellectual growth insights
+// Heuristic summaries (counts & formulas — not measures of IQ or “truth”)
 const intellectualInsights = [
   {
-    insight: 'Your intellectual depth has evolved significantly',
-    evidence: `${periodStats[periodStats.length - 1]?.avgIntellectualDepth || 0} vs ${periodStats[0]?.avgIntellectualDepth || 0} intellectual depth score`,
+    insight: 'Language-heuristic totals shifted between early and recent writing',
+    evidence: `${periodStats[periodStats.length - 1]?.avgIntellectualDepth || 0} vs ${periodStats[0]?.avgIntellectualDepth || 0} avg composite (word-list hits + word count term)`,
     impact: 'High',
-    reflection: 'How has your way of thinking about complex topics changed?',
+    reflection: 'Any change here can be length or vocabulary habits—not automatically “depth.”',
   },
   {
-    insight: 'Curiosity drives your learning',
-    evidence: `${periodStats[periodStats.length - 1]?.avgCuriosityCount || 0} curiosity indicators per post`,
+    insight: 'Curiosity word-list hits averaged per post shifted',
+    evidence: `Recent slice: ~${periodStats[periodStats.length - 1]?.avgCuriosityCount || 0} matches per post (curated “wonder / explore / research …” stems in raw Markdown)`,
     impact: 'High',
-    reflection: 'What questions are you most passionate about exploring?',
+    reflection: 'Frequency can reflect topic or habit—not intrinsically ‘more curious.’',
   },
   {
-    insight: 'Wisdom comes from experience',
-    evidence: `${periodStats[periodStats.length - 1]?.avgWisdomCount || 0} wisdom indicators per post`,
+    insight: 'Reflective language stems averaged per post shifted',
+    evidence: `Recent slice: ~${periodStats[periodStats.length - 1]?.avgWisdomCount || 0} matches per post (curated “learned / realized / chose …” stems)`,
     impact: 'Medium',
-    reflection: 'What experiences have taught you the most?',
+    reflection: 'These are rhetorical tics you can game; treat as texture, not virtue.',
   },
   {
     insight: 'Your knowledge areas are expanding',
@@ -408,9 +408,14 @@ const insightData = {
   emotionalPosts: 0, // Not calculated for evolution
   growthPosts: 0, // Not calculated for evolution
   complexityTrend:
-    periodStats[periodStats.length - 1]?.avgComplexity > periodStats[0]?.avgComplexity
-      ? ('increasing' as const)
-      : ('decreasing' as const),
+    (() => {
+      const early = periodStats[0]?.avgComplexity ?? NaN;
+      const recent = periodStats[periodStats.length - 1]?.avgComplexity ?? NaN;
+      if (Number.isNaN(early) || Number.isNaN(recent) || periodStats.length < 2) return 'stable' as const;
+      if (Math.abs(recent - early) < 3) return 'stable' as const;
+      /* Flesch: higher score ≈ easier text */
+      return recent > early ? ('increasing' as const) : ('decreasing' as const);
+    })(),
   productivityTrend: 'stable' as const, // Not calculated for evolution
   knowledgeAreas: [],
   writingStreaks: [],
@@ -465,13 +470,13 @@ const periodComparisonChart = {
       borderColor: 'rgb(59, 130, 246)',
     },
     {
-      label: 'Avg Complexity',
+      label: 'Avg Flesch reading ease',
       data: periodStats.map((p) => (isNaN(p.avgComplexity) ? 0 : p.avgComplexity)),
       backgroundColor: 'rgba(147, 51, 234, 0.6)',
       borderColor: 'rgb(147, 51, 234)',
     },
     {
-      label: 'Avg Intellectual Depth',
+      label: 'Avg word-pattern composite',
       data: periodStats.map((p) => (isNaN(p.avgIntellectualDepth) ? 0 : p.avgIntellectualDepth)),
       backgroundColor: 'rgba(34, 197, 94, 0.6)',
       borderColor: 'rgb(34, 197, 94)',
@@ -485,14 +490,14 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
 
 <BaseLayout
   title="Intellectual Growth Analytics - Brain Science"
-  description="Quantitative analysis of thinking style evolution, knowledge progression, and intellectual depth metrics over time."
+  description="Readability (Flesch) and word-pattern heuristics over time from post bodies—experimental signals, not IQ or quality scores."
   path="/brain-science/evolution"
   structuredDataType="website"
 >
   <BrainScienceLayout
     currentPage="/brain-science/evolution"
     title={pageInfo?.title || 'Intellectual Growth Analytics'}
-    description="Quantitative analysis of thinking style evolution, knowledge progression, and intellectual depth metrics over time. Data-driven insights into cognitive development patterns."
+    description="Readability (Flesch) and word-count heuristics computed from post bodies—signals for how writing changes, not scores of intelligence."
   >
     {/* Intellectual Growth Metrics */}
     <div
@@ -520,7 +525,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
           {avgMaturityScore}
         </div>
         <div class="text-xs text-[rgb(var(--color-text-muted))] md:text-sm">Avg Maturity Score</div>
-        <div class="mt-1 text-xs text-green-500">🧠 Intellectual Growth</div>
+        <div class="mt-1 text-xs text-green-500">🧠 Format mix (heuristic)</div>
       </div>
       <div
         class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-secondary))] p-4 md:p-6"
@@ -548,30 +553,72 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
       </div>
     </div>
 
-    {/* Complexity and Intellectual Depth Evolution */}
+    {/* Reading ease + heuristic index (formerly mislabeled “complexity / intellectual depth”) */}
     {
       complexityTimeSeries.length > 0 && (
         <div class="mb-8 md:mb-10 lg:mb-12">
-          <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
-            📈 Complexity and Intellectual Depth Evolution
+          <h2 class="mb-3 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-4 md:text-xl">
+            📈 Readability vs. heuristic language index (by quarter)
           </h2>
-          <p class="mb-6 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
-            Flesch reading ease score and intellectual depth metrics over time. Complexity formula:
-            206.835 - 1.015 × (words/sentences) - 84.6 × (syllables/words). Intellectual depth:
-            Σ(intellectual_words + curiosity_words + wisdom_words) + word_count/50
+          <p class="mb-4 max-w-3xl text-sm leading-relaxed text-[rgb(var(--color-text-muted))]">
+            This chart is exploratory. Lines are aggregated from Markdown bodies only—titles, headings,
+            and frontmatter quirks can skew counts. Useful for spotting drift in length and wording,
+            not for ranking how “deep” thinking is.
           </p>
+
+          <div
+            class="mb-6 space-y-4 rounded-xl border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-secondary))]/60 p-4 md:p-6"
+          >
+            <div>
+              <h3 class="mb-2 text-sm font-semibold uppercase tracking-wide text-[rgb(var(--color-text))]">
+                1 · Flesch reading ease (purple line)
+              </h3>
+              <p class="mb-0 text-sm leading-relaxed text-[rgb(var(--color-text-muted))]">
+                Roughly measures how simple sentences and syllable load are compared to benchmark
+                English. <strong class="font-semibold text-[rgb(var(--color-text))]"
+                  >Higher = easier reading by formula</strong
+                > (short words, shorter sentences)—not harder or “more intellectual.” Typical published
+                blog range is often roughly 30–70. Here syllables are <em>estimated</em> by counting
+                vowels, so scores are indicative only (see bottom “Formulas” for the expression).
+              </p>
+            </div>
+            <div>
+              <h3 class="mb-2 text-sm font-semibold uppercase tracking-wide text-[rgb(var(--color-text))]">
+                2 · Word-pattern composite (green line — experiment)
+              </h3>
+              <p class="mb-2 text-sm leading-relaxed text-[rgb(var(--color-text-muted))]">
+                A toy index in code: occurrences of curated “discourse,” “curiosity,” and reflection
+                word lists, plus <code class="rounded bg-[rgb(var(--color-bg-alt))] px-1 py-0.5 text-xs font-mono"
+                  >words ÷ 50</code
+                >
+                baked in so longer posts mechanically score higher regardless of merit. Interpret as “how
+                often these lexical buckets fire,” not cognition or truth.
+              </p>
+              <p class="mb-0 text-xs leading-relaxed text-[rgb(var(--color-text-muted))] md:text-sm">
+                <strong class="text-[rgb(var(--color-text))]">Combined post-level formula:</strong>
+                (transition-like matches + curiosity stems + reflective stems) +
+                round(word&nbsp;count&nbsp;/&nbsp;50). Charts show the <strong>mean per calendar quarter</strong> across
+                posts.
+              </p>
+            </div>
+            <p class="mb-0 border-t border-[rgb(var(--color-border))]/40 pt-4 text-xs text-[rgb(var(--color-text-muted))] md:text-sm">
+              <strong class="text-[rgb(var(--color-text))]">Mixed scales:</strong> Flesch and the heuristic
+              share one axis—use it for directional comparison, not to equate magnitude between the two series.
+            </p>
+          </div>
+
           <TimeSeriesChart
             id="complexity-evolution"
             labels={complexityTimeSeries.map((q) => q.label)}
             datasets={[
               {
-                label: 'Complexity Score',
+                label: 'Flesch reading ease (avg)',
                 data: complexityTimeSeries.map((q) => (isNaN(q.complexity) ? 0 : q.complexity)),
                 borderColor: 'rgb(147, 51, 234)',
                 backgroundColor: 'rgba(147, 51, 234, 0.1)',
               },
               {
-                label: 'Intellectual Depth',
+                label: 'Word-pattern composite (avg)',
                 data: complexityTimeSeries.map((q) =>
                   isNaN(q.intellectualDepth) ? 0 : q.intellectualDepth,
                 ),
@@ -579,8 +626,8 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
                 backgroundColor: 'rgba(34, 197, 94, 0.1)',
               },
             ]}
-            title="Complexity and Intellectual Depth Over Time"
-            yAxisLabel="Score"
+            title="Quarterly readability & heuristic averages"
+            yAxisLabel="See definitions above — mixed units"
           />
         </div>
       )
@@ -591,28 +638,39 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
       periodComparisonChart.labels.length > 0 && (
         <div class="mb-8 md:mb-10 lg:mb-12">
           <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
-            📊 Metrics Comparison by Period
+            📊 Metrics comparison by period
           </h2>
-          <p class="mb-6 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
-            Comparative analysis of writing metrics across Early, Middle, and Recent periods. Data
-            shows mean values for word count, complexity, and intellectual depth.
+          <p class="mb-6 max-w-3xl text-sm leading-relaxed text-[rgb(var(--color-text-muted))]">
+            Each bar group splits the archive into thirds by publication order (<strong class="font-medium text-[rgb(var(--color-text))]"
+              >Early / Middle / Recent</strong
+            >). Means mix <strong class="font-medium text-[rgb(var(--color-text))]">word count</strong>, <strong class="font-medium text-[rgb(var(--color-text))]">average Flesch reading ease per post</strong>, and <strong class="font-medium text-[rgb(var(--color-text))]"
+              >the word-pattern composite</strong
+            >
+            ({' '}
+            <em>different units stacked for contrast—eyeball deltas, don’t ratio them</em>).
           </p>
           <BarChart
             id="period-comparison-chart"
             labels={periodComparisonChart.labels}
             datasets={periodComparisonChart.datasets}
             title="Writing Metrics by Period"
-            yAxisLabel="Score / Count"
+            yAxisLabel="Mixed units — see section intro"
           />
         </div>
       )
     }
 
-    {/* Intellectual Growth Analysis */}
+    {/* Period heuristics (counts, not cognition) */}
     <div class="mb-6 md:mb-8 lg:mb-10">
       <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-lg">
-        📊 Statistical Analysis of Intellectual Growth
+        📊 Signals by writing period
       </h3>
+      <p class="mb-6 max-w-3xl text-xs leading-relaxed text-[rgb(var(--color-text-muted))] md:text-sm">
+        Short notes below compare rough metrics between <strong class="text-[rgb(var(--color-text))]"
+          >Early / Middle / Recent</strong
+        > slices of the archive. “Significance” is an informal weight for the dashboard, not statistical
+        testing.
+      </p>
       <div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
         {
           intellectualInsights.map((insight, index) => (
@@ -630,15 +688,17 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
                         : 'bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400'
                   }`}
                 >
-                  {insight.impact} Significance
+                  {insight.impact} emphasis
                 </span>
               </div>
               <div class="mb-2 text-sm font-medium text-[rgb(var(--color-text))]">
                 {insight.insight}
               </div>
-              <div class="mb-3 text-xs text-[rgb(var(--color-text-muted))]">{insight.evidence}</div>
-              <div class="text-xs text-[rgb(var(--color-text-muted))]">
-                Statistical observation: {insight.evidence}
+              <div class="mb-0 text-xs leading-relaxed text-[rgb(var(--color-text-muted))]">
+                {insight.evidence}
+              </div>
+              <div class="mt-3 border-t border-[rgb(var(--color-border))]/30 pt-3 text-xs italic text-[rgb(var(--color-text-muted))]">
+                {insight.reflection}
               </div>
             </div>
           ))
@@ -653,9 +713,9 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
       <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-lg">
         📊 Writing Metrics by Period
       </h3>
-      <p class="mb-4 text-xs text-[rgb(var(--color-text-muted))]">
-        Quantitative comparison of writing characteristics across time periods. Metrics calculated
-        using mean values for each period.
+      <p class="mb-4 text-xs leading-relaxed text-[rgb(var(--color-text-muted))] md:text-sm">
+        Per-period <strong class="font-medium text-[rgb(var(--color-text))]">means</strong> on the raw post
+        body. Higher Flesch = easier wording by formula (see definitions above).
       </p>
       <div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
         {
@@ -676,9 +736,12 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
                     {period.avgWordCount}
                   </span>
                 </div>
-                <div class="flex justify-between">
-                  <span class="text-xs text-[rgb(var(--color-text-muted))] md:text-sm">
-                    Complexity:
+                <div class="flex justify-between gap-3">
+                  <span
+                    class="text-xs text-[rgb(var(--color-text-muted))] md:text-sm"
+                    title="Avg Flesch reading ease across posts this period — higher tends to mean simpler wording"
+                  >
+                    Flesch ease:
                   </span>
                   <span
                     class={`text-xs font-medium md:text-sm ${
@@ -698,35 +761,44 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
                     {period.avgComplexity}
                   </span>
                 </div>
-                <div class="flex justify-between">
-                  <span class="text-xs text-[rgb(var(--color-text-muted))] md:text-sm">
-                    Intellectual Depth:
+                <div class="flex justify-between gap-3">
+                  <span
+                    class="text-xs text-[rgb(var(--color-text-muted))] md:text-sm"
+                    title="Composite: transition + curiosity + reflective word-list hits + word count bonus (see chart section)"
+                  >
+                    Word-pattern Σ:
                   </span>
                   <span
                     class="text-xs font-medium text-[rgb(var(--color-text))] md:text-sm"
-                    title={`Average intellectual depth score in ${period.period} period`}
+                    title={`Average word-pattern composite score in ${period.period} period`}
                   >
                     {period.avgIntellectualDepth}
                   </span>
                 </div>
                 <div class="flex justify-between">
-                  <span class="text-xs text-[rgb(var(--color-text-muted))] md:text-sm">
-                    Curiosity:
+                  <span
+                    class="text-xs text-[rgb(var(--color-text-muted))] md:text-sm"
+                    title="Avg count per post of curated ‘curiosity / exploration’ stems in markdown body"
+                  >
+                    Curiosity stems:
                   </span>
                   <span
                     class="text-xs font-medium text-[rgb(var(--color-text))] md:text-sm"
-                    title={`Average curiosity indicators per post in ${period.period} period`}
+                    title={`Average curiosity stems per post in ${period.period}`}
                   >
                     {period.avgCuriosityCount}
                   </span>
                 </div>
                 <div class="flex justify-between">
-                  <span class="text-xs text-[rgb(var(--color-text-muted))] md:text-sm">
-                    Wisdom:
+                  <span
+                    class="text-xs text-[rgb(var(--color-text-muted))] md:text-sm"
+                    title="Avg count per post of curated reflective / decision language stems"
+                  >
+                    Reflective stems:
                   </span>
                   <span
                     class="text-xs font-medium text-[rgb(var(--color-text))] md:text-sm"
-                    title={`Average wisdom indicators per post in ${period.period} period`}
+                    title={`Average reflective stems per post in ${period.period}`}
                   >
                     {period.avgWisdomCount}
                   </span>
@@ -835,9 +907,9 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
       <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-lg">
         📅 Topic Frequency Timeline by Quarter
       </h3>
-      <p class="mb-4 text-xs text-[rgb(var(--color-text-muted))]">
-        Quarterly analysis of topic distribution and content metrics. Data shows post count, average
-        word count, and complexity score per quarter.
+      <p class="mb-4 text-xs leading-relaxed text-[rgb(var(--color-text-muted))] md:text-sm">
+        Per quarter: counts, average words, and average Flesch reading ease (Markdown body only). Flesch uses
+        vowel-based syllable guesses, so treat as directional.
       </p>
       <div class="space-y-6">
         {
@@ -846,11 +918,10 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
               <div class="mb-3 flex items-center justify-between">
                 <h4 class="text-sm font-medium text-[rgb(var(--color-text))]">{quarter.label}</h4>
                 <div
-                  class="text-xs text-[rgb(var(--color-text-muted))]"
-                  title={`${quarter.posts} writings with average ${quarter.avgWordCount} words and ${quarter.avgComplexity} complexity score`}
+                  class="max-w-[min(100%,20rem)] text-right text-xs leading-snug text-[rgb(var(--color-text-muted))] md:max-w-none"
+                  title={`${quarter.posts} posts · ${quarter.avgWordCount} avg words · ${quarter.avgComplexity} avg Flesch ease (higher = simpler by formula)`}
                 >
-                  {quarter.posts} writings • {quarter.avgWordCount} avg words •{' '}
-                  {quarter.avgComplexity} complexity
+                  {quarter.posts} posts · {quarter.avgWordCount} words · Flesch ~{quarter.avgComplexity}
                 </div>
               </div>
               <div class="mb-3">
@@ -890,10 +961,13 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
       <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-lg">
         📊 Writing Maturity Metrics
       </h3>
-      <p class="mb-4 text-xs text-[rgb(var(--color-text-muted))]">
-        Quantitative indicators of content maturity. Maturity score calculated as: (has_code × 2) +
-        has_links + has_images + has_quotes + has_questions + has_examples + (word_count > 1000 ? 2
-        : 0) + (intellectual_depth > 10 ? 2 : 0)
+      <p class="mb-4 text-xs leading-relaxed text-[rgb(var(--color-text-muted))] md:text-sm">
+        “Maturity” here is a naive checklist on the Markdown body:<br />
+        <code class="mt-1 inline-block rounded bg-[rgb(var(--color-bg-alt))] px-2 py-1 text-[0.7rem] font-mono whitespace-pre-wrap"
+          >(code fences / inline code ? 2 : 0) + (URLs ? 1 : 0) + (images ? 1 : 0) + (blockquotes ? 1 : 0)
++ (? in body ? 1 : 0) + (e.g./such as cues ? 1 : 0) + (words &gt; 1000 ? 2 : 0)
++ (word-pattern composite &gt; 10 ? 2 : 0)</code
+        >
       </p>
       <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
         <div class="rounded-lg bg-[rgb(var(--color-bg))] p-4 text-center">
@@ -934,7 +1008,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
             {maturityIndicators.filter((post) => post.wordCount > 1000).length}
           </div>
           <div class="text-sm text-[rgb(var(--color-text-muted))]">Long-form Writings</div>
-          <div class="mt-1 text-xs text-yellow-500">📝 Depth of Thought</div>
+          <div class="mt-1 text-xs text-yellow-500">📝 &gt;1k words</div>
         </div>
       </div>
     </div>
@@ -945,7 +1019,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
         class="mb-4 flex items-center gap-3 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl"
       >
         <span class="text-2xl text-[rgb(var(--color-accent))]">📊</span>
-        Intellectual Growth Formulas
+        Metric definitions (Evolution page)
       </h3>
       <div class="space-y-6 md:space-y-8">
         <div class="grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-2">
@@ -954,24 +1028,32 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
               class="mb-4 flex items-center gap-2 text-lg font-semibold text-[rgb(var(--color-text))]"
             >
               <span class="text-blue-500">🧠</span>
-              Complexity Analysis
+              Readability & language heuristics
             </h4>
-            <div class="space-y-3 text-[rgb(var(--color-text-muted))]">
+            <div class="space-y-3 text-sm leading-relaxed text-[rgb(var(--color-text-muted))]">
               <p>
-                <strong class="text-[rgb(var(--color-text))]">Writing Complexity Trend:</strong>
-                Increasing/Decreasing/Stable over time
+                <strong class="text-[rgb(var(--color-text))]">Flesch reading ease per post:</strong>
+                Uses the standard formula<br />
+                <code class="mt-1 block rounded bg-[rgb(var(--color-bg-alt))] px-2 py-1 text-xs font-mono"
+                  >206.835 − 1.015×(words÷sentences) − 84.6×(syllables÷words)</code
+                >
+                with <strong class="text-[rgb(var(--color-text))]">syllables ≈ vowel count trick</strong>,
+                so it is <em>not</em> linguistically exact. Higher values mean “easier” on the scale, not smarter.
               </p>
               <p>
-                <strong class="text-[rgb(var(--color-text))]">Content Depth:</strong> Average words per
-                post
+                <strong class="text-[rgb(var(--color-text))]">Word-pattern composite:</strong> Counts of
+                three hand-picked word lists (argument transitions, curiosity stems, reflective stems) plus
+                <code class="rounded bg-[rgb(var(--color-bg-alt))] px-1 font-mono text-xs"
+                  >⌊word_count ÷ 50⌋</code
+                >-style term so long posts mechanically score higher even if content is thin.
               </p>
               <p>
-                <strong class="text-[rgb(var(--color-text))]">Technical Depth:</strong> Posts with code
-                blocks / Total posts
+                <strong class="text-[rgb(var(--color-text))]">Maturity score:</strong> Checkbox score for
+                Markdown features (code fences, links, blockquotes, question marks, cue phrases) plus points
+                when &gt;1000 words or the word-pattern composite clears a low threshold—not editorial quality.
               </p>
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Research Quality:</strong> Posts with external
-                links / Total posts
+              <p class="border-t border-[rgb(var(--color-border))]/40 pt-3 text-xs italic">
+                Nothing here measures truth, originality, kindness, rigor cited from sources outside the file, or psychological traits.
               </p>
             </div>
           </div>
