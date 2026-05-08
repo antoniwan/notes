@@ -547,6 +547,41 @@
   }
 }
 
+/* Thin, low-contrast vertical scrollbar for secondary panels (e.g. post sidebar) */
+.scrollbar-subtle-y {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--color-border) / 0.45) transparent;
+}
+
+.scrollbar-subtle-y::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollbar-subtle-y::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-subtle-y::-webkit-scrollbar-thumb {
+  background-color: rgb(var(--color-border) / 0.35);
+  border-radius: 9999px;
+}
+
+.scrollbar-subtle-y:hover::-webkit-scrollbar-thumb {
+  background-color: rgb(var(--color-border) / 0.55);
+}
+
+.dark .scrollbar-subtle-y {
+  scrollbar-color: rgb(var(--color-border) / 0.4) transparent;
+}
+
+.dark .scrollbar-subtle-y::-webkit-scrollbar-thumb {
+  background-color: rgb(var(--color-border) / 0.3);
+}
+
+.dark .scrollbar-subtle-y:hover::-webkit-scrollbar-thumb {
+  background-color: rgb(var(--color-border) / 0.45);
+}
+
 /* Simplified animation keyframes */
 @keyframes fade-up {
   0% {
