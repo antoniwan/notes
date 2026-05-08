@@ -84,7 +84,7 @@ const primaryCategory = categoryItems[0] || null;
 
       {/* Hero Section - Full width on mobile, moves to sidebar on desktop */}
       <div class="mb-10 md:mb-12 lg:hidden">
-        <PageHeader title={title} description={description} className="!mb-6" />
+        <PageHeader title={title} description={description} className="mb-6!" />
       </div>
 
       {/* Main Layout: Mobile-first, then 75/25 on desktop */}
@@ -114,7 +114,7 @@ const primaryCategory = categoryItems[0] || null;
                   data-post-slug={postSlug}
                   data-original-reading-time={minutesRead}
                 >
-                  <h3 class="text-xs font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
+                  <h3 class="text-xs font-semibold uppercase tracking-wider text-body-muted">
                     Reading Signals
                   </h3>
                   <div class="flex items-center gap-2 text-base leading-relaxed text-[rgb(var(--color-text))]">
@@ -129,13 +129,13 @@ const primaryCategory = categoryItems[0] || null;
             {
               (categoryItems.length > 0 || (tags && tags.length > 0)) && (
                 <div class="space-y-4 leading-relaxed">
-                  <h3 class="text-xs font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
+                  <h3 class="text-xs font-semibold uppercase tracking-wider text-body-muted">
                     Taxonomy
                   </h3>
 
                   {categoryItems.length > 0 && (
                     <div class="space-y-2">
-                      <p class="m-0 text-[11px] font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
+                      <p class="m-0 text-[11px] font-semibold uppercase tracking-wider text-body-muted">
                         Categories
                       </p>
                       <div class="flex flex-wrap gap-1.5 text-xs leading-tight">
@@ -153,7 +153,7 @@ const primaryCategory = categoryItems[0] || null;
 
                   {tags && tags.length > 0 && (
                     <div class="space-y-2">
-                      <p class="m-0 text-[11px] font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
+                      <p class="m-0 text-[11px] font-semibold uppercase tracking-wider text-body-muted">
                         Tags
                       </p>
                       <div class="flex flex-wrap gap-1 text-sm">
@@ -175,7 +175,7 @@ const primaryCategory = categoryItems[0] || null;
             {/* Actions */}
             <div class="space-y-2">
               <h3
-                class="text-xs font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]"
+                class="text-xs font-semibold uppercase tracking-wider text-body-muted"
               >
                 Actions
               </h3>
@@ -193,7 +193,7 @@ const primaryCategory = categoryItems[0] || null;
                 <div class="space-y-6 leading-relaxed">
                   {pubDate && (
                     <div class="space-y-2">
-                      <h3 class="text-xs font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
+                      <h3 class="text-xs font-semibold uppercase tracking-wider text-body-muted">
                         Publication
                       </h3>
                       <time
@@ -206,7 +206,7 @@ const primaryCategory = categoryItems[0] || null;
                       {updatedDate && updatedDate.getTime() !== pubDate?.getTime() && (
                         <time
                           datetime={updatedDate.toISOString()}
-                          class="mt-1 flex items-center gap-2 text-sm leading-relaxed text-[rgb(var(--color-text-muted))]"
+                          class="mt-1 flex items-center gap-2 text-sm leading-relaxed text-body-muted"
                         >
                           <span class="text-[rgb(var(--color-accent))]">🔄</span>
                           <span>
@@ -278,7 +278,7 @@ const primaryCategory = categoryItems[0] || null;
             {
               minutesRead && (
                 <details class="rounded-lg border border-[rgb(var(--color-border))] px-4 py-3">
-                  <summary class="cursor-pointer text-xs font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
+                  <summary class="cursor-pointer text-xs font-semibold uppercase tracking-wider text-body-muted">
                     Reading Signals
                   </summary>
                   <div
@@ -298,13 +298,13 @@ const primaryCategory = categoryItems[0] || null;
             {
               (categoryItems.length > 0 || (tags && tags.length > 0)) && (
                 <details class="rounded-lg border border-[rgb(var(--color-border))] px-4 py-3">
-                  <summary class="cursor-pointer text-xs font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
+                  <summary class="cursor-pointer text-xs font-semibold uppercase tracking-wider text-body-muted">
                     Taxonomy
                   </summary>
                   <div class="mt-3 space-y-3">
                     {categoryItems.length > 0 && (
                       <div class="space-y-2">
-                        <p class="m-0 text-[11px] font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
+                        <p class="m-0 text-[11px] font-semibold uppercase tracking-wider text-body-muted">
                           Categories
                         </p>
                         <div class="flex flex-wrap gap-1.5 text-xs leading-tight">
@@ -322,7 +322,7 @@ const primaryCategory = categoryItems[0] || null;
 
                     {tags && tags.length > 0 && (
                       <div class="space-y-2">
-                        <p class="m-0 text-[11px] font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
+                        <p class="m-0 text-[11px] font-semibold uppercase tracking-wider text-body-muted">
                           Tags
                         </p>
                         <div class="flex flex-wrap gap-1 text-sm">
@@ -344,7 +344,7 @@ const primaryCategory = categoryItems[0] || null;
 
             <details class="rounded-lg border border-[rgb(var(--color-border))] px-4 py-3">
               <summary
-                class="cursor-pointer text-xs font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]"
+                class="cursor-pointer text-xs font-semibold uppercase tracking-wider text-body-muted"
               >
                 Actions
               </summary>
@@ -361,13 +361,13 @@ const primaryCategory = categoryItems[0] || null;
             {
               pubDate && (
                 <details class="rounded-lg border border-[rgb(var(--color-border))] px-4 py-3">
-                  <summary class="cursor-pointer text-xs font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
+                  <summary class="cursor-pointer text-xs font-semibold uppercase tracking-wider text-body-muted">
                     Secondary Metadata
                   </summary>
                   <div class="mt-3 space-y-4">
                     {pubDate && (
                       <div class="space-y-2">
-                        <h3 class="text-xs font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
+                        <h3 class="text-xs font-semibold uppercase tracking-wider text-body-muted">
                           Publication
                         </h3>
                         <time
@@ -380,7 +380,7 @@ const primaryCategory = categoryItems[0] || null;
                         {updatedDate && updatedDate.getTime() !== pubDate?.getTime() && (
                           <time
                             datetime={updatedDate.toISOString()}
-                            class="mt-1 flex items-center gap-2 text-sm leading-relaxed text-[rgb(var(--color-text-muted))]"
+                            class="mt-1 flex items-center gap-2 text-sm leading-relaxed text-body-muted"
                           >
                             <span class="text-[rgb(var(--color-accent))]">🔄</span>
                             <span>

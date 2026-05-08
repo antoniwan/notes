@@ -6,12 +6,12 @@ import pkg from '../../package.json';
 ---
 
 <footer
-  class="theme-transition relative mt-16 border-t border-[rgb(var(--color-border))]/30 bg-gradient-to-b from-[rgb(var(--color-bg))] to-[rgb(var(--color-bg-alt))] shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] md:mt-20"
+  class="theme-transition relative mt-16 border-t border-[rgb(var(--color-border))]/30 bg-linear-to-b from-[rgb(var(--color-bg))] to-[rgb(var(--color-bg-alt))] shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] md:mt-20"
   role="contentinfo"
 >
   <!-- Subtle overlay for additional contrast -->
   <div
-    class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/[0.02] to-transparent"
+    class="pointer-events-none absolute inset-0 bg-linear-to-t from-black/2 to-transparent"
   >
   </div>
 
@@ -122,9 +122,9 @@ import pkg from '../../package.json';
     <div class="mt-8 border-t border-[rgb(var(--color-border))]/30 pt-8 md:mt-12 md:pt-12">
       <div class="flex flex-col items-center justify-between gap-4 md:flex-row">
         <div
-          class="text-center text-[0.7rem] leading-snug text-[rgb(var(--color-text-muted))] opacity-70 md:text-left"
+          class="text-center text-[0.7rem] leading-snug text-body-muted opacity-70 md:text-left"
         >
-          <p class="!mb-0 !mt-0 !text-[0.7rem] !leading-snug">
+          <p class="mb-0! mt-0! text-[0.7rem]! leading-snug!">
             © {new Date().getFullYear()}
             {SITE_TITLE}. All rights reserved. Content: <a
               href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
@@ -140,7 +140,7 @@ import pkg from '../../package.json';
 
         <!-- Additional Links -->
         <div
-          class="flex flex-wrap justify-center gap-4 text-[0.7rem] leading-snug text-[rgb(var(--color-text-muted))] md:justify-end"
+          class="flex flex-wrap justify-center gap-4 text-[0.7rem] leading-snug text-body-muted md:justify-end"
         >
           <div class="flex items-center gap-2">
             <a href="/sitemap-index.xml" class="link-muted">Sitemap</a>

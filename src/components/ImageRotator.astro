@@ -122,6 +122,8 @@ if (!images || images.length === 0) {
 </div>
 
 <style>
+  @reference '../styles/global.css';
+
   .image-rotator {
     @apply mx-auto my-8 w-full max-w-4xl;
   }
@@ -144,7 +146,7 @@ if (!images || images.length === 0) {
   }
 
   .image-overlay {
-    @apply absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-4;
+    @apply absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/70 via-black/30 to-transparent p-4;
   }
 
   .image-caption {

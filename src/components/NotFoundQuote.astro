@@ -11,13 +11,13 @@ const { existingTags } = Astro.props;
 ---
 
 <section
-  class="not-found-quote not-prose theme-transition mt-6 rounded-md border border-l-4 border-[rgb(var(--color-border))] border-l-[rgb(var(--color-primary))] bg-[rgb(var(--color-bg-alt))]/60 shadow-sm md:mt-8"
+  class="not-found-quote not-prose theme-transition mt-6 rounded-md border border-l-4 border-[rgb(var(--color-border))] border-l-[rgb(var(--color-primary))] bg-[rgb(var(--color-bg-alt))]/60 shadow-xs md:mt-8"
   aria-labelledby="nfq-label"
 >
   <div class="px-4 py-5 md:px-6 md:py-6">
     <p
       id="nfq-label"
-      class="mb-4 font-mono text-xs font-semibold uppercase tracking-[0.12em] text-[rgb(var(--color-text-muted))]"
+      class="mb-4 font-mono text-xs font-semibold uppercase tracking-[0.12em] text-body-muted"
     >
       From the archive
     </p>
@@ -26,11 +26,11 @@ const { existingTags } = Astro.props;
       <span
         class="inline-block h-2 w-2 shrink-0 animate-pulse rounded-full bg-[rgb(var(--color-primary))]"
         aria-hidden="true"></span>
-      <p class="m-0 text-sm text-[rgb(var(--color-text-muted))]">Loading quote…</p>
+      <p class="m-0 text-sm text-body-muted">Loading quote…</p>
     </div>
 
     <div id="nfq-error" class="hidden">
-      <p class="mb-4 mt-0 text-sm text-[rgb(var(--color-text-muted))]">Couldn’t load a quote.</p>
+      <p class="mb-4 mt-0 text-sm text-body-muted">Couldn’t load a quote.</p>
       <blockquote class="nfq-pullquote">
         <p class="nfq-quote-text">The obstacle is the way.</p>
         <footer class="nfq-attribution">
@@ -56,7 +56,7 @@ const { existingTags } = Astro.props;
         class="mt-5 hidden border-t border-[rgb(var(--color-border))]/80 pt-5"
       >
         <p
-          class="mb-2 mt-0 text-xs font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]"
+          class="mb-2 mt-0 text-xs font-semibold uppercase tracking-wider text-body-muted"
         >
           Related tags
         </p>
@@ -80,9 +80,9 @@ const { existingTags } = Astro.props;
   };
 
   const TAG_LINK =
-    'nfq-topic theme-transition inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:ring-offset-1 bg-[rgb(var(--color-accent))]/10 border-[rgb(var(--color-accent))]/20 text-[rgb(var(--color-accent))] hover:bg-[rgb(var(--color-accent))]/20';
+    'nfq-topic theme-transition inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-sm font-medium focus:outline-hidden focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:ring-offset-1 bg-[rgb(var(--color-accent))]/10 border-[rgb(var(--color-accent))]/20 text-[rgb(var(--color-accent))] hover:bg-[rgb(var(--color-accent))]/20';
   const TAG_STATIC =
-    'nfq-topic inline-flex items-center gap-1 rounded-full border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg))] px-2.5 py-1 text-sm font-medium text-[rgb(var(--color-text-muted))]';
+    'nfq-topic inline-flex items-center gap-1 rounded-full border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg))] px-2.5 py-1 text-sm font-medium text-body-muted';
 
   let retryCount = 0;
   const maxRetries = 3;

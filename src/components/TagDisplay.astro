@@ -28,7 +28,7 @@ const getTagColor = (variant: string) => {
     default:
       'bg-[rgb(var(--color-accent))]/10 border-[rgb(var(--color-accent))]/20 text-[rgb(var(--color-accent))] hover:bg-[rgb(var(--color-accent))]/20',
     subtle:
-      'bg-[rgb(var(--color-bg-alt))] border-[rgb(var(--color-border))] text-[rgb(var(--color-text-muted))] hover:bg-[rgb(var(--color-bg-alt))]/80',
+      'bg-[rgb(var(--color-bg-alt))] border-[rgb(var(--color-border))] text-body-muted hover:bg-[rgb(var(--color-bg-alt))]/80',
     bordered:
       'bg-transparent border-[rgb(var(--color-accent))]/30 text-[rgb(var(--color-accent))] hover:bg-[rgb(var(--color-accent))]/10',
   };
@@ -42,7 +42,7 @@ const getTagColor = (variant: string) => {
     visibleTags.map((tag) => (
       <a
         href={`/tag/${tag}/`}
-        class={`tag-item inline-flex items-center gap-1.5 ${compact ? 'px-2.5 py-1 text-sm' : 'px-3 py-1.5 text-base'} interactive-button rounded-full border font-medium focus:outline-none focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:ring-offset-1 ${getTagColor(variant)}`}
+        class={`tag-item inline-flex items-center gap-1.5 ${compact ? 'px-2.5 py-1 text-sm' : 'px-3 py-1.5 text-base'} interactive-button rounded-full border font-medium focus:outline-hidden focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:ring-offset-1 ${getTagColor(variant)}`}
       >
         <span class="tag-icon" aria-hidden="true">
           🏷️

@@ -39,7 +39,7 @@ const isPrimaryMobileNavActive = (href: string, pathname: string) => {
   aria-label="Open menu"
   aria-expanded="false"
   aria-controls="mobile-menu"
-  class="theme-transition inline-flex items-center justify-center rounded-lg p-2 text-[rgb(var(--color-text))] hover:bg-[rgb(var(--color-bg-alt))] focus:outline-none focus:ring-2 focus:ring-[rgb(var(--color-accent))] xl:hidden"
+  class="theme-transition inline-flex items-center justify-center rounded-lg p-2 text-[rgb(var(--color-text))] hover:bg-[rgb(var(--color-bg-alt))] focus:outline-hidden focus:ring-2 focus:ring-[rgb(var(--color-accent))] xl:hidden"
 >
   <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
     <path
@@ -65,7 +65,7 @@ const isPrimaryMobileNavActive = (href: string, pathname: string) => {
     <button
       type="button"
       aria-label="Close menu"
-      class="theme-transition rounded-lg p-2 text-[rgb(var(--color-text))] hover:bg-[rgb(var(--color-bg-alt))] focus:outline-none focus:ring-2 focus:ring-[rgb(var(--color-accent))]"
+      class="theme-transition rounded-lg p-2 text-[rgb(var(--color-text))] hover:bg-[rgb(var(--color-bg-alt))] focus:outline-hidden focus:ring-2 focus:ring-[rgb(var(--color-accent))]"
       id="close-mobile-menu"
     >
       <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -84,7 +84,7 @@ const isPrimaryMobileNavActive = (href: string, pathname: string) => {
     <nav class="space-y-6 p-6" aria-label="Primary navigation">
       <div class="space-y-2">
         <p
-          class="px-2 text-xs font-semibold uppercase tracking-wide text-[rgb(var(--color-text-muted))]"
+          class="px-2 text-xs font-semibold uppercase tracking-wide text-body-muted"
         >
           Core
         </p>
@@ -139,7 +139,7 @@ const isPrimaryMobileNavActive = (href: string, pathname: string) => {
                 <span>{item.label}</span>
                 {item.dropdown && (
                   <svg
-                    class="h-5 w-5 text-[rgb(var(--color-text-muted))]"
+                    class="h-5 w-5 text-body-muted"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -163,7 +163,7 @@ const isPrimaryMobileNavActive = (href: string, pathname: string) => {
                         href={catHref}
                         class:list={[
                           'theme-transition flex items-center justify-between rounded-lg px-4 py-3 text-lg hover:bg-[rgb(var(--color-bg-alt))]',
-                          subActive ? dropdownActiveClasses : 'text-[rgb(var(--color-text-muted))]',
+                          subActive ? dropdownActiveClasses : 'text-body-muted',
                         ]}
                         aria-current={subActive ? 'page' : undefined}
                       >
@@ -175,7 +175,7 @@ const isPrimaryMobileNavActive = (href: string, pathname: string) => {
                           )}
                           <span>{category.name}</span>
                         </div>
-                        <span class="rounded-full bg-[rgb(var(--color-bg-alt))] px-2 py-1 text-sm text-[rgb(var(--color-text-muted))]">
+                        <span class="rounded-full bg-[rgb(var(--color-bg-alt))] px-2 py-1 text-sm text-body-muted">
                           {category.postCount}
                         </span>
                       </a>
@@ -192,7 +192,7 @@ const isPrimaryMobileNavActive = (href: string, pathname: string) => {
                         href={dropdownItem.href}
                         class:list={[
                           'theme-transition flex items-center gap-3 rounded-lg px-4 py-3 text-lg hover:bg-[rgb(var(--color-bg-alt))]',
-                          subActive ? dropdownActiveClasses : 'text-[rgb(var(--color-text-muted))]',
+                          subActive ? dropdownActiveClasses : 'text-body-muted',
                         ]}
                         aria-current={subActive ? 'page' : undefined}
                       >
@@ -230,7 +230,7 @@ const isPrimaryMobileNavActive = (href: string, pathname: string) => {
     <!-- Social Links -->
     <div class="border-t border-[rgb(var(--color-border))] px-6 py-6">
       <h3
-        class="mb-4 text-sm font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]"
+        class="mb-4 text-sm font-semibold uppercase tracking-wider text-body-muted"
       >
         Connect
       </h3>

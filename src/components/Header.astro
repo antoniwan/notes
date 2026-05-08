@@ -14,7 +14,7 @@ const { searchData } = Astro.props;
 ---
 
 <header
-  class="theme-transition sticky top-0 z-40 w-full border-b border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg))]/95 shadow-sm"
+  class="theme-transition sticky top-0 z-40 w-full border-b border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg))]/95 shadow-xs"
   role="banner"
 >
   <Container padding="none">
@@ -37,7 +37,7 @@ const { searchData } = Astro.props;
         <!-- Search Toggle for Mobile/Tablet -->
         <button
           id="mobile-search-toggle"
-          class="theme-transition rounded-lg p-2 text-[rgb(var(--color-text-muted))] hover:bg-[rgb(var(--color-bg-alt))] hover:text-[rgb(var(--color-accent))] focus:outline-none focus:ring-2 focus:ring-[rgb(var(--color-accent))] xl:hidden"
+          class="theme-transition rounded-lg p-2 text-body-muted hover:bg-[rgb(var(--color-bg-alt))] hover:text-[rgb(var(--color-accent))] focus:outline-hidden focus:ring-2 focus:ring-[rgb(var(--color-accent))] xl:hidden"
           aria-label="Toggle search"
         >
           <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

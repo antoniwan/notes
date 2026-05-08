@@ -92,8 +92,8 @@ const floatClass =
   floatSide === 'none'
     ? ''
     : floatSide === 'start'
-      ? 'sm:float-left sm:mr-6 sm:text-left rtl:sm:float-right rtl:sm:ml-6 rtl:sm:mr-0'
-      : 'sm:float-right sm:ml-6 sm:text-left rtl:sm:float-left rtl:sm:mr-6 rtl:sm:ml-0';
+      ? 'sm:float-left sm:mr-6 sm:text-left sm:rtl:float-right sm:rtl:ml-6 sm:rtl:mr-0'
+      : 'sm:float-right sm:ml-6 sm:text-left sm:rtl:float-left sm:rtl:mr-6 sm:rtl:ml-0';
 
 const headingId = `review-verdict-${String(snapped).replace('.', '-')}`;
 ---
@@ -108,12 +108,12 @@ const headingId = `review-verdict-${String(snapped).replace('.', '-')}`;
     'mx-auto mb-6 w-full max-w-[min(13.5rem,calc(100%-0px))]',
     'shrink-0',
     'rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))]',
-    'px-4 py-3 shadow-sm sm:mx-0 sm:mb-3 sm:w-[min(13.5rem,calc(100%-0px))]',
+    'px-4 py-3 shadow-xs sm:mx-0 sm:mb-3 sm:w-[min(13.5rem,calc(100%-0px))]',
   ]}
   aria-label={`${eyebrow}: ${scoreLine(snapped)} out of ${SCALE}. ${label}.`}
 >
   <p
-    class="mb-1 text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[rgb(var(--color-text-muted))]"
+    class="mb-1 text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-body-muted"
   >
     {eyebrow}
   </p>
@@ -121,7 +121,7 @@ const headingId = `review-verdict-${String(snapped).replace('.', '-')}`;
     <span class="text-[2.375rem] font-bold tabular-nums leading-none text-[rgb(var(--color-text))]">
       {scoreLine(snapped)}
     </span>
-    <span class="pb-1 text-[1.35rem] font-light leading-none text-[rgb(var(--color-text-muted))]"
+    <span class="pb-1 text-[1.35rem] font-light leading-none text-body-muted"
       >/</span
     >
     <span
@@ -131,7 +131,7 @@ const headingId = `review-verdict-${String(snapped).replace('.', '-')}`;
   </div>
   {
     showOutOfFive && alternateFive !== null ? (
-      <p class="mt-1 text-xs tabular-nums text-[rgb(var(--color-text-muted))]">{alternateFive}</p>
+      <p class="mt-1 text-xs tabular-nums text-body-muted">{alternateFive}</p>
     ) : (
       ''
     )

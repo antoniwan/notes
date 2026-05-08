@@ -1,6 +1,5 @@
 import typography from '@tailwindcss/typography';
 import forms from '@tailwindcss/forms';
-import aspectRatio from '@tailwindcss/aspect-ratio';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -362,14 +361,5 @@ export default {
       },
     },
   },
-  future: {
-    hoverOnlyWhenSupported: true,
-  },
-  plugins: [typography, forms, aspectRatio],
-  // Optimize for production
-  ...(process.env.NODE_ENV === 'production'
-    ? {
-        safelist: ['dark', 'light'],
-      }
-    : {}),
+  plugins: [typography, forms],
 };

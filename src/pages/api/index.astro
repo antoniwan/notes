@@ -43,17 +43,17 @@ import { SITE_TITLE } from '../../consts';
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
           <div>
             <h4 class="mb-2 font-medium text-[rgb(var(--color-text))]">Endpoint</h4>
-            <code class="rounded bg-[rgb(var(--color-bg))] px-3 py-2 font-mono text-sm"
+            <code class="rounded-sm bg-[rgb(var(--color-bg))] px-3 py-2 font-mono text-sm"
               >GET /api/quotes</code
             >
-            <p class="mt-2 text-sm text-[rgb(var(--color-text-muted))]">
+            <p class="mt-2 text-sm text-body-muted">
               Returns a random Stoic philosophy quote with rich metadata.
             </p>
           </div>
           <div>
             <h4 class="mb-2 font-medium text-[rgb(var(--color-text))]">Response Format</h4>
             <pre
-              class="overflow-x-auto rounded border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg))] p-4 text-sm"><code>{`{
+              class="overflow-x-auto rounded-sm border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg))] p-4 text-sm"><code>{`{
   "quote": {
     "id": 1,
     "text": "Quote text...",
@@ -86,7 +86,7 @@ import { SITE_TITLE } from '../../consts';
           <div>
             <h4 class="mb-2 font-medium text-[rgb(var(--color-text))]">JavaScript/Fetch</h4>
             <pre
-              class="overflow-x-auto rounded border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg))] p-4 text-sm"><code>{`// Get a random quote
+              class="overflow-x-auto rounded-sm border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg))] p-4 text-sm"><code>{`// Get a random quote
 const response = await fetch('/api/quotes');
 const data = await response.json();
 // Display the quote
@@ -96,7 +96,7 @@ const quoteAuthor = \`By \${data.quote.author}\`;`}</code></pre>
           <div>
             <h4 class="mb-2 font-medium text-[rgb(var(--color-text))]">Python/Requests</h4>
             <pre
-              class="overflow-x-auto rounded border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg))] p-4 text-sm"><code>{`import requests
+              class="overflow-x-auto rounded-sm border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg))] p-4 text-sm"><code>{`import requests
 
 # Get a random quote
 response = requests.get('https://your-site.com/api/quotes')
@@ -122,9 +122,9 @@ print(f"By {data['quote']['author']}")`}</code></pre>
         </div>
         <div
           id="apiResult"
-          class="min-h-[200px] rounded border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg))] p-4"
+          class="min-h-[200px] rounded-sm border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg))] p-4"
         >
-          <p class="text-sm text-[rgb(var(--color-text-muted))]">
+          <p class="text-sm text-body-muted">
             Click the button above to test the API...
           </p>
         </div>
@@ -145,7 +145,7 @@ print(f"By {data['quote']['author']}")`}</code></pre>
     button.textContent = 'Loading...';
     resultDiv.replaceChildren();
     const loadingP = document.createElement('p');
-    loadingP.className = 'text-[rgb(var(--color-text-muted))] text-sm';
+    loadingP.className = 'text-body-muted text-sm';
     loadingP.textContent = 'Loading...';
     resultDiv.appendChild(loadingP);
 
@@ -165,27 +165,27 @@ print(f"By {data['quote']['author']}")`}</code></pre>
       const quote = data.quote;
       resultDiv.innerHTML = `
         <div class="space-y-4">
-          <div class="p-4 bg-[rgb(var(--color-bg-alt))] rounded border-l-4 border-blue-500">
+          <div class="p-4 bg-[rgb(var(--color-bg-alt))] rounded-sm border-l-4 border-blue-500">
             <p class="italic text-lg mb-2">"${quote.text}"</p>
-            <p class="text-sm text-[rgb(var(--color-text-muted))]">— ${quote.author}, ${quote.work}</p>
+            <p class="text-sm text-body-muted">— ${quote.author}, ${quote.work}</p>
           </div>
           
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
             <div>
               <span class="font-medium">Difficulty:</span>
-              <span class="text-[rgb(var(--color-text-muted))]">${quote.difficulty}</span>
+              <span class="text-body-muted">${quote.difficulty}</span>
             </div>
             <div>
               <span class="font-medium">Length:</span>
-              <span class="text-[rgb(var(--color-text-muted))]">${quote.length}</span>
+              <span class="text-body-muted">${quote.length}</span>
             </div>
             <div>
               <span class="font-medium">Popularity:</span>
-              <span class="text-[rgb(var(--color-text-muted))]">${quote.popularity}</span>
+              <span class="text-body-muted">${quote.popularity}</span>
             </div>
             <div>
               <span class="font-medium">Themes:</span>
-              <span class="text-[rgb(var(--color-text-muted))]">${quote.themes.join(', ')}</span>
+              <span class="text-body-muted">${quote.themes.join(', ')}</span>
             </div>
           </div>
           
@@ -194,7 +194,7 @@ print(f"By {data['quote']['author']}")`}</code></pre>
               ? `
             <div class="text-sm">
               <span class="font-medium">Context:</span>
-              <span class="text-[rgb(var(--color-text-muted))]">${quote.context}</span>
+              <span class="text-body-muted">${quote.context}</span>
             </div>
           `
               : ''
@@ -205,13 +205,13 @@ print(f"By {data['quote']['author']}")`}</code></pre>
               ? `
             <div class="text-sm">
               <span class="font-medium">Modern Relevance:</span>
-              <span class="text-[rgb(var(--color-text-muted))]">${quote.modernRelevance}</span>
+              <span class="text-body-muted">${quote.modernRelevance}</span>
             </div>
           `
               : ''
           }
           
-          <div class="text-xs text-[rgb(var(--color-text-muted))] mt-4 pt-4 border-t border-[rgb(var(--color-border))]/30">
+          <div class="text-xs text-body-muted mt-4 pt-4 border-t border-[rgb(var(--color-border))]/30">
             <p>API Response Time: ${new Date().toLocaleTimeString()}</p>
             <p>Total Quotes Available: ${data.metadata.totalQuotes}</p>
           </div>

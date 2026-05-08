@@ -32,9 +32,9 @@ const sortedCategories = await getSortedCategories();
             href={item.href}
             class="transition-normal relative rounded-lg px-3 py-2 text-sm font-medium"
             class:list={[
-              'text-[rgb(var(--color-text-muted))] hover:bg-[rgb(var(--color-bg-alt))] hover:text-[rgb(var(--color-accent))]',
+              'text-body-muted hover:bg-[rgb(var(--color-bg-alt))] hover:text-[rgb(var(--color-accent))]',
               {
-                'bg-[rgb(var(--color-accent))]/10 text-[rgb(var(--color-accent))] shadow-sm':
+                'bg-[rgb(var(--color-accent))]/10 text-[rgb(var(--color-accent))] shadow-xs':
                   isActive,
               },
             ]}
@@ -51,7 +51,7 @@ const sortedCategories = await getSortedCategories();
           {item.dropdown && item.href === '/category/' && (
             <div class="invisible absolute left-0 top-full z-50 mt-1 w-64 rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg))] opacity-0 shadow-lg transition-all duration-200 ease-in-out group-hover:visible group-hover:opacity-100">
               <div class="p-2">
-                <div class="mb-2 border-b border-[rgb(var(--color-border))] px-3 py-2 text-xs font-semibold uppercase tracking-wide text-[rgb(var(--color-text-muted))]">
+                <div class="mb-2 border-b border-[rgb(var(--color-border))] px-3 py-2 text-xs font-semibold uppercase tracking-wide text-body-muted">
                   {item.dropdown.label}
                 </div>
                 <div class="space-y-1">
@@ -75,7 +75,7 @@ const sortedCategories = await getSortedCategories();
                           )}
                           <span>{category.name}</span>
                         </div>
-                        <span class="rounded-full bg-[rgb(var(--color-bg-alt))] px-2 py-1 text-xs text-[rgb(var(--color-text-muted))]">
+                        <span class="rounded-full bg-[rgb(var(--color-bg-alt))] px-2 py-1 text-xs text-body-muted">
                           {category.postCount}
                         </span>
                       </a>
@@ -90,7 +90,7 @@ const sortedCategories = await getSortedCategories();
           {item.dropdown && item.href !== '/category/' && (
             <div class="invisible absolute left-0 top-full z-50 mt-1 w-64 rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg))] opacity-0 shadow-lg transition-all duration-200 ease-in-out group-hover:visible group-hover:opacity-100">
               <div class="p-2">
-                <div class="mb-2 border-b border-[rgb(var(--color-border))] px-3 py-2 text-xs font-semibold uppercase tracking-wide text-[rgb(var(--color-text-muted))]">
+                <div class="mb-2 border-b border-[rgb(var(--color-border))] px-3 py-2 text-xs font-semibold uppercase tracking-wide text-body-muted">
                   {item.dropdown.label}
                 </div>
                 <div class="space-y-1">

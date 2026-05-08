@@ -13,7 +13,7 @@ const { category, postCount, featured = false, compact = false } = Astro.props;
 
 <a
   href={`/category/${category.id}/`}
-  class="interactive-card theme-transition group relative block overflow-hidden rounded-xl border border-[rgb(var(--color-border))]/20 bg-[rgb(var(--color-bg))] hover:border-[rgb(var(--color-accent))]/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--color-accent))] focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--color-bg))]"
+  class="interactive-card theme-transition group relative block overflow-hidden rounded-xl border border-[rgb(var(--color-border))]/20 bg-[rgb(var(--color-bg))] hover:border-[rgb(var(--color-accent))]/25 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-[rgb(var(--color-accent))] focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--color-bg))]"
   class:list={{
     'category-card-featured': featured,
     'category-card-compact': compact,

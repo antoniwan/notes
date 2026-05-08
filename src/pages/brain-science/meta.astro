@@ -83,25 +83,25 @@ const topPhrases = Object.entries(phraseFrequency)
         <div class="text-2xl font-semibold tabular-nums text-[rgb(var(--color-text))] md:text-3xl">
           {metaMetrics.avgSelfAwarenessScore}
         </div>
-        <div class="text-xs text-[rgb(var(--color-text-muted))]">Avg heuristic score</div>
+        <div class="text-xs text-body-muted">Avg heuristic score</div>
       </div>
       <div>
         <div class="text-2xl font-semibold tabular-nums text-[rgb(var(--color-text))] md:text-3xl">
           {metaMetrics.writingAsSubjectCount}
         </div>
-        <div class="text-xs text-[rgb(var(--color-text-muted))]">Writing as explicit subject</div>
+        <div class="text-xs text-body-muted">Writing as explicit subject</div>
       </div>
       <div>
         <div class="text-2xl font-semibold tabular-nums text-[rgb(var(--color-text))] md:text-3xl">
           {metaMetrics.recursiveThinkingCount}
         </div>
-        <div class="text-xs text-[rgb(var(--color-text-muted))]">Recursive-thought flags</div>
+        <div class="text-xs text-body-muted">Recursive-thought flags</div>
       </div>
       <div>
         <div class="text-2xl font-semibold tabular-nums text-[rgb(var(--color-text))] md:text-3xl">
           {Math.round(metaMetrics.metaLanguageFrequency * 10) / 10}
         </div>
-        <div class="text-xs text-[rgb(var(--color-text-muted))]">Avg meta-token density</div>
+        <div class="text-xs text-body-muted">Avg meta-token density</div>
       </div>
     </div>
 
@@ -110,7 +110,7 @@ const topPhrases = Object.entries(phraseFrequency)
       aria-label="On this page"
     >
       <div
-        class="mb-2 text-[0.65rem] font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]"
+        class="mb-2 text-[0.65rem] font-semibold uppercase tracking-wider text-body-muted"
       >
         Jump to
       </div>
@@ -163,7 +163,7 @@ const topPhrases = Object.entries(phraseFrequency)
             <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
               Meta signals by quarter
             </h2>
-            <p class="mb-6 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
+            <p class="mb-6 max-w-3xl text-sm text-body-muted">
               Two series on one axis (mixed units): heuristic self-awareness score vs. meta-language
               frequency. Compare shape, not absolute scale.
             </p>
@@ -199,7 +199,7 @@ const topPhrases = Object.entries(phraseFrequency)
         <h2 class="mb-2 text-base font-semibold text-[rgb(var(--color-text))] md:text-lg">
           Subject vs tool (detector fractions)
         </h2>
-        <p class="mb-4 text-sm text-[rgb(var(--color-text-muted))]">
+        <p class="mb-4 text-sm text-body-muted">
           Proportion of posts that trip each classifier—overlap allowed; not a psychological
           typology.
         </p>
@@ -241,7 +241,7 @@ const topPhrases = Object.entries(phraseFrequency)
         <h2 class="mb-2 text-base font-semibold text-[rgb(var(--color-text))] md:text-lg">
           Pattern type hits (post occurrences)
         </h2>
-        <p class="mb-4 text-sm text-[rgb(var(--color-text-muted))]">
+        <p class="mb-4 text-sm text-body-muted">
           Counts aggregated across the detector outputs—taxonomy is defined in code.
         </p>
         <div
@@ -269,7 +269,7 @@ const topPhrases = Object.entries(phraseFrequency)
       <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl">
         Highest detector scores (ranked)
       </h2>
-      <p class="mb-6 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
+      <p class="mb-6 max-w-3xl text-sm text-body-muted">
         Scores aggregate pattern hits in each post—the ranking is deterministic from the analyzer,
         not qualitative judgment.
       </p>
@@ -280,7 +280,7 @@ const topPhrases = Object.entries(phraseFrequency)
           mostSelfAware.map((analysis, index) => (
             <article class="py-5 first:pt-0">
               <div class="mb-2 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-                <span class="font-mono text-xs text-[rgb(var(--color-text-muted))]">
+                <span class="font-mono text-xs text-body-muted">
                   {index + 1}.
                 </span>
                 <a
@@ -290,7 +290,7 @@ const topPhrases = Object.entries(phraseFrequency)
                   {analysis.postTitle}
                 </a>
               </div>
-              <div class="mb-3 text-xs text-[rgb(var(--color-text-muted))]">
+              <div class="mb-3 text-xs text-body-muted">
                 {format(analysis.postDate, 'MMM d, yyyy')} · score {analysis.selfAwarenessScore}/100
                 · {analysis.metaLanguageCount} patterns
                 {analysis.recursiveThinking ? ' · recursive flagged' : ''}
@@ -298,11 +298,11 @@ const topPhrases = Object.entries(phraseFrequency)
               </div>
               {analysis.metaLanguagePatterns.length > 0 && (
                 <div class="border-l-2 border-[rgb(var(--color-border))]/60 pl-3">
-                  <div class="mb-1 text-[0.65rem] font-medium uppercase tracking-wide text-[rgb(var(--color-text-muted))]">
+                  <div class="mb-1 text-[0.65rem] font-medium uppercase tracking-wide text-body-muted">
                     Sample hits
                   </div>
                   {analysis.metaLanguagePatterns.slice(0, 2).map((pattern) => (
-                    <p class="my-1 text-xs italic text-[rgb(var(--color-text-muted))]">
+                    <p class="my-1 text-xs italic text-body-muted">
                       “{pattern.sentence.substring(0, 150)}…”
                     </p>
                   ))}
@@ -321,7 +321,7 @@ const topPhrases = Object.entries(phraseFrequency)
           <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
             ✍️ Writings That Discuss Writing Itself
           </h2>
-          <p class="mb-6 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
+          <p class="mb-6 max-w-3xl text-sm text-body-muted">
             Posts where writing itself becomes the subject of discussion, revealing your
             relationship with the act of writing.
           </p>
@@ -334,15 +334,15 @@ const topPhrases = Object.entries(phraseFrequency)
                 <div class="mb-2 text-sm font-medium text-[rgb(var(--color-text))] group-hover:text-[rgb(var(--color-accent))]">
                   {analysis.postTitle}
                 </div>
-                <div class="mb-3 text-xs text-[rgb(var(--color-text-muted))]">
+                <div class="mb-3 text-xs text-body-muted">
                   {format(analysis.postDate, 'MMM d, yyyy')}
                 </div>
                 <div class="flex flex-wrap gap-1">
-                  <span class="rounded bg-purple-100 px-2 py-0.5 text-xs text-purple-700 dark:bg-purple-900/30 dark:text-purple-300">
+                  <span class="rounded-sm bg-purple-100 px-2 py-0.5 text-xs text-purple-700 dark:bg-purple-900/30 dark:text-purple-300">
                     {analysis.metaLanguageCount} patterns
                   </span>
                   {analysis.recursiveThinking && (
-                    <span class="rounded bg-green-100 px-2 py-0.5 text-xs text-green-700 dark:bg-green-900/30 dark:text-green-300">
+                    <span class="rounded-sm bg-green-100 px-2 py-0.5 text-xs text-green-700 dark:bg-green-900/30 dark:text-green-300">
                       Recursive
                     </span>
                   )}
@@ -360,19 +360,19 @@ const topPhrases = Object.entries(phraseFrequency)
           <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
             Top repeated phrases (normalized)
           </h2>
-          <p class="mb-6 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
+          <p class="mb-6 max-w-3xl text-sm text-body-muted">
             Lowercased &gt;3 chars from detected meta spans—frequency, not importance ranking.
           </p>
           <div class="overflow-x-auto">
-            <table class="w-full min-w-[20rem] border-collapse border-b border-t border-[rgb(var(--color-border))] text-sm">
+            <table class="w-full min-w-80 border-collapse border-b border-t border-[rgb(var(--color-border))] text-sm">
               <tbody>
                 {topPhrases.map(([phrase, count], index) => (
                   <tr class="border-b border-[rgb(var(--color-border))]/35 last:border-0">
-                    <td class="py-2 pr-3 font-mono text-xs text-[rgb(var(--color-text-muted))]">
+                    <td class="py-2 pr-3 font-mono text-xs text-body-muted">
                       {index + 1}
                     </td>
                     <td class="py-2 pr-4 text-[rgb(var(--color-text))]">“{phrase}”</td>
-                    <td class="py-2 text-right tabular-nums text-[rgb(var(--color-text-muted))]">
+                    <td class="py-2 text-right tabular-nums text-body-muted">
                       {count}
                     </td>
                   </tr>
@@ -396,7 +396,7 @@ const topPhrases = Object.entries(phraseFrequency)
           <h3 class="mb-2 text-base font-medium text-[rgb(var(--color-text))]">
             Self-Awareness in Writing
           </h3>
-          <p class="text-sm text-[rgb(var(--color-text-muted))]">
+          <p class="text-sm text-body-muted">
             Your average self-awareness score of {metaMetrics.avgSelfAwarenessScore}/100 indicates{
               ' '
             }
@@ -414,7 +414,7 @@ const topPhrases = Object.entries(phraseFrequency)
           <h3 class="mb-2 text-base font-medium text-[rgb(var(--color-text))]">
             Relationship with Writing
           </h3>
-          <p class="text-sm text-[rgb(var(--color-text-muted))]">
+          <p class="text-sm text-body-muted">
             {
               metaMetrics.writingAsSubjectCount > metaMetrics.writingAsToolCount
                 ? `You tend to treat writing as a subject of exploration itself (${metaMetrics.writingAsSubjectCount} writings) more often than as a tool (${metaMetrics.writingAsToolCount} writings). This suggests writing is something you think about, reflect upon, and examine as a practice.`
@@ -431,7 +431,7 @@ const topPhrases = Object.entries(phraseFrequency)
               <h3 class="mb-2 text-base font-medium text-[rgb(var(--color-text))]">
                 Recursive Thinking Patterns
               </h3>
-              <p class="text-sm text-[rgb(var(--color-text-muted))]">
+              <p class="text-sm text-body-muted">
                 You engage in recursive thinking—thinking about thinking—in{' '}
                 {metaMetrics.recursiveThinkingCount} of your writings. This meta-cognitive pattern
                 shows a deep engagement with your own thought processes and consciousness.
@@ -444,7 +444,7 @@ const topPhrases = Object.entries(phraseFrequency)
           <h3 class="mb-2 text-base font-medium text-[rgb(var(--color-text))]">
             Meta-Language Evolution
           </h3>
-          <p class="text-sm text-[rgb(var(--color-text-muted))]">
+          <p class="text-sm text-body-muted">
             {
               evolutionData.length > 0
                 ? `Over ${evolutionData.length} quarters, your use of meta-language has ${evolutionData[evolutionData.length - 1].metaLanguageFrequency > evolutionData[0].metaLanguageFrequency ? 'increased' : 'decreased'}, suggesting ${evolutionData[evolutionData.length - 1].metaLanguageFrequency > evolutionData[0].metaLanguageFrequency ? 'a growing' : 'a changing'} relationship with self-reflection in your writing.`

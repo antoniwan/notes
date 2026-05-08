@@ -471,25 +471,25 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
         <div class="text-2xl font-semibold tabular-nums text-[rgb(var(--color-text))] md:text-3xl">
           {emotionalPatterns.totalEmotionalPosts}
         </div>
-        <div class="text-xs text-[rgb(var(--color-text-muted))]">Posts w/ lexical “intensity”</div>
+        <div class="text-xs text-body-muted">Posts w/ lexical “intensity”</div>
       </div>
       <div>
         <div class="text-2xl font-semibold tabular-nums text-[rgb(var(--color-text))] md:text-3xl">
           {emotionalPatterns.totalVulnerablePosts}
         </div>
-        <div class="text-xs text-[rgb(var(--color-text-muted))]">Posts w/ vulnerability stems</div>
+        <div class="text-xs text-body-muted">Posts w/ vulnerability stems</div>
       </div>
       <div>
         <div class="text-2xl font-semibold tabular-nums text-[rgb(var(--color-text))] md:text-3xl">
           {emotionalPatterns.totalConfidentPosts}
         </div>
-        <div class="text-xs text-[rgb(var(--color-text-muted))]">Posts w/ confidence stems</div>
+        <div class="text-xs text-body-muted">Posts w/ confidence stems</div>
       </div>
       <div>
         <div class="text-2xl font-semibold tabular-nums text-[rgb(var(--color-text))] md:text-3xl">
           {growthIndicators.length}
         </div>
-        <div class="text-xs text-[rgb(var(--color-text-muted))]">Growth-tagged posts</div>
+        <div class="text-xs text-body-muted">Growth-tagged posts</div>
       </div>
     </div>
 
@@ -498,7 +498,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
       aria-label="On this page"
     >
       <div
-        class="mb-2 text-[0.65rem] font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]"
+        class="mb-2 text-[0.65rem] font-semibold uppercase tracking-wider text-body-muted"
       >
         Jump to
       </div>
@@ -548,7 +548,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
           <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
             Lexical intensity (quarter means)
           </h2>
-          <p class="mb-6 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
+          <p class="mb-6 max-w-3xl text-sm text-body-muted">
             Average emotional intensity per quarter. Formula: emotional_intensity =
             exclamation_count + Σ(emotional_word_count) where emotional_words ∈ emotional_dictionary
           </p>
@@ -574,7 +574,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
       <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
         Vulnerability vs confidence (total hits)
       </h2>
-      <p class="mb-6 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
+      <p class="mb-6 max-w-3xl text-sm text-body-muted">
         Average vulnerability and confidence scores across all posts. Vulnerability:
         Σ(vulnerability_words) per post. Confidence: Σ(confidence_words) per post.
       </p>
@@ -595,7 +595,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
             Word length vs lexical intensity (r = {Math.round(wordEmotionalCorrelation * 100) / 100}
             )
           </h2>
-          <p class="mb-6 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
+          <p class="mb-6 max-w-3xl text-sm text-body-muted">
             Pearson correlation on posts as independent points. Formula:
             <code class="font-mono text-xs">Σ((x−x̄)(y−ȳ)) / √(Σ(x−x̄)²·Σ(y−ȳ)²)</code>.
           </p>
@@ -622,7 +622,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
           personalDiscoveries.map((discovery, index) => (
             <article class="py-4 first:pt-3">
               <div class="mb-1 flex flex-wrap items-baseline gap-x-2">
-                <span class="font-mono text-xs text-[rgb(var(--color-text-muted))]">
+                <span class="font-mono text-xs text-body-muted">
                   {index + 1}.
                 </span>
                 <span
@@ -634,7 +634,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
               <p class="mb-1 text-sm font-medium text-[rgb(var(--color-text))]">
                 {discovery.insight}
               </p>
-              <p class="m-0 text-xs text-[rgb(var(--color-text-muted))]">{discovery.evidence}</p>
+              <p class="m-0 text-xs text-body-muted">{discovery.evidence}</p>
             </article>
           ))
         }
@@ -653,7 +653,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
           <div class="mb-1 text-xl font-bold text-purple-500 md:mb-2 md:text-2xl">
             {emotionalPatterns.avgEmotionalIntensity}
           </div>
-          <div class="text-xs text-[rgb(var(--color-text-muted))] md:text-sm">
+          <div class="text-xs text-body-muted md:text-sm">
             Avg Emotional Intensity
           </div>
           <div class="mt-1 text-xs text-purple-600 dark:text-purple-400">
@@ -666,7 +666,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
           <div class="mb-1 text-xl font-bold text-pink-500 md:mb-2 md:text-2xl">
             {emotionalPatterns.avgVulnerabilityScore}
           </div>
-          <div class="text-xs text-[rgb(var(--color-text-muted))] md:text-sm">
+          <div class="text-xs text-body-muted md:text-sm">
             Avg Vulnerability Score
           </div>
           <div class="mt-1 text-xs text-pink-600 dark:text-pink-400">
@@ -679,7 +679,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
           <div class="mb-1 text-xl font-bold text-green-500 md:mb-2 md:text-2xl">
             {emotionalPatterns.avgConfidenceScore}
           </div>
-          <div class="text-xs text-[rgb(var(--color-text-muted))] md:text-sm">
+          <div class="text-xs text-body-muted md:text-sm">
             Avg Confidence Score
           </div>
           <div class="mt-1 text-xs text-green-600 dark:text-green-400">
@@ -705,7 +705,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
                 <span class="text-purple-500">💜</span>
                 Emotional Intensity Score
               </h5>
-              <div class="space-y-2 text-[rgb(var(--color-text-muted))]">
+              <div class="space-y-2 text-body-muted">
                 <p>
                   <strong class="text-[rgb(var(--color-text))]">Formula:</strong>
                   <code class="font-mono text-xs md:text-sm"
@@ -729,7 +729,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
                 <span class="text-pink-500">🫂</span>
                 Vulnerability Score
               </h5>
-              <div class="space-y-2 text-[rgb(var(--color-text-muted))]">
+              <div class="space-y-2 text-body-muted">
                 <p>
                   <strong class="text-[rgb(var(--color-text))]">Formula:</strong>
                   <code class="font-mono text-xs md:text-sm"
@@ -755,7 +755,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
                 <span class="text-green-500">🌱</span>
                 Growth Focus Ratio
               </h5>
-              <div class="space-y-2 text-[rgb(var(--color-text-muted))]">
+              <div class="space-y-2 text-body-muted">
                 <p>
                   <strong class="text-[rgb(var(--color-text))]">Formula:</strong>
                   <code class="font-mono text-xs md:text-sm">Growth posts / Total posts × 100</code>
@@ -777,7 +777,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
                 <span class="text-blue-500">🎭</span>
                 Voice Evolution Metrics
               </h5>
-              <div class="space-y-2 text-[rgb(var(--color-text-muted))]">
+              <div class="space-y-2 text-body-muted">
                 <p>
                   <strong class="text-[rgb(var(--color-text))]">Word Count Trend:</strong> Average words
                   per period
@@ -822,7 +822,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
                 </div>
                 <div>
                   <div class="text-sm font-medium text-[rgb(var(--color-text))]">{post.title}</div>
-                  <div class="text-xs text-[rgb(var(--color-text-muted))]">
+                  <div class="text-xs text-body-muted">
                     {format(post.date, 'MMM d, yyyy')} • {post.wordCount} words
                   </div>
                 </div>
@@ -834,7 +834,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
                 >
                   {post.emotionalIntensity}
                 </div>
-                <div class="text-xs text-[rgb(var(--color-text-muted))]">emotional intensity</div>
+                <div class="text-xs text-body-muted">emotional intensity</div>
               </div>
             </div>
           ))
@@ -867,7 +867,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
                 </div>
                 <div>
                   <div class="text-sm font-medium text-[rgb(var(--color-text))]">{post.title}</div>
-                  <div class="text-xs text-[rgb(var(--color-text-muted))]">
+                  <div class="text-xs text-body-muted">
                     {format(post.date, 'MMM d, yyyy')} • {post.wordCount} words
                   </div>
                 </div>
@@ -879,7 +879,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
                 >
                   {post.vulnerabilityScore}
                 </div>
-                <div class="text-xs text-[rgb(var(--color-text-muted))]">vulnerability score</div>
+                <div class="text-xs text-body-muted">vulnerability score</div>
               </div>
             </div>
           ))
@@ -901,7 +901,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
               </div>
               <div class="space-y-3">
                 <div class="flex justify-between">
-                  <span class="text-sm text-[rgb(var(--color-text-muted))]">Avg Words:</span>
+                  <span class="text-sm text-body-muted">Avg Words:</span>
                   <span
                     class="text-sm font-medium text-[rgb(var(--color-text))]"
                     title={`Average word count per post in ${period.period} period`}
@@ -910,7 +910,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
                   </span>
                 </div>
                 <div class="flex justify-between">
-                  <span class="text-sm text-[rgb(var(--color-text-muted))]">
+                  <span class="text-sm text-body-muted">
                     Emotional Intensity:
                   </span>
                   <span
@@ -921,7 +921,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
                   </span>
                 </div>
                 <div class="flex justify-between">
-                  <span class="text-sm text-[rgb(var(--color-text-muted))]">Vulnerability:</span>
+                  <span class="text-sm text-body-muted">Vulnerability:</span>
                   <span
                     class="text-sm font-medium text-[rgb(var(--color-text))]"
                     title={`Average vulnerability score in ${period.period} period`}
@@ -930,7 +930,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
                   </span>
                 </div>
                 <div class="flex justify-between">
-                  <span class="text-sm text-[rgb(var(--color-text-muted))]">Confidence:</span>
+                  <span class="text-sm text-body-muted">Confidence:</span>
                   <span
                     class="text-sm font-medium text-[rgb(var(--color-text))]"
                     title={`Average confidence score in ${period.period} period`}
@@ -975,7 +975,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
                       <div class="text-sm font-medium text-[rgb(var(--color-text))]">
                         {area.title}
                       </div>
-                      <div class="text-xs text-[rgb(var(--color-text-muted))]">
+                      <div class="text-xs text-body-muted">
                         {area.earlyPosts} → {area.recentPosts} posts
                       </div>
                     </div>
@@ -983,13 +983,13 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
                 </div>
                 <div class="text-right">
                   <div
-                    class={`text-sm font-medium ${area.expansionRate > 0 ? 'text-green-500' : area.expansionRate < 0 ? 'text-red-500' : 'text-[rgb(var(--color-text-muted))]'}`}
+                    class={`text-sm font-medium ${area.expansionRate > 0 ? 'text-green-500' : area.expansionRate < 0 ? 'text-red-500' : 'text-body-muted'}`}
                     title={`${area.expansionRate > 0 ? 'Growth' : area.expansionRate < 0 ? 'Decline' : 'Stable'} rate: ${Math.round(area.expansionRate)}% change from early to recent periods`}
                   >
                     {area.expansionRate > 0 ? '+' : ''}
                     {Math.round(area.expansionRate)}%
                   </div>
-                  <div class="text-xs text-[rgb(var(--color-text-muted))]">
+                  <div class="text-xs text-body-muted">
                     {area.expansionRate > 0
                       ? 'growing'
                       : area.expansionRate < 0
@@ -1018,7 +1018,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
               <span class="text-purple-500">💜</span>
               Emotional Processing Metrics
             </h4>
-            <div class="space-y-3 text-[rgb(var(--color-text-muted))]">
+            <div class="space-y-3 text-body-muted">
               <p>
                 <strong class="text-[rgb(var(--color-text))]">Emotional Expression Ratio:</strong>
                 <code class="font-mono text-xs md:text-sm">Emotional posts / Total posts × 100</code
@@ -1045,7 +1045,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
               <span class="text-green-500">🌱</span>
               Growth Journey Metrics
             </h4>
-            <div class="space-y-3 text-[rgb(var(--color-text-muted))]">
+            <div class="space-y-3 text-body-muted">
               <p>
                 <strong class="text-[rgb(var(--color-text))]">Growth Focus Percentage:</strong>
                 <code class="font-mono text-xs md:text-sm"
@@ -1076,7 +1076,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
               <span class="text-blue-500">📈</span>
               Content Volume Analysis
             </h4>
-            <div class="space-y-3 text-[rgb(var(--color-text-muted))]">
+            <div class="space-y-3 text-body-muted">
               <p>
                 <strong class="text-[rgb(var(--color-text))]">Total Word Count:</strong> Sum of all words
                 across all posts
@@ -1102,7 +1102,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
               <span class="text-indigo-500">🎯</span>
               Self-Understanding Metrics
             </h4>
-            <div class="space-y-3 text-[rgb(var(--color-text-muted))]">
+            <div class="space-y-3 text-body-muted">
               <p>
                 <strong class="text-[rgb(var(--color-text))]">Pattern Recognition:</strong> Recurring
                 themes and topics
@@ -1131,7 +1131,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
         <span class="text-gray-600 dark:text-gray-400">⚖️</span>
         Balanced Analysis
       </h2>
-      <p class="mb-8 text-sm text-[rgb(var(--color-text-muted))]">
+      <p class="mb-8 text-sm text-body-muted">
         Objective assessment showing strengths, challenges, and neutral metrics without bias toward
         positive outcomes.
       </p>

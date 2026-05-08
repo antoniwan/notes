@@ -53,13 +53,13 @@ const nonPreferredTags = sortedTags.filter(([tag]) => !PREFERRED_TAG_SET.has(tag
           class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] p-4"
         >
           <div class="text-2xl font-bold text-[rgb(var(--color-primary))]">{totalTags}</div>
-          <div class="text-sm text-[rgb(var(--color-text-muted))]">Total Tags</div>
+          <div class="text-sm text-body-muted">Total Tags</div>
         </div>
         <div
           class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] p-4"
         >
           <div class="text-2xl font-bold text-[rgb(var(--color-primary))]">{totalTagInstances}</div>
-          <div class="text-sm text-[rgb(var(--color-text-muted))]">Tag Instances</div>
+          <div class="text-sm text-body-muted">Tag Instances</div>
         </div>
         <div
           class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] p-4"
@@ -67,13 +67,13 @@ const nonPreferredTags = sortedTags.filter(([tag]) => !PREFERRED_TAG_SET.has(tag
           <div class="text-2xl font-bold text-[rgb(var(--color-primary))]">
             {avgTagsPerPost.toFixed(1)}
           </div>
-          <div class="text-sm text-[rgb(var(--color-text-muted))]">Avg Tags/Post</div>
+          <div class="text-sm text-body-muted">Avg Tags/Post</div>
         </div>
         <div
           class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] p-4"
         >
           <div class="text-2xl font-bold text-[rgb(var(--color-primary))]">{postsWithManyTags}</div>
-          <div class="text-sm text-[rgb(var(--color-text-muted))]">Writings with 10+ Tags</div>
+          <div class="text-sm text-body-muted">Writings with 10+ Tags</div>
         </div>
       </div>
 
@@ -89,7 +89,7 @@ const nonPreferredTags = sortedTags.filter(([tag]) => !PREFERRED_TAG_SET.has(tag
           <div class="space-y-3">
             {
               topTags.map(([tag, count]) => (
-                <div class="flex items-center justify-between rounded border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg))] p-3">
+                <div class="flex items-center justify-between rounded-sm border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg))] p-3">
                   <div class="flex items-center gap-2">
                     <a
                       href={`/tag/${tag}/`}
@@ -97,7 +97,7 @@ const nonPreferredTags = sortedTags.filter(([tag]) => !PREFERRED_TAG_SET.has(tag
                     >
                       #{tag}
                     </a>
-                    <span class="text-xs text-[rgb(var(--color-text-muted))]">
+                    <span class="text-xs text-body-muted">
                       (weight: {tagWeights[tag]})
                     </span>
                   </div>
@@ -124,7 +124,7 @@ const nonPreferredTags = sortedTags.filter(([tag]) => !PREFERRED_TAG_SET.has(tag
                 .sort((a, b) => (b.data.tags?.length || 0) - (a.data.tags?.length || 0))
                 .slice(0, 10)
                 .map((post) => (
-                  <div class="rounded border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg))] p-3">
+                  <div class="rounded-sm border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg))] p-3">
                     <div class="mb-2 flex items-center justify-between">
                       <a
                         href={`/p/${post.id}/`}
@@ -165,7 +165,7 @@ const nonPreferredTags = sortedTags.filter(([tag]) => !PREFERRED_TAG_SET.has(tag
               <strong>{nonPreferredTags.length}</strong>
               tags currently outside the preferred vocabulary.
             </p>
-            <p class="text-[rgb(var(--color-text-muted))]">
+            <p class="text-body-muted">
               Use this list as a migration queue to normalize long-tail variants and aliases.
             </p>
           </div>
@@ -237,8 +237,8 @@ const nonPreferredTags = sortedTags.filter(([tag]) => !PREFERRED_TAG_SET.has(tag
             <div class="flex flex-wrap gap-2">
               {lowFrequencyTags.map(([tag, count]) => (
                 <div class="flex items-center gap-1 rounded-full border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg))] px-3 py-1">
-                  <span class="text-sm text-[rgb(var(--color-text-muted))]">#{tag}</span>
-                  <span class="text-xs text-[rgb(var(--color-text-muted))]">({count})</span>
+                  <span class="text-sm text-body-muted">#{tag}</span>
+                  <span class="text-xs text-body-muted">({count})</span>
                 </div>
               ))}
             </div>

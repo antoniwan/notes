@@ -15,7 +15,7 @@ const {
   subtitle,
   title,
   emoji,
-  color = 'text-[rgb(var(--color-text-muted))]',
+  color = 'text-body-muted',
   class: className = '',
 } = Astro.props;
 
@@ -36,7 +36,7 @@ const displayValue =
   >
     {displayValue}
   </div>
-  <div class="text-xs text-[rgb(var(--color-text-muted))] md:text-sm">{label}</div>
+  <div class="text-xs text-body-muted md:text-sm">{label}</div>
   {
     subtitle && (
       <div class:list={['mt-1 text-xs', color]}>

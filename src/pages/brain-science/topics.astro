@@ -314,19 +314,19 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
         <div class="text-2xl font-semibold tabular-nums text-[rgb(var(--color-text))] md:text-3xl">
           {Object.keys(tagFrequency).length}
         </div>
-        <div class="text-xs text-[rgb(var(--color-text-muted))]">Distinct tags used</div>
+        <div class="text-xs text-body-muted">Distinct tags used</div>
       </div>
       <div>
         <div class="text-2xl font-semibold tabular-nums text-[rgb(var(--color-text))] md:text-3xl">
           {maslowAnalysis.length}
         </div>
-        <div class="text-xs text-[rgb(var(--color-text-muted))]">Maslow buckets w/ hits</div>
+        <div class="text-xs text-body-muted">Maslow buckets w/ hits</div>
       </div>
       <div>
         <div class="text-2xl font-semibold tabular-nums text-[rgb(var(--color-text))] md:text-3xl">
           {tagRelationships.length}
         </div>
-        <div class="text-xs text-[rgb(var(--color-text-muted))]">Co-occur pairs (ranked)</div>
+        <div class="text-xs text-body-muted">Co-occur pairs (ranked)</div>
       </div>
       <div>
         <div class="text-2xl font-semibold tabular-nums text-[rgb(var(--color-text))] md:text-3xl">
@@ -336,7 +336,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
             )
           }%
         </div>
-        <div class="text-xs text-[rgb(var(--color-text-muted))]">Share in top-5 tags</div>
+        <div class="text-xs text-body-muted">Share in top-5 tags</div>
       </div>
     </div>
 
@@ -345,7 +345,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
       aria-label="On this page"
     >
       <div
-        class="mb-2 text-[0.65rem] font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]"
+        class="mb-2 text-[0.65rem] font-semibold uppercase tracking-wider text-body-muted"
       >
         Jump to
       </div>
@@ -402,7 +402,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
           <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
             Top tags by quarter
           </h2>
-          <p class="mb-6 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
+          <p class="mb-6 max-w-3xl text-sm text-body-muted">
             Quarterly frequency of top 5 topics. Formula: frequency(tag, quarter) = count(posts in
             quarter where tag ∈ post.tags)
           </p>
@@ -429,7 +429,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
           <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
             Early→recent growth (%)
           </h2>
-          <p class="mb-6 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
+          <p class="mb-6 max-w-3xl text-sm text-body-muted">
             Topics with highest growth rates. Formula: growth_rate = ((recent_count - early_count) /
             early_count) × 100
           </p>
@@ -448,7 +448,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
       <h2 class="mb-2 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl">
         Interpretive notes (not tests)
       </h2>
-      <p class="mb-4 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
+      <p class="mb-4 max-w-3xl text-sm text-body-muted">
         Friendly readings of the counts above—take as prompts, not statistically validated claims.
       </p>
       <div
@@ -458,7 +458,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
           topicInsights.map((insight, index) => (
             <article class="py-4 first:pt-3">
               <div class="mb-1 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-                <span class="font-mono text-xs text-[rgb(var(--color-text-muted))]">
+                <span class="font-mono text-xs text-body-muted">
                   {index + 1}.
                 </span>
                 <span
@@ -470,7 +470,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
               <p class="mb-1 text-sm font-medium text-[rgb(var(--color-text))]">
                 {insight.insight}
               </p>
-              <p class="m-0 text-xs leading-relaxed text-[rgb(var(--color-text-muted))]">
+              <p class="m-0 text-xs leading-relaxed text-body-muted">
                 {insight.evidence}
               </p>
             </article>
@@ -483,7 +483,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
       <h2 class="mb-2 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl">
         Ranked tags
       </h2>
-      <p class="mb-4 max-w-3xl text-xs text-[rgb(var(--color-text-muted))] md:text-sm">
+      <p class="mb-4 max-w-3xl text-xs text-body-muted md:text-sm">
         Raw frequency in the archive plus category weights from taxonomy metadata.
       </p>
       <div
@@ -493,17 +493,17 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
           topTags.slice(0, 10).map((tag, index) => (
             <div class="flex flex-wrap items-baseline justify-between gap-3 py-2.5">
               <div class="min-w-0">
-                <span class="mr-2 font-mono text-xs text-[rgb(var(--color-text-muted))]">
+                <span class="mr-2 font-mono text-xs text-body-muted">
                   {index + 1}.
                 </span>
                 <span class="text-sm font-medium text-[rgb(var(--color-text))]">{tag.tag}</span>
-                <span class="mt-0.5 block text-xs text-[rgb(var(--color-text-muted))] sm:mt-0 sm:inline sm:before:content-['_·_']">
+                <span class="mt-0.5 block text-xs text-body-muted sm:mt-0 sm:inline sm:before:content-['_·_']">
                   {tag.category?.title || 'Uncategorized'} · weight {tag.weight}
                 </span>
               </div>
               <div class="text-right tabular-nums">
                 <div class="text-sm font-medium text-[rgb(var(--color-text))]">{tag.count}</div>
-                <div class="text-xs text-[rgb(var(--color-text-muted))]">
+                <div class="text-xs text-body-muted">
                   {Math.round((tag.count / posts.length) * 100)}% of posts
                 </div>
               </div>
@@ -517,7 +517,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
       <h2 class="mb-2 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl">
         Static tag buckets in code
       </h2>
-      <p class="mb-6 max-w-3xl text-xs text-[rgb(var(--color-text-muted))] md:text-sm">
+      <p class="mb-6 max-w-3xl text-xs text-body-muted md:text-sm">
         These “clusters” are hard-coded slug lists—not learned communities. Useful for aligning with
         YOUR categories, misleading if read as clustering output.
       </p>
@@ -531,7 +531,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
                   <div class="text-lg font-semibold text-[rgb(var(--color-text))]">
                     {cluster.name}
                   </div>
-                  <div class="text-sm text-[rgb(var(--color-text-muted))]">
+                  <div class="text-sm text-body-muted">
                     {cluster.topics.length} topics •{' '}
                     {cluster.topics.reduce((sum, tag) => sum + tag.count, 0)} writings
                   </div>
@@ -548,7 +548,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
                           style={`width: ${(tag.count / Math.max(...cluster.topics.map((t) => t.count))) * 100}%`}
                         />
                       </div>
-                      <span class="w-8 text-right text-xs text-[rgb(var(--color-text-muted))]">
+                      <span class="w-8 text-right text-xs text-body-muted">
                         {tag.count}
                       </span>
                     </div>
@@ -565,7 +565,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
       <h2 class="mb-2 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl">
         Maslow-style coverage
       </h2>
-      <p class="mb-4 max-w-3xl text-xs text-[rgb(var(--color-text-muted))] md:text-sm">
+      <p class="mb-4 max-w-3xl text-xs text-body-muted md:text-sm">
         Rule: if a post has any tag from the bucket’s list, it counts once. Overlaps across buckets
         are possible.
       </p>
@@ -581,7 +581,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
                   <div class="text-sm font-medium text-[rgb(var(--color-text))]">
                     {category.title}
                   </div>
-                  <div class="text-xs text-[rgb(var(--color-text-muted))]">
+                  <div class="text-xs text-body-muted">
                     {category.description}
                   </div>
                 </div>
@@ -590,7 +590,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
                 <div class="text-sm font-medium text-[rgb(var(--color-text))]">
                   {category.postCount}
                 </div>
-                <div class="text-xs text-[rgb(var(--color-text-muted))]">
+                <div class="text-xs text-body-muted">
                   {category.percentage}%
                 </div>
               </div>
@@ -604,7 +604,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
       <h2 class="mb-2 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl">
         Top co-occurring pairs
       </h2>
-      <p class="mb-4 max-w-3xl text-xs text-[rgb(var(--color-text-muted))] md:text-sm">
+      <p class="mb-4 max-w-3xl text-xs text-body-muted md:text-sm">
         Strength = joint count ÷ min(individual tag counts) on the same post.
       </p>
       <div
@@ -614,13 +614,13 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
           tagRelationships.slice(0, 10).map((relationship, index) => (
             <div class="flex flex-wrap items-baseline justify-between gap-3 py-2.5">
               <div class="min-w-0">
-                <span class="mr-2 font-mono text-xs text-[rgb(var(--color-text-muted))]">
+                <span class="mr-2 font-mono text-xs text-body-muted">
                   {index + 1}.
                 </span>
                 <span class="text-sm font-medium text-[rgb(var(--color-text))]">
                   {relationship.tag1} ↔ {relationship.tag2}
                 </span>
-                <span class="mt-0.5 block text-xs text-[rgb(var(--color-text-muted))] sm:mt-0 sm:inline sm:before:content-['_·_']">
+                <span class="mt-0.5 block text-xs text-body-muted sm:mt-0 sm:inline sm:before:content-['_·_']">
                   strength ~{Math.round(relationship.strength * 100)}%
                 </span>
               </div>
@@ -650,7 +650,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
               <span class="text-blue-500">🏷️</span>
               Topic Analysis
             </h4>
-            <div class="space-y-3 text-[rgb(var(--color-text-muted))]">
+            <div class="space-y-3 text-body-muted">
               <p>
                 <strong class="text-[rgb(var(--color-text))]">Topic Frequency:</strong> Posts per tag
                 / Total posts
@@ -678,7 +678,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
               <span class="text-green-500">📈</span>
               Topic Trends
             </h4>
-            <div class="space-y-3 text-[rgb(var(--color-text-muted))]">
+            <div class="space-y-3 text-body-muted">
               <p>
                 <strong class="text-[rgb(var(--color-text))]">Growth Areas:</strong> Topics with increasing
                 post frequency
@@ -707,7 +707,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
               <span class="text-purple-500">🔗</span>
               Topic Relationships
             </h4>
-            <div class="space-y-3 text-[rgb(var(--color-text-muted))]">
+            <div class="space-y-3 text-body-muted">
               <p>
                 <strong class="text-[rgb(var(--color-text))]">Co-occurrence Strength:</strong> Shared
                 posts / Total posts with either tag
@@ -735,7 +735,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
               <span class="text-orange-500">🎯</span>
               Life Areas Focus
             </h4>
-            <div class="space-y-3 text-[rgb(var(--color-text-muted))]">
+            <div class="space-y-3 text-body-muted">
               <p>
                 <strong class="text-[rgb(var(--color-text))]">Maslow Distribution:</strong>
                 <code class="font-mono text-xs md:text-sm"

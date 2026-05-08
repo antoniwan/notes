@@ -2,7 +2,7 @@
 import { defineConfig, fontProviders } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 import vercel from '@astrojs/vercel';
 import { SITE_URL } from './src/consts';
 import { remarkReadingTime } from './remark-reading-time.mjs';
@@ -49,13 +49,7 @@ export default defineConfig({
       subsets: ['latin'],
     },
   ],
-  integrations: [
-    mdx(),
-    sitemap(),
-    tailwind({
-      applyBaseStyles: true,
-    }),
-  ],
+  integrations: [mdx(), sitemap()],
   adapter: vercel(),
   markdown: {
     syntaxHighlight: 'shiki',
@@ -92,6 +86,7 @@ export default defineConfig({
   },
   // Vite optimizations for better performance
   vite: {
+    plugins: [tailwindcss()],
     server: {
       watch: {
         // Polling can break HMR on macOS; use native events for hot-reload

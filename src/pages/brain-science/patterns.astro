@@ -543,23 +543,23 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
         <div class="text-2xl font-semibold tabular-nums md:text-3xl">
           {patterns.dayOfWeekPatterns.length}
         </div>
-        <div class="text-xs text-[rgb(var(--color-text-muted))]">Weekday bins</div>
+        <div class="text-xs text-body-muted">Weekday bins</div>
       </div>
       <div>
         <div class="text-2xl font-semibold tabular-nums md:text-3xl">
           {patterns.seasonalPatterns.length}
         </div>
-        <div class="text-xs text-[rgb(var(--color-text-muted))]">Month bins</div>
+        <div class="text-xs text-body-muted">Month bins</div>
       </div>
       <div>
         <div class="text-2xl font-semibold tabular-nums md:text-3xl">{cycleAnalysis.length}</div>
-        <div class="text-xs text-[rgb(var(--color-text-muted))]">Synthetic cycle buckets</div>
+        <div class="text-xs text-body-muted">Synthetic cycle buckets</div>
       </div>
       <div>
         <div class="text-2xl font-semibold tabular-nums md:text-3xl">
           {correlations.tagCombinations.length}
         </div>
-        <div class="text-xs text-[rgb(var(--color-text-muted))]">Tag pair correlations</div>
+        <div class="text-xs text-body-muted">Tag pair correlations</div>
       </div>
     </div>
 
@@ -568,7 +568,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
       aria-label="On this page"
     >
       <div
-        class="mb-2 text-[0.65rem] font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]"
+        class="mb-2 text-[0.65rem] font-semibold uppercase tracking-wider text-body-muted"
       >
         Jump to
       </div>
@@ -618,7 +618,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
           <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
             Word length vs lexical intensity
           </h2>
-          <p class="mb-6 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
+          <p class="mb-6 max-w-3xl text-sm text-body-muted">
             Correlation analysis between post length and emotional intensity. Correlation
             coefficient: {Math.round(wordEmotionalCorr * 100) / 100}. Formula: r = Σ((x - x̄)(y - ȳ))
             / √(Σ(x - x̄)² × Σ(y - ȳ)²)
@@ -642,7 +642,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
           <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
             📊 Complexity vs Day of Week
           </h2>
-          <p class="mb-6 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
+          <p class="mb-6 max-w-3xl text-sm text-body-muted">
             Flesch reading ease score distribution by day of week. Higher scores indicate easier
             reading.
           </p>
@@ -664,7 +664,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
           <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
             Weekday aggregates
           </h2>
-          <p class="mb-6 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
+          <p class="mb-6 max-w-3xl text-sm text-body-muted">
             Productivity and word count by day of week. Productivity = avg_word_count × post_count.
             Formula: productivity(day) = Σ(word_count for posts on day) × count(posts on day)
           </p>
@@ -686,7 +686,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
           <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
             Monthly aggregates
           </h2>
-          <p class="mb-6 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
+          <p class="mb-6 max-w-3xl text-sm text-body-muted">
             Creativity and complexity by month. Creativity = avg_word_count × avg_complexity.
             Formula: creativity(month) = mean(word_count for posts in month) × mean(complexity for
             posts in month)
@@ -709,7 +709,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
           <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
             Post-index modulo “phases” (toy)
           </h2>
-          <p class="mb-6 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
+          <p class="mb-6 max-w-3xl text-sm text-body-muted">
             Labels come from <code class="font-mono text-xs">postIndex % 4</code>—good for demos,
             weak causal story.
           </p>
@@ -728,7 +728,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
       <h2 class="mb-2 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl">
         Argmax snapshots (engineering composites)
       </h2>
-      <p class="mb-6 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
+      <p class="mb-6 max-w-3xl text-sm text-body-muted">
         “Productivity” = mean words × post count for that weekday; “creativity” = mean words × mean
         Flesch for that calendar month—these mixes are deliberate heuristics, not latent traits.
       </p>
@@ -738,14 +738,14 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
         >
           <tbody>
             <tr class="border-b border-[rgb(var(--color-border))]/35">
-              <td class="py-2 pr-6 text-[rgb(var(--color-text-muted))]">Peak weekday composite</td>
+              <td class="py-2 pr-6 text-body-muted">Peak weekday composite</td>
               <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]">
                 {
                   patterns.dayOfWeekPatterns.sort((a, b) => b.productivity - a.productivity)[0]
                     ?.productivity || 0
                 }
               </td>
-              <td class="py-2 pl-4 text-[rgb(var(--color-text-muted))]">
+              <td class="py-2 pl-4 text-body-muted">
                 {
                   patterns.dayOfWeekPatterns.sort((a, b) => b.productivity - a.productivity)[0]
                     ?.name || '—'
@@ -753,14 +753,14 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
               </td>
             </tr>
             <tr class="border-b border-[rgb(var(--color-border))]/35">
-              <td class="py-2 pr-6 text-[rgb(var(--color-text-muted))]">Peak month composite</td>
+              <td class="py-2 pr-6 text-body-muted">Peak month composite</td>
               <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]">
                 {
                   patterns.seasonalPatterns.sort((a, b) => b.creativity - a.creativity)[0]
                     ?.creativity || 0
                 }
               </td>
-              <td class="py-2 pl-4 text-[rgb(var(--color-text-muted))]">
+              <td class="py-2 pl-4 text-body-muted">
                 {
                   patterns.seasonalPatterns.sort((a, b) => b.creativity - a.creativity)[0]?.name ||
                     '—'
@@ -768,14 +768,14 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
               </td>
             </tr>
             <tr>
-              <td class="py-2 pr-6 text-[rgb(var(--color-text-muted))]">Peak cycle avg words</td>
+              <td class="py-2 pr-6 text-body-muted">Peak cycle avg words</td>
               <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]">
                 {
                   cycleAnalysis.sort((a, b) => b.avgWordCount - a.avgWordCount)[0]?.avgWordCount ||
                     0
                 }
               </td>
-              <td class="py-2 pl-4 text-[rgb(var(--color-text-muted))]">
+              <td class="py-2 pl-4 text-body-muted">
                 {cycleAnalysis.sort((a, b) => b.avgWordCount - a.avgWordCount)[0]?.phase || '—'}
               </td>
             </tr>
@@ -789,7 +789,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
       <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-lg">
         📊 Statistical Pattern Analysis
       </h3>
-      <p class="mb-4 text-xs text-[rgb(var(--color-text-muted))]">
+      <p class="mb-4 text-xs text-body-muted">
         Identified patterns based on quantitative analysis. Confidence levels determined by
         statistical significance of observed patterns.
       </p>
@@ -826,7 +826,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
               <div class="mb-2 text-sm font-medium text-[rgb(var(--color-text))]">
                 {insight.pattern}: {insight.insight}
               </div>
-              <div class="text-xs text-[rgb(var(--color-text-muted))]">{insight.evidence}</div>
+              <div class="text-xs text-body-muted">{insight.evidence}</div>
             </div>
           ))
         }
@@ -838,7 +838,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
       <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-lg">
         📊 Day of Week Metrics
       </h3>
-      <p class="mb-4 text-xs text-[rgb(var(--color-text-muted))]">
+      <p class="mb-4 text-xs text-body-muted">
         Quantitative metrics by day of week. Productivity = avg_word_count × post_count. Grades
         calculated as percentile of value relative to maximum.
       </p>
@@ -849,7 +849,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
               <div class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]">{day.name}</div>
               <div class="space-y-3">
                 <div class="flex justify-between">
-                  <span class="text-sm text-[rgb(var(--color-text-muted))]">Posts:</span>
+                  <span class="text-sm text-body-muted">Posts:</span>
                   <span
                     class="text-sm font-medium text-[rgb(var(--color-text))]"
                     title={`${day.postCount} posts published on ${day.name}`}
@@ -858,7 +858,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                   </span>
                 </div>
                 <div class="flex justify-between">
-                  <span class="text-sm text-[rgb(var(--color-text-muted))]">Avg Words:</span>
+                  <span class="text-sm text-body-muted">Avg Words:</span>
                   <div class="flex items-center gap-2">
                     <span
                       class="text-sm font-medium text-[rgb(var(--color-text))]"
@@ -867,7 +867,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                       {day.avgWordCount}
                     </span>
                     <span
-                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(day.wordCountGrade!)}`}
+                      class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(day.wordCountGrade!)}`}
                       title={`Grade: ${day.wordCountGrade} (${day.avgWordCount} words)`}
                     >
                       {day.wordCountGrade}
@@ -875,7 +875,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                   </div>
                 </div>
                 <div class="flex justify-between">
-                  <span class="text-sm text-[rgb(var(--color-text-muted))]">
+                  <span class="text-sm text-body-muted">
                     Emotional Intensity:
                   </span>
                   <div class="flex items-center gap-2">
@@ -886,7 +886,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                       {day.avgEmotionalIntensity}
                     </span>
                     <span
-                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(day.emotionalGrade!)}`}
+                      class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(day.emotionalGrade!)}`}
                       title={`Grade: ${day.emotionalGrade} (${day.avgEmotionalIntensity} intensity)`}
                     >
                       {day.emotionalGrade}
@@ -894,7 +894,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                   </div>
                 </div>
                 <div class="flex justify-between">
-                  <span class="text-sm text-[rgb(var(--color-text-muted))]">Productivity:</span>
+                  <span class="text-sm text-body-muted">Productivity:</span>
                   <div class="flex items-center gap-2">
                     <span
                       class={`text-sm font-medium ${getGradeColor(day.productivityGrade!)}`}
@@ -903,7 +903,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                       {day.productivity}
                     </span>
                     <span
-                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(day.productivityGrade!)}`}
+                      class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(day.productivityGrade!)}`}
                       title={`Grade: ${day.productivityGrade} (${day.productivity} productivity)`}
                     >
                       {day.productivityGrade}
@@ -922,7 +922,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
       <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-lg">
         📊 Seasonal Metrics
       </h3>
-      <p class="mb-4 text-xs text-[rgb(var(--color-text-muted))]">
+      <p class="mb-4 text-xs text-body-muted">
         Quantitative metrics by month of year. Creativity = avg_word_count × avg_complexity. Grades
         calculated as percentile of value relative to maximum.
       </p>
@@ -935,7 +935,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
               </div>
               <div class="space-y-3">
                 <div class="flex justify-between">
-                  <span class="text-sm text-[rgb(var(--color-text-muted))]">Posts:</span>
+                  <span class="text-sm text-body-muted">Posts:</span>
                   <span
                     class="text-sm font-medium text-[rgb(var(--color-text))]"
                     title={`${month.postCount} posts published in ${month.name}`}
@@ -944,7 +944,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                   </span>
                 </div>
                 <div class="flex justify-between">
-                  <span class="text-sm text-[rgb(var(--color-text-muted))]">Avg Words:</span>
+                  <span class="text-sm text-body-muted">Avg Words:</span>
                   <div class="flex items-center gap-2">
                     <span
                       class="text-sm font-medium text-[rgb(var(--color-text))]"
@@ -953,7 +953,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                       {month.avgWordCount}
                     </span>
                     <span
-                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(month.wordCountGrade!)}`}
+                      class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(month.wordCountGrade!)}`}
                       title={`Grade: ${month.wordCountGrade} (${month.avgWordCount} words)`}
                     >
                       {month.wordCountGrade}
@@ -961,7 +961,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                   </div>
                 </div>
                 <div class="flex justify-between">
-                  <span class="text-sm text-[rgb(var(--color-text-muted))]">Complexity:</span>
+                  <span class="text-sm text-body-muted">Complexity:</span>
                   <div class="flex items-center gap-2">
                     <span
                       class="text-sm font-medium text-[rgb(var(--color-text))]"
@@ -970,7 +970,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                       {month.avgComplexity}
                     </span>
                     <span
-                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(month.complexityGrade!)}`}
+                      class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(month.complexityGrade!)}`}
                       title={`Grade: ${month.complexityGrade} (${month.avgComplexity} complexity)`}
                     >
                       {month.complexityGrade}
@@ -978,7 +978,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                   </div>
                 </div>
                 <div class="flex justify-between">
-                  <span class="text-sm text-[rgb(var(--color-text-muted))]">Creativity:</span>
+                  <span class="text-sm text-body-muted">Creativity:</span>
                   <div class="flex items-center gap-2">
                     <span
                       class={`text-sm font-medium ${getGradeColor(month.creativityGrade!)}`}
@@ -987,7 +987,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                       {month.creativity}
                     </span>
                     <span
-                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(month.creativityGrade!)}`}
+                      class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(month.creativityGrade!)}`}
                       title={`Grade: ${month.creativityGrade} (${month.creativity} creativity)`}
                     >
                       {month.creativityGrade}
@@ -1006,7 +1006,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
       <h3 class="mb-6 text-lg font-semibold text-[rgb(var(--color-text))]">
         📊 Creative Cycle Phase Metrics
       </h3>
-      <p class="mb-4 text-xs text-[rgb(var(--color-text-muted))]">
+      <p class="mb-4 text-xs text-body-muted">
         Metrics by creative cycle phase. Phases assigned sequentially: cycle_phase = post_index % 4.
         Grades calculated as percentile relative to maximum.
       </p>
@@ -1019,7 +1019,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
               </div>
               <div class="space-y-3">
                 <div class="flex justify-between">
-                  <span class="text-sm text-[rgb(var(--color-text-muted))]">Posts:</span>
+                  <span class="text-sm text-body-muted">Posts:</span>
                   <span
                     class="text-sm font-medium text-[rgb(var(--color-text))]"
                     title={`${cycle.postCount} posts in ${cycle.phase} phase`}
@@ -1028,7 +1028,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                   </span>
                 </div>
                 <div class="flex justify-between">
-                  <span class="text-sm text-[rgb(var(--color-text-muted))]">Avg Words:</span>
+                  <span class="text-sm text-body-muted">Avg Words:</span>
                   <div class="flex items-center gap-2">
                     <span
                       class="text-sm font-medium text-[rgb(var(--color-text))]"
@@ -1037,7 +1037,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                       {cycle.avgWordCount}
                     </span>
                     <span
-                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(cycle.wordCountGrade!)}`}
+                      class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(cycle.wordCountGrade!)}`}
                       title={`Grade: ${cycle.wordCountGrade} (${cycle.avgWordCount} words)`}
                     >
                       {cycle.wordCountGrade}
@@ -1045,7 +1045,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                   </div>
                 </div>
                 <div class="flex justify-between">
-                  <span class="text-sm text-[rgb(var(--color-text-muted))]">
+                  <span class="text-sm text-body-muted">
                     Emotional Intensity:
                   </span>
                   <div class="flex items-center gap-2">
@@ -1056,7 +1056,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                       {cycle.avgEmotionalIntensity}
                     </span>
                     <span
-                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(cycle.emotionalGrade!)}`}
+                      class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(cycle.emotionalGrade!)}`}
                       title={`Grade: ${cycle.emotionalGrade} (${cycle.avgEmotionalIntensity} intensity)`}
                     >
                       {cycle.emotionalGrade}
@@ -1064,7 +1064,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                   </div>
                 </div>
                 <div class="flex justify-between">
-                  <span class="text-sm text-[rgb(var(--color-text-muted))]">Complexity:</span>
+                  <span class="text-sm text-body-muted">Complexity:</span>
                   <div class="flex items-center gap-2">
                     <span
                       class="text-sm font-medium text-[rgb(var(--color-text))]"
@@ -1073,7 +1073,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                       {cycle.avgComplexity}
                     </span>
                     <span
-                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(cycle.complexityGrade!)}`}
+                      class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(cycle.complexityGrade!)}`}
                       title={`Grade: ${cycle.complexityGrade} (${cycle.avgComplexity} complexity)`}
                     >
                       {cycle.complexityGrade}
@@ -1092,7 +1092,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
       <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-lg">
         🔗 Tag Co-occurrence Analysis
       </h3>
-      <p class="mb-4 text-xs text-[rgb(var(--color-text-muted))]">
+      <p class="mb-4 text-xs text-body-muted">
         Tag pairs that appear together frequently. Average word count calculated for posts
         containing both tags. Formula: avg_word_count(combo) = Σ(word_count for posts with combo) /
         count(posts with combo)
@@ -1119,7 +1119,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                   </div>
                   <div>
                     <div class="text-sm font-medium text-[rgb(var(--color-text))]">{combo}</div>
-                    <div class="text-xs text-[rgb(var(--color-text-muted))]">
+                    <div class="text-xs text-body-muted">
                       {data.count} posts with this combination
                     </div>
                   </div>
@@ -1133,13 +1133,13 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                       {data.avgWordCount}
                     </span>
                     <span
-                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(wordCountGrade!)}`}
+                      class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(wordCountGrade!)}`}
                       title={`Grade: ${wordCountGrade} (${data.avgWordCount} avg words)`}
                     >
                       {wordCountGrade}
                     </span>
                   </div>
-                  <div class="text-xs text-[rgb(var(--color-text-muted))]">avg words</div>
+                  <div class="text-xs text-body-muted">avg words</div>
                 </div>
               </div>
             );
@@ -1153,7 +1153,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
       <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-lg">
         📊 Posts with Highest Word Count
       </h3>
-      <p class="mb-4 text-xs text-[rgb(var(--color-text-muted))]">
+      <p class="mb-4 text-xs text-body-muted">
         Posts ranked by word count. Pattern classification: Long-form (>1000 words) vs Short-form,
         Emotional (intensity >5) vs Analytical, Complex (Flesch >50) vs Simple.
       </p>
@@ -1181,7 +1181,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                     <div class="text-sm font-medium text-[rgb(var(--color-text))]">
                       {post.title}
                     </div>
-                    <div class="text-xs text-[rgb(var(--color-text-muted))]">
+                    <div class="text-xs text-body-muted">
                       {format(post.date, 'MMM d, yyyy')} • {post.pattern}
                     </div>
                   </div>
@@ -1195,13 +1195,13 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                       {post.wordCount}
                     </span>
                     <span
-                      class={`rounded px-1 py-0.5 text-xs font-bold ${getGradeColor(wordCountGrade!)}`}
+                      class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(wordCountGrade!)}`}
                       title={`Grade: ${wordCountGrade} (${post.wordCount} words)`}
                     >
                       {wordCountGrade}
                     </span>
                   </div>
-                  <div class="text-xs text-[rgb(var(--color-text-muted))]">words</div>
+                  <div class="text-xs text-body-muted">words</div>
                 </div>
               </div>
             );

@@ -61,7 +61,7 @@ const tagPosts = posts
         <div class="mt-4 md:mt-6">
           <a
             href="/tag/"
-            class="theme-transition inline-flex items-center gap-2 rounded-full border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg-alt))] px-4 py-2 text-sm font-medium text-[rgb(var(--color-text))] hover:border-[rgb(var(--color-primary))]/40 hover:bg-[rgb(var(--color-primary))]/10 hover:text-[rgb(var(--color-primary))] focus:outline-none focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:ring-offset-1"
+            class="theme-transition inline-flex items-center gap-2 rounded-full border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg-alt))] px-4 py-2 text-sm font-medium text-[rgb(var(--color-text))] hover:border-[rgb(var(--color-primary))]/40 hover:bg-[rgb(var(--color-primary))]/10 hover:text-[rgb(var(--color-primary))] focus:outline-hidden focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:ring-offset-1"
           >
             <span aria-hidden="true">🏷️</span>
             See all tags
@@ -83,7 +83,7 @@ const tagPosts = posts
           {
             relatedTags.length > 0 && (
               <div class="flex items-center gap-2 rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] px-4 py-2">
-                <span class="text-[rgb(var(--color-text-muted))]" aria-hidden="true">
+                <span class="text-body-muted" aria-hidden="true">
                   🔗
                 </span>
                 <span class="text-base font-medium leading-relaxed text-[rgb(var(--color-text))]">
@@ -103,7 +103,7 @@ const tagPosts = posts
               <h2 class="text-heading text-[rgb(var(--color-text))]">
                 Writings tagged with #{canonicalTag}
               </h2>
-              <div class="text-base leading-relaxed text-[rgb(var(--color-text-muted))]">
+              <div class="text-base leading-relaxed text-body-muted">
                 Sorted by date
               </div>
             </div>
@@ -128,7 +128,7 @@ const tagPosts = posts
                 >
                   <span aria-hidden="true">🏷️</span>
                   <span>#{relatedTag}</span>
-                  <span class="text-xs text-[rgb(var(--color-text-muted))]">({count})</span>
+                  <span class="text-xs text-body-muted">({count})</span>
                 </a>
               ))}
             </div>
@@ -145,7 +145,7 @@ const tagPosts = posts
                 🏷️
               </div>
               <h3 class="text-subheading mb-2 text-[rgb(var(--color-text))]">No writings found</h3>
-              <p class="text-body-large mb-6 leading-relaxed text-[rgb(var(--color-text-muted))]">
+              <p class="text-body-large mb-6 leading-relaxed text-body-muted">
                 No writings have been tagged with "#{canonicalTag}" yet.
               </p>
               <a
