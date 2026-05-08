@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BrainScienceLayout from '../../components/brain-science/BrainScienceLayout.astro';
+import BrainScienceNarrativeSummary from '../../components/brain-science/BrainScienceNarrativeSummary.astro';
 import BarChart from '../../components/brain-science/BarChart.astro';
 import ScatterChart from '../../components/brain-science/ScatterChart.astro';
 import { getBrainSciencePosts } from '../../utils/brainScience/data';
@@ -526,21 +527,68 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
 
 <BaseLayout
   title="Pattern Recognition - Brain Science"
-  description="Analyzing correlations, creative cycles, and pattern recognition from my writing data."
+  description="Post-level correlations and binned aggregates—interesting noise until validated out-of-sample."
   path="/brain-science/patterns"
   structuredDataType="website"
 >
   <BrainScienceLayout
     currentPage="/brain-science/patterns"
     title={pageInfo?.title || 'Pattern Recognition'}
-    description="Quantitative analysis of correlations, temporal patterns, and statistical relationships in writing data. Objective pattern recognition using mathematical methods."
+    description="Plots combine different engineered features (Flesch, word count, lexical intensity). Bars often put unlike units beside each other for contrast—read labels, infer carefully."
   >
+    <div
+      class="mb-8 flex flex-wrap gap-x-10 gap-y-5 border-b border-[rgb(var(--color-border))]/50 pb-6 md:mb-10 md:gap-x-12 md:pb-8"
+    >
+      <div>
+        <div class="text-2xl font-semibold tabular-nums md:text-3xl">{patterns.dayOfWeekPatterns.length}</div>
+        <div class="text-xs text-[rgb(var(--color-text-muted))]">Weekday bins</div>
+      </div>
+      <div>
+        <div class="text-2xl font-semibold tabular-nums md:text-3xl">{patterns.seasonalPatterns.length}</div>
+        <div class="text-xs text-[rgb(var(--color-text-muted))]">Month bins</div>
+      </div>
+      <div>
+        <div class="text-2xl font-semibold tabular-nums md:text-3xl">{cycleAnalysis.length}</div>
+        <div class="text-xs text-[rgb(var(--color-text-muted))]">Synthetic cycle buckets</div>
+      </div>
+      <div>
+        <div class="text-2xl font-semibold tabular-nums md:text-3xl">{correlations.tagCombinations.length}</div>
+        <div class="text-xs text-[rgb(var(--color-text-muted))]">Tag pair correlations</div>
+      </div>
+    </div>
+
+    <nav
+      class="mb-8 border-b border-dashed border-[rgb(var(--color-border))]/50 pb-4 md:mb-10"
+      aria-label="On this page"
+    >
+      <div class="mb-2 text-[0.65rem] font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
+        Jump to
+      </div>
+      <ul class="m-0 flex list-none flex-wrap gap-x-4 gap-y-2 p-0 text-sm">
+        <li class="m-0 p-0">
+          <a href="#corr-scatter" class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4">Scatter</a>
+        </li>
+        <li class="m-0 p-0">
+          <a href="#dow" class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4">Weekday bars</a>
+        </li>
+        <li class="m-0 p-0">
+          <a href="#season" class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4">Seasonal bars</a>
+        </li>
+        <li class="m-0 p-0">
+          <a href="#cycle" class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4">Cycle toy</a>
+        </li>
+        <li class="m-0 p-0">
+          <a href="#peaks" class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4">Peak stats</a>
+        </li>
+      </ul>
+    </nav>
+
     {/* Correlation Analysis */}
     {
       wordCountEmotionalScatter.datasets[0].data.length > 0 && (
-        <div class="mb-8 md:mb-10 lg:mb-12">
+        <section id="corr-scatter" class="scroll-mt-28 mb-10 md:mb-12">
           <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
-            🔗 Word Count vs Emotional Intensity Correlation
+            Word length vs lexical intensity
           </h2>
           <p class="mb-6 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
             Correlation analysis between post length and emotional intensity. Correlation
@@ -555,7 +603,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
             yAxisLabel="Emotional Intensity"
             showRegressionLine={true}
           />
-        </div>
+        </section>
       )
     }
 
@@ -584,9 +632,9 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
     {/* Day of Week Patterns */}
     {
       dayOfWeekBarChart.labels.length > 0 && (
-        <div class="mb-8 md:mb-10 lg:mb-12">
+        <section id="dow" class="scroll-mt-28 mb-10 md:mb-12">
           <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
-            📊 Day of Week Pattern Analysis
+            Weekday aggregates
           </h2>
           <p class="mb-6 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
             Productivity and word count by day of week. Productivity = avg_word_count × post_count.
@@ -599,16 +647,16 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
             title="Day of Week Patterns"
             yAxisLabel="Score / Count"
           />
-        </div>
+        </section>
       )
     }
 
     {/* Seasonal Patterns */}
     {
       seasonalBarChart.labels.length > 0 && (
-        <div class="mb-8 md:mb-10 lg:mb-12">
+        <section id="season" class="scroll-mt-28 mb-10 md:mb-12">
           <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
-            📊 Seasonal Pattern Analysis
+            Monthly aggregates
           </h2>
           <p class="mb-6 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
             Creativity and complexity by month. Creativity = avg_word_count × avg_complexity.
@@ -622,20 +670,19 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
             title="Seasonal Patterns"
             yAxisLabel="Score"
           />
-        </div>
+        </section>
       )
     }
 
     {/* Creative Cycle Phases */}
     {
       creativeCycleChart.labels.length > 0 && (
-        <div class="mb-8 md:mb-10 lg:mb-12">
+        <section id="cycle" class="scroll-mt-28 mb-10 md:mb-12">
           <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
-            📈 Creative Cycle Phase Analysis
+            Post-index modulo “phases” (toy)
           </h2>
           <p class="mb-6 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
-            Metrics by creative cycle phase. Phases determined by post index modulo 4: Inspiration
-            (0), Creation (1), Reflection (2), Rest (3)
+            Labels come from <code class="font-mono text-xs">postIndex % 4</code>—good for demos, weak causal story.
           </p>
           <BarChart
             id="creative-cycle-phases"
@@ -644,126 +691,58 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
             title="Creative Cycle Phases"
             yAxisLabel="Score / Count"
           />
-        </div>
+        </section>
       )
     }
 
-    {/* Key Patterns with Balanced Indicators */}
-    <div
-      class="mb-8 grid grid-cols-2 gap-4 md:mb-10 md:grid-cols-2 md:gap-6 lg:mb-12 lg:grid-cols-4"
-    >
-      <div
-        class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-secondary))] p-4 md:p-6"
-      >
-        <div
-          class="mb-1 text-xl font-bold text-[rgb(var(--color-text))] md:mb-2 md:text-2xl"
-          title="Number of day-of-week patterns analyzed (7 days)"
-        >
-          {patterns.dayOfWeekPatterns.length}
-        </div>
-        <div class="text-xs text-[rgb(var(--color-text-muted))] md:text-sm">Day Patterns</div>
-        <div class="mt-1 text-xs text-blue-500">📅 Weekly Rhythms</div>
+    <section id="peaks" class="scroll-mt-28 mb-12">
+      <h2 class="mb-2 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl">
+        Argmax snapshots (engineering composites)
+      </h2>
+      <p class="mb-6 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
+        “Productivity” = mean words × post count for that weekday; “creativity” = mean words × mean Flesch for that calendar month—these mixes are deliberate heuristics, not latent traits.
+      </p>
+      <div class="overflow-x-auto">
+        <table class="w-full max-w-2xl border-collapse border-t border-b border-[rgb(var(--color-border))] text-sm tabular-nums">
+          <tbody>
+            <tr class="border-b border-[rgb(var(--color-border))]/35">
+              <td class="py-2 pr-6 text-[rgb(var(--color-text-muted))]">Peak weekday composite</td>
+              <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]">
+                {
+                  patterns.dayOfWeekPatterns.sort((a, b) => b.productivity - a.productivity)[0]
+                    ?.productivity || 0
+                }
+              </td>
+              <td class="py-2 pl-4 text-[rgb(var(--color-text-muted))]">
+                {patterns.dayOfWeekPatterns.sort((a, b) => b.productivity - a.productivity)[0]?.name ||
+                  '—'}
+              </td>
+            </tr>
+            <tr class="border-b border-[rgb(var(--color-border))]/35">
+              <td class="py-2 pr-6 text-[rgb(var(--color-text-muted))]">Peak month composite</td>
+              <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]">
+                {
+                  patterns.seasonalPatterns.sort((a, b) => b.creativity - a.creativity)[0]
+                    ?.creativity || 0
+                }
+              </td>
+              <td class="py-2 pl-4 text-[rgb(var(--color-text-muted))]">
+                {patterns.seasonalPatterns.sort((a, b) => b.creativity - a.creativity)[0]?.name || '—'}
+              </td>
+            </tr>
+            <tr>
+              <td class="py-2 pr-6 text-[rgb(var(--color-text-muted))]">Peak cycle avg words</td>
+              <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]">
+                {cycleAnalysis.sort((a, b) => b.avgWordCount - a.avgWordCount)[0]?.avgWordCount || 0}
+              </td>
+              <td class="py-2 pl-4 text-[rgb(var(--color-text-muted))]">
+                {cycleAnalysis.sort((a, b) => b.avgWordCount - a.avgWordCount)[0]?.phase || '—'}
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div
-        class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-secondary))] p-4 md:p-6"
-      >
-        <div
-          class="mb-1 text-xl font-bold text-[rgb(var(--color-text))] md:mb-2 md:text-2xl"
-          title="Number of seasonal patterns analyzed (12 months)"
-        >
-          {patterns.seasonalPatterns.length}
-        </div>
-        <div class="text-xs text-[rgb(var(--color-text-muted))] md:text-sm">Seasonal Patterns</div>
-        <div class="mt-1 text-xs text-green-500">🌱 Annual Cycles</div>
-      </div>
-      <div
-        class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-secondary))] p-4 md:p-6"
-      >
-        <div
-          class="mb-1 text-xl font-bold text-[rgb(var(--color-text))] md:mb-2 md:text-2xl"
-          title="Number of creative cycle phases analyzed (4 phases)"
-        >
-          {cycleAnalysis.length}
-        </div>
-        <div class="text-xs text-[rgb(var(--color-text-muted))] md:text-sm">Creative Cycles</div>
-        <div class="mt-1 text-xs text-purple-500">🌀 Creative Flow</div>
-      </div>
-      <div
-        class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-secondary))] p-4 md:p-6"
-      >
-        <div
-          class="mb-1 text-xl font-bold text-[rgb(var(--color-text))] md:mb-2 md:text-2xl"
-          title="Number of tag combination correlations found"
-        >
-          {correlations.tagCombinations.length}
-        </div>
-        <div class="text-xs text-[rgb(var(--color-text-muted))] md:text-sm">Tag Correlations</div>
-        <div class="mt-1 text-xs text-yellow-500">🔗 Topic Synergy</div>
-      </div>
-    </div>
-
-    {/* Pattern Strength Analysis */}
-    <div
-      class="mb-6 rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-secondary))] p-4 md:mb-8 md:p-6"
-    >
-      <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-lg">
-        📊 Pattern Strength Analysis
-      </h3>
-      <div class="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
-        <div class="rounded-lg bg-blue-50 p-4 text-center dark:bg-blue-900/20">
-          <div
-            class="mb-1 text-2xl font-bold text-blue-500 md:mb-2 md:text-3xl"
-            title="Peak day productivity score (avg words × post count for most productive day)"
-          >
-            {
-              patterns.dayOfWeekPatterns.sort((a, b) => b.productivity - a.productivity)[0]
-                ?.productivity || 0
-            }
-          </div>
-          <div class="text-xs text-[rgb(var(--color-text-muted))] md:text-sm">
-            Peak Day Productivity
-          </div>
-          <div class="mt-1 text-xs text-blue-600 dark:text-blue-400">
-            {
-              patterns.dayOfWeekPatterns.sort((a, b) => b.productivity - a.productivity)[0]?.name ||
-                'Unknown'
-            }
-          </div>
-        </div>
-        <div class="rounded-lg bg-green-50 p-4 text-center dark:bg-green-900/20">
-          <div
-            class="mb-1 text-2xl font-bold text-green-500 md:mb-2 md:text-3xl"
-            title="Peak season creativity score (avg words × complexity for most creative month)"
-          >
-            {
-              patterns.seasonalPatterns.sort((a, b) => b.creativity - a.creativity)[0]
-                ?.creativity || 0
-            }
-          </div>
-          <div class="text-xs text-[rgb(var(--color-text-muted))] md:text-sm">
-            Peak Season Creativity
-          </div>
-          <div class="mt-1 text-xs text-green-600 dark:text-green-400">
-            {
-              patterns.seasonalPatterns.sort((a, b) => b.creativity - a.creativity)[0]?.name ||
-                'Unknown'
-            }
-          </div>
-        </div>
-        <div class="rounded-lg bg-purple-50 p-4 text-center dark:bg-purple-900/20">
-          <div
-            class="mb-1 text-2xl font-bold text-purple-500 md:mb-2 md:text-3xl"
-            title="Average word count in the most productive creative cycle phase"
-          >
-            {cycleAnalysis.sort((a, b) => b.avgWordCount - a.avgWordCount)[0]?.avgWordCount || 0}
-          </div>
-          <div class="text-sm text-[rgb(var(--color-text-muted))]">Peak Cycle Output</div>
-          <div class="mt-1 text-xs text-purple-600 dark:text-purple-400">
-            {cycleAnalysis.sort((a, b) => b.avgWordCount - a.avgWordCount)[0]?.phase || 'Unknown'}
-          </div>
-        </div>
-      </div>
-    </div>
+    </section>
 
     {/* Pattern Analysis */}
     <div class="mb-6 md:mb-8 lg:mb-10">
@@ -1191,39 +1170,6 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
       </div>
     </div>
 
-    {/* Analysis Conclusion */}
-    <div
-      class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-secondary))] p-4 md:p-6"
-    >
-      <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-lg">
-        🌀 Pattern Recognition Summary
-      </h3>
-      <div class="space-y-4">
-        {/* Dynamic Insights */}
-        <div class="space-y-2">
-          {
-            insights.map((insight) => (
-              <div class={`flex items-center gap-2 ${insight.color}`}>
-                <span class="text-sm">
-                  {insight.type === 'positive'
-                    ? '✅'
-                    : insight.type === 'negative'
-                      ? '❌'
-                      : insight.type === 'warning'
-                        ? '⚠️'
-                        : 'ℹ️'}
-                </span>
-                <span class="text-sm" set:html={insight.text} />
-              </div>
-            ))
-          }
-        </div>
-
-        {/* Summary */}
-        <div class="pt-4">
-          <p class="text-sm text-[rgb(var(--color-text-muted))]" set:html={summary} />
-        </div>
-      </div>
-    </div>
+    <BrainScienceNarrativeSummary insights={insights} summary={summary} />
   </BrainScienceLayout>
 </BaseLayout>

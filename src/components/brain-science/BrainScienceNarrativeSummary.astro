@@ -1,0 +1,63 @@
+---
+/**
+ * Canonical “Narrative summary” section for Brain Science analyses.
+ * Keep markup and typography identical across cadence/evolution/topics/insights/patterns.
+ */
+export interface NarrativeInsight {
+  type: 'positive' | 'negative' | 'neutral' | 'warning' | 'objective' | string;
+  color: string;
+  text: string;
+}
+
+interface Props {
+  insights: NarrativeInsight[];
+  summary: string;
+  /** Anchor id for TOC / jump links (default summary). */
+  sectionId?: string;
+}
+
+const { insights, summary, sectionId = 'summary' } = Astro.props;
+
+function insightIcon(type: string) {
+  switch (type) {
+    case 'positive':
+      return '✅';
+    case 'negative':
+      return '❌';
+    case 'warning':
+      return '⚠️';
+    default:
+      return 'ℹ️';
+  }
+}
+---
+
+<section
+  id={sectionId}
+  class="scroll-mt-28 border-t border-[rgb(var(--color-border))] pt-8 md:pt-10"
+  aria-labelledby="brain-science-narrative-summary-heading"
+>
+  <h2
+    id="brain-science-narrative-summary-heading"
+    class="mb-6 text-lg font-semibold tracking-tight text-[rgb(var(--color-text))] md:text-xl"
+  >
+    Narrative summary
+  </h2>
+  <div class="space-y-4">
+    <div class="space-y-2">
+      {
+        insights.map((insight) => (
+          <div class={`flex items-start gap-2 text-sm leading-relaxed ${insight.color}`}>
+            <span class="mt-0.5 shrink-0 select-none" aria-hidden="true">
+              {insightIcon(insight.type)}
+            </span>
+            <span class="min-w-0 flex-1" set:html={insight.text} />
+          </div>
+        ))
+      }
+    </div>
+    <div class="border-t border-[rgb(var(--color-border))]/60 pt-4">
+      <p class="m-0 max-w-3xl text-sm leading-relaxed text-[rgb(var(--color-text-muted))]" set:html={summary} />
+    </div>
+  </div>
+</section>

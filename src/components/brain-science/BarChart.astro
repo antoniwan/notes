@@ -46,7 +46,11 @@ const isDev = import.meta.env.DEV;
       <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:text-lg">{title}</h3>
     )
   }
-  <div class="relative h-64 w-full md:h-80" id={`chart-container-${id}`} style="min-height: 256px;">
+  <div
+    class="relative h-64 w-full rounded-xl border border-[rgb(var(--color-border))]/45 bg-[rgb(var(--color-bg-alt))]/90 p-2 shadow-sm ring-1 ring-[rgb(var(--color-text))]/5 md:h-80 dark:border-[rgb(var(--color-border))]/55 dark:bg-[linear-gradient(165deg,rgb(26_38_62)_0%,rgb(18_29_49)_100%)] dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.07)] dark:ring-white/[0.06] md:p-3"
+    id={`chart-container-${id}`}
+    style="min-height: 256px;"
+  >
     <!-- Loading State -->
     <div
       id={`chart-loading-${id}`}
@@ -98,6 +102,24 @@ const isDev = import.meta.env.DEV;
       // Register components if registerables exists, otherwise Chart.js from CDN already has everything registered
       if (Chart.registerables && Array.isArray(Chart.registerables)) {
         Chart.register(...Chart.registerables);
+      }
+
+      if (!window.__brainScienceChartAreaFillRegistered) {
+        window.__brainScienceChartAreaFillRegistered = true;
+        Chart.register({
+          id: 'brainScienceChartAreaFill',
+          beforeDraw(chart) {
+            const { ctx, chartArea } = chart;
+            if (!chartArea || chartArea.width <= 0 || chartArea.height <= 0) return;
+            ctx.save();
+            const rootDark = document.documentElement.classList.contains('dark');
+            ctx.fillStyle = rootDark
+              ? 'rgba(51, 65, 85, 0.22)'
+              : 'rgba(255, 255, 255, 0.65)';
+            ctx.fillRect(chartArea.left, chartArea.top, chartArea.width, chartArea.height);
+            ctx.restore();
+          },
+        });
       }
 
       const container = document.getElementById(`chart-container-${id}`);
@@ -170,21 +192,21 @@ const isDev = import.meta.env.DEV;
       // Get theme based on light/dark mode
       const isDark = document.documentElement.classList.contains('dark');
       const chartTheme = {
-        text: isDark ? 'rgb(255, 255, 255)' : 'rgb(17, 24, 39)',
-        textMuted: isDark ? 'rgb(200, 210, 220)' : 'rgb(107, 114, 128)',
-        border: isDark ? 'rgba(148, 163, 184, 0.3)' : 'rgb(209, 213, 219)',
-        bgAlt: isDark ? 'rgb(20, 30, 50)' : 'rgb(249, 250, 251)',
+        text: isDark ? 'rgb(248, 250, 252)' : 'rgb(17, 24, 39)',
+        textMuted: isDark ? 'rgb(186, 205, 229)' : 'rgb(107, 114, 128)',
+        border: isDark ? 'rgba(148, 163, 184, 0.5)' : 'rgb(209, 213, 219)',
+        bgAlt: isDark ? 'rgb(30, 41, 59)' : 'rgb(249, 250, 251)',
       };
 
       // Dataset color palette - brighter in dark mode for better visibility
       const datasetColors = isDark
         ? [
-            { border: 'rgba(96, 165, 250, 1)', background: 'rgba(96, 165, 250, 0.6)' }, // Blue
-            { border: 'rgba(248, 113, 113, 1)', background: 'rgba(248, 113, 113, 0.6)' }, // Red
-            { border: 'rgba(74, 222, 128, 1)', background: 'rgba(74, 222, 128, 0.6)' }, // Green
-            { border: 'rgba(251, 191, 36, 1)', background: 'rgba(251, 191, 36, 0.6)' }, // Amber
-            { border: 'rgba(167, 139, 250, 1)', background: 'rgba(167, 139, 250, 0.6)' }, // Purple
-            { border: 'rgba(244, 114, 182, 1)', background: 'rgba(244, 114, 182, 0.6)' }, // Pink
+            { border: 'rgb(147, 197, 253)', background: 'rgba(96, 165, 250, 0.78)' },
+            { border: 'rgb(254, 181, 178)', background: 'rgba(248, 113, 113, 0.78)' },
+            { border: 'rgb(166, 246, 166)', background: 'rgba(74, 222, 128, 0.78)' },
+            { border: 'rgb(253, 235, 154)', background: 'rgba(251, 191, 36, 0.78)' },
+            { border: 'rgb(219, 207, 253)', background: 'rgba(167, 139, 250, 0.78)' },
+            { border: 'rgb(251, 177, 217)', background: 'rgba(244, 114, 182, 0.78)' },
           ]
         : [
             { border: 'rgba(59, 130, 246, 0.8)', background: 'rgba(59, 130, 246, 0.5)' }, // Blue
@@ -195,15 +217,14 @@ const isDev = import.meta.env.DEV;
             { border: 'rgba(236, 72, 153, 0.8)', background: 'rgba(236, 72, 153, 0.5)' }, // Pink
           ];
 
-      // Apply consistent colors to datasets
       const processedDatasets = datasets.map((ds, index) => {
         const colorIndex = index % datasetColors.length;
-        const themeColor = datasetColors[colorIndex];
+        const fallback = datasetColors[colorIndex];
         return {
           ...ds,
-          borderColor: themeColor.border,
-          backgroundColor: themeColor.background,
-          borderWidth: ds.borderWidth ?? 2,
+          borderColor: ds.borderColor || fallback.border,
+          backgroundColor: ds.backgroundColor || fallback.background,
+          borderWidth: ds.borderWidth ?? (isDark ? 2 : 1.5),
         };
       });
 

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BrainScienceLayout from '../../components/brain-science/BrainScienceLayout.astro';
+import BrainScienceNarrativeSummary from '../../components/brain-science/BrainScienceNarrativeSummary.astro';
 import TimeSeriesChart from '../../components/brain-science/TimeSeriesChart.astro';
 import BarChart from '../../components/brain-science/BarChart.astro';
 import ScatterChart from '../../components/brain-science/ScatterChart.astro';
@@ -454,21 +455,76 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
 
 <BaseLayout
   title="Emotional Processing Analytics - Brain Science"
-  description="Quantitative analysis of emotional patterns, vulnerability indicators, and confidence metrics in writing. Data-driven insights into emotional processing."
+  description="Counts from fixed dictionaries on post bodies—not emotion recognition or psychology."
   path="/brain-science/insights"
   structuredDataType="website"
 >
   <BrainScienceLayout
     currentPage="/brain-science/insights"
     title={pageInfo?.title || 'Emotional Processing Analytics'}
-    description="Objective analysis of emotional patterns, vulnerability indicators, and confidence metrics in writing. Balanced data-driven insights into emotional processing and psychological patterns without bias toward positive outcomes."
+    description="Signals = exclamations plus matches to static word lists (emotional / vulnerability / confidence). Exploratory; don’t extrapolate beyond what was counted."
   >
+    <div
+      class="mb-8 flex flex-wrap gap-x-10 gap-y-5 border-b border-[rgb(var(--color-border))]/50 pb-6 md:mb-10 md:gap-x-14 md:pb-8"
+    >
+      <div>
+        <div class="text-2xl font-semibold tabular-nums text-[rgb(var(--color-text))] md:text-3xl">
+          {emotionalPatterns.totalEmotionalPosts}
+        </div>
+        <div class="text-xs text-[rgb(var(--color-text-muted))]">Posts w/ lexical “intensity”</div>
+      </div>
+      <div>
+        <div class="text-2xl font-semibold tabular-nums text-[rgb(var(--color-text))] md:text-3xl">
+          {emotionalPatterns.totalVulnerablePosts}
+        </div>
+        <div class="text-xs text-[rgb(var(--color-text-muted))]">Posts w/ vulnerability stems</div>
+      </div>
+      <div>
+        <div class="text-2xl font-semibold tabular-nums text-[rgb(var(--color-text))] md:text-3xl">
+          {emotionalPatterns.totalConfidentPosts}
+        </div>
+        <div class="text-xs text-[rgb(var(--color-text-muted))]">Posts w/ confidence stems</div>
+      </div>
+      <div>
+        <div class="text-2xl font-semibold tabular-nums text-[rgb(var(--color-text))] md:text-3xl">
+          {growthIndicators.length}
+        </div>
+        <div class="text-xs text-[rgb(var(--color-text-muted))]">Growth-tagged posts</div>
+      </div>
+    </div>
+
+    <nav
+      class="mb-8 border-b border-dashed border-[rgb(var(--color-border))]/50 pb-4 md:mb-10"
+      aria-label="On this page"
+    >
+      <div class="mb-2 text-[0.65rem] font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
+        Jump to
+      </div>
+      <ul class="m-0 flex list-none flex-wrap gap-x-4 gap-y-2 p-0 text-sm">
+        <li class="m-0 p-0">
+          <a href="#emotion-series" class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4">Intensity trend</a>
+        </li>
+        <li class="m-0 p-0">
+          <a href="#vuln-bar" class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4">Scores bar</a>
+        </li>
+        <li class="m-0 p-0">
+          <a href="#scatter-wc" class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4">Scatter</a>
+        </li>
+        <li class="m-0 p-0">
+          <a href="#patterns" class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4">Narrative notes</a>
+        </li>
+        <li class="m-0 p-0">
+          <a href="#metrics" class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4">Means</a>
+        </li>
+      </ul>
+    </nav>
+
     {/* Emotional Intensity Over Time */}
     {
       emotionalIntensityTimeSeries.length > 0 && (
-        <div class="mb-8 md:mb-10 lg:mb-12">
+        <section id="emotion-series" class="scroll-mt-28 mb-10 md:mb-12">
           <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
-            📈 Emotional Intensity Trend
+            Lexical intensity (quarter means)
           </h2>
           <p class="mb-6 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
             Average emotional intensity per quarter. Formula: emotional_intensity =
@@ -488,14 +544,13 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
             title="Average Emotional Intensity Per Quarter"
             yAxisLabel="Intensity Score"
           />
-        </div>
+        </section>
       )
     }
 
-    {/* Vulnerability vs Confidence Comparison */}
-    <div class="mb-8 md:mb-10 lg:mb-12">
+    <section id="vuln-bar" class="scroll-mt-28 mb-10 md:mb-12">
       <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
-        📊 Vulnerability vs Confidence Scores
+        Vulnerability vs confidence (total hits)
       </h2>
       <p class="mb-6 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
         Average vulnerability and confidence scores across all posts. Vulnerability:
@@ -508,19 +563,18 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
         title="Average Vulnerability vs Confidence Scores"
         yAxisLabel="Score"
       />
-    </div>
+    </section>
 
     {/* Word Count vs Emotional Intensity Correlation */}
     {
       wordCountEmotionalScatter.datasets[0].data.length > 0 && (
-        <div class="mb-8 md:mb-10 lg:mb-12">
+        <section id="scatter-wc" class="scroll-mt-28 mb-10 md:mb-12">
           <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
-            🔗 Word Count vs Emotional Intensity Correlation
+            Word length vs lexical intensity (r = {Math.round(wordEmotionalCorrelation * 100) / 100})
           </h2>
           <p class="mb-6 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
-            Correlation analysis between post length and emotional intensity. Correlation
-            coefficient: {Math.round(wordEmotionalCorrelation * 100) / 100}. Formula: r = Σ((x -
-            x̄)(y - ȳ)) / √(Σ(x - x̄)² × Σ(y - ȳ)²)
+            Pearson correlation on posts as independent points. Formula:
+            <code class="font-mono text-xs">Σ((x−x̄)(y−ȳ)) / √(Σ(x−x̄)²·Σ(y−ȳ)²)</code>.
           </p>
           <ScatterChart
             id="word-emotional-scatter"
@@ -530,108 +584,36 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
             yAxisLabel="Emotional Intensity"
             showRegressionLine={true}
           />
-        </div>
+        </section>
       )
     }
 
-    {/* Emotional Processing Overview */}
-    <div
-      class="mb-8 grid grid-cols-2 gap-4 md:mb-10 md:grid-cols-2 md:gap-6 lg:mb-12 lg:grid-cols-4"
-    >
-      <div
-        class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-secondary))] p-4 md:p-6"
-      >
-        <div
-          class="mb-1 text-xl font-bold text-[rgb(var(--color-text))] md:mb-2 md:text-2xl"
-          title="Posts with high emotional intensity (exclamation marks and emotional keywords)"
-        >
-          {emotionalPatterns.totalEmotionalPosts}
-        </div>
-        <div class="text-xs text-[rgb(var(--color-text-muted))] md:text-sm">Emotional Writings</div>
-        <div class="mt-1 text-xs text-purple-500">💜 Heart Processing</div>
-      </div>
-      <div
-        class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-secondary))] p-4 md:p-6"
-      >
-        <div
-          class="mb-1 text-xl font-bold text-[rgb(var(--color-text))] md:mb-2 md:text-2xl"
-          title="Posts with high vulnerability indicators (struggle, challenge, pain, etc.)"
-        >
-          {emotionalPatterns.totalVulnerablePosts}
-        </div>
-        <div class="text-xs text-[rgb(var(--color-text-muted))] md:text-sm">
-          Vulnerable Writings
-        </div>
-        <div class="mt-1 text-xs text-pink-500">🫂 Raw Honesty</div>
-      </div>
-      <div
-        class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-secondary))] p-4 md:p-6"
-      >
-        <div
-          class="mb-1 text-xl font-bold text-[rgb(var(--color-text))] md:mb-2 md:text-2xl"
-          title="Posts with high confidence indicators (know, believe, certain, etc.)"
-        >
-          {emotionalPatterns.totalConfidentPosts}
-        </div>
-        <div class="text-xs text-[rgb(var(--color-text-muted))] md:text-sm">Confident Writings</div>
-        <div class="mt-1 text-xs text-green-500">💪 Inner Strength</div>
-      </div>
-      <div
-        class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-secondary))] p-4 md:p-6"
-      >
-        <div
-          class="mb-1 text-xl font-bold text-[rgb(var(--color-text))] md:mb-2 md:text-2xl"
-          title="Posts focused on personal growth, transformation, or self-improvement"
-        >
-          {growthIndicators.length}
-        </div>
-        <div class="text-xs text-[rgb(var(--color-text-muted))] md:text-sm">Growth Writings</div>
-        <div class="mt-1 text-xs text-blue-500">🌱 Evolution</div>
-      </div>
-    </div>
-
-    {/* Statistical Patterns */}
-    <div class="mb-6 md:mb-8">
-      <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-lg">
-        📊 Statistical Pattern Analysis
-      </h3>
-      <div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
+    <section id="patterns" class="scroll-mt-28 mb-10 md:mb-12">
+      <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl">
+        Narrative notes (same data, plain language)
+      </h2>
+      <div class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40">
         {
           personalDiscoveries.map((discovery, index) => (
-            <div class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-secondary))] p-4">
-              <div class="mb-3 flex items-center gap-3">
-                <div class="text-base font-bold text-[rgb(var(--color-accent))] md:text-lg">
-                  #{index + 1}
-                </div>
+            <article class="py-4 first:pt-3">
+              <div class="mb-1 flex flex-wrap items-baseline gap-x-2">
+                <span class="font-mono text-xs text-[rgb(var(--color-text-muted))]">{index + 1}.</span>
                 <span
-                  class={`rounded px-2 py-1 text-xs ${
-                    discovery.impact === 'High'
-                      ? 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400'
-                      : discovery.impact === 'Medium'
-                        ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400'
-                        : 'bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400'
-                  }`}
+                  class={`text-[0.65rem] font-medium uppercase tracking-wide ${discovery.impact === 'High' ? 'text-green-600 dark:text-green-400' : discovery.impact === 'Medium' ? 'text-amber-600 dark:text-amber-400' : 'text-blue-600 dark:text-blue-400'}`}
                 >
-                  {discovery.impact} Significance
+                  {discovery.impact}
                 </span>
               </div>
-              <div class="mb-2 text-sm font-medium text-[rgb(var(--color-text))]">
-                {discovery.insight}
-              </div>
-              <div class="mb-3 text-xs text-[rgb(var(--color-text-muted))]">
-                {discovery.evidence}
-              </div>
-              <div class="text-xs text-[rgb(var(--color-text-muted))]">
-                Statistical observation: {discovery.evidence}
-              </div>
-            </div>
+              <p class="mb-1 text-sm font-medium text-[rgb(var(--color-text))]">{discovery.insight}</p>
+              <p class="m-0 text-xs text-[rgb(var(--color-text-muted))]">{discovery.evidence}</p>
+            </article>
           ))
         }
       </div>
-    </div>
+    </section>
 
     {/* Emotional Processing Analysis */}
-    <div class="mb-6 md:mb-8">
+    <div id="metrics" class="scroll-mt-28 mb-6 md:mb-8">
       <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-lg">
         📊 Emotional Processing Metrics
       </h3>
@@ -1180,39 +1162,6 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
       }
     </div>
 
-    {/* Analysis Conclusion */}
-    <div
-      class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-secondary))] p-6"
-    >
-      <h3 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]">
-        💡 Personal Insights Summary
-      </h3>
-      <div class="space-y-4">
-        {/* Dynamic Insights */}
-        <div class="space-y-2">
-          {
-            insights.map((insight) => (
-              <div class={`flex items-center gap-2 ${insight.color}`}>
-                <span class="text-sm">
-                  {insight.type === 'positive'
-                    ? '✅'
-                    : insight.type === 'negative'
-                      ? '❌'
-                      : insight.type === 'warning'
-                        ? '⚠️'
-                        : 'ℹ️'}
-                </span>
-                <span class="text-sm" set:html={insight.text} />
-              </div>
-            ))
-          }
-        </div>
-
-        {/* Summary */}
-        <div class="pt-4">
-          <p class="text-sm text-[rgb(var(--color-text-muted))]" set:html={summary} />
-        </div>
-      </div>
-    </div>
+    <BrainScienceNarrativeSummary insights={insights} summary={summary} />
   </BrainScienceLayout>
 </BaseLayout>

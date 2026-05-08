@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BrainScienceLayout from '../../components/brain-science/BrainScienceLayout.astro';
-import MetricCard from '../../components/brain-science/MetricCard.astro';
+import BrainScienceNarrativeSummary from '../../components/brain-science/BrainScienceNarrativeSummary.astro';
 import TimeSeriesChart from '../../components/brain-science/TimeSeriesChart.astro';
 import BarChart from '../../components/brain-science/BarChart.astro';
 import {
@@ -147,139 +147,128 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
 
 <BaseLayout
   title="Writing Cadence - Brain Science"
-  description="Analyzing my publishing patterns, writing streaks, and seasonal rhythms."
+  description="Publish dates, streaks (≤7-day gaps), and calendar slices from your archive. Descriptive only."
   path="/brain-science/cadence"
   structuredDataType="website"
 >
   <BrainScienceLayout
     currentPage="/brain-science/cadence"
     title={pageInfo?.title || 'Writing Cadence'}
-    description="Quantitative analysis of publishing patterns, posting frequency, and temporal distribution. Statistical analysis of writing cadence using objective metrics."
+    description="Streaks use a 7-day bridge between posts; everything else is counting and binning by calendar. No claims about creativity or motivation—just timestamps and simple ratios."
   >
-    {/* Key Metrics with Balanced Indicators */}
     <div
-      class="mb-8 grid grid-cols-2 gap-4 md:mb-10 md:grid-cols-2 md:gap-6 lg:mb-12 lg:grid-cols-4"
+      class="mb-6 flex flex-wrap gap-x-10 gap-y-5 border-b border-[rgb(var(--color-border))]/50 pb-6 md:mb-8 md:gap-x-12 md:pb-8"
     >
-      <MetricCard
-        value={longestStreak}
-        label="Longest Streak"
-        subtitle="Peak Performance"
-        emoji="🏆"
-        color="text-green-500"
-        title="Longest consecutive streak of writings published within 7 days of each other"
-      />
-      <MetricCard
-        value={currentStreak}
-        label="Current Streak"
-        subtitle="Active Momentum"
-        emoji="🔥"
-        color="text-blue-500"
-        title="Current active streak of writings published within 7 days of each other"
-      />
-      <MetricCard
-        value={sortedDrySpells[0]?.days || 0}
-        label="Longest Dry Spell"
-        subtitle="Biggest Challenge"
-        emoji="⚠️"
-        color="text-red-500"
-        title="Longest gap between consecutive writings (days without publishing)"
-      />
-      <MetricCard
-        value={recentPosts.length}
-        label="Writings (30 days)"
-        subtitle={recentPosts.length > avgPostsPerMonth
-          ? 'Above Average'
-          : recentPosts.length < avgPostsPerMonth * 0.5
-            ? 'Below Average'
-            : 'On Track'}
-        emoji={recentPosts.length > avgPostsPerMonth
-          ? '📈'
-          : recentPosts.length < avgPostsPerMonth * 0.5
-            ? '📉'
-            : '➡️'}
-        color={recentPosts.length > avgPostsPerMonth
-          ? 'text-green-500'
-          : recentPosts.length < avgPostsPerMonth * 0.5
-            ? 'text-red-500'
-            : 'text-yellow-500'}
-        title="Number of writings published in the last 30 days"
-      />
+      <div title="Longest run with ≤7 days between adjacent posts">
+        <div class="text-2xl font-semibold tabular-nums text-green-600 dark:text-green-400 md:text-3xl">
+          {longestStreak}
+        </div>
+        <div class="text-xs text-[rgb(var(--color-text-muted))]">Longest streak</div>
+      </div>
+      <div title="Active streak by same rule">
+        <div class="text-2xl font-semibold tabular-nums text-[rgb(var(--color-text))] md:text-3xl">
+          {currentStreak}
+        </div>
+        <div class="text-xs text-[rgb(var(--color-text-muted))]">Current streak</div>
+      </div>
+      <div title="Largest gap between consecutive posts (days)">
+        <div class="text-2xl font-semibold tabular-nums text-red-600 dark:text-red-400 md:text-3xl">
+          {sortedDrySpells[0]?.days ?? 0}
+        </div>
+        <div class="text-xs text-[rgb(var(--color-text-muted))]">Longest gap (days)</div>
+      </div>
+      <div title="Posts in rolling last 30 days vs monthly average heuristic">
+        <div
+          class={`text-2xl font-semibold tabular-nums md:text-3xl ${recentPosts.length > avgPostsPerMonth ? 'text-green-600 dark:text-green-400' : recentPosts.length < avgPostsPerMonth * 0.5 ? 'text-red-600 dark:text-red-400' : 'text-[rgb(var(--color-text))]'}`}
+        >
+          {recentPosts.length}
+        </div>
+        <div class="text-xs text-[rgb(var(--color-text-muted))]">Last 30 days (posts)</div>
+      </div>
     </div>
 
-    {/* Productivity Health Score */}
-    <div
-      class="mb-6 rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-secondary))] p-4 md:mb-8 md:p-6"
+    <nav
+      class="mb-8 border-b border-dashed border-[rgb(var(--color-border))]/50 pb-4 md:mb-10"
+      aria-label="On this page"
     >
-      <h3 class="mb-3 text-base font-semibold text-[rgb(var(--color-text))] md:mb-4 md:text-lg">
-        📊 Productivity Health Score
-      </h3>
-      <div class="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
-        <div class="text-center">
-          <div
-            class="mb-1 text-2xl font-bold text-green-500 md:mb-2 md:text-3xl"
-            title="Consistency score calculated as: (number of writing streaks) / (total streaks + dry spells)"
-          >
-            {Math.round(consistencyScore * 100)}%
-          </div>
-          <div class="text-xs text-[rgb(var(--color-text-muted))] md:text-sm">
-            Consistency Score
-          </div>
-          <div class="mt-1 text-xs text-[rgb(var(--color-text-muted))]">
-            {
-              consistencyScore > 0.7
-                ? 'Excellent'
-                : consistencyScore > 0.4
-                  ? 'Good'
-                  : 'Needs Improvement'
-            }
-          </div>
-        </div>
-        <div class="text-center">
-          <div
-            class="mb-1 text-2xl font-bold text-blue-500 md:mb-2 md:text-3xl"
-            title="Average writings per month calculated as: total writings / (days since first writing / 30)"
-          >
-            {avgPostsPerMonth}
-          </div>
-          <div class="text-xs text-[rgb(var(--color-text-muted))] md:text-sm">
-            Avg Writings/Month
-          </div>
-          <div class="mt-1 text-xs text-[rgb(var(--color-text-muted))]">
-            {
-              avgPostsPerMonth > 4
-                ? 'High Output'
-                : avgPostsPerMonth > 2
-                  ? 'Moderate'
-                  : 'Low Output'
-            }
-          </div>
-        </div>
-        <div class="text-center">
-          <div
-            class={`text-2xl md:text-3xl font-bold mb-1 md:mb-2 ${productivityTrend === 'improving' ? 'text-green-500' : productivityTrend === 'declining' ? 'text-red-500' : 'text-yellow-500'}`}
-          >
-            {
-              productivityTrend === 'improving'
-                ? '↗️'
-                : productivityTrend === 'declining'
-                  ? '↘️'
-                  : '➡️'
-            }
-          </div>
-          <div class="text-xs text-[rgb(var(--color-text-muted))] md:text-sm">Trend</div>
-          <div class="mt-1 text-xs capitalize text-[rgb(var(--color-text-muted))]">
-            {productivityTrend}
-          </div>
-        </div>
+      <div class="mb-2 text-[0.65rem] font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
+        Jump to
       </div>
+      <ul class="m-0 flex list-none flex-wrap gap-x-4 gap-y-2 p-0 text-sm">
+        <li class="m-0 p-0">
+          <a
+            href="#monthly"
+            class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]"
+            >Monthly</a
+          >
+        </li>
+        <li class="m-0 p-0">
+          <a
+            href="#calendar"
+            class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]"
+            >Weekday / season</a
+          >
+        </li>
+        <li class="m-0 p-0">
+          <a
+            href="#streaks"
+            class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]"
+            >Streaks &amp; gaps</a
+          >
+        </li>
+        <li class="m-0 p-0">
+          <a
+            href="#balanced"
+            class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]"
+            >Consistency grades</a
+          >
+        </li>
+        <li class="m-0 p-0">
+          <a
+            href="#summary"
+            class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]"
+            >Narrative summary</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <div class="mb-8 border-b border-[rgb(var(--color-border))]/40 pb-8 md:mb-10">
+      <h2 class="mb-2 text-sm font-semibold uppercase tracking-wide text-[rgb(var(--color-text-muted))]">
+        Cadence ratios (toy)
+      </h2>
+      <p class="mb-4 max-w-3xl text-xs text-[rgb(var(--color-text-muted))] md:text-sm">
+        “Consistency” = streaks ÷ (streaks + dry spells). “Trend” compares last-30-day count to average
+        posts/month—coarse, not forecasting.
+      </p>
+      <table class="w-full max-w-lg border-collapse border-t border-b border-[rgb(var(--color-border))] text-sm tabular-nums">
+        <tbody>
+          <tr class="border-b border-[rgb(var(--color-border))]/35">
+            <td class="py-2 pr-4 text-[rgb(var(--color-text-muted))]">Streak share</td>
+            <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]">
+              {Math.round(consistencyScore * 100)}%
+            </td>
+          </tr>
+          <tr class="border-b border-[rgb(var(--color-border))]/35">
+            <td class="py-2 pr-4 text-[rgb(var(--color-text-muted))]">Avg posts / month</td>
+            <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]">{avgPostsPerMonth}</td>
+          </tr>
+          <tr>
+            <td class="py-2 pr-4 text-[rgb(var(--color-text-muted))]">30d vs avg (heuristic)</td>
+            <td class="py-2 text-right font-medium capitalize text-[rgb(var(--color-text))]">
+              {productivityTrend}
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     {/* Monthly Activity Chart */}
     {
       postingFrequencyTimeSeries.labels.length > 0 && (
-        <div class="mb-8 md:mb-10 lg:mb-12">
+        <section id="monthly" class="scroll-mt-28 mb-10 md:mb-12">
           <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
-            📈 Monthly Publishing Frequency
+            Monthly publishing frequency
           </h2>
           <p class="mb-6 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
             Post count per month over time. Formula: posts_per_month = count(posts where pubDate ∈
@@ -292,15 +281,14 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
             title="Posts Published Per Month"
             yAxisLabel="Number of Posts"
           />
-        </div>
+        </section>
       )
     }
 
-    {/* Day of Week Analysis */}
-    <div class="mb-6 grid grid-cols-1 gap-6 md:mb-8 md:gap-8 lg:mb-10 lg:grid-cols-2">
+    <section id="calendar" class="scroll-mt-28 mb-10 grid grid-cols-1 gap-10 md:mb-12 md:gap-12 lg:grid-cols-2">
       <div>
-        <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-lg">
-          Day of Week Distribution
+        <h3 class="mb-2 text-base font-semibold text-[rgb(var(--color-text))] md:text-lg">
+          Day of week
         </h3>
         <p class="mb-4 text-xs text-[rgb(var(--color-text-muted))]">
           Post frequency by day of week. Formula: frequency(day) = count(posts where
@@ -320,8 +308,8 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
       </div>
 
       <div>
-        <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-lg">
-          Seasonal Distribution
+        <h3 class="mb-2 text-base font-semibold text-[rgb(var(--color-text))] md:text-lg">
+          Month of year
         </h3>
         <p class="mb-4 text-xs text-[rgb(var(--color-text-muted))]">
           Post frequency by month of year. Formula: frequency(month) = count(posts where
@@ -339,211 +327,135 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
           )
         }
       </div>
-    </div>
+    </section>
 
-    {/* Writing Streaks */}
-    <div class="mb-6 md:mb-8 lg:mb-10">
-      <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-lg">
-        📊 Writing Streaks Analysis
-      </h3>
-      <p class="mb-4 text-xs text-[rgb(var(--color-text-muted))]">
-        Consecutive posts published within 7 days of each other. Streak length = count(consecutive
-        posts where days_between ≤ 7)
+    <section id="streaks" class="scroll-mt-28 mb-10 md:mb-12" aria-labelledby="streaks-heading">
+      <h2 id="streaks-heading" class="mb-2 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl">
+        Streaks &amp; gaps
+      </h2>
+      <p class="mb-6 max-w-3xl text-xs text-[rgb(var(--color-text-muted))] md:text-sm">
+        Streak = posts chained with ≤7 days between neighbors. Gaps are the complements between publications.
       </p>
-      <div class="space-y-4">
+
+      <h3 class="mb-3 text-sm font-semibold uppercase tracking-wide text-[rgb(var(--color-text-muted))]">
+        Top streaks
+      </h3>
+      <div class="mb-10 divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40">
         {
           sortedStreaks.slice(0, 10).map((streak, index) => (
-            <div class="flex items-center justify-between rounded-lg bg-[rgb(var(--color-bg))] p-4">
-              <div class="flex items-center gap-4">
-                <div
-                  class={`text-lg font-bold ${
-                    index === 0
-                      ? 'text-yellow-500'
-                      : index === 1
-                        ? 'text-gray-400'
-                        : index === 2
-                          ? 'text-amber-600'
-                          : 'text-[rgb(var(--color-accent))]'
-                  }`}
-                >
-                  {index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : `#${index + 1}`}
-                </div>
-                <div>
-                  <div class="text-sm font-medium text-[rgb(var(--color-text))]">
-                    {streak.length} posts in {streak.days} days
-                  </div>
-                  <div class="text-xs text-[rgb(var(--color-text-muted))]">
-                    {format(streak.startDate, 'MMM d, yyyy')} -{' '}
-                    {format(streak.endDate, 'MMM d, yyyy')}
-                  </div>
-                </div>
-              </div>
-              <div class="text-right">
-                <div
-                  class="text-sm font-medium text-[rgb(var(--color-text))]"
-                  title="Average posts per day during this streak"
-                >
-                  {Math.round((streak.length / streak.days) * 100) / 100} posts/day
-                </div>
-                <div class="text-xs text-[rgb(var(--color-text-muted))]">
-                  {streak.length > 5 ? '🔥 Intense' : streak.length > 3 ? '⚡ Strong' : '📝 Steady'}
-                </div>
-              </div>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-
-    {/* Dry Spells */}
-    <div class="mb-6 md:mb-8 lg:mb-10">
-      <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-lg">
-        📊 Publishing Gaps Analysis
-      </h3>
-      <p class="mb-4 text-xs text-[rgb(var(--color-text-muted))]">
-        Periods with no posts published. Gap duration = days_between(posts) where days_between > 7
-      </p>
-      <div class="space-y-4">
-        {
-          sortedDrySpells.slice(0, 5).map((spell, index) => (
-            <div class="flex items-center justify-between rounded-lg bg-[rgb(var(--color-bg))] p-4">
-              <div class="flex items-center gap-4">
-                <div class="text-lg font-bold text-red-500">#{index + 1}</div>
-                <div>
-                  <div class="text-sm font-medium text-[rgb(var(--color-text))]">
-                    {spell.days} days without posting
-                  </div>
-                  <div class="text-xs text-[rgb(var(--color-text-muted))]">
-                    {format(spell.startDate, 'MMM d, yyyy')} -{' '}
-                    {format(spell.endDate, 'MMM d, yyyy')}
-                  </div>
-                </div>
-              </div>
-              <div class="text-right">
-                <div
-                  class="text-sm text-[rgb(var(--color-text-muted))]"
-                  title="Duration converted to weeks"
-                >
-                  {Math.round(spell.days / 7)} weeks
-                </div>
-                <div class="text-xs text-[rgb(var(--color-text-muted))]">
-                  {spell.days > 90
-                    ? '🚨 Critical'
-                    : spell.days > 60
-                      ? '⚠️ Concerning'
-                      : '📉 Notable'}
-                </div>
-              </div>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-
-    {/* Most Productive Months */}
-    <div class="mb-8">
-      <h3 class="mb-6 text-lg font-semibold text-[rgb(var(--color-text))]">
-        📊 Months with Highest Post Count
-      </h3>
-      <p class="mb-4 text-xs text-[rgb(var(--color-text-muted))]">
-        Months ranked by post count. Formula: productivity(month) = count(posts where pubDate ∈
-        month)
-      </p>
-      <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {
-          productiveMonths.map((month, index) => (
-            <div class="rounded-lg bg-[rgb(var(--color-bg))] p-4">
-              <div class="mb-2 flex items-center justify-between">
-                <span class="text-sm font-medium text-[rgb(var(--color-text))]">{month.label}</span>
-                <span
-                  class={`text-lg font-bold ${
-                    index === 0
-                      ? 'text-yellow-500'
-                      : index === 1
-                        ? 'text-gray-400'
-                        : index === 2
-                          ? 'text-amber-600'
-                          : 'text-[rgb(var(--color-accent))]'
-                  }`}
-                >
-                  {index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : `#${index + 1}`}
+            <div class="flex flex-wrap items-baseline justify-between gap-3 py-2.5">
+              <div class="min-w-0">
+                <span class="mr-2 font-mono text-xs text-[rgb(var(--color-text-muted))]">{index + 1}.</span>
+                <span class="text-sm font-medium text-[rgb(var(--color-text))]">
+                  {streak.length} posts / {streak.days} days
+                </span>
+                <span class="mt-0.5 block text-xs text-[rgb(var(--color-text-muted))] sm:mt-0 sm:inline sm:before:content-['_·_']">
+                  {format(streak.startDate, 'MMM d, yyyy')} – {format(streak.endDate, 'MMM d, yyyy')}
                 </span>
               </div>
-              <div
-                class="text-2xl font-bold text-[rgb(var(--color-text))]"
-                title={`${month.count} posts published in ${month.label}`}
-              >
-                {month.count}
+              <div class="tabular-nums text-sm text-[rgb(var(--color-text-muted))]" title="Mean posts per day across span">
+                {Math.round((streak.length / streak.days) * 100) / 100}/day
               </div>
-              <div class="text-xs text-[rgb(var(--color-text-muted))]">posts</div>
             </div>
           ))
         }
       </div>
-    </div>
 
-    {/* Balanced Analysis Section */}
-    <div class="mb-6 md:mb-8 lg:mb-10">
-      <h2
-        class="mb-4 flex items-center gap-2 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl"
-      >
-        <span class="text-gray-600 dark:text-gray-400">⚖️</span>
-        Balanced Analysis
+      <h3 class="mb-3 text-sm font-semibold uppercase tracking-wide text-[rgb(var(--color-text-muted))]">
+        Largest gaps
+      </h3>
+      <div class="mb-10 divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40">
+        {
+          sortedDrySpells.slice(0, 5).map((spell, index) => (
+            <div class="flex flex-wrap items-baseline justify-between gap-3 py-2.5">
+              <div class="min-w-0">
+                <span class="mr-2 font-mono text-xs text-[rgb(var(--color-text-muted))]">{index + 1}.</span>
+                <span class="text-sm font-medium text-[rgb(var(--color-text))]">{spell.days} days</span>
+                <span class="mt-0.5 block text-xs text-[rgb(var(--color-text-muted))] sm:mt-0 sm:inline sm:before:content-['_·_']">
+                  {format(spell.startDate, 'MMM d, yyyy')} – {format(spell.endDate, 'MMM d, yyyy')}
+                </span>
+              </div>
+              <div class="text-sm tabular-nums text-[rgb(var(--color-text-muted))]">
+                ~{Math.round(spell.days / 7)} wk
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <h3 class="mb-3 text-sm font-semibold uppercase tracking-wide text-[rgb(var(--color-text-muted))]">
+        Busiest calendar months (top 5)
+      </h3>
+      <div class="overflow-x-auto">
+        <table class="w-full max-w-md border-collapse border-t border-b border-[rgb(var(--color-border))] text-sm tabular-nums">
+          <tbody>
+            {
+              productiveMonths.map((month, index) => (
+                <tr class="border-b border-[rgb(var(--color-border))]/35 last:border-0">
+                  <td class="py-2 pr-4 font-mono text-xs text-[rgb(var(--color-text-muted))]">{index + 1}</td>
+                  <td class="py-2 pr-4 text-[rgb(var(--color-text))]">{month.label}</td>
+                  <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]">{month.count}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="balanced" class="scroll-mt-28 mb-10 md:mb-12">
+      <h2 class="mb-2 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl">
+        Objective consistency grades
       </h2>
-      <p class="mb-4 text-sm text-[rgb(var(--color-text-muted))] md:mb-6">
-        Objective assessment showing strengths, challenges, and neutral metrics without bias toward
-        positive outcomes.
+      <p class="mb-6 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
+        Same abbreviated scores as the hub page—orthogonal to streak math above.
       </p>
 
-      {/* Consistency Grades */}
-      <div class="mb-6 md:mb-8">
-        <h3 class="mb-4 text-lg font-medium text-[rgb(var(--color-text))]">
-          📊 Consistency Grades
-        </h3>
-        <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-          <div>
-            <div class="mb-1 text-sm text-[rgb(var(--color-text-muted))]">Posting Regularity</div>
-            <div class="mb-1 text-2xl font-bold text-[rgb(var(--color-text))]">
-              {objectiveMetrics.consistencyMetrics.postingRegularity}/100
-            </div>
-            <div class="mb-1 text-xs text-[rgb(var(--color-text-muted))]">
-              Formula: 100 - (variance(inter_posting_intervals) / 10)
-            </div>
-            <div
-              class={`text-sm font-semibold ${letterGradeToColor(scoreToLetterGrade(objectiveMetrics.consistencyMetrics.postingRegularity))}`}
-            >
-              Grade: {scoreToLetterGrade(objectiveMetrics.consistencyMetrics.postingRegularity)}
-            </div>
-          </div>
-          <div>
-            <div class="mb-1 text-sm text-[rgb(var(--color-text-muted))]">Topic Consistency</div>
-            <div class="mb-1 text-2xl font-bold text-[rgb(var(--color-text))]">
-              {objectiveMetrics.consistencyMetrics.topicConsistency}/100
-            </div>
-            <div class="mb-1 text-xs text-[rgb(var(--color-text-muted))]">
-              Formula: (max_tag_frequency / total_posts) × 100
-            </div>
-            <div
-              class={`text-sm font-semibold ${letterGradeToColor(scoreToLetterGrade(objectiveMetrics.consistencyMetrics.topicConsistency))}`}
-            >
-              Grade: {scoreToLetterGrade(objectiveMetrics.consistencyMetrics.topicConsistency)}
-            </div>
-          </div>
-          <div>
-            <div class="mb-1 text-sm text-[rgb(var(--color-text-muted))]">Quality Consistency</div>
-            <div class="mb-1 text-2xl font-bold text-[rgb(var(--color-text))]">
-              {100 - objectiveMetrics.consistencyMetrics.qualityVariance}/100
-            </div>
-            <div class="mb-1 text-xs text-[rgb(var(--color-text-muted))]">
-              Formula: 100 - (variance(word_counts) / 10)
-            </div>
-            <div
-              class={`text-sm font-semibold ${letterGradeToColor(scoreToLetterGrade(100 - objectiveMetrics.consistencyMetrics.qualityVariance))}`}
-            >
-              Grade: {scoreToLetterGrade(100 - objectiveMetrics.consistencyMetrics.qualityVariance)}
-            </div>
-          </div>
-        </div>
+      <div class="overflow-x-auto">
+        <table class="mb-10 w-full max-w-2xl border-collapse border-t border-b border-[rgb(var(--color-border))] text-sm tabular-nums">
+          <thead>
+            <tr class="border-b border-[rgb(var(--color-border))] text-left text-[0.65rem] font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
+              <th scope="col" class="py-2 pr-4 font-medium">Metric</th>
+              <th scope="col" class="py-2 pr-4 font-medium">Score</th>
+              <th scope="col" class="py-2 font-medium">Grade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-[rgb(var(--color-border))]/35">
+              <td class="py-2.5 pr-4 text-[rgb(var(--color-text))]">Posting regularity</td>
+              <td class="py-2.5 pr-4 text-[rgb(var(--color-text-muted))]">
+                {objectiveMetrics.consistencyMetrics.postingRegularity}/100
+              </td>
+              <td
+                class={`py-2.5 font-semibold ${letterGradeToColor(scoreToLetterGrade(objectiveMetrics.consistencyMetrics.postingRegularity))}`}
+              >
+                {scoreToLetterGrade(objectiveMetrics.consistencyMetrics.postingRegularity)}
+              </td>
+            </tr>
+            <tr class="border-b border-[rgb(var(--color-border))]/35">
+              <td class="py-2.5 pr-4 text-[rgb(var(--color-text))]">Topic consistency</td>
+              <td class="py-2.5 pr-4 text-[rgb(var(--color-text-muted))]">
+                {objectiveMetrics.consistencyMetrics.topicConsistency}/100
+              </td>
+              <td
+                class={`py-2.5 font-semibold ${letterGradeToColor(scoreToLetterGrade(objectiveMetrics.consistencyMetrics.topicConsistency))}`}
+              >
+                {scoreToLetterGrade(objectiveMetrics.consistencyMetrics.topicConsistency)}
+              </td>
+            </tr>
+            <tr>
+              <td class="py-2.5 pr-4 text-[rgb(var(--color-text))]">Length stability (inverse var.)</td>
+              <td class="py-2.5 pr-4 text-[rgb(var(--color-text-muted))]">
+                {100 - objectiveMetrics.consistencyMetrics.qualityVariance}/100
+              </td>
+              <td
+                class={`py-2.5 font-semibold ${letterGradeToColor(scoreToLetterGrade(100 - objectiveMetrics.consistencyMetrics.qualityVariance))}`}
+              >
+                {scoreToLetterGrade(100 - objectiveMetrics.consistencyMetrics.qualityVariance)}
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       {/* Strengths */}
@@ -599,41 +511,8 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
           </div>
         )
       }
-    </div>
+    </section>
 
-    {/* Analysis Conclusion */}
-    <div
-      class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-secondary))] p-4 md:p-6"
-    >
-      <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-lg">
-        📊 Writing Cadence Analysis
-      </h3>
-      <div class="space-y-4">
-        {/* Dynamic Insights */}
-        <div class="space-y-2">
-          {
-            insights.map((insight) => (
-              <div class={`flex items-center gap-2 ${insight.color}`}>
-                <span class="text-sm">
-                  {insight.type === 'positive'
-                    ? '✅'
-                    : insight.type === 'negative'
-                      ? '❌'
-                      : insight.type === 'warning'
-                        ? '⚠️'
-                        : 'ℹ️'}
-                </span>
-                <span class="text-sm" set:html={insight.text} />
-              </div>
-            ))
-          }
-        </div>
-
-        {/* Summary */}
-        <div class="pt-4">
-          <p class="text-sm text-[rgb(var(--color-text-muted))]" set:html={summary} />
-        </div>
-      </div>
-    </div>
+    <BrainScienceNarrativeSummary insights={insights} summary={summary} />
   </BrainScienceLayout>
 </BaseLayout>
