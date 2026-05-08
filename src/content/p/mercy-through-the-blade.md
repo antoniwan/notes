@@ -49,8 +49,13 @@ Two values stand at the center of all authentic leadership, especially when rais
 
 ### One. Mercy Through "the Blade."
 
-<figure>
-  <img src="/images/0_IX7q73frWncrfQkv.png" alt="Not this Blade!" width="223">
+<figure class="post-inline-figure">
+  <img
+    src="/images/0_IX7q73frWncrfQkv.png"
+    alt="Not this Blade!"
+    loading="lazy"
+    decoding="async"
+  />
   <figcaption>Not THIS Blade!</figcaption>
 </figure>
 

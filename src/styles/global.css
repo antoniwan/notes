@@ -669,13 +669,59 @@
 }
 
 /* Floated MDX verdict: allow fixed max width alongside .prose * { max-width: 100% } */
-.post-prose .prose aside.review-verdict-float.review-verdict-float {
+.post-prose.prose aside.review-verdict-float.review-verdict-float {
   max-width: min(13.5rem, 100%);
   box-sizing: border-box;
 }
 
-.post-prose .prose aside.review-verdict-float.review-verdict-float * {
+.post-prose.prose aside.review-verdict-float.review-verdict-float * {
   max-width: none;
+}
+
+/* Inline figures: not full-bleed; align flush start with prose (better than centered for “document” rhythm).
+   Add `post-inline-figure--center` to center; use floats only for tiny wrap-around assets (not default here). */
+.post-prose.prose figure.post-inline-figure {
+  width: fit-content !important;
+  max-width: 100% !important;
+  margin-inline-start: 0 !important;
+  margin-inline-end: auto !important;
+}
+
+.post-prose.prose figure.post-inline-figure.post-inline-figure--center {
+  margin-inline-start: auto !important;
+  margin-inline-end: auto !important;
+}
+
+/* Natural/intrinsic size up to caps — avoids prose full-width, without shrinking small assets */
+.post-prose.prose figure.post-inline-figure img {
+  width: auto !important;
+  max-width: min(100%, 36rem) !important;
+  height: auto !important;
+  display: block !important;
+  margin-inline-start: 0 !important;
+  margin-inline-end: auto !important;
+  object-fit: contain !important;
+}
+
+.post-prose.prose figure.post-inline-figure.post-inline-figure--center img {
+  margin-inline-start: auto !important;
+  margin-inline-end: auto !important;
+}
+
+.post-prose.prose figure.post-inline-figure.post-inline-figure--sm img {
+  max-width: min(100%, 18rem) !important;
+  max-height: 12rem !important;
+}
+
+.post-prose.prose figure.post-inline-figure.post-inline-figure--lg img {
+  max-width: min(100%, 52rem) !important;
+  max-height: min(85vh, 48rem) !important;
+}
+
+.post-prose.prose figure.post-inline-figure figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: rgb(var(--color-text-muted));
 }
 
 .prose :where(h2, h3, h4) {
