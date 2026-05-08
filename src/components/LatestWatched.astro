@@ -1,5 +1,5 @@
 ---
-import type { LetterboxdWatch } from '../utils/letterboxd';
+import { letterboxdDiaryUrlFromProfile, type LetterboxdWatch } from '../utils/letterboxd';
 
 interface Props {
   films: LetterboxdWatch[];
@@ -7,6 +7,7 @@ interface Props {
 }
 
 const { films, profileUrl } = Astro.props;
+const diaryUrl = letterboxdDiaryUrlFromProfile(profileUrl);
 
 function starSummary(rating: string | null): { visual: string; a11y: string } | null {
   if (!rating) return null;
@@ -29,7 +30,7 @@ function starSummary(rating: string | null): { visual: string; a11y: string } | 
         </h2>
         <p class="about-watched__lede">
           Pulled from my{' '}
-          <a href={profileUrl} target="_blank" rel="noopener noreferrer">
+          <a href={diaryUrl} target="_blank" rel="noopener noreferrer">
             Letterboxd diary
           </a>
           — same spirit as the <a href="/library/books">book library</a>: I love movies!!!
@@ -80,7 +81,7 @@ function starSummary(rating: string | null): { visual: string; a11y: string } | 
       </ul>
 
       <p class="about-watched__footer">
-        <a href={profileUrl} target="_blank" rel="noopener noreferrer">
+        <a href={diaryUrl} target="_blank" rel="noopener noreferrer">
           Full diary on Letterboxd
         </a>
       </p>
@@ -97,8 +98,8 @@ function starSummary(rating: string | null): { visual: string; a11y: string } | 
         Diary feed could not be loaded (offline build or network). When{' '}
         <code class="about-watched__code">LETTERBOXD_RSS_URL</code> is set, recent watches appear
         here — same idea as the <a href="/library/books">book library</a>.{' '}
-        <a href={profileUrl} target="_blank" rel="noopener noreferrer">
-          Open Letterboxd
+        <a href={diaryUrl} target="_blank" rel="noopener noreferrer">
+          Open Letterboxd diary
         </a>
         .
       </p>

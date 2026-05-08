@@ -3,6 +3,27 @@
  * Expects LETTERBOXD_RSS_URL in env — same shape as https://letterboxd.com/{user}/rss/
  */
 
+/** Public diary URL from a member profile (e.g. …/username/ → …/username/diary/). */
+export function letterboxdDiaryUrlFromProfile(profileUrl: string): string {
+  const raw = profileUrl?.trim();
+  if (!raw) return 'https://letterboxd.com/';
+  try {
+    const u = new URL(raw);
+    const host = u.hostname.toLowerCase();
+    if (host !== 'letterboxd.com' && !host.endsWith('.letterboxd.com')) {
+      return raw;
+    }
+    const segments = u.pathname.split('/').filter(Boolean);
+    if (segments.length === 0) return raw;
+    if (segments[segments.length - 1] === 'diary') {
+      return `${u.origin}/${segments.join('/')}/`;
+    }
+    return `${u.origin}/${segments[0]}/diary/`;
+  } catch {
+    return raw;
+  }
+}
+
 export interface LetterboxdWatch {
   filmTitle: string;
   filmYear: string;
