@@ -344,7 +344,9 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
       class="mb-8 border-b border-dashed border-[rgb(var(--color-border))]/50 pb-4 md:mb-10"
       aria-label="On this page"
     >
-      <div class="mb-2 text-[0.65rem] font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
+      <div
+        class="mb-2 text-[0.65rem] font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]"
+      >
         Jump to
       </div>
       <ul class="m-0 flex list-none flex-wrap gap-x-4 gap-y-2 p-0 text-sm">
@@ -396,7 +398,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
     {/* Topic Frequency Over Time */}
     {
       topicTimeSeriesData.length > 0 && top5Tags.length > 0 && (
-        <section id="time" class="scroll-mt-28 mb-10 md:mb-12">
+        <section id="time" class="mb-10 scroll-mt-28 md:mb-12">
           <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
             Top tags by quarter
           </h2>
@@ -423,7 +425,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
     {/* Topic Growth Rates */}
     {
       topicGrowthChart.labels.length > 0 && (
-        <section id="growth" class="scroll-mt-28 mb-10 md:mb-12">
+        <section id="growth" class="mb-10 scroll-mt-28 md:mb-12">
           <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
             Early→recent growth (%)
           </h2>
@@ -442,46 +444,58 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
       )
     }
 
-    <section id="signals" class="scroll-mt-28 mb-10 md:mb-12">
+    <section id="signals" class="mb-10 scroll-mt-28 md:mb-12">
       <h2 class="mb-2 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl">
         Interpretive notes (not tests)
       </h2>
       <p class="mb-4 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
         Friendly readings of the counts above—take as prompts, not statistically validated claims.
       </p>
-      <div class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40">
+      <div
+        class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40"
+      >
         {
           topicInsights.map((insight, index) => (
             <article class="py-4 first:pt-3">
               <div class="mb-1 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-                <span class="font-mono text-xs text-[rgb(var(--color-text-muted))]">{index + 1}.</span>
+                <span class="font-mono text-xs text-[rgb(var(--color-text-muted))]">
+                  {index + 1}.
+                </span>
                 <span
                   class={`text-[0.65rem] font-medium uppercase tracking-wide ${insight.impact === 'High' ? 'text-green-600 dark:text-green-400' : insight.impact === 'Medium' ? 'text-amber-600 dark:text-amber-400' : 'text-blue-600 dark:text-blue-400'}`}
                 >
                   {insight.impact}
                 </span>
               </div>
-              <p class="mb-1 text-sm font-medium text-[rgb(var(--color-text))]">{insight.insight}</p>
-              <p class="m-0 text-xs leading-relaxed text-[rgb(var(--color-text-muted))]">{insight.evidence}</p>
+              <p class="mb-1 text-sm font-medium text-[rgb(var(--color-text))]">
+                {insight.insight}
+              </p>
+              <p class="m-0 text-xs leading-relaxed text-[rgb(var(--color-text-muted))]">
+                {insight.evidence}
+              </p>
             </article>
           ))
         }
       </div>
     </section>
 
-    <section id="frequency" class="scroll-mt-28 mb-10 md:mb-12">
+    <section id="frequency" class="mb-10 scroll-mt-28 md:mb-12">
       <h2 class="mb-2 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl">
         Ranked tags
       </h2>
       <p class="mb-4 max-w-3xl text-xs text-[rgb(var(--color-text-muted))] md:text-sm">
         Raw frequency in the archive plus category weights from taxonomy metadata.
       </p>
-      <div class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40">
+      <div
+        class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40"
+      >
         {
           topTags.slice(0, 10).map((tag, index) => (
             <div class="flex flex-wrap items-baseline justify-between gap-3 py-2.5">
               <div class="min-w-0">
-                <span class="mr-2 font-mono text-xs text-[rgb(var(--color-text-muted))]">{index + 1}.</span>
+                <span class="mr-2 font-mono text-xs text-[rgb(var(--color-text-muted))]">
+                  {index + 1}.
+                </span>
                 <span class="text-sm font-medium text-[rgb(var(--color-text))]">{tag.tag}</span>
                 <span class="mt-0.5 block text-xs text-[rgb(var(--color-text-muted))] sm:mt-0 sm:inline sm:before:content-['_·_']">
                   {tag.category?.title || 'Uncategorized'} · weight {tag.weight}
@@ -499,12 +513,13 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
       </div>
     </section>
 
-    <section id="clusters" class="scroll-mt-28 mb-10 md:mb-12">
+    <section id="clusters" class="mb-10 scroll-mt-28 md:mb-12">
       <h2 class="mb-2 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl">
         Static tag buckets in code
       </h2>
       <p class="mb-6 max-w-3xl text-xs text-[rgb(var(--color-text-muted))] md:text-sm">
-        These “clusters” are hard-coded slug lists—not learned communities. Useful for aligning with YOUR categories, misleading if read as clustering output.
+        These “clusters” are hard-coded slug lists—not learned communities. Useful for aligning with
+        YOUR categories, misleading if read as clustering output.
       </p>
       <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
         {
@@ -546,27 +561,38 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
       </div>
     </section>
 
-    <section class="scroll-mt-28 mb-10 md:mb-12">
+    <section class="mb-10 scroll-mt-28 md:mb-12">
       <h2 class="mb-2 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl">
         Maslow-style coverage
       </h2>
       <p class="mb-4 max-w-3xl text-xs text-[rgb(var(--color-text-muted))] md:text-sm">
-        Rule: if a post has any tag from the bucket’s list, it counts once. Overlaps across buckets are possible.
+        Rule: if a post has any tag from the bucket’s list, it counts once. Overlaps across buckets
+        are possible.
       </p>
-      <div class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40">
+      <div
+        class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40"
+      >
         {
           maslowAnalysis.map((category) => (
             <div class="flex flex-wrap items-start justify-between gap-3 py-2.5">
               <div class="flex min-w-0 gap-2">
                 <span class="shrink-0 text-lg">{category.icon}</span>
                 <div>
-                  <div class="text-sm font-medium text-[rgb(var(--color-text))]">{category.title}</div>
-                  <div class="text-xs text-[rgb(var(--color-text-muted))]">{category.description}</div>
+                  <div class="text-sm font-medium text-[rgb(var(--color-text))]">
+                    {category.title}
+                  </div>
+                  <div class="text-xs text-[rgb(var(--color-text-muted))]">
+                    {category.description}
+                  </div>
                 </div>
               </div>
               <div class="text-right tabular-nums">
-                <div class="text-sm font-medium text-[rgb(var(--color-text))]">{category.postCount}</div>
-                <div class="text-xs text-[rgb(var(--color-text-muted))]">{category.percentage}%</div>
+                <div class="text-sm font-medium text-[rgb(var(--color-text))]">
+                  {category.postCount}
+                </div>
+                <div class="text-xs text-[rgb(var(--color-text-muted))]">
+                  {category.percentage}%
+                </div>
               </div>
             </div>
           ))
@@ -574,19 +600,23 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
       </div>
     </section>
 
-    <section id="pairs" class="scroll-mt-28 mb-10 md:mb-12">
+    <section id="pairs" class="mb-10 scroll-mt-28 md:mb-12">
       <h2 class="mb-2 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl">
         Top co-occurring pairs
       </h2>
       <p class="mb-4 max-w-3xl text-xs text-[rgb(var(--color-text-muted))] md:text-sm">
         Strength = joint count ÷ min(individual tag counts) on the same post.
       </p>
-      <div class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40">
+      <div
+        class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40"
+      >
         {
           tagRelationships.slice(0, 10).map((relationship, index) => (
             <div class="flex flex-wrap items-baseline justify-between gap-3 py-2.5">
               <div class="min-w-0">
-                <span class="mr-2 font-mono text-xs text-[rgb(var(--color-text-muted))]">{index + 1}.</span>
+                <span class="mr-2 font-mono text-xs text-[rgb(var(--color-text-muted))]">
+                  {index + 1}.
+                </span>
                 <span class="text-sm font-medium text-[rgb(var(--color-text))]">
                   {relationship.tag1} ↔ {relationship.tag2}
                 </span>
@@ -594,7 +624,9 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
                   strength ~{Math.round(relationship.strength * 100)}%
                 </span>
               </div>
-              <div class="tabular-nums text-sm text-[rgb(var(--color-text))]">{relationship.count}</div>
+              <div class="text-sm tabular-nums text-[rgb(var(--color-text))]">
+                {relationship.count}
+              </div>
             </div>
           ))
         }

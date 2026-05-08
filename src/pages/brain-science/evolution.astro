@@ -415,15 +415,15 @@ const insightData = {
     .map(([tag, count]) => ({ tag, count })),
   emotionalPosts: 0, // Not calculated for evolution
   growthPosts: 0, // Not calculated for evolution
-  complexityTrend:
-    (() => {
-      const early = periodStats[0]?.avgComplexity ?? NaN;
-      const recent = periodStats[periodStats.length - 1]?.avgComplexity ?? NaN;
-      if (Number.isNaN(early) || Number.isNaN(recent) || periodStats.length < 2) return 'stable' as const;
-      if (Math.abs(recent - early) < 3) return 'stable' as const;
-      /* Flesch: higher score ≈ easier text */
-      return recent > early ? ('increasing' as const) : ('decreasing' as const);
-    })(),
+  complexityTrend: (() => {
+    const early = periodStats[0]?.avgComplexity ?? NaN;
+    const recent = periodStats[periodStats.length - 1]?.avgComplexity ?? NaN;
+    if (Number.isNaN(early) || Number.isNaN(recent) || periodStats.length < 2)
+      return 'stable' as const;
+    if (Math.abs(recent - early) < 3) return 'stable' as const;
+    /* Flesch: higher score ≈ easier text */
+    return recent > early ? ('increasing' as const) : ('decreasing' as const);
+  })(),
   productivityTrend: 'stable' as const, // Not calculated for evolution
   knowledgeAreas: [],
   writingStreaks: [],
@@ -485,7 +485,9 @@ const periodComparisonChart = {
     },
     {
       label: 'Avg word-pattern composite',
-      data: periodStatsOrdered.map((p) => (isNaN(p.avgIntellectualDepth) ? 0 : p.avgIntellectualDepth)),
+      data: periodStatsOrdered.map((p) =>
+        isNaN(p.avgIntellectualDepth) ? 0 : p.avgIntellectualDepth,
+      ),
       backgroundColor: 'rgba(34, 197, 94, 0.6)',
       borderColor: 'rgb(34, 197, 94)',
     },
@@ -524,7 +526,9 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
         <div class="text-xs text-[rgb(var(--color-text-muted))]">Avg maturity (format)</div>
       </div>
       <div title="Tag categories with positive early→recent growth">
-        <div class="text-2xl font-semibold tabular-nums text-green-600 dark:text-green-400 md:text-3xl">
+        <div
+          class="text-2xl font-semibold tabular-nums text-green-600 dark:text-green-400 md:text-3xl"
+        >
           {growingTopics.length}
         </div>
         <div class="text-xs text-[rgb(var(--color-text-muted))]">Tags rising</div>
@@ -541,7 +545,9 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
       class="mb-8 border-b border-dashed border-[rgb(var(--color-border))]/50 pb-4 md:mb-10"
       aria-label="On this page"
     >
-      <div class="mb-2 text-[0.65rem] font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
+      <div
+        class="mb-2 text-[0.65rem] font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]"
+      >
         Jump to
       </div>
       <ul class="m-0 flex list-none flex-wrap gap-x-4 gap-y-2 p-0 text-sm">
@@ -597,10 +603,16 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
       </ul>
     </nav>
 
-    {/* Readability + heuristic (line colors match legend — explicit colors preserved by TimeSeriesChart) */}
+    {
+      /* Readability + heuristic (line colors match legend — explicit colors preserved by TimeSeriesChart) */
+    }
     {
       complexityTimeSeries.length > 0 && (
-        <section id="readability-chart" class="scroll-mt-28 mb-10 md:mb-12" aria-labelledby="readability-heading">
+        <section
+          id="readability-chart"
+          class="mb-10 scroll-mt-28 md:mb-12"
+          aria-labelledby="readability-heading"
+        >
           <h2
             id="readability-heading"
             class="mb-2 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl"
@@ -608,14 +620,12 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
             Readability &amp; word-pattern index
           </h2>
           <p class="mb-4 max-w-3xl text-sm leading-relaxed text-[rgb(var(--color-text-muted))]">
-            Quarterly means from post bodies only. Drift in wording or length—not a score of how smart
-            posts are.
+            Quarterly means from post bodies only. Drift in wording or length—not a score of how
+            smart posts are.
           </p>
 
           <details class="mb-5" open>
-            <summary
-              class="cursor-pointer list-none text-sm font-medium text-[rgb(var(--color-accent))] marker:content-none underline decoration-[rgb(var(--color-accent))]/25 underline-offset-4 [&::-webkit-details-marker]:hidden"
-            >
+            <summary class="cursor-pointer list-none text-sm font-medium text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/25 underline-offset-4 marker:content-none [&::-webkit-details-marker]:hidden">
               How to read the two lines
             </summary>
             <div class="mt-3 space-y-3 border-l-2 border-[rgb(var(--color-border))]/60 pl-4 text-sm leading-relaxed text-[rgb(var(--color-text-muted))]">
@@ -625,9 +635,11 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
                   aria-hidden="true"
                 />
                 <span>
-                  <strong class="text-[rgb(var(--color-text))]">Flesch reading ease (purple).</strong>{' '}
-                  Higher = simpler sentences/vocabulary <em>by formula</em>. Syllables are approximated
-                  (vowel heuristic). Typical blog-ish scores often land ~30–70.
+                  <strong class="text-[rgb(var(--color-text))]">
+                    Flesch reading ease (purple).
+                  </strong>{' '}
+                  Higher = simpler sentences/vocabulary <em>by formula</em>. Syllables are
+                  approximated (vowel heuristic). Typical blog-ish scores often land ~30–70.
                 </span>
               </p>
               <p class="m-0 flex flex-wrap items-start gap-2">
@@ -636,17 +648,19 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
                   aria-hidden="true"
                 />
                 <span>
-                  <strong class="text-[rgb(var(--color-text))]">Word-pattern composite (green).</strong>{' '}
+                  <strong class="text-[rgb(var(--color-text))]">
+                    Word-pattern composite (green).
+                  </strong>{' '}
                   Toy counter: discourse / curiosity / reflection word lists + a length term (
-                  <code class="rounded bg-[rgb(var(--color-bg-alt))] px-1 py-0.5 text-xs font-mono"
-                    >words÷50</code
-                  >
+                  <code class="rounded bg-[rgb(var(--color-bg-alt))] px-1 py-0.5 font-mono text-xs">
+                    words÷50
+                  </code>
                   ). Long posts score higher mechanically.
                 </span>
               </p>
               <p class="m-0 text-xs md:text-sm">
-                <strong class="text-[rgb(var(--color-text))]">Axis caveat:</strong> both series share one
-                scale—compare directionally, not as equal units.
+                <strong class="text-[rgb(var(--color-text))]">Axis caveat:</strong> both series
+                share one scale—compare directionally, not as equal units.
               </p>
             </div>
           </details>
@@ -679,11 +693,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
       )
     }
 
-    <section
-      id="by-period"
-      class="scroll-mt-28 mb-10 md:mb-12"
-      aria-labelledby="by-period-heading"
-    >
+    <section id="by-period" class="mb-10 scroll-mt-28 md:mb-12" aria-labelledby="by-period-heading">
       <h2
         id="by-period-heading"
         class="mb-2 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl"
@@ -700,7 +710,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
 
       {
         periodComparisonChart.labels.length > 0 && (
-          <div class="mb-10 -mx-1 md:mx-0">
+          <div class="-mx-1 mb-10 md:mx-0">
             <BarChart
               id="period-comparison-chart"
               labels={periodComparisonChart.labels}
@@ -714,11 +724,13 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
 
       <details class="mb-10">
         <summary
-          class="cursor-pointer list-none text-sm font-medium text-[rgb(var(--color-accent))] marker:content-none underline decoration-[rgb(var(--color-accent))]/25 underline-offset-4 [&::-webkit-details-marker]:hidden"
+          class="cursor-pointer list-none text-sm font-medium text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/25 underline-offset-4 marker:content-none [&::-webkit-details-marker]:hidden"
         >
           Signal notes (informal, not significance tests)
         </summary>
-        <p class="mt-3 max-w-3xl text-xs leading-relaxed text-[rgb(var(--color-text-muted))] md:text-sm">
+        <p
+          class="mt-3 max-w-3xl text-xs leading-relaxed text-[rgb(var(--color-text-muted))] md:text-sm"
+        >
           Emphasis tags are for this page only. Counts come from post bodies.
         </p>
         <div class="mt-4 divide-y divide-[rgb(var(--color-border))]/40">
@@ -726,7 +738,9 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
             intellectualInsights.map((insight, index) => (
               <article class="py-5 first:pt-2">
                 <div class="mb-2 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-                  <span class="font-mono text-xs text-[rgb(var(--color-text-muted))]">{index + 1}.</span>
+                  <span class="font-mono text-xs text-[rgb(var(--color-text-muted))]">
+                    {index + 1}.
+                  </span>
                   <span
                     class={`text-[0.65rem] font-medium uppercase tracking-wide ${
                       insight.impact === 'High'
@@ -739,7 +753,9 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
                     {insight.impact}
                   </span>
                 </div>
-                <p class="mb-2 text-sm font-medium text-[rgb(var(--color-text))]">{insight.insight}</p>
+                <p class="mb-2 text-sm font-medium text-[rgb(var(--color-text))]">
+                  {insight.insight}
+                </p>
                 <p class="mb-0 text-xs leading-relaxed text-[rgb(var(--color-text-muted))] md:text-sm">
                   {insight.evidence}
                 </p>
@@ -752,12 +768,16 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
         </div>
       </details>
 
-      <h3 class="mb-1 text-sm font-semibold uppercase tracking-wide text-[rgb(var(--color-text-muted))]">
+      <h3
+        class="mb-1 text-sm font-semibold uppercase tracking-wide text-[rgb(var(--color-text-muted))]"
+      >
         Per-period means
       </h3>
-      <p class="mb-3 max-w-3xl text-xs leading-relaxed text-[rgb(var(--color-text-muted))] md:text-sm">
-        One row per third of the archive. Flesch ↑ ≈ simpler wording (approx. syllables). Word-pattern Σ =
-        toy composite from word lists + length term.
+      <p
+        class="mb-3 max-w-3xl text-xs leading-relaxed text-[rgb(var(--color-text-muted))] md:text-sm"
+      >
+        One row per third of the archive. Flesch ↑ ≈ simpler wording (approx. syllables).
+        Word-pattern Σ = toy composite from word lists + length term.
       </p>
       <div class="overflow-x-auto">
         <table class="w-full min-w-[32rem] border-collapse text-left text-sm">
@@ -775,7 +795,8 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
               >
                 Flesch
               </th>
-              <th scope="col" class="py-2 pr-4 text-right font-medium tabular-nums">W.-pattern Σ</th>
+              <th scope="col" class="py-2 pr-4 text-right font-medium tabular-nums">W.-pattern Σ</th
+              >
               <th scope="col" class="py-2 pr-4 text-right font-medium tabular-nums">Curiosity</th>
               <th scope="col" class="py-2 text-right font-medium tabular-nums">Reflective</th>
             </tr>
@@ -786,7 +807,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
                 <tr class="border-b border-[rgb(var(--color-border))]/35 last:border-0">
                   <th
                     scope="row"
-                    class="py-2.5 pr-4 font-medium text-[rgb(var(--color-text))] capitalize"
+                    class="py-2.5 pr-4 font-medium capitalize text-[rgb(var(--color-text))]"
                   >
                     {period.period}
                   </th>
@@ -832,7 +853,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
     {/* Topic Growth vs Decline Analysis */}
     <section
       id="topics"
-      class="scroll-mt-28 mb-10 grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-2"
+      class="mb-10 grid scroll-mt-28 grid-cols-1 gap-6 md:gap-8 lg:grid-cols-2"
       aria-labelledby="topics-growing-heading"
     >
       <div>
@@ -853,14 +874,16 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
             growingTopics.map((topic, index) => (
               <div class="flex items-baseline justify-between gap-4 py-2.5 first:pt-0">
                 <div class="min-w-0">
-                  <span class="mr-2 font-mono text-xs text-[rgb(var(--color-text-muted))]">{index + 1}.</span>
+                  <span class="mr-2 font-mono text-xs text-[rgb(var(--color-text-muted))]">
+                    {index + 1}.
+                  </span>
                   <span class="text-sm font-medium text-[rgb(var(--color-text))]">{topic.tag}</span>
                   <span class="mt-0.5 block text-xs text-[rgb(var(--color-text-muted))] sm:mt-0 sm:inline sm:before:content-['_·_']">
                     {topic.earlyCount} → {topic.recentCount}
                   </span>
                 </div>
                 <div
-                  class="shrink-0 tabular-nums text-sm font-medium text-green-600 dark:text-green-400"
+                  class="shrink-0 text-sm font-medium tabular-nums text-green-600 dark:text-green-400"
                   title={`Growth rate: ${Math.round(topic.growthRate)}% increase from early to recent`}
                 >
                   +{Math.round(topic.growthRate)}%
@@ -889,14 +912,16 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
             decliningTopics.map((topic, index) => (
               <div class="flex items-baseline justify-between gap-4 py-2.5 first:pt-0">
                 <div class="min-w-0">
-                  <span class="mr-2 font-mono text-xs text-[rgb(var(--color-text-muted))]">{index + 1}.</span>
+                  <span class="mr-2 font-mono text-xs text-[rgb(var(--color-text-muted))]">
+                    {index + 1}.
+                  </span>
                   <span class="text-sm font-medium text-[rgb(var(--color-text))]">{topic.tag}</span>
                   <span class="mt-0.5 block text-xs text-[rgb(var(--color-text-muted))] sm:mt-0 sm:inline sm:before:content-['_·_']">
                     {topic.earlyCount} → {topic.recentCount}
                   </span>
                 </div>
                 <div
-                  class="shrink-0 tabular-nums text-sm font-medium text-red-600 dark:text-red-400"
+                  class="shrink-0 text-sm font-medium tabular-nums text-red-600 dark:text-red-400"
                   title={`Decline rate: ${Math.round(topic.growthRate)}%`}
                 >
                   {Math.round(topic.growthRate)}%
@@ -909,19 +934,23 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
     </section>
 
     {/* Recent quarters — compact scan */}
-    <section id="quarters" class="scroll-mt-28 mb-10 md:mb-12" aria-labelledby="quarters-heading">
+    <section id="quarters" class="mb-10 scroll-mt-28 md:mb-12" aria-labelledby="quarters-heading">
       <h2
         id="quarters-heading"
         class="mb-2 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl"
       >
         Last eight quarters
       </h2>
-      <p class="mb-4 max-w-3xl text-xs leading-relaxed text-[rgb(var(--color-text-muted))] md:text-sm">
+      <p
+        class="mb-4 max-w-3xl text-xs leading-relaxed text-[rgb(var(--color-text-muted))] md:text-sm"
+      >
         Newest-first rows. Body text only for Flesch; syllables are approximated (
         <span class="whitespace-nowrap">higher ≈ simpler</span>).
       </p>
       <div class="overflow-x-auto">
-        <table class="w-full min-w-[36rem] border-collapse border-t border-b border-[rgb(var(--color-border))] text-left text-sm">
+        <table
+          class="w-full min-w-[36rem] border-collapse border-b border-t border-[rgb(var(--color-border))] text-left text-sm"
+        >
           <thead>
             <tr
               class="border-b border-[rgb(var(--color-border))] text-[0.65rem] font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]"
@@ -980,26 +1009,33 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
     </section>
 
     {/* Writing Maturity */}
-    <section id="format-mix" class="scroll-mt-28 mb-10 md:mb-12" aria-labelledby="format-mix-heading">
+    <section
+      id="format-mix"
+      class="mb-10 scroll-mt-28 md:mb-12"
+      aria-labelledby="format-mix-heading"
+    >
       <h2
         id="format-mix-heading"
         class="mb-2 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl"
       >
         Format &amp; structure checks
       </h2>
-      <p class="mb-4 max-w-3xl text-xs leading-relaxed text-[rgb(var(--color-text-muted))] md:text-sm">
+      <p
+        class="mb-4 max-w-3xl text-xs leading-relaxed text-[rgb(var(--color-text-muted))] md:text-sm"
+      >
         Heuristic checkbox on the Markdown body (not editorial quality). Expression:
       </p>
       <pre
-        class="mb-5 max-w-3xl overflow-x-auto border-l-2 border-[rgb(var(--color-border))]/70 pl-3 font-mono text-[0.7rem] leading-relaxed text-[rgb(var(--color-text-muted))]"
-        >(code fences / inline code ? 2 : 0) + (URLs ? 1 : 0) + (images ? 1 : 0) + (blockquotes ? 1 : 0)
+        class="mb-5 max-w-3xl overflow-x-auto border-l-2 border-[rgb(var(--color-border))]/70 pl-3 font-mono text-[0.7rem] leading-relaxed text-[rgb(var(--color-text-muted))]">(code fences / inline code ? 2 : 0) + (URLs ? 1 : 0) + (images ? 1 : 0) + (blockquotes ? 1 : 0)
 + (? in body ? 1 : 0) + (e.g./such as cues ? 1 : 0) + (words &gt; 1000 ? 2 : 0)
-+ (word-pattern composite &gt; 10 ? 2 : 0)</pre
-      >
++ (word-pattern composite &gt; 10 ? 2 : 0)</pre>
       <table class="w-full max-w-md border-collapse text-sm tabular-nums">
         <tbody>
           <tr class="border-b border-[rgb(var(--color-border))]/35">
-            <td class="py-2 pr-4 text-[rgb(var(--color-text-muted))]" title="Code fences or inline code">
+            <td
+              class="py-2 pr-4 text-[rgb(var(--color-text-muted))]"
+              title="Code fences or inline code"
+            >
               Posts with code
             </td>
             <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]">
@@ -1015,7 +1051,10 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
             </td>
           </tr>
           <tr class="border-b border-[rgb(var(--color-border))]/35">
-            <td class="py-2 pr-4 text-[rgb(var(--color-text-muted))]" title="Question marks in body">
+            <td
+              class="py-2 pr-4 text-[rgb(var(--color-text-muted))]"
+              title="Question marks in body"
+            >
               Posts with questions
             </td>
             <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]">
@@ -1023,7 +1062,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
             </td>
           </tr>
           <tr>
-            <td class="py-2 pr-4 text-[rgb(var(--color-text-muted))]" title="Word count &gt; 1000">
+            <td class="py-2 pr-4 text-[rgb(var(--color-text-muted))]" title="Word count > 1000">
               Long posts (&gt;1k words)
             </td>
             <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]">
@@ -1037,7 +1076,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
     {/* Metric definitions — collapsible */}
     <details
       id="definitions"
-      class="scroll-mt-28 mb-10 border-t border-[rgb(var(--color-border))] pt-8 md:mb-12"
+      class="mb-10 scroll-mt-28 border-t border-[rgb(var(--color-border))] pt-8 md:mb-12"
       open
     >
       <summary
@@ -1058,26 +1097,32 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
               <p>
                 <strong class="text-[rgb(var(--color-text))]">Flesch reading ease per post:</strong>
                 Uses the standard formula<br />
-                <code class="mt-1 block rounded bg-[rgb(var(--color-bg-alt))] px-2 py-1 text-xs font-mono"
+                <code
+                  class="mt-1 block rounded bg-[rgb(var(--color-bg-alt))] px-2 py-1 font-mono text-xs"
                   >206.835 − 1.015×(words÷sentences) − 84.6×(syllables÷words)</code
                 >
-                with <strong class="text-[rgb(var(--color-text))]">syllables ≈ vowel count trick</strong>,
-                so it is <em>not</em> linguistically exact. Higher values mean “easier” on the scale, not smarter.
+                with <strong class="text-[rgb(var(--color-text))]"
+                  >syllables ≈ vowel count trick</strong
+                >, so it is <em>not</em> linguistically exact. Higher values mean “easier” on the scale,
+                not smarter.
               </p>
               <p>
-                <strong class="text-[rgb(var(--color-text))]">Word-pattern composite:</strong> Counts of
-                three hand-picked word lists (argument transitions, curiosity stems, reflective stems) plus
+                <strong class="text-[rgb(var(--color-text))]">Word-pattern composite:</strong> Counts
+                of three hand-picked word lists (argument transitions, curiosity stems, reflective stems)
+                plus
                 <code class="rounded bg-[rgb(var(--color-bg-alt))] px-1 font-mono text-xs"
                   >⌊word_count ÷ 50⌋</code
                 >-style term so long posts mechanically score higher even if content is thin.
               </p>
               <p>
-                <strong class="text-[rgb(var(--color-text))]">Maturity score:</strong> Checkbox score for
-                Markdown features (code fences, links, blockquotes, question marks, cue phrases) plus points
-                when &gt;1000 words or the word-pattern composite clears a low threshold—not editorial quality.
+                <strong class="text-[rgb(var(--color-text))]">Maturity score:</strong> Checkbox score
+                for Markdown features (code fences, links, blockquotes, question marks, cue phrases) plus
+                points when &gt;1000 words or the word-pattern composite clears a low threshold—not editorial
+                quality.
               </p>
               <p class="border-t border-[rgb(var(--color-border))]/40 pt-3 text-xs italic">
-                Nothing here measures truth, originality, kindness, rigor cited from sources outside the file, or psychological traits.
+                Nothing here measures truth, originality, kindness, rigor cited from sources outside
+                the file, or psychological traits.
               </p>
             </div>
           </div>

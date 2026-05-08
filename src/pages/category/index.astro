@@ -11,10 +11,7 @@ const posts = await getCollection('blog', ({ data }) => {
 });
 
 const postCounts = Object.fromEntries(
-  categories.map((c) => [
-    c.id,
-    posts.filter((post) => post.data.category?.includes(c.id)).length,
-  ]),
+  categories.map((c) => [c.id, posts.filter((post) => post.data.category?.includes(c.id)).length]),
 ) as Record<string, number>;
 
 const withNotes = categories.filter((c) => postCounts[c.id] > 0);
@@ -90,7 +87,10 @@ const alphabetical = [...withNotes].sort((a, b) => a.name.localeCompare(b.name))
               <div class="mb-2 text-4xl" aria-hidden="true">
                 📁
               </div>
-              <h2 class="text-heading text-[rgb(var(--color-text))]" style="margin: 0; line-height: 1.3;">
+              <h2
+                class="text-heading text-[rgb(var(--color-text))]"
+                style="margin: 0; line-height: 1.3;"
+              >
                 Nothing filed yet
               </h2>
               <p

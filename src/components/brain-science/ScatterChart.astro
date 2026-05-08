@@ -41,7 +41,7 @@ const isDev = import.meta.env.DEV;
     )
   }
   <div
-    class="relative h-64 w-full rounded-xl border border-[rgb(var(--color-border))]/45 bg-[rgb(var(--color-bg-alt))]/90 p-2 shadow-sm ring-1 ring-[rgb(var(--color-text))]/5 md:h-80 dark:border-[rgb(var(--color-border))]/55 dark:bg-[linear-gradient(165deg,rgb(26_38_62)_0%,rgb(18_29_49)_100%)] dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.07)] dark:ring-white/[0.06] md:p-3"
+    class="relative h-64 w-full rounded-xl border border-[rgb(var(--color-border))]/45 bg-[rgb(var(--color-bg-alt))]/90 p-2 shadow-sm ring-1 ring-[rgb(var(--color-text))]/5 dark:border-[rgb(var(--color-border))]/55 dark:bg-[linear-gradient(165deg,rgb(26_38_62)_0%,rgb(18_29_49)_100%)] dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.07)] dark:ring-white/[0.06] md:h-80 md:p-3"
     id={`chart-container-${id}`}
     style="min-height: 256px;"
   >
@@ -107,9 +107,7 @@ const isDev = import.meta.env.DEV;
             if (!chartArea || chartArea.width <= 0 || chartArea.height <= 0) return;
             ctx.save();
             const rootDark = document.documentElement.classList.contains('dark');
-            ctx.fillStyle = rootDark
-              ? 'rgba(51, 65, 85, 0.22)'
-              : 'rgba(255, 255, 255, 0.65)';
+            ctx.fillStyle = rootDark ? 'rgba(51, 65, 85, 0.22)' : 'rgba(255, 255, 255, 0.65)';
             ctx.fillRect(chartArea.left, chartArea.top, chartArea.width, chartArea.height);
             ctx.restore();
           },

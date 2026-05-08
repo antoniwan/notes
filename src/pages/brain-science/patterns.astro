@@ -540,11 +540,15 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
       class="mb-8 flex flex-wrap gap-x-10 gap-y-5 border-b border-[rgb(var(--color-border))]/50 pb-6 md:mb-10 md:gap-x-12 md:pb-8"
     >
       <div>
-        <div class="text-2xl font-semibold tabular-nums md:text-3xl">{patterns.dayOfWeekPatterns.length}</div>
+        <div class="text-2xl font-semibold tabular-nums md:text-3xl">
+          {patterns.dayOfWeekPatterns.length}
+        </div>
         <div class="text-xs text-[rgb(var(--color-text-muted))]">Weekday bins</div>
       </div>
       <div>
-        <div class="text-2xl font-semibold tabular-nums md:text-3xl">{patterns.seasonalPatterns.length}</div>
+        <div class="text-2xl font-semibold tabular-nums md:text-3xl">
+          {patterns.seasonalPatterns.length}
+        </div>
         <div class="text-xs text-[rgb(var(--color-text-muted))]">Month bins</div>
       </div>
       <div>
@@ -552,7 +556,9 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
         <div class="text-xs text-[rgb(var(--color-text-muted))]">Synthetic cycle buckets</div>
       </div>
       <div>
-        <div class="text-2xl font-semibold tabular-nums md:text-3xl">{correlations.tagCombinations.length}</div>
+        <div class="text-2xl font-semibold tabular-nums md:text-3xl">
+          {correlations.tagCombinations.length}
+        </div>
         <div class="text-xs text-[rgb(var(--color-text-muted))]">Tag pair correlations</div>
       </div>
     </div>
@@ -561,24 +567,46 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
       class="mb-8 border-b border-dashed border-[rgb(var(--color-border))]/50 pb-4 md:mb-10"
       aria-label="On this page"
     >
-      <div class="mb-2 text-[0.65rem] font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
+      <div
+        class="mb-2 text-[0.65rem] font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]"
+      >
         Jump to
       </div>
       <ul class="m-0 flex list-none flex-wrap gap-x-4 gap-y-2 p-0 text-sm">
         <li class="m-0 p-0">
-          <a href="#corr-scatter" class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4">Scatter</a>
+          <a
+            href="#corr-scatter"
+            class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4"
+            >Scatter</a
+          >
         </li>
         <li class="m-0 p-0">
-          <a href="#dow" class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4">Weekday bars</a>
+          <a
+            href="#dow"
+            class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4"
+            >Weekday bars</a
+          >
         </li>
         <li class="m-0 p-0">
-          <a href="#season" class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4">Seasonal bars</a>
+          <a
+            href="#season"
+            class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4"
+            >Seasonal bars</a
+          >
         </li>
         <li class="m-0 p-0">
-          <a href="#cycle" class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4">Cycle toy</a>
+          <a
+            href="#cycle"
+            class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4"
+            >Cycle toy</a
+          >
         </li>
         <li class="m-0 p-0">
-          <a href="#peaks" class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4">Peak stats</a>
+          <a
+            href="#peaks"
+            class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4"
+            >Peak stats</a
+          >
         </li>
       </ul>
     </nav>
@@ -586,7 +614,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
     {/* Correlation Analysis */}
     {
       wordCountEmotionalScatter.datasets[0].data.length > 0 && (
-        <section id="corr-scatter" class="scroll-mt-28 mb-10 md:mb-12">
+        <section id="corr-scatter" class="mb-10 scroll-mt-28 md:mb-12">
           <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
             Word length vs lexical intensity
           </h2>
@@ -632,7 +660,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
     {/* Day of Week Patterns */}
     {
       dayOfWeekBarChart.labels.length > 0 && (
-        <section id="dow" class="scroll-mt-28 mb-10 md:mb-12">
+        <section id="dow" class="mb-10 scroll-mt-28 md:mb-12">
           <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
             Weekday aggregates
           </h2>
@@ -654,7 +682,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
     {/* Seasonal Patterns */}
     {
       seasonalBarChart.labels.length > 0 && (
-        <section id="season" class="scroll-mt-28 mb-10 md:mb-12">
+        <section id="season" class="mb-10 scroll-mt-28 md:mb-12">
           <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
             Monthly aggregates
           </h2>
@@ -677,12 +705,13 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
     {/* Creative Cycle Phases */}
     {
       creativeCycleChart.labels.length > 0 && (
-        <section id="cycle" class="scroll-mt-28 mb-10 md:mb-12">
+        <section id="cycle" class="mb-10 scroll-mt-28 md:mb-12">
           <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
             Post-index modulo “phases” (toy)
           </h2>
           <p class="mb-6 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
-            Labels come from <code class="font-mono text-xs">postIndex % 4</code>—good for demos, weak causal story.
+            Labels come from <code class="font-mono text-xs">postIndex % 4</code>—good for demos,
+            weak causal story.
           </p>
           <BarChart
             id="creative-cycle-phases"
@@ -695,15 +724,18 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
       )
     }
 
-    <section id="peaks" class="scroll-mt-28 mb-12">
+    <section id="peaks" class="mb-12 scroll-mt-28">
       <h2 class="mb-2 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl">
         Argmax snapshots (engineering composites)
       </h2>
       <p class="mb-6 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
-        “Productivity” = mean words × post count for that weekday; “creativity” = mean words × mean Flesch for that calendar month—these mixes are deliberate heuristics, not latent traits.
+        “Productivity” = mean words × post count for that weekday; “creativity” = mean words × mean
+        Flesch for that calendar month—these mixes are deliberate heuristics, not latent traits.
       </p>
       <div class="overflow-x-auto">
-        <table class="w-full max-w-2xl border-collapse border-t border-b border-[rgb(var(--color-border))] text-sm tabular-nums">
+        <table
+          class="w-full max-w-2xl border-collapse border-b border-t border-[rgb(var(--color-border))] text-sm tabular-nums"
+        >
           <tbody>
             <tr class="border-b border-[rgb(var(--color-border))]/35">
               <td class="py-2 pr-6 text-[rgb(var(--color-text-muted))]">Peak weekday composite</td>
@@ -714,8 +746,10 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                 }
               </td>
               <td class="py-2 pl-4 text-[rgb(var(--color-text-muted))]">
-                {patterns.dayOfWeekPatterns.sort((a, b) => b.productivity - a.productivity)[0]?.name ||
-                  '—'}
+                {
+                  patterns.dayOfWeekPatterns.sort((a, b) => b.productivity - a.productivity)[0]
+                    ?.name || '—'
+                }
               </td>
             </tr>
             <tr class="border-b border-[rgb(var(--color-border))]/35">
@@ -727,13 +761,19 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
                 }
               </td>
               <td class="py-2 pl-4 text-[rgb(var(--color-text-muted))]">
-                {patterns.seasonalPatterns.sort((a, b) => b.creativity - a.creativity)[0]?.name || '—'}
+                {
+                  patterns.seasonalPatterns.sort((a, b) => b.creativity - a.creativity)[0]?.name ||
+                    '—'
+                }
               </td>
             </tr>
             <tr>
               <td class="py-2 pr-6 text-[rgb(var(--color-text-muted))]">Peak cycle avg words</td>
               <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]">
-                {cycleAnalysis.sort((a, b) => b.avgWordCount - a.avgWordCount)[0]?.avgWordCount || 0}
+                {
+                  cycleAnalysis.sort((a, b) => b.avgWordCount - a.avgWordCount)[0]?.avgWordCount ||
+                    0
+                }
               </td>
               <td class="py-2 pl-4 text-[rgb(var(--color-text-muted))]">
                 {cycleAnalysis.sort((a, b) => b.avgWordCount - a.avgWordCount)[0]?.phase || '—'}

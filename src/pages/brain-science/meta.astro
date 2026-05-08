@@ -109,7 +109,9 @@ const topPhrases = Object.entries(phraseFrequency)
       class="mb-8 border-b border-dashed border-[rgb(var(--color-border))]/50 pb-4 md:mb-10"
       aria-label="On this page"
     >
-      <div class="mb-2 text-[0.65rem] font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]">
+      <div
+        class="mb-2 text-[0.65rem] font-semibold uppercase tracking-wider text-[rgb(var(--color-text-muted))]"
+      >
         Jump to
       </div>
       <ul class="m-0 flex list-none flex-wrap gap-x-4 gap-y-2 p-0 text-sm">
@@ -157,7 +159,7 @@ const topPhrases = Object.entries(phraseFrequency)
         evolutionLabels.length > 0 &&
         evolutionSelfAwareness.length > 0 &&
         evolutionMetaFrequency.length > 0 && (
-          <section id="evolution-chart" class="scroll-mt-28 mb-10 md:mb-12">
+          <section id="evolution-chart" class="mb-10 scroll-mt-28 md:mb-12">
             <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
               Meta signals by quarter
             </h2>
@@ -189,13 +191,17 @@ const topPhrases = Object.entries(phraseFrequency)
         )
     }
 
-    <section id="subject-tool" class="scroll-mt-28 mb-10 grid grid-cols-1 gap-10 md:mb-12 md:gap-12 lg:grid-cols-2">
+    <section
+      id="subject-tool"
+      class="mb-10 grid scroll-mt-28 grid-cols-1 gap-10 md:mb-12 md:gap-12 lg:grid-cols-2"
+    >
       <div>
         <h2 class="mb-2 text-base font-semibold text-[rgb(var(--color-text))] md:text-lg">
           Subject vs tool (detector fractions)
         </h2>
         <p class="mb-4 text-sm text-[rgb(var(--color-text-muted))]">
-          Proportion of posts that trip each classifier—overlap allowed; not a psychological typology.
+          Proportion of posts that trip each classifier—overlap allowed; not a psychological
+          typology.
         </p>
         <div class="space-y-3">
           <div class="flex items-center justify-between">
@@ -238,7 +244,9 @@ const topPhrases = Object.entries(phraseFrequency)
         <p class="mb-4 text-sm text-[rgb(var(--color-text-muted))]">
           Counts aggregated across the detector outputs—taxonomy is defined in code.
         </p>
-        <div class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40">
+        <div
+          class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40"
+        >
           {
             Object.entries(patternTypes)
               .sort(([, a], [, b]) => b - a)
@@ -247,7 +255,9 @@ const topPhrases = Object.entries(phraseFrequency)
                   <span class="text-[rgb(var(--color-text))]">
                     {type.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase())}
                   </span>
-                  <span class="tabular-nums font-medium text-[rgb(var(--color-text))]">{count}</span>
+                  <span class="font-medium tabular-nums text-[rgb(var(--color-text))]">
+                    {count}
+                  </span>
                 </div>
               ))
           }
@@ -255,19 +265,24 @@ const topPhrases = Object.entries(phraseFrequency)
       </div>
     </section>
 
-    <section id="top-posts" class="scroll-mt-28 mb-10 md:mb-12">
+    <section id="top-posts" class="mb-10 scroll-mt-28 md:mb-12">
       <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl">
         Highest detector scores (ranked)
       </h2>
       <p class="mb-6 max-w-3xl text-sm text-[rgb(var(--color-text-muted))]">
-        Scores aggregate pattern hits in each post—the ranking is deterministic from the analyzer, not qualitative judgment.
+        Scores aggregate pattern hits in each post—the ranking is deterministic from the analyzer,
+        not qualitative judgment.
       </p>
-      <div class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40">
+      <div
+        class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40"
+      >
         {
           mostSelfAware.map((analysis, index) => (
             <article class="py-5 first:pt-0">
               <div class="mb-2 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-                <span class="font-mono text-xs text-[rgb(var(--color-text-muted))]">{index + 1}.</span>
+                <span class="font-mono text-xs text-[rgb(var(--color-text-muted))]">
+                  {index + 1}.
+                </span>
                 <a
                   href={`/p/${analysis.postSlug}`}
                   class="text-base font-semibold text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/25 underline-offset-2 hover:decoration-[rgb(var(--color-accent))]"
@@ -276,8 +291,8 @@ const topPhrases = Object.entries(phraseFrequency)
                 </a>
               </div>
               <div class="mb-3 text-xs text-[rgb(var(--color-text-muted))]">
-                {format(analysis.postDate, 'MMM d, yyyy')} · score {analysis.selfAwarenessScore}/100 ·{' '}
-                {analysis.metaLanguageCount} patterns
+                {format(analysis.postDate, 'MMM d, yyyy')} · score {analysis.selfAwarenessScore}/100
+                · {analysis.metaLanguageCount} patterns
                 {analysis.recursiveThinking ? ' · recursive flagged' : ''}
                 {analysis.writingAsSubject ? ' · subject flagged' : ''}
               </div>
@@ -302,7 +317,7 @@ const topPhrases = Object.entries(phraseFrequency)
     {/* Writings About Writing */}
     {
       writingAboutWriting.length > 0 && (
-        <section class="scroll-mt-28 mb-10 md:mb-12">
+        <section class="mb-10 scroll-mt-28 md:mb-12">
           <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
             ✍️ Writings That Discuss Writing Itself
           </h2>
@@ -341,7 +356,7 @@ const topPhrases = Object.entries(phraseFrequency)
 
     {
       topPhrases.length > 0 && (
-        <section id="phrases" class="scroll-mt-28 mb-10 md:mb-12">
+        <section id="phrases" class="mb-10 scroll-mt-28 md:mb-12">
           <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
             Top repeated phrases (normalized)
           </h2>
@@ -349,13 +364,17 @@ const topPhrases = Object.entries(phraseFrequency)
             Lowercased &gt;3 chars from detected meta spans—frequency, not importance ranking.
           </p>
           <div class="overflow-x-auto">
-            <table class="w-full min-w-[20rem] border-collapse border-t border-b border-[rgb(var(--color-border))] text-sm">
+            <table class="w-full min-w-[20rem] border-collapse border-b border-t border-[rgb(var(--color-border))] text-sm">
               <tbody>
                 {topPhrases.map(([phrase, count], index) => (
                   <tr class="border-b border-[rgb(var(--color-border))]/35 last:border-0">
-                    <td class="py-2 pr-3 font-mono text-xs text-[rgb(var(--color-text-muted))]">{index + 1}</td>
+                    <td class="py-2 pr-3 font-mono text-xs text-[rgb(var(--color-text-muted))]">
+                      {index + 1}
+                    </td>
                     <td class="py-2 pr-4 text-[rgb(var(--color-text))]">“{phrase}”</td>
-                    <td class="py-2 text-right tabular-nums text-[rgb(var(--color-text-muted))]">{count}</td>
+                    <td class="py-2 text-right tabular-nums text-[rgb(var(--color-text-muted))]">
+                      {count}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -365,7 +384,10 @@ const topPhrases = Object.entries(phraseFrequency)
       )
     }
 
-    <section id="readout" class="scroll-mt-28 border-t border-[rgb(var(--color-border))] pt-8 md:pt-10">
+    <section
+      id="readout"
+      class="scroll-mt-28 border-t border-[rgb(var(--color-border))] pt-8 md:pt-10"
+    >
       <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
         Plain-language readout
       </h2>
