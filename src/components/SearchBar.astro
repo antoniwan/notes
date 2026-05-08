@@ -339,7 +339,7 @@ const searchDataJson = JSON.stringify(searchData);
         const link = document.createElement('a');
         link.href = this.escapeAttribute(result.url);
         link.className =
-          'search-result-item search-dropdown-item block px-6 py-4 hover:bg-[rgb(var(--color-bg-alt))] transition-colors duration-200 ease-out group';
+          'search-result-item search-dropdown-item block px-6 py-4 transition-colors duration-200 ease-out group';
 
         // Create content structure
         const content = document.createElement('div');
@@ -530,10 +530,8 @@ const searchDataJson = JSON.stringify(searchData);
       ) as NodeListOf<HTMLElement>;
       if (!resultItems || resultItems.length === 0) return;
 
-      const currentIndex = Array.from(resultItems).findIndex(
-        (item) =>
-          item.classList.contains('bg-[rgb(var(--color-accent))]') ||
-          item.classList.contains('bg-accent'),
+      const currentIndex = Array.from(resultItems).findIndex((item) =>
+        item.classList.contains('search-result-item--keyboard-active'),
       );
 
       let newIndex = 0;
@@ -543,22 +541,20 @@ const searchDataJson = JSON.stringify(searchData);
         newIndex = currentIndex > 0 ? currentIndex - 1 : resultItems.length - 1;
       }
 
-      // Remove highlight from all items
       resultItems.forEach((item) => {
-        item.classList.remove('bg-[rgb(var(--color-accent))]', 'bg-accent', 'text-white');
+        item.classList.remove('search-result-item--keyboard-active');
       });
 
-      // Highlight selected item
       const selectedItem = resultItems[newIndex];
       if (selectedItem) {
-        selectedItem.classList.add('bg-[rgb(var(--color-accent))]', 'text-white');
+        selectedItem.classList.add('search-result-item--keyboard-active');
         selectedItem.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
       }
     }
 
     handleEnterKey() {
       const highlightedItem = this.resultsList?.querySelector(
-        '.search-result-item.bg-[rgb(var(--color-accent))]',
+        '.search-result-item--keyboard-active',
       ) as HTMLAnchorElement;
       if (highlightedItem) {
         highlightedItem.click();
@@ -617,23 +613,6 @@ const searchDataJson = JSON.stringify(searchData);
   .search-dropdown {
     box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.15);
     border: 1px solid rgba(var(--color-border), 0.8);
-  }
-
-  /* Simplified search result item hover effects */
-  .search-result-item {
-    transition: background-color 0.2s ease;
-    position: relative;
-  }
-
-  .search-result-item:hover {
-    background-color: rgba(var(--color-bg-alt), 0.8);
-  }
-
-  /* Focus styles */
-  .search-result-item:focus {
-    outline: 2px solid rgb(var(--color-accent));
-    outline-offset: -2px;
-    background-color: rgba(var(--color-accent), 0.05);
   }
 
   /* Enhanced search result styling */
@@ -716,9 +695,8 @@ const searchDataJson = JSON.stringify(searchData);
 
   /* Respect reduced motion preferences */
   @media (prefers-reduced-motion: reduce) {
-    .search-result-item {
+    :global(.search-result-item) {
       transition: none !important;
-      transform: none !important;
     }
   }
 

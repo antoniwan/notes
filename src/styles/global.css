@@ -461,7 +461,28 @@
 
   /* Search results enhancements */
   .search-result-item {
-    @apply transition-colors hover:bg-[rgb(var(--color-bg-alt))] focus:outline-none focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:ring-offset-2;
+    @apply transition-colors focus:outline-none;
+  }
+
+  /* Mouse hover: full bg-alt so text stays primary/muted tokens (readable). */
+  .search-result-item:hover {
+    background-color: rgb(var(--color-bg-alt));
+  }
+
+  /* Keyboard highlight from search input (↑/↓): tint + accent bar, keep normal text colors. */
+  .search-result-item--keyboard-active,
+  .search-result-item--keyboard-active:hover {
+    background-color: color-mix(in srgb, rgb(var(--color-accent)) 18%, rgb(var(--color-bg)));
+    box-shadow: inset 3px 0 0 rgb(var(--color-accent));
+  }
+
+  .dark .search-result-item--keyboard-active,
+  .dark .search-result-item--keyboard-active:hover {
+    background-color: color-mix(in srgb, rgb(var(--color-accent)) 26%, rgb(var(--color-bg)));
+  }
+
+  .search-result-item:focus-visible {
+    @apply ring-2 ring-[rgb(var(--color-accent))] ring-offset-2 ring-offset-[rgb(var(--color-bg))];
   }
 
   .search-result-item:last-child {
@@ -475,11 +496,6 @@
 
   .search-dropdown-item {
     @apply border-b border-[rgb(var(--color-border))]/30 last:border-b-0;
-  }
-
-  /* Focus states for search results */
-  .search-result-item:focus-within {
-    @apply bg-[rgb(var(--color-bg-alt))] ring-2 ring-[rgb(var(--color-accent))] ring-offset-2;
   }
 
   /* Enhanced search result alignment */
