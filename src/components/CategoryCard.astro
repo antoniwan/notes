@@ -13,25 +13,23 @@ const { category, postCount, featured = false, compact = false } = Astro.props;
 
 <a
   href={`/category/${category.id}/`}
-  class="interactive-card group relative block overflow-hidden"
+  class="interactive-card theme-transition group relative block overflow-hidden rounded-xl border border-[rgb(var(--color-border))]/20 bg-[rgb(var(--color-bg))] hover:border-[rgb(var(--color-accent))]/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--color-accent))] focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--color-bg))]"
   class:list={{
-    'featured-category': featured,
-    'compact-category': compact,
+    'category-card-featured': featured,
+    'category-card-compact': compact,
   }}
 >
-  <!-- Card content -->
-  <div class="relative p-6 md:p-8">
+  <div class:list={[{ 'p-4 md:p-6': compact, 'p-6 md:p-8': !compact }]}>
     <div class="flex items-start gap-4">
-      <!-- Icon -->
       <div class="flex-shrink-0">
         <div
           class="theme-transition flex h-12 w-12 items-center justify-center rounded-xl bg-[rgb(var(--color-accent))]/10 text-2xl md:h-14 md:w-14 md:text-3xl"
+          aria-hidden="true"
         >
           {category.icon}
         </div>
       </div>
 
-      <!-- Content -->
       <div class="min-w-0 flex-1">
         <h3
           class="mb-2 mt-0 text-xl font-semibold leading-tight text-[rgb(var(--color-text))] md:text-2xl"
@@ -41,18 +39,18 @@ const { category, postCount, featured = false, compact = false } = Astro.props;
 
         {
           !compact && (
-            <p class="text-body-muted mb-3 mt-0 line-clamp-2 text-base leading-relaxed md:text-lg">
+            <p class="text-body-muted mb-4 mt-0 line-clamp-2 text-base leading-relaxed md:text-lg">
               {category.description}
             </p>
           )
         }
 
-        <div class="flex items-center justify-between">
-          <span class="text-body-muted text-base font-medium leading-relaxed">
+        <div class="flex items-center justify-between gap-2">
+          <span class="text-body-muted text-sm font-medium md:text-base">
             {postCount}
             {postCount === 1 ? 'writing' : 'writings'}
           </span>
-          <span class="font-semibold text-[rgb(var(--color-accent))]"> → </span>
+          <span class="text-[rgb(var(--color-accent))]" aria-hidden="true">→</span>
         </div>
       </div>
     </div>
@@ -60,53 +58,15 @@ const { category, postCount, featured = false, compact = false } = Astro.props;
 </a>
 
 <style>
-  /* Simplified category card styling */
-  a {
-    transition:
-      box-shadow 0.2s ease,
-      border-color 0.2s ease;
+  .category-card-featured {
+    border-color: rgb(var(--color-accent) / 0.18);
+    box-shadow: 0 2px 10px -3px rgb(0 0 0 / 0.08);
   }
 
-  /* Simplified featured category styling */
-  .featured-category {
-    border-color: rgb(var(--color-accent) / 0.2);
-    box-shadow: 0 2px 8px -2px rgb(0 0 0 / 0.1);
+  :global(.dark) .category-card-featured {
+    box-shadow: 0 2px 14px -2px rgb(0 0 0 / 0.35);
   }
 
-  /* Compact category styling */
-  .compact-category {
-    @apply p-4 md:p-6;
-  }
-
-  .compact-category .flex-1 {
-    @apply space-y-2;
-  }
-
-  /* Simplified hover effects */
-  .group:hover {
-    box-shadow: 0 4px 12px -2px rgb(0 0 0 / 0.15);
-    border-color: rgb(var(--color-accent) / 0.2);
-  }
-
-  /* Focus states */
-  .group:focus {
-    outline: 2px solid rgb(var(--color-accent));
-    outline-offset: 2px;
-    border-radius: 0.75rem;
-  }
-
-  /* Respect reduced motion preferences */
-  @media (prefers-reduced-motion: reduce) {
-    a {
-      transition: none !important;
-    }
-
-    .group:hover {
-      transform: none;
-    }
-  }
-
-  /* Override global h3 and p margins for category cards */
   h3 {
     margin-top: 0 !important;
   }
@@ -115,15 +75,15 @@ const { category, postCount, featured = false, compact = false } = Astro.props;
     margin-top: 0 !important;
   }
 
-  /* Responsive adjustments */
   @media (max-width: 768px) {
-    /* Adjust icon size for mobile */
-    .w-12.h-12 {
-      @apply h-10 w-10;
+    .flex-shrink-0 .h-12 {
+      height: 2.5rem;
+      width: 2.5rem;
     }
 
-    .text-2xl {
-      @apply text-xl;
+    .flex-shrink-0 .text-2xl {
+      font-size: 1.25rem;
+      line-height: 1.75rem;
     }
   }
 </style>
