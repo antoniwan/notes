@@ -8,34 +8,34 @@ Live site: [notes.antoniwan.online](https://notes.antoniwan.online)
 
 ## What it includes
 
-- Posts in `src/content/p/` (Markdown and MDX); the file count grows over time
+- Posts in `src/content/p/` (Markdown and MDX)
 - **10 categories** (for example Parenting, Psychology, Politics, Metaspace) — see `src/data/categories.ts`
 - **Dark and light theme**, including system preference
-- **Layout** that works on phones and larger screens
-- **Search** in the header (built from a client-side index at build time)
+- **Responsive layout** for small and large screens
+- **Search** in the header (client-side index built at build time)
 - **Guided Path** — seasonal reading order; progress stays in the browser only
 - **Everything** — full archive-style list
-- **Tags** — browse by tag; **Tag management** page for analytics-style views
-- **Tag prelude links** — `/tag` now shows a sentence-style list of canonical writing-form links (for example essays, notes, poems) above the tag cloud when available
-- **Brain Science** — several pages of writing stats and charts (cadence, topics, sentiment, and similar)
-- **Book library** — static reference data under `/library` and `/library/books`
-- **Reading time** — added at build time by a remark plugin (`minutesRead` in the collection)
-- **Reading progress** on posts — stored in `localStorage` only, not on a server
-- **Table of contents on long posts** — floating "Contents" button with section links and a quick "Top" jump
+- **Tags** — browse by tag; **Tag management** for overview-style views
+- **Tag prelude links** on `/tag` — links to writing forms (essays, notes, poems, and similar) above the tag cloud when data exists
+- **Brain Science** — writing stats and charts (cadence, topics, sentiment, and similar)
+- **Book library** — static data under `/library` and `/library/books`
+- **Reading time** — from a remark plugin (`minutesRead` in the collection)
+- **Reading progress** on posts — `localStorage` only, no server
+- **Table of contents on long posts** — floating contents control with section links and a jump to the top
 - **RSS** (`/rss.xml`) and **JSON Feed** (`/feed.json`)
-- **Random quotes API** — `GET /api/quotes` (Stoic quotes from local data)
-- **Public API** page at `/api/` — human-readable overview of endpoints
-- **Schema.org JSON-LD** on pages where it fits
-- **Comments** — [Remark42](https://remark42.com/) embed when you configure a host (optional; see `docs/comments-setup.md`)
-- **Service worker** — registered for caching; version bumps during `pnpm run build`
-- On **Vercel**: **Web Analytics** and **Speed Insights** components are included in the base layout (they only send data when the site runs on Vercel with those products enabled)
+- **Random quotes API** — `GET /api/quotes` (quotes from local data)
+- **Public API** page at `/api/` — lists endpoints in plain language
+- **Schema.org JSON-LD** where it fits the page type
+- **Comments** — optional [Remark42](https://remark42.com/) embed when you set env vars (see `docs/comments-setup.md`)
+- **Service worker** — registered for caching; the registration URL includes the **package version** from `package.json` so a version bump can nudge browsers to pick up updates
+- On **Vercel**: **Web Analytics** and **Speed Insights** are wired in the base layout (they only send data when those products are enabled on the project)
 
 ## Stack
 
 - [Astro](https://astro.build/) 6 — static output, MDX, `@astrojs/vercel` adapter
 - TypeScript
 - Tailwind CSS
-- Sharp for image work in the build
+- [Sharp](https://sharp.pixelplumbing.com/) — used by the social-image step to resize AVIF sources to JPEG/PNG
 
 ## Quick start
 
@@ -73,24 +73,34 @@ Remark42 uses `PUBLIC_REMARK42_HOST` and `PUBLIC_REMARK42_SITE_ID` when you turn
 | `pnpm run lint:fix`               | ESLint with `--fix`                                                                           |
 | `pnpm run format`                 | Prettier write                                                                                |
 | `pnpm run format:check`           | Prettier check                                                                                |
-| `pnpm run generate-social-images` | OG/social images only                                                                         |
+| `pnpm run generate-social-images` | AVIF → JPEG/PNG under `public/social/` only (same logic as the start of `pnpm run build`)    |
 | `pnpm run generate-favicons`      | Favicon assets                                                                                |
-| `pnpm run analyze`                | Build then Vercel static-build analysis                                                       |
+| `pnpm run analyze`                | Runs `astro build` only (no social-image step), then Vercel static-build analysis             |
 | `pnpm run lighthouse`             | Lighthouse HTML report (start dev server first)                                               |
-| `pnpm run performance`            | Build + analyze                                                                               |
-| `pnpm run audit-performance`      | Build + Lighthouse performance JSON                                                           |
+| `pnpm run performance`            | Runs `pnpm run build`, then `pnpm run analyze`                                                |
+| `pnpm run audit-performance`      | Full `pnpm run build`, then Lighthouse performance JSON                                       |
+
+## Build (social images)
+
+`pnpm run build` runs `scripts/generate-social-images.js` before `astro build`.
+
+Hero images are stored as AVIF under `public/`. Many preview surfaces still expect JPEG or PNG, so the script writes matching files under `public/social/` (names end with `-social.jpg` or `-social.png`). The mapping lives in `src/data/socialImageManifest.ts`.
+
+Each AVIF is hashed (SHA-256). If the hash matches `src/data/socialImageFingerprints.json` and the output file is on disk, that file is skipped. After adding or changing AVIFs, run `pnpm run build` or `pnpm run generate-social-images` and commit the updated manifest, fingerprints, and any new files under `public/social/`.
+
+CI restores `public/social/` from cache when possible (see `.github/workflows/ci.yml`). Timing depends on how many images need encoding; routine builds with everything already up to date stay short.
 
 ## Project layout
 
 ```text
 notes/
-├── public/              # Static files (images, service worker, etc.)
-├── scripts/             # generate-social-images, favicons, SW version bump
+├── public/              # Static assets; generated social JPEG/PNG live under public/social/
+├── scripts/             # generate-social-images.js, generate-favicons.js
 ├── src/
 │   ├── components/      # Astro components (shared + feature folders like brain-science/)
 │   ├── config/          # Comments, storage, assets
 │   ├── content/p/       # Post files (Markdown / MDX)
-│   ├── data/            # Categories, navigation, quotes, tags, etc.
+│   ├── data/            # Categories, navigation, socialImageManifest.ts, socialImageFingerprints.json, …
 │   ├── layouts/
 │   ├── pages/           # Routes (blog, category, tag, brain-science, api, …)
 │   ├── styles/
