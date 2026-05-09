@@ -49,6 +49,14 @@ const { existingTags } = Astro.props;
           <cite id="nfq-author"></cite>
           <span id="nfq-work" class="nfq-work"></span>
         </footer>
+        <p id="nfq-source-wrap" class="nfq-source-wrap hidden">
+          <a
+            id="nfq-source-link"
+            href="#"
+            class="theme-transition text-sm font-medium text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/35 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]/70"
+            >Read the piece</a
+          >
+        </p>
       </blockquote>
 
       <div
@@ -147,6 +155,18 @@ const { existingTags } = Astro.props;
         }
       }
 
+      const sourceWrap = document.getElementById('nfq-source-wrap');
+      const sourceLink = document.getElementById('nfq-source-link');
+      if (sourceWrap && sourceLink) {
+        const href = quote.sourceUrl;
+        if (typeof href === 'string' && href.length > 0) {
+          sourceLink.setAttribute('href', href);
+          sourceWrap.classList.remove('hidden');
+        } else {
+          sourceWrap.classList.add('hidden');
+        }
+      }
+
       const themesWrap = document.getElementById(SEL.themesWrap);
       const themesEl = document.getElementById(SEL.themes);
       if (themesEl) themesEl.replaceChildren();
@@ -234,6 +254,14 @@ const { existingTags } = Astro.props;
   }
 
   .not-found-quote .nfq-work.hidden {
+    display: none;
+  }
+
+  .not-found-quote .nfq-source-wrap {
+    margin: 0.75rem 0 0;
+  }
+
+  .not-found-quote .nfq-source-wrap.hidden {
     display: none;
   }
 </style>

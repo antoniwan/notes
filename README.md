@@ -1,6 +1,6 @@
 # Notes
 
-[![Version](https://img.shields.io/badge/version-5.24.1-blue.svg)](https://github.com/antoniwan/notes/releases)
+[![Version](https://img.shields.io/badge/version-5.25.0-blue.svg)](https://github.com/antoniwan/notes/releases)
 
 Personal writing site: essays and notes on fatherhood, masculinity, culture, and day-to-day life. Some posts are in English, some in Spanish, with links between translations where it applies.
 
@@ -23,7 +23,7 @@ Live site: [notes.antoniwan.online](https://notes.antoniwan.online)
 - **Reading progress** on posts — `localStorage` only, no server
 - **Table of contents on long posts** — floating contents control with section links and a jump to the top
 - **RSS** (`/rss.xml`) and **JSON Feed** (`/feed.json`)
-- **Random quotes API** — `GET /api/quotes` (quotes from local data)
+- **Random quotes API** — `GET /api/quotes` (Stoic excerpts, other philosophy, lines from posts; optional `?kind=`)
 - **Public API** page at `/api/` — lists endpoints in plain language
 - **Schema.org JSON-LD** where it fits the page type
 - **Comments** — optional [Remark42](https://remark42.com/) embed when you set env vars (see `docs/comments-setup.md`)

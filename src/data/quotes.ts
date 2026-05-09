@@ -1,5 +1,9 @@
-// Stoic Philosophy Quotes Collection
-// A curated collection of quotes from ancient Stoic philosophers
+// Quotes for GET /api/quotes: Stoic canon, wider philosophy, and lines from this site.
+
+import { AUTHOR } from '../consts';
+
+/** `stoic` — classical Stoics; `philosophical` — other thinkers; `site` — lines from posts here (`postId` → `/p/{postId}/`). */
+export type QuoteKind = 'stoic' | 'philosophical' | 'site';
 
 export interface Quote {
   id: number;
@@ -14,6 +18,10 @@ export interface Quote {
   popularity: 'low' | 'medium' | 'high' | 'very_high';
   context: string;
   modernRelevance: string;
+  /** Omit or `stoic` for the original thirty entries. */
+  kind?: QuoteKind;
+  /** When `kind` is `site`, blog post id (Markdown filename without extension). */
+  postId?: string;
 }
 
 export interface Author {
@@ -44,11 +52,12 @@ export interface QuotesCollection {
 
 export const quotesData: QuotesCollection = {
   metadata: {
-    title: 'Stoic Philosophy Quotes Collection',
-    description: 'A curated collection of quotes from ancient Stoic philosophers',
-    version: '1.0',
-    lastUpdated: '2025-07-30',
-    totalQuotes: 30,
+    title: 'Quotes API collection',
+    description:
+      'Stoic excerpts, broader philosophy, and pull quotes from posts on this site. Random selection via GET /api/quotes.',
+    version: '2.0',
+    lastUpdated: '2026-05-08',
+    totalQuotes: 42,
     philosophers: [
       'Marcus Aurelius',
       'Epictetus',
@@ -491,6 +500,192 @@ export const quotesData: QuotesCollection = {
       context: "Metaphor for maintaining stability amid life's storms",
       modernRelevance: 'Applicable to stress management and emotional regulation',
     },
+    {
+      id: 31,
+      kind: 'site',
+      postId: 'intelligence-burns',
+      text: 'People say they love intelligent people… until they actually have to deal with one.',
+      author: AUTHOR.name,
+      work: 'Intelligence Burns',
+      book: null,
+      themes: ['intelligence', 'relationships', 'self-reflection'],
+      category: 'author_voice',
+      difficulty: 'beginner',
+      length: 'short',
+      popularity: 'high',
+      context: 'From a note on intelligence as heat, empathy, and restraint.',
+      modernRelevance: 'Grounds the API in the author’s own writing.',
+    },
+    {
+      id: 32,
+      kind: 'site',
+      postId: 'notes-on-respect',
+      text: 'Respect is action, just as love is.',
+      author: AUTHOR.name,
+      work: 'Notes on Respect',
+      book: null,
+      themes: ['respect', 'relationships', 'love'],
+      category: 'author_voice',
+      difficulty: 'beginner',
+      length: 'very_short',
+      popularity: 'high',
+      context: 'On reciprocity and showing up in conversation.',
+      modernRelevance: 'Links respect to concrete behavior, not slogans.',
+    },
+    {
+      id: 33,
+      kind: 'site',
+      postId: 'the-inner-work-truly-never-ends',
+      text: 'This life is a battle of contention between you and you, not you versus me, and definitely not you versus them.',
+      author: AUTHOR.name,
+      work: 'The inner work truly never ends.',
+      book: null,
+      themes: ['inner-work', 'responsibility', 'consciousness'],
+      category: 'author_voice',
+      difficulty: 'intermediate',
+      length: 'medium',
+      popularity: 'medium',
+      context: 'Reflection on therapy, ego, and self-responsibility.',
+      modernRelevance: 'Frames growth as inward-first work.',
+    },
+    {
+      id: 34,
+      kind: 'site',
+      postId: 'love-is-the-final-revolution',
+      text: 'Love is, ultimately, the most revolutionary force we have.',
+      author: AUTHOR.name,
+      work: 'Love Is the Final Revolution',
+      book: null,
+      themes: ['love', 'politics', 'family', 'resilience'],
+      category: 'author_voice',
+      difficulty: 'beginner',
+      length: 'short',
+      popularity: 'high',
+      context: 'On pulling back from doom-scrolling into presence at home.',
+      modernRelevance: 'Connects personal practice to political exhaustion.',
+    },
+    {
+      id: 35,
+      kind: 'site',
+      postId: 'on-simplicity-and-peace-of-mind',
+      text: 'Sometimes, I wonder how I can be so content and at peace while possessing so little.',
+      author: AUTHOR.name,
+      work: 'On Simplicity and Peace of Mind',
+      book: null,
+      themes: ['simplicity', 'contentment', 'peace'],
+      category: 'author_voice',
+      difficulty: 'beginner',
+      length: 'short',
+      popularity: 'medium',
+      context: 'Opening reflection on enoughness and inner clarity.',
+      modernRelevance: 'Pairs minimal living with emotional steadiness.',
+    },
+    {
+      id: 36,
+      kind: 'site',
+      postId: 'the-joy-of-building-my-own-digital-sandbox-april-2026',
+      text: 'Become what I write, and be as honest through the process as I can.',
+      author: AUTHOR.name,
+      work: 'The Joy of Building My Own Digital Sandbox — April 2026 Update',
+      book: null,
+      themes: ['writing', 'craft', 'honesty', 'creativity'],
+      category: 'author_voice',
+      difficulty: 'beginner',
+      length: 'short',
+      popularity: 'medium',
+      context: 'Update on building this site as creative practice.',
+      modernRelevance: 'States the aim of the blog as self-witnessing.',
+    },
+    {
+      id: 37,
+      kind: 'philosophical',
+      text: 'The art of being wise is the art of knowing what to overlook.',
+      author: 'William James',
+      work: 'The Principles of Psychology',
+      book: null,
+      themes: ['wisdom', 'attention', 'judgment'],
+      category: 'philosophy_general',
+      difficulty: 'beginner',
+      length: 'short',
+      popularity: 'high',
+      context: 'American pragmatist on selective attention.',
+      modernRelevance: 'Useful for focus and reducing noise.',
+    },
+    {
+      id: 38,
+      kind: 'philosophical',
+      text: 'Attention is the rarest and purest form of generosity.',
+      author: 'Simone Weil',
+      work: 'Reflections on the Right Use of School Studies',
+      book: null,
+      themes: ['attention', 'generosity', 'presence'],
+      category: 'philosophy_general',
+      difficulty: 'beginner',
+      length: 'short',
+      popularity: 'high',
+      context: 'Often cited in moral and spiritual philosophy.',
+      modernRelevance: 'Ties listening to ethical care.',
+    },
+    {
+      id: 39,
+      kind: 'philosophical',
+      text: 'Tell me, what is it you plan to do with your one wild and precious life?',
+      author: 'Mary Oliver',
+      work: 'The Summer Day',
+      book: null,
+      themes: ['purpose', 'mortality', 'choice'],
+      category: 'philosophy_general',
+      difficulty: 'beginner',
+      length: 'short',
+      popularity: 'very_high',
+      context: 'Closing question of a much-quoted poem.',
+      modernRelevance: 'A plain invitation to decide how we spend time.',
+    },
+    {
+      id: 40,
+      kind: 'philosophical',
+      text: 'I quote others only in order the better to express myself.',
+      author: 'Michel de Montaigne',
+      work: 'Essays',
+      book: 'Of Physiognomy',
+      themes: ['writing', 'honesty', 'self-expression'],
+      category: 'philosophy_general',
+      difficulty: 'beginner',
+      length: 'short',
+      popularity: 'medium',
+      context: 'Renaissance essayist on borrowing and originality.',
+      modernRelevance: 'Frames citation as personal voice, not decoration.',
+    },
+    {
+      id: 41,
+      kind: 'philosophical',
+      text: 'In the midst of winter, I found there was, within me, an invincible summer.',
+      author: 'Albert Camus',
+      work: 'Return to Tipasa',
+      book: null,
+      themes: ['resilience', 'hope', 'interior-life'],
+      category: 'philosophy_general',
+      difficulty: 'beginner',
+      length: 'short',
+      popularity: 'very_high',
+      context: 'From Camus’s lyrical essay on returning to Algeria.',
+      modernRelevance: 'Often used for endurance and inner resource.',
+    },
+    {
+      id: 42,
+      kind: 'philosophical',
+      text: 'How we spend our days is, of course, how we spend our lives.',
+      author: 'Annie Dillard',
+      work: 'The Writing Life',
+      book: null,
+      themes: ['time', 'habits', 'meaning'],
+      category: 'philosophy_general',
+      difficulty: 'beginner',
+      length: 'short',
+      popularity: 'high',
+      context: 'On routine and the scale of a life.',
+      modernRelevance: 'Small daily choices as the whole story.',
+    },
   ],
   categories: {
     personal_power: "Quotes about taking control of one's mind and responses",
@@ -515,6 +710,8 @@ export const quotesData: QuotesCollection = {
     wisdom_and_action: 'Connecting contemplation with action',
     resilience_and_growth: 'Growing stronger through challenges',
     resilience_and_stability: 'Maintaining steadiness in turbulent times',
+    author_voice: 'Lines taken from essays and notes published on this site',
+    philosophy_general: 'Philosophy and literature outside the Stoic canon',
   },
   authors: {
     'Marcus Aurelius': {
@@ -549,10 +746,78 @@ export const quotesData: QuotesCollection = {
   },
 };
 
-// Utility functions for quote filtering and selection
-export function getRandomQuote(): Quote {
-  const randomIndex = Math.floor(Math.random() * quotesData.quotes.length);
-  return quotesData.quotes[randomIndex];
+export function getQuoteKind(quote: Quote): QuoteKind {
+  return quote.kind ?? 'stoic';
+}
+
+/** Permalink to the post when this is a site quote; otherwise null. */
+export function getQuoteSourceUrl(quote: Quote): string | null {
+  if (getQuoteKind(quote) !== 'site' || !quote.postId) return null;
+  const id = quote.postId.replace(/^\/+|\/+$/g, '');
+  if (!id || id.includes('..')) return null;
+  return `/p/${id}/`;
+}
+
+export function getQuoteCountsByKind(): Record<QuoteKind, number> {
+  const counts: Record<QuoteKind, number> = {
+    stoic: 0,
+    philosophical: 0,
+    site: 0,
+  };
+  for (const q of quotesData.quotes) {
+    counts[getQuoteKind(q)] += 1;
+  }
+  return counts;
+}
+
+export function filterQuotesByKind(kind: QuoteKind): Quote[] {
+  return quotesData.quotes.filter((q) => getQuoteKind(q) === kind);
+}
+
+export function pickRandomFrom(quotes: Quote[]): Quote {
+  if (quotes.length === 0) {
+    throw new Error('pickRandomFrom: quote list is empty');
+  }
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  return quotes[randomIndex];
+}
+
+export type QuotePickMeta = {
+  quote: Quote;
+  poolUsed: Quote[];
+  usedFallbackToFullPool: boolean;
+};
+
+/** One random quote plus the pool size (for API metadata); falls back to full list only if bucket is empty. */
+export function pickRandomQuoteWithMeta(kind?: QuoteKind | null): QuotePickMeta {
+  if (kind == null) {
+    return {
+      quote: pickRandomFrom(quotesData.quotes),
+      poolUsed: quotesData.quotes,
+      usedFallbackToFullPool: false,
+    };
+  }
+  const filtered = filterQuotesByKind(kind);
+  if (filtered.length > 0) {
+    return {
+      quote: pickRandomFrom(filtered),
+      poolUsed: filtered,
+      usedFallbackToFullPool: false,
+    };
+  }
+  return {
+    quote: pickRandomFrom(quotesData.quotes),
+    poolUsed: quotesData.quotes,
+    usedFallbackToFullPool: true,
+  };
+}
+
+/**
+ * Random quote; optionally restricted to `kind`.
+ * Falls back to the full list only when the filtered bucket is empty (data integrity safeguard).
+ */
+export function getRandomQuote(kind?: QuoteKind | null): Quote {
+  return pickRandomQuoteWithMeta(kind).quote;
 }
 
 export function getQuoteById(id: number): Quote | undefined {
