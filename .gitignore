@@ -1,6 +1,9 @@
 # build output
 dist/
-public/social/
+
+# Social JPEG/PNG under public/social are build artifacts but must be tracked (or CI/Vercel
+# recomputes from AVIF each time — very slow). Fingerprint metadata:
+# src/data/socialImageFingerprints.json + src/data/socialImageManifest.ts
 
 # generated types
 .astro/

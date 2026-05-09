@@ -1,6 +1,8 @@
 import sharp from 'sharp';
 import fs from 'fs/promises';
+import { createReadStream } from 'fs';
 import path from 'path';
+import crypto from 'crypto';
 import { fileURLToPath } from 'url';
 import prettier from 'prettier';
 
@@ -9,16 +11,9 @@ const __dirname = path.dirname(__filename);
 
 const publicDir = path.join(__dirname, '../public');
 const socialRootDir = path.join(publicDir, 'social');
-const cachePath = path.join(socialRootDir, '.cache.json');
+const fingerprintPath = path.join(__dirname, '../src/data/socialImageFingerprints.json');
 
 const CACHE_VERSION = 1;
-
-function getEmptyCache() {
-  return {
-    version: CACHE_VERSION,
-    entries: {},
-  };
-}
 
 async function ensureDir(dir) {
   await fs.mkdir(dir, { recursive: true });
@@ -31,6 +26,16 @@ function toWebPath(fsPath) {
 
 function toSingleQuoted(value) {
   return `'${value.replace(/\\/g, '\\\\').replace(/'/g, "\\'")}'`;
+}
+
+async function sha256File(filePath) {
+  return new Promise((resolve, reject) => {
+    const hash = crypto.createHash('sha256');
+    createReadStream(filePath)
+      .on('error', reject)
+      .on('data', (chunk) => hash.update(chunk))
+      .on('end', () => resolve(hash.digest('hex')));
+  });
 }
 
 async function getAvifFiles(rootDir) {
@@ -62,84 +67,153 @@ async function getAvifFiles(rootDir) {
   }
 
   await walk(rootDir);
+  results.sort((a, b) => a.localeCompare(b));
   return results;
 }
 
-async function findExistingSocialVariant(relativeDir, baseName) {
-  const targetDir = path.join(socialRootDir, relativeDir);
-  const jpegPath = path.join(targetDir, `${baseName}-social.jpg`);
-  const pngPath = path.join(targetDir, `${baseName}-social.png`);
-
-  try {
-    await fs.stat(jpegPath);
-    return jpegPath;
-  } catch {}
-
-  try {
-    await fs.stat(pngPath);
-    return pngPath;
-  } catch {}
-
-  return null;
+async function resolvePublicPath(webPath) {
+  const trimmed = webPath.replace(/^\/+/, '');
+  if (trimmed.includes('..')) {
+    throw new Error(`Invalid web path for social asset: ${webPath}`);
+  }
+  return path.join(publicDir, ...trimmed.split('/'));
 }
 
-async function getSourceFingerprint(filePath) {
-  const stats = await fs.stat(filePath);
-  return `${stats.size}-${Math.floor(stats.mtimeMs)}`;
+function serializeFingerprintsPayload(sourcesObj) {
+  const sortedSources = {};
+  for (const key of Object.keys(sourcesObj).sort()) {
+    sortedSources[key] = sourcesObj[key];
+  }
+  return (
+    JSON.stringify(
+      {
+        version: CACHE_VERSION,
+        sources: sortedSources,
+      },
+      null,
+      2,
+    ) + '\n'
+  );
 }
 
-async function readCache() {
+async function readFingerprintStore() {
   try {
-    const raw = await fs.readFile(cachePath, 'utf8');
+    const raw = await fs.readFile(fingerprintPath, 'utf8');
     const parsed = JSON.parse(raw);
-    if (parsed?.version !== CACHE_VERSION || typeof parsed.entries !== 'object') {
-      return getEmptyCache();
+    if (
+      parsed?.version !== CACHE_VERSION ||
+      typeof parsed.sources !== 'object' ||
+      parsed.sources === null
+    ) {
+      return { version: CACHE_VERSION, sources: {} };
     }
-    return parsed;
+    return { version: CACHE_VERSION, sources: parsed.sources };
   } catch {
-    return getEmptyCache();
+    return { version: CACHE_VERSION, sources: {} };
   }
 }
 
-async function writeCache(cache) {
-  const normalized = {
-    version: CACHE_VERSION,
-    entries: cache.entries ?? {},
-  };
-  await fs.writeFile(cachePath, JSON.stringify(normalized, null, 2) + '\n', 'utf8');
+/**
+ * One-time bootstrap: fingerprints file used to be ignored under public/social/.
+ * If we have manifest + AVIF + social outputs but empty fingerprints, hydrate SHA-256
+ * skips without re-encoding hundreds of thumbnails.
+ */
+function parsePairsFromSocialManifestTs(manifestText) {
+  const pairs = [];
+  const re = /'(\/[^']+)'\s*:\s*'(\/[^']+)'/gs;
+  let m;
+  while ((m = re.exec(manifestText)) !== null) {
+    const original = m[1];
+    const social = m[2];
+    if (
+      original.endsWith('.avif') &&
+      social.includes('-social.') &&
+      (social.endsWith('.jpg') || social.endsWith('.png'))
+    ) {
+      pairs.push({ original, social });
+    }
+  }
+  return pairs;
 }
 
-async function generateSocialForFile(filePath, cacheEntry) {
-  const relative = path.relative(publicDir, filePath);
-  const relDir = path.dirname(relative) === '.' ? '' : path.dirname(relative);
-  const base = path.basename(filePath, path.extname(filePath));
-  const originalWebPath = '/' + relative.split(path.sep).join('/');
-  const sourceFingerprint = await getSourceFingerprint(filePath);
+async function maybeHydrateFingerprintsFromManifest(store) {
+  if (Object.keys(store.sources).length > 0) {
+    return store;
+  }
 
-  if (cacheEntry?.fingerprint === sourceFingerprint && cacheEntry?.social) {
-    const cachedOutputPath = path.join(publicDir, cacheEntry.social.slice(1));
+  const manifestTsPath = path.join(__dirname, '../src/data/socialImageManifest.ts');
+  let manifestText;
+  try {
+    manifestText = await fs.readFile(manifestTsPath, 'utf8');
+  } catch {
+    return store;
+  }
+
+  const hydrated = { ...store, sources: { ...store.sources } };
+  const pairs = parsePairsFromSocialManifestTs(manifestText);
+  let filled = 0;
+
+  for (const { original, social } of pairs) {
     try {
-      await fs.stat(cachedOutputPath);
+      const sourceAbs = await resolvePublicPath(original);
+      const destAbs = await resolvePublicPath(social);
+      await Promise.all([fs.stat(sourceAbs), fs.stat(destAbs)]);
+      const contentSha256 = await sha256File(sourceAbs);
+      hydrated.sources[original] = {
+        sha256: contentSha256,
+        social,
+      };
+      filled += 1;
+    } catch {
+      // Missing file or unreadable manifest row; skip hydration for this pair.
+    }
+  }
+
+  if (filled > 0) {
+    console.log(
+      `🧭 Bootstrapped ${filled} fingerprint(s) from existing manifest + social outputs.`,
+    );
+  }
+
+  return hydrated;
+}
+
+async function writeFingerprintPayloadIfNeeded(sourcesObj, previousRaw) {
+  const next = serializeFingerprintsPayload(sourcesObj);
+  if (next.trim() === (previousRaw || '').trim()) {
+    return false;
+  }
+  await fs.mkdir(path.dirname(fingerprintPath), { recursive: true });
+  await fs.writeFile(fingerprintPath, next, 'utf8');
+  return true;
+}
+
+async function generateSocialForFile(filePath, previousEntry) {
+  const relative = path.relative(publicDir, filePath);
+  const relativeSlash = relative.split(path.sep).join('/');
+  const relDir =
+    path.dirname(relative) === '.' ? '' : path.dirname(relative).split(path.sep).join('/');
+  const base = path.basename(filePath, path.extname(filePath));
+  const originalWebPath = '/' + relativeSlash;
+  const contentSha256 = await sha256File(filePath);
+
+  if (
+    previousEntry?.sha256 === contentSha256 &&
+    previousEntry?.social &&
+    typeof previousEntry.social === 'string'
+  ) {
+    const cachedOutputAbs = await resolvePublicPath(previousEntry.social);
+    try {
+      await fs.stat(cachedOutputAbs);
       return {
         original: originalWebPath,
-        social: cacheEntry.social,
-        fingerprint: sourceFingerprint,
+        social: previousEntry.social,
+        fingerprint: contentSha256,
         wasCached: true,
       };
     } catch {
-      // Cache entry is stale (output missing), continue and regenerate.
+      // Output vanished; regenerate.
     }
-  }
-
-  // If we already have a generated social image, reuse it (cache)
-  const existing = await findExistingSocialVariant(relDir, base);
-  if (existing) {
-    return {
-      original: originalWebPath,
-      social: toWebPath(existing),
-      fingerprint: sourceFingerprint,
-      wasCached: true,
-    };
   }
 
   const sourceBuffer = await fs.readFile(filePath);
@@ -172,7 +246,7 @@ async function generateSocialForFile(filePath, cacheEntry) {
   return {
     original: originalWebPath,
     social: toWebPath(chosenPath),
-    fingerprint: sourceFingerprint,
+    fingerprint: contentSha256,
     wasCached: false,
   };
 }
@@ -211,25 +285,35 @@ async function main() {
   console.log('🔍 Scanning for AVIF images under /public ...');
   await ensureDir(publicDir);
   await ensureDir(socialRootDir);
-  const cache = await readCache();
+
+  let store = await readFingerprintStore();
+  store = await maybeHydrateFingerprintsFromManifest(store);
 
   const avifFiles = await getAvifFiles(publicDir);
 
+  let existingFingerprintsRaw = '';
+  try {
+    existingFingerprintsRaw = await fs.readFile(fingerprintPath, 'utf8');
+  } catch {
+    //
+  }
+
   if (avifFiles.length === 0) {
     console.log('No .avif files found under /public; nothing to generate.');
+    await writeFingerprintPayloadIfNeeded({}, existingFingerprintsRaw);
     await writeManifest([]);
     return;
   }
 
   const mappings = [];
-  const nextEntries = {};
   let generatedCount = 0;
   let skippedCount = 0;
 
   for (const file of avifFiles) {
-    const relative = path.relative(publicDir, file).split(path.sep).join('/');
-    const cacheEntry = cache.entries[relative];
-    const mapping = await generateSocialForFile(file, cacheEntry);
+    const relativeSlash = path.relative(publicDir, file).split(path.sep).join('/');
+    const originalWebPath = '/' + relativeSlash;
+    const prev = store.sources[originalWebPath];
+    const mapping = await generateSocialForFile(file, prev);
     if (mapping.wasCached) {
       skippedCount += 1;
     } else {
@@ -237,14 +321,14 @@ async function main() {
       console.log(`🆕 Generated ${mapping.social} from ${mapping.original}`);
     }
     mappings.push(mapping);
-    nextEntries[relative] = {
-      social: mapping.social,
-      fingerprint: mapping.fingerprint,
-    };
   }
 
-  cache.entries = nextEntries;
-  await writeCache(cache);
+  const nextSources = {};
+  for (const m of mappings) {
+    nextSources[m.original] = { sha256: m.fingerprint, social: m.social };
+  }
+
+  await writeFingerprintPayloadIfNeeded(nextSources, existingFingerprintsRaw);
 
   const manifestPath = path.join(__dirname, '../src/data/socialImageManifest.ts');
   let hasManifest = true;

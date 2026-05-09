@@ -15,6 +15,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Keeps regenerated social JPG/PNG warm between runs until they are committed to git.
+      - name: Restore social derivatives cache
+        uses: actions/cache@v4
+        with:
+          path: public/social
+          key: ${{ runner.os }}-social-images-${{ hashFiles('public/**/*.avif', 'scripts/generate-social-images.js', 'src/data/socialImageFingerprints.json') }}
+          restore-keys: |
+            ${{ runner.os }}-social-images-
+
       - name: Set up pnpm
         uses: pnpm/action-setup@v4
         with:
