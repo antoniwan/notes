@@ -329,6 +329,14 @@
       "sha256": "3cacf72e44e197d32ea693d04111bd23d1b90c31e32570b347cd0967c948ef78",
       "social": "/social/images/2026/cupey-papi-social.jpg"
     },
+    "/images/2026/dispatch-review/dispatch-logo-screen.avif": {
+      "sha256": "490be10171e6a8f028cdfc8037f89d9291a1555ad6692d3aa34fd82a7dc89e5c",
+      "social": "/social/images/2026/dispatch-review/dispatch-logo-screen-social.jpg"
+    },
+    "/images/2026/dispatch-review/dispatch-pc-game-dispatch.avif": {
+      "sha256": "ec6c83059dd02ca50d8052c3d9928856f36f9be119c5306a604be8143fca12ef",
+      "social": "/social/images/2026/dispatch-review/dispatch-pc-game-dispatch-social.jpg"
+    },
     "/images/2026/empathy-and-compassion.avif": {
       "sha256": "9cce22a6246faf4fd2f675598710383b72efe0fb81129c43510d22a4b568888a",
       "social": "/social/images/2026/empathy-and-compassion-social.jpg"
