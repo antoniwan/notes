@@ -21,10 +21,10 @@ tags:
   - reflection
   - meditation
   - values
-draft: true
+draft: false
 featured: false
 highlight: false
-published: false
+published: true
 showComments: true
 translationGroup: happiness-is-moments
 ---
