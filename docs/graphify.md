@@ -61,6 +61,23 @@ Treat that section as noise for conventional layout trees. Better prompts for th
 
 Use **God Nodes** and **Surprising Connections** when they point at cross-file doc↔code links; ignore bridge questions whose answer is “it’s the base layout.”
 
+## “Isolated nodes” in Knowledge Gaps
+
+The report’s **999 isolated node(s)** (your count may vary slightly after rebuilds) means **degree ≤ 1** — at most one graph edge — not “unused in the app.” Graphify already excludes file hubs, doc concepts, and `rationale` nodes from that list.
+
+For this repo, almost none of them are bugs. Typical buckets:
+
+| Source | Why it looks isolated | Fix in the app? |
+| ------ | --------------------- | --------------- |
+| `src/data/socialImageFingerprints.json` (~333) | AST emits one node per JSON path (`/images/...`, `sha256`, `social`) with almost no edges | No — build artifact map; listed in `.graphifyignore` |
+| `package.json` keys (`name`, `type`, `version`, …) (~46) | JSON field leaves | No — config noise |
+| Brain Science `.astro` pages (~137) | Page-local variables (`pageInfo`, `chartData`, …) with a single `contains` edge | No — normal Astro frontmatter scope |
+| Other code leaves (~461) | Module constants, `__dirname`, script paths, etc. | Usually no |
+
+Doc-only concepts from semantic extraction are **not** counted in that 999; they are separate leaf nodes.
+
+After ignoring fingerprint JSON, expect the gap line to drop by roughly a third on the next `/graphify` or `graphify update .`. Remaining “isolated” entries are mostly AST granularity, not missing architecture.
+
 ## Cursor behavior
 
 `.cursor/rules/graphify.mdc` tells the agent to:

@@ -4,6 +4,8 @@ dist/
 .vercel/
 graphify-out/
 public/social/
+src/data/socialImageFingerprints.json
+src/data/.brain-science-cache/
 public/images/
 src/content/p/
 specs/
