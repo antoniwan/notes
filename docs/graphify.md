@@ -47,6 +47,20 @@ graphify explain "translationGroup"
 
 Prefer these scoped results over reading all of `GRAPH_REPORT.md` or running broad greps.
 
+## Suggested questions (often skip them here)
+
+`GRAPH_REPORT.md` includes auto-generated “Suggested Questions” from graph metrics (high betweenness, weak cohesion, and similar). Those prompts do not know Astro layout hierarchy.
+
+In this repo you will often see questions like “Why does `BaseLayout` connect tags, read state, brain science, RSS, …?” That is usually not a design smell. `BaseLayout` is the parent of `PageLayout`, `HomeLayout`, and `BlogLayout`; most routes sit under that shell, so the graph treats it as a bridge between communities even when the real story is just **inheritance plus sibling imports on each page**.
+
+Treat that section as noise for conventional layout trees. Better prompts for this codebase:
+
+- What does `BlogLayout` add that post routes use but listing pages do not?
+- `graphify path "ReadStateServiceInit" "PostCard"` — how does read state reach cards?
+- Where do `translationGroup` and `LanguageToggle` meet in code?
+
+Use **God Nodes** and **Surprising Connections** when they point at cross-file doc↔code links; ignore bridge questions whose answer is “it’s the base layout.”
+
 ## Cursor behavior
 
 `.cursor/rules/graphify.mdc` tells the agent to:
