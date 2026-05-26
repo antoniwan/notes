@@ -1,0 +1,2887 @@
+{
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\astro.config.mjs": {
+    "mtime": 1778277139.5940897,
+    "ast_hash": "39d1d6a5134265e5a54690025c9e3881",
+    "semantic_hash": "39d1d6a5134265e5a54690025c9e3881"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\eslint.config.mjs": {
+    "mtime": 1778271273.705954,
+    "ast_hash": "fdc790c48505e68e9e9674f91e6fb95c",
+    "semantic_hash": "fdc790c48505e68e9e9674f91e6fb95c"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\package.json": {
+    "mtime": 1778291823.2131212,
+    "ast_hash": "9b95bc6ffeebcab4db0a42285d6b3b8c",
+    "semantic_hash": "9b95bc6ffeebcab4db0a42285d6b3b8c"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\remark-reading-time.mjs": {
+    "mtime": 1764687426.961514,
+    "ast_hash": "5c706d74ac8171c42303177b8bde69b0",
+    "semantic_hash": "5c706d74ac8171c42303177b8bde69b0"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\tailwind.config.js": {
+    "mtime": 1778277216.5813253,
+    "ast_hash": "094615571ab162e60e3a91214b6a8eea",
+    "semantic_hash": "094615571ab162e60e3a91214b6a8eea"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\tsconfig.json": {
+    "mtime": 1764687427.8223603,
+    "ast_hash": "7e12ac29260ea051f7e6c0234d5c575f",
+    "semantic_hash": "7e12ac29260ea051f7e6c0234d5c575f"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\vercel.json": {
+    "mtime": 1772220295.558072,
+    "ast_hash": "0d877e2ed9958ae271c5a8572b6d5b70",
+    "semantic_hash": "0d877e2ed9958ae271c5a8572b6d5b70"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.claude\\settings.local.json": {
+    "mtime": 1772219937.986941,
+    "ast_hash": "7b6d57e686789d65eaeda10e13a2891d",
+    "semantic_hash": "7b6d57e686789d65eaeda10e13a2891d"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.specify\\init-options.json": {
+    "mtime": 1778271273.0667305,
+    "ast_hash": "ca367a75214ac83efb583eb925b5397f",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.specify\\scripts\\bash\\check-prerequisites.sh": {
+    "mtime": 1775355818.5549598,
+    "ast_hash": "c6623c1a91dbad4d990d64a7399f157b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.specify\\scripts\\bash\\common.sh": {
+    "mtime": 1775355818.5549598,
+    "ast_hash": "0b9137f38d8d8eaf8fef913efaf5e872",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.specify\\scripts\\bash\\create-new-feature.sh": {
+    "mtime": 1775355818.5549598,
+    "ast_hash": "15e56688e16c4ec38d232b74a400a2c8",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.specify\\scripts\\bash\\setup-plan.sh": {
+    "mtime": 1775355818.5549598,
+    "ast_hash": "6c3adc0962d4efcfbd45ae28096a3ad7",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.specify\\scripts\\bash\\update-agent-context.sh": {
+    "mtime": 1775355818.5549598,
+    "ast_hash": "03f038c95bf28d7eacdcf1ff72d2057a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.vscode\\extensions.json": {
+    "mtime": 1764687425.839146,
+    "ast_hash": "94b9ad68fa08385589cb2c7e68935377",
+    "semantic_hash": "94b9ad68fa08385589cb2c7e68935377"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.vscode\\launch.json": {
+    "mtime": 1764687425.8431506,
+    "ast_hash": "60493763dcbc2d109e57da86d997602a",
+    "semantic_hash": "60493763dcbc2d109e57da86d997602a"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.vscode\\settings.json": {
+    "mtime": 1764687425.8451498,
+    "ast_hash": "76e9b24d0ec63ff7529d0c6a45db2f91",
+    "semantic_hash": "76e9b24d0ec63ff7529d0c6a45db2f91"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\sw.js": {
+    "mtime": 1778271274.1751902,
+    "ast_hash": "c5fb17df546b895d4feef75fa873fc13",
+    "semantic_hash": "c5fb17df546b895d4feef75fa873fc13"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\scripts\\generate-favicons.js": {
+    "mtime": 1772209963.0788033,
+    "ast_hash": "ddaa93d3d9d7d2cea4133a402a3309fc",
+    "semantic_hash": "ddaa93d3d9d7d2cea4133a402a3309fc"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\scripts\\generate-social-images.js": {
+    "mtime": 1778286614.5148325,
+    "ast_hash": "b010962c905e8d10bd68e647d9518f30",
+    "semantic_hash": "b010962c905e8d10bd68e647d9518f30"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\consts.ts": {
+    "mtime": 1773355706.2180455,
+    "ast_hash": "4395d99f136e56db83d3726cd60a0245",
+    "semantic_hash": "4395d99f136e56db83d3726cd60a0245"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content.config.ts": {
+    "mtime": 1778271276.7149568,
+    "ast_hash": "0ca61b12dedd3e5e6626ef9b7df08512",
+    "semantic_hash": "0ca61b12dedd3e5e6626ef9b7df08512"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\env.d.ts": {
+    "mtime": 1778271278.5079873,
+    "ast_hash": "a3c695572a7aa422f67cac0ad3aa2daa",
+    "semantic_hash": "a3c695572a7aa422f67cac0ad3aa2daa"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\BackToTop.astro": {
+    "mtime": 1778277691.9809864,
+    "ast_hash": "4fb6e5dca372f283ed7d419077148fa8",
+    "semantic_hash": "4fb6e5dca372f283ed7d419077148fa8"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\BaseHead.astro": {
+    "mtime": 1778271275.0554874,
+    "ast_hash": "f9bc493997613e70139cf2e80187bc11",
+    "semantic_hash": "f9bc493997613e70139cf2e80187bc11"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\Breadcrumbs.astro": {
+    "mtime": 1778277692.3389494,
+    "ast_hash": "4adf6fa4326bfe8d231938f85abf1255",
+    "semantic_hash": "4adf6fa4326bfe8d231938f85abf1255"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\CategoryCard.astro": {
+    "mtime": 1778277692.3640976,
+    "ast_hash": "3e60973af505668bf630aac52f46f225",
+    "semantic_hash": "3e60973af505668bf630aac52f46f225"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\Chapter.astro": {
+    "mtime": 1772209980.6555462,
+    "ast_hash": "955f6dd56d889693401c8151d2f05962",
+    "semantic_hash": "955f6dd56d889693401c8151d2f05962"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\Comments.astro": {
+    "mtime": 1778277692.4512644,
+    "ast_hash": "9f71d5932fe957b83bf9e9a7f716edf8",
+    "semantic_hash": "9f71d5932fe957b83bf9e9a7f716edf8"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\Container.astro": {
+    "mtime": 1764687427.021039,
+    "ast_hash": "4fafe64e5a6247347e8f46820a42d2da",
+    "semantic_hash": "4fafe64e5a6247347e8f46820a42d2da"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\DefaultImage.astro": {
+    "mtime": 1772041911.2312794,
+    "ast_hash": "087b57b204ed1109f3c8c67e6bbf996a",
+    "semantic_hash": "087b57b204ed1109f3c8c67e6bbf996a"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\Disclaimer.astro": {
+    "mtime": 1778277692.4841814,
+    "ast_hash": "21d74a9de531ba422b590863f59a29df",
+    "semantic_hash": "21d74a9de531ba422b590863f59a29df"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\FeaturedWritingsRotator.astro": {
+    "mtime": 1778277692.5782807,
+    "ast_hash": "32cecb9f8f0f20fd4e8edc81ac23c89f",
+    "semantic_hash": "32cecb9f8f0f20fd4e8edc81ac23c89f"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\Footer.astro": {
+    "mtime": 1778277692.62744,
+    "ast_hash": "f2eca3eae5bb21bdb304994d58c17623",
+    "semantic_hash": "f2eca3eae5bb21bdb304994d58c17623"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\FormattedDate.astro": {
+    "mtime": 1778277692.6446137,
+    "ast_hash": "360c442c1be3b89d812e65b7019369c5",
+    "semantic_hash": "360c442c1be3b89d812e65b7019369c5"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\Header.astro": {
+    "mtime": 1778277692.6766098,
+    "ast_hash": "fe29be3f375145c025e9f48a53be04cf",
+    "semantic_hash": "fe29be3f375145c025e9f48a53be04cf"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\HighlightsMasonry.astro": {
+    "mtime": 1778271275.7473705,
+    "ast_hash": "d7b4e6a8ec64e5c394d3a399a972e6a8",
+    "semantic_hash": "d7b4e6a8ec64e5c394d3a399a972e6a8"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\ImageRotator.astro": {
+    "mtime": 1778277692.8182447,
+    "ast_hash": "9edec9249259d8ce20e2b71e16603846",
+    "semantic_hash": "9edec9249259d8ce20e2b71e16603846"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\LanguageToggle.astro": {
+    "mtime": 1778277209.7185261,
+    "ast_hash": "841944db3d8a9d9e4e703cda8abedd0d",
+    "semantic_hash": "841944db3d8a9d9e4e703cda8abedd0d"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\LatestWatched.astro": {
+    "mtime": 1778271917.074507,
+    "ast_hash": "3cfe5ed56d4a04966d482b3387228b4a",
+    "semantic_hash": "3cfe5ed56d4a04966d482b3387228b4a"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\LazyPosts.astro": {
+    "mtime": 1778277692.9336827,
+    "ast_hash": "6e6cf94d45a333059ec3a77829e032c9",
+    "semantic_hash": "6e6cf94d45a333059ec3a77829e032c9"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\Logo.astro": {
+    "mtime": 1778277692.9575295,
+    "ast_hash": "8bef09180e60ec9ff02df3467627cbff",
+    "semantic_hash": "8bef09180e60ec9ff02df3467627cbff"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\MobileNav.astro": {
+    "mtime": 1778277693.0276415,
+    "ast_hash": "1d48c0ffe778947c0b8c5eb6c4fb8387",
+    "semantic_hash": "1d48c0ffe778947c0b8c5eb6c4fb8387"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\Navigation.astro": {
+    "mtime": 1778277693.0816512,
+    "ast_hash": "81c983252a8dbae58442297f2abb090c",
+    "semantic_hash": "81c983252a8dbae58442297f2abb090c"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\NotFoundQuote.astro": {
+    "mtime": 1778287038.1304371,
+    "ast_hash": "f06ae80b9021d7611c353e6040d0a7d6",
+    "semantic_hash": "f06ae80b9021d7611c353e6040d0a7d6"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\PageHeader.astro": {
+    "mtime": 1778277693.1132815,
+    "ast_hash": "36e38a73cc6d1c85132d1eace8d8596a",
+    "semantic_hash": "36e38a73cc6d1c85132d1eace8d8596a"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\PerformanceMonitor.astro": {
+    "mtime": 1778271416.210452,
+    "ast_hash": "3db6f705f2b54520a26f56f974ed3994",
+    "semantic_hash": "3db6f705f2b54520a26f56f974ed3994"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\PostCard.astro": {
+    "mtime": 1778277209.7813354,
+    "ast_hash": "4d247e4e770009b1084fdd8244585c99",
+    "semantic_hash": "4d247e4e770009b1084fdd8244585c99"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\ReadingProgress.astro": {
+    "mtime": 1778277693.2675595,
+    "ast_hash": "8e0d1c74748bf71f9f11ea7ce2f6bb81",
+    "semantic_hash": "8e0d1c74748bf71f9f11ea7ce2f6bb81"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\ReadStateServiceInit.astro": {
+    "mtime": 1772040273.6487648,
+    "ast_hash": "34c7195cc8446cf70096d717e3ee44fd",
+    "semantic_hash": "34c7195cc8446cf70096d717e3ee44fd"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\RelatedPosts.astro": {
+    "mtime": 1778277693.3117037,
+    "ast_hash": "ff5914b5b41fdd88add4754c1776be71",
+    "semantic_hash": "ff5914b5b41fdd88add4754c1776be71"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\ReviewVerdict.astro": {
+    "mtime": 1778277693.3337572,
+    "ast_hash": "c2494f902fec111a567e2797092200b7",
+    "semantic_hash": "c2494f902fec111a567e2797092200b7"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\SearchBar.astro": {
+    "mtime": 1778277693.428539,
+    "ast_hash": "244060144783a9a71fd3deaa20e582b7",
+    "semantic_hash": "244060144783a9a71fd3deaa20e582b7"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\ServiceWorkerRegistration.astro": {
+    "mtime": 1778271416.3885098,
+    "ast_hash": "db828130ba65c2fc453f1b5a56ef2b8e",
+    "semantic_hash": "db828130ba65c2fc453f1b5a56ef2b8e"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\SocialShare.astro": {
+    "mtime": 1778277693.545825,
+    "ast_hash": "94841d1e6520fb35b9eab8a3a9cad1d6",
+    "semantic_hash": "94841d1e6520fb35b9eab8a3a9cad1d6"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\StructuredData.astro": {
+    "mtime": 1772218795.7104673,
+    "ast_hash": "2d0662cb745f386c93cf8c0087919ecf",
+    "semantic_hash": "2d0662cb745f386c93cf8c0087919ecf"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\TagCard.astro": {
+    "mtime": 1778277693.6225502,
+    "ast_hash": "a7d96b3ba2f1f53ddcd3b379eefd5664",
+    "semantic_hash": "a7d96b3ba2f1f53ddcd3b379eefd5664"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\TagCloud.astro": {
+    "mtime": 1764687427.1185586,
+    "ast_hash": "35d1305464664bbeb0495db513372ae9",
+    "semantic_hash": "35d1305464664bbeb0495db513372ae9"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\TagDisplay.astro": {
+    "mtime": 1778277693.6566622,
+    "ast_hash": "da386e2c0001a11feda9d7d55b20976b",
+    "semantic_hash": "da386e2c0001a11feda9d7d55b20976b"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\TagSystem.astro": {
+    "mtime": 1772210020.288492,
+    "ast_hash": "67078996769cd5059defa1055025b102",
+    "semantic_hash": "67078996769cd5059defa1055025b102"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\ThemeToggle.astro": {
+    "mtime": 1778277693.6912568,
+    "ast_hash": "8fe8e08eafd6f52e60178eba6688856c",
+    "semantic_hash": "8fe8e08eafd6f52e60178eba6688856c"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\brain-science\\BarChart.astro": {
+    "mtime": 1778277692.1252484,
+    "ast_hash": "8851b4dcf9f813f212ceb0d610d512ca",
+    "semantic_hash": "8851b4dcf9f813f212ceb0d610d512ca"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\brain-science\\BrainScienceLayout.astro": {
+    "mtime": 1778277692.1435323,
+    "ast_hash": "a7283a2f2c18e5ee6f8f23e7f48e2ae0",
+    "semantic_hash": "a7283a2f2c18e5ee6f8f23e7f48e2ae0"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\brain-science\\BrainScienceNarrativeSummary.astro": {
+    "mtime": 1778277692.1662574,
+    "ast_hash": "151e7575ef933ca22f366bc7105d8058",
+    "semantic_hash": "151e7575ef933ca22f366bc7105d8058"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\brain-science\\BrainScienceNav.astro": {
+    "mtime": 1778277692.1941047,
+    "ast_hash": "a91443de59819ff0b39f311172722d32",
+    "semantic_hash": "a91443de59819ff0b39f311172722d32"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\brain-science\\MetricCard.astro": {
+    "mtime": 1778277692.2116275,
+    "ast_hash": "da705149ffea4cf5774918cf65695214",
+    "semantic_hash": "da705149ffea4cf5774918cf65695214"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\brain-science\\ScatterChart.astro": {
+    "mtime": 1778277692.275328,
+    "ast_hash": "5b9916c16b05cb43395dd7332b3b5d66",
+    "semantic_hash": "5b9916c16b05cb43395dd7332b3b5d66"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\brain-science\\TimeSeriesChart.astro": {
+    "mtime": 1778277692.3163872,
+    "ast_hash": "a9642851516cdbf4a8ca48d386ad92b0",
+    "semantic_hash": "a9642851516cdbf4a8ca48d386ad92b0"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\post-toc\\postToc.client.ts": {
+    "mtime": 1778271276.1497128,
+    "ast_hash": "9e7d63720594a610b5079e003d91c2d2",
+    "semantic_hash": "9e7d63720594a610b5079e003d91c2d2"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\post-toc\\PostTocModal.astro": {
+    "mtime": 1778271276.1859207,
+    "ast_hash": "d2d42793d8940ca3cacf513a05966fa2",
+    "semantic_hash": "d2d42793d8940ca3cacf513a05966fa2"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\components\\tag\\ContentFormPrelude.astro": {
+    "mtime": 1778277693.609523,
+    "ast_hash": "7013b7b9da75388d440246dec998f3a8",
+    "semantic_hash": "7013b7b9da75388d440246dec998f3a8"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\config\\assets.ts": {
+    "mtime": 1764687427.1725595,
+    "ast_hash": "7d1b3b759a4707bd701b2b1ddcc8d585",
+    "semantic_hash": "7d1b3b759a4707bd701b2b1ddcc8d585"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\config\\comments.ts": {
+    "mtime": 1772220971.3334332,
+    "ast_hash": "97660e86ffd7f01d4d735bbaf2dc65cf",
+    "semantic_hash": "97660e86ffd7f01d4d735bbaf2dc65cf"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\config\\storage.ts": {
+    "mtime": 1764687427.18156,
+    "ast_hash": "e3bfa6cddc9602f6fa4e38b3d93cf260",
+    "semantic_hash": "e3bfa6cddc9602f6fa4e38b3d93cf260"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\highlights.json": {
+    "mtime": 1772044244.3366687,
+    "ast_hash": "148f1d87580946fc468d8d11f313f8eb",
+    "semantic_hash": "148f1d87580946fc468d8d11f313f8eb"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\data\\brainScience.ts": {
+    "mtime": 1778274592.0676644,
+    "ast_hash": "44697046da9585a43afe67ece84a8129",
+    "semantic_hash": "44697046da9585a43afe67ece84a8129"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\data\\categories.ts": {
+    "mtime": 1764687427.5207047,
+    "ast_hash": "e6702a7796e625ae15f4ec37601db914",
+    "semantic_hash": "e6702a7796e625ae15f4ec37601db914"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\data\\defaultCovers.ts": {
+    "mtime": 1772044245.6719453,
+    "ast_hash": "ad23757f3ba699c268e26f388b44e76a",
+    "semantic_hash": "ad23757f3ba699c268e26f388b44e76a"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\data\\library.ts": {
+    "mtime": 1773355707.8575377,
+    "ast_hash": "ccfdca971e249f84465440ee17aee891",
+    "semantic_hash": "ccfdca971e249f84465440ee17aee891"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\data\\navigation.ts": {
+    "mtime": 1778271278.408872,
+    "ast_hash": "4da0a6ceaded3a2cc1fadad9011157d5",
+    "semantic_hash": "4da0a6ceaded3a2cc1fadad9011157d5"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\data\\quotes.ts": {
+    "mtime": 1778289324.201774,
+    "ast_hash": "1cf495530a9bc4a34e700dadb5b025cc",
+    "semantic_hash": "1cf495530a9bc4a34e700dadb5b025cc"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\data\\searchIndex.ts": {
+    "mtime": 1772044245.727535,
+    "ast_hash": "1956104600644df337193a699640b73c",
+    "semantic_hash": "1956104600644df337193a699640b73c"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\data\\socialImageFingerprints.json": {
+    "mtime": 1778696347.3829055,
+    "ast_hash": "426052c9e0aa57d0a0b3206bfe6d1995",
+    "semantic_hash": "426052c9e0aa57d0a0b3206bfe6d1995"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\data\\socialImageManifest.ts": {
+    "mtime": 1778696347.6849532,
+    "ast_hash": "003407efdcf5da7d4172e84d42f603ac",
+    "semantic_hash": "003407efdcf5da7d4172e84d42f603ac"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\data\\tags.ts": {
+    "mtime": 1764687427.5327091,
+    "ast_hash": "789c4dfc77fb4b24bc23efcf6949904e",
+    "semantic_hash": "789c4dfc77fb4b24bc23efcf6949904e"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\data\\tagVocabulary.ts": {
+    "mtime": 1778271278.4979892,
+    "ast_hash": "fe6367b51f225ec336dcfe3cdc63417e",
+    "semantic_hash": "fe6367b51f225ec336dcfe3cdc63417e"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\data\\.brain-science-cache\\meta-analysis.json": {
+    "mtime": 1778276922.2463112,
+    "ast_hash": "17415c2afa2e691c448855e8e7434985",
+    "semantic_hash": "17415c2afa2e691c448855e8e7434985"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\layouts\\BaseLayout.astro": {
+    "mtime": 1778277695.6320298,
+    "ast_hash": "44032d741f4da42cc25a403fe6b53756",
+    "semantic_hash": "44032d741f4da42cc25a403fe6b53756"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\layouts\\BlogLayout.astro": {
+    "mtime": 1778277695.7736688,
+    "ast_hash": "017ff9fae6baad3883939efca18782a9",
+    "semantic_hash": "017ff9fae6baad3883939efca18782a9"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\layouts\\HomeLayout.astro": {
+    "mtime": 1764687427.5517042,
+    "ast_hash": "56e0d4ff1920b8fe449de968edf4f3cf",
+    "semantic_hash": "56e0d4ff1920b8fe449de968edf4f3cf"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\layouts\\PageLayout.astro": {
+    "mtime": 1778271278.6955614,
+    "ast_hash": "e80eb9531ae75d395b449aa3ba97bf82",
+    "semantic_hash": "e80eb9531ae75d395b449aa3ba97bf82"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\pages\\404.astro": {
+    "mtime": 1778271278.706561,
+    "ast_hash": "09ff1a4b82bcc8de22528cbe014889de",
+    "semantic_hash": "09ff1a4b82bcc8de22528cbe014889de"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\pages\\about.astro": {
+    "mtime": 1778696989.752308,
+    "ast_hash": "0c012bcb9e245e6a53301947e3d5ede4",
+    "semantic_hash": "0c012bcb9e245e6a53301947e3d5ede4"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\pages\\everything.astro": {
+    "mtime": 1778277696.999393,
+    "ast_hash": "49664c8547f89861024e236715e13847",
+    "semantic_hash": "49664c8547f89861024e236715e13847"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\pages\\feed.json.js": {
+    "mtime": 1772210026.2620974,
+    "ast_hash": "5845ab06926715cf30288b7580e996c3",
+    "semantic_hash": "5845ab06926715cf30288b7580e996c3"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\pages\\guided-path.astro": {
+    "mtime": 1772218826.271036,
+    "ast_hash": "654b09e8a4891673bf57e1153cf1b98a",
+    "semantic_hash": "654b09e8a4891673bf57e1153cf1b98a"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\pages\\index.astro": {
+    "mtime": 1778696986.089178,
+    "ast_hash": "2c615b1e2d47f7ff5c54843ee1ac4cff",
+    "semantic_hash": "2c615b1e2d47f7ff5c54843ee1ac4cff"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\pages\\library.astro": {
+    "mtime": 1773368725.4457102,
+    "ast_hash": "8bd888e2a30f89a53ad034f0a07cc5f3",
+    "semantic_hash": "8bd888e2a30f89a53ad034f0a07cc5f3"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\pages\\rss.xml.js": {
+    "mtime": 1772210028.5628767,
+    "ast_hash": "007d5f15029878f7046628ccec1ad236",
+    "semantic_hash": "007d5f15029878f7046628ccec1ad236"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\pages\\sitemap.xml.astro": {
+    "mtime": 1764687427.6692305,
+    "ast_hash": "96bb1e34af037ed01695f92bb07a1d32",
+    "semantic_hash": "96bb1e34af037ed01695f92bb07a1d32"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\pages\\tag-management.astro": {
+    "mtime": 1778277697.2180302,
+    "ast_hash": "e537b1aee8552fe128f02da8cac07f58",
+    "semantic_hash": "e537b1aee8552fe128f02da8cac07f58"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\pages\\test-theme.astro": {
+    "mtime": 1778277103.2455058,
+    "ast_hash": "f7b0aceb555449062d73f6877952ec63",
+    "semantic_hash": "f7b0aceb555449062d73f6877952ec63"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\pages\\api\\index.astro": {
+    "mtime": 1778289380.9380054,
+    "ast_hash": "8f72fa76d2fc4bafd3158e19a42ea93a",
+    "semantic_hash": "8f72fa76d2fc4bafd3158e19a42ea93a"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\pages\\api\\quotes.ts": {
+    "mtime": 1778289377.8544474,
+    "ast_hash": "01a538c6dbf8cfadab373e7206d45b2e",
+    "semantic_hash": "01a538c6dbf8cfadab373e7206d45b2e"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\pages\\brain-science\\cadence.astro": {
+    "mtime": 1778277695.979719,
+    "ast_hash": "c502387918671f3f71f62dfda4bebefc",
+    "semantic_hash": "c502387918671f3f71f62dfda4bebefc"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\pages\\brain-science\\evolution.astro": {
+    "mtime": 1778277696.1375425,
+    "ast_hash": "028bdfc69b5baea9fcb5be3acd4e7173",
+    "semantic_hash": "028bdfc69b5baea9fcb5be3acd4e7173"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\pages\\brain-science\\index.astro": {
+    "mtime": 1778277696.224593,
+    "ast_hash": "d320ac7938a02f24df51d73e1b5cd3ab",
+    "semantic_hash": "d320ac7938a02f24df51d73e1b5cd3ab"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\pages\\brain-science\\insights.astro": {
+    "mtime": 1778277696.4758644,
+    "ast_hash": "093365455144aa2832f1defd53232f9e",
+    "semantic_hash": "093365455144aa2832f1defd53232f9e"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\pages\\brain-science\\meta.astro": {
+    "mtime": 1778277696.5877972,
+    "ast_hash": "bdaf89aef7a69f771ca5aa663a6f7530",
+    "semantic_hash": "bdaf89aef7a69f771ca5aa663a6f7530"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\pages\\brain-science\\patterns.astro": {
+    "mtime": 1778277696.8202145,
+    "ast_hash": "88b1dd3fd4e089f504643b15ab14e75f",
+    "semantic_hash": "88b1dd3fd4e089f504643b15ab14e75f"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\pages\\brain-science\\topics.astro": {
+    "mtime": 1778277696.9298005,
+    "ast_hash": "95fdd8062f54224c8eb45f46a9b6a519",
+    "semantic_hash": "95fdd8062f54224c8eb45f46a9b6a519"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\pages\\category\\index.astro": {
+    "mtime": 1778277696.9875264,
+    "ast_hash": "ab5fc08b5a8cd73a7dfed6fb24eec7a0",
+    "semantic_hash": "ab5fc08b5a8cd73a7dfed6fb24eec7a0"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\pages\\category\\[category].astro": {
+    "mtime": 1778277696.9623377,
+    "ast_hash": "8092ea186ba96bb1d0db5ee06e1c853f",
+    "semantic_hash": "8092ea186ba96bb1d0db5ee06e1c853f"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\pages\\library\\books.astro": {
+    "mtime": 1773355709.5302103,
+    "ast_hash": "fce37efef30dd8178131ba4f38d0d377",
+    "semantic_hash": "fce37efef30dd8178131ba4f38d0d377"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\pages\\p\\[...slug].astro": {
+    "mtime": 1778271279.966864,
+    "ast_hash": "96647344fb7e9b3b959044854cb8ab0c",
+    "semantic_hash": "96647344fb7e9b3b959044854cb8ab0c"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\pages\\tag\\index.astro": {
+    "mtime": 1778277103.2445052,
+    "ast_hash": "fb6c19d6ee53c9d699907f3b161fd769",
+    "semantic_hash": "fb6c19d6ee53c9d699907f3b161fd769"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\pages\\tag\\[tag].astro": {
+    "mtime": 1778277697.269611,
+    "ast_hash": "fbe71aa9235e27532025cac2e841d090",
+    "semantic_hash": "fbe71aa9235e27532025cac2e841d090"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\types\\astro-jsx.d.ts": {
+    "mtime": 1772043904.9166489,
+    "ast_hash": "28ff0c9f6678abc243d72980898a7488",
+    "semantic_hash": "28ff0c9f6678abc243d72980898a7488"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\types\\comments.d.ts": {
+    "mtime": 1772044247.4538596,
+    "ast_hash": "d6f60ee6400584010b06af912b137249",
+    "semantic_hash": "d6f60ee6400584010b06af912b137249"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\types\\jsx-global.d.ts": {
+    "mtime": 1764687427.7233045,
+    "ast_hash": "c94c63b356f17134d33f0e8dd381dd76",
+    "semantic_hash": "c94c63b356f17134d33f0e8dd381dd76"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\types\\layout.ts": {
+    "mtime": 1778271280.2116332,
+    "ast_hash": "01e45b9930cec0a03673b1778b70f54f",
+    "semantic_hash": "01e45b9930cec0a03673b1778b70f54f"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\types\\sentiment.d.ts": {
+    "mtime": 1772218431.372256,
+    "ast_hash": "328db0f0142b4585582aae1f3a00ca38",
+    "semantic_hash": "328db0f0142b4585582aae1f3a00ca38"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\utils\\categoryUtils.ts": {
+    "mtime": 1778271280.376286,
+    "ast_hash": "ef4b09ee25f8b7d7b247cc8bb191a74f",
+    "semantic_hash": "ef4b09ee25f8b7d7b247cc8bb191a74f"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\utils\\chartTheme.ts": {
+    "mtime": 1764687427.7623029,
+    "ast_hash": "f5b7c879ab7056a45f59389cffebb532",
+    "semantic_hash": "f5b7c879ab7056a45f59389cffebb532"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\utils\\excerpt.ts": {
+    "mtime": 1764687427.7703,
+    "ast_hash": "1df0da503cee334261782bd2bfed4bae",
+    "semantic_hash": "1df0da503cee334261782bd2bfed4bae"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\utils\\feedValidation.ts": {
+    "mtime": 1764687427.7743053,
+    "ast_hash": "0914dd63cb19320b206e022c092e9b33",
+    "semantic_hash": "0914dd63cb19320b206e022c092e9b33"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\utils\\highlights.ts": {
+    "mtime": 1773368726.0544581,
+    "ast_hash": "1e2ac6b6a3ae143ffe95727faa6015fa",
+    "semantic_hash": "1e2ac6b6a3ae143ffe95727faa6015fa"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\utils\\highlightsLayout.ts": {
+    "mtime": 1773368726.066497,
+    "ast_hash": "91ce54b7ebcab12f29fe30f7701f22ee",
+    "semantic_hash": "91ce54b7ebcab12f29fe30f7701f22ee"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\utils\\insightGenerator.ts": {
+    "mtime": 1778273912.375388,
+    "ast_hash": "9d7f848367f015e8c7db9bf5ff1ffc73",
+    "semantic_hash": "9d7f848367f015e8c7db9bf5ff1ffc73"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\utils\\letterboxd.ts": {
+    "mtime": 1778271910.5441387,
+    "ast_hash": "7377bf531268a96da7941f46a393e52a",
+    "semantic_hash": "7377bf531268a96da7941f46a393e52a"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\utils\\localStorageFeatures.ts": {
+    "mtime": 1772217030.1839747,
+    "ast_hash": "7c78753abb41950d7ac2984cbc6f711f",
+    "semantic_hash": "7c78753abb41950d7ac2984cbc6f711f"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\utils\\navActive.ts": {
+    "mtime": 1778271280.5278876,
+    "ast_hash": "6ccd907c389fabf8e2ea14725c00cd5c",
+    "semantic_hash": "6ccd907c389fabf8e2ea14725c00cd5c"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\utils\\readingTime.ts": {
+    "mtime": 1764687427.7903118,
+    "ast_hash": "a1b24f239c8fe31e531a688efa5ce826",
+    "semantic_hash": "a1b24f239c8fe31e531a688efa5ce826"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\utils\\relativeReadTime.client.ts": {
+    "mtime": 1772044247.7465093,
+    "ast_hash": "54c7e0c5597723b396a2ccf1acc6b256",
+    "semantic_hash": "54c7e0c5597723b396a2ccf1acc6b256"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\utils\\relativeReadTime.ts": {
+    "mtime": 1764687427.7943106,
+    "ast_hash": "2bf9b39713dd8d8f64cae10725d7d5ec",
+    "semantic_hash": "2bf9b39713dd8d8f64cae10725d7d5ec"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\utils\\remark42.client.ts": {
+    "mtime": 1772044247.7545722,
+    "ast_hash": "f97e7e7dd8e61494a2ae6f2a81f7ad21",
+    "semantic_hash": "f97e7e7dd8e61494a2ae6f2a81f7ad21"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\utils\\seo.ts": {
+    "mtime": 1772210033.6760976,
+    "ast_hash": "9a9a3df9a6ffcf485efb1eb8951b09c8",
+    "semantic_hash": "9a9a3df9a6ffcf485efb1eb8951b09c8"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\utils\\shareUtils.ts": {
+    "mtime": 1772048047.012503,
+    "ast_hash": "71f85a5708cdf4050fbaf5493d0686ae",
+    "semantic_hash": "71f85a5708cdf4050fbaf5493d0686ae"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\utils\\structuredData.ts": {
+    "mtime": 1772217033.5927024,
+    "ast_hash": "2aed6ceec5f9d0fd235101a3f892abde",
+    "semantic_hash": "2aed6ceec5f9d0fd235101a3f892abde"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\utils\\tagProcessing.ts": {
+    "mtime": 1778271280.6953866,
+    "ast_hash": "fc42cc0aeb28b2d59332c91972b47ee3",
+    "semantic_hash": "fc42cc0aeb28b2d59332c91972b47ee3"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\utils\\tagUtils.ts": {
+    "mtime": 1764687427.8133574,
+    "ast_hash": "7c08ff36b4529a688c88e4d4bb265fe4",
+    "semantic_hash": "7c08ff36b4529a688c88e4d4bb265fe4"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\utils\\tagVocabulary.ts": {
+    "mtime": 1778271280.7133882,
+    "ast_hash": "ec27c8de3d8848987450715e66d00e25",
+    "semantic_hash": "ec27c8de3d8848987450715e66d00e25"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\utils\\themeEvents.ts": {
+    "mtime": 1772044247.8545964,
+    "ast_hash": "3103c2645c7868b571204ee11082544c",
+    "semantic_hash": "3103c2645c7868b571204ee11082544c"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\utils\\translationUtils.ts": {
+    "mtime": 1764687427.817361,
+    "ast_hash": "e4abef9a367868f86e6609ac2de05b02",
+    "semantic_hash": "e4abef9a367868f86e6609ac2de05b02"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\utils\\brainScience\\cache.ts": {
+    "mtime": 1772045756.0892017,
+    "ast_hash": "c9cfab99f22c694e19ec56527bead662",
+    "semantic_hash": "c9cfab99f22c694e19ec56527bead662"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\utils\\brainScience\\data.ts": {
+    "mtime": 1772217045.1659458,
+    "ast_hash": "3ce9ebbf5a6d925349993ab9f8b07306",
+    "semantic_hash": "3ce9ebbf5a6d925349993ab9f8b07306"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\utils\\brainScience\\metaAnalysis.ts": {
+    "mtime": 1772217265.711583,
+    "ast_hash": "c7930796eaa3ead0dc7d234590f1cbd2",
+    "semantic_hash": "c7930796eaa3ead0dc7d234590f1cbd2"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\utils\\brainScience\\metrics.ts": {
+    "mtime": 1772218943.987519,
+    "ast_hash": "373477ff0980ed0e46d5b1a18ca17afc",
+    "semantic_hash": "373477ff0980ed0e46d5b1a18ca17afc"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\utils\\brainScience\\statistics.ts": {
+    "mtime": 1772210036.5311632,
+    "ast_hash": "5e79fcc3b50cb4b585ddd0a74b23e8b4",
+    "semantic_hash": "5e79fcc3b50cb4b585ddd0a74b23e8b4"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\utils\\tag\\contentFormTags.ts": {
+    "mtime": 1778271280.6486888,
+    "ast_hash": "18b4c1d82a137333233980bf6ce1f252",
+    "semantic_hash": "18b4c1d82a137333233980bf6ce1f252"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\utils\\tag\\preludeTemplates.ts": {
+    "mtime": 1778271280.6692986,
+    "ast_hash": "63c7c83112067a3887f8a6d93475de65",
+    "semantic_hash": "63c7c83112067a3887f8a6d93475de65"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\CONTENT_LICENSE.md": {
+    "mtime": 1772044241.7558641,
+    "ast_hash": "9d7d05e210ba24939f16146938bc0efb",
+    "semantic_hash": "9d7d05e210ba24939f16146938bc0efb"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\pnpm-workspace.yaml": {
+    "mtime": 1778277529.274319,
+    "ast_hash": "45f397a0e9400f6521427851733cd11b",
+    "semantic_hash": "45f397a0e9400f6521427851733cd11b"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\README.md": {
+    "mtime": 1779801701.8627086,
+    "ast_hash": "d6842c7da1a1ba9f4396436f54a45abf",
+    "semantic_hash": "d6842c7da1a1ba9f4396436f54a45abf"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.cursor\\commands\\speckit.analyze.md": {
+    "mtime": 1778271272.079543,
+    "ast_hash": "c15b9938683642e92198cc3af474c69a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.cursor\\commands\\speckit.checklist.md": {
+    "mtime": 1778271272.1393635,
+    "ast_hash": "0142b2620405906ba0e70beb12036062",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.cursor\\commands\\speckit.clarify.md": {
+    "mtime": 1778271272.1745627,
+    "ast_hash": "086b3ee60813709b92a87f0a4cc657d6",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.cursor\\commands\\speckit.constitution.md": {
+    "mtime": 1778271272.1955602,
+    "ast_hash": "1d3b0d80217fc6a246bfdd804caece28",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.cursor\\commands\\speckit.implement.md": {
+    "mtime": 1778271272.240059,
+    "ast_hash": "df9d5f3caaa66a6fa82c5c9948c5c4cb",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.cursor\\commands\\speckit.plan.md": {
+    "mtime": 1778271272.2652905,
+    "ast_hash": "5ed6ec8fd5288c8703bfc3cb25ed7e52",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.cursor\\commands\\speckit.specify.md": {
+    "mtime": 1778271272.310554,
+    "ast_hash": "5d2b03b3f678c31e51aa789b7d490895",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.cursor\\commands\\speckit.tasks.md": {
+    "mtime": 1778271272.3586783,
+    "ast_hash": "d6b0b920e1663801365ee94ab1642d20",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.cursor\\commands\\speckit.taskstoissues.md": {
+    "mtime": 1778271272.3830626,
+    "ast_hash": "0cb6a1734ef1054358b0dd2762dc1e09",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.cursor\\skills\\astro-webmaster-notes\\SKILL.md": {
+    "mtime": 1778271272.421942,
+    "ast_hash": "7c5fa1511b94de58a6c041b415855fe0",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.cursor\\skills\\brain-science-audit\\SKILL.md": {
+    "mtime": 1778271272.4363923,
+    "ast_hash": "179a3f36efbbe9d54b8a9bb4e53f1085",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.cursor\\skills\\content-strategy-map\\SKILL.md": {
+    "mtime": 1778271272.452556,
+    "ast_hash": "4fa6f131335f9d5a46569650d6391e38",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.cursor\\skills\\multilingual-content-qa\\SKILL.md": {
+    "mtime": 1778271272.4745817,
+    "ast_hash": "0be6d47bc29bb4c2534df6e46cacb248",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.cursor\\skills\\post-publishing-workflow\\SKILL.md": {
+    "mtime": 1778271272.4855838,
+    "ast_hash": "2cd12fbdef93b704ead8b2e13855f4d8",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.cursor\\skills\\release-quality-gate\\SKILL.md": {
+    "mtime": 1778271272.4920926,
+    "ast_hash": "dc786921cfdd9c9c98294686cb6fe081",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.github\\workflows\\ci.yml": {
+    "mtime": 1778285556.0616064,
+    "ast_hash": "a017673f9b3663b27bbc2c17a7ba5f83",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.specify\\memory\\constitution.md": {
+    "mtime": 1778271273.0838146,
+    "ast_hash": "e03288abb3434b96ed22147ccb1ade4a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.specify\\templates\\agent-file-template.md": {
+    "mtime": 1778271273.1068225,
+    "ast_hash": "b8247a4214e5a2fb2468ad8dcf5fca50",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.specify\\templates\\checklist-template.md": {
+    "mtime": 1778271273.1133606,
+    "ast_hash": "cb2f2cbc3b87a1ab1f3b2c5ac4587061",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.specify\\templates\\constitution-template.md": {
+    "mtime": 1778271273.1194756,
+    "ast_hash": "f8b29a13f5d30527b894e73de923be0c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.specify\\templates\\plan-template.md": {
+    "mtime": 1778271273.131511,
+    "ast_hash": "fbc9522161d0e83f1348ca179806e3b0",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.specify\\templates\\spec-template.md": {
+    "mtime": 1778271273.1465075,
+    "ast_hash": "5efbda694b6ad2bcffeb990aff5d3efd",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\.specify\\templates\\tasks-template.md": {
+    "mtime": 1778271273.1816301,
+    "ast_hash": "4a303585cfccf761461fc4da7bd27a35",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\docs\\comments-setup.md": {
+    "mtime": 1773089762.9348316,
+    "ast_hash": "1a78c7e897111f86242fac6c9e762898",
+    "semantic_hash": "1a78c7e897111f86242fac6c9e762898"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\docs\\cursor-agent-skills.md": {
+    "mtime": 1778271273.2752485,
+    "ast_hash": "11145893728eecdc28ca61f3ae0bc63b",
+    "semantic_hash": "11145893728eecdc28ca61f3ae0bc63b"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\docs\\frontmatter-spec.md": {
+    "mtime": 1778271273.3144674,
+    "ast_hash": "079460d0998e79750a680355e608a130",
+    "semantic_hash": "079460d0998e79750a680355e608a130"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\docs\\midjourney-og-image-prompts.md": {
+    "mtime": 1773368717.6959536,
+    "ast_hash": "9c05c8ccbf829458af50bde3097e4d88",
+    "semantic_hash": "9c05c8ccbf829458af50bde3097e4d88"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\docs\\multilingual-setup.md": {
+    "mtime": 1772044241.9713292,
+    "ast_hash": "8e8c4845914df1537389e9e253f285c4",
+    "semantic_hash": "8e8c4845914df1537389e9e253f285c4"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\docs\\performance-optimization.md": {
+    "mtime": 1778271273.5620809,
+    "ast_hash": "fb4917ac0950a4bf2a83c5c66502f2c2",
+    "semantic_hash": "fb4917ac0950a4bf2a83c5c66502f2c2"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\docs\\quotes-api.md": {
+    "mtime": 1778289380.5520508,
+    "ast_hash": "250cd2ab50581f8cdec53d5d1196cb89",
+    "semantic_hash": "250cd2ab50581f8cdec53d5d1196cb89"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\docs\\roadmap.md": {
+    "mtime": 1778271273.6309116,
+    "ast_hash": "4bebf6a401c3c4ae89e3be3c92b77ceb",
+    "semantic_hash": "4bebf6a401c3c4ae89e3be3c92b77ceb"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\docs\\structured-data-optimization.md": {
+    "mtime": 1772044242.0758402,
+    "ast_hash": "5195448c12d0c63742ab1a54b3c100d3",
+    "semantic_hash": "5195448c12d0c63742ab1a54b3c100d3"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\docs\\tag-cleanup-assessment-2026-04-10.md": {
+    "mtime": 1778271273.6739383,
+    "ast_hash": "c96513fe185a87b633d443763f8b9897",
+    "semantic_hash": "c96513fe185a87b633d443763f8b9897"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\docs\\tag-policy.md": {
+    "mtime": 1778271273.682945,
+    "ast_hash": "b0453881980c45d1bf6de54c1ac800ee",
+    "semantic_hash": "b0453881980c45d1bf6de54c1ac800ee"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\docs\\tag-vocabulary-migration-v1.md": {
+    "mtime": 1778271273.6899447,
+    "ast_hash": "d5fe0a5b21bf792cbb12615e0163f644",
+    "semantic_hash": "d5fe0a5b21bf792cbb12615e0163f644"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\docs\\tag-vocabulary.md": {
+    "mtime": 1778271273.6989465,
+    "ast_hash": "ad8b170bd8c524b55595805e412f2d43",
+    "semantic_hash": "ad8b170bd8c524b55595805e412f2d43"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\offline.html": {
+    "mtime": 1764687426.8990035,
+    "ast_hash": "d0cb75bd04b36051b95e288cd45d5466",
+    "semantic_hash": "d0cb75bd04b36051b95e288cd45d5466"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\robots.txt": {
+    "mtime": 1764687426.902514,
+    "ast_hash": "2430e855e915066f50baf1b779e463c4",
+    "semantic_hash": "2430e855e915066f50baf1b779e463c4"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\002-post-toc-modal\\data-model.md": {
+    "mtime": 1778271274.2644117,
+    "ast_hash": "1c0db7e6306349f31b759fe313c9e282",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\002-post-toc-modal\\plan.md": {
+    "mtime": 1778271274.2785017,
+    "ast_hash": "4ec7ff03dd30a5c01ca47a514d981776",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\002-post-toc-modal\\quickstart.md": {
+    "mtime": 1778271274.2905016,
+    "ast_hash": "10bf6e2075876a226e75b846cbf287bd",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\002-post-toc-modal\\research.md": {
+    "mtime": 1778271274.2996418,
+    "ast_hash": "11f4af1e6d03f95079820d21455113af",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\002-post-toc-modal\\spec.md": {
+    "mtime": 1778271274.3176508,
+    "ast_hash": "93b3db220f34b265b01f286b810b9ce6",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\002-post-toc-modal\\tasks.md": {
+    "mtime": 1778271274.3348463,
+    "ast_hash": "5d807c8a42fc0dea25050a337f84068b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\002-post-toc-modal\\checklists\\requirements.md": {
+    "mtime": 1778271274.2471368,
+    "ast_hash": "b830afb38cb9339a3a9687ad5cd4222b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\002-post-toc-modal\\contracts\\toc-behavior.md": {
+    "mtime": 1778271274.256138,
+    "ast_hash": "955486ec4bb8f1ee771df08bd3c9aa8e",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\003-update-home-about-voice\\data-model.md": {
+    "mtime": 1778271274.361523,
+    "ast_hash": "0123eb6b1e32d418ac2da4bc62bb77fd",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\003-update-home-about-voice\\plan.md": {
+    "mtime": 1778271274.370522,
+    "ast_hash": "f12e6b0e78a0cca3af1f865f197632e8",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\003-update-home-about-voice\\quickstart.md": {
+    "mtime": 1778271274.3767018,
+    "ast_hash": "2467863c25aa7260c9374e0b6be0c493",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\003-update-home-about-voice\\research.md": {
+    "mtime": 1778271274.3847003,
+    "ast_hash": "7fdfb8d43cf69977d1ac984cc6845311",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\003-update-home-about-voice\\spec.md": {
+    "mtime": 1778271274.4045413,
+    "ast_hash": "7bd8dd0c31c2b485147d5423dba7ddc1",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\003-update-home-about-voice\\tasks.md": {
+    "mtime": 1778271274.4205494,
+    "ast_hash": "dc8536b354d46c3dc901b7a316d0dec8",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\003-update-home-about-voice\\checklists\\requirements.md": {
+    "mtime": 1778271274.3448641,
+    "ast_hash": "3e2fd93a37dd2e4819a720dcc518eee4",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\003-update-home-about-voice\\contracts\\content-voice-contract.md": {
+    "mtime": 1778271274.3468719,
+    "ast_hash": "7d688b53957744cde2631b320fb51190",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\004-ui-ux-refinement\\data-model.md": {
+    "mtime": 1778271274.4418244,
+    "ast_hash": "cfb4a63a31269b4bc5873ae548af35e1",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\004-ui-ux-refinement\\plan.md": {
+    "mtime": 1778271274.458199,
+    "ast_hash": "914b703e43c72f55e3175f25e45e0184",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\004-ui-ux-refinement\\quickstart.md": {
+    "mtime": 1778271274.4685597,
+    "ast_hash": "35aa1824178b668d16dfdde9d641122c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\004-ui-ux-refinement\\research.md": {
+    "mtime": 1778271274.4758904,
+    "ast_hash": "70d83f43e0c174cea9ce25a95ea5df54",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\004-ui-ux-refinement\\spec.md": {
+    "mtime": 1778271274.4953606,
+    "ast_hash": "393234de64882abee97d457100a764f3",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\004-ui-ux-refinement\\tasks.md": {
+    "mtime": 1778271274.515506,
+    "ast_hash": "cc5f29a6205fb75d62df94274c1b01b4",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\004-ui-ux-refinement\\checklists\\requirements.md": {
+    "mtime": 1778271274.429946,
+    "ast_hash": "ac97607375966b59aeffca1f35ca148d",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\004-ui-ux-refinement\\contracts\\visual-refinement-contract.md": {
+    "mtime": 1778271274.437459,
+    "ast_hash": "83945a3e5ed35a6354d3f12920ec4479",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\005-redesign-post-sidebar\\data-model.md": {
+    "mtime": 1778271274.5449402,
+    "ast_hash": "6af83df22d694277fda6f0bcb919cf01",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\005-redesign-post-sidebar\\plan.md": {
+    "mtime": 1778271274.5549383,
+    "ast_hash": "95ea46bd3a2a733fbc74d3c0615510d0",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\005-redesign-post-sidebar\\quickstart.md": {
+    "mtime": 1778271274.5627196,
+    "ast_hash": "f4f30832ee6bed77108018770f23d019",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\005-redesign-post-sidebar\\research.md": {
+    "mtime": 1778271274.5726364,
+    "ast_hash": "c937c648ab8c9cbe4d5a20ad7e46f1fd",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\005-redesign-post-sidebar\\spec.md": {
+    "mtime": 1778271274.5968807,
+    "ast_hash": "bd230215a3bec34f9dbb7c0e7306ae0d",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\005-redesign-post-sidebar\\tasks.md": {
+    "mtime": 1778271274.6193848,
+    "ast_hash": "90fa12197ec61ea10da0adb3981bcfbb",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\005-redesign-post-sidebar\\checklists\\requirements.md": {
+    "mtime": 1778271274.5250165,
+    "ast_hash": "2badc3a9e27cc4e9f7cf5d4bf0808e1a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\005-redesign-post-sidebar\\contracts\\sidebar-behavior-contract.md": {
+    "mtime": 1778271274.5350778,
+    "ast_hash": "e8ddee1a46032d8aaefb0d605a1898ea",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\006-remake-mobile-nav\\data-model.md": {
+    "mtime": 1778271274.6467025,
+    "ast_hash": "1322d5bdc4faa598d8ec4dd7f4b01f03",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\006-remake-mobile-nav\\plan.md": {
+    "mtime": 1778271274.6567059,
+    "ast_hash": "f5059b1ae77f85e510362023759e063a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\006-remake-mobile-nav\\quickstart.md": {
+    "mtime": 1778271274.6627018,
+    "ast_hash": "0cb901661e6b68194448df75d1c711c0",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\006-remake-mobile-nav\\research.md": {
+    "mtime": 1778271274.6697018,
+    "ast_hash": "f60138902ef83476b9d39b6ddcadc424",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\006-remake-mobile-nav\\spec.md": {
+    "mtime": 1778271274.6872733,
+    "ast_hash": "b29fe4fa5df63493e78fedcfa8e20734",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\006-remake-mobile-nav\\tasks.md": {
+    "mtime": 1778271274.712618,
+    "ast_hash": "1ba3094bd725bf3c51c15e85434b1110",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\006-remake-mobile-nav\\checklists\\requirements.md": {
+    "mtime": 1778271274.6298954,
+    "ast_hash": "f6241ec261a6aa7d7eecbe4f87851000",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\006-remake-mobile-nav\\contracts\\mobile-nav-behavior-contract.md": {
+    "mtime": 1778271274.637411,
+    "ast_hash": "0e745ec48690e649f1287fbbdb5862ca",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\009-tag-content-links\\spec.md": {
+    "mtime": 1778271274.744358,
+    "ast_hash": "64073894eb174cf2f0a207263137cf6a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\009-tag-content-links\\checklists\\requirements.md": {
+    "mtime": 1778271274.721674,
+    "ast_hash": "9d306eada036ad5409efd068c0c49532",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\010-tag-content-links\\data-model.md": {
+    "mtime": 1778271274.777833,
+    "ast_hash": "266761460bde5a70decbcc6cd8ba8593",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\010-tag-content-links\\plan.md": {
+    "mtime": 1778271274.7868328,
+    "ast_hash": "d0b39403a0c9c44916ad28eefc99f539",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\010-tag-content-links\\quickstart.md": {
+    "mtime": 1778271274.7938342,
+    "ast_hash": "91c687127bc782d62730b767c37c5c35",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\010-tag-content-links\\research.md": {
+    "mtime": 1778271274.8028347,
+    "ast_hash": "d9ac8529b80aa4562533b1cba8e3706e",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\010-tag-content-links\\spec.md": {
+    "mtime": 1778271274.8235278,
+    "ast_hash": "43c6e18c22a844cfddc966e495403f81",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\010-tag-content-links\\tasks.md": {
+    "mtime": 1778271274.8439152,
+    "ast_hash": "c90684a541cb42be78870bf81bb098d1",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\010-tag-content-links\\checklists\\requirements.md": {
+    "mtime": 1778271274.7553556,
+    "ast_hash": "4448c15a6434deaf40e32f66d3528403",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\specs\\010-tag-content-links\\contracts\\tag-content-prelude.md": {
+    "mtime": 1778271274.7653544,
+    "ast_hash": "616f54f6460a25c6f91f960337a742a2",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\an-hour-of-hair-brushing-what-my-daughter-taught-me-about-time.md": {
+    "mtime": 1764687427.2080796,
+    "ast_hash": "95935276f08a406f3314d6475a55dcf1",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\an-invitation-to-the-end-of-wealth-worship-and-the-beginning-of-a-human-future.md": {
+    "mtime": 1778271276.7687397,
+    "ast_hash": "68c8a0d478c0c4f22f0f31834eccf28c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\arithmetic-presencia.md": {
+    "mtime": 1778271276.7737398,
+    "ast_hash": "1431ed44b134b002c8c9fdf6ff92e6f2",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\beef-heart-nutrition.md": {
+    "mtime": 1764687427.2180822,
+    "ast_hash": "0d1b78e17006bbcd64d4e563bdd88701",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\bend-dont-break-learning-to-flow-again.md": {
+    "mtime": 1778271276.8251474,
+    "ast_hash": "42aa03eb6c23b2893aab2ac842a92a53",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\boundaries-miscalibration-unconditional-love-es.md": {
+    "mtime": 1772044244.4769137,
+    "ast_hash": "7580415174239b1b48730d3a3fce573b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\boundaries-miscalibration-unconditional-love.md": {
+    "mtime": 1772044244.4902327,
+    "ast_hash": "d39641a96dde6ec149bf16783dc26a1c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\brief-notes-on-finding-serenity-in-self-control.md": {
+    "mtime": 1773368721.8194563,
+    "ast_hash": "3ec4fc36958ddde9dbb9bed0ef1bb844",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\briefly-on-empathy-as-a-double-edged-sword.md": {
+    "mtime": 1764687427.2330806,
+    "ast_hash": "e662ff04afacfdc0e39269087040f1d3",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\como-proteger-ninos-digital.md": {
+    "mtime": 1778271276.8923829,
+    "ast_hash": "430620e21f87b8a82bed2cb64162f338",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\conquering-imposter-syndrome-with-evidence-based-journaling.md": {
+    "mtime": 1764687427.2420795,
+    "ast_hash": "220d8ce4d5652f69f6bd6a6cef91e7f2",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\customizing-chatgpt.md": {
+    "mtime": 1773368883.0752425,
+    "ast_hash": "509be450bbf8529f994561325c30ee53",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\dispatch-game-review.md": {
+    "mtime": 1779801106.8640761,
+    "ast_hash": "855cb4404fc8bfd63479c503d3589310",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\el-problema-de-prometeo.md": {
+    "mtime": 1778271276.9835188,
+    "ast_hash": "82d321e475fa6e068a7074b41f26b378",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\embracing-the-spiritual-abyss-an-atheists-search-for-meaning.md": {
+    "mtime": 1778271276.993519,
+    "ast_hash": "d92aa8f5746aaa5e6df5f944ae8ec9f6",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\empathy-as-a-shield.md": {
+    "mtime": 1778271277.006519,
+    "ast_hash": "991718a0cf66dad3bbab36e4812c1668",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\fasting-metabolic-ritual.md": {
+    "mtime": 1773368722.0103154,
+    "ast_hash": "9ae938c3d261d5e689129aabd01956b9",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\fear-control-politics.md": {
+    "mtime": 1773368722.0269704,
+    "ast_hash": "df588522a8c57880597e6c8a47376032",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\forging-stronghand-terminal.md": {
+    "mtime": 1764687427.2710805,
+    "ast_hash": "abb184ddd90d245d02558a36c7901cfd",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\good-sheep.md": {
+    "mtime": 1773368722.1247272,
+    "ast_hash": "ea70bafbb4b7d2afe95e0d59155d3bdf",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\guia-ipad-es.md": {
+    "mtime": 1764687427.2800796,
+    "ast_hash": "2a0b9fb9eb6a65cc0f18905e5e310664",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\i-became-what-i-used-to-mock.md": {
+    "mtime": 1773368722.16274,
+    "ast_hash": "92b02220a7774f11e27b68a5435ad2f0",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\illuminalganti.md": {
+    "mtime": 1778271277.136015,
+    "ast_hash": "b9565bd91a63d0c6aa595751ee3faf65",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\intelligence-burns.md": {
+    "mtime": 1772044244.812581,
+    "ast_hash": "e6a603f415f7ffa0591fac4efbda23af",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\la-primera-pared.md": {
+    "mtime": 1772044244.8255184,
+    "ast_hash": "b727d478ae41248fe4412a961040ef17",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\learning-construction-self.md": {
+    "mtime": 1764687427.3000927,
+    "ast_hash": "94e6f1ff3b597791a0a2987167329d14",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\lemon-pepper-chicken.md": {
+    "mtime": 1773368722.2381217,
+    "ast_hash": "879948d28eadef6ad259f7e3d4f65dd8",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\life-statement-transformation.md": {
+    "mtime": 1764687427.309126,
+    "ast_hash": "c026245223f455179731eb781b08daa5",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\love-is-the-final-revolution.md": {
+    "mtime": 1778271277.2015488,
+    "ast_hash": "549e1b780b2ada3998672bdb83064ab8",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\mercy-through-the-blade.md": {
+    "mtime": 1778272562.4609525,
+    "ast_hash": "7f98e1986babbd0904fe74ce4600e25b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\my-crimson-desert-review-after-200-hours.mdx": {
+    "mtime": 1778271277.2909105,
+    "ast_hash": "33b28e25c9d936a2c94f67c3d20eb3c3",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\my-mental-health-routine-unfiltered.md": {
+    "mtime": 1778271277.3010442,
+    "ast_hash": "ca7f1656a918a97ff8852986e67815df",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\note-to-self-on-being-a-conscious-parent.md": {
+    "mtime": 1764687427.3281236,
+    "ast_hash": "5d231c05107476cf987b36caa64000e6",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\note-to-self-to-be-or-what-not-to-be.md": {
+    "mtime": 1764687427.332126,
+    "ast_hash": "af88a019ed539e35d42c84b572eacbbf",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\notes-on-puerto-rico-sin-pie-forzao-es.md": {
+    "mtime": 1772044244.9956708,
+    "ast_hash": "0cab75714e61016571735dbd2e53700b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\notes-on-puerto-rico-sin-pie-forzao.md": {
+    "mtime": 1773363915.7739604,
+    "ast_hash": "bd6017ae97cc7e4d93dc203fde037eb6",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\notes-on-respect.md": {
+    "mtime": 1773368413.7574103,
+    "ast_hash": "8a06c57972ba3bd4788424055b00c663",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\notes-on-self-control.md": {
+    "mtime": 1764687427.3421252,
+    "ast_hash": "b3828a1ceb98007859a0ca7437a9ed33",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\on-clear-signals.md": {
+    "mtime": 1772044245.0927477,
+    "ast_hash": "17b901c9c3067922c7050db0aab0a851",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\on-cooking-on-everything-and-foundations.md": {
+    "mtime": 1764687427.3511243,
+    "ast_hash": "b7b90fe29f082dce759b41f3a5b03479",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\on-feeling-overpowered.md": {
+    "mtime": 1764687427.3561244,
+    "ast_hash": "6abdd795dfae971c3aaed7ece47676dc",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\on-leadership-and-leadership-adjacent-things-april-2026.md": {
+    "mtime": 1778271277.6192915,
+    "ast_hash": "5b3a988f605196a9666c5281bfbc5323",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\on-limits-growth-and-the-meaning-of-my-life.md": {
+    "mtime": 1764687427.3611267,
+    "ast_hash": "b36f8eaf8a9495393f6b674995bb49bc",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\on-overcoming-analysis-paralysis.md": {
+    "mtime": 1764687427.3651235,
+    "ast_hash": "bc8d065564e76ffd5f8a36114e3f96f0",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\on-simplicity-and-peace-of-mind.md": {
+    "mtime": 1773368685.3461711,
+    "ast_hash": "5bd3459410d8bf3f7983561eab8b4006",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\on-testing-relationships.md": {
+    "mtime": 1772044245.1567602,
+    "ast_hash": "b2abdbf0b3ef260d7ff8118100dfc80d",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\on-the-application-of-empathy-and-compassion.md": {
+    "mtime": 1773368722.6044528,
+    "ast_hash": "47dfd3d6767c15364eb9142f4b9cbcf6",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\pa-la-nena-que-vive-en-ti.md": {
+    "mtime": 1778271277.6866,
+    "ast_hash": "1584db0883816cb3bb414c17d1cbe779",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\power-intentional-living.md": {
+    "mtime": 1773368722.6222928,
+    "ast_hash": "83f22624041227dd3ad68bf42193937a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\quien-soy-hoy-reporte-de-progreso-de-recuperacion.md": {
+    "mtime": 1764687427.388136,
+    "ast_hash": "0ac3241529928cc96a541d837461f421",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\redirigir-curiosidad-sexual-infantil.md": {
+    "mtime": 1764687427.3931346,
+    "ast_hash": "c47634f07797750888a097cca54c7c65",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\reflections-from-a-tough-weekend.md": {
+    "mtime": 1764687427.3981323,
+    "ast_hash": "2902111dc9990901576601fff537fc40",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\rolling-back-main-and-why-you-shouldnt-have-to.md": {
+    "mtime": 1773072600.4215014,
+    "ast_hash": "7db298edd0aa113615a69b0d79815e28",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\season-of-becoming.md": {
+    "mtime": 1764687427.4031875,
+    "ast_hash": "7a9de7961aa3feb62dcb126584849cf1",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\sharpen-your-tools.md": {
+    "mtime": 1778271277.801255,
+    "ast_hash": "5847d09a9da18afa21020d3f0bcf61a4",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\some-books-for-self-transcendence.md": {
+    "mtime": 1764687427.4121866,
+    "ast_hash": "b0039a542f2a7e160858652b6613a837",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\some-notes-on-overcoming-emotional-pain.md": {
+    "mtime": 1764687427.417189,
+    "ast_hash": "03e39f849aee1ff34bbe7cb166598c7e",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\symbols-of-power.md": {
+    "mtime": 1764687427.4211855,
+    "ast_hash": "0a4aba29837eeacde5675a279d0111d3",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\the-definition-and-practice-of-my-core-values-make-me-free.md": {
+    "mtime": 1773368722.8088539,
+    "ast_hash": "bd111d2c487120bd31587b7bc27f62c5",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\the-feeling-is-not-the-problem.md": {
+    "mtime": 1772211540.8757954,
+    "ast_hash": "e7622e6c04da00ae2edca98dc16993be",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\the-first-wall.md": {
+    "mtime": 1772044245.3215036,
+    "ast_hash": "ee2d2f8505aca327893a896c4432ac76",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\the-inner-work-truly-never-ends.md": {
+    "mtime": 1773369039.256343,
+    "ast_hash": "d2b6e95f6292a30c845a99c7d22d6966",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\the-joy-of-building-my-own-digital-sandbox-april-2026.md": {
+    "mtime": 1778271277.9287162,
+    "ast_hash": "910387699b0b71b99b6e1500cb1fea9a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\the-joy-of-building-my-own-digital-sandbox.md": {
+    "mtime": 1772044245.3381846,
+    "ast_hash": "9af323034e9152078e0e5eeb858eb246",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\the-paradox-of-modernity-progress-without-peace.md": {
+    "mtime": 1773368722.885599,
+    "ast_hash": "6e75a2ee01a6e62af9dfadb21e71c379",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\the-prometheus-problem.md": {
+    "mtime": 1778271278.0172577,
+    "ast_hash": "0324e4b79b1ffc8739b575e6d1fc51fe",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\the-rhythm-of-grief-summer-days-and-letting-go.md": {
+    "mtime": 1764687427.4451895,
+    "ast_hash": "4c750f9cb7e2a657f2d2757ec8634fc8",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\things-i-have-learned-this-week-regarding-a-4-year-olds-long-curly-hair.md": {
+    "mtime": 1764687427.4491851,
+    "ast_hash": "29731887b6165be0a0735bf6ab80f74f",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\toddler-internet-safety.md": {
+    "mtime": 1764687427.4541907,
+    "ast_hash": "c73b2645d3586902c71c3cb5f77c6ce4",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\total-concentration-breathing.md": {
+    "mtime": 1764687427.458187,
+    "ast_hash": "f2312d41d9c2277d2e3d2aaf2955a46e",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\transforming-life-through-values.md": {
+    "mtime": 1773368723.0334406,
+    "ast_hash": "9ea051f29eccf99c1f4c0bdc17d7064b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\una-invitacion-al-fin-de-la-adoracion-de-la-riqueza-y-al-comienzo-de-un-futuro-humano.md": {
+    "mtime": 1778271278.1087418,
+    "ast_hash": "3e7b9a6eb28c2cc87c0883a104ad7d4e",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\vs-code-title-bar-signaling.md": {
+    "mtime": 1764687427.4731874,
+    "ast_hash": "c72c0d56d7d025faa45204a7b236da57",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\what-are-we-even-calling-democracy.md": {
+    "mtime": 1773368723.0779614,
+    "ast_hash": "85e534554d6d85c342e51d8eb0c913ff",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\what-happens-when-you-leave-the-algorithm-behind.md": {
+    "mtime": 1773368723.0859578,
+    "ast_hash": "2a420ac2b9e956d210d756b00da05a52",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\who-i-am-today-a-recovery-progress-report.md": {
+    "mtime": 1772044245.547599,
+    "ast_hash": "bc696dfc2657621b88c0580a820a8a1f",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\who-really-raised-me.md": {
+    "mtime": 1778271278.1693797,
+    "ast_hash": "1d530fd0721a65cf4d8125bf78cec6e6",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\why-electric-cars-cant-look-like-electric-cars.mdx": {
+    "mtime": 1772044245.6051614,
+    "ast_hash": "86cc8565078a768cf7558c36654734ec",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\why-i-built-buildssoftware-and-what-im-building-next.md": {
+    "mtime": 1764687427.5016992,
+    "ast_hash": "4824009972b3fcf5898c2541ad8f9c6d",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\why-i-turned-off-notifications-again.md": {
+    "mtime": 1772044245.625453,
+    "ast_hash": "6c85f2c02d6c43cce3a47aa3610858d1",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\src\\content\\p\\you-are-joking-right.md": {
+    "mtime": 1773369194.6935427,
+    "ast_hash": "d9760000628ee8152541ee4ee58e4168",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\apple-touch-icon.png": {
+    "mtime": 1764687425.8891578,
+    "ast_hash": "0770383634105fc417b5722e51ec9aa7",
+    "semantic_hash": "0770383634105fc417b5722e51ec9aa7"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\favicon-192x192.png": {
+    "mtime": 1764687425.892155,
+    "ast_hash": "f07c703e16160db7f4699ff3fd043d49",
+    "semantic_hash": "f07c703e16160db7f4699ff3fd043d49"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\favicon-512x512.png": {
+    "mtime": 1764687425.8951564,
+    "ast_hash": "039c7ede8fe74753265fc3082bbe70fe",
+    "semantic_hash": "039c7ede8fe74753265fc3082bbe70fe"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\favicon.svg": {
+    "mtime": 1764687425.9001567,
+    "ast_hash": "93ec44c406be268a6eb9f74bc22270bb",
+    "semantic_hash": "93ec44c406be268a6eb9f74bc22270bb"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\sh-sh-logo.svg": {
+    "mtime": 1764687426.904513,
+    "ast_hash": "f072f5bb1bcd5d0271c975ba73857187",
+    "semantic_hash": "f072f5bb1bcd5d0271c975ba73857187"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\share-image.png": {
+    "mtime": 1764687426.9475124,
+    "ast_hash": "3ba558a4a5201eeab445417a78d258a7",
+    "semantic_hash": "3ba558a4a5201eeab445417a78d258a7"
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\images\\0_IX7q73frWncrfQkv.png": {
+    "mtime": 1764687425.9092467,
+    "ast_hash": "f2d0e4f9e4c4801cd0f3325f77c557e3",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\images\\0_uLjrPcjl6O6biWBM.jpg": {
+    "mtime": 1764687425.9162462,
+    "ast_hash": "eed4ee5da5e5195aa3740003060169a5",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\images\\1_1Nk2dG65FwJScF7h1KG9Dw.png": {
+    "mtime": 1764687425.9232478,
+    "ast_hash": "937c86273dcb7fa96bc164adc40c5a66",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\images\\1_Fdmjbqh4eRaDwA12bYERgw.png": {
+    "mtime": 1764687425.9302473,
+    "ast_hash": "59c2419dcb765c1cd8ecef9550f54361",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\images\\1_hZS3n1fhg_eDQTmqxg8O2w.png": {
+    "mtime": 1764687425.9502444,
+    "ast_hash": "db332195f7905508c871c756a256318f",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\images\\1_JMkniJ9RmTng62SL37WSBA.png": {
+    "mtime": 1764687425.9342463,
+    "ast_hash": "21e3bf1a3107e05eab761a1dc9acdaf8",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\images\\1_RduPSOmxiTdu3dKj-8lIUQ.png": {
+    "mtime": 1764687425.9402459,
+    "ast_hash": "8f54dcf9412ab4f46ffe4492b0cceed8",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\images\\1_UVQ9Lyp4yJ3dnpMbnSIOCQ.png": {
+    "mtime": 1764687425.9452455,
+    "ast_hash": "4e14e378aa2d9817e8c4f06624f5d82c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\images\\1_wjEXa_8z9DI8Wq4zMCBqig.png": {
+    "mtime": 1764687425.9552455,
+    "ast_hash": "b95cdbfe9285a894805b8b687ef2aaea",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\images\\beef-heart-comparison-chart.png": {
+    "mtime": 1764687426.0407598,
+    "ast_hash": "9567494a9cf380ea93eb55e278892c9a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\images\\comunicacion_propia.jpg": {
+    "mtime": 1764687426.0562737,
+    "ast_hash": "808943f287354c4835e65b4a8852af35",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\images\\guia-padres.jpg": {
+    "mtime": 1764687426.7584789,
+    "ast_hash": "ebbac047b86034bdffd07fd37ce48cbe",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\images\\life-statement.webp": {
+    "mtime": 1764687426.7874806,
+    "ast_hash": "4c369a91ac833f51733413213d015725",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\images\\mia-long-hair.webp": {
+    "mtime": 1764687426.8059974,
+    "ast_hash": "4d9a335f276f49fa3bd52b77df8f8a06",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\images\\saitama-okay.webp": {
+    "mtime": 1764687426.8169968,
+    "ast_hash": "94e3406e1720f9ca8af027b3c363cd1a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\images\\tcb.webp": {
+    "mtime": 1764687426.871993,
+    "ast_hash": "66eeb2df96ced19383f7aa66e7672dc6",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\images\\waaaat.jpg": {
+    "mtime": 1764687426.8960018,
+    "ast_hash": "5fb5d8391ae46041c7af5779406b1255",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\images\\2026\\lgtm-antoniwan.jpg": {
+    "mtime": 1773070962.9868758,
+    "ast_hash": "2637a3c50a48fb567a9a5dfaffa8a4a5",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\images\\2026\\practice-values.jpg": {
+    "mtime": 1773368234.040835,
+    "ast_hash": "47922391a1970c6f1529e74bac887715",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\images\\2026\\serenity.jpg": {
+    "mtime": 1773368478.3199503,
+    "ast_hash": "97af4198ebb2040daa798b722218eb2e",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\images\\2026\\sharpen-your-tools.jpg": {
+    "mtime": 1773368234.0429688,
+    "ast_hash": "6ac1cf49833a7e9bc3188fc36c9e516a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\ai-is-creepy-social.jpg": {
+    "mtime": 1772109523.918,
+    "ast_hash": "e83da5cb2d293b0c20ec63a7fd582c95",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\anime-souls-social.jpg": {
+    "mtime": 1772109524.338,
+    "ast_hash": "7cd537f482e9ea4bfe1581eb60dd5b8d",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\breathing-deep-social.jpg": {
+    "mtime": 1772109524.798,
+    "ast_hash": "d4a65a82280e89ab530343c085a50a42",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\cattoo-social.jpg": {
+    "mtime": 1772109525.095,
+    "ast_hash": "47fad832278d685dac92f388867b9f84",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\default-divider-social.jpg": {
+    "mtime": 1772109525.328,
+    "ast_hash": "3f527c01f508baeef1a9532925d80edb",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\default-social.jpg": {
+    "mtime": 1772109525.739,
+    "ast_hash": "c04e5878883af774427807b932110aa5",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\empathy-social.jpg": {
+    "mtime": 1772109530.8,
+    "ast_hash": "67491c649ac26737ebe0882898cfb018",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\good-sheep-social.jpg": {
+    "mtime": 1772109561.188,
+    "ast_hash": "cf1daa17bdc9980a0b0059e7fb161401",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\grief-social.jpg": {
+    "mtime": 1772109561.533,
+    "ast_hash": "c094414665ca16094c824b69f2c1a0e0",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\guia-practica-padres-conscientes-social.jpg": {
+    "mtime": 1772109562.029,
+    "ast_hash": "c9b71a9f7ca7db36c21f9543831e4af4",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\guy-fawkes-family-love-social.jpg": {
+    "mtime": 1772109562.389,
+    "ast_hash": "7812cbbbfaa81fd63d35fc656f4011bd",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\how-i-view-the-world-social.jpg": {
+    "mtime": 1772109562.589,
+    "ast_hash": "897308fdff0644f0e7cf74566b2855b6",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\i-lose-mia-social.jpg": {
+    "mtime": 1772109562.918,
+    "ast_hash": "81e6e1a893aa40a007e5b2c503ec43d4",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\lord-take-us-all-social.jpg": {
+    "mtime": 1772109563.258,
+    "ast_hash": "110de1662d09bf52e9d60fcf7533a4f1",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\lost-af-social.jpg": {
+    "mtime": 1772109563.47,
+    "ast_hash": "d3f33d7cf0246fa1c17de4b6ebbfb578",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\maslows-hierarchy-of-needs-social.jpg": {
+    "mtime": 1772109563.659,
+    "ast_hash": "57b776de15b246d795e5e9b3e1dd1b6b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\mia-y-yo-anime-social.jpg": {
+    "mtime": 1772109563.96,
+    "ast_hash": "279ecf1918ae63183ce8198cebb519ac",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\self-control-social.jpg": {
+    "mtime": 1772109564.241,
+    "ast_hash": "debad66d5df2c704904766ac8e009bd2",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\symbols-of-power-social.jpg": {
+    "mtime": 1772109565.248,
+    "ast_hash": "6b6f50b8772456f6dac9e6346cbf6614",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\tcb-social.jpg": {
+    "mtime": 1772109565.558,
+    "ast_hash": "cfa3f7b5a9bc707c20aa2a247f16f329",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\the_internet_is_fucking_weird-social.jpg": {
+    "mtime": 1772109565.679,
+    "ast_hash": "a3f98986388d969951574c567dfdede3",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\una-nena-poderosa-social.jpg": {
+    "mtime": 1772109565.983,
+    "ast_hash": "68972ac7552c95a5296eeba614325383",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\unclean-one-social.jpg": {
+    "mtime": 1772109566.288,
+    "ast_hash": "176d086898ef960754663abb870807ea",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\vs-code-signals-social.jpg": {
+    "mtime": 1772109566.658,
+    "ast_hash": "c5212294fe68f9274c90e4a86ce0b58b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2025\\broken-signals-social.jpg": {
+    "mtime": 1772109518.917,
+    "ast_hash": "3a047406d5861f5824a08a4be100984e",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2025\\hands-touching-each-other-social.jpg": {
+    "mtime": 1772109519.237,
+    "ast_hash": "85ae1ffa18adcd81ffaabb10f20a9c77",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2025\\intelligence-burn-social.jpg": {
+    "mtime": 1772109519.6,
+    "ast_hash": "7756e5ea037466a0689cbf29ab52de76",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2025\\intelligence-burns-conversation-social.jpg": {
+    "mtime": 1772109519.858,
+    "ast_hash": "75805078e44d8f94d8d74013fd166245",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2025\\light-and-shadow-social.jpg": {
+    "mtime": 1772109520.008,
+    "ast_hash": "a38dd9844d64d7f38bc3fedb102100b6",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2025\\line-on-sand-social.jpg": {
+    "mtime": 1772109520.319,
+    "ast_hash": "33a3b69b96cbc5892ce5141f6912152c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2025\\on-doom-scrolling-social.jpg": {
+    "mtime": 1772109520.768,
+    "ast_hash": "9ed207f569ee07c04120878fafdbb18e",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2025\\shadows-social.jpg": {
+    "mtime": 1772109521.088,
+    "ast_hash": "eac983acf011eb270d69dbe521cc83ab",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2025\\the-prometheus-problem-social.jpg": {
+    "mtime": 1772109521.661,
+    "ast_hash": "e677bd6138989220f87f745540b0abb9",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2025\\trillion-social.jpg": {
+    "mtime": 1772109522.097,
+    "ast_hash": "ed2755e0d3b11e88a7a5aebd78eaa4a5",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\arithmetic-social.jpg": {
+    "mtime": 1772109522.418,
+    "ast_hash": "2a714d9ad1afef9f8bb741bb4c0b8ae0",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\control-social.jpg": {
+    "mtime": 1778285584.446,
+    "ast_hash": "3203744c4795d7ab6b10cb6478d86e27",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\cupey-papi-social.jpg": {
+    "mtime": 1772109522.868,
+    "ast_hash": "21d261b3c4e9c3408bcf7df6894de050",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\empathy-and-compassion-social.jpg": {
+    "mtime": 1778285763.837,
+    "ast_hash": "030565080add5963301be6ae81978310",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\escaping-the-feeds-social.jpg": {
+    "mtime": 1778285764.306,
+    "ast_hash": "a9c4b889d33516450a3c23b9c61e1e46",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\fasting-hurts-social.jpg": {
+    "mtime": 1778285764.64,
+    "ast_hash": "8757258000ae937188ded6a52dbcd87c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\friendly-ai-social.jpg": {
+    "mtime": 1778285764.92,
+    "ast_hash": "ac4506663685813b2dc0567574df7f8e",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\in-my-feelings-social.jpg": {
+    "mtime": 1772109523.584,
+    "ast_hash": "395a3944a308f7caaacbf9fed1535735",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\learning-social.jpg": {
+    "mtime": 1778285765.129,
+    "ast_hash": "7fb00a5300b95daca850046f35d6d9aa",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\lemon-pepper-chicken-tais-social.jpg": {
+    "mtime": 1778285765.526,
+    "ast_hash": "e8eeb0b24fcae3f9e8b1dd3b95513002",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\neverending-walk-social.jpg": {
+    "mtime": 1778285766.061,
+    "ast_hash": "296da2ff50ea457d27fdf1cce7e2655d",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\notes-on-respect-social.jpg": {
+    "mtime": 1778285766.55,
+    "ast_hash": "8b619d1966f5ac5d4a13ad23205b8a48",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\oh-fuck-social.jpg": {
+    "mtime": 1778285766.764,
+    "ast_hash": "4b51bb95b5ed3fe23976799bce059ba0",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\on-leadership-plus-social.jpg": {
+    "mtime": 1778285767.02,
+    "ast_hash": "f10cc33060a806004cc1749e29ce9f9d",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\simplicity-social.jpg": {
+    "mtime": 1778285767.48,
+    "ast_hash": "f32083e1f05bf61fccc8202f8242824a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\the-abyss-social.jpg": {
+    "mtime": 1778285767.733,
+    "ast_hash": "20ef599abd021af79c81fb090513cca7",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\the-dark-abyss-social.jpg": {
+    "mtime": 1778285768.308,
+    "ast_hash": "382821c59baf16cf6c36b515020bec96",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\the-work-never-ends-social.jpg": {
+    "mtime": 1778285768.667,
+    "ast_hash": "051494f2162d07a72a0682f7fdf43962",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\tinkering-in-2026-social.jpg": {
+    "mtime": 1778285769.154,
+    "ast_hash": "ec57781148472ad4da901889c11d9613",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\value-roads-social.jpg": {
+    "mtime": 1778285769.748,
+    "ast_hash": "99333a745bc1a704199bfb5f63428d42",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260319210335-social.jpg": {
+    "mtime": 1778285584.938,
+    "ast_hash": "11745bdeb4bd62cecabca76f38ad56cf",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260319210358-social.jpg": {
+    "mtime": 1778285586.834,
+    "ast_hash": "b5b46f2a54959caec65863c952d62861",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260319222041-social.jpg": {
+    "mtime": 1778285589.847,
+    "ast_hash": "32d9906fcbaaf6df17e1a28e25495efb",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260320221404-social.jpg": {
+    "mtime": 1778285592.755,
+    "ast_hash": "2c0ccfc6ad2bdc5f122f5f496e3eca33",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260320230323-social.jpg": {
+    "mtime": 1778285595.067,
+    "ast_hash": "77414fdd3d10db20f559c9706c258962",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260321093358-social.jpg": {
+    "mtime": 1778285599.263,
+    "ast_hash": "dbc602d4a340e48206f92609cfc3c827",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260324135646-social.jpg": {
+    "mtime": 1778285601.677,
+    "ast_hash": "54a80238e36dda81745f52a349fc8d61",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260324185951-social.jpg": {
+    "mtime": 1778285604.188,
+    "ast_hash": "96315941aad7c061a2c9407b14386a75",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260324212054-social.jpg": {
+    "mtime": 1778285607.109,
+    "ast_hash": "1788e6e8b7ea392d36b53f70b0754be4",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260325214228-social.jpg": {
+    "mtime": 1778285611.138,
+    "ast_hash": "4a49cef3294f2951261c3e01d70cb74c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260326140331-social.jpg": {
+    "mtime": 1778285614.554,
+    "ast_hash": "1d01f84dae4801330ddf477c90ff9db3",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260326140722-social.jpg": {
+    "mtime": 1778285617.677,
+    "ast_hash": "83f4eaf44722b1cf200f6d67912946a9",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260327125905-social.jpg": {
+    "mtime": 1778285618.442,
+    "ast_hash": "e4c59ec766acfa3009bc94a939f584f6",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260327144134-social.jpg": {
+    "mtime": 1778285621.264,
+    "ast_hash": "8657800fd1856e167bfffacddcd4ab46",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260327144322-social.jpg": {
+    "mtime": 1778285623.643,
+    "ast_hash": "b6b948792477f5a1e6b1910b2c9fb482",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260327211316-social.jpg": {
+    "mtime": 1778285626.414,
+    "ast_hash": "e303e59bf4afc7be43bf9127b64b4012",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260327211331-social.jpg": {
+    "mtime": 1778285628.971,
+    "ast_hash": "d58747d396c9f9730b0de044e2cfeb68",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260327211342-social.jpg": {
+    "mtime": 1778285631.479,
+    "ast_hash": "b9faa44093cd01537dd0ac3d1c1a74f8",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260328124743-social.jpg": {
+    "mtime": 1778285634.682,
+    "ast_hash": "20ecc016227791575a954ad716454fcf",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260328132403-social.jpg": {
+    "mtime": 1778285637.807,
+    "ast_hash": "83d83917fbadebfa08e105a41d63eac6",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260328140556-social.jpg": {
+    "mtime": 1778285641.345,
+    "ast_hash": "a64b3bcd657439f97bc58f6a30087ba2",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260329140823-social.jpg": {
+    "mtime": 1778285644.991,
+    "ast_hash": "36acf2cc791b7162ef6e528b636bb960",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260329140825-social.jpg": {
+    "mtime": 1778285647.494,
+    "ast_hash": "bd8efc7e9614a595447f9bf62a709400",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260329194819-social.jpg": {
+    "mtime": 1778285650.12,
+    "ast_hash": "f1cb526ecbdedbada5ec92fc36843f39",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260402162156-social.jpg": {
+    "mtime": 1778285652.573,
+    "ast_hash": "9b983bd850e40973e24ca9651919b04b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260402170524-social.jpg": {
+    "mtime": 1778285655.056,
+    "ast_hash": "127a9998dad55a48f2fdd6c0d4255b2a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260404145925-social.jpg": {
+    "mtime": 1778285656.745,
+    "ast_hash": "3f9d21d55c20968f7789c5fcda8e0529",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260404150136-social.jpg": {
+    "mtime": 1778285659.393,
+    "ast_hash": "0b2edd5568fabf95c2e501ba41632f58",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260404150156-social.jpg": {
+    "mtime": 1778285661.8,
+    "ast_hash": "9b4429c1c6f10bd44c333ebd2a486b03",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260404150602-social.jpg": {
+    "mtime": 1778285665.036,
+    "ast_hash": "8f1827a91490c560b93820314ea56de4",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260404150620-social.jpg": {
+    "mtime": 1778285667.565,
+    "ast_hash": "905cf68f51e171d6dcb1baa24e11684e",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260406080722-social.jpg": {
+    "mtime": 1778285670.403,
+    "ast_hash": "7ef7134a72bb4d78a03116bdd3f9c7e3",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260406124619-social.jpg": {
+    "mtime": 1778285674.053,
+    "ast_hash": "c9e9d2ddd5d9d90f26ca491babe015b8",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260406140908-social.jpg": {
+    "mtime": 1778285676.218,
+    "ast_hash": "99335132555f6c3473df4e4bfc2312f1",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260406143257-social.jpg": {
+    "mtime": 1778285678.98,
+    "ast_hash": "90d27e1dd4af5817109b00efac75b059",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260406143800-social.jpg": {
+    "mtime": 1778285683.003,
+    "ast_hash": "d53314c55b70ebed3b78ccfcbdb499a3",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260408193925-social.jpg": {
+    "mtime": 1778285685.647,
+    "ast_hash": "85418f4a1ed8cf82865e253d11adfa18",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260413195125-social.jpg": {
+    "mtime": 1778285688.213,
+    "ast_hash": "91cc5fc12bba80171cfce85c857d6ebd",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260414164603-social.jpg": {
+    "mtime": 1778285691.225,
+    "ast_hash": "da651763430795007dede0464356ccfc",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260415141056-social.jpg": {
+    "mtime": 1778285693.228,
+    "ast_hash": "15a9c8a73481ef58ace9fd1c268abea9",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260416083607-social.jpg": {
+    "mtime": 1778285696.081,
+    "ast_hash": "3817e8deefdb5270cc425d2ffe00800b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260417153645-social.jpg": {
+    "mtime": 1778285697.731,
+    "ast_hash": "30fcee54c7dbf2067c0beac4d82992c4",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260417164435-social.jpg": {
+    "mtime": 1778285701.217,
+    "ast_hash": "ec107c90c9f1ab9aaac7af43099ae089",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260418073224-social.jpg": {
+    "mtime": 1778285703.476,
+    "ast_hash": "5c3c3b64842affa87edb440484837f20",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260418151044-social.jpg": {
+    "mtime": 1778285704.884,
+    "ast_hash": "9d8af3725c0ee6fd1dc87665acb7b0d9",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260419081550-social.jpg": {
+    "mtime": 1778285708.578,
+    "ast_hash": "645c2f4ef19758d3283961898197376d",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260420105214-social.jpg": {
+    "mtime": 1778285711.442,
+    "ast_hash": "8315351b1a0f0ea958705e2dc083a0e9",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260422183844-social.jpg": {
+    "mtime": 1778285714.391,
+    "ast_hash": "a0c8df4c9c26cc4da4e27d22b0c2e1f6",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260422193700-social.jpg": {
+    "mtime": 1778285716.576,
+    "ast_hash": "ff7721236c05a2a9a2f64052beddde18",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260423100846-social.jpg": {
+    "mtime": 1778285720.198,
+    "ast_hash": "8541f53f055d891ce24635d365924e97",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260423131600-social.jpg": {
+    "mtime": 1778285722.78,
+    "ast_hash": "906322b1f31f76d9da1b3a2f5d0e333c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260423131603-social.jpg": {
+    "mtime": 1778285724.522,
+    "ast_hash": "f09d0d109684232e11b793de13692133",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260423131606-social.jpg": {
+    "mtime": 1778285726.501,
+    "ast_hash": "fdc1928a8f0fa77ba6c328d41acbbd36",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260423131616-social.jpg": {
+    "mtime": 1778285728.603,
+    "ast_hash": "0f3e890d200e8e0dc16b979f58a596aa",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260423150807-social.jpg": {
+    "mtime": 1778285730.605,
+    "ast_hash": "d465412a60b90e50796536da849b9a51",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260424214818-social.jpg": {
+    "mtime": 1778285732.375,
+    "ast_hash": "09493c64343b27795c880ca49bbf0dc1",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260426150625-social.jpg": {
+    "mtime": 1778285735.362,
+    "ast_hash": "03d3e4e8363cc6c4e73917822cc9cb25",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260428102557-social.jpg": {
+    "mtime": 1778285737.812,
+    "ast_hash": "2ea89a5d97a5142724d42190e5e98529",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260428102923-social.jpg": {
+    "mtime": 1778285740.336,
+    "ast_hash": "c6bc303ad4d3bfd9289990f406366194",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260428114546-social.jpg": {
+    "mtime": 1778285743.438,
+    "ast_hash": "f89bf1453dae553aaefb81908005c172",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260428114559-social.jpg": {
+    "mtime": 1778285746.137,
+    "ast_hash": "22cff16e6923a8d66bc60a09a584562c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260428122738-social.jpg": {
+    "mtime": 1778285748.229,
+    "ast_hash": "b831dea5516bab0f76b06f3bc90d158b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260428122807-social.jpg": {
+    "mtime": 1778285750.112,
+    "ast_hash": "901daf97a472275eb17243863deea1c1",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260428123621-social.jpg": {
+    "mtime": 1778285750.756,
+    "ast_hash": "2f07edafb6e329345b4fba592d07cfdf",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260429080712-social.jpg": {
+    "mtime": 1778285753.653,
+    "ast_hash": "15ede0340c85c71021d7556fa96146e1",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260429080718-social.jpg": {
+    "mtime": 1778285755.552,
+    "ast_hash": "ccf6346550d284a8e7c9b93bed0658d3",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260429080724-social.jpg": {
+    "mtime": 1778285757.38,
+    "ast_hash": "6fa224c47e15f18c1c6b19c59c804dc4",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260429080733-social.jpg": {
+    "mtime": 1778285759.211,
+    "ast_hash": "1a77cc25cf67d0e7a735d4026f209e74",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\crimson-desert-review\\Crimson Desert_20260429081024-social.jpg": {
+    "mtime": 1778285761.086,
+    "ast_hash": "0287a5b2f8395b0f1bbbf208769b62b0",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\dispatch-review\\dispatch-logo-screen-social.jpg": {
+    "mtime": 1778696345.301,
+    "ast_hash": "aa55975ba039e66a30bf0abbddd166c8",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\2026\\dispatch-review\\dispatch-pc-game-dispatch-social.jpg": {
+    "mtime": 1778696346.716,
+    "ast_hash": "7b3f15f720e1a8ea3c6bc5c0576103f1",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\default_covers\\default-1-social.jpg": {
+    "mtime": 1772109526.068,
+    "ast_hash": "c04e5878883af774427807b932110aa5",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\default_covers\\default-10-social.jpg": {
+    "mtime": 1772109526.388,
+    "ast_hash": "b3fadd6c433e9eb4847db0f9b12c1006",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\default_covers\\default-2-social.jpg": {
+    "mtime": 1772109526.798,
+    "ast_hash": "4741cc9d41268b4074bd3d096251137d",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\default_covers\\default-3-social.jpg": {
+    "mtime": 1772109527.12,
+    "ast_hash": "870e29835188ab8bc0cf3e509f377a7c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\default_covers\\default-4-social.jpg": {
+    "mtime": 1772109527.631,
+    "ast_hash": "6dd2b374cbe56c1a92ccc4b330414828",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\default_covers\\default-5-social.jpg": {
+    "mtime": 1772109528.01,
+    "ast_hash": "09a6f86e480609c306153ff70efe647c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\default_covers\\default-6-social.jpg": {
+    "mtime": 1772109528.358,
+    "ast_hash": "6c274fbe738738df1ff92d1ca25ad77d",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\default_covers\\default-7-social.jpg": {
+    "mtime": 1772109528.784,
+    "ast_hash": "d19f6c6cd77be1e7e971fa91832d38da",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\default_covers\\default-8-social.jpg": {
+    "mtime": 1772109529.334,
+    "ast_hash": "a2e4d254614b82ab55600be5bd4f1bf5",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\default_covers\\default-9-social.jpg": {
+    "mtime": 1772109529.738,
+    "ast_hash": "cdfefb573fedd592574afffba664c38c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\default_covers\\wizards666_easy_clouds_--chaos_70_--ar_32_--weird_900_--v_7_944cbbcd-64a7-463b-b2c8-936dbe3e07f7_2-social.jpg": {
+    "mtime": 1772109530.088,
+    "ast_hash": "ba806831a2ac2bbddb971f5993bbd8e3",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\default_covers\\wizards666_explore_infinity_and_chaos_--chaos_70_--ar_32_--we_946a9dac-b5c1-477b-b06f-2c43b810ffef_2-social.jpg": {
+    "mtime": 1772109530.428,
+    "ast_hash": "028fd254da3abc28bce6e0b3572a1bfb",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_10-social.jpg": {
+    "mtime": 1772109531.178,
+    "ast_hash": "66b03dfcb8a38f0328b4e78a2037adc1",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_11-social.jpg": {
+    "mtime": 1772109531.378,
+    "ast_hash": "0ef36b4cab0f131c10c8116ddea2e500",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_12-social.jpg": {
+    "mtime": 1772109531.568,
+    "ast_hash": "6dc1e7ec9bca8cf422d5e766451424de",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_13-social.jpg": {
+    "mtime": 1772109531.798,
+    "ast_hash": "447ee4c3985c1da6734c0298de35854f",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_14-social.jpg": {
+    "mtime": 1772109531.998,
+    "ast_hash": "088cf2054cc5ddbe91359edfee90b06a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_15-social.jpg": {
+    "mtime": 1772109532.239,
+    "ast_hash": "a6211cd63f6685e8fdd607c6940c0b68",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_16-social.jpg": {
+    "mtime": 1772109532.528,
+    "ast_hash": "ccb6ae547ec4b4e2b2ac8e396284adbf",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_17-social.jpg": {
+    "mtime": 1772109532.961,
+    "ast_hash": "cc543d1cdc84644b2fabd1f343cfb6d7",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_18-social.jpg": {
+    "mtime": 1772109533.39,
+    "ast_hash": "4969f98bd16ec18fb6ea54cc1ff3dd33",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_19-social.jpg": {
+    "mtime": 1772109533.915,
+    "ast_hash": "7d7f3deda453751c39c3c22be5a3fa91",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_20-social.jpg": {
+    "mtime": 1772109534.368,
+    "ast_hash": "05b2661db508e12e77b7b97d5aaa6f29",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_21-social.jpg": {
+    "mtime": 1772109534.702,
+    "ast_hash": "e2aa0fbd843a2fbc1e6d443c38226e1d",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_22-social.jpg": {
+    "mtime": 1772109535.038,
+    "ast_hash": "d2e7ed26684f5c39eedeb7ad99812d4d",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_23-social.jpg": {
+    "mtime": 1772109535.551,
+    "ast_hash": "4105c745144ee2b2c89cd20813ca71fe",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_24-social.jpg": {
+    "mtime": 1772109535.918,
+    "ast_hash": "c0b11e171005586b7319e737fd85a811",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_25-social.jpg": {
+    "mtime": 1772109536.299,
+    "ast_hash": "c77ff7df0b2a3b2acdf9052f30441f0a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_26-social.jpg": {
+    "mtime": 1772109536.758,
+    "ast_hash": "e41d405edf64e66f8a0f2ea13f93f834",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_27-social.jpg": {
+    "mtime": 1772109537.208,
+    "ast_hash": "c62e7c495aef6f349b56cfa273967218",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_28-social.jpg": {
+    "mtime": 1772109537.648,
+    "ast_hash": "ff8d2a5ebdb58a73e258313e22d2b241",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_29-social.jpg": {
+    "mtime": 1772109538.078,
+    "ast_hash": "ad78a5ca7c2125877dd30ca9a671f9a4",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_30-social.jpg": {
+    "mtime": 1772109538.508,
+    "ast_hash": "e9226af94663d6903300bfe1747b4411",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_31-social.jpg": {
+    "mtime": 1772109538.964,
+    "ast_hash": "d4f53293ea4db697b0e5d997c63090bd",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_32-social.jpg": {
+    "mtime": 1772109539.431,
+    "ast_hash": "f80f615d9486e5d1ca9e307ae7aa978e",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_33-social.jpg": {
+    "mtime": 1772109539.914,
+    "ast_hash": "31bb82cc3a37423d596cd0635e771b82",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_34-social.jpg": {
+    "mtime": 1772109540.354,
+    "ast_hash": "51b6e1768892d6c8850d8dc128ecd1bd",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_35-social.jpg": {
+    "mtime": 1772109540.648,
+    "ast_hash": "48bd28b9bb969205e204f3ef2a376c82",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_36-social.jpg": {
+    "mtime": 1772109541.068,
+    "ast_hash": "1bbbf003e3ae9002c014721d254c50ca",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_38-social.jpg": {
+    "mtime": 1772109541.538,
+    "ast_hash": "119c46278743216be96795d6de6a1ace",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_39-social.jpg": {
+    "mtime": 1772109541.968,
+    "ast_hash": "6103b74cbe98e4b686ecad741ff8f9c6",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_41-social.jpg": {
+    "mtime": 1772109542.408,
+    "ast_hash": "1ea8f7d09e6f4f0b20e33dc0f8d3949f",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_42-social.jpg": {
+    "mtime": 1772109542.852,
+    "ast_hash": "f2421791fe324ed39a033290767c0717",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_43-social.jpg": {
+    "mtime": 1772109543.148,
+    "ast_hash": "920785636bd0c3ab7ba35709d09dae29",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_44-social.jpg": {
+    "mtime": 1772109543.562,
+    "ast_hash": "3e78bc9d063f5c96f05bccec00bba7f3",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_46-social.jpg": {
+    "mtime": 1772109543.951,
+    "ast_hash": "bba8aeb747cb82549fc9d6e676c3370a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_47-social.jpg": {
+    "mtime": 1772109544.368,
+    "ast_hash": "3272be0ba6e876676a32794589c821f7",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_49-social.jpg": {
+    "mtime": 1772109544.78,
+    "ast_hash": "7f42156b149ee30126551b6d6486e3c5",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_5-social.jpg": {
+    "mtime": 1772109545.158,
+    "ast_hash": "325641521609dc69959a63bbc840d56d",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_50-social.jpg": {
+    "mtime": 1772109545.63,
+    "ast_hash": "8340d896a8d98980d010d868fdeb3895",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_51-social.jpg": {
+    "mtime": 1772109546.06,
+    "ast_hash": "1639e0debcc0ad23ebac18088f243154",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_52-social.jpg": {
+    "mtime": 1772109546.348,
+    "ast_hash": "d2d96073e6bdd9bd6d7d77d7aad6f617",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_53-social.jpg": {
+    "mtime": 1772109546.798,
+    "ast_hash": "3344923bd03313b933dce861a45f593c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_55-social.jpg": {
+    "mtime": 1772109547.238,
+    "ast_hash": "06f016524deb1561c2c4cb4453d69ba5",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_57-social.jpg": {
+    "mtime": 1772109547.508,
+    "ast_hash": "2f1dfcb52b85dcf4803e839e078b6a3a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_58-social.jpg": {
+    "mtime": 1772109547.773,
+    "ast_hash": "ddeac1f14ee05ed7c2973ce3e6410fb3",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_59-social.jpg": {
+    "mtime": 1772109548.239,
+    "ast_hash": "a71f21ebe7dc89786ef5591cd3b72973",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_6-social.jpg": {
+    "mtime": 1772109548.688,
+    "ast_hash": "4b528fd4cb36465685248e33a6ea27dd",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_60-social.jpg": {
+    "mtime": 1772109549.198,
+    "ast_hash": "991e960337b1b4b48bda6be1d4439473",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_61-social.jpg": {
+    "mtime": 1772109549.66,
+    "ast_hash": "60cac24fa736328076310f831d21723b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_62-social.jpg": {
+    "mtime": 1772109550.141,
+    "ast_hash": "2d4765c3567dc71c6c70f38de05a9426",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_63-social.jpg": {
+    "mtime": 1772109550.579,
+    "ast_hash": "76ce7463dd62dd7ec90533e9800cc47b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_64-social.jpg": {
+    "mtime": 1772109551.05,
+    "ast_hash": "82f000558788303405c30514f8048682",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_65-social.jpg": {
+    "mtime": 1772109551.532,
+    "ast_hash": "bf1da74d66f2309064e9f1419e2d2c36",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_66-social.jpg": {
+    "mtime": 1772109551.784,
+    "ast_hash": "85a14b4a05d515dc75172e87112b3873",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_67-social.jpg": {
+    "mtime": 1772109552.108,
+    "ast_hash": "7b3b93d2cf06a94c3714a775b015586c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_68-social.jpg": {
+    "mtime": 1772109552.533,
+    "ast_hash": "b642a84f4766f2d8f2570c1500179a55",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_69-social.jpg": {
+    "mtime": 1772109552.888,
+    "ast_hash": "b27257003250c41ba7e1040866a7ba37",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_71-social.jpg": {
+    "mtime": 1772109553.18,
+    "ast_hash": "9c7a7b80c46d70c09f27ffa9d6bd0f18",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_72-social.jpg": {
+    "mtime": 1772109553.474,
+    "ast_hash": "4141c6859b54edf31acfa4d9d3f97253",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_73-social.jpg": {
+    "mtime": 1772109553.848,
+    "ast_hash": "2c8ffa3dc44476a363e73ed4fe922055",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_74-social.jpg": {
+    "mtime": 1772109554.099,
+    "ast_hash": "2c2189c4abf0f2daac63761c05fb8fbd",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_75-social.jpg": {
+    "mtime": 1772109554.568,
+    "ast_hash": "29453b899f54dd5ac7b7963496874487",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_76-social.jpg": {
+    "mtime": 1772109555.093,
+    "ast_hash": "5422f507d30cad2e76ae6afc4ac54215",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_77-social.jpg": {
+    "mtime": 1772109555.42,
+    "ast_hash": "4b03fc63f42ea3eb20cabeb510238609",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_78-social.jpg": {
+    "mtime": 1772109555.635,
+    "ast_hash": "d20b805313baf2dbb418192521893b92",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_79-social.jpg": {
+    "mtime": 1772109555.799,
+    "ast_hash": "f6efb3a1baf451fea42e5456ec5c08d6",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_80-social.jpg": {
+    "mtime": 1772109555.969,
+    "ast_hash": "d40e47fd0a7464810b705eec288fc7a1",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-images_81-social.jpg": {
+    "mtime": 1772109556.259,
+    "ast_hash": "b63dec35ef41d1797dcc750174160936",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-intro-2-social.jpg": {
+    "mtime": 1772109556.439,
+    "ast_hash": "7430549529c860d7c5bfea135393257d",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-occupants-1-social.jpg": {
+    "mtime": 1772109556.728,
+    "ast_hash": "97bb66019baa95f1ba07512106eb9f25",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-occupants-10-social.jpg": {
+    "mtime": 1772109557.109,
+    "ast_hash": "2228159b4603edf03a0dc519a47004f2",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-occupants-11-social.jpg": {
+    "mtime": 1772109557.328,
+    "ast_hash": "3af694bfca62a7608def3d96dd8ce0ec",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-occupants-12-social.jpg": {
+    "mtime": 1772109557.649,
+    "ast_hash": "58045ea128bdb4dbdbe98acb7bfa8803",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-occupants-2-social.jpg": {
+    "mtime": 1772109557.992,
+    "ast_hash": "b1e4c2b842067eadab69c08fb86c44e2",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-occupants-3-social.jpg": {
+    "mtime": 1772109558.336,
+    "ast_hash": "3edd08e636cf0801143953d06f31c674",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-occupants-4-social.jpg": {
+    "mtime": 1772109558.745,
+    "ast_hash": "6bdaa13a1738700e8884e2129e033c94",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-occupants-5-social.jpg": {
+    "mtime": 1772109559.099,
+    "ast_hash": "a6e9f09786cb9c0808e44dced694635d",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-occupants-6-social.jpg": {
+    "mtime": 1772109559.321,
+    "ast_hash": "7f2109d7da850b3951af92d1124a462c",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-occupants-7-social.jpg": {
+    "mtime": 1772109559.87,
+    "ast_hash": "e27e28b31dfe832df3235109fe313e72",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-occupants-8-social.jpg": {
+    "mtime": 1772109560.269,
+    "ast_hash": "11ca2e95e42cf4d855b510948fc82e13",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-ai-occupants-9-social.jpg": {
+    "mtime": 1772109560.578,
+    "ast_hash": "43590340bec8ed53e7b85e23f7631c76",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\ev-intro-social.jpg": {
+    "mtime": 1772109560.8,
+    "ast_hash": "3d5d6d247f3f29d499d2080b05f83584",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\evs\\future-of-vehicles-wat-social.jpg": {
+    "mtime": 1772109560.959,
+    "ast_hash": "355841bae0fc7c6dd55d22b9d6e6cf31",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\symbols\\dragon-slayer-social.jpg": {
+    "mtime": 1772109564.618,
+    "ast_hash": "a4938518134bf5abb355dcd04982e97b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\symbols\\ma5c-social.jpg": {
+    "mtime": 1772109564.659,
+    "ast_hash": "09779721741e1a7696ee2fb992284339",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\symbols\\master-sword-social.jpg": {
+    "mtime": 1772109564.757,
+    "ast_hash": "0240f94b59f5bb39328fd4dd58de18db",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\symbols\\mjolnir-social.jpg": {
+    "mtime": 1772109564.967,
+    "ast_hash": "0849de2662cc011bce6c25d4a8651f40",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\symbols\\narsil-social.jpg": {
+    "mtime": 1772109565.071,
+    "ast_hash": "27ed9bcc003b6239d1632a7f7a5470a7",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\images\\symbols\\vegvisir-social.jpg": {
+    "mtime": 1772109565.119,
+    "ast_hash": "6c3c2670a439cfbbe55ae0646e13536b",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\public\\social\\symbols\\lightsaber-social.jpg": {
+    "mtime": 1772109567.268,
+    "ast_hash": "ba5aa51c76b62470ed4ad0ab129614a3",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\zombi\\Developer\\projects\\notes\\docs\\graphify.md": {
+    "mtime": 1779801701.8627086,
+    "ast_hash": "d4c33f607f061e9373dd3600a8204b32",
+    "semantic_hash": "d4c33f607f061e9373dd3600a8204b32"
+  }
+}

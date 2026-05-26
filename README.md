@@ -107,6 +107,7 @@ notes/
 │   ├── utils/
 │   └── types/
 ├── docs/                # Longer how-tos and specs
+├── graphify-out/        # Knowledge graph (Graphify); see docs/graphify.md
 └── astro.config.mjs
 ```
 
@@ -120,6 +121,8 @@ Tag governance and usage are documented in [docs/tag-policy.md](docs/tag-policy.
 Translations: same `translationGroup` on each language version; use `featured` so only one version shows in main lists. Details: [docs/multilingual-setup.md](docs/multilingual-setup.md).
 
 Using Cursor AI in this repo: [docs/cursor-agent-skills.md](docs/cursor-agent-skills.md).
+
+Codebase map (optional): [Graphify](https://github.com/safishamsi/graphify) — see [docs/graphify.md](docs/graphify.md) for install, `graphify update .`, and querying `graphify-out/`.
 
 ## Documentation in `docs/`
 
@@ -136,6 +139,7 @@ Using Cursor AI in this repo: [docs/cursor-agent-skills.md](docs/cursor-agent-sk
 | [performance-optimization.md](docs/performance-optimization.md)                   | Performance notes        |
 | [roadmap.md](docs/roadmap.md)                                                     | Ideas and backlog        |
 | [cursor-agent-skills.md](docs/cursor-agent-skills.md)                             | Cursor agent skill guide |
+| [graphify.md](docs/graphify.md)                                                   | Codebase knowledge graph |
 | [midjourney-og-image-prompts.md](docs/midjourney-og-image-prompts.md)             | Image prompt notes       |
 
 ## Private generated materials

@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.astro/
+.vercel/
+graphify-out/
+public/social/
+public/images/
+src/content/p/
+specs/
+.cursor/
+.specify/
+.github/
