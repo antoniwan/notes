@@ -170,6 +170,7 @@ export const SOCIAL_IMAGE_MANIFEST: Record<string, string> = {
     '/social/images/2026/glimmer-chaos-social.jpg',
   '/images/2026/in-my-feelings.avif':
     '/social/images/2026/in-my-feelings-social.jpg',
+  '/images/2026/kids-laptop.avif': '/social/images/2026/kids-laptop-social.jpg',
   '/images/2026/learning.avif': '/social/images/2026/learning-social.jpg',
   '/images/2026/lemon-pepper-chicken-tais.avif':
     '/social/images/2026/lemon-pepper-chicken-tais-social.jpg',

@@ -123,7 +123,7 @@
     },
     {
       "id": "it-isnt-too-much-pressure",
-      "bodyLength": 8950,
+      "bodyLength": 9010,
       "pubDate": "2026-06-03T12:00:00.000Z"
     },
     {
@@ -429,12 +429,9 @@
       "writingAsTool": false,
       "recursiveThinking": false,
       "sentiment": {
-        "score": 0,
-        "comparative": 0,
+        "score": 1,
+        "comparative": 0.010638297872340425,
         "calculation": [
-          {
-            "pressure": -1
-          },
           {
             "pressure": -1
           },
@@ -446,6 +443,13 @@
           }
         ],
         "tokens": [
+          "import",
+          "threadsembed",
+          "from",
+          "'",
+          "components",
+          "threadsembed",
+          "astro'",
           "i",
           "was",
           "talking",
@@ -532,18 +536,9 @@
           "of",
           "having",
           "my",
-          "kids",
-          "here",
-          "doesn't",
-          "produce",
-          "pressure",
-          "especially",
-          "during",
-          "summer",
-          "whe"
+          "ki"
         ],
         "words": [
-          "pressure",
           "pressure",
           "pressure",
           "excited"
@@ -552,7 +547,6 @@
           "excited"
         ],
         "negative": [
-          "pressure",
           "pressure",
           "pressure"
         ]

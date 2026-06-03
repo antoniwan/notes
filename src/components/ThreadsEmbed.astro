@@ -1,0 +1,42 @@
+---
+import { fetchThreadsOEmbed, stripThreadsEmbedScript } from '../utils/threadsEmbed';
+
+interface Props {
+  url: string;
+  maxwidth?: number;
+}
+
+const { url, maxwidth = 540 } = Astro.props;
+
+let markup: string | null = null;
+
+try {
+  const oembed = await fetchThreadsOEmbed(url, maxwidth);
+  markup = stripThreadsEmbedScript(oembed.html);
+} catch (error) {
+  console.error('[ThreadsEmbed]', error);
+}
+---
+
+<figure class="threads-embed not-prose my-8 w-full" aria-label="Embedded Threads post">
+  {
+    markup ? (
+      <div class="threads-embed__frame mx-auto w-full max-w-[658px]" set:html={markup} />
+    ) : (
+      <p class="text-body-muted text-sm">
+        <a href={url} rel="noopener noreferrer" target="_blank">
+          View the Threads post
+        </a>
+      </p>
+    )
+  }
+</figure>
+
+{markup && <script is:inline async src="https://www.threads.com/embed.js"></script>}
+
+<style>
+  .threads-embed__frame :global(blockquote.text-post-media) {
+    margin: 0 auto !important;
+    width: 100% !important;
+  }
+</style>

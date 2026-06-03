@@ -353,6 +353,10 @@
       "sha256": "c8b5f770acf38f7bd7f3f0344acb3f31a42a27a21fb9ecd1d9b1638fec284e15",
       "social": "/social/images/2026/in-my-feelings-social.jpg"
     },
+    "/images/2026/kids-laptop.avif": {
+      "sha256": "b3429032b4992a8b1693b14345bd20aa680ec4e6da22206e9074f27f41247014",
+      "social": "/social/images/2026/kids-laptop-social.jpg"
+    },
     "/images/2026/learning.avif": {
       "sha256": "e948ebe7315aa1f20c2d7e991b1ff8a61516ca7025d3c10dd6ea01a193c51de8",
       "social": "/social/images/2026/learning-social.jpg"
