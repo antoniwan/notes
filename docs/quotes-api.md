@@ -16,9 +16,9 @@ Returns a random quote plus metadata (total count, version, counts per kind).
 
 #### Optional query parameter
 
-| Parameter | Values | Meaning |
-| --------- | ------ | ------- |
-| `kind` | `stoic`, `philosophical`, `site` | Prefer quotes from that bucket only. Invalid values are ignored and the full pool is used. |
+| Parameter | Values                           | Meaning                                                                                    |
+| --------- | -------------------------------- | ------------------------------------------------------------------------------------------ |
+| `kind`    | `stoic`, `philosophical`, `site` | Prefer quotes from that bucket only. Invalid values are ignored and the full pool is used. |
 
 Examples:
 
@@ -72,14 +72,14 @@ For **site** quotes, `kind` is `"site"`, `postId` is the blog entry id (Markdown
 
 #### Fields on `quote`
 
-| Field | Notes |
-| ----- | ----- |
-| `kind` | Always present in the response: `stoic`, `philosophical`, or `site`. |
-| `sourceUrl` | Path to the post, or `null`. |
-| `postId` | Set only for site quotes. |
-| `book` | Section or letter when known; may be `null`. |
-| `themes` | Tags for filtering or display. |
-| `context` / `modernRelevance` | Short blurbs; optional for display. |
+| Field                         | Notes                                                                |
+| ----------------------------- | -------------------------------------------------------------------- |
+| `kind`                        | Always present in the response: `stoic`, `philosophical`, or `site`. |
+| `sourceUrl`                   | Path to the post, or `null`.                                         |
+| `postId`                      | Set only for site quotes.                                            |
+| `book`                        | Section or letter when known; may be `null`.                         |
+| `themes`                      | Tags for filtering or display.                                       |
+| `context` / `modernRelevance` | Short blurbs; optional for display.                                  |
 
 ## Usage example
 

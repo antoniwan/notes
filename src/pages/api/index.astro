@@ -29,12 +29,19 @@ import { SITE_TITLE } from '../../consts';
             class="flex items-center gap-1 text-sm text-blue-500 transition-colors hover:text-blue-600"
           >
             Full reference (GitHub)
-            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <svg
+              class="h-4 w-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2"
-                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+              ></path>
             </svg>
           </a>
         </div>
@@ -47,29 +54,34 @@ import { SITE_TITLE } from '../../consts';
                 >GET /api/quotes</code
               >
               <p class="text-body-muted mt-2 text-sm leading-relaxed">
-                Returns one random quote. The pool mixes classical Stoic lines, a few other philosophers and writers,
-                and short pull quotes from essays published here. Each response includes a <code class="text-xs"
-                  >kind</code
-                > field (<code class="text-xs">stoic</code>, <code class="text-xs">philosophical</code>, or <code
-                  class="text-xs">site</code
-                >) and <code class="text-xs">sourceUrl</code> when the line links to a post (<code class="text-xs"
-                  >/p/…/</code
+                Returns one random quote. The pool mixes classical Stoic lines, a few other
+                philosophers and writers, and short pull quotes from essays published here. Each
+                response includes a <code class="text-xs">kind</code> field (<code class="text-xs"
+                  >stoic</code
+                >, <code class="text-xs">philosophical</code>, or <code class="text-xs">site</code>)
+                and <code class="text-xs">sourceUrl</code> when the line links to a post (<code
+                  class="text-xs">/p/…/</code
                 >).
               </p>
             </div>
 
             <div>
               <h3 class="mb-2 font-medium text-[rgb(var(--color-text))]">Optional query</h3>
-              <code class="break-all rounded-sm bg-[rgb(var(--color-bg))] px-3 py-2 font-mono text-sm"
+              <code
+                class="rounded-sm bg-[rgb(var(--color-bg))] px-3 py-2 font-mono text-sm break-all"
                 >?kind=stoic</code
               >
               <span class="text-body-muted mx-2 text-sm">or</span>
-              <code class="rounded-sm bg-[rgb(var(--color-bg))] px-3 py-2 font-mono text-sm">philosophical</code>
+              <code class="rounded-sm bg-[rgb(var(--color-bg))] px-3 py-2 font-mono text-sm"
+                >philosophical</code
+              >
               <span class="text-body-muted mx-2 text-sm">or</span>
-              <code class="rounded-sm bg-[rgb(var(--color-bg))] px-3 py-2 font-mono text-sm">site</code>
+              <code class="rounded-sm bg-[rgb(var(--color-bg))] px-3 py-2 font-mono text-sm"
+                >site</code
+              >
               <p class="text-body-muted mt-2 text-sm leading-relaxed">
-                Limits the draw to that bucket. If something is mis-typed, you still get a random quote from the full
-                list (no hard error).
+                Limits the draw to that bucket. If something is mis-typed, you still get a random
+                quote from the full list (no hard error).
               </p>
             </div>
           </div>
@@ -161,7 +173,9 @@ import { SITE_TITLE } from '../../consts';
         </div>
       </div>
 
-      <div class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] p-6">
+      <div
+        class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] p-6"
+      >
         <h2 class="mb-4 text-xl font-semibold text-[rgb(var(--color-text))]">Code snippets</h2>
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
           <div>
@@ -314,7 +328,9 @@ const { quote, metadata } = await res.json();
   function attachQuoteTester(): void {
     document.getElementById('testApiAny')?.addEventListener('click', () => fetchQuote(''));
     document.getElementById('testApiStoic')?.addEventListener('click', () => fetchQuote('stoic'));
-    document.getElementById('testApiPhil')?.addEventListener('click', () => fetchQuote('philosophical'));
+    document
+      .getElementById('testApiPhil')
+      ?.addEventListener('click', () => fetchQuote('philosophical'));
     document.getElementById('testApiSite')?.addEventListener('click', () => fetchQuote('site'));
   }
 

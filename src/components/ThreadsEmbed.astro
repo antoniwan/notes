@@ -23,19 +23,14 @@ try {
   aria-label="Embedded Threads post"
 >
   <div
-    class="threads-embed__shell overflow-hidden rounded-lg border border-[rgb(var(--color-border))] border-l-4 border-l-[rgb(var(--color-accent))] bg-[rgb(var(--color-bg-alt))]/50 px-3 py-3 shadow-xs md:rounded-xl md:px-4 md:py-4"
+    class="threads-embed__shell overflow-hidden rounded-lg border border-l-4 border-[rgb(var(--color-border))] border-l-[rgb(var(--color-accent))] bg-[rgb(var(--color-bg-alt))]/50 px-3 py-3 shadow-xs md:rounded-xl md:px-4 md:py-4"
   >
     {
       markup ? (
         <div class="threads-embed__frame threads-embed__frame--loading" set:html={markup} />
       ) : (
         <p class="text-body-muted m-0 text-center text-sm">
-          <a
-            href={url}
-            rel="noopener noreferrer"
-            target="_blank"
-            class="link font-medium"
-          >
+          <a href={url} rel="noopener noreferrer" target="_blank" class="link font-medium">
             Open this post on Threads
           </a>
         </p>
@@ -44,7 +39,7 @@ try {
   </div>
 </figure>
 
-{markup && <script is:inline async src="https://www.threads.com/embed.js"></script>}
+{markup && <script is:inline async src="https://www.threads.com/embed.js" />}
 
 <script>
   function watchThreadsEmbeds() {

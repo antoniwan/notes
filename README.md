@@ -73,7 +73,7 @@ Remark42 uses `PUBLIC_REMARK42_HOST` and `PUBLIC_REMARK42_SITE_ID` when you turn
 | `pnpm run lint:fix`               | ESLint with `--fix`                                                                           |
 | `pnpm run format`                 | Prettier write                                                                                |
 | `pnpm run format:check`           | Prettier check                                                                                |
-| `pnpm run generate-social-images` | AVIF → JPEG/PNG under `public/social/` only (same logic as the start of `pnpm run build`)    |
+| `pnpm run generate-social-images` | AVIF → JPEG/PNG under `public/social/` only (same logic as the start of `pnpm run build`)     |
 | `pnpm run generate-favicons`      | Favicon assets                                                                                |
 | `pnpm run analyze`                | Runs `astro build` only (no social-image step), then Vercel static-build analysis             |
 | `pnpm run lighthouse`             | Lighthouse HTML report (start dev server first)                                               |
