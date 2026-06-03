@@ -1,5 +1,9 @@
 ---
-import { fetchThreadsOEmbed, stripThreadsEmbedScript } from '../utils/threadsEmbed';
+import {
+  fetchThreadsOEmbed,
+  normalizeThreadsPostUrl,
+  prepareThreadsEmbedMarkup,
+} from '../utils/threadsEmbed';
 
 interface Props {
   url: string;
@@ -7,12 +11,13 @@ interface Props {
 }
 
 const { url, maxwidth = 540 } = Astro.props;
+const canonicalUrl = normalizeThreadsPostUrl(url);
 
 let markup: string | null = null;
 
 try {
-  const oembed = await fetchThreadsOEmbed(url, maxwidth);
-  markup = stripThreadsEmbedScript(oembed.html);
+  const oembed = await fetchThreadsOEmbed(canonicalUrl, maxwidth);
+  markup = prepareThreadsEmbedMarkup(oembed.html);
 } catch (error) {
   console.error('[ThreadsEmbed]', error);
 }
@@ -23,14 +28,19 @@ try {
   aria-label="Embedded Threads post"
 >
   <div
-    class="threads-embed__shell overflow-hidden rounded-lg border border-l-4 border-[rgb(var(--color-border))] border-l-[rgb(var(--color-accent))] bg-[rgb(var(--color-bg-alt))]/50 px-3 py-3 shadow-xs md:rounded-xl md:px-4 md:py-4"
+    class="threads-embed__shell overflow-hidden rounded-lg border border-[rgb(var(--color-border))] border-l-4 border-l-[rgb(var(--color-accent))] bg-[rgb(var(--color-bg-alt))]/50 px-3 py-3 shadow-xs md:rounded-xl md:px-4 md:py-4"
   >
     {
       markup ? (
-        <div class="threads-embed__frame threads-embed__frame--loading" set:html={markup} />
+        <div class="threads-embed__frame" set:html={markup} />
       ) : (
         <p class="text-body-muted m-0 text-center text-sm">
-          <a href={url} rel="noopener noreferrer" target="_blank" class="link font-medium">
+          <a
+            href={canonicalUrl}
+            rel="noopener noreferrer"
+            target="_blank"
+            class="link font-medium"
+          >
             Open this post on Threads
           </a>
         </p>
@@ -39,68 +49,31 @@ try {
   </div>
 </figure>
 
-{markup && <script is:inline async src="https://www.threads.com/embed.js" />}
+{
+  markup && (
+    <script>
+      import { initThreadsEmbeds } from '../utils/threadsEmbed.client';
+      import { THEME_CHANGE_EVENT } from '../utils/themeEvents';
 
-<script>
-  function watchThreadsEmbeds() {
-    document.querySelectorAll('.threads-embed__frame--loading').forEach((frame) => {
-      const ready = () => frame.classList.remove('threads-embed__frame--loading');
+      initThreadsEmbeds();
 
-      if (frame.querySelector('iframe')) {
-        ready();
-        return;
-      }
-
-      const observer = new MutationObserver(() => {
-        if (frame.querySelector('iframe')) {
-          ready();
-          observer.disconnect();
-        }
+      document.addEventListener('astro:page-load', () => {
+        initThreadsEmbeds();
       });
-      observer.observe(frame, { childList: true, subtree: true });
-    });
-  }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', watchThreadsEmbeds);
-  } else {
-    watchThreadsEmbeds();
-  }
-
-  document.addEventListener('astro:page-load', watchThreadsEmbeds);
-</script>
+      document.addEventListener(THEME_CHANGE_EVENT, () => {
+        initThreadsEmbeds();
+      });
+    </script>
+  )
+}
 
 <style>
   .threads-embed__frame {
     margin: 0 auto;
     width: 100%;
     max-width: 658px;
-  }
-
-  .threads-embed__frame--loading {
-    min-height: 6rem;
-    position: relative;
-  }
-
-  .threads-embed__frame--loading::before {
-    content: '';
-    position: absolute;
-    inset: 0.5rem 0.25rem;
-    border-radius: 0.5rem;
-    background: linear-gradient(
-      110deg,
-      rgb(var(--color-bg)) 8%,
-      rgb(var(--color-bg-alt)) 18%,
-      rgb(var(--color-bg)) 33%
-    );
-    background-size: 200% 100%;
-    animation: threads-embed-shimmer 1.4s ease-in-out infinite;
-  }
-
-  @keyframes threads-embed-shimmer {
-    to {
-      background-position-x: -200%;
-    }
+    min-height: 4.5rem;
   }
 
   .threads-embed__frame :global(blockquote.text-post-media) {
@@ -120,33 +93,22 @@ try {
     font-family: inherit !important;
   }
 
-  .threads-embed__frame :global(blockquote.text-post-media iframe) {
+  .threads-embed__frame :global(iframe) {
     display: block;
     width: 100% !important;
-    margin: 0 !important;
+    margin: 0 auto !important;
     border: none !important;
     border-radius: 0.375rem !important;
     background: rgb(var(--color-bg)) !important;
   }
 
-  .threads-embed__frame--loading :global(blockquote.text-post-media) {
-    opacity: 0;
-    pointer-events: none;
+  /* Meta hides the blockquote once the iframe is inserted; keep layout stable. */
+  .threads-embed__frame :global(blockquote.text-post-media-registered) {
+    display: none !important;
   }
 
-  .threads-embed__frame:not(.threads-embed__frame--loading) :global(blockquote.text-post-media) {
-    opacity: 1;
-    transition: opacity 0.2s ease;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .threads-embed__frame--loading::before {
-      animation: none;
-      background: rgb(var(--color-bg-alt));
-    }
-
-    .threads-embed__frame:not(.threads-embed__frame--loading) :global(blockquote.text-post-media) {
-      transition: none;
-    }
+  .threads-embed__frame--failed :global(blockquote.text-post-media) {
+    opacity: 1 !important;
+    pointer-events: auto !important;
   }
 </style>
