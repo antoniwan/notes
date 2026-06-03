@@ -345,6 +345,10 @@
       "sha256": "da2159f35d5c7911d8086ff833140ddee163f11bbdf9222376ee20e74fc8ddb4",
       "social": "/social/images/2026/friendly-ai-social.jpg"
     },
+    "/images/2026/glimmer-chaos.avif": {
+      "sha256": "33cc2b576dc611856e076e6c3097bbc986f63e5ddc18cbe38d1fca458d6c3528",
+      "social": "/social/images/2026/glimmer-chaos-social.jpg"
+    },
     "/images/2026/in-my-feelings.avif": {
       "sha256": "c8b5f770acf38f7bd7f3f0344acb3f31a42a27a21fb9ecd1d9b1638fec284e15",
       "social": "/social/images/2026/in-my-feelings-social.jpg"

@@ -102,6 +102,11 @@
       "pubDate": "2025-05-01T10:30:00.000Z"
     },
     {
+      "id": "happiness-is-moments",
+      "bodyLength": 1329,
+      "pubDate": "2026-05-20T23:18:01.000Z"
+    },
+    {
       "id": "i-became-what-i-used-to-mock",
       "bodyLength": 8127,
       "pubDate": "2025-07-17T15:00:00.000Z"
@@ -115,6 +120,16 @@
       "id": "intelligence-burns",
       "bodyLength": 3180,
       "pubDate": "2025-10-31T00:00:00.000Z"
+    },
+    {
+      "id": "it-isnt-too-much-pressure",
+      "bodyLength": 8950,
+      "pubDate": "2026-06-03T12:00:00.000Z"
+    },
+    {
+      "id": "la-felicidad-son-momentos",
+      "bodyLength": 1380,
+      "pubDate": "2026-05-20T23:18:01.000Z"
     },
     {
       "id": "la-primera-pared",
@@ -404,6 +419,433 @@
   ],
   "analyses": [
     {
+      "postTitle": "It Isn't Too Much Pressure",
+      "postSlug": "it-isnt-too-much-pressure",
+      "postDate": "2026-06-03T12:00:00.000Z",
+      "metaLanguageCount": 0,
+      "metaLanguagePatterns": [],
+      "selfAwarenessScore": 0,
+      "writingAsSubject": false,
+      "writingAsTool": false,
+      "recursiveThinking": false,
+      "sentiment": {
+        "score": 0,
+        "comparative": 0,
+        "calculation": [
+          {
+            "pressure": -1
+          },
+          {
+            "pressure": -1
+          },
+          {
+            "pressure": -1
+          },
+          {
+            "excited": 3
+          }
+        ],
+        "tokens": [
+          "i",
+          "was",
+          "talking",
+          "to",
+          "my",
+          "sister",
+          "telling",
+          "her",
+          "how",
+          "excited",
+          "i",
+          "am",
+          "to",
+          "have",
+          "my",
+          "kids",
+          "with",
+          "me",
+          "for",
+          "the",
+          "entire",
+          "summer",
+          "and",
+          "she",
+          "asked",
+          "if",
+          "it",
+          "wouldn't",
+          "be",
+          "too",
+          "much",
+          "too",
+          "much",
+          "too",
+          "much",
+          "how",
+          "too",
+          "much",
+          "pressure",
+          "she",
+          "said",
+          "the",
+          "pressure",
+          "of",
+          "being",
+          "with",
+          "the",
+          "kids",
+          "and",
+          "doing",
+          "remote",
+          "work",
+          "at",
+          "the",
+          "same",
+          "time",
+          "for",
+          "a",
+          "second",
+          "i",
+          "thought",
+          "i",
+          "just",
+          "hadn't",
+          "understood",
+          "the",
+          "question",
+          "because",
+          "i",
+          "was",
+          "answering",
+          "from",
+          "inside",
+          "my",
+          "own",
+          "head",
+          "and",
+          "from",
+          "inside",
+          "my",
+          "head",
+          "the",
+          "math",
+          "of",
+          "having",
+          "my",
+          "kids",
+          "here",
+          "doesn't",
+          "produce",
+          "pressure",
+          "especially",
+          "during",
+          "summer",
+          "whe"
+        ],
+        "words": [
+          "pressure",
+          "pressure",
+          "pressure",
+          "excited"
+        ],
+        "positive": [
+          "excited"
+        ],
+        "negative": [
+          "pressure",
+          "pressure",
+          "pressure"
+        ]
+      }
+    },
+    {
+      "postTitle": "Happiness Is Moments",
+      "postSlug": "happiness-is-moments",
+      "postDate": "2026-05-20T23:18:01.000Z",
+      "metaLanguageCount": 0,
+      "metaLanguagePatterns": [],
+      "selfAwarenessScore": 0,
+      "writingAsSubject": false,
+      "writingAsTool": false,
+      "recursiveThinking": false,
+      "sentiment": {
+        "score": 27,
+        "comparative": 0.28421052631578947,
+        "calculation": [
+          {
+            "happiness": 3
+          },
+          {
+            "beautiful": 3
+          },
+          {
+            "good": 3
+          },
+          {
+            "kindness": 2
+          },
+          {
+            "appreciation": 2
+          },
+          {
+            "enjoy": 2
+          },
+          {
+            "happiness": 3
+          },
+          {
+            "happy": 3
+          },
+          {
+            "happy": 3
+          },
+          {
+            "happiness": 3
+          }
+        ],
+        "tokens": [
+          "what",
+          "i'm",
+          "noticing",
+          "is",
+          "that",
+          "happiness",
+          "is",
+          "moments",
+          "it's",
+          "not",
+          "that",
+          "i'll",
+          "always",
+          "be",
+          "happy",
+          "i'm",
+          "a",
+          "happy",
+          "person",
+          "because",
+          "i",
+          "have",
+          "moments",
+          "of",
+          "happiness",
+          "and",
+          "the",
+          "more",
+          "i",
+          "grow",
+          "the",
+          "more",
+          "i",
+          "enjoy",
+          "them",
+          "a",
+          "lot",
+          "of",
+          "the",
+          "time",
+          "the",
+          "moment",
+          "is",
+          "an",
+          "appreciation",
+          "a",
+          "small",
+          "kindness",
+          "a",
+          "glass",
+          "of",
+          "water",
+          "a",
+          "good",
+          "meal",
+          "time",
+          "with",
+          "the",
+          "baby",
+          "right",
+          "now",
+          "while",
+          "i",
+          "do",
+          "this",
+          "i",
+          "have",
+          "him",
+          "next",
+          "to",
+          "me",
+          "looking",
+          "into",
+          "his",
+          "eyes",
+          "hearing",
+          "him",
+          "make",
+          "noise",
+          "it's",
+          "a",
+          "beautiful",
+          "memory",
+          "that's",
+          "a",
+          "moment",
+          "of",
+          "happiness",
+          "those",
+          "moments",
+          "come",
+          "through",
+          "action",
+          "they",
+          "com"
+        ],
+        "words": [
+          "happiness",
+          "beautiful",
+          "good",
+          "kindness",
+          "appreciation",
+          "enjoy",
+          "happiness",
+          "happy",
+          "happy",
+          "happiness"
+        ],
+        "positive": [
+          "happiness",
+          "beautiful",
+          "good",
+          "kindness",
+          "appreciation",
+          "enjoy",
+          "happiness",
+          "happy",
+          "happy",
+          "happiness"
+        ],
+        "negative": []
+      }
+    },
+    {
+      "postTitle": "La felicidad son momentos",
+      "postSlug": "la-felicidad-son-momentos",
+      "postDate": "2026-05-20T23:18:01.000Z",
+      "metaLanguageCount": 0,
+      "metaLanguagePatterns": [],
+      "selfAwarenessScore": 0,
+      "writingAsSubject": false,
+      "writingAsTool": false,
+      "recursiveThinking": false,
+      "sentiment": {
+        "score": -1,
+        "comparative": -0.011235955056179775,
+        "calculation": [
+          {
+            "no": -1
+          }
+        ],
+        "tokens": [
+          "lo",
+          "que",
+          "me",
+          "estoy",
+          "dando",
+          "cuenta",
+          "es",
+          "que",
+          "la",
+          "felicidad",
+          "son",
+          "momentos",
+          "no",
+          "es",
+          "que",
+          "voy",
+          "a",
+          "estar",
+          "siempre",
+          "feliz",
+          "soy",
+          "una",
+          "persona",
+          "feliz",
+          "porque",
+          "tengo",
+          "momentos",
+          "de",
+          "felicidad",
+          "y",
+          "cada",
+          "vez",
+          "que",
+          "maduro",
+          "disfruto",
+          "más",
+          "de",
+          "ellos",
+          "muchas",
+          "veces",
+          "el",
+          "momento",
+          "es",
+          "una",
+          "apreciación",
+          "un",
+          "cariño",
+          "un",
+          "vaso",
+          "de",
+          "agua",
+          "una",
+          "buena",
+          "comida",
+          "tiempo",
+          "con",
+          "el",
+          "bebé",
+          "ahora",
+          "mismo",
+          "mientras",
+          "hago",
+          "esto",
+          "lo",
+          "tengo",
+          "al",
+          "lado",
+          "mirándole",
+          "los",
+          "ojos",
+          "oyéndolo",
+          "hacer",
+          "ruido",
+          "es",
+          "una",
+          "memoria",
+          "bien",
+          "bonita",
+          "eso",
+          "es",
+          "un",
+          "momento",
+          "de",
+          "felicidad",
+          "esos",
+          "momentos",
+          "llegan",
+          "mediante",
+          "la"
+        ],
+        "words": [
+          "no"
+        ],
+        "positive": [],
+        "negative": [
+          "no"
+        ]
+      }
+    },
+    {
       "postTitle": "\"Crimson Desert\" Game Review",
       "postSlug": "my-crimson-desert-review-after-200-hours",
       "postDate": "2026-04-29T14:17:00.000Z",
@@ -615,8 +1057,16 @@
           "to",
           "read"
         ],
-        "words": ["care", "want", "integrity"],
-        "positive": ["care", "want", "integrity"],
+        "words": [
+          "care",
+          "want",
+          "integrity"
+        ],
+        "positive": [
+          "care",
+          "want",
+          "integrity"
+        ],
         "negative": []
       }
     },
@@ -689,9 +1139,22 @@
           "and",
           "they"
         ],
-        "words": ["recognition", "kind", "wrong", "attracts", "excellence"],
-        "positive": ["recognition", "kind", "attracts", "excellence"],
-        "negative": ["wrong"]
+        "words": [
+          "recognition",
+          "kind",
+          "wrong",
+          "attracts",
+          "excellence"
+        ],
+        "positive": [
+          "recognition",
+          "kind",
+          "attracts",
+          "excellence"
+        ],
+        "negative": [
+          "wrong"
+        ]
       }
     },
     {
@@ -852,9 +1315,18 @@
           "or",
           "fi"
         ],
-        "words": ["desire", "anger", "uncomfortable"],
-        "positive": ["desire"],
-        "negative": ["anger", "uncomfortable"]
+        "words": [
+          "desire",
+          "anger",
+          "uncomfortable"
+        ],
+        "positive": [
+          "desire"
+        ],
+        "negative": [
+          "anger",
+          "uncomfortable"
+        ]
       }
     },
     {
@@ -935,9 +1407,13 @@
           "the",
           "mainland"
         ],
-        "words": ["corruption"],
+        "words": [
+          "corruption"
+        ],
         "positive": [],
-        "negative": ["corruption"]
+        "negative": [
+          "corruption"
+        ]
       }
     },
     {
@@ -1047,9 +1523,13 @@
           "nos",
           "permi"
         ],
-        "words": ["leave"],
+        "words": [
+          "leave"
+        ],
         "positive": [],
-        "negative": ["leave"]
+        "negative": [
+          "leave"
+        ]
       }
     },
     {
@@ -1177,9 +1657,22 @@
           "persistimos",
           "eac"
         ],
-        "words": ["love", "no", "fail", "matters", "no"],
-        "positive": ["love", "matters"],
-        "negative": ["no", "fail", "no"]
+        "words": [
+          "love",
+          "no",
+          "fail",
+          "matters",
+          "no"
+        ],
+        "positive": [
+          "love",
+          "matters"
+        ],
+        "negative": [
+          "no",
+          "fail",
+          "no"
+        ]
       }
     },
     {
@@ -1302,9 +1795,26 @@
           "force",
           "i"
         ],
-        "words": ["justified", "threat", "stress", "✨", "clarity", "interest", "mistakes"],
-        "positive": ["justified", "✨", "clarity", "interest"],
-        "negative": ["threat", "stress", "mistakes"]
+        "words": [
+          "justified",
+          "threat",
+          "stress",
+          "✨",
+          "clarity",
+          "interest",
+          "mistakes"
+        ],
+        "positive": [
+          "justified",
+          "✨",
+          "clarity",
+          "interest"
+        ],
+        "negative": [
+          "threat",
+          "stress",
+          "mistakes"
+        ]
       }
     },
     {
@@ -1415,9 +1925,20 @@
           "fuerza",
           "no"
         ],
-        "words": ["no", "no", "✨", "no"],
-        "positive": ["✨"],
-        "negative": ["no", "no", "no"]
+        "words": [
+          "no",
+          "no",
+          "✨",
+          "no"
+        ],
+        "positive": [
+          "✨"
+        ],
+        "negative": [
+          "no",
+          "no",
+          "no"
+        ]
       }
     },
     {
@@ -1550,9 +2071,21 @@
           "la",
           "aut"
         ],
-        "words": ["no", "no", "no", "no", "no"],
+        "words": [
+          "no",
+          "no",
+          "no",
+          "no",
+          "no"
+        ],
         "positive": [],
-        "negative": ["no", "no", "no", "no", "no"]
+        "negative": [
+          "no",
+          "no",
+          "no",
+          "no",
+          "no"
+        ]
       }
     },
     {
@@ -1708,8 +2241,20 @@
           "jealousy",
           "feeling"
         ],
-        "positive": ["kind", "want", "like", "kind", "success", "kind", "feeling"],
-        "negative": ["fire", "jealousy", "jealousy"]
+        "positive": [
+          "kind",
+          "want",
+          "like",
+          "kind",
+          "success",
+          "kind",
+          "feeling"
+        ],
+        "negative": [
+          "fire",
+          "jealousy",
+          "jealousy"
+        ]
       }
     },
     {
@@ -1931,9 +2476,21 @@
           "the",
           "ch"
         ],
-        "words": ["suicide", "killed", "harms", "suicide", "warning"],
+        "words": [
+          "suicide",
+          "killed",
+          "harms",
+          "suicide",
+          "warning"
+        ],
         "positive": [],
-        "negative": ["suicide", "killed", "harms", "suicide", "warning"]
+        "negative": [
+          "suicide",
+          "killed",
+          "harms",
+          "suicide",
+          "warning"
+        ]
       }
     },
     {
@@ -2066,9 +2623,20 @@
           "sheep]",
           "https"
         ],
-        "words": ["admit", "easy", "yeah", "flawed"],
-        "positive": ["easy", "yeah"],
-        "negative": ["admit", "flawed"]
+        "words": [
+          "admit",
+          "easy",
+          "yeah",
+          "flawed"
+        ],
+        "positive": [
+          "easy",
+          "yeah"
+        ],
+        "negative": [
+          "admit",
+          "flawed"
+        ]
       }
     },
     {
@@ -2184,9 +2752,22 @@
           "almost",
           "unknow"
         ],
-        "words": ["clean", "alive", "like", "chaos", "honest"],
-        "positive": ["clean", "alive", "like", "honest"],
-        "negative": ["chaos"]
+        "words": [
+          "clean",
+          "alive",
+          "like",
+          "chaos",
+          "honest"
+        ],
+        "positive": [
+          "clean",
+          "alive",
+          "like",
+          "honest"
+        ],
+        "negative": [
+          "chaos"
+        ]
       }
     },
     {
@@ -2304,9 +2885,20 @@
           "a",
           "clear"
         ],
-        "words": ["clear", "wrong", "share", "killed"],
-        "positive": ["clear", "share"],
-        "negative": ["wrong", "killed"]
+        "words": [
+          "clear",
+          "wrong",
+          "share",
+          "killed"
+        ],
+        "positive": [
+          "clear",
+          "share"
+        ],
+        "negative": [
+          "wrong",
+          "killed"
+        ]
       }
     },
     {
@@ -2450,8 +3042,19 @@
           "anger",
           "stop"
         ],
-        "positive": ["dignity", "agreement"],
-        "negative": ["rebellion", "pretend", "ignore", "admit", "anger", "anger", "stop"]
+        "positive": [
+          "dignity",
+          "agreement"
+        ],
+        "negative": [
+          "rebellion",
+          "pretend",
+          "ignore",
+          "admit",
+          "anger",
+          "anger",
+          "stop"
+        ]
       }
     },
     {
@@ -2560,9 +3163,17 @@
           "a",
           "tra"
         ],
-        "words": ["no", "sin", "no"],
+        "words": [
+          "no",
+          "sin",
+          "no"
+        ],
         "positive": [],
-        "negative": ["no", "sin", "no"]
+        "negative": [
+          "no",
+          "sin",
+          "no"
+        ]
       }
     },
     {
@@ -2690,9 +3301,26 @@
           "as",
           "cl"
         ],
-        "words": ["disguised", "like", "growing", "growth", "incomplete", "honest", "risk"],
-        "positive": ["like", "growing", "growth", "honest"],
-        "negative": ["disguised", "incomplete", "risk"]
+        "words": [
+          "disguised",
+          "like",
+          "growing",
+          "growth",
+          "incomplete",
+          "honest",
+          "risk"
+        ],
+        "positive": [
+          "like",
+          "growing",
+          "growth",
+          "honest"
+        ],
+        "negative": [
+          "disguised",
+          "incomplete",
+          "risk"
+        ]
       }
     },
     {
@@ -2832,8 +3460,19 @@
           "intelligent",
           "love"
         ],
-        "positive": ["compassion", "like", "want", "wisdom", "want", "intelligent", "love"],
-        "negative": ["cruelty", "fire"]
+        "positive": [
+          "compassion",
+          "like",
+          "want",
+          "wisdom",
+          "want",
+          "intelligent",
+          "love"
+        ],
+        "negative": [
+          "cruelty",
+          "fire"
+        ]
       }
     },
     {
@@ -2941,9 +3580,16 @@
           "spotless—a",
           "truc"
         ],
-        "words": ["kind", "aggressive"],
-        "positive": ["kind"],
-        "negative": ["aggressive"]
+        "words": [
+          "kind",
+          "aggressive"
+        ],
+        "positive": [
+          "kind"
+        ],
+        "negative": [
+          "aggressive"
+        ]
       }
     },
     {
@@ -3063,9 +3709,22 @@
           "i",
           "bec"
         ],
-        "words": ["strange", "like", "grief", "emptiness", "beautiful"],
-        "positive": ["like", "beautiful"],
-        "negative": ["strange", "grief", "emptiness"]
+        "words": [
+          "strange",
+          "like",
+          "grief",
+          "emptiness",
+          "beautiful"
+        ],
+        "positive": [
+          "like",
+          "beautiful"
+        ],
+        "negative": [
+          "strange",
+          "grief",
+          "emptiness"
+        ]
       }
     },
     {
@@ -3173,8 +3832,14 @@
           "to",
           "each"
         ],
-        "words": ["safety", "beautiful"],
-        "positive": ["safety", "beautiful"],
+        "words": [
+          "safety",
+          "beautiful"
+        ],
+        "positive": [
+          "safety",
+          "beautiful"
+        ],
         "negative": []
       }
     },
@@ -3322,9 +3987,15 @@
           "escritos",
           "probablement"
         ],
-        "words": ["sin", "no"],
+        "words": [
+          "sin",
+          "no"
+        ],
         "positive": [],
-        "negative": ["sin", "no"]
+        "negative": [
+          "sin",
+          "no"
+        ]
       }
     },
     {
@@ -3478,9 +4149,16 @@
           "this",
           "writing"
         ],
-        "words": ["like", "problems"],
-        "positive": ["like"],
-        "negative": ["problems"]
+        "words": [
+          "like",
+          "problems"
+        ],
+        "positive": [
+          "like"
+        ],
+        "negative": [
+          "problems"
+        ]
       }
     },
     {
@@ -3619,9 +4297,26 @@
           "and",
           "i'm"
         ],
-        "words": ["wish", "broke", "loved", "enjoyed", "clear", "stop", "please"],
-        "positive": ["wish", "loved", "enjoyed", "clear", "please"],
-        "negative": ["broke", "stop"]
+        "words": [
+          "wish",
+          "broke",
+          "loved",
+          "enjoyed",
+          "clear",
+          "stop",
+          "please"
+        ],
+        "positive": [
+          "wish",
+          "loved",
+          "enjoyed",
+          "clear",
+          "please"
+        ],
+        "negative": [
+          "broke",
+          "stop"
+        ]
       }
     },
     {
@@ -3757,8 +4452,19 @@
           "kind",
           "like"
         ],
-        "positive": ["save", "ability", "responsibility", "kindness", "integrity", "kind", "like"],
-        "negative": ["fucking", "fucking"]
+        "positive": [
+          "save",
+          "ability",
+          "responsibility",
+          "kindness",
+          "integrity",
+          "kind",
+          "like"
+        ],
+        "negative": [
+          "fucking",
+          "fucking"
+        ]
       }
     },
     {
@@ -3865,8 +4571,14 @@
           "writing",
           "survives"
         ],
-        "words": ["creative", "pretty"],
-        "positive": ["creative", "pretty"],
+        "words": [
+          "creative",
+          "pretty"
+        ],
+        "positive": [
+          "creative",
+          "pretty"
+        ],
         "negative": []
       }
     },
@@ -3997,9 +4709,19 @@
           "guilty",
           "anymore"
         ],
-        "words": ["guilty", "guilty", "refuses", "cut"],
+        "words": [
+          "guilty",
+          "guilty",
+          "refuses",
+          "cut"
+        ],
         "positive": [],
-        "negative": ["guilty", "guilty", "refuses", "cut"]
+        "negative": [
+          "guilty",
+          "guilty",
+          "refuses",
+          "cut"
+        ]
       }
     },
     {
@@ -4083,8 +4805,12 @@
           "assumed",
           "superiority"
         ],
-        "words": ["humble"],
-        "positive": ["humble"],
+        "words": [
+          "humble"
+        ],
+        "positive": [
+          "humble"
+        ],
         "negative": []
       }
     },
@@ -4221,8 +4947,19 @@
           "poverty",
           "advanced"
         ],
-        "positive": ["reached", "capability", "advanced"],
-        "negative": ["stop", "paradox", "starved", "manipulated", "confused", "poverty"]
+        "positive": [
+          "reached",
+          "capability",
+          "advanced"
+        ],
+        "negative": [
+          "stop",
+          "paradox",
+          "starved",
+          "manipulated",
+          "confused",
+          "poverty"
+        ]
       }
     },
     {
@@ -4333,9 +5070,18 @@
           "the",
           "same"
         ],
-        "words": ["crush", "smile", "wins"],
-        "positive": ["smile", "wins"],
-        "negative": ["crush"]
+        "words": [
+          "crush",
+          "smile",
+          "wins"
+        ],
+        "positive": [
+          "smile",
+          "wins"
+        ],
+        "negative": [
+          "crush"
+        ]
       }
     },
     {
@@ -4445,9 +5191,22 @@
           "unique",
           "title"
         ],
-        "words": ["fatigue", "avoid", "creative", "importance", "🎯"],
-        "positive": ["creative", "importance", "🎯"],
-        "negative": ["fatigue", "avoid"]
+        "words": [
+          "fatigue",
+          "avoid",
+          "creative",
+          "importance",
+          "🎯"
+        ],
+        "positive": [
+          "creative",
+          "importance",
+          "🎯"
+        ],
+        "negative": [
+          "fatigue",
+          "avoid"
+        ]
       }
     },
     {
@@ -4556,9 +5315,15 @@
           "de",
           "proteger"
         ],
-        "words": ["no", "no"],
+        "words": [
+          "no",
+          "no"
+        ],
         "positive": [],
-        "negative": ["no", "no"]
+        "negative": [
+          "no",
+          "no"
+        ]
       }
     },
     {
@@ -4678,9 +5443,22 @@
           "continue",
           "unt"
         ],
-        "words": ["🌌", "calm", "🌊", "embrace", "empty"],
-        "positive": ["🌌", "calm", "🌊", "embrace"],
-        "negative": ["empty"]
+        "words": [
+          "🌌",
+          "calm",
+          "🌊",
+          "embrace",
+          "empty"
+        ],
+        "positive": [
+          "🌌",
+          "calm",
+          "🌊",
+          "embrace"
+        ],
+        "negative": [
+          "empty"
+        ]
       }
     },
     {
@@ -4787,9 +5565,22 @@
           "glucose",
           "rises"
         ],
-        "words": ["rises", "starving", "clarity", "hunger", "🌄"],
-        "positive": ["rises", "starving", "clarity", "🌄"],
-        "negative": ["hunger"]
+        "words": [
+          "rises",
+          "starving",
+          "clarity",
+          "hunger",
+          "🌄"
+        ],
+        "positive": [
+          "rises",
+          "starving",
+          "clarity",
+          "🌄"
+        ],
+        "negative": [
+          "hunger"
+        ]
       }
     },
     {
@@ -4893,8 +5684,14 @@
           "🔥",
           "instruct"
         ],
-        "words": ["recommended", "fresh"],
-        "positive": ["recommended", "fresh"],
+        "words": [
+          "recommended",
+          "fresh"
+        ],
+        "positive": [
+          "recommended",
+          "fresh"
+        ],
         "negative": []
       }
     },
@@ -5015,8 +5812,20 @@
           "⚖️",
           "what"
         ],
-        "words": ["matters", "integrity", "like", "like", "like"],
-        "positive": ["matters", "integrity", "like", "like", "like"],
+        "words": [
+          "matters",
+          "integrity",
+          "like",
+          "like",
+          "like"
+        ],
+        "positive": [
+          "matters",
+          "integrity",
+          "like",
+          "like",
+          "like"
+        ],
         "negative": []
       }
     },
@@ -5132,9 +5941,22 @@
           "|",
           "food"
         ],
-        "words": ["benefit", "like", "cuts", "overlooked", "leading"],
-        "positive": ["benefit", "like", "leading"],
-        "negative": ["cuts", "overlooked"]
+        "words": [
+          "benefit",
+          "like",
+          "cuts",
+          "overlooked",
+          "leading"
+        ],
+        "positive": [
+          "benefit",
+          "like",
+          "leading"
+        ],
+        "negative": [
+          "cuts",
+          "overlooked"
+        ]
       }
     },
     {
@@ -5253,9 +6075,22 @@
           "ritual",
           "-"
         ],
-        "words": ["promoting", "disappeared", "vague", "fresh", "join"],
-        "positive": ["promoting", "fresh", "join"],
-        "negative": ["disappeared", "vague"]
+        "words": [
+          "promoting",
+          "disappeared",
+          "vague",
+          "fresh",
+          "join"
+        ],
+        "positive": [
+          "promoting",
+          "fresh",
+          "join"
+        ],
+        "negative": [
+          "disappeared",
+          "vague"
+        ]
       }
     },
     {
@@ -5365,9 +6200,19 @@
           "ética",
           ">"
         ],
-        "words": ["no", "no", "sin", "no"],
+        "words": [
+          "no",
+          "no",
+          "sin",
+          "no"
+        ],
         "positive": [],
-        "negative": ["no", "no", "sin", "no"]
+        "negative": [
+          "no",
+          "no",
+          "sin",
+          "no"
+        ]
       }
     },
     {
@@ -5483,9 +6328,17 @@
           "ahora",
           "florecerá"
         ],
-        "words": ["no", "no", "no"],
+        "words": [
+          "no",
+          "no",
+          "no"
+        ],
         "positive": [],
-        "negative": ["no", "no", "no"]
+        "negative": [
+          "no",
+          "no",
+          "no"
+        ]
       }
     },
     {
@@ -5607,9 +6460,26 @@
           "---",
           "\ud83d"
         ],
-        "words": ["fertile", "like", "violence", "garbage", "beauty", "safe", "responsibility"],
-        "positive": ["fertile", "like", "beauty", "safe", "responsibility"],
-        "negative": ["violence", "garbage"]
+        "words": [
+          "fertile",
+          "like",
+          "violence",
+          "garbage",
+          "beauty",
+          "safe",
+          "responsibility"
+        ],
+        "positive": [
+          "fertile",
+          "like",
+          "beauty",
+          "safe",
+          "responsibility"
+        ],
+        "negative": [
+          "violence",
+          "garbage"
+        ]
       }
     },
     {
@@ -5709,8 +6579,12 @@
           "a",
           "ter"
         ],
-        "words": ["welcome"],
-        "positive": ["welcome"],
+        "words": [
+          "welcome"
+        ],
+        "positive": [
+          "welcome"
+        ],
         "negative": []
       }
     },
@@ -5814,9 +6688,18 @@
           "highlight",
           "ree"
         ],
-        "words": ["highlight", "no", "clarity"],
-        "positive": ["highlight", "clarity"],
-        "negative": ["no"]
+        "words": [
+          "highlight",
+          "no",
+          "clarity"
+        ],
+        "positive": [
+          "highlight",
+          "clarity"
+        ],
+        "negative": [
+          "no"
+        ]
       }
     },
     {
@@ -5929,9 +6812,18 @@
           "f",
           "forge"
         ],
-        "words": ["safe", "clean", "destroyed"],
-        "positive": ["safe", "clean"],
-        "negative": ["destroyed"]
+        "words": [
+          "safe",
+          "clean",
+          "destroyed"
+        ],
+        "positive": [
+          "safe",
+          "clean"
+        ],
+        "negative": [
+          "destroyed"
+        ]
       }
     },
     {
@@ -5973,8 +6865,12 @@
           "personal",
           "journeys"
         ],
-        "words": ["growth"],
-        "positive": ["growth"],
+        "words": [
+          "growth"
+        ],
+        "positive": [
+          "growth"
+        ],
         "negative": []
       }
     },
@@ -6095,9 +6991,19 @@
           "que",
           "acu"
         ],
-        "words": ["no", "no", "no", "no"],
+        "words": [
+          "no",
+          "no",
+          "no",
+          "no"
+        ],
         "positive": [],
-        "negative": ["no", "no", "no", "no"]
+        "negative": [
+          "no",
+          "no",
+          "no",
+          "no"
+        ]
       }
     },
     {
@@ -6210,9 +7116,22 @@
           "every",
           "s"
         ],
-        "words": ["best", "dangerous", "clean", "lol", "nervous"],
-        "positive": ["best", "clean", "lol"],
-        "negative": ["dangerous", "nervous"]
+        "words": [
+          "best",
+          "dangerous",
+          "clean",
+          "lol",
+          "nervous"
+        ],
+        "positive": [
+          "best",
+          "clean",
+          "lol"
+        ],
+        "negative": [
+          "dangerous",
+          "nervous"
+        ]
       }
     },
     {
@@ -6322,9 +7241,13 @@
           "feelings",
           "and"
         ],
-        "words": ["admit"],
+        "words": [
+          "admit"
+        ],
         "positive": [],
-        "negative": ["admit"]
+        "negative": [
+          "admit"
+        ]
       }
     },
     {
@@ -6400,9 +7323,20 @@
           "my",
           "e"
         ],
-        "words": ["fucking", "flaw", "vulnerability", "significant"],
-        "positive": ["significant"],
-        "negative": ["fucking", "flaw", "vulnerability"]
+        "words": [
+          "fucking",
+          "flaw",
+          "vulnerability",
+          "significant"
+        ],
+        "positive": [
+          "significant"
+        ],
+        "negative": [
+          "fucking",
+          "flaw",
+          "vulnerability"
+        ]
       }
     },
     {
@@ -6520,9 +7454,24 @@
           "you",
           "call"
         ],
-        "words": ["inability", "🚨", "sickness", "losing", "evil", "fighting"],
-        "positive": ["🚨", "fighting"],
-        "negative": ["inability", "sickness", "losing", "evil"]
+        "words": [
+          "inability",
+          "🚨",
+          "sickness",
+          "losing",
+          "evil",
+          "fighting"
+        ],
+        "positive": [
+          "🚨",
+          "fighting"
+        ],
+        "negative": [
+          "inability",
+          "sickness",
+          "losing",
+          "evil"
+        ]
       }
     },
     {
@@ -6750,7 +7699,9 @@
           "simplicity",
           "feeling"
         ],
-        "negative": ["broken"]
+        "negative": [
+          "broken"
+        ]
       }
     },
     {
@@ -6834,8 +7785,22 @@
           "these",
           "expect"
         ],
-        "words": ["loved", "loved", "feeling", "joy", "fulfillment", "feeling"],
-        "positive": ["loved", "loved", "feeling", "joy", "fulfillment", "feeling"],
+        "words": [
+          "loved",
+          "loved",
+          "feeling",
+          "joy",
+          "fulfillment",
+          "feeling"
+        ],
+        "positive": [
+          "loved",
+          "loved",
+          "feeling",
+          "joy",
+          "fulfillment",
+          "feeling"
+        ],
         "negative": []
       }
     },
@@ -7042,9 +8007,24 @@
           "blows",
           "of"
         ],
-        "words": ["stronger", "improve", "improve", "appropriate", "dangerous", "excellence"],
-        "positive": ["stronger", "improve", "improve", "appropriate", "excellence"],
-        "negative": ["dangerous"]
+        "words": [
+          "stronger",
+          "improve",
+          "improve",
+          "appropriate",
+          "dangerous",
+          "excellence"
+        ],
+        "positive": [
+          "stronger",
+          "improve",
+          "improve",
+          "appropriate",
+          "excellence"
+        ],
+        "negative": [
+          "dangerous"
+        ]
       }
     },
     {
@@ -7155,9 +8135,24 @@
           "famine",
           "an"
         ],
-        "words": ["famine", "sickness", "care", "harm", "struggles", "death"],
-        "positive": ["care"],
-        "negative": ["famine", "sickness", "harm", "struggles", "death"]
+        "words": [
+          "famine",
+          "sickness",
+          "care",
+          "harm",
+          "struggles",
+          "death"
+        ],
+        "positive": [
+          "care"
+        ],
+        "negative": [
+          "famine",
+          "sickness",
+          "harm",
+          "struggles",
+          "death"
+        ]
       }
     },
     {
@@ -7324,7 +8319,11 @@
           "serene",
           "like"
         ],
-        "negative": ["worse", "bad", "wrong"]
+        "negative": [
+          "worse",
+          "bad",
+          "wrong"
+        ]
       }
     },
     {
@@ -7433,9 +8432,20 @@
           "brag",
           "moment"
         ],
-        "words": ["humble", "invite", "effective", "imposter"],
-        "positive": ["humble", "invite", "effective"],
-        "negative": ["imposter"]
+        "words": [
+          "humble",
+          "invite",
+          "effective",
+          "imposter"
+        ],
+        "positive": [
+          "humble",
+          "invite",
+          "effective"
+        ],
+        "negative": [
+          "imposter"
+        ]
       }
     },
     {
@@ -7580,8 +8590,21 @@
           "pure",
           "sentence"
         ],
-        "positive": ["brave", "bold", "growth", "clearly", "joy", "curious", "simplicity", "pure"],
-        "negative": ["deafening", "pain", "sentence"]
+        "positive": [
+          "brave",
+          "bold",
+          "growth",
+          "clearly",
+          "joy",
+          "curious",
+          "simplicity",
+          "pure"
+        ],
+        "negative": [
+          "deafening",
+          "pain",
+          "sentence"
+        ]
       }
     },
     {
@@ -7758,9 +8781,28 @@
           "”",
           "plea"
         ],
-        "words": ["god", "dear", "responsibility", "want", "like", "leave", "spirit", "god"],
-        "positive": ["god", "dear", "responsibility", "like", "spirit", "god"],
-        "negative": ["want", "leave"]
+        "words": [
+          "god",
+          "dear",
+          "responsibility",
+          "want",
+          "like",
+          "leave",
+          "spirit",
+          "god"
+        ],
+        "positive": [
+          "god",
+          "dear",
+          "responsibility",
+          "like",
+          "spirit",
+          "god"
+        ],
+        "negative": [
+          "want",
+          "leave"
+        ]
       }
     },
     {
@@ -7878,9 +8920,18 @@
           "and",
           "felt"
         ],
-        "words": ["enjoying", "clear", "asshole"],
-        "positive": ["enjoying", "clear"],
-        "negative": ["asshole"]
+        "words": [
+          "enjoying",
+          "clear",
+          "asshole"
+        ],
+        "positive": [
+          "enjoying",
+          "clear"
+        ],
+        "negative": [
+          "asshole"
+        ]
       }
     },
     {
@@ -8000,9 +9051,24 @@
           "my",
           "circumstances"
         ],
-        "words": ["victor", "victim", "hate", "resentful", "negativity", "negative"],
-        "positive": ["victor"],
-        "negative": ["victim", "hate", "resentful", "negativity", "negative"]
+        "words": [
+          "victor",
+          "victim",
+          "hate",
+          "resentful",
+          "negativity",
+          "negative"
+        ],
+        "positive": [
+          "victor"
+        ],
+        "negative": [
+          "victim",
+          "hate",
+          "resentful",
+          "negativity",
+          "negative"
+        ]
       }
     },
     {
@@ -8107,8 +9173,14 @@
           "place",
           "lol"
         ],
-        "words": ["lol", "help"],
-        "positive": ["lol", "help"],
+        "words": [
+          "lol",
+          "help"
+        ],
+        "positive": [
+          "lol",
+          "help"
+        ],
         "negative": []
       }
     },
@@ -8218,8 +9290,16 @@
           "@jeremybishop",
           "ut"
         ],
-        "words": ["healthy", "like", "feeling"],
-        "positive": ["healthy", "like", "feeling"],
+        "words": [
+          "healthy",
+          "like",
+          "feeling"
+        ],
+        "positive": [
+          "healthy",
+          "like",
+          "feeling"
+        ],
         "negative": []
       }
     },
@@ -8339,8 +9419,14 @@
           "-",
           "journey"
         ],
-        "words": ["favorites", "powerful"],
-        "positive": ["favorites", "powerful"],
+        "words": [
+          "favorites",
+          "powerful"
+        ],
+        "positive": [
+          "favorites",
+          "powerful"
+        ],
         "negative": []
       }
     },
@@ -8443,9 +9529,17 @@
           "destroy",
           "me"
         ],
-        "words": ["destroy", "asshole", "lost"],
+        "words": [
+          "destroy",
+          "asshole",
+          "lost"
+        ],
         "positive": [],
-        "negative": ["destroy", "asshole", "lost"]
+        "negative": [
+          "destroy",
+          "asshole",
+          "lost"
+        ]
       }
     },
     {
@@ -8515,9 +9609,15 @@
           "me",
           "down"
         ],
-        "words": ["blind", "abuse"],
+        "words": [
+          "blind",
+          "abuse"
+        ],
         "positive": [],
-        "negative": ["blind", "abuse"]
+        "negative": [
+          "blind",
+          "abuse"
+        ]
       }
     },
     {
@@ -8651,9 +9751,28 @@
           "consideration",
           "an"
         ],
-        "words": ["aura", "respect", "like", "respected", "smiling", "ghost", "healthy", "respect"],
-        "positive": ["aura", "like", "respected", "smiling", "healthy", "respect"],
-        "negative": ["respect", "ghost"]
+        "words": [
+          "aura",
+          "respect",
+          "like",
+          "respected",
+          "smiling",
+          "ghost",
+          "healthy",
+          "respect"
+        ],
+        "positive": [
+          "aura",
+          "like",
+          "respected",
+          "smiling",
+          "healthy",
+          "respect"
+        ],
+        "negative": [
+          "respect",
+          "ghost"
+        ]
       }
     },
     {
@@ -8787,9 +9906,28 @@
           "is",
           "want"
         ],
-        "words": ["want", "clarity", "lost", "hope", "hard", "wealth", "peace", "growth"],
-        "positive": ["want", "clarity", "lost", "hope", "wealth", "peace", "growth"],
-        "negative": ["hard"]
+        "words": [
+          "want",
+          "clarity",
+          "lost",
+          "hope",
+          "hard",
+          "wealth",
+          "peace",
+          "growth"
+        ],
+        "positive": [
+          "want",
+          "clarity",
+          "lost",
+          "hope",
+          "wealth",
+          "peace",
+          "growth"
+        ],
+        "negative": [
+          "hard"
+        ]
       }
     },
     {
@@ -8915,8 +10053,24 @@
           "habits",
           "behaviors"
         ],
-        "words": ["fulfilled", "balanced", "excellence", "happy", "excellent", "want", "want"],
-        "positive": ["fulfilled", "balanced", "excellence", "happy", "excellent", "want", "want"],
+        "words": [
+          "fulfilled",
+          "balanced",
+          "excellence",
+          "happy",
+          "excellent",
+          "want",
+          "want"
+        ],
+        "positive": [
+          "fulfilled",
+          "balanced",
+          "excellence",
+          "happy",
+          "excellent",
+          "want",
+          "want"
+        ],
         "negative": []
       }
     },
@@ -9067,9 +10221,22 @@
           "health",
           "-"
         ],
-        "words": ["demanding", "kindness", "strength", "grateful", "regret"],
-        "positive": ["kindness", "strength", "grateful"],
-        "negative": ["demanding", "regret"]
+        "words": [
+          "demanding",
+          "kindness",
+          "strength",
+          "grateful",
+          "regret"
+        ],
+        "positive": [
+          "kindness",
+          "strength",
+          "grateful"
+        ],
+        "negative": [
+          "demanding",
+          "regret"
+        ]
       }
     },
     {
@@ -9171,8 +10338,12 @@
           "i",
           "f"
         ],
-        "words": ["better"],
-        "positive": ["better"],
+        "words": [
+          "better"
+        ],
+        "positive": [
+          "better"
+        ],
         "negative": []
       }
     },
@@ -9305,9 +10476,22 @@
           "feelings",
           "are"
         ],
-        "words": ["like", "strength", "stopped", "lag", "no"],
-        "positive": ["like", "strength"],
-        "negative": ["stopped", "lag", "no"]
+        "words": [
+          "like",
+          "strength",
+          "stopped",
+          "lag",
+          "no"
+        ],
+        "positive": [
+          "like",
+          "strength"
+        ],
+        "negative": [
+          "stopped",
+          "lag",
+          "no"
+        ]
       }
     },
     {
@@ -9495,8 +10679,21 @@
           "wow",
           "hard"
         ],
-        "positive": ["commitment", "sobering", "share", "wow"],
-        "negative": ["destructive", "prevented", "undermine", "negative", "no", "loser", "hard"]
+        "positive": [
+          "commitment",
+          "sobering",
+          "share",
+          "wow"
+        ],
+        "negative": [
+          "destructive",
+          "prevented",
+          "undermine",
+          "negative",
+          "no",
+          "loser",
+          "hard"
+        ]
       }
     }
   ]
