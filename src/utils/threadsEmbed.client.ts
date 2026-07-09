@@ -36,9 +36,13 @@ function loadThreadsEmbedScript(): Promise<void> {
         return;
       }
       existing.addEventListener('load', () => resolve(), { once: true });
-      existing.addEventListener('error', () => reject(new Error('Threads embed.js failed to load')), {
-        once: true,
-      });
+      existing.addEventListener(
+        'error',
+        () => reject(new Error('Threads embed.js failed to load')),
+        {
+          once: true,
+        },
+      );
       return;
     }
 

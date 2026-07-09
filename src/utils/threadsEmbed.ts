@@ -9,8 +9,7 @@ const OEMBED_ENDPOINTS = [
 ] as const;
 
 const SCRIPT_TAG_PATTERN = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
-const THREADS_POST_PATH =
-  /threads\.(?:com|net)\/(?:@[^/]+\/post\/|t\/)([A-Za-z0-9_-]+)/i;
+const THREADS_POST_PATH = /threads\.(?:com|net)\/(?:@[^/]+\/post\/|t\/)([A-Za-z0-9_-]+)/i;
 
 /** Canonical post URL for oEmbed (strips tracking query params). */
 export function normalizeThreadsPostUrl(url: string): string {
