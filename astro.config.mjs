@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig, fontProviders } from 'astro/config';
+import { unified } from '@astrojs/markdown-remark';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
@@ -10,11 +11,6 @@ import { remarkReadingTime } from './remark-reading-time.mjs';
 // https://astro.build/config
 export default defineConfig({
   site: SITE_URL,
-  experimental: {
-    queuedRendering: {
-      enabled: true,
-    },
-  },
   fonts: [
     {
       name: 'DM Sans',
@@ -57,9 +53,11 @@ export default defineConfig({
       theme: 'github-dark',
       wrap: true,
     },
-    smartypants: true,
-    gfm: true,
-    remarkPlugins: [remarkReadingTime],
+    processor: unified({
+      remarkPlugins: [remarkReadingTime],
+      gfm: true,
+      smartypants: true,
+    }),
   },
   // Enable built-in prefetch with optimized settings
   prefetch: {
