@@ -205,8 +205,11 @@
   @apply border-b border-[rgb(var(--color-border))]/30 last:border-b-0;
 }
 @utility search-result-content {
-  /* Enhanced search result alignment */
-  @apply flex items-start gap-5;
+  /* Enhanced search result alignment — grid so JS-rendered items match dropdown layout */
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 1rem;
+  align-items: start;
 }
 @utility search-result-image {
   @apply h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg border border-[rgb(var(--color-border))]/50 bg-[rgb(var(--color-bg-alt))];

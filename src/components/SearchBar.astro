@@ -36,7 +36,7 @@ const searchDataJson = JSON.stringify(searchData);
     <input
       type="text"
       id={searchId}
-      class="theme-transition w-full rounded-lg border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg-alt))]/50 px-3 py-2 pr-8 pl-8 text-sm text-[rgb(var(--color-text))] placeholder-[rgb(var(--color-text-muted))] focus:border-[rgb(var(--color-border))]/50 focus:bg-[rgb(var(--color-bg))] focus:ring-2 focus:ring-[rgb(var(--color-accent))]/20 focus:outline-hidden md:w-64 md:pr-3 lg:w-80"
+      class="theme-transition w-full rounded-lg border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg-alt))]/50 px-3 py-2 pr-8 pl-8 text-sm text-[rgb(var(--color-text))] placeholder-[rgb(var(--color-text-muted))] focus:border-[rgb(var(--color-border))]/50 focus:bg-[rgb(var(--color-bg))] focus:ring-2 focus:ring-[rgb(var(--color-accent))]/20 focus:outline-hidden xl:pr-3"
       placeholder={placeholder}
       aria-label="Search writings"
     />
@@ -60,7 +60,7 @@ const searchDataJson = JSON.stringify(searchData);
   <!-- Search Results Dropdown -->
   <div
     id={`${searchId}-results`}
-    class="search-dropdown absolute top-full right-0 left-0 z-50 mt-2 hidden max-h-96 overflow-y-auto rounded-xl border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg))] shadow-lg"
+    class="search-dropdown absolute top-full right-0 left-0 z-50 mt-2 hidden max-h-96 overflow-y-auto rounded-xl border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg))] shadow-lg xl:left-auto xl:w-[28rem]"
   >
     <!-- Loading State -->
     <div id={`${searchId}-loading`} class="text-body-muted hidden p-8 text-center">

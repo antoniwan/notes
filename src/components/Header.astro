@@ -28,8 +28,8 @@ const { searchData } = Astro.props;
       </div>
 
       <!-- Search Bar (Desktop) - More Prominent -->
-      <div class="mx-8 hidden max-w-md flex-1 xl:block">
-        <SearchBar searchData={searchData} />
+      <div class="mx-8 hidden flex-1 justify-center xl:flex">
+        <SearchBar searchData={searchData} class="w-80 shrink-0" />
       </div>
 
       <!-- Right Side Actions -->
