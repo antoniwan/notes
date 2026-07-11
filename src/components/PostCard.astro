@@ -60,7 +60,7 @@ const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
         <div class="text-body-muted flex items-center gap-1.5 text-xs leading-relaxed">
           <FormattedDate date={data.pubDate} />
           <span
-            class="reading-time-display"
+            class="reading-time-display inline-flex items-center gap-1.5"
             data-post-slug={post.id}
             data-original-reading-time={readingTime || ''}
           >
