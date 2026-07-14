@@ -73,18 +73,19 @@ export function generateMetaTags(config: SEOConfig): MetaTags {
     robots = SEO_CONFIG.defaultRobots,
   } = config;
 
-  // Special handling for homepage and different page types
+  // Short brand in titles; full author name stays in author meta + schema.
   const isHomepage = path === '/' || path === '';
   const isAboutPage = path === '/about' || title.toLowerCase().includes('about antonio');
-  const titleSuffix = 'Notes by Antonio Rodriguez Martinez';
 
   let fullTitle: string;
   if (isHomepage) {
-    fullTitle = titleSuffix;
+    fullTitle = SITE_TITLE;
   } else if (isAboutPage) {
-    fullTitle = 'About Antonio Rodriguez Martinez';
+    fullTitle = `About ${AUTHOR.name}`;
+  } else if (title === SITE_TITLE || title.endsWith(` | ${SITE_TITLE}`)) {
+    fullTitle = title;
   } else {
-    fullTitle = `${title} | ${titleSuffix}`;
+    fullTitle = `${title} | ${SITE_TITLE}`;
   }
   const canonical = path ? generateCanonicalUrl(path) : '';
   const ogImage = generateImageUrl(heroImage);
