@@ -146,7 +146,8 @@ const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
               readingTimeElement.appendChild(timeSpan);
             }
             timeSpan.textContent = 'Read';
-            (readingTimeElement as HTMLElement).style.display = 'inline';
+            // Keep inline-flex so gap between • and label is preserved
+            (readingTimeElement as HTMLElement).style.display = '';
           }
         } else {
           dot.classList.remove('read');
@@ -168,6 +169,7 @@ const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
                 readingTimeElement.appendChild(timeSpan);
               }
               timeSpan.textContent = originalReadingTime;
+              (readingTimeElement as HTMLElement).style.display = '';
             } else {
               (readingTimeElement as HTMLElement).style.display = 'none';
             }
