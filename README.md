@@ -9,7 +9,7 @@ Live site: [notes.antoniwan.online](https://notes.antoniwan.online)
 ## What it includes
 
 - Posts in `src/content/p/` (Markdown and MDX)
-- **10 categories** (for example Parenting, Psychology, Politics, Metaspace) — see `src/data/categories.ts`
+- **10 categories** (for example On Parenting; Psychology, Roughly; On Politics; Metaspace) — see `src/data/categories.ts`
 - **Dark and light theme**, including system preference
 - **Responsive layout** for small and large screens
 - **Search** in the header (client-side index built at build time)
