@@ -16,6 +16,7 @@ type AboutTopic = {
   categoryId?: string;
 };
 
+// Curated voice list for About — not a full category dump (see `src/data/categories.ts`).
 const topics: AboutTopic[] = [
   {
     label: 'Integration & Growth',
@@ -24,7 +25,7 @@ const topics: AboutTopic[] = [
     categoryId: 'integration-growth',
   },
   {
-    label: 'Parenting',
+    label: 'On Parenting',
     hint: 'Presence with my kids, the sacred in the ordinary',
     emoji: '\u{1F468}\u{200D}\u{1F469}\u{200D}\u{1F467}\u{200D}\u{1F466}',
     categoryId: 'parenting',
@@ -35,22 +36,16 @@ const topics: AboutTopic[] = [
     emoji: '\u{1F49C}',
   },
   {
-    label: 'Clear Signals',
-    hint: 'Honest environments, boundaries, real connection',
-    emoji: '\u{1F4E1}',
-    categoryId: 'psychology',
-  },
-  {
-    label: 'Politics & Culture',
-    hint: 'Systems that serve people; dignity that need not be earned',
-    emoji: '\u{2696}\u{FE0F}',
-    categoryId: 'politics',
-  },
-  {
-    label: 'Psychology',
-    hint: "Human behavior, healing, the body's wisdom",
+    label: 'Psychology, Roughly',
+    hint: "Human behavior, healing, clear signals, the body's wisdom",
     emoji: '\u{1F9E0}',
     categoryId: 'psychology',
+  },
+  {
+    label: 'On Politics & Culture',
+    hint: 'Power, norms, dignity that need not be earned',
+    emoji: '\u{2696}\u{FE0F}',
+    categoryId: 'politics',
   },
   {
     label: 'Art & Expression',
@@ -59,7 +54,7 @@ const topics: AboutTopic[] = [
     categoryId: 'art-expression',
   },
   {
-    label: 'Systems & Strategy',
+    label: 'On Systems & Strategy',
     hint: 'Digital power, code, tools that matter',
     emoji: '\u{1F4BB}',
     categoryId: 'systems-strategy',

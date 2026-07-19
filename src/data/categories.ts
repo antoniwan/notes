@@ -14,7 +14,7 @@ export const categories: Category[] = [
   },
   {
     id: 'culture',
-    name: 'Culture',
+    name: 'On Culture',
     description: 'Social norms, collective behavior, and cultural critique',
     icon: '🌍',
   },
@@ -44,25 +44,25 @@ export const categories: Category[] = [
   },
   {
     id: 'parenting',
-    name: 'Parenting',
+    name: 'On Parenting',
     description: 'Raising resilient children, family dynamics, and personal growth',
     icon: '👨‍👩‍👧‍👦',
   },
   {
     id: 'politics',
-    name: 'Politics',
+    name: 'On Politics',
     description: 'Power dynamics, social structures, and collective healing',
     icon: '⚖️',
   },
   {
     id: 'psychology',
-    name: 'Psychology',
+    name: 'Psychology, Roughly',
     description: 'Human behavior, social dynamics, and mental processes',
     icon: '🧠',
   },
   {
     id: 'systems-strategy',
-    name: 'Systems & Strategy',
+    name: 'On Systems & Strategy',
     description: 'Digital power, code, and strategic design',
     icon: '💻',
   },

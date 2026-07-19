@@ -37,3 +37,6 @@ build/
 # private generated strategy reports
 docs/materials/*
 !docs/materials/.gitkeep
+
+# graphify knowledge-graph cache (regenerate with `graphify update .`)
+graphify-out/
