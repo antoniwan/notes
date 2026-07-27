@@ -40,6 +40,14 @@ I did not coin this name, but I tried to. Believe it or not, I have been thinkin
 
 Then LLM tools like Claude gave me the ability to research and cross-check my ideations systematically, and as the models got better at Latin, Fable 5 and Opus 5 being the latest frontier for this work, my inventions kept failing under honest scrutiny. Every correction made my word less mine but the old Latin more interesting, until I finally stopped inventing and went looking in the ruins directly, where it turned out Lucretius, a Roman poet and philosopher, had already quarried the stones I was looking for, two thousand years ahead of me.
 
+Since I am borrowing from an actual human being, he has earned the courtesy of being named properly. Titus Lucretius Carus was a Roman poet of the first century before our era, born around 99 BC and dead by around 55 BC, and beyond that we know almost nothing of his life: no portrait, letters, or a reliable biography. Lucretius Carus is survived by a single work, *De Rerum Natura*, On the Nature of Things, six books of hexameter verse in which he tried to explain the entire physical universe to one friend: atoms and void, the birth and death of worlds, the mortality of the soul, why death is nothing to fear.
+
+He set himself the task of carrying Greek philosophy into Latin, a language he openly complained was too poor for the job, *patrii sermonis egestas*, the poverty of the ancestral tongue, so he coined what he needed. He was doing, two thousand years before me and with a mind I will not pretend to match, the exact work of this essay: forcing a language to hold a totality it had no word for.
+
+And his poem was unknown for centuries, surviving in a few forgotten copies, until 1417, when a book hunter pulled a manuscript out of a German monastery and had it copied, and that one recovery put Lucretius back into the bloodstream of the world and fed the *Renaissance*. The man who gave me *omniparens* was himself almost lost to the unknowable, and came back, so yeah, this kind of legendary situation needs to be acknowledged by name.
+
+So those are the stones and that is the man who cut them. Here is what they mean.
+
 *Vastitas* is a Latin noun, feminine, meaning the vastness, and also the desolation, the emptiness, even the devastation. I did not soften that and I will not, because the unknown looks desolate from the outside and so does a bloody womb. Infinite space is the ultimate unknown. And as Vastitas, she does destroy: stars die so that heavier things can exist, and the calcium in my children's bones was cooked inside explosions that erased whole suns, literally. A name for *her* that did not carry ruin in its mouth would be a lie. Ruin and vastness.
 
 *Omniparens* is the word Latin built for exactly what I spent years trying to find or create: she who births all things, the parent of everything. Lucretius uses it for mother Earth in the same line that names her the common grave of all things, *omniparens eadem rerum commune sepulcrum*. Vergil reaches for the same word in the *Aeneid*, *terrae omniparentis alumnum*, a nursling of the all-bearing earth. Birth and grave in one breath, two thousand years before I was looking for it, kinda cool.
@@ -96,11 +104,11 @@ Which brings me to the thing I have been putting off since the first paragraph, 
 
 The original *universum* is grammatically neuter. *Vastitas* is feminine, and I did not make her so. Latin did. The language that named the whole thing neuter kept its word for the vastness feminine the entire time, and gave its word for the birthing of everything to mother Earth. I am only setting them side by side or next to each other.
 
-But the grammar is the alibi and not the reason. The reason is that I have stood in the room twice.
+But the grammar is the alibi, not the reason. The reason is that I have stood in the room twice.
 
 The first was a cesarean. Which means I was on my side of a blue drape and could not see a thing and could hear all of it, the suction, the instruments, the flat clinical chatter of people doing their job, and then the pulling, and there is no gentler word available, they pull, it takes real physical effort, and then a sound came into the room that had not existed anywhere in this Universe one second before. The second was in December, no drape, hours of it, and I saw everything. I am not going to dress that up for you. It was violent and it was completely ordinary and she did it with her own body while I stood next to her being useless and saying things.
 
-Something in me changed chemically in those rooms, and I mean chemically, not as a figure of speech. Here is what it changed into.
+Something in me changed chemically in those rooms, and I mean chemically, not as a figure of speech.
 
 I am a man who can do hard things over long horizons. That is most of what I have. I spent thirty years on a name, thirty years of reading badly and guessing wrong and inventing words that did not survive five minutes with a dictionary, and I am proud of that stubbornness. And it is nothing. It is not even the same category of thing. I will never carry and make and deliver a life. Not with thirty years, not with sixty, not with every hour I have left. The most sustained work I am capable of does not reach the ankle of what a body did in nine months in front of me, twice, and one of those times the body had to be opened to finish the job.
 
@@ -108,17 +116,9 @@ So when I call the totality a *she*, I am not making a poetic gesture and I am n
 
 Two thousand years of neuter cosmology produced an architectural relationship to the totality, a thing to study, map, and eventually conquer. A feminine cosmology is gestational instead. A mother contains what she does not disclose. A mother holds a child without the child comprehending her, and that relationship, not the architectural one, is the accurate one, or at least it is the one that matches how it actually feels to be here. The feminine here is not gendered in the social sense, it is generative in the cosmogonic sense. *Nothing* I know of is more powerful than the bringing of life, and the totality brings life. After two thousand years of neuter, one name leaning the other way seems fair to me.
 
-And I was not the first one to lean it that way, not by a long shot. The man I took *omniparens* from got there two thousand years ahead of me, and since I am borrowing from an actual human being, he has earned the courtesy of being named properly.
+And I was not the first one to lean it that way, not by a long shot. Lucretius opened a poem about atoms and physics with a hymn to Venus, mother of the line of Aeneas, delight of gods and men, the generative force through which every living thing is conceived. The most materialist poet of antiquity chose to begin with her, because he understood that a totality which births everything is addressed correctly in the *feminine*. He did not need to stand in a delivery room to work that out. I did.
 
-Titus Lucretius Carus was a Roman poet of the first century before our era, born around 99 BC and dead by around 55 BC, and beyond that we know almost nothing of his life: no portrait, letters, or a reliable biography. Lucretius Carus is survived by a single work, *De Rerum Natura*, On the Nature of Things, six books of hexameter verse in which he tried to explain the entire physical universe to one friend: atoms and void, the birth and death of worlds, the mortality of the soul, why death is nothing to fear.
-
-He set himself the task of carrying Greek philosophy into Latin, a language he openly complained was too poor for the job, *patrii sermonis egestas*, the poverty of the ancestral tongue, so he coined what he needed. He was doing, two thousand years before me and with a mind I will not pretend to match, the exact work of this essay: forcing a language to hold a totality it had no word for.
-
-Two more things about him matter here. He opened a poem about atoms and physics with a hymn to Venus, mother of the line of Aeneas, delight of gods and men, the generative force through which every living thing is conceived. The most materialist poet of antiquity chose to begin with her, because he understood that a totality which births everything is addressed correctly in the *feminine*.
-
-And his poem was unknown for centuries, surviving in a few forgotten copies, until 1417, when a book hunter pulled a manuscript out of a German monastery and had it copied, and that one recovery put Lucretius back into the bloodstream of the world and fed the *Renaissance*. The man who gave me *omniparens* was himself almost lost to the unknowable, and came back, so yeah, this kind of legendary situation needs to be acknowledged by name.
-
-So those are the stones and that is the man who cut them. What is left is what you do with them, which is less than you would think.
+So that is the case, and what is left is what you do with it, which is less than you would think.
 
 The word is meant to be lived, not defended, and none of the scaffolding in this essay is required in order to use it. *Vastitas* can be explained to a ten-year-old in one sentence: she is the universe and everything we do not know about it. That sentence carries all three tiers. Everything above is for adults who need convincing, which included me for about three decades.
 
