@@ -349,6 +349,10 @@
       "sha256": "33cc2b576dc611856e076e6c3097bbc986f63e5ddc18cbe38d1fca458d6c3528",
       "social": "/social/images/2026/glimmer-chaos-social.jpg"
     },
+    "/images/2026/god.avif": {
+      "sha256": "1d3810733cb05424f2202655e65412480fc5982da9379107c6296eedd634e6c3",
+      "social": "/social/images/2026/god-social.jpg"
+    },
     "/images/2026/in-my-feelings.avif": {
       "sha256": "c8b5f770acf38f7bd7f3f0344acb3f31a42a27a21fb9ecd1d9b1638fec284e15",
       "social": "/social/images/2026/in-my-feelings-social.jpg"
@@ -404,6 +408,10 @@
     "/images/2026/value-roads.avif": {
       "sha256": "057545ba11d390dc95fd8b7452966c50cc7e489750fb8b0eebb7c79abae67031",
       "social": "/social/images/2026/value-roads-social.jpg"
+    },
+    "/images/2026/vastitas.avif": {
+      "sha256": "2b3b9b85c5dddf4a7d620929b832c20bb0004c0b9bd6bd92396305a4ec8d92ce",
+      "social": "/social/images/2026/vastitas-social.jpg"
     },
     "/images/ai-is-creepy.avif": {
       "sha256": "5eca0ef44bf65ebe75a61512f8a2c9289521e4c0ffdb36edbc8e5ce5b4d3f8ab",
