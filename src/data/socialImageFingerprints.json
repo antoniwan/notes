@@ -409,6 +409,10 @@
       "sha256": "057545ba11d390dc95fd8b7452966c50cc7e489750fb8b0eebb7c79abae67031",
       "social": "/social/images/2026/value-roads-social.jpg"
     },
+    "/images/2026/vastitas-flower.avif": {
+      "sha256": "a663b019bb680625bb6c9a3e1f0702a076ff9fcb142720ae39db34c7ddaf8eff",
+      "social": "/social/images/2026/vastitas-flower-social.jpg"
+    },
     "/images/2026/vastitas.avif": {
       "sha256": "2b3b9b85c5dddf4a7d620929b832c20bb0004c0b9bd6bd92396305a4ec8d92ce",
       "social": "/social/images/2026/vastitas-social.jpg"

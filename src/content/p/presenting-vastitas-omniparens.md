@@ -27,6 +27,7 @@ draft: false
 featured: true
 published: true
 showComments: true
+translationGroup: presenting-vastitas-omniparens
 ---
 
 *Vastitas Omniparens* is a proper name for the totality. And I do not mean everything the way people mean it when they say they have tried everything, I mean the total: this Universe, and whatever the Universe is sitting inside of, and what we know of it, and what we do not know yet, and what we are built in such a way that we will never know at all. Literally everything, for real.
