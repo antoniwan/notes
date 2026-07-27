@@ -121,3 +121,56 @@ From the vast, all things, through light and darkness.
 *Vastitas Omniparens.*
 
 She is older than the words we have given her, and the words are older than I am. I went looking to coin something new and came back with something old, which is what happens, I think, every time anyone looks at her carefully. The practice is what we do with our mortal minutes inside her.
+
+## References
+
+Further reading on the main topics in this essay.
+
+### Latin and language
+
+- [Latin](https://en.wikipedia.org/wiki/Latin): the language of *vastitas* and *omniparens*
+- [Etymology](https://en.wikipedia.org/wiki/Etymology), [semantic change](https://en.wikipedia.org/wiki/Semantic_change), and [lexical gap](https://en.wikipedia.org/wiki/Lexical_gap): how word meanings shift over time, including how *universum* narrowed into *universe*
+- [Grammatical gender](https://en.wikipedia.org/wiki/Grammatical_gender): why *vastitas* is feminine and *universum* is neuter in Latin
+- [Linguistic relativity](https://en.wikipedia.org/wiki/Linguistic_relativity), [philosophy of language](https://en.wikipedia.org/wiki/Philosophy_of_language), and [language](https://en.wikipedia.org/wiki/Language): how language shapes what we notice and how we think
+- [Universe](https://en.wikipedia.org/wiki/Universe), [observable universe](https://en.wikipedia.org/wiki/Observable_universe), and [cosmology](https://en.wikipedia.org/wiki/Cosmology): the physical system science studies, which is not the same as the totality
+
+### Lucretius, Vergil, and recovery
+
+- [Lucretius](https://en.wikipedia.org/wiki/Lucretius): Titus Lucretius Carus, Roman poet and philosopher
+- [_De rerum natura_](https://en.wikipedia.org/wiki/De_rerum_natura): *On the Nature of Things*, his six-book poem
+- [Epicureanism](https://en.wikipedia.org/wiki/Epicureanism) and [atomism](https://en.wikipedia.org/wiki/Atomism): the Greek philosophy Lucretius brought into Latin
+- [Dactylic hexameter](https://en.wikipedia.org/wiki/Dactylic_hexameter): the meter of the poem
+- [Virgil](https://en.wikipedia.org/wiki/Virgil) and the [_Aeneid_](https://en.wikipedia.org/wiki/Aeneid): also uses *omniparens* for mother Earth
+- [Venus (mythology)](https://en.wikipedia.org/wiki/Venus_(mythology)): the figure Lucretius opens his poem with
+- [Poggio Bracciolini](https://en.wikipedia.org/wiki/Poggio_Bracciolini), [_The Swerve_](https://en.wikipedia.org/wiki/The_Swerve), and the [Renaissance](https://en.wikipedia.org/wiki/Renaissance): the 1417 rediscovery of Lucretius in a German monastery
+
+### Totality and the physical world
+
+- [Absolute (philosophy)](https://en.wikipedia.org/wiki/Absolute_(philosophy)): philosophical attempts to name the whole
+- [Big Bang](https://en.wikipedia.org/wiki/Big_Bang): the early history of the observable universe
+- [Dark matter](https://en.wikipedia.org/wiki/Dark_matter) and [dark energy](https://en.wikipedia.org/wiki/Dark_energy): most of the universe we cannot see directly
+- [Stellar nucleosynthesis](https://en.wikipedia.org/wiki/Stellar_nucleosynthesis): how stars make the heavier elements, including the calcium in bones
+- [Neutrino](https://en.wikipedia.org/wiki/Neutrino): particles that pass through matter almost without interacting
+- [Plate tectonics](https://en.wikipedia.org/wiki/Plate_tectonics): how continents move, very slowly
+- [Humility](https://en.wikipedia.org/wiki/Humility): staying correctly sized against what is larger than us
+
+### Senses and the limits of knowing
+
+- [Sense](https://en.wikipedia.org/wiki/Sense) and [proprioception](https://en.wikipedia.org/wiki/Proprioception): human senses beyond the usual five
+- [Umwelt](https://en.wikipedia.org/wiki/Umwelt): the world as experienced by a particular animal
+- [Ultraviolet](https://en.wikipedia.org/wiki/Ultraviolet): light bees can see that we cannot
+- [Electroreception](https://en.wikipedia.org/wiki/Electroreception): how sharks and rays detect electric fields
+- [Infrared sensing in snakes](https://en.wikipedia.org/wiki/Infrared_sensing_in_snakes) and [thermoreception](https://en.wikipedia.org/wiki/Thermoreception): how pit vipers sense heat
+- [Infrasound](https://en.wikipedia.org/wiki/Infrasound): low-frequency sound elephants use over long distances
+- [Magnetoreception](https://en.wikipedia.org/wiki/Magnetoreception): how some animals sense Earth's magnetic field
+- [Thomas Nagel](https://en.wikipedia.org/wiki/Thomas_Nagel), ["What Is It Like to Be a Bat?"](https://en.wikipedia.org/wiki/What_Is_It_Like_to_Be_a_Bat%3F), and [qualia](https://en.wikipedia.org/wiki/Qualia): the gap between knowing facts about an experience and having that experience
+- [Cognitive closure (philosophy)](https://en.wikipedia.org/wiki/Cognitive_closure_(philosophy)): the idea that some truths may be forever beyond a given mind
+- [Evolutionary epistemology](https://en.wikipedia.org/wiki/Evolutionary_epistemology): how evolution shapes what we can know
+- [_Disclosure Day_](https://en.wikipedia.org/wiki/Disclosure_Day) and [Steven Spielberg](https://en.wikipedia.org/wiki/Steven_Spielberg): the film mentioned in the essay
+
+### Birth and fertility
+
+- [Terra (mythology)](https://en.wikipedia.org/wiki/Terra_(mythology)), [Gaia](https://en.wikipedia.org/wiki/Gaia), and [mother goddess](https://en.wikipedia.org/wiki/Mother_goddess): Earth as parent of all things
+- [Cosmogony](https://en.wikipedia.org/wiki/Cosmogony): stories and theories of how the world begins
+- [Fertility](https://en.wikipedia.org/wiki/Fertility) and [childbirth](https://en.wikipedia.org/wiki/Childbirth): bringing life into the world
+- [Venus (mythology)](https://en.wikipedia.org/wiki/Venus_(mythology)): also the generative force at the start of Lucretius's poem
