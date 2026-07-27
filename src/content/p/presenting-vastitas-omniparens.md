@@ -100,6 +100,8 @@ I am *so* insignificant that I can make everything significant to me. If we matt
 
 Take your portion seriously and take your troubles lightly. Which sounds like two instructions fighting each other, no? They are not. They come out of the same measurement.
 
+![Vastitas flower](/images/2026/vastitas-flower.avif)
+
 Which brings me to the thing I have been putting off since the first paragraph, which is why I keep calling all of this *she*.
 
 The original *universum* is grammatically neuter. *Vastitas* is feminine, and I did not make her so. Latin did. The language that named the whole thing neuter kept its word for the vastness feminine the entire time, and gave its word for the birthing of everything to mother Earth. I am only setting them side by side or next to each other.
