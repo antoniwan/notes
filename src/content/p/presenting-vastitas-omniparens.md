@@ -86,7 +86,7 @@ And this next part reframes everything above it, so let me just say it plainly: 
 
 I should also say that absolute unknowability, meaning something inaccessible to every possible living system anywhere, stays a hypothesis in here. I cannot defend it and I am not going to pretend to. The claim I can defend is the smaller one, the organism-relative one: this particular animal has a narrow aperture. That is enough. That was always enough.
 
-All of that smallness against a totality gives me nuance and humility. Measured against her, I perceive almost nothing. At the kitchen table, in the same minute, I am perceiving every single thing that is mine to perceive. My daughter telling me something that happened at school with the whole story out of order. My son's breath. A face across the table, not performing anything. My partner's beautiful smile. The weight of a dog against a tired leg. My portion is nothing against the totality and total inside its own boundary, both, no contradiction, and it took me an embarrassingly long time to stop treating that as a paradox to be solved instead of a fact to live inside.
+And all of that smallness turns out to be a gift, which took me decades to understand. Measured against her, I perceive almost nothing. At the kitchen table, in the same minute, I am perceiving every single thing that is mine to perceive. My daughter telling me something that happened at school with the whole story out of order. My son's breath. A face across the table, not performing anything. My partner's beautiful smile. The weight of a dog against a tired leg. My portion is nothing against the totality and total inside its own boundary, both, no contradiction, and it took me an embarrassingly long time to stop treating that as a paradox to be solved instead of a fact to live inside.
 
 I am *so* insignificant that I can make everything significant to me. If we mattered on *her* scale, home would never be enough, no? Because we do not, home is everything. And the same asymmetry that makes my portion sacred makes everything else lighter, because if I am nothing against her then so is whatever I happen to be carrying this week. It does not go away and it does not stop hurting. It just goes back to its actual size, which was the size it always was while I was treating it as the size of everything.
 
@@ -95,6 +95,16 @@ Take your portion seriously and take your troubles lightly. Which sounds like tw
 Which brings me to the thing I have been putting off since the first paragraph, which is why I keep calling all of this *she*.
 
 The original *universum* is grammatically neuter. *Vastitas* is feminine, and I did not make her so. Latin did. The language that named the whole thing neuter kept its word for the vastness feminine the entire time, and gave its word for the birthing of everything to mother Earth. I am only setting them side by side or next to each other.
+
+But the grammar is the alibi and not the reason. The reason is that I have stood in the room twice.
+
+The first was a cesarean. Which means I was on my side of a blue drape and could not see a thing and could hear all of it, the suction, the instruments, the flat clinical chatter of people doing their job, and then the pulling, and there is no gentler word available, they pull, it takes real physical effort, and then a sound came into the room that had not existed anywhere in this Universe one second before. The second was in December, no drape, hours of it, and I saw everything. I am not going to dress that up for you. It was violent and it was completely ordinary and she did it with her own body while I stood next to her being useless and saying things.
+
+Something in me changed chemically in those rooms, and I mean chemically, not as a figure of speech. Here is what it changed into.
+
+I am a man who can do hard things over long horizons. That is most of what I have. I spent thirty years on a name, thirty years of reading badly and guessing wrong and inventing words that did not survive five minutes with a dictionary, and I am proud of that stubbornness. And it is nothing. It is not even the same category of thing. I will never carry and make and deliver a life. Not with thirty years, not with sixty, not with every hour I have left. The most sustained work I am capable of does not reach the ankle of what a body did in nine months in front of me, twice, and one of those times the body had to be opened to finish the job.
+
+So when I call the totality a *she*, I am not making a poetic gesture and I am not doing politics. I am saying that the only thing I have ever witnessed operating at the scale I am trying to name was a woman making a person out of nothing but time and her own tissue. Everything else I could reach for here would be metaphor. That one I stood in the room for.
 
 Two thousand years of neuter cosmology produced an architectural relationship to the totality, a thing to study, map, and eventually conquer. A feminine cosmology is gestational instead. A mother contains what she does not disclose. A mother holds a child without the child comprehending her, and that relationship, not the architectural one, is the accurate one, or at least it is the one that matches how it actually feels to be here. The feminine here is not gendered in the social sense, it is generative in the cosmogonic sense. *Nothing* I know of is more powerful than the bringing of life, and the totality brings life. After two thousand years of neuter, one name leaning the other way seems fair to me.
 
@@ -172,5 +182,5 @@ Further reading on the main topics in this essay.
 
 - [Terra (mythology)](https://en.wikipedia.org/wiki/Terra_(mythology)), [Gaia](https://en.wikipedia.org/wiki/Gaia), and [mother goddess](https://en.wikipedia.org/wiki/Mother_goddess): Earth as parent of all things
 - [Cosmogony](https://en.wikipedia.org/wiki/Cosmogony): stories and theories of how the world begins
-- [Fertility](https://en.wikipedia.org/wiki/Fertility) and [childbirth](https://en.wikipedia.org/wiki/Childbirth): bringing life into the world
+- [Fertility](https://en.wikipedia.org/wiki/Fertility), [childbirth](https://en.wikipedia.org/wiki/Childbirth), and [caesarean section](https://en.wikipedia.org/wiki/Caesarean_section): bringing life into the world
 - [Venus (mythology)](https://en.wikipedia.org/wiki/Venus_(mythology)): also the generative force at the start of Lucretius's poem
