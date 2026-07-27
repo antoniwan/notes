@@ -8,6 +8,8 @@ pubDate: '2026-05-20T23:18:01.000Z'
 language:
   - en
 heroImage: /images/2026/glimmer-chaos.avif
+imageAlt: >-
+  Golden spiral of starlike sparks swirling against a deep navy background
 category:
   - psychology
   - integration-growth

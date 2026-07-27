@@ -8,6 +8,9 @@ pubDate: '2026-04-10T12:00:00.000Z'
 language:
   - en
 heroImage: '/images/2026/tinkering-in-2026.avif'
+imageAlt: >-
+  Boy and a small robot kneeling on a wooden floor, building glowing miniature
+  structures from carved wooden blocks in a sunlit attic workshop
 category:
   - metaspace
   - diy-creation

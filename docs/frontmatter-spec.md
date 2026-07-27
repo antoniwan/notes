@@ -62,6 +62,16 @@ Primary image for social sharing and post display
 heroImage: '/images/beef-heart-comparison-chart.png'
 ```
 
+### `imageAlt` (string)
+
+Accessible description of `heroImage` for screen readers, `og:image:alt`, and post cards. Describe what the image shows (subject, setting, distinctive detail) — not the post title. Prefer the post language (`en` / `es`). If omitted, the site falls back to `{title} - {site title}`.
+
+```yaml
+imageAlt: >-
+  Armored warrior with a glowing blue gauntlet stands before a stone tower
+  as winged creatures fly overhead
+```
+
 ### `category` (array)
 
 Main categories for the post
@@ -161,6 +171,7 @@ description: 'Nutritional comparison of beef heart with common meats, showing it
 pubDate: '2025-05-01T16:45:00.000Z'
 language: ['en']
 heroImage: '/images/beef-heart-comparison-chart.png'
+imageAlt: 'Chart comparing iron, B12, zinc, and CoQ10 in beef heart versus common meats'
 category: ['integration-growth']
 subcategory: 'Nutrition'
 tags: ['nutrition', 'health', 'wellness', 'cooking', 'beef-heart']

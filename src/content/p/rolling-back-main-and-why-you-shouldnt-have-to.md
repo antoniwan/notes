@@ -8,6 +8,9 @@ pubDate: '2026-03-09T16:30:00.000Z'
 language:
   - en
 heroImage: /images/2026/lgtm-antoniwan.jpg
+imageAlt: >-
+  Anime-style developer and a large robot buried in stacks of papers stamped
+  LGTM, under a fiery orange-and-purple sky
 category:
   - systems-strategy
   - learning-projects

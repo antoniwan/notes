@@ -1,12 +1,15 @@
 ---
 title: Presenting Vastitas Omniparens
 description: >-
-  A proper name for the totality — Vastitas Omniparens — and a practice of
-  staying correctly sized against what we know, don't know yet, and never will.
+  A thirty-year side quest to name everything, and the loot was already sitting
+  in a Roman poem the whole time. Here's the word.
 pubDate: '2026-07-27T13:45:00.000Z'
 language:
   - en
 heroImage: /images/2026/vastitas.avif
+imageAlt: >-
+  Yellow daisy split down the middle — left half in ordinary daylight, right
+  half under ultraviolet light with dark nectar guides across the petals
 category:
   - metaspace
   - psychology
@@ -100,7 +103,7 @@ I am *so* insignificant that I can make everything significant to me. If we matt
 
 Take your portion seriously and take your troubles lightly. Which sounds like two instructions fighting each other, no? They are not. They come out of the same measurement.
 
-![Vastitas flower](/images/2026/vastitas-flower.avif)
+![Grainy black-and-white lily bloom on a dark field, stamens sharp at the center](/images/2026/vastitas-flower.avif)
 
 Which brings me to the thing I have been putting off since the first paragraph, which is why I keep calling all of this *she*.
 

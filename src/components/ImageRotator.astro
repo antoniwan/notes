@@ -39,6 +39,9 @@ if (!images || images.length === 0) {
           <div
             class={`main-image ${index === 0 ? 'active' : ''}`}
             data-index={index}
+            role="img"
+            aria-label={image.alt}
+            aria-hidden={index === 0 ? 'false' : 'true'}
             style={`background-image: url('${image.src}')`}
           >
             <div class="image-overlay">
@@ -110,9 +113,10 @@ if (!images || images.length === 0) {
             <button
               class={`thumbnail ${index === 0 ? 'active' : ''}`}
               data-index={index}
-              aria-label={`Go to image ${index + 1}`}
+              aria-label={image.alt}
+              aria-current={index === 0 ? 'true' : undefined}
             >
-              <img src={image.src} alt={image.alt} loading="lazy" />
+              <img src={image.src} alt="" loading="lazy" />
             </button>
           ))}
         </div>
@@ -310,12 +314,20 @@ if (!images || images.length === 0) {
     private updateDisplay(): void {
       // Update main images
       this.images.forEach((image: Element, index: number) => {
-        image.classList.toggle('active', index === this.currentIndex);
+        const isActive = index === this.currentIndex;
+        image.classList.toggle('active', isActive);
+        image.setAttribute('aria-hidden', isActive ? 'false' : 'true');
       });
 
       // Update thumbnails
       this.thumbnails.forEach((thumbnail: Element, index: number) => {
-        thumbnail.classList.toggle('active', index === this.currentIndex);
+        const isActive = index === this.currentIndex;
+        thumbnail.classList.toggle('active', isActive);
+        if (isActive) {
+          thumbnail.setAttribute('aria-current', 'true');
+        } else {
+          thumbnail.removeAttribute('aria-current');
+        }
       });
 
       // Update counter

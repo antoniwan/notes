@@ -31,8 +31,8 @@ const minutesRead = post.data.minutesRead ?? calculateReadingTimeFromMarkdown(po
 // Auto-generate keywords from tags and categories
 const keywords = generateKeywords(post.data.tags || [], post.data.category || []);
 
-// Auto-generate image alt text
-const imageAlt = generateImageAlt(post.data.title);
+// Prefer authored imageAlt; fall back to title-based SEO helper
+const imageAlt = post.data.imageAlt || generateImageAlt(post.data.title);
 
 // Use author from post data or fall back to default author from consts
 const author = post.data.author || AUTHOR.name;

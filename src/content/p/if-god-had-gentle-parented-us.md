@@ -7,6 +7,9 @@ pubDate: '2026-07-14T20:00:00.000Z'
 language:
   - en
 heroImage: /images/2026/god.avif
+imageAlt: >-
+  Profile of a human head whose interior is a gothic cathedral; a hooded
+  figure stands before a glowing archway inside the skull
 category:
   - parenting
   - culture

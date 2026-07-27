@@ -8,6 +8,9 @@ updatedDate: '2026-02-27T16:00:00.000Z'
 language:
   - en
 heroImage: /images/2026/in-my-feelings.avif
+imageAlt: >-
+  Wireframe human silhouette trailing streaks of golden light and particles
+  across a dark background
 category:
   - integration-growth
   - psychology

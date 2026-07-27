@@ -7,6 +7,9 @@ pubDate: '2026-04-03T12:00:00-05:00'
 language:
   - en
 heroImage: /images/2026/on-leadership-plus.avif
+imageAlt: >-
+  Hand gripping a blazing wooden torch at night, with other torches glowing
+  out of focus in a crowded procession behind it
 category:
   - integration-growth
   - culture

@@ -8,6 +8,9 @@ pubDate: '2026-05-20T23:18:01.000Z'
 language:
   - es
 heroImage: /images/2026/glimmer-chaos.avif
+imageAlt: >-
+  Espiral dorada de destellos como estrellas arremolinándose sobre un fondo
+  azul noche
 category:
   - psychology
   - integration-growth
