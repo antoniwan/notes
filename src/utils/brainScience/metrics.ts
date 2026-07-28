@@ -1,5 +1,6 @@
 import type { CollectionEntry } from 'astro:content';
 import { BRAIN_SCIENCE_CONFIG } from '../../data/brainScience';
+import { createMemoBySignature, postsSignature } from './buildMemo';
 
 const config = BRAIN_SCIENCE_CONFIG;
 
@@ -130,16 +131,34 @@ export const SENTIMENT_WORDS = {
   ],
 };
 
-/**
- * Calculate sentiment analysis for posts
- */
-export function calculateSentiment(posts: CollectionEntry<'blog'>[]): {
+const SENTIMENT_REGEXES = {
+  positive: SENTIMENT_WORDS.positive.map((word) => new RegExp(`\\b${word}\\b`, 'gi')),
+  negative: SENTIMENT_WORDS.negative.map((word) => new RegExp(`\\b${word}\\b`, 'gi')),
+  neutral: SENTIMENT_WORDS.neutral.map((word) => new RegExp(`\\b${word}\\b`, 'gi')),
+};
+
+function countSentimentHits(content: string, regexes: RegExp[]): number {
+  return regexes.reduce((count, regex) => {
+    regex.lastIndex = 0;
+    return count + (content.match(regex) || []).length;
+  }, 0);
+}
+
+type SentimentBreakdown = {
   positive: number;
   negative: number;
   neutral: number;
   mixed: number;
-} {
-  const sentimentAnalysis = {
+};
+
+/**
+ * Calculate sentiment analysis for posts (memoized per post-set signature).
+ */
+export const calculateSentiment = createMemoBySignature<
+  CollectionEntry<'blog'>[],
+  SentimentBreakdown
+>(postsSignature, (posts) => {
+  const sentimentAnalysis: SentimentBreakdown = {
     positive: 0,
     negative: 0,
     neutral: 0,
@@ -149,22 +168,10 @@ export function calculateSentiment(posts: CollectionEntry<'blog'>[]): {
   posts.forEach((post) => {
     const content = ((post.body || '') + ' ' + (post.data.title || '')).toLowerCase();
 
-    const positiveCount = SENTIMENT_WORDS.positive.reduce((count, word) => {
-      const regex = new RegExp(`\\b${word}\\b`, 'gi');
-      return count + (content.match(regex) || []).length;
-    }, 0);
+    const positiveCount = countSentimentHits(content, SENTIMENT_REGEXES.positive);
+    const negativeCount = countSentimentHits(content, SENTIMENT_REGEXES.negative);
+    const neutralCount = countSentimentHits(content, SENTIMENT_REGEXES.neutral);
 
-    const negativeCount = SENTIMENT_WORDS.negative.reduce((count, word) => {
-      const regex = new RegExp(`\\b${word}\\b`, 'gi');
-      return count + (content.match(regex) || []).length;
-    }, 0);
-
-    const neutralCount = SENTIMENT_WORDS.neutral.reduce((count, word) => {
-      const regex = new RegExp(`\\b${word}\\b`, 'gi');
-      return count + (content.match(regex) || []).length;
-    }, 0);
-
-    // Determine sentiment based on word frequency
     if (positiveCount > negativeCount && positiveCount > neutralCount) {
       sentimentAnalysis.positive++;
     } else if (negativeCount > positiveCount && negativeCount > neutralCount) {
@@ -177,7 +184,7 @@ export function calculateSentiment(posts: CollectionEntry<'blog'>[]): {
   });
 
   return sentimentAnalysis;
-}
+});
 
 /**
  * Calculate posting regularity score (0-100)
@@ -336,12 +343,14 @@ export function calculateChallengeAreas(
 }
 
 /**
- * Calculate improvement areas based on configurable targets
+ * Calculate improvement areas based on configurable targets.
+ * Pass `sentimentAnalysis` when already computed to avoid a second full scan.
  */
 export function calculateImprovementAreas(
   posts: CollectionEntry<'blog'>[],
   firstPostDate?: Date,
   lastPostDate?: Date,
+  sentimentAnalysis: SentimentBreakdown = calculateSentiment(posts),
 ): Array<{ area: string; current: number; target: number; gap: number }> {
   const improvementAreas: Array<{ area: string; current: number; target: number; gap: number }> =
     [];
@@ -394,7 +403,6 @@ export function calculateImprovementAreas(
   });
 
   // Sentiment balance improvement
-  const sentimentAnalysis = calculateSentiment(posts);
   const totalSentiment =
     sentimentAnalysis.positive +
     sentimentAnalysis.negative +

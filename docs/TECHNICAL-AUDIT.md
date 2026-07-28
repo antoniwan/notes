@@ -143,6 +143,8 @@ No accounts. No server-side reading progress. Constitution principle IV applies.
 | T-11 | Listings included secondary ES translations | `isListingEligiblePost` / `isCollectionListed` on archives + search |
 | T-12 | Duplicate post redirects in `vercel.json` | Astro `seoRouting` (+ trailing slash); Vercel keeps hosts + Remark42 only |
 | T-13 | Search indexed noindex author tools | Dropped brain-science / tag-management from search index |
+| T-14 | Brain Science re-scanned corpus per page | Memoize posts + objective metrics + sentiment; precompiled regexes |
+| T-15 | `getSearchData()` rebuilt on every layout | Memoized for the Node build process |
 
 Package version bumped to **5.30.1** so browsers fetch the new service worker.
 
@@ -152,18 +154,17 @@ Package version bumped to **5.30.1** so browsers fetch the new service worker.
 
 See [roadmap.md §8](./roadmap.md#8-technical-roadmap--2026-07-28). Highest remaining leverage:
 
-1. **Brain Science shared precompute** — sentiment/word metrics once per build (Date revival done).
-2. **Targeted tests** — publish filters, SEO redirects, quotes API, feed HTML smoke.
-3. **Sitemap hreflang clusters** / `og:locale:alternate` (optional i18n polish).
-4. **Reduce `getSearchData()` cost** in BaseLayout (cache once per build).
+1. **Targeted tests** — publish filters, SEO redirects, quotes API, feed HTML smoke.
+2. **Sitemap hreflang clusters** / `og:locale:alternate` (optional i18n polish).
+3. **Page-local Brain Science NLP** — insights/evolution/patterns still embed large duplicated Flesch/regex loops (shared objective metrics are memoized).
 
 ---
 
 ## 10. Scaling risks (known)
 
 - `BaseLayout` calls `getSearchData()` on **every** page → full collection walk at build for each route that uses the layout.
-- Brain Science pages duplicate sentiment / Flesch / keyword scans; cache signature ignores title and same-length body edits.
-- Dual redirect tables invite drift.
+- Brain Science pages duplicate sentiment / Flesch / keyword scans in large route files; shared **objective metrics + sentiment + posts fetch** are memoized for the build process. Cache signature still ignores title and same-length body edits for the disk meta-analysis cache.
+- Dual redirect tables invite drift (host rules stay on Vercel; path redirects in Astro).
 - Graphify graph may lag HEAD; refresh with `graphify update .` after code changes.
 
 ---

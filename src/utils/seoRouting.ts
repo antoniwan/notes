@@ -40,20 +40,10 @@ export function buildTagAliasRedirects(): Record<string, string> {
 }
 
 export function buildSeoRedirects(): Record<string, string> {
-  const redirects: Record<string, string> = {
+  return {
     ...buildTagAliasRedirects(),
     ...POST_REDIRECTS,
   };
-
-  // Trailing-slash variants for renamed posts only (tag aliases already collide
-  // with static `/tag/[tag]` routes under trailingSlash: 'never').
-  for (const [from, to] of Object.entries(POST_REDIRECTS)) {
-    if (from !== '/' && !from.endsWith('/')) {
-      redirects[`${from}/`] = to;
-    }
-  }
-
-  return redirects;
 }
 
 /** Normalize a pathname for comparison (no trailing slash except root). */

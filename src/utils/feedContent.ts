@@ -49,14 +49,18 @@ function escapeHtml(text: string): string {
     .replace(/"/g, '&quot;');
 }
 
-/** Strip scripts/styles and absolutize same-origin href/src for feed readers. */
+/** Strip scripts/styles/handlers and absolutize same-origin href/src for feed readers. */
 export function prepareFeedHtml(html: string, siteUrl: string = SITE_URL): string {
   const base = siteUrl.replace(/\/+$/, '');
   return html
     .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '')
     .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '')
-    .replace(/\s(on\w+)="[^"]*"/gi, '')
-    .replace(/(href|src)="(\/[^"]*)"/g, (_m, attr: string, path: string) => `${attr}="${base}${path}"`);
+    .replace(/<iframe\b[^>]*>[\s\S]*?<\/iframe>/gi, '')
+    .replace(/<object\b[^>]*>[\s\S]*?<\/object>/gi, '')
+    .replace(/\s(on\w+)\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi, '')
+    .replace(/(href|src)\s*=\s*("|\')\s*javascript:[^"']*\2/gi, '$1="#"')
+    .replace(/(href|src)="(\/[^"]*)"/g, (_m, attr: string, path: string) => `${attr}="${base}${path}"`)
+    .replace(/(href|src)='(\/[^']*)'/g, (_m, attr: string, path: string) => `${attr}='${base}${path}'`);
 }
 
 /** Render a collection entry to HTML suitable for RSS/JSON Feed. */

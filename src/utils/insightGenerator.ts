@@ -7,6 +7,7 @@ import {
   calculateImprovementAreas,
 } from './brainScience/metrics';
 import type { CollectionEntry } from 'astro:content';
+import { createMemoBySignature, postsSignature } from './brainScience/buildMemo';
 
 export interface InsightData {
   totalPosts: number;
@@ -488,7 +489,7 @@ export function letterGradeToColor(grade: string): string {
   return 'text-red-600 dark:text-red-400';
 }
 
-export function calculateObjectiveMetrics(posts: CollectionEntry<'blog'>[]): {
+export type ObjectiveMetrics = {
   sentimentAnalysis: { positive: number; negative: number; neutral: number; mixed: number };
   consistencyMetrics: {
     postingRegularity: number;
@@ -497,21 +498,24 @@ export function calculateObjectiveMetrics(posts: CollectionEntry<'blog'>[]): {
   };
   challengeAreas: Array<{ area: string; frequency: number; severity: 'high' | 'medium' | 'low' }>;
   improvementAreas: Array<{ area: string; current: number; target: number; gap: number }>;
-} {
-  // Use centralized metric calculations
+};
+
+/** Shared across Brain Science pages for one compute-once / read-many build. */
+export const calculateObjectiveMetrics = createMemoBySignature<
+  CollectionEntry<'blog'>[],
+  ObjectiveMetrics
+>(postsSignature, (posts) => {
   const sentimentAnalysis = calculateSentiment(posts);
   const postingRegularity = calculatePostingRegularity(posts);
   const topicConsistency = calculateTopicConsistency(posts);
   const qualityVariance = calculateQualityVariance(posts);
 
-  // Get dates for improvement calculations
   const sortedPosts = [...posts].sort(
     (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
   );
   const firstPostDate = sortedPosts[0]?.data.pubDate;
   const lastPostDate = sortedPosts[sortedPosts.length - 1]?.data.pubDate;
 
-  // Calculate challenge and improvement areas using configurable thresholds
   const challengeAreas = calculateChallengeAreas(
     postingRegularity,
     qualityVariance,
@@ -519,7 +523,12 @@ export function calculateObjectiveMetrics(posts: CollectionEntry<'blog'>[]): {
     topicConsistency,
   );
 
-  const improvementAreas = calculateImprovementAreas(posts, firstPostDate, lastPostDate);
+  const improvementAreas = calculateImprovementAreas(
+    posts,
+    firstPostDate,
+    lastPostDate,
+    sentimentAnalysis,
+  );
 
   return {
     sentimentAnalysis,
@@ -531,4 +540,4 @@ export function calculateObjectiveMetrics(posts: CollectionEntry<'blog'>[]): {
     challengeAreas,
     improvementAreas,
   };
-}
+});

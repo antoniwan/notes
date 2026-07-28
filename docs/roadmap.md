@@ -316,15 +316,16 @@ Engineering debt and platform work from the full-stack audit. Detail lives in [T
 - Aligned **listing/search** with feed language policy (`isListingEligiblePost`).
 - Thinned `vercel.json` post redirects; Astro `seoRouting` is the post/tag redirect source of truth.
 - Removed noindex author tools from the public search index.
+- Memoized Brain Science posts fetch + objective metrics/sentiment for the build process.
+- Memoized `getSearchData()` so BaseLayout does not rebuild the search index per page.
 
 ### Near-term (platform integrity)
 
 | Priority | Item | Why |
 | --- | --- | --- |
-| P1 | Brain-science **shared precompute** beyond meta-analysis (sentiment/word metrics once per build) | Build wall time across 6+ pages |
 | P2 | Targeted tests: `publishFilters`, SEO redirects, quotes API, feed HTML | Highest-regression surfaces |
 | P2 | Optional sitemap hreflang / `og:locale:alternate` | EN/ES SEO polish |
-| P2 | Cache `getSearchData()` once per build | Build wall time as routes grow |
+| P2 | Extract page-local Brain Science NLP (Flesch/regex loops in large `.astro` files) | Remaining build cost / duplication |
 
 ### Mid-term (leverage)
 

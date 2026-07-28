@@ -79,12 +79,19 @@ export interface StreakMetrics {
   drySpells: DrySpell[];
 }
 
+let brainSciencePostsPromise: Promise<CollectionEntry<'blog'>[]> | null = null;
+
 /**
- * Get all published blog posts
+ * Get all published blog posts (memoized for the build process).
+ * Brain Science pages share this result so the collection is walked once.
  */
 export async function getBrainSciencePosts(): Promise<CollectionEntry<'blog'>[]> {
-  const posts = await getCollection('blog', ({ data }) => isCollectionPublic(data));
-  return posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  if (!brainSciencePostsPromise) {
+    brainSciencePostsPromise = getCollection('blog', ({ data }) => isCollectionPublic(data)).then(
+      (posts) => posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()),
+    );
+  }
+  return brainSciencePostsPromise;
 }
 
 /**

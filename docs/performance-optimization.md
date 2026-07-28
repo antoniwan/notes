@@ -312,8 +312,11 @@ pnpm run performance
 Brain Science pages are **author analytics**, not reader Core Web Vitals surfaces (`noindex`, sitemap-excluded). Cost shows up as **Astro build wall time**, not client LCP.
 
 - **Disk cache:** `src/data/.brain-science-cache/meta-analysis.json` — used only by `/brain-science/meta`. Signature = `{id, bodyLength, pubDate}`. On load, `postDate` fields are revived to `Date` (JSON would otherwise leave strings and break sorts).
-- **Uncached today:** index / insights / evolution / patterns / cadence / topics each re-scan post bodies for sentiment, readability, and keyword heuristics. Largest remaining win: shared precompute once per build (see `docs/roadmap.md` §8).
-- **Commit policy:** treat the cache like social fingerprints — regenerate on miss, commit when content signatures change so CI stays warm.
+- **In-memory memo (build process):** `getBrainSciencePosts()`, `calculateSentiment()`, and `calculateObjectiveMetrics()` are memoized so the seven Brain Science routes share one collection walk and one objective-metrics pass. Sentiment word regexes are precompiled once.
+- **Still page-local:** insights / evolution / patterns still run their own readability / emotional-word loops. Further wins mean extracting those into shared utils.
+- **Commit policy:** treat the disk cache like social fingerprints — regenerate on miss, commit when content signatures change so CI stays warm.
+
+`BaseLayout` also memoizes `getSearchData()` for the build process (one search index build, many pages).
 
 See `docs/TECHNICAL-AUDIT.md` for the full system map.
 

@@ -39,8 +39,18 @@ const PAGE_SEARCH_DATA = [
 /**
  * Build search index data once at build time. Call from a layout (e.g. BaseLayout)
  * and pass the result to Header/SearchBar so the collection is not fetched per component.
+ * Result is memoized for the Node build process (BaseLayout runs on every page).
  */
+let searchDataPromise: Promise<unknown[]> | null = null;
+
 export async function getSearchData() {
+  if (!searchDataPromise) {
+    searchDataPromise = buildSearchData();
+  }
+  return searchDataPromise;
+}
+
+async function buildSearchData() {
   const posts = await getCollection('blog', ({ data }) => isCollectionListed(data));
 
   const postSearchData = posts.map((post) => ({
