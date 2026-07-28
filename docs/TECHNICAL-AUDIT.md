@@ -79,7 +79,7 @@ A **hybrid Astro site**: almost everything is statically prerendered at build ti
 | API | `/api/`, `/api/quotes` | Quotes is SSR; index is static docs |
 | System | `/404`, `/sitemap.xml` → 301 to sitemap-index | |
 
-Redirects live in two places: Astro `buildSeoRedirects()` (`src/utils/seoRouting.ts`) and `vercel.json` (legacy hosts + a few post slugs + Remark42 rewrite). Prefer adding post/tag redirects in `seoRouting.ts` going forward.
+Redirects live in two places: Astro `buildSeoRedirects()` (`src/utils/seoRouting.ts`) and `vercel.json` (legacy hosts + Remark42 rewrite). Prefer adding post/tag redirects in `seoRouting.ts` going forward. Remark42 upstream: set `REMARK42_UPSTREAM_ORIGIN` and run `pnpm run sync-remark42-rewrite` (see `docs/comments-setup.md`).
 
 ---
 
@@ -148,6 +148,10 @@ No accounts. No server-side reading progress. Constitution principle IV applies.
 | T-16 | Missing `og:locale:alternate` + sitemap EN/ES clusters | BaseHead + sitemap `serialize` via `translationGroup` |
 | T-17 | Page-local Flesch/lexicon loops in Brain Science routes | Shared `textAnalysis.ts` (+ build memo) |
 | T-18 | `structured-data-optimization.md` drifted from generators | Rewrote against live `generateStructuredData` / layout wiring |
+| T-19 | Remark42 upstream hardcoded only in `vercel.json` | `REMARK42_UPSTREAM_ORIGIN` + sync/check scripts |
+| T-20 | Silent empty Letterboxd when RSS URL set | Build-time `console.warn` on HTTP/parse empty |
+| T-21 | Inert `transition:name` without View Transitions | Removed attrs |
+| T-22 | Tags overwrote BlogPosting `articleSection` | Category preferred; tags only as fallback |
 
 Package version bumped to **5.30.1** so browsers fetch the new service worker.
 
@@ -155,9 +159,9 @@ Package version bumped to **5.30.1** so browsers fetch the new service worker.
 
 ## 9. Findings — open (technical roadmap)
 
-See [roadmap.md §8](./roadmap.md#8-technical-roadmap--2026-07-28). Remaining items are optional polish (e.g. curated FAQ/HowTo wiring), not integrity blockers.
+See [roadmap.md §8](./roadmap.md#8-technical-roadmap--2026-07-28). Remaining optional polish: curated FAQ/HowTo wiring (P3) if product wants it.
 
-Unit tests (`pnpm test`) cover publish filters, SEO routing, feed HTML sanitization, quotes helpers, text metrics, OG locale alternates, and sitemap translation clusters.
+Unit tests (`pnpm test`) cover publish filters, SEO routing, feed HTML sanitization, quotes helpers, text metrics, OG locale alternates, sitemap translation clusters, and BlogPosting `articleSection`.
 
 ---
 

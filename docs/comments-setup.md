@@ -54,9 +54,24 @@ Set these environment variables in your Vercel project (or `.env` file for local
 ```env
 PUBLIC_REMARK42_HOST=https://yoursite.com/api/remark42
 PUBLIC_REMARK42_SITE_ID=notes-antoniwan
+# Upstream origin for the Vercel rewrite (no trailing slash)
+REMARK42_UPSTREAM_ORIGIN=https://your-remark42.up.railway.app
 ```
 
 The `PUBLIC_` prefix is required because these values are used client-side in the browser.
+
+**Proxy rewrite:** browsers talk to `/api/remark42/*` on this site; Vercel rewrites that path to the Remark42 upstream. Vercel cannot read env vars inside `vercel.json`, so the destination is written explicitly:
+
+```bash
+# After changing REMARK42_UPSTREAM_ORIGIN (or to apply the default):
+pnpm run sync-remark42-rewrite
+# Commit the updated vercel.json
+
+# CI / sanity check (uses env or the Railway default):
+pnpm run check-remark42-rewrite
+```
+
+Also set `REMARK_URL` on the Remark42 server to the same public proxy URL as `PUBLIC_REMARK42_HOST`.
 
 ### 4. Test Locally
 

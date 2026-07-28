@@ -15,7 +15,6 @@ const { title, description, className = '', showTitle = true } = Astro.props;
   <div class="space-y-2">
     <h1
       class={`text-display text-[rgb(var(--color-text))]${!showTitle ? ' sr-only' : ''}`}
-      transition:name="page-title"
       style="line-height: 1.3; margin: 0;"
     >
       {title}
@@ -24,7 +23,6 @@ const { title, description, className = '', showTitle = true } = Astro.props;
       description && (
         <p
           class="md:text-body-large text-body-muted text-base leading-relaxed"
-          transition:name="page-description"
           style="margin: 0; line-height: 1.6;"
         >
           {description}

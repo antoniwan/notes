@@ -39,7 +39,6 @@ const sortedCategories = await getSortedCategories();
               },
             ]}
             aria-current={isActive ? 'page' : undefined}
-            transition:name={`nav-${item.href.replace('/', '').replace(/\/$/, '') || 'home'}`}
           >
             <span class="relative z-10">{item.label}</span>
             {isActive && (

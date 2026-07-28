@@ -40,10 +40,9 @@ Notable fields:
 - `wordCount` when provided (> 0)
 - `mainEntityOfPage`, `isPartOf` → Blog named `Notes`
 - `about` from `category[]` as `Thing`s when categories exist
+- `articleSection`: primary `category[0]` if present; else first three tags joined; else `"Personal Growth"`
 - `featured` → `isAccessibleForFree: true`; `draft` → `isAccessibleForFree: false`
 - TOC present → `hasPart` WebPageElement named “Table of Contents”
-
-**`articleSection` quirk:** the generator first sets `articleSection` to `category[0]` (or `"Personal Growth"`), then **overwrites** it with the first three tags joined when `tags.length > 0`. Category is still reflected via `about` when categories exist.
 
 ### BreadcrumbList
 
@@ -97,10 +96,9 @@ import { validateStructuredData, generateStructuredDataSummary } from '../utils/
 ## Known gaps / follow-ups
 
 1. Base WebSite / Organization / Person always use `inLanguage: en-US` even on Spanish posts (only `BlogPosting.inLanguage` follows the post).
-2. `articleSection` tag overwrite vs category (above).
-3. FAQ / HowTo / Review helpers are dead code unless product wants them on specific posts.
-4. `hasComments` is accepted on options but unused in schema output.
-5. Collection schemas list every post in the page’s `posts` prop — keep that list bounded if indexes grow large.
+2. FAQ / HowTo / Review helpers are dead code unless product wants them on specific posts.
+3. `hasComments` is accepted on options but unused in schema output.
+4. Collection schemas list every post in the page’s `posts` prop — keep that list bounded if indexes grow large.
 
 ## Related
 

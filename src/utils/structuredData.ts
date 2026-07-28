@@ -174,7 +174,13 @@ export function generateStructuredData(options: StructuredDataOptions) {
       })(),
       url: url,
       inLanguage,
-      articleSection: category.length > 0 ? category[0] : 'Personal Growth',
+      // Prefer primary category; otherwise a short tag summary; else a stable default.
+      articleSection:
+        category.length > 0
+          ? category[0]
+          : tags.length > 0
+            ? tags.slice(0, 3).join(', ')
+            : 'Personal Growth',
       ...(typeof wordCount === 'number' && wordCount > 0 && { wordCount }),
       // Enhanced article properties
       mainEntityOfPage: {
@@ -192,9 +198,6 @@ export function generateStructuredData(options: StructuredDataOptions) {
           '@type': 'Thing',
           name: cat,
         })),
-      }),
-      ...(tags.length > 0 && {
-        articleSection: tags.slice(0, 3).join(', '), // Use first 3 tags as article section
       }),
       // Enhanced metadata
       ...(featured && { isAccessibleForFree: true }),

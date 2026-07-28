@@ -322,10 +322,14 @@ Engineering debt and platform work from the full-stack audit. Detail lives in [T
 - Added `og:locale:alternate` from post hreflang pairs; sitemap `serialize` attaches translationGroup clusters (slug-based EN/ES, not path-prefix i18n).
 - Extracted shared Brain Science text metrics (`textAnalysis.ts`) used by insights / evolution / patterns.
 - Refreshed `docs/structured-data-optimization.md` against live `generateStructuredData` (no SearchAction; unused FAQ/HowTo helpers documented).
+- Remark42 upstream origin configurable via `REMARK42_UPSTREAM_ORIGIN` + `pnpm run sync-remark42-rewrite` / `check-remark42-rewrite` (Vercel cannot interpolate env into `vercel.json`).
+- Letterboxd build warns when `LETTERBOXD_RSS_URL` is set but fetch/parse yields zero items.
+- Removed inert `transition:name` attrs (View Transitions are not enabled).
+- Fixed BlogPosting `articleSection` so tags no longer overwrite a primary category.
 
 ### Near-term (platform integrity)
 
-_None queued — P2 i18n SEO polish, Brain Science NLP extraction, and structured-data doc refresh closed above._
+_None queued — later polish items from §8 closed above._
 
 ### Mid-term (leverage)
 
@@ -335,9 +339,7 @@ _None queued — P2 i18n SEO polish, Brain Science NLP extraction, and structure
 
 ### Later / only if needed
 
-- Make Remark42 Railway rewrite host configurable (today hardcoded in `vercel.json`).
-- Letterboxd build warning when RSS URL is set but fetch returns empty.
-- Remove inert `transition:name` attrs or restore View Transitions deliberately.
+_None queued._
 
 ### Explicit non-goals (technical)
 

@@ -53,17 +53,23 @@ export async function fetchLetterboxdRecent(
   rssUrl: string,
   limit: number,
 ): Promise<LetterboxdWatch[]> {
-  if (!rssUrl?.trim()) return [];
+  const url = rssUrl?.trim();
+  if (!url) return [];
 
   try {
-    const res = await fetch(rssUrl.trim(), {
+    const res = await fetch(url, {
       headers: {
         Accept: 'application/rss+xml, application/xml, text/xml',
         'User-Agent': 'NotesAntoniwan/1.0 (+https://notes.antoniwan.online/about)',
       },
       signal: AbortSignal.timeout(12_000),
     });
-    if (!res.ok) return [];
+    if (!res.ok) {
+      console.warn(
+        `[letterboxd] LETTERBOXD_RSS_URL is set but fetch failed (HTTP ${res.status}): ${url}`,
+      );
+      return [];
+    }
 
     const xml = await res.text();
     const chunks = xml.split(/<item>/i).slice(1);
@@ -92,8 +98,15 @@ export async function fetchLetterboxdRecent(
       if (out.length >= limit) break;
     }
 
+    if (out.length === 0) {
+      console.warn(
+        `[letterboxd] LETTERBOXD_RSS_URL is set but no diary items were parsed: ${url}`,
+      );
+    }
+
     return out;
-  } catch {
+  } catch (error) {
+    console.warn(`[letterboxd] LETTERBOXD_RSS_URL is set but fetch threw: ${url}`, error);
     return [];
   }
 }

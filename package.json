@@ -28,7 +28,9 @@
     "test:watch": "vitest",
     "validate-feeds": "node scripts/validate-feeds.mjs",
     "audit-frontmatter": "node scripts/audit-frontmatter.mjs",
-    "validate-structured-data": "node scripts/validate-structured-data.mjs"
+    "validate-structured-data": "node scripts/validate-structured-data.mjs",
+    "sync-remark42-rewrite": "node scripts/sync-remark42-rewrite.mjs",
+    "check-remark42-rewrite": "node scripts/sync-remark42-rewrite.mjs --check"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^7.2.1",
@@ -52,6 +54,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
     "@tailwindcss/vite": "^4.3.0",
+    "@types/js-yaml": "^4.0.9",
     "@typescript-eslint/parser": "^8.59.2",
     "eslint": "^10.3.0",
     "eslint-plugin-astro": "^1.7.0",
