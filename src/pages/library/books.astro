@@ -8,19 +8,12 @@ const shelves = Array.from(new Set(books.map((book) => book.shelf))).sort((a, b)
 ---
 
 <PageLayout
-  title="Book Library (for reference)"
-  description="A simple, honest list of the books on my shelves — shared for reference, not as a reading challenge."
+  title="Book Library"
+  description="Books I own, books I've read, and books I dip into for a specific idea — shared for reference, not as a reading challenge. Filter by status or shelf, or search by title and author."
   path="/library/books"
   mode="chrome"
 >
   <section>
-    <h2>All books</h2>
-    <p>
-      This library exists purely as a reference: books I own, books I&apos;ve read, and books I dip
-      into when I need a specific idea. Use the filters to slice by status, shelf, or search by
-      title and author.
-    </p>
-
     <div class="library-filters">
       <label>
         <span>Status</span>
@@ -138,7 +131,7 @@ const shelves = Array.from(new Set(books.map((book) => book.shelf))).sort((a, b)
     flex-wrap: wrap;
     gap: 1rem;
     align-items: flex-end;
-    margin: 1rem 0 1.5rem;
+    margin: 0 0 1.5rem;
   }
 
   .library-filters label {
