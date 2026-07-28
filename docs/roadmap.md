@@ -321,16 +321,17 @@ Engineering debt and platform work from the full-stack audit. Detail lives in [T
 - Added Vitest suite for publish filters, SEO routing, feed HTML sanitization, and quotes helpers (`pnpm test` in CI).
 - Added `og:locale:alternate` from post hreflang pairs; sitemap `serialize` attaches translationGroup clusters (slug-based EN/ES, not path-prefix i18n).
 - Extracted shared Brain Science text metrics (`textAnalysis.ts`) used by insights / evolution / patterns.
+- Refreshed `docs/structured-data-optimization.md` against live `generateStructuredData` (no SearchAction; unused FAQ/HowTo helpers documented).
 
 ### Near-term (platform integrity)
 
-_None queued — P2 i18n SEO polish and Brain Science NLP extraction closed above._
+_None queued — P2 i18n SEO polish, Brain Science NLP extraction, and structured-data doc refresh closed above._
 
 ### Mid-term (leverage)
 
 | Priority | Item | Why |
 | --- | --- | --- |
-| P2 | Refresh `docs/structured-data-optimization.md` against current generators | Doc drift |
+| P3 | Optional: wire FAQ/HowTo only for curated posts | Helpers exist but unused; avoid noisy auto-detect |
 
 ### Later / only if needed
 

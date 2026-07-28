@@ -147,6 +147,7 @@ No accounts. No server-side reading progress. Constitution principle IV applies.
 | T-15 | `getSearchData()` rebuilt on every layout | Memoized for the Node build process |
 | T-16 | Missing `og:locale:alternate` + sitemap EN/ES clusters | BaseHead + sitemap `serialize` via `translationGroup` |
 | T-17 | Page-local Flesch/lexicon loops in Brain Science routes | Shared `textAnalysis.ts` (+ build memo) |
+| T-18 | `structured-data-optimization.md` drifted from generators | Rewrote against live `generateStructuredData` / layout wiring |
 
 Package version bumped to **5.30.1** so browsers fetch the new service worker.
 
@@ -154,11 +155,9 @@ Package version bumped to **5.30.1** so browsers fetch the new service worker.
 
 ## 9. Findings — open (technical roadmap)
 
-See [roadmap.md §8](./roadmap.md#8-technical-roadmap--2026-07-28). Highest remaining leverage:
+See [roadmap.md §8](./roadmap.md#8-technical-roadmap--2026-07-28). Remaining items are optional polish (e.g. curated FAQ/HowTo wiring), not integrity blockers.
 
-1. **Refresh `docs/structured-data-optimization.md`** against current generators (doc drift).
-
-Unit tests (`pnpm test`) cover publish filters, SEO routing, feed HTML sanitization, quotes helpers, text metrics, and OG locale alternates.
+Unit tests (`pnpm test`) cover publish filters, SEO routing, feed HTML sanitization, quotes helpers, text metrics, OG locale alternates, and sitemap translation clusters.
 
 ---
 

@@ -1,351 +1,109 @@
-# Structured Data Optimization
+# Structured Data
 
-This document describes the structured data implementation in the Notes project: Schema.org JSON-LD output for search discoverability.
+How Notes emits Schema.org JSON-LD. Source of truth: [`src/utils/structuredData.ts`](../src/utils/structuredData.ts), rendered by [`StructuredData.astro`](../src/components/StructuredData.astro) from [`BaseLayout.astro`](../src/layouts/BaseLayout.astro).
 
-## Overview
+Site constants (`SITE_TITLE`, `AUTHOR`, `SEO_CONFIG`, `SOCIAL_LINKS`) live in [`src/consts.ts`](../src/consts.ts). Image URLs go through `generateImageUrl()` (social-safe JPEG/PNG when a manifest variant exists). Canonical URLs never use trailing slashes (`trailingSlash: 'never'`).
 
-Structured data follows Schema.org and common search-engine guidelines. It provides machines with explicit types and fields (site, organization, author, articles, breadcrumbs, FAQ where applicable). Impact on rankings or visibility depends on search engines and content; this doc is a reference for what the project emits.
+## Production path
 
-## Current Implementation
+`BaseLayout` always calls `generateStructuredData(...)` and emits one `<script type="application/ld+json">` per schema object.
 
-### 1. Base Schemas (All Pages)
+| Layout / page prop | `structuredDataType` | Extra schemas beyond base set |
+| --- | --- | --- |
+| Default / most pages | `website` | none |
+| `BlogLayout` (posts) | `article` | `BlogPosting` + `BreadcrumbList` (requires `pubDate`) |
+| `category/[category]` | `category` | `CollectionPage` when `posts.length > 0` |
+| `tag/[tag]` | `tag` | `CollectionPage` when `posts.length > 0` |
 
-#### WebSite Schema
+Helpers such as FAQ / HowTo / Review / `generateEnhancedStructuredData` exist in the module but are **not wired** into layouts today. Do not assume they appear in page HTML.
 
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Blog",
-  "description": "Raw thoughts on fatherhood, masculinity, and modern life...",
-  "url": "https://notes.antoniwan.online",
-  "inLanguage": "en-US",
-  "publisher": { "@type": "Person", "name": "Antonio Rodriguez Martinez" },
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": {
-      "@type": "EntryPoint",
-      "urlTemplate": "https://notes.antoniwan.online/search?q={search_term_string}"
-    },
-    "query-input": "required name=search_term_string"
-  }
-}
+## Base schemas (every page)
+
+Always emitted first:
+
+1. **WebSite** — `name: Notes`, site description/URL, `inLanguage: en-US`, `publisher` as Person. **No `SearchAction`** (site search is client-only; there is no crawlable `/search?q=` endpoint).
+2. **Organization** — `name` from `SEO_CONFIG.organizationName` (author name), logo via `generateImageUrl`, `sameAs: Object.values(SOCIAL_LINKS)`, foundingDate `2024`, areaServed / serviceType strings.
+3. **Person** (author) — `AUTHOR` fields, subset `sameAs` (twitter, github, bluesky), `knowsAbout` topic list, occupation metadata.
+
+## Article pages (`type: 'article'`)
+
+Requires `pubDate`. Emits:
+
+### BlogPosting
+
+Notable fields:
+
+- `headline`, `description`, `image`, `datePublished`, `dateModified` (falls back to `pubDate`)
+- `author` / `publisher` (Person / Organization with logo)
+- `keywords` (comma-joined), `timeRequired` as `PTnM` when `minutesRead` parses
+- `url` (canonical), `inLanguage` from layout (post language → `en-US` / `es-ES`)
+- `wordCount` when provided (> 0)
+- `mainEntityOfPage`, `isPartOf` → Blog named `Notes`
+- `about` from `category[]` as `Thing`s when categories exist
+- `featured` → `isAccessibleForFree: true`; `draft` → `isAccessibleForFree: false`
+- TOC present → `hasPart` WebPageElement named “Table of Contents”
+
+**`articleSection` quirk:** the generator first sets `articleSection` to `category[0]` (or `"Personal Growth"`), then **overwrites** it with the first three tags joined when `tags.length > 0`. Category is still reflected via `about` when categories exist.
+
+### BreadcrumbList
+
+`Home` → optional first category (`/category/{id}`) → post title. Positions adjust when no category.
+
+## Collection pages (`category` / `tag`)
+
+Only when `posts` is non-empty. Emits **CollectionPage** with:
+
+- `mainEntity` → `ItemList` of compact `BlogPosting` items (headline, description, url, dates, author, image, keywords, articleSection, timeRequired)
+- Nested `breadcrumb`: Home → Categories|Tags index → current page
+- Category pages with `identifier`: `about` Thing
+- Tag pages with `identifier`: `keywords: identifier`
+- Collection `inLanguage` is hardcoded `en-US` (not post-language-aware)
+
+Empty category/tag result sets fall back to the base three schemas only.
+
+## Unused exports (library only)
+
+| Export | Intent | Wired to HTML? |
+| --- | --- | --- |
+| `generateFAQSchema` / `autoDetectFAQSchema` | FAQPage from Q&A markdown heuristics | No |
+| `generateEnhancedStructuredData` | Base schemas + auto FAQ for articles | No |
+| `generateHowToSchema` | HowTo tutorials | No |
+| `generateReviewSchema` | Review / rating | No |
+| `generateArticleSchema` | Generic `Article` (vs `BlogPosting`) | No |
+| `generateContentTypeSpecificSchema` | Switch for how-to / review / faq | No |
+| `validateStructuredData` / `generateStructuredDataSummary` | Dev/debug helpers | No (CI uses a separate smoke script) |
+
+Wire these only with intentional layout changes and Rich Results expectations — auto-FAQ heuristics are noisy.
+
+## Validation
+
+```bash
+pnpm run validate-structured-data
 ```
 
-#### Organization Schema
+Smoke-checks that `structuredData.ts` still exports `generateStructuredData`, `generateArticleSchema`, and `validateStructuredData`, and mentions core Schema.org types. It does **not** crawl live HTML or call Google’s Rich Results Test.
 
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Blog",
-  "url": "https://notes.antoniwan.online",
-  "logo": { "@type": "ImageObject", "url": "...", "width": 512, "height": 512 },
-  "sameAs": ["https://twitter.com/antoniwan", "https://github.com/antoniwan"],
-  "description": "Personal Blog & Content Creation",
-  "foundingDate": "2024",
-  "areaServed": "Worldwide",
-  "serviceType": "Personal Blog & Content Creation"
-}
+For live checks:
+
+- [Google Rich Results Test](https://search.google.com/test/rich-results)
+- Search Console → Enhancements / Experience reports after deploy
+
+Optional local helper:
+
+```ts
+import { validateStructuredData, generateStructuredDataSummary } from '../utils/structuredData';
 ```
 
-#### Person Schema (Author)
+## Known gaps / follow-ups
 
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Antonio Rodriguez Martinez",
-  "url": "https://antoniwan.online",
-  "jobTitle": "Software Engineer & Writer",
-  "worksFor": { "@type": "Organization", "name": "Blog" },
-  "knowsAbout": ["Software Development", "Personal Growth", "Mental Health", "Parenting"],
-  "description": "Software engineer and writer exploring fatherhood, masculinity, and modern life...",
-  "alumniOf": { "@type": "Organization", "name": "Software Engineering Community" },
-  "hasOccupation": {
-    "@type": "Occupation",
-    "name": "Software Engineer",
-    "description": "Building digital solutions and exploring technology's impact on modern life"
-  }
-}
-```
+1. Base WebSite / Organization / Person always use `inLanguage: en-US` even on Spanish posts (only `BlogPosting.inLanguage` follows the post).
+2. `articleSection` tag overwrite vs category (above).
+3. FAQ / HowTo / Review helpers are dead code unless product wants them on specific posts.
+4. `hasComments` is accepted on options but unused in schema output.
+5. Collection schemas list every post in the page’s `posts` prop — keep that list bounded if indexes grow large.
 
-### 2. Enhanced Article Schema (Blog Posts)
+## Related
 
-#### BlogPosting Schema
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Article Title",
-  "description": "Article description...",
-  "image": "https://notes.antoniwan.online/images/hero-image.jpg",
-  "datePublished": "2025-01-01T00:00:00.000Z",
-  "dateModified": "2025-01-01T00:00:00.000Z",
-  "author": { "@type": "Person", "name": "Antonio Rodriguez Martinez" },
-  "publisher": { "@type": "Organization", "name": "Blog" },
-  "keywords": "empathy, psychology, mental-health, consciousness",
-  "timeRequired": "PT5M",
-  "url": "https://notes.antoniwan.online/p/article-slug",
-  "inLanguage": "en-US",
-  "articleSection": "psychology",
-  "wordCount": 1500,
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://notes.antoniwan.online/p/article-slug"
-  },
-  "isPartOf": { "@type": "Blog", "name": "Blog", "url": "https://notes.antoniwan.online" },
-  "about": [
-    { "@type": "Thing", "name": "psychology" },
-    { "@type": "Thing", "name": "integration-growth" }
-  ],
-  "hasPart": {
-    "@type": "WebPageElement",
-    "name": "Table of Contents",
-    "description": "Structured navigation for this article"
-  }
-}
-```
-
-#### Breadcrumb Schema (for Blog Posts)
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://notes.antoniwan.online"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "psychology",
-      "item": "https://notes.antoniwan.online/category/psychology/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Article Title",
-      "item": "https://notes.antoniwan.online/p/article-slug"
-    }
-  ]
-}
-```
-
-### 3. Collection Page Schemas (Categories & Tags)
-
-#### CollectionPage Schema
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "Category Name",
-  "description": "Category description...",
-  "url": "https://notes.antoniwan.online/category/category-name/",
-  "mainEntity": {
-    "@type": "ItemList",
-    "numberOfItems": 25,
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "item": {
-          "@type": "BlogPosting",
-          "headline": "Post Title",
-          "description": "Post description...",
-          "url": "https://notes.antoniwan.online/p/post-slug",
-          "datePublished": "2025-01-01T00:00:00.000Z",
-          "author": { "@type": "Person", "name": "Antonio Rodriguez Martinez" }
-        }
-      }
-    ]
-  },
-  "breadcrumb": { "@type": "BreadcrumbList", "itemListElement": [...] }
-}
-```
-
-## Advanced Schema Types
-
-### 1. FAQ Schema (Auto-detected)
-
-Automatically generated for content with Q&A patterns:
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is empathy?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Empathy is the ability to understand and share the feelings of others..."
-      }
-    }
-  ]
-}
-```
-
-### 2. HowTo Schema (for Tutorials)
-
-For instructional content:
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "HowTo",
-  "name": "How to Practice Empathy",
-  "description": "Step-by-step guide to developing empathy...",
-  "totalTime": "PT30M",
-  "step": [
-    {
-      "@type": "HowToStep",
-      "position": 1,
-      "name": "Listen Actively",
-      "text": "Focus on what the other person is saying without interrupting..."
-    }
-  ]
-}
-```
-
-### 3. Review Schema (for Reviews)
-
-For review content:
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "Review",
-  "name": "Book Review: Meditations",
-  "description": "Review of Marcus Aurelius' Meditations...",
-  "reviewRating": {
-    "@type": "Rating",
-    "ratingValue": 5,
-    "bestRating": 5,
-    "worstRating": 1
-  },
-  "author": { "@type": "Person", "name": "Antonio Rodriguez Martinez" },
-  "reviewBody": "This book changed my perspective on life..."
-}
-```
-
-## Implementation Details
-
-### 1. Automatic Generation
-
-- Structured data is automatically generated from content frontmatter
-- No manual schema creation required
-- Consistent implementation across all content types
-
-### 2. Content Analysis
-
-- Automatic FAQ detection from markdown content
-- Content type classification for appropriate schema selection
-- Dynamic breadcrumb generation
-
-### 3. Validation
-
-- Built-in validation for common structured data issues
-- Error and warning reporting
-- Circular reference detection
-
-## SEO Benefits
-
-### 1. Enhanced Search Results
-
-- Rich snippets in search results
-- Featured snippet opportunities
-- Better click-through rates
-
-### 2. Improved Crawling
-
-- Clear content structure for search engines
-- Better understanding of content relationships
-- Improved indexing efficiency
-
-### 3. User Experience
-
-- Rich search result previews
-- Better content discovery
-- Enhanced social media sharing
-
-## Best Practices Implemented
-
-### 1. Schema.org Compliance
-
-- All schemas follow official Schema.org specifications
-- Proper @context and @type usage
-- Valid property values
-
-### 2. Google Guidelines
-
-- Follows Google's structured data guidelines
-- Proper nesting and relationships
-- Valid JSON-LD format
-
-### 3. Performance
-
-- Efficient schema generation
-- Minimal impact on page load
-- Optimized for search engine parsing
-
-## Testing and Validation
-
-### 1. Built-in Validation
-
-```typescript
-import { validateStructuredData } from '../utils/structuredData';
-
-const validation = validateStructuredData(schema);
-console.log(validation.isValid); // true/false
-console.log(validation.errors); // array of errors
-console.log(validation.warnings); // array of warnings
-```
-
-### 2. Google Testing Tools
-
-- Use Google's Rich Results Test
-- Validate with Google Search Console
-- Monitor structured data performance
-
-### 3. Debugging
-
-```typescript
-import { generateStructuredDataSummary } from '../utils/structuredData';
-
-const summary = generateStructuredDataSummary(schemas);
-console.log(summary); // Detailed validation report
-```
-
-## Future Enhancements
-
-### 1. Content-Specific Schemas
-
-- Recipe schemas for food content
-- Event schemas for time-sensitive content
-- Product schemas for review content
-
-### 2. Dynamic Content Analysis
-
-- AI-powered content classification
-- Automatic schema selection
-- Content quality scoring
-
-### 3. Performance Monitoring
-
-- Schema performance tracking
-- Search result improvement metrics
-- User engagement correlation
-
-## Conclusion
-
-Our structured data implementation provides a solid foundation for search engine optimization while maintaining flexibility for future enhancements. The automatic generation and validation systems ensure consistent, high-quality structured data across all content types, maximizing search engine discoverability and improving user experience.
-
-For questions or suggestions about structured data implementation, please refer to the development team or consult the Schema.org documentation.
+- Meta / Open Graph / hreflang: [`src/utils/seo.ts`](../src/utils/seo.ts), [`BaseHead.astro`](../src/components/BaseHead.astro)
+- Multilingual listing vs URL policy: [`docs/multilingual-setup.md`](./multilingual-setup.md)
+- Technical audit: [`docs/TECHNICAL-AUDIT.md`](./TECHNICAL-AUDIT.md)
