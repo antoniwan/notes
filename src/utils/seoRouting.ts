@@ -7,6 +7,13 @@ export const SEO_EXCLUDED_PATHS = [
   '/tag-management',
   '/sitemap.xml',
   '/api',
+  '/brain-science',
+  '/brain-science/insights',
+  '/brain-science/cadence',
+  '/brain-science/evolution',
+  '/brain-science/topics',
+  '/brain-science/patterns',
+  '/brain-science/meta',
 ] as const;
 
 /** Soft-deleted or renamed posts → permanent replacements. */

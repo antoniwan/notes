@@ -1,6 +1,36 @@
 {
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "antoniwan.blog" }],
+      "destination": "https://notes.antoniwan.online/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.antoniwan.blog" }],
+      "destination": "https://notes.antoniwan.online/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "blog.antoniwan.com" }],
+      "destination": "https://notes.antoniwan.online/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "blog.antoniwan.online" }],
+      "destination": "https://notes.antoniwan.online/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "vault.antoniwan.online" }],
+      "destination": "https://notes.antoniwan.online/:path*",
+      "permanent": true
+    },
+    {
       "source": "/p/it-isnt-too-much-pressure",
       "destination": "/p/on-parental-pressure",
       "permanent": true

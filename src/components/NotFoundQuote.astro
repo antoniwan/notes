@@ -176,7 +176,7 @@ const { existingTags } = Astro.props;
           const linked = existingTags.includes(theme);
           const el = document.createElement(linked ? 'a' : 'span');
           el.className = linked ? TAG_LINK : TAG_STATIC;
-          if (linked) el.href = `/tag/${encodeURIComponent(theme)}/`;
+          if (linked) el.href = `/tag/${encodeURIComponent(theme)}`;
 
           const hash = document.createElement('span');
           hash.textContent = `#${theme}`;

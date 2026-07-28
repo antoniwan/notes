@@ -10,7 +10,7 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 import SocialShare from '../components/SocialShare.astro';
 import LanguageToggle from '../components/LanguageToggle.astro';
 import PostTocModal from '../components/post-toc/PostTocModal.astro';
-import { generateCanonicalUrl } from '../utils/seo';
+import { generateCanonicalUrl, normalizeSeoPath } from '../utils/seo';
 import type { BlogLayoutProps } from '../types/layout';
 
 interface Props extends BlogLayoutProps {}
@@ -35,8 +35,9 @@ const {
   ...rest
 } = Astro.props as Props;
 
-// Generate canonical URL automatically
-const canonical = path || generateCanonicalUrl(Astro.url.pathname);
+// Prefer an explicit path prop; always normalize trailing slashes for canonicals.
+const canonicalPath = normalizeSeoPath(path || Astro.url.pathname);
+const canonical = generateCanonicalUrl(canonicalPath);
 
 const hreflangAlternates =
   translationData?.hasTranslations
@@ -70,7 +71,7 @@ const primaryCategory = categoryItems[0] || null;
   minutesRead={minutesRead}
   tags={tags}
   category={category}
-  path={canonical}
+  path={canonicalPath}
   imageAlt={imageAlt}
   author={author}
   keywords={keywords}

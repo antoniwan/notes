@@ -152,7 +152,7 @@ const isPrimaryMobileNavActive = (href: string, pathname: string) => {
               {item.dropdown && item.href === '/category/' && (
                 <div class="ml-4 space-y-1">
                   {sortedCategories.map((category) => {
-                    const catHref = `/category/${category.id}/`;
+                    const catHref = `/category/${category.id}`;
                     const subActive = isNavDropdownItemActive(catHref, currentPathname);
                     return (
                       <a

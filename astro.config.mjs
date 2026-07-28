@@ -7,10 +7,13 @@ import tailwindcss from '@tailwindcss/vite';
 import vercel from '@astrojs/vercel';
 import { SITE_URL } from './src/consts';
 import { remarkReadingTime } from './remark-reading-time.mjs';
+import { buildSeoRedirects, shouldIncludeInSitemap } from './src/utils/seoRouting';
 
 // https://astro.build/config
 export default defineConfig({
   site: SITE_URL,
+  trailingSlash: 'never',
+  redirects: buildSeoRedirects(),
   fonts: [
     {
       name: 'DM Sans',
@@ -45,7 +48,12 @@ export default defineConfig({
       subsets: ['latin'],
     },
   ],
-  integrations: [mdx(), sitemap()],
+  integrations: [
+    mdx(),
+    sitemap({
+      filter: shouldIncludeInSitemap,
+    }),
+  ],
   adapter: vercel(),
   markdown: {
     syntaxHighlight: 'shiki',
