@@ -10,6 +10,35 @@ import { remarkReadingTime } from './remark-reading-time.mjs';
 import { buildSeoRedirects, shouldIncludeInSitemap } from './src/utils/seoRouting';
 import { getSitemapTranslationLinksByUrl } from './src/utils/sitemapTranslations';
 
+/** Vite connect middleware: `/path/` → `/path` before Astro trailingSlash 404. */
+function trailingSlashDevRedirectPlugin() {
+  return {
+    name: 'trailing-slash-dev-redirect',
+    configureServer(server) {
+      const handler = (req, res, next) => {
+        const raw = req.url ?? '/';
+        const qIndex = raw.indexOf('?');
+        const pathname = qIndex === -1 ? raw : raw.slice(0, qIndex);
+        const search = qIndex === -1 ? '' : raw.slice(qIndex);
+
+        if (pathname.length > 1 && pathname.endsWith('/')) {
+          res.statusCode = 301;
+          res.setHeader('Location', `${pathname.replace(/\/+$/, '') || '/'}${search}`);
+          res.end();
+          return;
+        }
+
+        next();
+      };
+
+      // Post hook: run after Vite/Astro install their middlewares, then jump to front.
+      return () => {
+        server.middlewares.stack.unshift({ route: '', handle: handler });
+      };
+    },
+  };
+}
+
 // https://astro.build/config
 export default defineConfig({
   site: SITE_URL,
@@ -102,7 +131,7 @@ export default defineConfig({
   },
   // Vite optimizations for better performance
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [trailingSlashDevRedirectPlugin(), tailwindcss()],
     server: {
       watch: {
         // Polling can break HMR on macOS; use native events for hot-reload

@@ -6,153 +6,79 @@ import pkg from '../../package.json';
 ---
 
 <footer
-  class="theme-transition relative mt-16 border-t border-[rgb(var(--color-border))]/30 bg-linear-to-b from-[rgb(var(--color-bg))] to-[rgb(var(--color-bg-alt))] shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] md:mt-20"
+  class="theme-transition mt-16 border-t border-[rgb(var(--color-border))]/40 bg-[rgb(var(--color-bg))] md:mt-20"
   role="contentinfo"
 >
-  <!-- Subtle overlay for additional contrast -->
-  <div class="pointer-events-none absolute inset-0 bg-linear-to-t from-black/2 to-transparent">
-  </div>
-
-  <Container class="relative py-12 md:py-16">
-    <!-- Main Footer Content -->
-    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12 lg:grid-cols-4">
-      <!-- Brand Section -->
-      <div class="lg:col-span-1">
+  <Container class="py-10 md:py-12">
+    <div class="space-y-6">
+      <div>
         <Logo size="xs" />
       </div>
 
-      <!-- Quick Links -->
-      <div>
-        <h3
-          class="mb-4 text-lg leading-tight font-semibold text-[rgb(var(--color-text))] md:text-xl"
+      <nav class="flex flex-wrap gap-x-5 gap-y-2 text-sm" aria-label="Footer">
+        <a href="/guided-path" class="link-muted">Guided Path</a>
+        <a href="/category" class="link-muted">Categories</a>
+        <a href="/everything" class="link-muted">Everything</a>
+        <a href="/about" class="link-muted">About</a>
+        <a href="/brain-science" class="link-muted">Writing Insights</a>
+        <a href="/library/books" class="link-muted">Book Library</a>
+        <a
+          href={SOCIAL_LINKS.threads}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link-muted">Threads</a
         >
-          Quick Links
-        </h3>
-        <nav class="space-y-2" aria-label="Quick navigation">
-          <a href="/guided-path" class="link-muted block text-sm leading-relaxed md:text-base"
-            >Guided Path</a
-          >
-          <a href="/category" class="link-muted block text-sm leading-relaxed md:text-base"
-            >Categories</a
-          >
-          <a href="/everything" class="link-muted block text-sm leading-relaxed md:text-base"
-            >Everything</a
-          >
-          <a href="/about" class="link-muted block text-sm leading-relaxed md:text-base">About</a>
-        </nav>
-      </div>
-
-      <!-- Resources -->
-      <div>
-        <h3
-          class="mb-4 text-lg leading-tight font-semibold text-[rgb(var(--color-text))] md:text-xl"
+        <a
+          href={SOCIAL_LINKS.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link-muted">GitHub</a
         >
-          Resources
-        </h3>
-        <nav class="space-y-2" aria-label="Resources navigation">
-          <a href="/guided-path" class="link-muted block text-sm leading-relaxed md:text-base"
-            >🗺️ Guided Path</a
-          >
-          <a href="/brain-science" class="link-muted block text-sm leading-relaxed md:text-base"
-            >🧠 Writing Insights</a
-          >
-          <a href="/library/books" class="link-muted block text-sm leading-relaxed md:text-base"
-            >📚 Book Library (for reference)</a
-          >
-          <a href="/tag-management" class="link-muted block text-sm leading-relaxed md:text-base"
-            >🏷️ Tag Analytics</a
-          >
-          <a href="/api" class="link-muted block text-sm leading-relaxed md:text-base"
-            >💬 Public API</a
-          >
-        </nav>
-      </div>
-
-      <!-- Connect Section -->
-      <div>
-        <h3
-          class="mb-4 text-lg leading-tight font-semibold text-[rgb(var(--color-text))] md:text-xl"
+        <a
+          href={SOCIAL_LINKS.buildsSoftware}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link-muted">Builds Software</a
         >
-          Connect
-        </h3>
-        <nav class="space-y-2" aria-label="Social media links">
-          <a
-            href={SOCIAL_LINKS.threads}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="link-muted flex items-center gap-2 text-sm leading-relaxed md:text-base"
-          >
-            <span class="text-lg">🧵</span>
-            <span>Threads</span>
-          </a>
-          <a
-            href={SOCIAL_LINKS.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="link-muted flex items-center gap-2 text-sm leading-relaxed md:text-base"
-          >
-            <span class="text-lg">🐙</span>
-            <span>GitHub</span>
-          </a>
-          <a
-            href={SOCIAL_LINKS.buildsSoftware}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="link-muted flex items-center gap-2 text-sm leading-relaxed md:text-base"
-          >
-            <span class="text-lg">💻</span>
-            <span>Builds Software</span>
-          </a>
-          <a
-            href="https://antoniwan.online"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="link-muted flex items-center gap-2 text-sm leading-relaxed md:text-base"
-          >
-            <span class="text-lg">🌳</span>
-            <span>Links Forest</span>
-          </a>
-        </nav>
-      </div>
+        <a
+          href="https://antoniwan.online"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link-muted">Links</a
+        >
+      </nav>
     </div>
 
-    <!-- Copyright Section -->
-    <div class="mt-8 border-t border-[rgb(var(--color-border))]/30 pt-8 md:mt-12 md:pt-12">
-      <div class="flex flex-col items-center justify-between gap-4 md:flex-row">
-        <div class="text-body-muted text-center text-[0.7rem] leading-snug opacity-70 md:text-left">
-          <p class="mt-0! mb-0! text-[0.7rem]! leading-snug!">
-            © {new Date().getFullYear()}
-            {SITE_TITLE}. All rights reserved. Content: <a
-              href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
-              target="_blank"
-              rel="noopener noreferrer">CC BY-NC-SA 4.0</a
-            > Code: <a
-              href="https://opensource.org/licenses/MIT"
-              target="_blank"
-              rel="noopener noreferrer">MIT</a
-            >
-          </p>
-        </div>
-
-        <!-- Additional Links -->
-        <div
-          class="text-body-muted flex flex-wrap justify-center gap-4 text-[0.7rem] leading-snug md:justify-end"
+    <div
+      class="mt-8 flex flex-col gap-3 border-t border-[rgb(var(--color-border))]/40 pt-6 sm:flex-row sm:items-center sm:justify-between"
+    >
+      <p class="text-body-muted m-0 text-[0.7rem] leading-snug">
+        © {new Date().getFullYear()}{' '}
+        {SITE_TITLE}. Content:{' '}
+        <a
+          href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+          target="_blank"
+          rel="noopener noreferrer">CC BY-NC-SA 4.0</a
         >
-          <div class="flex items-center gap-2">
-            <a href="/sitemap-index.xml" class="link-muted">Sitemap</a>
-            <span class="text-[rgb(var(--color-text-muted))]/50">•</span>
-            <a href="/rss.xml" class="link-muted" title="RSS Feed">📡 RSS</a>
-            <span class="text-[rgb(var(--color-text-muted))]/50">•</span>
-            <a href="/feed.json" class="link-muted" title="JSON Feed">📄 JSON</a>
-          </div>
-          <span
-            class="inline-flex items-center rounded-full border border-[rgb(var(--color-primary))]/20 bg-[rgb(var(--color-primary))]/10 px-2 py-1 text-[0.7rem] font-medium text-[rgb(var(--color-primary))]"
-          >
-            <a href="https://github.com/antoniwan/notes" target="_blank" rel="noopener noreferrer"
-              >v{pkg.version}</a
-            ></span
-          >
-        </div>
+        {' '}· Code:{' '}
+        <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer"
+          >MIT</a
+        >
+      </p>
+
+      <div class="text-body-muted flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.7rem]">
+        <a href="/sitemap-index.xml" class="link-muted">Sitemap</a>
+        <span class="opacity-40" aria-hidden="true">·</span>
+        <a href="/rss.xml" class="link-muted" title="RSS Feed">RSS</a>
+        <span class="opacity-40" aria-hidden="true">·</span>
+        <a href="/feed.json" class="link-muted" title="JSON Feed">JSON</a>
+        <span class="opacity-40" aria-hidden="true">·</span>
+        <a
+          href="https://github.com/antoniwan/notes"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link-muted">v{pkg.version}</a
+        >
       </div>
     </div>
   </Container>

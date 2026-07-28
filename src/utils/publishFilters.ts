@@ -53,6 +53,19 @@ export function isListingEligiblePost(data: PostData, options: PublishFilterOpti
 }
 
 /**
+ * Guided Path is English-primary: never list Spanish posts (featured or not).
+ * Spanish versions stay reachable from the language toggle on the English note.
+ * Unlike `isCollectionListed`, this language rule applies in both prod and dev.
+ */
+export function isGuidedPathEligiblePost(
+  data: PostData,
+  options: PublishFilterOptions = {},
+): boolean {
+  if (isSpanishPrimary(data)) return false;
+  return isCollectionListed(data, options);
+}
+
+/**
  * Dev shows everything; prod uses listing eligibility (public ∧ not secondary translation).
  * Prefer this over `isCollectionPublic` for archive-style surfaces.
  */
@@ -61,10 +74,13 @@ export function isCollectionListed(data: PostData, options: PublishFilterOptions
   return isListingEligiblePost(data, options);
 }
 
+function isSpanishPrimary(data: PostData): boolean {
+  return (data.language?.[0] ?? 'en') === 'es';
+}
+
 /** Secondary translation: primary language is Spanish and not featured. */
 function isSecondaryLanguageTranslation(data: PostData): boolean {
-  const primary = data.language?.[0] ?? 'en';
-  return primary === 'es' && data.featured === false;
+  return isSpanishPrimary(data) && data.featured === false;
 }
 
 export type ContentLanguageMeta = {

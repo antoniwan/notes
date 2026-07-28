@@ -192,13 +192,13 @@ for (const [catId, list] of Object.entries(postsByCategory)) {
 
 <style>
   .highlights-section {
-    margin-top: 3.5rem;
+    margin-top: 2.5rem;
     margin-bottom: 3rem;
   }
 
   @media (min-width: 768px) {
     .highlights-section {
-      margin-top: 4.5rem;
+      margin-top: 3rem;
       margin-bottom: 4rem;
     }
   }
@@ -216,6 +216,7 @@ for (const [catId, list] of Object.entries(postsByCategory)) {
   }
 
   .highlights-title {
+    font-family: var(--font-heading);
     font-size: 1.75rem;
     line-height: 1.3;
     font-weight: 700;
@@ -248,34 +249,32 @@ for (const [catId, list] of Object.entries(postsByCategory)) {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
-    border-radius: 999px;
+    border-radius: var(--radius-lg);
     border: 1px solid rgb(var(--color-border));
     background: rgb(var(--color-bg));
     color: rgb(var(--color-text-muted));
     padding: 0.4rem 0.9rem;
+    font-family: var(--font-sans);
     font-size: 0.8rem;
     line-height: 1.2;
     cursor: pointer;
     transition:
       background-color 0.18s ease,
       color 0.18s ease,
-      border-color 0.18s ease,
-      box-shadow 0.18s ease,
-      transform 0.12s ease;
+      border-color 0.18s ease;
   }
 
   .filter-chip:hover {
-    border-color: rgb(var(--color-primary) / 0.6);
+    border-color: rgb(var(--color-primary) / 0.45);
     color: rgb(var(--color-text));
-    box-shadow: 0 2px 6px rgb(0 0 0 / 0.12);
-    transform: translateY(-1px);
+    background: rgb(var(--color-bg-alt));
   }
 
   .filter-chip.is-active {
-    background: rgb(var(--color-primary) / 0.1);
+    background: rgb(var(--color-primary));
     border-color: rgb(var(--color-primary));
-    color: rgb(var(--color-text));
-    box-shadow: 0 0 0 1px rgb(var(--color-primary) / 0.5);
+    color: rgb(var(--color-on-primary));
+    font-weight: 600;
   }
 
   .filter-chip:focus-visible {
@@ -339,22 +338,54 @@ for (const [catId, list] of Object.entries(postsByCategory)) {
       transform 0.2s ease;
   }
 
-  /* Same height per row: grid rows stretch, cards fill cell and use flex so content area grows */
+  /*
+    Equal row heights: emphasis spans are different widths, so aspect-ratio
+    media makes wide cards taller than narrow ones. Use a fixed media height
+    and stretch cards so the text block fills leftover space.
+    :global() required — PostCard is a child component with its own scope.
+  */
   @media (min-width: 768px) {
+    .highlights-masonry {
+      align-items: stretch;
+    }
+
     .highlights-masonry .masonry-item {
       display: flex;
+      height: 100%;
     }
-    .highlights-masonry .masonry-item article.interactive-card {
+
+    .highlights-masonry .masonry-item :global(article.postcard) {
       display: flex;
       flex-direction: column;
       flex: 1;
+      width: 100%;
+      height: 100%;
       min-height: 0;
     }
-    .highlights-masonry article.interactive-card > .relative {
-      flex: 1;
+
+    .highlights-masonry :global(article.postcard .image-container) {
+      aspect-ratio: auto;
+      flex: 0 0 auto;
+      height: 13rem;
+    }
+
+    .highlights-masonry :global(article.postcard .postcard-body) {
+      flex: 1 1 auto;
       display: flex;
       flex-direction: column;
-      min-height: 0;
+    }
+
+    .highlights-masonry :global(article.postcard .postcard-title) {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .highlights-masonry :global(article.postcard .image-container) {
+      height: 15rem;
     }
   }
 
@@ -366,8 +397,8 @@ for (const [catId, list] of Object.entries(postsByCategory)) {
     }
   }
 
-  .highlights-masonry .group:hover {
-    box-shadow: 0 4px 12px -2px rgb(0 0 0 / 0.15);
-    border-color: rgb(var(--color-primary) / 0.3);
+  .highlights-masonry :global(article.postcard:hover) {
+    box-shadow: var(--shadow-soft);
+    border-color: rgb(var(--color-accent) / 0.35);
   }
 </style>

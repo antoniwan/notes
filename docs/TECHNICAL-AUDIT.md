@@ -1,7 +1,7 @@
 # Notes — Technical Audit
 
 **Audit date:** 2026-07-28  
-**App version:** 5.30.1 (service-worker API cache fix + audit hygiene)  
+**App version:** 6.0.0 (visual UI overhaul — monochrome + marigold/violet accents)  
 **Production:** [notes.antoniwan.online](https://notes.antoniwan.online) · Vercel project `notes` (`prj_MrjdKV4wL7ubFNGKhVBASHub9rmb`)  
 **Companion product map:** [roadmap.md](./roadmap.md) (§7 product audit, §8 technical roadmap)
 
@@ -48,7 +48,7 @@ A **hybrid Astro site**: almost everything is statically prerendered at build ti
               ── ReadingProgress / ReadState / Footer / SW
          │
    ┌─────┴──────┬────────────┬─────────────┬──────────────┐
- PageLayout  BlogLayout  BrainScience*   Feeds/API docs
+ PageLayout  BlogLayout  BrainScience*   Feeds
    │             │
  Content        Posts (MD/MDX) ← content.config.ts schema
  collections    publishFilters · translationUtils · tagVocabulary
@@ -76,7 +76,7 @@ A **hybrid Astro site**: almost everything is statically prerendered at build ti
 | Author tools | `/brain-science/*`, `/tag-management` | `noindex` + sitemap-excluded |
 | Library | `/library`, `/library/books` | Static data in `src/data/library.ts` |
 | Syndication | `/rss.xml`, `/feed.json`, `@astrojs/sitemap` | Feed eligibility ≠ listing eligibility |
-| API | `/api/`, `/api/quotes` | Quotes is SSR; index is static docs |
+| API | `/api/quotes` | SSR JSON quotes endpoint |
 | System | `/404`, `/sitemap.xml` → 301 to sitemap-index | |
 
 Redirects live in two places: Astro `buildSeoRedirects()` (`src/utils/seoRouting.ts`) and `vercel.json` (legacy hosts + Remark42 rewrite). Prefer adding post/tag redirects in `seoRouting.ts` going forward. Remark42 upstream: set `REMARK42_UPSTREAM_ORIGIN` and run `pnpm run sync-remark42-rewrite` (see `docs/comments-setup.md`).

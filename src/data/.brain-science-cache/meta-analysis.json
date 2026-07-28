@@ -263,12 +263,12 @@
     },
     {
       "id": "presentando-vastitas-omniparens",
-      "bodyLength": 27162,
+      "bodyLength": 27702,
       "pubDate": "2026-07-27T13:45:00.000Z"
     },
     {
       "id": "presenting-vastitas-omniparens",
-      "bodyLength": 26204,
+      "bodyLength": 26713,
       "pubDate": "2026-07-27T13:45:00.000Z"
     },
     {
@@ -373,7 +373,7 @@
     },
     {
       "id": "total-concentration-breathing",
-      "bodyLength": 2446,
+      "bodyLength": 2480,
       "pubDate": "2025-05-06T07:15:00.000Z"
     },
     {
@@ -445,7 +445,7 @@
       "recursiveThinking": false,
       "sentiment": {
         "score": -2,
-        "comparative": -0.02,
+        "comparative": -0.021052631578947368,
         "calculation": [
           {
             "no": -1
@@ -455,6 +455,16 @@
           }
         ],
         "tokens": [
+          "<h2",
+          "id",
+          "que-es-este-nombre",
+          "class",
+          "toc-only",
+          ">qué",
+          "es",
+          "este",
+          "nombre<",
+          "h2>",
           "vastitas",
           "omniparens",
           "es",
@@ -539,22 +549,7 @@
           "cosas",
           "o",
           "como",
-          "lo",
-          "guardo",
-          "en",
-          "el",
-          "bolsillo",
-          "de",
-          "lo",
-          "vasto",
-          "todas",
-          "las",
-          "cosas",
-          "a",
-          "través",
-          "de",
-          "la",
-          "lu"
+          "lo"
         ],
         "words": [
           "no",
@@ -579,13 +574,23 @@
       "recursiveThinking": false,
       "sentiment": {
         "score": -2,
-        "comparative": -0.020202020202020204,
+        "comparative": -0.02127659574468085,
         "calculation": [
           {
             "sentence": -2
           }
         ],
         "tokens": [
+          "<h2",
+          "id",
+          "what-this-name-is",
+          "class",
+          "toc-only",
+          ">what",
+          "this",
+          "name",
+          "is<",
+          "h2>",
           "vastitas",
           "omniparens",
           "is",
@@ -669,22 +674,7 @@
           "out",
           "as",
           "the",
-          "vastness",
-          "that",
-          "births",
-          "all",
-          "things",
-          "or",
-          "the",
-          "way",
-          "i",
-          "keep",
-          "it",
-          "in",
-          "my",
-          "pocket",
-          "from",
-          "t"
+          "vastnes"
         ],
         "words": [
           "sentence"
@@ -5745,7 +5735,7 @@
       "recursiveThinking": false,
       "sentiment": {
         "score": 6,
-        "comparative": 0.07058823529411765,
+        "comparative": 0.07228915662650602,
         "calculation": [
           {
             "🌌": 2
@@ -5846,9 +5836,7 @@
           "sleep",
           "surrender",
           "lying",
-          "down",
-          "continue",
-          "unt"
+          "down"
         ],
         "words": [
           "🌌",

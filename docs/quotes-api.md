@@ -94,6 +94,4 @@ if (quote.sourceUrl) {
 console.log(metadata.countsByKind);
 ```
 
-## Human-readable docs
-
-The `/api/` page on the live site summarizes the same behavior and includes a small tester UI.
+See also `src/pages/api/quotes.ts` and `src/data/quotes.ts`.

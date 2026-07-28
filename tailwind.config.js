@@ -8,56 +8,56 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Primary colors (Red for shocking highlights)
+        // Electric marigold (Vastitas)
         primary: {
-          50: '#fef2f2',
-          100: '#fee2e2',
-          200: '#fecaca',
-          300: '#fca5a5',
-          400: '#f87171',
-          500: '#dc2626',
-          600: '#b91c1c',
-          700: '#991b1b',
-          800: '#7f1d1d',
-          900: '#450a0a',
+          50: '#FFF8E0',
+          100: '#FFEFAB',
+          200: '#FFE066',
+          300: '#FFD12E',
+          400: '#F8C000',
+          500: '#F8B000',
+          600: '#DC9400',
+          700: '#B87400',
+          800: '#8F5800',
+          900: '#5C3800',
         },
 
-        // Accent colors (Blue for links and secondary actions)
+        // UV violet (Vastitas reverse side)
         accent: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          200: '#bfdbfe',
-          300: '#93c5fd',
-          400: '#60a5fa',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
-          800: '#1e40af',
-          900: '#1e3a8a',
+          50: '#F3EDFF',
+          100: '#E4D6FF',
+          200: '#C9ADFF',
+          300: '#A87AFF',
+          400: '#8A52F0',
+          500: '#5828A8',
+          600: '#441C8C',
+          700: '#351570',
+          800: '#260F54',
+          900: '#180838',
         },
 
-        // Highlight colors (Yellow for shocking/curious elements)
+        // Bright marigold selection wash
         highlight: {
-          50: '#fffbeb',
-          100: '#fef3c7',
-          200: '#fde68a',
-          300: '#fcd34d',
-          400: '#fbbf24',
-          500: '#f59e0b',
-          600: '#d97706',
-          700: '#b45309',
-          800: '#92400e',
-          900: '#78350f',
+          50: '#FFFBEA',
+          100: '#FFF3C4',
+          200: '#FFE68A',
+          300: '#FFD64A',
+          400: '#FFD640',
+          500: '#FFC814',
+          600: '#E0A800',
+          700: '#B88600',
+          800: '#8F6800',
+          900: '#5C4200',
         },
 
-        // Status colors
+        // Status colors (functional only — not brand)
         success: {
           50: '#f0fdf4',
           100: '#dcfce7',
           200: '#bbf7d0',
           300: '#86efac',
           400: '#4ade80',
-          500: '#22c55e',
+          500: '#227846',
           600: '#16a34a',
           700: '#15803d',
           800: '#166534',
@@ -70,7 +70,7 @@ export default {
           200: '#fde68a',
           300: '#fcd34d',
           400: '#fbbf24',
-          500: '#f59e0b',
+          500: '#8c6e1e',
           600: '#d97706',
           700: '#b45309',
           800: '#92400e',
@@ -78,30 +78,30 @@ export default {
         },
 
         error: {
-          50: '#fef2f2',
-          100: '#fee2e2',
-          200: '#fecaca',
-          300: '#fca5a5',
-          400: '#f87171',
-          500: '#ef4444',
-          600: '#dc2626',
-          700: '#b91c1c',
-          800: '#991b1b',
-          900: '#7f1d1d',
+          50: '#fafafa',
+          100: '#f5f5f5',
+          200: '#e5e5e5',
+          300: '#d4d4d4',
+          400: '#a3a3a3',
+          500: '#8c2828',
+          600: '#737373',
+          700: '#404040',
+          800: '#262626',
+          900: '#0a0a0a',
         },
 
-        // Neutral colors
+        // Cool gray neutrals
         neutral: {
-          50: '#f8fafc',
-          100: '#f1f5f9',
-          200: '#e2e8f0',
-          300: '#cbd5e1',
-          400: '#94a3b8',
-          500: '#64748b',
-          600: '#475569',
-          700: '#334155',
-          800: '#1e293b',
-          900: '#0f172a',
+          50: '#fafafa',
+          100: '#f5f5f5',
+          200: '#e5e5e5',
+          300: '#d4d4d4',
+          400: '#a3a3a3',
+          500: '#737373',
+          600: '#525252',
+          700: '#404040',
+          800: '#262626',
+          900: '#0a0a0a',
         },
 
         // Background colors using CSS variables
@@ -140,33 +140,36 @@ export default {
         '6xl': ['4.5rem', { lineHeight: '1', letterSpacing: '-0.03em' }],
       },
       spacing: {
-        // Vertical rhythm system
-        section: '4rem', // 64px - Major section spacing
-        block: '2rem', // 32px - Block-level spacing
-        element: '1rem', // 16px - Element-level spacing
-        content: '0.75rem', // 12px - Content-level spacing
-        tight: '0.375rem', // 6px  - Tight spacing
-
-        // Legacy spacing (keep for backward compatibility)
-        xs: '0.25rem',
-        sm: '0.5rem',
-        md: '1rem',
-        lg: '1.5rem',
-        xl: '2rem',
-        '2xl': '3rem',
-        '3xl': '4rem',
-        '4xl': '6rem',
-        '5xl': '8rem',
+        // Vertical rhythm system (named tokens — do NOT reuse sm/md/xl/2xl/3xl here;
+        // in Tailwind v4 those keys also drive max-w-* and would crush max-w-3xl to 4rem)
+        section: '4rem',
+        block: '2rem',
+        element: '1rem',
+        content: '0.75rem',
+        tight: '0.375rem',
       },
       maxWidth: {
-        // Content widths
-        prose: '65ch', // Optimal reading width
-        'prose-wide': '85ch', // Wider content area
+        // Restore default reading widths (must be explicit after custom spacing history)
+        xs: '20rem',
+        sm: '24rem',
+        md: '28rem',
+        lg: '32rem',
+        xl: '36rem',
+        '2xl': '42rem',
+        '3xl': '48rem',
+        '4xl': '56rem',
+        '5xl': '64rem',
+        '6xl': '72rem',
+        '7xl': '80rem',
 
-        // Layout containers - optimized for full-width layouts
-        container: '1400px', // Increased from 1280px for better full-width experience
-        'container-narrow': '1024px', // For focused content
-        'container-wide': '1600px', // For full-width layouts with max constraint
+        // Content widths
+        prose: '65ch',
+        'prose-wide': '85ch',
+
+        // Layout containers
+        container: '1400px',
+        'container-narrow': '1024px',
+        'container-wide': '1600px',
 
         // Component widths
         card: '400px',
@@ -194,8 +197,8 @@ export default {
           css: {
             maxWidth: '65ch',
             color: 'rgb(var(--color-text))',
-            a: {
-              color: 'rgb(var(--color-primary))',
+    a: {
+              color: 'rgb(var(--color-accent))',
               textDecoration: 'none',
               fontWeight: '500',
               transition: 'color 0.2s ease',

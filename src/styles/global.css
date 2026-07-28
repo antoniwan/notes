@@ -1,14 +1,14 @@
 /*
-  Enhanced Theme System
-  =====================
-  
-  This stylesheet provides a sophisticated theme system with:
-  - Serious, professional color palette
-  - High contrast for better legibility
-  - Shocking/curious highlights for impact
-  - Optimized transitions and accessibility
-  - Reduced motion support
-  - Consolidated typography system
+  Monochrome + Shock Accents
+  ==========================
+
+  Black / white surfaces stay the canvas.
+  Shock hues sampled from site imagery (Vastitas marigold + UV violet;
+  About anime sky for selection wash):
+  - primary: electric marigold — CTAs, featured, progress
+  - accent: UV violet — links, focus rings
+  - highlight: bright marigold wash — text selection
+  - Type roles: Fraunces display, Literata prose, DM Sans UI
 */
 
 @import 'tailwindcss';
@@ -37,12 +37,21 @@
 }
 
 /* Component layer for reusable patterns */
+@utility text-display {
+  font-family: var(--font-heading);
+  /* Page H1 — readable, not billboard (was lg:text-5xl / 56px) */
+  @apply text-2xl leading-snug font-semibold tracking-tight md:text-3xl lg:text-[2.5rem];
+}
 @utility text-heading {
-  /* Enhanced typography utilities for better hierarchy */
-  @apply text-2xl leading-tight font-bold tracking-tight md:text-3xl lg:text-4xl;
+  font-family: var(--font-heading);
+  @apply text-xl leading-tight font-semibold tracking-tight md:text-2xl lg:text-3xl;
 }
 @utility text-body-large {
   @apply text-lg leading-relaxed md:text-xl;
+}
+@utility text-ui {
+  font-family: var(--font-sans);
+  @apply text-sm leading-snug font-medium tracking-normal;
 }
 @utility animate-fade-up {
   animation: fade-up 0.3s ease forwards;
@@ -78,20 +87,17 @@
   animation-delay: 0.5s;
 }
 @utility btn-primary {
-  /* Button utilities */
-  @apply inline-flex items-center gap-2 rounded-lg bg-[rgb(var(--color-primary))] px-4 py-2 font-semibold text-white transition-colors hover:bg-[rgb(var(--color-primary-hover))];
+  /* Button utilities — ink fill with contrasting label */
+  @apply inline-flex items-center gap-2 rounded-[var(--radius-md)] bg-[rgb(var(--color-primary))] px-4 py-2 font-semibold text-[rgb(var(--color-on-primary))] transition-colors hover:bg-[rgb(var(--color-primary-hover))];
 }
 @utility btn-secondary {
-  @apply inline-flex items-center gap-2 rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] px-4 py-2 font-medium text-[rgb(var(--color-text))] transition-colors hover:bg-[rgb(var(--color-bg-alt))]/80;
+  @apply inline-flex items-center gap-2 rounded-[var(--radius-md)] border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] px-4 py-2 font-medium text-[rgb(var(--color-text))] transition-colors hover:bg-[rgb(var(--color-surface-2))];
 }
 @utility btn-accent {
-  @apply inline-flex items-center gap-2 rounded-lg bg-[rgb(var(--color-accent))] px-4 py-2 font-semibold text-white transition-colors hover:bg-[rgb(var(--color-accent-hover))];
-}
-@utility btn-highlight {
-  @apply inline-flex items-center gap-2 rounded-lg bg-[rgb(var(--color-highlight))] px-4 py-2 font-bold text-[rgb(var(--color-text))] transition-colors hover:bg-[rgb(var(--color-highlight))]/90;
+  @apply inline-flex items-center gap-2 rounded-[var(--radius-md)] bg-[rgb(var(--color-accent))] px-4 py-2 font-semibold text-[rgb(var(--color-on-accent))] transition-colors hover:bg-[rgb(var(--color-accent-hover))];
 }
 @utility btn-outline {
-  @apply inline-flex items-center gap-2 rounded-lg border border-[rgb(var(--color-border))] bg-transparent px-4 py-2 font-medium text-[rgb(var(--color-text))] transition-colors hover:bg-[rgb(var(--color-bg-alt))];
+  @apply inline-flex items-center gap-2 rounded-[var(--radius-md)] border border-[rgb(var(--color-border))] bg-transparent px-4 py-2 font-medium text-[rgb(var(--color-text))] transition-colors hover:bg-[rgb(var(--color-bg-alt))];
 }
 @utility link {
   /* Link utilities */
@@ -103,18 +109,14 @@
 @utility link-primary {
   @apply font-semibold text-[rgb(var(--color-primary))] transition-colors hover:text-[rgb(var(--color-primary-hover))];
 }
-@utility highlight-shock {
-  /* Highlight utilities for shocking/curious elements */
-  @apply rounded-sm bg-[rgb(var(--color-highlight))] px-2 py-1 font-bold text-[rgb(var(--color-text))];
-}
 @utility highlight-primary {
-  @apply rounded-sm bg-[rgb(var(--color-primary))] px-2 py-1 font-bold text-white;
+  @apply rounded-[var(--radius-sm)] bg-[rgb(var(--color-primary))] px-2 py-1 font-bold text-[rgb(var(--color-on-primary))];
 }
 @utility highlight-accent {
-  @apply rounded-sm bg-[rgb(var(--color-accent))] px-2 py-1 font-semibold text-white;
+  @apply rounded-[var(--radius-sm)] bg-[rgb(var(--color-accent))] px-2 py-1 font-semibold text-[rgb(var(--color-on-accent))];
 }
 @utility highlight-brain {
-  @apply rounded-sm bg-purple-600 px-2 py-1 font-semibold text-white;
+  @apply rounded-[var(--radius-sm)] bg-[rgb(var(--color-accent))] px-2 py-1 font-semibold text-[rgb(var(--color-on-accent))];
 }
 @utility status-success {
   /* Status utilities */
@@ -180,13 +182,13 @@
   }
 
   & .brain-science-content table {
-    background: linear-gradient(165deg, rgb(24 38 62) 0%, rgb(17 26 44) 100%);
+    background: rgb(var(--color-bg-alt));
     outline-color: rgb(var(--color-border) / 0.65);
-    box-shadow: inset 0 1px 0 0 rgb(255 255 255 / 0.05);
+    box-shadow: inset 0 1px 0 0 rgb(255 255 255 / 0.04);
   }
 
   & .brain-science-content thead {
-    background: linear-gradient(180deg, rgb(32 47 78) 0%, rgb(26 40 66) 100%);
+    background: rgb(var(--color-surface-2));
   }
 
   & .brain-science-content tbody tr:nth-child(even) td {
@@ -251,13 +253,13 @@
   }
 
   .dark & table {
-    background: linear-gradient(165deg, rgb(24 38 62) 0%, rgb(17 26 44) 100%);
+    background: rgb(var(--color-bg-alt));
     outline-color: rgb(var(--color-border) / 0.65);
-    box-shadow: inset 0 1px 0 0 rgb(255 255 255 / 0.05);
+    box-shadow: inset 0 1px 0 0 rgb(255 255 255 / 0.04);
   }
 
   .dark & thead {
-    background: linear-gradient(180deg, rgb(32 47 78) 0%, rgb(26 40 66) 100%);
+    background: rgb(var(--color-surface-2));
   }
 
   .dark & tbody tr:nth-child(even) td {
@@ -272,32 +274,34 @@
 /* Custom base styles */
 @layer base {
   :root {
-    /* Light theme colors - Serious & Professional */
+    /* Monochrome — light: white paper + ink */
     --color-bg: 255 255 255;
-    --color-bg-alt: 249 250 251;
-    --color-bg-secondary: 249 250 251;
-    --color-text: 17 24 39;
-    /* Very dark gray for maximum contrast */
-    --color-text-muted: 107 114 128;
-    /* Medium gray for secondary text */
-    --color-border: 209 213 219;
-    /* Light gray borders */
-    --color-primary: 220 38 38;
-    /* Bold red for shocking highlights */
-    --color-primary-hover: 185 28 28;
-    /* Darker red on hover */
-    --color-accent: 59 130 246;
-    /* Blue accent for links */
-    --color-accent-hover: 37 99 235;
-    /* Darker blue on hover */
-    --color-success: 34 197 94;
-    /* Green for success states */
-    --color-warning: 245 158 11;
-    /* Amber for warnings */
-    --color-error: 239 68 68;
-    /* Red for errors */
-    --color-highlight: 255 193 7;
-    /* Bright yellow for shocking highlights */
+    --color-bg-alt: 245 245 245;
+    --color-bg-secondary: 245 245 245;
+    --color-surface-1: 255 255 255;
+    --color-surface-2: 235 235 235;
+    --color-text: 10 10 10;
+    --color-text-muted: 100 100 100;
+    --color-border: 220 220 220;
+    /* Shock signals — marigold + UV violet (Vastitas) */
+    --color-primary: 248 176 0;
+    --color-primary-hover: 220 148 0;
+    --color-accent: 88 40 168;
+    --color-accent-hover: 68 28 140;
+    --color-on-primary: 10 10 10;
+    --color-on-accent: 255 255 255;
+    --color-success: 34 120 70;
+    --color-warning: 140 110 30;
+    --color-error: 140 40 40;
+    /* Selection / rare wash — marigold + About sky hint */
+    --color-highlight: 255 214 64;
+
+    /* Surfaces & elevation */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.05), 0 4px 12px rgb(0 0 0 / 0.04);
+    --shadow-lift: 0 4px 16px rgb(0 0 0 / 0.08);
 
     /* Line heights */
     --leading-tight: 1.25;
@@ -317,31 +321,27 @@
   }
 
   .dark {
-    --color-bg: 3 7 18;
-    --color-bg-alt: 20 30 50;
-    --color-bg-secondary: 20 30 50;
-    --color-text: 255 255 255;
-    /* Pure white for maximum contrast */
-    --color-text-muted: 200 210 220;
-    /* Lighter gray for better readability */
-    --color-border: 71 85 105;
-    /* Lighter border for better visibility */
-    --color-primary: 239 68 68;
-    /* Bright red for shocking highlights */
-    --color-primary-hover: 220 38 38;
-    /* Slightly darker red on hover */
-    --color-accent: 96 165 250;
-    /* Blue accent for links */
-    --color-accent-hover: 147 197 253;
-    /* Lighter blue on hover */
-    --color-success: 74 222 128;
-    /* Bright green for success states */
-    --color-warning: 251 191 36;
-    /* Bright amber for warnings */
-    --color-error: 248 113 113;
-    /* Bright red for errors */
-    --color-highlight: 255 213 0;
-    /* Bright yellow for shocking highlights */
+    /* Monochrome — dark: black canvas + white ink */
+    --color-bg: 10 10 10;
+    --color-bg-alt: 24 24 24;
+    --color-bg-secondary: 24 24 24;
+    --color-surface-1: 10 10 10;
+    --color-surface-2: 38 38 38;
+    --color-text: 250 250 250;
+    --color-text-muted: 160 160 160;
+    --color-border: 55 55 55;
+    --color-primary: 255 196 20;
+    --color-primary-hover: 255 214 64;
+    --color-accent: 186 150 255;
+    --color-accent-hover: 208 180 255;
+    --color-on-primary: 10 10 10;
+    --color-on-accent: 10 10 10;
+    --color-success: 90 190 130;
+    --color-warning: 210 180 90;
+    --color-error: 220 120 120;
+    --color-highlight: 255 196 20;
+    --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.45), 0 4px 14px rgb(0 0 0 / 0.35);
+    --shadow-lift: 0 6px 20px rgb(0 0 0 / 0.5);
   }
 
   /* Base styles */
@@ -570,7 +570,7 @@
 
   /* Selection */
   ::selection {
-    @apply bg-[rgb(var(--color-highlight))]/30;
+    @apply bg-[rgb(var(--color-highlight))]/55 text-[rgb(var(--color-text))];
   }
 
   /* Focus outline */
@@ -748,6 +748,11 @@
   max-width: 72ch !important;
   margin-left: auto !important;
   margin-right: auto !important;
+  font-family: var(--font-serif);
+}
+
+.post-prose :where(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--font-heading);
 }
 
 /* Floated MDX verdict: allow fixed max width alongside .prose * { max-width: 100% } */

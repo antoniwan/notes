@@ -22,8 +22,8 @@ const chartData = JSON.parse(
     datasets: datasets.map((ds) => ({
       label: ds.label || '',
       data: ds.data || [],
-      backgroundColor: ds.backgroundColor || 'rgba(59, 130, 246, 0.6)',
-      borderColor: ds.borderColor || 'rgb(59, 130, 246)',
+      backgroundColor: ds.backgroundColor || null,
+      borderColor: ds.borderColor || null,
       pointRadius: ds.pointRadius,
     })),
     xAxisLabel: xAxisLabel || '',
@@ -41,7 +41,7 @@ const isDev = import.meta.env.DEV;
     )
   }
   <div
-    class="relative h-64 w-full rounded-xl border border-[rgb(var(--color-border))]/45 bg-[rgb(var(--color-bg-alt))]/90 p-2 shadow-xs ring-1 ring-[rgb(var(--color-text))]/5 md:h-80 md:p-3 dark:border-[rgb(var(--color-border))]/55 dark:bg-[linear-gradient(165deg,rgb(26_38_62)_0%,rgb(18_29_49)_100%)] dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.07)] dark:ring-white/6"
+    class="relative h-64 w-full rounded-[var(--radius-lg)] border border-[rgb(var(--color-border))]/50 bg-[rgb(var(--color-bg-alt))] p-2 md:h-80 md:p-3"
     id={`chart-container-${id}`}
     style="min-height: 256px;"
   >
@@ -107,7 +107,7 @@ const isDev = import.meta.env.DEV;
             if (!chartArea || chartArea.width <= 0 || chartArea.height <= 0) return;
             ctx.save();
             const rootDark = document.documentElement.classList.contains('dark');
-            ctx.fillStyle = rootDark ? 'rgba(51, 65, 85, 0.22)' : 'rgba(255, 255, 255, 0.65)';
+            ctx.fillStyle = rootDark ? 'rgba(38, 38, 38, 0.55)' : 'rgba(255, 255, 255, 0.72)';
             ctx.fillRect(chartArea.left, chartArea.top, chartArea.width, chartArea.height);
             ctx.restore();
           },
@@ -186,29 +186,28 @@ const isDev = import.meta.env.DEV;
       // Get theme based on light/dark mode
       const isDark = document.documentElement.classList.contains('dark');
       const chartTheme = {
-        text: isDark ? 'rgb(248, 250, 252)' : 'rgb(17, 24, 39)',
-        textMuted: isDark ? 'rgb(186, 205, 229)' : 'rgb(107, 114, 128)',
-        border: isDark ? 'rgba(148, 163, 184, 0.5)' : 'rgb(209, 213, 219)',
-        bgAlt: isDark ? 'rgb(30, 41, 59)' : 'rgb(249, 250, 251)',
+        text: isDark ? 'rgb(250, 250, 250)' : 'rgb(10, 10, 10)',
+        textMuted: isDark ? 'rgb(160, 160, 160)' : 'rgb(100, 100, 100)',
+        border: isDark ? 'rgba(255, 255, 255, 0.12)' : 'rgb(220, 220, 220)',
+        bgAlt: isDark ? 'rgb(24, 24, 24)' : 'rgb(245, 245, 245)',
       };
 
-      // Dataset color palette - brighter in dark mode for better visibility
       const datasetColors = isDark
         ? [
-            { border: 'rgb(147, 197, 253)', background: 'rgba(96, 165, 250, 0.72)' },
-            { border: 'rgb(254, 181, 178)', background: 'rgba(248, 113, 113, 0.72)' },
-            { border: 'rgb(166, 246, 166)', background: 'rgba(74, 222, 128, 0.72)' },
-            { border: 'rgb(253, 235, 154)', background: 'rgba(251, 191, 36, 0.72)' },
-            { border: 'rgb(219, 207, 253)', background: 'rgba(167, 139, 250, 0.72)' },
-            { border: 'rgb(251, 177, 217)', background: 'rgba(244, 114, 182, 0.72)' },
+            { border: 'rgb(186, 150, 255)', background: 'rgba(186, 150, 255, 0.72)' },
+            { border: 'rgb(255, 196, 20)', background: 'rgba(255, 196, 20, 0.72)' },
+            { border: 'rgb(220, 220, 220)', background: 'rgba(220, 220, 220, 0.55)' },
+            { border: 'rgb(160, 160, 160)', background: 'rgba(160, 160, 160, 0.5)' },
+            { border: 'rgb(208, 180, 255)', background: 'rgba(208, 180, 255, 0.65)' },
+            { border: 'rgb(255, 214, 64)', background: 'rgba(255, 214, 64, 0.65)' },
           ]
         : [
-            { border: 'rgba(59, 130, 246, 0.7)', background: 'rgba(59, 130, 246, 0.4)' }, // Blue
-            { border: 'rgba(220, 38, 38, 0.7)', background: 'rgba(220, 38, 38, 0.4)' }, // Red
-            { border: 'rgba(34, 197, 94, 0.7)', background: 'rgba(34, 197, 94, 0.4)' }, // Green
-            { border: 'rgba(245, 158, 11, 0.7)', background: 'rgba(245, 158, 11, 0.4)' }, // Amber
-            { border: 'rgba(147, 51, 234, 0.7)', background: 'rgba(147, 51, 234, 0.4)' }, // Purple
-            { border: 'rgba(236, 72, 153, 0.7)', background: 'rgba(236, 72, 153, 0.4)' }, // Pink
+            { border: 'rgba(88, 40, 168, 0.9)', background: 'rgba(88, 40, 168, 0.5)' },
+            { border: 'rgba(248, 176, 0, 0.95)', background: 'rgba(248, 176, 0, 0.5)' },
+            { border: 'rgba(40, 40, 40, 0.85)', background: 'rgba(40, 40, 40, 0.4)' },
+            { border: 'rgba(120, 120, 120, 0.9)', background: 'rgba(120, 120, 120, 0.4)' },
+            { border: 'rgba(68, 28, 140, 0.9)', background: 'rgba(68, 28, 140, 0.45)' },
+            { border: 'rgba(220, 148, 0, 0.9)', background: 'rgba(220, 148, 0, 0.45)' },
           ];
 
       // Calculate regression line if requested
@@ -245,7 +244,7 @@ const isDev = import.meta.env.DEV;
               regressionDatasets.push({
                 label: 'Regression Line',
                 data: regressionLine,
-                borderColor: 'rgba(220, 38, 38, 0.8)', // Red
+                borderColor: isDark ? 'rgba(220, 220, 220, 0.7)' : 'rgba(40, 40, 40, 0.55)',
                 backgroundColor: 'transparent',
                 pointRadius: 0,
                 borderWidth: 2,
@@ -262,7 +261,7 @@ const isDev = import.meta.env.DEV;
         if (ds.label === 'Regression Line') {
           return {
             ...ds,
-            borderColor: isDark ? 'rgb(253, 186, 180)' : 'rgba(220, 38, 38, 0.85)',
+            borderColor: isDark ? 'rgba(220, 220, 220, 0.75)' : 'rgba(40, 40, 40, 0.55)',
             backgroundColor: 'transparent',
             borderWidth: ds.borderWidth ?? (isDark ? 2.5 : 2),
             pointRadius: 0,
@@ -281,7 +280,7 @@ const isDev = import.meta.env.DEV;
         if (themed.pointRadius === undefined) {
           themed.pointRadius = isDark ? 5.5 : 4.5;
         }
-        themed.pointBorderColor = isDark ? 'rgba(15, 23, 42, 0.9)' : 'rgba(255, 255, 255, 0.95)';
+        themed.pointBorderColor = isDark ? 'rgba(10, 10, 10, 0.9)' : 'rgba(255, 255, 255, 0.95)';
         themed.pointBorderWidth = isDark ? 1.5 : 1.25;
         themed.pointHoverBorderColor = isDark ? 'rgb(248, 250, 252)' : 'rgb(15, 23, 42)';
         return themed;
@@ -383,7 +382,7 @@ const isDev = import.meta.env.DEV;
       if (loadingEl) {
         loadingEl.innerHTML = `
           <div class="flex flex-col items-center space-y-2 text-center p-4">
-            <p class="text-sm font-medium text-red-500">Failed to load chart</p>
+            <p class="text-sm font-medium text-[rgb(var(--color-text))]">Failed to load chart</p>
             <p class="text-xs text-body-muted">Data may be unavailable</p>
           </div>
         `;

@@ -9,46 +9,87 @@ const highlightsByCategory = await getHighlightsByCategory();
 
 <PageLayout
   title="Notes"
-  description="This is a season of execution: less narration, more action. I write from real life as a stay-at-home, remote-working father² and stepfather², practicing patience, temperance, and grounded leadership in public."
+  heading="A season of execution"
+  description="Less narration, more action. I write from real life as a stay-at-home, remote-working father² and stepfather² — practicing patience, temperance, and grounded leadership in public."
   path="/"
   structuredDataType="website"
-  showTitle={false}
+  contentClass="home-shell max-w-none"
 >
+  <nav class="home-paths" aria-label="Ways into the writing">
+    <a href="/guided-path" class="home-paths__link">Start here</a>
+    <span class="home-paths__sep" aria-hidden="true">·</span>
+    <a href="/category" class="home-paths__link">Browse topics</a>
+    <span class="home-paths__sep" aria-hidden="true">·</span>
+    <a href="/everything" class="home-paths__link">Everything</a>
+  </nav>
+
   <HighlightsMasonry posts={highlights} postsByCategory={highlightsByCategory} />
 
-  <p class="text-body-muted mt-10 text-[1.06rem] leading-relaxed">
-    If those highlights resonate, keep going. Start with context, follow a theme, or read everything
-    in sequence.
-  </p>
-  <ul class="my-6 space-y-2">
-    <li>
-      <a href="/guided-path" class="text-[rgb(var(--color-primary))] hover:underline"
-        ><strong>Start Here (Guided Path)</strong></a
-      >
-    </li>
-    <li>
-      <a href="/category" class="text-[rgb(var(--color-primary))] hover:underline"
-        ><strong>Browse by Topic (Categories)</strong></a
-      >
-    </li>
-    <li>
-      <a href="/everything" class="text-[rgb(var(--color-primary))] hover:underline"
-        ><strong>Everything (All Posts)</strong></a
-      >
-    </li>
-  </ul>
-
-  <h2 class="mt-12">Why this space exists right now</h2>
-
-  <p>
-    This space keeps me accountable to what I claim to value. I use it to document the gap between
-    what I know and what I actually do, then close that gap in public and in private, even when
-    nobody is watching.
-  </p>
-
-  <p>
-    I also write for fun. This is a valve for pressure, a creative output, and in many ways, art.
-    You will still find experiments and unfinished thoughts here. The difference is the standard:
-    less performance, more practice.
-  </p>
+  <section class="home-why" aria-labelledby="home-why-heading">
+    <h2 id="home-why-heading">Why this space exists right now</h2>
+    <p>
+      This space keeps me accountable to what I claim to value. I use it to document the gap between
+      what I know and what I actually do, then close that gap in public and in private, even when
+      nobody is watching.
+    </p>
+    <p>
+      I also write for fun. This is a valve for pressure, a creative output, and in many ways, art.
+      You will still find experiments and unfinished thoughts here. The difference is the standard:
+      less performance, more practice.
+    </p>
+  </section>
 </PageLayout>
+
+<style>
+  .home-paths {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 0.15rem;
+    margin: 0.15rem 0 0.25rem;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .home-paths__link {
+    color: rgb(var(--color-text));
+    font-weight: 600;
+    text-decoration: none;
+    text-underline-offset: 0.2em;
+  }
+
+  .home-paths__link:hover {
+    color: rgb(var(--color-accent));
+    text-decoration: underline;
+  }
+
+  .home-paths__sep {
+    color: rgb(var(--color-text-muted));
+    opacity: 0.55;
+    padding: 0 0.55rem;
+    user-select: none;
+  }
+
+  .home-why {
+    margin-top: 3rem;
+    max-width: 42rem;
+  }
+
+  .home-why h2 {
+    font-family: var(--font-heading);
+    margin-top: 0;
+  }
+
+  .home-why p {
+    font-family: var(--font-serif);
+    font-size: clamp(1.02rem, 0.98rem + 0.2vw, 1.12rem);
+    line-height: 1.75;
+  }
+
+  @media (min-width: 768px) {
+    .home-why {
+      margin-top: 4rem;
+    }
+  }
+</style>

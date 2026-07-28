@@ -34,13 +34,9 @@ function getGrade(score: number, maxScore: number, minScore: number = 0): string
   return 'F';
 }
 
-// Get grade color for visual feedback
-function getGradeColor(grade: string): string {
-  if (grade.startsWith('A')) return 'text-green-500';
-  if (grade.startsWith('B')) return 'text-blue-500';
-  if (grade.startsWith('C')) return 'text-yellow-500';
-  if (grade.startsWith('D')) return 'text-orange-500';
-  return 'text-red-500';
+// Grade label styling — monochrome (no rainbow grade colors)
+function getGradeColor(_grade: string): string {
+  return 'text-[rgb(var(--color-text))]';
 }
 
 // Get all published posts
@@ -623,7 +619,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
       complexityDayScatter.datasets[0].data.length > 0 && (
         <div class="mb-8 md:mb-10 lg:mb-12">
           <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
-            📊 Complexity vs Day of Week
+            Complexity vs Day of Week
           </h2>
           <p class="text-body-muted mb-6 max-w-3xl text-sm">
             Flesch reading ease score distribution by day of week. Higher scores indicate easier
@@ -770,7 +766,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
     {/* Pattern Analysis */}
     <div class="mb-6 md:mb-8 lg:mb-10">
       <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-lg">
-        📊 Statistical Pattern Analysis
+        Statistical Pattern Analysis
       </h3>
       <p class="text-body-muted mb-4 text-xs">
         Identified patterns based on quantitative analysis. Confidence levels determined by
@@ -779,31 +775,13 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
         {
           patternInsights.map((insight, index) => (
-            <div class="rounded-lg bg-[rgb(var(--color-bg))] p-4">
+            <div class="rounded-lg border border-[rgb(var(--color-border))]/50 p-4">
               <div class="mb-3 flex items-center gap-3">
-                <div
-                  class={`text-lg font-bold ${
-                    index === 0
-                      ? 'text-yellow-500'
-                      : index === 1
-                        ? 'text-gray-400'
-                        : index === 2
-                          ? 'text-amber-600'
-                          : 'text-[rgb(var(--color-accent))]'
-                  }`}
-                >
-                  {index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : `#${index + 1}`}
+                <div class="text-body-muted font-mono text-xs tabular-nums">
+                  {index + 1}.
                 </div>
-                <span
-                  class={`rounded px-2 py-1 text-xs ${
-                    insight.confidence === 'High'
-                      ? 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400'
-                      : insight.confidence === 'Medium'
-                        ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400'
-                        : 'bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400'
-                  }`}
-                >
-                  {insight.confidence} Confidence
+                <span class="text-body-muted rounded-sm bg-[rgb(var(--color-bg-alt))] px-2 py-1 text-xs">
+                  {insight.confidence} confidence
                 </span>
               </div>
               <div class="mb-2 text-sm font-medium text-[rgb(var(--color-text))]">
@@ -819,7 +797,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
     {/* Day of Week Metrics */}
     <div class="mb-6 md:mb-8 lg:mb-10">
       <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-lg">
-        📊 Day of Week Metrics
+        Day of Week Metrics
       </h3>
       <p class="text-body-muted mb-4 text-xs">
         Quantitative metrics by day of week. Productivity = avg_word_count × post_count. Grades
@@ -901,7 +879,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
     {/* Seasonal Metrics */}
     <div class="mb-6 md:mb-8 lg:mb-10">
       <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-lg">
-        📊 Seasonal Metrics
+        Seasonal Metrics
       </h3>
       <p class="text-body-muted mb-4 text-xs">
         Quantitative metrics by month of year. Creativity = avg_word_count × avg_complexity. Grades
@@ -985,7 +963,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
     {/* Creative Cycle Metrics */}
     <div class="mb-8">
       <h3 class="mb-6 text-lg font-semibold text-[rgb(var(--color-text))]">
-        📊 Creative Cycle Phase Metrics
+        Creative Cycle Phase Metrics
       </h3>
       <p class="text-body-muted mb-4 text-xs">
         Metrics by creative cycle phase. Phases assigned sequentially: cycle_phase = post_index % 4.
@@ -1069,7 +1047,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
     {/* Tag Correlations */}
     <div class="mb-6 md:mb-8 lg:mb-10">
       <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-lg">
-        🔗 Tag Co-occurrence Analysis
+        Tag Co-occurrence Analysis
       </h3>
       <p class="text-body-muted mb-4 text-xs">
         Tag pairs that appear together frequently. Average word count calculated for posts
@@ -1081,22 +1059,12 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
           correlations.tagCombinations.map(([combo, data], index) => {
             const wordCountGrade = getGrade(data.avgWordCount, maxWordCount);
             return (
-              <div class="flex items-center justify-between rounded-lg bg-[rgb(var(--color-bg))] p-4">
-                <div class="flex items-center gap-4">
-                  <div
-                    class={`text-lg font-bold ${
-                      index === 0
-                        ? 'text-purple-500'
-                        : index === 1
-                          ? 'text-pink-500'
-                          : index === 2
-                            ? 'text-indigo-500'
-                            : 'text-[rgb(var(--color-accent))]'
-                    }`}
-                  >
-                    {index === 0 ? '🔗' : index === 1 ? '⚡' : index === 2 ? '💫' : `#${index + 1}`}
+              <div class="flex items-center justify-between gap-4 border-t border-[rgb(var(--color-border))]/40 py-3">
+                <div class="flex min-w-0 items-baseline gap-3">
+                  <div class="text-body-muted w-6 shrink-0 font-mono text-xs tabular-nums">
+                    {index + 1}.
                   </div>
-                  <div>
+                  <div class="min-w-0">
                     <div class="text-sm font-medium text-[rgb(var(--color-text))]">{combo}</div>
                     <div class="text-body-muted text-xs">
                       {data.count} posts with this combination
@@ -1130,7 +1098,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
     {/* High Word Count Posts */}
     <div class="mb-6 md:mb-8 lg:mb-10">
       <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-lg">
-        📊 Posts with Highest Word Count
+        Posts with Highest Word Count
       </h3>
       <p class="text-body-muted mb-4 text-xs">
         Posts ranked by word count. Pattern classification: Long-form (>1000 words) vs Short-form,
@@ -1141,27 +1109,17 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
           productivePatterns.map((post, index) => {
             const wordCountGrade = getGrade(post.wordCount, maxWordCount);
             return (
-              <div class="flex items-center justify-between rounded-lg bg-[rgb(var(--color-bg))] p-4">
-                <div class="flex items-center gap-4">
-                  <div
-                    class={`text-lg font-bold ${
-                      index === 0
-                        ? 'text-yellow-500'
-                        : index === 1
-                          ? 'text-gray-400'
-                          : index === 2
-                            ? 'text-amber-600'
-                            : 'text-[rgb(var(--color-accent))]'
-                    }`}
-                  >
-                    {index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : `#${index + 1}`}
+              <div class="flex items-center justify-between gap-4 border-t border-[rgb(var(--color-border))]/40 py-3">
+                <div class="flex min-w-0 items-baseline gap-3">
+                  <div class="text-body-muted w-6 shrink-0 font-mono text-xs tabular-nums">
+                    {index + 1}.
                   </div>
-                  <div>
+                  <div class="min-w-0">
                     <div class="text-sm font-medium text-[rgb(var(--color-text))]">
                       {post.title}
                     </div>
                     <div class="text-body-muted text-xs">
-                      {format(post.date, 'MMM d, yyyy')} • {post.pattern}
+                      {format(post.date, 'MMM d, yyyy')} · {post.pattern}
                     </div>
                   </div>
                 </div>

@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {

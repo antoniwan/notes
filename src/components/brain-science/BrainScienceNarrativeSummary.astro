@@ -18,16 +18,18 @@ interface Props {
 
 const { insights, summary, sectionId = 'summary' } = Astro.props;
 
-function insightIcon(type: string) {
+function insightLabel(type: string) {
   switch (type) {
     case 'positive':
-      return '✅';
+      return 'Strength';
     case 'negative':
-      return '❌';
+      return 'Challenge';
     case 'warning':
-      return '⚠️';
+      return 'Watch';
+    case 'objective':
+      return 'Note';
     default:
-      return 'ℹ️';
+      return 'Note';
   }
 }
 ---
@@ -44,12 +46,12 @@ function insightIcon(type: string) {
     Narrative summary
   </h2>
   <div class="space-y-4">
-    <div class="space-y-2">
+    <div class="divide-y divide-[rgb(var(--color-border))]/40">
       {
         insights.map((insight) => (
-          <div class={`flex items-start gap-2 text-sm leading-relaxed ${insight.color}`}>
-            <span class="mt-0.5 shrink-0 select-none" aria-hidden="true">
-              {insightIcon(insight.type)}
+          <div class="flex items-start gap-3 py-3 text-sm leading-relaxed text-[rgb(var(--color-text))] first:pt-0">
+            <span class="text-body-muted mt-0.5 w-16 shrink-0 text-[0.65rem] font-medium tracking-wide uppercase">
+              {insightLabel(insight.type)}
             </span>
             <span class="min-w-0 flex-1" set:html={insight.text} />
           </div>

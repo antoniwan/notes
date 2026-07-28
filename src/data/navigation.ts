@@ -11,10 +11,11 @@ export interface NavigationItem {
   };
 }
 
+/** All hrefs omit trailing slashes to match `trailingSlash: 'never'`. */
 export const mainNavigation: NavigationItem[] = [
   { href: '/guided-path', label: 'Guided Path' },
   {
-    href: '/category/',
+    href: '/category',
     label: 'Categories',
     dropdown: {
       label: 'Browse Categories',
@@ -22,18 +23,18 @@ export const mainNavigation: NavigationItem[] = [
   },
   { href: '/everything', label: 'Posts' },
   {
-    href: '/tag/',
+    href: '/tag',
     label: 'Resources',
     dropdown: {
       label: 'Tools & Resources',
       items: [
         {
-          href: '/tag/',
+          href: '/tag',
           label: 'All Tags',
           icon: '🏷️',
         },
         {
-          href: '/brain-science/',
+          href: '/brain-science',
           label: 'Brain Science',
           icon: '🧠',
         },
@@ -46,11 +47,6 @@ export const mainNavigation: NavigationItem[] = [
           href: '/library/books',
           label: 'Book Library',
           icon: '📚',
-        },
-        {
-          href: '/api/',
-          label: 'Public API',
-          icon: '💬',
         },
       ],
     },

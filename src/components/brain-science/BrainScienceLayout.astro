@@ -1,41 +1,81 @@
 ---
 import Container from '../Container.astro';
 import BrainScienceNav from './BrainScienceNav.astro';
-import { getBrainSciencePage } from '../../data/brainScience';
 
 interface Props {
-  currentPage: string; // Path of current page
+  currentPage: string;
   title: string;
   description: string;
+  /** @deprecated Decorative emoji removed from chrome */
   emoji?: string;
   showNavLinks?: boolean;
 }
 
-const { currentPage, title, description, emoji, showNavLinks = true } = Astro.props;
-
-const pageInfo = getBrainSciencePage(currentPage);
-const displayEmoji = emoji || pageInfo?.emoji || '🧠';
+const { currentPage, title, description, showNavLinks = true } = Astro.props;
 ---
 
-<Container class="pt-6 md:pt-8">
-  <Container maxWidth="container" padding="none">
-    <BrainScienceNav currentPage={currentPage} showNavLinks={showNavLinks} />
+<Container class="pt-4 md:pt-6 lg:pt-8">
+  <BrainScienceNav currentPage={currentPage} showNavLinks={showNavLinks} />
 
-    <div class="py-4 md:py-6 lg:py-8">
-      {/* Header */}
-      <div class="mb-6 md:mb-8 lg:mb-10">
-        <h1 class="text-display mb-3 text-[rgb(var(--color-text))] md:mb-4 lg:mb-5">
-          {displayEmoji}
-          <span class="highlight-primary">{title}</span>
-        </h1>
-        <p class="text-body-large text-body-muted max-w-4xl leading-relaxed">
-          {description}
-        </p>
-      </div>
+  <header class="bs-header">
+    <h1 class="bs-header__title">{title}</h1>
+    <p class="bs-header__desc">{description}</p>
+  </header>
 
-      <div class="brain-science-content">
-        <slot />
-      </div>
-    </div>
-  </Container>
+  <div class="bs-content">
+    <slot />
+  </div>
 </Container>
+
+<style>
+  .bs-header {
+    margin: 1.5rem 0 2rem;
+    max-width: 48rem;
+  }
+
+  @media (min-width: 768px) {
+    .bs-header {
+      margin: 1.75rem 0 2.5rem;
+    }
+  }
+
+  .bs-header__title {
+    margin: 0 0 0.85rem;
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 1.25rem + 1vw, 2rem);
+    font-weight: 650;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: rgb(var(--color-text));
+  }
+
+  .bs-header__desc {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: rgb(var(--color-text-muted));
+  }
+
+  @media (min-width: 768px) {
+    .bs-header__desc {
+      font-size: 1.125rem;
+      line-height: 1.7;
+    }
+  }
+
+  .bs-content {
+    padding-bottom: 3rem;
+  }
+
+  @media (min-width: 768px) {
+    .bs-content {
+      padding-bottom: 4rem;
+    }
+  }
+
+  /* Tone down dense card grids inside analytics pages */
+  .bs-content :global(h2) {
+    font-family: var(--font-heading);
+    letter-spacing: -0.015em;
+  }
+</style>

@@ -14,12 +14,11 @@ interface Props {
 const { post, featured = false, compact = false, showFeaturedIndicator = true } = Astro.props;
 const { data } = post;
 
-// Calculate reading time from post content
 const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
 ---
 
 <article
-  class="interactive-card group relative overflow-hidden rounded-lg"
+  class="interactive-card postcard group relative overflow-hidden"
   class:list={{
     'featured-card': featured,
     'compact-card': compact,
@@ -27,149 +26,125 @@ const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
   role="article"
   data-post-slug={post.id}
 >
-  <!-- Read indicator -->
   <div class="read-indicator" data-post-slug={post.id}>
     <span class="read-dot"></span>
   </div>
 
-  <!-- Hero Image Container - Enhanced for consistent sizing and coverage -->
-  <div class="image-container relative overflow-hidden rounded-t-lg">
+  <div class="image-container relative overflow-hidden">
     {
       data.heroImage ? (
         <img
           src={data.heroImage}
           alt={data.imageAlt || data.title}
-          class="h-32 w-full object-cover object-center md:h-40"
+          class="postcard-image"
           loading="lazy"
         />
       ) : (
         <DefaultImage
           alt={data.title}
-          className="h-32 w-full object-cover object-center md:h-40"
+          className="postcard-image"
           loading="lazy"
         />
       )
     }
   </div>
 
-  <!-- Card content -->
-  <div class="relative p-4 sm:p-5 md:p-6">
-    <div class="space-y-2.5">
-      <!-- Header with metadata -->
-      <header class="space-y-2">
-        <div class="text-body-muted flex items-center gap-1.5 text-xs leading-relaxed">
-          <FormattedDate date={data.pubDate} />
-          <span
-            class="reading-time-display"
-            data-post-slug={post.id}
-            data-original-reading-time={readingTime || ''}
-          >
-            {
-              readingTime && (
-                <>
-                  <span aria-hidden="true">•</span>
-                  <span>{readingTime}</span>
-                </>
-              )
-            }
-          </span>
-          {
-            featured && showFeaturedIndicator && (
-              <>
-                <span aria-hidden="true">•</span>
-                <span
-                  class="text-sm font-semibold text-[rgb(var(--color-primary))]"
-                  role="img"
-                  aria-label="Featured post"
-                >
-                  🫀
-                </span>
-              </>
-            )
-          }
-        </div>
-
-        <h2
-          id={`postcard-title-${post.id}`}
-          class="postcard-title text-base leading-tight text-[rgb(var(--color-text))] sm:text-lg md:text-[1.25rem]"
-        >
-          <a href={`/p/${post.id}`} class="block" style="font-weight: 700 !important;">
-            {data.title}
-          </a>
-        </h2>
-      </header>
-
-      <!-- Description -->
+  <div class="postcard-body">
+    <div class="postcard-meta">
+      <FormattedDate date={data.pubDate} class="postcard-meta__item" />
       {
-        data.description && (
-          <p class="postcard-description text-body-muted mt-1.5 line-clamp-2 text-sm leading-relaxed sm:text-base md:line-clamp-2">
-            {data.description}
-          </p>
+        readingTime && (
+          <>
+            <span class="postcard-meta__sep" aria-hidden="true">
+              ·
+            </span>
+            <span
+              class="postcard-meta__item reading-time-display"
+              data-post-slug={post.id}
+              data-original-reading-time={readingTime}
+            >
+              {readingTime}
+            </span>
+          </>
+        )
+      }
+      {
+        featured && showFeaturedIndicator && (
+          <>
+            <span class="postcard-meta__sep" aria-hidden="true">
+              ·
+            </span>
+            <span
+              class="postcard-meta__item postcard-meta__featured"
+              role="img"
+              aria-label="Featured post"
+            >
+              Featured
+            </span>
+          </>
         )
       }
     </div>
+
+    <h2 id={`postcard-title-${post.id}`} class="postcard-title">
+      <a href={`/p/${post.id}`} class="postcard-link">{data.title}</a>
+    </h2>
+
+    {
+      data.description && (
+        <p class="postcard-description">{data.description}</p>
+      )
+    }
   </div>
 </article>
 
 <script>
-  // ReadStateService is initialized by ReadStateServiceInit component in BaseLayout
-  // Get the singleton instance
   const readStateService = (window as any).ReadStateService?.getInstance();
 
-  // Update indicators for all post cards
   function updateIndicators() {
-    if (!readStateService) return; // Exit early if service not available
+    if (!readStateService) return;
 
     document.querySelectorAll('.read-indicator').forEach((indicator) => {
       const postSlug = (indicator as HTMLElement).dataset.postSlug;
       const dot = indicator.querySelector('.read-dot');
 
-      if (postSlug && dot) {
-        const isRead = readStateService.isRead(postSlug);
-        const readingTimeElement = document.querySelector(
-          `.reading-time-display[data-post-slug="${postSlug}"]`,
-        );
+      if (!postSlug || !dot) return;
 
-        if (isRead) {
-          dot.classList.add('read');
-          indicator.setAttribute('title', 'Read');
+      const isRead = readStateService.isRead(postSlug);
+      const readingTimeElement = document.querySelector(
+        `.reading-time-display[data-post-slug="${postSlug}"]`,
+      ) as HTMLElement | null;
+      const readingTimeSep = readingTimeElement?.previousElementSibling as HTMLElement | null;
 
-          // Replace reading time with "Read" for read posts
-          if (readingTimeElement) {
-            let timeSpan = readingTimeElement.querySelector('span:last-child');
-            if (!timeSpan) {
-              const separator = document.createElement('span');
-              separator.setAttribute('aria-hidden', 'true');
-              separator.textContent = '•';
-              timeSpan = document.createElement('span');
-              readingTimeElement.appendChild(separator);
-              readingTimeElement.appendChild(timeSpan);
-            }
-            timeSpan.textContent = 'Read';
-            (readingTimeElement as HTMLElement).style.display = 'inline';
+      if (isRead) {
+        dot.classList.add('read');
+        indicator.setAttribute('title', 'Read');
+
+        if (readingTimeElement) {
+          readingTimeElement.textContent = 'Read';
+          readingTimeElement.hidden = false;
+          if (readingTimeSep?.classList.contains('postcard-meta__sep')) {
+            readingTimeSep.hidden = false;
           }
-        } else {
-          dot.classList.remove('read');
-          indicator.setAttribute('title', 'Unread');
+        }
+      } else {
+        dot.classList.remove('read');
+        indicator.setAttribute('title', 'Unread');
 
-          // Restore original reading time for unread posts
-          if (readingTimeElement) {
-            const originalReadingTime = readingTimeElement.getAttribute(
-              'data-original-reading-time',
-            );
-            if (originalReadingTime) {
-              let timeSpan = readingTimeElement.querySelector('span:last-child');
-              if (!timeSpan) {
-                const separator = document.createElement('span');
-                separator.setAttribute('aria-hidden', 'true');
-                separator.textContent = '•';
-                timeSpan = document.createElement('span');
-                readingTimeElement.appendChild(separator);
-                readingTimeElement.appendChild(timeSpan);
-              }
-              timeSpan.textContent = originalReadingTime;
-            } else {
-              (readingTimeElement as HTMLElement).style.display = 'none';
+        if (readingTimeElement) {
+          const originalReadingTime = readingTimeElement.getAttribute(
+            'data-original-reading-time',
+          );
+          if (originalReadingTime) {
+            readingTimeElement.textContent = originalReadingTime;
+            readingTimeElement.hidden = false;
+            if (readingTimeSep?.classList.contains('postcard-meta__sep')) {
+              readingTimeSep.hidden = false;
+            }
+          } else {
+            readingTimeElement.hidden = true;
+            if (readingTimeSep?.classList.contains('postcard-meta__sep')) {
+              readingTimeSep.hidden = true;
             }
           }
         }
@@ -177,14 +152,12 @@ const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
     });
   }
 
-  // Subscribe to all read state changes (only if service is available)
   let unsubscribe: (() => void) | null = null;
   if (readStateService) {
     unsubscribe = readStateService.subscribeToAll(() => {
       updateIndicators();
     });
 
-    // Initial update
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', updateIndicators);
     } else {
@@ -192,18 +165,14 @@ const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
     }
   }
 
-  // Cleanup on page unload
   window.addEventListener('beforeunload', () => {
-    if (unsubscribe) {
-      unsubscribe();
-    }
+    if (unsubscribe) unsubscribe();
   });
 </script>
 
 <style>
   @reference '../styles/global.css';
 
-  /* Read indicator styling */
   .read-indicator {
     position: absolute;
     top: 0.75rem;
@@ -216,225 +185,214 @@ const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
     display: block;
     width: 8px;
     height: 8px;
+    margin: 0;
+    padding: 0;
     border-radius: 50%;
     background: rgb(var(--color-border));
     border: 2px solid rgb(var(--color-bg));
-    transition: all 0.2s ease;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
   }
 
   .read-dot.read {
-    background: rgb(34, 197, 94);
-    border-color: rgb(34, 197, 94);
-    box-shadow: 0 0 0 2px rgb(34, 197, 94, 0.2);
+    background: rgb(var(--color-success));
+    border-color: rgb(var(--color-success));
+    box-shadow: 0 0 0 2px rgb(var(--color-success) / 0.22);
   }
 
-  /* Simplified card styling - isolated from parent context */
-  :global(.prose) article.interactive-card,
-  article.interactive-card {
+  /* Prose wrappers fight card typography — scoped resets stay intentional */
+  :global(.prose) article.postcard,
+  article.postcard {
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    border: 1px solid rgb(var(--color-border) / 0.45);
+    border-radius: var(--radius-lg);
+    background: rgb(var(--color-bg));
+    box-shadow: none;
     transition:
-      box-shadow 0.2s ease,
-      border-color 0.2s ease;
-    border: 1px solid rgb(var(--color-border) / 0.2) !important;
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1) !important;
-    /* Ensure consistent sizing regardless of parent */
-    width: 100% !important;
-    display: block !important;
-    /* Reset any prose-inherited styles */
-    margin: 0 !important;
-    max-width: 100% !important;
-    /* Override prose * styles */
-    box-sizing: border-box !important;
-    /* Ensure consistent background */
-    background: rgb(var(--color-bg)) !important;
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
   }
 
-  /* Isolate card content from prose typography - override prose styles and global h2 styles */
-  :global(.prose) article.interactive-card h2[id^='postcard-title-'],
-  :global(.prose) article.interactive-card .postcard-title,
-  article.interactive-card h2[id^='postcard-title-'],
-  article.interactive-card h2.postcard-title,
-  article.interactive-card .postcard-title {
-    margin: 0 !important;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-    font-size: 1rem !important;
-    line-height: 1.3 !important;
-    font-weight: 700 !important; /* Bold - override prose h2 and global h2 styles */
-    letter-spacing: normal !important;
+  :global(.prose) article.postcard :is(h1, h2, h3, h4, h5, h6, p, time, span, a, header),
+  article.postcard :is(h1, h2, h3, h4, h5, h6, p, time, span, a, header) {
+    margin: 0;
+    padding: 0;
   }
 
-  /* Responsive title sizes - override prose h2 styles */
+  article.postcard .postcard-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    padding: 1rem 1.1rem 1.15rem;
+  }
+
   @media (min-width: 640px) {
-    :global(.prose) article.interactive-card h2[id^='postcard-title-'],
-    :global(.prose) article.interactive-card .postcard-title,
-    article.interactive-card h2[id^='postcard-title-'],
-    article.interactive-card h2.postcard-title,
-    article.interactive-card .postcard-title {
-      font-size: 1.125rem !important;
-      font-weight: 700 !important;
+    article.postcard .postcard-body {
+      padding: 1.15rem 1.25rem 1.35rem;
+      gap: 0.65rem;
+    }
+  }
+
+  article.postcard .postcard-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 0.45rem;
+    row-gap: 0.15rem;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+    color: rgb(var(--color-text-muted));
+    text-transform: uppercase;
+  }
+
+  .postcard-meta__item,
+  .postcard-meta time {
+    display: inline;
+    color: rgb(var(--color-text-muted));
+    font-size: inherit;
+    line-height: inherit;
+    white-space: nowrap;
+  }
+
+  .postcard-meta__sep {
+    display: inline;
+    color: rgb(var(--color-text-muted));
+    opacity: 0.45;
+    user-select: none;
+    line-height: inherit;
+  }
+
+  .postcard-meta__featured {
+    font-weight: 700;
+    color: rgb(var(--color-primary));
+  }
+
+  article.postcard .postcard-title {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    line-height: 1.3;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    color: rgb(var(--color-text));
+  }
+
+  @media (min-width: 640px) {
+    article.postcard .postcard-title {
+      font-size: 1.2rem;
     }
   }
 
   @media (min-width: 768px) {
-    :global(.prose) article.interactive-card h2[id^='postcard-title-'],
-    :global(.prose) article.interactive-card .postcard-title,
-    article.interactive-card h2[id^='postcard-title-'],
-    article.interactive-card h2.postcard-title,
-    article.interactive-card .postcard-title {
-      font-size: 1.25rem !important;
-      font-weight: 700 !important;
+    article.postcard .postcard-title {
+      font-size: 1.28rem;
     }
   }
 
-  :global(.prose) article.interactive-card .postcard-description,
-  article.interactive-card .postcard-description {
-    margin: 0 !important;
-    margin-top: 0.5rem !important;
-    margin-bottom: 0 !important;
-    font-size: 0.875rem !important;
-    line-height: 1.6 !important;
+  article.postcard .postcard-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    font-weight: inherit;
   }
 
-  /* Responsive description sizes */
-  @media (min-width: 640px) {
-    :global(.prose) article.interactive-card .postcard-description,
-    article.interactive-card .postcard-description {
-      font-size: 1rem !important;
-    }
+  /* Stretch title link across the card for a single hit target */
+  article.postcard .postcard-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
   }
 
-  :global(.prose) article.interactive-card h2 a,
-  article.interactive-card h2 a {
-    text-decoration: none !important;
-    color: inherit !important;
+  article.postcard .postcard-description {
+    display: -webkit-box;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: rgb(var(--color-text-muted));
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
   }
 
-  /* Override prose * max-width for card content */
-  :global(.prose) article.interactive-card *,
-  article.interactive-card * {
-    max-width: 100% !important;
-  }
-
-  /* Enhanced image container styling for consistent sizing and coverage */
-  article.interactive-card .image-container {
+  article.postcard .image-container {
     position: relative;
     width: 100%;
-    height: 8rem; /* 128px - compact height for mobile */
+    aspect-ratio: 16 / 10;
+    margin: 0;
+    padding: 0;
     background: rgb(var(--color-bg-alt));
     overflow: hidden;
   }
 
-  /* Ensure images cover the entire container - isolate from prose img styles */
-  :global(.prose) article.interactive-card .image-container img,
-  article.interactive-card .image-container img {
-    /* Force override all prose img !important styles */
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    object-position: center !important;
-    display: block !important;
-    border: none !important;
-    outline: none !important;
-    margin: 0 !important;
-    max-width: 100% !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-    cursor: default !important;
-    overflow: visible !important;
+  article.postcard.compact-card .image-container {
+    aspect-ratio: 16 / 9;
   }
 
-  /* Responsive image heights */
-  @media (min-width: 768px) {
-    article.interactive-card .image-container {
-      height: 22rem;
-    }
+  :global(.prose) article.postcard .image-container img,
+  article.postcard .image-container img,
+  article.postcard .postcard-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border: none;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    box-shadow: none;
+    border-radius: 0;
+    transition: transform 0.45s var(--animation-easing-out);
   }
 
-  /* Simplified featured card styling */
   .featured-card {
-    border: 2px solid rgb(var(--color-primary) / 0.3);
-    box-shadow: 0 4px 12px -2px rgb(var(--color-primary) / 0.15);
+    border-color: rgb(var(--color-primary) / 0.55);
+    box-shadow: inset 3px 0 0 rgb(var(--color-primary));
   }
 
-  /* Compact card styling */
-  .compact-card {
-    @apply p-3 sm:p-4 md:p-6;
+  article.postcard.compact-card .postcard-body {
+    padding: 0.75rem 0.9rem 0.95rem;
   }
 
-  .compact-card .space-y-3 > * + * {
-    margin-top: 0.75rem;
+  article.postcard:hover {
+    border-color: rgb(var(--color-accent) / 0.35);
+    box-shadow: var(--shadow-soft);
   }
 
-  .compact-card .space-y-4 > * + * {
-    margin-top: 1rem;
+  article.postcard:hover .postcard-image {
+    transform: scale(1.03);
   }
 
-  .compact-card .space-y-5 > * + * {
-    margin-top: 1.25rem;
-  }
-
-  /* Simplified hover effects */
-  .group:hover {
-    box-shadow: 0 4px 12px -2px rgb(0 0 0 / 0.15);
-    border-color: rgb(var(--color-primary) / 0.3);
-  }
-
-  /* Enhanced focus states */
-  .group:focus-within {
-    outline: 2px solid rgb(var(--color-primary));
+  article.postcard:focus-within {
+    outline: 2px solid rgb(var(--color-accent));
     outline-offset: 2px;
-    border-radius: 0.75rem;
   }
 
-  /* Improved line heights for better readability */
-  .text-lg {
-    line-height: 1.4;
-  }
-
-  .text-xl {
-    line-height: 1.4;
-  }
-
-  .text-2xl {
-    line-height: 1.3;
-  }
-
-  .text-3xl {
-    line-height: 1.2;
-  }
-
-  /* Enhanced spacing between elements */
-  .space-y-3 > * + * {
-    margin-top: 0.75rem;
-  }
-
-  .space-y-4 > * + * {
-    margin-top: 1rem;
-  }
-
-  .space-y-5 > * + * {
-    margin-top: 1.25rem;
-  }
-
-  /* Ensure postcard grids have consistent spacing regardless of parent context */
   :global(.postcards-grid) {
-    /* Reset any prose or container inherited margins */
     margin-top: 0;
     margin-bottom: 0;
   }
 
-  /* Respect reduced motion preferences */
   @media (prefers-reduced-motion: reduce) {
-    article.interactive-card {
-      transition: none !important;
-    }
-
-    .group:hover {
-      transform: none;
-    }
-
+    article.postcard,
+    article.postcard .postcard-image,
     .read-dot {
-      transition: none !important;
+      transition: none;
+    }
+
+    article.postcard:hover .postcard-image {
+      transform: none;
     }
   }
 </style>

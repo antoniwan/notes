@@ -13,44 +13,38 @@ const { category, postCount, featured = false, compact = false } = Astro.props;
 
 <a
   href={`/category/${category.id}`}
-  class="interactive-card theme-transition group relative block overflow-hidden rounded-xl border border-[rgb(var(--color-border))]/20 bg-[rgb(var(--color-bg))] hover:border-[rgb(var(--color-accent))]/25 focus-visible:ring-2 focus-visible:ring-[rgb(var(--color-accent))] focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--color-bg))] focus-visible:outline-hidden"
+  class="category-card theme-transition group relative block overflow-hidden focus-visible:outline-hidden"
   class:list={{
     'category-card-featured': featured,
     'category-card-compact': compact,
   }}
 >
-  <div class:list={[{ 'p-4 md:p-6': compact, 'p-6 md:p-8': !compact }]}>
+  <div class:list={[{ 'p-4 md:p-5': compact, 'p-5 md:p-7': !compact }]}>
     <div class="flex items-start gap-4">
       <div class="flex-shrink-0">
-        <div
-          class="theme-transition flex h-12 w-12 items-center justify-center rounded-xl bg-[rgb(var(--color-accent))]/10 text-2xl md:h-14 md:w-14 md:text-3xl"
-          aria-hidden="true"
-        >
+        <div class="category-card__icon" aria-hidden="true">
           {category.icon}
         </div>
       </div>
 
       <div class="min-w-0 flex-1">
-        <h3
-          class="mt-0 mb-2 text-xl leading-tight font-semibold text-[rgb(var(--color-text))] md:text-2xl"
-        >
+        <h3 class="category-card__title">
           {category.name}
         </h3>
 
         {
           !compact && (
-            <p class="text-body-muted mt-0 mb-4 line-clamp-2 text-base leading-relaxed md:text-lg">
+            <p class="category-card__desc">
               {category.description}
             </p>
           )
         }
 
-        <div class="flex items-center justify-between gap-2">
-          <span class="text-body-muted text-sm font-medium md:text-base">
-            {postCount}
-            {postCount === 1 ? 'writing' : 'writings'}
+        <div class="category-card__meta">
+          <span>
+            {postCount} {postCount === 1 ? 'writing' : 'writings'}
           </span>
-          <span class="text-[rgb(var(--color-accent))]" aria-hidden="true">→</span>
+          <span class="category-card__arrow" aria-hidden="true">→</span>
         </div>
       </div>
     </div>
@@ -58,32 +52,117 @@ const { category, postCount, featured = false, compact = false } = Astro.props;
 </a>
 
 <style>
+  .category-card {
+    border: 1px solid rgb(var(--color-border) / 0.45);
+    border-radius: var(--radius-lg);
+    background: rgb(var(--color-bg));
+    box-shadow: none;
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .category-card:hover {
+    border-color: rgb(var(--color-accent) / 0.35);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .category-card:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 2px;
+  }
+
   .category-card-featured {
-    border-color: rgb(var(--color-accent) / 0.18);
-    box-shadow: 0 2px 10px -3px rgb(0 0 0 / 0.08);
+    border-color: rgb(var(--color-primary) / 0.55);
+    box-shadow: inset 3px 0 0 rgb(var(--color-primary));
   }
 
-  :global(.dark) .category-card-featured {
-    box-shadow: 0 2px 14px -2px rgb(0 0 0 / 0.35);
+  .category-card__icon {
+    display: flex;
+    height: 3rem;
+    width: 3rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    background: rgb(var(--color-accent) / 0.08);
+    font-size: 1.35rem;
+    transition: background-color 0.2s ease;
   }
 
-  h3 {
-    margin-top: 0 !important;
+  .category-card:hover .category-card__icon {
+    background: rgb(var(--color-primary) / 0.14);
   }
 
-  p {
-    margin-top: 0 !important;
+  @media (min-width: 768px) {
+    .category-card__icon {
+      height: 3.5rem;
+      width: 3.5rem;
+      font-size: 1.65rem;
+    }
   }
 
-  @media (max-width: 768px) {
-    .flex-shrink-0 .h-12 {
-      height: 2.5rem;
-      width: 2.5rem;
+  .category-card__title {
+    margin: 0 0 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    color: rgb(var(--color-text));
+  }
+
+  @media (min-width: 768px) {
+    .category-card__title {
+      font-size: 1.45rem;
+    }
+  }
+
+  .category-card__desc {
+    margin: 0 0 1rem;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: rgb(var(--color-text-muted));
+  }
+
+  @media (min-width: 768px) {
+    .category-card__desc {
+      font-size: 1.05rem;
+    }
+  }
+
+  .category-card__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgb(var(--color-text-muted));
+  }
+
+  .category-card__arrow {
+    color: rgb(var(--color-accent));
+    transition: transform 0.2s ease;
+  }
+
+  .category-card:hover .category-card__arrow {
+    transform: translateX(2px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .category-card,
+    .category-card__icon,
+    .category-card__arrow {
+      transition: none;
     }
 
-    .flex-shrink-0 .text-2xl {
-      font-size: 1.25rem;
-      line-height: 1.75rem;
+    .category-card:hover .category-card__arrow {
+      transform: none;
     }
   }
 </style>

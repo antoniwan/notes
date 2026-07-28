@@ -23,8 +23,8 @@ const chartData = JSON.parse(
     datasets: datasets.map((ds) => ({
       label: ds.label || '',
       data: ds.data || [],
-      borderColor: ds.borderColor || 'rgb(59, 130, 246)',
-      backgroundColor: ds.backgroundColor || 'rgba(59, 130, 246, 0.1)',
+      borderColor: ds.borderColor || null,
+      backgroundColor: ds.backgroundColor || null,
       borderWidth: ds.borderWidth,
     })),
     yAxisLabel: yAxisLabel || '',
@@ -40,7 +40,7 @@ const isDev = import.meta.env.DEV;
     )
   }
   <div
-    class="relative h-64 w-full rounded-xl border border-[rgb(var(--color-border))]/45 bg-[rgb(var(--color-bg-alt))]/90 p-2 shadow-xs ring-1 ring-[rgb(var(--color-text))]/5 md:h-80 md:p-3 dark:border-[rgb(var(--color-border))]/55 dark:bg-[linear-gradient(165deg,rgb(26_38_62)_0%,rgb(18_29_49)_100%)] dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.07)] dark:ring-white/6"
+    class="relative h-64 w-full rounded-[var(--radius-lg)] border border-[rgb(var(--color-border))]/50 bg-[rgb(var(--color-bg-alt))] p-2 md:h-80 md:p-3"
     id={`chart-container-${id}`}
     style="min-height: 256px;"
   >
@@ -106,7 +106,7 @@ const isDev = import.meta.env.DEV;
             if (!chartArea || chartArea.width <= 0 || chartArea.height <= 0) return;
             ctx.save();
             const rootDark = document.documentElement.classList.contains('dark');
-            ctx.fillStyle = rootDark ? 'rgba(51, 65, 85, 0.22)' : 'rgba(255, 255, 255, 0.65)';
+            ctx.fillStyle = rootDark ? 'rgba(38, 38, 38, 0.55)' : 'rgba(255, 255, 255, 0.72)';
             ctx.fillRect(chartArea.left, chartArea.top, chartArea.width, chartArea.height);
             ctx.restore();
           },
@@ -194,39 +194,55 @@ const isDev = import.meta.env.DEV;
       // Get theme based on light/dark mode
       const isDark = document.documentElement.classList.contains('dark');
       const chartTheme = {
-        text: isDark ? 'rgb(248, 250, 252)' : 'rgb(17, 24, 39)',
-        textMuted: isDark ? 'rgb(186, 205, 229)' : 'rgb(107, 114, 128)',
-        border: isDark ? 'rgba(148, 163, 184, 0.5)' : 'rgb(209, 213, 219)',
-        bgAlt: isDark ? 'rgb(30, 41, 59)' : 'rgb(249, 250, 251)',
+        text: isDark ? 'rgb(250, 250, 250)' : 'rgb(10, 10, 10)',
+        textMuted: isDark ? 'rgb(160, 160, 160)' : 'rgb(100, 100, 100)',
+        border: isDark ? 'rgba(255, 255, 255, 0.12)' : 'rgb(220, 220, 220)',
+        bgAlt: isDark ? 'rgb(24, 24, 24)' : 'rgb(245, 245, 245)',
       };
 
-      // Dataset color palette - brighter in dark mode, lighter fill for line charts
+      // Resolve CSS custom-property colors (canvas cannot parse rgb(var(--token)))
+      // Ignore legacy hardcoded blues/pinks/greens — use brand palette fallback instead
+      function resolvePaintColor(color, fallback) {
+        if (!color || typeof color !== 'string') return fallback;
+        if (!color.includes('var(--')) return fallback;
+        const token = color.match(/--[\w-]+/)?.[0];
+        if (!token) return fallback;
+        const raw = getComputedStyle(document.documentElement).getPropertyValue(token).trim();
+        if (!raw) return fallback;
+        const channels = raw.includes(',') ? raw : raw.split(/\s+/).join(', ');
+        const alphaMatch = color.match(/\/\s*([\d.]+)\s*\)|,\s*([\d.]+)\s*\)/);
+        const alpha = alphaMatch?.[1] || alphaMatch?.[2];
+        if (alpha != null) return `rgba(${channels}, ${alpha})`;
+        return `rgb(${channels})`;
+      }
+
+      // Brand + neutral only (violet / marigold / ink / gray)
       const datasetColors = isDark
         ? [
-            { border: 'rgba(96, 165, 250, 1)', background: 'rgba(96, 165, 250, 0.2)' }, // Blue
-            { border: 'rgba(248, 113, 113, 1)', background: 'rgba(248, 113, 113, 0.2)' }, // Red
-            { border: 'rgba(74, 222, 128, 1)', background: 'rgba(74, 222, 128, 0.2)' }, // Green
-            { border: 'rgba(251, 191, 36, 1)', background: 'rgba(251, 191, 36, 0.2)' }, // Amber
-            { border: 'rgba(167, 139, 250, 1)', background: 'rgba(167, 139, 250, 0.2)' }, // Purple
-            { border: 'rgba(244, 114, 182, 1)', background: 'rgba(244, 114, 182, 0.2)' }, // Pink
+            { border: 'rgba(186, 150, 255, 1)', background: 'rgba(186, 150, 255, 0.22)' },
+            { border: 'rgba(255, 196, 20, 1)', background: 'rgba(255, 196, 20, 0.2)' },
+            { border: 'rgba(220, 220, 220, 1)', background: 'rgba(220, 220, 220, 0.14)' },
+            { border: 'rgba(160, 160, 160, 1)', background: 'rgba(160, 160, 160, 0.12)' },
+            { border: 'rgba(208, 180, 255, 1)', background: 'rgba(208, 180, 255, 0.18)' },
+            { border: 'rgba(255, 214, 64, 1)', background: 'rgba(255, 214, 64, 0.16)' },
           ]
         : [
-            { border: 'rgba(59, 130, 246, 0.8)', background: 'rgba(59, 130, 246, 0.15)' }, // Blue
-            { border: 'rgba(220, 38, 38, 0.8)', background: 'rgba(220, 38, 38, 0.15)' }, // Red
-            { border: 'rgba(34, 197, 94, 0.8)', background: 'rgba(34, 197, 94, 0.15)' }, // Green
-            { border: 'rgba(245, 158, 11, 0.8)', background: 'rgba(245, 158, 11, 0.15)' }, // Amber
-            { border: 'rgba(147, 51, 234, 0.8)', background: 'rgba(147, 51, 234, 0.15)' }, // Purple
-            { border: 'rgba(236, 72, 153, 0.8)', background: 'rgba(236, 72, 153, 0.15)' }, // Pink
+            { border: 'rgba(88, 40, 168, 0.9)', background: 'rgba(88, 40, 168, 0.14)' },
+            { border: 'rgba(248, 176, 0, 0.95)', background: 'rgba(248, 176, 0, 0.18)' },
+            { border: 'rgba(40, 40, 40, 0.85)', background: 'rgba(40, 40, 40, 0.08)' },
+            { border: 'rgba(120, 120, 120, 0.9)', background: 'rgba(120, 120, 120, 0.1)' },
+            { border: 'rgba(68, 28, 140, 0.9)', background: 'rgba(68, 28, 140, 0.12)' },
+            { border: 'rgba(220, 148, 0, 0.9)', background: 'rgba(220, 148, 0, 0.14)' },
           ];
 
-      // Use explicit colors from props when set; otherwise theme palette by series index
+      // Use CSS-var colors from props when set; otherwise theme palette by series index
       const processedDatasets = datasets.map((ds, index) => {
         const colorIndex = index % datasetColors.length;
         const fallback = datasetColors[colorIndex];
         return {
           ...ds,
-          borderColor: ds.borderColor || fallback.border,
-          backgroundColor: ds.backgroundColor || fallback.background,
+          borderColor: resolvePaintColor(ds.borderColor, fallback.border),
+          backgroundColor: resolvePaintColor(ds.backgroundColor, fallback.background),
           borderWidth: ds.borderWidth ?? (isDark ? 3 : 2),
           tension: ds.tension ?? 0.4,
           fill: true,
@@ -320,7 +336,7 @@ const isDev = import.meta.env.DEV;
       if (loadingEl) {
         loadingEl.innerHTML = `
           <div class="flex flex-col items-center space-y-2 text-center p-4">
-            <p class="text-sm font-medium text-red-500">Failed to load chart</p>
+            <p class="text-sm font-medium text-[rgb(var(--color-text))]">Failed to load chart</p>
             <p class="text-xs text-body-muted">Data may be unavailable</p>
           </div>
         `;

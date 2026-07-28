@@ -269,19 +269,19 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'index');
         >
           <tbody>
             <tr class="border-b border-[rgb(var(--color-border))]/35">
-              <td class="py-2 pr-6 text-green-600 dark:text-green-400">Positive</td>
+              <td class="py-2 pr-6 text-[rgb(var(--color-text))]">Positive</td>
               <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]">
                 {objectiveMetrics.sentimentAnalysis.positive}
               </td>
             </tr>
             <tr class="border-b border-[rgb(var(--color-border))]/35">
-              <td class="py-2 pr-6 text-red-600 dark:text-red-400">Negative</td>
+              <td class="py-2 pr-6 text-[rgb(var(--color-text))]">Negative</td>
               <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]">
                 {objectiveMetrics.sentimentAnalysis.negative}
               </td>
             </tr>
             <tr class="border-b border-[rgb(var(--color-border))]/35">
-              <td class="py-2 pr-6 text-blue-600 dark:text-blue-400">Neutral</td>
+              <td class="py-2 pr-6 text-[rgb(var(--color-text))]">Neutral</td>
               <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]">
                 {objectiveMetrics.sentimentAnalysis.neutral}
               </td>
@@ -375,7 +375,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'index');
                     </span>
                   </div>
                   <span
-                    class={`text-[0.65rem] font-medium tracking-wide uppercase ${challenge.severity === 'high' ? 'text-red-600 dark:text-red-400' : challenge.severity === 'medium' ? 'text-amber-600 dark:text-amber-400' : 'text-blue-600 dark:text-blue-400'}`}
+                    class="text-body-muted text-[0.65rem] font-medium tracking-wide uppercase"
                   >
                     {challenge.severity}
                   </span>
@@ -472,8 +472,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'index');
           {
             maslowAnalysis.map((category) => (
               <div class="flex items-center justify-between gap-3 py-2.5">
-                <div class="flex min-w-0 items-center gap-2">
-                  <span class="shrink-0 text-base">{category.icon}</span>
+                <div class="min-w-0">
                   <span class="truncate text-sm font-medium text-[rgb(var(--color-text))]">
                     {category.title}
                   </span>

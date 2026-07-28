@@ -237,131 +237,183 @@ const { posts, chapterTitle, chapterId, defaultExpanded = true } = Astro.props;
 
 <style>
   .book-chapter {
-    margin-bottom: 1rem;
-    border: 1px solid rgb(var(--color-border));
-    border-radius: 12px;
+    margin-bottom: 1.25rem;
+    border: 1px solid rgb(var(--color-border) / 0.55);
+    border-radius: var(--radius-lg);
     overflow: hidden;
     background: rgb(var(--color-bg));
+  }
+
+  .book-chapter:last-child {
+    margin-bottom: 0;
   }
 
   .chapter-header {
     width: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
-    padding: 1rem 1.5rem;
+    gap: 1rem;
+    padding: 1.25rem 1.35rem;
     background: rgb(var(--color-bg-alt));
     border: none;
     cursor: pointer;
+    text-align: left;
     transition: background-color 0.2s ease;
   }
 
-  .chapter-header:hover {
-    background: rgb(var(--color-bg-alt));
+  @media (min-width: 768px) {
+    .chapter-header {
+      align-items: center;
+      padding: 1.35rem 1.75rem;
+    }
   }
 
-  .chapter-header:focus {
-    outline: 2px solid rgb(var(--color-primary));
+  .chapter-header:hover {
+    background: rgb(var(--color-surface-2));
+  }
+
+  .chapter-header:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
     outline-offset: -2px;
   }
 
   .chapter-title-section {
     display: flex;
-    align-items: center;
-    gap: 0.75rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.55rem;
     flex: 1;
+    min-width: 0;
+  }
+
+  @media (min-width: 768px) {
+    .chapter-title-section {
+      flex-direction: row;
+      align-items: center;
+      gap: 1.25rem;
+    }
   }
 
   .chapter-title {
-    font-size: 1.25rem;
-    font-weight: 600;
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.25;
     color: rgb(var(--color-text));
     margin: 0;
   }
 
+  @media (min-width: 768px) {
+    .chapter-title {
+      font-size: 1.5rem;
+    }
+  }
+
   .chapter-meta {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 1rem;
-    margin-left: auto;
+    gap: 0.75rem 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .chapter-meta {
+      margin-left: auto;
+    }
   }
 
   .post-count {
-    font-size: 0.875rem;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
     color: rgb(var(--color-text-muted));
-    font-weight: 400;
+    font-weight: 500;
   }
 
   .chapter-progress {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    min-width: 120px;
+    gap: 0.55rem;
+    min-width: 7rem;
   }
 
   .progress-bar {
-    width: 60px;
-    height: 6px;
+    width: 4.5rem;
+    height: 0.4rem;
     background: rgb(var(--color-border));
-    border-radius: 3px;
+    border-radius: 999px;
     overflow: hidden;
   }
 
   .progress-fill {
     height: 100%;
     background: rgb(var(--color-primary));
-    border-radius: 3px;
+    border-radius: 999px;
     width: 0%;
     transition: width 0.3s ease;
   }
 
   .chapter-progress.completed .progress-fill {
-    background: rgb(34, 197, 94);
+    background: rgb(var(--color-success));
   }
 
   .progress-text {
     font-size: 0.75rem;
-    font-weight: 500;
+    font-weight: 600;
     color: rgb(var(--color-text-muted));
-    min-width: 2rem;
+    min-width: 2.25rem;
     text-align: right;
+    font-variant-numeric: tabular-nums;
   }
 
   .chapter-progress.completed .progress-text {
-    color: rgb(34, 197, 94);
-    font-weight: 600;
+    color: rgb(var(--color-success));
   }
 
   .expand-icon {
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 1.35rem;
+    height: 1.35rem;
+    flex-shrink: 0;
+    margin-top: 0.2rem;
     color: rgb(var(--color-text-muted));
     transition: transform 0.2s ease;
   }
 
+  @media (min-width: 768px) {
+    .expand-icon {
+      margin-top: 0;
+    }
+  }
+
+  /* Grid collapse avoids clipping long seasons (old max-height: 2000px bug) */
   .chapter-content {
+    display: grid;
+    grid-template-rows: 1fr;
     transition:
-      max-height 0.3s ease,
-      opacity 0.3s ease;
-    max-height: 2000px;
+      grid-template-rows 0.28s ease,
+      opacity 0.2s ease;
     opacity: 1;
   }
 
   .chapter-content.collapsed {
-    max-height: 0;
+    grid-template-rows: 0fr;
     opacity: 0;
+  }
+
+  .chapter-content > * {
     overflow: hidden;
   }
 
   .post-list {
     list-style: none;
-    padding: 0;
+    padding: 0.35rem 0;
     margin: 0;
   }
 
   .post-item {
     margin: 0;
-    border-bottom: 1px solid rgb(var(--color-border));
+    border-bottom: 1px solid rgb(var(--color-border) / 0.55);
   }
 
   .post-item:last-child {
@@ -369,95 +421,139 @@ const { posts, chapterTitle, chapterId, defaultExpanded = true } = Astro.props;
   }
 
   .post-link {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 1rem 1.5rem;
+    display: grid;
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+    gap: 0.35rem 0.85rem;
+    align-items: start;
+    padding: 1.1rem 1.35rem;
     text-decoration: none;
     color: rgb(var(--color-text));
     transition: background-color 0.2s ease;
+  }
+
+  @media (min-width: 768px) {
+    .post-link {
+      grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 0.85rem 1.1rem;
+      padding: 1.2rem 1.75rem;
+    }
   }
 
   .post-link:hover {
     background: rgb(var(--color-bg-alt));
   }
 
+  .post-link:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: -2px;
+  }
+
   .post-number {
-    font-weight: 500;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
     color: rgb(var(--color-text-muted));
-    min-width: 2rem;
+    line-height: 1.5;
   }
 
   .post-content {
-    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 0.3rem;
+    min-width: 0;
   }
 
   .post-title {
-    font-weight: 400;
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+  }
+
+  @media (min-width: 768px) {
+    .post-title {
+      font-size: 1.1rem;
+    }
   }
 
   .post-category {
-    font-size: 0.75rem;
-    color: rgb(var(--color-primary));
-    font-weight: 500;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    color: rgb(var(--color-accent));
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
   }
 
   .post-status {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.55rem 0.75rem;
+    grid-column: 2;
+  }
+
+  @media (min-width: 768px) {
+    .post-status {
+      grid-column: auto;
+      justify-self: end;
+    }
   }
 
   .read-status {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    background: rgb(var(--color-bg-alt));
+    gap: 0.4rem;
+    padding: 0.2rem 0.65rem;
+    border-radius: var(--radius-sm);
+    background: transparent;
     border: 1px solid rgb(var(--color-border));
-    transition: all 0.2s ease;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease;
   }
 
   .read-status.read {
-    /* Relaxing green color instead of attention-grabbing red */
-    background: rgb(34, 197, 94, 0.1);
-    color: rgb(34, 197, 94);
-    border-color: rgb(34, 197, 94, 0.2);
+    background: rgb(var(--color-success) / 0.1);
+    color: rgb(var(--color-success));
+    border-color: rgb(var(--color-success) / 0.28);
   }
 
   .status-icon {
-    font-size: 0.875rem;
+    font-size: 0.8rem;
   }
 
   .status-text {
-    font-size: 0.75rem;
-    font-weight: 500;
+    font-size: 0.7rem;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
   }
 
   .reading-time {
-    font-size: 0.875rem;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
     color: rgb(var(--color-text-muted));
+    white-space: nowrap;
   }
 
   .empty-state {
     color: rgb(var(--color-text-muted));
     font-style: italic;
-    padding: 1.5rem;
+    padding: 1.75rem;
     text-align: center;
+    margin: 0;
   }
 
-  /* Respect reduced motion preferences */
   @media (prefers-reduced-motion: reduce) {
     .chapter-content,
-    .expand-icon {
+    .expand-icon,
+    .progress-fill,
+    .post-link,
+    .read-status {
       transition: none;
     }
   }

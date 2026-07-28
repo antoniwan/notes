@@ -11,10 +11,9 @@ const shelves = Array.from(new Set(books.map((book) => book.shelf))).sort((a, b)
   title="Library of Sources (Books)"
   description="A living, honest catalog of the books that shape these notes — what I'm reading now, what has formed my thinking, and what is quietly waiting on the shelf."
   path="/library"
+  mode="chrome"
 >
   <section>
-    <h2>All books</h2>
-
     <div class="library-filters">
       <label>
         <span>Status</span>
@@ -132,7 +131,7 @@ const shelves = Array.from(new Set(books.map((book) => book.shelf))).sort((a, b)
     flex-wrap: wrap;
     gap: 1rem;
     align-items: flex-end;
-    margin: 1rem 0 1.5rem;
+    margin: 0 0 1.5rem;
   }
 
   .library-filters label {

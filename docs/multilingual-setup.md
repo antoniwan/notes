@@ -76,7 +76,9 @@ The current language is automatically hidden from the toggle.
   - Discoverable via language toggle when `translationGroup` is set
   - Excluded from RSS/JSON feeds, `/everything`, category/tag indexes, Guided Path, and search (via `isListingEligiblePost` / `isFeedEligiblePost`)
 
-Spanish-only orphans without an English pair stay indexable with correct `lang="es"` metadata; add a `translationGroup` only when a real pair exists. If a Spanish post should appear in listings/feeds, set `featured: true`.
+**Guided Path** always excludes Spanish posts (`language: ["es"]`), even if `featured: true`. Read Spanish via the language toggle on the English note.
+
+Spanish-only orphans without an English pair stay indexable with correct `lang="es"` metadata; add a `translationGroup` only when a real pair exists. If a Spanish post should appear in category/tag/feed listings, set `featured: true` (Guided Path still omits it).
 
 ## Technical Implementation
 
