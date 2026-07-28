@@ -33,9 +33,24 @@ export interface MetaTags {
   ogType: 'website' | 'article';
 }
 
-// Generate canonical URL
+/** Strip trailing slashes except for the site root. */
+export function normalizeSeoPath(path: string): string {
+  if (!path || path === '/') return '/';
+  // Absolute URLs: normalize pathname only
+  if (/^https?:\/\//i.test(path)) {
+    const url = new URL(path);
+    url.pathname = url.pathname.length > 1 ? url.pathname.replace(/\/+$/, '') : '/';
+    return `${url.pathname}${url.search}${url.hash}`;
+  }
+  const [pathname, ...rest] = path.split('?');
+  const cleanPath = pathname.length > 1 ? pathname.replace(/\/+$/, '') : '/';
+  return rest.length ? `${cleanPath}?${rest.join('?')}` : cleanPath;
+}
+
+// Generate canonical URL (always absolute, no trailing slash except homepage)
 export function generateCanonicalUrl(path: string): string {
-  return new URL(path, SITE_URL).href;
+  const normalized = normalizeSeoPath(path);
+  return new URL(normalized, SITE_URL).href;
 }
 
 // Generate image URL for social/meta tags, with proper heroImage prioritization.
@@ -73,19 +88,18 @@ export function generateMetaTags(config: SEOConfig): MetaTags {
     robots = SEO_CONFIG.defaultRobots,
   } = config;
 
-  // Short brand in titles; full author name stays in author meta + schema.
+  // Special handling for homepage and different page types
   const isHomepage = path === '/' || path === '';
   const isAboutPage = path === '/about' || title.toLowerCase().includes('about antonio');
+  const titleSuffix = 'Notes by Antonio Rodriguez Martinez';
 
   let fullTitle: string;
   if (isHomepage) {
-    fullTitle = SITE_TITLE;
+    fullTitle = titleSuffix;
   } else if (isAboutPage) {
-    fullTitle = `About ${AUTHOR.name}`;
-  } else if (title === SITE_TITLE || title.endsWith(` | ${SITE_TITLE}`)) {
-    fullTitle = title;
+    fullTitle = 'About Antonio Rodriguez Martinez';
   } else {
-    fullTitle = `${title} | ${SITE_TITLE}`;
+    fullTitle = `${title} | ${titleSuffix}`;
   }
   const canonical = path ? generateCanonicalUrl(path) : '';
   const ogImage = generateImageUrl(heroImage);
@@ -106,6 +120,11 @@ export function generateMetaTags(config: SEOConfig): MetaTags {
     locale,
     ogType,
   };
+}
+
+export interface HreflangAlternate {
+  hreflang: string;
+  href: string;
 }
 
 // Generate keywords from tags and categories
@@ -146,12 +165,10 @@ export function generateRobotsTxt(sitemapUrl: string, additionalRules?: string[]
   const baseRules = [
     'User-agent: *',
     'Allow: /',
-    'Disallow: /api/',
-    'Disallow: /admin/',
-    'Disallow: /private/',
-    'Disallow: /*.json$',
-    'Disallow: /*.xml$',
-    'Crawl-delay: 1',
+    'Disallow: /test-theme',
+    'Disallow: /tag-management',
+    'Disallow: /temp/',
+    'Disallow: /dev/',
     `Sitemap: ${sitemapUrl}`,
   ];
 

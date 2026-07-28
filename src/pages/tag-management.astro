@@ -41,6 +41,7 @@ const nonPreferredTags = sortedTags.filter(([tag]) => !PREFERRED_TAG_SET.has(tag
   title="Tag Management"
   description="Tag usage statistics and management insights"
   path="/tag-management"
+  robots="noindex, nofollow"
   structuredDataType="website"
 >
   <Container>
@@ -92,7 +93,7 @@ const nonPreferredTags = sortedTags.filter(([tag]) => !PREFERRED_TAG_SET.has(tag
                 <div class="flex items-center justify-between rounded-sm border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg))] p-3">
                   <div class="flex items-center gap-2">
                     <a
-                      href={`/tag/${tag}/`}
+                      href={`/tag/${tag}`}
                       class="font-medium text-[rgb(var(--color-accent))] hover:underline"
                     >
                       #{tag}
@@ -125,7 +126,7 @@ const nonPreferredTags = sortedTags.filter(([tag]) => !PREFERRED_TAG_SET.has(tag
                   <div class="rounded-sm border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg))] p-3">
                     <div class="mb-2 flex items-center justify-between">
                       <a
-                        href={`/p/${post.id}/`}
+                        href={`/p/${post.id}`}
                         class="line-clamp-1 font-medium text-[rgb(var(--color-accent))] hover:underline"
                       >
                         {post.data.title}

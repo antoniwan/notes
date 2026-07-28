@@ -106,7 +106,7 @@ export const toContentFormPreludeItems = (
   return sortContentFormItems(groupedItems).map(({ label, count }) => ({
     label,
     count,
-    href: `/tag/${encodeURIComponent(CONTENT_FORM_TARGET_SLUGS[label] ?? label)}/`,
+    href: `/tag/${encodeURIComponent(CONTENT_FORM_TARGET_SLUGS[label] ?? label)}`,
   }));
 };
 

@@ -11,7 +11,12 @@ import { getCategoryDisplayItems, getCategoryNameFromIds } from '../../utils/cat
 export const prerender = true;
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+  const posts = await getCollection('blog', ({ data }) => {
+    if (import.meta.env.PROD) {
+      return !data.draft && data.published !== false;
+    }
+    return true;
+  });
   return posts.map((post) => ({
     params: { slug: post.id },
     props: { post, allPosts: posts },
@@ -31,8 +36,8 @@ const minutesRead = post.data.minutesRead ?? calculateReadingTimeFromMarkdown(po
 // Auto-generate keywords from tags and categories
 const keywords = generateKeywords(post.data.tags || [], post.data.category || []);
 
-// Prefer authored imageAlt; fall back to title-based SEO helper
-const imageAlt = post.data.imageAlt || generateImageAlt(post.data.title);
+// Auto-generate image alt text
+const imageAlt = generateImageAlt(post.data.title);
 
 // Use author from post data or fall back to default author from consts
 const author = post.data.author || AUTHOR.name;

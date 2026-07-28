@@ -61,7 +61,7 @@ const alphabetical = [...withNotes].sort((a, b) => a.name.localeCompare(b.name))
                 {alphabetical.map((category) => (
                   <li class="m-0 p-0">
                     <a
-                      href={`/category/${category.id}/`}
+                      href={`/category/${category.id}`}
                       class="group inline-flex items-baseline gap-1.5 text-base text-[rgb(var(--color-accent))] no-underline transition-colors hover:text-[rgb(var(--color-accent-hover))] hover:underline focus-visible:ring-2 focus-visible:ring-[rgb(var(--color-accent))] focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--color-bg))] focus-visible:outline-hidden"
                     >
                       <span aria-hidden="true" class="opacity-90 select-none">

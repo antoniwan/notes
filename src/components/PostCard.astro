@@ -60,7 +60,7 @@ const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
         <div class="text-body-muted flex items-center gap-1.5 text-xs leading-relaxed">
           <FormattedDate date={data.pubDate} />
           <span
-            class="reading-time-display inline-flex items-center gap-1.5"
+            class="reading-time-display"
             data-post-slug={post.id}
             data-original-reading-time={readingTime || ''}
           >
@@ -93,7 +93,7 @@ const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
           id={`postcard-title-${post.id}`}
           class="postcard-title text-base leading-tight text-[rgb(var(--color-text))] sm:text-lg md:text-[1.25rem]"
         >
-          <a href={`/p/${post.id}/`} class="block" style="font-weight: 700 !important;">
+          <a href={`/p/${post.id}`} class="block" style="font-weight: 700 !important;">
             {data.title}
           </a>
         </h2>
@@ -146,8 +146,7 @@ const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
               readingTimeElement.appendChild(timeSpan);
             }
             timeSpan.textContent = 'Read';
-            // Keep inline-flex so gap between • and label is preserved
-            (readingTimeElement as HTMLElement).style.display = '';
+            (readingTimeElement as HTMLElement).style.display = 'inline';
           }
         } else {
           dot.classList.remove('read');
@@ -169,7 +168,6 @@ const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
                 readingTimeElement.appendChild(timeSpan);
               }
               timeSpan.textContent = originalReadingTime;
-              (readingTimeElement as HTMLElement).style.display = '';
             } else {
               (readingTimeElement as HTMLElement).style.display = 'none';
             }
