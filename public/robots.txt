@@ -1,9 +1,7 @@
 User-agent: *
 Allow: /
 
-# Utility / non-content surfaces
-Disallow: /test-theme
-Disallow: /tag-management
+# Non-content dirs (utility pages use meta noindex so Google can see the directive)
 Disallow: /temp/
 Disallow: /dev/
 

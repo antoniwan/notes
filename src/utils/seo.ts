@@ -165,10 +165,12 @@ export function generateRobotsTxt(sitemapUrl: string, additionalRules?: string[]
   const baseRules = [
     'User-agent: *',
     'Allow: /',
-    'Disallow: /test-theme',
-    'Disallow: /tag-management',
+    // Utility pages (/test-theme, /tag-management) use meta noindex instead of Disallow
+    // so crawlers can see and honor the robots directive.
     'Disallow: /temp/',
     'Disallow: /dev/',
+    'Allow: /rss.xml',
+    'Allow: /feed.json',
     `Sitemap: ${sitemapUrl}`,
   ];
 

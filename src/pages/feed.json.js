@@ -1,11 +1,10 @@
 import { getCollection } from 'astro:content';
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL, AUTHOR } from '../consts';
+import { isFeedEligiblePost } from '../utils/publishFilters';
 
 export async function GET() {
   const posts = await getCollection('blog');
-  const publishedPosts = posts.filter(
-    (post) => !post.data.draft && post.data.published !== false && post.data.pubDate <= new Date(),
-  );
+  const publishedPosts = posts.filter((post) => isFeedEligiblePost(post.data));
 
   // Sort by publication date (newest first)
   const sortedPosts = publishedPosts.sort(
@@ -46,8 +45,8 @@ export async function GET() {
       }
 
       return {
-        id: `${SITE_URL}/p/${post.id}/`,
-        url: `${SITE_URL}/p/${post.id}/`,
+        id: `${SITE_URL}/p/${post.id}`,
+        url: `${SITE_URL}/p/${post.id}`,
         title: post.data.title,
         content_html: fullContent,
         content_text: post.data.description,

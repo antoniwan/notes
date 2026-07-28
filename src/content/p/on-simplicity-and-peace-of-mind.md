@@ -50,7 +50,7 @@ I reassess:
 
 Maybe materially, yes. But in every other way —  I’m rich.
 
-I have so many tools. So much privilege in my experiences. I use mental abstractions to harness willpower, transmute anger, channel discomfort into growth. Sometimes, I just rest and chill — *guilt-free*.
+I have so many tools. So much privilege in my experiences. I use mental abstractions to harness willpower, transmute anger, channel discomfort into growth. Sometimes, I just rest and chill — _guilt-free_.
 
 > Am I broken because I need so little?
 

@@ -30,6 +30,12 @@ export interface BaseLayoutProps {
   type?: 'website' | 'article';
   robots?: string;
   hreflangAlternates?: Array<{ hreflang: string; href: string }>;
+  /** BCP 47 / HTML lang for the document (defaults to en). */
+  htmlLang?: 'en' | 'es';
+  /** Open Graph locale (defaults to en_US). */
+  locale?: string;
+  /** schema.org inLanguage value (defaults to en-US). */
+  inLanguage?: string;
   // Structured data specific
   structuredDataType?: 'website' | 'article' | 'category' | 'tag';
   structuredDataIdentifier?: string;
@@ -39,6 +45,8 @@ export interface BaseLayoutProps {
   hasComments?: boolean;
   featured?: boolean;
   draft?: boolean;
+  /** Approximate word count for Article JSON-LD when known. */
+  wordCount?: number;
   // PageHeader options
   showTitle?: boolean; // Whether to show the H1 title in PageHeader (default: true)
   // Reading progress

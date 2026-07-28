@@ -6,7 +6,11 @@ import { getAllTags } from '../data/tags';
 const existingTags = getAllTags();
 ---
 
-<PageLayout title="Page not found" description="A random line from the quote archive.">
+<PageLayout
+  title="Page not found"
+  description="A random line from the quote archive."
+  robots="noindex, follow"
+>
   <div class="not-prose mx-auto max-w-3xl">
     <NotFoundQuote existingTags={existingTags} />
   </div>

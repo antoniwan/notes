@@ -6,14 +6,10 @@ import Container from '../../components/Container.astro';
 import { getCollection } from 'astro:content';
 import { getAllUniqueTags, getTagStatistics } from '../../utils/tagProcessing';
 import { canonicalizeTag } from '../../utils/tagVocabulary';
+import { isCollectionPublic } from '../../utils/publishFilters';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog', ({ data }) => {
-    if (import.meta.env.PROD) {
-      return !data.draft && data.published !== false;
-    }
-    return true;
-  });
+  const posts = await getCollection('blog', ({ data }) => isCollectionPublic(data));
   // Only build canonical tag pages that actually have posts.
   // Alias URLs are permanent-redirected via astro.config redirects.
   const tags = getAllUniqueTags(posts);
@@ -28,9 +24,7 @@ const { tag } = Astro.props;
 const canonicalTag = canonicalizeTag(tag);
 
 // Get all posts
-const posts = await getCollection('blog', ({ data }) => {
-  return import.meta.env.PROD ? !data.draft && data.published !== false : true;
-});
+const posts = await getCollection('blog', ({ data }) => isCollectionPublic(data));
 
 // Get tag statistics
 const { totalPosts, relatedTags } = getTagStatistics(canonicalTag, posts);

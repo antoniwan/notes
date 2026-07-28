@@ -11,6 +11,7 @@ import SocialShare from '../components/SocialShare.astro';
 import LanguageToggle from '../components/LanguageToggle.astro';
 import PostTocModal from '../components/post-toc/PostTocModal.astro';
 import { generateCanonicalUrl, normalizeSeoPath } from '../utils/seo';
+import { resolveContentLanguage } from '../utils/publishFilters';
 import type { BlogLayoutProps } from '../types/layout';
 
 interface Props extends BlogLayoutProps {}
@@ -39,22 +40,30 @@ const {
 const canonicalPath = normalizeSeoPath(path || Astro.url.pathname);
 const canonical = generateCanonicalUrl(canonicalPath);
 
-const hreflangAlternates =
-  translationData?.hasTranslations
-    ? [
-        ...translationData.translations.map((translation) => ({
-          hreflang: translation.language[0] || 'en',
-          href: generateCanonicalUrl(translation.path),
-        })),
-        {
-          hreflang: 'x-default',
-          href: generateCanonicalUrl(
-            translationData.translations.find((t) => t.language[0] === 'en')?.path ||
-              translationData.currentPath,
-          ),
-        },
-      ]
-    : undefined;
+const postLanguage = rest.currentPost?.data.language;
+const contentLanguage = resolveContentLanguage(postLanguage);
+const estimatedWordCount = (() => {
+  if (!minutesRead || typeof minutesRead !== 'string') return undefined;
+  const match = minutesRead.match(/(\d+)/);
+  // ~200 wpm reading estimate used only when body word count isn't passed in.
+  return match ? Number(match[1]) * 200 : undefined;
+})();
+
+const hreflangAlternates = translationData?.hasTranslations
+  ? [
+      ...translationData.translations.map((translation) => ({
+        hreflang: translation.language[0] || 'en',
+        href: generateCanonicalUrl(translation.path),
+      })),
+      {
+        hreflang: 'x-default',
+        href: generateCanonicalUrl(
+          translationData.translations.find((t) => t.language[0] === 'en')?.path ||
+            translationData.currentPath,
+        ),
+      },
+    ]
+  : undefined;
 
 // Use Astro's native post.id directly (no regex, no normalization)
 const postId = rest.currentPost?.id || '';
@@ -82,6 +91,10 @@ const primaryCategory = categoryItems[0] || null;
   featured={rest.featured}
   draft={rest.draft}
   postId={postId}
+  htmlLang={contentLanguage.htmlLang}
+  locale={contentLanguage.ogLocale}
+  inLanguage={contentLanguage.inLanguage}
+  wordCount={estimatedWordCount}
   {...rest}
   hreflangAlternates={hreflangAlternates}
 >

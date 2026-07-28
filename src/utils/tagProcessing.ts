@@ -7,6 +7,7 @@ import {
   type TagCategory,
 } from '../data/tags';
 import { canonicalizeTag, canonicalizeTags } from './tagVocabulary';
+import { isPublicPost } from './publishFilters';
 
 /**
  * Calculate tag statistics across all posts
@@ -235,8 +236,10 @@ export function findRelatedPosts(
   allPosts: CollectionEntry<'blog'>[],
   maxCount: number = 3,
 ): CollectionEntry<'blog'>[] {
-  // Filter out the current post and draft posts
-  const availablePosts = allPosts.filter((post) => post.id !== currentPost.id && !post.data.draft);
+  // Filter out the current post and non-public posts
+  const availablePosts = allPosts.filter(
+    (post) => post.id !== currentPost.id && isPublicPost(post.data, { includeFuture: true }),
+  );
 
   if (availablePosts.length === 0) return [];
 

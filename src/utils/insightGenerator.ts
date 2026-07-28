@@ -46,13 +46,7 @@ export interface DynamicInsight {
   color: string;
   weight: number; // 1-5 scale for importance
   category:
-    | 'sentiment'
-    | 'consistency'
-    | 'productivity'
-    | 'quality'
-    | 'challenges'
-    | 'growth'
-    | 'neutral';
+    'sentiment' | 'consistency' | 'productivity' | 'quality' | 'challenges' | 'growth' | 'neutral';
 }
 
 export function generateDynamicInsights(

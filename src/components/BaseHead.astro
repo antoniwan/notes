@@ -21,6 +21,7 @@ interface Props {
   type?: 'website' | 'article';
   robots?: string;
   hreflangAlternates?: Array<{ hreflang: string; href: string }>;
+  htmlLang?: 'en' | 'es';
 }
 
 const {
@@ -37,6 +38,7 @@ const {
   type,
   robots,
   hreflangAlternates = [],
+  htmlLang = 'en',
 } = Astro.props;
 
 // Generate optimized meta tags with proper heroImage prioritization
@@ -127,7 +129,7 @@ const updatedDateISO = updatedDate?.toISOString();
 <link rel="manifest" href={assetConfig.manifest} />
 
 <!-- Language & Generator -->
-<meta http-equiv="content-language" content="en" />
+<meta http-equiv="content-language" content={htmlLang} />
 <meta name="generator" content={Astro.generator} />
 
 <!-- Canonical URL -->

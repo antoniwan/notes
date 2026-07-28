@@ -6,12 +6,11 @@ import Container from '../components/Container.astro';
 import { getCollection } from 'astro:content';
 import { calculateTagStats } from '../utils/tagProcessing';
 import { PREFERRED_TAGS } from '../data/tagVocabulary';
+import { isCollectionPublic } from '../utils/publishFilters';
 const PREFERRED_TAG_SET = new Set<string>(PREFERRED_TAGS as readonly string[]);
 
 // Get all posts
-const posts = await getCollection('blog', ({ data }) => {
-  return import.meta.env.PROD ? !data.draft : true;
-});
+const posts = await getCollection('blog', ({ data }) => isCollectionPublic(data));
 
 // Calculate tag statistics
 const { tagCounts, tagWeights, totalTags, totalTagInstances } = calculateTagStats(posts);

@@ -8,11 +8,10 @@ import { getCollection } from 'astro:content';
 import { toContentFormPreludeItems } from '../../utils/tag/contentFormTags';
 import { calculateTagStats } from '../../utils/tagProcessing';
 import { canonicalizeTags } from '../../utils/tagVocabulary';
+import { isCollectionPublic } from '../../utils/publishFilters';
 
 // Get all posts and calculate tag counts
-const posts = await getCollection('blog', ({ data }) => {
-  return import.meta.env.PROD ? !data.draft : true;
-});
+const posts = await getCollection('blog', ({ data }) => isCollectionPublic(data));
 
 // Calculate tag counts (canonicalized through tag processing helpers)
 const { tagCounts } = calculateTagStats(posts);
@@ -35,7 +34,7 @@ const poemsFromRawTags = posts.reduce((count, post) => {
 }, 0);
 
 if (poemsFromRawTags > 0 && !contentFormPreludeItems.some((item) => item.label === 'poems')) {
-  contentFormPreludeItems.push({ label: 'poems', count: poemsFromRawTags, href: '/tag/poems/' });
+  contentFormPreludeItems.push({ label: 'poems', count: poemsFromRawTags, href: '/tag/poems' });
   contentFormPreludeItems.sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
 }
 

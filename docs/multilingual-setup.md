@@ -64,15 +64,18 @@ The current language is automatically hidden from the toggle.
 ### Main Listings Behavior
 
 - **Featured posts** (`featured: true`) appear in:
-  - Homepage post listings
-  - Category pages
+  - Homepage highlight masonry
+  - Category pages (as featured cards)
   - Tag pages
-  - RSS/JSON feeds
-- **Non-featured posts** (`featured: false`) are:
+- **Non-featured English posts** (`featured: false`, `language: ["en"]`) remain in:
+  - Category / tag / everything listings
+  - RSS/JSON feeds (primary-language feed content)
+- **Secondary-language translations** (`featured: false`, usually `language: ["es"]`) are:
   - Accessible via direct URL
-  - Discoverable via language toggle
-  - Hidden from main listings
-  - Excluded from feeds
+  - Discoverable via language toggle when `translationGroup` is set
+  - Excluded from RSS/JSON feeds to avoid duplicate-language feed noise
+
+Spanish-only orphans without an English pair stay indexable with correct `lang="es"` metadata; add a `translationGroup` only when a real pair exists.
 
 ## Technical Implementation
 

@@ -11,6 +11,7 @@ import {
 import { getTagWeight, MASLOW_CATEGORIES } from '../../data/tags';
 import { categories } from '../../data/categories';
 import type { CollectionEntry } from 'astro:content';
+import { isCollectionPublic } from '../publishFilters';
 
 export interface BaseMetrics {
   totalPosts: number;
@@ -82,9 +83,7 @@ export interface StreakMetrics {
  * Get all published blog posts
  */
 export async function getBrainSciencePosts(): Promise<CollectionEntry<'blog'>[]> {
-  const posts = await getCollection('blog', ({ data }) => {
-    return import.meta.env.PROD ? !data.draft && data.published !== false : true;
-  });
+  const posts = await getCollection('blog', ({ data }) => isCollectionPublic(data));
   return posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 }
 

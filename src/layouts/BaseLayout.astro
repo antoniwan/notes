@@ -44,6 +44,10 @@ const {
   tableOfContents,
   robots,
   hreflangAlternates,
+  htmlLang = 'en',
+  locale,
+  inLanguage = 'en-US',
+  wordCount,
 } = Astro.props;
 
 // Auto-generate keywords if not provided
@@ -71,11 +75,13 @@ const structuredData = generateStructuredData({
   hasComments,
   featured,
   draft,
+  inLanguage,
+  wordCount,
 });
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang={htmlLang} class="scroll-smooth">
   <head>
     <BaseHead
       title={title}
@@ -90,6 +96,8 @@ const structuredData = generateStructuredData({
       type={type}
       robots={robots}
       hreflangAlternates={hreflangAlternates}
+      locale={locale}
+      htmlLang={htmlLang}
     />
     <!-- Load Speed Insights asynchronously -->
     <SpeedInsights />

@@ -1,6 +1,46 @@
 {
   "redirects": [
     {
+      "source": "/p/it-isnt-too-much-pressure",
+      "destination": "https://notes.antoniwan.online/p/on-parental-pressure",
+      "permanent": true
+    },
+    {
+      "source": "/p/it-isnt-too-much-pressure/",
+      "destination": "https://notes.antoniwan.online/p/on-parental-pressure",
+      "permanent": true
+    },
+    {
+      "source": "/p/fasting-ground-flow",
+      "destination": "https://notes.antoniwan.online/p/fasting-metabolic-ritual",
+      "permanent": true
+    },
+    {
+      "source": "/p/fasting-ground-flow/",
+      "destination": "https://notes.antoniwan.online/p/fasting-metabolic-ritual",
+      "permanent": true
+    },
+    {
+      "source": "/p/core-values-freedom",
+      "destination": "https://notes.antoniwan.online/p/the-definition-and-practice-of-my-core-values-make-me-free",
+      "permanent": true
+    },
+    {
+      "source": "/p/core-values-freedom/",
+      "destination": "https://notes.antoniwan.online/p/the-definition-and-practice-of-my-core-values-make-me-free",
+      "permanent": true
+    },
+    {
+      "source": "/p/reflexion-palabras-transformacion",
+      "destination": "https://notes.antoniwan.online/tag/transformation",
+      "permanent": true
+    },
+    {
+      "source": "/p/reflexion-palabras-transformacion/",
+      "destination": "https://notes.antoniwan.online/tag/transformation",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "antoniwan.blog" }],
       "destination": "https://notes.antoniwan.online/:path*",
@@ -28,46 +68,6 @@
       "source": "/:path*",
       "has": [{ "type": "host", "value": "vault.antoniwan.online" }],
       "destination": "https://notes.antoniwan.online/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/p/it-isnt-too-much-pressure",
-      "destination": "/p/on-parental-pressure",
-      "permanent": true
-    },
-    {
-      "source": "/p/it-isnt-too-much-pressure/",
-      "destination": "/p/on-parental-pressure",
-      "permanent": true
-    },
-    {
-      "source": "/p/fasting-ground-flow",
-      "destination": "/p/fasting-metabolic-ritual",
-      "permanent": true
-    },
-    {
-      "source": "/p/fasting-ground-flow/",
-      "destination": "/p/fasting-metabolic-ritual",
-      "permanent": true
-    },
-    {
-      "source": "/p/core-values-freedom",
-      "destination": "/p/the-definition-and-practice-of-my-core-values-make-me-free",
-      "permanent": true
-    },
-    {
-      "source": "/p/core-values-freedom/",
-      "destination": "/p/the-definition-and-practice-of-my-core-values-make-me-free",
-      "permanent": true
-    },
-    {
-      "source": "/p/reflexion-palabras-transformacion",
-      "destination": "/tag/transformation",
-      "permanent": true
-    },
-    {
-      "source": "/p/reflexion-palabras-transformacion/",
-      "destination": "/tag/transformation",
       "permanent": true
     }
   ],

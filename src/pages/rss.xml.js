@@ -1,12 +1,11 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL, AUTHOR } from '../consts';
+import { isFeedEligiblePost } from '../utils/publishFilters';
 
 export async function GET() {
   const posts = await getCollection('blog');
-  const publishedPosts = posts.filter(
-    (post) => !post.data.draft && post.data.published !== false && post.data.pubDate <= new Date(),
-  );
+  const publishedPosts = posts.filter((post) => isFeedEligiblePost(post.data));
 
   // Sort by publication date (newest first)
   const sortedPosts = publishedPosts.sort(
@@ -51,8 +50,8 @@ export async function GET() {
         description: post.data.description,
         pubDate: post.data.pubDate,
         updatedDate: post.data.updatedDate,
-        link: `${SITE_URL}/p/${post.id}/`,
-        guid: `${SITE_URL}/p/${post.id}/`,
+        link: `${SITE_URL}/p/${post.id}`,
+        guid: `${SITE_URL}/p/${post.id}`,
         categories: post.data.category || [],
         author: post.data.author || AUTHOR.name,
         content: fullContent,
@@ -62,15 +61,25 @@ export async function GET() {
             url: post.data.heroImage.startsWith('http')
               ? post.data.heroImage
               : `${SITE_URL}${post.data.heroImage}`,
-            type: 'image/jpeg', // You might want to detect this dynamically
+            type: enclosureMimeType(post.data.heroImage),
             length: 0, // Length is optional for images
           },
         }),
         // Add comments URL if comments are enabled
         ...(post.data.showComments !== false && {
-          comments: `${SITE_URL}/p/${post.id}/#comments`,
+          comments: `${SITE_URL}/p/${post.id}#comments`,
         }),
       };
     }),
   });
+}
+
+function enclosureMimeType(imagePath) {
+  const lower = imagePath.toLowerCase();
+  if (lower.endsWith('.png')) return 'image/png';
+  if (lower.endsWith('.webp')) return 'image/webp';
+  if (lower.endsWith('.gif')) return 'image/gif';
+  if (lower.endsWith('.avif')) return 'image/avif';
+  if (lower.endsWith('.svg')) return 'image/svg+xml';
+  return 'image/jpeg';
 }

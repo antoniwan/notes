@@ -1,4 +1,5 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
+import { isPublicPost } from './publishFilters';
 
 export interface Translation {
   id: string;
@@ -28,12 +29,7 @@ export async function findTranslations(
 
   // Filter posts by translation group and only include published posts
   const translations = allPosts
-    .filter(
-      (post) =>
-        post.data.translationGroup === translationGroup &&
-        post.data.published !== false &&
-        !post.data.draft,
-    )
+    .filter((post) => post.data.translationGroup === translationGroup && isPublicPost(post.data))
     .map((post) => ({
       id: post.id,
       title: post.data.title,

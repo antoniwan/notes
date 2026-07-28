@@ -31,6 +31,8 @@ export interface StructuredDataOptions {
   hasComments?: boolean;
   featured?: boolean;
   draft?: boolean;
+  inLanguage?: string;
+  wordCount?: number;
 }
 
 // Generate enhanced structured data with improved SEO
@@ -50,15 +52,16 @@ export function generateStructuredData(options: StructuredDataOptions) {
     category = [],
     tags = [],
     tableOfContents = false,
-    hasComments = false,
     featured = false,
     draft = false,
+    inLanguage = 'en-US',
+    wordCount,
   } = options;
 
   const url = generateCanonicalUrl(path);
   const schemas: any[] = [];
 
-  // Base WebSite schema for all pages
+  // Base WebSite schema for all pages (no SearchAction — site search is client-only)
   schemas.push({
     '@context': 'https://schema.org',
     '@type': 'WebSite',
@@ -71,15 +74,6 @@ export function generateStructuredData(options: StructuredDataOptions) {
       name: AUTHOR.name,
       url: AUTHOR.url,
     },
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: `${SITE_URL}/search?q={search_term_string}`,
-      },
-      'query-input': 'required name=search_term_string',
-    },
-    dateModified: new Date().toISOString(),
   });
 
   // Enhanced Organization schema
@@ -96,7 +90,6 @@ export function generateStructuredData(options: StructuredDataOptions) {
       height: SEO_CONFIG.organizationLogoHeight,
     },
     sameAs: Object.values(SOCIAL_LINKS),
-    dateModified: new Date().toISOString(),
     // Enhanced organization details
     description: SITE_DESCRIPTION,
     foundingDate: '2024', // Adjust based on your actual founding date
@@ -180,9 +173,9 @@ export function generateStructuredData(options: StructuredDataOptions) {
         return undefined;
       })(),
       url: url,
-      inLanguage: 'en-US',
+      inLanguage,
       articleSection: category.length > 0 ? category[0] : 'Personal Growth',
-      wordCount: description.split(' ').length + keywords.join(' ').split(' ').length,
+      ...(typeof wordCount === 'number' && wordCount > 0 && { wordCount }),
       // Enhanced article properties
       mainEntityOfPage: {
         '@type': 'WebPage',
@@ -206,10 +199,6 @@ export function generateStructuredData(options: StructuredDataOptions) {
       // Enhanced metadata
       ...(featured && { isAccessibleForFree: true }),
       ...(draft && { isAccessibleForFree: false }),
-      ...(hasComments && {
-        commentCount: 0, // You can make this dynamic if you track comments
-        comment: [], // You can populate this with actual comments if available
-      }),
       // Reading experience indicators
       ...(tableOfContents && {
         hasPart: {
@@ -315,7 +304,6 @@ export function generateStructuredData(options: StructuredDataOptions) {
           },
         ],
       },
-      dateModified: new Date().toISOString(),
       inLanguage: 'en-US',
       ...(type === 'category' && identifier
         ? {

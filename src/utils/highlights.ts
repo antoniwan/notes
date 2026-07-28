@@ -1,10 +1,11 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { categories } from '../data/categories';
+import { isPublicPost } from './publishFilters';
 
 const HIGHLIGHT_PREDICATE = ({ data }: { data: CollectionEntry<'blog'>['data'] }) => {
   const isHighlighted = data.featured === true || data.highlight === true;
   if (import.meta.env.PROD) {
-    return !data.draft && data.published !== false && isHighlighted;
+    return isPublicPost(data) && isHighlighted;
   }
   return isHighlighted;
 };

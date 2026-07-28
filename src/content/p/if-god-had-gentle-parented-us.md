@@ -99,7 +99,7 @@ Shame loses its job. You do not need to feel worthless to learn. Shame actively 
 
 I can't rewrite Genesis. But I've noticed the architecture only survives by being rebuilt daily, in small decisions, by people like me and you.
 
-With my children, the reps are constant. Mistakes do not cost them connection. Ever (bullshit, it's harder than it seems and I'm not perfect). Consequences are natural and named, boundaries are real and explained, and the message underneath every correction is the same five words: *that didn't work, I'm still here*. I am not trying to break their will because their will is the engine they'll drive out of my house someday (or drive them out of the house). I'm only trying to build their capacity to steer it, not to tell them where to go.
+With my children, the reps are constant. Mistakes do not cost them connection. Ever (bullshit, it's harder than it seems and I'm not perfect). Consequences are natural and named, boundaries are real and explained, and the message underneath every correction is the same five words: _that didn't work, I'm still here_. I am not trying to break their will because their will is the engine they'll drive out of my house someday (or drive them out of the house). I'm only trying to build their capacity to steer it, not to tell them where to go.
 
 With myself, the work is quieter and harder. I catch the internal voice mid-sentence now, right when it starts drafting my sentence for some failure, and I ask myself one question: what did this reveal? Not "what do I owe." What did this reveal, and what's the learning? Some days I catch it. Some days the old landlord collects. But I know his name now, and knowing the name of the pattern is the first honest step out of it.
 

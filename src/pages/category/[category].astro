@@ -5,20 +5,23 @@ import PageHeader from '../../components/PageHeader.astro';
 import Container from '../../components/Container.astro';
 import { getCollection } from 'astro:content';
 import { categories } from '../../data/categories';
+import { isCollectionPublic } from '../../utils/publishFilters';
 
 export async function getStaticPaths() {
-  return categories.map((category) => ({
-    params: { category: category.id },
-    props: { category },
-  }));
+  const posts = await getCollection('blog', ({ data }) => isCollectionPublic(data));
+
+  return categories
+    .filter((category) => posts.some((post) => post.data.category?.includes(category.id)))
+    .map((category) => ({
+      params: { category: category.id },
+      props: { category },
+    }));
 }
 
 const { category } = Astro.props;
 
 // Get all posts in this category
-const posts = await getCollection('blog', ({ data }) => {
-  return import.meta.env.PROD ? !data.draft : true;
-});
+const posts = await getCollection('blog', ({ data }) => isCollectionPublic(data));
 
 // Filter posts by category and organize them
 const categoryPosts = posts.filter((post) => post.data.category?.includes(category.id));
@@ -33,12 +36,15 @@ const secondaryCategoryPosts = categoryPosts
     (post) => post.data.category?.[0] !== category.id && post.data.category?.includes(category.id),
   )
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const robots = categoryPosts.length > 0 ? 'index, follow' : 'noindex, follow';
 ---
 
 <BaseLayout
   title={category.name}
   description={`Browse all writings in the ${category.name} category`}
   path={`/category/${category.id}`}
+  robots={robots}
   structuredDataType="category"
   structuredDataIdentifier={category.id}
   posts={categoryPosts}
