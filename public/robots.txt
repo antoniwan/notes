@@ -1,33 +1,15 @@
 User-agent: *
 Allow: /
 
-# Crawl-delay for respectful crawling
-Crawl-delay: 1
+# Utility / non-content surfaces
+Disallow: /test-theme
+Disallow: /tag-management
+Disallow: /temp/
+Disallow: /dev/
 
-# Allow all content types
-Allow: /*.html$
-Allow: /*.xml$
-Allow: /*.css$
-Allow: /*.js$
-Allow: /*.png$
-Allow: /*.jpg$
-Allow: /*.jpeg$
-Allow: /*.gif$
-Allow: /*.svg$
-Allow: /*.webp$
-Allow: /*.avif$
-
-# Allow RSS feeds
+# Allow feeds explicitly
 Allow: /rss.xml
 Allow: /feed.json
 
 # Sitemap
 Sitemap: https://notes.antoniwan.online/sitemap-index.xml
-
-# Disallow temporary or development files
-Disallow: /temp/
-Disallow: /dev/
-Disallow: /test/
-Disallow: /.env
-Disallow: /package.json
-Disallow: /package-lock.json 

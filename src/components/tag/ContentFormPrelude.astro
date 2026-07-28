@@ -31,7 +31,7 @@ for (let index = 0; index < primaryItems.length; index += 4) {
 }
 
 const hasTag = (tag: string) => (tagCounts[tag] ?? 0) > 0;
-const tagLink = (tag: string) => `/tag/${encodeURIComponent(tag)}/`;
+const tagLink = (tag: string) => `/tag/${encodeURIComponent(tag)}`;
 const asHashTag = (tag: string) => `#${tag}`;
 const hasPoemsSignal = hasTag('poems') || items.some((item) => item.label === 'poems');
 const candidates = buildPreludeTemplateCandidates({ tagCounts, narrativeStats });
@@ -146,7 +146,7 @@ const fallbackTemplates = selectWeightedPreludeTemplates(candidates, 2);
         const connector = index === 0 ? ' ' : index === arr.length - 1 ? ', and ' : ', ';
         li.append(connector);
         const a = document.createElement('a');
-        a.href = `/tag/${encodeURIComponent(tag)}/`;
+        a.href = `/tag/${encodeURIComponent(tag)}`;
         a.className =
           'font-medium text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/40 underline-offset-4 hover:text-[rgb(var(--color-accent-hover))]';
         a.textContent = `#${tag}`;

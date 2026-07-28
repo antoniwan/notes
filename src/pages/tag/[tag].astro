@@ -5,19 +5,18 @@ import PageHeader from '../../components/PageHeader.astro';
 import Container from '../../components/Container.astro';
 import { getCollection } from 'astro:content';
 import { getAllUniqueTags, getTagStatistics } from '../../utils/tagProcessing';
-import { canonicalizeTag, normalizeTagInput } from '../../utils/tagVocabulary';
-import { TAG_ALIAS_MAP } from '../../data/tagVocabulary';
+import { canonicalizeTag } from '../../utils/tagVocabulary';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
-  const canonicalTags = getAllUniqueTags(posts);
-  const canonicalSet = new Set(canonicalTags);
-  const aliasTags = Object.keys(TAG_ALIAS_MAP).filter(
-    (alias) =>
-      canonicalSet.has(TAG_ALIAS_MAP[alias]) && normalizeTagInput(alias) !== TAG_ALIAS_MAP[alias],
-  );
-  const contentFormFallbackTags = ['poems', 'memoir', 'reflection'];
-  const tags = Array.from(new Set([...canonicalTags, ...aliasTags, ...contentFormFallbackTags]));
+  const posts = await getCollection('blog', ({ data }) => {
+    if (import.meta.env.PROD) {
+      return !data.draft && data.published !== false;
+    }
+    return true;
+  });
+  // Only build canonical tag pages that actually have posts.
+  // Alias URLs are permanent-redirected via astro.config redirects.
+  const tags = getAllUniqueTags(posts);
 
   return tags.map((tag) => ({
     params: { tag },
@@ -30,7 +29,7 @@ const canonicalTag = canonicalizeTag(tag);
 
 // Get all posts
 const posts = await getCollection('blog', ({ data }) => {
-  return import.meta.env.PROD ? !data.draft : true;
+  return import.meta.env.PROD ? !data.draft && data.published !== false : true;
 });
 
 // Get tag statistics
@@ -40,12 +39,16 @@ const { totalPosts, relatedTags } = getTagStatistics(canonicalTag, posts);
 const tagPosts = posts
   .filter((post) => post.data.tags?.some((rawTag) => canonicalizeTag(rawTag) === canonicalTag))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// Thin single-post tag archives are crawlable for UX but shouldn't compete in SERPs.
+const robots = totalPosts >= 2 ? 'index, follow' : 'noindex, follow';
 ---
 
 <BaseLayout
   title={`${canonicalTag} - Tag`}
   description={`Browse all writings tagged with ${canonicalTag}`}
   path={`/tag/${canonicalTag}`}
+  robots={robots}
   structuredDataType="tag"
   structuredDataIdentifier={canonicalTag}
   posts={tagPosts}
@@ -60,7 +63,7 @@ const tagPosts = posts
         />
         <div class="mt-4 md:mt-6">
           <a
-            href="/tag/"
+            href="/tag"
             class="theme-transition inline-flex items-center gap-2 rounded-full border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg-alt))] px-4 py-2 text-sm font-medium text-[rgb(var(--color-text))] hover:border-[rgb(var(--color-primary))]/40 hover:bg-[rgb(var(--color-primary))]/10 hover:text-[rgb(var(--color-primary))] focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:ring-offset-1 focus:outline-hidden"
           >
             <span aria-hidden="true">🏷️</span>
@@ -121,7 +124,7 @@ const tagPosts = posts
             <div class="flex flex-wrap gap-1.5">
               {relatedTags.map(({ tag: relatedTag, count }: { tag: string; count: number }) => (
                 <a
-                  href={`/tag/${relatedTag}/`}
+                  href={`/tag/${relatedTag}`}
                   class="theme-transition inline-flex items-center gap-1.5 rounded-full border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg-alt))] px-2.5 py-1 text-sm text-[rgb(var(--color-text))] hover:border-[rgb(var(--color-accent))]/30 hover:bg-[rgb(var(--color-accent))]/10 hover:text-[rgb(var(--color-accent))]"
                 >
                   <span aria-hidden="true">🏷️</span>
@@ -147,7 +150,7 @@ const tagPosts = posts
                 No writings have been tagged with "#{canonicalTag}" yet.
               </p>
               <a
-                href="/tag/"
+                href="/tag"
                 class="theme-transition inline-flex items-center gap-2 rounded-lg bg-[rgb(var(--color-accent))] px-4 py-2 text-base leading-relaxed text-white hover:bg-[rgb(var(--color-accent-hover))]"
               >
                 <span>←</span>

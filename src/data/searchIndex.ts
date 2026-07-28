@@ -87,7 +87,7 @@ export async function getSearchData() {
     category: post.data.category,
     tags: post.data.tags,
     heroImage: post.data.heroImage,
-    url: `/p/${post.id}/`,
+    url: `/p/${post.id}`,
     author: post.data.author,
     keywords: post.data.keywords,
     language: post.data.language,
@@ -98,7 +98,7 @@ export async function getSearchData() {
     id: category.id,
     title: category.name,
     description: category.description,
-    url: `/category/${category.id}/`,
+    url: `/category/${category.id}`,
     icon: category.icon,
   }));
 
@@ -111,7 +111,7 @@ export async function getSearchData() {
       title: tag.replace(/-/g, ' ').replace(/\b\w/g, (l: string) => l.toUpperCase()),
       description:
         metadata?.description || `${count} writing${count !== 1 ? 's' : ''} tagged with "${tag}"`,
-      url: `/tag/${tag}/`,
+      url: `/tag/${tag}`,
       weight: metadata?.weight || 1,
       count,
     };

@@ -33,9 +33,24 @@ export interface MetaTags {
   ogType: 'website' | 'article';
 }
 
-// Generate canonical URL
+/** Strip trailing slashes except for the site root. */
+export function normalizeSeoPath(path: string): string {
+  if (!path || path === '/') return '/';
+  // Absolute URLs: normalize pathname only
+  if (/^https?:\/\//i.test(path)) {
+    const url = new URL(path);
+    url.pathname = url.pathname.length > 1 ? url.pathname.replace(/\/+$/, '') : '/';
+    return `${url.pathname}${url.search}${url.hash}`;
+  }
+  const [pathname, ...rest] = path.split('?');
+  const cleanPath = pathname.length > 1 ? pathname.replace(/\/+$/, '') : '/';
+  return rest.length ? `${cleanPath}?${rest.join('?')}` : cleanPath;
+}
+
+// Generate canonical URL (always absolute, no trailing slash except homepage)
 export function generateCanonicalUrl(path: string): string {
-  return new URL(path, SITE_URL).href;
+  const normalized = normalizeSeoPath(path);
+  return new URL(normalized, SITE_URL).href;
 }
 
 // Generate image URL for social/meta tags, with proper heroImage prioritization.
@@ -107,6 +122,11 @@ export function generateMetaTags(config: SEOConfig): MetaTags {
   };
 }
 
+export interface HreflangAlternate {
+  hreflang: string;
+  href: string;
+}
+
 // Generate keywords from tags and categories
 export function generateKeywords(tags?: string[], categories?: string[]): string[] {
   const keywords: string[] = [];
@@ -145,12 +165,10 @@ export function generateRobotsTxt(sitemapUrl: string, additionalRules?: string[]
   const baseRules = [
     'User-agent: *',
     'Allow: /',
-    'Disallow: /api/',
-    'Disallow: /admin/',
-    'Disallow: /private/',
-    'Disallow: /*.json$',
-    'Disallow: /*.xml$',
-    'Crawl-delay: 1',
+    'Disallow: /test-theme',
+    'Disallow: /tag-management',
+    'Disallow: /temp/',
+    'Disallow: /dev/',
     `Sitemap: ${sitemapUrl}`,
   ];
 

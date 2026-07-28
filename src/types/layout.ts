@@ -28,6 +28,8 @@ export interface BaseLayoutProps {
   author?: string;
   keywords?: string[];
   type?: 'website' | 'article';
+  robots?: string;
+  hreflangAlternates?: Array<{ hreflang: string; href: string }>;
   // Structured data specific
   structuredDataType?: 'website' | 'article' | 'category' | 'tag';
   structuredDataIdentifier?: string;

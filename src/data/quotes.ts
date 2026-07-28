@@ -755,7 +755,7 @@ export function getQuoteSourceUrl(quote: Quote): string | null {
   if (getQuoteKind(quote) !== 'site' || !quote.postId) return null;
   const id = quote.postId.replace(/^\/+|\/+$/g, '');
   if (!id || id.includes('..')) return null;
-  return `/p/${id}/`;
+  return `/p/${id}`;
 }
 
 export function getQuoteCountsByKind(): Record<QuoteKind, number> {

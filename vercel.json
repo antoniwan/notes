@@ -1,4 +1,46 @@
 {
+  "redirects": [
+    {
+      "source": "/p/it-isnt-too-much-pressure",
+      "destination": "/p/on-parental-pressure",
+      "permanent": true
+    },
+    {
+      "source": "/p/it-isnt-too-much-pressure/",
+      "destination": "/p/on-parental-pressure",
+      "permanent": true
+    },
+    {
+      "source": "/p/fasting-ground-flow",
+      "destination": "/p/fasting-metabolic-ritual",
+      "permanent": true
+    },
+    {
+      "source": "/p/fasting-ground-flow/",
+      "destination": "/p/fasting-metabolic-ritual",
+      "permanent": true
+    },
+    {
+      "source": "/p/core-values-freedom",
+      "destination": "/p/the-definition-and-practice-of-my-core-values-make-me-free",
+      "permanent": true
+    },
+    {
+      "source": "/p/core-values-freedom/",
+      "destination": "/p/the-definition-and-practice-of-my-core-values-make-me-free",
+      "permanent": true
+    },
+    {
+      "source": "/p/reflexion-palabras-transformacion",
+      "destination": "/tag/transformation",
+      "permanent": true
+    },
+    {
+      "source": "/p/reflexion-palabras-transformacion/",
+      "destination": "/tag/transformation",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/api/remark42/:path*",

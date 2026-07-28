@@ -19,6 +19,8 @@ interface Props {
   keywords?: string[];
   locale?: string;
   type?: 'website' | 'article';
+  robots?: string;
+  hreflangAlternates?: Array<{ hreflang: string; href: string }>;
 }
 
 const {
@@ -33,6 +35,8 @@ const {
   keywords = [],
   locale = DEFAULT_LOCALE,
   type,
+  robots,
+  hreflangAlternates = [],
 } = Astro.props;
 
 // Generate optimized meta tags with proper heroImage prioritization
@@ -48,6 +52,7 @@ const metaTags = generateMetaTags({
   updatedDate,
   locale,
   type,
+  robots,
 });
 
 // Format dates for meta tags
@@ -127,6 +132,12 @@ const updatedDateISO = updatedDate?.toISOString();
 
 <!-- Canonical URL -->
 <link rel="canonical" href={metaTags.canonical} />
+
+{
+  hreflangAlternates.map((alternate) => (
+    <link rel="alternate" hreflang={alternate.hreflang} href={alternate.href} />
+  ))
+}
 
 <!-- RSS Feed -->
 <link

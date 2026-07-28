@@ -42,6 +42,8 @@ const {
   featured = false,
   draft = false,
   tableOfContents,
+  robots,
+  hreflangAlternates,
 } = Astro.props;
 
 // Auto-generate keywords if not provided
@@ -86,6 +88,8 @@ const structuredData = generateStructuredData({
       author={author}
       keywords={finalKeywords}
       type={type}
+      robots={robots}
+      hreflangAlternates={hreflangAlternates}
     />
     <!-- Load Speed Insights asynchronously -->
     <SpeedInsights />
