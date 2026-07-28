@@ -30,6 +30,8 @@ showComments: true
 translationGroup: presenting-vastitas-omniparens
 ---
 
+<h2 id="what-this-name-is" class="toc-only">What this name is</h2>
+
 _Vastitas Omniparens_ is a proper name for the totality. And I do not mean everything the way people mean it when they say they have tried everything, I mean the total: this Universe, and whatever the Universe is sitting inside of, and what we know of it, and what we do not know yet, and what we are built in such a way that we will never know at all. Literally everything, for real.
 
 Said as a sentence it comes out as the vastness that births all things. Or, the way I keep it in my pocket, from the vast, all things, through light and darkness.
@@ -40,6 +42,8 @@ This name is not for _her_, as _she_ does not need one. You might be inclined to
 
 _Vastitas Omniparens_ is what I say out loud to remember, in the middle of any day, going well or poorly, anytime really, that the thing containing us is so much larger than us that the humility we owe it should be cut to the exact size of that gap. Not humility as a general disposition, the kind you put on for a meeting. That one, at that size. These words are a practice disguised as a noun, a tool I am putting in my own hand and in my children's hands so we can stay correctly sized against what is actually here enveloping us, our total Universe.
 
+<h2 id="how-i-found-it" class="toc-only">How I found it</h2>
+
 I did not coin this name, but I tried to. Believe it or not, I have been thinking about this totality and looking for a proper name for it for over 30 years, and it bothered me the way a missing tooth bothers your tongue, you keep poking that empty skin for no productive reason whatsoever. For most of that time I worked at it archaically. My pre-LLM methods for researching language and etymology were, to not call myself an inefficient noob outright, slow to the point of embarrassment. _Latin_ turned out to be a language best left to actual experts, and I had access to none, so my attempts handed me many false positives over the years, a favorite being Auragenia Omnia Vasta, with a plural I called feminine that was actually neuter.
 
 Then LLM tools like Claude gave me the ability to research and cross-check my ideations systematically, and as the models got better at Latin, Fable 5 and Opus 5 being the latest frontier for this work, my inventions kept failing under honest scrutiny. Every correction made my word less mine but the old Latin more interesting, until I finally stopped inventing and went looking in the ruins directly, where it turned out Lucretius, a Roman poet and philosopher, had already quarried the stones I was looking for, two thousand years ahead of me.
@@ -49,6 +53,8 @@ Since I am borrowing from an actual human being, he has earned the courtesy of b
 He set himself the task of carrying Greek philosophy into Latin, a language he openly complained was too poor for the job, _patrii sermonis egestas_, the poverty of the ancestral tongue, so he coined what he needed. He was doing, two thousand years before me and with a mind I will not pretend to match, the exact work of this essay: forcing a language to hold a totality it had no word for.
 
 And his poem was unknown for centuries, surviving in a few forgotten copies, until 1417, when a book hunter pulled a manuscript out of a German monastery and had it copied, and that one recovery put Lucretius back into the bloodstream of the world and fed the _Renaissance_. The man who gave me _omniparens_ was himself almost lost to the unknowable, and came back, so yeah, this kind of legendary situation needs to be acknowledged by name.
+
+<h2 id="what-the-words-mean" class="toc-only">What the words mean</h2>
 
 So those are the stones and that is the man who cut them. Here is what they mean.
 
@@ -61,6 +67,8 @@ There is a reason I could not just use the word we already have. _Universum_ was
 I think these nuances matter, because language shapes posture. When we call the whole thing "the universe," we start talking like people who are nearly finished, like the leftover questions are cleanup and somebody's grant will close them out by next week and we are not nearly finished, or even started. The universe is not a "done deal" and it is not something to take lightly, we know absolutely almost nothing about it. I include myself in that we, and I have caught myself doing it out loud at a dinner table, explaining the first three minutes after the Big Bang or whatever the fuck is that we explain during dinner time, with the confidence of a man who was there taking notes but what we actually have is a sliver. A gorgeous, hard-won, genuinely heroic sliver, and we walk around holding it like a deed.
 
 So yeah. Vastitas is the container I pour that humility back into. And most of what is in that container is dark, which is the part I want to go slow on, because that is where the whole thing actually lives.
+
+<h2 id="what-we-know-and-what-we-dont" class="toc-only">What we know and what we don't</h2>
 
 The name holds three things at once.
 
@@ -98,6 +106,8 @@ And this next part reframes everything above it, so let me just say it plainly: 
 
 I should also say that absolute unknowability, meaning something inaccessible to every possible living system anywhere, stays a hypothesis in here. I cannot defend it and I am not going to pretend to. The claim I can defend is the smaller one, the organism-relative one: this particular animal has a narrow aperture. That is enough. That was always enough.
 
+<h2 id="why-being-small-is-a-gift" class="toc-only">Why being small is a gift</h2>
+
 And all of that smallness turns out to be a gift, which took me decades to understand. Measured against her, I perceive almost nothing. At the kitchen table, in the same minute, I am perceiving every single thing that is mine to perceive. My daughter telling me something that happened at school with the whole story out of order. My son's breath. A face across the table, not performing anything. My partner's beautiful smile. The weight of a dog against a tired leg. My portion is nothing against the totality and total inside its own boundary, both, no contradiction, and it took me an embarrassingly long time to stop treating that as a paradox to be solved instead of a fact to live inside.
 
 I am _so_ insignificant that I can make everything significant to me. If we mattered on _her_ scale, home would never be enough, no? Because we do not, home is everything. And the same asymmetry that makes my portion sacred makes everything else lighter, because if I am nothing against her then so is whatever I happen to be carrying this week. It does not go away and it does not stop hurting. It just goes back to its actual size, which was the size it always was while I was treating it as the size of everything.
@@ -105,6 +115,8 @@ I am _so_ insignificant that I can make everything significant to me. If we matt
 Take your portion seriously and take your troubles lightly. Which sounds like two instructions fighting each other, no? They are not. They come out of the same measurement.
 
 ![Grainy black-and-white lily bloom on a dark field, stamens sharp at the center](/images/2026/vastitas-flower.avif)
+
+<h2 id="why-i-call-her-she" class="toc-only">Why I call her she</h2>
 
 Which brings me to the thing I have been putting off since the first paragraph, which is why I keep calling all of this _she_.
 
@@ -123,6 +135,8 @@ So when I call the totality a _she_, I am not making a poetic gesture and I am n
 Two thousand years of neuter cosmology produced an architectural relationship to the totality, a thing to study, map, and eventually conquer. A feminine cosmology is gestational instead. A mother contains what she does not disclose. A mother holds a child without the child comprehending her, and that relationship, not the architectural one, is the accurate one, or at least it is the one that matches how it actually feels to be here. The feminine here is not gendered in the social sense, it is generative in the cosmogonic sense. _Nothing_ I know of is more powerful than the bringing of life, and the totality brings life. After two thousand years of neuter, one name leaning the other way seems fair to me.
 
 And I was not the first one to lean it that way, not by a long shot. Lucretius opened a poem about atoms and physics with a hymn to Venus, mother of the line of Aeneas, delight of gods and men, the generative force through which every living thing is conceived. The most materialist poet of antiquity chose to begin with her, because he understood that a totality which births everything is addressed correctly in the _feminine_. He did not need to stand in a delivery room to work that out. I did.
+
+<h2 id="how-to-use-it" class="toc-only">How to use it</h2>
 
 So that is the case, and what is left is what you do with it, which is less than you would think.
 

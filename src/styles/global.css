@@ -810,6 +810,18 @@
   scroll-margin-top: 6rem;
 }
 
+/* Section markers for the contents list: keep scroll targets, hide the label. */
+.prose :where(h2.toc-only, h3.toc-only) {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  color: transparent !important;
+}
+
 /* Poem block – preserve line breaks, readable line height */
 .a-poem {
   white-space: pre-line;

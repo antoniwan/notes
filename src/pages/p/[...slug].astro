@@ -42,8 +42,9 @@ const author = post.data.author || AUTHOR.name;
 const categoryName = getCategoryNameFromIds(post.data.category);
 const categoryItems = getCategoryDisplayItems(post.data.category);
 
-// Generate table of contents from markdown headings (post.body is raw markdown, not HTML)
-const headingRegex = /^(#{2,3})\s+(.+)$/gm;
+// Generate table of contents from markdown headings and optional HTML heading anchors
+// (e.g. <h2 class="toc-only" id="..."> for visually hidden section markers).
+const headingRegex = /^(?:(#{2,3})\s+(.+)|<h([23])(\s[^>]*)?>(.*?)<\/h\3>)/gm;
 const slugCounts = new Map<string, number>();
 const toSlug = (value: string) =>
   value
@@ -60,10 +61,22 @@ const withUniqueSlug = (baseSlug: string) => {
   return count === 0 ? baseSlug : `${baseSlug}-${count}`;
 };
 const tableOfContents = [...(post.body?.matchAll(headingRegex) ?? [])]
-  .map(([, hashes, text]) => {
-    const level = hashes.length;
-    const trimmedText = (text || '').trim();
-    const slug = withUniqueSlug(toSlug(trimmedText));
+  .map((match) => {
+    if (match[1]) {
+      const level = match[1].length;
+      const trimmedText = (match[2] || '').trim();
+      const slug = withUniqueSlug(toSlug(trimmedText));
+      return { text: trimmedText, slug, level };
+    }
+
+    const level = Number(match[3]);
+    const attrs = match[4] ?? '';
+    const trimmedText = (match[5] || '').replace(/<[^>]+>/g, '').trim();
+    const idFromAttr = attrs.match(/\bid=["']([^"']+)["']/i)?.[1];
+    const slug = idFromAttr || withUniqueSlug(toSlug(trimmedText));
+    if (idFromAttr) {
+      slugCounts.set(idFromAttr, (slugCounts.get(idFromAttr) ?? 0) + 1);
+    }
     return { text: trimmedText, slug, level };
   })
   .filter((item) => item.text.length > 0 && item.slug.length > 0);

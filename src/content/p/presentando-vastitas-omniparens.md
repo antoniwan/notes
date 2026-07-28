@@ -30,6 +30,8 @@ showComments: true
 translationGroup: presenting-vastitas-omniparens
 ---
 
+<h2 id="que-es-este-nombre" class="toc-only">Qué es este nombre</h2>
+
 _Vastitas Omniparens_ es un nombre propio para el todo. Y no me refiero a «todo» como cuando la gente dice que ya lo intentó todo. Me refiero al total: este Universo, y lo que sea que contenga al Universo, y lo que sabemos de él, y lo que aún no sabemos, y lo que estamos hechos de tal manera que nunca sabremos. Literalmente todo, de verdad.
 
 Dicho en una oración, sale como lo inmenso que da a luz a todas las cosas. O, como lo guardo en el bolsillo: de lo vasto, todas las cosas, a través de la luz y la oscuridad.
@@ -40,6 +42,8 @@ Este nombre no es para _ella_, porque _ella_ no necesita uno. Tal vez, al leer e
 
 _Vastitas Omniparens_ es lo que digo en voz alta para recordar, en medio de cualquier día, vaya bien o mal, en cualquier momento, de verdad, que lo que nos contiene es mucho más grande que nosotros, y por eso la humildad que le debemos debe cortarse al tamaño exacto de esa distancia. No la humildad como actitud general, la que uno se pone para una reunión. Esa, a ese tamaño. Estas palabras son una práctica disfrazada de nombre, una herramienta que pongo en mi propia mano y en las manos de mis hijos para que podamos quedarnos del tamaño correcto frente a lo que de verdad nos envuelve: nuestro Universo entero.
 
+<h2 id="como-lo-encontre" class="toc-only">Cómo lo encontré</h2>
+
 Yo no inventé este nombre, pero lo intenté. Créelo o no, llevo más de treinta años pensando en este todo y buscando un nombre propio para ella, y me molestaba como molesta un diente que falta: la lengua sigue tocando esa piel vacía sin razón útil alguna. Durante la mayor parte de ese tiempo trabajé a la antigua. Mis métodos de antes de los LLM para investigar idiomas y el origen de las palabras fueron, por no llamarme un novato lento de frente, lentos hasta la vergüenza. El _latín_ resultó ser un idioma mejor dejado a verdaderos expertos, y yo no tenía acceso a ninguno, así que mis intentos me dieron muchas palabras que parecían correctas y no lo eran. Una de mis favoritas fue Auragenia Omnia Vasta, con un plural que yo llamé femenino y que en realidad era neutro.
 
 Después, herramientas como Claude me dieron la capacidad de investigar y cruzar mis ideas con orden, y a medida que los modelos mejoraban en latín —Fable 5 y Opus 5 siendo lo más nuevo para este trabajo— mis inventos seguían fallando bajo una revisión honesta. Cada corrección hacía mi palabra menos mía y el latín antiguo más interesante, hasta que por fin dejé de inventar y fui a buscar directo en las ruinas, donde resultó que Lucrecio, poeta y filósofo romano, ya había sacado las piedras que yo buscaba, dos mil años por delante de mí.
@@ -49,6 +53,8 @@ Como estoy tomando prestado de un ser humano de verdad, se ha ganado el derecho 
 Se puso la tarea de llevar la filosofía griega al latín, una lengua de la que se quejó abiertamente por ser demasiado pobre para el trabajo, _patrii sermonis egestas_, la pobreza de la lengua de los antepasados, así que inventó lo que necesitaba. Estaba haciendo, dos mil años antes que yo y con una mente con la que no pretenderé igualarme, exactamente el trabajo de este ensayo: forzar a una lengua a sostener un todo para el que no tenía palabra.
 
 Y su poema estuvo perdido durante siglos, sobreviviendo en unas pocas copias olvidadas, hasta 1417, cuando un cazador de libros sacó un manuscrito de un monasterio alemán y lo hizo copiar, y ese solo rescate puso a Lucrecio de vuelta en la sangre del mundo y alimentó el _Renacimiento_. El hombre que me dio _omniparens_ estuvo él mismo casi perdido para lo que no se puede conocer, y volvió, así que sí: este tipo de historia merece ser reconocida por su nombre.
+
+<h2 id="que-significan-las-palabras" class="toc-only">Qué significan las palabras</h2>
 
 Esas son las piedras y ese es el hombre que las cortó. Aquí está lo que significan.
 
@@ -61,6 +67,8 @@ Hay una razón por la que no pude simplemente usar la palabra que ya teníamos. 
 Creo que estos detalles importan, porque el lenguaje da forma a cómo nos paramos ante las cosas. Cuando llamamos al conjunto «el universo», empezamos a hablar como gente que ya casi terminó, como si las preguntas que quedan fueran limpieza y la beca de alguien las cerrará la semana que viene —y no estamos ni cerca de terminar, ni siquiera de empezar. El universo no es un trato cerrado y no es algo para tomar a la ligera: sabemos absolutamente casi nada de él. Me incluyo en ese nosotros, y me he atrapado haciéndolo en voz alta en una mesa de cena, explicando los primeros tres minutos después del Big Bang o lo que sea que uno se pone a explicar a la hora de cenar, con la confianza de un hombre que estuvo ahí tomando notas, cuando lo que en realidad tenemos es un pedacito. Un pedacito hermoso, duro de ganar, de verdad heroico, y andamos por ahí sosteniéndolo como si fuera un título de propiedad.
 
 Así que sí. Vastitas es el vaso en el que vuelvo a verter esa humildad. Y la mayor parte de lo que hay en ese vaso es oscuro, que es la parte en la que quiero ir despacio, porque ahí es donde vive de verdad el conjunto.
+
+<h2 id="lo-que-sabemos-y-lo-que-no" class="toc-only">Lo que sabemos y lo que no</h2>
 
 El nombre sostiene tres cosas a la vez.
 
@@ -98,6 +106,8 @@ Y esta próxima parte cambia el marco de todo lo de arriba, así que lo digo cla
 
 También debo decir que lo que nadie puede conocer nunca —algo cerrado a todo ser vivo posible en cualquier lugar— se queda aquí como una idea. No puedo defenderla y no voy a fingir que sí. Lo que sí puedo defender es lo más pequeño, lo de este animal: este animal particular tiene una ventana estrecha. Eso basta. Eso siempre bastó.
 
+<h2 id="por-que-ser-pequeno-es-un-regalo" class="toc-only">Por qué ser pequeño es un regalo</h2>
+
 Y toda esa pequeñez resulta ser un regalo, cosa que me tomó décadas entender. Medido contra ella, percibo casi nada. En la mesa de la cocina, en el mismo minuto, estoy percibiendo cada cosa que me toca percibir. Mi hija contándome algo que pasó en la escuela con toda la historia fuera de orden. La respiración de mi hijo. Un rostro al otro lado de la mesa, sin actuar nada. La sonrisa hermosa de mi pareja. El peso de un perro contra una pierna cansada. Mi parte es nada frente al todo y total dentro de su propio límite, las dos cosas, sin contradicción, y me tomó un tiempo vergonzosamente largo dejar de tratar eso como un rompecabezas a resolver y empezar a vivirlo como un hecho.
 
 Soy _tan_ poca cosa que puedo hacer que todo sea importante para mí. Si importáramos a la escala de _ella_, el hogar nunca bastaría, ¿verdad? Como no importamos, el hogar es todo. Y la misma diferencia de tamaño que hace sagrada mi parte hace más liviano todo lo demás, porque si soy nada frente a ella, también lo es lo que me toque cargar esta semana. No se va y no deja de doler. Solo vuelve a su tamaño real, que era el tamaño que siempre tuvo mientras yo lo trataba como el tamaño de todo.
@@ -105,6 +115,8 @@ Soy _tan_ poca cosa que puedo hacer que todo sea importante para mí. Si import�
 Toma tu parte en serio y toma tus penas con suavidad. Lo cual suena como dos instrucciones peleándose, ¿no? No lo son. Salen de la misma medida.
 
 ![Flor de lirio en blanco y negro granulado sobre un campo oscuro, estambres nítidos al centro](/images/2026/vastitas-flower.avif)
+
+<h2 id="por-que-la-llamo-ella" class="toc-only">Por qué la llamo ella</h2>
 
 Lo cual me trae a lo que he estado posponiendo desde el primer párrafo: por qué sigo llamando a todo esto _ella_.
 
@@ -123,6 +135,8 @@ Así que cuando llamo al todo una _ella_, no estoy haciendo un gesto poético ni
 Dos mil años de ver el cosmos como algo neutro produjeron una relación de edificio con el todo: una cosa que estudiar, mapear y, con el tiempo, conquistar. Verlo como femenino es verlo como embarazo. Una madre contiene lo que no revela. Una madre sostiene a un hijo sin que el hijo la comprenda, y esa relación, no la del edificio, es la exacta, o al menos es la que coincide con cómo se siente de verdad estar aquí. Lo femenino aquí no es de género en el sentido social; es creativo en el sentido de origen del mundo. _Nada_ de lo que conozco es más poderoso que el traer la vida, y el todo trae vida. Después de dos mil años de neutro, un nombre que se incline hacia el otro lado me parece justo.
 
 Y no fui el primero en inclinarse así, ni de lejos. Lucrecio abrió un poema sobre átomos y física con un canto a Venus, madre de la línea de Eneas, gozo de dioses y hombres, la fuerza que da vida por la cual se concibe todo lo vivo. El poeta más materialista de la antigüedad eligió empezar con ella, porque entendió que un todo que da a luz a todo se dirige correctamente en lo _femenino_. Él no necesitó estar en un cuarto de parto para entenderlo. Yo sí.
+
+<h2 id="como-usarla" class="toc-only">Cómo usarla</h2>
 
 Ese es el caso, y lo que queda es lo que haces con él, que es menos de lo que uno pensaría.
 
