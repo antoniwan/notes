@@ -1,7 +1,7 @@
 # Notes — Technical Audit
 
 **Audit date:** 2026-07-28  
-**App version:** 5.30.1 (service-worker API cache fix + audit hygiene)  
+**App version:** 6.0.0 (visual UI overhaul — monochrome + marigold/violet accents)  
 **Production:** [notes.antoniwan.online](https://notes.antoniwan.online) · Vercel project `notes` (`prj_MrjdKV4wL7ubFNGKhVBASHub9rmb`)  
 **Companion product map:** [roadmap.md](./roadmap.md) (§7 product audit, §8 technical roadmap)
 
