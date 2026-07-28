@@ -35,20 +35,20 @@ function isUnderPostsSection(p: string): boolean {
  */
 export function isMainNavItemActive(href: string, pathname: string): boolean {
   const p = normalizePathname(pathname);
+  const h = normalizePathname(href);
 
-  if (href === '/category/') {
+  if (h === '/category') {
     return isUnderCategory(p);
   }
 
-  if (href === '/tag/') {
+  if (h === '/tag') {
     return isUnderResourcesSection(p);
   }
 
-  if (href === '/everything') {
+  if (h === '/everything') {
     return isUnderPostsSection(p);
   }
 
-  const h = normalizePathname(href);
   return p === h;
 }
 

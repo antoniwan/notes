@@ -3,10 +3,10 @@ import PageLayout from '../layouts/PageLayout.astro';
 import Chapter from '../components/Chapter.astro';
 import BackToTop from '../components/BackToTop.astro';
 import { getCollection } from 'astro:content';
-import { isCollectionListed } from '../utils/publishFilters';
+import { isGuidedPathEligiblePost } from '../utils/publishFilters';
 
-// Get all published posts (excludes secondary-language translations)
-const allPosts = await getCollection('blog', ({ data }) => isCollectionListed(data));
+// English-primary path: Spanish posts stay off this list (use language toggle on each note)
+const allPosts = await getCollection('blog', ({ data }) => isGuidedPathEligiblePost(data));
 
 // Define seasonal chapter structure
 interface SeasonalChapter {

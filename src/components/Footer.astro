@@ -10,30 +10,18 @@ import pkg from '../../package.json';
   role="contentinfo"
 >
   <Container class="py-10 md:py-12">
-    <div class="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between lg:gap-12">
-      <div class="w-full max-w-sm shrink-0 space-y-3">
+    <div class="space-y-6">
+      <div>
         <Logo size="xs" />
-        <p class="text-body-muted m-0 text-sm leading-relaxed">
-          Personal notes — practice over performance.
-        </p>
       </div>
 
-      <nav
-        class="flex min-w-0 flex-1 flex-wrap gap-x-8 gap-y-3 text-sm"
-        aria-label="Footer"
-      >
+      <nav class="flex flex-wrap gap-x-5 gap-y-2 text-sm" aria-label="Footer">
         <a href="/guided-path" class="link-muted">Guided Path</a>
         <a href="/category" class="link-muted">Categories</a>
         <a href="/everything" class="link-muted">Everything</a>
         <a href="/about" class="link-muted">About</a>
         <a href="/brain-science" class="link-muted">Writing Insights</a>
         <a href="/library/books" class="link-muted">Book Library</a>
-      </nav>
-
-      <nav
-        class="flex shrink-0 flex-wrap gap-x-6 gap-y-2 text-sm lg:justify-end"
-        aria-label="Connect"
-      >
         <a
           href={SOCIAL_LINKS.threads}
           target="_blank"
@@ -62,9 +50,9 @@ import pkg from '../../package.json';
     </div>
 
     <div
-      class="mt-10 flex flex-col items-center justify-between gap-3 border-t border-[rgb(var(--color-border))]/40 pt-6 md:flex-row"
+      class="mt-8 flex flex-col gap-3 border-t border-[rgb(var(--color-border))]/40 pt-6 sm:flex-row sm:items-center sm:justify-between"
     >
-      <p class="text-body-muted m-0 text-center text-[0.7rem] leading-snug md:text-left">
+      <p class="text-body-muted m-0 text-[0.7rem] leading-snug">
         © {new Date().getFullYear()}
         {SITE_TITLE}. Content:
         <a
@@ -78,13 +66,13 @@ import pkg from '../../package.json';
         >
       </p>
 
-      <div class="text-body-muted flex flex-wrap items-center justify-center gap-3 text-[0.7rem]">
+      <div class="text-body-muted flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.7rem]">
         <a href="/sitemap-index.xml" class="link-muted">Sitemap</a>
-        <span class="text-[rgb(var(--color-text-muted))]/40" aria-hidden="true">·</span>
+        <span class="opacity-40" aria-hidden="true">·</span>
         <a href="/rss.xml" class="link-muted" title="RSS Feed">RSS</a>
-        <span class="text-[rgb(var(--color-text-muted))]/40" aria-hidden="true">·</span>
+        <span class="opacity-40" aria-hidden="true">·</span>
         <a href="/feed.json" class="link-muted" title="JSON Feed">JSON</a>
-        <span class="text-[rgb(var(--color-text-muted))]/40" aria-hidden="true">·</span>
+        <span class="opacity-40" aria-hidden="true">·</span>
         <a
           href="https://github.com/antoniwan/notes"
           target="_blank"

@@ -149,7 +149,7 @@ const isPrimaryMobileNavActive = (href: string, pathname: string) => {
                   </svg>
                 )}
               </a>
-              {item.dropdown && item.href === '/category/' && (
+              {item.dropdown && item.href === '/category' && (
                 <div class="ml-4 space-y-1">
                   {sortedCategories.map((category) => {
                     const catHref = `/category/${category.id}`;
@@ -179,7 +179,7 @@ const isPrimaryMobileNavActive = (href: string, pathname: string) => {
                   })}
                 </div>
               )}
-              {item.dropdown && item.href !== '/category/' && (
+              {item.dropdown && item.href !== '/category' && (
                 <div class="ml-4 space-y-1">
                   {(item.dropdown.items ?? []).map((dropdownItem) => {
                     const subActive = isNavDropdownItemActive(dropdownItem.href, currentPathname);
