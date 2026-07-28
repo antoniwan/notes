@@ -3,7 +3,6 @@ import { normalizeTagInput } from './tagVocabulary';
 
 /** Paths that should never appear in the sitemap or be indexed. */
 export const SEO_EXCLUDED_PATHS = [
-  '/test-theme',
   '/tag-management',
   '/sitemap.xml',
   '/api',

@@ -8,7 +8,7 @@ The multilingual system allows you to:
 
 - Publish content in multiple languages (currently English and Spanish)
 - Link related translations via shared IDs
-- Hide secondary language versions from main listings
+- Keep secondary-language translations out of RSS/JSON feeds (listings still include them unless you filter by `featured`)
 - Display language toggles for easy switching between versions
 
 ## Quick Setup

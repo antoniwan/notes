@@ -72,8 +72,7 @@ to spot without intentional checks.
 
 ## Platform & Content Constraints
 
-- **Stack (current):** Astro 6.x, TypeScript, Tailwind CSS, MDX, pnpm, Sharp; optional Vercel
-  deployment and Remark42 comments per [README.md](../../README.md) and `docs/`.
+- **Stack (current):** Astro 7.x (hybrid: static pages + on-demand `/api/quotes`), TypeScript, Tailwind CSS, MDX, pnpm, Sharp; optional Vercel deployment and Remark42 comments per [README.md](../../README.md) and `docs/`.
 - **Licensing:** Site content under [CONTENT_LICENSE.md](../../CONTENT_LICENSE.md) (CC BY-NC-SA
   4.0); code under [LICENSE](../../LICENSE) (MIT). Features MUST NOT imply a different license
   without explicit governance amendment.
@@ -111,4 +110,4 @@ or non-semantic wording.
 **Compliance:** Maintainers SHOULD spot-check merged work against this document during significant
 releases. Feature plans MUST include a Constitution Check that references the principles above.
 
-**Version**: 1.0.0 | **Ratified**: 2026-03-28 | **Last Amended**: 2026-03-28
+**Version**: 1.0.1 | **Ratified**: 2026-03-28 | **Last Amended**: 2026-07-28

@@ -79,30 +79,6 @@ export const SEO_CONFIG: SEOConfig = {
   organizationLogoHeight: 512,
 };
 
-// Category Emojis
-export const CATEGORY_EMOJIS: Record<string, string> = {
-  tech: '💻',
-  health: '🏥',
-  food: '🍽️',
-  parenting: '👶',
-  personal: '👤',
-  projects: '🚀',
-  thoughts: '💭',
-  tutorials: '📚',
-  reviews: '⭐',
-  news: '📰',
-  thinking: '🧠',
-  fatherhood: '👨‍👧‍👦',
-  masculinity: '⚔️',
-  culture: '🌍',
-  philosophy: '🤔',
-  'modern-life': '🏙️',
-  collapse: '🔥',
-  reflection: '💭',
-  growth: '🌱',
-  identity: '🎭',
-};
-
 // Disclaimer Text
 export const DISCLAIMER_TEXT =
   'The wisdom, practices, and digital alchemy shared here flow from personal experience and creative exploration. None of this constitutes medical, legal, psychological, or professional advice. Please consult qualified professionals for such guidance.';

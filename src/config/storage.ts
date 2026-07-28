@@ -8,19 +8,10 @@
 // Storage version for schema management
 export const STORAGE_VERSION = '1.0';
 
-// Storage keys
+// Storage keys (reading progress only — keep the surface small and private)
 export const STORAGE_KEYS = {
-  // Reading progress system
   READ_POSTS: `blog-read-posts-v${STORAGE_VERSION}`,
   READ_POSTS_LEGACY: 'blog-read-posts', // For backwards compatibility
-
-  // Other localStorage features (from LocalStorageManager)
-  PREFERENCES: 'blog-preferences',
-  SESSION: 'blog-session',
-  ANALYTICS: 'blog-analytics',
-  SEARCH_HISTORY: 'blog-search-history',
-  BOOKMARKED_POSTS: 'blog-bookmarked-posts',
-  READING_GOALS: 'blog-reading-goals',
 } as const;
 
 // Event names for cross-component communication

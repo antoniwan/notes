@@ -54,7 +54,11 @@ export function loadMetaAnalysisCache(
       }
     }
 
-    return parsed.analyses;
+    // JSON.parse turns Date fields into strings — revive before callers sort/compare.
+    return parsed.analyses.map((analysis) => ({
+      ...analysis,
+      postDate: new Date(analysis.postDate as unknown as string),
+    }));
   } catch {
     return null;
   }

@@ -78,7 +78,7 @@ self.addEventListener('fetch', (event) => {
 
   // Handle different types of requests
   if (url.pathname.startsWith('/api/')) {
-    // API requests - network first, fallback to cache
+    // Never cache API traffic (random quotes, Remark42 proxy). Network-only.
     event.respondWith(handleApiRequest(request));
   } else if (url.pathname.match(/\.(css|js|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot)$/)) {
     // Static assets - cache first, fallback to network
@@ -92,30 +92,18 @@ self.addEventListener('fetch', (event) => {
   }
 });
 
-// Handle API requests
+// Handle API requests — network only (do not put responses in Cache Storage)
 async function handleApiRequest(request) {
   try {
-    const response = await fetch(request);
-
-    // Cache successful API responses
-    if (response.ok) {
-      const cache = await caches.open(DYNAMIC_CACHE);
-      cache.put(request, response.clone());
-    }
-
-    return response;
-  } catch (error) {
-    // Fallback to cache
-    const cachedResponse = await caches.match(request);
-    if (cachedResponse) {
-      return cachedResponse;
-    }
-
-    // Return offline response
-    return new Response(JSON.stringify({ error: 'Offline - data not available' }), {
+    return await fetch(request);
+  } catch {
+    return new Response(JSON.stringify({ error: 'Offline - API unavailable' }), {
       status: 503,
       statusText: 'Service Unavailable',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Cache-Control': 'no-store',
+      },
     });
   }
 }

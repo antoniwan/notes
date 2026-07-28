@@ -1,6 +1,6 @@
 # Notes
 
-[![Version](https://img.shields.io/badge/version-5.30.0-blue.svg)](https://github.com/antoniwan/notes/releases)
+[![Version](https://img.shields.io/badge/version-5.30.1-blue.svg)](https://github.com/antoniwan/notes/releases)
 
 Personal writing site: essays and notes on fatherhood, masculinity, culture, and day-to-day life. Some posts are in English, some in Spanish, with links between translations where it applies.
 
@@ -32,7 +32,7 @@ Live site: [notes.antoniwan.online](https://notes.antoniwan.online)
 
 ## Stack
 
-- [Astro](https://astro.build/) 6 — static output, MDX, `@astrojs/vercel` adapter
+- [Astro](https://astro.build/) 7 — hybrid output (static pages + on-demand `GET /api/quotes`), MDX, `@astrojs/vercel` adapter
 - TypeScript
 - Tailwind CSS
 - [Sharp](https://sharp.pixelplumbing.com/) — used by the social-image step to resize AVIF sources to JPEG/PNG
@@ -59,7 +59,7 @@ For production builds of the **About** page, Letterboxd “latest watched” nee
 
 If they are missing, that block on About simply won’t have fresh data (or may be empty depending on fallbacks).
 
-Remark42 uses `PUBLIC_REMARK42_HOST` and `PUBLIC_REMARK42_SITE_ID` when you turn comments on — see `docs/comments-setup.md`.
+Remark42 uses `PUBLIC_REMARK42_HOST` and `PUBLIC_REMARK42_SITE_ID` when you turn comments on — see `docs/comments-setup.md`. Both are listed in `.env.example`.
 
 ## Scripts
 
@@ -73,6 +73,9 @@ Remark42 uses `PUBLIC_REMARK42_HOST` and `PUBLIC_REMARK42_SITE_ID` when you turn
 | `pnpm run lint:fix`               | ESLint with `--fix`                                                                           |
 | `pnpm run format`                 | Prettier write                                                                                |
 | `pnpm run format:check`           | Prettier check                                                                                |
+| `pnpm run audit-frontmatter`      | Required-field / language sanity check on `src/content/p`                                     |
+| `pnpm run validate-feeds`         | Validates `dist/rss.xml` + `dist/feed.json` (run after build)                                 |
+| `pnpm run validate-structured-data` | Smoke-checks structured-data module exports                                                 |
 | `pnpm run generate-social-images` | AVIF → JPEG/PNG under `public/social/` only (same logic as the start of `pnpm run build`)     |
 | `pnpm run generate-favicons`      | Favicon assets                                                                                |
 | `pnpm run analyze`                | Runs `astro build` only (no social-image step), then Vercel static-build analysis             |
@@ -134,7 +137,8 @@ Using Cursor AI in this repo: [docs/cursor-agent-skills.md](docs/cursor-agent-sk
 | [quotes-api.md](docs/quotes-api.md)                                               | `/api/quotes`            |
 | [structured-data-optimization.md](docs/structured-data-optimization.md)           | Schema.org               |
 | [performance-optimization.md](docs/performance-optimization.md)                   | Performance notes        |
-| [roadmap.md](docs/roadmap.md)                                                     | Ideas and backlog        |
+| [roadmap.md](docs/roadmap.md)                                                     | Ideas, product audit, technical roadmap |
+| [TECHNICAL-AUDIT.md](docs/TECHNICAL-AUDIT.md)                                     | System map, integrations, technical debt |
 | [cursor-agent-skills.md](docs/cursor-agent-skills.md)                             | Cursor agent skill guide |
 | [midjourney-og-image-prompts.md](docs/midjourney-og-image-prompts.md)             | Image prompt notes       |
 

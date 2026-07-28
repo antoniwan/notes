@@ -297,3 +297,55 @@ Notes is a **public practice OS**, not a growth blog. The job is to make lived a
 - Growth-hack subscribe UX, engagement farming, accounts/social graph.
 - Goodreads-style rating theater or performative reading counters.
 - Building more author dashboards before shipping compression + return loops.
+
+---
+
+## 8. Technical roadmap — 2026-07-28
+
+Engineering debt and platform work from the full-stack audit. Detail lives in [TECHNICAL-AUDIT.md](./TECHNICAL-AUDIT.md). This section is the **execution order**, not a second encyclopedia.
+
+### Closed this pass (baseline hygiene)
+
+- Documented the real stack (Astro **7** hybrid) and filled the missing `TECHNICAL-AUDIT.md`.
+- Stopped the service worker from caching `/api/*` (quotes + Remark42).
+- Aligned Remark42 default `siteId` + `.env.example`.
+- Removed dead surfaces (`/test-theme`, unused `HomeLayout`, unused `localStorageFeatures`, stale `CATEGORY_EMOJIS`).
+- Wired constitution-named scripts: `validate-feeds`, `audit-frontmatter`, `validate-structured-data`.
+- Fixed brain-science meta-analysis cache **Date revival** after JSON load.
+
+### Near-term (platform integrity)
+
+| Priority | Item | Why |
+| --- | --- | --- |
+| P1 | Render feed **HTML** (not raw Markdown) and prefer social-safe JPEG/PNG for enclosures/images | Broken readers + AVIF-unfriendly clients |
+| P1 | Decide **listing policy** for secondary-language posts (filter like feeds, or keep + update copy sitewide) | Docs/product intent vs `/everything`/tags/search |
+| P1 | Collapse **duplicate redirects** — keep `seoRouting.ts` as source of truth; thin `vercel.json` to hosts + Remark42 rewrite | Drift risk |
+| P1 | Brain-science **shared precompute** beyond meta-analysis (sentiment/word metrics once per build) | Build wall time across 6+ pages |
+
+### Mid-term (leverage)
+
+| Priority | Item | Why |
+| --- | --- | --- |
+| P2 | Drop noindex author tools from **search index** (or mark them clearly) | Search surface matches SEO intent |
+| P2 | Reduce `getSearchData()` cost in `BaseLayout` (cache once per build) | Build wall time as route count grows |
+| P2 | Targeted tests: `publishFilters`, SEO redirects, quotes API | Highest-regression surfaces without full TDD |
+| P2 | Refresh `docs/structured-data-optimization.md` against current generators | Doc drift |
+
+### Later / only if needed
+
+- Sitemap hreflang clusters and `og:locale:alternate` for EN/ES pairs.
+- Make Remark42 Railway rewrite host configurable (today hardcoded in `vercel.json`).
+- Letterboxd build warning when RSS URL is set but fetch returns empty.
+- Remove inert `transition:name` attrs or restore View Transitions deliberately.
+
+### Explicit non-goals (technical)
+
+- Accounts, server-side reading graphs, growth analytics stacks.
+- Expanding Brain Science before feed HTML + listing-policy clarity.
+- Full unit-test coverage of every Astro component.
+
+### Suggested sequencing with product §7
+
+1. Ship **feed HTML + social images** (quiet reliability).
+2. Resolve **EN/ES listing policy** before Spanish-first content bets scale.
+3. Then product ranked bets (TLDRs → email → sources), with schema work feeding §5.

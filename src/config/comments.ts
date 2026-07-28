@@ -16,8 +16,8 @@ export const commentsConfig: CommentsConfig = {
   // Remark42 server host URL (normalized, no trailing slash)
   host: normalizeHost(rawHost),
 
-  // Site ID configured in your Remark42 instance (Railway default is 'remark42')
-  siteId: import.meta.env.PUBLIC_REMARK42_SITE_ID || 'remark42',
+  // Site ID configured in your Remark42 instance (see docs/comments-setup.md)
+  siteId: import.meta.env.PUBLIC_REMARK42_SITE_ID || 'notes-antoniwan',
 
   // Default language
   lang: 'en',
