@@ -16,6 +16,7 @@ const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDa
   description="The full record, newest to oldest. Scroll away! 📝"
   path="/everything"
   structuredDataType="website"
+  mode="chrome"
 >
   {
     sortedPosts.length > 0 ? (

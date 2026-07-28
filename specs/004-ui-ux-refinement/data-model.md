@@ -61,5 +61,5 @@ This feature does not add runtime-persisted entities. The model below defines de
 - `library books` -> `/library/books` (`src/pages/library/books.astro`)
 - `tag management` -> `/tag-management` (`src/pages/tag-management.astro`)
 - `brain science landing` -> `/brain-science` (`src/pages/brain-science/index.astro`)
-- `api docs` -> `/api` (`src/pages/api/index.astro`)
+- `api quotes` -> `/api/quotes` (`src/pages/api/quotes.ts`)
 - `not found` -> `/404` (`src/pages/404.astro`)

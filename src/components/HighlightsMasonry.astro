@@ -338,22 +338,54 @@ for (const [catId, list] of Object.entries(postsByCategory)) {
       transform 0.2s ease;
   }
 
-  /* Same height per row: grid rows stretch, cards fill cell and use flex so content area grows */
+  /*
+    Equal row heights: emphasis spans are different widths, so aspect-ratio
+    media makes wide cards taller than narrow ones. Use a fixed media height
+    and stretch cards so the text block fills leftover space.
+    :global() required — PostCard is a child component with its own scope.
+  */
   @media (min-width: 768px) {
+    .highlights-masonry {
+      align-items: stretch;
+    }
+
     .highlights-masonry .masonry-item {
       display: flex;
+      height: 100%;
     }
-    .highlights-masonry .masonry-item article.interactive-card {
+
+    .highlights-masonry .masonry-item :global(article.postcard) {
       display: flex;
       flex-direction: column;
       flex: 1;
+      width: 100%;
+      height: 100%;
       min-height: 0;
     }
-    .highlights-masonry article.interactive-card > .relative {
-      flex: 1;
+
+    .highlights-masonry :global(article.postcard .image-container) {
+      aspect-ratio: auto;
+      flex: 0 0 auto;
+      height: 13rem;
+    }
+
+    .highlights-masonry :global(article.postcard .postcard-body) {
+      flex: 1 1 auto;
       display: flex;
       flex-direction: column;
-      min-height: 0;
+    }
+
+    .highlights-masonry :global(article.postcard .postcard-title) {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .highlights-masonry :global(article.postcard .image-container) {
+      height: 15rem;
     }
   }
 
@@ -365,8 +397,8 @@ for (const [catId, list] of Object.entries(postsByCategory)) {
     }
   }
 
-  .highlights-masonry .group:hover {
-    box-shadow: 0 4px 12px -2px rgb(0 0 0 / 0.15);
-    border-color: rgb(var(--color-primary) / 0.3);
+  .highlights-masonry :global(article.postcard:hover) {
+    box-shadow: var(--shadow-soft);
+    border-color: rgb(var(--color-accent) / 0.35);
   }
 </style>

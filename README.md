@@ -24,7 +24,6 @@ Live site: [notes.antoniwan.online](https://notes.antoniwan.online)
 - **Table of contents on long posts** — floating contents control with section links and a jump to the top
 - **RSS** (`/rss.xml`) and **JSON Feed** (`/feed.json`)
 - **Random quotes API** — `GET /api/quotes` (Stoic excerpts, other philosophy, lines from posts; optional `?kind=`)
-- **Public API** page at `/api/` — lists endpoints in plain language
 - **Schema.org JSON-LD** where it fits the page type
 - **Comments** — optional [Remark42](https://remark42.com/) embed when you set env vars (see `docs/comments-setup.md`)
 - **Service worker** — registered for caching; the registration URL includes the **package version** from `package.json` so a version bump can nudge browsers to pick up updates

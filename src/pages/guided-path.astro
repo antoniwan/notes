@@ -117,6 +117,7 @@ const sortedChapters = nonEmptyChapters.sort(
   title="Guided Path"
   description="Read writings grouped by season and year. Each chapter is a season (Winter, Spring, Summer, Fall) with posts from that period. Only seasons with content are shown, and your reading progress is stored locally on your device."
   path="/guided-path"
+  mode="chrome"
 >
   <>
     <div class="guided-path">
@@ -336,53 +337,54 @@ const sortedChapters = nonEmptyChapters.sort(
 
 <style>
   .guided-path {
-  }
-
-  .path-intro {
-    max-width: 800px;
-    margin: 0 auto 3rem;
-    text-align: center;
-  }
-
-  .path-intro h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    color: rgb(var(--color-text));
-  }
-
-  .intro-text {
-    font-size: 1.125rem;
-    line-height: 1.7;
-    color: rgb(var(--color-text-muted));
-    margin-bottom: 1rem;
+    max-width: 52rem;
+    margin: 0 auto;
+    padding-bottom: 2rem;
   }
 
   .chapters {
-    max-width: 800px;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
   }
 
   .total-progress-summary {
-    max-width: 800px;
-    margin: 3rem auto;
-    padding: 2rem;
+    margin: 3.5rem 0 0;
+    padding: 1.75rem 1.5rem;
     background: rgb(var(--color-bg-alt));
-    border-radius: 12px;
-    border: 1px solid rgb(var(--color-border));
+    border-radius: var(--radius-lg);
+    border: 1px solid rgb(var(--color-border) / 0.55);
+  }
+
+  @media (min-width: 768px) {
+    .total-progress-summary {
+      margin-top: 4rem;
+      padding: 2rem 2.25rem;
+    }
   }
 
   .progress-header {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+  }
+
+  @media (min-width: 640px) {
+    .progress-header {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
   }
 
   .progress-header h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    line-height: 1.3;
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
     color: rgb(var(--color-text));
     margin: 0;
   }
@@ -390,21 +392,21 @@ const sortedChapters = nonEmptyChapters.sort(
   .total-progress {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.85rem;
   }
 
   .total-progress-bar {
-    width: 120px;
-    height: 8px;
+    width: 8rem;
+    height: 0.5rem;
     background: rgb(var(--color-border));
-    border-radius: 4px;
+    border-radius: 999px;
     overflow: hidden;
   }
 
   .total-progress-fill {
     height: 100%;
     background: rgb(var(--color-primary));
-    border-radius: 4px;
+    border-radius: 999px;
     width: 0%;
     transition:
       width 0.3s ease,
@@ -412,116 +414,95 @@ const sortedChapters = nonEmptyChapters.sort(
   }
 
   .total-progress-text {
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: 0.95rem;
+    font-weight: 600;
     color: rgb(var(--color-text-muted));
     min-width: 3rem;
     text-align: right;
-    transition:
-      color 0.3s ease,
-      font-weight 0.3s ease;
+    font-variant-numeric: tabular-nums;
   }
 
   .progress-stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 768px) {
+    .progress-stats {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+    }
   }
 
   .stat {
     text-align: center;
-    padding: 1rem;
+    padding: 1.1rem 0.75rem;
     background: rgb(var(--color-bg));
-    border-radius: 8px;
-    border: 1px solid rgb(var(--color-border));
+    border-radius: var(--radius-md);
+    border: 1px solid rgb(var(--color-border) / 0.5);
   }
 
   .stat-number {
     display: block;
-    font-size: 1.5rem;
+    font-family: var(--font-heading);
+    font-size: 1.65rem;
     font-weight: 700;
     color: rgb(var(--color-text));
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.3rem;
+    font-variant-numeric: tabular-nums;
   }
 
   .stat-label {
-    font-size: 0.875rem;
-    line-height: 1.6;
+    font-size: 0.72rem;
+    line-height: 1.4;
     color: rgb(var(--color-text-muted));
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
+    font-weight: 600;
   }
 
   .completion-message {
+    margin-top: 1.5rem;
     padding: 1.5rem;
-    background: rgb(34, 197, 94, 0.1);
-    border: 1px solid rgb(34, 197, 94, 0.2);
-    border-radius: 8px;
+    background: rgb(var(--color-success) / 0.1);
+    border: 1px solid rgb(var(--color-success) / 0.22);
+    border-radius: var(--radius-md);
     text-align: center;
   }
 
   .celebration {
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-    color: rgb(34, 197, 94);
+    font-size: 1.15rem;
+    margin-bottom: 0.85rem;
+    color: rgb(var(--color-success));
   }
 
   .completion-message p {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    line-height: 1.8;
-    color: rgb(var(--color-text-muted));
-  }
-
-  .completion-message p:first-child {
-    margin-top: 0;
-  }
-
-  .completion-message p:last-child {
-    margin-bottom: 0;
-  }
-
-  .privacy-notice {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 1.5rem;
-    background: rgb(var(--color-bg));
-    border-radius: 8px;
-    border: 1px solid rgb(var(--color-border));
-    border-left: 4px solid rgb(var(--color-primary));
-  }
-
-  .privacy-notice p {
-    margin: 0;
-    font-size: 0.875rem;
+    margin: 0.85rem 0 0;
     line-height: 1.7;
     color: rgb(var(--color-text-muted));
   }
 
-  @media (max-width: 768px) {
-    .path-intro h1 {
-      font-size: 2rem;
-    }
+  .privacy-notice {
+    margin: 2rem 0 0;
+    padding: 1.35rem 1.5rem;
+    background: rgb(var(--color-bg));
+    border-radius: var(--radius-md);
+    border: 1px solid rgb(var(--color-border) / 0.55);
+    border-left: 3px solid rgb(var(--color-primary));
+  }
 
-    .progress-header {
-      flex-direction: column;
-      gap: 1rem;
-      text-align: center;
-    }
+  .privacy-notice p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: rgb(var(--color-text-muted));
+  }
 
-    .progress-stats {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .chapter-meta {
-      flex-direction: column;
-      gap: 0.5rem;
-      align-items: flex-start;
-    }
-
-    .chapter-progress {
-      min-width: 100px;
+  @media (prefers-reduced-motion: reduce) {
+    .total-progress-fill {
+      transition: none;
     }
   }
 </style>

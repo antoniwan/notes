@@ -13,7 +13,7 @@ function isUnderCategory(p: string): boolean {
 
 /**
  * Resources nav groups tag index, tag detail pages, brain-science, tag-management,
- * library books, and API docs — not a single URL prefix.
+ * and library books — not a single URL prefix.
  */
 function isUnderResourcesSection(p: string): boolean {
   if (p === '/tag' || (p.startsWith('/tag/') && !p.startsWith('/tag-management'))) {
@@ -22,7 +22,6 @@ function isUnderResourcesSection(p: string): boolean {
   if (p === '/tag-management' || p.startsWith('/tag-management/')) return true;
   if (p === '/brain-science' || p.startsWith('/brain-science/')) return true;
   if (p === '/library/books' || p.startsWith('/library/books/')) return true;
-  if (p === '/api' || p.startsWith('/api/')) return true;
   return false;
 }
 
@@ -70,10 +69,6 @@ export function isNavDropdownItemActive(itemHref: string, pathname: string): boo
 
   if (h === '/brain-science') {
     return p === '/brain-science' || p.startsWith('/brain-science/');
-  }
-
-  if (h === '/api') {
-    return p === '/api' || p.startsWith('/api/');
   }
 
   if (h.startsWith('/category/')) {

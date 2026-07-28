@@ -5,12 +5,26 @@ import Container from '../components/Container.astro';
 import type { BaseLayoutProps } from '../types/layout';
 
 interface Props extends BaseLayoutProps {
-  /** Replaces default `prose prose-lg max-w-none` wrapper when you need a custom page layout */
+  /**
+   * Visible page H1. Defaults to `title`.
+   * Use when the document title (SEO/nav brand) should differ from the on-page headline
+   * — e.g. home: title "Notes", heading "A season of execution".
+   */
+  heading?: string;
+  /**
+   * Page content shell:
+   * - prose (default): long-form / mixed text pages
+   * - chrome: listing & tool pages (cards/grids) — avoids fighting Tailwind Typography
+   * Or pass an explicit contentClass to override.
+   */
+  mode?: 'prose' | 'chrome';
+  /** Replaces default wrapper when you need a custom page layout */
   contentClass?: string;
 }
 
 const {
   title,
+  heading,
   description,
   path,
   imageAlt,
@@ -20,9 +34,14 @@ const {
   structuredDataIdentifier,
   posts,
   showTitle = true,
-  contentClass = 'prose prose-lg max-w-none',
+  mode = 'prose',
+  contentClass,
   ...rest
 } = Astro.props;
+
+const resolvedContentClass =
+  contentClass ?? (mode === 'chrome' ? 'page-chrome max-w-none' : 'prose prose-lg max-w-none');
+const visibleHeading = heading ?? title;
 ---
 
 <BaseLayout
@@ -38,10 +57,9 @@ const {
   {...rest}
 >
   <Container>
-    <PageHeader title={title} description={description} showTitle={showTitle} />
+    <PageHeader title={visibleHeading} description={description} showTitle={showTitle} />
 
-    {/* Page Content */}
-    <div class={contentClass}>
+    <div class={resolvedContentClass}>
       <slot />
     </div>
   </Container>

@@ -22,7 +22,7 @@ This section is a **checkpoint** so the roadmap does not read like the site is o
 - **Home**: **highlight** masonry for posts marked `featured` or `highlight` in frontmatter.
 - **Brain Science**: multi-page **stats and charts** (cadence, topics, sentiment, etc.).
 - **Library**: dedicated **books** pages (see §4).
-- **Feeds & APIs**: **RSS**, **JSON Feed**, **GET `/api/quotes`**, human-readable **`/api/`** overview.
+- **Feeds & APIs**: **RSS**, **JSON Feed**, **GET `/api/quotes`**.
 - **Quality & distribution**: **Schema.org** where it fits, optional **Remark42** comments, **service worker** for caching (version bumped on build), **Vercel Web Analytics** and **Speed Insights** in the base layout when those products are enabled on Vercel.
 - **About**: curated topic grid; optional **Letterboxd “latest watched”** when `LETTERBOXD_*` env vars are set.
 

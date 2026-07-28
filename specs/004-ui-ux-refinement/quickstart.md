@@ -19,7 +19,7 @@
 
 - `/`, `/about`, `/p/[...slug]`, `/everything`, `/category`, `/category/[category]`
 - `/tag`, `/tag/[tag]`, `/guided-path`, `/library`, `/library/books`
-- `/tag-management`, `/brain-science`, `/api`, `/404`
+- `/tag-management`, `/brain-science`, `/404`
 
 ### Baseline capture notes
 
