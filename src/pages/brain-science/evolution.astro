@@ -489,14 +489,14 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
       </div>
       <div title="Tag categories with positive early→recent growth">
         <div
-          class="text-2xl font-semibold text-green-600 tabular-nums md:text-3xl dark:text-green-400"
+          class="text-2xl font-semibold text-[rgb(var(--color-text))] tabular-nums md:text-3xl"
         >
           {growingTopics.length}
         </div>
         <div class="text-body-muted text-xs">Tags rising</div>
       </div>
       <div title="Tag categories with negative early→recent growth">
-        <div class="text-2xl font-semibold text-red-600 tabular-nums md:text-3xl dark:text-red-400">
+        <div class="text-2xl font-semibold text-[rgb(var(--color-text))] tabular-nums md:text-3xl">
           {decliningTopics.length}
         </div>
         <div class="text-body-muted text-xs">Tags falling</div>
@@ -591,12 +591,12 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
             <div class="text-body-muted mt-3 space-y-3 border-l-2 border-[rgb(var(--color-border))]/60 pl-4 text-sm leading-relaxed">
               <p class="m-0 flex flex-wrap items-start gap-2">
                 <span
-                  class="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-[rgb(147,51,234)]"
+                  class="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-[rgb(var(--color-accent))]"
                   aria-hidden="true"
                 />
                 <span>
                   <strong class="text-[rgb(var(--color-text))]">
-                    Flesch reading ease (purple).
+                    Flesch reading ease (violet).
                   </strong>{' '}
                   Higher = simpler sentences/vocabulary <em>by formula</em>. Syllables are
                   approximated (vowel heuristic). Typical blog-ish scores often land ~30–70.
@@ -604,12 +604,12 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
               </p>
               <p class="m-0 flex flex-wrap items-start gap-2">
                 <span
-                  class="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-[rgb(34,197,94)]"
+                  class="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-[rgb(var(--color-primary))]"
                   aria-hidden="true"
                 />
                 <span>
                   <strong class="text-[rgb(var(--color-text))]">
-                    Word-pattern composite (green).
+                    Word-pattern composite (marigold).
                   </strong>{' '}
                   Toy counter: discourse / curiosity / reflection word lists + a length term (
                   <code class="rounded-sm bg-[rgb(var(--color-bg-alt))] px-1 py-0.5 font-mono text-xs">
@@ -700,10 +700,10 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
                   <span
                     class={`text-[0.65rem] font-medium tracking-wide uppercase ${
                       insight.impact === 'High'
-                        ? 'text-green-600 dark:text-green-400'
+                        ? 'text-[rgb(var(--color-text))]'
                         : insight.impact === 'Medium'
-                          ? 'text-amber-600 dark:text-amber-400'
-                          : 'text-blue-600 dark:text-blue-400'
+                          ? 'text-body-muted'
+                          : 'text-body-muted'
                     }`}
                   >
                     {insight.impact}
@@ -770,13 +770,13 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
                   <td
                     class={`py-2.5 pr-4 text-right tabular-nums ${
                       maxPeriodFlesch > 0 && period.avgComplexity >= maxPeriodFlesch * 0.8
-                        ? 'text-green-600 dark:text-green-400'
+                        ? 'text-[rgb(var(--color-text))]'
                         : maxPeriodFlesch > 0 && period.avgComplexity >= maxPeriodFlesch * 0.5
-                          ? 'text-blue-600 dark:text-blue-400'
+                          ? 'text-body-muted'
                           : maxPeriodFlesch > 0 && period.avgComplexity >= maxPeriodFlesch * 0.2
-                            ? 'text-amber-600 dark:text-amber-400'
+                            ? 'text-body-muted'
                             : maxPeriodFlesch > 0
-                              ? 'text-red-600 dark:text-red-400'
+                              ? 'text-body-muted'
                               : 'text-[rgb(var(--color-text))]'
                     }`}
                     title="Avg Flesch reading ease — higher tends to mean simpler wording"
@@ -831,7 +831,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
                   </span>
                 </div>
                 <div
-                  class="shrink-0 text-sm font-medium text-green-600 tabular-nums dark:text-green-400"
+                  class="shrink-0 text-sm font-medium tabular-nums text-[rgb(var(--color-text))]"
                   title={`Growth rate: ${Math.round(topic.growthRate)}% increase from early to recent`}
                 >
                   +{Math.round(topic.growthRate)}%
@@ -867,7 +867,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
                   </span>
                 </div>
                 <div
-                  class="shrink-0 text-sm font-medium text-red-600 tabular-nums dark:text-red-400"
+                  class="shrink-0 text-sm font-medium tabular-nums text-[rgb(var(--color-text))]"
                   title={`Decline rate: ${Math.round(topic.growthRate)}%`}
                 >
                   {Math.round(topic.growthRate)}%
@@ -1022,9 +1022,8 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
         <div class="grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-2">
           <div>
             <h4
-              class="mb-4 flex items-center gap-2 text-lg font-semibold text-[rgb(var(--color-text))]"
+              class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]"
             >
-              <span class="text-blue-500">🧠</span>
               Readability & language heuristics
             </h4>
             <div class="text-body-muted space-y-3 text-sm leading-relaxed">
@@ -1062,9 +1061,8 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
           </div>
           <div>
             <h4
-              class="mb-4 flex items-center gap-2 text-lg font-semibold text-[rgb(var(--color-text))]"
+              class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]"
             >
-              <span class="text-purple-500">📚</span>
               Knowledge Area Evolution
             </h4>
             <div class="text-body-muted space-y-3">
@@ -1091,9 +1089,8 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
         <div class="grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-2">
           <div>
             <h4
-              class="mb-4 flex items-center gap-2 text-lg font-semibold text-[rgb(var(--color-text))]"
+              class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]"
             >
-              <span class="text-green-500">🎓</span>
               Maturity Indicators
             </h4>
             <div class="text-body-muted space-y-3">
@@ -1117,9 +1114,8 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
           </div>
           <div>
             <h4
-              class="mb-4 flex items-center gap-2 text-lg font-semibold text-[rgb(var(--color-text))]"
+              class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]"
             >
-              <span class="text-orange-500">📈</span>
               Learning Trajectory
             </h4>
             <div class="text-body-muted space-y-3">

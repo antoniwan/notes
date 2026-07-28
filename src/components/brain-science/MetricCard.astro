@@ -3,9 +3,7 @@ interface Props {
   value: string | number;
   label: string;
   subtitle?: string;
-  title?: string; // Tooltip title
-  emoji?: string;
-  color?: string; // Color class for subtitle (e.g., 'text-blue-500')
+  title?: string;
   class?: string;
 }
 
@@ -14,8 +12,6 @@ const {
   label,
   subtitle,
   title,
-  emoji,
-  color = 'text-body-muted',
   class: className = '',
 } = Astro.props;
 
@@ -39,8 +35,7 @@ const displayValue =
   <div class="text-body-muted text-xs md:text-sm">{label}</div>
   {
     subtitle && (
-      <div class:list={['mt-1 text-xs', color]}>
-        {emoji && `${emoji} `}
+      <div class="text-body-muted mt-1 text-xs">
         {subtitle}
       </div>
     )

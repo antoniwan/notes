@@ -159,8 +159,8 @@ const topicClusters = [
         'mindfulness',
       ].includes(tag.tag),
     ),
-    color: 'text-green-500',
-    icon: '🌱',
+            color: 'text-[rgb(var(--color-text))]',
+    icon: '',
   },
   {
     name: 'Technical & Creative',
@@ -169,8 +169,8 @@ const topicClusters = [
         tag.tag,
       ),
     ),
-    color: 'text-blue-500',
-    icon: '💻',
+    color: 'text-[rgb(var(--color-text))]',
+    icon: '',
   },
   {
     name: 'Life & Relationships',
@@ -179,8 +179,8 @@ const topicClusters = [
         tag.tag,
       ),
     ),
-    color: 'text-purple-500',
-    icon: '💜',
+    color: 'text-[rgb(var(--color-text))]',
+    icon: '',
   },
   {
     name: 'Philosophy & Reflection',
@@ -195,8 +195,8 @@ const topicClusters = [
         'consciousness',
       ].includes(tag.tag),
     ),
-    color: 'text-yellow-500',
-    icon: '🤔',
+    color: 'text-[rgb(var(--color-text))]',
+    icon: '',
   },
 ].filter((cluster) => cluster.topics.length > 0);
 
@@ -459,8 +459,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
               <div class="mb-1 flex flex-wrap items-baseline gap-x-2 gap-y-1">
                 <span class="text-body-muted font-mono text-xs">{index + 1}.</span>
                 <span
-                  class={`text-[0.65rem] font-medium tracking-wide uppercase ${insight.impact === 'High' ? 'text-green-600 dark:text-green-400' : insight.impact === 'Medium' ? 'text-amber-600 dark:text-amber-400' : 'text-blue-600 dark:text-blue-400'}`}
-                >
+                <span class="text-body-muted text-[0.65rem] font-medium tracking-wide uppercase">
                   {insight.impact}
                 </span>
               </div>
@@ -518,17 +517,14 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
         {
           topicClusters.map((cluster) => (
             <div>
-              <div class="mb-4 flex items-center gap-3">
-                <span class="text-2xl">{cluster.icon}</span>
-                <div>
+              <div class="mb-4">
                   <div class="text-lg font-semibold text-[rgb(var(--color-text))]">
                     {cluster.name}
                   </div>
                   <div class="text-body-muted text-sm">
-                    {cluster.topics.length} topics •{' '}
+                    {cluster.topics.length} topics ·{' '}
                     {cluster.topics.reduce((sum, tag) => sum + tag.count, 0)} writings
                   </div>
-                </div>
               </div>
               <div class="space-y-2">
                 {cluster.topics.map((tag) => (
@@ -537,7 +533,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
                     <div class="flex items-center gap-2">
                       <div class="h-2 w-16 rounded-full bg-[rgb(var(--color-border))]">
                         <div
-                          class={`h-2 rounded-full ${cluster.color.replace('text-', 'bg-')}`}
+                          class="h-2 rounded-full bg-[rgb(var(--color-accent))]"
                           style={`width: ${(tag.count / Math.max(...cluster.topics.map((t) => t.count))) * 100}%`}
                         />
                       </div>
@@ -566,14 +562,11 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
         {
           maslowAnalysis.map((category) => (
             <div class="flex flex-wrap items-start justify-between gap-3 py-2.5">
-              <div class="flex min-w-0 gap-2">
-                <span class="shrink-0 text-lg">{category.icon}</span>
-                <div>
+              <div class="min-w-0">
                   <div class="text-sm font-medium text-[rgb(var(--color-text))]">
                     {category.title}
                   </div>
                   <div class="text-body-muted text-xs">{category.description}</div>
-                </div>
               </div>
               <div class="text-right tabular-nums">
                 <div class="text-sm font-medium text-[rgb(var(--color-text))]">
@@ -623,16 +616,14 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
       <h3
         class="mb-4 flex items-center gap-3 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl"
       >
-        <span class="text-2xl text-[rgb(var(--color-accent))]">📊</span>
         Core Themes Formulas
       </h3>
       <div class="space-y-6 md:space-y-8">
         <div class="grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-2">
           <div>
             <h4
-              class="mb-4 flex items-center gap-2 text-lg font-semibold text-[rgb(var(--color-text))]"
+              class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]"
             >
-              <span class="text-blue-500">🏷️</span>
               Topic Analysis
             </h4>
             <div class="text-body-muted space-y-3">
@@ -658,9 +649,8 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
           </div>
           <div>
             <h4
-              class="mb-4 flex items-center gap-2 text-lg font-semibold text-[rgb(var(--color-text))]"
+              class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]"
             >
-              <span class="text-green-500">📈</span>
               Topic Trends
             </h4>
             <div class="text-body-muted space-y-3">
@@ -687,9 +677,8 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
         <div class="grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-2">
           <div>
             <h4
-              class="mb-4 flex items-center gap-2 text-lg font-semibold text-[rgb(var(--color-text))]"
+              class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]"
             >
-              <span class="text-purple-500">🔗</span>
               Topic Relationships
             </h4>
             <div class="text-body-muted space-y-3">
@@ -715,9 +704,8 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
           </div>
           <div>
             <h4
-              class="mb-4 flex items-center gap-2 text-lg font-semibold text-[rgb(var(--color-text))]"
+              class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]"
             >
-              <span class="text-orange-500">🎯</span>
               Life Areas Focus
             </h4>
             <div class="text-body-muted space-y-3">

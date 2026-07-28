@@ -23,9 +23,6 @@ const allPages = BRAIN_SCIENCE_PAGES;
                 class:list={['bs-nav__link', { 'is-active': isActive }]}
                 aria-current={isActive ? 'page' : undefined}
               >
-                <span class="bs-nav__emoji" aria-hidden="true">
-                  {page.emoji}
-                </span>
                 <span class="bs-nav__label-short">{page.title.split(' ')[0]}</span>
                 <span class="bs-nav__label-full">{page.title}</span>
               </a>
@@ -55,7 +52,6 @@ const allPages = BRAIN_SCIENCE_PAGES;
   .bs-nav__link {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
     padding: 0.7rem 0.75rem;
     border-bottom: 2px solid transparent;
     margin-bottom: -1px;
@@ -93,10 +89,6 @@ const allPages = BRAIN_SCIENCE_PAGES;
   .bs-nav__link:focus-visible {
     outline: 2px solid rgb(var(--color-accent));
     outline-offset: 2px;
-  }
-
-  .bs-nav__emoji {
-    font-size: 0.95em;
   }
 
   .bs-nav__label-short {

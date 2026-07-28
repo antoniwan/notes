@@ -140,33 +140,36 @@ export default {
         '6xl': ['4.5rem', { lineHeight: '1', letterSpacing: '-0.03em' }],
       },
       spacing: {
-        // Vertical rhythm system
-        section: '4rem', // 64px - Major section spacing
-        block: '2rem', // 32px - Block-level spacing
-        element: '1rem', // 16px - Element-level spacing
-        content: '0.75rem', // 12px - Content-level spacing
-        tight: '0.375rem', // 6px  - Tight spacing
-
-        // Legacy spacing (keep for backward compatibility)
-        xs: '0.25rem',
-        sm: '0.5rem',
-        md: '1rem',
-        lg: '1.5rem',
-        xl: '2rem',
-        '2xl': '3rem',
-        '3xl': '4rem',
-        '4xl': '6rem',
-        '5xl': '8rem',
+        // Vertical rhythm system (named tokens — do NOT reuse sm/md/xl/2xl/3xl here;
+        // in Tailwind v4 those keys also drive max-w-* and would crush max-w-3xl to 4rem)
+        section: '4rem',
+        block: '2rem',
+        element: '1rem',
+        content: '0.75rem',
+        tight: '0.375rem',
       },
       maxWidth: {
-        // Content widths
-        prose: '65ch', // Optimal reading width
-        'prose-wide': '85ch', // Wider content area
+        // Restore default reading widths (must be explicit after custom spacing history)
+        xs: '20rem',
+        sm: '24rem',
+        md: '28rem',
+        lg: '32rem',
+        xl: '36rem',
+        '2xl': '42rem',
+        '3xl': '48rem',
+        '4xl': '56rem',
+        '5xl': '64rem',
+        '6xl': '72rem',
+        '7xl': '80rem',
 
-        // Layout containers - optimized for full-width layouts
-        container: '1400px', // Increased from 1280px for better full-width experience
-        'container-narrow': '1024px', // For focused content
-        'container-wide': '1600px', // For full-width layouts with max constraint
+        // Content widths
+        prose: '65ch',
+        'prose-wide': '85ch',
+
+        // Layout containers
+        container: '1400px',
+        'container-narrow': '1024px',
+        'container-wide': '1600px',
 
         // Component widths
         card: '400px',

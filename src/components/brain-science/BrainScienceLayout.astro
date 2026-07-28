@@ -1,27 +1,23 @@
 ---
 import Container from '../Container.astro';
 import BrainScienceNav from './BrainScienceNav.astro';
-import { getBrainSciencePage } from '../../data/brainScience';
 
 interface Props {
   currentPage: string;
   title: string;
   description: string;
+  /** @deprecated Decorative emoji removed from chrome */
   emoji?: string;
   showNavLinks?: boolean;
 }
 
-const { currentPage, title, description, emoji, showNavLinks = true } = Astro.props;
-
-const pageInfo = getBrainSciencePage(currentPage);
-const displayEmoji = emoji || pageInfo?.emoji || '🧠';
+const { currentPage, title, description, showNavLinks = true } = Astro.props;
 ---
 
 <Container class="pt-4 md:pt-6 lg:pt-8">
   <BrainScienceNav currentPage={currentPage} showNavLinks={showNavLinks} />
 
   <header class="bs-header">
-    <p class="bs-header__eyebrow" aria-hidden="true">{displayEmoji}</p>
     <h1 class="bs-header__title">{title}</h1>
     <p class="bs-header__desc">{description}</p>
   </header>
@@ -43,19 +39,13 @@ const displayEmoji = emoji || pageInfo?.emoji || '🧠';
     }
   }
 
-  .bs-header__eyebrow {
-    margin: 0 0 0.5rem;
-    font-size: 1.5rem;
-    line-height: 1;
-  }
-
   .bs-header__title {
     margin: 0 0 0.85rem;
     font-family: var(--font-heading);
-    font-size: clamp(1.85rem, 1.4rem + 1.6vw, 2.75rem);
-    font-weight: 800;
+    font-size: clamp(1.5rem, 1.25rem + 1vw, 2rem);
+    font-weight: 650;
     letter-spacing: -0.02em;
-    line-height: 1.15;
+    line-height: 1.2;
     color: rgb(var(--color-text));
   }
 
