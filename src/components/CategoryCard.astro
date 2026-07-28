@@ -47,8 +47,7 @@ const { category, postCount, featured = false, compact = false } = Astro.props;
 
         <div class="flex items-center justify-between gap-2">
           <span class="text-body-muted text-sm font-medium md:text-base">
-            {postCount}
-            {postCount === 1 ? 'writing' : 'writings'}
+            {postCount} {postCount === 1 ? 'writing' : 'writings'}
           </span>
           <span class="text-[rgb(var(--color-accent))]" aria-hidden="true">→</span>
         </div>

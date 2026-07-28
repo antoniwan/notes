@@ -36,7 +36,7 @@ const { posts, initialCount = 6, loadMoreCount = 6 } = Astro.props;
           {Math.round((initialCount / posts.length) * 100)}% complete)
         </div>
         <button
-          class="load-more-btn rounded-lg bg-[rgb(var(--color-primary))] px-8 py-3 text-base leading-relaxed font-medium text-white transition-colors duration-200 hover:bg-[rgb(var(--color-primary-hover))] focus:ring-2 focus:ring-[rgb(var(--color-primary))] focus:ring-offset-2 focus:outline-hidden"
+          class="load-more-btn rounded-lg bg-[rgb(var(--color-primary))] px-8 py-3 text-base leading-relaxed font-medium text-[rgb(var(--color-on-primary))] transition-colors duration-200 hover:bg-[rgb(var(--color-primary-hover))] focus:ring-2 focus:ring-[rgb(var(--color-primary))] focus:ring-offset-2 focus:outline-hidden"
           id="load-more-btn"
           data-total-posts={posts.length}
           data-current-count={initialCount}

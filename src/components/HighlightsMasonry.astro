@@ -271,9 +271,10 @@ for (const [catId, list] of Object.entries(postsByCategory)) {
   }
 
   .filter-chip.is-active {
-    background: rgb(var(--color-primary) / 0.1);
-    border-color: rgb(var(--color-primary) / 0.65);
-    color: rgb(var(--color-text));
+    background: rgb(var(--color-primary));
+    border-color: rgb(var(--color-primary));
+    color: rgb(var(--color-on-primary));
+    font-weight: 600;
   }
 
   .filter-chip:focus-visible {
