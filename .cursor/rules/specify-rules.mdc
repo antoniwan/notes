@@ -19,7 +19,7 @@ specs/        # Specify feature plans
 
 ## Commands
 
-pnpm run check && pnpm run lint && pnpm run build
+pnpm test && pnpm run check && pnpm run lint && pnpm run build
 # After content/feed/schema work also:
 pnpm run audit-frontmatter && pnpm run validate-feeds && pnpm run validate-structured-data
 

@@ -24,6 +24,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "check": "astro check",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "validate-feeds": "node scripts/validate-feeds.mjs",
     "audit-frontmatter": "node scripts/audit-frontmatter.mjs",
     "validate-structured-data": "node scripts/validate-structured-data.mjs"
@@ -57,6 +59,7 @@
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.8.0",
     "terser": "^5.47.1",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.7"
   }
 }

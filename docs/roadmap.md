@@ -318,12 +318,12 @@ Engineering debt and platform work from the full-stack audit. Detail lives in [T
 - Removed noindex author tools from the public search index.
 - Memoized Brain Science posts fetch + objective metrics/sentiment for the build process.
 - Memoized `getSearchData()` so BaseLayout does not rebuild the search index per page.
+- Added Vitest suite for publish filters, SEO routing, feed HTML sanitization, and quotes helpers (`pnpm test` in CI).
 
 ### Near-term (platform integrity)
 
 | Priority | Item | Why |
 | --- | --- | --- |
-| P2 | Targeted tests: `publishFilters`, SEO redirects, quotes API, feed HTML | Highest-regression surfaces |
 | P2 | Optional sitemap hreflang / `og:locale:alternate` | EN/ES SEO polish |
 | P2 | Extract page-local Brain Science NLP (Flesch/regex loops in large `.astro` files) | Remaining build cost / duplication |
 
@@ -331,9 +331,6 @@ Engineering debt and platform work from the full-stack audit. Detail lives in [T
 
 | Priority | Item | Why |
 | --- | --- | --- |
-| P2 | Drop noindex author tools from **search index** (or mark them clearly) | Search surface matches SEO intent |
-| P2 | Reduce `getSearchData()` cost in `BaseLayout` (cache once per build) | Build wall time as route count grows |
-| P2 | Targeted tests: `publishFilters`, SEO redirects, quotes API | Highest-regression surfaces without full TDD |
 | P2 | Refresh `docs/structured-data-optimization.md` against current generators | Doc drift |
 
 ### Later / only if needed

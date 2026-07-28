@@ -154,9 +154,10 @@ Package version bumped to **5.30.1** so browsers fetch the new service worker.
 
 See [roadmap.md §8](./roadmap.md#8-technical-roadmap--2026-07-28). Highest remaining leverage:
 
-1. **Targeted tests** — publish filters, SEO redirects, quotes API, feed HTML smoke.
-2. **Sitemap hreflang clusters** / `og:locale:alternate` (optional i18n polish).
-3. **Page-local Brain Science NLP** — insights/evolution/patterns still embed large duplicated Flesch/regex loops (shared objective metrics are memoized).
+1. **Sitemap hreflang clusters** / `og:locale:alternate` (optional i18n polish).
+2. **Page-local Brain Science NLP** — insights/evolution/patterns still embed large duplicated Flesch/regex loops (shared objective metrics are memoized).
+
+Unit tests (`pnpm test`) cover publish filters, SEO routing, feed HTML sanitization, and quotes helpers.
 
 ---
 

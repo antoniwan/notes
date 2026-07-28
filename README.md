@@ -68,6 +68,7 @@ Remark42 uses `PUBLIC_REMARK42_HOST` and `PUBLIC_REMARK42_SITE_ID` when you turn
 | `pnpm run dev`                    | Dev server                                                                                    |
 | `pnpm run build`                  | Builds social JPG/PNG from AVIF (skipped when fingerprints + files match), then `astro build` |
 | `pnpm run preview`                | Serves the production build locally                                                           |
+| `pnpm test`                       | Vitest unit tests (publish filters, SEO routing, feed HTML, quotes helpers) |
 | `pnpm run check`                  | `astro check` (TypeScript / Astro diagnostics)                                                |
 | `pnpm run lint`                   | ESLint                                                                                        |
 | `pnpm run lint:fix`               | ESLint with `--fix`                                                                           |
