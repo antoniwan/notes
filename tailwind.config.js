@@ -8,46 +8,46 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Primary colors (Red for shocking highlights)
+        // Ember (warm editorial signal)
         primary: {
-          50: '#fef2f2',
-          100: '#fee2e2',
-          200: '#fecaca',
-          300: '#fca5a5',
-          400: '#f87171',
-          500: '#dc2626',
-          600: '#b91c1c',
-          700: '#991b1b',
-          800: '#7f1d1d',
-          900: '#450a0a',
+          50: '#fdf4f1',
+          100: '#fce8e2',
+          200: '#f7cfc4',
+          300: '#eeaa97',
+          400: '#e07e66',
+          500: '#b43e2a',
+          600: '#943020',
+          700: '#7a281c',
+          800: '#662419',
+          900: '#562118',
         },
 
-        // Accent colors (Blue for links and secondary actions)
+        // Same family as primary — single accent system
         accent: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          200: '#bfdbfe',
-          300: '#93c5fd',
-          400: '#60a5fa',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
-          800: '#1e40af',
-          900: '#1e3a8a',
+          50: '#fdf4f1',
+          100: '#fce8e2',
+          200: '#f7cfc4',
+          300: '#eeaa97',
+          400: '#e07e66',
+          500: '#b43e2a',
+          600: '#943020',
+          700: '#7a281c',
+          800: '#662419',
+          900: '#562118',
         },
 
-        // Highlight colors (Yellow for shocking/curious elements)
+        // Soft warm wash (selection / rare emphasis)
         highlight: {
-          50: '#fffbeb',
-          100: '#fef3c7',
-          200: '#fde68a',
-          300: '#fcd34d',
-          400: '#fbbf24',
-          500: '#f59e0b',
-          600: '#d97706',
-          700: '#b45309',
-          800: '#92400e',
-          900: '#78350f',
+          50: '#fbf6ec',
+          100: '#f5ebd4',
+          200: '#ead7a8',
+          300: '#dcb878',
+          400: '#d4a85c',
+          500: '#c4923c',
+          600: '#a8762e',
+          700: '#855a28',
+          800: '#6d4a26',
+          900: '#5b3e23',
         },
 
         // Status colors
@@ -57,7 +57,7 @@ export default {
           200: '#bbf7d0',
           300: '#86efac',
           400: '#4ade80',
-          500: '#22c55e',
+          500: '#2e8c5a',
           600: '#16a34a',
           700: '#15803d',
           800: '#166534',
@@ -70,7 +70,7 @@ export default {
           200: '#fde68a',
           300: '#fcd34d',
           400: '#fbbf24',
-          500: '#f59e0b',
+          500: '#b47824',
           600: '#d97706',
           700: '#b45309',
           800: '#92400e',
@@ -78,30 +78,30 @@ export default {
         },
 
         error: {
-          50: '#fef2f2',
-          100: '#fee2e2',
-          200: '#fecaca',
-          300: '#fca5a5',
-          400: '#f87171',
-          500: '#ef4444',
-          600: '#dc2626',
-          700: '#b91c1c',
-          800: '#991b1b',
-          900: '#7f1d1d',
+          50: '#fdf4f1',
+          100: '#fce8e2',
+          200: '#f7cfc4',
+          300: '#eeaa97',
+          400: '#e07e66',
+          500: '#b43e2a',
+          600: '#943020',
+          700: '#7a281c',
+          800: '#662419',
+          900: '#562118',
         },
 
-        // Neutral colors
+        // Warm stone neutrals
         neutral: {
-          50: '#f8fafc',
-          100: '#f1f5f9',
-          200: '#e2e8f0',
-          300: '#cbd5e1',
-          400: '#94a3b8',
-          500: '#64748b',
-          600: '#475569',
-          700: '#334155',
-          800: '#1e293b',
-          900: '#0f172a',
+          50: '#faf8f5',
+          100: '#f1ede7',
+          200: '#e5e0d7',
+          300: '#d6cec4',
+          400: '#a89e92',
+          500: '#6c625a',
+          600: '#544c46',
+          700: '#3c3632',
+          800: '#2c2824',
+          900: '#1c1917',
         },
 
         // Background colors using CSS variables
@@ -194,8 +194,8 @@ export default {
           css: {
             maxWidth: '65ch',
             color: 'rgb(var(--color-text))',
-            a: {
-              color: 'rgb(var(--color-primary))',
+    a: {
+              color: 'rgb(var(--color-accent))',
               textDecoration: 'none',
               fontWeight: '500',
               transition: 'color 0.2s ease',

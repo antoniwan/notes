@@ -1,14 +1,13 @@
 /*
-  Enhanced Theme System
-  =====================
-  
-  This stylesheet provides a sophisticated theme system with:
-  - Serious, professional color palette
-  - High contrast for better legibility
-  - Shocking/curious highlights for impact
-  - Optimized transitions and accessibility
+  Warm Editorial Theme
+  ====================
+
+  Modern editorial system:
+  - Warm stone neutrals + ink text (not clinical white / blue-black)
+  - Single ember accent for links, focus, and signals
+  - Type roles: Fraunces display, Literata prose, DM Sans UI
+  - Surface / radius / shadow tokens for consistent chrome
   - Reduced motion support
-  - Consolidated typography system
 */
 
 @import 'tailwindcss';
@@ -37,12 +36,20 @@
 }
 
 /* Component layer for reusable patterns */
+@utility text-display {
+  font-family: var(--font-heading);
+  @apply text-3xl leading-[1.15] font-bold tracking-tight md:text-4xl lg:text-5xl;
+}
 @utility text-heading {
-  /* Enhanced typography utilities for better hierarchy */
+  font-family: var(--font-heading);
   @apply text-2xl leading-tight font-bold tracking-tight md:text-3xl lg:text-4xl;
 }
 @utility text-body-large {
   @apply text-lg leading-relaxed md:text-xl;
+}
+@utility text-ui {
+  font-family: var(--font-sans);
+  @apply text-sm leading-snug font-medium tracking-normal;
 }
 @utility animate-fade-up {
   animation: fade-up 0.3s ease forwards;
@@ -78,20 +85,17 @@
   animation-delay: 0.5s;
 }
 @utility btn-primary {
-  /* Button utilities */
-  @apply inline-flex items-center gap-2 rounded-lg bg-[rgb(var(--color-primary))] px-4 py-2 font-semibold text-white transition-colors hover:bg-[rgb(var(--color-primary-hover))];
+  /* Button utilities — single ember accent family */
+  @apply inline-flex items-center gap-2 rounded-[var(--radius-md)] bg-[rgb(var(--color-primary))] px-4 py-2 font-semibold text-white transition-colors hover:bg-[rgb(var(--color-primary-hover))];
 }
 @utility btn-secondary {
-  @apply inline-flex items-center gap-2 rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] px-4 py-2 font-medium text-[rgb(var(--color-text))] transition-colors hover:bg-[rgb(var(--color-bg-alt))]/80;
+  @apply inline-flex items-center gap-2 rounded-[var(--radius-md)] border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] px-4 py-2 font-medium text-[rgb(var(--color-text))] transition-colors hover:bg-[rgb(var(--color-surface-2))];
 }
 @utility btn-accent {
-  @apply inline-flex items-center gap-2 rounded-lg bg-[rgb(var(--color-accent))] px-4 py-2 font-semibold text-white transition-colors hover:bg-[rgb(var(--color-accent-hover))];
-}
-@utility btn-highlight {
-  @apply inline-flex items-center gap-2 rounded-lg bg-[rgb(var(--color-highlight))] px-4 py-2 font-bold text-[rgb(var(--color-text))] transition-colors hover:bg-[rgb(var(--color-highlight))]/90;
+  @apply inline-flex items-center gap-2 rounded-[var(--radius-md)] bg-[rgb(var(--color-accent))] px-4 py-2 font-semibold text-white transition-colors hover:bg-[rgb(var(--color-accent-hover))];
 }
 @utility btn-outline {
-  @apply inline-flex items-center gap-2 rounded-lg border border-[rgb(var(--color-border))] bg-transparent px-4 py-2 font-medium text-[rgb(var(--color-text))] transition-colors hover:bg-[rgb(var(--color-bg-alt))];
+  @apply inline-flex items-center gap-2 rounded-[var(--radius-md)] border border-[rgb(var(--color-border))] bg-transparent px-4 py-2 font-medium text-[rgb(var(--color-text))] transition-colors hover:bg-[rgb(var(--color-bg-alt))];
 }
 @utility link {
   /* Link utilities */
@@ -103,18 +107,14 @@
 @utility link-primary {
   @apply font-semibold text-[rgb(var(--color-primary))] transition-colors hover:text-[rgb(var(--color-primary-hover))];
 }
-@utility highlight-shock {
-  /* Highlight utilities for shocking/curious elements */
-  @apply rounded-sm bg-[rgb(var(--color-highlight))] px-2 py-1 font-bold text-[rgb(var(--color-text))];
-}
 @utility highlight-primary {
-  @apply rounded-sm bg-[rgb(var(--color-primary))] px-2 py-1 font-bold text-white;
+  @apply rounded-[var(--radius-sm)] bg-[rgb(var(--color-primary))] px-2 py-1 font-bold text-white;
 }
 @utility highlight-accent {
-  @apply rounded-sm bg-[rgb(var(--color-accent))] px-2 py-1 font-semibold text-white;
+  @apply rounded-[var(--radius-sm)] bg-[rgb(var(--color-accent))] px-2 py-1 font-semibold text-white;
 }
 @utility highlight-brain {
-  @apply rounded-sm bg-purple-600 px-2 py-1 font-semibold text-white;
+  @apply rounded-[var(--radius-sm)] bg-[rgb(var(--color-accent))] px-2 py-1 font-semibold text-white;
 }
 @utility status-success {
   /* Status utilities */
@@ -180,13 +180,13 @@
   }
 
   & .brain-science-content table {
-    background: linear-gradient(165deg, rgb(24 38 62) 0%, rgb(17 26 44) 100%);
+    background: rgb(var(--color-bg-alt));
     outline-color: rgb(var(--color-border) / 0.65);
-    box-shadow: inset 0 1px 0 0 rgb(255 255 255 / 0.05);
+    box-shadow: inset 0 1px 0 0 rgb(255 255 255 / 0.04);
   }
 
   & .brain-science-content thead {
-    background: linear-gradient(180deg, rgb(32 47 78) 0%, rgb(26 40 66) 100%);
+    background: rgb(var(--color-surface-2));
   }
 
   & .brain-science-content tbody tr:nth-child(even) td {
@@ -251,13 +251,13 @@
   }
 
   .dark & table {
-    background: linear-gradient(165deg, rgb(24 38 62) 0%, rgb(17 26 44) 100%);
+    background: rgb(var(--color-bg-alt));
     outline-color: rgb(var(--color-border) / 0.65);
-    box-shadow: inset 0 1px 0 0 rgb(255 255 255 / 0.05);
+    box-shadow: inset 0 1px 0 0 rgb(255 255 255 / 0.04);
   }
 
   .dark & thead {
-    background: linear-gradient(180deg, rgb(32 47 78) 0%, rgb(26 40 66) 100%);
+    background: rgb(var(--color-surface-2));
   }
 
   .dark & tbody tr:nth-child(even) td {
@@ -272,32 +272,32 @@
 /* Custom base styles */
 @layer base {
   :root {
-    /* Light theme colors - Serious & Professional */
-    --color-bg: 255 255 255;
-    --color-bg-alt: 249 250 251;
-    --color-bg-secondary: 249 250 251;
-    --color-text: 17 24 39;
-    /* Very dark gray for maximum contrast */
-    --color-text-muted: 107 114 128;
-    /* Medium gray for secondary text */
-    --color-border: 209 213 219;
-    /* Light gray borders */
-    --color-primary: 220 38 38;
-    /* Bold red for shocking highlights */
-    --color-primary-hover: 185 28 28;
-    /* Darker red on hover */
-    --color-accent: 59 130 246;
-    /* Blue accent for links */
-    --color-accent-hover: 37 99 235;
-    /* Darker blue on hover */
-    --color-success: 34 197 94;
-    /* Green for success states */
-    --color-warning: 245 158 11;
-    /* Amber for warnings */
-    --color-error: 239 68 68;
-    /* Red for errors */
-    --color-highlight: 255 193 7;
-    /* Bright yellow for shocking highlights */
+    /* Warm editorial — light: stone paper + ink */
+    --color-bg: 250 248 245;
+    --color-bg-alt: 241 237 231;
+    --color-bg-secondary: 241 237 231;
+    --color-surface-1: 250 248 245;
+    --color-surface-2: 235 230 223;
+    --color-text: 28 25 23;
+    --color-text-muted: 108 98 90;
+    --color-border: 214 206 196;
+    /* Ember — single signal for CTAs, links, focus */
+    --color-primary: 180 62 42;
+    --color-primary-hover: 148 48 32;
+    --color-accent: 180 62 42;
+    --color-accent-hover: 148 48 32;
+    --color-success: 46 140 90;
+    --color-warning: 180 120 36;
+    --color-error: 180 62 42;
+    /* Soft warm wash for selection only */
+    --color-highlight: 214 168 92;
+
+    /* Surfaces & elevation */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --shadow-soft: 0 1px 2px rgb(28 25 23 / 0.05), 0 4px 12px rgb(28 25 23 / 0.04);
+    --shadow-lift: 0 4px 16px rgb(28 25 23 / 0.08);
 
     /* Line heights */
     --leading-tight: 1.25;
@@ -317,31 +317,25 @@
   }
 
   .dark {
-    --color-bg: 3 7 18;
-    --color-bg-alt: 20 30 50;
-    --color-bg-secondary: 20 30 50;
-    --color-text: 255 255 255;
-    /* Pure white for maximum contrast */
-    --color-text-muted: 200 210 220;
-    /* Lighter gray for better readability */
-    --color-border: 71 85 105;
-    /* Lighter border for better visibility */
-    --color-primary: 239 68 68;
-    /* Bright red for shocking highlights */
-    --color-primary-hover: 220 38 38;
-    /* Slightly darker red on hover */
-    --color-accent: 96 165 250;
-    /* Blue accent for links */
-    --color-accent-hover: 147 197 253;
-    /* Lighter blue on hover */
-    --color-success: 74 222 128;
-    /* Bright green for success states */
-    --color-warning: 251 191 36;
-    /* Bright amber for warnings */
-    --color-error: 248 113 113;
-    /* Bright red for errors */
-    --color-highlight: 255 213 0;
-    /* Bright yellow for shocking highlights */
+    /* Warm editorial — dark: charcoal ink, not blue-black */
+    --color-bg: 22 20 18;
+    --color-bg-alt: 36 32 28;
+    --color-bg-secondary: 36 32 28;
+    --color-surface-1: 22 20 18;
+    --color-surface-2: 48 42 36;
+    --color-text: 250 247 242;
+    --color-text-muted: 176 166 154;
+    --color-border: 72 64 56;
+    --color-primary: 224 110 86;
+    --color-primary-hover: 236 140 118;
+    --color-accent: 224 110 86;
+    --color-accent-hover: 236 140 118;
+    --color-success: 90 190 130;
+    --color-warning: 220 170 80;
+    --color-error: 224 110 86;
+    --color-highlight: 196 150 70;
+    --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.35), 0 4px 14px rgb(0 0 0 / 0.28);
+    --shadow-lift: 0 6px 20px rgb(0 0 0 / 0.4);
   }
 
   /* Base styles */
@@ -748,6 +742,11 @@
   max-width: 72ch !important;
   margin-left: auto !important;
   margin-right: auto !important;
+  font-family: var(--font-serif);
+}
+
+.post-prose :where(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--font-heading);
 }
 
 /* Floated MDX verdict: allow fixed max width alongside .prose * { max-width: 100% } */
