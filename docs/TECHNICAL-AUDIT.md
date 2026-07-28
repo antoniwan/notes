@@ -139,6 +139,10 @@ No accounts. No server-side reading progress. Constitution principle IV applies.
 | T-07 | `/test-theme` shipped (noindex) | Removed + SEO exclude cleaned |
 | T-08 | Multilingual overview over-claimed “hidden from listings” | Clarified: feeds only for secondary ES |
 | T-09 | Brain Science meta cache returned string `postDate`s | Revive `Date` on load in `cache.ts` |
+| T-10 | Feeds shipped raw Markdown + AVIF images | HTML via Container API + social-safe images |
+| T-11 | Listings included secondary ES translations | `isListingEligiblePost` / `isCollectionListed` on archives + search |
+| T-12 | Duplicate post redirects in `vercel.json` | Astro `seoRouting` (+ trailing slash); Vercel keeps hosts + Remark42 only |
+| T-13 | Search indexed noindex author tools | Dropped brain-science / tag-management from search index |
 
 Package version bumped to **5.30.1** so browsers fetch the new service worker.
 
@@ -148,12 +152,10 @@ Package version bumped to **5.30.1** so browsers fetch the new service worker.
 
 See [roadmap.md §8](./roadmap.md#8-technical-roadmap--2026-07-28). Highest remaining leverage:
 
-1. **Feed HTML** — RSS/JSON still ship raw Markdown bodies and often AVIF images.
-2. **Single redirect source** — drop duplicated post redirects from `vercel.json` once Astro redirects are verified in prod.
-3. **Brain Science build cost** — only meta-analysis is disk-cached; other pages re-scan bodies (Date revival fixed; shared precompute still open).
-4. **Listing policy** — decide whether secondary-language posts belong in `/everything` / tags / search (today they do).
-5. **Search index hygiene** — indexes noindex author-tool pages.
-6. **Targeted tests** — publish filters, SEO redirects, quotes API (no full TDD mandate).
+1. **Brain Science shared precompute** — sentiment/word metrics once per build (Date revival done).
+2. **Targeted tests** — publish filters, SEO redirects, quotes API, feed HTML smoke.
+3. **Sitemap hreflang clusters** / `og:locale:alternate` (optional i18n polish).
+4. **Reduce `getSearchData()` cost** in BaseLayout (cache once per build).
 
 ---
 

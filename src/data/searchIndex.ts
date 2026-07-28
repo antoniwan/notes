@@ -2,9 +2,9 @@ import { getCollection } from 'astro:content';
 import { categories } from './categories';
 import { getTagMetadata } from './tags';
 import { calculateTagStats } from '../utils/tagProcessing';
-import { isCollectionPublic } from '../utils/publishFilters';
+import { isCollectionListed } from '../utils/publishFilters';
 
-/** Static list of pages for search (no blog fetch needed). */
+/** Static list of pages for search (public reader surfaces only). */
 const PAGE_SEARCH_DATA = [
   {
     type: 'page',
@@ -15,59 +15,24 @@ const PAGE_SEARCH_DATA = [
   },
   {
     type: 'page',
-    id: 'brain-science',
-    title: 'Brain Science',
-    description: 'Analytics and insights about writing patterns, themes, and growth',
-    url: '/brain-science',
+    id: 'library',
+    title: 'Library',
+    description: 'Books on the shelf that shape these notes',
+    url: '/library',
   },
   {
     type: 'page',
-    id: 'brain-science-topics',
-    title: 'Brain Science - Topics',
-    description: 'Analysis of topics and themes across all writings',
-    url: '/brain-science/topics',
+    id: 'everything',
+    title: 'Everything',
+    description: 'Full archive of all notes',
+    url: '/everything',
   },
   {
     type: 'page',
-    id: 'brain-science-patterns',
-    title: 'Brain Science - Patterns',
-    description: 'Writing patterns and frequency analysis',
-    url: '/brain-science/patterns',
-  },
-  {
-    type: 'page',
-    id: 'brain-science-evolution',
-    title: 'Brain Science - Evolution',
-    description: 'How writing and thinking has evolved over time',
-    url: '/brain-science/evolution',
-  },
-  {
-    type: 'page',
-    id: 'brain-science-insights',
-    title: 'Brain Science - Insights',
-    description: 'Key insights and discoveries from the writing journey',
-    url: '/brain-science/insights',
-  },
-  {
-    type: 'page',
-    id: 'brain-science-cadence',
-    title: 'Brain Science - Cadence',
-    description: 'Writing rhythm and consistency analysis',
-    url: '/brain-science/cadence',
-  },
-  {
-    type: 'page',
-    id: 'brain-science-meta',
-    title: 'Brain Science - Meta',
-    description: 'Meta-analysis of the site and its impact',
-    url: '/brain-science/meta',
-  },
-  {
-    type: 'page',
-    id: 'tag-management',
-    title: 'Tag Management',
-    description: 'Organize and manage tags across all writings',
-    url: '/tag-management',
+    id: 'guided-path',
+    title: 'Guided Path',
+    description: 'Seasonal reading order through the notes',
+    url: '/guided-path',
   },
 ];
 
@@ -76,7 +41,7 @@ const PAGE_SEARCH_DATA = [
  * and pass the result to Header/SearchBar so the collection is not fetched per component.
  */
 export async function getSearchData() {
-  const posts = await getCollection('blog', ({ data }) => isCollectionPublic(data));
+  const posts = await getCollection('blog', ({ data }) => isCollectionListed(data));
 
   const postSearchData = posts.map((post) => ({
     type: 'post',

@@ -3,10 +3,10 @@ import PageLayout from '../layouts/PageLayout.astro';
 import Chapter from '../components/Chapter.astro';
 import BackToTop from '../components/BackToTop.astro';
 import { getCollection } from 'astro:content';
-import { isCollectionPublic } from '../utils/publishFilters';
+import { isCollectionListed } from '../utils/publishFilters';
 
-// Get all published posts
-const allPosts = await getCollection('blog', ({ data }) => isCollectionPublic(data));
+// Get all published posts (excludes secondary-language translations)
+const allPosts = await getCollection('blog', ({ data }) => isCollectionListed(data));
 
 // Define seasonal chapter structure
 interface SeasonalChapter {

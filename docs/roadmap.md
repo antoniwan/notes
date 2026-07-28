@@ -312,15 +312,19 @@ Engineering debt and platform work from the full-stack audit. Detail lives in [T
 - Removed dead surfaces (`/test-theme`, unused `HomeLayout`, unused `localStorageFeatures`, stale `CATEGORY_EMOJIS`).
 - Wired constitution-named scripts: `validate-feeds`, `audit-frontmatter`, `validate-structured-data`.
 - Fixed brain-science meta-analysis cache **Date revival** after JSON load.
+- Feed **HTML** via Astro Container + social-safe JPEG/PNG images.
+- Aligned **listing/search** with feed language policy (`isListingEligiblePost`).
+- Thinned `vercel.json` post redirects; Astro `seoRouting` is the post/tag redirect source of truth.
+- Removed noindex author tools from the public search index.
 
 ### Near-term (platform integrity)
 
 | Priority | Item | Why |
 | --- | --- | --- |
-| P1 | Render feed **HTML** (not raw Markdown) and prefer social-safe JPEG/PNG for enclosures/images | Broken readers + AVIF-unfriendly clients |
-| P1 | Decide **listing policy** for secondary-language posts (filter like feeds, or keep + update copy sitewide) | Docs/product intent vs `/everything`/tags/search |
-| P1 | Collapse **duplicate redirects** — keep `seoRouting.ts` as source of truth; thin `vercel.json` to hosts + Remark42 rewrite | Drift risk |
 | P1 | Brain-science **shared precompute** beyond meta-analysis (sentiment/word metrics once per build) | Build wall time across 6+ pages |
+| P2 | Targeted tests: `publishFilters`, SEO redirects, quotes API, feed HTML | Highest-regression surfaces |
+| P2 | Optional sitemap hreflang / `og:locale:alternate` | EN/ES SEO polish |
+| P2 | Cache `getSearchData()` once per build | Build wall time as routes grow |
 
 ### Mid-term (leverage)
 

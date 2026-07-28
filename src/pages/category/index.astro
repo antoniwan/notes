@@ -5,9 +5,9 @@ import CategoryCard from '../../components/CategoryCard.astro';
 import Container from '../../components/Container.astro';
 import { getCollection } from 'astro:content';
 import { categories } from '../../data/categories';
-import { isCollectionPublic } from '../../utils/publishFilters';
+import { isCollectionListed } from '../../utils/publishFilters';
 
-const posts = await getCollection('blog', ({ data }) => isCollectionPublic(data));
+const posts = await getCollection('blog', ({ data }) => isCollectionListed(data));
 
 const postCounts = Object.fromEntries(
   categories.map((c) => [c.id, posts.filter((post) => post.data.category?.includes(c.id)).length]),

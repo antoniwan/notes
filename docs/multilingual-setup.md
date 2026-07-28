@@ -8,7 +8,7 @@ The multilingual system allows you to:
 
 - Publish content in multiple languages (currently English and Spanish)
 - Link related translations via shared IDs
-- Keep secondary-language translations out of RSS/JSON feeds (listings still include them unless you filter by `featured`)
+- Keep secondary-language translations out of **feeds, archives, category/tag indexes, Guided Path, and search** (they stay reachable via direct URL + language toggle)
 - Display language toggles for easy switching between versions
 
 ## Quick Setup
@@ -70,12 +70,13 @@ The current language is automatically hidden from the toggle.
 - **Non-featured English posts** (`featured: false`, `language: ["en"]`) remain in:
   - Category / tag / everything listings
   - RSS/JSON feeds (primary-language feed content)
+  - Search
 - **Secondary-language translations** (`featured: false`, usually `language: ["es"]`) are:
   - Accessible via direct URL
   - Discoverable via language toggle when `translationGroup` is set
-  - Excluded from RSS/JSON feeds to avoid duplicate-language feed noise
+  - Excluded from RSS/JSON feeds, `/everything`, category/tag indexes, Guided Path, and search (via `isListingEligiblePost` / `isFeedEligiblePost`)
 
-Spanish-only orphans without an English pair stay indexable with correct `lang="es"` metadata; add a `translationGroup` only when a real pair exists.
+Spanish-only orphans without an English pair stay indexable with correct `lang="es"` metadata; add a `translationGroup` only when a real pair exists. If a Spanish post should appear in listings/feeds, set `featured: true`.
 
 ## Technical Implementation
 

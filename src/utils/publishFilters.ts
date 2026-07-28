@@ -38,11 +38,33 @@ export function isCollectionPublic(data: PostData, options: PublishFilterOptions
  */
 export function isFeedEligiblePost(data: PostData, options: PublishFilterOptions = {}): boolean {
   if (!isPublicPost(data, options)) return false;
+  return !isSecondaryLanguageTranslation(data);
+}
 
+/**
+ * Listing / search eligibility: same language policy as feeds.
+ * Secondary-language translations stay reachable via direct URL + language toggle
+ * (post pages still use `isCollectionPublic`), but do not appear in archives,
+ * category/tag indexes, guided path, or search.
+ */
+export function isListingEligiblePost(data: PostData, options: PublishFilterOptions = {}): boolean {
+  if (!isPublicPost(data, options)) return false;
+  return !isSecondaryLanguageTranslation(data);
+}
+
+/**
+ * Dev shows everything; prod uses listing eligibility (public ∧ not secondary translation).
+ * Prefer this over `isCollectionPublic` for archive-style surfaces.
+ */
+export function isCollectionListed(data: PostData, options: PublishFilterOptions = {}): boolean {
+  if (!import.meta.env.PROD) return true;
+  return isListingEligiblePost(data, options);
+}
+
+/** Secondary translation: primary language is Spanish and not featured. */
+function isSecondaryLanguageTranslation(data: PostData): boolean {
   const primary = data.language?.[0] ?? 'en';
-  if (primary === 'es' && data.featured === false) return false;
-
-  return true;
+  return primary === 'es' && data.featured === false;
 }
 
 export type ContentLanguageMeta = {

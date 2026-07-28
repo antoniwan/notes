@@ -5,10 +5,10 @@ import PageHeader from '../../components/PageHeader.astro';
 import Container from '../../components/Container.astro';
 import { getCollection } from 'astro:content';
 import { categories } from '../../data/categories';
-import { isCollectionPublic } from '../../utils/publishFilters';
+import { isCollectionListed } from '../../utils/publishFilters';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog', ({ data }) => isCollectionPublic(data));
+  const posts = await getCollection('blog', ({ data }) => isCollectionListed(data));
 
   return categories
     .filter((category) => posts.some((post) => post.data.category?.includes(category.id)))
@@ -21,7 +21,7 @@ export async function getStaticPaths() {
 const { category } = Astro.props;
 
 // Get all posts in this category
-const posts = await getCollection('blog', ({ data }) => isCollectionPublic(data));
+const posts = await getCollection('blog', ({ data }) => isCollectionListed(data));
 
 // Filter posts by category and organize them
 const categoryPosts = posts.filter((post) => post.data.category?.includes(category.id));

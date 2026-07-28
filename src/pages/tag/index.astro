@@ -8,10 +8,10 @@ import { getCollection } from 'astro:content';
 import { toContentFormPreludeItems } from '../../utils/tag/contentFormTags';
 import { calculateTagStats } from '../../utils/tagProcessing';
 import { canonicalizeTags } from '../../utils/tagVocabulary';
-import { isCollectionPublic } from '../../utils/publishFilters';
+import { isCollectionListed } from '../../utils/publishFilters';
 
 // Get all posts and calculate tag counts
-const posts = await getCollection('blog', ({ data }) => isCollectionPublic(data));
+const posts = await getCollection('blog', ({ data }) => isCollectionListed(data));
 
 // Calculate tag counts (canonicalized through tag processing helpers)
 const { tagCounts } = calculateTagStats(posts);

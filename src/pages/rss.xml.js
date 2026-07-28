@@ -2,48 +2,25 @@ import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL, AUTHOR } from '../consts';
 import { isFeedEligiblePost } from '../utils/publishFilters';
+import {
+  buildFeedItemHtml,
+  enclosureMimeType,
+  feedImagePath,
+  feedImageUrl,
+} from '../utils/feedContent';
 
 export async function GET() {
   const posts = await getCollection('blog');
   const publishedPosts = posts.filter((post) => isFeedEligiblePost(post.data));
 
-  // Sort by publication date (newest first)
   const sortedPosts = publishedPosts.sort(
-    (a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate),
+    (a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf(),
   );
 
-  return rss({
-    title: SITE_TITLE,
-    description: SITE_DESCRIPTION,
-    site: SITE_URL,
-    language: 'en-US',
-    lastBuildDate: new Date(),
-    ttl: 60, // 1 hour cache
-    managingEditor: `${AUTHOR.email} (${AUTHOR.name})`,
-    webMaster: `${AUTHOR.email} (${AUTHOR.name})`,
-    image: {
-      url: `${SITE_URL}/images/default.avif`,
-      title: SITE_TITLE,
-      link: SITE_URL,
-      width: 1200,
-      height: 630,
-    },
-    items: sortedPosts.map((post) => {
-      // Get the full content for the feed
-      let fullContent = post.body || post.data.description;
-
-      // Build the full item content with image if available
-      if (post.data.heroImage) {
-        const imageUrl = post.data.heroImage.startsWith('http')
-          ? post.data.heroImage
-          : `${SITE_URL}${post.data.heroImage}`;
-        fullContent = `<img src="${imageUrl}" alt="${post.data.title}" style="max-width: 100%; height: auto; margin-bottom: 1rem;" />\n\n${fullContent}`;
-      }
-
-      // Add reading time if available
-      if (post.data.minutesRead) {
-        fullContent = `<p><em>Reading time: ${post.data.minutesRead}</em></p>\n\n${fullContent}`;
-      }
+  const items = await Promise.all(
+    sortedPosts.map(async (post) => {
+      const content = await buildFeedItemHtml(post);
+      const imagePath = post.data.heroImage ? feedImagePath(post.data.heroImage) : null;
 
       return {
         title: post.data.title,
@@ -54,32 +31,37 @@ export async function GET() {
         guid: `${SITE_URL}/p/${post.id}`,
         categories: post.data.category || [],
         author: post.data.author || AUTHOR.name,
-        content: fullContent,
-        // Add image enclosure if hero image exists
-        ...(post.data.heroImage && {
+        content,
+        ...(imagePath && {
           enclosure: {
-            url: post.data.heroImage.startsWith('http')
-              ? post.data.heroImage
-              : `${SITE_URL}${post.data.heroImage}`,
-            type: enclosureMimeType(post.data.heroImage),
-            length: 0, // Length is optional for images
+            url: feedImageUrl(post.data.heroImage),
+            type: enclosureMimeType(imagePath),
+            length: 0,
           },
         }),
-        // Add comments URL if comments are enabled
         ...(post.data.showComments !== false && {
           comments: `${SITE_URL}/p/${post.id}#comments`,
         }),
       };
     }),
-  });
-}
+  );
 
-function enclosureMimeType(imagePath) {
-  const lower = imagePath.toLowerCase();
-  if (lower.endsWith('.png')) return 'image/png';
-  if (lower.endsWith('.webp')) return 'image/webp';
-  if (lower.endsWith('.gif')) return 'image/gif';
-  if (lower.endsWith('.avif')) return 'image/avif';
-  if (lower.endsWith('.svg')) return 'image/svg+xml';
-  return 'image/jpeg';
+  return rss({
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    site: SITE_URL,
+    language: 'en-US',
+    lastBuildDate: new Date(),
+    ttl: 60,
+    managingEditor: `${AUTHOR.email} (${AUTHOR.name})`,
+    webMaster: `${AUTHOR.email} (${AUTHOR.name})`,
+    image: {
+      url: feedImageUrl(),
+      title: SITE_TITLE,
+      link: SITE_URL,
+      width: 1200,
+      height: 630,
+    },
+    items,
+  });
 }

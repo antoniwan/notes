@@ -2,10 +2,10 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import LazyPosts from '../components/LazyPosts.astro';
 import { getCollection } from 'astro:content';
-import { isCollectionPublic } from '../utils/publishFilters';
+import { isCollectionListed } from '../utils/publishFilters';
 
-// Get all published posts
-const posts = await getCollection('blog', ({ data }) => isCollectionPublic(data));
+// Get all published posts (excludes secondary-language translations)
+const posts = await getCollection('blog', ({ data }) => isCollectionListed(data));
 
 // Sort posts by date (newest first)
 const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
