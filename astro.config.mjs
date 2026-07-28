@@ -8,6 +8,7 @@ import vercel from '@astrojs/vercel';
 import { SITE_URL } from './src/consts';
 import { remarkReadingTime } from './remark-reading-time.mjs';
 import { buildSeoRedirects, shouldIncludeInSitemap } from './src/utils/seoRouting';
+import { getSitemapTranslationLinksByUrl } from './src/utils/sitemapTranslations';
 
 // https://astro.build/config
 export default defineConfig({
@@ -52,6 +53,15 @@ export default defineConfig({
     mdx(),
     sitemap({
       filter: shouldIncludeInSitemap,
+      // Slug-based EN/ES pairs (translationGroup) — not path-prefix i18n.
+      // Links map is filesystem-derived (safe to import at config load).
+      serialize(item) {
+        const links = getSitemapTranslationLinksByUrl().get(item.url);
+        if (links && links.length > 1) {
+          item.links = links;
+        }
+        return item;
+      },
     }),
   ],
   adapter: vercel(),

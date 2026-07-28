@@ -319,13 +319,12 @@ Engineering debt and platform work from the full-stack audit. Detail lives in [T
 - Memoized Brain Science posts fetch + objective metrics/sentiment for the build process.
 - Memoized `getSearchData()` so BaseLayout does not rebuild the search index per page.
 - Added Vitest suite for publish filters, SEO routing, feed HTML sanitization, and quotes helpers (`pnpm test` in CI).
+- Added `og:locale:alternate` from post hreflang pairs; sitemap `serialize` attaches translationGroup clusters (slug-based EN/ES, not path-prefix i18n).
+- Extracted shared Brain Science text metrics (`textAnalysis.ts`) used by insights / evolution / patterns.
 
 ### Near-term (platform integrity)
 
-| Priority | Item | Why |
-| --- | --- | --- |
-| P2 | Optional sitemap hreflang / `og:locale:alternate` | EN/ES SEO polish |
-| P2 | Extract page-local Brain Science NLP (Flesch/regex loops in large `.astro` files) | Remaining build cost / duplication |
+_None queued — P2 i18n SEO polish and Brain Science NLP extraction closed above._
 
 ### Mid-term (leverage)
 
@@ -335,7 +334,6 @@ Engineering debt and platform work from the full-stack audit. Detail lives in [T
 
 ### Later / only if needed
 
-- Sitemap hreflang clusters and `og:locale:alternate` for EN/ES pairs.
 - Make Remark42 Railway rewrite host configurable (today hardcoded in `vercel.json`).
 - Letterboxd build warning when RSS URL is set but fetch returns empty.
 - Remove inert `transition:name` attrs or restore View Transitions deliberately.

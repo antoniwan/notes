@@ -9,6 +9,12 @@ import { getTagWeight } from '../../data/tags';
 import { endOfQuarter, eachQuarterOfInterval } from 'date-fns';
 import { generateDynamicInsights, calculateObjectiveMetrics } from '../../utils/insightGenerator';
 import { BRAIN_SCIENCE_PAGES } from '../../data/brainScience';
+import {
+  countLexiconHits,
+  countWords,
+  estimateReadingMinutes,
+  getBasicTextMetricsForPost,
+} from '../../utils/brainScience/textAnalysis';
 
 // Get all published posts
 const posts = await getBrainSciencePosts();
@@ -16,110 +22,87 @@ const posts = await getBrainSciencePosts();
 // Sort posts by date
 const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
+const INTELLECTUAL_WORDS = [
+  'because',
+  'therefore',
+  'however',
+  'although',
+  'nevertheless',
+  'furthermore',
+  'moreover',
+  'consequently',
+  'thus',
+  'hence',
+  'accordingly',
+  'similarly',
+  'conversely',
+  'meanwhile',
+  'subsequently',
+  'previously',
+  'initially',
+  'ultimately',
+  'fundamentally',
+  'essentially',
+];
+const CURIOSITY_WORDS = [
+  'wonder',
+  'curious',
+  'question',
+  'explore',
+  'discover',
+  'investigate',
+  'examine',
+  'analyze',
+  'study',
+  'research',
+  'learn',
+  'understand',
+  'figure out',
+  'find out',
+  'look into',
+  'dive into',
+  'explore',
+  'uncover',
+  'reveal',
+  'unveil',
+];
+const WISDOM_WORDS = [
+  'experience',
+  'learned',
+  'realized',
+  'understood',
+  'discovered',
+  'found',
+  'came to',
+  'figured out',
+  'worked out',
+  'determined',
+  'concluded',
+  'decided',
+  'chose',
+  'opted',
+  'selected',
+  'preferred',
+  'valued',
+  'appreciated',
+  'recognized',
+  'acknowledged',
+];
+
 // Content evolution analysis
 const contentEvolution = posts.map((post) => {
   const content = post.body || '';
-  const wordCount = content.split(/\s+/).length;
-  const paragraphCount = content.split('\n\n').length;
-  const sentenceCount = content.split(/[.!?]+/).length - 1;
-  const averageSentenceLength = sentenceCount > 0 ? Math.round(wordCount / sentenceCount) : 0;
+  const {
+    wordCount,
+    paragraphCount,
+    sentenceCount,
+    averageSentenceLength,
+    fleschScore,
+  } = getBasicTextMetricsForPost(post.id, content);
 
-  // Calculate complexity score
-  const syllableCount = content
-    .toLowerCase()
-    .replace(/[^a-z]/g, '')
-    .split('')
-    .filter((char) => 'aeiou'.includes(char)).length;
-  const fleschScore =
-    sentenceCount > 0
-      ? Math.round(
-          206.835 - 1.015 * (wordCount / sentenceCount) - 84.6 * (syllableCount / wordCount),
-        )
-      : 0;
-
-  // Calculate intellectual depth indicators
-  const intellectualWords = [
-    'because',
-    'therefore',
-    'however',
-    'although',
-    'nevertheless',
-    'furthermore',
-    'moreover',
-    'consequently',
-    'thus',
-    'hence',
-    'accordingly',
-    'similarly',
-    'conversely',
-    'meanwhile',
-    'subsequently',
-    'previously',
-    'initially',
-    'ultimately',
-    'fundamentally',
-    'essentially',
-  ];
-  const intellectualWordCount = intellectualWords.reduce((count, word) => {
-    const regex = new RegExp(`\\b${word}\\b`, 'gi');
-    return count + (content.match(regex) || []).length;
-  }, 0);
-
-  // Calculate curiosity indicators
-  const curiosityWords = [
-    'wonder',
-    'curious',
-    'question',
-    'explore',
-    'discover',
-    'investigate',
-    'examine',
-    'analyze',
-    'study',
-    'research',
-    'learn',
-    'understand',
-    'figure out',
-    'find out',
-    'look into',
-    'dive into',
-    'explore',
-    'uncover',
-    'reveal',
-    'unveil',
-  ];
-  const curiosityCount = curiosityWords.reduce((count, word) => {
-    const regex = new RegExp(`\\b${word}\\b`, 'gi');
-    return count + (content.match(regex) || []).length;
-  }, 0);
-
-  // Calculate wisdom indicators
-  const wisdomWords = [
-    'experience',
-    'learned',
-    'realized',
-    'understood',
-    'discovered',
-    'found',
-    'came to',
-    'figured out',
-    'worked out',
-    'determined',
-    'concluded',
-    'decided',
-    'chose',
-    'opted',
-    'selected',
-    'preferred',
-    'valued',
-    'appreciated',
-    'recognized',
-    'acknowledged',
-  ];
-  const wisdomCount = wisdomWords.reduce((count, word) => {
-    const regex = new RegExp(`\\b${word}\\b`, 'gi');
-    return count + (content.match(regex) || []).length;
-  }, 0);
+  const intellectualWordCount = countLexiconHits(content, INTELLECTUAL_WORDS);
+  const curiosityCount = countLexiconHits(content, CURIOSITY_WORDS);
+  const wisdomCount = countLexiconHits(content, WISDOM_WORDS);
 
   return {
     title: post.data.title,
@@ -134,14 +117,7 @@ const contentEvolution = posts.map((post) => {
     intellectualWordCount,
     curiosityCount,
     wisdomCount,
-    readingTime: (() => {
-      if (post.data.minutesRead && typeof post.data.minutesRead === 'string') {
-        // Extract minutes from "X min read" format
-        const match = post.data.minutesRead.match(/(\d+)/);
-        return match ? parseInt(match[1]) : Math.ceil(wordCount / 200);
-      }
-      return Math.ceil(wordCount / 200);
-    })(),
+    readingTime: estimateReadingMinutes(post.data.minutesRead, wordCount),
     tags: post.data.tags || [],
     categories: post.data.category || [],
     complexityScore: fleschScore + wordCount / 100 + paragraphCount * 2,
@@ -198,27 +174,12 @@ for (let year = startYear; year <= currentYear; year++) {
           .slice(0, 3)
           .map(([cat, count]) => ({ cat, count })),
         avgWordCount: Math.round(
-          quarterPosts.reduce((sum, post) => sum + (post.body || '').split(/\s+/).length, 0) /
+          quarterPosts.reduce((sum, post) => sum + countWords(post.body || ''), 0) /
             quarterPosts.length,
         ),
         avgComplexity: Math.round(
           quarterPosts.reduce((sum, post) => {
-            const content = post.body || '';
-            const wordCount = content.split(/\s+/).length;
-            const sentenceCount = content.split(/[.!?]+/).length - 1;
-            const syllableCount = content
-              .toLowerCase()
-              .replace(/[^a-z]/g, '')
-              .split('')
-              .filter((char) => 'aeiou'.includes(char)).length;
-            const fleschScore =
-              sentenceCount > 0
-                ? Math.round(
-                    206.835 -
-                      1.015 * (wordCount / sentenceCount) -
-                      84.6 * (syllableCount / wordCount),
-                  )
-                : 0;
+            const { fleschScore } = getBasicTextMetricsForPost(post.id, post.body || '');
             return sum + fleschScore;
           }, 0) / quarterPosts.length,
         ),

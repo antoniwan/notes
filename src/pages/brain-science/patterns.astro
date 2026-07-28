@@ -9,6 +9,11 @@ import { format, getDay, getMonth } from 'date-fns';
 import { generateDynamicInsights, calculateObjectiveMetrics } from '../../utils/insightGenerator';
 import { BRAIN_SCIENCE_PAGES } from '../../data/brainScience';
 import { correlation } from '../../utils/brainScience/statistics';
+import {
+  countLexiconHits,
+  estimateReadingMinutes,
+  getBasicTextMetricsForPost,
+} from '../../utils/brainScience/textAnalysis';
 
 // Grade translation function - converts numerical scores to letter grades
 function getGrade(score: number, maxScore: number, minScore: number = 0): string {
@@ -41,48 +46,34 @@ function getGradeColor(grade: string): string {
 // Get all published posts
 const posts = await getBrainSciencePosts();
 
+const EMOTIONAL_WORDS = [
+  'love',
+  'hate',
+  'fear',
+  'joy',
+  'sadness',
+  'anger',
+  'peace',
+  'anxiety',
+  'hope',
+  'despair',
+  'gratitude',
+  'frustration',
+];
+
 // Content analysis
 const contentAnalysis = posts.map((post) => {
   const content = post.body || '';
-  const wordCount = content.split(/\s+/).length;
-  const paragraphCount = content.split('\n\n').length;
-  const sentenceCount = content.split(/[.!?]+/).length - 1;
-  const averageSentenceLength = sentenceCount > 0 ? Math.round(wordCount / sentenceCount) : 0;
+  const {
+    wordCount,
+    paragraphCount,
+    sentenceCount,
+    averageSentenceLength,
+    fleschScore,
+  } = getBasicTextMetricsForPost(post.id, content);
 
-  // Calculate complexity score
-  const syllableCount = content
-    .toLowerCase()
-    .replace(/[^a-z]/g, '')
-    .split('')
-    .filter((char) => 'aeiou'.includes(char)).length;
-  const fleschScore =
-    sentenceCount > 0
-      ? Math.round(
-          206.835 - 1.015 * (wordCount / sentenceCount) - 84.6 * (syllableCount / wordCount),
-        )
-      : 0;
-
-  // Calculate emotional intensity
   const exclamationCount = (content.match(/!/g) || []).length;
-  const emotionalWords = [
-    'love',
-    'hate',
-    'fear',
-    'joy',
-    'sadness',
-    'anger',
-    'peace',
-    'anxiety',
-    'hope',
-    'despair',
-    'gratitude',
-    'frustration',
-  ];
-  const emotionalWordCount = emotionalWords.reduce((count, word) => {
-    const regex = new RegExp(`\\b${word}\\b`, 'gi');
-    return count + (content.match(regex) || []).length;
-  }, 0);
-  const emotionalIntensity = exclamationCount + emotionalWordCount;
+  const emotionalIntensity = exclamationCount + countLexiconHits(content, EMOTIONAL_WORDS);
 
   return {
     title: post.data.title,
@@ -96,14 +87,7 @@ const contentAnalysis = posts.map((post) => {
     averageSentenceLength,
     fleschScore,
     emotionalIntensity,
-    readingTime: (() => {
-      if (post.data.minutesRead && typeof post.data.minutesRead === 'string') {
-        // Extract minutes from "X min read" format
-        const match = post.data.minutesRead.match(/(\d+)/);
-        return match ? parseInt(match[1]) : Math.ceil(wordCount / 200);
-      }
-      return Math.ceil(wordCount / 200);
-    })(),
+    readingTime: estimateReadingMinutes(post.data.minutesRead, wordCount),
     tags: post.data.tags || [],
     categories: post.data.category || [],
     complexityScore: fleschScore + wordCount / 100 + paragraphCount * 2,

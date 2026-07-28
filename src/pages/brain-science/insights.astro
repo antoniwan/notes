@@ -11,6 +11,12 @@ import { format, eachQuarterOfInterval, endOfQuarter } from 'date-fns';
 import { generateDynamicInsights, calculateObjectiveMetrics } from '../../utils/insightGenerator';
 import { BRAIN_SCIENCE_PAGES } from '../../data/brainScience';
 import { correlation } from '../../utils/brainScience/statistics';
+import {
+  countLexiconHits,
+  countWords,
+  estimateReadingMinutes,
+  getBasicTextMetricsForPost,
+} from '../../utils/brainScience/textAnalysis';
 
 // Get all published posts
 const posts = await getBrainSciencePosts();
@@ -18,99 +24,82 @@ const posts = await getBrainSciencePosts();
 // Sort posts by date
 const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
+const EMOTIONAL_WORDS = [
+  'love',
+  'hate',
+  'fear',
+  'joy',
+  'sadness',
+  'anger',
+  'peace',
+  'anxiety',
+  'hope',
+  'despair',
+  'gratitude',
+  'frustration',
+  'excited',
+  'worried',
+  'confused',
+  'inspired',
+  'overwhelmed',
+  'content',
+  'restless',
+  'fulfilled',
+];
+const VULNERABILITY_WORDS = [
+  'struggle',
+  'difficult',
+  'challenge',
+  'pain',
+  'hurt',
+  'broken',
+  'healing',
+  'recovery',
+  'vulnerable',
+  'afraid',
+  'scared',
+  'nervous',
+  'uncertain',
+  'doubt',
+  'question',
+  'wonder',
+  'maybe',
+  'perhaps',
+  'sometimes',
+  'often',
+];
+const CONFIDENCE_WORDS = [
+  'know',
+  'believe',
+  'certain',
+  'sure',
+  'confident',
+  'clear',
+  'understand',
+  'realize',
+  'discover',
+  'learn',
+  'grow',
+  'improve',
+  'better',
+  'stronger',
+  'wiser',
+  'experience',
+  'practice',
+  'master',
+  'achieve',
+  'succeed',
+];
+
 // Content analysis
 const contentAnalysis = posts.map((post) => {
   const content = post.body || '';
-  const wordCount = content.split(/\s+/).length;
-  const paragraphCount = content.split('\n\n').length;
-  const sentenceCount = content.split(/[.!?]+/).length - 1;
+  const { wordCount, paragraphCount, sentenceCount } = getBasicTextMetricsForPost(post.id, content);
 
-  // Calculate emotional intensity (simple proxy based on exclamation marks and emotional words)
   const exclamationCount = (content.match(/!/g) || []).length;
-  const emotionalWords = [
-    'love',
-    'hate',
-    'fear',
-    'joy',
-    'sadness',
-    'anger',
-    'peace',
-    'anxiety',
-    'hope',
-    'despair',
-    'gratitude',
-    'frustration',
-    'excited',
-    'worried',
-    'confused',
-    'inspired',
-    'overwhelmed',
-    'content',
-    'restless',
-    'fulfilled',
-  ];
-  const emotionalWordCount = emotionalWords.reduce((count, word) => {
-    const regex = new RegExp(`\\b${word}\\b`, 'gi');
-    return count + (content.match(regex) || []).length;
-  }, 0);
-
-  const emotionalIntensity = exclamationCount + emotionalWordCount;
-
-  // Calculate vulnerability indicators
-  const vulnerabilityWords = [
-    'struggle',
-    'difficult',
-    'challenge',
-    'pain',
-    'hurt',
-    'broken',
-    'healing',
-    'recovery',
-    'vulnerable',
-    'afraid',
-    'scared',
-    'nervous',
-    'uncertain',
-    'doubt',
-    'question',
-    'wonder',
-    'maybe',
-    'perhaps',
-    'sometimes',
-    'often',
-  ];
-  const vulnerabilityCount = vulnerabilityWords.reduce((count, word) => {
-    const regex = new RegExp(`\\b${word}\\b`, 'gi');
-    return count + (content.match(regex) || []).length;
-  }, 0);
-
-  // Calculate confidence indicators
-  const confidenceWords = [
-    'know',
-    'believe',
-    'certain',
-    'sure',
-    'confident',
-    'clear',
-    'understand',
-    'realize',
-    'discover',
-    'learn',
-    'grow',
-    'improve',
-    'better',
-    'stronger',
-    'wiser',
-    'experience',
-    'practice',
-    'master',
-    'achieve',
-    'succeed',
-  ];
-  const confidenceCount = confidenceWords.reduce((count, word) => {
-    const regex = new RegExp(`\\b${word}\\b`, 'gi');
-    return count + (content.match(regex) || []).length;
-  }, 0);
+  const emotionalIntensity = exclamationCount + countLexiconHits(content, EMOTIONAL_WORDS);
+  const vulnerabilityCount = countLexiconHits(content, VULNERABILITY_WORDS);
+  const confidenceCount = countLexiconHits(content, CONFIDENCE_WORDS);
 
   return {
     title: post.data.title,
@@ -122,14 +111,7 @@ const contentAnalysis = posts.map((post) => {
     emotionalIntensity,
     vulnerabilityScore: vulnerabilityCount,
     confidenceScore: confidenceCount,
-    readingTime: (() => {
-      if (post.data.minutesRead && typeof post.data.minutesRead === 'string') {
-        // Extract minutes from "X min read" format
-        const match = post.data.minutesRead.match(/(\d+)/);
-        return match ? parseInt(match[1]) : Math.ceil(wordCount / 200);
-      }
-      return Math.ceil(wordCount / 200);
-    })(),
+    readingTime: estimateReadingMinutes(post.data.minutesRead, wordCount),
     tags: post.data.tags || [],
     categories: post.data.category || [],
   };
@@ -200,7 +182,7 @@ const growthIndicators = posts
     title: post.data.title,
     slug: post.id,
     date: post.data.pubDate,
-    wordCount: (post.body || '').split(/\s+/).length,
+    wordCount: countWords(post.body || ''),
     tags: post.data.tags || [],
     reason: 'growth-related',
   }));
