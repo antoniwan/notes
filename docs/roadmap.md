@@ -252,3 +252,48 @@ This section is intentionally rough. Quick lines only; details come later.
 - Gentle **“related ideas”** surfacing from TLDRs and tags, without feeling like a recommendation engine.
   - _Partial today_: post footers already show **tag-overlap related posts** (`RelatedPosts`); this item still covers anything richer (TLDR-driven, curated pairs, softer copy, etc.).
 - More **reader‑friendly export** options (e.g., clean print/PDF for certain notes or series).
+
+---
+
+## 7. Product audit — 2026-07-28
+
+Corpus + product surface checkpoint. Directional, not a commitment. Companion content map: `docs/materials/2026-07-28-content-strategy-map.md`.
+
+### Snapshot
+
+| Signal | Value |
+| --- | --- |
+| Published posts | 86 (75 EN / 11 ES) |
+| Full EN↔ES translation pairs | 9 |
+| Featured / highlights | 23 / 12 |
+| Library books | 137 (75 read / 8 in progress / 54 to-read) |
+| Posts with `tldr` / `sources` frontmatter | 0 / 0 |
+| 2026 cadence | ~1–4 posts/month (quieter than May 2025 peak of 11) |
+| Heaviest categories | Integration & Growth (24), Psychology (16), Metaspace (12), Parenting (11) |
+| Thinnest categories | Culture (1), Learning Projects (1), DIY (2), Art (3) |
+
+### Product thesis
+
+Notes is a **public practice OS**, not a growth blog. The job is to make lived accountability discoverable and worth returning to — without audience capture. Author mirrors (Brain Science, Tag Analytics) are intentional Metaspace; they should not outrun reader value forever.
+
+### Ranked bets
+
+1. **Compress + return** — Formalized TLDRs on cornerstone notes + calm email opt-in (§1, §3). Highest reader leverage per hour.
+2. **Sharpen discovery** — Tag diet (broad tags covering ~half the corpus), named series beyond seasons, curated “Cornerstone Five” for Guided Path / Start Here.
+3. **Lineage layer** — Structured sources frontmatter (§5) bridged to Library (§4) so influences are navigable.
+
+### New ideas from this audit (not yet detailed above)
+
+- **Named series** (fatherhood, Vastitas, Puerto Rico, leadership) — chronological Guided Path is not the same as thematic arcs.
+- **Vastitas Omniparens hub** — treat the new EN/ES pair as a worldview entry point (related notes, glossary, library links), not a one-off.
+- **Spanish as first-class lane** — keep pairing quality high; occasional Spanish-first originals, not only translations.
+- **Feed or fold thin categories** — write into Culture / Learning / DIY or merge them so taxonomy matches corpus.
+- **Cross-post reading trails** — browser-local progress beyond Guided Path (series / cornerstone trails, still no accounts).
+- **Comments as rare invitation** — Remark42 stays optional; maybe only on cornerstones.
+- **Browser push** — stay parked; conflicts with the site’s digital-wellness stance. Email first.
+
+### Explicit non-goals
+
+- Growth-hack subscribe UX, engagement farming, accounts/social graph.
+- Goodreads-style rating theater or performative reading counters.
+- Building more author dashboards before shipping compression + return loops.
