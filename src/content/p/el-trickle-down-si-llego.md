@@ -6,6 +6,11 @@ description: >-
 pubDate: '2026-08-12T10:25:00-04:00'
 language:
   - en
+heroImage: /images/2026/trickle-down.avif
+imageAlt: >-
+  Cross-section of riveted industrial pipes: upper openings packed with gold
+  coins and cash, lower chambers with small lived-in rooms, and a cracked joint
+  pouring dark red sludge into an overflowing bucket
 category:
   - politics
   - culture
@@ -53,7 +58,7 @@ I'm not making this stuff up. The Federal Reserve has published who owns what in
 
 Now take the part that was supposed to be the whole deal: between 1978 and 2024, *net productivity went up 80.5%*. This net productivity means that we got better at making all the things. So the workers are clearly doing their part but still typical worker pay across those same 46 years went up 26% while CEO pay went up 1,094% (EPI, 2024). Do that division and the guy at the top got about 42 times the raise you did, out of the same work, or arguably less.
 
-And today, right now, 977 American billionaires are sitting on $9.24 trillion, up $2.2 trillion in the last twelve months alone (Americans for Tax Fairness, June 2026). The ten richest men in the country are up 526 percent since March of 2020 after you adjust for inflation, roughly six-fold (Oxfam, 2025). And in June one of them crossed a trillion dollars, the first person in history who ever did, and then dropped back under it twelve days later when the stock came down, about $270 billion gone in twelve days (Forbes and Americans for Tax Fairness, June 2026). Six years since March of 2020. Mia's tiny whole life, for perspective.
+And today, right now, 977 American billionaires are sitting on $9.24 trillion, up $2.2 trillion in the last twelve months alone (Americans for Tax Fairness, June 2026). The ten richest men in the country are up 526 percent since March of 2020 after you adjust for inflation, roughly six-fold (Oxfam, 2025). And in June one of them crossed a trillion dollars, the first person in history who ever did, and then dropped back under it twelve days later when the stock came down, about $270 billion gone (Forbes and Americans for Tax Fairness, June 2026). Six years since March of 2020. Mia's tiny whole life, for perspective.
 
 So the money moved, and it moved up. Cuando dicen que la marea sube todos los botes, pregúntate cuáles botes por favor.
 
@@ -61,11 +66,11 @@ And yeah, somebody is going to tell me the money does come down, through wages, 
 
 The pipe trickled down and ran perfectly. On time, at pressure, every day, to every floor, for the last whatever years. The thing carried money some places but for most, it just wasn't carrying money.
 
-El trickle down llegó, pero no en dinero y riquezas. Llegó en un trickle down a modo de crisis de valores y de integridad, y de corrupción. Los valores viven por dentro y nadie los puede ver, así que lo único que se ve, y lo único que se puede parar, es la conducta.
-
 <h2 id="what-actually-came-down" class="toc-only">What actually came down</h2>
 
-What came down was how people treat people as consumers and humanity is a second-thought. What trickled down are the numbers, the need and the architecture to sell to and extract. I'm going to call it conduct. Conduct is what you do when you have a little bit of power over somebody else, whether you squeeze the person under you or you don't, whether you hand the cost down or you eat it yourself. Not the version you'd tell at dinner, the thing you actually did, that's the conduct.
+El trickle down llegó, pero no en dinero y riquezas. Llegó en un trickle down a modo de crisis de valores y de integridad, y de corrupción. Los valores viven por dentro y nadie los puede ver, así que lo único que se ve, y lo único que se puede parar, es la conducta.
+
+What came down was how people treat people as consumers and humanity is a second-thought. What trickled down are the numbers, the need and the architecture to sell to and extract. Conduct is what you do when you have a little bit of power over somebody else, whether you squeeze the person under you or you don't, whether you hand the cost down or you eat it yourself. Not the version you'd tell at dinner, the thing you actually did, that's the conduct.
 
 Just watch how capitalistic interests historically deal with and treat somebody smaller than them. These interests take as much as they can and give back the least they can get away with, and they do it on purpose. We all feel in our bones something is off with the way things are going, we all know these capitalistic interests are stealing and extracting from us. The thing that came down the pipe is bullshit. It's extraction, it's a lack of compassion, it's suffering, and we've normalized it. Some people even call this progress, or a free-market. It's bonkers!
 
@@ -81,7 +86,7 @@ This stuff stopped being a scandal a long time ago too. Now it's so normalized a
 
 You see that cowboy-ism and much more trickle down at every table.
 
-<h2 id="rich-dad-and-every-table" class="toc-only">Rich Dad and every table</h2>
+<h2 id="normalized-at-every-table" class="toc-only">Normalized at every table</h2>
 
 Rich Dad Poor Dad, everybody has it, I have it, it has something like 40 million copies sold, it's the money book, the one your tío hands you when you turn 22. Not mine. Mine never gave me anything in my entire life, not even his time, guess he's as greedy as you can be (hah!). Anyway, I read it and I underlined it and I passed it to somebody else. First chapter. Rich dad's whole teaching method is that he hires two 9-year-olds at 10 cents an hour, and then he stops paying them at all and works them for free, and the free part is on purpose, the free part is the lesson. Fear makes you take the job, desire makes you spend the check, and those two run you in a circle for 50 years, and you are broke because you let your emotions do your thinking for you.
 
@@ -89,13 +94,11 @@ And he is not wrong about the fear. The fear is real, you can watch it run peopl
 
 The best-selling money book in the world, bought mostly by people who are not rich, and what it tells them is that the reason they are not rich is inside them. Nobody had to enforce that one. And rich dad himself, nobody has ever verified the man existed. Kiyosaki's company Rich Global LLC went into bankruptcy in 2012 owing about $24 million on a judgment, around $26 million in liabilities against $1.8 million in assets. The guy teaching you to master money, no?
 
-I got ahead of myself and mentioned the extremes of slavery, but in different scales it looks much closer to home, familiar. The contract that goes to somebody's friend, with the paperwork done clean enough that it isn't technically anything. The landlord who raises it because the market says he can and who will tell you, sincerely, and he means it, that it isn't personal. The boss who scopes work he will not price, he wants the thing built and he wants the cost to show up in a budget that isn't his. The guy who moves a deadline Thursday at 4pm because moving it costs him nothing and costs you your Saturday, and then says thanks, appreciate you, and he means that too. The vendor. The adjuster. The HR lady reading you a policy she did not write and does not like. The corporate lawyer, the mediator, fighting for the corporation and stepping on the individual, legally. The restaurant owner who keeps lowering the quality of the food items, in the name of profit. The wages unreported, the stolen tips, all the same at a different scale.
+I mentioned the extremes of slavery a while back, but in different scales it looks much closer to home, familiar. The contract that goes to somebody's friend, with the paperwork done clean enough that it isn't technically anything. The landlord who raises it because the market says he can and who will tell you, sincerely, and he means it, that it isn't personal. The boss who scopes work he will not price, he wants the thing built and he wants the cost to show up in a budget that isn't his. The guy who moves a deadline Thursday at 4pm because moving it costs him nothing and costs you your Saturday, and then says thanks, appreciate you, and he means that too. The vendor. The adjuster. The HR lady reading you a policy she did not write and does not like. The corporate lawyer, the mediator, fighting for the corporation and stepping on the individual, legally. The restaurant owner who keeps lowering the quality of the food items, in the name of profit. The wages unreported, the stolen tips, all the same at a different scale.
 
 None of them thinks he's corrupt or corrupt-adjacent or doing anything wrong, in any of these situations. This is just what is. Así son las cosas en el capitalismo, the survival of the fittest. None of them notices what really trickled down. Cada uno de ellos se acuesta tranquilo. Each of them, each of us, is just doing our job. I'm just doing my job. He's just doing his job. She's just doing her job. We are all doing our jobs... that's what trickles down man, the lack of responsibility, the hyperindividualism aggravated by a general lack of integrity smells like an infantilized society, a topic for a different essay.
 
-<h2 id="and-me" class="toc-only">And me</h2>
-
-And me. A work thread, the last Friday in July, somebody upstairs asks for four more things before a demo, and there are already weeks of work behind it and a report nobody is going to read. I wrote sounds good, sure thing! with the exclamation point, and I never said what any of it costs or whose week it comes out of, and in the same message I volunteered another guy on my team to help me build it. The honest version of that thread is in my journal, where nobody had to answer it.
+<h2 id="the-only-exit" class="toc-only">The only exit</h2>
 
 La muerte es el único descanso del que vive bajo el yugo de la avaricia y la corrupción.
 
@@ -107,6 +110,6 @@ And that's the deal our work culture is actually offering, no? The number keeps 
 
 I don't have a policy for you. I'm not going to propose a tax structure, I don't have the standing and I'd be performing if I tried.
 
-What I have is the only valve I've found, and I've been chewing on it maybe six years, so take that for whatever it's worth. Conduct comes down by being seen, which means somebody being seen not doing it is also how it stops. Somebody has to be the floor. Not the floor you walk on, the floor like a wage floor, the number nobody is allowed to go under. Something rolls downhill at you and you take it and you do not hand it to the person below you, and it stops there, on you. The one who prices the work out loud, the one who tells you what it costs before he eats it, the one who says no on a Thursday, the one who talks to the guy at the register like a person when nothing in the arrangement requires it, when there's no upside, when nobody's watching, when it doesn't show up on any chart anywhere, and that job is for all of us.
+What I have is the only valve I've found, and I've been chewing on it maybe six years, so take that for whatever it's worth. Somebody has to be the floor. Not the floor you walk on, the floor like a wage floor, the number nobody is allowed to go under. Something rolls downhill at you and you take it and you do not hand it to the person below you, and it stops there, on you. The one who prices the work out loud, the one who tells you what it costs before he eats it, the one who says no on a Thursday, the one who talks to the guy at the register like a person when nothing in the arrangement requires it, when there's no upside, when nobody's watching, when it doesn't show up on any chart anywhere, and that job is for all of us.
 
 Solo necesitamos cuidarnos el uno al otro, tener relaciones, amistades, amarnos. La integridad, aplicada, operacionalizada, vivida, no hablada.
