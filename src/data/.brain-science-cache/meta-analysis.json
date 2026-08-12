@@ -67,6 +67,11 @@
       "pubDate": "2025-12-16T19:00:00.000Z"
     },
     {
+      "id": "el-trickle-down-si-llego",
+      "bodyLength": 14580,
+      "pubDate": "2026-08-12T14:25:00.000Z"
+    },
+    {
       "id": "embracing-the-spiritual-abyss-an-atheists-search-for-meaning",
       "bodyLength": 4496,
       "pubDate": "2024-06-03T17:27:29.382Z"
@@ -373,7 +378,7 @@
     },
     {
       "id": "total-concentration-breathing",
-      "bodyLength": 2480,
+      "bodyLength": 2446,
       "pubDate": "2025-05-06T07:15:00.000Z"
     },
     {
@@ -433,6 +438,49 @@
     }
   ],
   "analyses": [
+    {
+      "postTitle": "El Trickle Down Sí Llegó",
+      "postSlug": "el-trickle-down-si-llego",
+      "postDate": "2026-08-12T14:25:00.000Z",
+      "metaLanguageCount": 1,
+      "metaLanguagePatterns": [
+        {
+          "phrase": "writing",
+          "type": "writing-about-writing",
+          "context": "sentence",
+          "sentence": "I wrote sounds good, sure thing",
+          "confidence": 0.9
+        }
+      ],
+      "selfAwarenessScore": 6,
+      "writingAsSubject": true,
+      "writingAsTool": false,
+      "recursiveThinking": false,
+      "sentiment": {
+        "score": 3,
+        "comparative": 0.5,
+        "calculation": [
+          {
+            "good": 3
+          }
+        ],
+        "tokens": [
+          "i",
+          "wrote",
+          "sounds",
+          "good",
+          "sure",
+          "thing"
+        ],
+        "words": [
+          "good"
+        ],
+        "positive": [
+          "good"
+        ],
+        "negative": []
+      }
+    },
     {
       "postTitle": "Presentando Vastitas Omniparens",
       "postSlug": "presentando-vastitas-omniparens",
@@ -5735,7 +5783,7 @@
       "recursiveThinking": false,
       "sentiment": {
         "score": 6,
-        "comparative": 0.07228915662650602,
+        "comparative": 0.07058823529411765,
         "calculation": [
           {
             "🌌": 2
@@ -5836,7 +5884,9 @@
           "sleep",
           "surrender",
           "lying",
-          "down"
+          "down",
+          "continue",
+          "unt"
         ],
         "words": [
           "🌌",
