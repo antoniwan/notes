@@ -20,9 +20,11 @@ pnpm-debug.log*
 *.log
 
 
-# environment variables
+# environment variables / local secrets (never commit)
+# Includes Vercel CLI tokens written to .env.local (e.g. VERCEL_OIDC_TOKEN)
 .env
 .env.production
+.env.local
 .env*
 
 # additional build outputs
