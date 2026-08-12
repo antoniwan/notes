@@ -3,9 +3,8 @@ allowBuilds:
   sharp: true
 minimumReleaseAgeExclude:
   - '@astrojs/telemetry@3.3.3'
-  - astro@7.0.7
+  - astro@7.0.7 || 7.1.4 || 7.2.1
   - '@astrojs/mdx@7.0.4'
-  - astro@7.1.4
 onlyBuiltDependencies:
   - '@vercel/speed-insights'
   - esbuild
