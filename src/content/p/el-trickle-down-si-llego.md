@@ -61,7 +61,7 @@ And yeah, somebody is going to tell me the money does come down, through wages, 
 
 The pipe trickled down and ran perfectly. On time, at pressure, every day, to every floor, for the last whatever years. The thing carried money some places but for most, it just wasn't carrying money.
 
-El trickle down llegó, pero no en dinero y riquezas. Llegó en un trickle down a modo de crisis de valores y de integridad, y de corrupción.
+El trickle down llegó, pero no en dinero y riquezas. Llegó en un trickle down a modo de crisis de valores y de integridad, y de corrupción. Los valores viven por dentro y nadie los puede ver, así que lo único que se ve, y lo único que se puede parar, es la conducta.
 
 <h2 id="what-actually-came-down" class="toc-only">What actually came down</h2>
 
