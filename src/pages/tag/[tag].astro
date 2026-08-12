@@ -33,16 +33,12 @@ const { totalPosts, relatedTags } = getTagStatistics(canonicalTag, posts);
 const tagPosts = posts
   .filter((post) => post.data.tags?.some((rawTag) => canonicalizeTag(rawTag) === canonicalTag))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
-// Thin single-post tag archives are crawlable for UX but shouldn't compete in SERPs.
-const robots = totalPosts >= 2 ? 'index, follow' : 'noindex, follow';
 ---
 
 <BaseLayout
   title={`${canonicalTag} - Tag`}
   description={`Browse all writings tagged with ${canonicalTag}`}
   path={`/tag/${canonicalTag}`}
-  robots={robots}
   structuredDataType="tag"
   structuredDataIdentifier={canonicalTag}
   posts={tagPosts}

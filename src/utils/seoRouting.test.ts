@@ -40,10 +40,13 @@ describe('shouldIncludeInSitemap', () => {
     expect(shouldIncludeInSitemap('https://notes.antoniwan.online/tag')).toBe(true);
   });
 
-  it('excludes author tools, API hub, and thin tag detail pages', () => {
+  it('includes tag detail pages', () => {
+    expect(shouldIncludeInSitemap('https://notes.antoniwan.online/tag/parenting')).toBe(true);
+  });
+
+  it('excludes only author tools and API hub paths', () => {
     expect(shouldIncludeInSitemap('https://notes.antoniwan.online/brain-science')).toBe(false);
     expect(shouldIncludeInSitemap('https://notes.antoniwan.online/tag-management')).toBe(false);
     expect(shouldIncludeInSitemap('https://notes.antoniwan.online/api')).toBe(false);
-    expect(shouldIncludeInSitemap('https://notes.antoniwan.online/tag/parenting')).toBe(false);
   });
 });

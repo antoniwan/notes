@@ -63,9 +63,5 @@ export function shouldIncludeInSitemap(pageUrl: string): boolean {
 
   if ((SEO_EXCLUDED_PATHS as readonly string[]).includes(pathname)) return false;
 
-  // Individual tag URLs are thin/duplicate-prone; keep only the tag index.
-  // Canonical tag pages remain crawlable via internal links.
-  if (pathname.startsWith('/tag/') && pathname !== '/tag') return false;
-
   return true;
 }
