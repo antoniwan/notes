@@ -15,6 +15,11 @@ export interface CategoryDisplayItem {
 export interface BaseLayoutProps {
   title: string;
   description?: string;
+  /**
+   * Optional SEO-only description. When set, used for meta/OG/JSON-LD instead of
+   * `description` (which may also render on-page as a subtitle).
+   */
+  metaDescription?: string;
   // Blog-specific props
   pubDate?: Date;
   updatedDate?: Date;

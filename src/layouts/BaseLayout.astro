@@ -23,6 +23,7 @@ const searchData = await getSearchData();
 const {
   title,
   description = SITE_DESCRIPTION,
+  metaDescription,
   pubDate,
   updatedDate,
   heroImage,
@@ -50,6 +51,8 @@ const {
   wordCount,
 } = Astro.props;
 
+const seoDescription = metaDescription || description;
+
 // Auto-generate keywords if not provided
 const finalKeywords = keywords || generateKeywords(tags, category);
 
@@ -59,7 +62,7 @@ const finalImageAlt = imageAlt || generateImageAlt(title);
 // Auto-generate structured data
 const structuredData = generateStructuredData({
   title,
-  description,
+  description: seoDescription,
   path: path || Astro.url.pathname,
   posts,
   type: structuredDataType,
@@ -85,7 +88,7 @@ const structuredData = generateStructuredData({
   <head>
     <BaseHead
       title={title}
-      description={description}
+      description={seoDescription}
       path={path}
       heroImage={heroImage}
       imageAlt={finalImageAlt}
