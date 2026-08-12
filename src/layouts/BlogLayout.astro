@@ -114,8 +114,10 @@ const primaryCategory = categoryItems[0] || null;
         />
       </div>
 
-      {/* Hero Section - Full width on mobile, moves to sidebar on desktop */}
-      <div class="mb-10 md:mb-12 lg:hidden">
+      {/* Canonical post H1 via PageHeader.
+          Visible on mobile; sr-only on desktop (NOT display:none) so crawlers/a11y
+          still see exactly one H1. Desktop sidebar shows a visual-only echo below. */}
+      <div class="mb-10 md:mb-12 lg:sr-only">
         <PageHeader title={title} description={description} className="mb-6!" />
       </div>
 
@@ -126,16 +128,10 @@ const primaryCategory = categoryItems[0] || null;
           <div
             class="scrollbar-subtle-y sticky top-6 max-h-[calc(100vh-2.5rem)] space-y-8 overflow-y-auto pt-6 pr-1.5"
           >
-            {/* Post Title & Description - Only shown in sidebar on desktop */}
-            <div class="space-y-2">
-              <h1 class="mb-4 text-2xl leading-tight font-bold text-[rgb(var(--color-text))]">
-                {title}
-              </h1>
-              {
-                description && (
-                  <p class="text-body-muted m-0 text-base leading-relaxed">{description}</p>
-                )
-              }
+            {/* Visual title echo only — real H1 lives in PageHeader above.
+                Reuse PageHeader (as="p") so font/weight/tracking match mobile. */}
+            <div class="sidebar-title-echo" aria-hidden="true">
+              <PageHeader title={title} description={description} as="p" className="!py-0" />
             </div>
 
             {/* Reading Signals */}
@@ -435,6 +431,14 @@ const primaryCategory = categoryItems[0] || null;
     </div>
   </Container>
 </BaseLayout>
+
+<style>
+  /* Sidebar title echo: same text-display face as mobile H1, capped for the narrow column */
+  .sidebar-title-echo :global(.text-display) {
+    font-size: clamp(1.35rem, 1.15rem + 0.55vw, 1.75rem);
+    line-height: 1.25;
+  }
+</style>
 
 <script>
   import { formatRelativeReadTime } from '../utils/relativeReadTime.client';

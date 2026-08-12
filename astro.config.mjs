@@ -7,6 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 import vercel from '@astrojs/vercel';
 import { SITE_URL } from './src/consts';
 import { remarkReadingTime } from './remark-reading-time.mjs';
+import { remarkDemoteMarkdownH1 } from './src/utils/remarkDemoteMarkdownH1.mjs';
 import { buildSeoRedirects, shouldIncludeInSitemap } from './src/utils/seoRouting';
 import { getSitemapTranslationLinksByUrl } from './src/utils/sitemapTranslations';
 
@@ -101,7 +102,7 @@ export default defineConfig({
       wrap: true,
     },
     processor: unified({
-      remarkPlugins: [remarkReadingTime],
+      remarkPlugins: [remarkReadingTime, remarkDemoteMarkdownH1],
       gfm: true,
       smartypants: true,
     }),
