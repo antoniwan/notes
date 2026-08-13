@@ -1,0 +1,15 @@
+---
+description: When package.json version changes, update CHANGELOG.md via pnpm changelog:since and the version-bump-changelog skill.
+globs: package.json
+alwaysApply: false
+---
+
+# Version bump requires changelog
+
+If `package.json` `"version"` is being bumped or was bumped in this session:
+
+1. Follow `.cursor/skills/version-bump-changelog/SKILL.md`
+2. Run `pnpm changelog:since` (add `--from <prev>` if needed)
+3. Prepend a Keep a Changelog section to `CHANGELOG.md` matching the new version
+
+Do not ship a version bump without a changelog entry.

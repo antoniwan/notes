@@ -6,6 +6,8 @@ Personal writing site: essays and notes on fatherhood, masculinity, culture, and
 
 Live site: [notes.antoniwan.online](https://notes.antoniwan.online)
 
+Release history: [CHANGELOG.md](./CHANGELOG.md)
+
 ## What it includes
 
 - Posts in `src/content/p/` (Markdown and MDX)
@@ -68,6 +70,7 @@ Remark42 uses `PUBLIC_REMARK42_HOST` and `PUBLIC_REMARK42_SITE_ID` when you turn
 | `pnpm run build`                  | Builds social JPG/PNG from AVIF (skipped when fingerprints + files match), then `astro build` |
 | `pnpm run preview`                | Serves the production build locally                                                           |
 | `pnpm test`                       | Vitest unit tests (publish filters, SEO routing, feed HTML, quotes helpers) |
+| `pnpm changelog:since`            | Commits + file groups since the previous version (for CHANGELOG drafts)   |
 | `pnpm run check`                  | `astro check` (TypeScript / Astro diagnostics)                                                |
 | `pnpm run lint`                   | ESLint                                                                                        |
 | `pnpm run lint:fix`               | ESLint with `--fix`                                                                           |
