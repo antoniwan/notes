@@ -1,5 +1,5 @@
 ---
-import { SITE_TITLE, SOCIAL_LINKS } from '../consts';
+import { AUTHOR, SITE_TITLE, SOCIAL_LINKS } from '../consts';
 import Logo from './Logo.astro';
 import Container from './Container.astro';
 import pkg from '../../package.json';
@@ -54,7 +54,7 @@ import pkg from '../../package.json';
     >
       <p class="text-body-muted m-0 text-[0.7rem] leading-snug">
         © {new Date().getFullYear()}{' '}
-        {SITE_TITLE}. Content:{' '}
+        {SITE_TITLE} by {AUTHOR.name}. Content:{' '}
         <a
           href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
           target="_blank"

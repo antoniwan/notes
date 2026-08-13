@@ -131,7 +131,14 @@ const primaryCategory = categoryItems[0] || null;
             {/* Visual title echo only — real H1 lives in PageHeader above.
                 Reuse PageHeader (as="p") so font/weight/tracking match mobile. */}
             <div class="sidebar-title-echo" aria-hidden="true">
-              <PageHeader title={title} description={description} as="p" className="!py-0" />
+              <PageHeader
+                title={title}
+                description={description}
+                as="p"
+                className="!py-0"
+                stackClass="gap-5"
+                descriptionClass="text-[1.0625rem]"
+              />
             </div>
 
             {/* Reading Signals */}

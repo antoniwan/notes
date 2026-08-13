@@ -6,6 +6,10 @@ interface Props {
   description?: string;
   className?: string;
   showTitle?: boolean;
+  /** Extra classes for the title/description stack (gap). */
+  stackClass?: string;
+  /** Extra classes for the description (size). */
+  descriptionClass?: string;
   /**
    * Document heading level. Keep a single page H1 — use `p` for visual echoes.
    * Default: h1 (canonical page title via PageHeader).
@@ -13,23 +17,30 @@ interface Props {
   as?: 'h1' | 'p';
 }
 
-const { title, description, className = '', showTitle = true, as = 'h1' } = Astro.props;
+const {
+  title,
+  description,
+  className = '',
+  showTitle = true,
+  stackClass = '',
+  descriptionClass = '',
+  as = 'h1',
+} = Astro.props;
 const TitleTag = as;
 ---
 
 <Container maxWidth="container" padding="none" class={`py-4 md:py-8 lg:py-10 ${className}`}>
-  <div class="space-y-3 md:space-y-4">
-    <TitleTag
-      class={`text-display text-[rgb(var(--color-text))]${!showTitle ? ' sr-only' : ''}`}
-      style="margin: 0;"
-    >
+  <div class:list={['flex flex-col', stackClass || 'gap-3 md:gap-4']}>
+    <TitleTag class={`text-display m-0 text-[rgb(var(--color-text))]${!showTitle ? ' sr-only' : ''}`}>
       {title}
     </TitleTag>
     {
       description && (
         <p
-          class="text-body-muted max-w-none text-base leading-relaxed md:text-lg md:leading-relaxed"
-          style="margin: 0; line-height: 1.65;"
+          class:list={[
+            'text-body-muted m-0 max-w-none leading-[1.65]',
+            descriptionClass || 'text-base md:text-lg',
+          ]}
         >
           {description}
         </p>
