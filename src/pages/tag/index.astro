@@ -5,6 +5,7 @@ import TagCard from '../../components/TagCard.astro';
 import Container from '../../components/Container.astro';
 import ContentFormPrelude from '../../components/tag/ContentFormPrelude.astro';
 import { getCollection } from 'astro:content';
+import { PAGE_META } from '../../data/pageMeta';
 import { toContentFormPreludeItems } from '../../utils/tag/contentFormTags';
 import { calculateTagStats } from '../../utils/tagProcessing';
 import { canonicalizeTags } from '../../utils/tagVocabulary';
@@ -65,6 +66,7 @@ const tagNarrativeStats = Object.values(
 <BaseLayout
   title="Tags"
   description="Browse all tags to discover content by topic. Find posts about parenting, mental health, technology, philosophy, and more."
+  metaDescription={PAGE_META['/tag']}
   path="/tag"
   structuredDataType="website"
 >

@@ -5,6 +5,7 @@ import CategoryCard from '../../components/CategoryCard.astro';
 import Container from '../../components/Container.astro';
 import { getCollection } from 'astro:content';
 import { categories } from '../../data/categories';
+import { PAGE_META } from '../../data/pageMeta';
 import { isCollectionListed } from '../../utils/publishFilters';
 
 const posts = await getCollection('blog', ({ data }) => isCollectionListed(data));
@@ -23,6 +24,7 @@ const alphabetical = [...withNotes].sort((a, b) => a.name.localeCompare(b.name))
 <BaseLayout
   title="Categories"
   description="Browse writings by high-level themes—parenting, psychology, systems, and more."
+  metaDescription={PAGE_META['/category']}
   path="/category"
   structuredDataType="website"
 >

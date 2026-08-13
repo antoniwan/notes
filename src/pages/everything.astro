@@ -2,6 +2,7 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import LazyPosts from '../components/LazyPosts.astro';
 import { getCollection } from 'astro:content';
+import { PAGE_META } from '../data/pageMeta';
 import { isCollectionListed } from '../utils/publishFilters';
 
 // Get all published posts (excludes secondary-language translations)
@@ -14,6 +15,7 @@ const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDa
 <PageLayout
   title="Everything (All Posts)"
   description="The full record, newest to oldest. Scroll away! 📝"
+  metaDescription={PAGE_META['/everything']}
   path="/everything"
   structuredDataType="website"
   mode="chrome"

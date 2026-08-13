@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import HighlightsMasonry from '../components/HighlightsMasonry.astro';
+import { PAGE_META } from '../data/pageMeta';
 import { getHighlights, getHighlightsByCategory } from '../utils/highlights';
 
 const highlights = await getHighlights();
@@ -11,7 +12,7 @@ const highlightsByCategory = await getHighlightsByCategory();
   title="Notes"
   heading="A season of execution"
   description="Less narration, more action. I write from real life as a stay-at-home, remote-working father² and stepfather² — practicing patience, temperance, and grounded leadership in public."
-  metaDescription="Less narration, more action. From real life as a stay-at-home, remote-working father² and stepfather²"
+  metaDescription={PAGE_META['/']}
   path="/"
   structuredDataType="website"
   contentClass="home-shell max-w-none"

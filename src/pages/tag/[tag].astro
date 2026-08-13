@@ -4,6 +4,7 @@ import PostCard from '../../components/PostCard.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import Container from '../../components/Container.astro';
 import { getCollection } from 'astro:content';
+import { tagMetaDescription } from '../../data/pageMeta';
 import { getAllUniqueTags, getTagStatistics } from '../../utils/tagProcessing';
 import { canonicalizeTag } from '../../utils/tagVocabulary';
 import { isCollectionListed } from '../../utils/publishFilters';
@@ -38,6 +39,7 @@ const tagPosts = posts
 <BaseLayout
   title={`${canonicalTag} - Tag`}
   description={`Browse all writings tagged with ${canonicalTag}`}
+  metaDescription={tagMetaDescription(canonicalTag, totalPosts)}
   path={`/tag/${canonicalTag}`}
   structuredDataType="tag"
   structuredDataIdentifier={canonicalTag}
@@ -68,7 +70,8 @@ const tagPosts = posts
           >
             <span class="text-[rgb(var(--color-accent))]" aria-hidden="true">📊</span>
             <span class="text-base leading-relaxed font-medium text-[rgb(var(--color-accent))]">
-              {totalPosts} {totalPosts === 1 ? 'writing' : 'writings'}
+              {totalPosts}
+              {totalPosts === 1 ? 'writing' : 'writings'}
             </span>
           </div>
 

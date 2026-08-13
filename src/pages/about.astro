@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import LatestWatched from '../components/LatestWatched.astro';
+import { PAGE_META } from '../data/pageMeta';
 import { fetchLetterboxdRecent } from '../utils/letterboxd';
 
 const rssUrl = import.meta.env.LETTERBOXD_RSS_URL ?? '';
@@ -77,6 +78,7 @@ const topics: AboutTopic[] = [
 <PageLayout
   title="About Antonio Rodríguez Martínez"
   description="Father² and stepfather². Builder. In a season of execution, practicing patience, temperance, and leadership through ordinary daily action."
+  metaDescription={PAGE_META['/about']}
   path="/about"
   contentClass="about-shell max-w-none"
 >

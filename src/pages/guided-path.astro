@@ -3,6 +3,7 @@ import PageLayout from '../layouts/PageLayout.astro';
 import Chapter from '../components/Chapter.astro';
 import BackToTop from '../components/BackToTop.astro';
 import { getCollection } from 'astro:content';
+import { PAGE_META } from '../data/pageMeta';
 import { isGuidedPathEligiblePost } from '../utils/publishFilters';
 
 // English-primary path: Spanish posts stay off this list (use language toggle on each note)
@@ -116,6 +117,7 @@ const sortedChapters = nonEmptyChapters.sort(
 <PageLayout
   title="Guided Path"
   description="Read writings grouped by season and year. Each chapter is a season (Winter, Spring, Summer, Fall) with posts from that period. Only seasons with content are shown, and your reading progress is stored locally on your device."
+  metaDescription={PAGE_META['/guided-path']}
   path="/guided-path"
   mode="chrome"
 >

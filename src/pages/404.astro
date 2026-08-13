@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import NotFoundQuote from '../components/NotFoundQuote.astro';
+import { PAGE_META } from '../data/pageMeta';
 import { getAllTags } from '../data/tags';
 
 const existingTags = getAllTags();
@@ -9,6 +10,7 @@ const existingTags = getAllTags();
 <PageLayout
   title="Page not found"
   description="A random line from the quote archive."
+  metaDescription={PAGE_META['/404']}
   robots="noindex, follow"
 >
   <div class="not-prose mx-auto max-w-3xl">

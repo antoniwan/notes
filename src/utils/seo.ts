@@ -108,7 +108,7 @@ export function generateMetaTags(config: SEOConfig): MetaTags {
 
   return {
     title: fullTitle,
-    description,
+    description: generateOptimizedDescription(description),
     canonical,
     ogImage,
     ogImageAlt,
@@ -177,8 +177,13 @@ export function generateRobotsTxt(sitemapUrl: string, additionalRules?: string[]
   return [...baseRules, ...(additionalRules || [])].join('\n');
 }
 
+export const META_DESCRIPTION_MAX_LENGTH = 160;
+
 // Generate enhanced meta description with better length optimization
-export function generateOptimizedDescription(description: string, maxLength: number = 160): string {
+export function generateOptimizedDescription(
+  description: string,
+  maxLength: number = META_DESCRIPTION_MAX_LENGTH,
+): string {
   if (description.length <= maxLength) return description;
 
   // Try to break at sentence boundaries

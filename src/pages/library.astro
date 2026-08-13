@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import { books } from '../data/library';
+import { PAGE_META } from '../data/pageMeta';
 
 const shelves = Array.from(new Set(books.map((book) => book.shelf))).sort((a, b) =>
   a.localeCompare(b),
@@ -10,6 +11,7 @@ const shelves = Array.from(new Set(books.map((book) => book.shelf))).sort((a, b)
 <PageLayout
   title="Library of Sources (Books)"
   description="A living, honest catalog of the books that shape these notes — what I'm reading now, what has formed my thinking, and what is quietly waiting on the shelf."
+  metaDescription={PAGE_META['/library']}
   path="/library"
   mode="chrome"
 >

@@ -7,6 +7,13 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.6.0] — 2026-08-13
+
+### Added
+
+- Unique SEO meta descriptions for every public page (home, about, archive, guided path, library, categories, and tags), instead of reusing the homepage default.
+- Category and tag listing pages get their own meta copy; meta tags clip to about 160 characters.
+
 ## [6.4.0] — 2026-08-12
 
 ### Changed

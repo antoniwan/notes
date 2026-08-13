@@ -5,6 +5,7 @@ import PageHeader from '../../components/PageHeader.astro';
 import Container from '../../components/Container.astro';
 import { getCollection } from 'astro:content';
 import { categories } from '../../data/categories';
+import { categoryMetaDescription } from '../../data/pageMeta';
 import { isCollectionListed } from '../../utils/publishFilters';
 
 export async function getStaticPaths() {
@@ -42,7 +43,8 @@ const robots = categoryPosts.length > 0 ? 'index, follow' : 'noindex, follow';
 
 <BaseLayout
   title={category.name}
-  description={`Browse all writings in the ${category.name} category`}
+  description={category.description}
+  metaDescription={categoryMetaDescription(category)}
   path={`/category/${category.id}`}
   robots={robots}
   structuredDataType="category"
@@ -55,7 +57,7 @@ const robots = categoryPosts.length > 0 ? 'index, follow' : 'noindex, follow';
       <div class="mb-8 md:mb-10">
         <PageHeader
           title={`${category.icon} ${category.name}`}
-          description={`Browse all writings in the ${category.name} category`}
+          description={category.description}
         />
         <div class="mt-4 md:mt-6">
           <a
