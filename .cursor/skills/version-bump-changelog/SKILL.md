@@ -31,7 +31,7 @@ Every `package.json` version bump gets a matching `CHANGELOG.md` entry written f
    - Prefer outcomes over file lists
    - Group under `Added` / `Changed` / `Fixed` / `Removed` / `Security` as needed
    - Skip noise unless meaningful (lockfile-only, generated fingerprints, formatting-only)
-   - Call out content posts by title/slug when they ship in the release
+   - Technical changelog only: do **not** list published notes, translations, or copy edits in `src/content/`
 4. Prepend a section to `CHANGELOG.md` **above** the previous release:
 
    ```markdown
