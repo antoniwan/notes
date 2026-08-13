@@ -32,14 +32,8 @@ I feel like there’s something special, something serene, about abstaining from
 
 I’m aware this could very well be my past trauma manifesting and some process I have to go through myself, or perhaps some self-flagellation or self-sabotage. Maybe I’m just rationalizing some fears or emotions I’m not fully grasping or understanding about myself, specifically after my failures as a husband and in past romantic relationships. I don’t know yet, but I will find out.
 
-### Does this resonate with some of you? What are your thoughts about this idea?
+Does this resonate with some of you? What are your thoughts about this idea?
 
 And to be extra precise, I do genuinely believe sexual intimacy or carnal desires are part of our natural life after all; it’s honest and essential for our lives and development as healthy human beings.
-
-![](https://cdn-images-1.medium.com/max/800/0*C5b_lUwsLZ12xFSD)
-
-<small>Photo by [Joshua Earle](https://unsplash.com/@joshuaearle?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)</small>
-
----
 
 _Originally published on [Medium](https://medium.com/@wizards777/brief-notes-on-finding-serenity-in-self-control-e2e489677baa)._

@@ -47,6 +47,4 @@ So, in conclusion, why is it so natural for me to wake up early and cook for the
 
 Food for thought.
 
----
-
 _This post was originally published on [Medium](https://medium.com/@wizards777/note-to-self-on-being-a-conscious-parent-a1c0e429f5fb)._

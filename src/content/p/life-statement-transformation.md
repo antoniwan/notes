@@ -46,6 +46,4 @@ In creating and updating this document, I self-reflect on my actions and, whenev
 
 Again, this document is not meant to be shared. Instead, it's a document for self-reflection and accountability for yourself. For clarification. For goal setting. So that I can stop lying or manipulating myself and become active; action is, thoughts aren't. It's a call to action!
 
----
-
 _This article was originally published on [Medium](https://medium.com/@wizards777/why-creating-a-life-statement-has-helped-me-so-much-7077afc34f18). I'm sharing it here as part of my journey of self-reflection and growth, hoping it might resonate with others on a similar path._

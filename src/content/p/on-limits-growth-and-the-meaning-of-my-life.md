@@ -34,6 +34,4 @@ So, what are my limits? Where am I going? I have not figured it out fully yet, b
 
 And lately, I've noticed that the meaning of life is not something you ask others; it's something you ask yourself — it's something to be asked to yourself, and the answer is as much mine as it is yours — food for thought.
 
----
-
 _This post was originally published on [Medium](https://medium.com/@wizards777/on-limits-growth-and-the-meaning-of-my-life-77b24178018c)._

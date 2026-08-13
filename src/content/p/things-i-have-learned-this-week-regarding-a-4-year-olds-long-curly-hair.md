@@ -27,10 +27,6 @@ published: true
 showComments: true
 ---
 
-![](https://cdn-images-1.medium.com/max/800/0*aXqmLg3o-62nSyLQ)
-
-<small>Photo by [Senjuti Kundu](https://unsplash.com/@senjuti?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)</small>
-
 1. One does not brush curly hair because it becomes Mufasa-like. I tried different brush styles before I noticed this.
 2. Detangling curly hair is easiest during the conditioning stage in the shower.
 3. Bath toys help keep the toddler in place (LOL).
@@ -46,7 +42,5 @@ showComments: true
 13. YouTube is my friend for learning tips and tricks about hairstyling.
 
 _Sharing is caring._ I hope this helps out other dads!
-
----
 
 _Originally published on [Medium](https://medium.com/@wizards777/things-i-have-learned-this-week-regarding-a-4-year-olds-long-curly-hair-813db24e002e)._

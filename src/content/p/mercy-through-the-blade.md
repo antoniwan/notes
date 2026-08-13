@@ -29,11 +29,9 @@ published: true
 showComments: true
 ---
 
-> This is a silent topic. Nobody really wants to talk about it. I think because it's uncomfortable. It exposes things most people would rather keep hidden. But here we go — no ego, no drama, just truth. If this resonates, or if it challenges you, leave a comment below. I'll reply to every comment personally. Let's sharpen each other the way warriors are supposed to — with presence, respect, and real conversation. ¡Gracias por leer!
+> This is a silent topic. Nobody really wants to talk about it. I think because it's uncomfortable. It exposes things most people would rather keep hidden. But here we go — no ego, no drama, just truth. Let's sharpen each other the way warriors are supposed to — with presence, respect, and real conversation. ¡Gracias por leer!
 
-<small>**_Hero Image Caption & Credit: Lioness. True Leadership. Photo by roya ann miller on Unsplash_**</small>
-
-## ⚔ Leading Through Truth: The Warrior's Dilemma ⚔
+## Leading Through Truth: The Warrior's Dilemma
 
 In every generation, a moment arises when a leader — a true leader — must make a brutal, sacred decision:
 
@@ -88,7 +86,9 @@ When you truly love others, you are loyal to **their highest possible self — n
 
 A **true** leader understands:
 
-> I offer truth cleanly.<br />If they are ready, they rise.<br />If they are not, I continue walking — **because truth must not bow to fear.**
+> I offer truth cleanly.
+> If they are ready, they rise.
+> If they are not, I continue walking — **because truth must not bow to fear.**
 
 ## Tactical Principles for Leading Through Resistance
 
@@ -102,7 +102,7 @@ When someone you lead resists growth — turns away, rejects your offering, refu
 
 This is what separates **kings from manipulators. Warriors from cowards. Mentors from enablers.** Leadership is. You lead, I follow. I lead, you follow. We can even switch hats mid-mission if we have to — but the structure stays alive. **Leadership doesn't disappear just because it's uncomfortable. It's always present. And if it dies, so does the mission.**
 
-## Building After the Cut ⚔️🩸🩸🩸
+## Building After the Cut
 
 When you realize someone cannot follow you — whether a mentee, a son, a student, or a brother — you must honor both yourself and them by _building forward_:
 
@@ -122,97 +122,24 @@ It is simply time to lead anyway. **Quietly. Fiercely. Without regret.**
 
 > For those ready to wield leadership **not as domination, but as duty** — the study never ends. **The blade only sharpens.**
 
-<figure>
-<table class="value-definitions">
-  <thead>
-    <tr>
-      <th>Value</th>
-      <th>Definition</th>
-      <th>Warrior Application</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Mercy</strong></td>
-      <td>Compassionate treatment with strength</td>
-      <td>Cutting illusions without hatred</td>
-    </tr>
-    <tr>
-      <td><strong>Truth</strong></td>
-      <td>Unwavering loyalty to reality</td>
-      <td>Speaking what is, not what comforts</td>
-    </tr>
-    <tr>
-      <td><strong>Leadership</strong></td>
-      <td>Sacred responsibility to guide</td>
-      <td>Leading by example, not force</td>
-    </tr>
-    <tr>
-      <td><strong>Discipline</strong></td>
-      <td>Consistent action aligned with values</td>
-      <td>Daily practice of core principles</td>
-    </tr>
-    <tr>
-      <td><strong>Authenticity</strong></td>
-      <td>Being true to one's nature</td>
-      <td>No masks, no pretense</td>
-    </tr>
-    <tr>
-      <td><strong>Responsibility</strong></td>
-      <td>Owning the consequences of power</td>
-      <td>Accepting the weight of leadership</td>
-    </tr>
-  </tbody>
-</table>
+| Value          | Definition                            | Warrior application                 |
+| -------------- | ------------------------------------- | ----------------------------------- |
+| Mercy          | Compassionate treatment with strength | Cutting illusions without hatred    |
+| Truth          | Unwavering loyalty to reality         | Speaking what is, not what comforts |
+| Leadership     | Sacred responsibility to guide        | Leading by example, not force       |
+| Discipline     | Consistent action aligned with values | Daily practice of core principles   |
+| Authenticity   | Being true to one's nature            | No masks, no pretense               |
+| Responsibility | Owning the consequences of power      | Accepting the weight of leadership  |
 
-<br />
-
-<table class="book-references">
-  <thead>
-    <tr>
-      <th>Book Title</th>
-      <th>Author</th>
-      <th>Key Theme</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>The Leadership Blade</strong></td>
-      <td>Dr. Calvin McDowall</td>
-      <td>Warrior leadership principles</td>
-    </tr>
-    <tr>
-      <td><strong>The Art of War</strong></td>
-      <td>Sun Tzu</td>
-      <td>Strategic thinking and discipline</td>
-    </tr>
-    <tr>
-      <td><strong>Meditations</strong></td>
-      <td>Marcus Aurelius</td>
-      <td>Stoic leadership and self-mastery</td>
-    </tr>
-    <tr>
-      <td><strong>The Book of Five Rings</strong></td>
-      <td>Miyamoto Musashi</td>
-      <td>Warrior philosophy and mastery</td>
-    </tr>
-    <tr>
-      <td><strong>Leadership and Self-Deception</strong></td>
-      <td>The Arbinger Institute</td>
-      <td>Authentic leadership principles</td>
-    </tr>
-    <tr>
-      <td><strong>The Way of the Superior Man</strong></td>
-      <td>David Deida</td>
-      <td>Masculine leadership and purpose</td>
-    </tr>
-  </tbody>
-</table>
-<figcaption>Further Study References for Warrior Leadership & Core Values for Warrior Leadership (Glossary Style)</figcaption>
-</figure>
+| Book                          | Author                 | Key theme                         |
+| ----------------------------- | ---------------------- | --------------------------------- |
+| The Leadership Blade          | Dr. Calvin McDowall    | Warrior leadership principles     |
+| The Art of War                | Sun Tzu                | Strategic thinking and discipline |
+| Meditations                   | Marcus Aurelius        | Stoic leadership and self-mastery |
+| The Book of Five Rings        | Miyamoto Musashi       | Warrior philosophy and mastery    |
+| Leadership and Self-Deception | The Arbinger Institute | Authentic leadership principles   |
+| The Way of the Superior Man   | David Deida            | Masculine leadership and purpose  |
 
 P.S. After dropping this, I somehow found "The Leadership Blade" by Dr. Calvin McDowall… I swear on everything I love — I had never read his stuff before — and it's like we share a braincell lmao. It's fucking insane how aligned it is. If you're feeling what I'm saying, read his too. Legends recognize legends. 🐺
-
----
 
 _Originally published on [Medium](https://medium.com/@wizards777/mercy-through-the-blade-the-silent-law-of-leadership-24cef2df828a)._

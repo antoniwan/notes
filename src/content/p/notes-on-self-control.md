@@ -37,6 +37,4 @@ Impulsivity is interesting. We could harness it to become much more joyful and s
 
 Surprisingly (is it?), value-based decision-making makes me feel free, happy, joyful, insufferable, effective, and improved. The discipline it takes to be this way also makes me feel powerful. We are so powerful; we just have to practice and take our power with our bare hearts, minds, and consciousness.
 
----
-
 _This post was originally published on [Medium](https://medium.com/@wizards777/notes-on-self-control-48f01e1f21ff)._

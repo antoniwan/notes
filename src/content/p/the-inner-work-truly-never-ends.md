@@ -28,7 +28,7 @@ published: true
 showComments: true
 ---
 
-At the end of March, I thought, “Wow, you are such a loser; you have no pictures to share,” that idea stunned me. Not only do I again understand that my thoughts are a complete asshole sometimes, but it was a clear signal of how our self-esteem presents itself through our ways of habitual thinking and how much more work is left to do — or that perhaps the work never ends, really. ~4 years of inner work and therapy, shifting my mindset into healthier paradigms, was not enough for my Self to formulate this simple but potentially destructive thought. This realization is humbling. The ego must be confronted, and the soul must be fed daily.
+At the end of March, I thought, “Wow, you are such a loser; you have no pictures to share,” that idea stunned me. Not only do I again understand that my thoughts are a complete asshole sometimes, but it was a clear signal of how our self-esteem presents itself through our ways of habitual thinking and how much more work is left to do—or that perhaps the work never ends, really. ~4 years of inner work and therapy, shifting my mindset into healthier paradigms, was not enough for my Self to formulate this simple but potentially destructive thought. This realization is humbling. The ego must be confronted, and the soul must be fed daily.
 
 As I provided evidence to myself that I’m not a loser, I ended up doing my “March 2024 dump” in my head with all my lovely memories, moments, learnings, tasty meals, funny FaceTime calls, disappointments, challenges, work, conversations, pain, everything. In an almost meditative state, definitely reflective, this digest of my month blew my mind away. From a self-depreciative thought, I had just found another way to practice my self-awareness and understand myself better. The thoughtful digestion and understanding of a moment, a day, a week, a month is now within my grasp because living consciously lets you do that. More power. On autopilot, I, unhealthy, would’ve believed that destructive thought and possibly stressed and became anxious or disappointed. I invite you to stop doing that. Dig deep; this life is a battle of contention between you and you, not you versus me, and definitely not you versus them. Take full responsibility for yourself and digest your thoughts for more power.
 
@@ -37,11 +37,5 @@ One night, one of those memories, I was at a metal show by myself as usual, and 
 A friend recently wrote and shared, “There’s no such thing as’ a long time ago.’ There’s only memories that mean something and memories that don’t.” And boy, does this fit the bill. Ultimately, I’ve noticed that the experiences that align with my values become memories, and the experiences that do not align with my values become learnings.
 
 Food for thought!
-
-![](https://cdn-images-1.medium.com/max/800/0*oA98rX80LnOrfXPm)
-
-<small>Photo by [Dingzeyu Li](https://unsplash.com/@dingzeyuli?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)</small>
-
----
 
 _Originally published on [Medium](https://medium.com/@wizards777/the-inner-work-truly-never-ends-6e88a81d6b33)._

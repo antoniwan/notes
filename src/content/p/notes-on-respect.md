@@ -38,6 +38,4 @@ All in all, I hear so much noise about respect, but in this society where integr
 
 Food for thought.
 
----
-
 _This post was originally published on [Medium](https://medium.com/@wizards777/notes-on-respect-0ff922fedccf)._

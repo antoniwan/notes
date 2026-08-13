@@ -44,6 +44,4 @@ There's nothing as hurtful as talking candidly and openly about how I feel and w
 
 You got this. One day at a time.
 
----
-
 _This post was originally published on [Medium](https://medium.com/@wizards777/reflections-from-a-tough-weekend-154e8c2a13b7)._

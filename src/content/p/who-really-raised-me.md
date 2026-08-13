@@ -41,9 +41,9 @@ showComments: true
 
 I've been thinking a lot about who raised me to be who I am. And I'm preparing an essay about that. _But this one is not about that._ This one is about the **fictional characters** that raised me.
 
-![](/images/mia-y-yo-anime.avif)
+![My daughter and I talking about magic fruit](/images/mia-y-yo-anime.avif)
 
-<small>My daughter and I. Talking about magic fruit. Wink.</small>
+_My daughter and I. Talking about magic fruit._
 
 When I think about what I value today, throughout my life, from childhood to now, I can only admit that fictional characters have influenced me heavily in my upbringing, my emotions, my feelings, and my paradigms. _It's absolutely insane!!! Jajaja_
 
@@ -101,9 +101,9 @@ Now that I'm older, the characters influencing or giving me **_joy_ are differen
 
 ### And last but not least…
 
-![](https://cdn-images-1.medium.com/max/800/1*iv9CeuiMWXclD6P3pWzKVQ.jpeg)
+![Saitama from One Punch Man](/images/saitama-sensei.jpeg)
 
-<small>Sensei…</small>
+_Sensei…_
 
 🧢 **One Punch Man / Saitama** — **The loneliness of mastery**.
 
@@ -138,7 +138,5 @@ Saitama isn't about winning. He's about **what happens after**. After winning...
 And above all? **To keep showing up**. To the fight. To the friends. To the market on discount day. _LOL fuck off with that, Saitama Sensei, respectfully._ Because the meaning isn't in the victory — **It's in the living**.
 
 I hope you enjoyed this. **_What's your jam? Who raised you?_**
-
----
 
 _Originally published on [Medium](https://medium.com/@wizards777/who-really-raised-me-b22766a8a48f)._

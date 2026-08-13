@@ -405,6 +405,10 @@
       "sha256": "5e6e9c568563bb63a044d2c6141c70b8829fc5b86b305e8cd3cb9b88fdc210b2",
       "social": "/social/images/2026/tinkering-in-2026-social.jpg"
     },
+    "/images/2026/trickle-down.avif": {
+      "sha256": "ee142e483230541c3ad42d05d90bfc42bece7ad61fedbfcd6a5f5fe9fcc5aa13",
+      "social": "/social/images/2026/trickle-down-social.jpg"
+    },
     "/images/2026/value-roads.avif": {
       "sha256": "057545ba11d390dc95fd8b7452966c50cc7e489750fb8b0eebb7c79abae67031",
       "social": "/social/images/2026/value-roads-social.jpg"

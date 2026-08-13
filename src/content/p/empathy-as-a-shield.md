@@ -32,8 +32,6 @@ published: true
 showComments: true
 ---
 
-<small>Hero Image by [Nik](https://unsplash.com/@helloimnik?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)</small>
-
 Do you ever run into one of those clown-ass lifted trucks, barreling down the road with aggressive swagger? The kind with "Glock" and "Don't Tread on Me" stickers, maybe a thin blue line flag—jacked up so high the owner probably needs a ladder to climb in. So practical. So battle-ready. And of course, spotless—a truck that's never hauled anything heavier than its owner's ego. \*\*sarcastic eye roll\*\*
 
 Then comes the instant irony: "Back the Blue" while driving like a sociopathic maniac. It fries your brain. _"Wait—if these people worship law enforcement, why don't they follow the law to the letter? Why do they drive like wannabe terrorists?"_

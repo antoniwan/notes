@@ -48,6 +48,4 @@ How do I practice these values, you ask? I limit my scope of activities and set 
 
 The way I see it, I've been told time heals all wounds, so I will only focus on these things and stay healthy and focused on spending my time according to my values. Accountability is a power that we all have. The ability to own how we live our lives, make decisions, procrastinate, lie, cheat, whatever it is that you do, you are responsible and are responsible for what happens to you and from you. Understanding this and being aware of this responsibility is a gift — this power. I didn't know about it until recently, and I regret it, so I'm making up for it — hopefully, I'm not being that extreme with myself. It's a painful process but worth it. So I guess that the "no pain, no pain" quote is legit. Anyways… I imagine I will get used to it eventually, but I'm sure co-parenting will kick my ass.
 
----
-
 _This post was originally published on [Medium](https://medium.com/@wizards777/some-notes-on-overcoming-emotional-pain-1e0315607456)._
