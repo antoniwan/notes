@@ -56,7 +56,7 @@ export function generateCanonicalUrl(path: string): string {
 // Generate image URL for social/meta tags, with proper heroImage prioritization.
 // Uses a build-time manifest to map AVIF (and other) originals to social-safe JPEG/PNG variants.
 export function generateImageUrl(heroImage?: string): string {
-  // Priority: heroImage > default social image
+  // Priority: heroImage > default 1200×630 social JPEG
   const originalPath = heroImage || SEO_CONFIG.defaultImage;
 
   // If we have a generated social-safe variant for this path, prefer it.

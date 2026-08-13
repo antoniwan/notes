@@ -6,7 +6,6 @@ description: >-
 pubDate: '2024-07-15T16:45:00.000Z'
 language:
   - en
-heroImage: ''
 category:
   - psychology
   - integration-growth

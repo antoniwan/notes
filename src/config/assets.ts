@@ -7,8 +7,8 @@ export const assetConfig = {
     // Default hero image for blog posts without a specific hero image
     defaultHero: '/images/default.avif',
 
-    // Default social sharing image
-    defaultSocial: '/share-image.png',
+    // Default OG/Twitter card (1200×630 JPEG from generate-social-images)
+    defaultSocial: '/social/images/default-social.jpg',
 
     // Site logo
     logo: '/sh-sh-logo.svg',

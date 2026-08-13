@@ -1,234 +1,247 @@
-## Midjourney prompts for posts without custom OG images
+# Midjourney cover prompts
 
-This doc tracks Midjourney prompts for posts that currently **do not** have a custom `heroImage` / OG image in `src/content/p`.
+Target size for this site: **1200×630** (Open Graph / Twitter `summary_large_image`).
 
-### Posts that already have custom OG images
+Only posts **without** a non-empty `heroImage` are listed below. If a post already has a cover, skip it.
 
-The following posts already declare a `heroImage` in frontmatter (or share one via translations) and are **not** covered below:
+## Drop-in parameters
 
-- `what-are-we-even-calling-democracy.md`
-- `why-i-turned-off-notifications-again.md`
-- `fear-control-politics.md`
-- `sharpen-your-tools.md`
-- `boundaries-miscalibration-unconditional-love.md`
-- `total-concentration-breathing.md`
-- `fasting-metabolic-ritual.md`
-- `lemon-pepper-chicken.md`
-- `on-testing-relationships.md`
-- `power-intentional-living.md`
-- `the-definition-and-practice-of-my-core-values-make-me-free.md`
-- `who-really-raised-me.md`
-- `rolling-back-main-and-why-you-shouldnt-have-to.md`
-- `what-happens-when-you-leave-the-algorithm-behind.md`
-- `an-invitation-to-the-end-of-wealth-worship-and-the-beginning-of-a-human-future.md`
-- `una-invitacion-al-fin-de-la-adoracion-de-la-riqueza-y-al-comienzo-de-un-futuro-humano.md`
-- `an-hour-of-hair-brushing-what-my-daughter-taught-me-about-time.md`
-- `beef-heart-nutrition.md`
-- `notes-on-self-control.md`
-- `redirigir-curiosidad-sexual-infantil.md`
-- `symbols-of-power.md`
-- `on-clear-signals.md`
-- `season-of-becoming.md`
-- `notes-on-puerto-rico-sin-pie-forzao.md`
-- `notes-on-puerto-rico-sin-pie-forzao-es.md`
-- `the-paradox-of-modernity-progress-without-peace.md`
-- `illuminalganti.md`
-- `the-prometheus-problem.md`
-- `embracing-the-spiritual-abyss-an-atheists-search-for-meaning.md`
-- `arithmetic-presencia.md`
-- `vs-code-title-bar-signaling.md`
-- `transforming-life-through-values.md`
-- `the-feeling-is-not-the-problem.md`
-- `love-is-the-final-revolution.md`
-- `el-problema-de-prometeo.md`
-- `i-became-what-i-used-to-mock.md`
-- `on-the-application-of-empathy-and-compassion.md`
-- `guia-ipad-es.md`
-- `intelligence-burns.md`
-- `boundaries-miscalibration-unconditional-love-es.md`
-- `who-i-am-today-a-recovery-progress-report.md`
-- `quien-soy-hoy-reporte-de-progreso-de-recuperacion.md`
-- `the-first-wall.md`
-- `la-primera-pared.md`
-- `the-rhythm-of-grief-summer-days-and-letting-go.md`
-- `life-statement-transformation.md`
-- `the-joy-of-building-my-own-digital-sandbox.md`
-- `empathy-as-a-shield.md`
-- `pa-la-nena-que-vive-en-ti.md`
-- `bend-dont-break-learning-to-flow-again.md`
-- `good-sheep.md`
-- `why-electric-cars-cant-look-like-electric-cars.mdx`
+Append this to every prompt (or keep it at the end of the paste):
 
-> Any new post with a populated `heroImage` can be excluded from prompts in this file.
+```text
+--ar 1200:630 --v 7 --stylize 200 --style raw --no text, watermark, logo, letters, signature, caption, typography
+```
 
-### Midjourney prompts for posts without OG images
+Then: upscale → download → convert to AVIF → save under `public/images/2026/<slug>.avif` → set `heroImage: /images/2026/<slug>.avif` in frontmatter → run `pnpm run generate-social-images`.
 
-Each entry below is a suggested Midjourney prompt for generating a 16:9 social/OG image. Tweak style keywords as desired.
+Keep the focal subject in the **center third**. The on-page hero crops to a shorter 1200×450 banner; OG uses the full 1200×630.
 
 ---
 
-#### `notes-on-respect.md` — abstract, hand-drawn style
+## Default cover pool (placeholders)
 
-**Prompt**  
-“a minimal abstract illustration of two human silhouettes standing face to face, each with a small glowing heart in the chest, overlapping circles between them representing mutual respect and boundaries, soft warm colors (amber, deep blue, cream), subtle pencil texture, clean white background, hand-drawn line art, no text, cinematic 16:9 composition”
+Drop these into `public/images/default_covers/` as `default-1.avif` … `default-8.avif` (replace the current 3:2 set). Same parameters as above. Site vibe: raw, cosmic, hand-made, a little weird, no letters.
 
----
+**1 — night chart**
 
-#### `brief-notes-on-finding-serenity-in-self-control.md` — calm, painterly
+```text
+wide cinematic painting of a deep navy night sky with a warm orange-to-violet nebula band across the center, thin gold constellation linework and small alchemical sigils floating among stars, mystical star-chart mood, no people, no text
+```
 
-**Prompt**  
-“a lone figure sitting on a cliff at sunrise, calm ocean below, the figure made of soft brushstrokes fading into the sky, thin golden threads connecting heart and mind, impressionist painting style, muted pastel palette, serene and contemplative mood, no text, 16:9 wide shot”
+**2 — kintsugi quiet**
 
----
+```text
+extreme close-up of cracked dark ceramic repaired with glowing gold kintsugi seams, soft cream and charcoal, shallow depth of field, tender still life, one small hairline crack catching light, no text
+```
 
-#### `on-simplicity-and-peace-of-mind.md` — Japanese-inspired ink drawing
+**3 — threshold**
 
-**Prompt**  
-“zen-inspired ink drawing of a single stone, a cup of tea, and a small bonsai on a clean wooden table, large empty negative space, soft natural light from one side, Japanese sumi-e brushstroke style, monochrome with a single muted accent color, peaceful and minimal, 16:9 layout”
+```text
+a lone figure standing at a desert-to-forest threshold at golden hour, a faint glowing path under their feet, vast sky, painterly cinematic landscape, introspective, no readable signs
+```
 
----
+**4 — breath**
 
-#### `the-inner-work-truly-never-ends.md` — surreal, abstract
+```text
+abstract impressionist study of a human torso dissolving into ocean fog and sunrise, thin gold thread from heart to mind, muted pastels, calm, lots of negative space, no face details, no text
+```
 
-**Prompt**  
-“a person walking up an endless staircase that loops into itself inside their own transparent chest, galaxies and constellations where the heart should be, surreal dreamlike atmosphere, dark blues and purples with gold accents, digital painting, no text, cinematic 16:9 frame”
+**5 — forge**
 
----
+```text
+dark workshop, a blacksmith anvil beside a dim terminal glow, sparks and molten gold in the dark, cyan reflections on steel, gritty digital painting, no screens with readable UI
+```
 
-#### `customizing-chatgpt.md` — playful tech cartoon
+**6 — two silhouettes**
 
-**Prompt**  
-“cartoon-style illustration of a friendly robot made of sticky notes, sliders, and toggles, sitting at a desk covered in notebooks and settings panels, bright modern UI elements floating around it, fun but clean color palette (teal, purple, white), flat vector style, 16:9 composition”
+```text
+minimal hand-drawn illustration of two human silhouettes facing each other, small glowing hearts in the chest, overlapping circles of amber and deep blue between them, cream background, pencil texture, no text
+```
 
----
+**7 — notebook light**
 
-#### `some-books-for-self-transcendence.md` — cozy illustrated stack of books
+```text
+open cloth-bound journal on a wooden desk under a warm lamp, pages filled with unreadable marks and checkmarks, a shrinking shadow in the background, cozy browns and gold, no legible writing
+```
 
-**Prompt**  
-“illustrated stack of well-worn books with titles blurred out, soft warm lamp light, tendrils of stardust and small galaxies rising from the open top book, cozy reading nook in the background, painterly digital illustration, warm oranges and deep blues, no legible text on covers, 16:9”
+**8 — infinite stair**
 
----
-
-#### `you-are-joking-right.md` — expressive comic panel
-
-**Prompt**  
-“comic-style close-up of a person raising an eyebrow in disbelief, half of the face lit by the glow of a phone screen showing chaotic social media icons, bold ink lines, limited color palette (neon pink, cyan, black), slightly exaggerated expression, no actual UI text, 16:9 graphic novel frame”
-
----
-
-#### `why-i-built-buildssoftware-and-what-im-building-next.md` — tech blueprint aesthetic
-
-**Prompt**  
-“semi-abstract blueprint of a software city being constructed, cranes lifting code blocks, roads made of flowcharts, glowing nodes connecting buildings, deep navy background with cyan linework, modern isometric illustration, clean and optimistic, 16:9 wide shot”
+```text
+surreal digital painting of a figure walking an endless staircase that loops inside a transparent chest, galaxies where the heart should be, dark blue purple gold, dreamlike, no text
+```
 
 ---
 
-#### `on-limits-growth-and-the-meaning-of-my-life.md` — philosophical landscape
+## Posts still missing a cover
 
-**Prompt**  
-“a lone traveler standing at the edge of a vast desert that gradually transforms into a lush forest, a faint glowing line on the ground marking a chosen path, golden hour lighting, semi-realistic painting, introspective mood, no text, wide 16:9 cinematic landscape”
+17 posts. Each block is one paste: subject + the parameters from the top of this file.
 
----
+### `some-notes-on-overcoming-emotional-pain.md`
 
-#### `conquering-imposter-syndrome-with-evidence-based-journaling.md` — notebook-centric illustration
+Path: `/images/2026/overcoming-emotional-pain.avif`
 
-**Prompt**  
-“a journal open on a desk with pages filled with small checkmarks and reassuring notes (not readable), a dark shadowy silhouette shrinking in the background while the pages glow softly, cozy lamplight, warm browns and golds, clean digital illustration, 16:9 composition”
+Away from his daughter, somatization, accountability, kintsugi of the self.
 
----
+```text
+close-up of a cracked ceramic heart being repaired with glowing gold kintsugi seams, a child's drawing barely visible and out of focus on the table behind it, soft ambient light, warm muted pinks and creams, tender detailed digital painting, no text --ar 1200:630 --v 7 --stylize 200 --style raw --no text, watermark, logo, letters, signature
+```
 
-#### `briefly-on-empathy-as-a-double-edged-sword.md` — symbolic, semi-abstract
+### `reflections-from-a-tough-weekend.md`
 
-**Prompt**  
-“a hand gently holding a glowing crystal sword made of light, the blade split into warm golden light on one side and cold blue shards on the other, floating over a dark neutral background, minimalist semi-abstract illustration, sharp edges contrasted with soft glow, 16:9”
+Path: `/images/2026/tough-weekend.avif`
 
----
+Night kitchen, one lamp, processing hurt and getting ready to leave emotional abuse.
 
-#### `learning-construction-self.md` — conceptual blueprint of the self
+```text
+a person sitting alone at a kitchen table at night, small pool of warm lamp light, coffee mug and crumpled unreadable notes, rain on the window, semi-realistic digital painting, muted blues and warm yellow, honest and tired mood, no text --ar 1200:630 --v 7 --stylize 200 --style raw --no text, watermark, logo, letters, signature
+```
 
-**Prompt**  
-“a human silhouette drawn as an architectural blueprint, with labeled but unreadable sections for ‘values’, ‘memories’, ‘habits’, scaffolding and cranes actively building parts of the figure, teal and white technical drawing style, high contrast, clean 16:9 layout”
+### `on-limits-growth-and-the-meaning-of-my-life.md`
 
----
+Path: `/images/2026/limits-growth-meaning.avif`
 
-#### `my-mental-health-routine-unfiltered.md` — journal + daily life collage
+Tearing down and rebuilding body and mind; meaning asked of the self, not others.
 
-**Prompt**  
-“collage-style illustration of simple daily self-care rituals: journal, glass of water, running shoes, pillow, sunlight through a window, all orbiting around a calm central figure with eyes closed, soft pastel colors, textured painterly style, no text, 16:9 composition”
+```text
+a lone traveler at the edge of a vast desert that gradually becomes a lush forest, a faint glowing line on the ground marking a chosen path, golden hour, semi-realistic painting, introspective, wide cinematic landscape, no text --ar 1200:630 --v 7 --stylize 200 --style raw --no text, watermark, logo, letters, signature
+```
 
----
+### `note-to-self-on-being-a-conscious-parent.md`
 
-#### `on-feeling-overpowered.md` — dramatic, moody anime style
+Path: `/images/2026/conscious-parent.avif`
 
-**Prompt**  
-“anime-style scene of a character standing in the middle of a storm of oversized notifications and shadowy figures towering above them, tiny but standing straight with a faint glow around them, high contrast lighting, deep blues and neon highlights, dynamic 16:9 shot”
+Model the behavior; stop lecturing; children copy what we do.
 
----
+```text
+pencil-and-watercolor drawing of an adult kneeling to meet a child at eye level, soft halos of light around both heads, a faint heart-shaped connection between them, warm gentle palette, sketchy expressive linework, no text --ar 1200:630 --v 7 --stylize 200 --style raw --no text, watermark, logo, letters, signature
+```
 
-#### `some-notes-on-overcoming-emotional-pain.md` — gentle healing motif
+### `learning-construction-self.md`
 
-**Prompt**  
-“close-up of a cracked ceramic heart being repaired with golden kintsugi seams, surrounded by small handwritten notes and tissues, soft ambient light, warm and tender mood, detailed digital painting, muted pinks and creams, 16:9 framing”
+Path: `/images/2026/learning-construction-self.avif`
 
----
+Humility, a daughter's wonder, the self built like a structure.
 
-#### `things-i-have-learned-this-week-regarding-a-4-year-olds-long-curly-hair.md` — warm, storybook cartoon
+```text
+a human silhouette drawn as an architectural blueprint, scaffolding and cranes building the figure, unlabeled sections of light where values and memories live, teal and white technical drawing on deep navy, high contrast, clean wide composition, no readable labels --ar 1200:630 --v 7 --stylize 200 --style raw --no text, watermark, logo, letters, signature
+```
 
-**Prompt**  
-“whimsical illustration of a parent gently brushing a small child’s long curly hair, curls flowing like waves, toys scattered on the floor, soft evening light, storybook cartoon style with rounded shapes, warm oranges and purples, cozy and tender, 16:9 composition”
+### `conquering-imposter-syndrome-with-evidence-based-journaling.md`
 
----
+Path: `/images/2026/imposter-syndrome-journaling.avif`
 
-#### `reflections-from-a-tough-weekend.md` — introspective, low-light scene
+Evidence log of real work; the shadow of fraud shrinks as the page glows.
 
-**Prompt**  
-“a person sitting alone at a kitchen table at night, small pool of light from a single lamp, coffee mug and crumpled notes on the table, rain on the window, semi-realistic digital painting, muted blues and warm yellows, contemplative and honest mood, 16:9”
+```text
+a journal open on a desk with pages of small checkmarks and unreadable notes, a dark shadowy silhouette shrinking in the background while the pages glow softly, cozy lamplight, warm browns and golds, clean digital illustration, no legible writing --ar 1200:630 --v 7 --stylize 200 --style raw --no text, watermark, logo, letters, signature
+```
 
----
+### `some-books-for-self-transcendence.md`
 
-#### `forging-stronghand-terminal.md` — gritty, terminal-themed illustration
+Path: `/images/2026/books-self-transcendence.avif`
 
-**Prompt**  
-“a blacksmith forging a glowing sword whose blade is made of green terminal code, sparks flying, dark workshop lit only by the forge and terminal glow, gritty digital painting, mix of fantasy and hacker aesthetics, high contrast, 16:9 cinematic frame”
+Stoic and heart books as tools; daily reads, rain or shine.
 
----
+```text
+illustrated stack of well-worn clothbound books with unreadable spines, soft warm lamp light, tendrils of stardust and tiny galaxies rising from the open top book, cozy reading nook, painterly digital illustration, warm orange and deep blue, no legible titles --ar 1200:630 --v 7 --stylize 200 --style raw --no text, watermark, logo, letters, signature
+```
 
-#### `note-to-self-to-be-or-what-not-to-be.md` — handwritten note motif
+### `things-i-have-learned-this-week-regarding-a-4-year-olds-long-curly-hair.md`
 
-**Prompt**  
-“a close-up of a desk with a handwritten sticky note that simply has a large question mark (no other readable text), reflected in a small mirror showing a blurred human silhouette, soft natural light, minimal color palette, contemplative mood, 16:9 composition”
+Path: `/images/2026/curly-hair-lessons.avif`
 
----
+Dad learning not to brush curls dry; detangle in the shower; patience.
 
-#### `toddler-internet-safety.md` — friendly, educational cartoon
+```text
+whimsical storybook illustration of a parent gently detangling a small child's long curly hair, curls flowing like waves, bath toys and a towel nearby, soft evening light, rounded shapes, warm oranges and purples, cozy and tender, no text --ar 1200:630 --v 7 --stylize 200 --style raw --no text, watermark, logo, letters, signature
+```
 
-**Prompt**  
-“cartoon-style illustration of a small child using a tablet while a gentle guardian figure made of a shield icon and warm light protects them from dark glitchy shapes in the background, bright friendly colors, simple clean shapes, no text, 16:9”
+### `note-to-self-to-be-or-what-not-to-be.md`
 
----
+Path: `/images/2026/to-be-or-what-not.avif`
 
-#### `note-to-self-on-being-a-conscious-parent.md` — soft, emotional drawing
+You become what you practice; refuse resentment; choose kindness.
 
-**Prompt**  
-“pencil-and-watercolor style drawing of an adult kneeling to meet a child at eye level, both with soft halos of light around their heads, heart-shaped connection line between them, gentle warm palette, sketchy but expressive linework, 16:9 composition”
+```text
+close-up of a small mirror on a desk reflecting a blurred human silhouette, a blank sticky note beside it with only a hand-drawn question mark, soft natural light, minimal color palette, contemplative, no other writing --ar 1200:630 --v 7 --stylize 200 --style raw --no text, watermark, logo, letters, signature
+```
 
----
+### `on-feeling-overpowered.md`
 
-#### `on-cooking-on-everything-and-foundations.md` — metaphorical kitchen scene
+Path: `/images/2026/feeling-overpowered.avif`
 
-**Prompt**  
-“a kitchen counter with simple staple ingredients (eggs, flour, salt, herbs) arranged like building blocks, a foundation blueprint faintly visible underneath the cutting board, warm overhead light, semi-realistic illustration, rich earthy colors, 16:9 layout”
+OP in the good sense: training to failure, whole food, sleep, kids, response not reaction.
 
----
+```text
+a strong calm figure standing in a sunlit kitchen doorway after training, steam from a whole-food meal, a child's shoes by the door, golden hour, grounded power not rage, painterly realistic, warm earth tones, no text --ar 1200:630 --v 7 --stylize 200 --style raw --no text, watermark, logo, letters, signature
+```
 
-#### `on-overcoming-analysis-paralysis.md` — dynamic, concept art style
+### `briefly-on-empathy-as-a-double-edged-sword.md`
 
-**Prompt**  
-“a person standing at a crossroads of dozens of glowing paths, most are blurry and fade away while one clear path lights up under their feet as they take the first step, motion blur suggesting movement, cinematic concept art style, blues and golds, 16:9”
+Path: `/images/2026/empathy-double-edged.avif`
 
----
+Empathy cuts the hand that grips too tight; the world's suffering vs self-preservation.
 
-#### `como-proteger-ninos-digital.md` — Spanish-friendly, iconographic illustration
+```text
+a hand gently holding a glowing crystal sword of light, the blade split warm gold on one side and cold blue shards on the other, floating over a dark neutral background, minimalist semi-abstract, sharp edges with a soft glow, no text --ar 1200:630 --v 7 --stylize 200 --style raw --no text, watermark, logo, letters, signature
+```
 
-**Prompt**  
-“flat vector illustration of a family holding hands inside a glowing shield made of overlapping app icons and padlock symbols, modern UI-inspired shapes, bilingual-friendly with **no text**, bright but soft colors, clean minimal style, 16:9 social image”
+### `forging-stronghand-terminal.md`
+
+Path: `/images/2026/stronghand-terminal.avif`
+
+WezTerm / PowerShell forge: chaos to command.
+
+```text
+a blacksmith forging a glowing sword whose blade is made of green terminal code, sparks flying, dark workshop lit only by the forge and a dim CRT glow, gritty digital painting, fantasy mixed with hacker aesthetic, no readable UI --ar 1200:630 --v 7 --stylize 200 --style raw --no text, watermark, logo, letters, signature
+```
+
+### `why-i-built-buildssoftware-and-what-im-building-next.md`
+
+Path: `/images/2026/builds-software.avif`
+
+A personal digital forge; no ads, no feed; build in public.
+
+```text
+semi-abstract blueprint of a software city being constructed, cranes lifting code blocks, roads made of flowcharts, glowing nodes connecting buildings, deep navy background with cyan linework, modern isometric illustration, clean and optimistic, no readable labels --ar 1200:630 --v 7 --stylize 200 --style raw --no text, watermark, logo, letters, signature
+```
+
+### `my-mental-health-routine-unfiltered.md`
+
+Path: `/images/2026/mental-health-routine.avif`
+
+Breathwork, writing, gym, art, daughter FaceTime, real food, sunrise, rest.
+
+```text
+collage-style illustration of daily rituals orbiting a calm seated figure with eyes closed: journal, glass of water, running shoes, guitar, a sunlit window, bare feet on wet grass, soft pastel painterly texture, no text --ar 1200:630 --v 7 --stylize 200 --style raw --no text, watermark, logo, letters, signature
+```
+
+### `on-cooking-on-everything-and-foundations.md`
+
+Path: `/images/2026/cooking-foundations.avif`
+
+Once you know heat, ingredients, knife work, you stop needing the recipe — same as life.
+
+```text
+a kitchen counter with eggs, flour, salt, and herbs arranged like building blocks, a faint architectural foundation blueprint under the cutting board, warm overhead light, semi-realistic illustration, rich earthy colors, no recipes or labels --ar 1200:630 --v 7 --stylize 200 --style raw --no text, watermark, logo, letters, signature
+```
+
+### `on-overcoming-analysis-paralysis.md`
+
+Path: `/images/2026/analysis-paralysis.avif`
+
+Breathe until you are in your senses, then take one physical step. Motion before the perfect plan.
+
+```text
+a person standing at a crossroads of dozens of glowing paths, most blurry and fading, one clear gold path lighting up under their feet as they take the first step, motion blur, cinematic concept art, blues and golds, no text --ar 1200:630 --v 7 --stylize 200 --style raw --no text, watermark, logo, letters, signature
+```
+
+### `toddler-internet-safety.md`
+
+Path: `/images/2026/toddler-internet-safety.avif`
+
+Protecting toddlers online; guardian presence vs glitchy dark shapes.
+
+```text
+cartoon illustration of a small child with a tablet while a gentle guardian figure made of warm light and a shield shape stands between them and dark glitchy forms in the background, bright friendly colors, simple clean shapes, no UI text, no logos --ar 1200:630 --v 7 --stylize 200 --style raw --no text, watermark, logo, letters, signature
+```

@@ -40,7 +40,7 @@
 @utility text-display {
   font-family: var(--font-heading);
   /* Page H1 — readable, not billboard (was lg:text-5xl / 56px) */
-  @apply text-2xl leading-snug font-semibold tracking-tight md:text-3xl lg:text-[2.5rem];
+  @apply text-2xl leading-snug font-bold tracking-tight md:text-3xl lg:text-[2.5rem];
 }
 @utility text-heading {
   font-family: var(--font-heading);

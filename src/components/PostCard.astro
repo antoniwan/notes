@@ -44,6 +44,8 @@ const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
           alt={data.title}
           className="postcard-image"
           loading="lazy"
+          width={1200}
+          height={750}
         />
       )
     }
@@ -90,11 +92,7 @@ const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
       <a href={`/p/${post.id}`} class="postcard-link">{data.title}</a>
     </h2>
 
-    {
-      data.description && (
-        <p class="postcard-description">{data.description}</p>
-      )
-    }
+    {data.description && <p class="postcard-description">{data.description}</p>}
   </div>
 </article>
 
@@ -132,9 +130,7 @@ const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
         indicator.setAttribute('title', 'Unread');
 
         if (readingTimeElement) {
-          const originalReadingTime = readingTimeElement.getAttribute(
-            'data-original-reading-time',
-          );
+          const originalReadingTime = readingTimeElement.getAttribute('data-original-reading-time');
           if (originalReadingTime) {
             readingTimeElement.textContent = originalReadingTime;
             readingTimeElement.hidden = false;
@@ -339,21 +335,35 @@ const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
     aspect-ratio: 16 / 9;
   }
 
-  :global(.prose) article.postcard .image-container img,
-  article.postcard .image-container img,
-  article.postcard .postcard-image {
+  /* :global(img) — DefaultImage lives in a child scope, so unscoped img is required.
+     Absolute fill so native aspect ratios cannot stretch the card. */
+  article.postcard .image-container :global(img) {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
+    max-width: none;
     object-fit: cover;
     object-position: center;
     display: block;
     border: none;
     margin: 0;
     padding: 0;
-    max-width: 100%;
     box-shadow: none;
     border-radius: 0;
     transition: transform 0.45s var(--animation-easing-out);
+  }
+
+  :global(.prose) article.postcard .image-container :global(img) {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    cursor: default !important;
   }
 
   .featured-card {
@@ -370,7 +380,7 @@ const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
     box-shadow: var(--shadow-soft);
   }
 
-  article.postcard:hover .postcard-image {
+  article.postcard:hover .image-container :global(img) {
     transform: scale(1.03);
   }
 
@@ -386,12 +396,12 @@ const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
 
   @media (prefers-reduced-motion: reduce) {
     article.postcard,
-    article.postcard .postcard-image,
+    article.postcard .image-container :global(img),
     .read-dot {
       transition: none;
     }
 
-    article.postcard:hover .postcard-image {
+    article.postcard:hover .image-container :global(img) {
       transform: none;
     }
   }

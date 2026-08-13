@@ -1,6 +1,6 @@
 ---
-// Enhanced DefaultImage component with performance optimizations
-// This provides variety for posts without specific hero images
+// Cover fallback for posts without a hero image.
+// Fills the parent frame (hero banner, postcard, rotator) with object-cover.
 
 import { getDefaultCoverUrls } from '../data/defaultCovers';
 
@@ -8,9 +8,11 @@ interface Props {
   alt?: string;
   className?: string;
   loading?: 'lazy' | 'eager';
-  seed?: string; // Optional seed for consistent randomization
-  sizes?: string; // Responsive image sizes
-  priority?: boolean; // Whether this is a priority image (above the fold)
+  seed?: string;
+  sizes?: string;
+  priority?: boolean;
+  width?: number;
+  height?: number;
 }
 
 const {
@@ -20,30 +22,19 @@ const {
   seed,
   sizes = '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw',
   priority = false,
+  width,
+  height,
 } = Astro.props;
 
-// Use build-time list from data layer (resolved once per build)
 const defaultImages = getDefaultCoverUrls();
 
-// Select a random image from the array
-// If a seed is provided, use it for consistent randomization
-// Otherwise, use the alt text as a seed for per-usage variety
-let hashInput;
-if (seed) {
-  hashInput = seed;
-} else {
-  // Use the alt text as a seed - this will be different for each post
-  // and provide consistent results for the same post
-  hashInput = alt || 'default';
-}
-
+const hashInput = seed || alt || 'default';
 const hash = hashInput.split('').reduce((a, b) => {
   a = (a << 5) - a + b.charCodeAt(0);
   return a & a;
 }, 0);
 const selectedImage = defaultImages[Math.abs(hash) % defaultImages.length];
 
-// Determine loading strategy
 const finalLoading = priority ? 'eager' : loading;
 const fetchPriority = priority ? 'high' : 'auto';
 ---
@@ -51,34 +42,28 @@ const fetchPriority = priority ? 'high' : 'auto';
 <img
   src={selectedImage}
   alt={alt}
-  class={`${className} ${priority ? 'priority-image' : ''}`}
+  class:list={[className, 'default-cover', priority && 'priority-image']}
   loading={finalLoading}
   fetchpriority={fetchPriority}
   sizes={sizes}
   decoding="async"
-  style={priority ? 'content-visibility: auto; contain-intrinsic-size: 400px 300px;' : ''}
+  width={width}
+  height={height}
 />
 
 <style>
-  .priority-image {
-    /* Optimize priority images for LCP */
-    will-change: transform;
-    transform: translateZ(0);
-  }
-
-  /* Prevent layout shift during image loading */
-  img {
-    max-width: 100%;
-    height: auto;
+  .default-cover {
     display: block;
-    margin: 0 !important;
-  }
-
-  /* Ensure consistent sizing when used in PostCard */
-  img[class*='object-cover'] {
     width: 100%;
     height: 100%;
+    max-width: none;
+    margin: 0 !important;
     object-fit: cover;
     object-position: center;
+  }
+
+  .priority-image {
+    will-change: transform;
+    transform: translateZ(0);
   }
 </style>

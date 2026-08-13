@@ -13,7 +13,9 @@ const publicDir = path.join(__dirname, '../public');
 const socialRootDir = path.join(publicDir, 'social');
 const fingerprintPath = path.join(__dirname, '../src/data/socialImageFingerprints.json');
 
-const CACHE_VERSION = 1;
+const CACHE_VERSION = 2;
+const OG_WIDTH = 1200;
+const OG_HEIGHT = 630;
 
 async function ensureDir(dir) {
   await fs.mkdir(dir, { recursive: true });
@@ -204,15 +206,17 @@ async function generateSocialForFile(filePath, previousEntry) {
   ) {
     const cachedOutputAbs = await resolvePublicPath(previousEntry.social);
     try {
-      await fs.stat(cachedOutputAbs);
-      return {
-        original: originalWebPath,
-        social: previousEntry.social,
-        fingerprint: contentSha256,
-        wasCached: true,
-      };
+      const meta = await sharp(cachedOutputAbs).metadata();
+      if (meta.width === OG_WIDTH && meta.height === OG_HEIGHT) {
+        return {
+          original: originalWebPath,
+          social: previousEntry.social,
+          fingerprint: contentSha256,
+          wasCached: true,
+        };
+      }
     } catch {
-      // Output vanished; regenerate.
+      // Output vanished or unreadable; regenerate.
     }
   }
 
@@ -222,30 +226,26 @@ async function generateSocialForFile(filePath, previousEntry) {
   await ensureDir(targetDir);
 
   const jpegPath = path.join(targetDir, `${base}-social.jpg`);
-  const pngPath = path.join(targetDir, `${base}-social.png`);
+  const legacyPngPath = path.join(targetDir, `${base}-social.png`);
 
-  // Encode as JPEG and PNG, then pick the smaller file
-  await sharp(sourceBuffer).jpeg({ quality: 82, chromaSubsampling: '4:4:4' }).toFile(jpegPath);
-  await sharp(sourceBuffer).png({ compressionLevel: 9, adaptiveFiltering: true }).toFile(pngPath);
-
-  const [jpegStat, pngStat] = await Promise.all([fs.stat(jpegPath), fs.stat(pngPath)]);
-
-  let chosenPath = jpegPath;
-  let discardPath = pngPath;
-  if (pngStat.size < jpegStat.size) {
-    chosenPath = pngPath;
-    discardPath = jpegPath;
-  }
+  await sharp(sourceBuffer)
+    .rotate()
+    .resize(OG_WIDTH, OG_HEIGHT, {
+      fit: 'cover',
+      position: 'attention',
+    })
+    .jpeg({ quality: 82, chromaSubsampling: '4:4:4', mozjpeg: true })
+    .toFile(jpegPath);
 
   try {
-    await fs.unlink(discardPath);
+    await fs.unlink(legacyPngPath);
   } catch {
-    // If deletion fails, it's non-fatal; we just keep the extra file.
+    // No leftover PNG from the pre-crop pipeline.
   }
 
   return {
     original: originalWebPath,
-    social: toWebPath(chosenPath),
+    social: toWebPath(jpegPath),
     fingerprint: contentSha256,
     wasCached: false,
   };

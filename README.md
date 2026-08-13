@@ -64,33 +64,33 @@ Remark42 uses `PUBLIC_REMARK42_HOST` and `PUBLIC_REMARK42_SITE_ID` when you turn
 
 ## Scripts
 
-| Command                           | What it does                                                                                  |
-| --------------------------------- | --------------------------------------------------------------------------------------------- |
-| `pnpm run dev`                    | Dev server                                                                                    |
-| `pnpm run build`                  | Builds social JPG/PNG from AVIF (skipped when fingerprints + files match), then `astro build` |
-| `pnpm run preview`                | Serves the production build locally                                                           |
-| `pnpm test`                       | Vitest unit tests (publish filters, SEO routing, feed HTML, quotes helpers) |
-| `pnpm changelog:since`            | Commits + file groups since the previous version (for CHANGELOG drafts)   |
-| `pnpm run check`                  | `astro check` (TypeScript / Astro diagnostics)                                                |
-| `pnpm run lint`                   | ESLint                                                                                        |
-| `pnpm run lint:fix`               | ESLint with `--fix`                                                                           |
-| `pnpm run format`                 | Prettier write                                                                                |
-| `pnpm run format:check`           | Prettier check                                                                                |
-| `pnpm run audit-frontmatter`      | Required-field / language sanity check on `src/content/p`                                     |
-| `pnpm run validate-feeds`         | Validates `dist/rss.xml` + `dist/feed.json` (run after build)                                 |
-| `pnpm run validate-structured-data` | Smoke-checks structured-data module exports                                                 |
-| `pnpm run generate-social-images` | AVIF → JPEG/PNG under `public/social/` only (same logic as the start of `pnpm run build`)     |
-| `pnpm run generate-favicons`      | Favicon assets                                                                                |
-| `pnpm run analyze`                | Runs `astro build` only (no social-image step), then Vercel static-build analysis             |
-| `pnpm run lighthouse`             | Lighthouse HTML report (start dev server first)                                               |
-| `pnpm run performance`            | Runs `pnpm run build`, then `pnpm run analyze`                                                |
-| `pnpm run audit-performance`      | Full `pnpm run build`, then Lighthouse performance JSON                                       |
+| Command                             | What it does                                                                                  |
+| ----------------------------------- | --------------------------------------------------------------------------------------------- |
+| `pnpm run dev`                      | Dev server                                                                                    |
+| `pnpm run build`                    | Builds social JPG/PNG from AVIF (skipped when fingerprints + files match), then `astro build` |
+| `pnpm run preview`                  | Serves the production build locally                                                           |
+| `pnpm test`                         | Vitest unit tests (publish filters, SEO routing, feed HTML, quotes helpers)                   |
+| `pnpm changelog:since`              | Commits + file groups since the previous version (for CHANGELOG drafts)                       |
+| `pnpm run check`                    | `astro check` (TypeScript / Astro diagnostics)                                                |
+| `pnpm run lint`                     | ESLint                                                                                        |
+| `pnpm run lint:fix`                 | ESLint with `--fix`                                                                           |
+| `pnpm run format`                   | Prettier write                                                                                |
+| `pnpm run format:check`             | Prettier check                                                                                |
+| `pnpm run audit-frontmatter`        | Required-field / language sanity check on `src/content/p`                                     |
+| `pnpm run validate-feeds`           | Validates `dist/rss.xml` + `dist/feed.json` (run after build)                                 |
+| `pnpm run validate-structured-data` | Smoke-checks structured-data module exports                                                   |
+| `pnpm run generate-social-images`   | AVIF → JPEG/PNG under `public/social/` only (same logic as the start of `pnpm run build`)     |
+| `pnpm run generate-favicons`        | Favicon assets                                                                                |
+| `pnpm run analyze`                  | Runs `astro build` only (no social-image step), then Vercel static-build analysis             |
+| `pnpm run lighthouse`               | Lighthouse HTML report (start dev server first)                                               |
+| `pnpm run performance`              | Runs `pnpm run build`, then `pnpm run analyze`                                                |
+| `pnpm run audit-performance`        | Full `pnpm run build`, then Lighthouse performance JSON                                       |
 
 ## Build (social images)
 
 `pnpm run build` runs `scripts/generate-social-images.js` before `astro build`.
 
-Hero images are stored as AVIF under `public/`. Many preview surfaces still expect JPEG or PNG, so the script writes matching files under `public/social/` (names end with `-social.jpg` or `-social.png`). The mapping lives in `src/data/socialImageManifest.ts`.
+Hero images are stored as AVIF under `public/`. Many preview surfaces still expect JPEG, so the script writes **1200×630** cover-cropped JPEGs under `public/social/` (names end with `-social.jpg`). The mapping lives in `src/data/socialImageManifest.ts`. Posts without a `heroImage` share `/social/images/default-social.jpg`.
 
 Each AVIF is hashed (SHA-256). If the hash matches `src/data/socialImageFingerprints.json` and the output file is on disk, that file is skipped. After adding or changing AVIFs, run `pnpm run build` or `pnpm run generate-social-images` and commit the updated manifest, fingerprints, and any new files under `public/social/`.
 
@@ -129,21 +129,21 @@ Using Cursor AI in this repo: [docs/cursor-agent-skills.md](docs/cursor-agent-sk
 
 ## Documentation in `docs/`
 
-| File                                                                              | Topic                    |
-| --------------------------------------------------------------------------------- | ------------------------ |
-| [frontmatter-spec.md](docs/frontmatter-spec.md)                                   | Post frontmatter         |
-| [tag-policy.md](docs/tag-policy.md)                                               | Signal-first tag policy  |
-| [tag-vocabulary.md](docs/tag-vocabulary.md)                                       | Canonical vocabulary     |
-| [tag-cleanup-assessment-2026-04-10.md](docs/tag-cleanup-assessment-2026-04-10.md) | Current cleanup audit    |
-| [multilingual-setup.md](docs/multilingual-setup.md)                               | EN/ES linking            |
-| [comments-setup.md](docs/comments-setup.md)                                       | Remark42                 |
-| [quotes-api.md](docs/quotes-api.md)                                               | `/api/quotes`            |
-| [structured-data-optimization.md](docs/structured-data-optimization.md)           | Schema.org               |
-| [performance-optimization.md](docs/performance-optimization.md)                   | Performance notes        |
-| [roadmap.md](docs/roadmap.md)                                                     | Ideas, product audit, technical roadmap |
+| File                                                                              | Topic                                    |
+| --------------------------------------------------------------------------------- | ---------------------------------------- |
+| [frontmatter-spec.md](docs/frontmatter-spec.md)                                   | Post frontmatter                         |
+| [tag-policy.md](docs/tag-policy.md)                                               | Signal-first tag policy                  |
+| [tag-vocabulary.md](docs/tag-vocabulary.md)                                       | Canonical vocabulary                     |
+| [tag-cleanup-assessment-2026-04-10.md](docs/tag-cleanup-assessment-2026-04-10.md) | Current cleanup audit                    |
+| [multilingual-setup.md](docs/multilingual-setup.md)                               | EN/ES linking                            |
+| [comments-setup.md](docs/comments-setup.md)                                       | Remark42                                 |
+| [quotes-api.md](docs/quotes-api.md)                                               | `/api/quotes`                            |
+| [structured-data-optimization.md](docs/structured-data-optimization.md)           | Schema.org                               |
+| [performance-optimization.md](docs/performance-optimization.md)                   | Performance notes                        |
+| [roadmap.md](docs/roadmap.md)                                                     | Ideas, product audit, technical roadmap  |
 | [TECHNICAL-AUDIT.md](docs/TECHNICAL-AUDIT.md)                                     | System map, integrations, technical debt |
-| [cursor-agent-skills.md](docs/cursor-agent-skills.md)                             | Cursor agent skill guide |
-| [midjourney-og-image-prompts.md](docs/midjourney-og-image-prompts.md)             | Image prompt notes       |
+| [cursor-agent-skills.md](docs/cursor-agent-skills.md)                             | Cursor agent skill guide                 |
+| [midjourney-og-image-prompts.md](docs/midjourney-og-image-prompts.md)             | Image prompt notes                       |
 
 ## Private generated materials
 

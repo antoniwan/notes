@@ -114,9 +114,11 @@ const primaryCategory = categoryItems[0] || null;
         />
       </div>
 
-      {/* Canonical post H1 via PageHeader.
+      {
+        /* Canonical post H1 via PageHeader.
           Visible on mobile; sr-only on desktop (NOT display:none) so crawlers/a11y
-          still see exactly one H1. Desktop sidebar shows a visual-only echo below. */}
+          still see exactly one H1. Desktop sidebar shows a visual-only echo below. */
+      }
       <div class="mb-10 md:mb-12 lg:sr-only">
         <PageHeader title={title} description={description} className="mb-6!" />
       </div>
@@ -128,8 +130,10 @@ const primaryCategory = categoryItems[0] || null;
           <div
             class="scrollbar-subtle-y sticky top-6 max-h-[calc(100vh-2.5rem)] space-y-8 overflow-y-auto pt-6 pr-1.5"
           >
-            {/* Visual title echo only — real H1 lives in PageHeader above.
-                Reuse PageHeader (as="p") so font/weight/tracking match mobile. */}
+            {
+              /* Visual title echo only — real H1 lives in PageHeader above.
+                Reuse PageHeader (as="p") so font/weight/tracking match mobile. */
+            }
             <div class="sidebar-title-echo" aria-hidden="true">
               <PageHeader
                 title={title}
@@ -258,13 +262,13 @@ const primaryCategory = categoryItems[0] || null;
         {/* Main Content Area - Full width on mobile, 75% on desktop */}
         <main class="lg:col-span-3">
           {/* Hero Image - First thing in main content */}
-          <div class="mb-8 md:mb-12">
+          <div class="mb-8 h-[450px] overflow-hidden rounded-lg shadow-lg md:mb-12 md:rounded-xl">
             {
               heroImage ? (
                 <img
                   src={heroImage}
                   alt={imageAlt || title}
-                  class="h-[450px] w-full rounded-lg object-cover shadow-lg md:rounded-xl"
+                  class="h-full w-full object-cover"
                   loading="eager"
                   fetchpriority="high"
                   decoding="async"
@@ -274,9 +278,11 @@ const primaryCategory = categoryItems[0] || null;
               ) : (
                 <DefaultImage
                   alt={imageAlt || title}
-                  className="w-full h-[450px] object-cover rounded-lg shadow-lg md:rounded-xl"
+                  className="h-full w-full"
                   loading="eager"
                   priority={true}
+                  width={1200}
+                  height={450}
                 />
               )
             }
