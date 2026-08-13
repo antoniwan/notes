@@ -14,6 +14,31 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 - Unique SEO meta descriptions for every public page (home, about, archive, guided path, library, categories, and tags), instead of reusing the homepage default.
 - Category and tag listing pages get their own meta copy; meta tags clip to about 160 characters.
 
+## [6.5.2] — 2026-08-13
+
+### Changed
+
+- Tightened copy across existing notes (clarity pass, not new posts).
+- Social share images regenerated and compressed; default OG card is now the 1200×630 JPEG.
+- Post card and hero images crop to fill instead of stretching.
+
+## [6.5.1] — 2026-08-13
+
+### Changed
+
+- Footer credits the author by name.
+- Post sidebar title echo uses the same heading rhythm as the mobile H1, with a bit more space above the description.
+
+## [6.5.0] — 2026-08-12
+
+### Added
+
+- `CHANGELOG.md` and `pnpm changelog:since` so version bumps get a draft from git history.
+
+### Changed
+
+- Comments heading is now “Leave a note”.
+
 ## [6.4.0] — 2026-08-12
 
 ### Changed
