@@ -7,6 +7,17 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.7.0] — 2026-08-15
+
+### Added
+
+- Soft staggered fade-up entrances on postcard grids, homepage highlights, category cards, popular tags, and related posts (`motion-stagger` + shared `fade-up` tokens).
+
+### Changed
+
+- Archive “load more” batches reuse the same calm fade-up motion instead of a separate keyframe.
+- Astro updated to 7.2.2.
+
 ## [6.6.0] — 2026-08-13
 
 ### Added
