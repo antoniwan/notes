@@ -92,7 +92,11 @@ for (const [catId, list] of Object.entries(postsByCategory)) {
 
   <div class="highlights-container" data-highlights-container data-active-view="all">
     <!-- All: same UI as filtered views (all use PostCard) -->
-    <div class="highlights-masonry highlights-view" data-view="all" aria-hidden="false">
+    <div
+      class="highlights-masonry highlights-view motion-stagger"
+      data-view="all"
+      aria-hidden="false"
+    >
       {
         allSlots.map((slot) => (
           <div
@@ -259,9 +263,9 @@ for (const [catId, list] of Object.entries(postsByCategory)) {
     line-height: 1.2;
     cursor: pointer;
     transition:
-      background-color 0.18s ease,
-      color 0.18s ease,
-      border-color 0.18s ease;
+      background-color var(--animation-duration-fast) var(--animation-easing-default),
+      color var(--animation-duration-fast) var(--animation-easing-default),
+      border-color var(--animation-duration-fast) var(--animation-easing-default);
   }
 
   .filter-chip:hover {

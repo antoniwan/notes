@@ -92,7 +92,7 @@ const tagNarrativeStats = Object.values(
         topTags.length > 0 && (
           <section class="mb-12">
             <h2 class="text-heading mb-6 text-[rgb(var(--color-text))]">Popular Tags</h2>
-            <div class="flex flex-wrap gap-2">
+            <div class="motion-stagger flex flex-wrap gap-2">
               {topTags.map(({ tag, count }) => (
                 <TagCard tag={tag} count={count} size="lg" showCount={true} />
               ))}

@@ -54,37 +54,77 @@
   @apply text-sm leading-snug font-medium tracking-normal;
 }
 @utility animate-fade-up {
-  animation: fade-up 0.3s ease forwards;
+  animation: fade-up var(--animation-duration-slow) var(--animation-easing-out) both;
 }
 @utility animate-fade-up-delay-1 {
-  animation-delay: 0.05s;
+  animation-delay: 50ms;
 }
 @utility animate-fade-up-delay-2 {
-  animation-delay: 0.1s;
+  animation-delay: 100ms;
 }
 @utility animate-fade-up-delay-3 {
-  animation-delay: 0.15s;
+  animation-delay: 150ms;
 }
 @utility animate-fade-up-delay-4 {
-  animation-delay: 0.2s;
+  animation-delay: 200ms;
 }
 @utility animate-fade-up-delay-5 {
-  animation-delay: 0.25s;
+  animation-delay: 250ms;
 }
 @utility animate-fade-up-delay-6 {
-  animation-delay: 0.3s;
+  animation-delay: 300ms;
 }
 @utility animate-fade-up-delay-7 {
-  animation-delay: 0.35s;
+  animation-delay: 350ms;
 }
 @utility animate-fade-up-delay-8 {
-  animation-delay: 0.4s;
+  animation-delay: 400ms;
 }
 @utility animate-fade-up-delay-9 {
-  animation-delay: 0.45s;
+  animation-delay: 450ms;
 }
 @utility animate-fade-up-delay-10 {
-  animation-delay: 0.5s;
+  animation-delay: 500ms;
+}
+/* Soft staggered entrance for listing grids (cards, tags, related links). */
+@utility motion-stagger {
+  & > * {
+    animation: fade-up var(--animation-duration-slow) var(--animation-easing-out) both;
+  }
+
+  & > *:nth-child(1) {
+    animation-delay: 0ms;
+  }
+  & > *:nth-child(2) {
+    animation-delay: 50ms;
+  }
+  & > *:nth-child(3) {
+    animation-delay: 100ms;
+  }
+  & > *:nth-child(4) {
+    animation-delay: 150ms;
+  }
+  & > *:nth-child(5) {
+    animation-delay: 200ms;
+  }
+  & > *:nth-child(6) {
+    animation-delay: 250ms;
+  }
+  & > *:nth-child(7) {
+    animation-delay: 300ms;
+  }
+  & > *:nth-child(8) {
+    animation-delay: 350ms;
+  }
+  & > *:nth-child(9) {
+    animation-delay: 400ms;
+  }
+  & > *:nth-child(10) {
+    animation-delay: 450ms;
+  }
+  & > *:nth-child(n + 11) {
+    animation-delay: 500ms;
+  }
 }
 @utility btn-primary {
   /* Button utilities — ink fill with contrasting label */
@@ -629,15 +669,56 @@
   background-color: rgb(var(--color-border) / 0.45);
 }
 
-/* Simplified animation keyframes */
+/* Soft entrance — opacity + slight rise (calm, not bounce) */
 @keyframes fade-up {
-  0% {
+  from {
     opacity: 0;
+    transform: translateY(0.5rem);
   }
 
-  100% {
+  to {
     opacity: 1;
+    transform: translateY(0);
   }
+}
+
+/* Postcard listing grids get the same staggered entrance without per-page classes */
+.postcards-grid > * {
+  animation: fade-up var(--animation-duration-slow) var(--animation-easing-out) both;
+}
+
+.postcards-grid > *:nth-child(1) {
+  animation-delay: 0ms;
+}
+.postcards-grid > *:nth-child(2) {
+  animation-delay: 50ms;
+}
+.postcards-grid > *:nth-child(3) {
+  animation-delay: 100ms;
+}
+.postcards-grid > *:nth-child(4) {
+  animation-delay: 150ms;
+}
+.postcards-grid > *:nth-child(5) {
+  animation-delay: 200ms;
+}
+.postcards-grid > *:nth-child(6) {
+  animation-delay: 250ms;
+}
+.postcards-grid > *:nth-child(7) {
+  animation-delay: 300ms;
+}
+.postcards-grid > *:nth-child(8) {
+  animation-delay: 350ms;
+}
+.postcards-grid > *:nth-child(9) {
+  animation-delay: 400ms;
+}
+.postcards-grid > *:nth-child(10) {
+  animation-delay: 450ms;
+}
+.postcards-grid > *:nth-child(n + 11) {
+  animation-delay: 500ms;
 }
 
 /* Image Modal Styles */

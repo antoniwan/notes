@@ -1,7 +1,7 @@
 {
   "name": "notes blog",
   "type": "module",
-  "version": "6.6.0",
+  "version": "6.7.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/antoniwan/notes.git"
@@ -43,7 +43,7 @@
     "@tailwindcss/typography": "^0.5.19",
     "@vercel/analytics": "^1.6.1",
     "@vercel/speed-insights": "^1.3.1",
-    "astro": "^7.2.1",
+    "astro": "^7.2.2",
     "date-fns": "^4.1.0",
     "js-yaml": "^4.1.1",
     "mdast-util-to-string": "^4.0.0",

@@ -40,7 +40,7 @@ const alphabetical = [...withNotes].sort((a, b) => a.name.localeCompare(b.name))
             <h2 id="category-grid-heading" class="sr-only">
               Categories, ordered by number of writings
             </h2>
-            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div class="motion-stagger grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {mostWritten.map((category, index) => (
                 <CategoryCard
                   category={category}

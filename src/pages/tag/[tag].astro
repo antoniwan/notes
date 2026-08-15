@@ -103,7 +103,7 @@ const tagPosts = posts
           )
         }
 
-        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+        <div class="postcards-grid grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
           {tagPosts.map((post) => <PostCard post={post} featured={post.data.featured} />)}
         </div>
       </div>

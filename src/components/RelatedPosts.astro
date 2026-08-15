@@ -30,7 +30,7 @@ const hasRelatedPosts = relatedPosts.length > 0;
         </div>
 
         {/* Related Posts List */}
-        <ol class="post-list space-y-3">
+        <ol class="post-list motion-stagger space-y-3">
           {relatedPosts.map((post, index) => {
             const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
             return (

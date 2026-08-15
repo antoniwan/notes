@@ -138,6 +138,8 @@ const { posts, initialCount = 6, loadMoreCount = 6 } = Astro.props;
       for (let i = currentCount; i < endIndex; i++) {
         const postItem = postItems[i] as HTMLElement;
         if (postItem) {
+          const batchIndex = i - currentCount;
+          postItem.style.animationDelay = `${Math.min(batchIndex, 10) * 50}ms`;
           postItem.classList.remove('hidden');
           postItem.classList.add('visible', 'fade-in');
         }
@@ -200,39 +202,8 @@ const { posts, initialCount = 6, loadMoreCount = 6 } = Astro.props;
     display: block;
   }
 
-  /* Fade-in animation for newly shown posts */
+  /* Load-more batch: reuse global fade-up; delay set per item in JS */
   .post-item.fade-in {
-    animation: fadeInUp 0.4s ease-out;
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* Stagger animation for multiple posts */
-  .post-item.fade-in:nth-child(1) {
-    animation-delay: 0ms;
-  }
-  .post-item.fade-in:nth-child(2) {
-    animation-delay: 50ms;
-  }
-  .post-item.fade-in:nth-child(3) {
-    animation-delay: 100ms;
-  }
-  .post-item.fade-in:nth-child(4) {
-    animation-delay: 150ms;
-  }
-  .post-item.fade-in:nth-child(5) {
-    animation-delay: 200ms;
-  }
-  .post-item.fade-in:nth-child(6) {
-    animation-delay: 250ms;
+    animation: fade-up var(--animation-duration-slow) var(--animation-easing-out) both;
   }
 </style>
