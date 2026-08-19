@@ -9,7 +9,11 @@ import { SITE_URL } from './src/consts';
 import { remarkReadingTime } from './remark-reading-time.mjs';
 import { remarkDemoteMarkdownH1 } from './src/utils/remarkDemoteMarkdownH1.mjs';
 import { buildSeoRedirects, shouldIncludeInSitemap } from './src/utils/seoRouting';
-import { getSitemapTranslationLinksByUrl } from './src/utils/sitemapTranslations';
+import { indexNowIntegration } from './src/utils/indexNow';
+import {
+  getSitemapLastmodByUrl,
+  getSitemapTranslationLinksByUrl,
+} from './src/utils/sitemapTranslations';
 
 /** Vite connect middleware: `/path/` → `/path` before Astro trailingSlash 404. */
 function trailingSlashDevRedirectPlugin() {
@@ -84,8 +88,12 @@ export default defineConfig({
     sitemap({
       filter: shouldIncludeInSitemap,
       // Slug-based EN/ES pairs (translationGroup) — not path-prefix i18n.
-      // Links map is filesystem-derived (safe to import at config load).
+      // lastmod + links maps are filesystem-derived (safe to import at config load).
       serialize(item) {
+        const lastmod = getSitemapLastmodByUrl().get(item.url);
+        if (lastmod) {
+          item.lastmod = lastmod.toISOString();
+        }
         const links = getSitemapTranslationLinksByUrl().get(item.url);
         if (links && links.length > 1) {
           item.links = links;
@@ -93,6 +101,7 @@ export default defineConfig({
         return item;
       },
     }),
+    indexNowIntegration(),
   ],
   adapter: vercel(),
   markdown: {

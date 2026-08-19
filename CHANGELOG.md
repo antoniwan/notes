@@ -7,6 +7,13 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.8.0] — 2026-08-19
+
+### Added
+
+- IndexNow ping on Vercel production publishes, so Bing and other IndexNow engines get the live sitemap URLs as soon as a deploy goes out.
+- `lastmod` on sitemap URLs from post `updatedDate` or `pubDate`; listing pages use the newest related post.
+
 ## [6.7.0] — 2026-08-15
 
 ### Added

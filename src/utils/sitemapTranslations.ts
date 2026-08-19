@@ -1,14 +1,19 @@
 /**
- * Sitemap translation clusters for slug-based EN/ES pairs.
+ * Sitemap metadata derived from post frontmatter.
  *
- * Uses filesystem frontmatter (not `astro:content`) so this module can be
- * imported from `astro.config.mjs` at config-load time.
+ * Uses the filesystem (not `astro:content`) so this module can be imported
+ * from `astro.config.mjs` at config-load time.
+ *
+ * Provides:
+ * - xhtml:link clusters for slug-based EN/ES translationGroup pairs
+ * - lastmod dates (updatedDate, else pubDate) for posts and listing pages
  */
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import yaml from 'js-yaml';
 import { SITE_URL } from '../consts';
+import { canonicalizeTags } from './tagVocabulary';
 
 export type SitemapLangLink = { url: string; lang: string };
 
@@ -19,7 +24,22 @@ const HREFLANG_BY_LANG: Record<string, string> = {
 
 const CONTENT_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../content/p');
 
-let linksByCanonicalUrl: Map<string, SitemapLangLink[]> | null = null;
+const LISTING_PATHS = [
+  '/',
+  '/everything',
+  '/guided-path',
+  '/category',
+  '/tag',
+  '/rss.xml',
+  '/feed.json',
+];
+
+type SitemapMeta = {
+  linksByCanonicalUrl: Map<string, SitemapLangLink[]>;
+  lastmodByUrl: Map<string, Date>;
+};
+
+let sitemapMeta: SitemapMeta | null = null;
 
 function walkMarkdownFiles(dir: string): string[] {
   if (!fs.existsSync(dir)) return [];
@@ -45,13 +65,22 @@ function parseFrontmatter(raw: string): Record<string, unknown> | null {
   }
 }
 
+function parseDate(value: unknown): Date | null {
+  if (value instanceof Date) {
+    return Number.isNaN(value.valueOf()) ? null : value;
+  }
+  if (typeof value === 'string' || typeof value === 'number') {
+    const d = new Date(value);
+    return Number.isNaN(d.valueOf()) ? null : d;
+  }
+  return null;
+}
+
 function isPublicFrontmatter(data: Record<string, unknown>, now = new Date()): boolean {
   if (data.draft === true) return false;
   if (data.published === false) return false;
-  if (data.pubDate) {
-    const pub = data.pubDate instanceof Date ? data.pubDate : new Date(String(data.pubDate));
-    if (!Number.isNaN(pub.valueOf()) && pub > now) return false;
-  }
+  const pub = parseDate(data.pubDate);
+  if (pub && pub > now) return false;
   return true;
 }
 
@@ -64,15 +93,36 @@ function canonicalPostUrl(id: string): string {
   return new URL(`/p/${id}`, SITE_URL).href.replace(/\/$/, '');
 }
 
-/**
- * Build sitemap xhtml:link clusters for posts that share a translationGroup.
- * Paths are slug-based (not `/es/...` prefixes), so @astrojs/sitemap's `i18n`
- * option cannot infer pairs — we attach `links` in serialize instead.
- */
-export function getSitemapTranslationLinksByUrl(): Map<string, SitemapLangLink[]> {
-  if (linksByCanonicalUrl) return linksByCanonicalUrl;
+/** Match @astrojs/sitemap URLs with `trailingSlash: 'never'` (root keeps `/`). */
+export function sitemapPageUrl(pathname: string): string {
+  const href = new URL(pathname, SITE_URL).href;
+  if (pathname === '/') return href;
+  return href.replace(/\/$/, '');
+}
+
+function asStringArray(value: unknown): string[] {
+  if (typeof value === 'string' && value) return [value];
+  if (!Array.isArray(value)) return [];
+  return value.filter((v): v is string => typeof v === 'string' && v.length > 0);
+}
+
+function postLang(data: Record<string, unknown>): string {
+  const language = data.language;
+  if (Array.isArray(language) && language[0] === 'es') return 'es';
+  if (typeof language === 'string' && language === 'es') return 'es';
+  return 'en';
+}
+
+function bumpLastmod(map: Map<string, Date>, url: string, date: Date) {
+  const prev = map.get(url);
+  if (!prev || date > prev) map.set(url, date);
+}
+
+function loadSitemapMeta(): SitemapMeta {
+  if (sitemapMeta) return sitemapMeta;
 
   const byGroup = new Map<string, Array<{ lang: string; url: string }>>();
+  const lastmodByUrl = new Map<string, Date>();
   const now = new Date();
 
   for (const file of walkMarkdownFiles(CONTENT_DIR)) {
@@ -80,24 +130,33 @@ export function getSitemapTranslationLinksByUrl(): Map<string, SitemapLangLink[]
     const data = parseFrontmatter(raw);
     if (!data || !isPublicFrontmatter(data, now)) continue;
 
+    const lastmod = parseDate(data.updatedDate) ?? parseDate(data.pubDate);
+    if (!lastmod) continue;
+
+    const url = canonicalPostUrl(postIdFromFile(file));
+    lastmodByUrl.set(url, lastmod);
+
+    for (const listingPath of LISTING_PATHS) {
+      bumpLastmod(lastmodByUrl, sitemapPageUrl(listingPath), lastmod);
+    }
+
+    for (const category of asStringArray(data.category)) {
+      bumpLastmod(lastmodByUrl, sitemapPageUrl(`/category/${category}`), lastmod);
+    }
+
+    for (const tag of canonicalizeTags(asStringArray(data.tags))) {
+      bumpLastmod(lastmodByUrl, sitemapPageUrl(`/tag/${tag}`), lastmod);
+    }
+
     const group = data.translationGroup;
     if (typeof group !== 'string' || !group) continue;
 
-    const language = data.language;
-    const lang =
-      Array.isArray(language) && language[0] === 'es'
-        ? 'es'
-        : typeof language === 'string' && language === 'es'
-          ? 'es'
-          : 'en';
-
-    const url = canonicalPostUrl(postIdFromFile(file));
     const list = byGroup.get(group) ?? [];
-    list.push({ lang, url });
+    list.push({ lang: postLang(data), url });
     byGroup.set(group, list);
   }
 
-  const map = new Map<string, SitemapLangLink[]>();
+  const linksByCanonicalUrl = new Map<string, SitemapLangLink[]>();
   for (const members of byGroup.values()) {
     if (members.length < 2) continue;
     const links: SitemapLangLink[] = members.map((m) => ({
@@ -105,10 +164,27 @@ export function getSitemapTranslationLinksByUrl(): Map<string, SitemapLangLink[]
       lang: HREFLANG_BY_LANG[m.lang] || m.lang,
     }));
     for (const member of members) {
-      map.set(member.url, links);
+      linksByCanonicalUrl.set(member.url, links);
     }
   }
 
-  linksByCanonicalUrl = map;
-  return map;
+  sitemapMeta = { linksByCanonicalUrl, lastmodByUrl };
+  return sitemapMeta;
+}
+
+/**
+ * Build sitemap xhtml:link clusters for posts that share a translationGroup.
+ * Paths are slug-based (not `/es/...` prefixes), so @astrojs/sitemap's `i18n`
+ * option cannot infer pairs — we attach `links` in serialize instead.
+ */
+export function getSitemapTranslationLinksByUrl(): Map<string, SitemapLangLink[]> {
+  return loadSitemapMeta().linksByCanonicalUrl;
+}
+
+/**
+ * lastmod per sitemap URL: post `updatedDate` or `pubDate`; listing pages use
+ * the newest related post so crawlers see real content changes, not build time.
+ */
+export function getSitemapLastmodByUrl(): Map<string, Date> {
+  return loadSitemapMeta().lastmodByUrl;
 }
