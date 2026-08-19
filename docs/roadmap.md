@@ -19,7 +19,7 @@ This section is a **checkpoint** so the roadmap does not read like the site is o
 
 - **Reading & discovery**: full-text **search** (build-time index), **categories**, **tags** (index, per-tag pages, **tag management** analytics view), **Everything** archive, **Guided Path** (seasonal order; progress in the browser only).
 - **Posts**: automatic **reading time**, **reading progress** (`localStorage`), markdown-derived **table of contents**, **EN/ES** linking via `translationGroup`, **related posts** at the bottom via overlapping tags (“Continue reading”).
-- **Home**: **highlight** masonry for posts marked `featured` or `highlight` in frontmatter.
+- **Home**: **highlight** masonry for published posts marked `featured: true`.
 - **Brain Science**: multi-page **stats and charts** (cadence, topics, sentiment, etc.).
 - **Library**: dedicated **books** pages (see §4).
 - **Feeds & APIs**: **RSS**, **JSON Feed**, **GET `/api/quotes`**.

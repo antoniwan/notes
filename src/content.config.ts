@@ -52,7 +52,6 @@ const blog = defineCollection({
     authorImage: z.string().optional(),
     authorBio: z.string().optional(),
     featured: z.boolean().optional().default(false),
-    highlight: z.boolean().optional().default(false),
 
     // Translation group for multilingual posts
     translationGroup: z.string().optional(),

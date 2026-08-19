@@ -7,6 +7,16 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.8.3] — 2026-08-19
+
+### Changed
+
+- Homepage Highlights lists only published `featured: true` posts.
+
+### Removed
+
+- Unused `src/content/highlights.json` and the leftover `highlight` frontmatter field. Homepage Highlights is driven only by `featured`.
+
 ## [6.8.2] — 2026-08-19
 
 ### Fixed

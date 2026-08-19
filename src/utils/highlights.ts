@@ -1,22 +1,15 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { categories } from '../data/categories';
-import { isPublicPost } from './publishFilters';
-
-const HIGHLIGHT_PREDICATE = ({ data }: { data: CollectionEntry<'blog'>['data'] }) => {
-  const isHighlighted = data.featured === true || data.highlight === true;
-  if (import.meta.env.PROD) {
-    return isPublicPost(data) && isHighlighted;
-  }
-  return isHighlighted;
-};
+import { isHomepageHighlight } from './publishFilters';
 
 /**
  * Get homepage highlights for "All":
- * - Posts with either featured: true OR highlight: true
+ * - Posts with featured: true
+ * - Public only (published, not draft, pubDate not in the future)
  * - Sorted by pubDate (newest first)
  */
 export async function getHighlights(): Promise<CollectionEntry<'blog'>[]> {
-  const highlightedPosts = await getCollection('blog', HIGHLIGHT_PREDICATE);
+  const highlightedPosts = await getCollection('blog', ({ data }) => isHomepageHighlight(data));
   return highlightedPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 }
 
@@ -27,7 +20,7 @@ export async function getHighlights(): Promise<CollectionEntry<'blog'>[]> {
 export async function getHighlightsByCategory(): Promise<
   Record<string, CollectionEntry<'blog'>[]>
 > {
-  const highlightedPosts = await getCollection('blog', HIGHLIGHT_PREDICATE);
+  const highlightedPosts = await getCollection('blog', ({ data }) => isHomepageHighlight(data));
   const byCategory: Record<string, CollectionEntry<'blog'>[]> = {};
 
   for (const cat of categories) {

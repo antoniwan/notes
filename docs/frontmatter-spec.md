@@ -124,7 +124,7 @@ draft: false
 
 ### `featured` (boolean)
 
-Whether the post should be featured on the homepage
+Whether the post appears in the homepage Highlights masonry. Only **published** featured posts are listed (`published: true`, not draft, `pubDate` not in the future).
 
 ```yaml
 featured: false

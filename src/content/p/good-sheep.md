@@ -27,8 +27,7 @@ tags:
   - digital-age
   - authenticity
 draft: false
-featured: false
-highlight: true
+featured: true
 published: true
 showComments: true
 ---

@@ -26,7 +26,6 @@ tags:
   - healing
 draft: false
 featured: false
-highlight: true
 published: true
 showComments: true
 ---

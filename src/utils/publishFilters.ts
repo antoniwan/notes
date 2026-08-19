@@ -32,6 +32,11 @@ export function isCollectionPublic(data: PostData, options: PublishFilterOptions
   return isPublicPost(data, options);
 }
 
+/** Homepage Highlights: featured and publicly live (not draft/unpublished/embargoed). */
+export function isHomepageHighlight(data: PostData, options: PublishFilterOptions = {}): boolean {
+  return data.featured === true && isPublicPost(data, options);
+}
+
 /**
  * Feed eligibility: public posts only; exclude secondary-language translations
  * (typically Spanish with featured: false) so feeds stay primary-language.

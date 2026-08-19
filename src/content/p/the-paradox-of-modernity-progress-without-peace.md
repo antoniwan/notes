@@ -26,8 +26,7 @@ tags:
   - self-reflection
   - philosophy
 draft: false
-featured: false
-highlight: true
+featured: true
 published: true
 showComments: true
 ---

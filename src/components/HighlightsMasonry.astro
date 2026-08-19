@@ -106,7 +106,7 @@ for (const [catId, list] of Object.entries(postsByCategory)) {
           >
             <PostCard
               post={slot.post}
-              featured={slot.post.data.featured || slot.post.data.highlight}
+              featured={slot.post.data.featured}
               showFeaturedIndicator={false}
             />
           </div>
@@ -125,7 +125,7 @@ for (const [catId, list] of Object.entries(postsByCategory)) {
             >
               <PostCard
                 post={slot.post}
-                featured={slot.post.data.featured || slot.post.data.highlight}
+                featured={slot.post.data.featured}
                 showFeaturedIndicator={false}
               />
             </div>

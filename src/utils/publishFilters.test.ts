@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   isFeedEligiblePost,
   isGuidedPathEligiblePost,
+  isHomepageHighlight,
   isListingEligiblePost,
   isPublicPost,
   resolveContentLanguage,
@@ -18,7 +19,6 @@ function post(overrides: Partial<PostData> = {}): PostData {
     draft: false,
     published: true,
     featured: false,
-    highlight: false,
     showComments: true,
     ...overrides,
   } as PostData;
@@ -80,6 +80,17 @@ describe('isGuidedPathEligiblePost', () => {
     expect(isGuidedPathEligiblePost(post({ language: ['es'], featured: true }), { now })).toBe(
       false,
     );
+  });
+});
+
+describe('isHomepageHighlight', () => {
+  it('includes published featured posts', () => {
+    expect(isHomepageHighlight(post({ featured: true }), { now })).toBe(true);
+  });
+
+  it('excludes unpublished or draft featured posts', () => {
+    expect(isHomepageHighlight(post({ featured: true, published: false }), { now })).toBe(false);
+    expect(isHomepageHighlight(post({ featured: true, draft: true }), { now })).toBe(false);
   });
 });
 
