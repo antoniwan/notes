@@ -24,7 +24,7 @@ tags:
   - meditation
   - values
 draft: false
-featured: false
+featured: true
 published: true
 showComments: true
 translationGroup: happiness-is-moments
