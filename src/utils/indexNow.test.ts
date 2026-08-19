@@ -10,6 +10,7 @@ import {
   buildIndexNowPayload,
   extractSitemapPageUrls,
   pingIndexNowFromSitemapDir,
+  readSitemapXmlFiles,
   shouldSubmitIndexNow,
 } from './indexNow';
 
@@ -89,5 +90,39 @@ describe('pingIndexNowFromSitemapDir', () => {
       key: INDEXNOW_KEY,
       urlList: ['https://notes.antoniwan.online/p/foo'],
     });
+  });
+
+  it('skips a sitemap.xml directory next to real sitemap files', async () => {
+    const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'indexnow-'));
+    fs.mkdirSync(path.join(tmp, 'sitemap.xml'));
+    fs.writeFileSync(path.join(tmp, 'sitemap.xml', 'index.html'), '<html></html>');
+    fs.writeFileSync(
+      path.join(tmp, 'sitemap-0.xml'),
+      `<urlset><url><loc>https://notes.antoniwan.online/p/foo</loc></url></urlset>`,
+    );
+
+    expect(readSitemapXmlFiles(pathToFileURL(tmp))).toHaveLength(1);
+
+    const fetchImpl = vi.fn(async () => new Response('', { status: 200 }));
+    const result = await pingIndexNowFromSitemapDir(pathToFileURL(tmp), {
+      env: { VERCEL_ENV: 'production' },
+      fetchImpl: fetchImpl as unknown as typeof fetch,
+    });
+
+    expect(result).toBe('submitted');
+    expect(fetchImpl).toHaveBeenCalledTimes(1);
+  });
+
+  it('does not throw when the output path is a file instead of a directory', async () => {
+    const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'indexnow-'));
+    const file = path.join(tmp, 'not-a-dir');
+    fs.writeFileSync(file, 'x');
+
+    await expect(
+      pingIndexNowFromSitemapDir(pathToFileURL(file), {
+        env: { VERCEL_ENV: 'production' },
+        fetchImpl: vi.fn() as unknown as typeof fetch,
+      }),
+    ).resolves.toBe('empty');
   });
 });

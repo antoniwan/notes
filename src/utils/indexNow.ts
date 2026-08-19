@@ -74,12 +74,32 @@ export function extractSitemapPageUrls(xmlContents: string[]): string[] {
 }
 
 export function readSitemapXmlFiles(dir: URL): string[] {
-  const root = fileURLToPath(dir);
+  let root: string;
+  try {
+    root = fileURLToPath(dir);
+  } catch {
+    return [];
+  }
   if (!fs.existsSync(root)) return [];
-  return fs
-    .readdirSync(root)
-    .filter((name) => name.startsWith('sitemap') && name.endsWith('.xml'))
-    .map((name) => fs.readFileSync(path.join(root, name), 'utf8'));
+
+  let entries: fs.Dirent[];
+  try {
+    entries = fs.readdirSync(root, { withFileTypes: true });
+  } catch {
+    return [];
+  }
+
+  const xmlContents: string[] = [];
+  for (const entry of entries) {
+    if (!entry.isFile()) continue;
+    if (!entry.name.startsWith('sitemap') || !entry.name.endsWith('.xml')) continue;
+    try {
+      xmlContents.push(fs.readFileSync(path.join(root, entry.name), 'utf8'));
+    } catch {
+      // ignore
+    }
+  }
+  return xmlContents;
 }
 
 export async function submitIndexNow(
@@ -112,13 +132,13 @@ export async function pingIndexNowFromSitemapDir(
     return 'skipped';
   }
 
-  const urls = extractSitemapPageUrls(readSitemapXmlFiles(dir));
-  if (urls.length === 0) {
-    logger.warn('IndexNow skipped (no sitemap URLs found)');
-    return 'empty';
-  }
-
   try {
+    const urls = extractSitemapPageUrls(readSitemapXmlFiles(dir));
+    if (urls.length === 0) {
+      logger.warn('IndexNow skipped (no sitemap URLs found)');
+      return 'empty';
+    }
+
     let lastStatus = 0;
     for (let i = 0; i < urls.length; i += INDEXNOW_BATCH_LIMIT) {
       const batch = urls.slice(i, i + INDEXNOW_BATCH_LIMIT);
@@ -144,7 +164,12 @@ export function indexNowIntegration() {
     name: 'indexnow',
     hooks: {
       'astro:build:done': async ({ dir, logger }: { dir: URL; logger: IndexNowLogger }) => {
-        await pingIndexNowFromSitemapDir(dir, { logger });
+        try {
+          await pingIndexNowFromSitemapDir(dir, { logger });
+        } catch (err) {
+          const message = err instanceof Error ? err.message : String(err);
+          logger.warn(`IndexNow failed: ${message}`);
+        }
       },
     },
   };

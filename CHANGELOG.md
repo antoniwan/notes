@@ -7,6 +7,12 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.8.1] — 2026-08-19
+
+### Fixed
+
+- IndexNow no longer fails the Vercel production build when the output folder has a `sitemap.xml` directory (the `/sitemap.xml` redirect page) alongside the real sitemap XML files.
+
 ## [6.8.0] — 2026-08-19
 
 ### Added
