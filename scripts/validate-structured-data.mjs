@@ -31,4 +31,6 @@ if (!/BlogPosting|Article|WebSite|Organization|Person/.test(src)) {
   process.exit(1);
 }
 
-console.log(`validate-structured-data: OK (${path.relative(root, modulePath).replace(/\\/g, '/')})`);
+console.log(
+  `validate-structured-data: OK (${path.relative(root, modulePath).replace(/\\/g, '/')})`,
+);

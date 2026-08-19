@@ -7,13 +7,7 @@ interface Props {
   class?: string;
 }
 
-const {
-  value,
-  label,
-  subtitle,
-  title,
-  class: className = '',
-} = Astro.props;
+const { value, label, subtitle, title, class: className = '' } = Astro.props;
 
 const displayValue =
   typeof value === 'number' && value > 1000 ? value.toLocaleString() : String(value);
@@ -33,11 +27,5 @@ const displayValue =
     {displayValue}
   </div>
   <div class="text-body-muted text-xs md:text-sm">{label}</div>
-  {
-    subtitle && (
-      <div class="text-body-muted mt-1 text-xs">
-        {subtitle}
-      </div>
-    )
-  }
+  {subtitle && <div class="text-body-muted mt-1 text-xs">{subtitle}</div>}
 </div>

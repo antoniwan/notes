@@ -92,13 +92,8 @@ const WISDOM_WORDS = [
 // Content evolution analysis
 const contentEvolution = posts.map((post) => {
   const content = post.body || '';
-  const {
-    wordCount,
-    paragraphCount,
-    sentenceCount,
-    averageSentenceLength,
-    fleschScore,
-  } = getBasicTextMetricsForPost(post.id, content);
+  const { wordCount, paragraphCount, sentenceCount, averageSentenceLength, fleschScore } =
+    getBasicTextMetricsForPost(post.id, content);
 
   const intellectualWordCount = countLexiconHits(content, INTELLECTUAL_WORDS);
   const curiosityCount = countLexiconHits(content, CURIOSITY_WORDS);
@@ -488,9 +483,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
         <div class="text-body-muted text-xs">Avg maturity (format)</div>
       </div>
       <div title="Tag categories with positive early→recent growth">
-        <div
-          class="text-2xl font-semibold text-[rgb(var(--color-text))] tabular-nums md:text-3xl"
-        >
+        <div class="text-2xl font-semibold text-[rgb(var(--color-text))] tabular-nums md:text-3xl">
           {growingTopics.length}
         </div>
         <div class="text-body-muted text-xs">Tags rising</div>
@@ -831,7 +824,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
                   </span>
                 </div>
                 <div
-                  class="shrink-0 text-sm font-medium tabular-nums text-[rgb(var(--color-text))]"
+                  class="shrink-0 text-sm font-medium text-[rgb(var(--color-text))] tabular-nums"
                   title={`Growth rate: ${Math.round(topic.growthRate)}% increase from early to recent`}
                 >
                   +{Math.round(topic.growthRate)}%
@@ -867,7 +860,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
                   </span>
                 </div>
                 <div
-                  class="shrink-0 text-sm font-medium tabular-nums text-[rgb(var(--color-text))]"
+                  class="shrink-0 text-sm font-medium text-[rgb(var(--color-text))] tabular-nums"
                   title={`Decline rate: ${Math.round(topic.growthRate)}%`}
                 >
                   {Math.round(topic.growthRate)}%
@@ -1021,9 +1014,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
       <div class="mt-6 space-y-8 md:space-y-10">
         <div class="grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-2">
           <div>
-            <h4
-              class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]"
-            >
+            <h4 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]">
               Readability & language heuristics
             </h4>
             <div class="text-body-muted space-y-3 text-sm leading-relaxed">
@@ -1060,9 +1051,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
             </div>
           </div>
           <div>
-            <h4
-              class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]"
-            >
+            <h4 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]">
               Knowledge Area Evolution
             </h4>
             <div class="text-body-muted space-y-3">
@@ -1088,9 +1077,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
 
         <div class="grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-2">
           <div>
-            <h4
-              class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]"
-            >
+            <h4 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]">
               Maturity Indicators
             </h4>
             <div class="text-body-muted space-y-3">
@@ -1113,9 +1100,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
             </div>
           </div>
           <div>
-            <h4
-              class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]"
-            >
+            <h4 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]">
               Learning Trajectory
             </h4>
             <div class="text-body-muted space-y-3">

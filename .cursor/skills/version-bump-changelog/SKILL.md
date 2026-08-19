@@ -38,13 +38,16 @@ Every `package.json` version bump gets a matching `CHANGELOG.md` entry written f
    ## [X.Y.Z] — YYYY-MM-DD
 
    ### Added
+
    - …
 
    ### Changed
+
    - …
    ```
 
    Use today's date (user/local) unless the user specifies otherwise.
+
 5. Keep README version badges in sync only if the repo already mirrors version there.
 6. Do **not** commit unless the user asks.
 

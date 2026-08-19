@@ -197,7 +197,7 @@ export default {
           css: {
             maxWidth: '65ch',
             color: 'rgb(var(--color-text))',
-    a: {
+            a: {
               color: 'rgb(var(--color-accent))',
               textDecoration: 'none',
               fontWeight: '500',

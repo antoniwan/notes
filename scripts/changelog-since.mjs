@@ -64,7 +64,15 @@ function commitForVersion(version) {
   }
 
   // Walk history of package.json for the bump TO this version
-  const log = sh('git', ['log', '-p', '-S', `"version": "${version}"`, '--format=%H', '--', 'package.json']);
+  const log = sh('git', [
+    'log',
+    '-p',
+    '-S',
+    `"version": "${version}"`,
+    '--format=%H',
+    '--',
+    'package.json',
+  ]);
   const hashes = log
     .split('\n')
     .map((l) => l.trim())
@@ -110,14 +118,24 @@ function previousVersion(current) {
 
 function classifyPath(path) {
   if (path.startsWith('src/content/')) return 'content';
-  if (path.startsWith('src/pages/') || path.startsWith('src/layouts/') || path.startsWith('src/components/'))
+  if (
+    path.startsWith('src/pages/') ||
+    path.startsWith('src/layouts/') ||
+    path.startsWith('src/components/')
+  )
     return 'ui';
-  if (path.startsWith('src/utils/') || path.startsWith('src/data/') || path.startsWith('astro.config'))
+  if (
+    path.startsWith('src/utils/') ||
+    path.startsWith('src/data/') ||
+    path.startsWith('astro.config')
+  )
     return 'platform';
   if (path.startsWith('public/')) return 'assets';
   if (path.startsWith('docs/') || path === 'README.md' || path === 'CHANGELOG.md') return 'docs';
-  if (path.startsWith('scripts/') || path.includes('test') || path.endsWith('.test.ts')) return 'tooling';
-  if (path === 'package.json' || path.includes('lock') || path.startsWith('.github/')) return 'deps';
+  if (path.startsWith('scripts/') || path.includes('test') || path.endsWith('.test.ts'))
+    return 'tooling';
+  if (path === 'package.json' || path.includes('lock') || path.startsWith('.github/'))
+    return 'deps';
   return 'other';
 }
 

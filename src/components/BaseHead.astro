@@ -182,11 +182,7 @@ const updatedDateISO = updatedDate?.toISOString();
 <meta property="og:image" content={metaTags.ogImage} />
 <meta property="og:image:alt" content={metaTags.ogImageAlt} />
 <meta property="og:locale" content={metaTags.locale} />
-{
-  ogLocaleAlternates.map((ogLocale) => (
-    <meta property="og:locale:alternate" content={ogLocale} />
-  ))
-}
+{ogLocaleAlternates.map((ogLocale) => <meta property="og:locale:alternate" content={ogLocale} />)}
 <meta property="og:site_name" content={SITE_TITLE} />
 
 <!-- Twitter -->

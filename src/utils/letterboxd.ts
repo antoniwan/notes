@@ -99,9 +99,7 @@ export async function fetchLetterboxdRecent(
     }
 
     if (out.length === 0) {
-      console.warn(
-        `[letterboxd] LETTERBOXD_RSS_URL is set but no diary items were parsed: ${url}`,
-      );
+      console.warn(`[letterboxd] LETTERBOXD_RSS_URL is set but no diary items were parsed: ${url}`);
     }
 
     return out;

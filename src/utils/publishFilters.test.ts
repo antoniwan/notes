@@ -74,12 +74,12 @@ describe('isGuidedPathEligiblePost', () => {
   });
 
   it('excludes all Spanish posts, including featured', () => {
-    expect(
-      isGuidedPathEligiblePost(post({ language: ['es'], featured: false }), { now }),
-    ).toBe(false);
-    expect(
-      isGuidedPathEligiblePost(post({ language: ['es'], featured: true }), { now }),
-    ).toBe(false);
+    expect(isGuidedPathEligiblePost(post({ language: ['es'], featured: false }), { now })).toBe(
+      false,
+    );
+    expect(isGuidedPathEligiblePost(post({ language: ['es'], featured: true }), { now })).toBe(
+      false,
+    );
   });
 });
 

@@ -60,13 +60,8 @@ const EMOTIONAL_WORDS = [
 // Content analysis
 const contentAnalysis = posts.map((post) => {
   const content = post.body || '';
-  const {
-    wordCount,
-    paragraphCount,
-    sentenceCount,
-    averageSentenceLength,
-    fleschScore,
-  } = getBasicTextMetricsForPost(post.id, content);
+  const { wordCount, paragraphCount, sentenceCount, averageSentenceLength, fleschScore } =
+    getBasicTextMetricsForPost(post.id, content);
 
   const exclamationCount = (content.match(/!/g) || []).length;
   const emotionalIntensity = exclamationCount + countLexiconHits(content, EMOTIONAL_WORDS);
@@ -777,9 +772,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
           patternInsights.map((insight, index) => (
             <div class="rounded-lg border border-[rgb(var(--color-border))]/50 p-4">
               <div class="mb-3 flex items-center gap-3">
-                <div class="text-body-muted font-mono text-xs tabular-nums">
-                  {index + 1}.
-                </div>
+                <div class="text-body-muted font-mono text-xs tabular-nums">{index + 1}.</div>
                 <span class="text-body-muted rounded-sm bg-[rgb(var(--color-bg-alt))] px-2 py-1 text-xs">
                   {insight.confidence} confidence
                 </span>

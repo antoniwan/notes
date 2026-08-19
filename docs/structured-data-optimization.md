@@ -8,12 +8,12 @@ Site constants (`SITE_TITLE`, `AUTHOR`, `SEO_CONFIG`, `SOCIAL_LINKS`) live in [`
 
 `BaseLayout` always calls `generateStructuredData(...)` and emits one `<script type="application/ld+json">` per schema object.
 
-| Layout / page prop | `structuredDataType` | Extra schemas beyond base set |
-| --- | --- | --- |
-| Default / most pages | `website` | none |
-| `BlogLayout` (posts) | `article` | `BlogPosting` + `BreadcrumbList` (requires `pubDate`) |
-| `category/[category]` | `category` | `CollectionPage` when `posts.length > 0` |
-| `tag/[tag]` | `tag` | `CollectionPage` when `posts.length > 0` |
+| Layout / page prop    | `structuredDataType` | Extra schemas beyond base set                         |
+| --------------------- | -------------------- | ----------------------------------------------------- |
+| Default / most pages  | `website`            | none                                                  |
+| `BlogLayout` (posts)  | `article`            | `BlogPosting` + `BreadcrumbList` (requires `pubDate`) |
+| `category/[category]` | `category`           | `CollectionPage` when `posts.length > 0`              |
+| `tag/[tag]`           | `tag`                | `CollectionPage` when `posts.length > 0`              |
 
 Helpers such as FAQ / HowTo / Review / `generateEnhancedStructuredData` exist in the module but are **not wired** into layouts today. Do not assume they appear in page HTML.
 
@@ -62,15 +62,15 @@ Empty category/tag result sets fall back to the base three schemas only.
 
 ## Unused exports (library only)
 
-| Export | Intent | Wired to HTML? |
-| --- | --- | --- |
-| `generateFAQSchema` / `autoDetectFAQSchema` | FAQPage from Q&A markdown heuristics | No |
-| `generateEnhancedStructuredData` | Base schemas + auto FAQ for articles | No |
-| `generateHowToSchema` | HowTo tutorials | No |
-| `generateReviewSchema` | Review / rating | No |
-| `generateArticleSchema` | Generic `Article` (vs `BlogPosting`) | No |
-| `generateContentTypeSpecificSchema` | Switch for how-to / review / faq | No |
-| `validateStructuredData` / `generateStructuredDataSummary` | Dev/debug helpers | No (CI uses a separate smoke script) |
+| Export                                                     | Intent                               | Wired to HTML?                       |
+| ---------------------------------------------------------- | ------------------------------------ | ------------------------------------ |
+| `generateFAQSchema` / `autoDetectFAQSchema`                | FAQPage from Q&A markdown heuristics | No                                   |
+| `generateEnhancedStructuredData`                           | Base schemas + auto FAQ for articles | No                                   |
+| `generateHowToSchema`                                      | HowTo tutorials                      | No                                   |
+| `generateReviewSchema`                                     | Review / rating                      | No                                   |
+| `generateArticleSchema`                                    | Generic `Article` (vs `BlogPosting`) | No                                   |
+| `generateContentTypeSpecificSchema`                        | Switch for how-to / review / faq     | No                                   |
+| `validateStructuredData` / `generateStructuredDataSummary` | Dev/debug helpers                    | No (CI uses a separate smoke script) |
 
 Wire these only with intentional layout changes and Rich Results expectations — auto-FAQ heuristics are noisy.
 

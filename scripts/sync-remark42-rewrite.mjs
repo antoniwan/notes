@@ -19,8 +19,7 @@ const vercelPath = path.join(root, 'vercel.json');
 const checkOnly = process.argv.includes('--check');
 
 /** Default production Remark42 origin (Railway). Override with REMARK42_UPSTREAM_ORIGIN. */
-export const DEFAULT_REMARK42_UPSTREAM_ORIGIN =
-  'https://remark42-production-7df4.up.railway.app';
+export const DEFAULT_REMARK42_UPSTREAM_ORIGIN = 'https://remark42-production-7df4.up.railway.app';
 
 function normalizeOrigin(raw) {
   return String(raw || '')

@@ -31,7 +31,9 @@ const TitleTag = as;
 
 <Container maxWidth="container" padding="none" class={`py-4 md:py-8 lg:py-10 ${className}`}>
   <div class:list={['flex flex-col', stackClass || 'gap-3 md:gap-4']}>
-    <TitleTag class={`text-display m-0 text-[rgb(var(--color-text))]${!showTitle ? ' sr-only' : ''}`}>
+    <TitleTag
+      class={`text-display m-0 text-[rgb(var(--color-text))]${!showTitle ? ' sr-only' : ''}`}
+    >
       {title}
     </TitleTag>
     {

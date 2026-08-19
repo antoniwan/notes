@@ -20,6 +20,12 @@ export function prepareFeedHtml(html: string, siteUrl: string = SITE_URL): strin
     .replace(/<object\b[^>]*>[\s\S]*?<\/object>/gi, '')
     .replace(/\s(on\w+)\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi, '')
     .replace(/(href|src)\s*=\s*("|\')\s*javascript:[^"']*\2/gi, '$1="#"')
-    .replace(/(href|src)="(\/[^"]*)"/g, (_m, attr: string, path: string) => `${attr}="${base}${path}"`)
-    .replace(/(href|src)='(\/[^']*)'/g, (_m, attr: string, path: string) => `${attr}='${base}${path}'`);
+    .replace(
+      /(href|src)="(\/[^"]*)"/g,
+      (_m, attr: string, path: string) => `${attr}="${base}${path}"`,
+    )
+    .replace(
+      /(href|src)='(\/[^']*)'/g,
+      (_m, attr: string, path: string) => `${attr}='${base}${path}'`,
+    );
 }

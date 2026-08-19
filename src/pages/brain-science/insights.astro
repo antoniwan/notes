@@ -625,21 +625,27 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
       </h3>
       <div class="mb-6 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
         <div class="border-t border-[rgb(var(--color-border))] pt-4">
-          <div class="mb-1 text-xl font-semibold tabular-nums text-[rgb(var(--color-text))] md:text-2xl">
+          <div
+            class="mb-1 text-xl font-semibold text-[rgb(var(--color-text))] tabular-nums md:text-2xl"
+          >
             {emotionalPatterns.avgEmotionalIntensity}
           </div>
           <div class="text-body-muted text-xs md:text-sm">Avg Emotional Intensity</div>
           <div class="text-body-muted mt-1 text-xs">Mean emotional intensity score</div>
         </div>
         <div class="border-t border-[rgb(var(--color-border))] pt-4">
-          <div class="mb-1 text-xl font-semibold tabular-nums text-[rgb(var(--color-text))] md:text-2xl">
+          <div
+            class="mb-1 text-xl font-semibold text-[rgb(var(--color-text))] tabular-nums md:text-2xl"
+          >
             {emotionalPatterns.avgVulnerabilityScore}
           </div>
           <div class="text-body-muted text-xs md:text-sm">Avg Vulnerability Score</div>
           <div class="text-body-muted mt-1 text-xs">Mean vulnerability word count</div>
         </div>
         <div class="border-t border-[rgb(var(--color-border))] pt-4">
-          <div class="mb-1 text-xl font-semibold tabular-nums text-[rgb(var(--color-text))] md:text-2xl">
+          <div
+            class="mb-1 text-xl font-semibold text-[rgb(var(--color-text))] tabular-nums md:text-2xl"
+          >
             {emotionalPatterns.avgConfidenceScore}
           </div>
           <div class="text-body-muted text-xs md:text-sm">Avg Confidence Score</div>
@@ -684,8 +690,8 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
                 >
               </p>
               <p>
-                <strong class="text-[rgb(var(--color-text))]">Interpretation:</strong> Higher scores
-                = more vulnerable content
+                <strong class="text-[rgb(var(--color-text))]">Interpretation:</strong> Higher scores =
+                more vulnerable content
               </p>
               <p>
                 <strong class="text-[rgb(var(--color-text))]">Keywords:</strong> struggle, challenge,
@@ -701,8 +707,8 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
                 <code class="font-mono text-xs md:text-sm">Growth posts / Total posts × 100</code>
               </p>
               <p>
-                <strong class="text-[rgb(var(--color-text))]">Growth Tags:</strong> personal-growth,
-                transformation, healing, self-improvement, learning, consciousness
+                <strong class="text-[rgb(var(--color-text))]">Growth Tags:</strong> personal-growth, transformation,
+                healing, self-improvement, learning, consciousness
               </p>
               <p>
                 <strong class="text-[rgb(var(--color-text))]">Growth Keywords:</strong> growth, change,
@@ -711,15 +717,17 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
             </div>
           </div>
           <div>
-            <h5 class="mb-2 font-semibold text-[rgb(var(--color-text))]">Voice Evolution Metrics</h5>
+            <h5 class="mb-2 font-semibold text-[rgb(var(--color-text))]">
+              Voice Evolution Metrics
+            </h5>
             <div class="text-body-muted space-y-2">
               <p>
                 <strong class="text-[rgb(var(--color-text))]">Word Count Trend:</strong> Average words
                 per period
               </p>
               <p>
-                <strong class="text-[rgb(var(--color-text))]">Emotional Density:</strong> Emotional
-                words / Total words
+                <strong class="text-[rgb(var(--color-text))]">Emotional Density:</strong> Emotional words
+                / Total words
               </p>
               <p>
                 <strong class="text-[rgb(var(--color-text))]">Confidence Indicators:</strong> Confident
@@ -736,7 +744,9 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
       <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-lg">
         Posts with Highest Emotional Intensity
       </h3>
-      <div class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40">
+      <div
+        class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40"
+      >
         {
           emotionalPosts.map((post, index) => (
             <div class="flex items-center justify-between gap-4 py-3">
@@ -753,7 +763,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
               </div>
               <div class="shrink-0 text-right">
                 <div
-                  class="text-sm font-medium tabular-nums text-[rgb(var(--color-text))]"
+                  class="text-sm font-medium text-[rgb(var(--color-text))] tabular-nums"
                   title={`Emotional intensity score: ${post.emotionalIntensity} (exclamation marks + emotional keywords)`}
                 >
                   {post.emotionalIntensity}
@@ -771,7 +781,9 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
       <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-lg">
         Posts with Highest Vulnerability Scores
       </h3>
-      <div class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40">
+      <div
+        class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40"
+      >
         {
           vulnerablePosts.map((post, index) => (
             <div class="flex items-center justify-between gap-4 py-3">
@@ -788,7 +800,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
               </div>
               <div class="shrink-0 text-right">
                 <div
-                  class="text-sm font-medium tabular-nums text-[rgb(var(--color-text))]"
+                  class="text-sm font-medium text-[rgb(var(--color-text))] tabular-nums"
                   title={`Vulnerability score: ${post.vulnerabilityScore} (struggle, challenge, pain, etc.)`}
                 >
                   {post.vulnerabilityScore}
@@ -817,7 +829,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
                 <div class="flex justify-between gap-4">
                   <span class="text-body-muted text-sm">Avg Words</span>
                   <span
-                    class="text-sm font-medium tabular-nums text-[rgb(var(--color-text))]"
+                    class="text-sm font-medium text-[rgb(var(--color-text))] tabular-nums"
                     title={`Average word count per post in ${period.period} period`}
                   >
                     {period.avgWordCount}
@@ -826,7 +838,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
                 <div class="flex justify-between gap-4">
                   <span class="text-body-muted text-sm">Emotional Intensity</span>
                   <span
-                    class="text-sm font-medium tabular-nums text-[rgb(var(--color-text))]"
+                    class="text-sm font-medium text-[rgb(var(--color-text))] tabular-nums"
                     title={`Average emotional intensity score in ${period.period} period`}
                   >
                     {period.avgEmotionalIntensity}
@@ -835,7 +847,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
                 <div class="flex justify-between gap-4">
                   <span class="text-body-muted text-sm">Vulnerability</span>
                   <span
-                    class="text-sm font-medium tabular-nums text-[rgb(var(--color-text))]"
+                    class="text-sm font-medium text-[rgb(var(--color-text))] tabular-nums"
                     title={`Average vulnerability score in ${period.period} period`}
                   >
                     {period.avgVulnerabilityScore}
@@ -844,7 +856,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
                 <div class="flex justify-between gap-4">
                   <span class="text-body-muted text-sm">Confidence</span>
                   <span
-                    class="text-sm font-medium tabular-nums text-[rgb(var(--color-text))]"
+                    class="text-sm font-medium text-[rgb(var(--color-text))] tabular-nums"
                     title={`Average confidence score in ${period.period} period`}
                   >
                     {period.avgConfidenceScore}
@@ -862,7 +874,9 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
       <h3 class="mb-6 text-lg font-semibold text-[rgb(var(--color-text))]">
         Knowledge Area Expansion
       </h3>
-      <div class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40">
+      <div
+        class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40"
+      >
         {
           knowledgeAreas
             .sort((a, b) => Math.abs(b.expansionRate) - Math.abs(a.expansionRate))
@@ -877,7 +891,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
                 </div>
                 <div class="shrink-0 text-right">
                   <div
-                    class="text-sm font-medium tabular-nums text-[rgb(var(--color-text))]"
+                    class="text-sm font-medium text-[rgb(var(--color-text))] tabular-nums"
                     title={`${area.expansionRate > 0 ? 'Growth' : area.expansionRate < 0 ? 'Decline' : 'Stable'} rate: ${Math.round(area.expansionRate)}% change from early to recent periods`}
                   >
                     {area.expansionRate > 0 ? '+' : ''}
@@ -921,8 +935,8 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
               <code class="font-mono text-xs md:text-sm">Vulnerability words per 1000 words</code>
             </p>
             <p>
-              <strong class="text-[rgb(var(--color-text))]">Emotional Evolution:</strong> Sentiment
-              trend over time periods
+              <strong class="text-[rgb(var(--color-text))]">Emotional Evolution:</strong> Sentiment trend
+              over time periods
             </p>
           </div>
         </div>
@@ -980,8 +994,8 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
           </h4>
           <div class="text-body-muted space-y-2 text-sm">
             <p>
-              <strong class="text-[rgb(var(--color-text))]">Pattern Recognition:</strong> Recurring
-              themes and topics
+              <strong class="text-[rgb(var(--color-text))]">Pattern Recognition:</strong> Recurring themes
+              and topics
             </p>
             <p>
               <strong class="text-[rgb(var(--color-text))]">Emotional Cycles:</strong> High/low emotional
@@ -992,8 +1006,8 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
               indicators
             </p>
             <p>
-              <strong class="text-[rgb(var(--color-text))]">Writing Purpose:</strong> Processing vs.
-              sharing vs. discovery ratios
+              <strong class="text-[rgb(var(--color-text))]">Writing Purpose:</strong> Processing vs. sharing
+              vs. discovery ratios
             </p>
           </div>
         </div>
@@ -1044,7 +1058,9 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
       {
         balancedAnalysis.neutral.length > 0 && (
           <div class="mb-8">
-            <h3 class="mb-4 text-lg font-medium text-[rgb(var(--color-text))]">Objective Metrics</h3>
+            <h3 class="mb-4 text-lg font-medium text-[rgb(var(--color-text))]">
+              Objective Metrics
+            </h3>
             <div class="space-y-3">
               {balancedAnalysis.neutral.map((insight) => (
                 <div class="border-b border-[rgb(var(--color-border))] py-3 last:border-b-0">

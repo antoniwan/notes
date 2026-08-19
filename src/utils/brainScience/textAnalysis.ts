@@ -55,10 +55,7 @@ export function countLexiconHits(content: string, words: string[]): number {
   }, 0);
 }
 
-export function estimateReadingMinutes(
-  minutesRead: string | undefined,
-  wordCount: number,
-): number {
+export function estimateReadingMinutes(minutesRead: string | undefined, wordCount: number): number {
   if (minutesRead && typeof minutesRead === 'string') {
     const match = minutesRead.match(/(\d+)/);
     if (match) return parseInt(match[1], 10);

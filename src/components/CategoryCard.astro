@@ -32,17 +32,12 @@ const { category, postCount, featured = false, compact = false } = Astro.props;
           {category.name}
         </h3>
 
-        {
-          !compact && (
-            <p class="category-card__desc">
-              {category.description}
-            </p>
-          )
-        }
+        {!compact && <p class="category-card__desc">{category.description}</p>}
 
         <div class="category-card__meta">
           <span>
-            {postCount} {postCount === 1 ? 'writing' : 'writings'}
+            {postCount}
+            {postCount === 1 ? 'writing' : 'writings'}
           </span>
           <span class="category-card__arrow" aria-hidden="true">→</span>
         </div>

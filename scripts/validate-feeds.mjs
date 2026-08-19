@@ -38,7 +38,8 @@ const rss = fs.readFileSync(rssPath, 'utf8');
 const jsonRaw = fs.readFileSync(jsonPath, 'utf8');
 
 const rssErrors = [];
-if (!rss.includes('<rss') && !rss.includes('<feed')) rssErrors.push('not recognizable RSS/Atom XML');
+if (!rss.includes('<rss') && !rss.includes('<feed'))
+  rssErrors.push('not recognizable RSS/Atom XML');
 if (!/<item[\s>]|<entry[\s>]/.test(rss)) rssErrors.push('no <item> or <entry> elements');
 if (!rss.includes('<title')) rssErrors.push('missing <title>');
 if (!rss.includes('<link')) rssErrors.push('missing <link>');

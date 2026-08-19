@@ -261,16 +261,16 @@ Corpus + product surface checkpoint. Directional, not a commitment. Companion co
 
 ### Snapshot
 
-| Signal | Value |
-| --- | --- |
-| Published posts | 86 (75 EN / 11 ES) |
-| Full EN↔ES translation pairs | 9 |
-| Featured / highlights | 23 / 12 |
-| Library books | 137 (75 read / 8 in progress / 54 to-read) |
-| Posts with `tldr` / `sources` frontmatter | 0 / 0 |
-| 2026 cadence | ~1–4 posts/month (quieter than May 2025 peak of 11) |
-| Heaviest categories | Integration & Growth (24), Psychology (16), Metaspace (12), Parenting (11) |
-| Thinnest categories | Culture (1), Learning Projects (1), DIY (2), Art (3) |
+| Signal                                    | Value                                                                      |
+| ----------------------------------------- | -------------------------------------------------------------------------- |
+| Published posts                           | 86 (75 EN / 11 ES)                                                         |
+| Full EN↔ES translation pairs              | 9                                                                          |
+| Featured / highlights                     | 23 / 12                                                                    |
+| Library books                             | 137 (75 read / 8 in progress / 54 to-read)                                 |
+| Posts with `tldr` / `sources` frontmatter | 0 / 0                                                                      |
+| 2026 cadence                              | ~1–4 posts/month (quieter than May 2025 peak of 11)                        |
+| Heaviest categories                       | Integration & Growth (24), Psychology (16), Metaspace (12), Parenting (11) |
+| Thinnest categories                       | Culture (1), Learning Projects (1), DIY (2), Art (3)                       |
 
 ### Product thesis
 
@@ -333,9 +333,9 @@ _None queued — later polish items from §8 closed above._
 
 ### Mid-term (leverage)
 
-| Priority | Item | Why |
-| --- | --- | --- |
-| P3 | Optional: wire FAQ/HowTo only for curated posts | Helpers exist but unused; avoid noisy auto-detect |
+| Priority | Item                                            | Why                                               |
+| -------- | ----------------------------------------------- | ------------------------------------------------- |
+| P3       | Optional: wire FAQ/HowTo only for curated posts | Helpers exist but unused; avoid noisy auto-detect |
 
 ### Later / only if needed
 

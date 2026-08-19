@@ -161,9 +161,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
       class="mb-6 flex flex-wrap gap-x-10 gap-y-5 border-b border-[rgb(var(--color-border))]/50 pb-6 md:mb-8 md:gap-x-12 md:pb-8"
     >
       <div title="Longest run with ≤7 days between adjacent posts">
-        <div
-          class="text-2xl font-semibold text-[rgb(var(--color-text))] tabular-nums md:text-3xl"
-        >
+        <div class="text-2xl font-semibold text-[rgb(var(--color-text))] tabular-nums md:text-3xl">
           {longestStreak}
         </div>
         <div class="text-body-muted text-xs">Longest streak</div>
@@ -496,9 +494,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
       {
         balancedAnalysis.strengths.length > 0 && (
           <div class="mb-6 md:mb-8">
-            <h3 class="mb-4 text-lg font-medium text-[rgb(var(--color-text))]">
-              Strengths
-            </h3>
+            <h3 class="mb-4 text-lg font-medium text-[rgb(var(--color-text))]">Strengths</h3>
             <div class="space-y-3">
               {balancedAnalysis.strengths.map((insight) => (
                 <div class="border-b border-[rgb(var(--color-border))] py-3 last:border-b-0">
@@ -514,9 +510,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
       {
         balancedAnalysis.challenges.length > 0 && (
           <div class="mb-6 md:mb-8">
-            <h3 class="mb-4 text-lg font-medium text-[rgb(var(--color-text))]">
-              Challenges
-            </h3>
+            <h3 class="mb-4 text-lg font-medium text-[rgb(var(--color-text))]">Challenges</h3>
             <div class="space-y-3">
               {balancedAnalysis.challenges.map((insight) => (
                 <div class="border-b border-[rgb(var(--color-border))] py-3 last:border-b-0">
