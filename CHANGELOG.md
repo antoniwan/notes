@@ -14,6 +14,7 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 - IndexNow checks that the live key file is reachable before pinging, and retries Bing if the shared endpoint returns 403, so production deploys no longer warn when Bing cannot verify the key yet.
 - Feed MDX rendering imports `getContainerRenderer` from `@astrojs/mdx/container-renderer`.
 - Threads embeds no longer wrap a processed `<script>` in a `{ markup && … }` expression, which broke the Astro compiler.
+- `astro check` type errors in the Vite trailing-slash plugin, PageHeader props, and the H1-demote unit test.
 
 ### Removed
 

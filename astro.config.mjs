@@ -19,7 +19,15 @@ import {
 function trailingSlashDevRedirectPlugin() {
   return {
     name: 'trailing-slash-dev-redirect',
+    /**
+     * @param {{ middlewares: { stack: unknown[] } }} server
+     */
     configureServer(server) {
+      /**
+       * @param {import('node:http').IncomingMessage} req
+       * @param {import('node:http').ServerResponse} res
+       * @param {(err?: unknown) => void} next
+       */
       const handler = (req, res, next) => {
         const raw = req.url ?? '/';
         const qIndex = raw.indexOf('?');

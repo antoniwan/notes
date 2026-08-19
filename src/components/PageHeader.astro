@@ -1,7 +1,7 @@
 ---
 import Container from './Container.astro';
 
-interface Props {
+export interface Props {
   title: string;
   description?: string;
   className?: string;
@@ -25,7 +25,7 @@ const {
   stackClass = '',
   descriptionClass = '',
   as = 'h1',
-} = Astro.props;
+}: Props = Astro.props as Props;
 const TitleTag = as;
 ---
 

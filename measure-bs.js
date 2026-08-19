@@ -1,4 +1,5 @@
-const { chromium } = require('playwright');
+import { chromium } from 'playwright';
+
 (async () => {
   const browser = await chromium.launch({ headless: true });
   const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
@@ -15,7 +16,7 @@ const { chromium } = require('playwright');
     const parent = p.parentElement;
     const pcs = parent ? getComputedStyle(parent) : null;
     return {
-      text: p.textContent.slice(0, 80),
+      text: p.textContent?.slice(0, 80),
       width: rect.width,
       height: rect.height,
       display: cs.display,
