@@ -7,6 +7,17 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.8.2] — 2026-08-19
+
+### Fixed
+
+- IndexNow checks that the live key file is reachable before pinging, and retries Bing if the shared endpoint returns 403, so production deploys no longer warn when Bing cannot verify the key yet.
+- Feed MDX rendering imports `getContainerRenderer` from `@astrojs/mdx/container-renderer`.
+
+### Removed
+
+- Unused leftover IndexNow key file from an older key.
+
 ## [6.8.1] — 2026-08-19
 
 ### Fixed

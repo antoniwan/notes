@@ -14,6 +14,7 @@ import { SITE_URL } from '../consts';
 
 export const INDEXNOW_KEY = '3e725118-3860-4543-9a80-625eed302bb1';
 export const INDEXNOW_ENDPOINT = 'https://api.indexnow.org/indexnow';
+export const INDEXNOW_FALLBACK_ENDPOINT = 'https://www.bing.com/indexnow';
 export const INDEXNOW_KEY_FILENAME = `${INDEXNOW_KEY}.txt`;
 
 const INDEXNOW_BATCH_LIMIT = 10_000;
@@ -53,6 +54,35 @@ export function buildIndexNowPayload(urlList: string[], siteUrl = SITE_URL): Ind
     keyLocation: getIndexNowKeyLocation(siteUrl),
     urlList,
   };
+}
+
+/** IndexNow verifies ownership by fetching the live key file; skip until that URL serves the key. */
+export async function isIndexNowKeyLive(
+  options: { fetchImpl?: typeof fetch; siteUrl?: string } = {},
+): Promise<boolean> {
+  const fetchImpl = options.fetchImpl ?? fetch;
+  const keyLocation = getIndexNowKeyLocation(options.siteUrl);
+  try {
+    const res = await fetchImpl(keyLocation, {
+      method: 'GET',
+      headers: { accept: 'text/plain' },
+    });
+    if (!res.ok) return false;
+    return (await res.text()).trim() === INDEXNOW_KEY;
+  } catch {
+    return false;
+  }
+}
+
+export function urlsOnIndexNowHost(urlList: string[], siteUrl = SITE_URL): string[] {
+  const host = getIndexNowHost(siteUrl);
+  return urlList.filter((url) => {
+    try {
+      return new URL(url).host === host;
+    } catch {
+      return false;
+    }
+  });
 }
 
 /** Page `<loc>` values from sitemap XML (skips sitemapindex files). */
@@ -104,16 +134,18 @@ export function readSitemapXmlFiles(dir: URL): string[] {
 
 export async function submitIndexNow(
   urlList: string[],
-  options: { fetchImpl?: typeof fetch; siteUrl?: string } = {},
-): Promise<{ status: number; ok: boolean }> {
+  options: { fetchImpl?: typeof fetch; siteUrl?: string; endpoint?: string } = {},
+): Promise<{ status: number; ok: boolean; body: string }> {
   const fetchImpl = options.fetchImpl ?? fetch;
+  const endpoint = options.endpoint ?? INDEXNOW_ENDPOINT;
   const payload = buildIndexNowPayload(urlList, options.siteUrl);
-  const res = await fetchImpl(INDEXNOW_ENDPOINT, {
+  const res = await fetchImpl(endpoint, {
     method: 'POST',
     headers: { 'content-type': 'application/json; charset=utf-8' },
     body: JSON.stringify(payload),
   });
-  return { status: res.status, ok: res.status === 200 || res.status === 202 };
+  const body = await res.text().catch(() => '');
+  return { status: res.status, ok: res.status === 200 || res.status === 202, body };
 }
 
 export async function pingIndexNowFromSitemapDir(
@@ -133,19 +165,34 @@ export async function pingIndexNowFromSitemapDir(
   }
 
   try {
-    const urls = extractSitemapPageUrls(readSitemapXmlFiles(dir));
+    const urls = urlsOnIndexNowHost(extractSitemapPageUrls(readSitemapXmlFiles(dir)));
     if (urls.length === 0) {
       logger.warn('IndexNow skipped (no sitemap URLs found)');
       return 'empty';
     }
 
+    const fetchImpl = options.fetchImpl;
+    if (!(await isIndexNowKeyLive({ fetchImpl }))) {
+      logger.info('IndexNow skipped (live key file not reachable yet)');
+      return 'skipped';
+    }
+
     let lastStatus = 0;
     for (let i = 0; i < urls.length; i += INDEXNOW_BATCH_LIMIT) {
       const batch = urls.slice(i, i + INDEXNOW_BATCH_LIMIT);
-      const result = await submitIndexNow(batch, { fetchImpl: options.fetchImpl });
+      let result = await submitIndexNow(batch, { fetchImpl });
+      if (!result.ok && result.status === 403) {
+        result = await submitIndexNow(batch, {
+          fetchImpl,
+          endpoint: INDEXNOW_FALLBACK_ENDPOINT,
+        });
+      }
       lastStatus = result.status;
       if (!result.ok) {
-        logger.warn(`IndexNow failed (${result.status}) for ${batch.length} URLs`);
+        const detail = result.body.trim().replace(/\s+/g, ' ').slice(0, 180);
+        logger.warn(
+          `IndexNow failed (${result.status}) for ${batch.length} URLs${detail ? `: ${detail}` : ''}`,
+        );
         return 'failed';
       }
     }

@@ -5,6 +5,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { describe, expect, it, vi } from 'vitest';
 import {
   INDEXNOW_ENDPOINT,
+  INDEXNOW_FALLBACK_ENDPOINT,
   INDEXNOW_KEY,
   INDEXNOW_KEY_FILENAME,
   buildIndexNowPayload,
@@ -15,6 +16,15 @@ import {
 } from './indexNow';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
+
+function mockIndexNowFetch(postStatus = 200) {
+  return vi.fn(async (url: string) => {
+    if (String(url).includes(INDEXNOW_KEY_FILENAME)) {
+      return new Response(INDEXNOW_KEY, { status: 200 });
+    }
+    return new Response('', { status: postStatus });
+  });
+}
 
 describe('shouldSubmitIndexNow', () => {
   it('submits only on Vercel production by default', () => {
@@ -75,15 +85,15 @@ describe('pingIndexNowFromSitemapDir', () => {
       `<urlset><url><loc>https://notes.antoniwan.online/p/foo</loc></url></urlset>`,
     );
 
-    const fetchImpl = vi.fn(async () => new Response('', { status: 200 }));
+    const fetchImpl = mockIndexNowFetch(200);
     const result = await pingIndexNowFromSitemapDir(pathToFileURL(tmp), {
       env: { VERCEL_ENV: 'production' },
       fetchImpl: fetchImpl as unknown as typeof fetch,
     });
 
     expect(result).toBe('submitted');
-    expect(fetchImpl).toHaveBeenCalledTimes(1);
-    const call = fetchImpl.mock.calls[0] as unknown as [string, RequestInit];
+    expect(fetchImpl).toHaveBeenCalledTimes(2);
+    const call = fetchImpl.mock.calls[1] as unknown as [string, RequestInit];
     const [endpoint, init] = call;
     expect(endpoint).toBe(INDEXNOW_ENDPOINT);
     expect(JSON.parse(String(init.body))).toMatchObject({
@@ -103,14 +113,63 @@ describe('pingIndexNowFromSitemapDir', () => {
 
     expect(readSitemapXmlFiles(pathToFileURL(tmp))).toHaveLength(1);
 
-    const fetchImpl = vi.fn(async () => new Response('', { status: 200 }));
+    const fetchImpl = mockIndexNowFetch(200);
     const result = await pingIndexNowFromSitemapDir(pathToFileURL(tmp), {
       env: { VERCEL_ENV: 'production' },
       fetchImpl: fetchImpl as unknown as typeof fetch,
     });
 
     expect(result).toBe('submitted');
-    expect(fetchImpl).toHaveBeenCalledTimes(1);
+    expect(fetchImpl).toHaveBeenCalledTimes(2);
+  });
+
+  it('skips when the live key file is not reachable yet', async () => {
+    const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'indexnow-'));
+    fs.writeFileSync(
+      path.join(tmp, 'sitemap-0.xml'),
+      `<urlset><url><loc>https://notes.antoniwan.online/p/foo</loc></url></urlset>`,
+    );
+
+    const fetchImpl = vi.fn(async (_url: string) => new Response('not found', { status: 404 }));
+    const result = await pingIndexNowFromSitemapDir(pathToFileURL(tmp), {
+      env: { VERCEL_ENV: 'production' },
+      fetchImpl: fetchImpl as unknown as typeof fetch,
+    });
+
+    expect(result).toBe('skipped');
+    expect(fetchImpl.mock.calls.map((call) => String(call[0]))).toEqual([
+      `https://notes.antoniwan.online/${INDEXNOW_KEY_FILENAME}`,
+    ]);
+  });
+
+  it('retries Bing when the shared endpoint returns 403', async () => {
+    const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'indexnow-'));
+    fs.writeFileSync(
+      path.join(tmp, 'sitemap-0.xml'),
+      `<urlset><url><loc>https://notes.antoniwan.online/p/foo</loc></url></urlset>`,
+    );
+
+    const fetchImpl = vi.fn(async (url: string) => {
+      if (String(url).includes(INDEXNOW_KEY_FILENAME)) {
+        return new Response(INDEXNOW_KEY, { status: 200 });
+      }
+      if (String(url) === INDEXNOW_ENDPOINT) {
+        return new Response('User is unauthorized to access the site', { status: 403 });
+      }
+      return new Response('', { status: 202 });
+    });
+
+    const result = await pingIndexNowFromSitemapDir(pathToFileURL(tmp), {
+      env: { VERCEL_ENV: 'production' },
+      fetchImpl: fetchImpl as unknown as typeof fetch,
+    });
+
+    expect(result).toBe('submitted');
+    expect(fetchImpl.mock.calls.map((call) => String(call[0]))).toEqual([
+      `https://notes.antoniwan.online/${INDEXNOW_KEY_FILENAME}`,
+      INDEXNOW_ENDPOINT,
+      INDEXNOW_FALLBACK_ENDPOINT,
+    ]);
   });
 
   it('does not throw when the output path is a file instead of a directory', async () => {
