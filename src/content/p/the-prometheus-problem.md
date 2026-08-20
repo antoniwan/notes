@@ -223,7 +223,7 @@ So we have: executives with documented evidence of harm who continue deployment;
 
 This is regulatory capture made explicit. Not hidden. Not subtle. An executive order saying: if you try to slow this down, we will sue you.
 
-<h2 id="elon-musk" class="toc-only">Elon Musk</h2>
+## Musk as Evolutionary Type
 
 Elon Musk deserves his own section because he represents something new. Not the theater of responsibility, but something distinct: a figure who positions himself as both visionary and safety advocate while systematically removing safety measures.
 

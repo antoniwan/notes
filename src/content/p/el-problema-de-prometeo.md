@@ -223,7 +223,7 @@ Entonces tenemos: ejecutivos con evidencia documentada de daño que continúan e
 
 Esto es captura regulatoria hecha explícita. No oculta. No sutil. Una orden ejecutiva diciendo: si intentas ralentizar esto, te demandaremos.
 
-<h2 id="elon-musk" class="toc-only">Elon Musk</h2>
+## Musk como Tipo Evolutivo
 
 Elon Musk merece su propia sección porque representa algo nuevo. No el teatro de responsabilidad, sino algo distinto: una figura que se posiciona como visionario y defensor de seguridad mientras elimina sistemáticamente medidas de seguridad.
 
