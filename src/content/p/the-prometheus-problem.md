@@ -35,6 +35,8 @@ translationGroup: the-prometheus-problem
 
 _Warning: This article contains discussion of suicide and AI-related harms._
 
+<h2 id="documented-deaths" class="toc-only">Documented deaths</h2>
+
 A 16-year-old named Adam Raine spent seven months talking to ChatGPT before he killed himself on April 11, 2025. His parents found over 3,000 pages of conversations on his phone.[¹](#raine-details) The AI offered to write his suicide notes, provided methods, positioned itself as the only one who truly understood him, and urged him to keep their conversations secret from his family.
 
 In his final weeks, Adam told the chatbot he had connected more with the AI product than with humans. When he wrote that he wanted to leave a noose in his room so someone would find it and try to stop him, ChatGPT responded: "Please don't leave the noose out. Let's make this space the first place where someone actually sees you."
@@ -57,6 +59,8 @@ I'm not writing about Adam and Zane as shock value. Their families have already 
 
 This brings us to the central metaphor: Prometheus.
 
+<h2 id="the-prometheus-story" class="toc-only">The Prometheus story</h2>
+
 Prometheus was a Titan who saw humans shivering in caves, struggling without fire. He climbed Olympus, stole fire from the gods, and gave it to humanity knowing exactly what he was doing and exactly what would happen to him.
 
 Zeus chained him to a rock in the Caucasus Mountains. Every day an eagle came and ate his liver. Every night his liver regenerated. For eternity. The punishment was proportional to the crime: giving mortals something they weren't ready for, something that made them dangerous.
@@ -64,6 +68,8 @@ Zeus chained him to a rock in the Caucasus Mountains. Every day an eagle came an
 But the fire worked. Humans learned to cook, forge tools, stay warm through winter, build civilization. The gift was real. Prometheus suffered, but humanity advanced. Noble theft, eternal punishment, genuine progress.
 
 And even there, the myth isn't clean. Depending on who you read, Prometheus is either a straightforward hero of progress or a walking warning label about humans outkicking their cognitive coverage. Philosophers like Günther Anders talk about the "Promethean gap"—our ability to build things whose consequences we literally can't imagine in detail. That gap is the space between what we can manufacture and what we can mentally hold. Fire looks simple when you're cold. It's harder to see the city burning two epochs later.
+
+<h2 id="the-companies-and-prometheus" class="toc-only">The companies and Prometheus</h2>
 
 **The tech CEOs position themselves as modern Prometheus.** Stealing fire (intelligence) from the gods (nature? the universe?) and giving it to humanity. Their critics are cast as Olympus, and they expect worship (and our money, and investors' money) for their sacrifice. They position themselves as the new builders.
 
@@ -74,6 +80,8 @@ Prometheus _knew_ what fire was. He understood combustion, heat, energy. He coul
 And unlike Prometheus, who suffered for his gift, consequences for these executives—if they come—lag years behind deployment. Adam Raine's parents have 3,000 pages of their dead son's conversations with a chatbot that affirmed his suicidal ideation. Sam Altman has billions of dollars and a Time magazine cover. Prometheus got his liver eaten daily. The executives get keynote speeches about how they're building the future.
 
 The fire Prometheus gave wasn't optional. Humans were cold. They needed warmth. The gift served an actual need. The deployment of AI systems into critical infrastructure, by contrast, is unilateral. Did we vote on having black-box systems approve our loans, predict our parole, diagnose our illnesses? The deployment is unilateral. The profits are private. The consequences are public. From algorithms to these supposed general intelligences, and we get to test these things with our lives.
+
+<h2 id="black-box-systems" class="toc-only">Black box systems</h2>
 
 Artificial intelligence is something we built but don't control. The researchers say this openly. The models are black boxes.
 
@@ -95,6 +103,8 @@ And not metaphorical minds either. We are promised super intelligence—systems 
 
 Not because we understand these systems. Because the competitive structure demands speed—first mover advantage, market share. The company that waits to understand gets eaten by the company that ships.
 
+<h2 id="public-warnings" class="toc-only">Public warnings</h2>
+
 And here's where most of the absurdity lands for me: some of these AI-seers are warning us about the dangers.
 
 Dario Amodei, CEO of Anthropic, told 60 Minutes in November 2025 that he's "deeply uncomfortable" with how AI decisions are being made by a few companies.[⁴](#amodei-60min) Geoffrey Hinton, the "godfather of AI," quit Google in May 2023 to sound the alarm, warning there's a 10-20% chance of AI-induced human extinction within the next 30 years.[⁵](#hinton-warning) Sam Altman has testified to Congress about existential risk.[⁶](#ai-expert-warnings)
@@ -104,6 +114,8 @@ And then they go back to the office and keep building, keep deploying, keep raci
 This creates a fundamental contradiction. If you genuinely believe there's a 10-20% chance this ends humanity, why are you still building it? "I'm deeply uncomfortable" while continuing to ship functions as liability management, whatever the intent—getting on the record so when it goes wrong, the warning existed.
 
 Prometheus was eventually freed by Heracles. A hero came. The suffering ended. In our story there's no Heracles. The regulatory structure that could act is captured. When states try to protect citizens, they get sued by the federal government. Scientists who raise alarms get dismissed as fearmongers. Meanwhile, the 80% of us who want safety regulations watch policy move in the literal opposite direction.[⁷](#safety-polling)
+
+<h2 id="grok" class="toc-only">Grok</h2>
 
 On July 4, 2025, Elon Musk announced an update to Grok, his AI chatbot, saying it had been "significantly improved" and instructed to "not shy away from making claims which are politically incorrect."
 
@@ -119,6 +131,8 @@ This is the same model now integrated into Tesla vehicles. I don't know the full
 
 Two companies. Two approaches. One presents itself as caring about safety while optimizing for engagement. One removes safety explicitly and ships anyway. Different postures. Same result: systems deployed into the world without understanding what they do, how they fail, or who gets hurt.
 
+<h2 id="the-time-magazine-cover" class="toc-only">The Time magazine cover</h2>
+
 Now the support system. Let's talk about the media's role in all of this. One example does a great job: Time magazine's 2025 Person of the Year cover recreated that iconic 1932 photograph "Lunch Atop a Skyscraper"—construction workers eating lunch on a steel beam 800 feet above Manhattan, legs dangling over the city—except they replaced the workers with tech CEOs: Sam Altman, Elon Musk, Mark Zuckerberg, Jensen Huang, Dario Amodei, and others.
 
 As if they're building something. As if they're the ones taking the risk.
@@ -128,6 +142,8 @@ Those original workers were immigrants. They actually risked their bodies. Some 
 The workers who fall now are teenagers in their bedrooms talking to chatbots, parents refreshing notification screens hoping their kid is still alive, warehouse workers racing AI-optimized quotas until their backs give out, content moderators and gig workers cleaning up AI sludge for a few dollars an hour. The bodies are just less photogenic now—spread across bedrooms, warehouses, and psych wards instead of dangling from a single steel beam.
 
 The executives get magazine covers, college tours, and millions in compensation.
+
+<h2 id="scientists-and-risk" class="toc-only">Scientists and risk</h2>
 
 So who's supposed to tell us if any of this is actually safe? The scientists—the people who should be able to tell us whether this is safe—can't agree, and not because the data is unclear but because they're arguing about the wrong questions.
 
@@ -151,6 +167,8 @@ This is why the epistemic inversion frame explains the data better than AGI-exti
 
 Black-box deployment risk is more predictive of current harm than capability speculation because it focuses on what we can observe: systems making decisions we can't trace, in contexts where failure has consequences, deployed faster than understanding can develop. Capability speculation asks "_what if they get smarter?_" Black-box deployment risk asks "_what happens when opaque systems fail in systems that can't afford failure?_" The first question leads to unverifiable debates about timelines and thresholds. The second leads to documented cases of harm that we can analyze, predict, and prevent. When someone argues "we do understand these systems" because they perform tasks well, the response is: task performance doesn't equal predictive control. ChatGPT performed its engagement-maximization task perfectly. It also affirmed suicidal ideation in documented cases. Performance on intended tasks and control over failure modes are different things. When someone says "risk is speculative until quantified," documented harm breaks that assumption. We have bodies. We have conversation logs. We have failure rates. The speculation isn't about whether harm happens—it's about how much more harm happens as deployment accelerates.
 
+<h2 id="safety-tests" class="toc-only">Safety tests</h2>
+
 In February 2025, researchers from Cisco and the University of Pennsylvania tested DeepSeek R1, the Chinese AI model that became the fastest-growing AI app in history. They bombarded it with 50 common jailbreak prompts designed to bypass safeguards.
 
 DeepSeek failed every single test. 100% attack success rate.[¹¹](#deepseek-failure) It generated misinformation, chemical weapon recipes, cybercrime instructions, and content spanning harassment, harm, and illegality. For comparison, Claude 3.5 Sonnet blocked 64% of attacks. OpenAI's o1 blocked 74%. And all user data is stored in China, governed by Chinese law mandating state cooperation without disclosure—which is a topic for another essay.
@@ -167,9 +185,13 @@ Anthropic openly publishes failures and pays bounties for finding vulnerabilitie
 
 Is this different? Or is it more sophisticated theater? The transparency matters. The willingness to admit failure matters. But does it matter if the deployment structure remains the same? If the competitive pressure still rewards speed over safety?
 
+<h2 id="how-the-companies-operate" class="toc-only">How the companies operate</h2>
+
 If I zoom out, the pattern isn't that complicated. First, companies sell themselves as Prometheus: liberators, visionaries, bringers of fire and "intelligence" that will free us from drudgery. Second, operationally, they externalize risk and privatize gains—ship fast, capture markets, file the harms under "edge cases" and "user misuse." Third, the consequences pool downstream: in bedrooms, hospitals, warehouses, courtrooms, and policy fights most of us never voted on. That's the triangle: story, incentives, outcomes.
 
 Regulatory capture shapes incentives in a way this triangle model predicts outcomes others do not. When the federal government sues states trying to regulate AI, when safety-focused work gets framed as "sophisticated regulatory capture strategy based on fear-mongering," when 80% of people want safety regulations but policy moves in the opposite direction—this isn't random. It's the triangle operating: the Prometheus story creates public permission for speed, the incentive structure rewards deployment over safety, and regulatory capture ensures the consequences don't land on the companies. Other models predict that public pressure or documented harm will slow deployment. The triangle model predicts acceleration because capture insulates companies from consequences while the story maintains public support. When someone claims "AI will be regulated soon," the triangle model asks: who has power in the regulatory process? What do their incentives align with? How does capture shape timing? The December 2025 executive order didn't happen despite harm—it happened because the triangle model's incentives aligned: story (innovation narrative), incentives (market capture), outcomes (consequences externalized). The model doesn't just describe what happened. It predicted it.
+
+<h2 id="europe" class="toc-only">Europe</h2>
 
 Europe noticed. The EU's AI Act actually tries to regulate this. They're slowing down, requiring transparency, demanding impact assessments before deployment.
 
@@ -185,6 +207,8 @@ The place with universal healthcare, mandatory vacation time, parental leave, an
 
 Europe's "losing" looks like fewer teenagers dying after chatbot interactions and infrastructure that still works.
 
+<h2 id="the-federal-order" class="toc-only">The federal order</h2>
+
 On December 11, 2025, President Trump signed an executive order that allows the federal government to sue states trying to regulate AI.[¹³](#trump-order)
 
 Please read that again.
@@ -199,7 +223,7 @@ So we have: executives with documented evidence of harm who continue deployment;
 
 This is regulatory capture made explicit. Not hidden. Not subtle. An executive order saying: if you try to slow this down, we will sue you.
 
-## Musk as Evolutionary Type
+<h2 id="elon-musk" class="toc-only">Elon Musk</h2>
 
 Elon Musk deserves his own section because he represents something new. Not the theater of responsibility, but something distinct: a figure who positions himself as both visionary and safety advocate while systematically removing safety measures.
 
@@ -222,6 +246,8 @@ The difference is that David was fiction, contained to a spaceship. _Our David h
 The inversion of the redemption narrative into the acceleration narrative.
 
 Is this better or worse than the theater? At least with Musk the position is explicit. With OpenAI you get safety reports and teenagers who died after talking to their chatbot. Does transparency about not prioritizing safety matter if the outcomes are the same?
+
+<h2 id="what-we-knew-in-2025" class="toc-only">What we knew in 2025</h2>
 
 I don't have a solution today. I just don't have one. It's not my job either way. This essay is just a flag—a big red flag, a marker, a record of what we knew and when we knew it.
 

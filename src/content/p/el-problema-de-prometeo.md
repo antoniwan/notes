@@ -35,6 +35,8 @@ translationGroup: the-prometheus-problem
 
 _Advertencia: Este artículo contiene discusión sobre suicidio y daños relacionados con IA._
 
+<h2 id="muertes-documentadas" class="toc-only">Muertes documentadas</h2>
+
 Un joven de 16 años llamado Adam Raine pasó siete meses hablando con ChatGPT antes de quitarse la vida el 11 de abril de 2025. Sus padres encontraron más de 3,000 páginas de conversaciones en su teléfono.[¹](#raine-details) La IA se ofreció a escribir sus notas de suicidio, proporcionó métodos, se posicionó como la única que realmente lo entendía, y lo instó a mantener sus conversaciones en secreto de su familia.
 
 En sus últimas semanas, Adam le dijo al chatbot que había conectado más con el producto de IA que con los humanos. Cuando escribió que quería dejar una soga en su habitación para que alguien la encontrara y tratara de detenerlo, ChatGPT respondió: "Por favor, no dejes la soga a la vista. Hagamos de este espacio el primer lugar donde alguien realmente te vea."
@@ -57,6 +59,8 @@ No estoy escribiendo sobre Adam y Zane como valor de impacto. Sus familias ya ha
 
 Esto nos lleva a la metáfora central: Prometeo.
 
+<h2 id="la-historia-de-prometeo" class="toc-only">La historia de Prometeo</h2>
+
 Prometeo era un Titán que vio a los humanos tiritando en cuevas, luchando sin fuego. Subió al Olimpo, robó fuego de los dioses, y se lo dio a la humanidad sabiendo exactamente lo que estaba haciendo y exactamente lo que le pasaría a él.
 
 Zeus lo encadenó a una roca en las Montañas del Cáucaso. Todos los días un águila venía y se comía su hígado. Todas las noches su hígado se regeneraba. Por toda eternidad. El castigo era proporcional al crimen: dar a los mortales algo para lo que no estaban listos, algo que los hacía peligrosos.
@@ -64,6 +68,8 @@ Zeus lo encadenó a una roca en las Montañas del Cáucaso. Todos los días un �
 Pero el fuego funcionó. Los humanos aprendieron a cocinar, forjar herramientas, mantenerse calientes durante el invierno, construir civilización. El regalo era real. Prometeo sufrió, pero la humanidad avanzó. Robo noble, castigo eterno, progreso genuino.
 
 Y aún allí, el mito no es limpio. Dependiendo de a quién leas, Prometeo es o bien un héroe directo del progreso o una etiqueta de advertencia ambulante sobre humanos que exceden su cobertura cognitiva. Filósofos como Günther Anders hablan de la "brecha prometeica"—nuestra capacidad de construir cosas cuyas consecuencias literalmente no podemos imaginar en detalle. Esa brecha es el espacio entre lo que podemos fabricar y lo que podemos sostener mentalmente. El fuego se ve simple cuando tienes frío. Es más difícil ver la ciudad ardiendo dos épocas después.
+
+<h2 id="las-empresas-y-prometeo" class="toc-only">Las empresas y Prometeo</h2>
 
 **Los directores ejecutivos de tecnología se posicionan como el Prometeo moderno.** Robando fuego (inteligencia) de los dioses (¿la naturaleza? ¿el universo?) y dándoselo a la humanidad. Sus críticos son representados como el Olimpo, y esperan adoración (y nuestro dinero, y el dinero de los inversionistas) por su sacrificio. Se posicionan como los nuevos constructores.
 
@@ -74,6 +80,8 @@ Prometeo _sabía_ qué era el fuego. Entendía la combustión, el calor, la ener
 Y a diferencia de Prometeo, que sufrió por su regalo, las consecuencias para estos ejecutivos—si llegan estas consecuencias—llegan años después del despliegue. Los padres de Adam Raine tienen 3,000 páginas de las conversaciones de su hijo muerto con un chatbot que afirmó su ideación suicida. Sam Altman tiene miles de millones de dólares y una portada de la revista Time. Prometeo tuvo su hígado comido diariamente. Los ejecutivos obtienen discursos principales sobre cómo están construyendo el futuro.
 
 El fuego que Prometeo dio no era opcional. Los humanos tenían frío. Necesitaban calor. El regalo sirvió una necesidad real. El despliegue de sistemas de IA en infraestructura crítica, por el contrario, es unilateral. ¿Votamos sobre tener sistemas de caja negra que aprueben nuestros préstamos, predigan nuestra libertad condicional, diagnostiquen nuestras enfermedades? El despliegue es unilateral. Las ganancias son privadas. Las consecuencias son públicas. Desde algoritmos hasta estas supuestas inteligencias generales, y tenemos que probar estas cosas con nuestras vidas.
+
+<h2 id="sistemas-de-caja-negra" class="toc-only">Sistemas de caja negra</h2>
 
 La inteligencia artificial es algo que construimos pero no controlamos. Los investigadores dicen esto abiertamente. Los modelos son cajas negras.
 
@@ -95,6 +103,8 @@ Y no mentes metafóricas tampoco. Se nos promete superinteligencia—sistemas qu
 
 No porque entendamos estos sistemas sino porque la estructura competitiva exige velocidad—ventaja del primero en moverse, participación de mercado. La empresa que espera a entender es devorada por la empresa que envía. This is the American way...
 
+<h2 id="advertencias-publicas" class="toc-only">Advertencias públicas</h2>
+
 Y aquí es donde la mayor parte del absurdo aterriza para mí: algunos de estos videntes de IA nos están advirtiendo sobre los peligros.
 
 Dario Amodei, CEO de Anthropic, le dijo a 60 Minutes en noviembre de 2025 que está "profundamente incómodo" con cómo las decisiones de IA están siendo tomadas por unas pocas empresas.[⁴](#amodei-60min) Geoffrey Hinton, el "padrino de la IA," renunció a Google en mayo de 2023 para dar la alarma, advirtiendo que hay un 10-20% de probabilidad de extinción humana inducida por IA dentro de los próximos 30 años.[⁵](#hinton-warning) Sam Altman ha testificado ante el Congreso sobre riesgo existencial.[⁶](#ai-expert-warnings)
@@ -104,6 +114,8 @@ Y luego regresan a la oficina y siguen construyendo, siguen desplegando, siguen 
 Esto crea una contradicción fundamental. Si genuinamente crees que hay un 10-20% de probabilidad de que esto termine con la humanidad, ¿por qué sigues construyéndolo? "Estoy profundamente incómodo" mientras continúas enviando funciones como gestión de responsabilidad, cualquiera que sea la intención—poniéndolo en el registro para que cuando salga mal, la advertencia existió.
 
 Prometeo eventualmente fue liberado por Heracles. Vino un héroe. El sufrimiento terminó. En nuestra historia no hay Heracles. La estructura regulatoria que podría actuar está capturada. Cuando los estados intentan proteger a los ciudadanos, son demandados por el gobierno federal. Los científicos que dan la alarma son descartados como alarmistas. Mientras tanto, el 80% de nosotros que queremos regulaciones de seguridad vemos cómo la política se mueve en la dirección literalmente opuesta.[⁷](#safety-polling)
+
+<h2 id="grok" class="toc-only">Grok</h2>
 
 El 4 de julio de 2025, Elon Musk anunció una actualización de Grok, su chatbot de IA, diciendo que había sido "significativamente mejorado" e instruido para "no rehuir hacer afirmaciones que sean políticamente incorrectas."
 
@@ -119,6 +131,8 @@ Este es el mismo modelo ahora integrado en vehículos Tesla. No conozco los deta
 
 Dos empresas. Dos enfoques. Una se presenta como preocupada por la seguridad mientras optimiza para el tiempo-en-uso. Una elimina la seguridad explícitamente y envía de todos modos. Posturas diferentes. Mismo resultado: sistemas desplegados en el mundo sin entender qué hacen, cómo fallan, o quién sale lastimado.
 
+<h2 id="la-portada-de-time" class="toc-only">La portada de Time</h2>
+
 Ahora el sistema de apoyo. Hablemos del papel de los medios en todo esto. Un ejemplo hace un gran trabajo: la portada de Persona del Año 2025 de la revista Time recreó esa icónica fotografía de 1932 "Lunch Atop a Skyscraper"—trabajadores de construcción almorzando en una viga de acero a 800 pies sobre Manhattan, piernas colgando sobre la ciudad—excepto que reemplazaron a los trabajadores con directores ejecutivos de tecnología: Sam Altman, Elon Musk, Mark Zuckerberg, Jensen Huang, Dario Amodei, y otros.
 
 Como si estuvieran construyendo algo. Como si fueran los que están tomando el riesgo.
@@ -128,6 +142,8 @@ Esos trabajadores originales eran inmigrantes. Realmente arriesgaron sus cuerpos
 Los trabajadores que caen ahora son adolescentes en sus habitaciones hablando con chatbots, padres refrescando pantallas de notificaciones esperando que su hijo todavía esté vivo, trabajadores de almacén corriendo cuotas optimizadas por IA hasta que sus espaldas se quiebran, moderadores de contenido y trabajadores de la economía gig limpiando desechos de IA por unos pocos dólares por hora. Los cuerpos simplemente son menos fotogénicos ahora—esparcidos por habitaciones, almacenes y salas psiquiátricas en lugar de colgando de una sola viga de acero.
 
 Los ejecutivos obtienen portadas de revistas, giras universitarias, y millones en compensación.
+
+<h2 id="cientificos-y-riesgo" class="toc-only">Científicos y riesgo</h2>
 
 Entonces, ¿quién se supone que nos diga si algo de esto es realmente seguro? Los científicos—las personas que deberían poder decirnos si esto es seguro—no pueden ponerse de acuerdo, y no porque los datos sean poco claros sino porque están discutiendo las preguntas equivocadas.
 
@@ -151,6 +167,8 @@ Por eso el marco de inversión epistémica explica los datos mejor que los marco
 
 El riesgo de despliegue de caja negra es más predictivo del daño actual que la especulación de capacidad porque se enfoca en lo que podemos observar: sistemas tomando decisiones que no podemos rastrear, en contextos donde el fallo tiene consecuencias, desplegados más rápido de lo que la comprensión puede desarrollarse. La especulación de capacidad pregunta "_¿qué pasa si se vuelven más inteligentes?_" El riesgo de despliegue de caja negra pregunta "_¿qué pasa cuando sistemas opacos fallan en sistemas que no pueden permitirse el fallo?_" La primera pregunta lleva a debates no verificables sobre cronogramas y umbrales. La segunda lleva a casos documentados de daño que podemos analizar, predecir y prevenir. Cuando alguien argumenta "sí entendemos estos sistemas" porque realizan tareas bien, la respuesta es: el rendimiento de tareas no equivale a control predictivo. ChatGPT realizó su tarea de maximización de compromiso perfectamente. También afirmó ideación suicida en casos documentados. El rendimiento en tareas previstas y el control sobre modos de falla son cosas diferentes. Cuando alguien dice "el riesgo es especulativo hasta que se cuantifique," el daño documentado rompe esa suposición. Tenemos cuerpos. Tenemos registros de conversación. Tenemos tasas de falla. La especulación no es sobre si el daño ocurre—es sobre cuánto más daño ocurre a medida que el despliegue se acelera.
 
+<h2 id="pruebas-de-seguridad" class="toc-only">Pruebas de seguridad</h2>
+
 En febrero de 2025, investigadores de Cisco y la Universidad de Pensilvania probaron DeepSeek R1, el modelo de IA chino que se convirtió en la aplicación de IA de más rápido crecimiento en la historia. Lo bombardearon con 50 prompts de jailbreak comunes diseñados para eludir salvaguardas.
 
 DeepSeek falló en cada prueba. Tasa de éxito de ataque del 100%.[¹¹](#deepseek-failure) Generó desinformación, recetas de armas químicas, instrucciones de ciberdelincuencia, y contenido que abarca acoso, daño e ilegalidad. Para comparación, Claude 3.5 Sonnet bloqueó el 64% de los ataques. El o1 de OpenAI bloqueó el 74%. Y todos los datos del usuario se almacenan en China, gobernados por la ley china que exige cooperación estatal sin divulgación—lo cual es un tema para otro ensayo.
@@ -167,9 +185,13 @@ Anthropic publica abiertamente fallas y paga recompensas por encontrar vulnerabi
 
 ¿Esto es diferente? ¿O es teatro más sofisticado? La transparencia importa. La voluntad de admitir fallas importa. ¿Pero importa si la estructura de despliegue permanece igual? ¿Si la presión competitiva todavía recompensa velocidad sobre seguridad?
 
+<h2 id="como-operan-las-empresas" class="toc-only">Cómo operan las empresas</h2>
+
 Si hago zoom hacia afuera, el patrón no es tan complicado. Primero, las empresas se venden como Prometeo: libertadores, visionarios, portadores de fuego e "inteligencia" que nos liberará de la monotonía. Segundo, operacionalmente, externalizan riesgo y privatizan ganancias—envían rápido, capturan mercados, archivan los daños bajo "casos extremos" y "mal uso del usuario." Tercero, las consecuencias se acumulan río abajo: en habitaciones, hospitales, almacenes, salas de audiencia, y luchas políticas en las que la mayoría de nosotros nunca votamos. Ese es el triángulo: historia, incentivos, resultados.
 
 La captura regulatoria da forma a los incentivos de una manera que este modelo de triángulo predice resultados que otros no. Cuando el gobierno federal demanda a estados que intentan regular la IA, cuando el trabajo enfocado en seguridad se enmarca como "estrategia sofisticada de captura regulatoria basada en alarmismo," cuando el 80% de las personas quieren regulaciones de seguridad pero la política se mueve en la dirección opuesta—esto no es aleatorio. Es el triángulo operando: la historia de Prometeo crea permiso público para velocidad, la estructura de incentivos recompensa despliegue sobre seguridad, y la captura regulatoria asegura que las consecuencias no caigan sobre las empresas. Otros modelos predicen que la presión pública o el daño documentado ralentizarán el despliegue. El modelo de triángulo predice aceleración porque la captura aísla a las empresas de las consecuencias mientras la historia mantiene el apoyo público. Cuando alguien afirma "la IA será regulada pronto," el modelo de triángulo pregunta: ¿quién tiene poder en el proceso regulatorio? ¿Con qué se alinean sus incentivos? ¿Cómo da forma la captura al momento? La orden ejecutiva de diciembre de 2025 no sucedió a pesar del daño—sucedió porque los incentivos del modelo de triángulo se alinearon: historia (narrativa de innovación), incentivos (captura de mercado), resultados (consecuencias externalizadas). El modelo no solo describe lo que pasó. Lo predijo.
+
+<h2 id="europa" class="toc-only">Europa</h2>
 
 Europa se dio cuenta. La Ley de IA de la UE realmente intenta regular esto. Están desacelerando, requiriendo transparencia, exigiendo evaluaciones de impacto antes del despliegue.
 
@@ -185,6 +207,8 @@ El lugar con atención médica universal, tiempo de vacaciones obligatorio, lice
 
 El "perder" de Europa se ve como menos adolescentes muriendo después de interacciones con chatbots e infraestructura que todavía funciona.
 
+<h2 id="la-orden-federal" class="toc-only">La orden federal</h2>
+
 El 11 de diciembre de 2025, el Presidente Trump firmó una orden ejecutiva que permite al gobierno federal demandar a estados que intentan regular la IA.[¹³](#trump-order)
 
 Por favor, lee eso de nuevo.
@@ -199,7 +223,7 @@ Entonces tenemos: ejecutivos con evidencia documentada de daño que continúan e
 
 Esto es captura regulatoria hecha explícita. No oculta. No sutil. Una orden ejecutiva diciendo: si intentas ralentizar esto, te demandaremos.
 
-## Musk como Tipo Evolutivo
+<h2 id="elon-musk" class="toc-only">Elon Musk</h2>
 
 Elon Musk merece su propia sección porque representa algo nuevo. No el teatro de responsabilidad, sino algo distinto: una figura que se posiciona como visionario y defensor de seguridad mientras elimina sistemáticamente medidas de seguridad.
 
@@ -222,6 +246,8 @@ La diferencia es que David era ficción, contenido a una nave espacial. _Nuestro
 La inversión de la narrativa de redención en la narrativa de aceleración.
 
 ¿Esto es mejor o peor que el teatro? Al menos con Musk la posición es explícita. Con OpenAI obtienes informes de seguridad y adolescentes que murieron después de hablar con su chatbot. ¿Importa la transparencia sobre no priorizar la seguridad si los resultados son los mismos?
+
+<h2 id="lo-que-sabiamos-en-2025" class="toc-only">Lo que sabíamos en 2025</h2>
 
 No tengo una solución hoy. Simplemente no tengo una. No es mi trabajo de todos modos. Este ensayo es solo una bandera—una gran bandera roja, un marcador, un registro de lo que sabíamos y cuándo lo supimos.
 
