@@ -7,6 +7,16 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.8.8] — 2026-08-27
+
+### Changed
+
+- Comment threads sit closer to the essay, with a small ✦ break instead of a padded gap and a horizontal rule.
+
+### Removed
+
+- Remark42 “Powered by” footer on post comments.
+
 ## [6.8.7] — 2026-08-27
 
 ### Changed

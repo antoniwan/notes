@@ -19,7 +19,7 @@ const hasRelatedPosts = relatedPosts.length > 0;
 
 {
   hasRelatedPosts && (
-    <section class="related-posts mt-14 pt-8">
+    <section class="related-posts mt-10">
       <div class="space-y-7">
         {/* Header */}
         <div class="mb-6">
@@ -71,6 +71,11 @@ const hasRelatedPosts = relatedPosts.length > 0;
 <style>
   .related-posts {
     scroll-margin-top: 2rem;
+  }
+
+  .related-posts h2,
+  .related-posts p {
+    margin-top: 0;
   }
 
   /* Post list styling similar to Chapter component */

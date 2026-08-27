@@ -6,9 +6,10 @@ const pageUrl = generateCanonicalUrl(Astro.url.pathname);
 const { host, siteId } = commentsConfig;
 ---
 
-<div class="comments-section mt-12 pt-8">
-  <h2 class="mb-6 text-2xl font-bold text-[rgb(var(--color-text))]">💬 Leave a note</h2>
-  <p class="text-body-muted mb-8">
+<div class="comments-section mt-8">
+  <div class="post-section-break" aria-hidden="true">✦</div>
+  <h2 class="mb-2 text-2xl font-bold text-[rgb(var(--color-text))]">💬 Leave a note</h2>
+  <p class="text-body-muted mb-4">
     Share your thoughts, ask questions, or simply let me know what resonated with you. I read and
     respond to every comment personally. Sign in with your favorite social account to participate.
   </p>
@@ -29,7 +30,11 @@ const { host, siteId } = commentsConfig;
 
 <script>
   import type { Remark42Instance } from '../types/comments';
-  import { createRemark42Instance, whenRemark42Ready } from '../utils/remark42.client';
+  import {
+    buildRemark42Config,
+    createRemark42Instance,
+    whenRemark42Ready,
+  } from '../utils/remark42.client';
   import { THEME_CHANGE_EVENT } from '../utils/themeEvents';
 
   // Store the current Remark42 instance so we can destroy it on SPA navigation
@@ -96,11 +101,7 @@ const { host, siteId } = commentsConfig;
       }
 
       // Remark42 embed.js reads window.remark_config on load; set it so they don't throw (reading 'host' of undefined)
-      window.remark_config = {
-        host,
-        site_id: siteId,
-        url: pageUrl,
-      };
+      window.remark_config = buildRemark42Config(host, siteId, pageUrl);
 
       const script = document.createElement('script');
       script.src = `${host}/web/embed.js`;
@@ -189,12 +190,32 @@ const { host, siteId } = commentsConfig;
 </script>
 
 <style>
-  /* Remark42 container styling */
-  :global(#remark42) {
-    min-height: 100px;
+  .post-section-break {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 1.25rem;
+    color: rgb(var(--color-accent));
+    font-size: 0.9rem;
+    line-height: 1;
+    opacity: 0.8;
   }
 
-  /* Ensure Remark42 respects dark mode */
+  /* Global h2/p margins are sized for article body; zero them here so the
+     thread sits on the article instead of after a padded void. */
+  .comments-section h2 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .comments-section > p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  :global(#remark42) {
+    min-height: 0;
+  }
+
   :global(.dark #remark42) {
     color-scheme: dark;
   }
