@@ -7,6 +7,12 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.8.5] — 2026-08-27
+
+### Fixed
+
+- Post image captions sit under the image on desktop instead of centering across the full column.
+
 ## [6.8.3] — 2026-08-19
 
 ### Changed

@@ -63,7 +63,7 @@
     },
     {
       "id": "el-problema-de-prometeo",
-      "bodyLength": 44202,
+      "bodyLength": 44179,
       "pubDate": "2025-12-16T19:00:00.000Z"
     },
     {
@@ -318,7 +318,7 @@
     },
     {
       "id": "symbols-of-power",
-      "bodyLength": 13661,
+      "bodyLength": 11502,
       "pubDate": "2024-07-06T11:20:00.000Z"
     },
     {
@@ -358,7 +358,7 @@
     },
     {
       "id": "the-prometheus-problem",
-      "bodyLength": 39253,
+      "bodyLength": 39231,
       "pubDate": "2025-12-16T19:00:00.000Z"
     },
     {
@@ -413,7 +413,7 @@
     },
     {
       "id": "who-really-raised-me",
-      "bodyLength": 8452,
+      "bodyLength": 8299,
       "pubDate": "2025-04-17T13:56:47.953Z"
     },
     {
@@ -7708,10 +7708,10 @@
       "recursiveThinking": false,
       "sentiment": {
         "score": -1,
-        "comparative": -0.011363636363636364,
+        "comparative": -0.012345679012345678,
         "calculation": [
           {
-            "admit": -1
+            "lazy": -1
           }
         ],
         "tokens": [
@@ -7753,17 +7753,16 @@
           "that",
           "raised",
           "me",
-          "[my",
-          "daughter",
-          "and",
-          "i",
-          "talking",
-          "about",
-          "magic",
-          "fruit]",
+          "<figure",
+          "class",
+          "post-inline-figure",
+          ">",
+          "<img",
+          "src",
           "images",
           "mia-y-yo-anime",
           "avif",
+          "alt",
           "my",
           "daughter",
           "and",
@@ -7772,6 +7771,23 @@
           "about",
           "magic",
           "fruit",
+          "loading",
+          "lazy",
+          "decoding",
+          "async",
+          ">",
+          "<figcaption>my",
+          "daughter",
+          "and",
+          "i",
+          "talking",
+          "about",
+          "magic",
+          "fruit",
+          "<",
+          "figcaption>",
+          "<",
+          "figure>",
           "when",
           "i",
           "think",
@@ -7779,37 +7795,14 @@
           "what",
           "i",
           "value",
-          "today",
-          "throughout",
-          "my",
-          "life",
-          "from",
-          "childhood",
-          "to",
-          "now",
-          "i",
-          "can",
-          "only",
-          "admit",
-          "that",
-          "fictional",
-          "characters",
-          "have",
-          "influenced",
-          "me",
-          "heavily",
-          "in",
-          "my",
-          "upbringing",
-          "my",
-          "emo"
+          "today"
         ],
         "words": [
-          "admit"
+          "lazy"
         ],
         "positive": [],
         "negative": [
-          "admit"
+          "lazy"
         ]
       }
     },
@@ -9207,7 +9200,7 @@
           "phrase": "meta",
           "type": "recursive-thinking",
           "context": "sentence",
-          "sentence": "- **Transmutation**: Alchemical transformation — literal or metaphorical — of self or experience",
+          "sentence": "- **Transmutation** — Alchemical transformation — literal or metaphorical — of self or experience",
           "confidence": 0.9
         }
       ],
@@ -9222,6 +9215,7 @@
         "tokens": [
           "-",
           "transmutation",
+          "—",
           "alchemical",
           "transformation",
           "—",

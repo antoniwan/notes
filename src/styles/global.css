@@ -803,6 +803,10 @@
   margin: 0 auto !important;
 }
 
+.prose figure figcaption {
+  text-align: inherit;
+}
+
 .prose > div:first-child img {
   object-fit: cover !important;
 }
@@ -846,50 +850,66 @@
   max-width: none;
 }
 
-/* Inline figures: not full-bleed; align flush start with prose (better than centered for “document” rhythm).
-   Add `post-inline-figure--center` to center; use floats only for tiny wrap-around assets (not default here). */
+/* Inline figures: cap the FIGURE (not just the image) so captions share the
+   image's width and start edge. `.prose figure { width: 100%; text-align: center }`
+   otherwise leaves a narrower image left-aligned under a full-column caption.
+   Add `post-inline-figure--center` to center the whole unit. */
 .post-prose.prose figure.post-inline-figure {
-  width: fit-content !important;
-  max-width: 100% !important;
+  display: flex !important;
+  flex-direction: column;
+  align-items: stretch;
+  width: max-content !important;
+  max-width: min(36rem, 100%) !important;
   margin-inline-start: 0 !important;
   margin-inline-end: auto !important;
+  text-align: start !important;
 }
 
 .post-prose.prose figure.post-inline-figure.post-inline-figure--center {
   margin-inline-start: auto !important;
   margin-inline-end: auto !important;
+  text-align: center !important;
 }
 
-/* Natural/intrinsic size up to caps — avoids prose full-width, without shrinking small assets */
 .post-prose.prose figure.post-inline-figure img {
-  width: auto !important;
-  max-width: min(100%, 36rem) !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
   height: auto !important;
   display: block !important;
   margin-inline-start: 0 !important;
-  margin-inline-end: auto !important;
+  margin-inline-end: 0 !important;
   object-fit: contain !important;
 }
 
-.post-prose.prose figure.post-inline-figure.post-inline-figure--center img {
-  margin-inline-start: auto !important;
-  margin-inline-end: auto !important;
+.post-prose.prose figure.post-inline-figure.post-inline-figure--sm {
+  max-width: min(18rem, 100%) !important;
 }
 
 .post-prose.prose figure.post-inline-figure.post-inline-figure--sm img {
-  max-width: min(100%, 18rem) !important;
   max-height: 12rem !important;
 }
 
+.post-prose.prose figure.post-inline-figure.post-inline-figure--lg {
+  max-width: min(52rem, 100%) !important;
+}
+
 .post-prose.prose figure.post-inline-figure.post-inline-figure--lg img {
-  max-width: min(100%, 52rem) !important;
   max-height: min(85vh, 48rem) !important;
 }
 
 .post-prose.prose figure.post-inline-figure figcaption {
+  /* Caption must not drive the figure's intrinsic width. */
+  width: 0 !important;
+  min-width: 100% !important;
   margin-top: 0.5rem;
   font-size: 0.875rem;
   color: rgb(var(--color-text-muted));
+  text-align: start;
+}
+
+.post-prose.prose figure.post-inline-figure.post-inline-figure--center figcaption {
+  text-align: center;
 }
 
 .prose :where(h2, h3, h4) {
