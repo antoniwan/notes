@@ -7,5 +7,6 @@ public/**/*.avif
 public/**/*.svg
 *.lock
 pnpm-lock.yaml
+src/data/.brain-science-cache/
 
 
