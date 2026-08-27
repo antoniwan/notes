@@ -6,6 +6,10 @@ description: >-
 pubDate: '2024-05-29T18:01:30.848Z'
 language:
   - en
+heroImage: /images/mia-long-hair.webp
+imageAlt: >-
+  Pixel-art girl with long dark wavy hair flowing in the wind, standing under a
+  bright cloudy sky
 category:
   - metaspace
   - integration-growth
