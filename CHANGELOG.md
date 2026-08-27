@@ -7,6 +7,12 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.8.7] — 2026-08-27
+
+### Changed
+
+- Prose body font is Source Serif 4 instead of Literata, so long-form reading sits quieter next to Fraunces headings and DM Sans UI.
+
 ## [6.8.6] — 2026-08-27
 
 ### Added

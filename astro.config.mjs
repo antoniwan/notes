@@ -75,7 +75,7 @@ export default defineConfig({
       subsets: ['latin'],
     },
     {
-      name: 'Literata',
+      name: 'Source Serif 4',
       cssVariable: '--font-serif',
       provider: fontProviders.fontsource(),
       weights: [300, 400, 500, 600, 700, 800],
