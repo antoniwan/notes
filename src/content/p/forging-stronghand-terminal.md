@@ -8,6 +8,7 @@ pubDate: '2025-04-28'
 language:
   - en
 category:
+  - diy-creation
   - systems-strategy
   - learning-projects
 tags:

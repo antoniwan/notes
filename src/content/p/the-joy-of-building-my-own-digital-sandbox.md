@@ -9,9 +9,9 @@ language:
   - en
 heroImage: /images/how-i-view-the-world.avif
 category:
-  - systems-strategy
   - diy-creation
   - metaspace
+  - systems-strategy
   - art-expression
 tags:
   - astro

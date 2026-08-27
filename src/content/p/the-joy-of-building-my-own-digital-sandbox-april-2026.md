@@ -12,8 +12,8 @@ imageAlt: >-
   Boy and a small robot kneeling on a wooden floor, building glowing miniature
   structures from carved wooden blocks in a sunlit attic workshop
 category:
-  - metaspace
   - diy-creation
+  - metaspace
   - systems-strategy
   - art-expression
 tags:
