@@ -75,7 +75,7 @@ Remark42 uses `PUBLIC_REMARK42_HOST` and `PUBLIC_REMARK42_SITE_ID` when you turn
 | `pnpm run lint`                     | ESLint                                                                                        |
 | `pnpm run lint:fix`                 | ESLint with `--fix`                                                                           |
 | `pnpm run format`                   | Prettier write                                                                                |
-| `pnpm run format:check`             | Prettier check                                                                                |
+| `pnpm run format:check`             | Prettier check (CI verifier; does not rewrite files)                                          |
 | `pnpm run audit-frontmatter`        | Required-field / language sanity check on `src/content/p`                                     |
 | `pnpm run validate-feeds`           | Validates `dist/rss.xml` + `dist/feed.json` (run after build)                                 |
 | `pnpm run validate-structured-data` | Smoke-checks structured-data module exports                                                   |
@@ -85,6 +85,8 @@ Remark42 uses `PUBLIC_REMARK42_HOST` and `PUBLIC_REMARK42_SITE_ID` when you turn
 | `pnpm run lighthouse`               | Lighthouse HTML report (start dev server first)                                               |
 | `pnpm run performance`              | Runs `pnpm run build`, then `pnpm run analyze`                                                |
 | `pnpm run audit-performance`        | Full `pnpm run build`, then Lighthouse performance JSON                                       |
+
+CI’s format step **checks**; it does not rewrite or open a follow-up commit. After `pnpm install`, a pre-commit hook runs Prettier on staged files so commits already match that check.
 
 ## Build (social images)
 

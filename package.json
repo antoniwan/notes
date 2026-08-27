@@ -1,7 +1,7 @@
 {
   "name": "notes blog",
   "type": "module",
-  "version": "6.8.5",
+  "version": "6.8.6",
   "repository": {
     "type": "git",
     "url": "https://github.com/antoniwan/notes.git"
@@ -19,6 +19,7 @@
     "lighthouse": "npx lighthouse http://localhost:4321 --output=html --output-path=./lighthouse-report.html",
     "performance": "pnpm run build && pnpm run analyze",
     "audit-performance": "pnpm run build && npx lighthouse http://localhost:4321 --only-categories=performance --output=json --output-path=./performance-audit.json",
+    "prepare": "simple-git-hooks",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint .",
@@ -59,12 +60,20 @@
     "@typescript-eslint/parser": "^8.59.2",
     "eslint": "^10.3.0",
     "eslint-plugin-astro": "^1.7.0",
+    "lint-staged": "^17.3.0",
     "playwright": "1.55.0",
     "prettier": "^3.8.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.8.0",
+    "simple-git-hooks": "^2.13.1",
     "terser": "^5.47.1",
     "typescript": "^5.9.3",
     "vitest": "^3.2.7"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm exec lint-staged"
+  },
+  "lint-staged": {
+    "*": "prettier --write --ignore-unknown"
   }
 }

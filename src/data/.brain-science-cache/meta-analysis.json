@@ -407,6 +407,11 @@
       "pubDate": "2025-04-30T12:52:40.726Z"
     },
     {
+      "id": "what-phrases-did-your-dad-install-on-you",
+      "bodyLength": 11762,
+      "pubDate": "2026-08-27T19:00:00.000Z"
+    },
+    {
       "id": "who-i-am-today-a-recovery-progress-report",
       "bodyLength": 5980,
       "pubDate": "2025-08-06T11:00:00.000Z"
@@ -438,6 +443,45 @@
     }
   ],
   "analyses": [
+    {
+      "postTitle": "What Phrases Did Your Dad Install On You?",
+      "postSlug": "what-phrases-did-your-dad-install-on-you",
+      "postDate": "2026-08-27T19:00:00.000Z",
+      "metaLanguageCount": 1,
+      "metaLanguagePatterns": [
+        {
+          "phrase": "what i think",
+          "type": "meta-cognition",
+          "context": "sentence",
+          "sentence": "At least that's what I think he used it for",
+          "confidence": 0.85
+        }
+      ],
+      "selfAwarenessScore": 8,
+      "writingAsSubject": false,
+      "writingAsTool": true,
+      "recursiveThinking": false,
+      "sentiment": {
+        "score": 0,
+        "comparative": 0,
+        "calculation": [],
+        "tokens": [
+          "at",
+          "least",
+          "that's",
+          "what",
+          "i",
+          "think",
+          "he",
+          "used",
+          "it",
+          "for"
+        ],
+        "words": [],
+        "positive": [],
+        "negative": []
+      }
+    },
     {
       "postTitle": "El Trickle Down Sí Llegó",
       "postSlug": "el-trickle-down-si-llego",
@@ -7707,11 +7751,14 @@
       "writingAsTool": false,
       "recursiveThinking": false,
       "sentiment": {
-        "score": -1,
-        "comparative": -0.012345679012345678,
+        "score": -3,
+        "comparative": -0.033707865168539325,
         "calculation": [
           {
-            "lazy": -1
+            "insane": -2
+          },
+          {
+            "admit": -1
           }
         ],
         "tokens": [
@@ -7753,41 +7800,6 @@
           "that",
           "raised",
           "me",
-          "<figure",
-          "class",
-          "post-inline-figure",
-          ">",
-          "<img",
-          "src",
-          "images",
-          "mia-y-yo-anime",
-          "avif",
-          "alt",
-          "my",
-          "daughter",
-          "and",
-          "i",
-          "talking",
-          "about",
-          "magic",
-          "fruit",
-          "loading",
-          "lazy",
-          "decoding",
-          "async",
-          ">",
-          "<figcaption>my",
-          "daughter",
-          "and",
-          "i",
-          "talking",
-          "about",
-          "magic",
-          "fruit",
-          "<",
-          "figcaption>",
-          "<",
-          "figure>",
           "when",
           "i",
           "think",
@@ -7795,14 +7807,59 @@
           "what",
           "i",
           "value",
-          "today"
+          "today",
+          "throughout",
+          "my",
+          "life",
+          "from",
+          "childhood",
+          "to",
+          "now",
+          "i",
+          "can",
+          "only",
+          "admit",
+          "that",
+          "fictional",
+          "characters",
+          "have",
+          "influenced",
+          "me",
+          "heavily",
+          "in",
+          "my",
+          "upbringing",
+          "my",
+          "emotions",
+          "my",
+          "feelings",
+          "and",
+          "my",
+          "paradigms",
+          "it's",
+          "absolutely",
+          "insane",
+          "jajaja",
+          "i",
+          "was",
+          "able",
+          "to",
+          "identify",
+          "many",
+          "of",
+          "the",
+          "emotions",
+          "tied",
+          "to"
         ],
         "words": [
-          "lazy"
+          "insane",
+          "admit"
         ],
         "positive": [],
         "negative": [
-          "lazy"
+          "insane",
+          "admit"
         ]
       }
     },

@@ -6,5 +6,6 @@ public/**/*.webp
 public/**/*.avif
 public/**/*.svg
 *.lock
+pnpm-lock.yaml
 
 

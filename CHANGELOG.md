@@ -7,6 +7,16 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.8.6] — 2026-08-27
+
+### Added
+
+- Pre-commit hook runs Prettier on staged files so the CI format check does not need a follow-up commit.
+
+### Changed
+
+- Format-on-save uses Prettier for Astro, Markdown, JSON, and CSS so the editor matches CI.
+
 ## [6.8.5] — 2026-08-27
 
 ### Fixed
