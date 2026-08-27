@@ -179,6 +179,8 @@ export const SOCIAL_IMAGE_MANIFEST: Record<string, string> = {
   '/images/2026/value-roads.avif': '/social/images/2026/value-roads-social.jpg',
   '/images/2026/vastitas-flower.avif': '/social/images/2026/vastitas-flower-social.jpg',
   '/images/2026/vastitas.avif': '/social/images/2026/vastitas-social.jpg',
+  '/images/2026/what-phrases-did-your-dad-install-on-you.avif':
+    '/social/images/2026/what-phrases-did-your-dad-install-on-you-social.jpg',
   '/images/ai-is-creepy.avif': '/social/images/ai-is-creepy-social.jpg',
   '/images/anime-souls.avif': '/social/images/anime-souls-social.jpg',
   '/images/breathing-deep.avif': '/social/images/breathing-deep-social.jpg',
