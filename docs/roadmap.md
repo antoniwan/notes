@@ -20,7 +20,7 @@ This section is a **checkpoint** so the roadmap does not read like the site is o
 - **Reading & discovery**: full-text **search** (build-time index), **categories**, **tags** (index, per-tag pages, **tag management** analytics view), **Everything** archive, **Guided Path** (seasonal order; progress in the browser only).
 - **Posts**: automatic **reading time**, **reading progress** (`localStorage`), markdown-derived **table of contents**, **EN/ES** linking via `translationGroup`, **related posts** at the bottom via overlapping tags (“Continue reading”).
 - **Home**: **highlight** masonry for published posts marked `featured: true`.
-- **Brain Science**: multi-page **stats and charts** (cadence, topics, sentiment, etc.).
+- **Writing Insights** (`/brain-science`): multi-page **stats and charts** (cadence, topics, lexicon buckets, etc.). See [brain-science.md](./brain-science.md).
 - **Library**: dedicated **books** pages (see §4).
 - **Feeds & APIs**: **RSS**, **JSON Feed**, **GET `/api/quotes`**.
 - **Quality & distribution**: **Schema.org** where it fits, optional **Remark42** comments, **service worker** for caching (version bumped on build), **Vercel Web Analytics** and **Speed Insights** in the base layout when those products are enabled on Vercel.
@@ -274,7 +274,7 @@ Corpus + product surface checkpoint. Directional, not a commitment. Companion co
 
 ### Product thesis
 
-Notes is a **public practice OS**, not a growth blog. The job is to make lived accountability discoverable and worth returning to — without audience capture. Author mirrors (Brain Science, Tag Analytics) are intentional Metaspace; they should not outrun reader value forever.
+Notes is a **public practice OS**, not a growth blog. The job is to make lived accountability discoverable and worth returning to — without audience capture. Author mirrors (Writing Insights, Tag Analytics) are intentional Metaspace; they should not outrun reader value forever.
 
 ### Ranked bets
 
@@ -344,7 +344,7 @@ _None queued._
 ### Explicit non-goals (technical)
 
 - Accounts, server-side reading graphs, growth analytics stacks.
-- Expanding Brain Science before feed HTML + listing-policy clarity.
+- Expanding Writing Insights before feed HTML + listing-policy clarity.
 - Full unit-test coverage of every Astro component.
 
 ### Suggested sequencing with product §7
@@ -352,3 +352,16 @@ _None queued._
 1. Ship **feed HTML + social images** (quiet reliability).
 2. Resolve **EN/ES listing policy** before Spanish-first content bets scale.
 3. Then product ranked bets (TLDRs → email → sources), with schema work feeding §5.
+
+---
+
+## 9. Writing Insights (Brain Science) — 2026-08-29
+
+- **Status**: In progress (labels + dictionaries shipped; URL still `/brain-science`)
+- **Tracking:** [brain-science.md](./brain-science.md)
+
+The old name overclaimed. The section is build-time counts and lexicon votes over published Markdown, not psychology. Public chrome now says **Writing Insights**. Routes stay put until a redirect pass.
+
+This pass unblocked the dictionaries: one shared module, Spanish tokens, unicode matching, quieter hedges. Remaining honesty work (grades, Flesch-on-Spanish, in-page leftover headings, `/writing-insights` URL) is listed in that doc, not here.
+
+Feed HTML + listing-policy non-goal from §8 is closed, so expanding this mirror is allowed again — still behind compress + return loops for **readers**.

@@ -59,6 +59,14 @@ function isWritingAsSubject(sentence: string): boolean {
     /(i|we) (write|wrote|writing) (to|because|so|in order)/i,
     /(purpose|point|reason) (of|for) writing/i,
     /writing (itself|process|practice|act)/i,
+    /escribir (es|era|se vuelve|se siente)/i,
+    /(esta|ésta|mi|la) escritura/i,
+    /acto de escribir/i,
+    /proceso de escribir/i,
+    /pr[aá]ctica de escribir/i,
+    /cuando escribo/i,
+    /mientras escribo/i,
+    /escribir (me|nos) (ayuda|permite|obliga|exige)/i,
   ];
 
   return strongIndicators.some((pattern) => pattern.test(lower));
@@ -76,6 +84,10 @@ function isWritingAsTool(sentence: string): boolean {
     /through writing/i,
     /by writing/i,
     /writing (to|for) (express|explore|process|understand|clarify|organize)/i,
+    /escribir (me|nos) (ayuda|permite|deja)/i,
+    /(uso|us[eé]) (la )?escritura (para|como)/i,
+    /a trav[eé]s de (escribir|la escritura)/i,
+    /al escribir/i,
   ];
 
   return toolIndicators.some((pattern) => pattern.test(lower));
@@ -108,6 +120,10 @@ function isGenuineSelfReflection(phrase: string, sentence: string): boolean {
     /(it|this) (makes|made) me (realize|think|wonder|question|reflect)/i,
     /(i|i've) (come|begun|started) to (realize|understand|see|notice)/i,
     /(i|i've) been (thinking|wondering|questioning|reflecting) (about|on|over)/i,
+    /me (doy|di) cuenta (de|que)/i,
+    /me (do[yi]|di) cuenta (de que|que)/i,
+    /(estoy|estuve|he estado) (pensando|reflexionando|pregunt[aá]ndome)/i,
+    /esto me (hace|hizo) (pensar|preguntar|reflexionar)/i,
   ];
 
   return genuineIndicators.some((pattern) => pattern.test(lower));
@@ -128,6 +144,10 @@ function isMetaCognition(sentence: string): boolean {
     /(cognitive|mental) (process|state|activity|function)/i,
     /(aware|conscious) (of|that) (my|the) (thoughts|thinking|mind)/i,
     /(i|i'm) (aware|conscious) (of|that) (i|my|the)/i,
+    /(mis|los) (pensamientos|procesos mentales)/i,
+    /(c[oó]mo|por qu[eé]|qu[eé]) (pienso|pensamos)/i,
+    /(mi|la) mente (funciona|procesa|piensa)/i,
+    /(consciente|consciente de) (mis|los) (pensamientos|pensar)/i,
   ];
 
   return metaIndicators.some((pattern) => pattern.test(lower));
@@ -212,6 +232,11 @@ export function detectMetaLanguage(content: string, title: string): MetaLanguage
       'i consider',
       'i think about',
       'i feel that',
+      'me doy cuenta',
+      'me di cuenta',
+      'me pregunto',
+      'reflexiono',
+      'considero que',
     ];
 
     selfReflectionPhrases.forEach((phrase) => {
@@ -245,6 +270,11 @@ export function detectMetaLanguage(content: string, title: string): MetaLanguage
       'how i think',
       'why i think',
       'what i think',
+      'mis pensamientos',
+      'mi pensamiento',
+      'mi mente',
+      'cómo pienso',
+      'por qué pienso',
     ];
 
     metaCognitionPhrases.forEach((phrase) => {

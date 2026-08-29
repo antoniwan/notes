@@ -19,7 +19,7 @@ Release history: [CHANGELOG.md](./CHANGELOG.md)
 - **Everything** — full archive-style list
 - **Tags** — browse by tag; **Tag management** for overview-style views
 - **Tag prelude links** on `/tag` — links to writing forms (essays, notes, poems, and similar) above the tag cloud when data exists
-- **Brain Science** — writing stats and charts (cadence, topics, sentiment, and similar)
+- **Writing Insights** (`/brain-science`) — writing stats and charts (cadence, topics, lexicon buckets, and similar)
 - **Book library** — static data under `/library` and `/library/books`
 - **Reading time** — from a remark plugin (`minutesRead` in the collection)
 - **Reading progress** on posts — `localStorage` only, no server

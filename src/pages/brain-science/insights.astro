@@ -16,80 +16,19 @@ import {
   countWords,
   estimateReadingMinutes,
   getBasicTextMetricsForPost,
+  perThousand,
 } from '../../utils/brainScience/textAnalysis';
+import {
+  CONFIDENCE_WORDS,
+  EMOTIONAL_WORDS,
+  VULNERABILITY_WORDS,
+} from '../../utils/brainScience/vocabulary';
 
 // Get all published posts
 const posts = await getBrainSciencePosts();
 
 // Sort posts by date
 const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
-const EMOTIONAL_WORDS = [
-  'love',
-  'hate',
-  'fear',
-  'joy',
-  'sadness',
-  'anger',
-  'peace',
-  'anxiety',
-  'hope',
-  'despair',
-  'gratitude',
-  'frustration',
-  'excited',
-  'worried',
-  'confused',
-  'inspired',
-  'overwhelmed',
-  'content',
-  'restless',
-  'fulfilled',
-];
-const VULNERABILITY_WORDS = [
-  'struggle',
-  'difficult',
-  'challenge',
-  'pain',
-  'hurt',
-  'broken',
-  'healing',
-  'recovery',
-  'vulnerable',
-  'afraid',
-  'scared',
-  'nervous',
-  'uncertain',
-  'doubt',
-  'question',
-  'wonder',
-  'maybe',
-  'perhaps',
-  'sometimes',
-  'often',
-];
-const CONFIDENCE_WORDS = [
-  'know',
-  'believe',
-  'certain',
-  'sure',
-  'confident',
-  'clear',
-  'understand',
-  'realize',
-  'discover',
-  'learn',
-  'grow',
-  'improve',
-  'better',
-  'stronger',
-  'wiser',
-  'experience',
-  'practice',
-  'master',
-  'achieve',
-  'succeed',
-];
 
 // Content analysis
 const contentAnalysis = posts.map((post) => {
@@ -109,8 +48,11 @@ const contentAnalysis = posts.map((post) => {
     paragraphCount,
     sentenceCount,
     emotionalIntensity,
+    emotionalDensity: perThousand(emotionalIntensity, wordCount),
     vulnerabilityScore: vulnerabilityCount,
+    vulnerabilityDensity: perThousand(vulnerabilityCount, wordCount),
     confidenceScore: confidenceCount,
+    confidenceDensity: perThousand(confidenceCount, wordCount),
     readingTime: estimateReadingMinutes(post.data.minutesRead, wordCount),
     tags: post.data.tags || [],
     categories: post.data.category || [],
@@ -118,22 +60,24 @@ const contentAnalysis = posts.map((post) => {
 });
 
 // Most emotionally intense posts
-const emotionalPosts = contentAnalysis
-  .sort((a, b) => b.emotionalIntensity - a.emotionalIntensity)
+const emotionalPosts = [...contentAnalysis]
+  .sort((a, b) => b.emotionalDensity - a.emotionalDensity)
   .slice(0, 10);
 
 // Most vulnerable posts
-const vulnerablePosts = contentAnalysis
-  .sort((a, b) => b.vulnerabilityScore - a.vulnerabilityScore)
+const vulnerablePosts = [...contentAnalysis]
+  .sort((a, b) => b.vulnerabilityDensity - a.vulnerabilityDensity)
   .slice(0, 10);
 
 // Most confident posts
-const confidentPosts = contentAnalysis
-  .sort((a, b) => b.confidenceScore - a.confidenceScore)
+const confidentPosts = [...contentAnalysis]
+  .sort((a, b) => b.confidenceDensity - a.confidenceDensity)
   .slice(0, 10);
 
 // Creative energy analysis (posts with most words as proxy for creative energy)
-const creativeEnergyPosts = contentAnalysis.sort((a, b) => b.wordCount - a.wordCount).slice(0, 10);
+const creativeEnergyPosts = [...contentAnalysis]
+  .sort((a, b) => b.wordCount - a.wordCount)
+  .slice(0, 10);
 
 // Personal growth indicators
 const growthIndicators = posts
@@ -383,7 +327,9 @@ const wordCountEmotionalScatter = {
 // Calculate correlation
 const wordCounts = contentAnalysis.map((p) => p.wordCount);
 const emotionalIntensities = contentAnalysis.map((p) => p.emotionalIntensity);
+const emotionalDensities = contentAnalysis.map((p) => p.emotionalDensity);
 const wordEmotionalCorrelation = correlation(wordCounts, emotionalIntensities);
+const wordDensityCorrelation = correlation(wordCounts, emotionalDensities);
 
 // Calculate objective metrics
 const objectiveMetrics = calculateObjectiveMetrics(posts);
@@ -436,7 +382,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
 ---
 
 <BaseLayout
-  title="Emotional Processing Analytics - Brain Science"
+  title="Affect lexicon - Writing Insights"
   description="Counts from fixed dictionaries on post bodies—not emotion recognition or psychology."
   path="/brain-science/insights"
   robots="noindex, follow"
@@ -444,8 +390,8 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
 >
   <BrainScienceLayout
     currentPage="/brain-science/insights"
-    title={pageInfo?.title || 'Emotional Processing Analytics'}
-    description="Signals = exclamations plus matches to static word lists (emotional / vulnerability / confidence). Exploratory; don’t extrapolate beyond what was counted."
+    title={pageInfo?.title || 'Affect lexicon'}
+    description="Exclamation marks plus dictionary hits. Rankings below use hits per 1,000 words so length does not win by default. Not emotion recognition."
   >
     <div
       class="mb-8 flex flex-wrap gap-x-10 gap-y-5 border-b border-[rgb(var(--color-border))]/50 pb-6 md:mb-10 md:gap-x-14 md:pb-8"
@@ -475,6 +421,13 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
         <div class="text-body-muted text-xs">Growth-tagged posts</div>
       </div>
     </div>
+
+    <p class="text-body-muted mb-8 max-w-3xl text-sm">
+      A longer essay has more chances to match <code>love</code>. That is a counting artifact, not
+      more love. Rankings on this page use <strong>hits per 1,000 words</strong>. The scatter below
+      reports Pearson r of length vs raw counts (the confound) and vs the rate (what remains).
+      Correctness here means “we counted tokens as specified,” not “we measured feeling.”
+    </p>
 
     <nav
       class="mb-8 border-b border-dashed border-[rgb(var(--color-border))]/50 pb-4 md:mb-10"
@@ -573,12 +526,13 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
       wordCountEmotionalScatter.datasets[0].data.length > 0 && (
         <section id="scatter-wc" class="mb-10 scroll-mt-28 md:mb-12">
           <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
-            Word length vs lexical intensity (r = {Math.round(wordEmotionalCorrelation * 100) / 100}
-            )
+            Word length vs raw hit count (r = {Math.round(wordEmotionalCorrelation * 100) / 100})
           </h2>
           <p class="text-body-muted mb-6 max-w-3xl text-sm">
-            Pearson correlation on posts as independent points. Formula:
-            <code class="font-mono text-xs">Σ((x−x̄)(y−ȳ)) / √(Σ(x−x̄)²·Σ(y−ȳ)²)</code>.
+            Pearson r of word count vs raw lexicon+exclamation hits. A high r means “intense” is
+            mostly “long.” After dividing by length, r(word count, hits per 1,000 words) is{' '}
+            {Math.round(wordDensityCorrelation * 100) / 100} — closer to 0 is the length confound
+            shrinking. Neither r is a measure of actual emotion.
           </p>
           <ScatterChart
             id="word-emotional-scatter"
@@ -742,8 +696,13 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
     {/* Most Emotionally Intense Posts */}
     <div class="mb-6 md:mb-8">
       <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-lg">
-        Posts with Highest Emotional Intensity
+        Highest affect density (hits per 1,000 words)
       </h3>
+      <p class="text-body-muted mb-4 max-w-3xl text-xs md:text-sm">
+        Ranked by rate, not raw count, so a short note can outrank a long essay. The small number is
+        total dictionary hits (length-biased). “Love” here means the token <code>love</code> /{' '}
+        <code>amor</code>, not that the essay is about love.
+      </p>
       <div
         class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40"
       >
@@ -764,11 +723,11 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
               <div class="shrink-0 text-right">
                 <div
                   class="text-sm font-medium text-[rgb(var(--color-text))] tabular-nums"
-                  title={`Emotional intensity score: ${post.emotionalIntensity} (exclamation marks + emotional keywords)`}
+                  title={`${post.emotionalDensity.toFixed(1)} hits per 1,000 words; raw count ${post.emotionalIntensity}`}
                 >
-                  {post.emotionalIntensity}
+                  {post.emotionalDensity.toFixed(1)}
                 </div>
-                <div class="text-body-muted text-xs">intensity</div>
+                <div class="text-body-muted text-xs">{post.emotionalIntensity} raw</div>
               </div>
             </div>
           ))
@@ -779,8 +738,11 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
     {/* Most Vulnerable Posts */}
     <div class="mb-6 md:mb-8">
       <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-lg">
-        Posts with Highest Vulnerability Scores
+        Highest vulnerability density (per 1,000 words)
       </h3>
+      <p class="text-body-muted mb-4 max-w-3xl text-xs md:text-sm">
+        Same rate vs count split. Tokens like struggle / dolor, not a clinical vulnerability score.
+      </p>
       <div
         class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40"
       >
@@ -801,11 +763,11 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
               <div class="shrink-0 text-right">
                 <div
                   class="text-sm font-medium text-[rgb(var(--color-text))] tabular-nums"
-                  title={`Vulnerability score: ${post.vulnerabilityScore} (struggle, challenge, pain, etc.)`}
+                  title={`${post.vulnerabilityDensity.toFixed(1)} hits per 1,000 words; raw count ${post.vulnerabilityScore}`}
                 >
-                  {post.vulnerabilityScore}
+                  {post.vulnerabilityDensity.toFixed(1)}
                 </div>
-                <div class="text-body-muted text-xs">vulnerability</div>
+                <div class="text-body-muted text-xs">{post.vulnerabilityScore} raw</div>
               </div>
             </div>
           ))

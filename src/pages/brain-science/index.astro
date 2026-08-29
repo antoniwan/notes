@@ -20,6 +20,8 @@ import {
   letterGradeToColor,
 } from '../../utils/insightGenerator';
 import { BRAIN_SCIENCE_PAGES } from '../../data/brainScience';
+import { explainConsistencyFromPosts } from '../../utils/brainScience/grades';
+import GradeExplainer from '../../components/brain-science/GradeExplainer.astro';
 
 // Get all published posts
 const posts = await getBrainSciencePosts();
@@ -35,6 +37,7 @@ const emotionalPosts = calculateEmotionalPosts(posts);
 
 // Calculate objective metrics
 const objectiveMetrics = calculateObjectiveMetrics(posts);
+const gradeExplanations = explainConsistencyFromPosts(posts);
 
 // Prepare time series data for post count over time
 const monthlyPosts = calculateMonthlyPosts(
@@ -72,7 +75,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'index');
 ---
 
 <BaseLayout
-  title="Writing Analytics & Self-Discovery - Brain Science"
+  title="Writing Insights"
   description="Build-time aggregates from published posts—counts, lexicon sentiment buckets, and simple consistency scores. Exploratory, not psychology."
   path="/brain-science"
   robots="noindex, follow"
@@ -80,7 +83,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'index');
 >
   <BrainScienceLayout
     currentPage="/brain-science"
-    title={pageInfo?.title || 'Writing Analytics & Self-Discovery'}
+    title={pageInfo?.title || 'Writing Insights'}
     description="Everything here is computed at build from published Markdown: word splits, fixed dictionaries, tags, and dates. Useful for spotting drift or concentration—NOT clinical or cognitive assessment."
   >
     <div
@@ -253,8 +256,8 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'index');
         Lexicon sentiment &amp; consistency (heuristic)
       </h2>
       <p class="text-body-muted mb-8 max-w-3xl text-sm">
-        Same engines as elsewhere in Brain Science: small dictionaries map tokens to coarse buckets.
-        Grades compress continuous scores—useful shorthand, not ground truth about you.
+        Same engines as the other Writing Insights pages: shared dictionaries map tokens to coarse
+        buckets. Grades compress continuous scores—useful shorthand, not ground truth about you.
       </p>
 
       <h3 class="text-body-muted mb-2 text-sm font-semibold tracking-wide uppercase">
@@ -354,6 +357,8 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'index');
         </table>
       </div>
 
+      <GradeExplainer explanations={gradeExplanations} />
+
       {
         objectiveMetrics.challengeAreas.length > 0 && (
           <div class="mb-8">
@@ -361,7 +366,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'index');
               Flagged deltas (informal)
             </h3>
             <p class="text-body-muted mb-4 max-w-3xl text-xs md:text-sm">
-              Thresholds come from Brain Science config—dashboard hints, not failing grades.
+              Thresholds come from Writing Insights config—dashboard hints, not failing grades.
             </p>
             <div class="divide-y divide-[rgb(var(--color-border))]/45 border-t border-[rgb(var(--color-border))]/40">
               {objectiveMetrics.challengeAreas.map((challenge) => (

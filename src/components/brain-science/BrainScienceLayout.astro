@@ -1,6 +1,7 @@
 ---
 import Container from '../Container.astro';
 import BrainScienceNav from './BrainScienceNav.astro';
+import WritingInsightsPreamble from './WritingInsightsPreamble.astro';
 
 interface Props {
   currentPage: string;
@@ -21,6 +22,8 @@ const { currentPage, title, description, showNavLinks = true } = Astro.props;
     <h1 class="bs-header__title">{title}</h1>
     <p class="bs-header__desc">{description}</p>
   </header>
+
+  <WritingInsightsPreamble />
 
   <div class="bs-content">
     <slot />

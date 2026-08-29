@@ -297,7 +297,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
 ---
 
 <BaseLayout
-  title="Topic Analysis Analytics - Brain Science"
+  title="Themes & tags - Writing Insights"
   description="Tag counts, co-occurrence pairs, and hand-labeled clusters from your taxonomy. Exploratory only."
   path="/brain-science/topics"
   robots="noindex, follow"
@@ -305,7 +305,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
 >
   <BrainScienceLayout
     currentPage="/brain-science/topics"
-    title={pageInfo?.title || 'Core Themes Analysis'}
+    title={pageInfo?.title || 'Themes & tags'}
     description="Measures are naive: keyword tags on posts, Jaccard-style pair strength for overlap, and static cluster lists in code—not embeddings or latent topics."
   >
     <div

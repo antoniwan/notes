@@ -1,147 +1,19 @@
 import type { CollectionEntry } from 'astro:content';
 import { BRAIN_SCIENCE_CONFIG } from '../../data/brainScience';
 import { createMemoBySignature, postsSignature } from './buildMemo';
+import { SENTIMENT_WORDS } from './vocabulary';
+import { countCompiledLexiconHits, lexiconHitRegex } from './textAnalysis';
 
 const config = BRAIN_SCIENCE_CONFIG;
 
-/**
- * Updated and expanded sentiment word lists
- */
-export const SENTIMENT_WORDS = {
-  positive: [
-    'love',
-    'joy',
-    'excited',
-    'happy',
-    'grateful',
-    'inspired',
-    'confident',
-    'proud',
-    'accomplished',
-    'fulfilled',
-    'peaceful',
-    'content',
-    'optimistic',
-    'hopeful',
-    'energized',
-    'motivated',
-    'successful',
-    'achieved',
-    'breakthrough',
-    'transformation',
-    'growth',
-    'improvement',
-    'better',
-    'stronger',
-    'wiser',
-    'appreciate',
-    'celebrate',
-    'thrilled',
-    'delighted',
-    'blessed',
-    'empowered',
-    'liberated',
-    'triumphant',
-    'victorious',
-    'radiant',
-    'blissful',
-    'euphoric',
-    'serene',
-    'tranquil',
-    'harmonious',
-  ],
-  negative: [
-    'hate',
-    'fear',
-    'sadness',
-    'anger',
-    'anxiety',
-    'despair',
-    'frustration',
-    'worried',
-    'confused',
-    'overwhelmed',
-    'restless',
-    'pain',
-    'hurt',
-    'broken',
-    'struggle',
-    'difficult',
-    'challenge',
-    'failure',
-    'disappointed',
-    'defeated',
-    'hopeless',
-    'lost',
-    'stuck',
-    'trapped',
-    'suffering',
-    'dread',
-    'terror',
-    'panic',
-    'distress',
-    'agony',
-    'torment',
-    'misery',
-    'anguish',
-    'grief',
-    'sorrow',
-    'regret',
-    'shame',
-    'guilt',
-    'humiliation',
-    'isolation',
-  ],
-  neutral: [
-    'think',
-    'believe',
-    'understand',
-    'realize',
-    'observe',
-    'notice',
-    'consider',
-    'reflect',
-    'analyze',
-    'examine',
-    'study',
-    'learn',
-    'discover',
-    'explore',
-    'investigate',
-    'research',
-    'find',
-    'determine',
-    'conclude',
-    'decide',
-    'evaluate',
-    'assess',
-    'review',
-    'document',
-    'record',
-    'note',
-    'acknowledge',
-    'recognize',
-    'identify',
-    'describe',
-    'explain',
-    'clarify',
-    'define',
-    'categorize',
-    'classify',
-  ],
-};
-
 const SENTIMENT_REGEXES = {
-  positive: SENTIMENT_WORDS.positive.map((word) => new RegExp(`\\b${word}\\b`, 'gi')),
-  negative: SENTIMENT_WORDS.negative.map((word) => new RegExp(`\\b${word}\\b`, 'gi')),
-  neutral: SENTIMENT_WORDS.neutral.map((word) => new RegExp(`\\b${word}\\b`, 'gi')),
+  positive: SENTIMENT_WORDS.positive.map((word) => lexiconHitRegex(word)),
+  negative: SENTIMENT_WORDS.negative.map((word) => lexiconHitRegex(word)),
+  neutral: SENTIMENT_WORDS.neutral.map((word) => lexiconHitRegex(word)),
 };
 
-function countSentimentHits(content: string, regexes: RegExp[]): number {
-  return regexes.reduce((count, regex) => {
-    regex.lastIndex = 0;
-    return count + (content.match(regex) || []).length;
-  }, 0);
+function countSentimentHits(content: string, regexes: readonly RegExp[]): number {
+  return countCompiledLexiconHits(content, regexes);
 }
 
 type SentimentBreakdown = {

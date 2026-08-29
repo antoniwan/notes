@@ -15,79 +15,17 @@ import {
   estimateReadingMinutes,
   getBasicTextMetricsForPost,
 } from '../../utils/brainScience/textAnalysis';
+import {
+  CURIOSITY_WORDS,
+  INTELLECTUAL_WORDS,
+  WISDOM_WORDS,
+} from '../../utils/brainScience/vocabulary';
 
 // Get all published posts
 const posts = await getBrainSciencePosts();
 
 // Sort posts by date
 const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
-const INTELLECTUAL_WORDS = [
-  'because',
-  'therefore',
-  'however',
-  'although',
-  'nevertheless',
-  'furthermore',
-  'moreover',
-  'consequently',
-  'thus',
-  'hence',
-  'accordingly',
-  'similarly',
-  'conversely',
-  'meanwhile',
-  'subsequently',
-  'previously',
-  'initially',
-  'ultimately',
-  'fundamentally',
-  'essentially',
-];
-const CURIOSITY_WORDS = [
-  'wonder',
-  'curious',
-  'question',
-  'explore',
-  'discover',
-  'investigate',
-  'examine',
-  'analyze',
-  'study',
-  'research',
-  'learn',
-  'understand',
-  'figure out',
-  'find out',
-  'look into',
-  'dive into',
-  'explore',
-  'uncover',
-  'reveal',
-  'unveil',
-];
-const WISDOM_WORDS = [
-  'experience',
-  'learned',
-  'realized',
-  'understood',
-  'discovered',
-  'found',
-  'came to',
-  'figured out',
-  'worked out',
-  'determined',
-  'concluded',
-  'decided',
-  'chose',
-  'opted',
-  'selected',
-  'preferred',
-  'valued',
-  'appreciated',
-  'recognized',
-  'acknowledged',
-];
 
 // Content evolution analysis
 const contentEvolution = posts.map((post) => {
@@ -455,7 +393,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
 ---
 
 <BaseLayout
-  title="Intellectual Growth Analytics - Brain Science"
+  title="Language over time - Writing Insights"
   description="Readability (Flesch) and word-pattern heuristics over time from post bodies—experimental signals, not IQ or quality scores."
   path="/brain-science/evolution"
   robots="noindex, follow"
@@ -463,7 +401,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
 >
   <BrainScienceLayout
     currentPage="/brain-science/evolution"
-    title={pageInfo?.title || 'Intellectual Growth Analytics'}
+    title={pageInfo?.title || 'Language over time'}
     description="Readability formulas and hand-picked word-pattern tallies over time—signals about language, not IQ or depth."
   >
     {/* Snapshot row — notebook-style, no cards */}

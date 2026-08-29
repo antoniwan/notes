@@ -4,7 +4,7 @@ import type { CollectionEntry } from 'astro:content';
 import type { WritingPhilosophyAnalysis } from './metaAnalysis';
 
 interface MetaAnalysisCache {
-  version: 1;
+  version: 2;
   postsSignature: Array<{
     id: string;
     bodyLength: number;
@@ -40,7 +40,7 @@ export function loadMetaAnalysisCache(
     const raw = fs.readFileSync(CACHE_FILE, 'utf8');
     const parsed = JSON.parse(raw) as MetaAnalysisCache;
 
-    if (parsed.version !== 1 || !Array.isArray(parsed.postsSignature)) return null;
+    if (parsed.version !== 2 || !Array.isArray(parsed.postsSignature)) return null;
 
     const currentSignature = buildPostsSignature(posts);
 
@@ -74,7 +74,7 @@ export function saveMetaAnalysisCache(
     }
 
     const cache: MetaAnalysisCache = {
-      version: 1,
+      version: 2,
       postsSignature: buildPostsSignature(posts),
       analyses,
     };

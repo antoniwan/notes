@@ -20,6 +20,8 @@ import {
 } from '../../utils/insightGenerator';
 import { format, differenceInDays } from 'date-fns';
 import { BRAIN_SCIENCE_PAGES } from '../../data/brainScience';
+import { explainConsistencyFromPosts } from '../../utils/brainScience/grades';
+import GradeExplainer from '../../components/brain-science/GradeExplainer.astro';
 
 // Get all published posts
 const posts = await getBrainSciencePosts();
@@ -67,6 +69,7 @@ const productivityTrend: 'improving' | 'declining' | 'stable' =
 
 // Calculate objective metrics
 const objectiveMetrics = calculateObjectiveMetrics(posts);
+const gradeExplanations = explainConsistencyFromPosts(posts);
 
 // Generate dynamic insights
 const insightData = {
@@ -146,7 +149,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
 ---
 
 <BaseLayout
-  title="Writing Cadence - Brain Science"
+  title="Cadence - Writing Insights"
   description="Publish dates, streaks (≤7-day gaps), and calendar slices from your archive. Descriptive only."
   path="/brain-science/cadence"
   robots="noindex, follow"
@@ -154,7 +157,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
 >
   <BrainScienceLayout
     currentPage="/brain-science/cadence"
-    title={pageInfo?.title || 'Writing Cadence'}
+    title={pageInfo?.title || 'Cadence'}
     description="Streaks use a 7-day bridge between posts; everything else is counting and binning by calendar. No claims about creativity or motivation—just timestamps and simple ratios."
   >
     <div
@@ -489,6 +492,8 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
           </tbody>
         </table>
       </div>
+
+      <GradeExplainer explanations={gradeExplanations} />
 
       {/* Strengths */}
       {

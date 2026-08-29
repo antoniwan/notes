@@ -167,7 +167,7 @@ Unit tests (`pnpm test`) cover publish filters, SEO routing, feed HTML sanitizat
 
 ## 10. Scaling risks (known)
 
-- Brain Science routes still hold page-specific lexicon lists; shared **Flesch / word / sentence metrics + objective metrics + sentiment + posts fetch** are memoized for the build process. Cache signature still ignores title and same-length body edits for the disk meta-analysis cache.
+- Writing Insights lexicons live in `src/utils/brainScience/vocabulary.ts` (EN+ES). Flesch / word / sentence metrics + objective metrics + sentiment + posts fetch are memoized for the build process. Meta disk cache is versioned (v2); signature still ignores title and same-length body edits.
 - Dual redirect tables invite drift (host rules stay on Vercel; path redirects in Astro).
 - Graphify graph may lag HEAD; refresh with `graphify update .` after code changes.
 

@@ -12,6 +12,8 @@ import { getTagWeight, MASLOW_CATEGORIES } from '../../data/tags';
 import { categories } from '../../data/categories';
 import type { CollectionEntry } from 'astro:content';
 import { isCollectionPublic } from '../publishFilters';
+import { countLexiconHits } from './textAnalysis';
+import { EMOTIONAL_WORDS, GROWTH_KEYWORDS, GROWTH_TAGS } from './vocabulary';
 
 export interface BaseMetrics {
   totalPosts: number;
@@ -443,34 +445,14 @@ export function calculateCurrentMonthPosts(posts: CollectionEntry<'blog'>[]): nu
  * Calculate growth posts (posts focused on personal growth)
  */
 export function calculateGrowthPosts(posts: CollectionEntry<'blog'>[]): number {
-  const growthTags = [
-    'personal-growth',
-    'transformation',
-    'healing',
-    'self-improvement',
-    'learning',
-    'consciousness',
-  ];
-  const growthKeywords = [
-    'growth',
-    'change',
-    'transform',
-    'learn',
-    'evolve',
-    'improve',
-    'heal',
-    'discover',
-  ];
-
   return posts.filter((post) => {
     const tags = post.data.tags || [];
     const title = post.data.title.toLowerCase();
     const content = (post.body || '').toLowerCase();
+    const haystack = `${title} ${content}`;
 
-    const hasGrowthTags = growthTags.some((tag) => tags.includes(tag));
-    const hasGrowthKeywords = growthKeywords.some(
-      (keyword) => title.includes(keyword) || content.includes(keyword),
-    );
+    const hasGrowthTags = GROWTH_TAGS.some((tag) => tags.includes(tag));
+    const hasGrowthKeywords = countLexiconHits(haystack, GROWTH_KEYWORDS) > 0;
 
     return hasGrowthTags || hasGrowthKeywords;
   }).length;
@@ -483,28 +465,10 @@ export function calculateEmotionalPosts(
   posts: CollectionEntry<'blog'>[],
   threshold: number = 5,
 ): number {
-  const emotionalWords = [
-    'love',
-    'hate',
-    'fear',
-    'joy',
-    'sadness',
-    'anger',
-    'peace',
-    'anxiety',
-    'hope',
-    'despair',
-    'gratitude',
-    'frustration',
-  ];
-
   return posts.filter((post) => {
     const content = post.body || '';
     const exclamationCount = (content.match(/!/g) || []).length;
-    const emotionalWordCount = emotionalWords.reduce((count, word) => {
-      const regex = new RegExp(`\\b${word}\\b`, 'gi');
-      return count + (content.match(regex) || []).length;
-    }, 0);
+    const emotionalWordCount = countLexiconHits(content, EMOTIONAL_WORDS);
 
     return exclamationCount + emotionalWordCount > threshold;
   }).length;

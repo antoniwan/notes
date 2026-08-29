@@ -4,6 +4,7 @@ import {
   countLexiconHits,
   estimateReadingMinutes,
   fleschReadingEase,
+  perThousand,
 } from './textAnalysis';
 import { ogLocaleAlternatesFromHreflang } from '../ogLocale';
 
@@ -21,6 +22,22 @@ describe('textAnalysis basics', () => {
     expect(countLexiconHits('I feel love and joy today', ['love', 'joy', 'hate'])).toBe(2);
     expect(estimateReadingMinutes('4 min read', 900)).toBe(4);
     expect(estimateReadingMinutes(undefined, 400)).toBe(2);
+  });
+
+  it('matches accented Spanish tokens that JS word boundaries miss', () => {
+    expect(countLexiconHits('Siento angustia y también amor.', ['angustia', 'amor'])).toBe(2);
+    expect(countLexiconHits('está bueno', ['está'])).toBe(1);
+    expect(countLexiconHits('me doy cuenta de eso', ['me doy cuenta'])).toBe(1);
+  });
+
+  it('normalizes lexicon hits by length so three loves in a short note outrank three in a long essay', () => {
+    const hits = 3;
+    const shortRate = perThousand(hits, 150);
+    const longRate = perThousand(hits, 3000);
+    expect(shortRate).toBe(20);
+    expect(longRate).toBe(1);
+    expect(shortRate).toBeGreaterThan(longRate);
+    expect(perThousand(hits, 0)).toBe(0);
   });
 });
 

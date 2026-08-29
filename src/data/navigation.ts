@@ -35,7 +35,7 @@ export const mainNavigation: NavigationItem[] = [
         },
         {
           href: '/brain-science',
-          label: 'Brain Science',
+          label: 'Writing Insights',
           icon: '🧠',
         },
         {

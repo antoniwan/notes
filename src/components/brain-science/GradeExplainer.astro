@@ -1,0 +1,117 @@
+---
+import { letterGradeToColor, type GradeExplanation } from '../../utils/brainScience/grades';
+
+interface Props {
+  explanations: GradeExplanation[];
+  heading?: string;
+}
+
+const { explanations, heading = 'What the grades mean for this set' } = Astro.props;
+---
+
+<section class="grade-explain" aria-labelledby="grade-explain-heading">
+  <h3 id="grade-explain-heading" class="grade-explain__heading">{heading}</h3>
+  <p class="grade-explain__lead">
+    An A is not “better writing.” It is a number on a stated formula. Here is why
+    <em>these</em> notes scored what they scored, and what an A would actually require.
+  </p>
+  <ol class="grade-explain__list">
+    {
+      explanations.map((item) => (
+        <li class="grade-explain__item">
+          <div class="grade-explain__row">
+            <span class="grade-explain__metric">{item.metric}</span>
+            <span class:list={['grade-explain__grade', letterGradeToColor(item.grade)]}>
+              {item.grade}
+              <span class="grade-explain__score">{item.score}/100</span>
+            </span>
+          </div>
+          <p>
+            <strong>This set:</strong> {item.why}
+          </p>
+          <p>
+            <strong>An A:</strong> {item.aLooksLike}
+          </p>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<style>
+  .grade-explain {
+    margin: 1.5rem 0 0;
+    max-width: 42rem;
+  }
+
+  .grade-explain__heading {
+    margin: 0 0 0.4rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgb(var(--color-text-muted));
+  }
+
+  .grade-explain__lead {
+    margin: 0 0 1rem;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: rgb(var(--color-text-muted));
+  }
+
+  .grade-explain__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid rgb(var(--color-border) / 0.45);
+  }
+
+  .grade-explain__item {
+    padding: 0.9rem 0;
+    border-bottom: 1px solid rgb(var(--color-border) / 0.35);
+  }
+
+  .grade-explain__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.35rem 1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .grade-explain__metric {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: rgb(var(--color-text));
+  }
+
+  .grade-explain__grade {
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+
+  .grade-explain__score {
+    margin-left: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgb(var(--color-text-muted));
+  }
+
+  .grade-explain__item p {
+    margin: 0 0 0.35rem;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: rgb(var(--color-text-muted));
+  }
+
+  .grade-explain__item p:last-child {
+    margin-bottom: 0;
+  }
+
+  .grade-explain__item strong {
+    font-weight: 600;
+    color: rgb(var(--color-text));
+  }
+</style>

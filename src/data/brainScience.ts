@@ -57,43 +57,43 @@ export const BRAIN_SCIENCE_PAGES: BrainSciencePage[] = [
   {
     id: 'index',
     path: '/brain-science',
-    title: 'Writing Analytics & Self-Discovery',
+    title: 'Writing Insights',
     description:
-      'Build-time aggregates from published posts—reproducible counts and lexicon-based scores. Exploratory; not psychology or medical insight.',
+      'Build-time counts from published posts: cadence, tags, and lexicon buckets. Exploratory; not psychology or medical insight.',
     icon: '🧠',
     emoji: '🧠',
   },
   {
     id: 'insights',
     path: '/brain-science/insights',
-    title: 'Emotional Processing Analytics',
+    title: 'Affect lexicon',
     description:
-      'Lexical proxies only: fixed word lists + punctuation on Markdown bodies. Useful for drift, not diagnostics.',
+      'Fixed word lists plus punctuation on Markdown bodies. Useful for drift, not diagnostics.',
     icon: '💡',
     emoji: '💡',
   },
   {
     id: 'evolution',
     path: '/brain-science/evolution',
-    title: 'Intellectual Growth Analytics',
+    title: 'Language over time',
     description:
-      'Readability formulas and hand-picked word-pattern tallies over time—signals about language, not IQ or depth.',
+      'Readability formulas and word-pattern tallies over time—signals about language, not IQ or depth.',
     icon: '📈',
     emoji: '📈',
   },
   {
     id: 'topics',
     path: '/brain-science/topics',
-    title: 'Core Themes Analysis',
+    title: 'Themes & tags',
     description:
-      'Tag frequencies, co-occurrence, and heuristic “clusters” from your taxonomy—descriptive, not a mind map.',
+      'Tag frequencies, co-occurrence, and heuristic clusters from your taxonomy—descriptive, not a mind map.',
     icon: '🏷️',
     emoji: '🏷️',
   },
   {
     id: 'cadence',
     path: '/brain-science/cadence',
-    title: 'Writing Cadence',
+    title: 'Cadence',
     description:
       'Publish dates, streaks (≤7-day gaps), and calendar slices. Simple time-series, not habit coaching.',
     icon: '📅',
@@ -102,7 +102,7 @@ export const BRAIN_SCIENCE_PAGES: BrainSciencePage[] = [
   {
     id: 'patterns',
     path: '/brain-science/patterns',
-    title: 'Pattern Recognition',
+    title: 'Correlations',
     description:
       'Correlations and composites from the same post features—interpret directionally; mixed units are intentional for contrast.',
     icon: '🌀',
@@ -111,9 +111,9 @@ export const BRAIN_SCIENCE_PAGES: BrainSciencePage[] = [
   {
     id: 'meta',
     path: '/brain-science/meta',
-    title: 'Meta Analysis',
+    title: 'Meta-language',
     description:
-      'Curated detectors for meta-language in bodies—counts and toy scores, not a measure of self-awareness in a clinical sense.',
+      'Detectors for writing-about-writing in bodies—counts and toy scores, not clinical self-awareness.',
     icon: '🔍',
     emoji: '🔍',
   },

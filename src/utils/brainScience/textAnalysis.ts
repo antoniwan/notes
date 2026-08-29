@@ -1,5 +1,5 @@
 /**
- * Shared body-text metrics for Brain Science pages.
+ * Shared body-text metrics for Writing Insights pages (routes under /brain-science).
  * Keeps Flesch / word / sentence heuristics in one place so routes don't reimplement them.
  */
 
@@ -13,6 +13,22 @@ export interface BasicTextMetrics {
 }
 
 const basicMetricsByKey = new Map<string, BasicTextMetrics>();
+
+export function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+/** Unicode-aware token boundary. JS `\\b` does not treat á/é/ñ as word characters. */
+export function lexiconHitRegex(word: string): RegExp {
+  return new RegExp(`(?<![\\p{L}\\p{N}_])${escapeRegExp(word)}(?![\\p{L}\\p{N}_])`, 'giu');
+}
+
+export function countCompiledLexiconHits(content: string, regexes: readonly RegExp[]): number {
+  return regexes.reduce((count, regex) => {
+    regex.lastIndex = 0;
+    return count + (content.match(regex) || []).length;
+  }, 0);
+}
 
 export function countWords(content: string): number {
   const trimmed = content.trim();
@@ -48,11 +64,17 @@ export function fleschReadingEase(
   );
 }
 
-export function countLexiconHits(content: string, words: string[]): number {
-  return words.reduce((count, word) => {
-    const regex = new RegExp(`\\b${word}\\b`, 'gi');
-    return count + (content.match(regex) || []).length;
-  }, 0);
+export function countLexiconHits(content: string, words: readonly string[]): number {
+  return countCompiledLexiconHits(
+    content,
+    words.map((word) => lexiconHitRegex(word)),
+  );
+}
+
+/** Hits per 1,000 words so a long essay is not “more loving” just for being longer. */
+export function perThousand(hits: number, wordCount: number): number {
+  if (wordCount <= 0) return 0;
+  return (hits / wordCount) * 1000;
 }
 
 export function estimateReadingMinutes(minutesRead: string | undefined, wordCount: number): number {

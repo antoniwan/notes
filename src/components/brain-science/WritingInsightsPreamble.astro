@@ -1,0 +1,71 @@
+---
+/**
+ * What this section is: a forkable Markdown toolkit, plus local-only reports.
+ */
+const notesRepoUrl = 'https://github.com/antoniwan/notes';
+---
+
+<aside class="wi-preamble" aria-labelledby="wi-preamble-heading">
+  <h2 id="wi-preamble-heading" class="wi-preamble__heading">
+    An idea — this is meant to be a toolkit, not a verdict
+  </h2>
+  <p>
+    Everything here is computed at build from published Markdown in <code>src/content/p/</code>. If
+    you use <a href={notesRepoUrl}>this repo</a> for your own notes, you get the same mirrors: cadence,
+    tags, lexicon buckets, correlations. Put files in, run the build. The reports describe your corpus.
+  </p>
+  <p>
+    Some of that stays private on purpose. Agent skills can write dated audits into
+    <code>docs/materials/</code> (gitignored except a <code>.gitkeep</code>) — content maps,
+    planning notes, things that should not ship. The local knowledge graph under
+    <code>graphify-out/</code> is gitignored too. These pages are <code>noindex</code>: an author
+    mirror, not a public gradebook.
+  </p>
+  <p class="wi-preamble__aside">
+    Letter grades are shorthand on toy formulas. Read “this set” and “an A” next to each score.
+  </p>
+</aside>
+
+<style>
+  .wi-preamble {
+    margin: 0 0 1.75rem;
+    max-width: 42rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px dashed rgb(var(--color-border) / 0.7);
+  }
+
+  .wi-preamble__heading {
+    margin: 0 0 0.75rem;
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+    line-height: 1.35;
+    color: rgb(var(--color-text));
+  }
+
+  .wi-preamble p {
+    margin: 0 0 0.75rem;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: rgb(var(--color-text-muted));
+  }
+
+  .wi-preamble p:last-child {
+    margin-bottom: 0;
+  }
+
+  .wi-preamble a {
+    color: rgb(var(--color-accent));
+    text-underline-offset: 3px;
+  }
+
+  .wi-preamble code {
+    font-size: 0.85em;
+  }
+
+  .wi-preamble__aside {
+    font-size: 0.85rem;
+  }
+</style>

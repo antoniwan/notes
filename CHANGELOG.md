@@ -7,6 +7,20 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.9.0] — 2026-08-29
+
+### Added
+
+- Writing Insights preamble on every author-analytics page: this is a forkable Markdown toolkit, not a public gradebook.
+- Letter-grade explainers that show what this corpus scored versus what an A would require on the same toy formula.
+- Shared English and Spanish lexicons, with a Unicode word matcher so accented terms actually count.
+- Rankings by hits per 1,000 words, so longer essays do not win by volume.
+
+### Changed
+
+- Nav, About, and README call the section Writing Insights. The URL is still `/brain-science`.
+- Meta-language detectors include Spanish writing/reflection phrases; the disk cache is version 2 so old English-only analyses are not reused.
+
 ## [6.8.8] — 2026-08-27
 
 ### Changed
