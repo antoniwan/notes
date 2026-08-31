@@ -32,7 +32,7 @@ Use prompts like:
 - "I edited `src/content/p/my-post.md`. Use `post-publishing-workflow` and fix issues."
 - "I added EN and ES versions. Use `multilingual-content-qa` and verify toggles."
 - "Run `release-quality-gate` for this branch and fix clear failures."
-- "I changed `src/pages/brain-science/`. Run `brain-science-audit`."
+- "I changed `src/pages/writing-insights/`. Run `brain-science-audit`."
 - "This touches pages, layouts, and SEO. Use `astro-webmaster-notes`."
 - "Use `content-strategy-map` to audit the latest 30 posts and save a dated topic map report."
 

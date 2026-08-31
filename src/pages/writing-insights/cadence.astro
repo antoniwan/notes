@@ -150,15 +150,15 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
 
 <BaseLayout
   title="Cadence - Writing Insights"
-  description="Publish dates, streaks (≤7-day gaps), and calendar slices from your archive. Descriptive only."
-  path="/brain-science/cadence"
+  description={pageInfo?.description || 'Publish dates by month and weekday.'}
+  path="/writing-insights/cadence"
   robots="noindex, follow"
   structuredDataType="website"
 >
   <BrainScienceLayout
-    currentPage="/brain-science/cadence"
+    currentPage="/writing-insights/cadence"
     title={pageInfo?.title || 'Cadence'}
-    description="Streaks use a 7-day bridge between posts; everything else is counting and binning by calendar. No claims about creativity or motivation—just timestamps and simple ratios."
+    description={pageInfo?.description || 'Publish dates by month and weekday.'}
   >
     <div
       class="mb-6 flex flex-wrap gap-x-10 gap-y-5 border-b border-[rgb(var(--color-border))]/50 pb-6 md:mb-8 md:gap-x-12 md:pb-8"
@@ -224,7 +224,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
           <a
             href="#balanced"
             class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]"
-            >Consistency grades</a
+            >Regularity</a
           >
         </li>
         <li class="m-0 p-0">
@@ -239,11 +239,11 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
 
     <div class="mb-8 border-b border-[rgb(var(--color-border))]/40 pb-8 md:mb-10">
       <h2 class="text-body-muted mb-2 text-sm font-semibold tracking-wide uppercase">
-        Cadence ratios (toy)
+        Cadence ratios
       </h2>
       <p class="text-body-muted mb-4 max-w-3xl text-xs md:text-sm">
-        “Consistency” = streaks ÷ (streaks + dry spells). “Trend” compares last-30-day count to
-        average posts/month—coarse, not forecasting.
+        Streak share is streaks ÷ (streaks + dry spells). The last row compares the last 30 days to
+        average posts per month.
       </p>
       <table
         class="w-full max-w-lg border-collapse border-t border-b border-[rgb(var(--color-border))] text-sm tabular-nums"
@@ -262,7 +262,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
             >
           </tr>
           <tr>
-            <td class="text-body-muted py-2 pr-4">30d vs avg (heuristic)</td>
+            <td class="text-body-muted py-2 pr-4">30d vs avg</td>
             <td class="py-2 text-right font-medium text-[rgb(var(--color-text))] capitalize">
               {productivityTrend}
             </td>
@@ -279,8 +279,8 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
             Monthly publishing frequency
           </h2>
           <p class="text-body-muted mb-6 max-w-3xl text-sm">
-            Post count per month over time. Formula: posts_per_month = count(posts where pubDate ∈
-            [month_start, month_end])
+            Posts per calendar month, from first <code class="font-mono text-xs">pubDate</code> to
+            last.
           </p>
           <TimeSeriesChart
             id="monthly-posting-frequency"
@@ -302,8 +302,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
           Day of week
         </h3>
         <p class="text-body-muted mb-4 text-xs">
-          Post frequency by day of week. Formula: frequency(day) = count(posts where
-          day_of_week(pubDate) = day) / total_posts × 100
+          Weekday of each post’s <code class="font-mono text-[0.65rem]">pubDate</code>.
         </p>
         {
           dayOfWeekChart.labels.length > 0 && (
@@ -323,8 +322,8 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
           Month of year
         </h3>
         <p class="text-body-muted mb-4 text-xs">
-          Post frequency by month of year. Formula: frequency(month) = count(posts where
-          month(pubDate) = month) / total_posts × 100
+          Calendar month of <code class="font-mono text-[0.65rem]">pubDate</code>, summed across
+          years.
         </p>
         {
           monthOfYearChart.labels.length > 0 && (
@@ -348,8 +347,8 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
         Streaks &amp; gaps
       </h2>
       <p class="text-body-muted mb-6 max-w-3xl text-xs md:text-sm">
-        Streak = posts chained with ≤7 days between neighbors. Gaps are the complements between
-        publications.
+        Consecutive posts with 7 days or less between neighbors. A gap is the days with no post
+        between two publish dates.
       </p>
 
       <h3 class="text-body-muted mb-3 text-sm font-semibold tracking-wide uppercase">
@@ -434,10 +433,10 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
 
     <section id="balanced" class="mb-10 scroll-mt-28 md:mb-12">
       <h2 class="mb-2 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl">
-        Objective consistency grades
+        Regularity scores
       </h2>
       <p class="text-body-muted mb-6 max-w-3xl text-sm">
-        Same abbreviated scores as the hub page—orthogonal to streak math above.
+        The same three scores as the hub page (regularity, topic share, length spread).
       </p>
 
       <div class="overflow-x-auto">
@@ -531,9 +530,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
       {
         balancedAnalysis.neutral.length > 0 && (
           <div class="mb-6 md:mb-8">
-            <h3 class="mb-4 text-lg font-medium text-[rgb(var(--color-text))] text-gray-600 dark:text-gray-400">
-              Objective Metrics
-            </h3>
+            <h3 class="mb-4 text-lg font-medium text-[rgb(var(--color-text))]">Just the counts</h3>
             <div class="space-y-3">
               {balancedAnalysis.neutral.map((insight) => (
                 <div class="border-b border-[rgb(var(--color-border))] py-3 last:border-b-0">

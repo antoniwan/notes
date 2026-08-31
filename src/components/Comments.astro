@@ -100,6 +100,8 @@ const { host, siteId } = commentsConfig;
         return;
       }
 
+      if (!host || !siteId) return;
+
       // Remark42 embed.js reads window.remark_config on load; set it so they don't throw (reading 'host' of undefined)
       window.remark_config = buildRemark42Config(host, siteId, pageUrl);
 

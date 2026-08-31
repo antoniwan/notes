@@ -261,25 +261,25 @@ const intellectualInsights = [
     insight: 'Language-heuristic totals shifted between early and recent writing',
     evidence: `${periodStats[periodStats.length - 1]?.avgIntellectualDepth || 0} vs ${periodStats[0]?.avgIntellectualDepth || 0} avg composite (word-list hits + word count term)`,
     impact: 'High',
-    reflection: 'Any change here can be length or vocabulary habits—not automatically “depth.”',
+    reflection: 'This score includes a length term, so longer posts raise it.',
   },
   {
     insight: 'Curiosity word-list hits averaged per post shifted',
     evidence: `Recent slice: ~${periodStats[periodStats.length - 1]?.avgCuriosityCount || 0} matches per post (curated “wonder / explore / research …” stems in raw Markdown)`,
     impact: 'High',
-    reflection: 'Frequency can reflect topic or habit—not intrinsically ‘more curious.’',
+    reflection: 'Hits on a fixed list of curiosity stems in the body.',
   },
   {
     insight: 'Reflective language stems averaged per post shifted',
     evidence: `Recent slice: ~${periodStats[periodStats.length - 1]?.avgWisdomCount || 0} matches per post (curated “learned / realized / chose …” stems)`,
     impact: 'Medium',
-    reflection: 'These are rhetorical tics you can game; treat as texture, not virtue.',
+    reflection: 'Hits on a fixed list of reflective stems in the body.',
   },
   {
-    insight: 'Your knowledge areas are expanding',
+    insight: 'Tag count change, first third vs last third',
     evidence: `${growingTopics.length} topics growing vs ${decliningTopics.length} declining`,
     impact: 'High',
-    reflection: 'Which new areas of knowledge excite you most?',
+    reflection: 'Count in the last third of the archive vs the first third.',
   },
 ];
 
@@ -394,15 +394,17 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
 
 <BaseLayout
   title="Language over time - Writing Insights"
-  description="Readability (Flesch) and word-pattern heuristics over time from post bodies—experimental signals, not IQ or quality scores."
-  path="/brain-science/evolution"
+  description={pageInfo?.description ||
+    'Flesch reading ease, a word-pattern count, and tag counts over time.'}
+  path="/writing-insights/evolution"
   robots="noindex, follow"
   structuredDataType="website"
 >
   <BrainScienceLayout
-    currentPage="/brain-science/evolution"
+    currentPage="/writing-insights/evolution"
     title={pageInfo?.title || 'Language over time'}
-    description="Readability formulas and hand-picked word-pattern tallies over time—signals about language, not IQ or depth."
+    description={pageInfo?.description ||
+      'Flesch reading ease, a word-pattern count, and tag counts over time.'}
   >
     {/* Snapshot row — notebook-style, no cards */}
     <div
@@ -481,7 +483,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
           <a
             href="#definitions"
             class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]"
-            >Definitions</a
+            >Flesch formula</a
           >
         </li>
         <li class="m-0 p-0">
@@ -511,8 +513,8 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
             Readability &amp; word-pattern index
           </h2>
           <p class="text-body-muted mb-4 max-w-3xl text-sm leading-relaxed">
-            Quarterly means from post bodies only. Drift in wording or length—not a score of how
-            smart posts are.
+            Mean Flesch and mean word-pattern score per quarter. Both lines share one axis; the
+            units are not the same.
           </p>
 
           <details class="mb-5" open>
@@ -529,8 +531,8 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
                   <strong class="text-[rgb(var(--color-text))]">
                     Flesch reading ease (violet).
                   </strong>{' '}
-                  Higher = simpler sentences/vocabulary <em>by formula</em>. Syllables are
-                  approximated (vowel heuristic). Typical blog-ish scores often land ~30–70.
+                  Higher = shorter words and sentences on the formula. Syllables are counted by
+                  vowel groups. English scores often fall between 30 and 70.
                 </span>
               </p>
               <p class="m-0 flex flex-wrap items-start gap-2">
@@ -542,16 +544,16 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
                   <strong class="text-[rgb(var(--color-text))]">
                     Word-pattern composite (marigold).
                   </strong>{' '}
-                  Toy counter: discourse / curiosity / reflection word lists + a length term (
+                  Word-list hits for discourse, curiosity, and reflection, plus a length term (
                   <code class="rounded-sm bg-[rgb(var(--color-bg-alt))] px-1 py-0.5 font-mono text-xs">
                     words÷50
                   </code>
-                  ). Long posts score higher mechanically.
+                  ). Longer posts score higher by construction.
                 </span>
               </p>
               <p class="m-0 text-xs md:text-sm">
-                <strong class="text-[rgb(var(--color-text))]">Axis caveat:</strong> both series
-                share one scale—compare directionally, not as equal units.
+                Both series share one scale. A move in one line is not comparable in size to a move
+                in the other.
               </p>
             </div>
           </details>
@@ -592,11 +594,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
         By period: Early, Middle, Recent
       </h2>
       <p class="text-body-muted mb-6 max-w-3xl text-sm leading-relaxed">
-        The archive is split into <strong class="font-medium text-[rgb(var(--color-text))]"
-          >thirds by publication order</strong
-        >. Bar chart and tables use <strong class="font-medium text-[rgb(var(--color-text))]"
-          >mixed units</strong
-        >—look for direction, not precise ratios between series.
+        The archive split into three equal groups by publish order. Bars mix units.
       </p>
 
       {
@@ -617,10 +615,10 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
         <summary
           class="cursor-pointer list-none text-sm font-medium text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/25 underline-offset-4 marker:content-none [&::-webkit-details-marker]:hidden"
         >
-          Signal notes (informal, not significance tests)
+          Notes from the period split
         </summary>
         <p class="text-body-muted mt-3 max-w-3xl text-xs leading-relaxed md:text-sm">
-          Emphasis tags are for this page only. Counts come from post bodies.
+          Impact tags are assigned on this page only.
         </p>
         <div class="mt-4 divide-y divide-[rgb(var(--color-border))]/40">
           {
@@ -657,8 +655,8 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
         Per-period means
       </h3>
       <p class="text-body-muted mb-3 max-w-3xl text-xs leading-relaxed md:text-sm">
-        One row per third of the archive. Flesch ↑ ≈ simpler wording (approx. syllables).
-        Word-pattern Σ = toy composite from word lists + length term.
+        One row per third. Higher Flesch = shorter words and sentences on the formula. The
+        word-pattern column is the composite from the chart above.
       </p>
       <div class="overflow-x-auto">
         <table class="w-full min-w-128 border-collapse text-left text-sm">
@@ -745,10 +743,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
           Tags rising (early → recent)
         </h3>
         <p class="text-body-muted mb-4 text-xs">
-          Positive growth rate:
-          <code class="rounded-sm bg-[rgb(var(--color-bg-alt))] px-1 font-mono text-[0.65rem]">
-            ((recent − early) ÷ early) × 100</code
-          >.
+          Count in the last third minus count in the first third, as a percent of the first third.
         </p>
         <div class="divide-y divide-[rgb(var(--color-border))]/40">
           {
@@ -780,12 +775,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
         >
           Tags falling (early → recent)
         </h3>
-        <p class="text-body-muted mb-4 text-xs">
-          Negative growth rate:
-          <code class="rounded-sm bg-[rgb(var(--color-bg-alt))] px-1 font-mono text-[0.65rem]">
-            ((recent − early) ÷ early) × 100</code
-          >.
-        </p>
+        <p class="text-body-muted mb-4 text-xs">Same formula, negative values.</p>
         <div class="divide-y divide-[rgb(var(--color-border))]/40">
           {
             decliningTopics.map((topic, index) => (
@@ -819,8 +809,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
         Last eight quarters
       </h2>
       <p class="text-body-muted mb-4 max-w-3xl text-xs leading-relaxed md:text-sm">
-        Newest-first rows. Body text only for Flesch; syllables are approximated (
-        <span class="whitespace-nowrap">higher ≈ simpler</span>).
+        Last eight calendar quarters, newest first. Flesch is computed from the body.
       </p>
       <div class="overflow-x-auto">
         <table
@@ -896,7 +885,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
         Format &amp; structure checks
       </h2>
       <p class="text-body-muted mb-4 max-w-3xl text-xs leading-relaxed md:text-sm">
-        Heuristic checkbox on the Markdown body (not editorial quality). Expression:
+        Points for code, links, images, quotes, questions, examples, and posts over 1,000 words.
       </p>
       <pre
         class="text-body-muted mb-5 max-w-3xl overflow-x-auto border-l-2 border-[rgb(var(--color-border))]/70 pl-3 font-mono text-[0.7rem] leading-relaxed">(code fences / inline code ? 2 : 0) + (URLs ? 1 : 0) + (images ? 1 : 0) + (blockquotes ? 1 : 0)
@@ -938,130 +927,22 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
       </table>
     </section>
 
-    {/* Metric definitions — collapsible */}
     <details
       id="definitions"
       class="mb-10 scroll-mt-28 border-t border-[rgb(var(--color-border))] pt-8 md:mb-12"
-      open
     >
       <summary
         class="cursor-pointer list-none text-lg font-semibold text-[rgb(var(--color-text))] marker:content-none md:text-xl [&::-webkit-details-marker]:hidden"
       >
-        Definitions &amp; formulas
+        The Flesch formula
       </summary>
-      <div class="mt-6 space-y-8 md:space-y-10">
-        <div class="grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-2">
-          <div>
-            <h4 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]">
-              Readability & language heuristics
-            </h4>
-            <div class="text-body-muted space-y-3 text-sm leading-relaxed">
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Flesch reading ease per post:</strong>
-                Uses the standard formula<br />
-                <code
-                  class="mt-1 block rounded-sm bg-[rgb(var(--color-bg-alt))] px-2 py-1 font-mono text-xs"
-                  >206.835 − 1.015×(words÷sentences) − 84.6×(syllables÷words)</code
-                >
-                with <strong class="text-[rgb(var(--color-text))]"
-                  >syllables ≈ vowel count trick</strong
-                >, so it is <em>not</em> linguistically exact. Higher values mean “easier” on the scale,
-                not smarter.
-              </p>
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Word-pattern composite:</strong> Counts
-                of three hand-picked word lists (argument transitions, curiosity stems, reflective stems)
-                plus
-                <code class="rounded-sm bg-[rgb(var(--color-bg-alt))] px-1 font-mono text-xs"
-                  >⌊word_count ÷ 50⌋</code
-                >-style term so long posts mechanically score higher even if content is thin.
-              </p>
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Maturity score:</strong> Checkbox score
-                for Markdown features (code fences, links, blockquotes, question marks, cue phrases) plus
-                points when &gt;1000 words or the word-pattern composite clears a low threshold—not editorial
-                quality.
-              </p>
-              <p class="border-t border-[rgb(var(--color-border))]/40 pt-3 text-xs italic">
-                Nothing here measures truth, originality, kindness, rigor cited from sources outside
-                the file, or psychological traits.
-              </p>
-            </div>
-          </div>
-          <div>
-            <h4 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]">
-              Knowledge Area Evolution
-            </h4>
-            <div class="text-body-muted space-y-3">
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Topic Diversity:</strong> Number of distinct
-                knowledge areas
-              </p>
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Growth Trends:</strong> Growing/Declining/Stable
-                topic areas
-              </p>
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Focus Concentration:</strong> Top topic
-                percentage of total posts
-              </p>
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Exploration Depth:</strong> Average posts
-                per knowledge area
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-2">
-          <div>
-            <h4 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]">
-              Maturity Indicators
-            </h4>
-            <div class="text-body-muted space-y-3">
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Long-form Content:</strong> Posts >1000
-                words / Total posts
-              </p>
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Curiosity Level:</strong> Posts with questions
-                / Total posts
-              </p>
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Technical Integration:</strong> Code-containing
-                posts / Total posts
-              </p>
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Research Integration:</strong> Link-containing
-                posts / Total posts
-              </p>
-            </div>
-          </div>
-          <div>
-            <h4 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]">
-              Learning Trajectory
-            </h4>
-            <div class="text-body-muted space-y-3">
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Quarterly Growth:</strong> Post count and
-                word count per quarter
-              </p>
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Topic Evolution:</strong> Category distribution
-                over time periods
-              </p>
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Depth Progression:</strong> Average post
-                length trend
-              </p>
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Complexity Progression:</strong> Technical
-                content frequency trend
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <p class="text-body-muted mt-4 max-w-3xl text-sm leading-relaxed">
+        English formula. Syllables are counted by vowel groups, which under-counts Spanish.
+      </p>
+      <code
+        class="text-body-muted mt-3 block max-w-3xl rounded-sm bg-[rgb(var(--color-bg-alt))] px-2 py-1 font-mono text-xs"
+        >206.835 − 1.015×(words÷sentences) − 84.6×(syllables÷words)</code
+      >
     </details>
 
     <BrainScienceNarrativeSummary insights={insights} summary={summary} />

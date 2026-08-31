@@ -1,5 +1,5 @@
 /**
- * Shared body-text metrics for Writing Insights pages (routes under /brain-science).
+ * Shared body-text metrics for Writing Insights pages (routes under /writing-insights).
  * Keeps Flesch / word / sentence heuristics in one place so routes don't reimplement them.
  */
 

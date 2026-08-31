@@ -38,7 +38,7 @@ That's probably the most honest introduction I can give you. Not "consciousness 
 
 ## Why the Scaffolding Exists
 
-If you've read my writing, you've probably noticed the systematic approach to everything—frameworks for empathy, [analytics for tracking patterns](/brain-science/insights), step-by-step guides for basic human functions. This isn't because I think I'm smart. It's because I'm building prosthetics for parts of my emotional system that never developed properly.
+If you've read my writing, you've probably noticed the systematic approach to everything—frameworks for empathy, [analytics for tracking patterns](/writing-insights/insights), step-by-step guides for basic human functions. This isn't because I think I'm smart. It's because I'm building prosthetics for parts of my emotional system that never developed properly.
 
 Normal people don't need instructions for compassion. I do. Normal people can trust their instincts about relationships. I can't—mine are still calibrated for manipulation and boundary violations. So I build external systems to do what healthy people do internally.
 

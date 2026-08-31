@@ -1,0 +1,508 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BrainScienceLayout from '../../components/brain-science/BrainScienceLayout.astro';
+import TimeSeriesChart from '../../components/brain-science/TimeSeriesChart.astro';
+import BarChart from '../../components/brain-science/BarChart.astro';
+import {
+  getBrainSciencePosts,
+  calculateBaseMetrics,
+  calculateTagFrequency,
+  calculateMaslowAnalysis,
+  calculateCurrentMonthPosts,
+  calculateStreakMetrics,
+  calculateGrowthPosts,
+  calculateEmotionalPosts,
+  calculateMonthlyPosts,
+} from '../../utils/brainScience/data';
+import {
+  calculateObjectiveMetrics,
+  scoreToLetterGrade,
+  letterGradeToColor,
+} from '../../utils/insightGenerator';
+import { BRAIN_SCIENCE_PAGES } from '../../data/brainScience';
+import { explainConsistencyFromPosts } from '../../utils/brainScience/grades';
+import GradeExplainer from '../../components/brain-science/GradeExplainer.astro';
+
+// Get all published posts
+const posts = await getBrainSciencePosts();
+
+// Calculate base metrics using shared utilities
+const baseMetrics = calculateBaseMetrics(posts);
+const topTags = calculateTagFrequency(posts, 10);
+const maslowAnalysis = calculateMaslowAnalysis(posts);
+const thisMonthPosts = calculateCurrentMonthPosts(posts);
+const streakMetrics = calculateStreakMetrics(posts);
+const growthPosts = calculateGrowthPosts(posts);
+const emotionalPosts = calculateEmotionalPosts(posts);
+
+// Calculate objective metrics
+const objectiveMetrics = calculateObjectiveMetrics(posts);
+const gradeExplanations = explainConsistencyFromPosts(posts);
+
+// Prepare time series data for post count over time
+const monthlyPosts = calculateMonthlyPosts(
+  posts,
+  baseMetrics.firstPostDate,
+  baseMetrics.lastPostDate,
+);
+const postCountTimeSeries = {
+  labels: monthlyPosts.map((m) => m.label),
+  datasets: [
+    {
+      label: 'Posts Published',
+      data: monthlyPosts.map((m) => m.count),
+      borderColor: 'rgb(var(--color-accent))',
+      backgroundColor: 'rgba(var(--color-accent), 0.1)',
+    },
+  ],
+};
+
+// Prepare bar chart data for top tags
+const tagBarChart = {
+  labels: topTags.slice(0, 10).map((t) => t.tag),
+  datasets: [
+    {
+      label: 'Post Count',
+      data: topTags.slice(0, 10).map((t) => t.count),
+      backgroundColor: 'rgba(var(--color-accent), 0.6)',
+      borderColor: 'rgb(var(--color-accent))',
+    },
+  ],
+};
+
+// Get page info
+const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'index');
+---
+
+<BaseLayout
+  title="Writing Insights"
+  description={pageInfo?.description ||
+    'Post counts, tag frequencies, and word-list votes from published Markdown.'}
+  path="/writing-insights"
+  robots="noindex, follow"
+  structuredDataType="website"
+>
+  <BrainScienceLayout
+    currentPage="/writing-insights"
+    title={pageInfo?.title || 'Writing Insights'}
+    description={pageInfo?.description ||
+      'Post counts, tag frequencies, and word-list votes from published Markdown.'}
+    showPreamble
+  >
+    <div
+      class="mb-6 flex flex-wrap gap-x-10 gap-y-5 border-b border-[rgb(var(--color-border))]/50 pb-6 md:mb-8 md:gap-x-14 md:pb-8"
+    >
+      <div title="Published posts in scope">
+        <div class="text-2xl font-semibold text-[rgb(var(--color-text))] tabular-nums md:text-3xl">
+          {baseMetrics.totalPosts}
+        </div>
+        <div class="text-body-muted text-xs">Posts</div>
+      </div>
+      <div title="Whitespace-split word count summed over bodies">
+        <div class="text-2xl font-semibold text-[rgb(var(--color-text))] tabular-nums md:text-3xl">
+          {baseMetrics.totalWords.toLocaleString()}
+        </div>
+        <div class="text-body-muted text-xs">Words (Σ bodies)</div>
+      </div>
+      <div title="Posts matching growth tags or keywords in title/body">
+        <div class="text-2xl font-semibold text-[rgb(var(--color-text))] tabular-nums md:text-3xl">
+          {growthPosts}
+        </div>
+        <div class="text-body-muted text-xs">Growth-tagged / keyword</div>
+      </div>
+      <div title="Exclamations + emotional lexicon hits > threshold">
+        <div class="text-2xl font-semibold text-[rgb(var(--color-text))] tabular-nums md:text-3xl">
+          {emotionalPosts}
+        </div>
+        <div class="text-body-muted text-xs">High lexical “intensity”</div>
+      </div>
+    </div>
+
+    <nav
+      class="mb-8 border-b border-dashed border-[rgb(var(--color-border))]/50 pb-4 md:mb-10"
+      aria-label="On this page"
+    >
+      <div class="text-body-muted mb-2 text-[0.65rem] font-semibold tracking-wider uppercase">
+        Jump to
+      </div>
+      <ul class="m-0 flex list-none flex-wrap gap-x-4 gap-y-2 p-0 text-sm">
+        <li class="m-0 p-0">
+          <a
+            href="#activity"
+            class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]"
+            >Monthly activity</a
+          >
+        </li>
+        <li class="m-0 p-0">
+          <a
+            href="#tags"
+            class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]"
+            >Top tags</a
+          >
+        </li>
+        <li class="m-0 p-0">
+          <a
+            href="#pulse"
+            class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]"
+            >Streaks</a
+          >
+        </li>
+        <li class="m-0 p-0">
+          <a
+            href="#objective"
+            class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]"
+            >Lexicon &amp; consistency</a
+          >
+        </li>
+        <li class="m-0 p-0">
+          <a
+            href="#distribution"
+            class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]"
+            >Tag &amp; Maslow share</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    {
+      postCountTimeSeries.labels.length > 0 && (
+        <section
+          id="activity"
+          class="mb-10 scroll-mt-28 md:mb-12"
+          aria-labelledby="activity-heading"
+        >
+          <h2
+            id="activity-heading"
+            class="mb-2 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl"
+          >
+            Posts per month
+          </h2>
+          <p class="text-body-muted mb-6 max-w-3xl text-sm">
+            Posts whose <code class="font-mono text-xs">pubDate</code> falls in that calendar month.
+          </p>
+          <TimeSeriesChart
+            id="post-count-timeline"
+            labels={postCountTimeSeries.labels}
+            datasets={postCountTimeSeries.datasets}
+            title="Posts Published Per Month"
+            yAxisLabel="Number of Posts"
+          />
+        </section>
+      )
+    }
+
+    {
+      tagBarChart.labels.length > 0 && (
+        <section id="tags" class="mb-10 scroll-mt-28 md:mb-12" aria-labelledby="tags-heading">
+          <h2
+            id="tags-heading"
+            class="mb-2 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl"
+          >
+            Top tags by post count
+          </h2>
+          <p class="text-body-muted mb-6 max-w-3xl text-sm">
+            How many posts have this tag in frontmatter.
+          </p>
+          <BarChart
+            id="tag-frequency-chart"
+            labels={tagBarChart.labels}
+            datasets={tagBarChart.datasets}
+            title="Top 10 Tags by Frequency"
+            yAxisLabel="Post Count"
+            xAxisLabel="Tag"
+          />
+        </section>
+      )
+    }
+
+    <section id="pulse" class="mb-10 scroll-mt-28 md:mb-12" aria-labelledby="pulse-heading">
+      <h2
+        id="pulse-heading"
+        class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl"
+      >
+        Recent cadence snapshot
+      </h2>
+      <p class="text-body-muted mb-6 max-w-3xl text-sm">
+        Consecutive posts with 7 days or less between them. Full streak and gap lists are on the
+        <a
+          href="/writing-insights/cadence"
+          class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]"
+          >cadence page</a
+        >.
+      </p>
+      <div
+        class="flex flex-wrap gap-x-10 gap-y-5 border-b border-[rgb(var(--color-border))]/40 pb-6"
+      >
+        <div>
+          <div class="text-2xl font-semibold text-[rgb(var(--color-text))] tabular-nums">
+            {thisMonthPosts}
+          </div>
+          <div class="text-body-muted text-xs">This calendar month</div>
+        </div>
+        <div>
+          <div class="text-2xl font-semibold text-[rgb(var(--color-text))] tabular-nums">
+            {streakMetrics.currentStreak}
+          </div>
+          <div class="text-body-muted text-xs">Current streak length</div>
+        </div>
+        <div>
+          <div class="text-2xl font-semibold text-[rgb(var(--color-text))] tabular-nums">
+            {streakMetrics.longestStreak}
+          </div>
+          <div class="text-body-muted text-xs">Longest streak</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="objective" class="mb-12 scroll-mt-28 md:mb-16" aria-labelledby="objective-heading">
+      <h2
+        id="objective-heading"
+        class="mb-2 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl"
+      >
+        Sentiment &amp; consistency
+      </h2>
+      <p class="text-body-muted mb-8 max-w-3xl text-sm">
+        Each post is assigned one bucket: the word list with the most hits. Neutral is a list of
+        thinking-verbs. Mixed means no list won. Grades below turn those scores into letters.
+      </p>
+
+      <h3 class="text-body-muted mb-2 text-sm font-semibold tracking-wide uppercase">
+        Sentiment buckets
+      </h3>
+      <p class="text-body-muted mb-3 max-w-3xl text-xs md:text-sm">One bucket per post.</p>
+      <div class="overflow-x-auto">
+        <table
+          class="mb-10 w-full max-w-xl border-collapse border-t border-b border-[rgb(var(--color-border))] text-sm tabular-nums"
+        >
+          <tbody>
+            <tr class="border-b border-[rgb(var(--color-border))]/35">
+              <td class="py-2 pr-6 text-[rgb(var(--color-text))]">Positive</td>
+              <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]">
+                {objectiveMetrics.sentimentAnalysis.positive}
+              </td>
+            </tr>
+            <tr class="border-b border-[rgb(var(--color-border))]/35">
+              <td class="py-2 pr-6 text-[rgb(var(--color-text))]">Negative</td>
+              <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]">
+                {objectiveMetrics.sentimentAnalysis.negative}
+              </td>
+            </tr>
+            <tr class="border-b border-[rgb(var(--color-border))]/35">
+              <td class="py-2 pr-6 text-[rgb(var(--color-text))]">Neutral</td>
+              <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]">
+                {objectiveMetrics.sentimentAnalysis.neutral}
+              </td>
+            </tr>
+            <tr>
+              <td class="text-body-muted py-2 pr-6">Mixed</td>
+              <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]">
+                {objectiveMetrics.sentimentAnalysis.mixed}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="text-body-muted mb-2 text-sm font-semibold tracking-wide uppercase">
+        Consistency scores
+      </h3>
+      <p class="text-body-muted mb-3 max-w-3xl text-xs md:text-sm">
+        Regularity: how even the days-between-posts are. Topic consistency: share of posts with the
+        most-used tag. Length variance: spread of word counts; the letter on the right is inverted,
+        so a tighter spread is a higher letter.
+      </p>
+      <div class="overflow-x-auto">
+        <table
+          class="mb-10 w-full max-w-2xl border-collapse border-t border-b border-[rgb(var(--color-border))] text-sm tabular-nums"
+        >
+          <thead>
+            <tr
+              class="text-body-muted border-b border-[rgb(var(--color-border))] text-left text-[0.65rem] font-semibold tracking-wider uppercase"
+            >
+              <th scope="col" class="py-2 pr-4 font-medium">Metric</th>
+              <th scope="col" class="py-2 pr-4 font-medium">Score</th>
+              <th scope="col" class="py-2 font-medium">Grade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-[rgb(var(--color-border))]/35">
+              <td class="py-2.5 pr-4 text-[rgb(var(--color-text))]">Posting regularity</td>
+              <td class="text-body-muted py-2.5 pr-4">
+                {objectiveMetrics.consistencyMetrics.postingRegularity}/100
+              </td>
+              <td
+                class={`py-2.5 font-semibold ${letterGradeToColor(scoreToLetterGrade(objectiveMetrics.consistencyMetrics.postingRegularity))}`}
+              >
+                {scoreToLetterGrade(objectiveMetrics.consistencyMetrics.postingRegularity)}
+              </td>
+            </tr>
+            <tr class="border-b border-[rgb(var(--color-border))]/35">
+              <td class="py-2.5 pr-4 text-[rgb(var(--color-text))]">Topic consistency</td>
+              <td class="text-body-muted py-2.5 pr-4">
+                {objectiveMetrics.consistencyMetrics.topicConsistency}/100
+              </td>
+              <td
+                class={`py-2.5 font-semibold ${letterGradeToColor(scoreToLetterGrade(objectiveMetrics.consistencyMetrics.topicConsistency))}`}
+              >
+                {scoreToLetterGrade(objectiveMetrics.consistencyMetrics.topicConsistency)}
+              </td>
+            </tr>
+            <tr>
+              <td class="py-2.5 pr-4 text-[rgb(var(--color-text))]">Length variance index</td>
+              <td class="text-body-muted py-2.5 pr-4">
+                {objectiveMetrics.consistencyMetrics.qualityVariance}/100
+              </td>
+              <td
+                class={`py-2.5 font-semibold ${letterGradeToColor(scoreToLetterGrade(100 - objectiveMetrics.consistencyMetrics.qualityVariance))}`}
+              >
+                {scoreToLetterGrade(100 - objectiveMetrics.consistencyMetrics.qualityVariance)} (inverse)
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <GradeExplainer explanations={gradeExplanations} />
+
+      {
+        objectiveMetrics.challengeAreas.length > 0 && (
+          <div class="mb-8">
+            <h3 class="text-body-muted mb-2 text-sm font-semibold tracking-wide uppercase">
+              Outside config cutoffs
+            </h3>
+            <p class="text-body-muted mb-4 max-w-3xl text-xs md:text-sm">
+              Values that sit outside the thresholds in{' '}
+              <code class="font-mono text-xs">BRAIN_SCIENCE_CONFIG</code>.
+            </p>
+            <div class="divide-y divide-[rgb(var(--color-border))]/45 border-t border-[rgb(var(--color-border))]/40">
+              {objectiveMetrics.challengeAreas.map((challenge) => (
+                <div class="flex flex-wrap items-baseline justify-between gap-2 py-3">
+                  <div>
+                    <span class="text-sm font-medium text-[rgb(var(--color-text))]">
+                      {challenge.area}
+                    </span>
+                    <span class="text-body-muted mt-0.5 block text-xs sm:mt-0 sm:inline sm:before:content-['_·_']">
+                      Frequency {challenge.frequency}%
+                    </span>
+                  </div>
+                  <span class="text-body-muted text-[0.65rem] font-medium tracking-wide uppercase">
+                    {challenge.severity}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )
+      }
+
+      {
+        objectiveMetrics.improvementAreas.length > 0 && (
+          <div>
+            <h3 class="text-body-muted mb-4 text-sm font-semibold tracking-wide uppercase">
+              Targets vs current (benchmarks)
+            </h3>
+            <div class="space-y-5">
+              {objectiveMetrics.improvementAreas.map((improvement) => (
+                <div class="border-b border-[rgb(var(--color-border))]/35 pb-4 last:border-0 last:pb-0">
+                  <div class="mb-2 flex flex-wrap items-baseline justify-between gap-2">
+                    <span class="text-sm font-medium text-[rgb(var(--color-text))]">
+                      {improvement.area}
+                    </span>
+                    <span class="text-body-muted text-xs tabular-nums">
+                      {improvement.current} / {improvement.target}
+                    </span>
+                  </div>
+                  <div class="mb-1 h-1.5 w-full bg-[rgb(var(--color-bg-alt))]">
+                    <div
+                      class="h-1.5 bg-[rgb(var(--color-accent))]"
+                      style={`width: ${Math.min(100, (improvement.current / improvement.target) * 100)}%`}
+                    />
+                  </div>
+                  <div class="text-body-muted text-xs">Gap {improvement.gap.toFixed(1)}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )
+      }
+    </section>
+
+    <section
+      id="distribution"
+      class="mb-12 grid scroll-mt-28 grid-cols-1 gap-10 md:mb-16 lg:grid-cols-2 lg:gap-12"
+      aria-labelledby="distribution-tags-heading"
+    >
+      <div>
+        <h2
+          id="distribution-tags-heading"
+          class="mb-2 text-base font-semibold text-[rgb(var(--color-text))] md:text-lg"
+        >
+          Tag share (top 10)
+        </h2>
+        <p class="text-body-muted mb-4 text-xs md:text-sm">
+          Bar length is relative to the tag with the most posts in this list.
+        </p>
+        <div
+          class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40"
+        >
+          {
+            topTags.map(({ tag, count }) => (
+              <div class="flex items-center justify-between gap-3 py-2.5">
+                <span class="text-sm font-medium text-[rgb(var(--color-text))]">{tag}</span>
+                <div class="flex min-w-0 flex-1 items-center justify-end gap-2 sm:max-w-56">
+                  <div class="h-1.5 min-w-12 flex-1 bg-[rgb(var(--color-bg-alt))]">
+                    <div
+                      class="h-1.5 bg-[rgb(var(--color-accent))]"
+                      style={`width: ${topTags[0] ? (count / topTags[0].count) * 100 : 0}%`}
+                      title={`${count} posts (${Math.round((count / posts.length) * 100)}% of archive)`}
+                    />
+                  </div>
+                  <span class="text-body-muted w-10 shrink-0 text-right text-xs tabular-nums">
+                    {count}
+                  </span>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div>
+        <h2 class="mb-2 text-base font-semibold text-[rgb(var(--color-text))] md:text-lg">
+          Maslow-style categories (tag rules)
+        </h2>
+        <p class="text-body-muted mb-4 text-xs md:text-sm">
+          If a post has any tag from the list, it counts once in that row. The same post can count
+          in more than one row.
+        </p>
+        <div
+          class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40"
+        >
+          {
+            maslowAnalysis.map((category) => (
+              <div class="flex items-center justify-between gap-3 py-2.5">
+                <div class="min-w-0">
+                  <span class="truncate text-sm font-medium text-[rgb(var(--color-text))]">
+                    {category.title}
+                  </span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="hidden h-1.5 w-16 bg-[rgb(var(--color-bg-alt))] sm:block md:w-20">
+                    <div
+                      class="h-1.5 bg-[rgb(var(--color-accent))]"
+                      style={`width: ${category.percentage}%`}
+                      title={`${category.postCount} posts`}
+                    />
+                  </div>
+                  <span class="text-body-muted w-12 shrink-0 text-right text-xs tabular-nums">
+                    {category.percentage}%
+                  </span>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </BrainScienceLayout>
+</BaseLayout>

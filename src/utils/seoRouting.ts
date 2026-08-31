@@ -13,7 +13,24 @@ export const SEO_EXCLUDED_PATHS = [
   '/brain-science/topics',
   '/brain-science/patterns',
   '/brain-science/meta',
+  '/writing-insights',
+  '/writing-insights/insights',
+  '/writing-insights/cadence',
+  '/writing-insights/evolution',
+  '/writing-insights/topics',
+  '/writing-insights/patterns',
+  '/writing-insights/meta',
 ] as const;
+
+/** Old dashboard subpaths → Writing Insights. `/brain-science` itself stays as the origin note. */
+export const WRITING_INSIGHTS_REDIRECTS: Record<string, string> = {
+  '/brain-science/insights': '/writing-insights/insights',
+  '/brain-science/cadence': '/writing-insights/cadence',
+  '/brain-science/evolution': '/writing-insights/evolution',
+  '/brain-science/topics': '/writing-insights/topics',
+  '/brain-science/patterns': '/writing-insights/patterns',
+  '/brain-science/meta': '/writing-insights/meta',
+};
 
 /** Soft-deleted or renamed posts → permanent replacements. */
 export const POST_REDIRECTS: Record<string, string> = {
@@ -43,6 +60,7 @@ export function buildSeoRedirects(): Record<string, string> {
   return {
     ...buildTagAliasRedirects(),
     ...POST_REDIRECTS,
+    ...WRITING_INSIGHTS_REDIRECTS,
   };
 }
 

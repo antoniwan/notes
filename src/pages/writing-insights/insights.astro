@@ -383,15 +383,16 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
 
 <BaseLayout
   title="Affect lexicon - Writing Insights"
-  description="Counts from fixed dictionaries on post bodies—not emotion recognition or psychology."
-  path="/brain-science/insights"
+  description={pageInfo?.description || 'Word-list hits for affect, vulnerability, and confidence.'}
+  path="/writing-insights/insights"
   robots="noindex, follow"
   structuredDataType="website"
 >
   <BrainScienceLayout
-    currentPage="/brain-science/insights"
+    currentPage="/writing-insights/insights"
     title={pageInfo?.title || 'Affect lexicon'}
-    description="Exclamation marks plus dictionary hits. Rankings below use hits per 1,000 words so length does not win by default. Not emotion recognition."
+    description={pageInfo?.description ||
+      'Word-list hits for affect, vulnerability, and confidence.'}
   >
     <div
       class="mb-8 flex flex-wrap gap-x-10 gap-y-5 border-b border-[rgb(var(--color-border))]/50 pb-6 md:mb-10 md:gap-x-14 md:pb-8"
@@ -423,10 +424,9 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
     </div>
 
     <p class="text-body-muted mb-8 max-w-3xl text-sm">
-      A longer essay has more chances to match <code>love</code>. That is a counting artifact, not
-      more love. Rankings on this page use <strong>hits per 1,000 words</strong>. The scatter below
-      reports Pearson r of length vs raw counts (the confound) and vs the rate (what remains).
-      Correctness here means “we counted tokens as specified,” not “we measured feeling.”
+      A 12,000-word essay that says <code>love</code> three times outranks a 400-word note that says it
+      three times if you count raw hits. Rankings here use hits per 1,000 words. The scatter’s first r
+      is length vs raw hits; the second is length vs that rate.
     </p>
 
     <nav
@@ -462,7 +462,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
           <a
             href="#patterns"
             class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4"
-            >Narrative notes</a
+            >Notes</a
           >
         </li>
         <li class="m-0 p-0">
@@ -483,8 +483,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
             Lexical intensity (quarter means)
           </h2>
           <p class="text-body-muted mb-6 max-w-3xl text-sm">
-            Average emotional intensity per quarter. Formula: emotional_intensity =
-            exclamation_count + Σ(emotional_word_count) where emotional_words ∈ emotional_dictionary
+            Mean of (exclamation marks + affect-list hits) per post, by quarter.
           </p>
           <TimeSeriesChart
             id="emotional-intensity-timeline"
@@ -509,8 +508,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
         Vulnerability vs confidence (total hits)
       </h2>
       <p class="text-body-muted mb-6 max-w-3xl text-sm">
-        Average vulnerability and confidence scores across all posts. Vulnerability:
-        Σ(vulnerability_words) per post. Confidence: Σ(confidence_words) per post.
+        Mean hits per post from the vulnerability word list vs the confidence word list.
       </p>
       <BarChart
         id="vulnerability-confidence-chart"
@@ -529,10 +527,9 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
             Word length vs raw hit count (r = {Math.round(wordEmotionalCorrelation * 100) / 100})
           </h2>
           <p class="text-body-muted mb-6 max-w-3xl text-sm">
-            Pearson r of word count vs raw lexicon+exclamation hits. A high r means “intense” is
-            mostly “long.” After dividing by length, r(word count, hits per 1,000 words) is{' '}
-            {Math.round(wordDensityCorrelation * 100) / 100} — closer to 0 is the length confound
-            shrinking. Neither r is a measure of actual emotion.
+            Each point is one post: word count vs raw hits. r ={' '}
+            {Math.round(wordEmotionalCorrelation * 100) / 100} means longer posts have more hits.
+            After dividing by length, r = {Math.round(wordDensityCorrelation * 100) / 100}.
           </p>
           <ScatterChart
             id="word-emotional-scatter"
@@ -548,7 +545,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
 
     <section id="patterns" class="mb-10 scroll-mt-28 md:mb-12">
       <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl">
-        Narrative notes (same data, plain language)
+        Notes from the counts
       </h2>
       <div
         class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40"
@@ -572,10 +569,10 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
       </div>
     </section>
 
-    {/* Emotional Processing Analysis */}
+    {/* Archive means */}
     <div id="metrics" class="mb-6 scroll-mt-28 md:mb-8">
       <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-lg">
-        Emotional Processing Metrics
+        Archive means
       </h3>
       <div class="mb-6 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
         <div class="border-t border-[rgb(var(--color-border))] pt-4">
@@ -584,8 +581,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
           >
             {emotionalPatterns.avgEmotionalIntensity}
           </div>
-          <div class="text-body-muted text-xs md:text-sm">Avg Emotional Intensity</div>
-          <div class="text-body-muted mt-1 text-xs">Mean emotional intensity score</div>
+          <div class="text-body-muted text-xs md:text-sm">Avg affect hits</div>
         </div>
         <div class="border-t border-[rgb(var(--color-border))] pt-4">
           <div
@@ -593,8 +589,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
           >
             {emotionalPatterns.avgVulnerabilityScore}
           </div>
-          <div class="text-body-muted text-xs md:text-sm">Avg Vulnerability Score</div>
-          <div class="text-body-muted mt-1 text-xs">Mean vulnerability word count</div>
+          <div class="text-body-muted text-xs md:text-sm">Avg vulnerability hits</div>
         </div>
         <div class="border-t border-[rgb(var(--color-border))] pt-4">
           <div
@@ -602,15 +597,14 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
           >
             {emotionalPatterns.avgConfidenceScore}
           </div>
-          <div class="text-body-muted text-xs md:text-sm">Avg Confidence Score</div>
-          <div class="text-body-muted mt-1 text-xs">Mean confidence word count</div>
+          <div class="text-body-muted text-xs md:text-sm">Avg confidence hits</div>
         </div>
       </div>
 
       {/* Emotional Analysis Formulas */}
       <div class="mt-6 md:mt-8">
         <h4 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-lg">
-          Emotional Analysis Formulas
+          How the lists add up
         </h4>
         <div class="grid grid-cols-1 gap-x-10 gap-y-8 text-xs md:grid-cols-2 md:text-sm">
           <div>
@@ -644,10 +638,6 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
                 >
               </p>
               <p>
-                <strong class="text-[rgb(var(--color-text))]">Interpretation:</strong> Higher scores =
-                more vulnerable content
-              </p>
-              <p>
                 <strong class="text-[rgb(var(--color-text))]">Keywords:</strong> struggle, challenge,
                 pain, hurt, broken, difficult, failure, disappointed, defeated, hopeless
               </p>
@@ -671,9 +661,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
             </div>
           </div>
           <div>
-            <h5 class="mb-2 font-semibold text-[rgb(var(--color-text))]">
-              Voice Evolution Metrics
-            </h5>
+            <h5 class="mb-2 font-semibold text-[rgb(var(--color-text))]">By period</h5>
             <div class="text-body-muted space-y-2">
               <p>
                 <strong class="text-[rgb(var(--color-text))]">Word Count Trend:</strong> Average words
@@ -699,9 +687,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
         Highest affect density (hits per 1,000 words)
       </h3>
       <p class="text-body-muted mb-4 max-w-3xl text-xs md:text-sm">
-        Ranked by rate, not raw count, so a short note can outrank a long essay. The small number is
-        total dictionary hits (length-biased). “Love” here means the token <code>love</code> /{' '}
-        <code>amor</code>, not that the essay is about love.
+        Sorted by hits per 1,000 words. The smaller number is the raw hit count.
       </p>
       <div
         class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40"
@@ -741,7 +727,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
         Highest vulnerability density (per 1,000 words)
       </h3>
       <p class="text-body-muted mb-4 max-w-3xl text-xs md:text-sm">
-        Same rate vs count split. Tokens like struggle / dolor, not a clinical vulnerability score.
+        Same sort, using the vulnerability word list (struggle, dolor, and related stems).
       </p>
       <div
         class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40"
@@ -778,14 +764,14 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
     {/* Writing Voice Evolution */}
     <div class="mb-8">
       <h3 class="mb-6 text-lg font-semibold text-[rgb(var(--color-text))]">
-        Voice Metrics by Period
+        Early, middle, recent
       </h3>
       <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
         {
           voiceStats.map((period) => (
             <div class="border-t border-[rgb(var(--color-border))] pt-4">
               <div class="mb-3 text-sm font-semibold text-[rgb(var(--color-text))]">
-                {period.period} Voice
+                {period.period}
               </div>
               <div class="space-y-2">
                 <div class="flex justify-between gap-4">
@@ -834,7 +820,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
     {/* Knowledge Area Evolution */}
     <div class="mb-8">
       <h3 class="mb-6 text-lg font-semibold text-[rgb(var(--color-text))]">
-        Knowledge Area Expansion
+        Tag categories, early → recent
       </h3>
       <div
         class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40"
@@ -873,116 +859,10 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
       </div>
     </div>
 
-    {/* Personal Insights Formulas */}
-    <div class="mt-12">
-      <h3 class="mb-6 text-xl font-semibold text-[rgb(var(--color-text))]">
-        Personal Insights Formulas
-      </h3>
-      <div class="grid grid-cols-1 gap-x-10 gap-y-8 lg:grid-cols-2">
-        <div>
-          <h4 class="mb-3 text-base font-semibold text-[rgb(var(--color-text))]">
-            Emotional Processing Metrics
-          </h4>
-          <div class="text-body-muted space-y-2 text-sm">
-            <p>
-              <strong class="text-[rgb(var(--color-text))]">Emotional Expression Ratio:</strong>
-              <code class="font-mono text-xs md:text-sm">Emotional posts / Total posts × 100</code>
-            </p>
-            <p>
-              <strong class="text-[rgb(var(--color-text))]">Intensity Distribution:</strong> High/Medium/Low
-              emotional intensity posts
-            </p>
-            <p>
-              <strong class="text-[rgb(var(--color-text))]">Vulnerability Frequency:</strong>
-              <code class="font-mono text-xs md:text-sm">Vulnerability words per 1000 words</code>
-            </p>
-            <p>
-              <strong class="text-[rgb(var(--color-text))]">Emotional Evolution:</strong> Sentiment trend
-              over time periods
-            </p>
-          </div>
-        </div>
-        <div>
-          <h4 class="mb-3 text-base font-semibold text-[rgb(var(--color-text))]">
-            Growth Journey Metrics
-          </h4>
-          <div class="text-body-muted space-y-2 text-sm">
-            <p>
-              <strong class="text-[rgb(var(--color-text))]">Growth Focus Percentage:</strong>
-              <code class="font-mono text-xs md:text-sm"
-                >Growth-oriented posts / Total posts × 100</code
-              >
-            </p>
-            <p>
-              <strong class="text-[rgb(var(--color-text))]">Knowledge Area Trends:</strong> Growing/Declining/Stable
-              topic areas
-            </p>
-            <p>
-              <strong class="text-[rgb(var(--color-text))]">Confidence Indicators:</strong> Confident
-              words frequency over time
-            </p>
-            <p>
-              <strong class="text-[rgb(var(--color-text))]">Transformation Markers:</strong> Breakthrough
-              moments and insights
-            </p>
-          </div>
-        </div>
-        <div>
-          <h4 class="mb-3 text-base font-semibold text-[rgb(var(--color-text))]">
-            Content Volume Analysis
-          </h4>
-          <div class="text-body-muted space-y-2 text-sm">
-            <p>
-              <strong class="text-[rgb(var(--color-text))]">Total Word Count:</strong> Sum of all words
-              across all posts
-            </p>
-            <p>
-              <strong class="text-[rgb(var(--color-text))]">Average Post Length:</strong> Total words
-              / Total posts
-            </p>
-            <p>
-              <strong class="text-[rgb(var(--color-text))]">Content Density:</strong>
-              <code class="font-mono text-xs md:text-sm">Words per emotional/growth post</code>
-            </p>
-            <p>
-              <strong class="text-[rgb(var(--color-text))]">Writing Momentum:</strong> Posts per time
-              period trends
-            </p>
-          </div>
-        </div>
-        <div>
-          <h4 class="mb-3 text-base font-semibold text-[rgb(var(--color-text))]">
-            Self-Understanding Metrics
-          </h4>
-          <div class="text-body-muted space-y-2 text-sm">
-            <p>
-              <strong class="text-[rgb(var(--color-text))]">Pattern Recognition:</strong> Recurring themes
-              and topics
-            </p>
-            <p>
-              <strong class="text-[rgb(var(--color-text))]">Emotional Cycles:</strong> High/low emotional
-              intensity patterns
-            </p>
-            <p>
-              <strong class="text-[rgb(var(--color-text))]">Growth Trajectory:</strong> Personal development
-              indicators
-            </p>
-            <p>
-              <strong class="text-[rgb(var(--color-text))]">Writing Purpose:</strong> Processing vs. sharing
-              vs. discovery ratios
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
     {/* Balanced Analysis Section */}
     <div class="mt-12 mb-16">
-      <h2 class="mb-4 text-xl font-semibold text-[rgb(var(--color-text))]">Balanced Analysis</h2>
-      <p class="text-body-muted mb-8 text-sm">
-        Objective assessment showing strengths, challenges, and neutral metrics without bias toward
-        positive outcomes.
-      </p>
+      <h2 class="mb-4 text-xl font-semibold text-[rgb(var(--color-text))]">Summary</h2>
+      <p class="text-body-muted mb-8 text-sm">The same scores as above, written as sentences.</p>
 
       {/* Strengths */}
       {
@@ -1020,9 +900,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'insights');
       {
         balancedAnalysis.neutral.length > 0 && (
           <div class="mb-8">
-            <h3 class="mb-4 text-lg font-medium text-[rgb(var(--color-text))]">
-              Objective Metrics
-            </h3>
+            <h3 class="mb-4 text-lg font-medium text-[rgb(var(--color-text))]">Just the counts</h3>
             <div class="space-y-3">
               {balancedAnalysis.neutral.map((insight) => (
                 <div class="border-b border-[rgb(var(--color-border))] py-3 last:border-b-0">

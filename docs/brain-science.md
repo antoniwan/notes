@@ -1,6 +1,6 @@
-# Writing Insights (routes: `/brain-science`)
+# Writing Insights (routes: `/writing-insights`)
 
-Public name is **Writing Insights**. The URL is still `/brain-science` until a redirect pass. This document is the living audit and execution map for that section.
+Public name is **Writing Insights**. Dashboards live at `/writing-insights`. `/brain-science` is a short first-person origin note. Old dashboard subpaths 301 to the new URLs. This document is the living audit and execution map for that section.
 
 Companion: [roadmap.md](./roadmap.md) §9.
 
@@ -13,7 +13,7 @@ Companion: [roadmap.md](./roadmap.md) §9.
 
 Build-time **author mirrors**: counts, tag frequencies, calendar slices, and lexicon votes over published Markdown. Pages are `noindex` and sitemap-excluded. They are not psychology, medicine, IQ, or “brain science.”
 
-Footer already said Writing Insights. Nav, About, and page titles now match. Folder names and routes do not, yet.
+Footer already said Writing Insights. Nav, About, and page titles now match. Public URL is `/writing-insights`. Code folders are still named brain-science.
 
 ## Length bias and what “love” means
 
@@ -38,17 +38,17 @@ Other known skews: winner-take-all sentiment uses raw counts and a large “neut
 
 ### Honesty / naming
 
-| Surface     | Before                             | After this pass    |
-| ----------- | ---------------------------------- | ------------------ |
-| Nav / About | Brain Science                      | Writing Insights   |
-| Index H1    | Writing Analytics & Self-Discovery | Writing Insights   |
-| Insights    | Emotional Processing Analytics     | Affect lexicon     |
-| Evolution   | Intellectual Growth Analytics      | Language over time |
-| Topics      | Core Themes Analysis               | Themes & tags      |
-| Cadence     | Writing Cadence                    | Cadence            |
-| Patterns    | Pattern Recognition                | Correlations       |
-| Meta        | Meta Analysis                      | Meta-language      |
-| URL         | `/brain-science/*`                 | **unchanged**      |
+| Surface     | Before                             | After this pass                                               |
+| ----------- | ---------------------------------- | ------------------------------------------------------------- |
+| Nav / About | Brain Science                      | Writing Insights                                              |
+| Index H1    | Writing Analytics & Self-Discovery | Writing Insights                                              |
+| Insights    | Emotional Processing Analytics     | Affect lexicon                                                |
+| Evolution   | Intellectual Growth Analytics      | Language over time                                            |
+| Topics      | Core Themes Analysis               | Themes & tags                                                 |
+| Cadence     | Writing Cadence                    | Cadence                                                       |
+| Patterns    | Pattern Recognition                | Correlations                                                  |
+| Meta        | Meta Analysis                      | Meta-language                                                 |
+| URL         | `/brain-science/*`                 | `/writing-insights/*` (origin note stays at `/brain-science`) |
 
 In-page copy still has leftover “Emotional Processing Metrics” headings. That is queued below, not done.
 
@@ -78,7 +78,7 @@ Meta-language detectors now include Spanish writing/reflection phrases. Disk cac
 4. **“Quality variance”** is word-count variance labeled as quality.
 5. **Cache signature** still ignores title and same-length body edits (`{id, bodyLength, pubDate}`).
 6. **Page-local loops** remain (each route still walks posts for its own charts). Shared vocab + memoized posts/sentiment/Flesch; not a single analysis pipeline.
-7. **Code identifiers** are still `brainScience`, `BrainScienceLayout`, `/brain-science`. Public name and URL diverge on purpose until redirects exist.
+7. **Code identifiers** are still `brainScience`, `BrainScienceLayout`, `src/components/brain-science`. Public URL is `/writing-insights`.
 8. **Insights inner headings** still say “Emotional Processing.”
 9. **No dedicated topic lexicon** (leadership, fatherhood, colony, algorithm). Tags already cover this; a second dictionary would double-count unless it is a separate view.
 
@@ -120,7 +120,7 @@ Meta-language detectors now include Spanish writing/reflection phrases. Disk cac
 
 | Status   | Item                                                                      | Notes                                                             |
 | -------- | ------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| Planned  | Route rename `/brain-science` → `/writing-insights` with 301s             | Pages are `noindex`; still do redirects for bookmarks             |
+| Shipped  | Route rename `/brain-science` subpaths → `/writing-insights` with 301s    | Hub at `/writing-insights`; origin note stays at `/brain-science` |
 | Idea     | Fold Tag Analytics and Writing Insights into one “Mirrors” hub            | Product thesis in roadmap §7; do not outrun reader value          |
 | Idea     | Per-language split on every chart                                         | 11 ES posts are now countable; they should also be **filterable** |
 | Non-goal | Client-side NLP, LLM scoring at request time, “brain” metaphors in new UI | Build-time, reviewable, cheap                                     |
@@ -153,5 +153,6 @@ Meta-language detectors now include Spanish writing/reflection phrases. Disk cac
 | `src/utils/brainScience/metrics.ts`      | Sentiment buckets, “challenge” scores |
 | `src/utils/brainScience/metaAnalysis.ts` | Writing-about-writing detectors       |
 | `src/utils/brainScience/cache.ts`        | Disk cache for meta (v2)              |
-| `src/data/brainScience.ts`               | Page titles, thresholds               |
-| `src/pages/brain-science/`               | Routes (URL unchanged)                |
+| `src/data/brainScience.ts`               | Page titles, thresholds, public paths |
+| `src/pages/writing-insights/`            | Dashboard routes                      |
+| `src/pages/brain-science/index.astro`    | Origin note (no dashboard nav)        |

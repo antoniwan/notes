@@ -298,15 +298,17 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
 
 <BaseLayout
   title="Themes & tags - Writing Insights"
-  description="Tag counts, co-occurrence pairs, and hand-labeled clusters from your taxonomy. Exploratory only."
-  path="/brain-science/topics"
+  description={pageInfo?.description ||
+    'Tag counts, tags that appear on the same post, and tag groups listed in code.'}
+  path="/writing-insights/topics"
   robots="noindex, follow"
   structuredDataType="website"
 >
   <BrainScienceLayout
-    currentPage="/brain-science/topics"
+    currentPage="/writing-insights/topics"
     title={pageInfo?.title || 'Themes & tags'}
-    description="Measures are naive: keyword tags on posts, Jaccard-style pair strength for overlap, and static cluster lists in code—not embeddings or latent topics."
+    description={pageInfo?.description ||
+      'Tag counts, tags that appear on the same post, and tag groups listed in code.'}
   >
     <div
       class="mb-6 flex flex-wrap gap-x-10 gap-y-5 border-b border-[rgb(var(--color-border))]/50 pb-6 md:mb-8 md:gap-x-14 md:pb-8"
@@ -367,7 +369,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
           <a
             href="#signals"
             class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]"
-            >Narrative notes</a
+            >Notes</a
           >
         </li>
         <li class="m-0 p-0">
@@ -402,8 +404,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
             Top tags by quarter
           </h2>
           <p class="text-body-muted mb-6 max-w-3xl text-sm">
-            Quarterly frequency of top 5 topics. Formula: frequency(tag, quarter) = count(posts in
-            quarter where tag ∈ post.tags)
+            How many posts in that quarter have the tag.
           </p>
           <TimeSeriesChart
             id="topic-frequency-timeline"
@@ -429,8 +430,8 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
             Early→recent growth (%)
           </h2>
           <p class="text-body-muted mb-6 max-w-3xl text-sm">
-            Topics with highest growth rates. Formula: growth_rate = ((recent_count - early_count) /
-            early_count) × 100
+            Percent change from the first third of the archive to the last:
+            <code class="font-mono text-xs">((recent − early) ÷ early) × 100</code>.
           </p>
           <BarChart
             id="topic-growth-chart"
@@ -445,10 +446,10 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
 
     <section id="signals" class="mb-10 scroll-mt-28 md:mb-12">
       <h2 class="mb-2 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl">
-        Interpretive notes (not tests)
+        Notes from the tag counts
       </h2>
       <p class="text-body-muted mb-4 max-w-3xl text-sm">
-        Friendly readings of the counts above—take as prompts, not statistically validated claims.
+        Sentences generated from the frequencies above.
       </p>
       <div
         class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40"
@@ -477,7 +478,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
         Ranked tags
       </h2>
       <p class="text-body-muted mb-4 max-w-3xl text-xs md:text-sm">
-        Raw frequency in the archive plus category weights from taxonomy metadata.
+        Post count per tag, plus the weight from the taxonomy file.
       </p>
       <div
         class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40"
@@ -506,11 +507,10 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
 
     <section id="clusters" class="mb-10 scroll-mt-28 md:mb-12">
       <h2 class="mb-2 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl">
-        Static tag buckets in code
+        Tag groups in code
       </h2>
       <p class="text-body-muted mb-6 max-w-3xl text-xs md:text-sm">
-        These “clusters” are hard-coded slug lists—not learned communities. Useful for aligning with
-        YOUR categories, misleading if read as clustering output.
+        Lists of tag slugs written in the repo, not computed from the data.
       </p>
       <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
         {
@@ -552,8 +552,8 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
         Maslow-style coverage
       </h2>
       <p class="text-body-muted mb-4 max-w-3xl text-xs md:text-sm">
-        Rule: if a post has any tag from the bucket’s list, it counts once. Overlaps across buckets
-        are possible.
+        If a post has any tag from the list, it counts once in that row. The same post can count in
+        more than one row.
       </p>
       <div
         class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40"
@@ -584,7 +584,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
         Top co-occurring pairs
       </h2>
       <p class="text-body-muted mb-4 max-w-3xl text-xs md:text-sm">
-        Strength = joint count ÷ min(individual tag counts) on the same post.
+        How often two tags appear on the same post, divided by the smaller of the two tag totals.
       </p>
       <div
         class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40"
@@ -609,116 +609,6 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'topics');
         }
       </div>
     </section>
-
-    {/* Core Themes Formulas */}
-    <div class="mb-6 md:mb-8 lg:mb-10">
-      <h3
-        class="mb-4 flex items-center gap-3 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl"
-      >
-        Core Themes Formulas
-      </h3>
-      <div class="space-y-6 md:space-y-8">
-        <div class="grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-2">
-          <div>
-            <h4 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]">Topic Analysis</h4>
-            <div class="text-body-muted space-y-3">
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Topic Frequency:</strong> Posts per tag
-                / Total posts
-              </p>
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Top Topic Concentration:</strong>
-                <code class="font-mono text-xs md:text-sm"
-                  >Most frequent tag / Total posts × 100</code
-                >
-              </p>
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Topic Diversity:</strong> Number of unique
-                tags used
-              </p>
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Topic Balance:</strong>
-                <code class="font-mono text-xs md:text-sm">Stable areas / Total areas × 100</code>
-              </p>
-            </div>
-          </div>
-          <div>
-            <h4 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]">Topic Trends</h4>
-            <div class="text-body-muted space-y-3">
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Growth Areas:</strong> Topics with increasing
-                post frequency
-              </p>
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Declining Areas:</strong> Topics with decreasing
-                post frequency
-              </p>
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Stable Areas:</strong> Topics with consistent
-                post frequency
-              </p>
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Trend Distribution:</strong> Growing/Declining/Stable
-                topic counts
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-2">
-          <div>
-            <h4 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]">
-              Topic Relationships
-            </h4>
-            <div class="text-body-muted space-y-3">
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Co-occurrence Strength:</strong> Shared
-                posts / Total posts with either tag
-              </p>
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Relationship Percentage:</strong>
-                <code class="font-mono text-xs md:text-sm"
-                  >Co-occurrence count / Total posts × 100</code
-                >
-              </p>
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Topic Clusters:</strong> Groups of frequently
-                co-occurring tags
-              </p>
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Cross-pollination:</strong> Tags that appear
-                together across different posts
-              </p>
-            </div>
-          </div>
-          <div>
-            <h4 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]">
-              Life Areas Focus
-            </h4>
-            <div class="text-body-muted space-y-3">
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Maslow Distribution:</strong>
-                <code class="font-mono text-xs md:text-sm"
-                  >Posts per life area / Total posts × 100</code
-                >
-              </p>
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Area Concentration:</strong> Most focused
-                life area percentage
-              </p>
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Balance Score:</strong> Evenness of distribution
-                across life areas
-              </p>
-              <p>
-                <strong class="text-[rgb(var(--color-text))]">Growth Trajectory:</strong> Life area focus
-                trends over time
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <BrainScienceNarrativeSummary insights={insights} summary={summary} />
   </BrainScienceLayout>

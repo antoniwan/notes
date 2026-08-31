@@ -473,15 +473,17 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
 
 <BaseLayout
   title="Correlations - Writing Insights"
-  description="Post-level correlations and binned aggregates—interesting noise until validated out-of-sample."
-  path="/brain-science/patterns"
+  description={pageInfo?.description ||
+    'Word count vs lexicon hits, weekday vs Flesch, month vs word count.'}
+  path="/writing-insights/patterns"
   robots="noindex, follow"
   structuredDataType="website"
 >
   <BrainScienceLayout
-    currentPage="/brain-science/patterns"
+    currentPage="/writing-insights/patterns"
     title={pageInfo?.title || 'Correlations'}
-    description="Plots combine different engineered features (Flesch, word count, lexical intensity). Bars often put unlike units beside each other for contrast—read labels, infer carefully."
+    description={pageInfo?.description ||
+      'Word count vs lexicon hits, weekday vs Flesch, month vs word count.'}
   >
     <div
       class="mb-8 flex flex-wrap gap-x-10 gap-y-5 border-b border-[rgb(var(--color-border))]/50 pb-6 md:mb-10 md:gap-x-12 md:pb-8"
@@ -543,7 +545,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
           <a
             href="#cycle"
             class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4"
-            >Cycle toy</a
+            >Cycle phases</a
           >
         </li>
         <li class="m-0 p-0">
@@ -564,9 +566,15 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
             Word length vs raw hit count (r = {Math.round(wordEmotionalCorr * 100) / 100})
           </h2>
           <p class="text-body-muted mb-6 max-w-3xl text-sm">
-            High r means longer posts collect more dictionary hits. After rate-normalizing, r(word
-            count, hits per 1,000 words) is {Math.round(wordDensityCorr * 100) / 100}. That second
-            number is the leftover association once length is divided out — still not “emotion.”
+            Same scatter as{' '}
+            <a
+              href="/writing-insights/insights"
+              class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4"
+            >
+              Affect lexicon
+            </a>
+            . Each point is one post. Raw r = {Math.round(wordEmotionalCorr * 100) / 100}; r after
+            dividing by length = {Math.round(wordDensityCorr * 100) / 100}.
           </p>
           <ScatterChart
             id="word-emotional-correlation"
@@ -588,8 +596,9 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
             Complexity vs Day of Week
           </h2>
           <p class="text-body-muted mb-6 max-w-3xl text-sm">
-            Flesch reading ease score distribution by day of week. Higher scores indicate easier
-            reading.
+            Flesch score of each post, plotted by weekday of{' '}
+            <code class="font-mono text-xs">pubDate</code>. Higher Flesch = shorter words and
+            sentences on the formula.
           </p>
           <ScatterChart
             id="complexity-day-scatter"
@@ -610,8 +619,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
             Weekday aggregates
           </h2>
           <p class="text-body-muted mb-6 max-w-3xl text-sm">
-            Productivity and word count by day of week. Productivity = avg_word_count × post_count.
-            Formula: productivity(day) = Σ(word_count for posts on day) × count(posts on day)
+            Productivity = mean word count × number of posts published that weekday.
           </p>
           <BarChart
             id="day-of-week-patterns"
@@ -632,9 +640,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
             Monthly aggregates
           </h2>
           <p class="text-body-muted mb-6 max-w-3xl text-sm">
-            Creativity and complexity by month. Creativity = avg_word_count × avg_complexity.
-            Formula: creativity(month) = mean(word_count for posts in month) × mean(complexity for
-            posts in month)
+            Creativity = mean word count × mean Flesch for posts in that calendar month.
           </p>
           <BarChart
             id="seasonal-patterns"
@@ -652,11 +658,11 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
       creativeCycleChart.labels.length > 0 && (
         <section id="cycle" class="mb-10 scroll-mt-28 md:mb-12">
           <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
-            Post-index modulo “phases” (toy)
+            Four groups by publish order
           </h2>
           <p class="text-body-muted mb-6 max-w-3xl text-sm">
-            Labels come from <code class="font-mono text-xs">postIndex % 4</code>—good for demos,
-            weak causal story.
+            Posts numbered 0, 1, 2, 3, 0, 1… in publish order. The four labels are those remainder
+            groups (<code class="font-mono text-xs">postIndex % 4</code>).
           </p>
           <BarChart
             id="creative-cycle-phases"
@@ -671,11 +677,11 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
 
     <section id="peaks" class="mb-12 scroll-mt-28">
       <h2 class="mb-2 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl">
-        Argmax snapshots (engineering composites)
+        Highest composites
       </h2>
       <p class="text-body-muted mb-6 max-w-3xl text-sm">
-        “Productivity” = mean words × post count for that weekday; “creativity” = mean words × mean
-        Flesch for that calendar month—these mixes are deliberate heuristics, not latent traits.
+        The weekday with the highest productivity score, the month with the highest creativity
+        score, and the remainder-group with the highest mean word count.
       </p>
       <div class="overflow-x-auto">
         <table
@@ -732,11 +738,11 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
     {/* Pattern Analysis */}
     <div class="mb-6 md:mb-8 lg:mb-10">
       <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-lg">
-        Statistical Pattern Analysis
+        Notes from the bins
       </h3>
       <p class="text-body-muted mb-4 text-xs">
-        Identified patterns based on quantitative analysis. Confidence levels determined by
-        statistical significance of observed patterns.
+        Sentences generated from the weekday, month, and remainder-group tables. Confidence is a
+        label on this page, not a p-value.
       </p>
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
         {
@@ -764,11 +770,8 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
         Day of Week Metrics
       </h3>
       <p class="text-body-muted mb-4 max-w-3xl text-xs md:text-sm">
-        Productivity = avg words × post count, graded against the busiest weekday. Word-count and
-        intensity grades compare a <em>weekday average</em> to your <em
-          >single longest / most intense post</em
-        >, so most days look like D or F. Hover a letter for why this slice scored that way. An A is
-        ≥93% of that max — near the peak of <em>this</em> corpus, not a school standard.
+        Letters compare a weekday mean to the single longest or most intense post, so most days
+        score D or F. An A is 93% or more of this archive’s maximum. Hover a letter for the numbers.
       </p>
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {
@@ -849,9 +852,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
         Seasonal Metrics
       </h3>
       <p class="text-body-muted mb-4 max-w-3xl text-xs md:text-sm">
-        Creativity = avg words × avg complexity, graded against the peak month. Word-count grades
-        still compare a monthly average to your longest single post — hover a letter for why that
-        month scored D or A. An A is ≥93% of the same max.
+        Same letter scale as the weekday table, for calendar months.
       </p>
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {
@@ -931,11 +932,10 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
     {/* Creative Cycle Metrics */}
     <div class="mb-8">
       <h3 class="mb-6 text-lg font-semibold text-[rgb(var(--color-text))]">
-        Creative Cycle Phase Metrics
+        Remainder groups, scored
       </h3>
       <p class="text-body-muted mb-4 text-xs">
-        Metrics by creative cycle phase. Phases assigned sequentially: cycle_phase = post_index % 4.
-        Grades calculated as percentile relative to maximum.
+        Same letter scale for the <code class="font-mono text-[0.65rem]">index % 4</code> groups.
       </p>
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
         {
@@ -1015,12 +1015,10 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
     {/* Tag Correlations */}
     <div class="mb-6 md:mb-8 lg:mb-10">
       <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-lg">
-        Tag Co-occurrence Analysis
+        Tag pairs on the same post
       </h3>
       <p class="text-body-muted mb-4 text-xs">
-        Tag pairs that appear together frequently. Average word count calculated for posts
-        containing both tags. Formula: avg_word_count(combo) = Σ(word_count for posts with combo) /
-        count(posts with combo)
+        Posts that have both tags, and the mean word count of those posts.
       </p>
       <div class="space-y-4">
         {
@@ -1069,8 +1067,8 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
         Posts with Highest Word Count
       </h3>
       <p class="text-body-muted mb-4 text-xs">
-        Posts ranked by word count. Pattern classification: Long-form (>1000 words) vs Short-form,
-        Emotional (intensity >5) vs Analytical, Complex (Flesch >50) vs Simple.
+        Posts sorted by word count. The pattern label uses cutoffs: 1,000 words, affect hits &gt; 5,
+        Flesch &gt; 50.
       </p>
       <div class="space-y-4">
         {

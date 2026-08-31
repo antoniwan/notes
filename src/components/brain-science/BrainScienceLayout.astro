@@ -10,9 +10,11 @@ interface Props {
   /** @deprecated Decorative emoji removed from chrome */
   emoji?: string;
   showNavLinks?: boolean;
+  /** Hub-only: the idea lives once, at the start of the section. */
+  showPreamble?: boolean;
 }
 
-const { currentPage, title, description, showNavLinks = true } = Astro.props;
+const { currentPage, title, description, showNavLinks = true, showPreamble = false } = Astro.props;
 ---
 
 <Container class="pt-4 md:pt-6 lg:pt-8">
@@ -23,7 +25,7 @@ const { currentPage, title, description, showNavLinks = true } = Astro.props;
     <p class="bs-header__desc">{description}</p>
   </header>
 
-  <WritingInsightsPreamble />
+  {showPreamble && <WritingInsightsPreamble />}
 
   <div class="bs-content">
     <slot />

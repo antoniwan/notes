@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   POST_REDIRECTS,
+  WRITING_INSIGHTS_REDIRECTS,
   buildSeoRedirects,
   normalizePathname,
   shouldIncludeInSitemap,
@@ -30,6 +31,20 @@ describe('POST_REDIRECTS + buildSeoRedirects', () => {
     const tagRedirects = Object.keys(redirects).filter((k) => k.startsWith('/tag/'));
     expect(tagRedirects.length).toBeGreaterThan(0);
   });
+
+  it('301s old Writing Insights subpaths and leaves the origin page in place', () => {
+    const redirects = buildSeoRedirects();
+    expect(WRITING_INSIGHTS_REDIRECTS['/brain-science/insights']).toBe(
+      '/writing-insights/insights',
+    );
+    expect(redirects['/brain-science/insights']).toBe('/writing-insights/insights');
+    expect(redirects['/brain-science/cadence']).toBe('/writing-insights/cadence');
+    expect(redirects['/brain-science/evolution']).toBe('/writing-insights/evolution');
+    expect(redirects['/brain-science/topics']).toBe('/writing-insights/topics');
+    expect(redirects['/brain-science/patterns']).toBe('/writing-insights/patterns');
+    expect(redirects['/brain-science/meta']).toBe('/writing-insights/meta');
+    expect(redirects['/brain-science']).toBeUndefined();
+  });
 });
 
 describe('shouldIncludeInSitemap', () => {
@@ -46,6 +61,10 @@ describe('shouldIncludeInSitemap', () => {
 
   it('excludes only author tools and API hub paths', () => {
     expect(shouldIncludeInSitemap('https://notes.antoniwan.online/brain-science')).toBe(false);
+    expect(shouldIncludeInSitemap('https://notes.antoniwan.online/writing-insights')).toBe(false);
+    expect(shouldIncludeInSitemap('https://notes.antoniwan.online/writing-insights/cadence')).toBe(
+      false,
+    );
     expect(shouldIncludeInSitemap('https://notes.antoniwan.online/tag-management')).toBe(false);
     expect(shouldIncludeInSitemap('https://notes.antoniwan.online/api')).toBe(false);
   });
