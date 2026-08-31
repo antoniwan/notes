@@ -20,7 +20,7 @@ This section is a **checkpoint** so the roadmap does not read like the site is o
 - **Reading & discovery**: full-text **search** (build-time index), **categories**, **tags** (index, per-tag pages, **tag management** analytics view), **Everything** archive, **Guided Path** (seasonal order; progress in the browser only).
 - **Posts**: automatic **reading time**, **reading progress** (`localStorage`), markdown-derived **table of contents**, **EN/ES** linking via `translationGroup`, **related posts** at the bottom via overlapping tags (“Continue reading”).
 - **Home**: **highlight** masonry for published posts marked `featured: true`.
-- **Writing Insights** (`/brain-science`): multi-page **stats and charts** (cadence, topics, lexicon buckets, etc.). See [brain-science.md](./brain-science.md).
+- **Writing Insights** (`/writing-insights`): multi-page **stats and charts** (cadence, topics, lexicon buckets, etc.). `/brain-science` is the origin note; old subpaths 301. See [brain-science.md](./brain-science.md).
 - **Library**: dedicated **books** pages (see §4).
 - **Feeds & APIs**: **RSS**, **JSON Feed**, **GET `/api/quotes`**.
 - **Quality & distribution**: **Schema.org** where it fits, optional **Remark42** comments, **service worker** for caching (version bumped on build), **Vercel Web Analytics** and **Speed Insights** in the base layout when those products are enabled on Vercel.
@@ -357,11 +357,11 @@ _None queued._
 
 ## 9. Writing Insights (Brain Science) — 2026-08-29
 
-- **Status**: In progress (labels + dictionaries shipped; URL still `/brain-science`)
+- **Status**: In progress (dashboards live at `/writing-insights`; origin note at `/brain-science`)
 - **Tracking:** [brain-science.md](./brain-science.md)
 
-The old name overclaimed. The section is build-time counts and lexicon votes over published Markdown, not psychology. Public chrome now says **Writing Insights**. Routes stay put until a redirect pass.
+The old name overclaimed. The section is build-time counts and lexicon votes over published Markdown, not psychology. Public chrome says **Writing Insights**. Dashboards are at `/writing-insights`. `/brain-science` is a short first-person origin note. Old dashboard subpaths 301.
 
-This pass unblocked the dictionaries: one shared module, Spanish tokens, unicode matching, quieter hedges. Remaining honesty work (grades, Flesch-on-Spanish, in-page leftover headings, `/writing-insights` URL) is listed in that doc, not here.
+This pass unblocked the dictionaries: one shared module, Spanish tokens, unicode matching, quieter hedges. Remaining honesty work (grades, Flesch-on-Spanish, in-page leftover headings) is listed in that doc, not here.
 
 Feed HTML + listing-policy non-goal from §8 is closed, so expanding this mirror is allowed again — still behind compress + return loops for **readers**.

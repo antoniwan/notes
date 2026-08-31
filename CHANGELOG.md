@@ -7,6 +7,21 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.10.0] — 2026-08-31
+
+### Added
+
+- Origin note at `/brain-science` for anyone still on the old URL: the name is retired, the charts are Writing Insights.
+
+### Changed
+
+- Writing Insights dashboards live at `/writing-insights`. Old `/brain-science/*` subpaths 301; `/brain-science` itself is not redirected.
+- Nav, footer, and About point at the Writing Insights hub. The hub preamble is only on that index page.
+
+### Fixed
+
+- `astro check` no longer fails when Remark42 config is built from comment-section data attributes.
+
 ## [6.9.0] — 2026-08-29
 
 ### Added

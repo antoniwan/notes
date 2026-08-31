@@ -1,5 +1,5 @@
 /**
- * Shared lexicons for Writing Insights (routes still live under /brain-science).
+ * Shared lexicons for Writing Insights (public URL `/writing-insights`).
  *
  * These are exploratory token lists, not psychology. Spanish is included because
  * ~1 in 8 published posts is ES-only and JS `\b` never matched accented words.

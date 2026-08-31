@@ -19,7 +19,7 @@ Release history: [CHANGELOG.md](./CHANGELOG.md)
 - **Everything** — full archive-style list
 - **Tags** — browse by tag; **Tag management** for overview-style views
 - **Tag prelude links** on `/tag` — links to writing forms (essays, notes, poems, and similar) above the tag cloud when data exists
-- **Writing Insights** (`/brain-science`) — writing stats and charts (cadence, topics, lexicon buckets, and similar)
+- **Writing Insights** (`/writing-insights`) — writing stats and charts (cadence, topics, lexicon buckets, and similar). `/brain-science` is a short origin note; old dashboard subpaths 301.
 - **Book library** — static data under `/library` and `/library/books`
 - **Reading time** — from a remark plugin (`minutesRead` in the collection)
 - **Reading progress** on posts — `localStorage` only, no server
@@ -110,7 +110,7 @@ notes/
 │   ├── content/p/       # Post files (Markdown / MDX)
 │   ├── data/            # Categories, navigation, socialImageManifest.ts, socialImageFingerprints.json, …
 │   ├── layouts/
-│   ├── pages/           # Routes (blog, category, tag, brain-science, api, …)
+│   ├── pages/           # Routes (blog, category, tag, writing-insights, api, …)
 │   ├── styles/
 │   ├── utils/
 │   └── types/

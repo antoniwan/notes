@@ -34,7 +34,7 @@ export const mainNavigation: NavigationItem[] = [
           icon: '🏷️',
         },
         {
-          href: '/brain-science',
+          href: '/writing-insights',
           label: 'Writing Insights',
           icon: '🧠',
         },

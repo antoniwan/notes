@@ -56,64 +56,63 @@ export interface BrainScienceConfig {
 export const BRAIN_SCIENCE_PAGES: BrainSciencePage[] = [
   {
     id: 'index',
-    path: '/brain-science',
+    path: '/writing-insights',
     title: 'Writing Insights',
     description:
-      'Build-time counts from published posts: cadence, tags, and lexicon buckets. Exploratory; not psychology or medical insight.',
+      'Post counts, tag frequencies, and word-list votes from published Markdown. Each number is a count or a score from a formula in this repo.',
     icon: '🧠',
     emoji: '🧠',
   },
   {
     id: 'insights',
-    path: '/brain-science/insights',
+    path: '/writing-insights/insights',
     title: 'Affect lexicon',
     description:
-      'Fixed word lists plus punctuation on Markdown bodies. Useful for drift, not diagnostics.',
+      'Word-list hits for affect, vulnerability, and confidence. Ranked by hits per 1,000 words, so a 400-word note can rank above a 4,000-word essay.',
     icon: '💡',
     emoji: '💡',
   },
   {
     id: 'evolution',
-    path: '/brain-science/evolution',
+    path: '/writing-insights/evolution',
     title: 'Language over time',
     description:
-      'Readability formulas and word-pattern tallies over time—signals about language, not IQ or depth.',
+      'Flesch reading ease, a word-pattern count, and tag counts split into the first, middle, and last third of the archive by publish order.',
     icon: '📈',
     emoji: '📈',
   },
   {
     id: 'topics',
-    path: '/brain-science/topics',
+    path: '/writing-insights/topics',
     title: 'Themes & tags',
-    description:
-      'Tag frequencies, co-occurrence, and heuristic clusters from your taxonomy—descriptive, not a mind map.',
+    description: 'Tag counts, tags that appear on the same post, and tag groups listed in code.',
     icon: '🏷️',
     emoji: '🏷️',
   },
   {
     id: 'cadence',
-    path: '/brain-science/cadence',
+    path: '/writing-insights/cadence',
     title: 'Cadence',
     description:
-      'Publish dates, streaks (≤7-day gaps), and calendar slices. Simple time-series, not habit coaching.',
+      'Publish dates by month and weekday. A streak is two or more posts with 7 days or less between them.',
     icon: '📅',
     emoji: '📅',
   },
   {
     id: 'patterns',
-    path: '/brain-science/patterns',
+    path: '/writing-insights/patterns',
     title: 'Correlations',
     description:
-      'Correlations and composites from the same post features—interpret directionally; mixed units are intentional for contrast.',
+      'Word count vs lexicon hits, weekday vs Flesch, month vs word count. Axes use mixed units; read each label.',
     icon: '🌀',
     emoji: '🌀',
   },
   {
     id: 'meta',
-    path: '/brain-science/meta',
+    path: '/writing-insights/meta',
     title: 'Meta-language',
     description:
-      'Detectors for writing-about-writing in bodies—counts and toy scores, not clinical self-awareness.',
+      'Counts of writing-about-writing phrases in the body. A post ranks higher when more of those phrases match.',
     icon: '🔍',
     emoji: '🔍',
   },

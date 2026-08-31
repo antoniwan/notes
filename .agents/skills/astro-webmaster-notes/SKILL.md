@@ -37,7 +37,7 @@ Make high-quality, low-regression decisions across this Astro codebase while pre
 
 - If content/frontmatter changes are involved, apply `post-publishing-workflow`.
 - If EN/ES pairing or toggle/listing issues are involved, apply `multilingual-content-qa`.
-- If brain-science pages/utils are touched, apply `brain-science-audit`.
+- If writing-insights or brain-science pages/utils are touched, apply `brain-science-audit`.
 - Before final handoff on substantial changes, apply `release-quality-gate`.
 
 ## Implementation Checklist

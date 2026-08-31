@@ -67,15 +67,15 @@ const topPhrases = Object.entries(phraseFrequency)
 
 <BaseLayout
   title="Meta-language - Writing Insights"
-  description="Counts of curated meta-phrases and heuristic scores over post bodies—not clinical meta-cognition."
-  path="/brain-science/meta"
+  description={pageInfo?.description || 'Counts of writing-about-writing phrases in the body.'}
+  path="/writing-insights/meta"
   robots="noindex, follow"
   structuredDataType="website"
 >
   <BrainScienceLayout
-    currentPage="/brain-science/meta"
+    currentPage="/writing-insights/meta"
     title={pageInfo?.title || 'Meta-language'}
-    description="All scores come from tuned pattern lists and thresholds in repo code. Interpret as ‘how often this language shows up,’ not aptitude or mental health indicators."
+    description={pageInfo?.description || 'Counts of writing-about-writing phrases in the body.'}
   >
     <div
       class="mb-6 flex flex-wrap gap-x-10 gap-y-5 border-b border-[rgb(var(--color-border))]/50 pb-6 md:mb-8 md:gap-x-14 md:pb-8"
@@ -84,7 +84,7 @@ const topPhrases = Object.entries(phraseFrequency)
         <div class="text-2xl font-semibold text-[rgb(var(--color-text))] tabular-nums md:text-3xl">
           {metaMetrics.avgSelfAwarenessScore}
         </div>
-        <div class="text-body-muted text-xs">Avg heuristic score</div>
+        <div class="text-body-muted text-xs">Avg detector score</div>
       </div>
       <div>
         <div class="text-2xl font-semibold text-[rgb(var(--color-text))] tabular-nums md:text-3xl">
@@ -163,8 +163,8 @@ const topPhrases = Object.entries(phraseFrequency)
               Meta signals by quarter
             </h2>
             <p class="text-body-muted mb-6 max-w-3xl text-sm">
-              Two series on one axis (mixed units): heuristic self-awareness score vs. meta-language
-              frequency. Compare shape, not absolute scale.
+              Detector score and meta-phrase count per quarter, drawn on one axis. The units are not
+              the same.
             </p>
             <TimeSeriesChart
               id="writing-philosophy-evolution"
@@ -196,11 +196,10 @@ const topPhrases = Object.entries(phraseFrequency)
     >
       <div>
         <h2 class="mb-2 text-base font-semibold text-[rgb(var(--color-text))] md:text-lg">
-          Subject vs tool (detector fractions)
+          Subject vs tool
         </h2>
         <p class="text-body-muted mb-4 text-sm">
-          Proportion of posts that trip each classifier—overlap allowed; not a psychological
-          typology.
+          Share of posts that matched each detector. One post can match both.
         </p>
         <div class="space-y-3">
           <div class="flex items-center justify-between">
@@ -240,9 +239,7 @@ const topPhrases = Object.entries(phraseFrequency)
         <h2 class="mb-2 text-base font-semibold text-[rgb(var(--color-text))] md:text-lg">
           Pattern type hits (post occurrences)
         </h2>
-        <p class="text-body-muted mb-4 text-sm">
-          Counts aggregated across the detector outputs—taxonomy is defined in code.
-        </p>
+        <p class="text-body-muted mb-4 text-sm">How many posts matched each detector type.</p>
         <div
           class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40"
         >
@@ -266,11 +263,10 @@ const topPhrases = Object.entries(phraseFrequency)
 
     <section id="top-posts" class="mb-10 scroll-mt-28 md:mb-12">
       <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl">
-        Highest detector scores (ranked)
+        Highest detector scores
       </h2>
       <p class="text-body-muted mb-6 max-w-3xl text-sm">
-        Scores aggregate pattern hits in each post—the ranking is deterministic from the analyzer,
-        not qualitative judgment.
+        Posts ranked by detector score (pattern hits in the body).
       </p>
       <div
         class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40"
@@ -316,11 +312,10 @@ const topPhrases = Object.entries(phraseFrequency)
       writingAboutWriting.length > 0 && (
         <section class="mb-10 scroll-mt-28 md:mb-12">
           <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
-            ✍️ Writings That Discuss Writing Itself
+            Writings that discuss writing
           </h2>
           <p class="text-body-muted mb-6 max-w-3xl text-sm">
-            Posts where writing itself becomes the subject of discussion, revealing your
-            relationship with the act of writing.
+            Posts that matched the writing-about-writing detector.
           </p>
           <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {writingAboutWriting.slice(0, 12).map((analysis) => (
@@ -355,10 +350,10 @@ const topPhrases = Object.entries(phraseFrequency)
       topPhrases.length > 0 && (
         <section id="phrases" class="mb-10 scroll-mt-28 md:mb-12">
           <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
-            Top repeated phrases (normalized)
+            Repeated phrases
           </h2>
           <p class="text-body-muted mb-6 max-w-3xl text-sm">
-            Lowercased &gt;3 chars from detected meta spans—frequency, not importance ranking.
+            Phrases from those matches, lowercased, longer than three characters, counted.
           </p>
           <div class="overflow-x-auto">
             <table class="w-full min-w-80 border-collapse border-t border-b border-[rgb(var(--color-border))] text-sm">
@@ -382,39 +377,30 @@ const topPhrases = Object.entries(phraseFrequency)
       class="scroll-mt-28 border-t border-[rgb(var(--color-border))] pt-8 md:pt-10"
     >
       <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
-        Plain-language readout
+        Summary
       </h2>
       <div class="space-y-4">
         <div>
-          <h3 class="mb-2 text-base font-medium text-[rgb(var(--color-text))]">
-            Self-Awareness in Writing
-          </h3>
+          <h3 class="mb-2 text-base font-medium text-[rgb(var(--color-text))]">Detector score</h3>
           <p class="text-body-muted text-sm">
-            Your average self-awareness score of {metaMetrics.avgSelfAwarenessScore}/100 indicates{
-              ' '
-            }
+            Mean score is {metaMetrics.avgSelfAwarenessScore}/100
             {
               metaMetrics.avgSelfAwarenessScore >= 70
-                ? 'a high level of meta-cognitive engagement with your writing process. You frequently reflect on your thinking and writing itself.'
+                ? ' (70 or higher: the lists matched often).'
                 : metaMetrics.avgSelfAwarenessScore >= 40
-                  ? 'a moderate level of self-reflection in your writing. You occasionally engage with meta-cognitive patterns.'
-                  : 'that you tend to write more directly, with less explicit self-reflection. Your writing focuses on content rather than the writing process itself.'
+                  ? ' (40–69: the lists matched on some posts).'
+                  : ' (below 40: the lists matched rarely).'
             }
           </p>
         </div>
 
         <div>
           <h3 class="mb-2 text-base font-medium text-[rgb(var(--color-text))]">
-            Relationship with Writing
+            Subject vs tool counts
           </h3>
           <p class="text-body-muted text-sm">
-            {
-              metaMetrics.writingAsSubjectCount > metaMetrics.writingAsToolCount
-                ? `You tend to treat writing as a subject of exploration itself (${metaMetrics.writingAsSubjectCount} writings) more often than as a tool (${metaMetrics.writingAsToolCount} writings). This suggests writing is something you think about, reflect upon, and examine as a practice.`
-                : metaMetrics.writingAsToolCount > metaMetrics.writingAsSubjectCount
-                  ? `You tend to use writing more as a tool for expression (${metaMetrics.writingAsToolCount} writings) than as a subject itself (${metaMetrics.writingAsSubjectCount} writings). Writing serves as your medium for communication and thought.`
-                  : `You balance writing as both a tool and a subject (${metaMetrics.writingAsSubjectCount} vs ${metaMetrics.writingAsToolCount} writings). You both use writing to express ideas and reflect on the writing process itself.`
-            }
+            Writing-as-subject: {metaMetrics.writingAsSubjectCount} posts. Writing-as-tool:{' '}
+            {metaMetrics.writingAsToolCount} posts.
           </p>
         </div>
 
@@ -422,12 +408,11 @@ const topPhrases = Object.entries(phraseFrequency)
           metaMetrics.recursiveThinkingCount > 0 && (
             <div>
               <h3 class="mb-2 text-base font-medium text-[rgb(var(--color-text))]">
-                Recursive Thinking Patterns
+                Recursive-thought detector
               </h3>
               <p class="text-body-muted text-sm">
-                You engage in recursive thinking—thinking about thinking—in{' '}
-                {metaMetrics.recursiveThinkingCount} of your writings. This meta-cognitive pattern
-                shows a deep engagement with your own thought processes and consciousness.
+                Matched {metaMetrics.recursiveThinkingCount}{' '}
+                {metaMetrics.recursiveThinkingCount === 1 ? 'post' : 'posts'}.
               </p>
             </div>
           )
@@ -435,13 +420,13 @@ const topPhrases = Object.entries(phraseFrequency)
 
         <div>
           <h3 class="mb-2 text-base font-medium text-[rgb(var(--color-text))]">
-            Meta-Language Evolution
+            First quarter vs last
           </h3>
           <p class="text-body-muted text-sm">
             {
               evolutionData.length > 0
-                ? `Over ${evolutionData.length} quarters, your use of meta-language has ${evolutionData[evolutionData.length - 1].metaLanguageFrequency > evolutionData[0].metaLanguageFrequency ? 'increased' : 'decreased'}, suggesting ${evolutionData[evolutionData.length - 1].metaLanguageFrequency > evolutionData[0].metaLanguageFrequency ? 'a growing' : 'a changing'} relationship with self-reflection in your writing.`
-                : '            Your writing shows consistent patterns of meta-cognitive engagement.'
+                ? `Across ${evolutionData.length} quarters, meta-phrase density ${evolutionData[evolutionData.length - 1].metaLanguageFrequency > evolutionData[0].metaLanguageFrequency ? 'rose' : 'fell'} from the first quarter to the latest.`
+                : 'Fewer than two quarters in the series.'
             }
           </p>
         </div>

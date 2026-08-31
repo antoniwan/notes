@@ -413,7 +413,7 @@
     },
     {
       "id": "who-i-am-today-a-recovery-progress-report",
-      "bodyLength": 5980,
+      "bodyLength": 5983,
       "pubDate": "2025-08-06T11:00:00.000Z"
     },
     {
@@ -4425,7 +4425,7 @@
           "phrase": "writing, you've probably noticed the systematic approach ",
           "type": "writing-about-writing",
           "context": "sentence",
-          "sentence": "## Why the Scaffolding Exists\n\nIf you've read my writing, you've probably noticed the systematic approach to everything—frameworks for empathy, [analytics for tracking patterns](/brain-science/insight",
+          "sentence": "## Why the Scaffolding Exists\n\nIf you've read my writing, you've probably noticed the systematic approach to everything—frameworks for empathy, [analytics for tracking patterns](/writing-insights/insi",
           "confidence": 0.9
         },
         {
@@ -4496,8 +4496,8 @@
           "for",
           "tracking",
           "patterns]",
-          "brain-science",
-          "insight",
+          "writing-insights",
+          "insi",
           "evidence",
           "-",
           "because",

@@ -25,8 +25,13 @@ const isPrimaryMobileNavActive = (href: string, pathname: string) => {
   if (h === '/everything') {
     return p === '/everything' || p.startsWith('/p/');
   }
-  if (h === '/brain-science') {
-    return p === '/brain-science' || p.startsWith('/brain-science/');
+  if (h === '/writing-insights' || h === '/brain-science') {
+    return (
+      p === '/writing-insights' ||
+      p.startsWith('/writing-insights/') ||
+      p === '/brain-science' ||
+      p.startsWith('/brain-science/')
+    );
   }
   return p === h;
 };

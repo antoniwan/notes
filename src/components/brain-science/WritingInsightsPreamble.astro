@@ -7,22 +7,17 @@ const notesRepoUrl = 'https://github.com/antoniwan/notes';
 
 <aside class="wi-preamble" aria-labelledby="wi-preamble-heading">
   <h2 id="wi-preamble-heading" class="wi-preamble__heading">
-    An idea — this is meant to be a toolkit, not a verdict
+    An idea — this is a toolkit, not a verdict
   </h2>
   <p>
-    Everything here is computed at build from published Markdown in <code>src/content/p/</code>. If
-    you use <a href={notesRepoUrl}>this repo</a> for your own notes, you get the same mirrors: cadence,
-    tags, lexicon buckets, correlations. Put files in, run the build. The reports describe your corpus.
+    Put Markdown in <code>src/content/p/</code> and run the build, or
+    <a href={notesRepoUrl}>fork the repo</a> and do the same. These pages count dates, tags, and word-list
+    hits from that folder.
   </p>
   <p>
-    Some of that stays private on purpose. Agent skills can write dated audits into
-    <code>docs/materials/</code> (gitignored except a <code>.gitkeep</code>) — content maps,
-    planning notes, things that should not ship. The local knowledge graph under
-    <code>graphify-out/</code> is gitignored too. These pages are <code>noindex</code>: an author
-    mirror, not a public gradebook.
-  </p>
-  <p class="wi-preamble__aside">
-    Letter grades are shorthand on toy formulas. Read “this set” and “an A” next to each score.
+    Dated files in <code>docs/materials/</code> and the graph under <code>graphify-out/</code> stay on
+    this machine. Pages are <code>noindex</code>. A letter grade is a number from a formula; the
+    “this set” and “an A” lines say what that formula used.
   </p>
 </aside>
 
@@ -63,9 +58,5 @@ const notesRepoUrl = 'https://github.com/antoniwan/notes';
 
   .wi-preamble code {
     font-size: 0.85em;
-  }
-
-  .wi-preamble__aside {
-    font-size: 0.85rem;
   }
 </style>

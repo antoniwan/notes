@@ -3,7 +3,7 @@ import { chromium } from 'playwright';
 (async () => {
   const browser = await chromium.launch({ headless: true });
   const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
-  await page.goto('http://localhost:4321/brain-science/insights', {
+  await page.goto('http://localhost:4321/writing-insights/insights', {
     waitUntil: 'networkidle',
     timeout: 90000,
   });

@@ -1,6 +1,6 @@
 ---
 name: brain-science-audit
-description: Audits brain-science pages and analytics pipeline behavior, with focus on build cost, cache usage, and data integrity in this Notes repo. Use when changing src/pages/brain-science, src/utils/brainScience, or diagnosing slow builds tied to analysis features.
+description: Audits Writing Insights pages and analytics pipeline behavior, with focus on build cost, cache usage, and data integrity in this Notes repo. Use when changing src/pages/writing-insights, src/pages/brain-science, src/utils/brainScience, or diagnosing slow builds tied to analysis features.
 ---
 
 # Brain Science Audit
@@ -11,7 +11,8 @@ Protect analytics feature correctness while containing build-time cost.
 
 ## Relevant Areas
 
-- `src/pages/brain-science/`
+- `src/pages/writing-insights/`
+- `src/pages/brain-science/` (origin note)
 - `src/utils/brainScience/`
 - `src/data/.brain-science-cache/`
 - `docs/performance-optimization.md`
