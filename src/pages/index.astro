@@ -11,23 +11,19 @@ const highlightsByCategory = await getHighlightsByCategory();
 <PageLayout
   title="Notes"
   heading="I write from home."
-  description="I enjoy writing from my life as a stay-at-home and remote-working father, and as a stepfather, while I practice patience, temperance, and grounded leadership. If one of these finds you, start there."
+  description="I enjoy writing from my life as a stay-at-home and remote-working father, and as a stepfather, while I practice patience, temperance, and grounded leadership."
   metaDescription={PAGE_META['/']}
   path="/"
   structuredDataType="website"
   contentClass="home-shell max-w-none"
   descriptionClass="max-w-[46rem] text-base md:text-lg"
 >
-  <nav class="home-paths" aria-label="Start with one of these notes">
-    <a href="/p/what-phrases-did-your-dad-install-on-you" class="home-paths__link"
-      >What phrases did your dad install on you?</a
-    >
+  <nav class="home-paths" aria-label="Ways into the writing">
+    <a href="/guided-path" class="home-paths__link">Start here</a>
     <span class="home-paths__sep" aria-hidden="true">·</span>
-    <a href="/p/on-parental-pressure" class="home-paths__link">It isn't too much pressure</a>
+    <a href="/category" class="home-paths__link">Browse topics</a>
     <span class="home-paths__sep" aria-hidden="true">·</span>
-    <a href="/p/if-god-had-gentle-parented-us" class="home-paths__link"
-      >If God had gentle-parented us</a
-    >
+    <a href="/everything" class="home-paths__link">Everything</a>
   </nav>
 
   <HighlightsMasonry posts={highlights} postsByCategory={highlightsByCategory} />
@@ -51,13 +47,12 @@ const highlightsByCategory = await getHighlightsByCategory();
   .home-paths {
     display: flex;
     flex-wrap: wrap;
-    align-items: baseline;
-    gap: 0.45rem 0.15rem;
-    margin: 0.15rem 0 0.85rem;
-    max-width: 46rem;
+    align-items: center;
+    gap: 0.35rem 0.15rem;
+    margin: 0.15rem 0 0.25rem;
     font-family: var(--font-sans);
     font-size: 0.95rem;
-    line-height: 1.55;
+    line-height: 1.5;
   }
 
   .home-paths__link {
