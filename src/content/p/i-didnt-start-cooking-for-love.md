@@ -64,7 +64,3 @@ I wasn't always this picky. I lived in Miami for over 12 years and ate at all so
 A craft that started for me as a necessity became one of the real pleasures of my life, worthy of every hour I put into it. That inversion of purpose still surprises me right to this moment that I'm writing this. Cooking home meals and eating home-made food are simply some of the best things in this life and they must be shared as much as you can. Food is nurture and soul, to be shared as such. The caldero and the DIY were supposed to be budget instruments and they're now some of the best and tastiest parts of my week. I got pushed into the kitchen and I stayed for the delicious food and my family's smiles. I keep going because of what the food does to a house. I make cornbread, gluten-free, out of a bag, nothing heroic, and my family materializes out of the walls. I make the magic brownies, IYKWIM, and the adults in my life have a very pleasant evening and bring it up for a week afterward. My kids eat things I made with my hands. Es una bendición, de verdad.
 
 So yeah, keep more of your money and pick up cooking because things just taste better and people will sit down at your table. Me voy a comer un arroz con pollo que cociné anoche.
-
----
-
-_Related on Notes: [El Trickle Down Sí Llegó](/p/el-trickle-down-si-llego) — the structural version of this complaint._
