@@ -166,6 +166,7 @@ export const SOCIAL_IMAGE_MANIFEST: Record<string, string> = {
   '/images/2026/learning.avif': '/social/images/2026/learning-social.jpg',
   '/images/2026/lemon-pepper-chicken-tais.avif':
     '/social/images/2026/lemon-pepper-chicken-tais-social.jpg',
+  '/images/2026/love_for_cooking.avif': '/social/images/2026/love_for_cooking-social.jpg',
   '/images/2026/neverending-walk.avif': '/social/images/2026/neverending-walk-social.jpg',
   '/images/2026/notes-on-respect.avif': '/social/images/2026/notes-on-respect-social.jpg',
   '/images/2026/oh-fuck.avif': '/social/images/2026/oh-fuck-social.jpg',
