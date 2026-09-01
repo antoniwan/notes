@@ -24,7 +24,7 @@ tags:
   - integration
   - puerto-rico
 draft: false
-featured: true
+featured: false
 published: true
 showComments: true
 ---
