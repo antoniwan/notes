@@ -41,7 +41,7 @@ Those basics stuck. The foundations stacked fast, ideas leaking into each other 
 
 Somewhere around the first juicy tender chicken breast I actually wanted to cook, my reason changed. I could've kept ranting about not being able to go out to eat out of necessity, or complained about [how fucking insane grocery prices are right now](/p/el-trickle-down-si-llego), but the practice still has its desires and parameters, and requires a specific effort that is rough, the price is there. The reason, and the reasoning, and the whys for the experience itself changed, and so I stopped cooking because of the money and necessity and kept cooking because the food is so fucking good.
 
-The hours kept stacking anyway. Also luckily, during this period I was also changing my living habits, all of them, literally, and I was on a wellness and healthy journey through weightlifting, and running, so switching to whole foods and home-cooked everything was just excellent timing. But yeah, all of this started because of this economy — and what those hours actually bought was not really the money. Somewhere around 8,000 of them in by rough math now, and I'd check that number before I bet money on it, but the idea holds: it was another Tuesday of arroz con pollo for my babies and ladies, and it was delicious, and it brought us together.
+The hours kept stacking anyway. I was lifting and running by then too, so the stove and the whole-food fridge just lined up — nothing noble, just convenient timing. But yeah, all of this started because of this economy — and what those hours actually bought was not really the money. Somewhere around 8,000 of them in by rough math now, and I'd check that number before I bet money on it, but the idea holds: it was another Tuesday of arroz con pollo for my babies and ladies, and it was delicious, and it brought us together.
 
 The idea of a used or active home kitchen is romantic; fluency behind it is not. I'm flowing through prep and cleanup, dancing to whatever's on — Peeling Flesh, Juan Luis Guerra, Coltrane yesterday. The music helps literally, not as metaphor — a song is a clock you can dance to. Ænema for a short boil, Pneuma when you've got a while, no? Stack enough hours that way and the movement starts looking mechanical, expert, because that's what practice does to you.
 
@@ -53,4 +53,4 @@ I'm pickier about eating out now, and I know how that sounds. It's a coin flip f
 
 The caldero and the DIY were supposed to be budget instruments. They're some of the best and tastiest parts of my week now. I keep going because of what the food does to a house.
 
-So yeah, keep more of your money and pick up cooking because things just taste better and people will sit down at your table. Me voy a comer un arroz con pollo que cociné anoche.
+Me voy a comer un arroz con pollo que cociné anoche.
