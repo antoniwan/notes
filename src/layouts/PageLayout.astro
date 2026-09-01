@@ -8,7 +8,7 @@ interface Props extends BaseLayoutProps {
   /**
    * Visible page H1. Defaults to `title`.
    * Use when the document title (SEO/nav brand) should differ from the on-page headline
-   * — e.g. home: title "Notes", heading "A season of execution".
+   * — e.g. home: title "Notes", heading "I write from home."
    */
   heading?: string;
   /**
@@ -20,6 +20,8 @@ interface Props extends BaseLayoutProps {
   mode?: 'prose' | 'chrome';
   /** Replaces default wrapper when you need a custom page layout */
   contentClass?: string;
+  /** Extra classes for the PageHeader description (size / measure). */
+  descriptionClass?: string;
 }
 
 const {
@@ -37,6 +39,7 @@ const {
   showTitle = true,
   mode = 'prose',
   contentClass,
+  descriptionClass,
   ...rest
 } = Astro.props;
 
@@ -59,7 +62,12 @@ const visibleHeading = heading ?? title;
   {...rest}
 >
   <Container>
-    <PageHeader title={visibleHeading} description={description} showTitle={showTitle} />
+    <PageHeader
+      title={visibleHeading}
+      description={description}
+      showTitle={showTitle}
+      descriptionClass={descriptionClass}
+    />
 
     <div class={resolvedContentClass}>
       <slot />

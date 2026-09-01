@@ -10,19 +10,24 @@ const highlightsByCategory = await getHighlightsByCategory();
 
 <PageLayout
   title="Notes"
-  heading="A season of execution"
-  description="Less narration, more action. I write from real life as a stay-at-home, remote-working father² and stepfather² — practicing patience, temperance, and grounded leadership in public."
+  heading="I write from home."
+  description="I enjoy writing from my life as a stay-at-home and remote-working father, and as a stepfather, while I practice patience, temperance, and grounded leadership. If one of these finds you, start there."
   metaDescription={PAGE_META['/']}
   path="/"
   structuredDataType="website"
   contentClass="home-shell max-w-none"
+  descriptionClass="max-w-[46rem] text-base md:text-lg"
 >
-  <nav class="home-paths" aria-label="Ways into the writing">
-    <a href="/guided-path" class="home-paths__link">Start here</a>
+  <nav class="home-paths" aria-label="Start with one of these notes">
+    <a href="/p/what-phrases-did-your-dad-install-on-you" class="home-paths__link"
+      >What phrases did your dad install on you?</a
+    >
     <span class="home-paths__sep" aria-hidden="true">·</span>
-    <a href="/category" class="home-paths__link">Browse topics</a>
+    <a href="/p/on-parental-pressure" class="home-paths__link">It isn't too much pressure</a>
     <span class="home-paths__sep" aria-hidden="true">·</span>
-    <a href="/everything" class="home-paths__link">Everything</a>
+    <a href="/p/if-god-had-gentle-parented-us" class="home-paths__link"
+      >If God had gentle-parented us</a
+    >
   </nav>
 
   <HighlightsMasonry posts={highlights} postsByCategory={highlightsByCategory} />
@@ -46,12 +51,13 @@ const highlightsByCategory = await getHighlightsByCategory();
   .home-paths {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    gap: 0.35rem 0.15rem;
-    margin: 0.15rem 0 0.25rem;
+    align-items: baseline;
+    gap: 0.45rem 0.15rem;
+    margin: 0.15rem 0 0.85rem;
+    max-width: 46rem;
     font-family: var(--font-sans);
     font-size: 0.95rem;
-    line-height: 1.5;
+    line-height: 1.55;
   }
 
   .home-paths__link {
