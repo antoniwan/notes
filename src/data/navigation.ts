@@ -21,13 +21,17 @@ export const mainNavigation: NavigationItem[] = [
       label: 'Browse Categories',
     },
   },
-  { href: '/everything', label: 'Posts' },
   {
     href: '/tag',
     label: 'Resources',
     dropdown: {
       label: 'Tools & Resources',
       items: [
+        {
+          href: '/everything',
+          label: 'Everything',
+          icon: '📝',
+        },
         {
           href: '/tag',
           label: 'Tags',

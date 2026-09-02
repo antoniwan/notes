@@ -7,6 +7,16 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.12.1] — 2026-09-02
+
+### Changed
+
+- Everything lives under Resources in the header, not as a top-level Posts item. Homepage and footer still link the archive.
+
+### Fixed
+
+- Category cards on `/category` keep a space between the count and "writing(s)".
+
 ## [6.12.0] — 2026-09-02
 
 ### Added

@@ -12,14 +12,15 @@ function isUnderCategory(p: string): boolean {
 }
 
 /**
- * Resources nav groups tag index, tag detail pages, writing-insights, the
- * /brain-science origin note, tag-management, library books, and the cookbook.
+ * Resources nav groups the archive, tag index, tag detail pages, writing-insights,
+ * the /brain-science origin note, tag-management, library books, and the cookbook.
  */
 function isRecipeUrl(p: string): boolean {
   return p === '/recipes' || p.startsWith('/p/recipes/') || p === '/p/recipes';
 }
 
 function isUnderResourcesSection(p: string): boolean {
+  if (p === '/everything') return true;
   if (p === '/tag' || (p.startsWith('/tag/') && !p.startsWith('/tag-management'))) {
     return true;
   }
@@ -29,12 +30,6 @@ function isUnderResourcesSection(p: string): boolean {
   if (p === '/library/books' || p.startsWith('/library/books/')) return true;
   if (isRecipeUrl(p)) return true;
   return false;
-}
-
-function isUnderPostsSection(p: string): boolean {
-  if (p === '/everything') return true;
-  if (isRecipeUrl(p)) return false;
-  return p.startsWith('/p/');
 }
 
 /**
@@ -50,10 +45,6 @@ export function isMainNavItemActive(href: string, pathname: string): boolean {
 
   if (h === '/tag') {
     return isUnderResourcesSection(p);
-  }
-
-  if (h === '/everything') {
-    return isUnderPostsSection(p);
   }
 
   return p === h;

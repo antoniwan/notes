@@ -15,25 +15,11 @@ const currentPathname = Astro.url.pathname;
 
 const mobilePrimaryNavigation = [
   { href: '/', label: 'Home' },
-  { href: '/everything', label: 'Posts' },
   { href: '/about', label: 'About' },
 ];
 
 const isPrimaryMobileNavActive = (href: string, pathname: string) => {
-  const p = normalizePathname(pathname);
-  const h = normalizePathname(href);
-  if (h === '/everything') {
-    return p === '/everything' || (p.startsWith('/p/') && !p.startsWith('/p/recipes'));
-  }
-  if (h === '/writing-insights' || h === '/brain-science') {
-    return (
-      p === '/writing-insights' ||
-      p.startsWith('/writing-insights/') ||
-      p === '/brain-science' ||
-      p.startsWith('/brain-science/')
-    );
-  }
-  return p === h;
+  return normalizePathname(pathname) === normalizePathname(href);
 };
 ---
 
