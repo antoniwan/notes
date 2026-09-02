@@ -26,7 +26,7 @@ const topTags = sortedTagCounts.slice(0, 12);
 
 <BaseLayout
   title="Tags"
-  description="Browse all tags to discover content by topic. Find posts about parenting, mental health, technology, philosophy, and more."
+  description="An idea map. Follow a room to find writings that share it."
   metaDescription={PAGE_META['/tag']}
   path="/tag"
   structuredDataType="website"
@@ -35,16 +35,17 @@ const topTags = sortedTagCounts.slice(0, 12);
     <Container maxWidth="container" padding="none">
       <PageHeader
         title="Tags"
-        description="Browse all tags to discover content by topic. Find posts about parenting, mental health, technology, philosophy, and more."
+        description="An idea map. Follow a room to find writings that share it."
       />
 
       {Object.keys(tagCounts).length > 0 && <ContentFormPrelude tagCounts={tagCounts} />}
 
-      {/* Popular Tags */}
       {
         topTags.length > 0 && (
           <section class="mb-12">
-            <h2 class="text-heading mb-6 text-[rgb(var(--color-text))]">Popular Tags</h2>
+            <h2 class="text-heading mb-6 text-[rgb(var(--color-text))]">
+              Rooms with the most writings
+            </h2>
             <div class="motion-stagger flex flex-wrap gap-2">
               {topTags.map(({ tag, count }) => (
                 <TagCard tag={tag} count={count} size="lg" showCount={true} />
@@ -54,9 +55,8 @@ const topTags = sortedTagCounts.slice(0, 12);
         )
       }
 
-      {/* All Tags */}
       <section>
-        <h2 class="text-heading mb-6 text-[rgb(var(--color-text))]">All Tags</h2>
+        <h2 class="text-heading mb-6 text-[rgb(var(--color-text))]">Every idea</h2>
         <div class="rounded-lg bg-[rgb(var(--color-bg-alt))]/5 p-6">
           <div class="flex flex-wrap gap-2">
             {

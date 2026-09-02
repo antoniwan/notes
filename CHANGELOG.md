@@ -7,6 +7,14 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.11.1] — 2026-09-02
+
+### Changed
+
+- `/tag` reads as an idea map: follow a room to find writings that share it. Headings are rooms with the most writings, then every idea.
+- Busy preferred rooms have a short blurb on the room page. Cousin doors stay distinct in copy (`healing` is not `recovery`).
+- Tag chips and room pages dropped the inventory emoji. The back link is Every idea.
+
 ## [6.11.0] — 2026-09-02
 
 ### Added
