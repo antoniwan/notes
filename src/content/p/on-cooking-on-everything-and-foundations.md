@@ -6,6 +6,10 @@ description: >-
 pubDate: '2024-09-15T13:06:14.100Z'
 language:
   - en
+heroImage: /images/2026/cooking-foundations.avif
+imageAlt: >-
+  Wooden cutting board on a kitchen counter with a mound of flour, eggs, herbs,
+  and bowls resting on the board, faint architectural blueprint lines underneath
 category:
   - metaspace
   - integration-growth

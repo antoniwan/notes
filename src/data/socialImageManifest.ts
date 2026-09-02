@@ -15,6 +15,7 @@ export const SOCIAL_IMAGE_MANIFEST: Record<string, string> = {
   '/images/2025/trillion.avif': '/social/images/2025/trillion-social.jpg',
   '/images/2026/arithmetic.avif': '/social/images/2026/arithmetic-social.jpg',
   '/images/2026/control.avif': '/social/images/2026/control-social.jpg',
+  '/images/2026/cooking-foundations.avif': '/social/images/2026/cooking-foundations-social.jpg',
   '/images/2026/crimson-desert-review/Crimson Desert_20260319210335.avif':
     '/social/images/2026/crimson-desert-review/Crimson Desert_20260319210335-social.jpg',
   '/images/2026/crimson-desert-review/Crimson Desert_20260319210358.avif':

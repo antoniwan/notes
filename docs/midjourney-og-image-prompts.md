@@ -74,7 +74,7 @@ surreal digital painting of a figure walking an endless staircase that loops ins
 
 ## Posts still missing a cover
 
-17 posts. Each block is one paste: subject + the parameters from the top of this file.
+16 posts. Each block is one paste: subject + the parameters from the top of this file.
 
 ### `some-notes-on-overcoming-emotional-pain.md`
 
@@ -214,16 +214,6 @@ Breathwork, writing, gym, art, daughter FaceTime, real food, sunrise, rest.
 
 ```text
 collage-style illustration of daily rituals orbiting a calm seated figure with eyes closed: journal, glass of water, running shoes, guitar, a sunlit window, bare feet on wet grass, soft pastel painterly texture, no text --ar 1200:630 --v 7 --stylize 200 --style raw --no text, watermark, logo, letters, signature
-```
-
-### `on-cooking-on-everything-and-foundations.md`
-
-Path: `/images/2026/cooking-foundations.avif`
-
-Once you know heat, ingredients, knife work, you stop needing the recipe — same as life.
-
-```text
-a kitchen counter with eggs, flour, salt, and herbs arranged like building blocks, a faint architectural foundation blueprint under the cutting board, warm overhead light, semi-realistic illustration, rich earthy colors, no recipes or labels --ar 1200:630 --v 7 --stylize 200 --style raw --no text, watermark, logo, letters, signature
 ```
 
 ### `on-overcoming-analysis-paralysis.md`
