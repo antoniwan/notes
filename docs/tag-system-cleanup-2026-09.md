@@ -50,7 +50,7 @@ Tags are not a `/tag`-only feature. The collection schema canonicalizes `tags` a
 
 | Surface                 | What changed                                                                                                                                                                               | What to check after merge                                                          |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------- |
-| `/tag`                  | Prelude is a deterministic idea map. No `#notes`. No “I’ve written #memoirs…” inventory line.                                                                                              | Open `/tag`. Confirm no notes chip and no author-form first line.                  |
+| `/tag`                  | Prelude is a deterministic idea map. Subtitle is “Follow a room…”. Busy rooms have blurbs. No `#notes`. No author-form inventory line.                                                     | Open `/tag`. Confirm idea-map subtitle, no notes chip, no “I’ve written” line.     |
 | `/tag/<slug>`           | Titles from `getTagMetadata` (humanized preferred names). Related row is co-occurrence. No `/tag/notes` page.                                                                              | `/tag/parenting`, `/tag/puerto-rico`, `/tag/poems`, `/tag/limites` → `boundaries`. |
 | Post pages              | Chips are canonical English slugs. Eight titled-notes posts lost the `notes` chip. Over-tagged posts were trimmed to ≤12.                                                                  | Respect, Self-Control, Note to Self pair, etc.                                     |
 | Continue reading        | `findRelatedPosts` still scores shared tags + **weights**. Non-preferred tags no longer get hand weights (e.g. old `fitness: 7` → default 1). Order of related posts can shuffle slightly. | Spot-check 3–4 posts’ related row.                                                 |
@@ -115,7 +115,7 @@ Dead UI already removed earlier on this branch: `TagSystem.astro`, `TagCloud.ast
 Do these as small follow-up branches. Do not mix them into unrelated PRs.
 
 1. **Long-tail leftovers** — still many one-offs (`berserk`, `crimson-desert`, English `limits`). Leave them. Promote later only if a third distinct writing appears (`colonialism`, `accountability`, …).
-2. **Tag blurbs** — some preferred tags have descriptions; the rest humanize the slug. Optional copy, not a retag.
+2. **Tag blurbs** — busy preferred rooms have a sentence; sparse preferred tags still humanize the slug. Optional copy, not a retag.
 3. **Specs 009 / 010** — still Draft; same feature, two folders. Prelude is now an idea map, not the form inventory those specs asked for. Align or archive.
 4. **Insights math** — “193% in top 5” is a counting bug in the dashboard, not a reason to change tags.
 

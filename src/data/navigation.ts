@@ -30,7 +30,7 @@ export const mainNavigation: NavigationItem[] = [
       items: [
         {
           href: '/tag',
-          label: 'All Tags',
+          label: 'Tags',
           icon: '🏷️',
         },
         {

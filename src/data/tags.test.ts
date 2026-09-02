@@ -67,6 +67,9 @@ describe('tag analytics follow preferred vocabulary', () => {
     }
     expect(getTagMetadata('poems').description).toMatch(/poem/i);
     expect(getTagMetadata('love').description).toMatch(/closeness/i);
+    expect(getTagMetadata('inner-work').description).toMatch(/nobody else/i);
+    expect(getTagMetadata('family-dynamics').description).toMatch(/household/i);
+    expect(getTagMetadata('healing').description).not.toMatch(/recovery/i);
     expect(getTagMetadata('crimson-desert').name).toBe('Crimson Desert');
     expect(getTagMetadata('crimson-desert').category).toBeUndefined();
   });

@@ -20,7 +20,7 @@ export const PAGE_META = {
   '/category':
     'Published notes grouped by category, including parenting, psychology, culture, and systems.',
   '/tag':
-    'Tag index for published notes, including parenting, mental health, philosophy, and culture.',
+    'An idea map of the writings: parenting, fatherhood, healing, Puerto Rico, and the rooms they connect.',
   '/404': 'This page does not exist. A random quote from the site archive is shown instead.',
 } as const;
 
