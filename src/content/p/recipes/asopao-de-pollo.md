@@ -3,7 +3,7 @@ title: Asopao de Pollo
 description: >-
   Asopao caldoso de muslos sin pellejo, sofrito y caldo de caja. Se sirve al
   momento.
-pubDate: '2026-07-23T11:00:00-04:00'
+pubDate: '2026-08-27T10:00:00-04:00'
 language:
   - es
 heroImage: /images/2026/asopao-de-pollo.avif

@@ -3,7 +3,7 @@ title: Arepas de Calabaza
 description: >-
   Pumpkin arepas of mashed calabaza and precooked corn flour. Sear, then
   finish in a 400°F oven. Two arepas.
-pubDate: '2026-03-23T10:00:00-04:00'
+pubDate: '2026-03-04T10:00:00-04:00'
 language:
   - en
 heroImage: /images/2026/arepas-de-calabaza.avif

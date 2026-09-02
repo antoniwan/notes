@@ -2,7 +2,7 @@
 title: Habichuelas Guisadas
 description: >-
   Canned pink beans, sofrito, and pumpkin. The pumpkin thickens the broth.
-pubDate: '2026-07-23T10:15:00-04:00'
+pubDate: '2026-07-04T10:00:00-04:00'
 language:
   - en
 heroImage: /images/2026/habichuelas-guisadas.avif

@@ -136,7 +136,7 @@ draft: false
 
 ### `featured` (boolean)
 
-Whether the post appears in the homepage Highlights masonry. Only **published** featured posts are listed (`published: true`, not draft, `pubDate` not in the future).
+Whether the post appears in the homepage Highlights masonry. Only **published English** featured posts are listed (`published: true`, not draft, `pubDate` not in the future). Spanish posts never appear on Highlights, even with `featured: true`.
 
 ```yaml
 featured: false

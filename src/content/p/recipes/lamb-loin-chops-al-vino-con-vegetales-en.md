@@ -3,7 +3,7 @@ title: Lamb Loin Chops al Vino con Vegetales
 description: >-
   Lamb loin chops in cast iron with garlic, rosemary, red wine, and
   vegetables.
-pubDate: '2026-03-23T10:45:00-04:00'
+pubDate: '2026-04-15T10:00:00-04:00'
 language:
   - en
 heroImage: /images/2026/lamb-loin-chops-al-vino-con-vegetales.avif

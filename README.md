@@ -125,7 +125,7 @@ Feature-specific components live under `src/components/<feature>/` when they are
 Post frontmatter is documented in [docs/frontmatter-spec.md](docs/frontmatter-spec.md).
 Tag governance and usage are documented in [docs/tag-policy.md](docs/tag-policy.md) and [docs/tag-vocabulary.md](docs/tag-vocabulary.md).
 
-Translations: same `translationGroup` on each language version; use `featured` so only one version shows in main lists. Details: [docs/multilingual-setup.md](docs/multilingual-setup.md).
+Translations: same `translationGroup` on each language version. Spanish stays off English listings; English cards show an ES marker when a twin exists. Details: [docs/multilingual-setup.md](docs/multilingual-setup.md).
 
 Using Cursor AI in this repo: [docs/cursor-agent-skills.md](docs/cursor-agent-skills.md).
 

@@ -61,6 +61,18 @@
       "sha256": "dec4bdbc8520307ead25435bdc4789a71f66e48fa01b6f29ea2b072d3803480d",
       "social": "/social/images/2026/asopao-de-pollo-social.jpg"
     },
+    "/images/2026/banana-oat-bread.avif": {
+      "sha256": "4dffa67ead3d9127c874000a2131768dbbb81692aa961091c094959b651fcf5b",
+      "social": "/social/images/2026/banana-oat-bread-social.jpg"
+    },
+    "/images/2026/brocoli-con-sabor.avif": {
+      "sha256": "a0be9e5e9ced43f9af1ee59485affd85f7977d28faf812712aa1eb4a137c3816",
+      "social": "/social/images/2026/brocoli-con-sabor-social.jpg"
+    },
+    "/images/2026/brown-butter-gourmet-brownies.avif": {
+      "sha256": "a0f4eb2236984c95477cc4f811c40efcc0da862677910338bc38c139957d91e5",
+      "social": "/social/images/2026/brown-butter-gourmet-brownies-social.jpg"
+    },
     "/images/2026/cast-iron-flank-steak.avif": {
       "sha256": "5306f3c5081520e8bdc397913124a0591f61011588557c088a1035edad9e88ae",
       "social": "/social/images/2026/cast-iron-flank-steak-social.jpg"
@@ -361,6 +373,10 @@
       "sha256": "3cacf72e44e197d32ea693d04111bd23d1b90c31e32570b347cd0967c948ef78",
       "social": "/social/images/2026/cupey-papi-social.jpg"
     },
+    "/images/2026/easy-breakfast-guacamole-toast.avif": {
+      "sha256": "21e3d483e32c8ae8e4d81dc4ff532e1c072f0899972dbd6c46b6616dbc5b64b8",
+      "social": "/social/images/2026/easy-breakfast-guacamole-toast-social.jpg"
+    },
     "/images/2026/empathy-and-compassion.avif": {
       "sha256": "9cce22a6246faf4fd2f675598710383b72efe0fb81129c43510d22a4b568888a",
       "social": "/social/images/2026/empathy-and-compassion-social.jpg"
@@ -372,6 +388,10 @@
     "/images/2026/fasting-hurts.avif": {
       "sha256": "d535b488a62249db32d690c5217467a432db0eaf6a6114bc64a9e7cacec569d3",
       "social": "/social/images/2026/fasting-hurts-social.jpg"
+    },
+    "/images/2026/fettuccine-with-seared-chicken.avif": {
+      "sha256": "0ae848ceb4e59ea16a7b61744dee06a396665d810c24d618de7aa1613999f3b4",
+      "social": "/social/images/2026/fettuccine-with-seared-chicken-social.jpg"
     },
     "/images/2026/fried-chicken-tender-nuggets.avif": {
       "sha256": "8f12cffc414abdac13fe2f1c908a56a2e120fe925e302120dc0324246dead222",

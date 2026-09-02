@@ -2,7 +2,7 @@
 title: Arroz con Gandules
 description: >-
   Arroz con gandules de lata, sofrito y caldo de pollo, en un caldero.
-pubDate: '2026-07-23T10:45:00-04:00'
+pubDate: '2026-08-06T10:00:00-04:00'
 language:
   - es
 heroImage: /images/2026/arroz-con-gandules.avif

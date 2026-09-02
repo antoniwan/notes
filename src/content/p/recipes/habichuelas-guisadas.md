@@ -3,7 +3,7 @@ title: Habichuelas Guisadas
 description: >-
   Habichuelas rosadas de lata, sofrito y calabaza. La calabaza espesa el
   caldo.
-pubDate: '2026-07-23T10:15:00-04:00'
+pubDate: '2026-07-04T10:00:00-04:00'
 language:
   - es
 heroImage: /images/2026/habichuelas-guisadas.avif

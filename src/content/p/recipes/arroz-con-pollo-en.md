@@ -2,7 +2,7 @@
 title: Arroz con Pollo
 description: >-
   Skinless chicken thighs, sofrito, and rice in a caldero. Achiote oil.
-pubDate: '2026-07-23T10:30:00-04:00'
+pubDate: '2026-07-23T10:00:00-04:00'
 language:
   - en
 heroImage: /images/2026/arroz-con-pollo.avif

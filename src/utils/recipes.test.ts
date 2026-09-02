@@ -97,4 +97,13 @@ describe('findRelatedPosts recipe exclusion', () => {
     const related = findRelatedPosts(essay, [essay, recipe, otherEssay]);
     expect(related.map((item) => item.id)).toEqual(['on-cooking-on-everything-and-foundations']);
   });
+
+  it('does not recommend Spanish posts from Continue reading', () => {
+    const essay = post('boundaries-and-belonging');
+    const spanish = post('limites-y-pertenencia', { language: ['es'] });
+    const otherEssay = post('the-feeling-is-not-the-problem');
+
+    const related = findRelatedPosts(essay, [essay, spanish, otherEssay]);
+    expect(related.map((item) => item.id)).toEqual(['the-feeling-is-not-the-problem']);
+  });
 });

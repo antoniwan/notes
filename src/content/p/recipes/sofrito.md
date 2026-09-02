@@ -3,7 +3,7 @@ title: Sofrito
 description: >-
   Recaíto de ajíes dulces, recao, cilantro, ajo y pimiento. Se congela en
   cubitos.
-pubDate: '2026-07-23T10:00:00-04:00'
+pubDate: '2026-06-20T10:00:00-04:00'
 language:
   - es
 heroImage: /images/2026/sofrito.avif

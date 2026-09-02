@@ -3,7 +3,7 @@ title: Sofrito
 description: >-
   Green recaíto of sweet peppers, recao, cilantro, garlic, and bell pepper.
   Frozen in cubes.
-pubDate: '2026-07-23T10:00:00-04:00'
+pubDate: '2026-06-20T10:00:00-04:00'
 language:
   - en
 heroImage: /images/2026/sofrito.avif

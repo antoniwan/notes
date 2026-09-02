@@ -18,7 +18,7 @@ I am not promising timelines here. This is a **directional map**, not a contract
 This section is a **checkpoint** so the roadmap does not read like the site is only the items below in sections 1–6. For full detail, see [README.md](../README.md).
 
 - **Reading & discovery**: full-text **search** (build-time index), **categories**, **tags** as a reader idea map (index, per-tag pages; **tag management** is author-only). See [tag-policy.md](./tag-policy.md) and the 2026-09 [continuity report](./tag-system-cleanup-2026-09.md).
-- **Posts**: automatic **reading time**, **reading progress** (`localStorage`), markdown-derived **table of contents**, **EN/ES** linking via `translationGroup`, **related posts** at the bottom via overlapping tags (“Continue reading”).
+- **Posts**: automatic **reading time**, **reading progress** (`localStorage`), markdown-derived **table of contents**, **EN/ES** linking via `translationGroup` (Spanish is off listings; English cards show an ES marker; toggle / search / SEO / URL remain the paths in), **related posts** at the bottom via overlapping tags (“Continue reading”).
 - **Home**: **highlight** masonry for published posts marked `featured: true`.
 - **Writing Insights** (`/writing-insights`): multi-page **stats and charts** (cadence, topics, lexicon buckets, etc.). `/brain-science` is the origin note; old subpaths 301. See [brain-science.md](./brain-science.md).
 - **Library**: dedicated **books** pages (see §4).
@@ -286,7 +286,7 @@ Notes is a **public practice OS**, not a growth blog. The job is to make lived a
 
 - **Named series** (fatherhood, Vastitas, Puerto Rico, leadership) — chronological Guided Path is not the same as thematic arcs.
 - **Vastitas Omniparens hub** — treat the new EN/ES pair as a worldview entry point (related notes, glossary, library links), not a one-off.
-- **Spanish as first-class lane** — keep pairing quality high; occasional Spanish-first originals, not only translations.
+- **Spanish as first-class lane** — pairing quality stays high; Spanish originals stay reachable via toggle, search, SEO, and URL. A Spanish-only site is §10, not a listing change on this site.
 - **Feed or fold thin categories** — write into Culture / Learning / DIY or merge them so taxonomy matches corpus.
 - **Cross-post reading trails** — browser-local progress beyond Guided Path (series / cornerstone trails, still no accounts).
 - **Comments as rare invitation** — Remark42 stays optional; maybe only on cornerstones.
@@ -350,7 +350,7 @@ _None queued._
 ### Suggested sequencing with product §7
 
 1. Ship **feed HTML + social images** (quiet reliability).
-2. Resolve **EN/ES listing policy** before Spanish-first content bets scale.
+2. EN/ES listing policy is English-primary (Spanish off browse surfaces; toggle / search / SEO / URL remain). A Spanish-only site is later (§10).
 3. Then product ranked bets (TLDRs → email → sources), with schema work feeding §5.
 
 ---
@@ -365,3 +365,37 @@ The old name overclaimed. The section is build-time counts and lexicon votes ove
 This pass unblocked the dictionaries: one shared module, Spanish tokens, unicode matching, quieter hedges. Remaining honesty work (grades, Flesch-on-Spanish, in-page leftover headings) is listed in that doc, not here.
 
 Feed HTML + listing-policy non-goal from §8 is closed, so expanding this mirror is allowed again — still behind compress + return loops for **readers**.
+
+---
+
+## 10. Spanish-only site (inverse of Notes)
+
+- **Status**: Idea
+- **Goal**: A Spanish-first surface where Spanish notes are the listings, and English is the translation overlay.
+
+### What this actually means
+
+- A path, locale, or subdomain that is only in Spanish (nav, listings, search, feeds).
+- English twins reachable from a language toggle on the Spanish note, plus search / SEO / direct URL.
+- The current site stays English-primary. This item is the inverse, not a bilingual mixed listing.
+
+### Why it matters
+
+Spanish readers should not have to hunt through an English archive. A dedicated surface makes that honest without dumping Spanish cards into this site.
+
+### Trade-offs
+
+- Two listing languages means two homes, two feeds, and more IA work.
+- A subdomain (`es.notes…`) is a second origin for SEO, cookies, and comments.
+- A `/es` prefix on the same origin is simpler to ship and easier to reverse.
+
+### Open questions
+
+- Path prefix vs subdomain vs a separate “In Spanish” index on this origin.
+- Whether recipes, Guided Path, and Writing Insights get Spanish chrome or stay English.
+- How comments and read-state cookies behave across the two surfaces.
+
+### Non-goals (for now)
+
+- Building any of this until the English-primary listing policy is lived with.
+- Mixing Spanish cards back onto Everything / category / tags / home / RSS.

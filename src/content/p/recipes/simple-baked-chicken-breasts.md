@@ -3,7 +3,7 @@ title: Simple Baked Chicken Breasts
 description: >-
   Chicken breasts seasoned with salt, pepper, and paprika. Pounded even, then
   baked at 325°F.
-pubDate: '2026-03-23T10:30:00-04:00'
+pubDate: '2026-04-01T10:00:00-04:00'
 language:
   - en
 heroImage: /images/2026/simple-baked-chicken-breasts.avif

@@ -26,8 +26,8 @@ Keep EN/ES pairs correctly linked and visible in the intended places.
 2. Verify both posts share the same `translationGroup`.
 3. Validate language/visibility rules:
    - Translation linking depends on `translationGroup`, `language`, `published`, and `draft`.
-   - Use `featured` only as an editorial listing control, not as a hard requirement for translation linking.
-   - If the user asks for listing behavior changes, then verify `featured` intent across the pair.
+   - Spanish is never listed on English browse surfaces. `featured` is an English Highlights control, not a Spanish listing switch.
+   - If the user asks for listing behavior changes, then verify language and `featured` intent across the pair.
 4. Ensure language arrays are correct (`["en"]` and `["es"]`).
 5. Run:
    - `pnpm run check`
@@ -37,7 +37,7 @@ Keep EN/ES pairs correctly linked and visible in the intended places.
 ## Failure Triage
 
 - Missing toggle: check `translationGroup`, `published`, `draft`, and `language`.
-- Duplicate listing exposure: check `featured` values only when listing behavior is part of the request.
+- Duplicate listing exposure: Spanish posts should not appear on Everything, category, tags, home, feeds, or Continue reading. Search, sitemap, and the language toggle are the intended paths.
 - Wrong routing/path: confirm file names and content slugs align.
 
 ## Output Format

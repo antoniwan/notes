@@ -3,7 +3,7 @@ title: Cast Iron Flank Steak
 description: >-
   Flank steak salted and seared in a smoking-hot cast iron skillet. Flip
   once. Slice against the grain.
-pubDate: '2026-03-23T10:15:00-04:00'
+pubDate: '2026-03-18T10:00:00-04:00'
 language:
   - en
 heroImage: /images/2026/cast-iron-flank-steak.avif

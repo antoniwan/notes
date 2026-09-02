@@ -3,7 +3,7 @@ title: Shaved Carrots
 description: >-
   Carrot shavings tossed with flour, cinnamon, and confectioner's sugar. Air
   fryer at 375°F for 5 minutes.
-pubDate: '2022-07-18T10:15:00-04:00'
+pubDate: '2022-08-11T10:00:00-04:00'
 language:
   - en
 heroImage: /images/2026/shaved-carrots.avif

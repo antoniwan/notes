@@ -18,6 +18,10 @@ export const SOCIAL_IMAGE_MANIFEST: Record<string, string> = {
   '/images/2026/arroz-con-gandules.avif': '/social/images/2026/arroz-con-gandules-social.jpg',
   '/images/2026/arroz-con-pollo.avif': '/social/images/2026/arroz-con-pollo-social.jpg',
   '/images/2026/asopao-de-pollo.avif': '/social/images/2026/asopao-de-pollo-social.jpg',
+  '/images/2026/banana-oat-bread.avif': '/social/images/2026/banana-oat-bread-social.jpg',
+  '/images/2026/brocoli-con-sabor.avif': '/social/images/2026/brocoli-con-sabor-social.jpg',
+  '/images/2026/brown-butter-gourmet-brownies.avif':
+    '/social/images/2026/brown-butter-gourmet-brownies-social.jpg',
   '/images/2026/cast-iron-flank-steak.avif': '/social/images/2026/cast-iron-flank-steak-social.jpg',
   '/images/2026/chilean-sea-bass.avif': '/social/images/2026/chilean-sea-bass-social.jpg',
   '/images/2026/control.avif': '/social/images/2026/control-social.jpg',
@@ -162,10 +166,14 @@ export const SOCIAL_IMAGE_MANIFEST: Record<string, string> = {
   '/images/2026/crimson-desert-review/Crimson Desert_20260429081024.avif':
     '/social/images/2026/crimson-desert-review/Crimson Desert_20260429081024-social.jpg',
   '/images/2026/cupey-papi.avif': '/social/images/2026/cupey-papi-social.jpg',
+  '/images/2026/easy-breakfast-guacamole-toast.avif':
+    '/social/images/2026/easy-breakfast-guacamole-toast-social.jpg',
   '/images/2026/empathy-and-compassion.avif':
     '/social/images/2026/empathy-and-compassion-social.jpg',
   '/images/2026/escaping-the-feeds.avif': '/social/images/2026/escaping-the-feeds-social.jpg',
   '/images/2026/fasting-hurts.avif': '/social/images/2026/fasting-hurts-social.jpg',
+  '/images/2026/fettuccine-with-seared-chicken.avif':
+    '/social/images/2026/fettuccine-with-seared-chicken-social.jpg',
   '/images/2026/fried-chicken-tender-nuggets.avif':
     '/social/images/2026/fried-chicken-tender-nuggets-social.jpg',
   '/images/2026/friendly-ai.avif': '/social/images/2026/friendly-ai-social.jpg',

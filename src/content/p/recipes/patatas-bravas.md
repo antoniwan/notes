@@ -3,7 +3,7 @@ title: Patatas Bravas
 description: >-
   Parboiled potatoes crisped in a pan, oven, or air fryer. Brava sauce of
   paprika, tomato, and vinegar.
-pubDate: '2026-03-23T11:00:00-04:00'
+pubDate: '2026-04-29T10:00:00-04:00'
 language:
   - en
 heroImage: /images/2026/patatas-bravas.avif

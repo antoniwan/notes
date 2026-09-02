@@ -3,7 +3,7 @@ title: Lamb Loin Chops al Vino con Vegetales
 description: >-
   Chuletas de lomo de cordero en cast iron con ajo, romero, vino tinto y
   vegetales.
-pubDate: '2026-03-23T10:45:00-04:00'
+pubDate: '2026-04-15T10:00:00-04:00'
 language:
   - es
 heroImage: /images/2026/lamb-loin-chops-al-vino-con-vegetales.avif

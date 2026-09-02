@@ -3,7 +3,7 @@ title: Asopao de Pollo
 description: >-
   Brothy asopao of skinless thighs, sofrito, and boxed broth. Serve it right
   away.
-pubDate: '2026-07-23T11:00:00-04:00'
+pubDate: '2026-08-27T10:00:00-04:00'
 language:
   - en
 heroImage: /images/2026/asopao-de-pollo.avif

@@ -2,7 +2,7 @@ import { getCollection } from 'astro:content';
 import { categories } from './categories';
 import { getTagMetadata } from './tags';
 import { calculateTagStats } from '../utils/tagProcessing';
-import { isCollectionListed } from '../utils/publishFilters';
+import { isListingEligiblePost, isSearchEligiblePost } from '../utils/publishFilters';
 
 /** Static list of pages for search (public reader surfaces only). */
 const PAGE_SEARCH_DATA = [
@@ -51,7 +51,8 @@ export async function getSearchData() {
 }
 
 async function buildSearchData() {
-  const posts = await getCollection('blog', ({ data }) => isCollectionListed(data));
+  const posts = await getCollection('blog', ({ data }) => isSearchEligiblePost(data));
+  const listedPosts = posts.filter((post) => isListingEligiblePost(post.data));
 
   const postSearchData = posts.map((post) => ({
     type: 'post',
@@ -76,7 +77,7 @@ async function buildSearchData() {
     icon: category.icon,
   }));
 
-  const { tagCounts } = calculateTagStats(posts);
+  const { tagCounts } = calculateTagStats(listedPosts);
   const tagSearchData = Object.entries(tagCounts).map(([tag, count]) => {
     const metadata = getTagMetadata(tag);
     return {
