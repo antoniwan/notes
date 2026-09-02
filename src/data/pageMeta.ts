@@ -8,9 +8,9 @@ import { getTagMetadata } from './tags';
  * can stay longer via `description`; pass these as `metaDescription`.
  */
 export const PAGE_META = {
-  '/': 'Notes on fatherhood, family, work, and daily life.',
+  '/': 'Essays, household recipes, and notes on fatherhood, family, work, and daily life.',
   '/about':
-    'About Antonio Rodríguez Martínez, author of Notes: father, stepfather, software builder, and recovering overthinker.',
+    'About Antonio Rodríguez Martínez, who keeps field notes at Notes: father, stepfather, software builder, and recovering overthinker.',
   '/everything': 'Complete archive of published notes, listed newest first.',
   '/guided-path':
     'Published notes grouped by season and year. Reading progress is stored on this device.',

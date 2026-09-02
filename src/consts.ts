@@ -40,7 +40,7 @@ export interface SEOConfig {
 export const SITE_TITLE = 'Notes';
 export const SHORT_SITE_TITLE = 'Notes';
 export const SITE_DESCRIPTION =
-  'Raw thoughts on fatherhood, masculinity, and modern life. No filter, some philosophy, occasional beauty. This is where I think out loud about the hard questions that keep me up at night.';
+  'Field notes from a life in progress: essays, household recipes, fatherhood, cooking, culture, and work.';
 export const SITE_URL = 'https://notes.antoniwan.online';
 
 // Author Information
@@ -99,6 +99,8 @@ export const SITE_TAGLINES = {
 export const SEO_KEYWORDS = [
   'thinking',
   'fatherhood',
+  'cooking',
+  'recipes',
   'masculinity',
   'culture',
   'modern collapse',

@@ -56,7 +56,7 @@ Reading progress, Guided Path state, and similar behaviors MUST remain browser-l
 server-side persistence and documents the privacy impact. MUST NOT add third-party analytics or
 trackers without disclosure in project documentation and the relevant spec.
 
-**Rationale:** The site presents personal essays; audience trust depends on predictable, honest data
+**Rationale:** The site presents personal field notes; audience trust depends on predictable, honest data
 handling.
 
 ### V. Discoverability and feed integrity

@@ -4,7 +4,7 @@
 
 - **Stoic** — classical excerpts (the original set).
 - **Philosophical** — other thinkers and writers (short attributed lines).
-- **Site** — pull quotes from essays on this site; responses include a URL to the post when applicable.
+- **Site** — pull quotes from posts on this site; responses include a URL to the post when applicable.
 
 There is no authentication. The server sends **`Cache-Control: private, max-age=0, must-revalidate`** so `?kind=` is never mixed up with a shared cache entry for `/api/quotes`.
 

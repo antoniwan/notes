@@ -13,6 +13,10 @@ I am not promising timelines here. This is a **directional map**, not a contract
 
 ---
 
+## What this site is
+
+Field notes. Essays, household recipes, and the books on the shelf. The surface got broader on purpose: one public notebook, not a magazine and not a recipe site with a blog attached. English listings; Spanish as a twin. See [README.md](../README.md).
+
 ## Shipped today (living surface)
 
 This section is a **checkpoint** so the roadmap does not read like the site is only the items below in sections 1–6. For full detail, see [README.md](../README.md).

@@ -4,7 +4,7 @@ This guide explains how to create and manage bilingual content using the automat
 
 ## Overview
 
-The multilingual system allows you to:
+The multilingual system is how field notes exist in English and Spanish:
 
 - Publish content in multiple languages (currently English and Spanish)
 - Link related translations via shared IDs

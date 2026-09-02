@@ -94,7 +94,7 @@ export function generateStructuredData(options: StructuredDataOptions) {
     description: SITE_DESCRIPTION,
     foundingDate: '2024', // Adjust based on your actual founding date
     areaServed: 'Worldwide',
-    serviceType: 'Personal Blog & Content Creation',
+    serviceType: 'Personal field notes',
   });
 
   // Enhanced Person schema for author
@@ -118,6 +118,7 @@ export function generateStructuredData(options: StructuredDataOptions) {
       'Technology',
       'Thinking',
       'Fatherhood',
+      'Cooking',
       'Masculinity',
       'Culture',
       'Modern Collapse',
@@ -126,7 +127,7 @@ export function generateStructuredData(options: StructuredDataOptions) {
     ],
     // Enhanced author details
     description:
-      'Software engineer and writer exploring fatherhood, masculinity, and modern life through raw, unfiltered reflection.',
+      'Software engineer and writer. Field notes on fatherhood, cooking, and modern life.',
     alumniOf: {
       '@type': 'Organization',
       name: 'Software Engineering Community',

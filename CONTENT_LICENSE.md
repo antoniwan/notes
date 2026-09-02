@@ -1,6 +1,6 @@
 # Content License
 
-The content in this repository (including but not limited to blog posts, articles, markdown files, and written materials) is licensed under:
+The content in this repository (including but not limited to essays, household recipes, articles, markdown files, and other written materials) is licensed under:
 
 ## Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)
 

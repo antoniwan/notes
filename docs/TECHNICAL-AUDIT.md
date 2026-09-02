@@ -11,7 +11,7 @@ This document is the system map the constitution already points at. It records w
 
 ## 1. Product shape (one sentence)
 
-A **hybrid Astro site**: almost everything is statically prerendered at build time; the only on-demand server route is `GET /api/quotes`. Reader state stays in the browser. Optional third parties are Remark42 (comments), Letterboxd (About), Vercel Analytics / Speed Insights, and Threads oEmbed.
+Public field notes (essays, household recipes, book library) on a **hybrid Astro site**: almost everything is statically prerendered at build time; the only on-demand server route is `GET /api/quotes`. Reader state stays in the browser. Optional third parties are Remark42 (comments), Letterboxd (About), Vercel Analytics / Speed Insights, and Threads oEmbed.
 
 ---
 
@@ -75,6 +75,7 @@ A **hybrid Astro site**: almost everything is statically prerendered at build ti
 | Taxonomy     | `/category`, `/category/[category]`, `/tag`, `/tag/[tag]` | Tag detail pages crawlable but **omitted from sitemap** by design |
 | Author tools | `/brain-science/*`, `/tag-management`                     | `noindex` + sitemap-excluded                                      |
 | Library      | `/library`, `/library/books`                              | Static data in `src/data/library.ts`                              |
+| Cookbook     | `/recipes`, `/p/recipes/[...slug]`                        | Household recipes; English listed; Spanish via dish toggle        |
 | Syndication  | `/rss.xml`, `/feed.json`, `@astrojs/sitemap`              | Feed eligibility ≠ listing eligibility                            |
 | API          | `/api/quotes`                                             | SSR JSON quotes endpoint                                          |
 | System       | `/404`, `/sitemap.xml` → 301 to sitemap-index             |                                                                   |

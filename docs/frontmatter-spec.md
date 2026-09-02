@@ -1,6 +1,6 @@
 # Frontmatter Specification
 
-This document defines the frontmatter format for all blog posts in the Blog.
+This document defines the frontmatter format for all posts in Notes: essays and household recipes in `src/content/p/`.
 
 ## Reading Time System
 

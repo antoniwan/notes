@@ -5,7 +5,7 @@ Use this guide to run the right Cursor AI skill in the Notes repo.
 ## What Skills We Have
 
 - `astro-webmaster-notes` — use for multi-file or architecture-level work.
-- `post-publishing-workflow` — use when editing posts in `src/content/p/`.
+- `post-publishing-workflow` — use when editing posts in `src/content/p/` (essays and recipes).
 - `multilingual-content-qa` — use for EN/ES translation pairs and toggles.
 - `release-quality-gate` — use before PR or merge.
 - `brain-science-audit` — use when touching brain-science pages/utils.

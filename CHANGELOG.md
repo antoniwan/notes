@@ -21,6 +21,7 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 - Spanish posts stay off Everything, category, tags, homepage Highlights, Guided Path, RSS/JSON feeds, and Continue reading, including in local `astro dev`. `featured` no longer lists Spanish.
 - Search indexes public posts in any language. Sitemap, hreflang, and post URLs are unchanged.
+- Default site description names field notes, including household recipes.
 - More Recipes stays in the same language and skips the translation twin.
 - A Spanish-only site or subdomain is documented as later work in `docs/roadmap.md` (§10).
 

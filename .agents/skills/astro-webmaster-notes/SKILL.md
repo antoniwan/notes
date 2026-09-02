@@ -19,7 +19,8 @@ Make high-quality, low-regression decisions across this Astro codebase while pre
 ## Repo Anchors
 
 - Content model: `src/content.config.ts`
-- Post content: `src/content/p/`
+- Post content: `src/content/p/` (essays) and `src/content/p/recipes/` (household recipes)
+- Cookbook index: `src/pages/recipes.astro`
 - Frontmatter spec: `docs/frontmatter-spec.md`
 - Multilingual behavior: `docs/multilingual-setup.md`
 - SEO/meta/structured data logic: `src/utils/seo.ts`, `src/utils/structuredData.ts`

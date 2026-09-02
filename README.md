@@ -2,35 +2,40 @@
 
 [![Version](https://img.shields.io/github/package-json/v/antoniwan/notes)](https://github.com/antoniwan/notes/releases)
 
-Personal writing site: essays and notes on fatherhood, masculinity, culture, and day-to-day life. Some posts are in English, some in Spanish, with links between translations where it applies.
+Field notes from a life being lived: essays, household recipes, and the books on the shelf. Fatherhood, cooking, culture, work. English and Spanish, with links between twins.
+
+This is not a magazine. It is not a recipe site with a blog attached. One public notebook. Essays and recipes share the same collection. Recipes live under `/p/recipes/` and list on the Cookbook.
 
 Live site: [notes.antoniwan.online](https://notes.antoniwan.online)
 
 Release history: [CHANGELOG.md](./CHANGELOG.md)
 
-## What it includes
+## What a reader sees
 
-- Posts in `src/content/p/` (Markdown and MDX)
-- **10 categories** (for example On Parenting; Psychology, Roughly; On Politics; Metaspace) — see `src/data/categories.ts`
+- **Writing** — essays and notes in `src/content/p/` (Markdown and MDX)
+- **Cookbook** — `/recipes` is a plate grid plus A–Z contents. Recipes ship at `/p/recipes/<slug>`. English listed; Spanish via the dish toggle
+- **Book library** — books on the shelf, under `/library` and `/library/books`
+- **Paths in** — Guided Path (seasonal order, progress in the browser only), Everything (English archive), categories, tags as an idea map, header search
+- **Home** — highlight masonry for `featured` English posts
+- **Writing Insights** (`/writing-insights`) — cadence, topics, lexicon. `/brain-science` is the origin note; old dashboard subpaths 301
+- **Feeds** — RSS (`/rss.xml`) and JSON Feed (`/feed.json`). Spanish stays out of feeds, same as listings
+- **Quotes API** — `GET /api/quotes` (Stoic excerpts, other philosophy, lines from posts; optional `?kind=`)
+
+English is the listing language. Spanish is a twin: language toggle, title search, SEO, direct URL. Not a second card stream. Details: [docs/multilingual-setup.md](docs/multilingual-setup.md).
+
+## How it is built
+
+- **10 categories** (for example On Parenting; Psychology, Roughly; On Politics; Metaspace; DIY & Creation for recipes) — see `src/data/categories.ts`
+- **Tags** — idea map for readers; **Tag management** is an author overview (noindex). Tags describe content, not the site name
 - **Dark and light theme**, including system preference
 - **Responsive layout** for small and large screens
-- **Search** in the header (client-side index built at build time)
-- **Guided Path** — seasonal reading order; progress stays in the browser only
-- **Everything** — full archive-style list
-- **Tags** — browse by idea; **Tag management** is an author overview (noindex)
-- **Tag index** on `/tag` — idea-map sentences plus the tag cloud; tags describe content, not the site name or an author inventory
-- **Writing Insights** (`/writing-insights`) — writing stats and charts (cadence, topics, lexicon buckets, and similar). `/brain-science` is a short origin note; old dashboard subpaths 301.
-- **Book library** — static data under `/library` and `/library/books`
-- **Cookbook** — `/recipes` lists household recipes as plates and an A–Z contents page
-- **Reading time** — from a remark plugin (`minutesRead` in the collection)
+- **Reading time** — remark plugin (`minutesRead`). Hidden on recipe cards and dish pages
 - **Reading progress** on posts — `localStorage` only, no server
-- **Table of contents on long posts** — floating contents control with section links and a jump to the top
-- **RSS** (`/rss.xml`) and **JSON Feed** (`/feed.json`)
-- **Random quotes API** — `GET /api/quotes` (Stoic excerpts, other philosophy, lines from posts; optional `?kind=`)
+- **Table of contents on long posts** — floating contents control
 - **Schema.org JSON-LD** where it fits the page type
-- **Comments** — optional [Remark42](https://remark42.com/) embed when you set env vars (see `docs/comments-setup.md`)
-- **Service worker** — registered for caching; the registration URL includes the **package version** from `package.json` so a version bump can nudge browsers to pick up updates
-- On **Vercel**: **Web Analytics** and **Speed Insights** are wired in the base layout (they only send data when those products are enabled on the project)
+- **Comments** — optional [Remark42](https://remark42.com/) when env vars are set (see `docs/comments-setup.md`)
+- **Service worker** — registration URL includes the **package version** from `package.json`
+- On **Vercel**: **Web Analytics** and **Speed Insights** in the base layout (they only send data when those products are enabled)
 
 ## Stack
 
@@ -108,10 +113,12 @@ notes/
 ├── src/
 │   ├── components/      # Astro components (shared + feature folders like brain-science/)
 │   ├── config/          # Comments, storage, assets
-│   ├── content/p/       # Post files (Markdown / MDX)
+│   ├── content/p/       # Essays and notes (Markdown / MDX)
+│   │   └── recipes/    # Household recipes → /p/recipes/<slug>
 │   ├── data/            # Categories, navigation, socialImageManifest.ts, socialImageFingerprints.json, …
 │   ├── layouts/
-│   ├── pages/           # Routes (blog, category, tag, writing-insights, api, …)
+│   ├── pages/           # Routes (cookbook, category, tag, writing-insights, api, …)
+│   │   └── recipes.astro
 │   ├── styles/
 │   ├── utils/
 │   └── types/
@@ -123,8 +130,15 @@ Feature-specific components live under `src/components/<feature>/` when they are
 
 ## Content
 
-Post frontmatter is documented in [docs/frontmatter-spec.md](docs/frontmatter-spec.md).
-Tag governance and usage are documented in [docs/tag-policy.md](docs/tag-policy.md) and [docs/tag-vocabulary.md](docs/tag-vocabulary.md).
+One collection (`blog` in `src/content.config.ts`). Folder is the discriminator, not a `kind` field:
+
+| Path                              | Public URL          | Listing                                                                                    |
+| --------------------------------- | ------------------- | ------------------------------------------------------------------------------------------ |
+| `src/content/p/<slug>.md`         | `/p/<slug>`         | Everything, categories, tags, home Highlights, Guided Path, feeds                          |
+| `src/content/p/recipes/<slug>.md` | `/p/recipes/<slug>` | Cookbook (`/recipes`). Cards say Recipe / Receta. More Recipes instead of Continue reading |
+
+Frontmatter: [docs/frontmatter-spec.md](docs/frontmatter-spec.md).
+Tags: [docs/tag-policy.md](docs/tag-policy.md) and [docs/tag-vocabulary.md](docs/tag-vocabulary.md).
 
 Translations: same `translationGroup` on each language version. Spanish stays off English listings; English cards show an ES marker when a twin exists. Details: [docs/multilingual-setup.md](docs/multilingual-setup.md).
 
