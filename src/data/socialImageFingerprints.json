@@ -373,6 +373,14 @@
       "sha256": "3df905667a01756d190f1d7a2e0f802867c874ae536284e9ed0c32437f3e60c2",
       "social": "/social/images/2026/lemon-pepper-chicken-tais-social.jpg"
     },
+    "/images/2026/lemon-pepper-chicken.avif": {
+      "sha256": "73a0a2791b1d5fb18d64d9794f5989a298cd75681982994c06a77633b437ea09",
+      "social": "/social/images/2026/lemon-pepper-chicken-social.jpg"
+    },
+    "/images/2026/love_for_cooking.avif": {
+      "sha256": "3a4f5d23f76f0f8f7f0767efa8b303e3090c548df7dc0eb05d36ee00c479f8d4",
+      "social": "/social/images/2026/love_for_cooking-social.jpg"
+    },
     "/images/2026/neverending-walk.avif": {
       "sha256": "55925c6c77b46b4bdb77c50a0491c574b3b64975b6818047fe0d2f1395f003df",
       "social": "/social/images/2026/neverending-walk-social.jpg"
@@ -426,7 +434,7 @@
       "social": "/social/images/2026/vastitas-social.jpg"
     },
     "/images/2026/what-phrases-did-your-dad-install-on-you.avif": {
-      "sha256": "148d360c91bea55cad41a3dffd08c438a47dc75a7269cdaa2919ecf5be2874fe",
+      "sha256": "2a28d7ebd6eee4200330bea5a838b861aa6a09fa77001076edd58f1922d5a058",
       "social": "/social/images/2026/what-phrases-did-your-dad-install-on-you-social.jpg"
     },
     "/images/ai-is-creepy.avif": {

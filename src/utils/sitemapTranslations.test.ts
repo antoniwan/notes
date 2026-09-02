@@ -31,6 +31,13 @@ describe('getSitemapLastmodByUrl', () => {
     expect(lastmodByUrl.get(url)?.toISOString()).toBe('2026-07-27T13:45:00.000Z');
   });
 
+  it('uses nested content paths as post ids', () => {
+    const nested = sitemapPageUrl('/p/recipes/lemon-pepper-chicken');
+    const oldFlat = sitemapPageUrl('/p/lemon-pepper-chicken');
+    expect(lastmodByUrl.has(nested)).toBe(true);
+    expect(lastmodByUrl.has(oldFlat)).toBe(false);
+  });
+
   it('sets listing pages to the newest related post', () => {
     const home = lastmodByUrl.get(sitemapPageUrl('/'));
     const category = lastmodByUrl.get(sitemapPageUrl('/category/integration-growth'));

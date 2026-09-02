@@ -19,6 +19,7 @@ describe('POST_REDIRECTS + buildSeoRedirects', () => {
   it('maps known renamed posts to their replacements', () => {
     expect(POST_REDIRECTS['/p/it-isnt-too-much-pressure']).toBe('/p/on-parental-pressure');
     expect(POST_REDIRECTS['/p/fasting-ground-flow']).toBe('/p/fasting-metabolic-ritual');
+    expect(POST_REDIRECTS['/p/lemon-pepper-chicken']).toBe('/p/recipes/lemon-pepper-chicken');
   });
 
   it('includes post redirects and tag-alias redirects without trailing-slash duplicates', () => {

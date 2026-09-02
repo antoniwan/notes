@@ -4,6 +4,7 @@ import PageHeader from '../components/PageHeader.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Comments from '../components/Comments.astro';
 import RelatedPosts from '../components/RelatedPosts.astro';
+import MoreRecipes from '../components/MoreRecipes.astro';
 import Container from '../components/Container.astro';
 import DefaultImage from '../components/DefaultImage.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
@@ -12,6 +13,7 @@ import LanguageToggle from '../components/LanguageToggle.astro';
 import PostTocModal from '../components/post-toc/PostTocModal.astro';
 import { generateCanonicalUrl, normalizeSeoPath } from '../utils/seo';
 import { resolveContentLanguage } from '../utils/publishFilters';
+import { isRecipePost } from '../utils/recipes';
 import type { BlogLayoutProps } from '../types/layout';
 
 interface Props extends BlogLayoutProps {}
@@ -438,7 +440,13 @@ const primaryCategory = categoryItems[0] || null;
           {/* Comments */}
           {showComments && <Comments />}
 
-          <RelatedPosts currentPost={rest.currentPost} allPosts={rest.allPosts} />
+          {
+            rest.currentPost && isRecipePost(rest.currentPost) ? (
+              <MoreRecipes currentPost={rest.currentPost} allPosts={rest.allPosts} />
+            ) : (
+              <RelatedPosts currentPost={rest.currentPost} allPosts={rest.allPosts} />
+            )
+          }
         </main>
       </div>
     </div>

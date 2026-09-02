@@ -85,8 +85,8 @@ function isPublicFrontmatter(data: Record<string, unknown>, now = new Date()): b
 }
 
 function postIdFromFile(file: string): string {
-  const base = path.basename(file);
-  return base.replace(/\.(md|mdx)$/i, '');
+  const rel = path.relative(CONTENT_DIR, file).replace(/\\/g, '/');
+  return rel.replace(/\.(md|mdx)$/i, '');
 }
 
 function canonicalPostUrl(id: string): string {
