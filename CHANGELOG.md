@@ -7,6 +7,26 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.11.0] — 2026-09-02
+
+### Added
+
+- Recipe posts live under `/p/recipes/`. `/p/lemon-pepper-chicken` 301s to the nested URL.
+- More Recipes on recipe pages, so dishes link to other dishes instead of cooking essays.
+
+### Changed
+
+- Tags are a reader idea map. `/tag` opens with a deterministic set of connected rooms, not an author inventory of forms.
+- Related tags rank by co-occurrence on the same writings. Tag pages use preferred names. 404 chips come from live posts.
+- Spanish and other alias tag URLs 301 to the English canonical room. `/tag/notes` 301s to `/tag`.
+- RSS `<category>` includes tags as well as site categories. JSON Feed `tags` is tags only.
+- Recipe posts stay out of Continue reading. Tag Analytics is no longer in the author nav.
+- Homepage headline names the practice. Start here, Browse topics, and Everything stay the three paths. About is quieter.
+
+### Removed
+
+- Unused tag cloud and tag-system UI. `notes` is not a browse tag.
+
 ## [6.10.0] — 2026-08-31
 
 ### Added
