@@ -14,7 +14,6 @@ category:
 tags:
   - empathy
   - compassion
-  - consciousness
   - personal-growth
   - psychology
   - emotional-regulation

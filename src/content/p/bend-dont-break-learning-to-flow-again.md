@@ -19,7 +19,6 @@ tags:
   - self-reflection
   - trauma
   - emotional-regulation
-  - mindfulness
   - presence
   - resilience
   - adaptability

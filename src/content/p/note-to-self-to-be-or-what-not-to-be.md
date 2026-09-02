@@ -11,12 +11,8 @@ category:
   - integration-growth
 tags:
   - self-reflection
-  - consciousness
-  - personal-growth
   - authenticity
-  - self-improvement
   - healing
-  - mindfulness
   - transformation
   - metaspace
   - purpose

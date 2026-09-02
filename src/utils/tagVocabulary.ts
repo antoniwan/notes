@@ -1,7 +1,13 @@
-import { CONTENT_FORM_TAGS, PREFERRED_TAGS, TAG_ALIAS_MAP } from '../data/tagVocabulary';
+import {
+  CONTENT_FORM_TAGS,
+  PREFERRED_TAGS,
+  STRIPPED_TAGS,
+  TAG_ALIAS_MAP,
+} from '../data/tagVocabulary';
 
 const PREFERRED_TAG_SET = new Set<string>(PREFERRED_TAGS as readonly string[]);
 const CONTENT_FORM_TAG_SET = new Set<string>(CONTENT_FORM_TAGS as readonly string[]);
+const STRIPPED_TAG_SET = new Set<string>(STRIPPED_TAGS as readonly string[]);
 
 export const normalizeTagInput = (value: string): string =>
   value
@@ -23,6 +29,7 @@ export const humanizeTagSlug = (tag: string): string =>
 
 export const canonicalizeTag = (tag: string): string => {
   const normalized = normalizeTagInput(tag);
+  if (STRIPPED_TAG_SET.has(normalized)) return '';
   // Canonical form slugs never collapse into thematic tags.
   if (CONTENT_FORM_TAG_SET.has(normalized)) return normalized;
   return TAG_ALIAS_MAP[normalized] ?? normalized;

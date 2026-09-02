@@ -13,12 +13,10 @@ tags:
   - emotional-pain
   - mental-health
   - healing
-  - consciousness
   - personal-growth
   - therapy
   - emotional-regulation
   - resilience
-  - mindfulness
   - co-parenting
   - parenting
 draft: false

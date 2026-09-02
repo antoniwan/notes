@@ -32,6 +32,7 @@ Make high-quality, low-regression decisions across this Astro codebase while pre
 3. **Server/build over client**: avoid moving heavy work to client runtime.
 4. **Single source of truth**: avoid duplicating metadata logic in multiple places.
 5. **Content integrity**: frontmatter and translation consistency are non-negotiable.
+6. **Tags are reader-first**: idea-mapping and browse, never site-name labels (`notes`) or analytics/SEO padding. See `docs/tag-policy.md`.
 
 ## Orchestration Rules
 

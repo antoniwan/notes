@@ -19,7 +19,6 @@ tags:
   - typescript
   - web-development
   - open-source
-  - diy-creation
   - systems-strategy
   - art-expression
   - metaspace

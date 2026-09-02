@@ -14,6 +14,7 @@ describe('buildPreludeTemplateCandidates', () => {
         consciousness: 41,
         healing: 38,
         'self-reflection': 32,
+        'inner-work': 1,
         'social-issues': 11,
         politics: 8,
         'systemic-critique': 8,
@@ -46,6 +47,11 @@ describe('buildPreludeTemplateCandidates', () => {
       'family',
     ]);
     expect(candidates.find((item) => item.id === 'island')?.tags[0]).toBe('puerto-rico');
+    expect(candidates.find((item) => item.id === 'inner-work')?.tags[0]).toBe('inner-work');
+    expect(candidates.find((item) => item.id === 'inner-work')?.tags).not.toContain('healing');
+    for (const candidate of candidates) {
+      expect(candidate.prefix.toLowerCase()).not.toMatch(/i'?ve written|i have |some notes are/);
+    }
   });
 
   it('does not emit an axis when too few of its tags are present', () => {
@@ -123,7 +129,7 @@ describe('selectPreludeTemplates', () => {
     expect(selected.map((item) => item.id)).toEqual(['a']);
   });
 
-  it('does not repeat form-line tags in theme sentences', () => {
+  it('does not repeat excluded tags in later sentences', () => {
     const selected = selectPreludeTemplates(
       [
         { id: 'memoir', weight: 4, prefix: 'memoir', tags: ['memoir'] },

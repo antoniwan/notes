@@ -29,7 +29,7 @@ export async function GET() {
         updatedDate: post.data.updatedDate,
         link: `${SITE_URL}/p/${post.id}`,
         guid: `${SITE_URL}/p/${post.id}`,
-        categories: post.data.category || [],
+        categories: [...new Set([...(post.data.category || []), ...(post.data.tags || [])])],
         author: post.data.author || AUTHOR.name,
         content,
         ...(imagePath && {

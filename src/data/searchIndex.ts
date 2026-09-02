@@ -83,8 +83,7 @@ async function buildSearchData() {
       type: 'tag',
       id: tag,
       title: metadata.name,
-      description:
-        metadata.description || `${count} writing${count !== 1 ? 's' : ''} tagged with "${tag}"`,
+      description: metadata.description || `${count} writing${count !== 1 ? 's' : ''}`,
       url: `/tag/${tag}`,
       weight: metadata.weight,
       count,

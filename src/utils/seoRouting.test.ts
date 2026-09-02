@@ -36,7 +36,9 @@ describe('POST_REDIRECTS + buildSeoRedirects', () => {
     expect(redirects['/tag/poem']).toBe('/tag/poems');
     expect(redirects['/tag/essay']).toBe('/tag/essays');
     expect(redirects['/tag/essays']).toBeUndefined();
-    expect(redirects['/tag/notes']).toBeUndefined();
+    expect(redirects['/tag/development']).toBe('/tag/software-development');
+    expect(redirects['/tag/notes']).toBe('/tag');
+    expect(redirects['/tag/nota']).toBe('/tag');
   });
 
   it('301s old Writing Insights subpaths and leaves the origin page in place', () => {

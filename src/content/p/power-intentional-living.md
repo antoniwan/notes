@@ -16,13 +16,10 @@ tags:
   - power
   - intentional-living
   - consciousness
-  - personal-growth
-  - self-mastery
   - authenticity
   - transformation
   - purpose
   - healing
-  - self-improvement
 draft: false
 featured: false
 published: true

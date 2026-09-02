@@ -23,7 +23,6 @@ tags:
   - freedom
   - collective-healing
   - emotional-health
-  - self-reflection
   - philosophy
 draft: false
 featured: true

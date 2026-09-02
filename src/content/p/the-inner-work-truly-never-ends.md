@@ -13,14 +13,8 @@ category:
   - psychology
 tags:
   - inner-work
-  - consciousness
-  - personal-growth
-  - self-reflection
   - healing
-  - transformation
   - therapy
-  - self-improvement
-  - mindfulness
   - metaspace
 draft: false
 featured: false

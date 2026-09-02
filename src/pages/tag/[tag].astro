@@ -24,20 +24,20 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.props;
 const canonicalTag = canonicalizeTag(tag);
-const tagLabel = getTagMetadata(canonicalTag).name;
+const tagMeta = getTagMetadata(canonicalTag);
+const tagLabel = tagMeta.name;
+const tagBlurb = tagMeta.description;
 
-// Get all posts
 const posts = await getCollection('blog', ({ data }) => isCollectionListed(data));
-
-// Get tag statistics
 const { totalPosts, relatedTags } = getTagStatistics(canonicalTag, posts);
 const tagPosts = filterPostsByTag(posts, canonicalTag);
+const seoDescription = tagMetaDescription(canonicalTag, totalPosts);
 ---
 
 <BaseLayout
   title={`${tagLabel} - Tag`}
-  description={`Browse all writings tagged with ${tagLabel}`}
-  metaDescription={tagMetaDescription(canonicalTag, totalPosts)}
+  description={tagBlurb ?? seoDescription}
+  metaDescription={seoDescription}
   path={`/tag/${canonicalTag}`}
   structuredDataType="tag"
   structuredDataIdentifier={canonicalTag}
@@ -47,7 +47,7 @@ const tagPosts = filterPostsByTag(posts, canonicalTag);
     <Container maxWidth="container" padding="none">
       {/* Tag Header with Stats */}
       <div class="mb-8">
-        <PageHeader title={tagLabel} description={`Browse all writings tagged with ${tagLabel}`} />
+        <PageHeader title={tagLabel} description={tagBlurb} />
         <div class="mt-4 md:mt-6">
           <a
             href="/tag"
@@ -88,11 +88,8 @@ const tagPosts = filterPostsByTag(posts, canonicalTag);
       <div class="space-y-6">
         {
           tagPosts.length > 0 && (
-            <div class="mb-6 flex items-center justify-between">
-              <h2 class="text-heading text-[rgb(var(--color-text))]">
-                Writings tagged with {tagLabel}
-              </h2>
-              <div class="text-body-muted text-base leading-relaxed">Sorted by date</div>
+            <div class="mb-6 flex items-center justify-end">
+              <div class="text-body-muted text-base leading-relaxed">Newest first</div>
             </div>
           )
         }
@@ -106,7 +103,7 @@ const tagPosts = filterPostsByTag(posts, canonicalTag);
       {
         relatedTags.length > 0 && (
           <div class="mt-8">
-            <h3 class="text-subheading mb-4 text-[rgb(var(--color-text))]">Related Tags</h3>
+            <h2 class="text-subheading mb-4 text-[rgb(var(--color-text))]">Related tags</h2>
             <div class="flex flex-wrap gap-1.5">
               {relatedTags.map(({ tag: relatedTag, count }: { tag: string; count: number }) => (
                 <a

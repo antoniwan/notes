@@ -16,9 +16,7 @@ tags:
   - systems-strategy
   - learning-projects
   - efficiency
-  - self-improvement
   - consciousness
-  - personal-growth
   - mastery
   - workflow
 draft: false

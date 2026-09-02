@@ -16,7 +16,6 @@ tags:
   - leadership
   - authenticity
   - truth
-  - personal-growth
   - values
   - responsibility
   - discipline

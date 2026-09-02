@@ -1,4 +1,4 @@
-import { TAG_ALIAS_MAP } from '../data/tagVocabulary';
+import { STRIPPED_TAGS, TAG_ALIAS_MAP } from '../data/tagVocabulary';
 import { normalizeTagInput } from './tagVocabulary';
 
 /** Paths that should never appear in the sitemap or be indexed. */
@@ -46,6 +46,10 @@ export const POST_REDIRECTS: Record<string, string> = {
  */
 export function buildTagAliasRedirects(): Record<string, string> {
   const redirects: Record<string, string> = {};
+
+  for (const stripped of STRIPPED_TAGS) {
+    redirects[`/tag/${stripped}`] = '/tag';
+  }
 
   for (const [alias, canonical] of Object.entries(TAG_ALIAS_MAP)) {
     const aliasSlug = normalizeTagInput(alias);

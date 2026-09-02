@@ -12,12 +12,10 @@ category:
 tags:
   - personal-growth
   - meaning
-  - consciousness
   - limits
   - self-reflection
   - philosophy
   - metaspace
-  - transformation
   - healing
   - purpose
 draft: false

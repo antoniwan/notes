@@ -15,9 +15,8 @@ tags:
   - technology
   - systems-strategy
   - learning-projects
-  - diy-creation
   - productivity
-  - development
+  - software-development
   - consciousness
   - personal-growth
   - workflow

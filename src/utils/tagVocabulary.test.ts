@@ -42,8 +42,11 @@ describe('canonicalizeTag', () => {
     expect(canonicalizeTag('poems')).toBe('poems');
     expect(canonicalizeTag('idea')).toBe('ideas');
     expect(canonicalizeTag('ideas')).toBe('ideas');
-    expect(canonicalizeTag('note')).toBe('notes');
-    expect(canonicalizeTag('notes')).toBe('notes');
+    expect(isContentFormTag('ideas')).toBe(false);
+    expect(isContentFormTag('essays')).toBe(false);
+    expect(canonicalizeTag('notes')).toBe('');
+    expect(canonicalizeTag('note')).toBe('');
+    expect(canonicalizeTag('nota')).toBe('');
     expect(canonicalizeTag('essay')).toBe('essays');
     expect(canonicalizeTag('letter')).toBe('letters');
     expect(canonicalizeTag('story')).toBe('stories');
@@ -54,7 +57,7 @@ describe('canonicalizeTag', () => {
   });
 
   it('does not send form slugs into thematic tags', () => {
-    expect(canonicalizeTag('notes')).not.toBe('reflection');
+    expect(canonicalizeTag('notes')).toBe('');
     expect(canonicalizeTag('essays')).not.toBe('reflection');
     expect(canonicalizeTag('manifestos')).not.toBe('political-awakening');
     expect(canonicalizeTag('letters')).not.toBe('memoir');
@@ -87,6 +90,24 @@ describe('preferred + form vocabulary', () => {
     expect(canonicalizeTag('wellness')).toBe('health');
     expect(isPreferredTag('wellness')).toBe(true);
     expect((PREFERRED_TAGS as readonly string[]).includes('wellness')).toBe(false);
+  });
+
+  it('promotes reader hubs and aliases vague development into software-development', () => {
+    expect(isPreferredTag('efficiency')).toBe(true);
+    expect(isPreferredTag('revolution')).toBe(true);
+    expect(isPreferredTag('discipline')).toBe(true);
+    expect(canonicalizeTag('development')).toBe('software-development');
+    expect(canonicalizeTag('revolución')).toBe('revolution');
+  });
+
+  it('strips notes because the site is already called Notes', () => {
+    expect(canonicalizeTags(['notes', 'parenting', 'nota'])).toEqual(['parenting']);
+    expect(isPreferredTag('notes')).toBe(false);
+    expect((PREFERRED_TAGS as readonly string[]).includes('notes')).toBe(false);
+    expect((CONTENT_FORM_TAGS as readonly string[]).includes('notes')).toBe(false);
+    expect((CONTENT_FORM_TAGS as readonly string[]).includes('essays')).toBe(false);
+    expect((PREFERRED_TAGS as readonly string[]).includes('essays')).toBe(false);
+    expect((PREFERRED_TAGS as readonly string[]).includes('ideas')).toBe(false);
   });
 });
 

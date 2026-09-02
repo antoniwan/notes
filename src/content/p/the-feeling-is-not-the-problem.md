@@ -25,7 +25,6 @@ tags:
   - suppression
   - reactivity
   - consciousness
-  - personal-growth
   - character
   - impulse
   - authenticity

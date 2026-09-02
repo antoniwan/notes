@@ -49,6 +49,7 @@ Use prompts like:
 - Include intent: "fix", "audit", "verify", or "prepare for PR".
 - For bigger changes, start with `astro-webmaster-notes`.
 - For publishing content, always run `post-publishing-workflow`.
+- Tags are reader-first (`docs/tag-policy.md`, `.cursor/rules/tag-reader-first.mdc`): never tag `notes`.
 - Before merge, run `release-quality-gate`.
 - For writing direction, run `content-strategy-map` and keep the dated report.
 

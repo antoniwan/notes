@@ -17,7 +17,7 @@ I am not promising timelines here. This is a **directional map**, not a contract
 
 This section is a **checkpoint** so the roadmap does not read like the site is only the items below in sections 1–6. For full detail, see [README.md](../README.md).
 
-- **Reading & discovery**: full-text **search** (build-time index), **categories**, **tags** (index, per-tag pages, **tag management** analytics view), **Everything** archive, **Guided Path** (seasonal order; progress in the browser only).
+- **Reading & discovery**: full-text **search** (build-time index), **categories**, **tags** as a reader idea map (index, per-tag pages; **tag management** is author-only). See [tag-policy.md](./tag-policy.md) and the 2026-09 [continuity report](./tag-system-cleanup-2026-09.md).
 - **Posts**: automatic **reading time**, **reading progress** (`localStorage`), markdown-derived **table of contents**, **EN/ES** linking via `translationGroup`, **related posts** at the bottom via overlapping tags (“Continue reading”).
 - **Home**: **highlight** masonry for published posts marked `featured: true`.
 - **Writing Insights** (`/writing-insights`): multi-page **stats and charts** (cadence, topics, lexicon buckets, etc.). `/brain-science` is the origin note; old subpaths 301. See [brain-science.md](./brain-science.md).

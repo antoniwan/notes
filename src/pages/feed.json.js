@@ -30,7 +30,7 @@ export async function GET() {
             url: AUTHOR.url,
           },
         ],
-        tags: [...(post.data.category || []), ...(post.data.tags || [])],
+        tags: post.data.tags || [],
         ...(post.data.heroImage && {
           image: feedImageUrl(post.data.heroImage),
         }),

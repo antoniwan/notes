@@ -2,6 +2,7 @@ import type { CollectionEntry } from 'astro:content';
 import { getTagWeight, getTagCategory, type TagCategory } from '../data/tags';
 import { canonicalizeTag, canonicalizeTags } from './tagVocabulary';
 import { isPublicPost } from './publishFilters';
+import { isRecipePost } from './recipes';
 
 /**
  * Calculate tag statistics across all posts
@@ -110,7 +111,10 @@ export function findRelatedPosts(
 ): CollectionEntry<'blog'>[] {
   // Filter out the current post and non-public posts
   const availablePosts = allPosts.filter(
-    (post) => post.id !== currentPost.id && isPublicPost(post.data, { includeFuture: true }),
+    (post) =>
+      post.id !== currentPost.id &&
+      !isRecipePost(post) &&
+      isPublicPost(post.data, { includeFuture: true }),
   );
 
   if (availablePosts.length === 0) return [];

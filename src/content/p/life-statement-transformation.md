@@ -14,13 +14,10 @@ category:
 subcategory: Personal Development
 tags:
   - transformation
-  - personal-growth
-  - consciousness
   - self-reflection
   - authenticity
   - values
   - healing
-  - self-improvement
   - metaspace
   - purpose
 draft: false

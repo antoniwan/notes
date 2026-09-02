@@ -13,14 +13,10 @@ category:
   - integration-growth
 tags:
   - values
-  - consciousness
-  - personal-growth
   - authenticity
   - freedom
   - self-reflection
   - healing
-  - transformation
-  - self-improvement
   - metaspace
 draft: false
 featured: false

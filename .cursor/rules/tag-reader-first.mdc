@@ -1,0 +1,29 @@
+---
+description: Tags describe ideas for readers — never site-name, author, SEO, or analytics leftovers
+alwaysApply: true
+---
+
+# Tags are for the reader
+
+The site is called Notes. Every writing is already a note. Tags exist so a **reader** can browse, navigate, map ideas, and follow connections between pieces.
+
+They do not exist to describe your process, to feed `/tag` prelude code, to pad SEO, or to make Writing Insights charts happier.
+
+## Do
+
+- Tag **what the piece is about** and **which ideas it connects to** (`fatherhood`, `puerto-rico`, `boundaries`, `cooking`).
+- Prefer tags a stranger would click to find more of that idea.
+- Keep distinct ideas distinct (`parenting` vs `fatherhood`; English `limits` vs `boundaries`).
+- One becoming door per piece (`personal-growth` or `transformation` or `self-improvement`), not the hallway stacked.
+- One inner-work door per piece (`consciousness` or `self-reflection` or `mindfulness` or `inner-work`), not the hallway stacked.
+- Form tags (`poems`, `memoir`, `reflection`) only when a reader would browse that shelf.
+
+## Do not
+
+- Never tag `notes`, `note`, `nota`, or `notas`. Canonicalize strips them; `/tag/notes` 301s to `/tag`.
+- Do not add `essays`, `ideas`, or other empty form labels just because a spec wants a prelude inventory.
+- Do not invent tags for Maslow buckets, tag weights, or schema.
+
+The `/tag` index is an idea map, not an author inventory. Do not restore “I've written #essays, #notes…” copy.
+
+Full policy: `docs/tag-policy.md`. Vocabulary: `src/data/tagVocabulary.ts`.

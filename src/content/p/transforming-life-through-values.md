@@ -16,7 +16,6 @@ subcategory: Personal Development
 tags:
   - values
   - therapy
-  - personal-growth
   - mental-health
   - family
   - habits

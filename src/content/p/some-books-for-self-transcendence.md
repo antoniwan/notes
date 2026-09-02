@@ -14,7 +14,6 @@ tags:
   - books
   - self-transcendence
   - consciousness
-  - personal-growth
   - learning
   - philosophy
   - spirituality

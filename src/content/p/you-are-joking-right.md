@@ -13,15 +13,10 @@ category:
   - integration-growth
 tags:
   - self-reflection
-  - consciousness
-  - personal-growth
   - healing
   - therapy
   - emotional-regulation
-  - self-improvement
-  - mindfulness
   - metaspace
-  - transformation
 draft: false
 featured: false
 published: true

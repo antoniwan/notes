@@ -1,5 +1,4 @@
 ---
-import type { ContentFormPreludeItem } from '../../utils/tag/contentFormTags';
 import { formatPreludeConnectors } from '../../utils/tag/contentFormTags';
 import {
   buildPreludeTemplateCandidates,
@@ -8,53 +7,21 @@ import {
 } from '../../utils/tag/preludeTemplates';
 
 interface Props {
-  items: ContentFormPreludeItem[];
   tagCounts: Record<string, number>;
 }
 
-const { items, tagCounts } = Astro.props;
+const { tagCounts } = Astro.props;
 
-const primaryItems = items.filter((item) => item.label !== 'poems');
-const chunks: ContentFormPreludeItem[][] = [];
-for (let index = 0; index < primaryItems.length; index += 4) {
-  chunks.push(primaryItems.slice(index, index + 4));
-}
-
-const formSlugsAlreadyLinked = primaryItems.map((item) => item.href.replace(/^\/tag\//, ''));
 const tagLink = (tag: string) => `/tag/${encodeURIComponent(tag)}`;
 const asHashTag = (tag: string) => `#${tag}`;
 const candidates = buildPreludeTemplateCandidates({ tagCounts });
-const templates = selectPreludeTemplates(candidates, PRELUDE_THEME_LIMIT, {
-  excludeTags: formSlugsAlreadyLinked,
-});
+const templates = selectPreludeTemplates(candidates, PRELUDE_THEME_LIMIT);
 ---
 
 {
-  (chunks.length > 0 || templates.length > 0) && (
+  templates.length > 0 && (
     <section class="mb-6">
       <ul class="text-body-muted list-disc space-y-1.5 pl-5 text-sm leading-relaxed">
-        {chunks.map((chunk, chunkIndex) => {
-          const connectors = formatPreludeConnectors(chunk.length);
-          const prefix = chunkIndex === 0 ? "I've written" : "I've also written";
-          return (
-            <li>
-              {prefix}
-              {chunk.map((item, itemIndex) => (
-                <>
-                  <span>{connectors[itemIndex] ?? ', '}</span>
-                  <a
-                    href={item.href}
-                    class="font-medium text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/40 underline-offset-4 hover:text-[rgb(var(--color-accent-hover))]"
-                  >
-                    {asHashTag(item.label)}
-                  </a>
-                </>
-              ))}
-              .
-            </li>
-          );
-        })}
-
         {templates.map((template) => {
           const connectors = formatPreludeConnectors(template.tags.length);
           return (

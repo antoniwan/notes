@@ -12,8 +12,6 @@ category:
 tags:
   - analysis-paralysis
   - mental-health
-  - consciousness
-  - personal-growth
   - decision-making
   - mindfulness
   - self-improvement

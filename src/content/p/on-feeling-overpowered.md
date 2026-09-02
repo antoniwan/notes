@@ -12,9 +12,6 @@ category:
 tags:
   - mental-health
   - emotional-regulation
-  - consciousness
-  - personal-growth
-  - self-reflection
   - healing
   - therapy
   - mindfulness

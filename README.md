@@ -17,8 +17,8 @@ Release history: [CHANGELOG.md](./CHANGELOG.md)
 - **Search** in the header (client-side index built at build time)
 - **Guided Path** — seasonal reading order; progress stays in the browser only
 - **Everything** — full archive-style list
-- **Tags** — browse by tag; **Tag management** for overview-style views
-- **Tag prelude links** on `/tag` — links to writing forms (essays, notes, poems, and similar) above the tag cloud when data exists
+- **Tags** — browse by idea; **Tag management** is an author overview (noindex)
+- **Tag index** on `/tag` — idea-map sentences plus the tag cloud; tags describe content, not the site name or an author inventory
 - **Writing Insights** (`/writing-insights`) — writing stats and charts (cadence, topics, lexicon buckets, and similar). `/brain-science` is a short origin note; old dashboard subpaths 301.
 - **Book library** — static data under `/library` and `/library/books`
 - **Reading time** — from a remark plugin (`minutesRead` in the collection)

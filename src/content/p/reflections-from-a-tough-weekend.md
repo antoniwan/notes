@@ -10,16 +10,14 @@ category:
   - integration-growth
   - psychology
 tags:
+  - reflection
   - self-reflection
   - mental-health
-  - consciousness
   - personal-growth
   - healing
   - emotional-regulation
   - therapy
   - resilience
-  - self-improvement
-  - mindfulness
 draft: false
 featured: false
 published: true

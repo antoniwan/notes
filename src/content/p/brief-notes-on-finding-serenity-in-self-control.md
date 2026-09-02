@@ -13,13 +13,11 @@ category:
   - integration-growth
 tags:
   - self-control
-  - mindfulness
   - mental-health
   - serenity
   - consciousness
   - self-mastery
   - emotional-regulation
-  - personal-growth
   - discipline
   - healing
 draft: false

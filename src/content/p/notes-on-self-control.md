@@ -14,11 +14,8 @@ tags:
   - discipline
   - mental-health
   - consciousness
-  - personal-growth
   - self-mastery
   - emotional-regulation
-  - self-improvement
-  - mindfulness
   - healing
 draft: false
 featured: false

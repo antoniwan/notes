@@ -15,7 +15,6 @@ tags:
   - technology
   - productivity
   - systems-strategy
-  - development
   - tools
   - efficiency
   - software-development

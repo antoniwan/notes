@@ -18,7 +18,6 @@ tags:
   - power
   - self-mastery
   - emotional-intelligence
-  - personal-growth
   - communication
   - relationships
   - philosophy

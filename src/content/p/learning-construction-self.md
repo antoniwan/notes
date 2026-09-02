@@ -15,12 +15,9 @@ tags:
   - personal-growth
   - self-construction
   - learning
-  - consciousness
-  - transformation
   - self-reflection
   - healing
   - authenticity
-  - self-improvement
   - metaspace
 draft: false
 featured: false

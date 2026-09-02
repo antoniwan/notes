@@ -72,6 +72,7 @@ export const DOMAIN_EXTENSION_TAGS = {
     'inner-work',
     'inner-child',
     'self-mastery',
+    'discipline',
     'emotional-health',
     'fear',
     'grief',
@@ -89,6 +90,7 @@ export const DOMAIN_EXTENSION_TAGS = {
     'version-control',
     'digital-safety',
     'customization',
+    'efficiency',
   ],
   society: [
     'social-issues',
@@ -97,6 +99,7 @@ export const DOMAIN_EXTENSION_TAGS = {
     'governance',
     'activism',
     'democracy',
+    'revolution',
     'puerto-rico',
     'economics',
   ],
@@ -123,21 +126,16 @@ export const DOMAIN_EXTENSION_TAGS = {
 } as const;
 
 /**
- * Canonical slugs for writing-form tags. These are a separate axis from
- * thematic tags and must never alias into themes (e.g. notes → reflection).
+ * Reader destinations that currently exist as their own shelves.
+ * Empty form labels (essays, ideas, letters, …) stay out of preferred vocab
+ * so they cannot feed a prelude inventory. Aliases still 301 old URLs.
  */
-export const CONTENT_FORM_TAGS = [
-  'essays',
-  'ideas',
-  'letters',
-  'manifestos',
-  'memoir',
-  'notes',
-  'poems',
-  'reflection',
-  'songs',
-  'stories',
-] as const;
+export const CONTENT_FORM_TAGS = ['memoir', 'poems', 'reflection'] as const;
+
+/**
+ * Site-name / tautology slugs. Dropped in canonicalize. `/tag/notes` 301s to `/tag`.
+ */
+export const STRIPPED_TAGS = ['note', 'notes', 'nota', 'notas'] as const;
 
 const DOMAIN_EXTENSION_VALUES = Object.values(DOMAIN_EXTENSION_TAGS).flat();
 
@@ -193,14 +191,12 @@ export const TAG_ALIAS_MAP: Record<string, string> = {
   wellness: 'health',
   systems: 'systems-strategy',
   'social-critique': 'systemic-critique',
+  development: 'software-development',
   // Content-form singular/plural and EN/ES variants — stay on the form axis
   essay: 'essays',
   ensayo: 'essays',
   ensayos: 'essays',
   idea: 'ideas',
-  note: 'notes',
-  nota: 'notes',
-  notas: 'notes',
   letter: 'letters',
   carta: 'letters',
   cartas: 'letters',

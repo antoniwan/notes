@@ -51,7 +51,12 @@ export function categoryMetaDescription(category: Pick<Category, 'id' | 'name'>)
 
 /** Unique meta description for a tag listing page. */
 export function tagMetaDescription(tag: string, count: number): string {
-  const label = getTagMetadata(tag).name;
+  const meta = getTagMetadata(tag);
   const n = count === 1 ? '1 note' : `${count} notes`;
-  return `${n} tagged ${label} in the Notes archive.`;
+  if (meta.description) {
+    const blurb = meta.description.trim();
+    const withStop = /[.!?]$/.test(blurb) ? blurb : `${blurb}.`;
+    return `${withStop} ${n} in the archive.`;
+  }
+  return `${n} on ${meta.name} in the Notes archive.`;
 }

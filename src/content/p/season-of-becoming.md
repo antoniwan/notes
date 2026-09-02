@@ -12,9 +12,7 @@ category:
   - metaspace
 tags:
   - authenticity
-  - self-awareness
   - transformation
-  - consciousness
   - embodiment
   - integration
   - self-reflection

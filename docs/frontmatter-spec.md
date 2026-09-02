@@ -100,7 +100,8 @@ Tag policy:
 
 - Prefer canonical tags from `docs/tag-vocabulary.md` / `docs/tag-policy.md`.
 - Canonical tags use lowercase kebab-case English slugs.
-- Target 5-12 reusable tags; writing-form tags (`poems`, `memoir`, `notes`, …) stay distinct from themes.
+- Tags describe ideas for readers (browse, navigation, idea-mapping). Never tag `notes` — the site is already Notes.
+- Target 5-12 reusable idea tags. Form tags (`poems`, `memoir`) only when a reader would browse that form as a destination.
 - Keep tags descriptive and reusable; avoid one-off labels unless they are clearly needed.
 
 ### `readingTime` (removed)

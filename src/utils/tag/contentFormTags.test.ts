@@ -14,27 +14,27 @@ describe('content-form grouping', () => {
     expect(poems?.href).toBe('/tag/poems');
   });
 
-  it('keeps ideas and notes distinct from reflections', () => {
+  it('keeps memoirs distinct from reflections', () => {
     const items = toContentFormPreludeItems({
-      ideas: 2,
-      notes: 4,
+      memoir: 2,
       reflection: 3,
     });
-    expect(items.map((item) => item.label)).toEqual(['notes', 'reflections', 'ideas']);
-    expect(items.find((item) => item.label === 'ideas')?.href).toBe('/tag/ideas');
-    expect(items.find((item) => item.label === 'notes')?.href).toBe('/tag/notes');
+    expect(items.map((item) => item.label)).toEqual(['reflections', 'memoirs']);
+    expect(items.find((item) => item.label === 'memoirs')?.href).toBe('/tag/memoir');
     expect(items.find((item) => item.label === 'reflections')?.href).toBe('/tag/reflection');
   });
 
   it('sorts by count then label', () => {
-    const items = toContentFormPreludeItems({ stories: 2, letters: 2, poems: 5 });
-    expect(items.map((item) => item.label)).toEqual(['poems', 'letters', 'stories']);
+    const items = toContentFormPreludeItems({ memoir: 2, poems: 5, reflection: 2 });
+    expect(items.map((item) => item.label)).toEqual(['poems', 'memoirs', 'reflections']);
   });
 
-  it('maps display labels to canonical slugs', () => {
+  it('maps display labels to canonical slugs and ignores empty form shelves', () => {
     expect(CONTENT_FORM_TARGET_SLUGS.memoirs).toBe('memoir');
     expect(CONTENT_FORM_TARGET_SLUGS.reflections).toBe('reflection');
-    expect(getCanonicalContentFormLabel('ensayo')).toBe('essays');
+    expect(getCanonicalContentFormLabel('poema')).toBe('poems');
+    expect(getCanonicalContentFormLabel('ensayo')).toBeNull();
+    expect(getCanonicalContentFormLabel('ideas')).toBeNull();
   });
 });
 

@@ -12,7 +12,6 @@ category:
 tags:
   - respect
   - relationships
-  - consciousness
   - personal-growth
   - psychology
   - emotional-regulation

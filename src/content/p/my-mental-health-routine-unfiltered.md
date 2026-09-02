@@ -14,7 +14,6 @@ tags:
   - therapy
   - self-care
   - wellness
-  - personal-growth
   - healing
   - consciousness
   - emotional-regulation

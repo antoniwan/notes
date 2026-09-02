@@ -21,7 +21,6 @@ tags:
   - foundations
   - self-care
   - learning-projects
-  - diy-creation
   - consciousness
   - personal-growth
 draft: false

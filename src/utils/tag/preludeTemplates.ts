@@ -33,7 +33,7 @@ const PRELUDE_AXES: PreludeAxis[] = [
   {
     id: 'poems',
     weight: 7,
-    prefix: 'I have poems too over at',
+    prefix: 'Poems live at',
     allowed: ['poems'],
     limit: 1,
     minTags: 1,
@@ -41,7 +41,7 @@ const PRELUDE_AXES: PreludeAxis[] = [
   {
     id: 'family',
     weight: 6,
-    prefix: 'A lot of this is fatherhood in real time:',
+    prefix: 'Fatherhood in real time:',
     prefer: ['fatherhood'],
     allowed: [
       'fatherhood',
@@ -55,14 +55,14 @@ const PRELUDE_AXES: PreludeAxis[] = [
   {
     id: 'inner-work',
     weight: 5,
-    prefix: 'I keep returning to',
-    suffix: 'the long road kind',
-    allowed: ['consciousness', 'healing', 'self-reflection', 'therapy', 'mindfulness'],
+    prefix: 'The inner work sits under',
+    prefer: ['inner-work'],
+    allowed: ['inner-work', 'consciousness', 'self-reflection', 'mindfulness'],
   },
   {
     id: 'public-life',
     weight: 5,
-    prefix: 'When the world gets loud, I write on',
+    prefix: 'When the world gets loud:',
     allowed: ['social-issues', 'politics', 'systemic-critique', 'social-justice', 'power'],
   },
   {
@@ -75,7 +75,7 @@ const PRELUDE_AXES: PreludeAxis[] = [
   {
     id: 'becoming',
     weight: 4,
-    prefix: 'Some notes are for becoming:',
+    prefix: 'Becoming lives under',
     allowed: [
       'personal-growth',
       'emotional-regulation',
@@ -87,26 +87,27 @@ const PRELUDE_AXES: PreludeAxis[] = [
   {
     id: 'closeness',
     weight: 4,
-    prefix: 'I write about closeness without pretending it is easy:',
+    prefix: 'Closeness without pretending it is easy:',
     allowed: ['relationships', 'vulnerability', 'love', 'intimacy', 'communication'],
   },
   {
     id: 'craft',
     weight: 4,
-    prefix: 'I also build in public:',
+    prefix: 'The making lives under',
     allowed: ['learning-projects', 'technology', 'software-development', 'writing', 'metaspace'],
   },
   {
     id: 'kitchen',
     weight: 4,
-    prefix: 'The kitchen notes live under',
+    prefix: 'The kitchen is under',
     allowed: ['cooking', 'food', 'recipes'],
   },
   {
     id: 'repair',
     weight: 4,
     prefix: 'The repair work is in',
-    allowed: ['recovery', 'trauma', 'attachment', 'grief'],
+    prefer: ['healing'],
+    allowed: ['healing', 'recovery', 'trauma', 'attachment', 'grief'],
   },
   {
     id: 'rebellion',
@@ -123,19 +124,19 @@ const PRELUDE_AXES: PreludeAxis[] = [
   {
     id: 'study',
     weight: 3,
-    prefix: 'If you are in study mode, I also write about',
+    prefix: 'In study mode:',
     allowed: ['philosophy', 'psychology', 'education', 'spirituality', 'learning'],
   },
   {
     id: 'body',
     weight: 3,
-    prefix: 'When I need to slow down, I write around',
+    prefix: 'To slow down:',
     allowed: ['health', 'self-care', 'nutrition', 'ritual', 'presence'],
   },
   {
     id: 'systems-thinking',
     weight: 3,
-    prefix: 'Others are systems notes about',
+    prefix: 'Systems thinking lives under',
     allowed: ['systems-strategy', 'technology', 'power', 'metaspace'],
   },
 ];
@@ -184,8 +185,8 @@ export interface SelectPreludeTemplatesOptions {
 
 /**
  * Stable, diversity-first pick: highest weight wins, then id.
- * Tags already used (or excluded by the form line) are stripped so later
- * sentences cover other axes instead of repeating healing/self-reflection.
+ * Tags already used are stripped so later sentences cover other axes
+ * instead of repeating healing/self-reflection.
  */
 export const selectPreludeTemplates = (
   candidates: PreludeTemplateCandidate[],

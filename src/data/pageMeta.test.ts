@@ -41,14 +41,21 @@ describe('categoryMetaDescription', () => {
 });
 
 describe('tagMetaDescription', () => {
-  it('includes the tag and a count', () => {
+  it('leads with the tag blurb when one exists', () => {
     const description = tagMetaDescription('fatherhood', 12);
     expect(description).toMatch(/12 notes/i);
-    expect(description.toLowerCase()).toContain('fatherhood');
+    expect(description.toLowerCase()).toContain('father');
+    expect(description).not.toMatch(/tagged with/i);
     expect(description).not.toBe(SITE_DESCRIPTION);
   });
 
   it('uses singular copy for a single note', () => {
-    expect(tagMetaDescription('healing', 1)).toBe('1 note tagged Healing in the Notes archive.');
+    expect(tagMetaDescription('healing', 1)).toBe(
+      'Recovery and restoration processes. 1 note in the archive.',
+    );
+  });
+
+  it('names the room once when there is no blurb', () => {
+    expect(tagMetaDescription('limits', 3)).toBe('3 notes on Limits in the Notes archive.');
   });
 });

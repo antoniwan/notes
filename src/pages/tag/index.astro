@@ -6,7 +6,6 @@ import Container from '../../components/Container.astro';
 import ContentFormPrelude from '../../components/tag/ContentFormPrelude.astro';
 import { getCollection } from 'astro:content';
 import { PAGE_META } from '../../data/pageMeta';
-import { toContentFormPreludeItems } from '../../utils/tag/contentFormTags';
 import { calculateTagStats } from '../../utils/tagProcessing';
 import { isCollectionListed } from '../../utils/publishFilters';
 
@@ -23,7 +22,6 @@ const sortedTagCounts = Object.entries(tagCounts)
 
 // Get top tags for quick access
 const topTags = sortedTagCounts.slice(0, 12);
-const contentFormPreludeItems = toContentFormPreludeItems(tagCounts);
 ---
 
 <BaseLayout
@@ -40,11 +38,7 @@ const contentFormPreludeItems = toContentFormPreludeItems(tagCounts);
         description="Browse all tags to discover content by topic. Find posts about parenting, mental health, technology, philosophy, and more."
       />
 
-      {
-        contentFormPreludeItems.length > 0 && (
-          <ContentFormPrelude items={contentFormPreludeItems} tagCounts={tagCounts} />
-        )
-      }
+      {Object.keys(tagCounts).length > 0 && <ContentFormPrelude tagCounts={tagCounts} />}
 
       {/* Popular Tags */}
       {

@@ -16,7 +16,6 @@ tags:
   - mental-health
   - therapy
   - self-reflection
-  - personal-growth
   - emotional-regulation
   - professional-development
   - confidence-building

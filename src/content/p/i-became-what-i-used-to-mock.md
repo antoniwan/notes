@@ -16,7 +16,6 @@ tags:
   - transformation
   - humility
   - therapy
-  - personal-growth
   - ego
   - blind-spots
   - authenticity

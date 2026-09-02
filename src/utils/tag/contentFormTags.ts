@@ -6,30 +6,13 @@ export interface ContentFormPreludeItem {
 
 type ContentFormCanonicalLabel = (typeof CONTENT_FORM_CANONICAL_LABELS)[number];
 
-export const CONTENT_FORM_CANONICAL_LABELS = [
-  'essays',
-  'ideas',
-  'letters',
-  'manifestos',
-  'memoirs',
-  'notes',
-  'poems',
-  'reflections',
-  'songs',
-  'stories',
-] as const;
+/** Only form labels that are actual reader shelves right now. */
+export const CONTENT_FORM_CANONICAL_LABELS = ['memoirs', 'poems', 'reflections'] as const;
 
 export const CONTENT_FORM_TARGET_SLUGS: Record<ContentFormCanonicalLabel, string> = {
-  essays: 'essays',
-  ideas: 'ideas',
-  letters: 'letters',
-  manifestos: 'manifestos',
   memoirs: 'memoir',
-  notes: 'notes',
   poems: 'poems',
   reflections: 'reflection',
-  songs: 'songs',
-  stories: 'stories',
 };
 
 export const normalizeTagLabel = (value: string): string =>
@@ -40,16 +23,9 @@ export const normalizeTagLabel = (value: string): string =>
     .replace(/[\u0300-\u036f]/g, '');
 
 const CONTENT_FORM_VARIANTS: Record<ContentFormCanonicalLabel, string[]> = {
-  essays: ['essay', 'essays', 'ensayo', 'ensayos'],
-  ideas: ['idea', 'ideas'],
-  letters: ['letter', 'letters', 'carta', 'cartas'],
-  manifestos: ['manifesto', 'manifestos', 'manifiesto', 'manifiestos'],
   memoirs: ['memoir', 'memoirs'],
-  notes: ['note', 'notes', 'nota', 'notas'],
   poems: ['poem', 'poems', 'poema', 'poemas', 'poetry'],
   reflections: ['reflection', 'reflections'],
-  songs: ['song', 'songs', 'cancion', 'canciones'],
-  stories: ['story', 'stories', 'historia', 'historias'],
 };
 
 const contentFormVariantMap: Record<string, ContentFormCanonicalLabel> = {};

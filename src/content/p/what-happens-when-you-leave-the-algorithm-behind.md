@@ -14,12 +14,9 @@ tags:
   - consciousness
   - social-media
   - mental-health
-  - mindfulness
   - personal-growth
-  - self-reflection
   - healing
   - social-issues
-  - self-improvement
 draft: false
 featured: false
 published: true
