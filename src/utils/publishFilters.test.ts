@@ -5,7 +5,9 @@ import {
   isHomepageHighlight,
   isListingEligiblePost,
   isPublicPost,
+  isSearchEligiblePost,
   resolveContentLanguage,
+  spanishTwinGroupsFromPosts,
 } from './publishFilters';
 
 type PostData = Parameters<typeof isPublicPost>[0];
@@ -50,21 +52,29 @@ describe('feed and listing eligibility', () => {
     expect(isListingEligiblePost(en, { now })).toBe(true);
   });
 
-  it('excludes secondary Spanish translations (featured: false)', () => {
+  it('excludes all Spanish posts from feeds and listings, including featured', () => {
     const esSecondary = post({ language: ['es'], featured: false });
+    const esFeatured = post({ language: ['es'], featured: true });
     expect(isFeedEligiblePost(esSecondary, { now })).toBe(false);
     expect(isListingEligiblePost(esSecondary, { now })).toBe(false);
-  });
-
-  it('includes featured Spanish posts (Spanish-first / featured lane)', () => {
-    const esFeatured = post({ language: ['es'], featured: true });
-    expect(isFeedEligiblePost(esFeatured, { now })).toBe(true);
-    expect(isListingEligiblePost(esFeatured, { now })).toBe(true);
+    expect(isFeedEligiblePost(esFeatured, { now })).toBe(false);
+    expect(isListingEligiblePost(esFeatured, { now })).toBe(false);
   });
 
   it('still requires public status before language rules', () => {
     const draftEs = post({ language: ['es'], featured: true, draft: true });
     expect(isFeedEligiblePost(draftEs, { now })).toBe(false);
+  });
+});
+
+describe('isSearchEligiblePost', () => {
+  it('includes public Spanish posts so title search can find them', () => {
+    expect(isSearchEligiblePost(post({ language: ['es'], featured: false }), { now })).toBe(true);
+    expect(isSearchEligiblePost(post({ language: ['es'], featured: true }), { now })).toBe(true);
+  });
+
+  it('still hides drafts from search', () => {
+    expect(isSearchEligiblePost(post({ language: ['es'], draft: true }), { now })).toBe(false);
   });
 });
 
@@ -84,13 +94,38 @@ describe('isGuidedPathEligiblePost', () => {
 });
 
 describe('isHomepageHighlight', () => {
-  it('includes published featured posts', () => {
+  it('includes published featured English posts', () => {
     expect(isHomepageHighlight(post({ featured: true }), { now })).toBe(true);
+  });
+
+  it('excludes featured Spanish posts from homepage highlights', () => {
+    expect(isHomepageHighlight(post({ featured: true, language: ['es'] }), { now })).toBe(false);
   });
 
   it('excludes unpublished or draft featured posts', () => {
     expect(isHomepageHighlight(post({ featured: true, published: false }), { now })).toBe(false);
     expect(isHomepageHighlight(post({ featured: true, draft: true }), { now })).toBe(false);
+  });
+});
+
+describe('spanishTwinGroupsFromPosts', () => {
+  it('marks groups that have a public Spanish sibling', () => {
+    const posts = [
+      { data: post({ translationGroup: 'feeling', language: ['en'] }) },
+      { data: post({ translationGroup: 'feeling', language: ['es'] }) },
+      { data: post({ translationGroup: 'english-only', language: ['en'] }) },
+    ];
+
+    expect(spanishTwinGroupsFromPosts(posts)).toEqual(new Set(['feeling']));
+  });
+
+  it('ignores draft Spanish siblings', () => {
+    const posts = [
+      { data: post({ translationGroup: 'feeling', language: ['en'] }) },
+      { data: post({ translationGroup: 'feeling', language: ['es'], draft: true }) },
+    ];
+
+    expect(spanishTwinGroupsFromPosts(posts).size).toBe(0);
   });
 });
 

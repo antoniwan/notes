@@ -5,7 +5,7 @@ import { getCollection } from 'astro:content';
 import { PAGE_META } from '../data/pageMeta';
 import { isCollectionListed } from '../utils/publishFilters';
 
-// Get all published posts (excludes secondary-language translations)
+// Get listed posts (English only; Spanish is on the article toggle, search, SEO, or direct URL)
 const posts = await getCollection('blog', ({ data }) => isCollectionListed(data));
 
 // Sort posts by date (newest first)

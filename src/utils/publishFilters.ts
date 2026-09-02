@@ -26,39 +26,67 @@ export function isPublicPost(data: PostData, options: PublishFilterOptions = {})
 /**
  * Astro content-collection filter for production vs development.
  * Dev shows everything; prod requires a publicly live post.
+ * Post pages use this so Spanish URLs still resolve.
  */
 export function isCollectionPublic(data: PostData, options: PublishFilterOptions = {}): boolean {
   if (!import.meta.env.PROD) return true;
   return isPublicPost(data, options);
 }
 
-/** Homepage Highlights: featured and publicly live (not draft/unpublished/embargoed). */
+/** True when the post's primary language is Spanish. */
+export function isSpanishPrimary(data: PostData): boolean {
+  return (data.language?.[0] ?? 'en') === 'es';
+}
+
+/**
+ * translationGroup values that have a public Spanish sibling.
+ * Used so English listing cards can show an ES marker without linking to Spanish.
+ */
+export function spanishTwinGroupsFromPosts(posts: { data: PostData }[]): Set<string> {
+  const groups = new Set<string>();
+  for (const post of posts) {
+    const group = post.data.translationGroup;
+    if (!group) continue;
+    if (!isPublicPost(post.data)) continue;
+    if (isSpanishPrimary(post.data)) groups.add(group);
+  }
+  return groups;
+}
+
+/** Homepage Highlights: featured English posts that are publicly live. */
 export function isHomepageHighlight(data: PostData, options: PublishFilterOptions = {}): boolean {
+  if (isSpanishPrimary(data)) return false;
   return data.featured === true && isPublicPost(data, options);
 }
 
 /**
- * Feed eligibility: public posts only; exclude secondary-language translations
- * (typically Spanish with featured: false) so feeds stay primary-language.
+ * Feed eligibility: public English posts only.
+ * Spanish stays reachable via language toggle, title search, SEO, and direct URL.
  */
 export function isFeedEligiblePost(data: PostData, options: PublishFilterOptions = {}): boolean {
   if (!isPublicPost(data, options)) return false;
-  return !isSecondaryLanguageTranslation(data);
+  return !isSpanishPrimary(data);
 }
 
 /**
- * Listing / search eligibility: same language policy as feeds.
- * Secondary-language translations stay reachable via direct URL + language toggle
- * (post pages still use `isCollectionPublic`), but do not appear in archives,
- * category/tag indexes, guided path, or search.
+ * Listing eligibility: public English posts only.
+ * Spanish does not appear on Everything, category, tag, 404, or Guided Path.
  */
 export function isListingEligiblePost(data: PostData, options: PublishFilterOptions = {}): boolean {
   if (!isPublicPost(data, options)) return false;
-  return !isSecondaryLanguageTranslation(data);
+  return !isSpanishPrimary(data);
 }
 
 /**
- * Guided Path is English-primary: never list Spanish posts (featured or not).
+ * Search eligibility: public posts in any language.
+ * Title search is an allowed path to Spanish; listings are not.
+ */
+export function isSearchEligiblePost(data: PostData, options: PublishFilterOptions = {}): boolean {
+  return isPublicPost(data, options);
+}
+
+/**
+ * Guided Path is English-primary: never list Spanish posts.
  * Spanish versions stay reachable from the language toggle on the English note.
  * Unlike `isCollectionListed`, this language rule applies in both prod and dev.
  */
@@ -71,21 +99,13 @@ export function isGuidedPathEligiblePost(
 }
 
 /**
- * Dev shows everything; prod uses listing eligibility (public ∧ not secondary translation).
- * Prefer this over `isCollectionPublic` for archive-style surfaces.
+ * Archive-style surfaces: hide Spanish in both prod and dev.
+ * Dev still shows English drafts; prod requires a publicly live English post.
  */
 export function isCollectionListed(data: PostData, options: PublishFilterOptions = {}): boolean {
+  if (isSpanishPrimary(data)) return false;
   if (!import.meta.env.PROD) return true;
-  return isListingEligiblePost(data, options);
-}
-
-function isSpanishPrimary(data: PostData): boolean {
-  return (data.language?.[0] ?? 'en') === 'es';
-}
-
-/** Secondary translation: primary language is Spanish and not featured. */
-function isSecondaryLanguageTranslation(data: PostData): boolean {
-  return isSpanishPrimary(data) && data.featured === false;
+  return isPublicPost(data, options);
 }
 
 export type ContentLanguageMeta = {

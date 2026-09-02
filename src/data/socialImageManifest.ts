@@ -13,9 +13,20 @@ export const SOCIAL_IMAGE_MANIFEST: Record<string, string> = {
   '/images/2025/the-prometheus-problem.avif':
     '/social/images/2025/the-prometheus-problem-social.jpg',
   '/images/2025/trillion.avif': '/social/images/2025/trillion-social.jpg',
+  '/images/2026/arepas-de-calabaza.avif': '/social/images/2026/arepas-de-calabaza-social.jpg',
   '/images/2026/arithmetic.avif': '/social/images/2026/arithmetic-social.jpg',
+  '/images/2026/arroz-con-gandules.avif': '/social/images/2026/arroz-con-gandules-social.jpg',
+  '/images/2026/arroz-con-pollo.avif': '/social/images/2026/arroz-con-pollo-social.jpg',
+  '/images/2026/asopao-de-pollo.avif': '/social/images/2026/asopao-de-pollo-social.jpg',
+  '/images/2026/banana-oat-bread.avif': '/social/images/2026/banana-oat-bread-social.jpg',
+  '/images/2026/brocoli-con-sabor.avif': '/social/images/2026/brocoli-con-sabor-social.jpg',
+  '/images/2026/brown-butter-gourmet-brownies.avif':
+    '/social/images/2026/brown-butter-gourmet-brownies-social.jpg',
+  '/images/2026/cast-iron-flank-steak.avif': '/social/images/2026/cast-iron-flank-steak-social.jpg',
+  '/images/2026/chilean-sea-bass.avif': '/social/images/2026/chilean-sea-bass-social.jpg',
   '/images/2026/control.avif': '/social/images/2026/control-social.jpg',
   '/images/2026/cooking-foundations.avif': '/social/images/2026/cooking-foundations-social.jpg',
+  '/images/2026/coquito-de-moni.avif': '/social/images/2026/coquito-de-moni-social.jpg',
   '/images/2026/crimson-desert-review/Crimson Desert_20260319210335.avif':
     '/social/images/2026/crimson-desert-review/Crimson Desert_20260319210335-social.jpg',
   '/images/2026/crimson-desert-review/Crimson Desert_20260319210358.avif':
@@ -155,30 +166,54 @@ export const SOCIAL_IMAGE_MANIFEST: Record<string, string> = {
   '/images/2026/crimson-desert-review/Crimson Desert_20260429081024.avif':
     '/social/images/2026/crimson-desert-review/Crimson Desert_20260429081024-social.jpg',
   '/images/2026/cupey-papi.avif': '/social/images/2026/cupey-papi-social.jpg',
+  '/images/2026/easy-breakfast-guacamole-toast.avif':
+    '/social/images/2026/easy-breakfast-guacamole-toast-social.jpg',
   '/images/2026/empathy-and-compassion.avif':
     '/social/images/2026/empathy-and-compassion-social.jpg',
   '/images/2026/escaping-the-feeds.avif': '/social/images/2026/escaping-the-feeds-social.jpg',
   '/images/2026/fasting-hurts.avif': '/social/images/2026/fasting-hurts-social.jpg',
+  '/images/2026/fettuccine-with-seared-chicken.avif':
+    '/social/images/2026/fettuccine-with-seared-chicken-social.jpg',
+  '/images/2026/fried-chicken-tender-nuggets.avif':
+    '/social/images/2026/fried-chicken-tender-nuggets-social.jpg',
   '/images/2026/friendly-ai.avif': '/social/images/2026/friendly-ai-social.jpg',
   '/images/2026/glimmer-chaos.avif': '/social/images/2026/glimmer-chaos-social.jpg',
   '/images/2026/god.avif': '/social/images/2026/god-social.jpg',
+  '/images/2026/habichuelas-guisadas.avif': '/social/images/2026/habichuelas-guisadas-social.jpg',
   '/images/2026/in-my-feelings.avif': '/social/images/2026/in-my-feelings-social.jpg',
   '/images/2026/kids-laptop.avif': '/social/images/2026/kids-laptop-social.jpg',
+  '/images/2026/lamb-loin-chops-al-vino-con-vegetales.avif':
+    '/social/images/2026/lamb-loin-chops-al-vino-con-vegetales-social.jpg',
   '/images/2026/learning.avif': '/social/images/2026/learning-social.jpg',
   '/images/2026/lemon-pepper-chicken-tais.avif':
     '/social/images/2026/lemon-pepper-chicken-tais-social.jpg',
   '/images/2026/lemon-pepper-chicken.avif': '/social/images/2026/lemon-pepper-chicken-social.jpg',
   '/images/2026/love_for_cooking.avif': '/social/images/2026/love_for_cooking-social.jpg',
+  '/images/2026/mias-chicken-nuggets.avif': '/social/images/2026/mias-chicken-nuggets-social.jpg',
+  '/images/2026/mias-cinnamon-pancakes.avif':
+    '/social/images/2026/mias-cinnamon-pancakes-social.jpg',
+  '/images/2026/mias-vegan-cupcakes.avif': '/social/images/2026/mias-vegan-cupcakes-social.jpg',
   '/images/2026/neverending-walk.avif': '/social/images/2026/neverending-walk-social.jpg',
   '/images/2026/notes-on-respect.avif': '/social/images/2026/notes-on-respect-social.jpg',
   '/images/2026/oh-fuck.avif': '/social/images/2026/oh-fuck-social.jpg',
   '/images/2026/on-leadership-plus.avif': '/social/images/2026/on-leadership-plus-social.jpg',
+  '/images/2026/pancakes-sin-huevo-para-mia-luna.avif':
+    '/social/images/2026/pancakes-sin-huevo-para-mia-luna-social.jpg',
+  '/images/2026/pastel-de-banana.avif': '/social/images/2026/pastel-de-banana-social.jpg',
+  '/images/2026/patatas-bravas.avif': '/social/images/2026/patatas-bravas-social.jpg',
+  '/images/2026/perfect-crispy-oven-drumsticks.avif':
+    '/social/images/2026/perfect-crispy-oven-drumsticks-social.jpg',
+  '/images/2026/shaved-carrots.avif': '/social/images/2026/shaved-carrots-social.jpg',
+  '/images/2026/simple-baked-chicken-breasts.avif':
+    '/social/images/2026/simple-baked-chicken-breasts-social.jpg',
   '/images/2026/simplicity.avif': '/social/images/2026/simplicity-social.jpg',
+  '/images/2026/sofrito.avif': '/social/images/2026/sofrito-social.jpg',
   '/images/2026/the-abyss.avif': '/social/images/2026/the-abyss-social.jpg',
   '/images/2026/the-dark-abyss.avif': '/social/images/2026/the-dark-abyss-social.jpg',
   '/images/2026/the-work-never-ends.avif': '/social/images/2026/the-work-never-ends-social.jpg',
   '/images/2026/tinkering-in-2026.avif': '/social/images/2026/tinkering-in-2026-social.jpg',
   '/images/2026/trickle-down.avif': '/social/images/2026/trickle-down-social.jpg',
+  '/images/2026/turkey-patties.avif': '/social/images/2026/turkey-patties-social.jpg',
   '/images/2026/value-roads.avif': '/social/images/2026/value-roads-social.jpg',
   '/images/2026/vastitas-flower.avif': '/social/images/2026/vastitas-flower-social.jpg',
   '/images/2026/vastitas.avif': '/social/images/2026/vastitas-social.jpg',

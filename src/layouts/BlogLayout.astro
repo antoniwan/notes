@@ -44,6 +44,10 @@ const canonical = generateCanonicalUrl(canonicalPath);
 
 const postLanguage = rest.currentPost?.data.language;
 const contentLanguage = resolveContentLanguage(postLanguage);
+const imageCredit = rest.currentPost?.data.imageCredit;
+const imageCreditUrl = rest.currentPost?.data.imageCreditUrl;
+const imageLicense = rest.currentPost?.data.imageLicense;
+const isRecipe = rest.currentPost ? isRecipePost(rest.currentPost) : false;
 const estimatedWordCount = (() => {
   if (!minutesRead || typeof minutesRead !== 'string') return undefined;
   const match = minutesRead.match(/(\d+)/);
@@ -107,9 +111,11 @@ const primaryCategory = categoryItems[0] || null;
         <Breadcrumbs
           items={[
             { label: 'Home', href: '/' },
-            ...(primaryCategory
-              ? [{ label: primaryCategory.name, href: `/category/${primaryCategory.id}` }]
-              : []),
+            ...(isRecipe
+              ? [{ label: 'Cookbook', href: '/recipes' }]
+              : primaryCategory
+                ? [{ label: primaryCategory.name, href: `/category/${primaryCategory.id}` }]
+                : []),
             { label: title },
           ]}
           class="text-sm"
@@ -149,7 +155,7 @@ const primaryCategory = categoryItems[0] || null;
 
             {/* Reading Signals */}
             {
-              minutesRead && (
+              minutesRead && !isRecipe && (
                 <div
                   class="reading-time-section space-y-2 leading-relaxed"
                   data-post-slug={postSlug}
@@ -264,28 +270,57 @@ const primaryCategory = categoryItems[0] || null;
         {/* Main Content Area - Full width on mobile, 75% on desktop */}
         <main class="lg:col-span-3">
           {/* Hero Image - First thing in main content */}
-          <div class="mb-8 h-[450px] overflow-hidden rounded-lg shadow-lg md:mb-12 md:rounded-xl">
+          <div class="mb-8 md:mb-12">
+            <div class="h-[450px] overflow-hidden rounded-lg shadow-lg md:rounded-xl">
+              {
+                heroImage ? (
+                  <img
+                    src={heroImage}
+                    alt={imageAlt || title}
+                    class="h-full w-full object-cover"
+                    loading="eager"
+                    fetchpriority="high"
+                    decoding="async"
+                    width="1200"
+                    height="450"
+                  />
+                ) : (
+                  <DefaultImage
+                    alt={imageAlt || title}
+                    className="h-full w-full"
+                    loading="eager"
+                    priority={true}
+                    width={1200}
+                    height={450}
+                  />
+                )
+              }
+            </div>
             {
-              heroImage ? (
-                <img
-                  src={heroImage}
-                  alt={imageAlt || title}
-                  class="h-full w-full object-cover"
-                  loading="eager"
-                  fetchpriority="high"
-                  decoding="async"
-                  width="1200"
-                  height="450"
-                />
-              ) : (
-                <DefaultImage
-                  alt={imageAlt || title}
-                  className="h-full w-full"
-                  loading="eager"
-                  priority={true}
-                  width={1200}
-                  height={450}
-                />
+              imageCredit && (
+                <p class="text-body-muted mt-2 text-sm leading-relaxed">
+                  {contentLanguage.contentLanguage === 'es' ? 'Foto: ' : 'Photo: '}
+                  {imageCreditUrl ? (
+                    <a
+                      href={imageCreditUrl}
+                      class="underline decoration-[rgb(var(--color-border))] underline-offset-2 hover:text-[rgb(var(--color-accent))]"
+                      rel="noopener noreferrer"
+                    >
+                      {imageCredit}
+                    </a>
+                  ) : (
+                    imageCredit
+                  )}
+                  {imageLicense ? ` · ${imageLicense}` : ''}
+                  {imageCreditUrl?.includes('wikimedia.org')
+                    ? ' via Wikimedia Commons'
+                    : imageCreditUrl?.includes('flickr.com')
+                      ? ' via Flickr'
+                      : imageCreditUrl?.includes('unsplash.com')
+                        ? ' via Unsplash'
+                        : ''}
+                  . Converted to AVIF.
+                </p>
               )
             }
           </div>
@@ -317,7 +352,7 @@ const primaryCategory = categoryItems[0] || null;
           {/* Mobile/Tablet metadata - collapsed by default */}
           <div class="mt-12 space-y-3 border-t border-[rgb(var(--color-border))] pt-8 lg:hidden">
             {
-              minutesRead && (
+              minutesRead && !isRecipe && (
                 <details class="rounded-lg border border-[rgb(var(--color-border))] px-4 py-3">
                   <summary class="text-body-muted cursor-pointer text-xs font-semibold tracking-wider uppercase">
                     Reading Signals

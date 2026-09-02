@@ -3,6 +3,9 @@ import type { CollectionEntry } from 'astro:content';
 import FormattedDate from './FormattedDate.astro';
 import DefaultImage from './DefaultImage.astro';
 import { calculateReadingTimeFromMarkdown } from '../utils/readingTime';
+import { getSpanishTwinGroups } from '../utils/translationUtils';
+import { isSpanishPrimary } from '../utils/publishFilters';
+import { isRecipePost } from '../utils/recipes';
 
 interface Props {
   post: CollectionEntry<'blog'>;
@@ -15,6 +18,13 @@ const { post, featured = false, compact = false, showFeaturedIndicator = true } 
 const { data } = post;
 
 const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
+const isRecipe = isRecipePost(post);
+const kindLabel = isRecipe ? (isSpanishPrimary(data) ? 'Receta' : 'Recipe') : null;
+const spanishTwinGroups = await getSpanishTwinGroups();
+const hasSpanishTwin =
+  !isSpanishPrimary(data) &&
+  Boolean(data.translationGroup) &&
+  spanishTwinGroups.has(data.translationGroup ?? '');
 ---
 
 <article
@@ -55,7 +65,22 @@ const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
     <div class="postcard-meta">
       <FormattedDate date={data.pubDate} class="postcard-meta__item" />
       {
-        readingTime && (
+        kindLabel && (
+          <>
+            <span class="postcard-meta__sep" aria-hidden="true">
+              ·
+            </span>
+            <span
+              class="postcard-meta__item postcard-meta__kind"
+              lang={isSpanishPrimary(data) ? 'es' : 'en'}
+            >
+              {kindLabel}
+            </span>
+          </>
+        )
+      }
+      {
+        readingTime && !isRecipe && (
           <>
             <span class="postcard-meta__sep" aria-hidden="true">
               ·
@@ -82,6 +107,22 @@ const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
               aria-label="Featured post"
             >
               Featured
+            </span>
+          </>
+        )
+      }
+      {
+        hasSpanishTwin && (
+          <>
+            <span class="postcard-meta__sep" aria-hidden="true">
+              ·
+            </span>
+            <span
+              class="postcard-meta__item postcard-meta__es"
+              lang="es"
+              aria-label="Also available in Spanish"
+            >
+              ES
             </span>
           </>
         )
@@ -271,6 +312,17 @@ const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
   .postcard-meta__featured {
     font-weight: 700;
     color: rgb(var(--color-primary));
+  }
+
+  .postcard-meta__es {
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    color: rgb(var(--color-accent));
+  }
+
+  .postcard-meta__kind {
+    font-weight: 600;
   }
 
   article.postcard .postcard-title {

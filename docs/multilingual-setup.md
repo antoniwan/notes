@@ -8,8 +8,11 @@ The multilingual system allows you to:
 
 - Publish content in multiple languages (currently English and Spanish)
 - Link related translations via shared IDs
-- Keep secondary-language translations out of **feeds, archives, category/tag indexes, Guided Path, and search** (they stay reachable via direct URL + language toggle)
+- Keep Spanish out of English browse surfaces (Everything, category, tags, homepage, Guided Path, RSS/JSON feeds, Continue reading)
+- Let readers reach Spanish from the language toggle on the English note, from title search, from SEO, or via a direct URL
 - Display language toggles for easy switching between versions
+
+A Spanish-only site (or subdomain) is later roadmap work. Do not build it here.
 
 ## Quick Setup
 
@@ -18,14 +21,14 @@ The multilingual system allows you to:
 Use the same `translationGroup` value in both language versions:
 
 ```yaml
-# English version - featured in main listings
+# English version - listed on the English site
 ---
 title: 'My Article'
 language: ['en']
 featured: true
 translationGroup: 'my-unique-article-id'
 ---
-# Spanish version - hidden from main listings
+# Spanish version - not listed; reach it from the toggle, search, SEO, or URL
 ---
 title: 'Mi Artículo'
 language: ['es']
@@ -36,8 +39,8 @@ translationGroup: 'my-unique-article-id'
 
 ### 2. Language Settings
 
-- **Primary language**: Set `featured: true` (appears in listings)
-- **Secondary language**: Set `featured: false` (discoverable via language toggle only)
+- **English**: `language: ["en"]`. `featured: true` puts it on homepage Highlights. Non-featured English still appears in Everything, category, tags, and feeds.
+- **Spanish**: `language: ["es"]`. Never listed on English browse surfaces, even if `featured: true`. Both sides of a pair should use `featured: false` unless the English note is a Highlight.
 - **Language array**: Use `["en"]` for English, `["es"]` for Spanish
 
 ### 3. Translation Group IDs
@@ -55,36 +58,41 @@ Choose descriptive, unique IDs for `translationGroup`:
 When readers view a post with translations, they see:
 
 ```
-🌐 Read in other languages:
-🇺🇸 English | 🇪🇸 Español
+Also available in:
+🇵🇷 Español
 ```
 
-The current language is automatically hidden from the toggle.
+That toggle is the in-site browse path to Spanish. Listing cards do not link to Spanish.
+
+### Listing cards
+
+English cards whose `translationGroup` has a public Spanish sibling show an **ES** marker. The card still opens the English note. Spanish is one toggle away.
 
 ### Main Listings Behavior
 
-- **Featured posts** (`featured: true`) appear in:
-  - Homepage highlight masonry
-  - Category pages (as featured cards)
-  - Tag pages
-- **Non-featured English posts** (`featured: false`, `language: ["en"]`) remain in:
+- **English posts** appear in:
+  - Homepage highlight masonry (when `featured: true`)
   - Category / tag / everything listings
-  - RSS/JSON feeds (primary-language feed content)
+  - RSS/JSON feeds
+  - Guided Path (when eligible)
   - Search
-- **Secondary-language translations** (`featured: false`, usually `language: ["es"]`) are:
+- **Spanish posts** (`language: ["es"]`) are:
   - Accessible via direct URL
-  - Discoverable via language toggle when `translationGroup` is set
-  - Excluded from RSS/JSON feeds, `/everything`, category/tag indexes, Guided Path, and search (via `isListingEligiblePost` / `isFeedEligiblePost`)
+  - Discoverable via the language toggle when `translationGroup` is set
+  - Discoverable via search (title, description, tags)
+  - Indexable for SEO (sitemap, hreflang)
+  - Excluded from RSS/JSON feeds, `/everything`, category/tag indexes, homepage Highlights, Guided Path, and Continue reading (via `isListingEligiblePost` / `isFeedEligiblePost`)
 
-**Guided Path** always excludes Spanish posts (`language: ["es"]`), even if `featured: true`. Read Spanish via the language toggle on the English note.
+**Guided Path** always excludes Spanish posts. Read Spanish via the language toggle on the English note.
 
-Spanish-only orphans without an English pair stay indexable with correct `lang="es"` metadata; add a `translationGroup` only when a real pair exists. If a Spanish post should appear in category/tag/feed listings, set `featured: true` (Guided Path still omits it).
+Spanish-only notes without an English pair stay indexable with `lang="es"` metadata. They do not appear as listing cards. Add a `translationGroup` only when a real pair exists.
 
 ## Technical Implementation
 
 ### Components
 
-- **LanguageToggle.astro**: Displays available translations
+- **LanguageToggle.astro**: Displays available translations on the post
+- **PostCard.astro**: Shows a non-link ES marker when a Spanish twin exists
 - **translationUtils.ts**: Core translation discovery logic
 - **BlogLayout.astro**: Integrates language toggle into post layout
 
@@ -121,7 +129,7 @@ interface TranslationData {
 
 ### Content Strategy
 
-1. **Choose primary language**: Usually English for wider reach
+1. **English is the listing language** for this site
 2. **Consistent translation groups**: Use descriptive, permanent IDs
 3. **Complete translations**: Ensure both versions are substantively equivalent
 4. **Synchronized publishing**: Publish translations together when possible
@@ -149,10 +157,11 @@ interface TranslationData {
 3. Ensure neither post has `draft: true`
 4. Confirm `language` arrays are correctly set
 
-### Multiple Featured Versions
+### Spanish showing in Everything / category / tags
 
-- Only one version per translation group should have `featured: true`
-- Secondary languages should always use `featured: false`
+- Spanish is excluded by language, not by `featured`
+- Local `astro dev` uses the same listing rule as production for Spanish
+- Search can still return Spanish by title
 
 ### Missing Language Toggle
 
@@ -166,7 +175,7 @@ Planned features:
 
 - Additional language support
 - Language-specific RSS feeds
-- Automatic translation status indicators
+- A Spanish-only site or subdomain (the inverse of this site). See [roadmap.md](./roadmap.md)
 - Content synchronization tools
 
 ## Support

@@ -13,8 +13,12 @@ function isUnderCategory(p: string): boolean {
 
 /**
  * Resources nav groups tag index, tag detail pages, writing-insights, the
- * /brain-science origin note, tag-management, and library books — not a single URL prefix.
+ * /brain-science origin note, tag-management, library books, and the cookbook.
  */
+function isRecipeUrl(p: string): boolean {
+  return p === '/recipes' || p.startsWith('/p/recipes/') || p === '/p/recipes';
+}
+
 function isUnderResourcesSection(p: string): boolean {
   if (p === '/tag' || (p.startsWith('/tag/') && !p.startsWith('/tag-management'))) {
     return true;
@@ -23,11 +27,14 @@ function isUnderResourcesSection(p: string): boolean {
   if (p === '/writing-insights' || p.startsWith('/writing-insights/')) return true;
   if (p === '/brain-science' || p.startsWith('/brain-science/')) return true;
   if (p === '/library/books' || p.startsWith('/library/books/')) return true;
+  if (isRecipeUrl(p)) return true;
   return false;
 }
 
 function isUnderPostsSection(p: string): boolean {
-  return p === '/everything' || p.startsWith('/p/');
+  if (p === '/everything') return true;
+  if (isRecipeUrl(p)) return false;
+  return p.startsWith('/p/');
 }
 
 /**
@@ -78,6 +85,10 @@ export function isNavDropdownItemActive(itemHref: string, pathname: string): boo
 
   if (h === '/library/books') {
     return p === '/library/books' || p.startsWith('/library/books/');
+  }
+
+  if (h === '/recipes') {
+    return isRecipeUrl(p);
   }
 
   return p === h;

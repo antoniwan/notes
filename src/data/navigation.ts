@@ -43,6 +43,11 @@ export const mainNavigation: NavigationItem[] = [
           label: 'Book Library',
           icon: '📚',
         },
+        {
+          href: '/recipes',
+          label: 'Cookbook',
+          icon: '📖',
+        },
       ],
     },
   },

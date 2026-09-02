@@ -1,6 +1,11 @@
 import type { CollectionEntry } from 'astro:content';
 import { describe, expect, it } from 'vitest';
-import { findMoreRecipes, isRecipePost } from './recipes';
+import {
+  findMoreRecipes,
+  isCookbookListedPost,
+  isRecipePost,
+  recipeContentsLetter,
+} from './recipes';
 import { findRelatedPosts } from './tagProcessing';
 
 type BlogPost = CollectionEntry<'blog'>;
@@ -30,6 +35,21 @@ describe('isRecipePost', () => {
     expect(isRecipePost({ id: 'recipes' })).toBe(true);
     expect(isRecipePost({ id: 'i-didnt-start-cooking-for-love' })).toBe(false);
     expect(isRecipePost({ id: 'recipe-lemon-pepper-chicken' })).toBe(false);
+  });
+});
+
+describe('isCookbookListedPost', () => {
+  it('lists English recipes and hides Spanish twins', () => {
+    expect(isCookbookListedPost(post('recipes/sofrito-en', { language: ['en'] }))).toBe(true);
+    expect(isCookbookListedPost(post('recipes/sofrito', { language: ['es'] }))).toBe(false);
+    expect(isCookbookListedPost(post('i-didnt-start-cooking-for-love'))).toBe(false);
+  });
+});
+
+describe('recipeContentsLetter', () => {
+  it('uses the first letter of the title', () => {
+    expect(recipeContentsLetter('Sofrito')).toBe('S');
+    expect(recipeContentsLetter("Mia's Chicken Nuggets")).toBe('M');
   });
 });
 
@@ -64,6 +84,28 @@ describe('findMoreRecipes', () => {
       'recipes/habichuelas-guisadas',
     ]);
   });
+
+  it('keeps More Recipes in the same language and skips a twin', () => {
+    const current = post('recipes/sofrito-en', {
+      language: ['en'],
+      translationGroup: 'sofrito',
+    });
+    const esTwin = post('recipes/sofrito', {
+      language: ['es'],
+      translationGroup: 'sofrito',
+    });
+    const enOther = post('recipes/habichuelas-guisadas-en', {
+      language: ['en'],
+      translationGroup: 'habichuelas-guisadas',
+    });
+    const esOther = post('recipes/habichuelas-guisadas', {
+      language: ['es'],
+      translationGroup: 'habichuelas-guisadas',
+    });
+
+    const more = findMoreRecipes(current, [current, esTwin, enOther, esOther]);
+    expect(more.map((item) => item.id)).toEqual(['recipes/habichuelas-guisadas-en']);
+  });
 });
 
 describe('findRelatedPosts recipe exclusion', () => {
@@ -74,5 +116,14 @@ describe('findRelatedPosts recipe exclusion', () => {
 
     const related = findRelatedPosts(essay, [essay, recipe, otherEssay]);
     expect(related.map((item) => item.id)).toEqual(['on-cooking-on-everything-and-foundations']);
+  });
+
+  it('does not recommend Spanish posts from Continue reading', () => {
+    const essay = post('boundaries-and-belonging');
+    const spanish = post('limites-y-pertenencia', { language: ['es'] });
+    const otherEssay = post('the-feeling-is-not-the-problem');
+
+    const related = findRelatedPosts(essay, [essay, spanish, otherEssay]);
+    expect(related.map((item) => item.id)).toEqual(['the-feeling-is-not-the-problem']);
   });
 });

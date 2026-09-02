@@ -41,9 +41,45 @@
       "sha256": "c837ece1b868709d02ec38fdcc12c40610bcd33d0dae321b876af9382c6d8e77",
       "social": "/social/images/2025/trillion-social.jpg"
     },
+    "/images/2026/arepas-de-calabaza.avif": {
+      "sha256": "26568e1eba2db44007ee5f66029554d4a404015664c4f4bf2426a51b6f5f432f",
+      "social": "/social/images/2026/arepas-de-calabaza-social.jpg"
+    },
     "/images/2026/arithmetic.avif": {
       "sha256": "f1527ea16f5db58e4abc36657c8292410964e079e1c9eb2317c56f69cca508c7",
       "social": "/social/images/2026/arithmetic-social.jpg"
+    },
+    "/images/2026/arroz-con-gandules.avif": {
+      "sha256": "2b8ba5335d17a488278706162bcdba2aedea06a5e5f344383cabbe7d743ca858",
+      "social": "/social/images/2026/arroz-con-gandules-social.jpg"
+    },
+    "/images/2026/arroz-con-pollo.avif": {
+      "sha256": "c419ca025b3d2b788d06a4d0bef4ff1dc2c0ab08d6bfc63bdf38588b49d6cf25",
+      "social": "/social/images/2026/arroz-con-pollo-social.jpg"
+    },
+    "/images/2026/asopao-de-pollo.avif": {
+      "sha256": "dec4bdbc8520307ead25435bdc4789a71f66e48fa01b6f29ea2b072d3803480d",
+      "social": "/social/images/2026/asopao-de-pollo-social.jpg"
+    },
+    "/images/2026/banana-oat-bread.avif": {
+      "sha256": "4dffa67ead3d9127c874000a2131768dbbb81692aa961091c094959b651fcf5b",
+      "social": "/social/images/2026/banana-oat-bread-social.jpg"
+    },
+    "/images/2026/brocoli-con-sabor.avif": {
+      "sha256": "a0be9e5e9ced43f9af1ee59485affd85f7977d28faf812712aa1eb4a137c3816",
+      "social": "/social/images/2026/brocoli-con-sabor-social.jpg"
+    },
+    "/images/2026/brown-butter-gourmet-brownies.avif": {
+      "sha256": "a0f4eb2236984c95477cc4f811c40efcc0da862677910338bc38c139957d91e5",
+      "social": "/social/images/2026/brown-butter-gourmet-brownies-social.jpg"
+    },
+    "/images/2026/cast-iron-flank-steak.avif": {
+      "sha256": "5306f3c5081520e8bdc397913124a0591f61011588557c088a1035edad9e88ae",
+      "social": "/social/images/2026/cast-iron-flank-steak-social.jpg"
+    },
+    "/images/2026/chilean-sea-bass.avif": {
+      "sha256": "ec55c8ffbf8359e9b680893aa7566493aced7dcb4b9440f1328a8bdf543f84e4",
+      "social": "/social/images/2026/chilean-sea-bass-social.jpg"
     },
     "/images/2026/control.avif": {
       "sha256": "f81c37c7cccbc8bbbc1444d77204596705c21eefebf0e4bd28994a0147953ee8",
@@ -52,6 +88,10 @@
     "/images/2026/cooking-foundations.avif": {
       "sha256": "29e2a0cc2881e0d6dfa8c898bd90d694bb2d5f3a74d5dddee7d0c24982de841b",
       "social": "/social/images/2026/cooking-foundations-social.jpg"
+    },
+    "/images/2026/coquito-de-moni.avif": {
+      "sha256": "554db684d3a543b992749f4c4292e0a3dce0ed1505e6234592bbd9e0171d53ee",
+      "social": "/social/images/2026/coquito-de-moni-social.jpg"
     },
     "/images/2026/crimson-desert-review/Crimson Desert_20260319210335.avif": {
       "sha256": "9865a9b0afe44945d45481984edcf78f3d943281569d1daa6c3646945c49c338",
@@ -333,6 +373,10 @@
       "sha256": "3cacf72e44e197d32ea693d04111bd23d1b90c31e32570b347cd0967c948ef78",
       "social": "/social/images/2026/cupey-papi-social.jpg"
     },
+    "/images/2026/easy-breakfast-guacamole-toast.avif": {
+      "sha256": "21e3d483e32c8ae8e4d81dc4ff532e1c072f0899972dbd6c46b6616dbc5b64b8",
+      "social": "/social/images/2026/easy-breakfast-guacamole-toast-social.jpg"
+    },
     "/images/2026/empathy-and-compassion.avif": {
       "sha256": "9cce22a6246faf4fd2f675598710383b72efe0fb81129c43510d22a4b568888a",
       "social": "/social/images/2026/empathy-and-compassion-social.jpg"
@@ -344,6 +388,14 @@
     "/images/2026/fasting-hurts.avif": {
       "sha256": "d535b488a62249db32d690c5217467a432db0eaf6a6114bc64a9e7cacec569d3",
       "social": "/social/images/2026/fasting-hurts-social.jpg"
+    },
+    "/images/2026/fettuccine-with-seared-chicken.avif": {
+      "sha256": "0ae848ceb4e59ea16a7b61744dee06a396665d810c24d618de7aa1613999f3b4",
+      "social": "/social/images/2026/fettuccine-with-seared-chicken-social.jpg"
+    },
+    "/images/2026/fried-chicken-tender-nuggets.avif": {
+      "sha256": "8f12cffc414abdac13fe2f1c908a56a2e120fe925e302120dc0324246dead222",
+      "social": "/social/images/2026/fried-chicken-tender-nuggets-social.jpg"
     },
     "/images/2026/friendly-ai.avif": {
       "sha256": "da2159f35d5c7911d8086ff833140ddee163f11bbdf9222376ee20e74fc8ddb4",
@@ -357,6 +409,10 @@
       "sha256": "1d3810733cb05424f2202655e65412480fc5982da9379107c6296eedd634e6c3",
       "social": "/social/images/2026/god-social.jpg"
     },
+    "/images/2026/habichuelas-guisadas.avif": {
+      "sha256": "51974603cdba81beafda77a6c011e0544c7f0449b0d470266fab050789c329ec",
+      "social": "/social/images/2026/habichuelas-guisadas-social.jpg"
+    },
     "/images/2026/in-my-feelings.avif": {
       "sha256": "c8b5f770acf38f7bd7f3f0344acb3f31a42a27a21fb9ecd1d9b1638fec284e15",
       "social": "/social/images/2026/in-my-feelings-social.jpg"
@@ -364,6 +420,10 @@
     "/images/2026/kids-laptop.avif": {
       "sha256": "b3429032b4992a8b1693b14345bd20aa680ec4e6da22206e9074f27f41247014",
       "social": "/social/images/2026/kids-laptop-social.jpg"
+    },
+    "/images/2026/lamb-loin-chops-al-vino-con-vegetales.avif": {
+      "sha256": "68238004ec9282b1d87db9b066fc34053229bcb3953a0c668003f22876e05c9e",
+      "social": "/social/images/2026/lamb-loin-chops-al-vino-con-vegetales-social.jpg"
     },
     "/images/2026/learning.avif": {
       "sha256": "e948ebe7315aa1f20c2d7e991b1ff8a61516ca7025d3c10dd6ea01a193c51de8",
@@ -374,12 +434,24 @@
       "social": "/social/images/2026/lemon-pepper-chicken-tais-social.jpg"
     },
     "/images/2026/lemon-pepper-chicken.avif": {
-      "sha256": "73a0a2791b1d5fb18d64d9794f5989a298cd75681982994c06a77633b437ea09",
+      "sha256": "675b98e1da984875b715fcd74ed11da666bd7092f17803f7f019b5825191d407",
       "social": "/social/images/2026/lemon-pepper-chicken-social.jpg"
     },
     "/images/2026/love_for_cooking.avif": {
       "sha256": "3a4f5d23f76f0f8f7f0767efa8b303e3090c548df7dc0eb05d36ee00c479f8d4",
       "social": "/social/images/2026/love_for_cooking-social.jpg"
+    },
+    "/images/2026/mias-chicken-nuggets.avif": {
+      "sha256": "2e58c3193b1493c95b5727f50a6dc5db0e57ddbfbbd8dea715524ae979cf202e",
+      "social": "/social/images/2026/mias-chicken-nuggets-social.jpg"
+    },
+    "/images/2026/mias-cinnamon-pancakes.avif": {
+      "sha256": "a5ea750381b1e2bbfd41a393c2d9140b44c6a6b4af8fb042d63a77fcd00ea239",
+      "social": "/social/images/2026/mias-cinnamon-pancakes-social.jpg"
+    },
+    "/images/2026/mias-vegan-cupcakes.avif": {
+      "sha256": "5d5910eceed42c94f4bc3cc9c8df9200f21495024d0f5185ff5a91ba650f0663",
+      "social": "/social/images/2026/mias-vegan-cupcakes-social.jpg"
     },
     "/images/2026/neverending-walk.avif": {
       "sha256": "55925c6c77b46b4bdb77c50a0491c574b3b64975b6818047fe0d2f1395f003df",
@@ -397,9 +469,37 @@
       "sha256": "4adead1dcad217f855a41df038b2108e707bcc158ed40801ae8f7f1838c4e3a6",
       "social": "/social/images/2026/on-leadership-plus-social.jpg"
     },
+    "/images/2026/pancakes-sin-huevo-para-mia-luna.avif": {
+      "sha256": "dc910fc3891ecf9a50268c9536ccee7a58e16c2594e001eaec667f59418dc07f",
+      "social": "/social/images/2026/pancakes-sin-huevo-para-mia-luna-social.jpg"
+    },
+    "/images/2026/pastel-de-banana.avif": {
+      "sha256": "bd6b32d28e7ec7b6f3782832a60f2da68746e407a3ce904f9df52bbf12c67200",
+      "social": "/social/images/2026/pastel-de-banana-social.jpg"
+    },
+    "/images/2026/patatas-bravas.avif": {
+      "sha256": "0b9f5c44b029c49b114fdf082394b87a92af168dc1eefaf99318440cd3189682",
+      "social": "/social/images/2026/patatas-bravas-social.jpg"
+    },
+    "/images/2026/perfect-crispy-oven-drumsticks.avif": {
+      "sha256": "99abc16299cfc5efa3f1b29470d6bf42ad98d224f03b8d85967bab317882292e",
+      "social": "/social/images/2026/perfect-crispy-oven-drumsticks-social.jpg"
+    },
+    "/images/2026/shaved-carrots.avif": {
+      "sha256": "2d042c022f051c1e245fac5433c02121968e41764c16a55052fa3c5e0b314f52",
+      "social": "/social/images/2026/shaved-carrots-social.jpg"
+    },
+    "/images/2026/simple-baked-chicken-breasts.avif": {
+      "sha256": "b08677f7aef09014049969d8f4a22e73dd281b30866e66d40bc87471ffc55141",
+      "social": "/social/images/2026/simple-baked-chicken-breasts-social.jpg"
+    },
     "/images/2026/simplicity.avif": {
       "sha256": "588cafb6812b6f5af1d1b35f86aed5b3f1ca3c8844d2486fd8a6c154ea5908dd",
       "social": "/social/images/2026/simplicity-social.jpg"
+    },
+    "/images/2026/sofrito.avif": {
+      "sha256": "4181658dfd66b54193fd66e89ad1f4e96bd4d9d9c015e05deac1f3b58433e5b0",
+      "social": "/social/images/2026/sofrito-social.jpg"
     },
     "/images/2026/the-abyss.avif": {
       "sha256": "e4e414e13026fa1e2124dea20fa2ba6b7e7228eeee95a95ab2280be93982b213",
@@ -420,6 +520,10 @@
     "/images/2026/trickle-down.avif": {
       "sha256": "ee142e483230541c3ad42d05d90bfc42bece7ad61fedbfcd6a5f5fe9fcc5aa13",
       "social": "/social/images/2026/trickle-down-social.jpg"
+    },
+    "/images/2026/turkey-patties.avif": {
+      "sha256": "75d929c2111f331c773551098924f52f7542eaaf166c913a25d927474bc5c976",
+      "social": "/social/images/2026/turkey-patties-social.jpg"
     },
     "/images/2026/value-roads.avif": {
       "sha256": "057545ba11d390dc95fd8b7452966c50cc7e489750fb8b0eebb7c79abae67031",

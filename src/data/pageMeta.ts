@@ -17,6 +17,8 @@ export const PAGE_META = {
   '/library': 'Catalog of books used as sources in Notes, by reading status and shelf.',
   '/library/books':
     'Searchable catalog of books in the Notes library, filterable by status, shelf, title, or author.',
+  '/recipes':
+    'Household cookbook: recipes you can cook from, listed as plates and a contents page.',
   '/category':
     'Published notes grouped by category, including parenting, psychology, culture, and systems.',
   '/tag':

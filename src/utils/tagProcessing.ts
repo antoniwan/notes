@@ -1,7 +1,7 @@
 import type { CollectionEntry } from 'astro:content';
 import { getTagWeight, getTagCategory, type TagCategory } from '../data/tags';
 import { canonicalizeTag, canonicalizeTags } from './tagVocabulary';
-import { isPublicPost } from './publishFilters';
+import { isPublicPost, isSpanishPrimary } from './publishFilters';
 import { isRecipePost } from './recipes';
 
 /**
@@ -114,6 +114,7 @@ export function findRelatedPosts(
     (post) =>
       post.id !== currentPost.id &&
       !isRecipePost(post) &&
+      !isSpanishPrimary(post.data) &&
       isPublicPost(post.data, { includeFuture: true }),
   );
 

@@ -21,6 +21,7 @@ Release history: [CHANGELOG.md](./CHANGELOG.md)
 - **Tag index** on `/tag` — idea-map sentences plus the tag cloud; tags describe content, not the site name or an author inventory
 - **Writing Insights** (`/writing-insights`) — writing stats and charts (cadence, topics, lexicon buckets, and similar). `/brain-science` is a short origin note; old dashboard subpaths 301.
 - **Book library** — static data under `/library` and `/library/books`
+- **Cookbook** — `/recipes` lists household recipes as plates and an A–Z contents page
 - **Reading time** — from a remark plugin (`minutesRead` in the collection)
 - **Reading progress** on posts — `localStorage` only, no server
 - **Table of contents on long posts** — floating contents control with section links and a jump to the top
@@ -125,7 +126,7 @@ Feature-specific components live under `src/components/<feature>/` when they are
 Post frontmatter is documented in [docs/frontmatter-spec.md](docs/frontmatter-spec.md).
 Tag governance and usage are documented in [docs/tag-policy.md](docs/tag-policy.md) and [docs/tag-vocabulary.md](docs/tag-vocabulary.md).
 
-Translations: same `translationGroup` on each language version; use `featured` so only one version shows in main lists. Details: [docs/multilingual-setup.md](docs/multilingual-setup.md).
+Translations: same `translationGroup` on each language version. Spanish stays off English listings; English cards show an ES marker when a twin exists. Details: [docs/multilingual-setup.md](docs/multilingual-setup.md).
 
 Using Cursor AI in this repo: [docs/cursor-agent-skills.md](docs/cursor-agent-skills.md).
 

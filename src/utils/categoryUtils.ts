@@ -1,7 +1,7 @@
 import { getCollection } from 'astro:content';
 import { categories } from '../data/categories';
 import type { Category } from '../data/categories';
-import { isCollectionPublic } from './publishFilters';
+import { isCollectionListed } from './publishFilters';
 
 export interface CategoryWithCount extends Category {
   postCount: number;
@@ -51,7 +51,7 @@ export function getCategoryDisplayItems(ids: string[] | undefined): CategoryDisp
 
 export async function getSortedCategories(): Promise<CategoryWithCount[]> {
   // Get all posts
-  const posts = await getCollection('blog', ({ data }) => isCollectionPublic(data));
+  const posts = await getCollection('blog', ({ data }) => isCollectionListed(data));
 
   // Get post counts by category
   const postCounts = categories.reduce(

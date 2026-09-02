@@ -1,5 +1,5 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
-import { isPublicPost } from './publishFilters';
+import { isPublicPost, spanishTwinGroupsFromPosts } from './publishFilters';
 
 export interface Translation {
   id: string;
@@ -61,6 +61,17 @@ export async function hasTranslations(
 ): Promise<boolean> {
   const translations = await findTranslations(translationGroup, allPosts);
   return translations.length > 1;
+}
+
+let spanishTwinGroupsPromise: Promise<Set<string>> | null = null;
+
+export async function getSpanishTwinGroups(): Promise<Set<string>> {
+  if (!spanishTwinGroupsPromise) {
+    spanishTwinGroupsPromise = getCollection('blog').then((posts) =>
+      spanishTwinGroupsFromPosts(posts),
+    );
+  }
+  return spanishTwinGroupsPromise;
 }
 
 /**

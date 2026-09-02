@@ -303,6 +303,7 @@ const searchDataJson = JSON.stringify(searchData);
         author: item.author,
         themes: item.themes,
         icon: item.icon,
+        language: item.language,
       }));
     }
 
@@ -364,6 +365,16 @@ const searchDataJson = JSON.stringify(searchData);
         title.textContent = result.title;
 
         headerDiv.appendChild(title);
+
+        const primaryLang = Array.isArray(result.language) ? result.language[0] : result.language;
+        if (result.type === 'post' && primaryLang === 'es') {
+          const langSpan = document.createElement('span');
+          langSpan.className =
+            'search-result-type text-xs px-2.5 py-1 rounded-full bg-[rgb(var(--color-accent))]/10 text-[rgb(var(--color-accent))] font-medium flex-shrink-0';
+          langSpan.textContent = 'ES';
+          langSpan.setAttribute('aria-label', 'Spanish');
+          headerDiv.appendChild(langSpan);
+        }
 
         if (result.type !== 'post') {
           const typeSpan = document.createElement('span');

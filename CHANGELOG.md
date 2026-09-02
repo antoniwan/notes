@@ -7,6 +7,23 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.12.0] — 2026-09-02
+
+### Added
+
+- English listing cards show an **ES** marker when a public Spanish twin exists. The card still opens the English note.
+- Search results for Spanish posts show an ES badge. Title search can find Spanish; listings cannot.
+- Hero photos can credit the photographer, license, and source under the image.
+- Recipe cards show **Recipe** (Receta on Spanish dishes) in the date row, from the `/p/recipes/` folder. Reading time is hidden on those cards and on the dish page.
+- `/recipes` is a cookbook under Resources: plate grid plus A–Z contents. Recipe pages breadcrumb to it.
+
+### Changed
+
+- Spanish posts stay off Everything, category, tags, homepage Highlights, Guided Path, RSS/JSON feeds, and Continue reading, including in local `astro dev`. `featured` no longer lists Spanish.
+- Search indexes public posts in any language. Sitemap, hreflang, and post URLs are unchanged.
+- More Recipes stays in the same language and skips the translation twin.
+- A Spanish-only site or subdomain is documented as later work in `docs/roadmap.md` (§10).
+
 ## [6.11.1] — 2026-09-02
 
 ### Changed

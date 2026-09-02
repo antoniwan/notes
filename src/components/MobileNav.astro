@@ -23,7 +23,7 @@ const isPrimaryMobileNavActive = (href: string, pathname: string) => {
   const p = normalizePathname(pathname);
   const h = normalizePathname(href);
   if (h === '/everything') {
-    return p === '/everything' || p.startsWith('/p/');
+    return p === '/everything' || (p.startsWith('/p/') && !p.startsWith('/p/recipes'));
   }
   if (h === '/writing-insights' || h === '/brain-science') {
     return (
