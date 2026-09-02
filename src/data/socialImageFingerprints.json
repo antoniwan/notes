@@ -45,6 +45,18 @@
       "sha256": "f1527ea16f5db58e4abc36657c8292410964e079e1c9eb2317c56f69cca508c7",
       "social": "/social/images/2026/arithmetic-social.jpg"
     },
+    "/images/2026/arroz-con-gandules.avif": {
+      "sha256": "b677b2fb485ddd5f1efc59a300edb1862c77b2ea8fae05d8ed0fbdcf7fc587ee",
+      "social": "/social/images/2026/arroz-con-gandules-social.jpg"
+    },
+    "/images/2026/arroz-con-pollo.avif": {
+      "sha256": "c419ca025b3d2b788d06a4d0bef4ff1dc2c0ab08d6bfc63bdf38588b49d6cf25",
+      "social": "/social/images/2026/arroz-con-pollo-social.jpg"
+    },
+    "/images/2026/asopao-de-pollo.avif": {
+      "sha256": "dec4bdbc8520307ead25435bdc4789a71f66e48fa01b6f29ea2b072d3803480d",
+      "social": "/social/images/2026/asopao-de-pollo-social.jpg"
+    },
     "/images/2026/control.avif": {
       "sha256": "f81c37c7cccbc8bbbc1444d77204596705c21eefebf0e4bd28994a0147953ee8",
       "social": "/social/images/2026/control-social.jpg"
@@ -357,6 +369,10 @@
       "sha256": "1d3810733cb05424f2202655e65412480fc5982da9379107c6296eedd634e6c3",
       "social": "/social/images/2026/god-social.jpg"
     },
+    "/images/2026/habichuelas-guisadas.avif": {
+      "sha256": "51974603cdba81beafda77a6c011e0544c7f0449b0d470266fab050789c329ec",
+      "social": "/social/images/2026/habichuelas-guisadas-social.jpg"
+    },
     "/images/2026/in-my-feelings.avif": {
       "sha256": "c8b5f770acf38f7bd7f3f0344acb3f31a42a27a21fb9ecd1d9b1638fec284e15",
       "social": "/social/images/2026/in-my-feelings-social.jpg"
@@ -374,7 +390,7 @@
       "social": "/social/images/2026/lemon-pepper-chicken-tais-social.jpg"
     },
     "/images/2026/lemon-pepper-chicken.avif": {
-      "sha256": "73a0a2791b1d5fb18d64d9794f5989a298cd75681982994c06a77633b437ea09",
+      "sha256": "675b98e1da984875b715fcd74ed11da666bd7092f17803f7f019b5825191d407",
       "social": "/social/images/2026/lemon-pepper-chicken-social.jpg"
     },
     "/images/2026/love_for_cooking.avif": {
@@ -400,6 +416,10 @@
     "/images/2026/simplicity.avif": {
       "sha256": "588cafb6812b6f5af1d1b35f86aed5b3f1ca3c8844d2486fd8a6c154ea5908dd",
       "social": "/social/images/2026/simplicity-social.jpg"
+    },
+    "/images/2026/sofrito.avif": {
+      "sha256": "4181658dfd66b54193fd66e89ad1f4e96bd4d9d9c015e05deac1f3b58433e5b0",
+      "social": "/social/images/2026/sofrito-social.jpg"
     },
     "/images/2026/the-abyss.avif": {
       "sha256": "e4e414e13026fa1e2124dea20fa2ba6b7e7228eeee95a95ab2280be93982b213",

@@ -72,6 +72,16 @@ imageAlt: >-
   as winged creatures fly overhead
 ```
 
+### `imageCredit` / `imageCreditUrl` / `imageLicense` (optional)
+
+For open-source heroes. Shown under the photo. Use a real photographer and a file page, not a generated image.
+
+```yaml
+imageCredit: Jose Kevo
+imageCreditUrl: https://commons.wikimedia.org/wiki/File:Arroz_con_gandules.jpg
+imageLicense: CC BY-SA 2.0
+```
+
 ### `category` (array)
 
 Main categories for the post

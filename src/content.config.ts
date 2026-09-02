@@ -34,6 +34,12 @@ const blog = defineCollection({
     updatedDate: dateSchema.optional(),
     heroImage: z.string().optional(),
     imageAlt: z.string().optional(),
+    /** Photographer or source name shown under the hero. */
+    imageCredit: z.string().optional(),
+    /** Link to the source page (Wikimedia file page, Unsplash, etc.). */
+    imageCreditUrl: z.url().optional(),
+    /** Short license label, e.g. CC BY-SA 2.0 */
+    imageLicense: z.string().optional(),
     category: z.array(z.enum(validCategoryIds as [string, ...string[]])).optional(),
     subcategory: z.string().optional(),
     // Canonicalize at parse so chips, indexes, and aliases share one vocabulary.

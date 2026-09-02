@@ -1,15 +1,18 @@
 ---
 title: Lemon-Pepper Chicken Thighs
 description: >-
-  Bone-in thighs on a wire rack, lemon-pepper, then honey after they come out
-  of the oven.
+  Bone-in, skin-on chicken thighs on a wire rack. Lemon-pepper in the oven,
+  honey after they rest.
 pubDate: '2025-05-02'
 language:
   - en
 heroImage: /images/2026/lemon-pepper-chicken.avif
 imageAlt: >-
-  Bone-in chicken thighs with blistered skin, cracked pepper, roasted lemon
-  halves, and a honey glaze on a wire rack
+  Bone-in lemon pepper chicken on a black plate, cilantro and lemon slices on
+  top
+imageCredit: Yuvraj Singh 97
+imageCreditUrl: https://commons.wikimedia.org/wiki/File:Lemon_Pepper_Chicken_-_Home_-_Chandigarh_-_India_-_0005.jpg
+imageLicense: CC BY-SA 4.0
 category:
   - diy-creation
 subcategory: Recipes
@@ -26,7 +29,7 @@ published: true
 showComments: true
 ---
 
-Bone-in thighs on a wire rack, lemon-pepper, then honey after they come out of the oven. This is the chicken I actually make on a weeknight.
+Bone-in, skin-on chicken thighs on a wire rack. Lemon-pepper in the oven. Honey after they rest.
 
 ## Ingredients
 
