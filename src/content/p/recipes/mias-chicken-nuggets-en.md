@@ -1,5 +1,5 @@
 ---
-title: Mia's Chicken Nuggets
+title: Mia's Chicken "Nuggets"
 description: >-
   Chicken tenderloins, olive oil, salt, paprika, and flour. Fried until
   golden, about 5 minutes.

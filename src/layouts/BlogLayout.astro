@@ -313,7 +313,9 @@ const primaryCategory = categoryItems[0] || null;
                     ? ' via Wikimedia Commons'
                     : imageCreditUrl?.includes('flickr.com')
                       ? ' via Flickr'
-                      : ''}
+                      : imageCreditUrl?.includes('unsplash.com')
+                        ? ' via Unsplash'
+                        : ''}
                   . Converted to AVIF.
                 </p>
               )

@@ -41,6 +41,10 @@
       "sha256": "c837ece1b868709d02ec38fdcc12c40610bcd33d0dae321b876af9382c6d8e77",
       "social": "/social/images/2025/trillion-social.jpg"
     },
+    "/images/2026/arepas-de-calabaza.avif": {
+      "sha256": "26568e1eba2db44007ee5f66029554d4a404015664c4f4bf2426a51b6f5f432f",
+      "social": "/social/images/2026/arepas-de-calabaza-social.jpg"
+    },
     "/images/2026/arithmetic.avif": {
       "sha256": "f1527ea16f5db58e4abc36657c8292410964e079e1c9eb2317c56f69cca508c7",
       "social": "/social/images/2026/arithmetic-social.jpg"
@@ -56,6 +60,14 @@
     "/images/2026/asopao-de-pollo.avif": {
       "sha256": "dec4bdbc8520307ead25435bdc4789a71f66e48fa01b6f29ea2b072d3803480d",
       "social": "/social/images/2026/asopao-de-pollo-social.jpg"
+    },
+    "/images/2026/cast-iron-flank-steak.avif": {
+      "sha256": "5306f3c5081520e8bdc397913124a0591f61011588557c088a1035edad9e88ae",
+      "social": "/social/images/2026/cast-iron-flank-steak-social.jpg"
+    },
+    "/images/2026/chilean-sea-bass.avif": {
+      "sha256": "ec55c8ffbf8359e9b680893aa7566493aced7dcb4b9440f1328a8bdf543f84e4",
+      "social": "/social/images/2026/chilean-sea-bass-social.jpg"
     },
     "/images/2026/control.avif": {
       "sha256": "f81c37c7cccbc8bbbc1444d77204596705c21eefebf0e4bd28994a0147953ee8",
@@ -361,6 +373,10 @@
       "sha256": "d535b488a62249db32d690c5217467a432db0eaf6a6114bc64a9e7cacec569d3",
       "social": "/social/images/2026/fasting-hurts-social.jpg"
     },
+    "/images/2026/fried-chicken-tender-nuggets.avif": {
+      "sha256": "8f12cffc414abdac13fe2f1c908a56a2e120fe925e302120dc0324246dead222",
+      "social": "/social/images/2026/fried-chicken-tender-nuggets-social.jpg"
+    },
     "/images/2026/friendly-ai.avif": {
       "sha256": "da2159f35d5c7911d8086ff833140ddee163f11bbdf9222376ee20e74fc8ddb4",
       "social": "/social/images/2026/friendly-ai-social.jpg"
@@ -384,6 +400,10 @@
     "/images/2026/kids-laptop.avif": {
       "sha256": "b3429032b4992a8b1693b14345bd20aa680ec4e6da22206e9074f27f41247014",
       "social": "/social/images/2026/kids-laptop-social.jpg"
+    },
+    "/images/2026/lamb-loin-chops-al-vino-con-vegetales.avif": {
+      "sha256": "68238004ec9282b1d87db9b066fc34053229bcb3953a0c668003f22876e05c9e",
+      "social": "/social/images/2026/lamb-loin-chops-al-vino-con-vegetales-social.jpg"
     },
     "/images/2026/learning.avif": {
       "sha256": "e948ebe7315aa1f20c2d7e991b1ff8a61516ca7025d3c10dd6ea01a193c51de8",
@@ -409,6 +429,10 @@
       "sha256": "a5ea750381b1e2bbfd41a393c2d9140b44c6a6b4af8fb042d63a77fcd00ea239",
       "social": "/social/images/2026/mias-cinnamon-pancakes-social.jpg"
     },
+    "/images/2026/mias-vegan-cupcakes.avif": {
+      "sha256": "5d5910eceed42c94f4bc3cc9c8df9200f21495024d0f5185ff5a91ba650f0663",
+      "social": "/social/images/2026/mias-vegan-cupcakes-social.jpg"
+    },
     "/images/2026/neverending-walk.avif": {
       "sha256": "55925c6c77b46b4bdb77c50a0491c574b3b64975b6818047fe0d2f1395f003df",
       "social": "/social/images/2026/neverending-walk-social.jpg"
@@ -432,6 +456,22 @@
     "/images/2026/pastel-de-banana.avif": {
       "sha256": "bd6b32d28e7ec7b6f3782832a60f2da68746e407a3ce904f9df52bbf12c67200",
       "social": "/social/images/2026/pastel-de-banana-social.jpg"
+    },
+    "/images/2026/patatas-bravas.avif": {
+      "sha256": "0b9f5c44b029c49b114fdf082394b87a92af168dc1eefaf99318440cd3189682",
+      "social": "/social/images/2026/patatas-bravas-social.jpg"
+    },
+    "/images/2026/perfect-crispy-oven-drumsticks.avif": {
+      "sha256": "99abc16299cfc5efa3f1b29470d6bf42ad98d224f03b8d85967bab317882292e",
+      "social": "/social/images/2026/perfect-crispy-oven-drumsticks-social.jpg"
+    },
+    "/images/2026/shaved-carrots.avif": {
+      "sha256": "2d042c022f051c1e245fac5433c02121968e41764c16a55052fa3c5e0b314f52",
+      "social": "/social/images/2026/shaved-carrots-social.jpg"
+    },
+    "/images/2026/simple-baked-chicken-breasts.avif": {
+      "sha256": "b08677f7aef09014049969d8f4a22e73dd281b30866e66d40bc87471ffc55141",
+      "social": "/social/images/2026/simple-baked-chicken-breasts-social.jpg"
     },
     "/images/2026/simplicity.avif": {
       "sha256": "588cafb6812b6f5af1d1b35f86aed5b3f1ca3c8844d2486fd8a6c154ea5908dd",
@@ -460,6 +500,10 @@
     "/images/2026/trickle-down.avif": {
       "sha256": "ee142e483230541c3ad42d05d90bfc42bece7ad61fedbfcd6a5f5fe9fcc5aa13",
       "social": "/social/images/2026/trickle-down-social.jpg"
+    },
+    "/images/2026/turkey-patties.avif": {
+      "sha256": "75d929c2111f331c773551098924f52f7542eaaf166c913a25d927474bc5c976",
+      "social": "/social/images/2026/turkey-patties-social.jpg"
     },
     "/images/2026/value-roads.avif": {
       "sha256": "057545ba11d390dc95fd8b7452966c50cc7e489750fb8b0eebb7c79abae67031",

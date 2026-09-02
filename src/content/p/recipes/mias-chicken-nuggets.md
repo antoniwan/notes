@@ -1,5 +1,5 @@
 ---
-title: Mia's Chicken Nuggets
+title: Mia's Chicken "Nuggets"
 description: >-
   Tenderloins de pollo, aceite de oliva, sal, paprika y harina. Se fríen hasta
   dorar, unos 5 minutos.
