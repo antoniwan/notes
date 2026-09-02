@@ -2,9 +2,12 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import NotFoundQuote from '../components/NotFoundQuote.astro';
 import { PAGE_META } from '../data/pageMeta';
-import { getAllTags } from '../data/tags';
+import { getCollection } from 'astro:content';
+import { getAllUniqueTags } from '../utils/tagProcessing';
+import { isCollectionListed } from '../utils/publishFilters';
 
-const existingTags = getAllTags();
+const posts = await getCollection('blog', ({ data }) => isCollectionListed(data));
+const existingTags = getAllUniqueTags(posts);
 ---
 
 <PageLayout

@@ -40,6 +40,7 @@ export const CORE_PREFERRED_TAGS = [
   'boundaries',
   'psychology',
   'philosophy',
+  'spirituality',
   'time',
   'social-justice',
   'systemic-critique',
@@ -49,13 +50,11 @@ export const CORE_PREFERRED_TAGS = [
   'identity',
   'leadership',
   'learning',
+  'learning-projects',
   'education',
-  'memoir',
-  'reflection',
   'metaspace',
   'health',
   'emotional-health',
-  'wellness',
   'self-care',
   'nutrition',
   'ritual',
@@ -73,10 +72,12 @@ export const DOMAIN_EXTENSION_TAGS = {
     'inner-work',
     'inner-child',
     'self-mastery',
-    'self-discovery',
     'emotional-health',
     'fear',
     'grief',
+    'trauma',
+    'recovery',
+    'attachment',
   ],
   technology: [
     'software-development',
@@ -91,14 +92,24 @@ export const DOMAIN_EXTENSION_TAGS = {
   ],
   society: [
     'social-issues',
-    'social-critique',
     'political-awakening',
     'power',
     'governance',
     'activism',
     'democracy',
+    'puerto-rico',
+    'economics',
   ],
-  lifestyle: ['habits', 'simplicity', 'meditation', 'breathing', 'fasting', 'recipes', 'food'],
+  lifestyle: [
+    'habits',
+    'simplicity',
+    'meditation',
+    'breathing',
+    'fasting',
+    'recipes',
+    'food',
+    'cooking',
+  ],
   expression: [
     'art-expression',
     'self-expression',
@@ -107,18 +118,40 @@ export const DOMAIN_EXTENSION_TAGS = {
     'symbols',
     'digital-art',
     'craftsmanship',
+    'writing',
   ],
 } as const;
+
+/**
+ * Canonical slugs for writing-form tags. These are a separate axis from
+ * thematic tags and must never alias into themes (e.g. notes → reflection).
+ */
+export const CONTENT_FORM_TAGS = [
+  'essays',
+  'ideas',
+  'letters',
+  'manifestos',
+  'memoir',
+  'notes',
+  'poems',
+  'reflection',
+  'songs',
+  'stories',
+] as const;
 
 const DOMAIN_EXTENSION_VALUES = Object.values(DOMAIN_EXTENSION_TAGS).flat();
 
 export const PREFERRED_TAGS = Object.freeze(
-  Array.from(new Set([...CORE_PREFERRED_TAGS, ...DOMAIN_EXTENSION_VALUES])),
+  Array.from(new Set([...CORE_PREFERRED_TAGS, ...DOMAIN_EXTENSION_VALUES, ...CONTENT_FORM_TAGS])),
 );
 
-// Canonical vocabulary for this repo is English slugs.
+/**
+ * Alias keys MUST already be in post-normalize kebab form (lowercase, no
+ * accents, hyphens not spaces). `canonicalizeTag` looks up the normalized
+ * input, so a key like `ai agents` never matches.
+ */
 export const TAG_ALIAS_MAP: Record<string, string> = {
-  // EN/ES core equivalents
+  // EN/ES thematic equivalents
   consciencia: 'consciousness',
   sanacion: 'healing',
   'salud-mental': 'mental-health',
@@ -137,40 +170,56 @@ export const TAG_ALIAS_MAP: Record<string, string> = {
   empatia: 'empathy',
   compasion: 'compassion',
   humanidad: 'humanism',
-  recuperacion: 'healing',
+  recuperacion: 'recovery',
   'crecimiento-personal': 'personal-growth',
   cultura: 'culture',
   dignidad: 'dignity',
   'auto-conocimiento': 'self-awareness',
   apego: 'attachment',
-  escritura: 'reflection',
-  // Intent-level consolidation
+  escritura: 'writing',
+  limites: 'boundaries',
+  culpa: 'guilt',
+  amor: 'love',
+  crianza: 'parenting',
+  responsabilidad: 'responsibility',
+  vulnerabilidad: 'vulnerability',
+  libertad: 'freedom',
+  revolucion: 'revolution',
+  'sanacion-colectiva': 'collective-healing',
+  // Intent-level consolidation (thematic only)
   growth: 'personal-growth',
-  'ai agents': 'ai-agents',
   'ai-agent': 'ai-agents',
   'self-discovery': 'self-reflection',
   wellness: 'health',
   systems: 'systems-strategy',
   'social-critique': 'systemic-critique',
-  // Content-form and writing-style normalization
-  essay: 'reflection',
-  essays: 'reflection',
-  idea: 'reflection',
-  ideas: 'reflection',
-  note: 'reflection',
-  notes: 'reflection',
-  letter: 'memoir',
-  letters: 'memoir',
-  story: 'memoir',
-  stories: 'memoir',
+  // Content-form singular/plural and EN/ES variants — stay on the form axis
+  essay: 'essays',
+  ensayo: 'essays',
+  ensayos: 'essays',
+  idea: 'ideas',
+  note: 'notes',
+  nota: 'notes',
+  notas: 'notes',
+  letter: 'letters',
+  carta: 'letters',
+  cartas: 'letters',
+  story: 'stories',
+  historia: 'stories',
+  historias: 'stories',
   poem: 'poems',
   poetry: 'poems',
-  reflection: 'reflection',
+  poema: 'poems',
+  poemas: 'poems',
   reflections: 'reflection',
   memoirs: 'memoir',
-  manifesto: 'political-awakening',
-  manifestos: 'political-awakening',
-  // plural/singular harmonization
+  manifesto: 'manifestos',
+  manifiestos: 'manifestos',
+  manifiesto: 'manifestos',
+  song: 'songs',
+  cancion: 'songs',
+  canciones: 'songs',
+  // plural/singular thematic harmonization
   relationship: 'relationships',
   value: 'values',
 };

@@ -5,7 +5,8 @@ import PageHeader from '../../components/PageHeader.astro';
 import Container from '../../components/Container.astro';
 import { getCollection } from 'astro:content';
 import { tagMetaDescription } from '../../data/pageMeta';
-import { getAllUniqueTags, getTagStatistics } from '../../utils/tagProcessing';
+import { getTagMetadata } from '../../data/tags';
+import { filterPostsByTag, getAllUniqueTags, getTagStatistics } from '../../utils/tagProcessing';
 import { canonicalizeTag } from '../../utils/tagVocabulary';
 import { isCollectionListed } from '../../utils/publishFilters';
 
@@ -23,22 +24,19 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.props;
 const canonicalTag = canonicalizeTag(tag);
+const tagLabel = getTagMetadata(canonicalTag).name;
 
 // Get all posts
 const posts = await getCollection('blog', ({ data }) => isCollectionListed(data));
 
 // Get tag statistics
 const { totalPosts, relatedTags } = getTagStatistics(canonicalTag, posts);
-
-// Filter posts by tag and sort by date
-const tagPosts = posts
-  .filter((post) => post.data.tags?.some((rawTag) => canonicalizeTag(rawTag) === canonicalTag))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const tagPosts = filterPostsByTag(posts, canonicalTag);
 ---
 
 <BaseLayout
-  title={`${canonicalTag} - Tag`}
-  description={`Browse all writings tagged with ${canonicalTag}`}
+  title={`${tagLabel} - Tag`}
+  description={`Browse all writings tagged with ${tagLabel}`}
   metaDescription={tagMetaDescription(canonicalTag, totalPosts)}
   path={`/tag/${canonicalTag}`}
   structuredDataType="tag"
@@ -49,10 +47,7 @@ const tagPosts = posts
     <Container maxWidth="container" padding="none">
       {/* Tag Header with Stats */}
       <div class="mb-8">
-        <PageHeader
-          title={`#${canonicalTag}`}
-          description={`Browse all writings tagged with ${canonicalTag}`}
-        />
+        <PageHeader title={tagLabel} description={`Browse all writings tagged with ${tagLabel}`} />
         <div class="mt-4 md:mt-6">
           <a
             href="/tag"
@@ -70,8 +65,7 @@ const tagPosts = posts
           >
             <span class="text-[rgb(var(--color-accent))]" aria-hidden="true">📊</span>
             <span class="text-base leading-relaxed font-medium text-[rgb(var(--color-accent))]">
-              {totalPosts}
-              {totalPosts === 1 ? 'writing' : 'writings'}
+              {totalPosts === 1 ? `${totalPosts} writing` : `${totalPosts} writings`}
             </span>
           </div>
 
@@ -96,7 +90,7 @@ const tagPosts = posts
           tagPosts.length > 0 && (
             <div class="mb-6 flex items-center justify-between">
               <h2 class="text-heading text-[rgb(var(--color-text))]">
-                Writings tagged with #{canonicalTag}
+                Writings tagged with {tagLabel}
               </h2>
               <div class="text-body-muted text-base leading-relaxed">Sorted by date</div>
             </div>
@@ -139,7 +133,7 @@ const tagPosts = posts
               </div>
               <h3 class="text-subheading mb-2 text-[rgb(var(--color-text))]">No writings found</h3>
               <p class="text-body-large text-body-muted mb-6 leading-relaxed">
-                No writings have been tagged with "#{canonicalTag}" yet.
+                No writings have been tagged with "{tagLabel}" yet.
               </p>
               <a
                 href="/tag"

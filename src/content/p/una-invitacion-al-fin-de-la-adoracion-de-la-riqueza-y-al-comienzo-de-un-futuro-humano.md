@@ -12,21 +12,16 @@ category:
   - integration-growth
 tags:
   - dignidad
+  - sociedad
   - compasión
   - valores
   - justicia-social
   - crítica-sistémica
-  - transformación
-  - consciencia
   - política
   - cultura
-  - propósito
   - sanación-colectiva
   - revolución
   - amor
-  - empatía
-  - auto-reflexión
-  - verdad
   - libertad
 draft: false
 featured: false

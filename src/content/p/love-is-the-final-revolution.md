@@ -15,20 +15,12 @@ tags:
   - politics
   - fear
   - parenting
-  - consciousness
   - healing
   - values
   - empathy
-  - compassion
-  - social-justice
-  - collective-healing
   - presence
-  - mindfulness
-  - resilience
-  - purpose
   - radical-love
   - political-awakening
-  - systemic-critique
   - love-as-resistance
 draft: false
 featured: true

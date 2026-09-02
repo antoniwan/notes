@@ -44,10 +44,6 @@ export const CATEGORY_META: Record<string, string> = {
     'Notes on software, systems, and strategic design. Category: On Systems & Strategy.',
 };
 
-function humanizeTag(tag: string): string {
-  return tag.replace(/-/g, ' ');
-}
-
 /** Unique meta description for a category listing page. */
 export function categoryMetaDescription(category: Pick<Category, 'id' | 'name'>): string {
   return CATEGORY_META[category.id] ?? `Notes filed under ${category.name}.`;
@@ -55,8 +51,7 @@ export function categoryMetaDescription(category: Pick<Category, 'id' | 'name'>)
 
 /** Unique meta description for a tag listing page. */
 export function tagMetaDescription(tag: string, count: number): string {
-  const metadata = getTagMetadata(tag);
-  const label = metadata?.name ?? humanizeTag(tag);
+  const label = getTagMetadata(tag).name;
   const n = count === 1 ? '1 note' : `${count} notes`;
   return `${n} tagged ${label} in the Notes archive.`;
 }

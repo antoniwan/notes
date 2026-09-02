@@ -14,8 +14,6 @@ tags:
   - boundaries
   - communication
   - self-reflection
-  - personal-growth
-  - connection
   - clarity
   - honesty
   - energy-conservation

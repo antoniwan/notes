@@ -17,15 +17,11 @@ tags:
   - humility
   - therapy
   - personal-growth
-  - consciousness
   - ego
   - blind-spots
-  - growth
   - authenticity
   - vulnerability
   - self-awareness
-  - writing
-  - feedback
   - metaspace
 draft: false
 featured: false

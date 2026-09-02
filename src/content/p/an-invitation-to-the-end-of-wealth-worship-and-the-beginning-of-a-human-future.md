@@ -13,23 +13,15 @@ category:
 tags:
   - dignity
   - social-issues
-  - systems-strategy
   - compassion
   - values
   - social-justice
   - systemic-critique
-  - transformation
-  - consciousness
   - politics
   - culture
-  - purpose
-  - meaning
   - collective-healing
   - revolution
   - love
-  - empathy
-  - self-reflection
-  - truth
   - freedom
 featured: true
 published: true

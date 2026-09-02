@@ -14,6 +14,7 @@ category:
   - systems-strategy
   - art-expression
 tags:
+  - technology
   - astro
   - typescript
   - web-development
@@ -23,7 +24,6 @@ tags:
   - art-expression
   - metaspace
   - coding
-  - personal-projects
   - digital-art
   - craftsmanship
 draft: false

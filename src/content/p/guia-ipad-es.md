@@ -15,6 +15,7 @@ category:
   - systems-strategy
 subcategory: Tecnología y Crianza
 tags:
+  - puerto-rico
   - technology
   - parenting
   - children

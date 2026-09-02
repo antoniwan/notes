@@ -93,13 +93,14 @@ subcategory: 'Nutrition'
 Keywords and topics for the post
 
 ```yaml
-tags: ['nutrition', 'health', 'wellness', 'cooking']
+tags: ['nutrition', 'health', 'cooking']
 ```
 
 Tag policy:
 
-- Prefer canonical tags from `docs/tag-vocabulary.md`.
+- Prefer canonical tags from `docs/tag-vocabulary.md` / `docs/tag-policy.md`.
 - Canonical tags use lowercase kebab-case English slugs.
+- Target 5-12 reusable tags; writing-form tags (`poems`, `memoir`, `notes`, …) stay distinct from themes.
 - Keep tags descriptive and reusable; avoid one-off labels unless they are clearly needed.
 
 ### `readingTime` (removed)
@@ -174,7 +175,7 @@ heroImage: '/images/beef-heart-comparison-chart.png'
 imageAlt: 'Chart comparing iron, B12, zinc, and CoQ10 in beef heart versus common meats'
 category: ['integration-growth']
 subcategory: 'Nutrition'
-tags: ['nutrition', 'health', 'wellness', 'cooking', 'beef-heart']
+tags: ['nutrition', 'health', 'cooking', 'beef-heart']
 # minutesRead: "3 min read"  # Automatically calculated
 draft: false
 featured: false

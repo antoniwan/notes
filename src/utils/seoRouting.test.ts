@@ -30,6 +30,13 @@ describe('POST_REDIRECTS + buildSeoRedirects', () => {
     // Alias map should produce at least one /tag/... redirect when aliases exist
     const tagRedirects = Object.keys(redirects).filter((k) => k.startsWith('/tag/'));
     expect(tagRedirects.length).toBeGreaterThan(0);
+    expect(redirects['/tag/limites']).toBe('/tag/boundaries');
+    expect(redirects['/tag/recuperacion']).toBe('/tag/recovery');
+    expect(redirects['/tag/escritura']).toBe('/tag/writing');
+    expect(redirects['/tag/poem']).toBe('/tag/poems');
+    expect(redirects['/tag/essay']).toBe('/tag/essays');
+    expect(redirects['/tag/essays']).toBeUndefined();
+    expect(redirects['/tag/notes']).toBeUndefined();
   });
 
   it('301s old Writing Insights subpaths and leaves the origin page in place', () => {

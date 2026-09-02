@@ -14,16 +14,12 @@ tags:
   - empathy
   - psychology
   - mental-health
-  - consciousness
   - emotional-regulation
-  - personal-growth
   - self-reflection
   - bias
   - judgment
   - inner-peace
   - emotional-intelligence
-  - self-awareness
-  - mindfulness
   - resilience
   - stoicism
 draft: false

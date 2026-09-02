@@ -16,6 +16,7 @@ category:
   - learning-projects
   - metaspace
 tags:
+  - technology
   - git
   - version-control
   - ai-agents

@@ -1,28 +1,18 @@
 ---
 import type { ContentFormPreludeItem } from '../../utils/tag/contentFormTags';
+import { formatPreludeConnectors } from '../../utils/tag/contentFormTags';
 import {
   buildPreludeTemplateCandidates,
-  selectWeightedPreludeTemplates,
+  PRELUDE_THEME_LIMIT,
+  selectPreludeTemplates,
 } from '../../utils/tag/preludeTemplates';
 
 interface Props {
   items: ContentFormPreludeItem[];
   tagCounts: Record<string, number>;
-  narrativeStats: Array<{ tag: string; postCount: number; averageWords: number }>;
 }
 
-const { items, tagCounts, narrativeStats } = Astro.props;
-
-const toConnectors = (itemsCount: number): string[] => {
-  if (itemsCount <= 0) return [];
-  if (itemsCount === 1) return [' '];
-  if (itemsCount === 2) return [' ', ' and '];
-  return Array.from({ length: itemsCount }, (_, index) => {
-    if (index === 0) return ' ';
-    if (index === itemsCount - 1) return ', and ';
-    return ', ';
-  });
-};
+const { items, tagCounts } = Astro.props;
 
 const primaryItems = items.filter((item) => item.label !== 'poems');
 const chunks: ContentFormPreludeItem[][] = [];
@@ -30,132 +20,62 @@ for (let index = 0; index < primaryItems.length; index += 4) {
   chunks.push(primaryItems.slice(index, index + 4));
 }
 
-const hasTag = (tag: string) => (tagCounts[tag] ?? 0) > 0;
+const formSlugsAlreadyLinked = primaryItems.map((item) => item.href.replace(/^\/tag\//, ''));
 const tagLink = (tag: string) => `/tag/${encodeURIComponent(tag)}`;
 const asHashTag = (tag: string) => `#${tag}`;
-const hasPoemsSignal = hasTag('poems') || items.some((item) => item.label === 'poems');
-const candidates = buildPreludeTemplateCandidates({ tagCounts, narrativeStats });
-const fallbackTemplates = selectWeightedPreludeTemplates(candidates, 2);
+const candidates = buildPreludeTemplateCandidates({ tagCounts });
+const templates = selectPreludeTemplates(candidates, PRELUDE_THEME_LIMIT, {
+  excludeTags: formSlugsAlreadyLinked,
+});
 ---
 
-<section class="mb-6">
-  <ul class="text-body-muted list-disc space-y-1.5 pl-5 text-sm leading-relaxed">
-    {
-      chunks.map((chunk, chunkIndex) => {
-        const connectors = toConnectors(chunk.length);
-        const prefix = chunkIndex === 0 ? "I've written" : "I've also written";
-        return (
-          <li>
-            {prefix}
-            {chunk.map((item, itemIndex) => (
-              <>
-                <span>{connectors[itemIndex] ?? ', '}</span>
-                <a
-                  href={item.href}
-                  class="font-medium text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/40 underline-offset-4 hover:text-[rgb(var(--color-accent-hover))]"
-                >
-                  {asHashTag(item.label)}
-                </a>
-              </>
-            ))}
-            .
-          </li>
-        );
-      })
-    }
+{
+  (chunks.length > 0 || templates.length > 0) && (
+    <section class="mb-6">
+      <ul class="text-body-muted list-disc space-y-1.5 pl-5 text-sm leading-relaxed">
+        {chunks.map((chunk, chunkIndex) => {
+          const connectors = formatPreludeConnectors(chunk.length);
+          const prefix = chunkIndex === 0 ? "I've written" : "I've also written";
+          return (
+            <li>
+              {prefix}
+              {chunk.map((item, itemIndex) => (
+                <>
+                  <span>{connectors[itemIndex] ?? ', '}</span>
+                  <a
+                    href={item.href}
+                    class="font-medium text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/40 underline-offset-4 hover:text-[rgb(var(--color-accent-hover))]"
+                  >
+                    {asHashTag(item.label)}
+                  </a>
+                </>
+              ))}
+              .
+            </li>
+          );
+        })}
 
-    {
-      fallbackTemplates.map((template) => (
-        <li class="js-prelude-template">
-          {template.prefix}
-          {template.tags.map((tag, index) => (
-            <>
-              <span>
-                {index === 0 ? ' ' : index === template.tags.length - 1 ? ', and ' : ', '}
-              </span>
-              <a
-                href={tagLink(tag)}
-                class="font-medium text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/40 underline-offset-4 hover:text-[rgb(var(--color-accent-hover))]"
-              >
-                {asHashTag(tag)}
-              </a>
-            </>
-          ))}
-          {template.suffix ? ` ${template.suffix}` : ''}.
-        </li>
-      ))
-    }
-    {
-      hasPoemsSignal && !fallbackTemplates.some((template) => template.id === 'poems') && (
-        <li class="js-prelude-template">
-          I have poems too over at{' '}
-          <a
-            href={tagLink('poems')}
-            class="font-medium text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/40 underline-offset-4 hover:text-[rgb(var(--color-accent-hover))]"
-          >
-            {asHashTag('poems')}
-          </a>
-          .
-        </li>
-      )
-    }
-  </ul>
-</section>
-
-<script is:inline>
-  (() => {
-    const candidates = JSON.parse(`${JSON.stringify(candidates)}`);
-    const list = document.querySelector('section.mb-6 > ul');
-    if (!list || !Array.isArray(candidates) || candidates.length === 0) return;
-
-    const existingTemplates = Array.from(list.querySelectorAll('.js-prelude-template'));
-    for (const node of existingTemplates) node.remove();
-
-    const pickWeighted = (pool) => {
-      const total = pool.reduce((sum, item) => sum + (item.weight || 0), 0);
-      if (total <= 0) return null;
-      let cursor = Math.random() * total;
-      for (const item of pool) {
-        cursor -= item.weight || 0;
-        if (cursor <= 0) return item;
-      }
-      return pool[pool.length - 1] || null;
-    };
-
-    const selected = [];
-    const pool = [...candidates];
-    const targetCount = Math.min(3, pool.length);
-    while (selected.length < targetCount && pool.length > 0) {
-      const next = pickWeighted(pool);
-      if (!next) break;
-      selected.push(next);
-      const index = pool.findIndex((item) => item.id === next.id);
-      if (index >= 0) pool.splice(index, 1);
-    }
-
-    const poemsTemplate = candidates.find((item) => item.id === 'poems');
-    if (poemsTemplate && !selected.some((item) => item.id === 'poems')) {
-      selected.push(poemsTemplate);
-    }
-
-    const buildSentence = (template) => {
-      const li = document.createElement('li');
-      li.className = 'js-prelude-template';
-      li.append(`${template.prefix || ''}`);
-      (template.tags || []).forEach((tag, index, arr) => {
-        const connector = index === 0 ? ' ' : index === arr.length - 1 ? ', and ' : ', ';
-        li.append(connector);
-        const a = document.createElement('a');
-        a.href = `/tag/${encodeURIComponent(tag)}`;
-        a.className =
-          'font-medium text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/40 underline-offset-4 hover:text-[rgb(var(--color-accent-hover))]';
-        a.textContent = `#${tag}`;
-        li.append(a);
-      });
-      li.append(template.suffix ? ` ${template.suffix}.` : '.');
-      return li;
-    };
-
-    selected.forEach((template) => list.append(buildSentence(template)));
-  })();
-</script>
+        {templates.map((template) => {
+          const connectors = formatPreludeConnectors(template.tags.length);
+          return (
+            <li>
+              {template.prefix}
+              {template.tags.map((tag, index) => (
+                <>
+                  <span>{connectors[index] ?? ', '}</span>
+                  <a
+                    href={tagLink(tag)}
+                    class="font-medium text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/40 underline-offset-4 hover:text-[rgb(var(--color-accent-hover))]"
+                  >
+                    {asHashTag(tag)}
+                  </a>
+                </>
+              ))}
+              {template.suffix ? ` ${template.suffix}` : ''}.
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  )
+}

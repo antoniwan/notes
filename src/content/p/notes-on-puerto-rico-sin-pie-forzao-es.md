@@ -17,17 +17,12 @@ tags:
   - colonialism
   - economics
   - governance
-  - poverty
-  - debt
   - healthcare
   - education
   - corruption
   - diaspora
   - sovereignty
-  - austerity
-  - elections
   - gentrification
-  - housing
   - activism
 draft: false
 featured: false

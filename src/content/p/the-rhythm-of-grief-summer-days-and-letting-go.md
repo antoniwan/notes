@@ -12,11 +12,11 @@ category:
   - integration-growth
   - psychology
 tags:
+  - parenting
   - co-parenting
   - grief
   - family-dynamics
   - emotional-pain
-  - consciousness
   - healing
   - resilience
   - love
@@ -24,9 +24,6 @@ tags:
   - children
   - family
   - emotional-regulation
-  - self-reflection
-  - personal-growth
-  - transformation
 draft: false
 featured: true
 published: true

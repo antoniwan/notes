@@ -19,9 +19,6 @@ tags:
   - social-justice
   - systemic-critique
   - fear
-  - mental-health
-  - collective-healing
-  - philosophy
   - power
   - freedom
   - digital-safety

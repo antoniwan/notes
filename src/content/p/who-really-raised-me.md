@@ -18,19 +18,12 @@ category:
 tags:
   - childhood
   - family
-  - consciousness
-  - personal-growth
-  - self-reflection
-  - healing
-  - therapy
-  - trauma
   - identity
-  - self-discovery
+  - values
   - anime
   - cartoons
   - fictional-characters
   - mentorship
-  - values
   - one-punch-man
   - dragon-ball
   - berserk

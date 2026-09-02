@@ -15,6 +15,7 @@ category:
   - integration-growth
   - learning-projects
 tags:
+  - cooking
   - food
   - recipes
   - family

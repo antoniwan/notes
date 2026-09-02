@@ -13,19 +13,15 @@ category:
 tags:
   - authenticity
   - self-awareness
-  - personal-growth
   - transformation
   - consciousness
   - embodiment
   - integration
   - self-reflection
   - vulnerability
-  - growth
   - performance
   - truth
   - presence
-  - awareness
-  - healing
 draft: false
 featured: true
 published: true

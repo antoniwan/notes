@@ -39,11 +39,6 @@ export const mainNavigation: NavigationItem[] = [
           icon: '🧠',
         },
         {
-          href: '/tag-management',
-          label: 'Tag Analytics',
-          icon: '🏷️',
-        },
-        {
           href: '/library/books',
           label: 'Book Library',
           icon: '📚',

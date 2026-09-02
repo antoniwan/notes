@@ -17,6 +17,7 @@ category:
   - systems-strategy
   - art-expression
 tags:
+  - technology
   - astro
   - typescript
   - web-development

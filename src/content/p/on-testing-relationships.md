@@ -18,14 +18,9 @@ tags:
   - self-reflection
   - mental-health
   - therapy
-  - personal-growth
   - authenticity
-  - emotional-health
-  - emotional-intelligence
-  - self-awareness
   - healing
   - trauma
-  - family-dynamics
   - connection
   - intimacy
 draft: false

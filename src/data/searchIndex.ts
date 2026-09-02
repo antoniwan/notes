@@ -82,11 +82,11 @@ async function buildSearchData() {
     return {
       type: 'tag',
       id: tag,
-      title: tag.replace(/-/g, ' ').replace(/\b\w/g, (l: string) => l.toUpperCase()),
+      title: metadata.name,
       description:
-        metadata?.description || `${count} writing${count !== 1 ? 's' : ''} tagged with "${tag}"`,
+        metadata.description || `${count} writing${count !== 1 ? 's' : ''} tagged with "${tag}"`,
       url: `/tag/${tag}`,
-      weight: metadata?.weight || 1,
+      weight: metadata.weight,
       count,
     };
   });

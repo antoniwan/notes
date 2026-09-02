@@ -13,13 +13,10 @@ category:
   - psychology
 subcategory: Personal Transformation
 tags:
-  - consciousness
-  - personal-growth
   - mental-health
   - healing
   - therapy
   - self-reflection
-  - transformation
   - trauma
   - emotional-regulation
   - mindfulness
@@ -27,7 +24,6 @@ tags:
   - resilience
   - adaptability
   - vulnerability
-  - psychology
 draft: false
 featured: false
 published: true

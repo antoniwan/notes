@@ -1,3 +1,7 @@
+import { PREFERRED_TAGS } from './tagVocabulary';
+
+const PREFERRED_TAG_SET = new Set<string>(PREFERRED_TAGS as readonly string[]);
+
 export interface TagData {
   name: string;
   weight: number;
@@ -35,6 +39,15 @@ export const TAG_WEIGHTS: Record<string, number> = {
   values: 9,
   love: 10,
   revolution: 9,
+  fatherhood: 8,
+  presence: 7,
+  metaspace: 6,
+  recovery: 6,
+  writing: 4,
+  'puerto-rico': 5,
+  economics: 5,
+  poems: 4,
+  memoir: 4,
 
   // Major life areas
   parenting: 8,
@@ -208,7 +221,6 @@ export const MASLOW_CATEGORIES: TagCategory[] = [
     tags: [
       'nutrition',
       'health',
-      'wellness',
       'cooking',
       'food',
       'healthy-eating',
@@ -269,6 +281,8 @@ export const MASLOW_CATEGORIES: TagCategory[] = [
       'love',
       'radical-love',
       'love-as-resistance',
+      'guilt',
+      'attachment',
     ],
   },
   {
@@ -295,6 +309,7 @@ export const MASLOW_CATEGORIES: TagCategory[] = [
       'self-awareness',
       'humility',
       'ego',
+      'values',
     ],
   },
   {
@@ -306,10 +321,8 @@ export const MASLOW_CATEGORIES: TagCategory[] = [
     tags: [
       'personal-growth',
       'self-improvement',
-      'growth',
       'learning',
       'learning-projects',
-      'self-discovery',
       'self-expression',
       'art-expression',
       'creativity',
@@ -342,6 +355,8 @@ export const MASLOW_CATEGORIES: TagCategory[] = [
       'revolution',
       'political-awakening',
       'systemic-critique',
+      'metaspace',
+      'technology',
     ],
   },
   {
@@ -379,9 +394,8 @@ export const MASLOW_CATEGORIES: TagCategory[] = [
   },
 ];
 
-// Tag metadata for enhanced display
+// Tag metadata for enhanced display (top browse tags). Others humanize from slug.
 export const TAG_METADATA: Record<string, TagData> = {
-  // Core themes
   consciousness: {
     name: 'Consciousness',
     weight: 10,
@@ -406,37 +420,137 @@ export const TAG_METADATA: Record<string, TagData> = {
     description: 'Recovery and restoration processes',
     category: 'transcendence',
   },
-  // Add more tag metadata as needed...
+  'self-reflection': {
+    name: 'Self-Reflection',
+    weight: 9,
+    description: 'Looking inward with honesty',
+    category: 'actualization',
+  },
+  authenticity: {
+    name: 'Authenticity',
+    weight: 9,
+    description: 'Living without a performed self',
+    category: 'actualization',
+  },
+  transformation: {
+    name: 'Transformation',
+    weight: 9,
+    description: 'Change that actually takes',
+    category: 'actualization',
+  },
+  'emotional-regulation': {
+    name: 'Emotional Regulation',
+    weight: 7,
+    description: 'Staying present with feeling without being ruled by it',
+    category: 'safety',
+  },
+  parenting: {
+    name: 'Parenting',
+    weight: 8,
+    description: 'Raising children in real time',
+    category: 'belonging',
+  },
+  fatherhood: {
+    name: 'Fatherhood',
+    weight: 8,
+    description: 'The work of being a father',
+    category: 'belonging',
+  },
+  family: {
+    name: 'Family',
+    weight: 5,
+    description: 'Kinship, household, and the people we keep',
+    category: 'belonging',
+  },
+  therapy: {
+    name: 'Therapy',
+    weight: 9,
+    description: 'Clinical and personal repair work',
+    category: 'safety',
+  },
+  mindfulness: {
+    name: 'Mindfulness',
+    weight: 7,
+    description: 'Attention brought back to now',
+    category: 'transcendence',
+  },
+  values: {
+    name: 'Values',
+    weight: 9,
+    description: 'What we actually stand on',
+    category: 'esteem',
+  },
+  metaspace: {
+    name: 'Metaspace',
+    weight: 6,
+    description: 'Notes about the notes — method, site, and writing',
+    category: 'actualization',
+  },
+  technology: {
+    name: 'Technology',
+    weight: 8,
+    description: 'Tools, systems, and the digital layer',
+    category: 'actualization',
+  },
+  presence: {
+    name: 'Presence',
+    weight: 7,
+    description: 'Showing up without rushing the moment',
+    category: 'transcendence',
+  },
+  philosophy: {
+    name: 'Philosophy',
+    weight: 8,
+    description: 'Questions that do not fit a how-to',
+    category: 'transcendence',
+  },
+  poems: {
+    name: 'Poems',
+    weight: 4,
+    description: 'Poems and poetry',
+    category: 'actualization',
+  },
+  memoir: {
+    name: 'Memoir',
+    weight: 4,
+    description: 'Lived memory, told as narrative',
+    category: 'actualization',
+  },
+  reflection: {
+    name: 'Reflection',
+    weight: 4,
+    description: 'Direct reflective writing',
+    category: 'transcendence',
+  },
 };
 
 // Utility functions
 export function getTagWeight(tag: string): number {
-  return TAG_WEIGHTS[tag] || TAG_WEIGHTS['default'];
+  if (tag !== 'default' && Object.prototype.hasOwnProperty.call(TAG_WEIGHTS, tag)) {
+    return TAG_WEIGHTS[tag];
+  }
+  if (PREFERRED_TAG_SET.has(tag)) return 4;
+  return TAG_WEIGHTS.default;
 }
 
 export function getTagCategory(tag: string): TagCategory | undefined {
   return MASLOW_CATEGORIES.find((category) => category.tags.includes(tag));
 }
 
-export function getTagMetadata(tag: string): TagData | undefined {
-  return TAG_METADATA[tag];
+function displayNameForTag(tag: string): string {
+  return tag
+    .split('-')
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(' ');
 }
 
-export function getAllTags(): string[] {
-  return Object.keys(TAG_WEIGHTS).filter((key) => key !== 'default');
-}
-
-export function getCategorizedTags(): Record<string, string[]> {
-  const categorized: Record<string, string[]> = {};
-
-  MASLOW_CATEGORIES.forEach((category) => {
-    categorized[category.key] = category.tags;
-  });
-
-  return categorized;
-}
-
-export function getUncategorizedTags(): string[] {
-  const allCategorizedTags = MASLOW_CATEGORIES.flatMap((cat) => cat.tags);
-  return getAllTags().filter((tag) => !allCategorizedTags.includes(tag));
+export function getTagMetadata(tag: string): TagData {
+  const existing = TAG_METADATA[tag];
+  if (existing) return existing;
+  return {
+    name: displayNameForTag(tag),
+    weight: getTagWeight(tag),
+    category: getTagCategory(tag)?.key,
+  };
 }

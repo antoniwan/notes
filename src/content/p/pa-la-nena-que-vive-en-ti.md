@@ -11,23 +11,13 @@ category:
   - parenting
 tags:
   - poem
-  - consciousness
   - inner-child
   - healing
-  - personal-growth
-  - self-reflection
-  - authenticity
-  - therapy
-  - emotional-regulation
-  - transformation
   - parenting
-  - conscious-parenting
   - co-parenting
   - family
   - family-dynamics
   - vulnerability
-  - empathy
-  - compassion
 draft: false
 featured: false
 published: true

@@ -8,7 +8,6 @@ import { getCollection } from 'astro:content';
 import { PAGE_META } from '../../data/pageMeta';
 import { toContentFormPreludeItems } from '../../utils/tag/contentFormTags';
 import { calculateTagStats } from '../../utils/tagProcessing';
-import { canonicalizeTags } from '../../utils/tagVocabulary';
 import { isCollectionListed } from '../../utils/publishFilters';
 
 // Get all posts and calculate tag counts
@@ -25,42 +24,6 @@ const sortedTagCounts = Object.entries(tagCounts)
 // Get top tags for quick access
 const topTags = sortedTagCounts.slice(0, 12);
 const contentFormPreludeItems = toContentFormPreludeItems(tagCounts);
-const poemsFromRawTags = posts.reduce((count, post) => {
-  const hasPoemLikeTag =
-    post.data.tags?.some((tag) => {
-      const normalized = tag.trim().toLowerCase();
-      return normalized === 'poem' || normalized === 'poems' || normalized === 'poetry';
-    }) ?? false;
-  return hasPoemLikeTag ? count + 1 : count;
-}, 0);
-
-if (poemsFromRawTags > 0 && !contentFormPreludeItems.some((item) => item.label === 'poems')) {
-  contentFormPreludeItems.push({ label: 'poems', count: poemsFromRawTags, href: '/tag/poems' });
-  contentFormPreludeItems.sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
-}
-
-const tagNarrativeStats = Object.values(
-  posts.reduce(
-    (acc, post) => {
-      const wordCount = (post.body ?? '').split(/\s+/).filter(Boolean).length;
-      for (const tag of canonicalizeTags(post.data.tags)) {
-        if (!acc[tag]) {
-          acc[tag] = { tag, totalWords: 0, postCount: 0 };
-        }
-        acc[tag].totalWords += wordCount;
-        acc[tag].postCount += 1;
-      }
-      return acc;
-    },
-    {} as Record<string, { tag: string; totalWords: number; postCount: number }>,
-  ),
-)
-  .map((entry) => ({
-    tag: entry.tag,
-    postCount: entry.postCount,
-    averageWords: Math.round(entry.totalWords / entry.postCount),
-  }))
-  .filter((entry) => entry.postCount >= 2);
 ---
 
 <BaseLayout
@@ -79,11 +42,7 @@ const tagNarrativeStats = Object.values(
 
       {
         contentFormPreludeItems.length > 0 && (
-          <ContentFormPrelude
-            items={contentFormPreludeItems}
-            tagCounts={tagCounts}
-            narrativeStats={tagNarrativeStats}
-          />
+          <ContentFormPrelude items={contentFormPreludeItems} tagCounts={tagCounts} />
         )
       }
 

@@ -19,21 +19,10 @@ tags:
   - humanism
   - philosophy
   - consciousness
-  - self-reflection
   - identity
   - values
   - purpose
   - existentialism
-  - mental-health
-  - healing
-  - therapy
-  - transformation
-  - authenticity
-  - truth
-  - responsibility
-  - emotional-intelligence
-  - self-awareness
-  - resilience
 draft: false
 featured: false
 published: true

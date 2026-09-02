@@ -18,14 +18,11 @@ tags:
   - psychology
   - systems
   - exploitation
-  - modern-life
   - capitalism
-  - abuse
+  - economics
   - conditioning
   - social-critique
   - behavioral-economics
-  - digital-age
-  - authenticity
 draft: false
 featured: true
 published: true

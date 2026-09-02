@@ -247,7 +247,7 @@ const correlations = {
     > = {};
 
     contentAnalysis.forEach((post) => {
-      const tags = post.tags.sort();
+      const tags = [...post.tags].sort();
       for (let i = 0; i < tags.length; i++) {
         for (let j = i + 1; j < tags.length; j++) {
           const combo = `${tags[i]}+${tags[j]}`;

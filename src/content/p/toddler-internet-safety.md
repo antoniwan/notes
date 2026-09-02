@@ -23,6 +23,7 @@ tags:
   - social-issues
   - family-dynamics
   - education
+  - puerto-rico
 draft: false
 featured: false
 published: true

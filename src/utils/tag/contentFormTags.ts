@@ -7,6 +7,7 @@ export interface ContentFormPreludeItem {
 type ContentFormCanonicalLabel = (typeof CONTENT_FORM_CANONICAL_LABELS)[number];
 
 export const CONTENT_FORM_CANONICAL_LABELS = [
+  'essays',
   'ideas',
   'letters',
   'manifestos',
@@ -18,6 +19,19 @@ export const CONTENT_FORM_CANONICAL_LABELS = [
   'stories',
 ] as const;
 
+export const CONTENT_FORM_TARGET_SLUGS: Record<ContentFormCanonicalLabel, string> = {
+  essays: 'essays',
+  ideas: 'ideas',
+  letters: 'letters',
+  manifestos: 'manifestos',
+  memoirs: 'memoir',
+  notes: 'notes',
+  poems: 'poems',
+  reflections: 'reflection',
+  songs: 'songs',
+  stories: 'stories',
+};
+
 export const normalizeTagLabel = (value: string): string =>
   value
     .trim()
@@ -26,21 +40,16 @@ export const normalizeTagLabel = (value: string): string =>
     .replace(/[\u0300-\u036f]/g, '');
 
 const CONTENT_FORM_VARIANTS: Record<ContentFormCanonicalLabel, string[]> = {
+  essays: ['essay', 'essays', 'ensayo', 'ensayos'],
   ideas: ['idea', 'ideas'],
   letters: ['letter', 'letters', 'carta', 'cartas'],
   manifestos: ['manifesto', 'manifestos', 'manifiesto', 'manifiestos'],
   memoirs: ['memoir', 'memoirs'],
   notes: ['note', 'notes', 'nota', 'notas'],
-  // "poetry" is currently used in existing posts (e.g., Arithmetic)
   poems: ['poem', 'poems', 'poema', 'poemas', 'poetry'],
   reflections: ['reflection', 'reflections'],
-  songs: ['song', 'songs', 'cancion', 'canciones', 'canción', 'canciónes'],
+  songs: ['song', 'songs', 'cancion', 'canciones'],
   stories: ['story', 'stories', 'historia', 'historias'],
-};
-
-const CONTENT_FORM_TARGET_SLUGS: Partial<Record<ContentFormCanonicalLabel, string>> = {
-  memoirs: 'memoir',
-  reflections: 'reflection',
 };
 
 const contentFormVariantMap: Record<string, ContentFormCanonicalLabel> = {};
@@ -83,32 +92,12 @@ export const sortContentFormItems = (
 
 export const toContentFormPreludeItems = (
   tagCounts: Record<string, number>,
-): ContentFormPreludeItem[] => {
-  const groupedItems = getContentFormTagGroups(tagCounts);
-  const hasPoems = groupedItems.some((item) => item.label === 'poems');
-
-  // Defensive fallback so poems never disappear from prelude
-  // if poem-like tags exist in data.
-  if (!hasPoems) {
-    const poemsCount = Object.entries(tagCounts).reduce((sum, [rawTag, count]) => {
-      const normalized = normalizeTagLabel(rawTag);
-      if (normalized === 'poem' || normalized === 'poems' || normalized === 'poetry') {
-        return sum + count;
-      }
-      return sum;
-    }, 0);
-
-    if (poemsCount > 0) {
-      groupedItems.push({ label: 'poems', count: poemsCount });
-    }
-  }
-
-  return sortContentFormItems(groupedItems).map(({ label, count }) => ({
+): ContentFormPreludeItem[] =>
+  sortContentFormItems(getContentFormTagGroups(tagCounts)).map(({ label, count }) => ({
     label,
     count,
-    href: `/tag/${encodeURIComponent(CONTENT_FORM_TARGET_SLUGS[label] ?? label)}`,
+    href: `/tag/${encodeURIComponent(CONTENT_FORM_TARGET_SLUGS[label])}`,
   }));
-};
 
 export const formatPreludeConnectors = (itemsCount: number): string[] => {
   if (itemsCount <= 0) return [];

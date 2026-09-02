@@ -1,11 +1,5 @@
 import type { CollectionEntry } from 'astro:content';
-import {
-  MASLOW_CATEGORIES,
-  getTagWeight,
-  getTagCategory,
-  type TagStats,
-  type TagCategory,
-} from '../data/tags';
+import { getTagWeight, getTagCategory, type TagCategory } from '../data/tags';
 import { canonicalizeTag, canonicalizeTags } from './tagVocabulary';
 import { isPublicPost } from './publishFilters';
 
@@ -31,118 +25,10 @@ export function calculateTagStats(posts: CollectionEntry<'blog'>[]) {
   };
 }
 
-/**
- * Sort tags by importance (weight) and then alphabetically
- */
-export function sortTagsByImportance(tags: string[]): string[] {
-  return tags.sort((a, b) => {
-    const weightA = getTagWeight(a);
-    const weightB = getTagWeight(b);
-
-    // Sort by weight first (descending)
-    if (weightA !== weightB) {
-      return weightB - weightA;
-    }
-
-    // Then alphabetically
-    return a.localeCompare(b);
-  });
-}
-
-/**
- * Get the most important tags for display, limited to maxCount
- */
-export function getImportantTags(tags: string[], maxCount: number = 3): string[] {
-  const sortedTags = sortTagsByImportance(tags);
-  return sortedTags.slice(0, maxCount);
-}
-
-/**
- * Get recommended tags for a post based on its content and related posts
- */
-export function getRecommendedTags(
-  postTags: string[],
-  allPosts: CollectionEntry<'blog'>[],
-  maxCount: number = 5,
-): string[] {
-  const canonicalPostTags = canonicalizeTags(postTags);
-  // Get posts with similar tags
-  const relatedPosts = allPosts.filter((post) =>
-    canonicalizeTags(post.data.tags).some((tag) => canonicalPostTags.includes(tag)),
-  );
-
-  // Count tag frequency in related posts
-  const relatedTagCounts: Record<string, number> = {};
-  relatedPosts.forEach((post) => {
-    canonicalizeTags(post.data.tags).forEach((tag) => {
-      if (!canonicalPostTags.includes(tag)) {
-        // Don't include tags already on the post
-        relatedTagCounts[tag] = (relatedTagCounts[tag] || 0) + 1;
-      }
-    });
-  });
-
-  // Sort by frequency and weight
-  const sortedRelatedTags = Object.entries(relatedTagCounts)
-    .sort(([tagA], [tagB]) => {
-      const weightA = getTagWeight(tagA);
-      const weightB = getTagWeight(tagB);
-      return weightB - weightA;
-    })
-    .map(([tag]) => tag);
-
-  return sortedRelatedTags.slice(0, maxCount);
-}
-
-/**
- * Create tag data with size calculation for visual representation
- */
-export function createTagData(
-  tag: string,
-  count: number,
-  maxCount: number,
-  minCount: number,
-): TagStats {
-  return {
-    tag,
-    count,
-    size: Math.max(
-      0.875,
-      Math.min(2.5, 0.875 + ((count - minCount) / (maxCount - minCount)) * 1.625),
-    ),
-  };
-}
-
-/**
- * Categorize tags by Maslow's hierarchy
- */
-export function categorizeTags(tagCounts: Record<string, number>): {
-  categorized: Array<Omit<TagCategory, 'tags'> & { tags: TagStats[] }>;
-  uncategorized: TagStats[];
-} {
-  const maxCount = Math.max(...Object.values(tagCounts));
-  const minCount = Math.min(...Object.values(tagCounts));
-
-  const categorized = MASLOW_CATEGORIES.map((category) => ({
-    ...category,
-    tags: Object.entries(tagCounts)
-      .filter(([tag]) => category.tags.includes(tag))
-      .map(([tag, count]) => createTagData(tag, count, maxCount, minCount))
-      .sort((a, b) => b.count - a.count),
-  }));
-
-  const uncategorized = Object.entries(tagCounts)
-    .filter(([tag]) => !MASLOW_CATEGORIES.some((cat) => cat.tags.includes(tag)))
-    .map(([tag, count]) => createTagData(tag, count, maxCount, minCount))
-    .sort((a, b) => b.count - a.count);
-
-  return { categorized, uncategorized };
-}
-
 export { getTagWeight };
 
 /**
- * Get related tags for a specific tag
+ * Related tags ranked by co-occurrence on the same posts, not site-wide popularity.
  */
 export function getRelatedTags(
   targetTag: string,
@@ -150,34 +36,20 @@ export function getRelatedTags(
   maxCount: number = 8,
 ): Array<{ tag: string; count: number }> {
   const canonicalTargetTag = canonicalizeTag(targetTag);
-  // Get posts with the target tag
-  const tagPosts = posts.filter((post) =>
-    canonicalizeTags(post.data.tags).includes(canonicalTargetTag),
-  );
+  const coCounts: Record<string, number> = {};
 
-  // Get all tags from these posts
-  const relatedTags = new Set<string>();
-  tagPosts.forEach((post) => {
-    canonicalizeTags(post.data.tags).forEach((tag) => {
-      if (tag !== canonicalTargetTag) relatedTags.add(tag);
+  posts.forEach((post) => {
+    const tags = canonicalizeTags(post.data.tags);
+    if (!tags.includes(canonicalTargetTag)) return;
+    tags.forEach((tag) => {
+      if (tag === canonicalTargetTag) return;
+      coCounts[tag] = (coCounts[tag] || 0) + 1;
     });
   });
 
-  // Calculate tag counts across all posts
-  const tagCounts = posts.reduce(
-    (acc, post) => {
-      canonicalizeTags(post.data.tags).forEach((tag) => {
-        acc[tag] = (acc[tag] || 0) + 1;
-      });
-      return acc;
-    },
-    {} as Record<string, number>,
-  );
-
-  // Return related tags with counts, sorted by frequency
-  return Array.from(relatedTags)
-    .map((tag) => ({ tag, count: tagCounts[tag] }))
-    .sort((a, b) => b.count - a.count)
+  return Object.entries(coCounts)
+    .map(([tag, count]) => ({ tag, count }))
+    .sort((a, b) => b.count - a.count || a.tag.localeCompare(b.tag))
     .slice(0, maxCount);
 }
 

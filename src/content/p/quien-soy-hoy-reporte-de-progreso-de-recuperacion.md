@@ -14,17 +14,13 @@ category:
 tags:
   - auto-reflexión
   - recuperación
-  - consciencia
   - autenticidad
   - escritura
-  - crecimiento-personal
   - sanación
   - terapia
   - vulnerabilidad
-  - transformación
   - metaspace
   - regulación-emocional
-  - auto-conocimiento
 draft: false
 featured: false
 published: true

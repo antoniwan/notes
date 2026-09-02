@@ -36,6 +36,7 @@ const blog = defineCollection({
     imageAlt: z.string().optional(),
     category: z.array(z.enum(validCategoryIds as [string, ...string[]])).optional(),
     subcategory: z.string().optional(),
+    // Canonicalize at parse so chips, indexes, and aliases share one vocabulary.
     tags: z.array(z.string()).transform(canonicalizeTags).optional(),
     draft: z
       .boolean()
