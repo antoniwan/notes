@@ -26,6 +26,7 @@ draft: false
 featured: false
 published: true
 showComments: true
+translationGroup: sofrito
 ---
 
 Recaíto verde de ajíes dulces, recao, cilantro, ajo y pimiento. Se procesa hasta pasta gruesa y se congela en cubitos. Un cubito arranca un caldero de arroz, habichuelas o guiso.

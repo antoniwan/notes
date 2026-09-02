@@ -15,13 +15,19 @@ export function findMoreRecipes(
   allPosts: CollectionEntry<'blog'>[],
   maxCount: number = 4,
 ): CollectionEntry<'blog'>[] {
+  const currentLang = currentPost.data.language?.[0] ?? 'en';
+  const currentGroup = currentPost.data.translationGroup;
+
   return allPosts
-    .filter(
-      (post) =>
-        post.id !== currentPost.id &&
-        isRecipePost(post) &&
-        isPublicPost(post.data, { includeFuture: true }),
-    )
+    .filter((post) => {
+      if (post.id === currentPost.id) return false;
+      if (!isRecipePost(post)) return false;
+      if (!isPublicPost(post.data, { includeFuture: true })) return false;
+      const lang = post.data.language?.[0] ?? 'en';
+      if (lang !== currentLang) return false;
+      if (currentGroup && post.data.translationGroup === currentGroup) return false;
+      return true;
+    })
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
     .slice(0, maxCount);
 }

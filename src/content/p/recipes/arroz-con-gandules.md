@@ -7,10 +7,10 @@ language:
   - es
 heroImage: /images/2026/arroz-con-gandules.avif
 imageAlt: >-
-  Gandules secos sueltos, redondos, de varios colores, sobre fondo blanco
-imageCredit: David E Mead
-imageCreditUrl: https://commons.wikimedia.org/wiki/File:Pigeon_peas_dried.jpg
-imageLicense: CC0
+  Gandules verdes recién desgranados, redondos, sobre fondo blanco
+imageCredit: Nandhinikandhasamy
+imageCreditUrl: https://commons.wikimedia.org/wiki/File:Pigeon_pea_(Red_gram,_Thuvarai_in_Tamil)_02.jpg
+imageLicense: CC BY-SA 3.0
 category:
   - diy-creation
 subcategory: Recipes
@@ -24,6 +24,7 @@ draft: false
 featured: false
 published: true
 showComments: true
+translationGroup: arroz-con-gandules
 ---
 
 Gandules de lata enjuagados, [sofrito](/p/recipes/sofrito) y caldo de pollo. Cuatro pasos, un caldero.
@@ -56,4 +57,4 @@ Gandules de lata enjuagados, [sofrito](/p/recipes/sofrito) y caldo de pollo. Cua
 - Enjuaga los gandules de lata. Frescos solo si es Navidad y tienes la tarde.
 - Sobras: 4 días. Recalienta con un chorrito de caldo.
 - Sofrito y sazón comprados lo bajan a unos 30 minutos.
-- Si hay una porción chica, aparta antes del alcaparrado.
+- Si vas a apartar una porción para un bebé que está aprendiendo a comer, sácala antes de echar el alcaparrado.

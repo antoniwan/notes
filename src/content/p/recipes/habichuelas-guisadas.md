@@ -26,6 +26,7 @@ draft: false
 featured: false
 published: true
 showComments: true
+translationGroup: habichuelas-guisadas
 ---
 
 Habichuelas rosadas de lata, cubito de [sofrito](/p/recipes/sofrito) y calabaza. La calabaza espesa el caldo. Veinte a veinticinco minutos a fuego medio-bajo.
@@ -60,4 +61,4 @@ Habichuelas rosadas de lata, cubito de [sofrito](/p/recipes/sofrito) y calabaza.
 - La calabaza espesa sin crema ni manteca. No la saltes.
 - Sobras: mejoran al otro día. 4 a 5 días en nevera. Se congelan bien.
 - Variantes: coloradas, blancas o gandules en vez de rosadas.
-- Si hay una porción chica en la mesa, aparta antes del alcaparrado y de la sal.
+- Si vas a apartar una porción para un bebé que está aprendiendo a comer, sácala del caldero antes de echar el alcaparrado y la sal.

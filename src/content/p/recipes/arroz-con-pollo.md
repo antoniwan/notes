@@ -25,6 +25,7 @@ draft: false
 featured: false
 published: true
 showComments: true
+translationGroup: arroz-con-pollo
 ---
 
 Muslos sin pellejo, [sofrito](/p/recipes/sofrito) y arroz en un caldero. Se adoba, se sofríe, se tuesta el arroz y se tapa. Aceite de achiote.
@@ -70,4 +71,4 @@ El caldero:
 - Sobras: enfría bien. 4 días. Recalienta con un chorrito de caldo.
 - Aceite de achiote: fuego bajo, ½ taza de aceite con 2 cucharadas de semillas de achiote hasta que se ponga rojo. Cuela. Nevera. Una cucharada pinta el caldero.
 - Sazón casero (1½ cdta = 1 sobre): 1 cda achiote molido, 1 cda ajo en polvo, 1 cda comino, 1 cda cilantro molido, 1½ cdta orégano, 1 cdta pimienta negra, ½ cda sal.
-- Si hay una porción chica, aparta antes del alcaparrado.
+- Si vas a apartar una porción para un bebé que está aprendiendo a comer, sácala antes de echar el alcaparrado.

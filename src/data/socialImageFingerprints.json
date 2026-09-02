@@ -46,7 +46,7 @@
       "social": "/social/images/2026/arithmetic-social.jpg"
     },
     "/images/2026/arroz-con-gandules.avif": {
-      "sha256": "b677b2fb485ddd5f1efc59a300edb1862c77b2ea8fae05d8ed0fbdcf7fc587ee",
+      "sha256": "0c124505b4ba15c2294299f92abf52e57e9ce5a3f84b0849b8a59cbcf49c19b9",
       "social": "/social/images/2026/arroz-con-gandules-social.jpg"
     },
     "/images/2026/arroz-con-pollo.avif": {
@@ -64,6 +64,10 @@
     "/images/2026/cooking-foundations.avif": {
       "sha256": "29e2a0cc2881e0d6dfa8c898bd90d694bb2d5f3a74d5dddee7d0c24982de841b",
       "social": "/social/images/2026/cooking-foundations-social.jpg"
+    },
+    "/images/2026/coquito-de-moni.avif": {
+      "sha256": "554db684d3a543b992749f4c4292e0a3dce0ed1505e6234592bbd9e0171d53ee",
+      "social": "/social/images/2026/coquito-de-moni-social.jpg"
     },
     "/images/2026/crimson-desert-review/Crimson Desert_20260319210335.avif": {
       "sha256": "9865a9b0afe44945d45481984edcf78f3d943281569d1daa6c3646945c49c338",
@@ -397,6 +401,14 @@
       "sha256": "3a4f5d23f76f0f8f7f0767efa8b303e3090c548df7dc0eb05d36ee00c479f8d4",
       "social": "/social/images/2026/love_for_cooking-social.jpg"
     },
+    "/images/2026/mias-chicken-nuggets.avif": {
+      "sha256": "2e58c3193b1493c95b5727f50a6dc5db0e57ddbfbbd8dea715524ae979cf202e",
+      "social": "/social/images/2026/mias-chicken-nuggets-social.jpg"
+    },
+    "/images/2026/mias-cinnamon-pancakes.avif": {
+      "sha256": "a5ea750381b1e2bbfd41a393c2d9140b44c6a6b4af8fb042d63a77fcd00ea239",
+      "social": "/social/images/2026/mias-cinnamon-pancakes-social.jpg"
+    },
     "/images/2026/neverending-walk.avif": {
       "sha256": "55925c6c77b46b4bdb77c50a0491c574b3b64975b6818047fe0d2f1395f003df",
       "social": "/social/images/2026/neverending-walk-social.jpg"
@@ -412,6 +424,14 @@
     "/images/2026/on-leadership-plus.avif": {
       "sha256": "4adead1dcad217f855a41df038b2108e707bcc158ed40801ae8f7f1838c4e3a6",
       "social": "/social/images/2026/on-leadership-plus-social.jpg"
+    },
+    "/images/2026/pancakes-sin-huevo-para-mia-luna.avif": {
+      "sha256": "dc910fc3891ecf9a50268c9536ccee7a58e16c2594e001eaec667f59418dc07f",
+      "social": "/social/images/2026/pancakes-sin-huevo-para-mia-luna-social.jpg"
+    },
+    "/images/2026/pastel-de-banana.avif": {
+      "sha256": "bd6b32d28e7ec7b6f3782832a60f2da68746e407a3ce904f9df52bbf12c67200",
+      "social": "/social/images/2026/pastel-de-banana-social.jpg"
     },
     "/images/2026/simplicity.avif": {
       "sha256": "588cafb6812b6f5af1d1b35f86aed5b3f1ca3c8844d2486fd8a6c154ea5908dd",

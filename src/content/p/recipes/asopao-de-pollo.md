@@ -23,6 +23,7 @@ draft: false
 featured: false
 published: true
 showComments: true
+translationGroup: asopao-de-pollo
 ---
 
 Muslos sin pellejo, cubito de [sofrito](/p/recipes/sofrito) y caldo de caja. Queda caldoso. Se sirve al momento: el arroz sigue bebiendo caldo.
@@ -59,4 +60,4 @@ Muslos sin pellejo, cubito de [sofrito](/p/recipes/sofrito) y caldo de caja. Que
 - Ten caldo extra caliente para aflojarlo. Espesa al reposar. Recalienta siempre con caldo extra.
 - La receta original lleva chorizo. El sabor aguanta con chorizo de pavo, o sin él.
 - Unos lo comen casi seco, otros casi sopa. Tú mandas con el caldo y el tiempo destapado.
-- Si hay una porción chica, aparta antes del alcaparrado: arroz suave con pollo desmenuzado.
+- Si vas a apartar una porción para un bebé que está aprendiendo a comer, sácala antes de echar el alcaparrado. Déjala como arroz suave con el pollo desmenuzado.

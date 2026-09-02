@@ -64,6 +64,28 @@ describe('findMoreRecipes', () => {
       'recipes/habichuelas-guisadas',
     ]);
   });
+
+  it('keeps More Recipes in the same language and skips a twin', () => {
+    const current = post('recipes/sofrito-en', {
+      language: ['en'],
+      translationGroup: 'sofrito',
+    });
+    const esTwin = post('recipes/sofrito', {
+      language: ['es'],
+      translationGroup: 'sofrito',
+    });
+    const enOther = post('recipes/habichuelas-guisadas-en', {
+      language: ['en'],
+      translationGroup: 'habichuelas-guisadas',
+    });
+    const esOther = post('recipes/habichuelas-guisadas', {
+      language: ['es'],
+      translationGroup: 'habichuelas-guisadas',
+    });
+
+    const more = findMoreRecipes(current, [current, esTwin, enOther, esOther]);
+    expect(more.map((item) => item.id)).toEqual(['recipes/habichuelas-guisadas-en']);
+  });
 });
 
 describe('findRelatedPosts recipe exclusion', () => {
