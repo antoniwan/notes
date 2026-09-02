@@ -1,9 +1,23 @@
 import type { CollectionEntry } from 'astro:content';
-import { isPublicPost } from './publishFilters';
+import { isListingEligiblePost, isPublicPost } from './publishFilters';
 
 /** Recipe posts live under `src/content/p/recipes/` and ship at `/p/recipes/<slug>`. */
+export function isRecipeId(id: string): boolean {
+  return id === 'recipes' || id.startsWith('recipes/');
+}
+
 export function isRecipePost(post: Pick<CollectionEntry<'blog'>, 'id'>): boolean {
-  return post.id === 'recipes' || post.id.startsWith('recipes/');
+  return isRecipeId(post.id);
+}
+
+/** English, public recipes for the cookbook index. */
+export function isCookbookListedPost(post: Pick<CollectionEntry<'blog'>, 'id' | 'data'>): boolean {
+  return isRecipePost(post) && isListingEligiblePost(post.data);
+}
+
+export function recipeContentsLetter(title: string): string {
+  const ch = title.trim().charAt(0).toUpperCase();
+  return /[A-Z]/.test(ch) ? ch : '#';
 }
 
 /**

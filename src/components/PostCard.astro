@@ -5,6 +5,7 @@ import DefaultImage from './DefaultImage.astro';
 import { calculateReadingTimeFromMarkdown } from '../utils/readingTime';
 import { getSpanishTwinGroups } from '../utils/translationUtils';
 import { isSpanishPrimary } from '../utils/publishFilters';
+import { isRecipePost } from '../utils/recipes';
 
 interface Props {
   post: CollectionEntry<'blog'>;
@@ -17,6 +18,8 @@ const { post, featured = false, compact = false, showFeaturedIndicator = true } 
 const { data } = post;
 
 const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
+const isRecipe = isRecipePost(post);
+const kindLabel = isRecipe ? (isSpanishPrimary(data) ? 'Receta' : 'Recipe') : null;
 const spanishTwinGroups = await getSpanishTwinGroups();
 const hasSpanishTwin =
   !isSpanishPrimary(data) &&
@@ -62,7 +65,22 @@ const hasSpanishTwin =
     <div class="postcard-meta">
       <FormattedDate date={data.pubDate} class="postcard-meta__item" />
       {
-        readingTime && (
+        kindLabel && (
+          <>
+            <span class="postcard-meta__sep" aria-hidden="true">
+              ·
+            </span>
+            <span
+              class="postcard-meta__item postcard-meta__kind"
+              lang={isSpanishPrimary(data) ? 'es' : 'en'}
+            >
+              {kindLabel}
+            </span>
+          </>
+        )
+      }
+      {
+        readingTime && !isRecipe && (
           <>
             <span class="postcard-meta__sep" aria-hidden="true">
               ·
@@ -301,6 +319,10 @@ const hasSpanishTwin =
     letter-spacing: 0.04em;
     text-transform: none;
     color: rgb(var(--color-accent));
+  }
+
+  .postcard-meta__kind {
+    font-weight: 600;
   }
 
   article.postcard .postcard-title {

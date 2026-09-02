@@ -7,10 +7,11 @@ language:
   - en
 heroImage: /images/2026/arroz-con-gandules.avif
 imageAlt: >-
-  Fresh shelled green pigeon peas, round, on a white background
-imageCredit: Nandhinikandhasamy
-imageCreditUrl: https://commons.wikimedia.org/wiki/File:Pigeon_pea_(Red_gram,_Thuvarai_in_Tamil)_02.jpg
-imageLicense: CC BY-SA 3.0
+  Plate of orange rice with pigeon peas and olives, with fried plantains,
+  avocado, and tomato
+imageCredit: USDA Food and Nutrition Service
+imageCreditUrl: https://commons.wikimedia.org/wiki/File:MyPlate_gov_Cultural_Food_(20241025-USDA-FNS-UNK-0063).jpg
+imageLicense: Public domain
 category:
   - diy-creation
 subcategory: Recipes

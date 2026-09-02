@@ -22,6 +22,13 @@ const PAGE_SEARCH_DATA = [
   },
   {
     type: 'page',
+    id: 'cookbook',
+    title: 'Cookbook',
+    description: 'Household recipes you can cook from',
+    url: '/recipes',
+  },
+  {
+    type: 'page',
     id: 'everything',
     title: 'Everything',
     description: 'Full archive of all notes',

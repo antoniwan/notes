@@ -42,9 +42,11 @@ describe('getSitemapLastmodByUrl', () => {
     const home = lastmodByUrl.get(sitemapPageUrl('/'));
     const category = lastmodByUrl.get(sitemapPageUrl('/category/integration-growth'));
     const tag = lastmodByUrl.get(sitemapPageUrl('/tag/integration'));
+    const cookbook = lastmodByUrl.get(sitemapPageUrl('/recipes'));
     expect(home).toBeInstanceOf(Date);
     expect(category).toBeInstanceOf(Date);
     expect(tag).toBeInstanceOf(Date);
+    expect(cookbook).toBeInstanceOf(Date);
     expect(home!.valueOf()).toBeGreaterThanOrEqual(category!.valueOf());
   });
 });

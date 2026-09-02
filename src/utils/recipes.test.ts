@@ -1,6 +1,11 @@
 import type { CollectionEntry } from 'astro:content';
 import { describe, expect, it } from 'vitest';
-import { findMoreRecipes, isRecipePost } from './recipes';
+import {
+  findMoreRecipes,
+  isCookbookListedPost,
+  isRecipePost,
+  recipeContentsLetter,
+} from './recipes';
 import { findRelatedPosts } from './tagProcessing';
 
 type BlogPost = CollectionEntry<'blog'>;
@@ -30,6 +35,21 @@ describe('isRecipePost', () => {
     expect(isRecipePost({ id: 'recipes' })).toBe(true);
     expect(isRecipePost({ id: 'i-didnt-start-cooking-for-love' })).toBe(false);
     expect(isRecipePost({ id: 'recipe-lemon-pepper-chicken' })).toBe(false);
+  });
+});
+
+describe('isCookbookListedPost', () => {
+  it('lists English recipes and hides Spanish twins', () => {
+    expect(isCookbookListedPost(post('recipes/sofrito-en', { language: ['en'] }))).toBe(true);
+    expect(isCookbookListedPost(post('recipes/sofrito', { language: ['es'] }))).toBe(false);
+    expect(isCookbookListedPost(post('i-didnt-start-cooking-for-love'))).toBe(false);
+  });
+});
+
+describe('recipeContentsLetter', () => {
+  it('uses the first letter of the title', () => {
+    expect(recipeContentsLetter('Sofrito')).toBe('S');
+    expect(recipeContentsLetter("Mia's Chicken Nuggets")).toBe('M');
   });
 });
 

@@ -47,6 +47,7 @@ const contentLanguage = resolveContentLanguage(postLanguage);
 const imageCredit = rest.currentPost?.data.imageCredit;
 const imageCreditUrl = rest.currentPost?.data.imageCreditUrl;
 const imageLicense = rest.currentPost?.data.imageLicense;
+const isRecipe = rest.currentPost ? isRecipePost(rest.currentPost) : false;
 const estimatedWordCount = (() => {
   if (!minutesRead || typeof minutesRead !== 'string') return undefined;
   const match = minutesRead.match(/(\d+)/);
@@ -110,9 +111,11 @@ const primaryCategory = categoryItems[0] || null;
         <Breadcrumbs
           items={[
             { label: 'Home', href: '/' },
-            ...(primaryCategory
-              ? [{ label: primaryCategory.name, href: `/category/${primaryCategory.id}` }]
-              : []),
+            ...(isRecipe
+              ? [{ label: 'Cookbook', href: '/recipes' }]
+              : primaryCategory
+                ? [{ label: primaryCategory.name, href: `/category/${primaryCategory.id}` }]
+                : []),
             { label: title },
           ]}
           class="text-sm"
@@ -152,7 +155,7 @@ const primaryCategory = categoryItems[0] || null;
 
             {/* Reading Signals */}
             {
-              minutesRead && (
+              minutesRead && !isRecipe && (
                 <div
                   class="reading-time-section space-y-2 leading-relaxed"
                   data-post-slug={postSlug}
@@ -349,7 +352,7 @@ const primaryCategory = categoryItems[0] || null;
           {/* Mobile/Tablet metadata - collapsed by default */}
           <div class="mt-12 space-y-3 border-t border-[rgb(var(--color-border))] pt-8 lg:hidden">
             {
-              minutesRead && (
+              minutesRead && !isRecipe && (
                 <details class="rounded-lg border border-[rgb(var(--color-border))] px-4 py-3">
                   <summary class="text-body-muted cursor-pointer text-xs font-semibold tracking-wider uppercase">
                     Reading Signals

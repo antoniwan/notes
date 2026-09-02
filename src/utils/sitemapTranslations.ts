@@ -14,6 +14,7 @@ import { fileURLToPath } from 'node:url';
 import yaml from 'js-yaml';
 import { SITE_URL } from '../consts';
 import { canonicalizeTags } from './tagVocabulary';
+import { isRecipeId } from './recipes';
 
 export type SitemapLangLink = { url: string; lang: string };
 
@@ -133,11 +134,16 @@ function loadSitemapMeta(): SitemapMeta {
     const lastmod = parseDate(data.updatedDate) ?? parseDate(data.pubDate);
     if (!lastmod) continue;
 
-    const url = canonicalPostUrl(postIdFromFile(file));
+    const postId = postIdFromFile(file);
+    const url = canonicalPostUrl(postId);
     lastmodByUrl.set(url, lastmod);
 
     for (const listingPath of LISTING_PATHS) {
       bumpLastmod(lastmodByUrl, sitemapPageUrl(listingPath), lastmod);
+    }
+
+    if (isRecipeId(postId)) {
+      bumpLastmod(lastmodByUrl, sitemapPageUrl('/recipes'), lastmod);
     }
 
     for (const category of asStringArray(data.category)) {

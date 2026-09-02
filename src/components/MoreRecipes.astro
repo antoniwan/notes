@@ -24,8 +24,19 @@ const hasMoreRecipes = moreRecipes.length > 0;
       </h2>
       {
         hasMoreRecipes ? (
-          <p class="text-body-muted text-base leading-relaxed">Other dishes from this kitchen.</p>
-        ) : null
+          <p class="text-body-muted text-base leading-relaxed">
+            Other dishes from this kitchen.{' '}
+            <a href="/recipes" class="text-[rgb(var(--color-accent))] hover:underline">
+              Cookbook
+            </a>
+          </p>
+        ) : (
+          <p class="text-body-muted text-base leading-relaxed">
+            <a href="/recipes" class="text-[rgb(var(--color-accent))] hover:underline">
+              Cookbook
+            </a>
+          </p>
+        )
       }
     </div>
 

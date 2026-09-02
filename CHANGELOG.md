@@ -14,6 +14,8 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 - English listing cards show an **ES** marker when a public Spanish twin exists. The card still opens the English note.
 - Search results for Spanish posts show an ES badge. Title search can find Spanish; listings cannot.
 - Hero photos can credit the photographer, license, and source under the image.
+- Recipe cards show **Recipe** (Receta on Spanish dishes) in the date row, from the `/p/recipes/` folder. Reading time is hidden on those cards and on the dish page.
+- `/recipes` is a cookbook under Resources: plate grid plus A–Z contents. Recipe pages breadcrumb to it.
 
 ### Changed
 

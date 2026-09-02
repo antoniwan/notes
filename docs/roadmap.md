@@ -22,6 +22,7 @@ This section is a **checkpoint** so the roadmap does not read like the site is o
 - **Home**: **highlight** masonry for published posts marked `featured: true`.
 - **Writing Insights** (`/writing-insights`): multi-page **stats and charts** (cadence, topics, lexicon buckets, etc.). `/brain-science` is the origin note; old subpaths 301. See [brain-science.md](./brain-science.md).
 - **Library**: dedicated **books** pages (see §4).
+- **Cookbook** (`/recipes`): household recipes as a plate grid plus A–Z contents. Under Resources, next to the book library.
 - **Feeds & APIs**: **RSS**, **JSON Feed**, **GET `/api/quotes`**.
 - **Quality & distribution**: **Schema.org** where it fits, optional **Remark42** comments, **service worker** for caching (version bumped on build), **Vercel Web Analytics** and **Speed Insights** in the base layout when those products are enabled on Vercel.
 - **About**: curated topic grid; optional **Letterboxd “latest watched”** when `LETTERBOXD_*` env vars are set.

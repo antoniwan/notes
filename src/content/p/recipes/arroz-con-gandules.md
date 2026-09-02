@@ -7,10 +7,11 @@ language:
   - es
 heroImage: /images/2026/arroz-con-gandules.avif
 imageAlt: >-
-  Gandules verdes recién desgranados, redondos, sobre fondo blanco
-imageCredit: Nandhinikandhasamy
-imageCreditUrl: https://commons.wikimedia.org/wiki/File:Pigeon_pea_(Red_gram,_Thuvarai_in_Tamil)_02.jpg
-imageLicense: CC BY-SA 3.0
+  Plato de arroz anaranjado con gandules y aceitunas, plátanos maduros,
+  aguacate y tomate
+imageCredit: USDA Food and Nutrition Service
+imageCreditUrl: https://commons.wikimedia.org/wiki/File:MyPlate_gov_Cultural_Food_(20241025-USDA-FNS-UNK-0063).jpg
+imageLicense: Public domain
 category:
   - diy-creation
 subcategory: Recipes
