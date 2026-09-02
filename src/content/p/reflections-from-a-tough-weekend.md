@@ -12,11 +12,9 @@ category:
 tags:
   - reflection
   - self-reflection
-  - mental-health
   - personal-growth
   - healing
   - emotional-regulation
-  - therapy
   - resilience
 draft: false
 featured: false

@@ -20,7 +20,6 @@ tags:
   - personal-growth
   - inner-peace
   - contentment
-  - healing
 draft: false
 featured: false
 published: true

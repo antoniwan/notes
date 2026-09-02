@@ -15,7 +15,6 @@ tags:
   - social-media
   - mental-health
   - personal-growth
-  - healing
   - social-issues
 draft: false
 featured: false

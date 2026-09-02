@@ -14,7 +14,6 @@ category:
 tags:
   - self-reflection
   - healing
-  - therapy
   - emotional-regulation
   - metaspace
 draft: false

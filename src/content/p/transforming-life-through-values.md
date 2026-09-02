@@ -16,7 +16,6 @@ subcategory: Personal Development
 tags:
   - values
   - therapy
-  - mental-health
   - family
   - habits
   - accountability

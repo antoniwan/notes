@@ -16,8 +16,6 @@ tags:
   - recuperación
   - autenticidad
   - escritura
-  - sanación
-  - terapia
   - vulnerabilidad
   - metaspace
   - regulación-emocional

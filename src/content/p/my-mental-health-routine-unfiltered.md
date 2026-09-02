@@ -11,10 +11,8 @@ category:
   - psychology
 tags:
   - mental-health
-  - therapy
   - self-care
   - wellness
-  - healing
   - consciousness
   - emotional-regulation
   - self-improvement

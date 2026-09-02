@@ -14,13 +14,11 @@ category:
 tags:
   - imposter-syndrome
   - mental-health
-  - therapy
   - self-reflection
   - emotional-regulation
   - professional-development
   - confidence-building
   - self-improvement
-  - healing
 draft: false
 featured: false
 published: true

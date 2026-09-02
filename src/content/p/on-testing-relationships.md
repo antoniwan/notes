@@ -17,9 +17,7 @@ tags:
   - vulnerability
   - self-reflection
   - mental-health
-  - therapy
   - authenticity
-  - healing
   - trauma
   - connection
   - intimacy

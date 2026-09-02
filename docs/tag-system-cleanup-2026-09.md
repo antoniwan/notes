@@ -29,14 +29,14 @@ Never tag `notes`. Canonicalize strips it. `/tag/notes` 301s to `/tag` (restart 
 
 |                                 | 2026-09-02 original audit                                | This checkpoint                                              |
 | ------------------------------- | -------------------------------------------------------- | ------------------------------------------------------------ |
-| Canonical unique tags           | 252                                                      | 231                                                          |
-| Avg tags per post               | 11.3                                                     | ~10.16                                                       |
-| Posts over the 12-tag cap       | 22 (max 21)                                              | 0                                                            |
+| Canonical unique tags           | 252                                                      | 230                                                          |
+| Avg tags per post               | 11.3                                                     | ~8.96                                                        |
+| Posts over the 12-tag cap       | 22 (max 21)                                              | 0 (max 12)                                                   |
 | `notes` as a browse tag         | aliased into `reflection`, then briefly added to 8 posts | stripped; 0 posts                                            |
 | Spanish chips (`limites`, etc.) | 404 in production                                        | 301 to English canonical rooms                               |
 | Related tags                    | global popularity                                        | co-occurrence                                                |
 | `/tag` prelude                  | SSR then client `Math.random()`                          | deterministic idea map; no “I’ve written #memoirs” inventory |
-| Preferred / weights / Maslow    | three disagreeing lists                                  | derived from preferred list (116 slugs)                      |
+| Preferred / weights / Maslow    | three disagreeing lists                                  | derived from preferred list (113 slugs)                      |
 
 The mid-cleanup experiment of tagging eight writings `notes` was a detour (prelude/spec, not readers). It is reversed in this checkpoint.
 
@@ -50,7 +50,7 @@ Tags are not a `/tag`-only feature. The collection schema canonicalizes `tags` a
 
 | Surface                 | What changed                                                                                                                                                                               | What to check after merge                                                          |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------- |
-| `/tag`                  | Prelude is deterministic. No `#notes`. Idea map sentences stay. First line is still “I’ve written #memoirs and #reflections” (author voice; follow-up).                                    | Open `/tag`. Confirm no notes chip.                                                |
+| `/tag`                  | Prelude is a deterministic idea map. No `#notes`. No “I’ve written #memoirs…” inventory line.                                                                                              | Open `/tag`. Confirm no notes chip and no author-form first line.                  |
 | `/tag/<slug>`           | Titles from `getTagMetadata` (humanized preferred names). Related row is co-occurrence. No `/tag/notes` page.                                                                              | `/tag/parenting`, `/tag/puerto-rico`, `/tag/poems`, `/tag/limites` → `boundaries`. |
 | Post pages              | Chips are canonical English slugs. Eight titled-notes posts lost the `notes` chip. Over-tagged posts were trimmed to ≤12.                                                                  | Respect, Self-Control, Note to Self pair, etc.                                     |
 | Continue reading        | `findRelatedPosts` still scores shared tags + **weights**. Non-preferred tags no longer get hand weights (e.g. old `fitness: 7` → default 1). Order of related posts can shuffle slightly. | Spot-check 3–4 posts’ related row.                                                 |
@@ -104,6 +104,7 @@ Expected Insights deltas (not bugs):
 9. Empty form shelves (`essays`, `ideas`, `letters`, `stories`, `songs`, `manifestos`) removed from preferred vocab. Aliases still 301 old URLs.
 10. Cousin becoming stacks trimmed per post (keep one door). `efficiency`, `revolution`, `discipline` promoted as reader hubs. Vague `development` aliases to `software-development`.
 11. Inner-work cousins trimmed per post (`consciousness` / `self-reflection` / `mindfulness` / `inner-work` — one door).
+12. Heal cousins trimmed per post (`healing` / `therapy` / `mental-health` — one door). EN/ES recovery-progress pair aligned.
 
 Dead UI already removed earlier on this branch: `TagSystem.astro`, `TagCloud.astro`, `tagUtils.ts`.
 
@@ -114,10 +115,9 @@ Dead UI already removed earlier on this branch: `TagSystem.astro`, `TagCloud.ast
 Do these as small follow-up branches. Do not mix them into unrelated PRs.
 
 1. **Long-tail leftovers** — still many one-offs (`berserk`, `crimson-desert`, English `limits`). Leave them. Promote later only if a third distinct writing appears (`colonialism`, `accountability`, …).
-2. **Heal cousins** — `healing` / `therapy` / `mental-health` still co-occur on some pieces. Same rule: trim per post, do not merge.
-3. **Tag blurbs** — some preferred tags have descriptions; the rest humanize the slug. Optional copy, not a retag.
-4. **Specs 009 / 010** — still Draft; same feature, two folders. Prelude is now an idea map, not the form inventory those specs asked for. Align or archive.
-5. **Insights math** — “193% in top 5” is a counting bug in the dashboard, not a reason to change tags.
+2. **Tag blurbs** — some preferred tags have descriptions; the rest humanize the slug. Optional copy, not a retag.
+3. **Specs 009 / 010** — still Draft; same feature, two folders. Prelude is now an idea map, not the form inventory those specs asked for. Align or archive.
+4. **Insights math** — “193% in top 5” is a counting bug in the dashboard, not a reason to change tags.
 
 ---
 
@@ -140,4 +140,4 @@ When you cut a site version, changelog the reader-facing parts (tag chips, redir
 
 ## Continuity one-liner
 
-Tags are an idea map for readers. This checkpoint made the map honest (rooms resolve, connections are real, covers are quieter, `notes` is not a tag, `/tag` is not an author inventory, becoming and inner-work cousins are one door per piece). Writing Insights will look different because it holds up a mirror to that map; do not retag to please the mirror. Next: heal cousins, leftover long-tail.
+Tags are an idea map for readers. This checkpoint made the map honest (rooms resolve, connections are real, covers are quieter, `notes` is not a tag, `/tag` is not an author inventory, becoming / inner-work / heal cousins are one door per piece). Writing Insights will look different because it holds up a mirror to that map; do not retag to please the mirror. Next: leftover long-tail, optional blurbs.

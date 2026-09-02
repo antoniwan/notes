@@ -15,8 +15,6 @@ tags:
   - decision-making
   - mindfulness
   - self-improvement
-  - healing
-  - therapy
   - emotional-regulation
 draft: false
 featured: false

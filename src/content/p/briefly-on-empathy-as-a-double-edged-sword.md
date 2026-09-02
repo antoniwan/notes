@@ -18,7 +18,6 @@ tags:
   - boundaries
   - personal-growth
   - self-reflection
-  - healing
   - relationships
 draft: false
 featured: false

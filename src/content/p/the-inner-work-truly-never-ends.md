@@ -13,7 +13,6 @@ category:
   - psychology
 tags:
   - inner-work
-  - healing
   - therapy
   - metaspace
 draft: false

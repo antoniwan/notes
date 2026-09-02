@@ -13,9 +13,7 @@ category:
   - psychology
 subcategory: Personal Transformation
 tags:
-  - mental-health
   - healing
-  - therapy
   - self-reflection
   - trauma
   - emotional-regulation

@@ -12,8 +12,6 @@ category:
 tags:
   - mental-health
   - emotional-regulation
-  - healing
-  - therapy
   - mindfulness
   - resilience
   - self-improvement

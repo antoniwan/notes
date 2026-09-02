@@ -17,7 +17,6 @@ tags:
   - wellness
   - self-care
   - meditation
-  - healing
   - self-improvement
 draft: false
 featured: false

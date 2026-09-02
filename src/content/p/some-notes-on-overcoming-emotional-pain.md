@@ -11,10 +11,8 @@ category:
   - parenting
 tags:
   - emotional-pain
-  - mental-health
   - healing
   - personal-growth
-  - therapy
   - emotional-regulation
   - resilience
   - co-parenting

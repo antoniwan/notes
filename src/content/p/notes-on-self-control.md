@@ -16,7 +16,6 @@ tags:
   - consciousness
   - self-mastery
   - emotional-regulation
-  - healing
 draft: false
 featured: false
 published: true

@@ -19,7 +19,6 @@ tags:
   - self-mastery
   - emotional-regulation
   - discipline
-  - healing
 draft: false
 featured: false
 published: true

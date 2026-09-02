@@ -54,7 +54,7 @@ Writing Insights, Maslow buckets, and tag weights are **downstream**. They follo
 - Target **5–12 tags per post**, favoring ideas over volume.
 - Include 1–2 domain/context tags and several thematic/meaning tags.
 - Add a form tag only if the piece is a distinct reader destination (a poem, not “a note”).
-- Do not stack cousin doors on one piece (`personal-growth` + `transformation` + `self-improvement`; `consciousness` + `self-reflection` + `mindfulness`). Pick the one a stranger would click.
+- Do not stack cousin doors on one piece (`personal-growth` + `transformation` + `self-improvement`; `consciousness` + `self-reflection` + `mindfulness`; `healing` + `therapy` + `mental-health`). Pick the one a stranger would click.
 - Avoid one-off tags unless you expect reuse.
 - New recurring idea tags go in `src/data/tagVocabulary.ts`.
 - On Spanish translations, Spanish labels are fine; aliases must map them to the same English canonical slugs as the English twin.

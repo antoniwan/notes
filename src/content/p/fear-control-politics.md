@@ -22,8 +22,6 @@ tags:
   - collective-healing
   - consciousness
   - social-justice
-  - therapy
-  - healing
 draft: false
 featured: false
 published: true
