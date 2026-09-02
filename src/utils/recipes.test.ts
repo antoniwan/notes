@@ -2,6 +2,7 @@ import type { CollectionEntry } from 'astro:content';
 import { describe, expect, it } from 'vitest';
 import {
   findMoreRecipes,
+  isCategoryListedPost,
   isCookbookListedPost,
   isRecipePost,
   recipeContentsLetter,
@@ -43,6 +44,21 @@ describe('isCookbookListedPost', () => {
     expect(isCookbookListedPost(post('recipes/sofrito-en', { language: ['en'] }))).toBe(true);
     expect(isCookbookListedPost(post('recipes/sofrito', { language: ['es'] }))).toBe(false);
     expect(isCookbookListedPost(post('i-didnt-start-cooking-for-love'))).toBe(false);
+  });
+});
+
+describe('isCategoryListedPost', () => {
+  it('keeps essays and drops household recipes', () => {
+    expect(isCategoryListedPost(post('i-didnt-start-cooking-for-love'))).toBe(true);
+    expect(isCategoryListedPost(post('recipes/lemon-pepper-chicken'))).toBe(false);
+  });
+
+  it('still hides Spanish twins', () => {
+    expect(
+      isCategoryListedPost(
+        post('on-cooking-on-everything-and-foundations-es', { language: ['es'] }),
+      ),
+    ).toBe(false);
   });
 });
 

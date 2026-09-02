@@ -7,6 +7,16 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.13.0] — 2026-09-02
+
+### Added
+
+- Guided Path marks household recipes with **Recipe**, the same kind label as the postcards. Reading time stays off on those rows.
+
+### Changed
+
+- Category pages and category counts list essays only. Recipes stay on Cookbook and Everything.
+
 ## [6.12.1] — 2026-09-02
 
 ### Changed

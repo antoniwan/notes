@@ -1,6 +1,7 @@
 ---
 import { getCategoryNameFromIds } from '../utils/categoryUtils';
 import { calculateReadingTimeFromMarkdown } from '../utils/readingTime';
+import { isRecipePost } from '../utils/recipes';
 
 export interface Props {
   posts: any[];
@@ -48,22 +49,36 @@ const { posts, chapterTitle, chapterId, defaultExpanded = true } = Astro.props;
         <ol class="post-list">
           {posts.map((post, index) => {
             const categoryName = getCategoryNameFromIds(post.data.category);
+            const isRecipe = isRecipePost(post);
+            const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
             return (
               <li class="post-item">
                 <a href={`/p/${post.id}`} class="post-link" data-post-slug={post.id}>
                   <span class="post-number">{index + 1}.</span>
                   <div class="post-content">
                     <span class="post-title">{post.data.title}</span>
-                    {categoryName && <span class="post-category">{categoryName}</span>}
+                    {(isRecipe || categoryName) && (
+                      <span class="post-labels">
+                        {isRecipe && <span class="post-kind">Recipe</span>}
+                        {isRecipe && categoryName && (
+                          <span class="post-labels__sep" aria-hidden="true">
+                            ·
+                          </span>
+                        )}
+                        {categoryName && <span class="post-category">{categoryName}</span>}
+                      </span>
+                    )}
                   </div>
                   <div class="post-status">
                     <span class="read-status" data-post-slug={post.id}>
                       <span class="status-icon">⭕</span>
                       <span class="status-text">Unread</span>
                     </span>
-                    <span class="reading-time" data-post-slug={post.id}>
-                      {calculateReadingTimeFromMarkdown(post.body || '')}
-                    </span>
+                    {readingTime && !isRecipe && (
+                      <span class="reading-time" data-post-slug={post.id}>
+                        {readingTime}
+                      </span>
+                    )}
                   </div>
                 </a>
               </li>
@@ -478,13 +493,32 @@ const { posts, chapterTitle, chapterId, defaultExpanded = true } = Astro.props;
     }
   }
 
-  .post-category {
+  .post-labels {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 0.4rem;
+    row-gap: 0.1rem;
     font-family: var(--font-sans);
     font-size: 0.72rem;
-    color: rgb(var(--color-accent));
     font-weight: 600;
-    text-transform: uppercase;
     letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  .post-kind {
+    color: rgb(var(--color-text-muted));
+  }
+
+  .post-labels__sep {
+    color: rgb(var(--color-text-muted));
+    opacity: 0.45;
+    user-select: none;
+  }
+
+  .post-category {
+    color: rgb(var(--color-accent));
   }
 
   .post-status {

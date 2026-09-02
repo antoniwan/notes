@@ -6,10 +6,10 @@ import Container from '../../components/Container.astro';
 import { getCollection } from 'astro:content';
 import { categories } from '../../data/categories';
 import { categoryMetaDescription } from '../../data/pageMeta';
-import { isCollectionListed } from '../../utils/publishFilters';
+import { isCategoryListedPost } from '../../utils/recipes';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog', ({ data }) => isCollectionListed(data));
+  const posts = await getCollection('blog', (entry) => isCategoryListedPost(entry));
 
   return categories
     .filter((category) => posts.some((post) => post.data.category?.includes(category.id)))
@@ -22,7 +22,7 @@ export async function getStaticPaths() {
 const { category } = Astro.props;
 
 // Get all posts in this category
-const posts = await getCollection('blog', ({ data }) => isCollectionListed(data));
+const posts = await getCollection('blog', (entry) => isCategoryListedPost(entry));
 
 // Filter posts by category and organize them
 const categoryPosts = posts.filter((post) => post.data.category?.includes(category.id));

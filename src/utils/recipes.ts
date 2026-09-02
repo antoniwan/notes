@@ -1,5 +1,5 @@
 import type { CollectionEntry } from 'astro:content';
-import { isListingEligiblePost, isPublicPost } from './publishFilters';
+import { isCollectionListed, isListingEligiblePost, isPublicPost } from './publishFilters';
 
 /** Recipe posts live under `src/content/p/recipes/` and ship at `/p/recipes/<slug>`. */
 export function isRecipeId(id: string): boolean {
@@ -13,6 +13,14 @@ export function isRecipePost(post: Pick<CollectionEntry<'blog'>, 'id'>): boolean
 /** English, public recipes for the cookbook index. */
 export function isCookbookListedPost(post: Pick<CollectionEntry<'blog'>, 'id' | 'data'>): boolean {
   return isRecipePost(post) && isListingEligiblePost(post.data);
+}
+
+/**
+ * Category pages and counts: listed writings, not household recipes.
+ * Recipes keep `category` on the dish page; they list on Cookbook and Everything.
+ */
+export function isCategoryListedPost(post: Pick<CollectionEntry<'blog'>, 'id' | 'data'>): boolean {
+  return isCollectionListed(post.data) && !isRecipePost(post);
 }
 
 export function recipeContentsLetter(title: string): string {
