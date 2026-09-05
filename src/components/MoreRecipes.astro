@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { findMoreRecipes } from '../utils/recipes';
+import PostSectionBreak from './PostSectionBreak.astro';
 
 interface Props {
   currentPost?: CollectionEntry<'blog'>;
@@ -13,7 +14,8 @@ const moreRecipes = currentPost && allPosts ? findMoreRecipes(currentPost, allPo
 const hasMoreRecipes = moreRecipes.length > 0;
 ---
 
-<section class="more-recipes mt-10" aria-labelledby="more-recipes-heading">
+<section class="more-recipes mt-8" aria-labelledby="more-recipes-heading">
+  <PostSectionBreak />
   <div class="space-y-7">
     <div class="mb-6">
       <h2

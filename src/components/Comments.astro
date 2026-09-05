@@ -1,13 +1,14 @@
 ---
 import { commentsConfig } from '../config/comments';
 import { generateCanonicalUrl } from '../utils/seo';
+import PostSectionBreak from './PostSectionBreak.astro';
 
 const pageUrl = generateCanonicalUrl(Astro.url.pathname);
 const { host, siteId } = commentsConfig;
 ---
 
 <div class="comments-section mt-8">
-  <div class="post-section-break" aria-hidden="true">✦</div>
+  <PostSectionBreak />
   <h2 class="mb-2 text-2xl font-bold text-[rgb(var(--color-text))]">💬 Leave a note</h2>
   <p class="text-body-muted mb-4">
     Share your thoughts, ask questions, or simply let me know what resonated with you. I read and
@@ -192,16 +193,6 @@ const { host, siteId } = commentsConfig;
 </script>
 
 <style>
-  .post-section-break {
-    display: flex;
-    justify-content: center;
-    margin: 0 0 1.25rem;
-    color: rgb(var(--color-accent));
-    font-size: 0.9rem;
-    line-height: 1;
-    opacity: 0.8;
-  }
-
   /* Global h2/p margins are sized for article body; zero them here so the
      thread sits on the article instead of after a padded void. */
   .comments-section h2 {

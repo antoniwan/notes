@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import { findRelatedPosts } from '../utils/tagProcessing';
 import { calculateReadingTimeFromMarkdown } from '../utils/readingTime';
+import PostSectionBreak from './PostSectionBreak.astro';
 
 interface Props {
   currentPost?: CollectionEntry<'blog'>;
@@ -19,7 +20,8 @@ const hasRelatedPosts = relatedPosts.length > 0;
 
 {
   hasRelatedPosts && (
-    <section class="related-posts mt-10">
+    <section class="related-posts mt-8">
+      <PostSectionBreak />
       <div class="space-y-7">
         {/* Header */}
         <div class="mb-6">

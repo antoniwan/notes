@@ -7,6 +7,12 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.13.1] — 2026-09-05
+
+### Changed
+
+- Writings with Sources or References use the same ✦ break as comments. Continue Reading and More Recipes do too. Citation sections sit a little quieter; comments keep the current accent.
+
 ## [6.13.0] — 2026-09-02
 
 ### Added

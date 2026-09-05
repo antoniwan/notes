@@ -1,0 +1,18 @@
+---
+interface Props {
+  /**
+   * `done` is the current accent (comments and other finished chrome).
+   * `almost` is the same mark, quieter, for in-essay sources/references.
+   */
+  tone?: 'done' | 'almost';
+}
+
+const { tone = 'done' } = Astro.props;
+---
+
+<div
+  class:list={['post-section-break', tone === 'almost' && 'post-section-break--almost']}
+  aria-hidden="true"
+>
+  ✦
+</div>

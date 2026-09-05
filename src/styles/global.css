@@ -840,6 +840,32 @@
   font-family: var(--font-heading);
 }
 
+/* Shared ✦ divisor: comments / related / recipes use the current accent
+   (`done`). In-essay Sources/References use `--almost` (same hue, quieter). */
+.post-section-break {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0 1.25rem;
+  color: rgb(var(--color-accent));
+  font-size: 0.9rem;
+  line-height: 1;
+  opacity: 0.8;
+}
+
+.post-section-break--almost {
+  opacity: 0.45;
+}
+
+.comments-section .post-section-break,
+.related-posts .post-section-break,
+.more-recipes .post-section-break {
+  margin-top: 0;
+}
+
+.post-prose .post-section-break + :where(h2) {
+  margin-top: 0;
+}
+
 /* Floated MDX verdict: allow fixed max width alongside .prose * { max-width: 100% } */
 .post-prose.prose aside.review-verdict-float.review-verdict-float {
   max-width: min(13.5rem, 100%);

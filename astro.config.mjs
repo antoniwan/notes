@@ -8,6 +8,7 @@ import vercel from '@astrojs/vercel';
 import { SITE_URL } from './src/consts';
 import { remarkReadingTime } from './remark-reading-time.mjs';
 import { remarkDemoteMarkdownH1 } from './src/utils/remarkDemoteMarkdownH1.mjs';
+import { remarkPostSectionBreak } from './src/utils/remarkPostSectionBreak.mjs';
 import { buildSeoRedirects, shouldIncludeInSitemap } from './src/utils/seoRouting';
 import { indexNowIntegration } from './src/utils/indexNow';
 import {
@@ -119,7 +120,7 @@ export default defineConfig({
       wrap: true,
     },
     processor: unified({
-      remarkPlugins: [remarkReadingTime, remarkDemoteMarkdownH1],
+      remarkPlugins: [remarkReadingTime, remarkDemoteMarkdownH1, remarkPostSectionBreak],
       gfm: true,
       smartypants: true,
     }),
