@@ -2,13 +2,14 @@
 title: Presenting Vastitas Omniparens
 description: >-
   A thirty-year side quest to name everything, and the loot was already sitting
-  in a Roman poem the whole time. Here's the word.
+  in a Roman poem the whole time.
 pubDate: '2026-07-27T13:45:00.000Z'
+updatedDate: '2026-09-05T16:15:00.000Z'
 language:
   - en
 heroImage: /images/2026/vastitas.avif
 imageAlt: >-
-  Yellow daisy split down the middle — left half in ordinary daylight, right
+  Yellow daisy split down the middle, left half in ordinary daylight, right
   half under ultraviolet light with dark nectar guides across the petals
 category:
   - metaspace
@@ -48,7 +49,7 @@ I did not coin this name, but I tried to. Believe it or not, I have been thinkin
 
 Then LLM tools like Claude gave me the ability to research and cross-check my ideations systematically, and as the models got better at Latin, Fable 5 and Opus 5 being the latest frontier for this work, my inventions kept failing under honest scrutiny. Every correction made my word less mine but the old Latin more interesting, until I finally stopped inventing and went looking in the ruins directly, where it turned out Lucretius, a Roman poet and philosopher, had already quarried the stones I was looking for, two thousand years ahead of me.
 
-Since I am borrowing from an actual human being, he has earned the courtesy of being named properly. Titus Lucretius Carus was a Roman poet of the first century before our era, born around 99 BC and dead by around 55 BC, and beyond that we know almost nothing of his life: no portrait, letters, or a reliable biography. Lucretius Carus is survived by a single work, _De Rerum Natura_, On the Nature of Things, six books of hexameter verse in which he tried to explain the entire physical universe to one friend: atoms and void, the birth and death of worlds, the mortality of the soul, why death is nothing to fear.
+Since I am borrowing from an actual human being, he has earned the courtesy of being named properly. Titus Lucretius Carus was a Roman poet of the first century before our era, and beyond that we know almost nothing of his life. He is survived by a single work, _De Rerum Natura_, On the Nature of Things, in which he tried to explain the entire physical universe to one friend.
 
 He set himself the task of carrying Greek philosophy into Latin, a language he openly complained was too poor for the job, _patrii sermonis egestas_, the poverty of the ancestral tongue, so he coined what he needed. He was doing, two thousand years before me and with a mind I will not pretend to match, the exact work of this essay: forcing a language to hold a totality it had no word for.
 
@@ -56,7 +57,7 @@ And his poem was unknown for centuries, surviving in a few forgotten copies, unt
 
 <h2 id="what-the-words-mean" class="toc-only">What the words mean</h2>
 
-So those are the stones and that is the man who cut them. Here is what they mean.
+So those are the stones and that is the man who cut them.
 
 _Vastitas_ is a Latin noun, feminine, meaning the vastness, and also the desolation, the emptiness, even the devastation. I did not soften that and I will not, because the unknown looks desolate from the outside and so does a bloody womb. Infinite space is the ultimate unknown. And as Vastitas, she does destroy: stars die so that heavier things can exist, and the calcium in my children's bones was cooked inside explosions that erased whole suns, literally. A name for _her_ that did not carry ruin in its mouth would be a lie. Ruin and vastness.
 
@@ -80,15 +81,15 @@ And then there is the third thing, what we will never know, because the instrume
 
 Not hard questions or questions we are underfunded for but questions that cannot occur to us at all, _ever_, the way a color you have never seen cannot occur to you.
 
-That third one is the whole point of this exercise, I think, and it is easy to make it sound like a deficit, a to-do list for a smarter species that shows up later but it is not that. It is a feature of the thing itself and of the animals we happen to be, and it shows up in a few different ways, at least three that I can hold in my head at the same time.
+It is easy to make that third one sound like a deficit, a to-do list for a smarter species that shows up later. It is a feature of the thing itself and of the animals we happen to be, and it shows up in a few different ways, at least three that I can hold in my head at the same time.
 
-Start with the easy one, the channels we just do not have. There is stuff moving through the room you are sitting in right now that you have no receiver for, none, and it is not out in space somewhere, it is here. Bees see ultraviolet, and a great many flowers have landing patterns painted on them in ultraviolet, bullseyes and runway stripes aimed at the bee, which means there has been a whole layer of decoration on the natural world the entire time that was never addressed to us, and we walked past it for the length of our species until we built a machine to look. Sharks and rays read the electric fields that muscles make, so a flounder buried under the sand is, to them, lit. Pit vipers see in heat. Elephants speak to each other underneath the floor of human hearing, across distances that would cost me a phone call. Birds appear to perceive the magnetic field of the planet, possibly as something visual, possibly as an overlay on top of what they are already looking at.
+Start with the easy one, the channels we just do not have. There is stuff moving through the room you are sitting in right now that you have no receiver for, none. Bees see ultraviolet, and a great many flowers have landing patterns painted on them in ultraviolet, bullseyes and runway stripes aimed at the bee, which means there has been a whole layer of decoration on the natural world the entire time that was never addressed to us, and we walked past it for the length of our species until we built a machine to look.
 
 Our pitbull used to stop dead in the middle of the yard over something that was not there, not to me anyway, and stand in it, smell it, look at it, understand whatever was going on there then and there. What she was assembling out of that was not a louder version of my experience either, it was information of a whole different kind: who came through here, in what order, how long ago, whether they were calm, perhaps some rodents. She was reading time off the ground. I was four feet away holding the leash, same yard, same morning, getting effectively none of it.
 
-The second flavor is scale, and it is less exotic but it might be worse, or cooler. Trillions of neutrinos are passing through your body in the time it takes to read this sentence and not one of them will ever announce itself. The continent under you is drifting at roughly the speed your fingernails grow. Your own face is changing shape continuously and you cannot watch it happen, you can only compare photographs years apart and be startled. Our senses are tuned to a band, more or less the band where a medium-sized animal has to make decisions in order to keep existing, and everything faster, slower, smaller, or larger than that band is not being hidden from us. This information was just never addressed to us.
+The second flavor is scale, and it is less exotic but it might be worse, or cooler. Trillions of neutrinos are passing through your body in the time it takes to read this sentence and not one of them will ever announce itself. The continent under you is drifting at roughly the speed your fingernails grow. Your own face is changing shape continuously and you cannot watch it happen, you can only compare photographs years apart and be startled. Our senses are tuned to a band, more or less the band where a medium-sized animal has to make decisions in order to keep existing, and everything faster, slower, smaller, or larger than that band is not being hidden from us.
 
-The third flavor is the one I actually mean, and it is not about missing signal at all. It is about missing categories. In 1974 a philosopher named Thomas Nagel wrote a paper titled "What Is It Like to Be a Bat?" and the argument has aged well. You can learn every fact about echolocation, the physics, the neurology, the timing, all of it, and you still will not know what it is like to be inside that or be the bat, because knowing about a thing and having the equipment for a thing are two different kinds of owning, and the first one does not turn into the second no matter how much of it you pile up.
+The third flavor is the one I actually mean. In 1974 a philosopher named Thomas Nagel wrote a paper titled "What Is It Like to Be a Bat?" and the argument has aged well. You can learn every fact about echolocation, the physics, the neurology, the timing, all of it, and you still will not know what it is like to be inside that or be the bat, because knowing about a thing and having the equipment for a thing are two different kinds of owning, and the first one does not turn into the second no matter how much of it you pile up.
 
 Come back to the dog, our pitbull. She could not form the thought _"next Tuesday"_. Not because she was dumb, she was superb at being what she was, but because the machinery that assembles a category like "an arbitrary future day, a week out, which does not exist yet and may never" was not or is not installed. And what I find cool is that she did not experience that as a gap because there was no dog-shaped hole in her afternoon where Tuesday ought to be. From the inside, she was missing nothing. Her world was complete. It was just smaller than the world.
 
@@ -98,11 +99,9 @@ I watched _Disclosure Day_ last night, the Spielberg one, where a meteorologist 
 
 It came from this: full disclosure, actual proof, the biggest announcement in the history of our species, would still only be a second-tier event. A thing that moves from the maybe pile over to the yes pile. It would rearrange every religion and every government on this planet, and it would _still not_ touch the third tier by one inch. We would still be the animal with a handful of doors. Now with alien company.
 
-And speaking of the doors. I have been saying _five senses_ for years, the way everybody does, and while I was writing this I went and checked, and five is folk math. There is balance. There is proprioception, the thing that lets you touch your nose with your eyes closed in a dark room. There is the whole quiet channel reporting your temperature and your hunger and the position of your gut. Nobody agrees on the final count of senses we possess or develop throughout our lives. Which does not weaken the point, it makes it worse in the direction I want: we do not have a reliable inventory of our own doors, and here we are, discussing the totality.
+And speaking of the doors. I have been saying _five senses_ for years, the way everybody does, and while I was writing this I went and checked, and five is folk math. There is proprioception, the thing that lets you touch your nose with your eyes closed in a dark room. A creature with a handful of keyholes inside something enormous, making meaning out of whatever leaks through. The instrument and the limit are the same object.
 
-Whatever the number is, it is small and it is fixed and we did not pick it. A creature with a handful of keyholes inside something enormous, making meaning out of whatever leaks through. The instrument and the limit are the same object.
-
-And this next part reframes everything above it, so let me just say it plainly: none of these instruments were built for truth. They were built to keep something alive long enough to reproduce, and accuracy only ever got selected for where accuracy paid. So the aperture is not narrow because of some accident or some tragedy. It is narrow on purpose, by a process that was never once trying to show anybody the universe.
+None of these instruments were built for truth. They were built to keep something alive long enough to reproduce, and accuracy only ever got selected for where accuracy paid. The aperture is narrow on purpose, by a process that was never once trying to show anybody the universe.
 
 I should also say that absolute unknowability, meaning something inaccessible to every possible living system anywhere, stays a hypothesis in here. I cannot defend it and I am not going to pretend to. The claim I can defend is the smaller one, the organism-relative one: this particular animal has a narrow aperture. That is enough. That was always enough.
 
@@ -112,13 +111,11 @@ And all of that smallness turns out to be a gift, which took me decades to under
 
 I am _so_ insignificant that I can make everything significant to me. If we mattered on _her_ scale, home would never be enough, no? Because we do not, home is everything. And the same asymmetry that makes my portion sacred makes everything else lighter, because if I am nothing against her then so is whatever I happen to be carrying this week. It does not go away and it does not stop hurting. It just goes back to its actual size, which was the size it always was while I was treating it as the size of everything.
 
-Take your portion seriously and take your troubles lightly. Which sounds like two instructions fighting each other, no? They are not. They come out of the same measurement.
-
 ![Grainy black-and-white lily bloom on a dark field, stamens sharp at the center](/images/2026/vastitas-flower.avif)
 
 <h2 id="why-i-call-her-she" class="toc-only">Why I call her she</h2>
 
-Which brings me to the thing I have been putting off since the first paragraph, which is why I keep calling all of this _she_.
+Which is why I keep calling all of this _she_.
 
 The original _universum_ is grammatically neuter. _Vastitas_ is feminine, and I did not make her so. Latin did. The language that named the whole thing neuter kept its word for the vastness feminine the entire time, and gave its word for the birthing of everything to mother Earth. I am only setting them side by side or next to each other.
 
@@ -132,13 +129,9 @@ I am a man who can do hard things over long horizons. That is most of what I hav
 
 So when I call the totality a _she_, I am not making a poetic gesture and I am not doing politics. I am saying that the only thing I have ever witnessed operating at the scale I am trying to name was a woman making a person out of nothing but time and her own tissue. Everything else I could reach for here would be metaphor. That one I stood in the room for.
 
-Two thousand years of neuter cosmology produced an architectural relationship to the totality, a thing to study, map, and eventually conquer. A feminine cosmology is gestational instead. A mother contains what she does not disclose. A mother holds a child without the child comprehending her, and that relationship, not the architectural one, is the accurate one, or at least it is the one that matches how it actually feels to be here. The feminine here is not gendered in the social sense, it is generative in the cosmogonic sense. _Nothing_ I know of is more powerful than the bringing of life, and the totality brings life. After two thousand years of neuter, one name leaning the other way seems fair to me.
-
 And I was not the first one to lean it that way, not by a long shot. Lucretius opened a poem about atoms and physics with a hymn to Venus, mother of the line of Aeneas, delight of gods and men, the generative force through which every living thing is conceived. The most materialist poet of antiquity chose to begin with her, because he understood that a totality which births everything is addressed correctly in the _feminine_. He did not need to stand in a delivery room to work that out. I did.
 
 <h2 id="how-to-use-it" class="toc-only">How to use it</h2>
-
-So that is the case, and what is left is what you do with it, which is less than you would think.
 
 The word is meant to be lived, not defended, and none of the scaffolding in this essay is required in order to use it. _Vastitas_ can be explained to a ten-year-old in one sentence: she is the universe and everything we do not know about it. That sentence carries all three tiers. Everything above is for adults who need convincing, which included me for about three decades.
 
@@ -169,7 +162,6 @@ Further reading on the main topics in this essay.
 - [Lucretius](https://en.wikipedia.org/wiki/Lucretius): Titus Lucretius Carus, Roman poet and philosopher
 - [_De rerum natura_](https://en.wikipedia.org/wiki/De_rerum_natura): _On the Nature of Things_, his six-book poem
 - [Epicureanism](https://en.wikipedia.org/wiki/Epicureanism) and [atomism](https://en.wikipedia.org/wiki/Atomism): the Greek philosophy Lucretius brought into Latin
-- [Dactylic hexameter](https://en.wikipedia.org/wiki/Dactylic_hexameter): the meter of the poem
 - [Virgil](https://en.wikipedia.org/wiki/Virgil) and the [_Aeneid_](https://en.wikipedia.org/wiki/Aeneid): also uses _omniparens_ for mother Earth
 - [Venus (mythology)](<https://en.wikipedia.org/wiki/Venus_(mythology)>): the figure Lucretius opens his poem with
 - [Poggio Bracciolini](https://en.wikipedia.org/wiki/Poggio_Bracciolini), [_The Swerve_](https://en.wikipedia.org/wiki/The_Swerve), and the [Renaissance](https://en.wikipedia.org/wiki/Renaissance): the 1417 rediscovery of Lucretius in a German monastery
@@ -189,10 +181,6 @@ Further reading on the main topics in this essay.
 - [Sense](https://en.wikipedia.org/wiki/Sense) and [proprioception](https://en.wikipedia.org/wiki/Proprioception): human senses beyond the usual five
 - [Umwelt](https://en.wikipedia.org/wiki/Umwelt): the world as experienced by a particular animal
 - [Ultraviolet](https://en.wikipedia.org/wiki/Ultraviolet): light bees can see that we cannot
-- [Electroreception](https://en.wikipedia.org/wiki/Electroreception): how sharks and rays detect electric fields
-- [Infrared sensing in snakes](https://en.wikipedia.org/wiki/Infrared_sensing_in_snakes) and [thermoreception](https://en.wikipedia.org/wiki/Thermoreception): how pit vipers sense heat
-- [Infrasound](https://en.wikipedia.org/wiki/Infrasound): low-frequency sound elephants use over long distances
-- [Magnetoreception](https://en.wikipedia.org/wiki/Magnetoreception): how some animals sense Earth's magnetic field
 - [Thomas Nagel](https://en.wikipedia.org/wiki/Thomas_Nagel), ["What Is It Like to Be a Bat?"](https://en.wikipedia.org/wiki/What_Is_It_Like_to_Be_a_Bat%3F), and [qualia](https://en.wikipedia.org/wiki/Qualia): the gap between knowing facts about an experience and having that experience
 - [Cognitive closure (philosophy)](<https://en.wikipedia.org/wiki/Cognitive_closure_(philosophy)>): the idea that some truths may be forever beyond a given mind
 - [Evolutionary epistemology](https://en.wikipedia.org/wiki/Evolutionary_epistemology): how evolution shapes what we can know
@@ -201,6 +189,5 @@ Further reading on the main topics in this essay.
 ### Birth and fertility
 
 - [Terra (mythology)](<https://en.wikipedia.org/wiki/Terra_(mythology)>), [Gaia](https://en.wikipedia.org/wiki/Gaia), and [mother goddess](https://en.wikipedia.org/wiki/Mother_goddess): Earth as parent of all things
-- [Cosmogony](https://en.wikipedia.org/wiki/Cosmogony): stories and theories of how the world begins
 - [Fertility](https://en.wikipedia.org/wiki/Fertility), [childbirth](https://en.wikipedia.org/wiki/Childbirth), and [caesarean section](https://en.wikipedia.org/wiki/Caesarean_section): bringing life into the world
 - [Venus (mythology)](<https://en.wikipedia.org/wiki/Venus_(mythology)>): also the generative force at the start of Lucretius's poem
