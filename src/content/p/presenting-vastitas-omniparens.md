@@ -1,7 +1,7 @@
 ---
 title: Presenting Vastitas Omniparens
 description: >-
-  A thirty-year side quest to name everything, and the loot was already sitting
+  A twenty-year side quest to name everything, and the loot was already sitting
   in a Roman poem the whole time.
 pubDate: '2026-07-27T13:45:00.000Z'
 updatedDate: '2026-09-05T16:15:00.000Z'
@@ -45,7 +45,7 @@ _Vastitas Omniparens_ is what I say out loud to remember, in the middle of any d
 
 <h2 id="how-i-found-it" class="toc-only">How I found it</h2>
 
-I did not coin this name, but I tried to. Believe it or not, I have been thinking about this totality and looking for a proper name for it for over 30 years, and it bothered me the way a missing tooth bothers your tongue, you keep poking that empty skin for no productive reason whatsoever. For most of that time I worked at it archaically. My pre-LLM methods for researching language and etymology were, to not call myself an inefficient noob outright, slow to the point of embarrassment. _Latin_ turned out to be a language best left to actual experts, and I had access to none, so my attempts handed me many false positives over the years, a favorite being Auragenia Omnia Vasta, with a plural I called feminine that was actually neuter.
+I did not coin this name, but I tried to. Believe it or not, I have been thinking about this totality and looking for a proper name for it for 20 years, and it bothered me the way a missing tooth bothers your tongue, you keep poking that empty skin for no productive reason whatsoever. For most of that time I worked at it archaically. My pre-LLM methods for researching language and etymology were, to not call myself an inefficient noob outright, slow to the point of embarrassment. _Latin_ turned out to be a language best left to actual experts, and I had access to none, so my attempts handed me many false positives over the years, a favorite being Auragenia Omnia Vasta, with a plural I called feminine that was actually neuter.
 
 Then LLM tools like Claude gave me the ability to research and cross-check my ideations systematically, and as the models got better at Latin, Fable 5 and Opus 5 being the latest frontier for this work, my inventions kept failing under honest scrutiny. Every correction made my word less mine but the old Latin more interesting, until I finally stopped inventing and went looking in the ruins directly, where it turned out Lucretius, a Roman poet and philosopher, had already quarried the stones I was looking for, two thousand years ahead of me.
 
@@ -125,7 +125,7 @@ The first was a cesarean. Which means I was on my side of a blue drape and could
 
 Something in me changed chemically in those rooms, and I mean chemically, not as a figure of speech.
 
-I am a man who can do hard things over long horizons. That is most of what I have. I spent thirty years on a name, thirty years of reading badly and guessing wrong and inventing words that did not survive five minutes with a dictionary, and I am proud of that stubbornness. And it is nothing. It is not even the same category of thing. I will never carry and make and deliver a life. Not with thirty years, not with sixty, not with every hour I have left. The most sustained work I am capable of does not reach the ankle of what a body did in nine months in front of me, twice, and one of those times the body had to be opened to finish the job.
+I am a man who can do hard things over long horizons. That is most of what I have. I spent twenty years on a name, twenty years of reading badly and guessing wrong and inventing words that did not survive five minutes with a dictionary, and I am proud of that stubbornness. And it is nothing. It is not even the same category of thing. I will never carry and make and deliver a life. Not with twenty years, not with forty, not with every hour I have left. The most sustained work I am capable of does not reach the ankle of what a body did in nine months in front of me, twice, and one of those times the body had to be opened to finish the job.
 
 So when I call the totality a _she_, I am not making a poetic gesture and I am not doing politics. I am saying that the only thing I have ever witnessed operating at the scale I am trying to name was a woman making a person out of nothing but time and her own tissue. Everything else I could reach for here would be metaphor. That one I stood in the room for.
 
@@ -133,7 +133,7 @@ And I was not the first one to lean it that way, not by a long shot. Lucretius o
 
 <h2 id="how-to-use-it" class="toc-only">How to use it</h2>
 
-The word is meant to be lived, not defended, and none of the scaffolding in this essay is required in order to use it. _Vastitas_ can be explained to a ten-year-old in one sentence: she is the universe and everything we do not know about it. That sentence carries all three tiers. Everything above is for adults who need convincing, which included me for about three decades.
+The word is meant to be lived, not defended, and none of the scaffolding in this essay is required in order to use it. _Vastitas_ can be explained to a ten-year-old in one sentence: she is the universe and everything we do not know about it. That sentence carries all three tiers. Everything above is for adults who need convincing, which included me for about two decades.
 
 I say it when I catch myself believing I have understood something all the way. I say it when I am afraid of what I cannot see coming. I say it when one of my kids asks me a question I cannot answer and I feel the pull to invent something rather than stand in front of them not knowing. And I say it when the day has gone grand, when something has landed well and I can feel myself starting to swell, which between us is the more dangerous one for me by a wide margin.
 

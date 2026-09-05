@@ -1,7 +1,7 @@
 ---
 title: Presentando Vastitas Omniparens
 description: >-
-  Treinta años buscando un nombre para todo lo que hay, y la palabra ya estaba
+  Veinte años buscando un nombre para todo lo que hay, y la palabra ya estaba
   en un poema romano.
 pubDate: '2026-07-27T13:45:00.000Z'
 updatedDate: '2026-09-05T16:15:00.000Z'
@@ -47,7 +47,7 @@ _Vastitas Omniparens_ es lo que digo en voz alta para recordar, en medio de cual
 
 <h2 id="como-lo-encontre" class="toc-only">Cómo lo encontré</h2>
 
-Yo no inventé este nombre, pero lo intenté. Créelo o no, llevo más de treinta años pensando en este todo y buscando un nombre propio para ella, y me molestaba como molesta un diente que falta: la lengua sigue tocando esa piel vacía sin razón útil alguna. Durante la mayor parte de ese tiempo trabajé a la antigua. Mis métodos de antes de los programas de inteligencia artificial, para investigar idiomas y el origen de las palabras, fueron, por no llamarme un principiante lento de frente, lentos hasta la vergüenza. El _latín_ resultó ser un idioma mejor dejado a verdaderos expertos, y yo no tenía acceso a ninguno, así que mis intentos me dieron muchas palabras que parecían correctas y no lo eran. Una de mis favoritas fue Auragenia Omnia Vasta, con un plural que yo llamé femenino y que en realidad era neutro: ni él ni ella, una cosa.
+Yo no inventé este nombre, pero lo intenté. Créelo o no, llevo veinte años pensando en este todo y buscando un nombre propio para ella, y me molestaba como molesta un diente que falta: la lengua sigue tocando esa piel vacía sin razón útil alguna. Durante la mayor parte de ese tiempo trabajé a la antigua. Mis métodos de antes de los programas de inteligencia artificial, para investigar idiomas y el origen de las palabras, fueron, por no llamarme un principiante lento de frente, lentos hasta la vergüenza. El _latín_ resultó ser un idioma mejor dejado a verdaderos expertos, y yo no tenía acceso a ninguno, así que mis intentos me dieron muchas palabras que parecían correctas y no lo eran. Una de mis favoritas fue Auragenia Omnia Vasta, con un plural que yo llamé femenino y que en realidad era neutro: ni él ni ella, una cosa.
 
 Después, herramientas como Claude me dieron la capacidad de investigar y cruzar mis ideas con orden, y a medida que esos programas mejoraban en latín, Fable 5 y Opus 5 siendo lo más nuevo para este trabajo, mis inventos seguían fallando bajo una revisión honesta. Cada corrección hacía mi palabra menos mía y el latín antiguo más interesante, hasta que por fin dejé de inventar y fui a buscar directo en las ruinas, donde resultó que Lucrecio, poeta y filósofo romano, ya había sacado las piedras que yo buscaba, dos mil años por delante de mí.
 
@@ -127,7 +127,7 @@ La primera fue una cesárea. Quiere decir que yo estaba de mi lado de una cortin
 
 Algo en mí cambió químicamente en esos cuartos, y lo digo químicamente, no como forma de hablar.
 
-Soy un hombre que puede hacer cosas difíciles a lo largo de mucho tiempo. Eso es la mayor parte de lo que tengo. Pasé treinta años en un nombre, treinta años leyendo mal y adivinando mal e inventando palabras que no sobrevivían cinco minutos con un diccionario, y estoy orgulloso de esa terquedad. Y no es nada. Ni siquiera es el mismo tipo de cosa. Yo nunca voy a cargar, hacer y entregar una vida. Ni con treinta años, ni con sesenta, ni con cada hora que me quede. El trabajo más largo del que soy capaz no le llega al tobillo de lo que un cuerpo hizo en nueve meses delante de mí, dos veces, y una de esas veces hubo que abrir el cuerpo para terminar el trabajo.
+Soy un hombre que puede hacer cosas difíciles a lo largo de mucho tiempo. Eso es la mayor parte de lo que tengo. Pasé veinte años en un nombre, veinte años leyendo mal y adivinando mal e inventando palabras que no sobrevivían cinco minutos con un diccionario, y estoy orgulloso de esa terquedad. Y no es nada. Ni siquiera es el mismo tipo de cosa. Yo nunca voy a cargar, hacer y entregar una vida. Ni con veinte años, ni con cuarenta, ni con cada hora que me quede. El trabajo más largo del que soy capaz no le llega al tobillo de lo que un cuerpo hizo en nueve meses delante de mí, dos veces, y una de esas veces hubo que abrir el cuerpo para terminar el trabajo.
 
 Así que cuando llamo al todo una _ella_, no estoy haciendo un gesto poético ni estoy haciendo política. Estoy diciendo que lo único que he visto operar a la escala que estoy tratando de nombrar fue una mujer haciendo a una persona de nada más que tiempo y su propia carne. Todo lo demás a lo que podría llegar aquí sería comparación. Esa la viví de pie en el cuarto.
 
@@ -135,7 +135,7 @@ Y no fui el primero en inclinarse así, ni de lejos. Lucrecio abrió un poema so
 
 <h2 id="como-usarla" class="toc-only">Cómo usarla</h2>
 
-La palabra está hecha para vivirse, no para defenderse, y ninguna de las explicaciones de este ensayo es necesaria para usarla. _Vastitas_ se le puede explicar a un niño de diez años en una sola oración: ella es el universo y todo lo que no sabemos de él. Esa oración carga los tres montones. Todo lo de arriba es para adultos que necesitan que los convenzan, entre los cuales me conté yo por unas tres décadas.
+La palabra está hecha para vivirse, no para defenderse, y ninguna de las explicaciones de este ensayo es necesaria para usarla. _Vastitas_ se le puede explicar a un niño de diez años en una sola oración: ella es el universo y todo lo que no sabemos de él. Esa oración carga los tres montones. Todo lo de arriba es para adultos que necesitan que los convenzan, entre los cuales me conté yo por unas dos décadas.
 
 La digo cuando me atrapo creyendo que ya entendí algo del todo. La digo cuando tengo miedo de lo que no puedo ver venir. La digo cuando uno de mis hijos me hace una pregunta que no puedo responder y siento la tentación de inventar algo en vez de quedarme frente a ellos sin saber. Y la digo cuando el día ha salido grande, cuando algo ha caído bien y puedo sentirme empezando a hincharme, que entre nos es el más peligroso para mí, y por mucho.
 
