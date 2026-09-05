@@ -4,7 +4,7 @@ description: >-
   Veinte años buscando un nombre para todo lo que hay, y la palabra ya estaba
   en un poema romano.
 pubDate: '2026-07-27T13:45:00.000Z'
-updatedDate: '2026-09-05T16:15:00.000Z'
+updatedDate: '2026-09-05T20:40:00.000Z'
 language:
   - es
 heroImage: /images/2026/vastitas.avif
@@ -91,7 +91,7 @@ Nuestra pitbull solía quedarse quieta de golpe en medio del patio ante algo que
 
 El segundo modo es la escala, y es menos raro, pero tal vez peor, o más interesante. Cantidades enormes de neutrinos, partículas tan chiquitas que cruzan tu cuerpo ahora mismo, mientras lees esta oración, y ninguna se va a anunciar jamás. El continente bajo tus pies se mueve aproximadamente a la velocidad a la que te crecen las uñas. Tu propia cara cambia de forma sin parar y no puedes verlo ocurrir; solo puedes comparar fotografías años aparte y asustarte. Nuestros sentidos están afinados a una banda, más o menos la banda donde un animal de tamaño mediano tiene que tomar decisiones para seguir existiendo, y todo lo que es más rápido, más lento, más pequeño o más grande que esa banda no nos está siendo escondido.
 
-El tercer modo es el que realmente quiero decir. En 1974, un filósofo llamado Thomas Nagel escribió un ensayo titulado «¿Cómo es ser un murciélago?». La pregunta no era cómo funciona un murciélago. Era cómo se siente ser uno. Puedes aprender cada hecho sobre cómo el murciélago «ve» con el sonido, la física, el cerebro, el tiempo, todo, y aún así no sabrás cómo es estar adentro de eso o ser el murciélago. Saber de una cosa y tener el equipo para una cosa son dos maneras distintas de poseer, y la primera no se convierte en la segunda por más que la amontones.
+El tercer modo es el que realmente quiero decir. En 1974, un filósofo llamado Thomas Nagel escribió un ensayo titulado «¿Cómo es ser un murciélago?». La pregunta no era cómo funciona un murciélago. Era cómo se siente ser uno. Puedes aprender cada hecho sobre cómo el murciélago «ve» con el sonido, la física, el cerebro, el tiempo, todo, y aún así no sabrás cómo es estar adentro de eso o ser el murciélago. Saber de una cosa y tener el equipo para una cosa son dos maneras distintas de poseer, y la primera no se convierte en la segunda por más que la amontones. Encontré [mi primera pared](/p/la-primera-pared) cuando quise alimentar a mi hijo desde mi cuerpo, y no pude.
 
 Vuelvo a la perra, nuestra pitbull. Ella no podía formar el pensamiento _«el martes que viene»_. No porque fuera tonta. Era excelente en ser lo que era. Pero la maquinaria que arma una idea como «un día futuro cualquiera, dentro de una semana, que aún no existe y tal vez nunca exista» no estaba, o no está, instalada. Y lo hermoso es esto: ella no vivía eso como un hueco. No había un vacío con forma de perra en su tarde donde el martes debiera estar. Desde adentro, no le faltaba nada. Su mundo estaba completo. Solo que era más pequeño que el mundo.
 

@@ -4,7 +4,7 @@ description: >-
   A twenty-year side quest to name everything, and the loot was already sitting
   in a Roman poem the whole time.
 pubDate: '2026-07-27T13:45:00.000Z'
-updatedDate: '2026-09-05T16:15:00.000Z'
+updatedDate: '2026-09-05T20:40:00.000Z'
 language:
   - en
 heroImage: /images/2026/vastitas.avif
@@ -89,7 +89,7 @@ Our pitbull used to stop dead in the middle of the yard over something that was 
 
 The second flavor is scale, and it is less exotic but it might be worse, or cooler. Trillions of neutrinos are passing through your body in the time it takes to read this sentence and not one of them will ever announce itself. The continent under you is drifting at roughly the speed your fingernails grow. Your own face is changing shape continuously and you cannot watch it happen, you can only compare photographs years apart and be startled. Our senses are tuned to a band, more or less the band where a medium-sized animal has to make decisions in order to keep existing, and everything faster, slower, smaller, or larger than that band is not being hidden from us.
 
-The third flavor is the one I actually mean. In 1974 a philosopher named Thomas Nagel wrote a paper titled "What Is It Like to Be a Bat?" and the argument has aged well. You can learn every fact about echolocation, the physics, the neurology, the timing, all of it, and you still will not know what it is like to be inside that or be the bat, because knowing about a thing and having the equipment for a thing are two different kinds of owning, and the first one does not turn into the second no matter how much of it you pile up.
+The third flavor is the one I actually mean. In 1974 a philosopher named Thomas Nagel wrote a paper titled "What Is It Like to Be a Bat?" and the argument has aged well. You can learn every fact about echolocation, the physics, the neurology, the timing, all of it, and you still will not know what it is like to be inside that or be the bat, because knowing about a thing and having the equipment for a thing are two different kinds of owning, and the first one does not turn into the second no matter how much of it you pile up. I found [my first wall](/p/the-first-wall) when I wanted to feed my son from my body, and could not.
 
 Come back to the dog, our pitbull. She could not form the thought _"next Tuesday"_. Not because she was dumb, she was superb at being what she was, but because the machinery that assembles a category like "an arbitrary future day, a week out, which does not exist yet and may never" was not or is not installed. And what I find cool is that she did not experience that as a gap because there was no dog-shaped hole in her afternoon where Tuesday ought to be. From the inside, she was missing nothing. Her world was complete. It was just smaller than the world.
 
