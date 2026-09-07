@@ -13,6 +13,7 @@ export const SOCIAL_IMAGE_MANIFEST: Record<string, string> = {
   '/images/2025/the-prometheus-problem.avif':
     '/social/images/2025/the-prometheus-problem-social.jpg',
   '/images/2025/trillion.avif': '/social/images/2025/trillion-social.jpg',
+  '/images/2026/alphas.avif': '/social/images/2026/alphas-social.jpg',
   '/images/2026/arepas-de-calabaza.avif': '/social/images/2026/arepas-de-calabaza-social.jpg',
   '/images/2026/arithmetic.avif': '/social/images/2026/arithmetic-social.jpg',
   '/images/2026/arroz-con-gandules.avif': '/social/images/2026/arroz-con-gandules-social.jpg',
@@ -180,7 +181,10 @@ export const SOCIAL_IMAGE_MANIFEST: Record<string, string> = {
   '/images/2026/glimmer-chaos.avif': '/social/images/2026/glimmer-chaos-social.jpg',
   '/images/2026/god.avif': '/social/images/2026/god-social.jpg',
   '/images/2026/habichuelas-guisadas.avif': '/social/images/2026/habichuelas-guisadas-social.jpg',
+  '/images/2026/hung-cao-alpha-males-cnn.avif':
+    '/social/images/2026/hung-cao-alpha-males-cnn-social.jpg',
   '/images/2026/in-my-feelings.avif': '/social/images/2026/in-my-feelings-social.jpg',
+  '/images/2026/irrigation-canal.avif': '/social/images/2026/irrigation-canal-social.jpg',
   '/images/2026/kids-laptop.avif': '/social/images/2026/kids-laptop-social.jpg',
   '/images/2026/lamb-loin-chops-al-vino-con-vegetales.avif':
     '/social/images/2026/lamb-loin-chops-al-vino-con-vegetales-social.jpg',

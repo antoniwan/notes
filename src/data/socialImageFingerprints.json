@@ -41,6 +41,10 @@
       "sha256": "c837ece1b868709d02ec38fdcc12c40610bcd33d0dae321b876af9382c6d8e77",
       "social": "/social/images/2025/trillion-social.jpg"
     },
+    "/images/2026/alphas.avif": {
+      "sha256": "a1e33e0e6a33adba50321be761a85927c8d1c9c4e1cf06b2bc34c32163b43806",
+      "social": "/social/images/2026/alphas-social.jpg"
+    },
     "/images/2026/arepas-de-calabaza.avif": {
       "sha256": "26568e1eba2db44007ee5f66029554d4a404015664c4f4bf2426a51b6f5f432f",
       "social": "/social/images/2026/arepas-de-calabaza-social.jpg"
@@ -413,9 +417,17 @@
       "sha256": "51974603cdba81beafda77a6c011e0544c7f0449b0d470266fab050789c329ec",
       "social": "/social/images/2026/habichuelas-guisadas-social.jpg"
     },
+    "/images/2026/hung-cao-alpha-males-cnn.avif": {
+      "sha256": "46efe13e67787779946d9ae738620880c88735b9dd1a68ff0b9b90729b1306a8",
+      "social": "/social/images/2026/hung-cao-alpha-males-cnn-social.jpg"
+    },
     "/images/2026/in-my-feelings.avif": {
       "sha256": "c8b5f770acf38f7bd7f3f0344acb3f31a42a27a21fb9ecd1d9b1638fec284e15",
       "social": "/social/images/2026/in-my-feelings-social.jpg"
+    },
+    "/images/2026/irrigation-canal.avif": {
+      "sha256": "516cc84e9113e090dbafb3daed83a56becae9bf51568c5bc7099fc2e8ca1fffc",
+      "social": "/social/images/2026/irrigation-canal-social.jpg"
     },
     "/images/2026/kids-laptop.avif": {
       "sha256": "b3429032b4992a8b1693b14345bd20aa680ec4e6da22206e9074f27f41247014",
