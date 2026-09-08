@@ -1,5 +1,5 @@
 ---
-import { AUTHOR, SITE_TITLE, SOCIAL_LINKS } from '../consts';
+import { AUTHOR, SOCIAL_LINKS } from '../consts';
 import { mainNavigation } from '../data/navigation';
 import Logo from './Logo.astro';
 import Container from './Container.astro';
@@ -74,20 +74,17 @@ const connectLinks = [
     </div>
 
     <div class="footer-colophon">
-      <div class="footer-legal">
-        <p>© {new Date().getFullYear()} {SITE_TITLE} by {AUTHOR.name}.</p>
-        <div class="footer-licenses">
-          <a
-            href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Content: CC BY-NC-SA 4.0
-          </a>
-          <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">
-            Code: MIT
-          </a>
-        </div>
+      <div class="footer-licenses">
+        <a
+          href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Content: CC BY-NC-SA 4.0
+        </a>
+        <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">
+          Code: MIT
+        </a>
       </div>
 
       <nav class="footer-feeds" aria-label="Feeds and site information">
@@ -191,10 +188,6 @@ const connectLinks = [
     margin-top: 2rem;
     font-size: 0.6875rem;
     line-height: 1.6;
-  }
-
-  .footer-legal p {
-    margin: 0;
   }
 
   .footer-licenses,

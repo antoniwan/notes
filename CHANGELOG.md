@@ -7,6 +7,12 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.15.1] — 2026-09-08
+
+### Changed
+
+- Footer names the author once, under the logo. The colophon is the CC and MIT licenses; the © year line is gone.
+
 ## [6.15.0] — 2026-09-08
 
 ### Added
