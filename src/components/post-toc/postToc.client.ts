@@ -1,83 +1,187 @@
-const MOBILE_QUERY = '(max-width: 1023px)';
+const DESKTOP_QUERY = '(min-width: 1200px)';
 
-function setOpenState(modal: HTMLElement, trigger: HTMLButtonElement, isOpen: boolean) {
-  modal.classList.toggle('hidden', !isOpen);
-  trigger.setAttribute('aria-expanded', String(isOpen));
-}
-
-function updateActiveLink(links: HTMLAnchorElement[]) {
-  const headingIds = links
-    .map((link) => link.getAttribute('data-post-toc-link'))
-    .filter((id): id is string => Boolean(id));
-
-  if (headingIds.length === 0) return;
-
-  const headingElements = headingIds
-    .map((id) => document.getElementById(id))
-    .filter((el): el is HTMLElement => Boolean(el));
-
-  if (headingElements.length === 0) return;
-
-  const activeHeading = headingElements
-    .filter((heading) => heading.getBoundingClientRect().top <= 140)
-    .at(-1);
-
-  if (!activeHeading) return;
-
-  const activeId = activeHeading.id;
-  links.forEach((link) => {
-    const target = link.getAttribute('data-post-toc-link');
-    link.setAttribute('data-active', target === activeId ? 'true' : 'false');
-  });
-}
+type TocEntry = {
+  link: HTMLAnchorElement;
+  heading: HTMLElement;
+};
 
 function initPostToc() {
   const container = document.querySelector<HTMLElement>('[data-post-toc]');
-  const trigger = document.querySelector<HTMLButtonElement>('[data-post-toc-trigger]');
-  const modal = document.querySelector<HTMLElement>('[data-post-toc-modal]');
+  if (!container || container.dataset.tocInitialized === 'true') return;
 
-  if (!container || !trigger || !modal) return;
+  const trigger = container.querySelector<HTMLButtonElement>('[data-post-toc-trigger]');
+  const panel = container.querySelector<HTMLElement>('[data-post-toc-modal]');
+  if (!trigger || !panel) return;
 
-  const closeButton = modal.querySelector<HTMLButtonElement>('[data-post-toc-close]');
-  const links = Array.from(modal.querySelectorAll<HTMLAnchorElement>('[data-post-toc-link]'));
-  const mediaQuery = window.matchMedia(MOBILE_QUERY);
-
-  setOpenState(modal, trigger, false);
-
-  const openModal = () => setOpenState(modal, trigger, true);
-  const closeModal = () => setOpenState(modal, trigger, false);
-
-  trigger.addEventListener('click', () => {
-    const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
-    setOpenState(modal, trigger, !isExpanded);
+  container.dataset.tocInitialized = 'true';
+  const closeButton = panel.querySelector<HTMLButtonElement>('[data-post-toc-close]');
+  const links = Array.from(panel.querySelectorAll<HTMLAnchorElement>('[data-post-toc-link]'));
+  const entries = links.flatMap<TocEntry>((link) => {
+    const id = link.dataset.postTocLink;
+    const heading = id ? document.getElementById(id) : null;
+    return heading ? [{ link, heading }] : [];
   });
+  const desktop = window.matchMedia(DESKTOP_QUERY);
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const controller = new AbortController();
+  const { signal } = controller;
+  let frame = 0;
+  let headingOffset = 104;
+  let activeLink: HTMLAnchorElement | undefined;
 
-  closeButton?.addEventListener('click', closeModal);
+  const isOpen = () => container.dataset.open === 'true';
 
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') closeModal();
-  });
+  const setOpen = (open: boolean) => {
+    container.dataset.open = String(open);
+    trigger.setAttribute('aria-expanded', String(open));
+  };
 
-  modal.addEventListener('click', (event) => {
-    if (event.target === modal) closeModal();
-  });
+  const closePanel = (restoreFocus = true) => {
+    if (!isOpen()) return;
+    setOpen(false);
+    if (restoreFocus && !desktop.matches) trigger.focus({ preventScroll: true });
+  };
 
-  links.forEach((link) => {
-    link.addEventListener('click', () => {
-      if (mediaQuery.matches) {
-        closeModal();
-      } else {
-        openModal();
+  const openPanel = () => {
+    if (desktop.matches) return;
+    setOpen(true);
+    const target = activeLink || entries[0]?.link || closeButton;
+    target?.focus({ preventScroll: true });
+    target?.scrollIntoView({ block: 'nearest', behavior: 'instant' });
+  };
+
+  const updateActiveLink = () => {
+    frame = 0;
+    activeLink = undefined;
+    for (const entry of entries) {
+      if (entry.heading.getBoundingClientRect().top <= headingOffset) activeLink = entry.link;
+    }
+    for (const link of links) {
+      const active = link === activeLink;
+      link.dataset.active = String(active);
+      if (active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    }
+  };
+
+  const scheduleUpdate = () => {
+    if (!frame) frame = window.requestAnimationFrame(updateActiveLink);
+  };
+
+  const updateHeadingOffset = () => {
+    const firstHeading = entries[0]?.heading;
+    const scrollMargin = firstHeading
+      ? Number.parseFloat(window.getComputedStyle(firstHeading).scrollMarginTop)
+      : 96;
+    headingOffset = (Number.isFinite(scrollMargin) ? scrollMargin : 96) + 8;
+    scheduleUpdate();
+  };
+
+  const syncViewport = () => {
+    const focused = document.activeElement;
+    setOpen(false);
+    if (desktop.matches) {
+      trigger.removeAttribute('aria-haspopup');
+      panel.removeAttribute('role');
+      panel.removeAttribute('aria-modal');
+      if (focused === trigger || focused === closeButton) {
+        (activeLink || entries[0]?.link)?.focus({ preventScroll: true });
       }
-    });
-  });
+    } else {
+      trigger.setAttribute('aria-haspopup', 'dialog');
+      panel.setAttribute('role', 'dialog');
+      panel.setAttribute('aria-modal', 'false');
+      if (focused instanceof Node && panel.contains(focused)) {
+        trigger.focus({ preventScroll: true });
+      }
+    }
+    updateHeadingOffset();
+  };
 
-  document.addEventListener('scroll', () => updateActiveLink(links), { passive: true });
-  updateActiveLink(links);
+  trigger.addEventListener('click', () => (isOpen() ? closePanel() : openPanel()), { signal });
+  closeButton?.addEventListener('click', () => closePanel(), { signal });
+
+  document.addEventListener(
+    'keydown',
+    (event) => {
+      if (event.key === 'Escape' && isOpen() && !desktop.matches) {
+        event.preventDefault();
+        closePanel();
+      }
+    },
+    { signal },
+  );
+
+  document.addEventListener(
+    'pointerdown',
+    (event) => {
+      if (
+        !desktop.matches &&
+        isOpen() &&
+        event.target instanceof Node &&
+        !container.contains(event.target)
+      ) {
+        closePanel();
+      }
+    },
+    { signal },
+  );
+
+  for (const { link, heading } of entries) {
+    link.addEventListener(
+      'click',
+      (event) => {
+        if (
+          event.button !== 0 ||
+          event.metaKey ||
+          event.ctrlKey ||
+          event.shiftKey ||
+          event.altKey
+        ) {
+          return;
+        }
+        event.preventDefault();
+        closePanel(false);
+
+        // Make the reading destination available to keyboard users without adding a tab stop.
+        if (!heading.hasAttribute('tabindex')) {
+          heading.setAttribute('tabindex', '-1');
+          heading.addEventListener('blur', () => heading.removeAttribute('tabindex'), {
+            once: true,
+            signal,
+          });
+        }
+        heading.focus({ preventScroll: true });
+        heading.scrollIntoView({
+          block: 'start',
+          behavior: reducedMotion.matches ? 'instant' : 'smooth',
+        });
+        if (window.location.hash !== link.hash) window.history.pushState(null, '', link.hash);
+        scheduleUpdate();
+      },
+      { signal },
+    );
+  }
+
+  window.addEventListener('scroll', scheduleUpdate, { passive: true, signal });
+  window.addEventListener('resize', updateHeadingOffset, { passive: true, signal });
+  window.addEventListener('hashchange', scheduleUpdate, { signal });
+  desktop.addEventListener('change', syncViewport, { signal });
+  document.addEventListener(
+    'astro:before-swap',
+    () => {
+      controller.abort();
+      window.cancelAnimationFrame(frame);
+      delete container.dataset.tocInitialized;
+    },
+    { once: true, signal },
+  );
+
+  syncViewport();
 }
 
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initPostToc);
+  document.addEventListener('DOMContentLoaded', initPostToc, { once: true });
 } else {
   initPostToc();
 }

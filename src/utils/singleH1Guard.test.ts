@@ -9,15 +9,17 @@ function countRawH1(source: string): number {
 }
 
 describe('single H1 guardrails', () => {
-  it('BlogLayout has no raw <h1> (canonical H1 comes from PageHeader only)', () => {
+  it('BlogLayout exposes one visible article title without a sidebar duplicate', () => {
     const src = readFileSync(join(root, 'src/layouts/BlogLayout.astro'), 'utf8');
-    expect(countRawH1(src)).toBe(0);
-    expect(src).toContain('PageHeader');
-    expect(src).toMatch(/lg:sr-only/);
-    expect(src).toMatch(/aria-hidden="true"/);
+    expect(countRawH1(src)).toBe(1);
+    expect(src).toMatch(/<h1 id="post-title" class="post-title">\{title\}<\/h1>/);
+    expect(src).not.toContain('<PageHeader');
+    expect(src).not.toContain('lg:sr-only');
+    expect(src).toContain('aria-labelledby="post-title"');
+    expect(src).not.toMatch(/<main\b/i);
   });
 
-  it('PageHeader is the only shared layout component that emits h1 by default', () => {
+  it('PageHeader retains its default h1 for other page layouts', () => {
     const src = readFileSync(join(root, 'src/components/PageHeader.astro'), 'utf8');
     expect(src).toMatch(/as\?:\s*'h1'\s*\|\s*'p'/);
     expect(src).toMatch(/as = 'h1'/);

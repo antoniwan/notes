@@ -7,6 +7,29 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.14.0] — 2026-09-08
+
+### Added
+
+- Wide article pages keep a persistent On this page list. Below 1200px, Contents opens a left-aligned panel with focus, Escape, and outside-click.
+- `/category` opens with a fair warning: tags follow how the ideas connect; categories are just the first stamp.
+
+### Changed
+
+- Title, description, date, reading time, and translation links sit above the hero at every width. One visible H1; the reading body is an article, not a nested main.
+- Below 1200px the reading column stays a single centered stack. Wider screens get a 224px navigation rail beside the article. Prose stays at 68ch.
+- Hero crops to 16:10 on phones and 16:9 from 768px up.
+- Topics, tags, and sharing sit in the rail on desktop and collapse after the prose on smaller screens. Read status and duration show together.
+- Reading progress tracks the article body, not comments, related posts, or the footer.
+
+### Fixed
+
+- Contents restores focus on close, marks the active section, and moves focus to the heading after a jump.
+- Wide tables and code scroll inside the article instead of clipping, and focus outlines stay visible.
+- Floating reading controls respect safe-area insets. The local service-worker badge stays off article previews.
+
+Reading-layout pass built with GPT-6 Astra at Max reasoning effort.
+
 ## [6.13.2] — 2026-09-08
 
 ### Fixed

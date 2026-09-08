@@ -19,7 +19,7 @@ const { searchData } = Astro.props;
 >
   <Container padding="none">
     <div
-      class="flex h-[var(--site-header-height)] items-center justify-between px-4 md:px-6 lg:px-8"
+      class="flex h-[var(--site-header-height)] items-center justify-between px-4 md:px-6 lg:px-8 xl:px-12"
     >
       <!-- Logo and Primary Navigation -->
       <div class="flex items-center gap-6 md:gap-8">
@@ -57,7 +57,7 @@ const { searchData } = Astro.props;
     </div>
 
     <!-- Mobile/Tablet Search Bar (Hidden by default) -->
-    <div id="mobile-search-container" class="hidden px-4 pb-4 md:px-6 lg:px-8 xl:hidden">
+    <div id="mobile-search-container" class="hidden px-4 pb-4 md:px-6 lg:px-8 xl:hidden xl:px-12">
       <SearchBar searchData={searchData} />
     </div>
   </Container>

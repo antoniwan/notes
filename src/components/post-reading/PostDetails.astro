@@ -1,0 +1,167 @@
+---
+import type { CategoryDisplayItem } from '../../types/layout';
+import FormattedDate from '../FormattedDate.astro';
+
+interface Props {
+  categoryItems: CategoryDisplayItem[];
+  tags?: string[];
+  pubDate?: Date;
+  updatedDate?: Date;
+  language?: 'en' | 'es';
+}
+
+const { categoryItems, tags = [], pubDate, updatedDate, language = 'en' } = Astro.props;
+const isSpanish = language === 'es';
+const visibleCategories = categoryItems.slice(0, 3);
+const moreCategories = categoryItems.slice(3);
+---
+
+<div class="post-details">
+  {
+    categoryItems.length > 0 && (
+      <nav aria-label={isSpanish ? 'Temas relacionados' : 'Related topics'}>
+        <h2 class="details-label">{isSpanish ? 'Explorar temas' : 'Explore topics'}</h2>
+        <ul class="topic-list">
+          {visibleCategories.map((item) => (
+            <li>
+              <a href={`/category/${item.id}`}>
+                {item.name}
+                <span aria-hidden="true">↗</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        {moreCategories.length > 0 && (
+          <details class="more-topics">
+            <summary>
+              {isSpanish
+                ? `Ver ${moreCategories.length} más`
+                : `Show ${moreCategories.length} more`}
+            </summary>
+            <ul class="topic-list">
+              {moreCategories.map((item) => (
+                <li>
+                  <a href={`/category/${item.id}`}>
+                    {item.name}
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </details>
+        )}
+      </nav>
+    )
+  }
+  {
+    tags.length > 0 && (
+      <details class="tag-details">
+        <summary>
+          {isSpanish ? 'Etiquetas' : 'Tags'} <span class="tag-count">{tags.length}</span>
+        </summary>
+        <ul class="tag-list">
+          {tags.map((tag) => (
+            <li>
+              <a href={`/tag/${tag}`}>#{tag}</a>
+            </li>
+          ))}
+        </ul>
+      </details>
+    )
+  }
+  {
+    updatedDate && pubDate && updatedDate.getTime() !== pubDate.getTime() && (
+      <p class="updated-date">
+        {isSpanish ? 'Actualizado el ' : 'Updated '}
+        <FormattedDate date={updatedDate} format="short" />
+      </p>
+    )
+  }
+</div>
+
+<style>
+  .post-details {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+  .details-label {
+    margin: 0 0 0.6rem;
+    font-family: var(--font-sans);
+    color: rgb(var(--color-text-muted));
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .topic-list,
+  .tag-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .topic-list a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    min-height: 2.75rem;
+    padding-block: 0.35rem;
+    color: rgb(var(--color-text-muted));
+    text-decoration: none;
+    overflow-wrap: anywhere;
+  }
+  .topic-list a span {
+    color: rgb(var(--color-accent));
+    opacity: 0.65;
+  }
+  a:hover {
+    color: rgb(var(--color-accent));
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  summary {
+    min-height: 2.75rem;
+    align-content: center;
+    cursor: pointer;
+    color: rgb(var(--color-text-muted));
+  }
+  .more-topics summary {
+    color: rgb(var(--color-accent));
+    font-size: 0.8125rem;
+  }
+  .tag-details {
+    margin-top: 0.75rem;
+    padding-top: 0.5rem;
+  }
+  .tag-count {
+    margin-left: 0.25rem;
+    font-size: 0.75rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.65rem;
+    padding: 0.25rem;
+  }
+  .tag-list a {
+    display: inline-block;
+    padding-block: 0.4rem;
+    color: rgb(var(--color-accent));
+    font-size: 0.8125rem;
+    overflow-wrap: anywhere;
+  }
+  .updated-date {
+    margin: 1rem 0 0;
+    color: rgb(var(--color-text-muted));
+    font-size: 0.75rem;
+    line-height: 1.6;
+  }
+  a:focus-visible,
+  summary:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+</style>

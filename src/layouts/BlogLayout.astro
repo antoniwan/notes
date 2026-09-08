@@ -1,6 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import PageHeader from '../components/PageHeader.astro';
+import PostDetails from '../components/post-reading/PostDetails.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Comments from '../components/Comments.astro';
 import RelatedPosts from '../components/RelatedPosts.astro';
@@ -75,6 +75,7 @@ const hreflangAlternates = translationData?.hasTranslations
 const postId = rest.currentPost?.id || '';
 const postSlug = postId; // Alias for backward compatibility in template
 const primaryCategory = categoryItems[0] || null;
+const isSpanish = contentLanguage.contentLanguage === 'es';
 ---
 
 <BaseLayout
@@ -104,409 +105,453 @@ const primaryCategory = categoryItems[0] || null;
   {...rest}
   hreflangAlternates={hreflangAlternates}
 >
-  <Container>
-    <div class="py-8 md:py-10 lg:py-12">
-      {/* Breadcrumbs - Hidden on mobile, visible on desktop */}
-      <div class="mb-6 hidden md:block">
-        <Breadcrumbs
-          items={[
-            { label: 'Home', href: '/' },
-            ...(isRecipe
-              ? [{ label: 'Cookbook', href: '/recipes' }]
-              : primaryCategory
-                ? [{ label: primaryCategory.name, href: `/category/${primaryCategory.id}` }]
-                : []),
-            { label: title },
-          ]}
-          class="text-sm"
-        />
-      </div>
+  <Container class="post-shell">
+    <div class="post-breadcrumbs">
+      <Breadcrumbs
+        items={[
+          { label: isSpanish ? 'Inicio' : 'Home', href: '/' },
+          ...(isRecipe
+            ? [{ label: isSpanish ? 'Recetario' : 'Cookbook', href: '/recipes' }]
+            : primaryCategory
+              ? [{ label: primaryCategory.name, href: `/category/${primaryCategory.id}` }]
+              : []),
+          { label: title },
+        ]}
+        class="text-sm"
+      />
+    </div>
 
-      {
-        /* Canonical post H1 via PageHeader.
-          Visible on mobile; sr-only on desktop (NOT display:none) so crawlers/a11y
-          still see exactly one H1. Desktop sidebar shows a visual-only echo below. */
-      }
-      <div class="mb-10 md:mb-12 lg:sr-only">
-        <PageHeader title={title} description={description} className="mb-6!" />
-      </div>
-
-      {/* Main Layout: Mobile-first, then 75/25 on desktop */}
-      <div class="lg:grid lg:grid-cols-4 lg:gap-10 xl:gap-12">
-        {/* Sidebar - Hidden on mobile, visible on desktop */}
-        <aside class="post-sidebar scrollbar-subtle-y hidden lg:col-span-1 lg:block">
-          <div class="post-sidebar__panel space-y-8 pr-1.5">
-            {
-              /* Visual title echo only — real H1 lives in PageHeader above.
-                Reuse PageHeader (as="p") so font/weight/tracking match mobile. */
-            }
-            <div class="sidebar-title-echo" aria-hidden="true">
-              <PageHeader
-                title={title}
-                description={description}
-                as="p"
-                className="!py-0"
-                stackClass="gap-5"
-                descriptionClass="text-[1.0625rem]"
-              />
-            </div>
-
-            {/* Reading Signals */}
-            {
-              minutesRead && !isRecipe && (
-                <div
-                  class="reading-time-section space-y-2 leading-relaxed"
-                  data-post-slug={postSlug}
-                  data-original-reading-time={minutesRead}
-                >
-                  <h3 class="text-body-muted text-xs font-semibold tracking-wider uppercase">
-                    Reading Signals
-                  </h3>
-                  <div class="flex items-center gap-2 text-base leading-relaxed text-[rgb(var(--color-text))]">
-                    <span class="reading-time-icon text-[rgb(var(--color-accent))]">⏱️</span>
-                    <span class="reading-time-value">{minutesRead}</span>
-                  </div>
-                </div>
-              )
-            }
-
-            {/* Taxonomy */}
-            {
-              (categoryItems.length > 0 || (tags && tags.length > 0)) && (
-                <div class="space-y-4 leading-relaxed">
-                  <h3 class="text-body-muted text-xs font-semibold tracking-wider uppercase">
-                    Taxonomy
-                  </h3>
-
-                  {categoryItems.length > 0 && (
-                    <div class="space-y-2">
-                      <p class="text-body-muted m-0 text-[11px] font-semibold tracking-wider uppercase">
-                        Categories
-                      </p>
-                      <div class="flex flex-wrap gap-1.5 text-xs leading-tight">
-                        {categoryItems.map((item) => (
-                          <a
-                            href={`/category/${item.id}`}
-                            class="theme-transition rounded-[var(--radius-sm)] border border-[rgb(var(--color-border))]/70 px-2 py-0.5 text-[rgb(var(--color-text))] hover:border-[rgb(var(--color-accent))] hover:text-[rgb(var(--color-accent))]"
-                          >
-                            {item.name}
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {tags && tags.length > 0 && (
-                    <div class="space-y-2">
-                      <p class="text-body-muted m-0 text-[11px] font-semibold tracking-wider uppercase">
-                        Tags
-                      </p>
-                      <div class="flex flex-wrap gap-1 text-sm">
-                        {tags.map((tag) => (
-                          <a
-                            href={`/tag/${tag}`}
-                            class="text-[rgb(var(--color-accent))] transition-colors hover:text-[rgb(var(--color-accent))]/80 hover:underline"
-                          >
-                            #{tag}
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              )
-            }
-
-            {/* Actions */}
-            <div class="space-y-2">
-              <h3 class="text-body-muted text-xs font-semibold tracking-wider uppercase">
-                Actions
-              </h3>
-              <SocialShare
-                title={title}
-                description={description}
-                url={canonical}
-                variant="vertical"
-              />
-            </div>
-
-            {/* Secondary Metadata */}
-            {
-              pubDate && (
-                <div class="space-y-6 leading-relaxed">
-                  {pubDate && (
-                    <div class="space-y-2">
-                      <h3 class="text-body-muted text-xs font-semibold tracking-wider uppercase">
-                        Publication
-                      </h3>
-                      <time
-                        datetime={pubDate.toISOString()}
-                        class="flex items-center gap-2 text-base leading-relaxed text-[rgb(var(--color-text))]"
-                      >
-                        <span class="text-[rgb(var(--color-accent))]">📅</span>
-                        <FormattedDate date={pubDate} format="long" />
-                      </time>
-                      {updatedDate && updatedDate.getTime() !== pubDate?.getTime() && (
-                        <time
-                          datetime={updatedDate.toISOString()}
-                          class="text-body-muted mt-1 flex items-center gap-2 text-sm leading-relaxed"
-                        >
-                          <span class="text-[rgb(var(--color-accent))]">🔄</span>
-                          <span>
-                            Updated on <FormattedDate date={updatedDate} format="long" />
-                          </span>
-                        </time>
-                      )}
-                    </div>
-                  )}
-                </div>
-              )
-            }
-          </div>
-        </aside>
-
-        {/* Main Content Area - Full width on mobile, 75% on desktop */}
-        <main class="lg:col-span-3">
-          {/* Hero Image - First thing in main content */}
-          <div class="mb-8 md:mb-12">
-            <div class="h-[450px] overflow-hidden rounded-lg shadow-lg md:rounded-xl">
-              {
-                heroImage ? (
-                  <img
-                    src={heroImage}
-                    alt={imageAlt || title}
-                    class="h-full w-full object-cover"
-                    loading="eager"
-                    fetchpriority="high"
-                    decoding="async"
-                    width="1200"
-                    height="450"
-                  />
-                ) : (
-                  <DefaultImage
-                    alt={imageAlt || title}
-                    className="h-full w-full"
-                    loading="eager"
-                    priority={true}
-                    width={1200}
-                    height={450}
-                  />
-                )
-              }
-            </div>
-            {
-              imageCredit && (
-                <p class="text-body-muted mt-2 text-sm leading-relaxed">
-                  {contentLanguage.contentLanguage === 'es' ? 'Foto: ' : 'Photo: '}
-                  {imageCreditUrl ? (
-                    <a
-                      href={imageCreditUrl}
-                      class="underline decoration-[rgb(var(--color-border))] underline-offset-2 hover:text-[rgb(var(--color-accent))]"
-                      rel="noopener noreferrer"
-                    >
-                      {imageCredit}
-                    </a>
-                  ) : (
-                    imageCredit
-                  )}
-                  {imageLicense ? ` · ${imageLicense}` : ''}
-                  {imageCreditUrl?.includes('wikimedia.org')
-                    ? ' via Wikimedia Commons'
-                    : imageCreditUrl?.includes('flickr.com')
-                      ? ' via Flickr'
-                      : imageCreditUrl?.includes('unsplash.com')
-                        ? ' via Unsplash'
-                        : ''}
-                  . Converted to AVIF.
-                </p>
-              )
-            }
-          </div>
-
-          {/* Language Toggle */}
-          {
-            translationData?.hasTranslations && (
+    <div class="post-layout">
+      <header class="post-heading" id="post-heading">
+        {
+          primaryCategory && (
+            <a
+              class="post-eyebrow"
+              href={isRecipe ? '/recipes' : `/category/${primaryCategory.id}`}
+            >
+              <span aria-hidden="true" class="post-eyebrow__mark" />
+              {isRecipe
+                ? isSpanish
+                  ? 'Del recetario'
+                  : 'From the cookbook'
+                : primaryCategory.name}
+            </a>
+          )
+        }
+        <h1 id="post-title" class="post-title">{title}</h1>
+        {description && <p class="post-description">{description}</p>}
+        <div class="post-byline">
+          {pubDate && <FormattedDate date={pubDate} format="long" />}
+          {minutesRead && !isRecipe && <span class="post-duration">{minutesRead}</span>}
+          <span class="post-read-status" data-read-status data-post-slug={postSlug} hidden></span>
+        </div>
+        {
+          translationData?.hasTranslations && (
+            <div class="post-language">
               <LanguageToggle
                 translations={translationData.translations}
                 currentLanguage={translationData.currentLanguage}
                 currentPath={translationData.currentPath}
               />
-            )
-          }
+            </div>
+          )
+        }
+      </header>
 
-          <div id="post-top" aria-hidden="true"></div>
-
-          {/* Content */}
-          <div
-            class="post-prose prose prose-lg prose-headings:scroll-mt-24 prose-p:leading-relaxed prose-p:text-[rgb(var(--color-text))]"
-            data-post-slug={postSlug}
-          >
-            <slot />
+      <aside
+        class="post-sidebar scrollbar-subtle-y"
+        aria-label={isSpanish
+          ? 'Navegación y detalles del artículo'
+          : 'Article navigation and details'}
+      >
+        <PostTocModal
+          tableOfContents={tableOfContents}
+          language={contentLanguage.contentLanguage}
+        />
+        <div class="post-sidebar__details">
+          <PostDetails
+            categoryItems={categoryItems}
+            tags={tags}
+            pubDate={pubDate}
+            updatedDate={updatedDate}
+            language={contentLanguage.contentLanguage}
+          />
+          <div class="post-share">
+            <SocialShare
+              title={title}
+              description={description}
+              url={canonical}
+              variant="vertical"
+            />
           </div>
+        </div>
+      </aside>
 
-          {/* Floating TOC (shown only when enough headings exist) */}
-          <PostTocModal tableOfContents={tableOfContents} />
-
-          {/* Mobile/Tablet metadata - collapsed by default */}
-          <div class="mt-12 space-y-3 border-t border-[rgb(var(--color-border))] pt-8 lg:hidden">
+      <article class="post-article" aria-labelledby="post-title">
+        <div class="post-hero">
+          <div class="post-hero__frame">
             {
-              minutesRead && !isRecipe && (
-                <details class="rounded-lg border border-[rgb(var(--color-border))] px-4 py-3">
-                  <summary class="text-body-muted cursor-pointer text-xs font-semibold tracking-wider uppercase">
-                    Reading Signals
-                  </summary>
-                  <div
-                    class="reading-time-section mt-3 space-y-2"
-                    data-post-slug={postSlug}
-                    data-original-reading-time={minutesRead}
-                  >
-                    <div class="flex items-center gap-2 text-base leading-relaxed text-[rgb(var(--color-text))]">
-                      <span class="reading-time-icon text-[rgb(var(--color-text))]">⏱️</span>
-                      <span class="reading-time-value">{minutesRead}</span>
-                    </div>
-                  </div>
-                </details>
-              )
-            }
-
-            {
-              (categoryItems.length > 0 || (tags && tags.length > 0)) && (
-                <details class="rounded-lg border border-[rgb(var(--color-border))] px-4 py-3">
-                  <summary class="text-body-muted cursor-pointer text-xs font-semibold tracking-wider uppercase">
-                    Taxonomy
-                  </summary>
-                  <div class="mt-3 space-y-3">
-                    {categoryItems.length > 0 && (
-                      <div class="space-y-2">
-                        <p class="text-body-muted m-0 text-[11px] font-semibold tracking-wider uppercase">
-                          Categories
-                        </p>
-                        <div class="flex flex-wrap gap-1.5 text-xs leading-tight">
-                          {categoryItems.map((item) => (
-                            <a
-                              href={`/category/${item.id}`}
-                              class="theme-transition rounded-[var(--radius-sm)] border border-[rgb(var(--color-border))]/70 px-2 py-0.5 text-[rgb(var(--color-text))] hover:border-[rgb(var(--color-accent))] hover:text-[rgb(var(--color-accent))]"
-                            >
-                              {item.name}
-                            </a>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    {tags && tags.length > 0 && (
-                      <div class="space-y-2">
-                        <p class="text-body-muted m-0 text-[11px] font-semibold tracking-wider uppercase">
-                          Tags
-                        </p>
-                        <div class="flex flex-wrap gap-1 text-sm">
-                          {tags.map((tag) => (
-                            <a
-                              href={`/tag/${tag}`}
-                              class="text-[rgb(var(--color-accent))] transition-colors hover:text-[rgb(var(--color-accent))]/80 hover:underline"
-                            >
-                              #{tag}
-                            </a>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </details>
-              )
-            }
-
-            <details class="rounded-lg border border-[rgb(var(--color-border))] px-4 py-3">
-              <summary
-                class="text-body-muted cursor-pointer text-xs font-semibold tracking-wider uppercase"
-              >
-                Actions
-              </summary>
-              <div class="mt-3">
-                <SocialShare
-                  title={title}
-                  description={description}
-                  url={canonical}
-                  variant="horizontal"
+              heroImage ? (
+                <img
+                  src={heroImage}
+                  alt={imageAlt || title}
+                  class="h-full w-full object-cover"
+                  loading="eager"
+                  fetchpriority="high"
+                  decoding="async"
+                  width="1200"
+                  height="450"
                 />
-              </div>
-            </details>
-
-            {
-              pubDate && (
-                <details class="rounded-lg border border-[rgb(var(--color-border))] px-4 py-3">
-                  <summary class="text-body-muted cursor-pointer text-xs font-semibold tracking-wider uppercase">
-                    Secondary Metadata
-                  </summary>
-                  <div class="mt-3 space-y-4">
-                    {pubDate && (
-                      <div class="space-y-2">
-                        <h3 class="text-body-muted text-xs font-semibold tracking-wider uppercase">
-                          Publication
-                        </h3>
-                        <time
-                          datetime={pubDate.toISOString()}
-                          class="flex items-center gap-2 text-base leading-relaxed text-[rgb(var(--color-text))]"
-                        >
-                          <span class="text-[rgb(var(--color-accent))]">📅</span>
-                          <FormattedDate date={pubDate} format="long" />
-                        </time>
-                        {updatedDate && updatedDate.getTime() !== pubDate?.getTime() && (
-                          <time
-                            datetime={updatedDate.toISOString()}
-                            class="text-body-muted mt-1 flex items-center gap-2 text-sm leading-relaxed"
-                          >
-                            <span class="text-[rgb(var(--color-accent))]">🔄</span>
-                            <span>
-                              Updated on <FormattedDate date={updatedDate} format="long" />
-                            </span>
-                          </time>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                </details>
+              ) : (
+                <DefaultImage
+                  alt={imageAlt || title}
+                  className="h-full w-full"
+                  loading="eager"
+                  priority={true}
+                  width={1200}
+                  height={450}
+                />
               )
             }
           </div>
-
-          {/* Comments */}
-          {showComments && <Comments />}
-
           {
-            rest.currentPost && isRecipePost(rest.currentPost) ? (
-              <MoreRecipes currentPost={rest.currentPost} allPosts={rest.allPosts} />
-            ) : (
-              <RelatedPosts currentPost={rest.currentPost} allPosts={rest.allPosts} />
+            imageCredit && (
+              <p class="text-body-muted mt-2 text-sm leading-relaxed">
+                {contentLanguage.contentLanguage === 'es' ? 'Foto: ' : 'Photo: '}
+                {imageCreditUrl ? (
+                  <a
+                    href={imageCreditUrl}
+                    class="underline decoration-[rgb(var(--color-border))] underline-offset-2 hover:text-[rgb(var(--color-accent))]"
+                    rel="noopener noreferrer"
+                  >
+                    {imageCredit}
+                  </a>
+                ) : (
+                  imageCredit
+                )}
+                {imageLicense ? ` · ${imageLicense}` : ''}
+                {imageCreditUrl?.includes('wikimedia.org')
+                  ? ' via Wikimedia Commons'
+                  : imageCreditUrl?.includes('flickr.com')
+                    ? ' via Flickr'
+                    : imageCreditUrl?.includes('unsplash.com')
+                      ? ' via Unsplash'
+                      : ''}
+                . Converted to AVIF.
+              </p>
             )
           }
-        </main>
+        </div>
+
+        <div
+          id="post-top"
+          class="post-prose prose prose-lg prose-p:text-[rgb(var(--color-text))]"
+          data-post-slug={postSlug}
+        >
+          <slot />
+        </div>
+      </article>
+
+      <div class="post-afterword">
+        <details class="post-mobile-details">
+          <summary
+            >{
+              isSpanish ? 'Temas y detalles de este artículo' : 'Topics and article details'
+            }</summary
+          >
+          <PostDetails
+            categoryItems={categoryItems}
+            tags={tags}
+            pubDate={pubDate}
+            updatedDate={updatedDate}
+            language={contentLanguage.contentLanguage}
+          />
+          <div class="post-share">
+            <SocialShare
+              title={title}
+              description={description}
+              url={canonical}
+              variant="horizontal"
+            />
+          </div>
+        </details>
+        {showComments && <Comments />}
+        {
+          rest.currentPost && isRecipePost(rest.currentPost) ? (
+            <MoreRecipes currentPost={rest.currentPost} allPosts={rest.allPosts} />
+          ) : (
+            <RelatedPosts currentPost={rest.currentPost} allPosts={rest.allPosts} />
+          )
+        }
       </div>
     </div>
   </Container>
 </BaseLayout>
 
 <style>
-  /* Sidebar title echo: same text-display face as mobile H1, capped for the narrow column */
-  .sidebar-title-echo :global(.text-display) {
-    font-size: clamp(1.35rem, 1.15rem + 0.55vw, 1.75rem);
-    line-height: 1.25;
+  :global(.post-shell) {
+    padding-bottom: 3rem;
   }
 
-  /*
-    Desktop: stay in the viewport below the sticky header while the article
-    scrolls. The panel scrolls on its own when taxonomy is taller than the
-    leftover viewport, instead of clipping under the header or past the fold.
-  */
-  @media (min-width: 1024px) {
+  .post-breadcrumbs {
+    margin: 1.5rem 0 0;
+  }
+
+  .post-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+  }
+
+  .post-heading {
+    min-width: 0;
+    padding-block: clamp(1.75rem, 4vw, 3.5rem) 2rem;
+  }
+
+  .post-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-height: 2rem;
+    margin-bottom: 0.85rem;
+    color: rgb(var(--color-accent));
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .post-eyebrow__mark {
+    width: 0.5rem;
+    height: 0.5rem;
+    background: rgb(var(--color-primary));
+    transform: rotate(45deg);
+  }
+
+  .post-title {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: clamp(2.125rem, 1.4rem + 2.2vw, 3.5rem);
+    line-height: 1.13;
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+  }
+
+  .post-description {
+    margin: 1.25rem 0 0;
+    max-width: 42rem;
+    color: rgb(var(--color-text-muted));
+    font-size: clamp(1.0625rem, 0.95rem + 0.35vw, 1.25rem);
+    line-height: 1.65;
+    text-wrap: pretty;
+  }
+
+  .post-byline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1.1rem;
+    margin-top: 1.5rem;
+    color: rgb(var(--color-text-muted));
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    line-height: 1.6;
+  }
+
+  .post-duration {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .post-read-status {
+    color: rgb(var(--color-accent));
+  }
+
+  .post-language {
+    margin-top: 1.25rem;
+  }
+
+  .post-language :global(.language-toggle) {
+    margin-bottom: 0;
+    flex-wrap: wrap;
+  }
+
+  .post-sidebar {
+    display: contents;
+  }
+
+  .post-sidebar__details {
+    display: none;
+  }
+
+  .post-article,
+  .post-afterword {
+    min-width: 0;
+  }
+
+  .post-hero {
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+
+  .post-hero__frame {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    background: rgb(var(--color-bg-alt));
+    border: 1px solid rgb(var(--color-border) / 0.45);
+  }
+
+  .post-hero__frame :global(img) {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .post-article :global(.post-prose) {
+    max-width: 68ch !important;
+    margin-inline: 0 !important;
+    overflow: visible !important;
+    display: flow-root;
+    font-size: clamp(1.125rem, 1.025rem + 0.35vw, 1.25rem);
+    line-height: 1.8;
+    scroll-margin-top: calc(var(--site-header-height) + 1.5rem);
+    overflow-wrap: anywhere;
+  }
+
+  .post-afterword {
+    max-width: 48rem;
+    width: 100%;
+  }
+
+  .post-article :global(.post-prose hr) {
+    border: 0;
+    height: 0;
+    margin-block: 2.5rem;
+  }
+
+  .post-article :global(.post-prose p) {
+    line-height: 1.8;
+  }
+
+  .post-article :global(.post-prose > :first-child) {
+    margin-top: 0;
+  }
+
+  .post-article :global(.post-prose :is(h2, h3, h4, [id])) {
+    scroll-margin-top: calc(var(--site-header-height) + 1.5rem);
+  }
+
+  .post-article :global(.post-prose :is(table, pre)) {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+  }
+
+  .post-article :global(.post-prose table) {
+    font-size: 0.9em;
+  }
+
+  .post-article :global(.post-prose :is(a, button, [tabindex]):focus-visible),
+  .post-eyebrow:focus-visible,
+  .post-mobile-details > summary:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  .post-mobile-details {
+    margin-top: 2.5rem;
+    padding-block: 1rem;
+  }
+
+  .post-mobile-details > summary {
+    min-height: 2.75rem;
+    align-content: center;
+    cursor: pointer;
+    color: rgb(var(--color-text-muted));
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .post-mobile-details[open] > summary {
+    margin-bottom: 1rem;
+  }
+
+  .post-share {
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+  }
+
+  @media (max-width: 599px) {
+    .post-breadcrumbs {
+      display: none;
+    }
+    .post-heading {
+      padding-top: 1.75rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .post-hero__frame {
+      aspect-ratio: 16 / 9;
+      max-height: 28rem;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .post-breadcrumbs {
+      max-width: none;
+      margin-top: 2rem;
+    }
+    .post-layout {
+      max-width: none;
+      grid-template-columns: 14rem minmax(0, 1fr);
+      column-gap: clamp(3rem, 5vw, 4.5rem);
+    }
+    .post-heading {
+      grid-column: 2;
+      grid-row: 1;
+      padding-top: 2.25rem;
+    }
     .post-sidebar {
+      display: block;
+      grid-column: 1;
+      grid-row: 1 / 4;
       position: sticky;
-      top: calc(var(--site-header-height) + 0.75rem);
       align-self: start;
-      max-height: calc(100dvh - var(--site-header-height) - 1.5rem);
+      top: calc(var(--site-header-height) + 1.5rem);
+      margin-top: 2.5rem;
+      max-height: calc(100dvh - var(--site-header-height) - 3rem);
       overflow-y: auto;
       overscroll-behavior: contain;
-      padding-bottom: 0.25rem;
+      padding-block: 0.25rem;
+      padding-right: 0.5rem;
+      font-family: var(--font-sans);
+    }
+    .post-sidebar__details {
+      display: block;
+    }
+    .post-sidebar:has([data-post-toc]) .post-sidebar__details {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+    }
+    .post-article {
+      grid-column: 2;
+      grid-row: 2;
+    }
+    .post-afterword {
+      grid-column: 2;
+      grid-row: 3;
+    }
+    .post-mobile-details {
+      display: none;
     }
   }
 </style>
@@ -515,104 +560,18 @@ const primaryCategory = categoryItems[0] || null;
   import { formatRelativeReadTime } from '../utils/relativeReadTime.client';
   import '../components/post-toc/postToc.client';
 
-  // Read slug from DOM (set on main content wrapper) so this script can stay a module
-  const postSlug = document.querySelector('[data-post-slug]')?.getAttribute('data-post-slug');
-
-  // ReadStateService is initialized by ReadStateServiceInit component in BaseLayout
-  // Get the singleton instance
+  const status = document.querySelector<HTMLElement>('[data-read-status]');
+  const postSlug = status?.dataset.postSlug;
   const readStateService = window.ReadStateService?.getInstance();
 
   function updateReadStatus() {
-    if (!postSlug || !readStateService) return; // Exit early if slug or service not available
+    if (!status || !postSlug || !readStateService) return;
     const readData = readStateService.getReadData(postSlug);
-
-    // Reading time sections (both desktop and mobile)
-    const readingTimeSections = document.querySelectorAll(
-      `.reading-time-section[data-post-slug="${postSlug}"]`,
-    );
-
-    if (readData) {
-      const relativeTime = formatRelativeReadTime(readData.readAt);
-
-      // Update reading time sections to show relative time
-      readingTimeSections.forEach((section) => {
-        const timeValueElement = section.querySelector('.reading-time-value');
-        const iconElement = section.querySelector('.reading-time-icon');
-        const headingElement = section.querySelector('h3');
-
-        if (timeValueElement) {
-          timeValueElement.textContent = relativeTime;
-          timeValueElement.setAttribute('datetime', readData.readAt);
-        }
-
-        // Change the icon to indicate read status
-        if (iconElement) {
-          iconElement.textContent = '✓';
-          iconElement.classList.remove(
-            'text-[rgb(var(--color-accent))]',
-            'text-[rgb(var(--color-text))]',
-          );
-          iconElement.classList.add('text-[rgb(34,197,94)]');
-        }
-
-        // Hide the "Reading Time" heading when already read for cleaner flow
-        if (headingElement) {
-          headingElement.classList.add('sr-only');
-        }
-      });
-    } else {
-      // Restore original reading time for unread posts
-      readingTimeSections.forEach((section) => {
-        const originalReadingTime = section.getAttribute('data-original-reading-time');
-        const timeValueElement = section.querySelector('.reading-time-value');
-        const iconElement = section.querySelector('.reading-time-icon');
-        const headingElement = section.querySelector('h3');
-
-        if (timeValueElement && originalReadingTime) {
-          timeValueElement.textContent = originalReadingTime;
-          timeValueElement.removeAttribute('datetime');
-        }
-
-        // Restore the icon
-        if (iconElement) {
-          iconElement.textContent = '⏱️';
-          iconElement.classList.remove('text-[rgb(34,197,94)]');
-          // Restore original color based on context (desktop has accent, mobile has text)
-          const isMobile = section.closest('.lg\\:hidden');
-          if (isMobile) {
-            iconElement.classList.add('text-[rgb(var(--color-text))]');
-          } else {
-            iconElement.classList.add('text-[rgb(var(--color-accent))]');
-          }
-        }
-
-        // Restore heading for unread posts
-        if (headingElement) {
-          headingElement.classList.remove('sr-only');
-        }
-      });
-    }
+    status.hidden = !readData;
+    status.textContent = readData ? `✓ ${formatRelativeReadTime(readData.readAt)}` : '';
   }
 
-  // Subscribe to read state changes (only if service is available)
-  let unsubscribe = null;
-  if (readStateService) {
-    unsubscribe = readStateService.subscribeToAll(() => {
-      updateReadStatus();
-    });
-
-    // Initial update
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', updateReadStatus);
-    } else {
-      updateReadStatus();
-    }
-  }
-
-  // Cleanup on page unload
-  window.addEventListener('beforeunload', () => {
-    if (unsubscribe) {
-      unsubscribe();
-    }
-  });
+  const unsubscribe = readStateService?.subscribeToAll(updateReadStatus);
+  updateReadStatus();
+  window.addEventListener('beforeunload', () => unsubscribe?.());
 </script>

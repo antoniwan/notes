@@ -87,6 +87,8 @@ const { class: className = '' } = Astro.props;
 
 <style>
   #back-to-top {
+    right: max(1rem, env(safe-area-inset-right));
+    bottom: calc(1rem + env(safe-area-inset-bottom));
     transition:
       opacity 0.3s ease,
       transform 0.3s ease,

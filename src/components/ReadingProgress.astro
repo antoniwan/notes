@@ -25,12 +25,13 @@ const { class: className = '', postId } = Astro.props;
 </div>
 
 <script>
+  import { calculateReadingProgress } from '../utils/readingProgress';
+
   const readingProgress = document.getElementById('reading-progress')!;
-  const progressBar = document.querySelector('[role="progressbar"]') as HTMLElement;
+  const progressBar = readingProgress.parentElement!;
+  const article = document.querySelector<HTMLElement>('.post-prose');
   let ticking = false;
-  let lastProgress = 0;
-  let lastScrollY = 0;
-  let lastWindowHeight = 0;
+  let lastProgress = -1;
   let hasMarkedAsRead = false;
 
   // Reading tracker functionality
@@ -223,20 +224,19 @@ const { class: className = '', postId } = Astro.props;
   }
 
   function updateReadingProgress() {
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight - windowHeight;
     const scrolled = window.scrollY;
+    const articleBounds = article?.getBoundingClientRect();
+    const progress = calculateReadingProgress(
+      scrolled,
+      window.innerHeight,
+      document.documentElement.scrollHeight,
+      articleBounds
+        ? { top: articleBounds.top + scrolled, height: articleBounds.height }
+        : undefined,
+    );
 
-    // Skip update if scroll position and window size haven't changed significantly
-    if (Math.abs(scrolled - lastScrollY) < 10 && Math.abs(windowHeight - lastWindowHeight) < 10) {
-      ticking = false;
-      return;
-    }
-
-    const progress = Math.min((scrolled / documentHeight) * 100, 100);
-
-    // Only update if progress changed significantly (performance optimization)
-    if (Math.abs(progress - lastProgress) > 1.0) {
+    // Keep the endpoints exact, including small scrolls and content reflow.
+    if (progress !== lastProgress) {
       readingProgress.style.width = `${progress}%`;
       lastProgress = progress;
 
@@ -261,8 +261,6 @@ const { class: className = '', postId } = Astro.props;
       }
     }
 
-    lastScrollY = scrolled;
-    lastWindowHeight = windowHeight;
     ticking = false;
   }
 
@@ -276,11 +274,23 @@ const { class: className = '', postId } = Astro.props;
   // Use passive listeners for better performance
   window.addEventListener('scroll', throttledUpdate, { passive: true });
   window.addEventListener('resize', throttledUpdate, { passive: true });
+  window.addEventListener('pageshow', throttledUpdate);
+  window.addEventListener('hashchange', throttledUpdate);
+  // Capturing load also catches images that change the article's starting position.
+  document.addEventListener('load', throttledUpdate, true);
+
+  const resizeObserver = new ResizeObserver(throttledUpdate);
+  resizeObserver.observe(document.body);
+  if (article) resizeObserver.observe(article);
 
   // Store references for cleanup
   (window as any).readingProgressCleanup = () => {
     window.removeEventListener('scroll', throttledUpdate);
     window.removeEventListener('resize', throttledUpdate);
+    window.removeEventListener('pageshow', throttledUpdate);
+    window.removeEventListener('hashchange', throttledUpdate);
+    document.removeEventListener('load', throttledUpdate, true);
+    resizeObserver.disconnect();
   };
 
   // Initial update
