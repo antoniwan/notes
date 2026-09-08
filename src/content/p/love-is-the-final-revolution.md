@@ -34,8 +34,6 @@ And yet, after tumbling down that rabbit hole, I can say with confidence: the th
 
 It took real shadow work to realize that presence, rooted in love and kindness, is the only sustainable way to face the cruelty of our human systems. My daughter's laughter, my girlfriend's affection, my ex-wife's empathy, nourishing my body and mind, and creating a home where kindness is our default — that is what I _can_ do. Love is, ultimately, the most revolutionary force we have.
 
-> **Love is, ultimately, the most revolutionary force we have.**
-
 As a parent, I believe raising my children with kindness, empathy, restraint, self-care, and self-respect is the most meaningful revolutionary act available to me. To move through life from a place of love is to resist every system that seeks to dehumanize.
 
 When I think back on those weeks when I felt like I couldn't breathe, I see now that I was missing love — and the safety it brings. Our governments and systems remind us daily that we are expendable, just fuel for war machines and profit engines. **But at home, we can create a sanctuary that defies that message.**

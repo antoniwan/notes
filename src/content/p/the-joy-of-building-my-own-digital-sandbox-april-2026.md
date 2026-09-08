@@ -142,9 +142,7 @@ These are project-specific configurations, not generic prompts. They give the AI
 
 AI writes first drafts of code. I review and shape. AI suggests refactors. I decide which ones to take. AI runs quality gates. I decide what to do about the results.
 
-Sometimes the AI fucks up. _Rolling Back Main_ exists because I let the AI handle too much without checking. It pushed changes that broke things, and I had to do a manual rollback on `main`. The lesson:
-
-> Tools amplify both your strengths and your inattention.
+Sometimes the AI fucks up. _Rolling Back Main_ exists because I let the AI handle too much without checking. It pushed changes that broke things, and I had to do a manual rollback on `main`. The lesson: tools amplify both your strengths and your inattention.
 
 The collaboration works when I stay involved, and when I don't, things break. Pretty obvious, but as a solo developer it exposes the attention gap that otherwise someone else would have caught (or perhaps I wouldn't be this careless at work with others — who knows).
 

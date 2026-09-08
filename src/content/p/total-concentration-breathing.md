@@ -29,11 +29,11 @@ showComments: true
 - **Exhale** — 4 seconds (slow, through the mouth)
 - **Hold (Empty)** — 4 seconds (embrace the pause)
 
-> Repeat for **4–10 rounds** based on your intention:
->
-> - 🔥 **Focus & Power**: 4 rounds, eyes open, upright posture
-> - 🌊 **Calm & Reset**: 8–10 rounds, eyes closed, soften body
-> - 🌌 **Sleep & Surrender**: Lying down, continue until body relaxes
+Repeat for **4–10 rounds** based on your intention:
+
+- 🔥 **Focus & Power**: 4 rounds, eyes open, upright posture
+- 🌊 **Calm & Reset**: 8–10 rounds, eyes closed, soften body
+- 🌌 **Sleep & Surrender**: Lying down, continue until body relaxes
 
 ![Total Concentration Breathing!](/images/tcb.avif)
 

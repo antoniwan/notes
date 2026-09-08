@@ -29,9 +29,7 @@ translationGroup: toddler-internet-safety
 ## Our Digital Responsibility as Parents
 
 In Puerto Rico—and across the world—we now raise children in an age where the Internet is everywhere. But **just because something is common, doesn't mean it's safe.**  
-The Internet is NOT made for children. It's a wild field filled with beauty, but also with garbage, violence, extreme sexuality, and content a young child is not ready to handle.
-
-> **A child's mind is like fertile soil. Whatever you plant now will either bloom—or rot—later.**
+The Internet is NOT made for children. It's a wild field filled with beauty, but also with garbage, violence, extreme sexuality, and content a young child is not ready to handle. A child's mind is like fertile soil. Whatever you plant now will either bloom—or rot—later.
 
 ---
 

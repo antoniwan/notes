@@ -74,7 +74,7 @@ By the time election season comes around, salaried professionals are cooked beca
 
 About **22% of these households pay credit card late fees**. These aren't irresponsible people. These are professionals drowning inside a cost structure designed to bleed them slowly.
 
-> I was one of these, but the colonized in me was too strong, so I left to chase money in the mainland.
+I was one of these, but the colonized in me was too strong, so I left to chase money in the mainland.
 
 ## The Welfare Class
 
@@ -100,7 +100,7 @@ When the power goes out, these are the people who die first.
 
 By the way, seven years after María, Puerto Rico still doesn't have an integrated system to identify people who depend on electricity to survive.
 
-> I'm not qualified to speak _for_ this group. My father grew up in poverty as an orphan in Santurce but I didn't. What I know is secondhand. What I _do_ know is that they are the most exploited and the most disposable when infrastructure fails. Their story deserves a first-person voice.
+I'm not qualified to speak _for_ this group. My father grew up in poverty as an orphan in Santurce but I didn't. What I know is secondhand. What I _do_ know is that they are the most exploited and the most disposable when infrastructure fails. Their story deserves a first-person voice.
 
 ## The Affluent (Los Apellidos)
 

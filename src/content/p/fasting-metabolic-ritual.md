@@ -24,9 +24,7 @@ showComments: true
 ## 🌄 From Hunger to Power: Fasting as a Metabolic Reset
 
 I fasted from 5:30 AM to 4:00 PM today. Not for aesthetics. Not for a trend.  
-I needed **clarity**. **Stillness**. **Dominion** over impulse.
-
-> _I'm not starving. I'm choosing._
+I needed **clarity**. **Stillness**. **Dominion** over impulse. I'm not starving. I'm choosing.
 
 ## 🧬 What Happens in the Body?
 

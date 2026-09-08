@@ -66,8 +66,6 @@ Without empathy, bias weaponizes judgment. And then we're not just wasting energ
 
 Marcus Aurelius said: "You have power over your mind — not outside events. Realize this, and you will find strength."
 
-> You have power over your mind — not outside events. Realize this, and you will find strength.
-
 Modern translation? Stop letting clowns in traffic and randos at the beach hijack your peace.
 
 Bias will always flare up. Judgment will always tempt. But empathy—that's the armor. That's how you walk through lifted trucks, blasting speakers, and clown-world nonsense without burning alive.

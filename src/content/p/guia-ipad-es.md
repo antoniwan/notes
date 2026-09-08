@@ -30,9 +30,7 @@ showComments: true
 
 En un mundo donde la tecnología digital penetra todos los aspectos de la vida, muchos padres se enfrentan a una difícil pregunta: ¿cómo permitimos que nuestros hijos accedan a las herramientas digitales sin exponerlos a los riesgos que conllevan?
 
-La respuesta no se encuentra en la prohibición total, sino en la preparación consciente. Esta guía no solo enseña a configurar un iPad para niños, sino que plantea una responsabilidad ética:
-
-> **Los niños no son responsables de su protección. Nosotros, los adultos, lo somos.**
+La respuesta no se encuentra en la prohibición total, sino en la preparación consciente. Esta guía no solo enseña a configurar un iPad para niños, sino que plantea una responsabilidad ética: los niños no son responsables de su protección. Nosotros, los adultos, lo somos.
 
 ---
 

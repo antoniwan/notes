@@ -35,17 +35,13 @@ My body is calm, lying unbothered in my bed. Nothing hurts. My health is with me
 
 I’ve learned to do hard things. I possess so few material objects, but I possess so much strength, agility, discipline, temperance, and willpower. I play basketball, box, do martial arts, or dance at least twice a week—keeping me young at heart, playful, competitive. My daughter loves our dance parties; we can dance for hours.
 
-I reassess:
-
-> Do I possess so little?
+I reassess: do I possess so little?
 
 Maybe materially, yes. But in every other way— I’m rich.
 
 I have so many tools. So much privilege in my experiences. I use mental abstractions to harness willpower, transmute anger, channel discomfort into growth. Sometimes, I just rest and chill—_guilt-free_.
 
-> Am I broken because I need so little?
-
-Or is our world broken for making us believe we need so much more than the basics—good food, good company, hugs, friendships, hobbies, time off, time to do nothing, time to learn shit that matters?
+Am I broken because I need so little? Or is our world broken for making us believe we need so much more than the basics—good food, good company, hugs, friendships, hobbies, time off, time to do nothing, time to learn shit that matters?
 
 I wonder if I’m broken because I don’t want to conquer the world. Or maybe… maybe I _am_ conquering my world. And that’s OK.
 

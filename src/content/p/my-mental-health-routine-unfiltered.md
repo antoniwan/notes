@@ -39,7 +39,7 @@ Here’s what’s keeping me mentally sharp, emotionally clean, and spiritually 
 
 ### Prompts for you
 
-> What’s your nervous system asking for right now? What small ritual makes you feel like yourself again? What would your 10-year-old self beg you to start doing again?
+What’s your nervous system asking for right now? What small ritual makes you feel like yourself again? What would your 10-year-old self beg you to start doing again?
 
 You don’t need to copy this list. Make it sacred. Make it yours. Do it with your full attention. **Let it change your life. BROOO!!!!!** (achieve an emotionally regulated nervous system)
 

@@ -22,14 +22,19 @@ published: true
 showComments: true
 ---
 
-> ## A Note Before We Begin
->
-> This essay might trigger you. If it does, please stop reading rather than lashing out at the messenger.
-> Let me be clear: I enjoyed my Universal Studios experience. My daughter loved it. We spent 9:30am to 5pm and only got on two rides - the second queue we waited in for over 40 minutes before the machine broke down right in front of us. I wish I was making this up for dramatic effect, but that's exactly what happened. My daughter still had a magical day, and I'm glad we went.
-> This essay is not about you or me personally. It's not about individual experiences or personal choices. It's not an attack on anyone who enjoys theme parks, fast food, or pre-recorded concerts. This is observational analysis - a report on systems and patterns that exist regardless of how any individual feels about them.
-> I'm not "flaunting about being better" or claiming moral superiority. I participate in these systems too. I've eaten the fast food, waited in the lines, enjoyed the algorithmic playlists. The point isn't to shame anyone for finding pleasure in these experiences - the point is to examine what these systems are doing to us collectively.
-> The fact that people derive genuine pleasure from these experiences doesn't invalidate the systemic critique. In fact, as you'll see, that pleasure is often part of the mechanism itself. We can acknowledge that something feels good while also examining what it's doing to us collectively.
-> So let's talk shop, shall we?
+## A Note Before We Begin
+
+This essay might trigger you. If it does, please stop reading rather than lashing out at the messenger.
+
+Let me be clear: I enjoyed my Universal Studios experience. My daughter loved it. We spent 9:30am to 5pm and only got on two rides - the second queue we waited in for over 40 minutes before the machine broke down right in front of us. I wish I was making this up for dramatic effect, but that's exactly what happened. My daughter still had a magical day, and I'm glad we went.
+
+This essay is not about you or me personally. It's not about individual experiences or personal choices. It's not an attack on anyone who enjoys theme parks, fast food, or pre-recorded concerts. This is observational analysis - a report on systems and patterns that exist regardless of how any individual feels about them.
+
+I'm not "flaunting about being better" or claiming moral superiority. I participate in these systems too. I've eaten the fast food, waited in the lines, enjoyed the algorithmic playlists. The point isn't to shame anyone for finding pleasure in these experiences - the point is to examine what these systems are doing to us collectively.
+
+The fact that people derive genuine pleasure from these experiences doesn't invalidate the systemic critique. In fact, as you'll see, that pleasure is often part of the mechanism itself. We can acknowledge that something feels good while also examining what it's doing to us collectively.
+
+So let's talk shop, shall we?
 
 ## The Moment of Recognition
 
@@ -104,8 +109,6 @@ This is psychological warfare (at the very least, psy-experimentation without di
 
 And here's the crucial part: it feels good. The algorithms are designed to provide genuine pleasure, real satisfaction, authentic-feeling discovery. Users love their Spotify recommendations, their Netflix suggestions, their Instagram feeds. The manipulation works precisely because it delivers actual enjoyment.
 
-> Users love their Spotify recommendations, their Netflix suggestions, their Instagram feeds. The manipulation works precisely because it delivers actual enjoyment.
-
 Social media amplifies this through manufactured herding behaviors. Phrases like "most popular," "best-selling," and "trending now" aren't descriptions - they're herding commands. Influencer marketing creates artificial social proof, while user-generated content provides free labor for corporate messaging. We've become unpaid employees in our own manipulation, and we love it.
 
 ## The Physical Infrastructure of Willing Compliance
@@ -160,7 +163,7 @@ Sound familiar? We pay to wait in lines for hours because it temporarily distrac
 
 The sheep machine exploits the same psychological vulnerabilities that drive clinical self-destruction: the desire "to feel something, especially if they feel numb or empty," "to block out painful memories or emotions," and "to release unpleasant emotions such as anger, hopelessness or depression."
 
-> BTW, whenever I bring this up in a group of normies, I will be attacked, I will trigger people, this topic is so touch-feely nasty, while we just should be objective and observe, and talk about what we see, experience, feel, think, a lot, plenty, we must talk about this shit!!
+BTW, whenever I bring this up in a group of normies, I will be attacked, I will trigger people, this topic is so touch-feely nasty, while we just should be objective and observe, and talk about what we see, experience, feel, think, a lot, plenty, we must talk about this shit!!
 
 But here's the crucial difference: clinical self-destructive behavior is recognized as harmful and treated. When it's recognized right? We know how this song and dance goes. But ironically, Corporate-induced self-destructive behavior is celebrated as consumer choice and economic participation. What?!
 

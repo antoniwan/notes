@@ -74,7 +74,7 @@ Cuando llega la temporada electoral, los profesionales asalariados están fritos
 
 Aproximadamente **22% de estos hogares paga recargos por pago tardío en tarjetas de crédito**. No son gente irresponsable. Son profesionales ahogándose en una estructura de costos hecha para desangrarlos poco a poco.
 
-> Yo fui uno de estos, pero lo colonizado en mí era demasiado fuerte, así que me fui a perseguir el billete al continente.
+Yo fui uno de estos, pero lo colonizado en mí era demasiado fuerte, así que me fui a perseguir el billete al continente.
 
 ## La clase del "welfare"
 
@@ -100,7 +100,7 @@ Cuando se va la luz, esta es la gente que muere primero.
 
 Por cierto: siete años después de María, Puerto Rico todavía no tiene un sistema integrado para identificar a las personas que dependen de la electricidad para sobrevivir.
 
-> No estoy calificado para hablar _por_ este grupo. Mi padre creció en pobreza como huérfano en Santurce, pero yo no. Lo que sé es de segunda mano. Lo que _sí_ sé es que son los más explotados y los más desechables cuando falla la infraestructura. Su historia merece una voz en primera persona.
+No estoy calificado para hablar _por_ este grupo. Mi padre creció en pobreza como huérfano en Santurce, pero yo no. Lo que sé es de segunda mano. Lo que _sí_ sé es que son los más explotados y los más desechables cuando falla la infraestructura. Su historia merece una voz en primera persona.
 
 ## Los acomodados (Los apellidos)
 
