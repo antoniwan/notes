@@ -262,7 +262,7 @@ Los boricuas discuten entre sí sobre por qué la gente se va. Cada quien tiene 
 
 Le dije al principio: si algo aquí le apretó el estómago, esa reacción es dato. ¿Qué va a hacer usted con eso?
 
-## **Fuentes**
+## Fuentes
 
 AP via Greeley Tribune. (2026, February 12). Puerto Rico governor signs law to recognize fetus as human being as critics warn of consequences. https://www.greeleytribune.com/2026/02/12/puerto-rico-pregnancies/
 

@@ -28,7 +28,7 @@ Then it said this: _"You write as if everyone shares your therapeutic insights a
 
 Holy fuck. I've become one of _those_ people.
 
-## **The Thing I'm Still Trying to Figure Out**
+## The Thing I'm Still Trying to Figure Out
 
 Eighteen years. That's how long this took. Twelve years of therapy on and off, then six years of intensive work — CBT, spiritual wrestling, physical loneliness, celibacy, burned bridges, relationships torched in the name of "growth."
 
@@ -40,7 +40,7 @@ But here's what's fucking with my head: This version of me — the one who's "do
 
 **So which is it? Am I better or worse? More honest or more insufferable?**
 
-## **The Question That Made My Stomach Drop**
+## The Question That Made My Stomach Drop
 
 The AI asked me: "Do you think you come across as humble?" And I wanted to say yes. I work on humility. I value it. I think about it.
 
@@ -54,7 +54,7 @@ I write like someone who's figured it out talking to people who haven't. Even wh
 
 **But here's what I don't understand:** How do you own what you've learned without sounding like you think you know everything? How do you share insights without talking down to people?
 
-## **What My Kids Are Teaching Me (That I Keep Forgetting, _and remembering..._)**
+## What My Kids Are Teaching Me (That I Keep Forgetting, _and remembering..._)
 
 My 5-year-old daughter doesn't give a shit about my psychological frameworks. When she's having a meltdown, telling her "feelings are temporary" is about as helpful as explaining quantum physics to a goldfish.
 
@@ -68,7 +68,7 @@ After all those years of therapy and isolation, my kids became my greatest teach
 
 **Why is it so hard to remember that confusion (knowledge-seeking) connects better than certainty?**
 
-## **The Stuff I'm Still Working Through**
+## The Stuff I'm Still Working Through
 
 I'm sitting here wondering: What else have I become unconscious of? Like, I used to get rage-filled when my therapist suggested my anger was a choice. I used to think boundaries were mean. I used to believe personal growth was navel-gazing bullshit for privileged people.
 
@@ -76,7 +76,7 @@ Now those insights feel obvious to me. **But they're not obvious.** They cost me
 
 **How do I write about what I've learned without forgetting what it cost to learn it?**
 
-## **What I'm Trying to Figure Out**
+## What I'm Trying to Figure Out
 
 Maybe the real question isn't "How do I stay humble?" but "How do I stay confused?" Because when I look at my best writing, it's not when I'm sharing answers. It's when I'm wrestling with questions in real time. Like that piece where I wrote ["You are joking, right?"](/p/you-are-joking-right) — catching myself dismissing someone's feelings and realizing I'd been doing it my whole life. That was me learning, not teaching. Discovering, not explaining.
 
@@ -84,7 +84,7 @@ Maybe the real question isn't "How do I stay humble?" but "How do I stay confuse
 
 **What if I led with confusion instead of conclusions?**
 
-## **The Part That Scares Me**
+## The Part That Scares Me
 
 This whole realization happened because I was open to feedback. But what if I hadn't been? What if I'd dismissed the AI's observation the way my father dismisses mine? What if my stepson rolls his eyes because I'm doing to him what I do to my readers — assuming insights that took me years to integrate should be obvious to a 20-year-old?
 
@@ -94,7 +94,7 @@ The scariest part isn't that I became unconscious. It's that unconsciousness fee
 
 **How many times have I been certain I was right while being completely wrong?**
 
-## **What I'm Thinking About Now**
+## What I'm Thinking About Now
 
 I don't want to throw away what I've learned. Those eighteen years weren't wasted. The insights are real. The growth matters. But maybe the point isn't to stop growing or to dumb down what I know. Maybe it's to remember that I'm still growing. That there's still more confusion ahead. (Kinda obvious, no?! 🙃)
 
@@ -102,7 +102,7 @@ I don't want to throw away what I've learned. Those eighteen years weren't waste
 
 What if the person reading this who thinks therapy is bullshit — what if they're me five years ago? What if instead of trying to convince them, I just... remember what it felt like to think that way? **What if instead of building bridges from my transformed self to their untransformed self, I built bridges from my current confusion to their current confusion?** Now I have very little clue what I'm referring to, but I'll figure it out, I need to keep asking questions and staying receptive.
 
-## **Questions I'm Sitting With**
+## Questions I'm Sitting With
 
 - Why do I assume my growth is obvious when it took me two decades to figure out?
 - How do I share what I've learned without forgetting what it was like to not know it?
@@ -110,7 +110,7 @@ What if the person reading this who thinks therapy is bullshit — what if they'
 - How do I write as a student instead of a teacher?
 - What would happen if I ended every post with questions instead of answers?
 
-## **What I'm Asking You**
+## What I'm Asking You
 
 If you've made it this far, maybe you see something I don't. Maybe you've become insufferable in your own transformation. Maybe you're rolling your eyes at me right now.
 

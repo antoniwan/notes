@@ -262,7 +262,7 @@ Boricuas argue with other boricuas about why people leave. Everyone has their mo
 
 I told you at the top: if something here tightened your stomach, that reaction is data. Now what are you going to do with it?
 
-## **Sources**
+## Sources
 
 AP via Greeley Tribune. (2026, February 12). Puerto Rico governor signs law to recognize fetus as human being as critics warn of consequences. https://www.greeleytribune.com/2026/02/12/puerto-rico-pregnancies/
 

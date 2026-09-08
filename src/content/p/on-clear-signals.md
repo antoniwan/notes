@@ -22,7 +22,7 @@ showComments: true
 
 This morning with a full house, kids running around, dogs being their honest mammal selves, Z doing Z things, all the usual chaos that makes the day feel like a day — I'm cooking, regulating one kid while answering the other, side-eyeing the dogs as they speak in posture and breath, thinking about my estranged 20-year-old stepson and his permanent silence… and suddenly something clicks.
 
-### **"Everything alive in this house gives me clean signals."**
+### "Everything alive in this house gives me clean signals."
 
 I've curated my environment — almost unknowingly — by setting up boundaries that protect my becoming.I’ve built a life around beings and contexts that give me clean signal. It’s the effortful thing to do, no?
 
@@ -34,7 +34,7 @@ The 2-year-old is instinct incarnate. Pure raw signal. My 5-year-old is sincerit
 
 So it's as if I'm not becoming healthier just because I'm doing the inner work (I am, but that's not the point) and I'm becoming healthier because the environment is honest enough that my real nature shows up without armor. An environemnt with clear signals lets my nervous system heal(?). There’s a loop, simple and undeniable for me:
 
-#### **clean signal → clean response → real connection**
+#### clean signal → clean response → real connection
 
 Now I can see how far that loop has spread through every corner of my life.
 

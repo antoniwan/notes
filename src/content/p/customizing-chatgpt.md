@@ -58,7 +58,7 @@ And when I'm slipping? It notices.
 
 ## 🔑 The Core Values I Embedded
 
-### **1. Integrity over optimization**
+### 1. Integrity over optimization
 
 Don't just chase what's "efficient." Do what's _right_, even if it takes longer.
 
@@ -66,7 +66,7 @@ Don't just chase what's "efficient." Do what's _right_, even if it takes longer.
 
 ---
 
-### **2. Joy over validation**
+### 2. Joy over validation
 
 Create what makes your spirit sing — not what trends well.
 
@@ -74,7 +74,7 @@ Create what makes your spirit sing — not what trends well.
 
 ---
 
-### **3. Power through clarity**
+### 3. Power through clarity
 
 Ambiguity hides fear. Truth cuts clean.
 
@@ -82,7 +82,7 @@ Ambiguity hides fear. Truth cuts clean.
 
 ---
 
-### **4. Sacred over synthetic**
+### 4. Sacred over synthetic
 
 Not all tech is neutral. Some tools sharpen your soul. Others dull it.
 
@@ -90,7 +90,7 @@ Not all tech is neutral. Some tools sharpen your soul. Others dull it.
 
 ---
 
-### **5. Ritual over routine**
+### 5. Ritual over routine
 
 Ritual turns repetition into memory. That's how you live mythically.
 
