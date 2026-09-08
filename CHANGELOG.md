@@ -7,6 +7,12 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.15.4] — 2026-09-08
+
+### Added
+
+- Kitchen tags (`recipes`, `cooking`, `food`) send you to the Cookbook. The tag page stays writings.
+
 ## [6.15.3] — 2026-09-08
 
 ### Changed

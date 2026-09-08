@@ -3,20 +3,23 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/PostCard.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import Container from '../../components/Container.astro';
+import CookbookNotice from '../../components/tag/CookbookNotice.astro';
 import { getCollection } from 'astro:content';
 import { tagMetaDescription } from '../../data/pageMeta';
+import { COOKBOOK_NOTICE_TAGS, tagHasCookbookNotice } from '../../data/tagCookbookNotice';
 import { getTagMetadata } from '../../data/tags';
 import { filterPostsByTag, getAllUniqueTags, getTagStatistics } from '../../utils/tagProcessing';
 import { canonicalizeTag } from '../../utils/tagVocabulary';
-import { isTagListedPost } from '../../utils/recipes';
+import { isCookbookListedPost, isTagListedPost } from '../../utils/recipes';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', (entry) => isTagListedPost(entry));
-  // Only build canonical tag pages that actually have posts.
-  // Alias URLs are permanent-redirected via astro.config redirects.
-  const tags = getAllUniqueTags(posts);
+  // Canonical tag pages with writings, plus kitchen doors that still need a
+  // Cookbook pointer even when no essay uses the tag.
+  const tags = new Set(getAllUniqueTags(posts));
+  for (const slug of COOKBOOK_NOTICE_TAGS) tags.add(slug);
 
-  return tags.map((tag) => ({
+  return [...tags].map((tag) => ({
     params: { tag },
     props: { tag },
   }));
@@ -31,6 +34,10 @@ const tagBlurb = tagMeta.description;
 const posts = await getCollection('blog', (entry) => isTagListedPost(entry));
 const { totalPosts, relatedTags } = getTagStatistics(canonicalTag, posts);
 const tagPosts = filterPostsByTag(posts, canonicalTag);
+const showCookbookNotice = tagHasCookbookNotice(canonicalTag);
+const cookbookCount = showCookbookNotice
+  ? (await getCollection('blog', (entry) => isCookbookListedPost(entry))).length
+  : 0;
 const seoDescription = tagMetaDescription(canonicalTag, totalPosts);
 ---
 
@@ -57,42 +64,53 @@ const seoDescription = tagMetaDescription(canonicalTag, totalPosts);
           </a>
         </div>
 
-        {/* Tag Statistics */}
-        <div class="mt-6 flex flex-wrap items-center gap-4">
-          <div
-            class="flex items-center gap-2 rounded-lg border border-[rgb(var(--color-accent))]/20 bg-[rgb(var(--color-accent))]/10 px-4 py-2"
-          >
-            <span class="text-base leading-relaxed font-medium text-[rgb(var(--color-accent))]">
-              {totalPosts === 1 ? `${totalPosts} writing` : `${totalPosts} writings`}
-            </span>
-          </div>
-
-          {
-            relatedTags.length > 0 && (
-              <div class="flex items-center gap-2 rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] px-4 py-2">
-                <span class="text-base leading-relaxed font-medium text-[rgb(var(--color-text))]">
-                  {relatedTags.length} related tags
-                </span>
-              </div>
-            )
-          }
-        </div>
-      </div>
-
-      {/* Tag Posts */}
-      <div class="space-y-6">
         {
-          tagPosts.length > 0 && (
-            <div class="mb-6 flex items-center justify-end">
-              <div class="text-body-muted text-base leading-relaxed">Newest first</div>
+          showCookbookNotice && (
+            <div class="mt-6">
+              <CookbookNotice recipeCount={cookbookCount} />
             </div>
           )
         }
 
-        <div class="postcards-grid grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
-          {tagPosts.map((post) => <PostCard post={post} featured={post.data.featured} />)}
-        </div>
+        {
+          (totalPosts > 0 || relatedTags.length > 0) && (
+            <div class="mt-6 flex flex-wrap items-center gap-4">
+              {totalPosts > 0 && (
+                <div class="flex items-center gap-2 rounded-lg border border-[rgb(var(--color-accent))]/20 bg-[rgb(var(--color-accent))]/10 px-4 py-2">
+                  <span class="text-base leading-relaxed font-medium text-[rgb(var(--color-accent))]">
+                    {totalPosts === 1 ? `${totalPosts} writing` : `${totalPosts} writings`}
+                  </span>
+                </div>
+              )}
+
+              {relatedTags.length > 0 && (
+                <div class="flex items-center gap-2 rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] px-4 py-2">
+                  <span class="text-base leading-relaxed font-medium text-[rgb(var(--color-text))]">
+                    {relatedTags.length} related tags
+                  </span>
+                </div>
+              )}
+            </div>
+          )
+        }
       </div>
+
+      {/* Tag Posts */}
+      {
+        tagPosts.length > 0 && (
+          <div class="space-y-6">
+            <div class="mb-6 flex items-center justify-end">
+              <div class="text-body-muted text-base leading-relaxed">Newest first</div>
+            </div>
+
+            <div class="postcards-grid grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+              {tagPosts.map((post) => (
+                <PostCard post={post} featured={post.data.featured} />
+              ))}
+            </div>
+          </div>
+        )
+      }
 
       {/* Related Tags */}
       {
@@ -116,7 +134,7 @@ const seoDescription = tagMetaDescription(canonicalTag, totalPosts);
 
       {/* Empty State */}
       {
-        tagPosts.length === 0 && (
+        tagPosts.length === 0 && !showCookbookNotice && (
           <div class="py-12 text-center">
             <div class="mx-auto max-w-md">
               <h3 class="text-subheading mb-2 text-[rgb(var(--color-text))]">No writings found</h3>

@@ -1,0 +1,33 @@
+---
+interface Props {
+  recipeCount: number;
+}
+
+const { recipeCount } = Astro.props;
+const countLabel = recipeCount === 1 ? '1 recipe' : `${recipeCount} recipes`;
+---
+
+<aside
+  class="theme-transition rounded-md border border-l-4 border-[rgb(var(--color-border))] border-l-[rgb(var(--color-primary))] bg-[rgb(var(--color-bg-alt))]/60 p-4 shadow-xs md:p-5"
+  aria-labelledby="tag-cookbook-heading"
+>
+  <h2
+    id="tag-cookbook-heading"
+    class="m-0 mb-2 font-sans text-sm font-semibold tracking-wide text-[rgb(var(--color-text))] uppercase"
+  >
+    Cookbook
+  </h2>
+  <div class="text-body-muted max-w-3xl space-y-3 text-[0.95rem] leading-relaxed">
+    <p class="m-0">
+      This room is writings about the kitchen. The dishes you can cook from live in the Cookbook,
+      listed as plates.
+    </p>
+  </div>
+  <a
+    href="/recipes"
+    class="btn-primary theme-transition mt-4 inline-flex min-h-11 items-center gap-2 rounded-full px-4 py-2 text-sm"
+  >
+    Open the Cookbook
+    <span class="tabular-nums opacity-80">({countLabel})</span>
+  </a>
+</aside>
