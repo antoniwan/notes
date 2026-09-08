@@ -7,8 +7,8 @@ Date: 2026-09-08. Scope: local article reading layouts and supporting controls.
 | Finding in the previous layout                                                                | Change                                                                                                                                                                                                   |
 | --------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Desktop title and description competed with metadata inside a narrow 25% sidebar.             | A single visible H1, description, date, reading time, and translation links now precede the hero at every width.                                                                                         |
-| A 450px hero cropped the image severely on phones and delayed the opening paragraph.          | Hero uses 16:10 below 768px and 16:9 above it.                                                                                                                                                           |
-| A sidebar appeared at 1024px, squeezing the reading column on landscape tablets.              | Single centered column below 1200px; a 224px navigation rail alongside a maximum 768px article above it. Prose remains capped at 68ch.                                                                   |
+| A 450px hero cropped the image severely on phones and delayed the opening paragraph.          | Hero uses 16:10 below 768px and 16:9 above it, with a 448px height cap on wider screens.                                                                                                                 |
+| A sidebar appeared at 1024px, squeezing the reading column on landscape tablets.              | Single column below 1200px; a 224px navigation rail alongside a fluid article above it, inside the shared 1400px site frame. Prose remains capped at 68ch.                                               |
 | Desktop contents required a floating popup. Mobile trigger and popup occupied opposite sides. | Persistent desktop section navigation; a left-aligned mobile/tablet panel with safe-area spacing.                                                                                                        |
 | Contents lacked focus management and reliable outside-click dismissal.                        | Focus moves to a section link on opening, returns on Escape/close, and moves to the reading destination after a jump. Active sections expose aria-current.                                               |
 | Metadata was verbose, and read-state feedback replaced the duration.                          | Compact linked topics, three initial categories with expansion, collapsed tags, and sharing below the details. Read status and duration coexist. Rich mobile metadata remains collapsed after the prose. |
@@ -16,6 +16,16 @@ Date: 2026-09-08. Scope: local article reading layouts and supporting controls.
 | Global prose clipping could cut off wide content and focus outlines.                          | Article-only overflow handling preserves focus outlines and gives tables/code horizontal scrolling.                                                                                                      |
 | Reading progress included comments, related posts, and the footer.                            | Progress measures the prose extent, recalculates after layout changes, and has exact endpoints. Existing read-state storage and the 75% marking threshold remain.                                        |
 | Local service-worker status overlapped mobile reading controls.                               | The development badge is hidden on article previews; floating reading controls account for safe-area insets.                                                                                             |
+
+## Alignment and sharing refinement
+
+The follow-up review identified an accidental staircase of nested margins. The article-specific outer width and grid centering have been removed. Header, breadcrumbs, and sidebar now share the same site gutter. Title, hero, and prose share the article column's start. The hero fills that column, while the text measure stays constrained.
+
+Horizontal separator rules have been removed from the sidebar, mobile details, and contents header. Prose section breaks retain semantic markup and use whitespace visually. The existing ornamental section marks remain.
+
+Article sharing now uses borderless DM Sans controls with a violet Copy link action and a Share disclosure. Destinations expand as text choices in normal flow. All controls retain 44px targets, Escape dismissal, and visible focus. Copy feedback reports the clipboard API outcome and shares the public canonical URL during localhost previews.
+
+Follow-up browser checks covered shared alignment at 390, 768, 1024, 1280, and 1440px, menu open/close behavior, keyboard Tab and Escape, copy feedback, canonical target URLs, and mobile dark mode. The in-app browser clipboard readback returned an empty value, so the OS clipboard contents were not independently verified.
 
 ## Implementation
 
@@ -40,7 +50,7 @@ Browser checks on localhost:4321:
 - English/Spanish navigation and localized contents controls.
 - Recipe duration remains omitted, and translation access is retained.
 - Technical article tables and code remain inside a 390px viewport with horizontal overflow available.
-- Expanded categories and tags remain accessible; the desktop share menu stays inside the rail, focuses an option, and restores focus on Escape.
+- Expanded categories and tags remain accessible; the desktop share choices remain inside the rail, are reached with Tab, and restore focus on Escape.
 
 Representative routes: `/p/captured-not-pathetic`, `/p/my-crimson-desert-review-after-200-hours`, `/p/presenting-vastitas-omniparens`, `/p/presentando-vastitas-omniparens`, and `/p/recipes/asopao-de-pollo-en`.
 

@@ -1,8 +1,8 @@
 ---
 title: Captured, Not Pathetic
-description: Everybody can be an alpha, apparently. I guess I'll be the last one underneath.
+description: Everybody can be an alpha, apparently. I guess I'll be the last inferior man.
 pubDate: '2026-09-07T18:00:00-04:00'
-updatedDate: '2026-09-08T12:10:00-04:00'
+updatedDate: '2026-09-08T13:10:00-04:00'
 language:
   - en
 heroImage: /images/2026/alphas.avif
@@ -34,7 +34,7 @@ published: true
 showComments: true
 ---
 
-Everybody can be an alpha, apparently, which makes me wonder what the word alpha is supposed to mean once every one of you gets there. I guess I'll be the last non-alpha, and the hierarchy will dictate that I be underneath all of y'all. That's how it works, no?
+Everybody can be an alpha, apparently, which makes me wonder what the word alpha is supposed to mean once every one of you gets there. I guess I'll be the last inferior man. That's how it works, no?
 
 As an offer or an ideal, though, it makes sense. Be the alpha. Are you the alpha in your life? Good for you, buddy! Who's to say I ain't? Or you aren't? The exceptional position can be promised to all of us because each of us is invited to imagine occupying it alone. The seller, whoever they are, gets a market: you, me, everybody else who falls for the promises. We get a possible future, an aspiration, and a title we can give ourselves. I've met so many "alphas" in my life, which is interesting and a little suspicious, because the sellers of this ideal have no need to distribute actual authority as widely as they distribute the promise of it. Or perhaps some of us are selling the idea to ourselves to compensate for something we feel we lack, with no outside seller involved.
 
