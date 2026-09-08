@@ -25,7 +25,7 @@ const PAGE_SEARCH_DATA = [
     type: 'page',
     id: 'cookbook',
     title: 'Cookbook',
-    description: 'Household recipes you can cook from',
+    description: 'Household dishes, listed by name',
     url: '/recipes',
   },
   {

@@ -7,6 +7,12 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.15.6] — 2026-09-08
+
+### Changed
+
+- Cookbook leads with the A–Z index. The plate grid comes after, and the intro names the kitchen instead of “Notes Recipes.”
+
 ## [6.15.5] — 2026-09-08
 
 ### Added

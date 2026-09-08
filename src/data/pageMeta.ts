@@ -18,7 +18,7 @@ export const PAGE_META = {
   '/library/books':
     'Searchable catalog of books in the Notes library, filterable by status, shelf, title, or author.',
   '/recipes':
-    'Household cookbook: recipes you can cook from, listed as plates and a contents page.',
+    'Dishes from this kitchen, listed by name, then as plates. Puerto Rican weeknights, breakfasts, and what we actually cook.',
   '/category':
     'Published notes grouped by category, including parenting, psychology, culture, and systems.',
   '/tag':
