@@ -134,10 +134,8 @@ const primaryCategory = categoryItems[0] || null;
       {/* Main Layout: Mobile-first, then 75/25 on desktop */}
       <div class="lg:grid lg:grid-cols-4 lg:gap-10 xl:gap-12">
         {/* Sidebar - Hidden on mobile, visible on desktop */}
-        <aside class="hidden lg:col-span-1 lg:block">
-          <div
-            class="scrollbar-subtle-y sticky top-6 max-h-[calc(100vh-2.5rem)] space-y-8 overflow-y-auto pt-6 pr-1.5"
-          >
+        <aside class="post-sidebar scrollbar-subtle-y hidden lg:col-span-1 lg:block">
+          <div class="post-sidebar__panel space-y-8 pr-1.5">
             {
               /* Visual title echo only — real H1 lives in PageHeader above.
                 Reuse PageHeader (as="p") so font/weight/tracking match mobile. */
@@ -493,6 +491,23 @@ const primaryCategory = categoryItems[0] || null;
   .sidebar-title-echo :global(.text-display) {
     font-size: clamp(1.35rem, 1.15rem + 0.55vw, 1.75rem);
     line-height: 1.25;
+  }
+
+  /*
+    Desktop: stay in the viewport below the sticky header while the article
+    scrolls. The panel scrolls on its own when taxonomy is taller than the
+    leftover viewport, instead of clipping under the header or past the fold.
+  */
+  @media (min-width: 1024px) {
+    .post-sidebar {
+      position: sticky;
+      top: calc(var(--site-header-height) + 0.75rem);
+      align-self: start;
+      max-height: calc(100dvh - var(--site-header-height) - 1.5rem);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      padding-bottom: 0.25rem;
+    }
   }
 </style>
 

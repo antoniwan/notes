@@ -18,7 +18,9 @@ const { searchData } = Astro.props;
   role="banner"
 >
   <Container padding="none">
-    <div class="flex h-16 items-center justify-between px-4 md:h-18 md:px-6 lg:px-8">
+    <div
+      class="flex h-[var(--site-header-height)] items-center justify-between px-4 md:px-6 lg:px-8"
+    >
       <!-- Logo and Primary Navigation -->
       <div class="flex items-center gap-6 md:gap-8">
         <Logo />

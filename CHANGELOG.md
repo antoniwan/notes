@@ -7,6 +7,12 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.13.2] — 2026-09-08
+
+### Fixed
+
+- Desktop post sidebar stays below the header while you read. Long tag lists scroll inside the sidebar instead of clipping off the screen.
+
 ## [6.13.1] — 2026-09-05
 
 ### Changed

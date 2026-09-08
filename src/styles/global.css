@@ -358,6 +358,15 @@
     --animation-easing-in: cubic-bezier(0.4, 0, 1, 1);
     --animation-easing-out: cubic-bezier(0, 0, 0.2, 1);
     --animation-easing-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Matches Header inner bar (h-16 / md:h-18). Sticky chrome uses this. */
+    --site-header-height: 4rem;
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      --site-header-height: 4.5rem;
+    }
   }
 
   .dark {
