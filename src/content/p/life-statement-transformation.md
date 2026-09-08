@@ -14,12 +14,8 @@ category:
 subcategory: Personal Development
 tags:
   - transformation
-  - self-reflection
   - authenticity
   - values
-  - healing
-  - metaspace
-  - purpose
 draft: false
 featured: false
 published: true

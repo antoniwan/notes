@@ -12,15 +12,11 @@ category:
 subcategory: Personal Reflection
 tags:
   - boundaries
-  - emotional-regulation
-  - self-reflection
-  - guilt
   - love
-  - attachment
   - parenting
+  - attachment
   - healing
-  - accountability
-  - responsibility
+  - emotional-regulation
 keywords:
   - boundaries
   - miscalibration

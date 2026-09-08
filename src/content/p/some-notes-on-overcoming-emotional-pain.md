@@ -10,13 +10,10 @@ category:
   - integration-growth
   - parenting
 tags:
-  - emotional-pain
   - healing
-  - personal-growth
-  - emotional-regulation
-  - resilience
   - co-parenting
   - parenting
+  - emotional-regulation
 draft: false
 featured: false
 published: true

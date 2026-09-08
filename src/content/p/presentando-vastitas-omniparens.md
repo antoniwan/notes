@@ -18,12 +18,8 @@ category:
 tags:
   - philosophy
   - meaning
-  - consciousness
-  - presence
-  - values
   - fatherhood
   - culture
-  - learning
 draft: false
 featured: false
 published: true

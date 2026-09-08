@@ -14,10 +14,6 @@ tags:
   - consciousness
   - philosophy
   - spirituality
-  - healing
-  - authenticity
-  - truth
-  - metaspace
 draft: false
 featured: false
 published: true

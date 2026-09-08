@@ -14,14 +14,8 @@ subcategory: Social Commentary
 tags:
   - politics
   - democracy
-  - social-issues
-  - consciousness
   - social-justice
-  - collective-healing
-  - philosophy
   - power
-  - responsibility
-  - metaspace
 draft: false
 featured: false
 published: true

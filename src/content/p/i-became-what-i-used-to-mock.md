@@ -14,13 +14,8 @@ category:
 tags:
   - self-reflection
   - transformation
-  - humility
   - therapy
-  - ego
-  - blind-spots
   - authenticity
-  - vulnerability
-  - metaspace
 draft: false
 featured: false
 published: true

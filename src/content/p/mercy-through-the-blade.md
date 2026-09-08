@@ -15,12 +15,8 @@ subcategory: Leadership
 tags:
   - leadership
   - authenticity
-  - truth
   - values
-  - responsibility
-  - discipline
   - power
-  - consciousness
 draft: false
 featured: true
 published: true

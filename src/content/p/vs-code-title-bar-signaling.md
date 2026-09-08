@@ -14,13 +14,7 @@ category:
 tags:
   - technology
   - productivity
-  - systems-strategy
-  - tools
-  - efficiency
   - software-development
-  - workflow
-  - customization
-  - learning-projects
 draft: false
 featured: false
 published: true

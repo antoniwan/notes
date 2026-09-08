@@ -13,12 +13,8 @@ category:
 subcategory: Philosophy
 tags:
   - personal-growth
-  - self-construction
   - learning
-  - self-reflection
-  - healing
   - authenticity
-  - metaspace
 draft: false
 featured: false
 published: true

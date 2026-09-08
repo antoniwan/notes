@@ -12,12 +12,7 @@ category:
 tags:
   - respect
   - relationships
-  - personal-growth
-  - psychology
-  - emotional-regulation
   - boundaries
-  - self-reflection
-  - healing
   - authenticity
 draft: false
 featured: false

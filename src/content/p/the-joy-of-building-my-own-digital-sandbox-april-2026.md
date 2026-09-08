@@ -18,14 +18,9 @@ category:
   - art-expression
 tags:
   - technology
-  - astro
-  - typescript
-  - web-development
-  - ai
-  - ai-agents
   - software-development
+  - ai-agents
   - craftsmanship
-  - creativity
 draft: false
 featured: true
 published: true

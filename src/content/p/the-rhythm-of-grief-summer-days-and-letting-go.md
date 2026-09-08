@@ -14,16 +14,10 @@ category:
 tags:
   - parenting
   - co-parenting
-  - grief
-  - family-dynamics
-  - emotional-pain
-  - healing
-  - resilience
-  - love
   - fatherhood
-  - children
-  - family
-  - emotional-regulation
+  - grief
+  - healing
+  - love
 draft: false
 featured: true
 published: true

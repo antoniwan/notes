@@ -11,17 +11,10 @@ category:
   - parenting
   - integration-growth
 tags:
-  - parenting
   - fatherhood
+  - parenting
   - presence
   - time
-  - connection
-  - patience
-  - family-dynamics
-  - conscious-parenting
-  - social-media
-  - digital-detox
-  - slow-living
   - ritual
 draft: false
 featured: true

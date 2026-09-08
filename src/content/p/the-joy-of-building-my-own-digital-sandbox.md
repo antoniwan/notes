@@ -15,16 +15,9 @@ category:
   - art-expression
 tags:
   - technology
-  - astro
-  - typescript
-  - web-development
-  - open-source
-  - systems-strategy
-  - art-expression
   - metaspace
-  - coding
-  - digital-art
   - craftsmanship
+  - art-expression
 draft: false
 featured: false
 published: true

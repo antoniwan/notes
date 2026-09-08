@@ -14,15 +14,9 @@ category:
 tags:
   - technology
   - politics
-  - social-issues
-  - truth
   - social-justice
   - systemic-critique
-  - fear
   - power
-  - freedom
-  - digital-safety
-  - technology-policy
 draft: false
 featured: true
 published: true

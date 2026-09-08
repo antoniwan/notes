@@ -10,13 +10,11 @@ category:
   - art-expression
   - parenting
 tags:
-  - poem
+  - poems
   - fatherhood
   - presence
   - love
   - family
-  - bilingual
-  - personal-growth
 draft: false
 featured: true
 published: true

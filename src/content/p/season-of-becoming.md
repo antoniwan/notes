@@ -13,12 +13,6 @@ category:
 tags:
   - authenticity
   - transformation
-  - embodiment
-  - integration
-  - self-reflection
-  - vulnerability
-  - performance
-  - truth
   - presence
 draft: false
 featured: true

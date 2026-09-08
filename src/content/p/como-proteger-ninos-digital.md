@@ -19,11 +19,6 @@ tags:
   - digital-safety
   - technology
   - family
-  - conscious-parenting
-  - child-development
-  - social-issues
-  - education
-  - family-dynamics
   - puerto-rico
 draft: false
 featured: false

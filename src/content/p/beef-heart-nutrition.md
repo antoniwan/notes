@@ -16,8 +16,7 @@ subcategory: Nutrition
 tags:
   - nutrition
   - cooking
-  - learning-projects
-  - micronutrients
+  - food
 draft: false
 featured: false
 published: true

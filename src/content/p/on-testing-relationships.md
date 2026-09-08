@@ -15,12 +15,7 @@ tags:
   - relationships
   - trust
   - vulnerability
-  - self-reflection
-  - mental-health
   - authenticity
-  - trauma
-  - connection
-  - intimacy
 draft: false
 featured: false
 published: true

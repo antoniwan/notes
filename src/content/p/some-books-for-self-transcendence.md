@@ -12,14 +12,9 @@ category:
   - psychology
 tags:
   - books
-  - self-transcendence
   - consciousness
-  - learning
-  - philosophy
   - spirituality
   - transformation
-  - healing
-  - metaspace
 draft: false
 featured: false
 published: true

@@ -13,9 +13,6 @@ tags:
   - analysis-paralysis
   - mental-health
   - decision-making
-  - mindfulness
-  - self-improvement
-  - emotional-regulation
 draft: false
 featured: false
 published: true

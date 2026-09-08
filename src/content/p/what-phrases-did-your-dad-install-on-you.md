@@ -19,9 +19,6 @@ tags:
   - parenting
   - family
   - identity
-  - children
-  - self-reflection
-  - integration
   - puerto-rico
 draft: false
 featured: false

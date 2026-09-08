@@ -18,8 +18,8 @@ tags:
   - cooking
   - food
   - family
+  - puerto-rico
   - personal-growth
-  - habits
   - values
 draft: false
 featured: true

@@ -15,9 +15,6 @@ tags:
   - values
   - authenticity
   - freedom
-  - self-reflection
-  - healing
-  - metaspace
 draft: false
 featured: false
 published: true

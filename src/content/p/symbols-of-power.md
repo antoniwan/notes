@@ -15,16 +15,10 @@ category:
   - art-expression
 subcategory: Philosophy
 tags:
-  - symbols
   - mythology
   - power
-  - psychology
-  - art-expression
   - identity
-  - healing
-  - consciousness
-  - self-expression
-  - metaspace
+  - art-expression
 draft: false
 featured: true
 published: true

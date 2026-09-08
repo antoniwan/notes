@@ -17,15 +17,8 @@ category:
   - integration-growth
 tags:
   - economics
-  - corruption
   - values
-  - integrity
-  - capitalism
-  - exploitation
   - systemic-critique
-  - social-issues
-  - responsibility
-  - systems-strategy
   - puerto-rico
   - power
 draft: false

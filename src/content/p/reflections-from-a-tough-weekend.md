@@ -11,11 +11,8 @@ category:
   - psychology
 tags:
   - reflection
-  - self-reflection
-  - personal-growth
   - healing
-  - emotional-regulation
-  - resilience
+  - personal-growth
 draft: false
 featured: false
 published: true

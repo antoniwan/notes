@@ -14,16 +14,9 @@ subcategory: Memoir
 tags:
   - memoir
   - puerto-rico
-  - colonialism
   - economics
-  - governance
-  - healthcare
-  - education
-  - corruption
   - diaspora
-  - sovereignty
-  - gentrification
-  - activism
+  - colonialism
 draft: false
 featured: true
 published: true

@@ -11,18 +11,12 @@ category:
   - culture
   - integration-growth
 tags:
-  - dignity
-  - social-issues
-  - compassion
   - values
-  - social-justice
-  - systemic-critique
   - politics
   - culture
-  - collective-healing
-  - revolution
-  - love
+  - social-justice
   - freedom
+  - love
 featured: true
 published: true
 showComments: true

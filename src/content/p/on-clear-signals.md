@@ -13,13 +13,7 @@ tags:
   - relationships
   - boundaries
   - communication
-  - self-reflection
-  - clarity
-  - honesty
-  - energy-conservation
-  - ambiguity
   - presence
-  - letting-go
 draft: false
 featured: true
 published: true

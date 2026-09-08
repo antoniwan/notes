@@ -13,8 +13,6 @@ tags:
   - self-control
   - discipline
   - mental-health
-  - consciousness
-  - emotional-regulation
 draft: false
 featured: false
 published: true

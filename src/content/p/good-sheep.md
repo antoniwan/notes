@@ -12,17 +12,10 @@ category:
   - culture
   - psychology
 tags:
-  - consumerism
-  - corporate-manipulation
-  - cultural-critique
-  - psychology
-  - systems
-  - exploitation
-  - capitalism
+  - culture
   - economics
-  - conditioning
-  - social-critique
-  - behavioral-economics
+  - psychology
+  - systemic-critique
 draft: false
 featured: true
 published: true

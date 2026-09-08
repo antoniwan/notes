@@ -18,9 +18,7 @@ category:
 tags:
   - technology
   - git
-  - version-control
   - ai-agents
-  - workflow
   - critical-thinking
 keywords:
   - git

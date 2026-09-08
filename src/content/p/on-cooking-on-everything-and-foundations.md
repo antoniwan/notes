@@ -16,8 +16,6 @@ category:
 tags:
   - cooking
   - foundations
-  - learning-projects
-  - consciousness
   - personal-growth
 draft: false
 featured: false

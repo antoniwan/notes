@@ -13,12 +13,7 @@ category:
 tags:
   - tools
   - productivity
-  - systems-strategy
-  - learning-projects
-  - efficiency
-  - consciousness
-  - mastery
-  - workflow
+  - technology
 draft: false
 featured: false
 published: true

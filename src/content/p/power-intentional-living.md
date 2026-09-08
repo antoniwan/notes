@@ -14,12 +14,8 @@ category:
 subcategory: Personal Development
 tags:
   - power
-  - intentional-living
   - consciousness
   - authenticity
-  - transformation
-  - purpose
-  - healing
 draft: false
 featured: false
 published: true

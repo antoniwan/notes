@@ -12,12 +12,7 @@ category:
   - integration-growth
 tags:
   - empathy
-  - psychology
-  - mental-health
-  - emotional-regulation
   - boundaries
-  - personal-growth
-  - self-reflection
   - relationships
 draft: false
 featured: false

@@ -16,14 +16,8 @@ subcategory: AI
 tags:
   - technology
   - ai
-  - productivity
   - tools
-  - systems-strategy
-  - learning-projects
-  - efficiency
   - software-development
-  - workflow
-  - customization
 draft: false
 featured: false
 published: true

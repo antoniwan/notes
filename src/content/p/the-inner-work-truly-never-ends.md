@@ -14,7 +14,8 @@ category:
 tags:
   - inner-work
   - therapy
-  - metaspace
+  - authenticity
+  - values
 draft: false
 featured: false
 published: true

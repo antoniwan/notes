@@ -17,8 +17,6 @@ tags:
   - authenticity
   - writing
   - vulnerability
-  - metaspace
-  - emotional-regulation
 draft: false
 featured: false
 published: true

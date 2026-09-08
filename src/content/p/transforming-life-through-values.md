@@ -17,10 +17,6 @@ tags:
   - values
   - therapy
   - family
-  - habits
-  - accountability
-  - authenticity
-  - responsibility
   - transformation
 draft: false
 featured: false

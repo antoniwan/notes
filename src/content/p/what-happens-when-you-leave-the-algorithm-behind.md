@@ -11,11 +11,8 @@ category:
   - integration-growth
 tags:
   - technology
-  - consciousness
   - social-media
-  - mental-health
-  - personal-growth
-  - social-issues
+  - consciousness
 draft: false
 featured: false
 published: true

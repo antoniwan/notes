@@ -17,12 +17,8 @@ category:
 tags:
   - parenting
   - fatherhood
-  - conscious-parenting
-  - philosophy
   - culture
-  - learning
   - values
-  - systemic-critique
 draft: false
 featured: true
 published: true

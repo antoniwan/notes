@@ -21,9 +21,6 @@ tags:
   - presence
   - fatherhood
   - joy
-  - reflection
-  - meditation
-  - values
 draft: false
 featured: false
 published: true

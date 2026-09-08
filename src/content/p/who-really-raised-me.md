@@ -16,17 +16,10 @@ category:
   - parenting
   - psychology
 tags:
-  - childhood
-  - family
   - identity
   - values
-  - anime
-  - cartoons
-  - fictional-characters
-  - mentorship
-  - one-punch-man
-  - dragon-ball
-  - berserk
+  - family
+  - culture
 draft: false
 featured: true
 published: true

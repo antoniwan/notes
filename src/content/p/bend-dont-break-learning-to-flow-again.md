@@ -14,12 +14,8 @@ category:
 subcategory: Personal Transformation
 tags:
   - healing
-  - self-reflection
   - trauma
-  - emotional-regulation
   - presence
-  - resilience
-  - adaptability
   - vulnerability
 draft: false
 featured: false

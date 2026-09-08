@@ -9,17 +9,10 @@ category:
   - integration-growth
   - parenting
 tags:
-  - notifications
   - social-media
-  - doom-scrolling
   - presence
-  - digital-wellness
   - parenting
-  - attention
-  - habits
   - technology
-  - mental-health
-  - self-reflection
 draft: false
 featured: true
 published: true

@@ -14,10 +14,7 @@ category:
 tags:
   - simplicity
   - mindfulness
-  - mental-health
-  - personal-growth
   - inner-peace
-  - contentment
 draft: false
 featured: false
 published: true

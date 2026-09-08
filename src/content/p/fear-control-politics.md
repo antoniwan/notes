@@ -16,12 +16,8 @@ subcategory: Psychology
 tags:
   - politics
   - fear
-  - control
-  - mental-health
-  - social-issues
-  - collective-healing
-  - consciousness
   - social-justice
+  - power
 draft: false
 featured: false
 published: true

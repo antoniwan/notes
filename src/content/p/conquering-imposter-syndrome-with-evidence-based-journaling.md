@@ -15,7 +15,6 @@ tags:
   - imposter-syndrome
   - mental-health
   - self-reflection
-  - emotional-regulation
   - self-improvement
 draft: false
 featured: false

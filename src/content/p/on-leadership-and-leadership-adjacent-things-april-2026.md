@@ -18,16 +18,8 @@ category:
 subcategory: Leadership
 tags:
   - leadership
-  - sacrifice
   - responsibility
   - parenting
-  - household-labor
-  - cognitive-load
-  - institutions
-  - work
-  - servant-leadership
-  - self-leadership
-  - empowerment
   - family
 draft: false
 featured: true

@@ -15,15 +15,8 @@ category:
 tags:
   - consciousness
   - technology
-  - social-issues
-  - mental-health
   - meaning
-  - purpose
-  - truth
-  - freedom
-  - collective-healing
-  - emotional-health
-  - philosophy
+  - social-issues
 draft: false
 featured: true
 published: true

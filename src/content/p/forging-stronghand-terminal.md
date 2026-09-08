@@ -12,15 +12,9 @@ category:
   - systems-strategy
   - learning-projects
 tags:
-  - systems-strategy
-  - productivity
   - technology
   - tools
-  - efficiency
-  - workflow
-  - learning-projects
   - software-development
-  - customization
 draft: false
 featured: false
 published: true

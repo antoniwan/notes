@@ -20,10 +20,7 @@ tags:
   - politics
   - systemic-critique
   - power
-  - mythology
   - identity
-  - social-media
-  - philosophy
 draft: false
 featured: true
 published: true

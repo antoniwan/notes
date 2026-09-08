@@ -13,8 +13,6 @@ tags:
   - mental-health
   - emotional-regulation
   - mindfulness
-  - resilience
-  - self-improvement
 draft: false
 featured: false
 published: true

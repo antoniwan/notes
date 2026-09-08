@@ -17,14 +17,8 @@ subcategory: Emotional Education
 tags:
   - parenting
   - children
-  - sexuality
-  - education
   - family
-  - conscious-parenting
-  - child-development
-  - social-issues
-  - family-dynamics
-  - consciousness
+  - sexuality
 draft: false
 featured: false
 published: true

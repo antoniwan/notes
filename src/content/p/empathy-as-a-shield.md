@@ -12,16 +12,8 @@ category:
   - metaspace
 tags:
   - empathy
-  - psychology
-  - mental-health
   - emotional-regulation
   - self-reflection
-  - bias
-  - judgment
-  - inner-peace
-  - emotional-intelligence
-  - resilience
-  - stoicism
 draft: false
 featured: true
 published: true

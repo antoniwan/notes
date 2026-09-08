@@ -13,11 +13,6 @@ tags:
   - personal-growth
   - meaning
   - limits
-  - self-reflection
-  - philosophy
-  - metaspace
-  - healing
-  - purpose
 draft: false
 featured: false
 published: true

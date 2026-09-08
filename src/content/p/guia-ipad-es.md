@@ -19,13 +19,7 @@ tags:
   - technology
   - parenting
   - children
-  - education
-  - family
   - digital-safety
-  - conscious-parenting
-  - tools
-  - learning
-  - family-dynamics
 draft: false
 featured: false
 published: true

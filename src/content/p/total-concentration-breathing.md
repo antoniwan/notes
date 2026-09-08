@@ -13,10 +13,7 @@ category:
 tags:
   - breathing
   - mindfulness
-  - mental-health
-  - self-care
   - meditation
-  - self-improvement
 draft: false
 featured: false
 published: true

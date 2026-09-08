@@ -16,13 +16,7 @@ tags:
   - spirituality
   - atheism
   - meaning
-  - humanism
-  - philosophy
   - consciousness
-  - identity
-  - values
-  - purpose
-  - existentialism
 draft: false
 featured: false
 published: true

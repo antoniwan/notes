@@ -13,14 +13,8 @@ category:
 tags:
   - intelligence
   - empathy
-  - restraint
-  - responsibility
   - power
-  - self-mastery
-  - emotional-intelligence
-  - communication
   - relationships
-  - philosophy
 draft: false
 featured: false
 published: true

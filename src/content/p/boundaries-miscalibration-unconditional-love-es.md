@@ -12,15 +12,11 @@ category:
 subcategory: Reflexión Personal
 tags:
   - límites
-  - regulación-emocional
-  - auto-reflexión
-  - culpa
   - amor
-  - apego
   - crianza
+  - apego
   - sanación
-  - responsabilidad
-  - accountability
+  - regulación-emocional
 keywords:
   - límites
   - descalibración

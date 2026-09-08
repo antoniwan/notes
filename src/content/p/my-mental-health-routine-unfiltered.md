@@ -12,9 +12,6 @@ category:
 tags:
   - mental-health
   - self-care
-  - consciousness
-  - emotional-regulation
-  - self-improvement
   - routine
 draft: false
 featured: false

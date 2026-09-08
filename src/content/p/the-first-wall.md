@@ -13,14 +13,9 @@ category:
 tags:
   - fatherhood
   - parenting
-  - vulnerability
-  - personal-growth
-  - self-reflection
   - family
-  - children
   - limits
-  - healing
-  - family-dynamics
+  - vulnerability
 draft: false
 featured: true
 published: true

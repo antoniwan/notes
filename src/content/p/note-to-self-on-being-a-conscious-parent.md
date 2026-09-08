@@ -12,14 +12,9 @@ category:
   - psychology
 tags:
   - parenting
-  - conscious-parenting
   - family
   - children
   - personal-growth
-  - self-reflection
-  - family-dynamics
-  - responsibility
-  - healing
 draft: false
 featured: false
 published: true

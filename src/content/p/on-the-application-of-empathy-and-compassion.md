@@ -14,13 +14,8 @@ category:
 tags:
   - empathy
   - compassion
-  - personal-growth
-  - psychology
-  - emotional-regulation
   - relationships
   - healing
-  - self-reflection
-  - authenticity
 draft: false
 featured: true
 published: true

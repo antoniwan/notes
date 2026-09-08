@@ -13,10 +13,8 @@ category:
 subcategory: Health
 tags:
   - fasting
-  - health
-  - consciousness
   - ritual
-  - personal-growth
+  - consciousness
 draft: false
 featured: false
 published: true

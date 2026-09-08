@@ -11,18 +11,12 @@ category:
   - culture
   - integration-growth
 tags:
-  - dignidad
-  - sociedad
-  - compasión
   - valores
-  - justicia-social
-  - crítica-sistémica
   - política
   - cultura
-  - sanación-colectiva
-  - revolución
-  - amor
+  - justicia-social
   - libertad
+  - amor
 draft: false
 featured: false
 published: true

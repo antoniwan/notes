@@ -15,8 +15,6 @@ tags:
   - self-control
   - mental-health
   - serenity
-  - consciousness
-  - emotional-regulation
   - discipline
 draft: false
 featured: false

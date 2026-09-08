@@ -13,15 +13,9 @@ tags:
   - love
   - revolution
   - politics
-  - fear
   - parenting
   - healing
   - values
-  - empathy
-  - presence
-  - radical-love
-  - political-awakening
-  - love-as-resistance
 draft: false
 featured: true
 published: true

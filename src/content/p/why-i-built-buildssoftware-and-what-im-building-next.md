@@ -11,15 +11,9 @@ category:
   - learning-projects
   - diy-creation
 tags:
-  - software
   - technology
-  - systems-strategy
-  - learning-projects
-  - productivity
   - software-development
-  - consciousness
   - personal-growth
-  - workflow
 draft: false
 featured: false
 published: true

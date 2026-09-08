@@ -18,10 +18,6 @@ tags:
   - parenting
   - children
   - family
-  - learning
-  - conscious-parenting
-  - child-development
-  - family-dynamics
 draft: false
 featured: false
 published: true

@@ -14,16 +14,9 @@ subcategory: Memoria
 tags:
   - memoir
   - puerto-rico
-  - colonialism
   - economics
-  - governance
-  - healthcare
-  - education
-  - corruption
   - diaspora
-  - sovereignty
-  - gentrification
-  - activism
+  - colonialism
 draft: false
 featured: false
 published: true

@@ -13,9 +13,6 @@ tags:
   - self-reflection
   - authenticity
   - healing
-  - transformation
-  - metaspace
-  - purpose
 draft: false
 featured: false
 published: true
