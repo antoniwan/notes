@@ -48,7 +48,7 @@
     },
     {
       "id": "captured-not-pathetic",
-      "bodyLength": 18865,
+      "bodyLength": 18802,
       "pubDate": "2026-09-07T22:00:00.000Z"
     },
     {
@@ -654,9 +654,12 @@
       "writingAsTool": false,
       "recursiveThinking": false,
       "sentiment": {
-        "score": 3,
-        "comparative": 0.030927835051546393,
+        "score": -1,
+        "comparative": -0.010309278350515464,
         "calculation": [
+          {
+            "alone": -2
+          },
           {
             "promised": 1
           },
@@ -665,6 +668,9 @@
           },
           {
             "no": -1
+          },
+          {
+            "inferior": -2
           }
         ],
         "tokens": [
@@ -699,19 +705,8 @@
           "be",
           "the",
           "last",
-          "non-alpha",
-          "and",
-          "the",
-          "hierarchy",
-          "will",
-          "dictate",
-          "that",
-          "i",
-          "be",
-          "underneath",
-          "all",
-          "of",
-          "y'all",
+          "inferior",
+          "man",
           "that's",
           "how",
           "it",
@@ -764,19 +759,34 @@
           "of",
           "us",
           "is",
-          "invited"
+          "invited",
+          "to",
+          "imagine",
+          "occupying",
+          "it",
+          "alone",
+          "the",
+          "seller",
+          "whoever",
+          "they",
+          "are",
+          "ge"
         ],
         "words": [
+          "alone",
           "promised",
           "good",
-          "no"
+          "no",
+          "inferior"
         ],
         "positive": [
           "promised",
           "good"
         ],
         "negative": [
-          "no"
+          "alone",
+          "no",
+          "inferior"
         ]
       }
     },
