@@ -7,6 +7,12 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.15.3] — 2026-09-08
+
+### Changed
+
+- Homepage **Browse topics** goes to the tag map, not categories.
+
 ## [6.15.2] — 2026-09-08
 
 ### Changed
