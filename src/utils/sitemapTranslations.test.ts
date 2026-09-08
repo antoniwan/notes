@@ -26,9 +26,9 @@ describe('getSitemapLastmodByUrl', () => {
     expect(lastmodByUrl.get(url)?.toISOString()).toBe('2026-02-27T16:00:00.000Z');
   });
 
-  it('falls back to pubDate when updatedDate is absent', () => {
+  it('uses updatedDate for Vastitas ES when present', () => {
     const url = sitemapPageUrl('/p/presentando-vastitas-omniparens');
-    expect(lastmodByUrl.get(url)?.toISOString()).toBe('2026-07-27T13:45:00.000Z');
+    expect(lastmodByUrl.get(url)?.toISOString()).toBe('2026-09-05T20:40:00.000Z');
   });
 
   it('uses nested content paths as post ids', () => {
