@@ -9,6 +9,7 @@ import { SITE_URL } from './src/consts';
 import { remarkReadingTime } from './remark-reading-time.mjs';
 import { remarkDemoteMarkdownH1 } from './src/utils/remarkDemoteMarkdownH1.mjs';
 import { remarkPostSectionBreak } from './src/utils/remarkPostSectionBreak.mjs';
+import { rehypeWrapTables } from './src/utils/rehypeWrapTables.mjs';
 import { buildSeoRedirects, shouldIncludeInSitemap } from './src/utils/seoRouting';
 import { indexNowIntegration } from './src/utils/indexNow';
 import {
@@ -121,6 +122,7 @@ export default defineConfig({
     },
     processor: unified({
       remarkPlugins: [remarkReadingTime, remarkDemoteMarkdownH1, remarkPostSectionBreak],
+      rehypePlugins: [rehypeWrapTables],
       gfm: true,
       smartypants: true,
     }),

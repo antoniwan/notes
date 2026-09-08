@@ -307,6 +307,16 @@ export default {
               padding: '0.75rem 1rem',
               borderBottom: '1px solid rgb(var(--color-border))',
             },
+            // Typography flushes first/last cells to the measure. Bordered
+            // essay tables need that padding back (DEFAULT + prose-lg).
+            'thead th:first-child': { paddingInlineStart: '1.5rem' },
+            'thead th:last-child': { paddingInlineEnd: '1.5rem' },
+            'tbody td:first-child, tfoot td:first-child': {
+              paddingInlineStart: '1.5rem',
+            },
+            'tbody td:last-child, tfoot td:last-child': {
+              paddingInlineEnd: '1.5rem',
+            },
             img: {
               marginTop: '2rem',
               marginBottom: '2rem',
@@ -327,6 +337,18 @@ export default {
               fontSize: '0.875em',
               marginTop: '0.5rem',
               textAlign: 'center',
+            },
+          },
+        },
+        lg: {
+          css: {
+            'thead th:first-child': { paddingInlineStart: '1.5rem' },
+            'thead th:last-child': { paddingInlineEnd: '1.5rem' },
+            'tbody td:first-child, tfoot td:first-child': {
+              paddingInlineStart: '1.5rem',
+            },
+            'tbody td:last-child, tfoot td:last-child': {
+              paddingInlineEnd: '1.5rem',
             },
           },
         },

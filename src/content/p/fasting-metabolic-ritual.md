@@ -51,7 +51,7 @@ I needed **clarity**. **Stillness**. **Dominion** over impulse.
 - **Gratitude**: Earning your meal
 - **Presence**: Each breath matters
 
-## 🍽️ Post-Fast Ritual: _Ground + Flow_
+## 🍽️ Post-Fast Ritual: Ground + Flow
 
 I broke the fast with a ritual meal. Full recipe and protocol here:  
 👉 [Fasting Ritual: Ground + Flow](/blog/fasting-ground-flow)

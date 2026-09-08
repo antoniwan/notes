@@ -7,6 +7,18 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.15.7] — 2026-09-08
+
+### Fixed
+
+- Essay tables keep padding on the first and last columns. Typography had been flushing those cells to the border.
+- Wide tables scroll sideways instead of squeezing every column into the measure.
+- On this page labels and essay headings no longer leak leftover `**` or `_` from markdown emphasis.
+
+### Changed
+
+- Post blockquotes no longer add a second pair of quotation marks around the quoted line.
+
 ## [6.15.6] — 2026-09-08
 
 ### Changed

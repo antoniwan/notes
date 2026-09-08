@@ -54,7 +54,7 @@ I write like someone who's figured it out talking to people who haven't. Even wh
 
 **But here's what I don't understand:** How do you own what you've learned without sounding like you think you know everything? How do you share insights without talking down to people?
 
-## What My Kids Are Teaching Me (That I Keep Forgetting, _and remembering..._)
+## What My Kids Are Teaching Me (That I Keep Forgetting, and remembering...)
 
 My 5-year-old daughter doesn't give a shit about my psychological frameworks. When she's having a meltdown, telling her "feelings are temporary" is about as helpful as explaining quantum physics to a goldfish.
 

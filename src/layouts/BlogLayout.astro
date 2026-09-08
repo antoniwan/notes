@@ -415,7 +415,8 @@ const isSpanish = contentLanguage.contentLanguage === 'es';
   .post-article :global(.post-prose) {
     max-width: 68ch !important;
     margin-inline: 0 !important;
-    overflow: visible !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
     display: flow-root;
     font-size: clamp(1.125rem, 1.025rem + 0.35vw, 1.25rem);
     line-height: 1.8;
@@ -446,7 +447,7 @@ const isSpanish = contentLanguage.contentLanguage === 'es';
     scroll-margin-top: calc(var(--site-header-height) + 1.5rem);
   }
 
-  .post-article :global(.post-prose :is(table, pre)) {
+  .post-article :global(.post-prose pre) {
     display: block;
     max-width: 100%;
     overflow-x: auto;
@@ -454,7 +455,53 @@ const isSpanish = contentLanguage.contentLanguage === 'es';
   }
 
   .post-article :global(.post-prose table) {
+    display: table;
+    width: 100%;
+    max-width: none;
+    overflow: visible;
     font-size: 0.9em;
+    overflow-wrap: normal;
+  }
+
+  .post-article :global(.post-prose .table-scroll) {
+    max-width: 100%;
+    margin-block: 2rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .post-article :global(.post-prose .table-scroll table) {
+    margin: 0;
+    width: max-content;
+    min-width: 100%;
+    overflow: visible;
+  }
+
+  .post-article :global(.post-prose :is(thead, tbody, tfoot, tr, th, td)) {
+    max-width: none;
+  }
+
+  .post-article :global(.post-prose th) {
+    text-transform: none;
+    letter-spacing: -0.02em;
+  }
+
+  .post-article :global(.post-prose :is(th, td)) {
+    padding-block: 0.7rem;
+    padding-inline: 1rem;
+  }
+
+  .post-article :global(.post-prose :is(th, td):first-child) {
+    padding-inline-start: 1.5rem;
+  }
+
+  .post-article :global(.post-prose :is(th, td):last-child) {
+    padding-inline-end: 1.5rem;
+  }
+
+  .post-article :global(.post-prose td:first-child) {
+    font-weight: inherit;
   }
 
   .post-article :global(.post-prose :is(a, button, [tabindex]):focus-visible),

@@ -948,6 +948,36 @@
   box-sizing: border-box !important;
 }
 
+.prose :is(table, thead, tbody, tfoot, tr, th, td) {
+  max-width: none !important;
+}
+
+.prose .table-scroll {
+  max-width: 100% !important;
+}
+
+/* Tailwind Typography flushes first/last cells to the measure. Bordered
+   essay tables need that padding back. */
+.prose :is(th, td):first-child,
+.prose :is(thead th, tbody td, tfoot td):first-child {
+  padding-inline-start: 1.5rem !important;
+}
+
+.prose :is(th, td):last-child,
+.prose :is(thead th, tbody td, tfoot td):last-child {
+  padding-inline-end: 1.5rem !important;
+}
+
+.prose blockquote {
+  quotes: none;
+}
+
+.prose blockquote p:first-of-type::before,
+.prose blockquote p:first-of-type::after,
+.prose blockquote p:last-of-type::after {
+  content: none;
+}
+
 .post-prose {
   max-width: 72ch !important;
   margin-left: auto !important;
@@ -957,6 +987,18 @@
 
 .post-prose :where(h1, h2, h3, h4, h5, h6) {
   font-family: var(--font-heading);
+}
+
+.post-prose.prose blockquote p:first-of-type::before,
+.post-prose.prose blockquote p:first-of-type::after,
+.post-prose.prose blockquote p:last-of-type::after {
+  content: none !important;
+}
+
+.post-prose blockquote p:last-child:not(:first-child) {
+  font-style: normal;
+  font-size: 0.95em;
+  margin-top: 0.65rem;
 }
 
 /* Shared ✦ divisor: comments / related / recipes use the current accent

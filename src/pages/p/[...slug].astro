@@ -8,6 +8,7 @@ import { calculateReadingTimeFromMarkdown } from '../../utils/readingTime';
 import { AUTHOR } from '../../consts';
 import { getCategoryDisplayItems, getCategoryNameFromIds } from '../../utils/categoryUtils';
 import { isCollectionPublic } from '../../utils/publishFilters';
+import { preparePostHtml, stripHeadingMarkup } from '../../utils/wrapTablesInHtml';
 
 export const prerender = true;
 
@@ -25,6 +26,8 @@ interface Props {
 
 const { post, allPosts } = Astro.props;
 const { Content } = await render(post);
+const isMdx = post.filePath?.endsWith('.mdx') ?? false;
+const bodyHtml = isMdx ? undefined : preparePostHtml(post.rendered?.html);
 
 // Use reading time from remark plugin when present; otherwise compute from body
 const minutesRead = post.data.minutesRead ?? calculateReadingTimeFromMarkdown(post.body || '');
@@ -63,14 +66,14 @@ const tableOfContents = [...(post.body?.matchAll(headingRegex) ?? [])]
   .map((match) => {
     if (match[1]) {
       const level = match[1].length;
-      const trimmedText = (match[2] || '').trim();
+      const trimmedText = stripHeadingMarkup(match[2] || '');
       const slug = withUniqueSlug(toSlug(trimmedText));
       return { text: trimmedText, slug, level };
     }
 
     const level = Number(match[3]);
     const attrs = match[4] ?? '';
-    const trimmedText = (match[5] || '').replace(/<[^>]+>/g, '').trim();
+    const trimmedText = stripHeadingMarkup((match[5] || '').replace(/<[^>]+>/g, ''));
     const idFromAttr = attrs.match(/\bid=["']([^"']+)["']/i)?.[1];
     const slug = idFromAttr || withUniqueSlug(toSlug(trimmedText));
     if (idFromAttr) {
@@ -113,5 +116,5 @@ const translationData = await getTranslationData(post, allPosts);
   currentPost={post}
   allPosts={allPosts}
 >
-  <Content />
+  {bodyHtml ? <div class="contents" set:html={bodyHtml} /> : <Content />}
 </BlogLayout>
