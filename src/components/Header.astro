@@ -13,122 +13,211 @@ interface Props {
 const { searchData } = Astro.props;
 ---
 
-<header
-  class="theme-transition sticky top-0 z-40 w-full border-b border-[rgb(var(--color-border))]/40 bg-[rgb(var(--color-bg))]/92 backdrop-blur-sm"
-  role="banner"
->
-  <Container padding="none">
-    <div
-      class="flex h-[var(--site-header-height)] items-center justify-between px-4 md:px-6 lg:px-8 xl:px-12"
-    >
-      <!-- Logo and Primary Navigation -->
-      <div class="flex items-center gap-6 md:gap-8">
+<header class="site-header" role="banner">
+  <Container>
+    <div class="site-header__bar">
+      <div class="site-header__navigation">
         <Logo />
-        <div class="hidden xl:block">
-          <Navigation />
+        <div class="site-header__desktop-nav"><Navigation /></div>
+      </div>
+      <div class="site-header__actions">
+        <div class="site-header__desktop-search">
+          <SearchBar searchData={searchData} placeholder="Search notes…" />
         </div>
-      </div>
-
-      <!-- Search Bar (Desktop) - More Prominent -->
-      <div class="mx-8 hidden flex-1 justify-center xl:flex">
-        <SearchBar searchData={searchData} class="w-80 shrink-0" />
-      </div>
-
-      <!-- Right Side Actions -->
-      <div class="flex items-center gap-3 md:gap-4">
-        <!-- Search Toggle for Mobile/Tablet -->
         <button
+          type="button"
           id="mobile-search-toggle"
-          class="theme-transition text-body-muted rounded-lg p-2 hover:bg-[rgb(var(--color-bg-alt))] hover:text-[rgb(var(--color-accent))] focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:outline-hidden xl:hidden"
-          aria-label="Toggle search"
+          class="site-header__search-toggle"
+          aria-label="Search notes"
+          aria-expanded="false"
+          aria-controls="mobile-search-container"
         >
-          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
-              stroke-width="2"
+              stroke-width="1.75"
               d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
           </svg>
+          <span>Search</span>
         </button>
-
         <ThemeToggle />
         <MobileNav class="xl:hidden" />
       </div>
     </div>
-
-    <!-- Mobile/Tablet Search Bar (Hidden by default) -->
-    <div id="mobile-search-container" class="hidden px-4 pb-4 md:px-6 lg:px-8 xl:hidden xl:px-12">
-      <SearchBar searchData={searchData} />
-    </div>
   </Container>
+  <div id="mobile-search-container" class="site-header__search-panel" hidden>
+    <Container
+      ><SearchBar
+        searchData={searchData}
+        placeholder="Search notes, topics, and pages…"
+      /></Container
+    >
+  </div>
 </header>
 
 <script>
-  // Mobile search toggle functionality
-  let mobileSearchToggle: HTMLElement | null = null;
-  let mobileSearchContainer: HTMLElement | null = null;
-  let isSearchVisible = false;
+  const searchToggle = document.getElementById('mobile-search-toggle');
+  const searchPanel = document.getElementById('mobile-search-container');
+  const desktopQuery = window.matchMedia('(min-width: 1280px)');
 
-  function initializeMobileSearch() {
-    mobileSearchToggle = document.getElementById('mobile-search-toggle');
-    mobileSearchContainer = document.getElementById('mobile-search-container');
-
-    if (!mobileSearchToggle || !mobileSearchContainer) return;
-
-    mobileSearchToggle.addEventListener('click', toggleMobileSearch);
-    document.addEventListener('mobile-nav:open-search', openMobileSearchFromNav as EventListener);
+  function closeSearch(restoreFocus = false) {
+    if (!searchPanel || !searchToggle) return;
+    searchPanel.hidden = true;
+    searchToggle.setAttribute('aria-expanded', 'false');
+    if (restoreFocus) searchToggle.focus();
   }
 
-  function toggleMobileSearch() {
-    if (!mobileSearchContainer) return;
+  function openSearch() {
+    if (!searchPanel || !searchToggle || desktopQuery.matches) return;
+    searchPanel.hidden = false;
+    searchToggle.setAttribute('aria-expanded', 'true');
+    searchPanel.querySelector('input')?.focus();
+  }
 
-    isSearchVisible = !isSearchVisible;
+  searchToggle?.addEventListener('click', () => {
+    if (searchPanel?.hidden) openSearch();
+    else closeSearch(true);
+  });
 
-    if (isSearchVisible) {
-      mobileSearchContainer.classList.remove('hidden');
-      // Focus the search input
-      const searchInput = mobileSearchContainer.querySelector('input');
-      if (searchInput) {
-        setTimeout(() => searchInput.focus(), 100);
-      }
-    } else {
-      mobileSearchContainer.classList.add('hidden');
+  document.addEventListener('mobile-nav:open-search', openSearch);
+  document.addEventListener('mobile-nav:opened', () => closeSearch());
+  document.addEventListener('click', (event) => {
+    if (
+      !searchPanel?.hidden &&
+      !searchPanel?.contains(event.target as Node) &&
+      !searchToggle?.contains(event.target as Node)
+    ) {
+      closeSearch();
     }
-  }
-
-  function openMobileSearchFromNav() {
-    if (!mobileSearchContainer) return;
-    if (!isSearchVisible) {
-      isSearchVisible = true;
-      mobileSearchContainer.classList.remove('hidden');
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && searchPanel && !searchPanel.hidden) {
+      event.preventDefault();
+      closeSearch(true);
     }
-    const searchInput = mobileSearchContainer.querySelector('input');
-    if (searchInput) {
-      setTimeout(() => searchInput.focus(), 100);
+  });
+  document.addEventListener('focusin', (event) => {
+    if (
+      searchPanel &&
+      !searchPanel.hidden &&
+      !searchPanel.contains(event.target as Node) &&
+      !searchToggle?.contains(event.target as Node)
+    ) {
+      closeSearch();
     }
-  }
-
-  // Initialize when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeMobileSearch);
-  } else {
-    initializeMobileSearch();
-  }
+  });
+  desktopQuery.addEventListener('change', () => {
+    if (!desktopQuery.matches) return;
+    const moveFocus = searchPanel?.contains(document.activeElement);
+    closeSearch();
+    if (moveFocus)
+      document.querySelector<HTMLInputElement>('.site-header__desktop-search input')?.focus();
+  });
 </script>
 
 <style>
-  /* Smooth transitions for dark mode */
-  header {
-    transition:
-      background-color var(--animation-duration-fast) var(--animation-easing-default),
-      border-color var(--animation-duration-fast) var(--animation-easing-default),
-      box-shadow var(--animation-duration-fast) var(--animation-easing-default);
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    width: 100%;
+    background: rgb(var(--color-bg) / 0.96);
+    backdrop-filter: blur(16px);
+    font-family: var(--font-sans);
   }
 
-  /* Respect reduced motion preferences */
-  @media (prefers-reduced-motion: reduce) {
-    header {
-      transition: none !important;
+  .site-header__bar,
+  .site-header__navigation,
+  .site-header__actions {
+    display: flex;
+    align-items: center;
+  }
+
+  .site-header__bar {
+    height: var(--site-header-height);
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .site-header__navigation {
+    gap: clamp(1.5rem, 3vw, 3rem);
+  }
+  .site-header__actions {
+    gap: 0.25rem;
+  }
+  .site-header__desktop-nav,
+  .site-header__desktop-search {
+    display: none;
+  }
+
+  .site-header__search-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-width: 44px;
+    min-height: 44px;
+    border: 0;
+    border-radius: 0.75rem;
+    background: transparent;
+    color: rgb(var(--color-text-muted));
+    font-size: 0.875rem;
+    cursor: pointer;
+  }
+
+  .site-header__search-toggle span {
+    display: none;
+  }
+  .site-header__search-toggle:hover,
+  .site-header__search-toggle[aria-expanded='true'] {
+    color: rgb(var(--color-accent));
+    background: rgb(var(--color-accent) / 0.07);
+  }
+  .site-header__search-toggle:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 3px;
+  }
+
+  .site-header__search-panel {
+    position: absolute;
+    top: 100%;
+    inset-inline: 0;
+    padding-block: 0.5rem 1rem;
+    background: rgb(var(--color-bg));
+    box-shadow: 0 12px 24px rgb(0 0 0 / 0.06);
+  }
+
+  @media (min-width: 640px) {
+    .site-header__actions {
+      gap: 0.5rem;
+    }
+    .site-header__search-toggle {
+      padding-inline: 0.75rem;
+    }
+    .site-header__search-toggle span {
+      display: inline;
+    }
+  }
+  @media (min-width: 1280px) {
+    .site-header__desktop-nav,
+    .site-header__desktop-search {
+      display: block;
+    }
+    .site-header__desktop-search {
+      width: clamp(14rem, 21vw, 18rem);
+      margin-right: 0.75rem;
+    }
+    .site-header__search-toggle,
+    .site-header__search-panel {
+      display: none;
     }
   }
 </style>

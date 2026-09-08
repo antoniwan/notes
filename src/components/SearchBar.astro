@@ -34,9 +34,11 @@ const searchDataJson = JSON.stringify(searchData);
 
     <!-- Input Field -->
     <input
-      type="text"
+      type="search"
       id={searchId}
-      class="theme-transition w-full rounded-lg border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg-alt))]/50 px-3 py-2 pr-8 pl-8 text-sm text-[rgb(var(--color-text))] placeholder-[rgb(var(--color-text-muted))] focus:border-[rgb(var(--color-border))]/50 focus:bg-[rgb(var(--color-bg))] focus:ring-2 focus:ring-[rgb(var(--color-accent))]/20 focus:outline-hidden xl:pr-3"
+      autocomplete="off"
+      aria-controls={`${searchId}-results`}
+      class="search-input"
       placeholder={placeholder}
       aria-label="Search writings"
     />
@@ -44,7 +46,8 @@ const searchDataJson = JSON.stringify(searchData);
     <!-- Clear Button -->
     <button
       id={`${searchId}-clear`}
-      class="text-body-muted absolute inset-y-0 right-0 flex hidden items-center pr-2.5 hover:text-[rgb(var(--color-accent))]"
+      type="button"
+      class="search-clear hidden"
       aria-label="Clear search"
     >
       <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -60,7 +63,9 @@ const searchDataJson = JSON.stringify(searchData);
   <!-- Search Results Dropdown -->
   <div
     id={`${searchId}-results`}
-    class="search-dropdown absolute top-full right-0 left-0 z-50 mt-2 hidden max-h-96 overflow-y-auto rounded-xl border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg))] shadow-lg xl:left-auto xl:w-[28rem]"
+    class="search-dropdown hidden"
+    role="region"
+    aria-label="Search results"
   >
     <!-- Loading State -->
     <div id={`${searchId}-loading`} class="text-body-muted hidden p-8 text-center">
@@ -83,7 +88,6 @@ const searchDataJson = JSON.stringify(searchData);
     <!-- No Results State -->
     <div id={`${searchId}-no-results`} class="text-body-muted hidden p-8 text-center">
       <div class="flex flex-col items-center space-y-4">
-        <div class="text-5xl opacity-60">🔍</div>
         <div class="space-y-2">
           <p class="text-base font-semibold">No results found</p>
           <p class="text-sm opacity-75">Try searching for writings, categories, tags, or pages</p>
@@ -92,7 +96,7 @@ const searchDataJson = JSON.stringify(searchData);
     </div>
 
     <!-- Results List -->
-    <div id={`${searchId}-results-list`} class="divide-y divide-[rgb(var(--color-border))]"></div>
+    <div id={`${searchId}-results-list`} class="search-results-list"></div>
   </div>
 </div>
 
@@ -157,11 +161,26 @@ const searchDataJson = JSON.stringify(searchData);
         }
       });
 
+      document.addEventListener('focusin', (event) => {
+        if (!this.input?.closest('.search-container')?.contains(event.target as Node))
+          this.hideResults();
+      });
+      this.resultsList?.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+          event.preventDefault();
+          this.handleArrowKeys(event.key);
+        } else if (event.key === 'Escape') {
+          event.preventDefault();
+          this.input?.focus();
+          this.hideResults();
+        }
+      });
+
       // Keyboard navigation
       this.input.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
           this.hideResults();
-          this.input?.blur();
+          e.preventDefault();
         } else if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
           e.preventDefault();
           this.handleArrowKeys(e.key);
@@ -328,8 +347,7 @@ const searchDataJson = JSON.stringify(searchData);
         // Create main link element
         const link = document.createElement('a');
         link.href = this.escapeAttribute(result.url);
-        link.className =
-          'search-result-item search-dropdown-item block px-6 py-4 transition-colors duration-200 ease-out group';
+        link.className = 'search-result-item group';
 
         // Create content structure
         const content = document.createElement('div');
@@ -390,8 +408,7 @@ const searchDataJson = JSON.stringify(searchData);
 
         // Meta section
         const metaDiv = document.createElement('div');
-        metaDiv.className =
-          'search-result-meta flex items-center gap-4 mt-3 text-xs text-body-muted';
+        metaDiv.className = 'search-result-meta';
 
         // Add author if present
         if (result.author) {
@@ -530,10 +547,11 @@ const searchDataJson = JSON.stringify(searchData);
       const resultItems = this.resultsList?.querySelectorAll(
         '.search-result-item',
       ) as NodeListOf<HTMLElement>;
-      if (!resultItems || resultItems.length === 0) return;
+      if (!resultItems || resultItems.length === 0 || this.results?.classList.contains('hidden'))
+        return;
 
-      const currentIndex = Array.from(resultItems).findIndex((item) =>
-        item.classList.contains('search-result-item--keyboard-active'),
+      const currentIndex = Array.from(resultItems).findIndex(
+        (item) => item === document.activeElement,
       );
 
       let newIndex = 0;
@@ -550,7 +568,8 @@ const searchDataJson = JSON.stringify(searchData);
       const selectedItem = resultItems[newIndex];
       if (selectedItem) {
         selectedItem.classList.add('search-result-item--keyboard-active');
-        selectedItem.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        selectedItem.focus({ preventScroll: true });
+        selectedItem.scrollIntoView({ block: 'nearest' });
       }
     }
 
@@ -558,7 +577,7 @@ const searchDataJson = JSON.stringify(searchData);
       const highlightedItem = this.resultsList?.querySelector(
         '.search-result-item--keyboard-active',
       ) as HTMLAnchorElement;
-      if (highlightedItem) {
+      if (highlightedItem && !this.results?.classList.contains('hidden')) {
         highlightedItem.click();
       } else {
         // If no item is highlighted, submit the search (you could implement a search page here)
@@ -601,165 +620,163 @@ const searchDataJson = JSON.stringify(searchData);
   }
 
   // Initialize search bars
-  document.addEventListener('DOMContentLoaded', () => {
-    const searchInputs = document.querySelectorAll('[id^="search-"]');
+  function initializeSearchBars() {
+    const searchInputs = document.querySelectorAll('input[id^="search-"]');
     searchInputs.forEach((input) => {
       const searchId = input.id;
       new SearchBar(searchId);
     });
-  });
+  }
+  if (document.readyState === 'loading')
+    document.addEventListener('DOMContentLoaded', initializeSearchBars, { once: true });
+  else initializeSearchBars();
 </script>
 
 <style>
-  /* Simplified search dropdown container */
-  .search-dropdown {
-    box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(var(--color-border), 0.8);
+  .search-container {
+    font-family: var(--font-sans);
   }
-
-  /* Enhanced search result styling */
-  .search-result-content {
-    display: grid;
-    grid-template-columns: 64px 1fr;
-    gap: 16px;
-    align-items: start;
-  }
-
-  .search-result-image {
-    width: 64px;
-    height: 64px;
-    border-radius: 12px;
-    overflow: hidden;
-    flex-shrink: 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-
-  .search-result-text {
-    min-width: 0;
-    flex: 1;
-  }
-
-  .search-result-title {
-    font-weight: 600;
-    font-size: 1rem;
-    line-height: 1.4;
-    margin-bottom: 6px;
+  .search-input {
+    display: block;
+    width: 100%;
+    min-height: 44px;
+    padding: 0.625rem 2.75rem 0.625rem 2.125rem;
+    border: 1px solid transparent;
+    border-radius: 0.75rem;
+    background: rgb(var(--color-accent) / 0.055);
     color: rgb(var(--color-text));
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .search-result-description {
+    font: inherit;
     font-size: 0.875rem;
     line-height: 1.5;
+    box-shadow: none;
+    transition:
+      background-color 150ms ease,
+      border-color 150ms ease;
+  }
+  .search-input::placeholder {
     color: rgb(var(--color-text-muted));
-    margin-bottom: 10px;
+    opacity: 1;
+  }
+  .search-input:hover {
+    background: rgb(var(--color-accent) / 0.08);
+  }
+  .search-input:focus {
+    border-color: rgb(var(--color-accent) / 0.45);
+    outline: 2px solid rgb(var(--color-accent) / 0.2);
+    outline-offset: 2px;
+  }
+  .search-input::-webkit-search-cancel-button {
+    display: none;
+  }
+  .search-clear {
+    position: absolute;
+    inset-block: 0;
+    right: 0;
+    width: 44px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    color: rgb(var(--color-text-muted));
+    cursor: pointer;
+  }
+  .search-clear:not(.hidden) {
+    display: flex;
+  }
+  .search-clear:hover {
+    color: rgb(var(--color-accent));
+  }
+  .search-clear:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+  }
+  .search-dropdown {
+    position: absolute;
+    top: 100%;
+    inset-inline: 0;
+    z-index: 50;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    max-height: min(32rem, calc(100dvh - var(--site-header-height) - 6rem));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border: 1px solid rgb(var(--color-accent) / 0.13);
+    border-radius: 1rem;
+    background: rgb(var(--color-bg));
+    box-shadow: 0 16px 48px rgb(0 0 0 / 0.12);
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--color-border)) transparent;
+  }
+  .search-results-list {
+    display: grid;
+    gap: 0.25rem;
+  }
+  /* Results are created in the browser and do not carry Astro's scope attribute. */
+  .search-container :global(.search-result-item) {
+    display: block;
+    padding: 0.875rem;
+    border-radius: 0.625rem;
+    text-decoration: none;
+  }
+  .search-container :global(.search-result-item:hover),
+  .search-container :global(.search-result-item:focus) {
+    background: rgb(var(--color-accent) / 0.065);
+  }
+  .search-container :global(.search-result-item:focus-visible) {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: -2px;
+  }
+  .search-container :global(.search-result-content) {
+    display: grid;
+    grid-template-columns: 3rem minmax(0, 1fr);
+    gap: 0.875rem;
+    align-items: start;
+  }
+  .search-container :global(.search-result-image) {
+    width: 3rem;
+    height: 3rem;
+    overflow: hidden;
+    border-radius: 0.5rem;
+  }
+  .search-container :global(.search-result-text) {
+    min-width: 0;
+  }
+  .search-container :global(.search-result-title) {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    line-height: 1.4;
+    font-weight: 600;
+    color: rgb(var(--color-text));
+  }
+  .search-container :global(.search-result-description) {
+    margin: 0;
+    color: rgb(var(--color-text-muted));
+    font-size: 0.8125rem;
+    line-height: 1.5;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    opacity: 0.85;
   }
-
-  .search-result-type {
-    font-size: 0.7rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 0.25rem 0.75rem;
-    border-radius: 9999px;
-    white-space: nowrap;
-  }
-
-  .search-result-meta {
-    font-size: 0.75rem;
-    line-height: 1.3;
-    opacity: 0.7;
-  }
-
-  .search-result-meta span {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 2px 0;
-  }
-
-  /* Loading and no results states */
-  #search-loading,
-  #search-no-results {
-    min-height: 120px;
+  .search-container :global(.search-result-meta) {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.75rem;
+    margin-top: 0.5rem;
+    font-size: 0.6875rem;
+    color: rgb(var(--color-text-muted));
   }
-
-  /* Respect reduced motion preferences */
-  @media (prefers-reduced-motion: reduce) {
-    :global(.search-result-item) {
-      transition: none !important;
-    }
+  .search-container :global(.search-result-meta svg) {
+    flex-shrink: 0;
   }
-
-  /* Responsive adjustments */
-  @media (max-width: 640px) {
-    .search-result-content {
-      grid-template-columns: 56px 1fr;
-      gap: 14px;
-    }
-
-    .search-result-image {
-      width: 56px;
-      height: 56px;
-      border-radius: 10px;
-    }
-
-    .search-result-title {
-      font-size: 0.95rem;
-    }
-
-    .search-result-description {
-      font-size: 0.8rem;
-    }
-
-    .search-result-meta {
-      font-size: 0.7rem;
-    }
-  }
-
-  /* Dark mode enhancements */
-  @media (prefers-color-scheme: dark) {
+  @media (min-width: 1280px) {
     .search-dropdown {
-      box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.3);
-    }
-
-    .search-result-image {
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      left: auto;
+      width: 28rem;
     }
   }
-
-  /* Scrollbar styling for search results */
-  .search-dropdown::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  .search-dropdown::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  .search-dropdown::-webkit-scrollbar-thumb {
-    background: rgba(var(--color-border), 0.5);
-    border-radius: 3px;
-  }
-
-  .search-dropdown::-webkit-scrollbar-thumb:hover {
-    background: rgba(var(--color-border), 0.8);
-  }
-
-  /* Firefox scrollbar */
-  .search-dropdown {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(var(--color-border), 0.5) transparent;
+  @media (prefers-reduced-motion: reduce) {
+    .search-input {
+      transition: none;
+    }
   }
 </style>

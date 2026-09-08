@@ -1,80 +1,232 @@
 ---
 import { AUTHOR, SITE_TITLE, SOCIAL_LINKS } from '../consts';
+import { mainNavigation } from '../data/navigation';
 import Logo from './Logo.astro';
 import Container from './Container.astro';
 import pkg from '../../package.json';
+
+const readingLinks = mainNavigation.filter((item) =>
+  ['/guided-path', '/category'].includes(item.href),
+);
+const resourceLinks =
+  mainNavigation.find((item) => item.label === 'Resources')?.dropdown?.items || [];
+const connectLinks = [
+  { href: '/about', label: 'About' },
+  { href: SOCIAL_LINKS.threads, label: 'Threads' },
+  { href: SOCIAL_LINKS.github, label: 'GitHub' },
+  { href: SOCIAL_LINKS.buildsSoftware, label: 'Builds Software' },
+  { href: AUTHOR.url, label: 'Links' },
+];
 ---
 
-<footer
-  class="theme-transition mt-16 border-t border-[rgb(var(--color-border))]/40 bg-[rgb(var(--color-bg))] md:mt-20"
-  role="contentinfo"
->
-  <Container class="py-10 md:py-12">
-    <div class="space-y-6">
-      <div>
-        <Logo size="xs" />
+<footer class="site-footer" role="contentinfo">
+  <Container>
+    <div class="footer-directory">
+      <div class="footer-identity">
+        <Logo size="xl" alwaysFull class="footer-brand" />
+        <p>{AUTHOR.name}</p>
       </div>
 
-      <nav class="flex flex-wrap gap-x-5 gap-y-2 text-sm" aria-label="Footer">
-        <a href="/guided-path" class="link-muted">Guided Path</a>
-        <a href="/category" class="link-muted">Categories</a>
-        <a href="/everything" class="link-muted">Everything</a>
-        <a href="/about" class="link-muted">About</a>
-        <a href="/writing-insights" class="link-muted">Writing Insights</a>
-        <a href="/library/books" class="link-muted">Book Library</a>
-        <a href="/recipes" class="link-muted">Cookbook</a>
-        <a href={SOCIAL_LINKS.threads} target="_blank" rel="noopener noreferrer" class="link-muted"
-          >Threads</a
-        >
-        <a href={SOCIAL_LINKS.github} target="_blank" rel="noopener noreferrer" class="link-muted"
-          >GitHub</a
-        >
-        <a
-          href={SOCIAL_LINKS.buildsSoftware}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="link-muted">Builds Software</a
-        >
-        <a
-          href="https://antoniwan.online"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="link-muted">Links</a
-        >
+      <nav class="footer-group" aria-labelledby="footer-reading">
+        <h2 id="footer-reading">Reading</h2>
+        <ul>
+          {
+            readingLinks.map((link) => (
+              <li>
+                <a href={link.href}>{link.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <nav class="footer-group" aria-labelledby="footer-resources">
+        <h2 id="footer-resources">Resources</h2>
+        <ul>
+          {
+            resourceLinks.map((link) => (
+              <li>
+                <a href={link.href}>{link.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <nav class="footer-group" aria-labelledby="footer-connect">
+        <h2 id="footer-connect">Connect</h2>
+        <ul>
+          {
+            connectLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  target={link.href.startsWith('https://') ? '_blank' : undefined}
+                  rel={link.href.startsWith('https://') ? 'noopener noreferrer' : undefined}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
       </nav>
     </div>
 
-    <div
-      class="mt-8 flex flex-col gap-3 border-t border-[rgb(var(--color-border))]/40 pt-6 sm:flex-row sm:items-center sm:justify-between"
-    >
-      <p class="text-body-muted m-0 text-[0.7rem] leading-snug">
-        © {new Date().getFullYear()}{' '}
-        {SITE_TITLE} by {AUTHOR.name}. Content:{' '}
-        <a
-          href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
-          target="_blank"
-          rel="noopener noreferrer">CC BY-NC-SA 4.0</a
-        >
-        {' '}· Code:{' '}
-        <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer"
-          >MIT</a
-        >
-      </p>
+    <div class="footer-colophon">
+      <div class="footer-legal">
+        <p>© {new Date().getFullYear()} {SITE_TITLE} by {AUTHOR.name}.</p>
+        <div class="footer-licenses">
+          <a
+            href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Content: CC BY-NC-SA 4.0
+          </a>
+          <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">
+            Code: MIT
+          </a>
+        </div>
+      </div>
 
-      <div class="text-body-muted flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.7rem]">
-        <a href="/sitemap-index.xml" class="link-muted">Sitemap</a>
-        <span class="opacity-40" aria-hidden="true">·</span>
-        <a href="/rss.xml" class="link-muted" title="RSS Feed">RSS</a>
-        <span class="opacity-40" aria-hidden="true">·</span>
-        <a href="/feed.json" class="link-muted" title="JSON Feed">JSON</a>
-        <span class="opacity-40" aria-hidden="true">·</span>
+      <nav class="footer-feeds" aria-label="Feeds and site information">
+        <a href="/sitemap-index.xml">Sitemap</a>
+        <a href="/rss.xml" title="RSS Feed">RSS</a>
+        <a href="/feed.json" title="JSON Feed">JSON</a>
         <a
           href="https://github.com/antoniwan/notes"
           target="_blank"
           rel="noopener noreferrer"
-          class="link-muted">v{pkg.version}</a
+          aria-label={`Site source, version ${pkg.version}`}
         >
-      </div>
+          v{pkg.version}
+        </a>
+      </nav>
     </div>
   </Container>
 </footer>
+
+<style>
+  .site-footer {
+    margin-top: clamp(3.5rem, 7vw, 6rem);
+    padding-block: 1rem 1.5rem;
+    color: rgb(var(--color-text-muted));
+    font-family: var(--font-sans);
+  }
+
+  .footer-directory {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 1.5rem;
+    row-gap: 2rem;
+    align-items: start;
+  }
+
+  .footer-identity {
+    min-width: 0;
+  }
+
+  .footer-identity :global(.footer-brand) {
+    min-height: 44px;
+    font-size: 2rem;
+  }
+
+  .footer-identity p {
+    max-width: 14rem;
+    margin: 0.65rem 0 0;
+    font-size: 0.75rem;
+    line-height: 1.6;
+    text-wrap: balance;
+  }
+
+  .footer-group h2 {
+    margin: 0 0 0.6rem;
+    color: rgb(var(--color-accent));
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .footer-group ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .site-footer a {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    padding: 0;
+    color: inherit;
+    text-decoration: none;
+    transition: color 160ms ease;
+  }
+
+  .footer-group a {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+  }
+
+  .site-footer a:hover {
+    color: rgb(var(--color-accent));
+  }
+
+  .site-footer a:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  .footer-colophon {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    column-gap: 2rem;
+    margin-top: 2rem;
+    font-size: 0.6875rem;
+    line-height: 1.6;
+  }
+
+  .footer-legal p {
+    margin: 0;
+  }
+
+  .footer-licenses,
+  .footer-feeds {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 1.25rem;
+  }
+
+  .footer-feeds a {
+    min-width: 44px;
+  }
+
+  @media (min-width: 640px) {
+    .footer-directory {
+      grid-template-columns: minmax(0, 1.35fr) repeat(3, minmax(0, 1fr));
+      gap: 2rem;
+    }
+
+    .site-footer {
+      padding-block: 1.5rem 2rem;
+    }
+
+    .footer-colophon {
+      margin-top: 2.5rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .site-footer a {
+      transition: none;
+    }
+  }
+</style>

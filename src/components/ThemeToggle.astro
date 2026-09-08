@@ -8,16 +8,13 @@ const { class: className = '' } = Astro.props;
 
 <button
   type="button"
-  class:list={[
-    'theme-transition text-body-muted inline-flex items-center justify-center rounded-lg p-2 hover:bg-[rgb(var(--color-bg-alt))] hover:text-[rgb(var(--color-accent))]',
-    className,
-  ]}
+  class:list={['theme-control', className]}
   aria-label="Toggle theme"
   id="theme-toggle"
 >
   <!-- Sun icon for light mode -->
   <svg
-    class="h-6 w-6 dark:hidden"
+    class="h-5 w-5 dark:hidden"
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
@@ -27,14 +24,14 @@ const { class: className = '' } = Astro.props;
     <path
       stroke-linecap="round"
       stroke-linejoin="round"
-      stroke-width="2"
+      stroke-width="1.75"
       d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
     ></path>
   </svg>
 
   <!-- Moon icon for dark mode -->
   <svg
-    class="hidden h-6 w-6 dark:block"
+    class="hidden h-5 w-5 dark:block"
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
@@ -44,7 +41,7 @@ const { class: className = '' } = Astro.props;
     <path
       stroke-linecap="round"
       stroke-linejoin="round"
-      stroke-width="2"
+      stroke-width="1.75"
       d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
     ></path>
   </svg>
@@ -53,71 +50,74 @@ const { class: className = '' } = Astro.props;
 <script>
   import { THEME_CHANGE_EVENT } from '../utils/themeEvents';
 
-  // Enhanced theme toggle function
-  function setTheme(theme: 'dark' | 'light') {
-    const root = document.documentElement;
-
-    root.classList.toggle('dark', theme === 'dark');
-
-    localStorage.setItem('theme', theme);
-
-    // Update meta theme-color
-    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
-    if (metaThemeColor) {
-      metaThemeColor.setAttribute('content', theme === 'dark' ? '#0a0a0a' : '#ffffff');
-    }
-
-    // Dispatch custom event for other components that might need to know about theme changes
-    window.dispatchEvent(new CustomEvent(THEME_CHANGE_EVENT, { detail: { theme } }));
-  }
-
-  // Toggle theme function
-  function toggleTheme() {
-    const isDark = document.documentElement.classList.contains('dark');
-    setTheme(isDark ? 'light' : 'dark');
-  }
-
-  // Initialize theme toggle state on component mount
-  function initializeThemeToggle() {
-    // The button state will automatically reflect the current theme via CSS classes
-  }
-
-  // Listen for system preference changes
-  function setupSystemPreferenceListener() {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-
-    mediaQuery.addEventListener('change', (e) => {
-      // Only auto-update if user hasn't set a manual preference
-      const storedTheme = localStorage.getItem('theme');
-      if (!storedTheme) {
-        const newTheme = e.matches ? 'dark' : 'light';
-        setTheme(newTheme);
-      }
-    });
-  }
-
-  // Add event listeners
   const themeToggle = document.getElementById('theme-toggle');
-  if (themeToggle) {
-    // Initialize the toggle state
-    initializeThemeToggle();
 
-    // Setup system preference listener
-    setupSystemPreferenceListener();
-
-    themeToggle.addEventListener('click', toggleTheme);
-
-    // Keyboard support
-    themeToggle.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        toggleTheme();
-      }
-    });
+  function updateLabel() {
+    const label = document.documentElement.classList.contains('dark')
+      ? 'Switch to light theme'
+      : 'Switch to dark theme';
+    themeToggle?.setAttribute('aria-label', label);
+    themeToggle?.setAttribute('title', label);
   }
+
+  function setTheme(theme: 'dark' | 'light', remember = true) {
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    if (remember) {
+      try {
+        localStorage.setItem('theme', theme);
+      } catch {
+        /* Theme still works when storage is unavailable. */
+      }
+    }
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute('content', theme === 'dark' ? '#0a0a0a' : '#ffffff');
+    window.dispatchEvent(new CustomEvent(THEME_CHANGE_EVENT, { detail: { theme } }));
+    updateLabel();
+  }
+
+  themeToggle?.addEventListener('click', () => {
+    setTheme(document.documentElement.classList.contains('dark') ? 'light' : 'dark');
+  });
+  window.addEventListener(THEME_CHANGE_EVENT, updateLabel);
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+    let storedTheme: string | null = null;
+    try {
+      storedTheme = localStorage.getItem('theme');
+    } catch {
+      /* Use the system preference. */
+    }
+    if (!storedTheme) setTheme(event.matches ? 'dark' : 'light', false);
+  });
+  updateLabel();
 </script>
 
 <style>
+  .theme-control {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border: 0;
+    border-radius: 0.75rem;
+    background: transparent;
+    color: rgb(var(--color-text-muted));
+    cursor: pointer;
+    transition:
+      color 150ms ease,
+      background-color 150ms ease;
+  }
+  .theme-control:hover {
+    color: rgb(var(--color-accent));
+    background: rgb(var(--color-accent) / 0.07);
+  }
+  .theme-control:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 3px;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     button {
       transition: none !important;

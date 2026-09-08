@@ -7,6 +7,25 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.15.0] — 2026-09-08
+
+### Added
+
+- Footer is a directory: Reading, Resources, and Connect, with the full logo and a quieter colophon.
+- Phone menu can share the current page and lists Bluesky, GitHub, and YouTube under Elsewhere.
+
+### Changed
+
+- Header, desktop nav, search, theme toggle, and the phone menu share one chrome language: 44px targets, native disclosures, and category counts.
+- Search below 1280px opens a panel under the header. Escape, outside click, and leaving focus close it. Desktop search stays in the bar.
+
+### Fixed
+
+- Search arrow keys move focus onto results. Escape keeps you in the field.
+- Phone search and menu keep `aria-expanded` in sync and close each other. Theme toggle names the theme you will switch to.
+
+Chrome pass built with GPT-6 Astra at Max reasoning effort.
+
 ## [6.14.0] — 2026-09-08
 
 ### Added
