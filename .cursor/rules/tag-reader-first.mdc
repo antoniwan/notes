@@ -18,12 +18,13 @@ They do not exist to describe your process, to feed `/tag` prelude code, to pad 
 - One inner-work door per piece (`consciousness` or `self-reflection` or `mindfulness` or `inner-work`), not the hallway stacked.
 - One heal door per piece (`healing` or `therapy` or `mental-health`), not the hallway stacked.
 - Form tags (`poems`, `memoir`, `reflection`) only when a reader would browse that shelf.
+- On recipes: `cooking` / `recipes` / `food`, plus `puerto-rico` or `children` only when the dish is that idea. Never `family` just because it was cooked at home.
 
 ## Do not
 
 - Never tag `notes`, `note`, `nota`, or `notas`. Canonicalize strips them; `/tag/notes` 301s to `/tag`.
 - Do not add `essays`, `ideas`, or other empty form labels just because a spec wants a prelude inventory.
-- Do not invent tags for Maslow buckets, tag weights, or schema.
+- Do not invent tags for Maslow buckets, tag weights, chip colors, or schema.
 
 The `/tag` index is an idea map, not an author inventory. Do not restore “I've written #essays, #notes…” copy.
 

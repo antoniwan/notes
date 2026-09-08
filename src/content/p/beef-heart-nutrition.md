@@ -15,14 +15,8 @@ category:
 subcategory: Nutrition
 tags:
   - nutrition
-  - health
-  - wellness
   - cooking
-  - self-care
   - learning-projects
-  - integration-growth
-  - fitness
-  - healthy-eating
   - micronutrients
 draft: false
 featured: false

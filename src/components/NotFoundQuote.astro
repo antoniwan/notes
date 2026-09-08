@@ -3,11 +3,17 @@
  * Random quote from /api/quotes for the 404 page.
  * Visual language: same left-border callout as Disclaimer + TagDisplay-style topic chips.
  */
+import { PREFERRED_TAGS } from '../data/tagVocabulary';
+import { getTagFamily } from '../data/tagFamilies';
+
 interface Props {
   existingTags: string[];
 }
 
 const { existingTags } = Astro.props;
+const tagFamilyBySlug = Object.fromEntries(
+  (PREFERRED_TAGS as readonly string[]).map((tag) => [tag, getTagFamily(tag)]),
+);
 ---
 
 <section
@@ -72,7 +78,7 @@ const { existingTags } = Astro.props;
   </div>
 </section>
 
-<script is:inline define:vars={{ existingTags }}>
+<script is:inline define:vars={{ existingTags, tagFamilyBySlug }}>
   const SEL = {
     loading: 'nfq-loading',
     error: 'nfq-error',
@@ -86,7 +92,7 @@ const { existingTags } = Astro.props;
   };
 
   const TAG_LINK =
-    'nfq-topic theme-transition inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-sm font-medium focus:outline-hidden focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:ring-offset-1 bg-[rgb(var(--color-accent))]/10 border-[rgb(var(--color-accent))]/20 text-[rgb(var(--color-accent))] hover:bg-[rgb(var(--color-accent))]/20';
+    'tag-chip nfq-topic theme-transition inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-sm font-medium focus:outline-hidden';
   const TAG_STATIC =
     'nfq-topic inline-flex items-center gap-1 rounded-full border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg))] px-2.5 py-1 text-sm font-medium text-body-muted';
 
@@ -177,6 +183,7 @@ const { existingTags } = Astro.props;
           const el = document.createElement(linked ? 'a' : 'span');
           el.className = linked ? TAG_LINK : TAG_STATIC;
           if (linked) el.href = `/tag/${encodeURIComponent(theme)}`;
+          el.dataset.tagFamily = tagFamilyBySlug[theme] ?? 'rest';
 
           const hash = document.createElement('span');
           hash.textContent = `#${theme}`;

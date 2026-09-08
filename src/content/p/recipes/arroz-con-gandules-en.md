@@ -19,7 +19,6 @@ tags:
   - cooking
   - recipes
   - food
-  - family
   - puerto-rico
 draft: false
 featured: false

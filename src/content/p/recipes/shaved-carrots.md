@@ -16,7 +16,6 @@ tags:
   - cooking
   - recipes
   - food
-  - family
 draft: false
 featured: false
 published: true

@@ -19,8 +19,6 @@ tags:
   - cooking
   - recipes
   - food
-  - nutrition
-  - family
 draft: false
 featured: false
 published: true

@@ -7,6 +7,16 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.15.5] — 2026-09-08
+
+### Added
+
+- Tag chips use eight idea-family colors (kitchen stays marigold, inner stays violet). Long-tail tags stay muted.
+
+### Changed
+
+- Recipe tags are the dish and its world, not household stamps. Kitchen rooms still send you to the Cookbook.
+
 ## [6.15.4] — 2026-09-08
 
 ### Added

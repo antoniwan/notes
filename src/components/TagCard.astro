@@ -1,4 +1,6 @@
 ---
+import { getTagFamily } from '../data/tagFamilies';
+
 interface Props {
   tag: string;
   count: number;
@@ -17,21 +19,14 @@ const {
   className = '',
 } = Astro.props;
 
-// Simplified color system
-const getTagColor = (variant: string) => {
-  const colors = {
-    default:
-      'bg-[rgb(var(--color-accent))]/10 border-[rgb(var(--color-accent))]/20 text-[rgb(var(--color-accent))] hover:bg-[rgb(var(--color-accent))]/20',
-    subtle:
-      'bg-[rgb(var(--color-bg-alt))] border-[rgb(var(--color-border))] text-body-muted hover:bg-[rgb(var(--color-bg-alt))]/80',
-    bordered:
-      'bg-transparent border-[rgb(var(--color-accent))]/30 text-[rgb(var(--color-accent))] hover:bg-[rgb(var(--color-accent))]/10',
-  };
+const family = getTagFamily(tag);
 
-  return colors[variant as keyof typeof colors];
-};
+const variantClass = {
+  default: '',
+  subtle: 'tag-chip--subtle',
+  bordered: 'tag-chip--bordered',
+}[variant];
 
-// Size classes
 const sizeClasses = {
   sm: 'text-sm px-2.5 py-1',
   md: 'text-base px-3 py-1.5',
@@ -41,7 +36,8 @@ const sizeClasses = {
 
 <a
   href={`/tag/${tag}`}
-  class={`tag-card group inline-flex items-center gap-2 ${sizeClasses[size]} rounded-full border font-medium interactive-button focus:outline-hidden focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:ring-offset-1 ${getTagColor(variant)} ${className}`}
+  data-tag-family={family}
+  class={`tag-chip tag-card group inline-flex items-center gap-2 ${sizeClasses[size]} ${variantClass} rounded-full border font-medium interactive-button focus:outline-hidden ${className}`}
 >
   <span class="tag-text">#{tag}</span>
   {
@@ -52,39 +48,29 @@ const sizeClasses = {
 </a>
 
 <style>
-  /* Enhanced tag card styling */
   .tag-card {
-    transition: all 0.2s ease;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease,
+      transform 0.2s ease;
     backdrop-filter: blur(4px);
   }
 
-  /* Tag text styling */
   .tag-text {
     font-weight: 500;
     letter-spacing: -0.01em;
   }
 
-  /* Tag count styling */
   .tag-count {
     font-weight: 400;
     opacity: 0.75;
   }
 
-  /* Enhanced hover effects */
   .tag-card:hover {
     transform: translateY(-1px);
-    box-shadow:
-      0 4px 6px -1px rgb(0 0 0 / 0.1),
-      0 2px 4px -1px rgb(0 0 0 / 0.06);
   }
 
-  /* Focus styles for accessibility */
-  .tag-card:focus {
-    outline: 2px solid rgb(var(--color-accent));
-    outline-offset: 2px;
-  }
-
-  /* Respect reduced motion preferences */
   @media (prefers-reduced-motion: reduce) {
     .tag-card {
       transition: none !important;
@@ -95,7 +81,6 @@ const sizeClasses = {
     }
   }
 
-  /* Responsive adjustments */
   @media (max-width: 768px) {
     .tag-card {
       font-size: 0.75rem;

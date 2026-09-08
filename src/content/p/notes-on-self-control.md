@@ -14,7 +14,6 @@ tags:
   - discipline
   - mental-health
   - consciousness
-  - self-mastery
   - emotional-regulation
 draft: false
 featured: false

@@ -14,13 +14,8 @@ subcategory: Health
 tags:
   - fasting
   - health
-  - wellness
-  - nutrition
-  - self-discipline
-  - fitness
   - consciousness
   - ritual
-  - self-care
   - personal-growth
 draft: false
 featured: false

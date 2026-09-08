@@ -18,12 +18,8 @@ category:
 tags:
   - culture
   - politics
-  - psychology
-  - systems-strategy
   - systemic-critique
   - power
-  - leadership
-  - responsibility
   - mythology
   - identity
   - social-media

@@ -15,11 +15,7 @@ category:
   - integration-growth
 tags:
   - cooking
-  - nutrition
-  - health
-  - wellness
   - foundations
-  - self-care
   - learning-projects
   - consciousness
   - personal-growth

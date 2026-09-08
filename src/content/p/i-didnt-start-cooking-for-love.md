@@ -17,15 +17,10 @@ category:
 tags:
   - cooking
   - food
-  - recipes
   - family
   - personal-growth
-  - learning
   - habits
-  - nutrition
-  - memoir
   - values
-  - presence
 draft: false
 featured: true
 published: true

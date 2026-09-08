@@ -15,8 +15,6 @@ tags:
   - simplicity
   - mindfulness
   - mental-health
-  - wellness
-  - self-care
   - personal-growth
   - inner-peace
   - contentment

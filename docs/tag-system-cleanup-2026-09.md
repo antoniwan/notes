@@ -115,7 +115,7 @@ Dead UI already removed earlier on this branch: `TagSystem.astro`, `TagCloud.ast
 Do these as small follow-up branches. Do not mix them into unrelated PRs.
 
 1. **Long-tail leftovers** — still many one-offs (`berserk`, `crimson-desert`, English `limits`). Leave them. Promote later only if a third distinct writing appears (`colonialism`, `accountability`, …).
-2. **Tag blurbs** — busy preferred rooms have a sentence; sparse preferred tags still humanize the slug. Optional copy, not a retag.
+2. **Color by idea family** — done on `cursor/tag-corpus-walk` (2026-09-08). Eight families + rest in `src/data/tagFamilies.ts`. Chips on `/tag`, rooms, post details, prelude, 404. Not Maslow. Not 221 rainbows. Kitchen rooms (`/tag/cooking`, `/tag/recipes`, `/tag/food`) point to Cookbook.
 3. **Specs 009 / 010** — still Draft; same feature, two folders. Prelude is now an idea map, not the form inventory those specs asked for. Align or archive.
 4. **Insights math** — “193% in top 5” is a counting bug in the dashboard, not a reason to change tags.
 

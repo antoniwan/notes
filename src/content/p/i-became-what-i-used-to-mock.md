@@ -20,7 +20,6 @@ tags:
   - blind-spots
   - authenticity
   - vulnerability
-  - self-awareness
   - metaspace
 draft: false
 featured: false

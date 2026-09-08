@@ -336,6 +336,18 @@
     /* Selection / rare wash — marigold + About sky hint */
     --color-highlight: 255 214 64;
 
+    /* Idea-family chips — eight rooms + rest. Not Maslow. Not 221 hues.
+       Kitchen reuses marigold; inner reuses UV violet. */
+    --tag-kinship: 176 48 72;
+    --tag-kitchen: var(--color-primary);
+    --tag-island: 8 128 118;
+    --tag-inner: var(--color-accent);
+    --tag-repair: 56 108 72;
+    --tag-becoming: 196 92 24;
+    --tag-public: 156 32 48;
+    --tag-craft: 40 80 156;
+    --tag-rest: var(--color-text-muted);
+
     /* Surfaces & elevation */
     --radius-sm: 0.25rem;
     --radius-md: 0.5rem;
@@ -389,6 +401,12 @@
     --color-warning: 210 180 90;
     --color-error: 220 120 120;
     --color-highlight: 255 196 20;
+    --tag-kinship: 255 148 160;
+    --tag-island: 88 208 196;
+    --tag-repair: 140 196 160;
+    --tag-becoming: 255 176 96;
+    --tag-public: 255 128 140;
+    --tag-craft: 150 180 255;
     --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.45), 0 4px 14px rgb(0 0 0 / 0.35);
     --shadow-lift: 0 6px 20px rgb(0 0 0 / 0.5);
   }
@@ -641,6 +659,98 @@
       animation: none !important;
     }
   }
+}
+
+/* Idea-family chips — eight rooms + rest. Kitchen/inner reuse shock accents. */
+.tag-chip {
+  --tag-ink: var(--tag-rest);
+  color: rgb(var(--tag-ink));
+  background-color: rgb(var(--tag-ink) / 0.1);
+  border-color: rgb(var(--tag-ink) / 0.28);
+}
+
+.tag-chip[data-tag-family='kinship'] {
+  --tag-ink: var(--tag-kinship);
+}
+
+.tag-chip[data-tag-family='kitchen'] {
+  --tag-ink: var(--tag-kitchen);
+}
+
+.tag-chip[data-tag-family='island'] {
+  --tag-ink: var(--tag-island);
+}
+
+.tag-chip[data-tag-family='inner'] {
+  --tag-ink: var(--tag-inner);
+}
+
+.tag-chip[data-tag-family='repair'] {
+  --tag-ink: var(--tag-repair);
+}
+
+.tag-chip[data-tag-family='becoming'] {
+  --tag-ink: var(--tag-becoming);
+}
+
+.tag-chip[data-tag-family='public'] {
+  --tag-ink: var(--tag-public);
+}
+
+.tag-chip[data-tag-family='craft'] {
+  --tag-ink: var(--tag-craft);
+}
+
+.tag-chip[data-tag-family='rest'] {
+  --tag-ink: var(--tag-rest);
+}
+
+.tag-chip:hover {
+  background-color: rgb(var(--tag-ink) / 0.18);
+  border-color: rgb(var(--tag-ink) / 0.42);
+}
+
+.tag-chip:focus-visible {
+  outline: 2px solid rgb(var(--tag-ink));
+  outline-offset: 2px;
+}
+
+.tag-chip--subtle {
+  background-color: rgb(var(--tag-ink) / 0.07);
+  border-color: rgb(var(--tag-ink) / 0.2);
+}
+
+.tag-chip--bordered {
+  background-color: transparent;
+  border-color: rgb(var(--tag-ink) / 0.35);
+}
+
+.tag-chip--plain {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.tag-chip--plain:hover {
+  background-color: transparent;
+  border-color: transparent;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.tag-chip--underline {
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  text-decoration: underline;
+  text-decoration-color: rgb(var(--tag-ink) / 0.4);
+  text-underline-offset: 4px;
+}
+
+.tag-chip--underline:hover {
+  background-color: transparent;
+  border-color: transparent;
+  text-decoration-color: rgb(var(--tag-ink));
 }
 
 /* Thin, low-contrast vertical scrollbar for secondary panels (e.g. post sidebar) */

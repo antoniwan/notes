@@ -55,9 +55,11 @@ Writing Insights, Maslow buckets, and tag weights are **downstream**. They follo
 - Include 1–2 domain/context tags and several thematic/meaning tags.
 - Add a form tag only if the piece is a distinct reader destination (a poem, not “a note”).
 - Do not stack cousin doors on one piece (`personal-growth` + `transformation` + `self-improvement`; `consciousness` + `self-reflection` + `mindfulness`; `healing` + `therapy` + `mental-health`). Pick the one a stranger would click.
+- On recipes, tag the dish (`cooking`, `recipes`, `food`) plus the world it actually belongs to (`puerto-rico`, `children`). Do not stamp `family` because it was cooked at home.
 - Avoid one-off tags unless you expect reuse.
 - New recurring idea tags go in `src/data/tagVocabulary.ts`.
 - On Spanish translations, Spanish labels are fine; aliases must map them to the same English canonical slugs as the English twin.
+- Chip color is display-only. Eight idea families live in `src/data/tagFamilies.ts`. Do not retag a piece so a chip matches a hue.
 
 ## Governance
 
@@ -66,6 +68,7 @@ Writing Insights, Maslow buckets, and tag weights are **downstream**. They follo
   - Optional form destinations: `CONTENT_FORM_TAGS` (`poems`, `memoir`, `reflection` only)
   - Aliases: `TAG_ALIAS_MAP`
   - Stripped slugs: `STRIPPED_TAGS`
+  - Chip families (display only): `src/data/tagFamilies.ts`
 - Author analytics: `/tag-management` (noindex; not in public nav). Do not retag posts to improve that page.
 - Before merging broad tag changes:
   1. Run `pnpm run check`

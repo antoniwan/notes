@@ -1,4 +1,6 @@
 ---
+import { getTagFamily } from '../data/tagFamilies';
+
 interface Props {
   tags: string[];
   maxVisible?: number;
@@ -17,24 +19,15 @@ const {
   className = '',
 } = Astro.props;
 
-// Calculate visible tags and remaining count
 const visibleTags = tags.slice(0, maxVisible);
 const hasMoreTags = showMoreIndicator && tags.length > maxVisible;
 const remainingCount = tags.length - maxVisible;
 
-// Simplified color system
-const getTagColor = (variant: string) => {
-  const colors = {
-    default:
-      'bg-[rgb(var(--color-accent))]/10 border-[rgb(var(--color-accent))]/20 text-[rgb(var(--color-accent))] hover:bg-[rgb(var(--color-accent))]/20',
-    subtle:
-      'bg-[rgb(var(--color-bg-alt))] border-[rgb(var(--color-border))] text-body-muted hover:bg-[rgb(var(--color-bg-alt))]/80',
-    bordered:
-      'bg-transparent border-[rgb(var(--color-accent))]/30 text-[rgb(var(--color-accent))] hover:bg-[rgb(var(--color-accent))]/10',
-  };
-
-  return colors[variant as keyof typeof colors];
-};
+const variantClass = {
+  default: '',
+  subtle: 'tag-chip--subtle',
+  bordered: 'tag-chip--bordered',
+}[variant];
 ---
 
 <div class={`tag-display flex flex-wrap items-center gap-1.5 ${className}`}>
@@ -42,11 +35,9 @@ const getTagColor = (variant: string) => {
     visibleTags.map((tag) => (
       <a
         href={`/tag/${tag}`}
-        class={`tag-item inline-flex items-center gap-1.5 ${compact ? 'px-2.5 py-1 text-sm' : 'px-3 py-1.5 text-base'} interactive-button rounded-full border font-medium focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:ring-offset-1 focus:outline-hidden ${getTagColor(variant)}`}
+        data-tag-family={getTagFamily(tag)}
+        class={`tag-chip tag-item inline-flex items-center gap-1.5 ${compact ? 'px-2.5 py-1 text-sm' : 'px-3 py-1.5 text-base'} ${variantClass} interactive-button rounded-full border font-medium focus:outline-hidden`}
       >
-        <span class="tag-icon" aria-hidden="true">
-          🏷️
-        </span>
         <span class="tag-text">#{tag}</span>
       </a>
     ))
@@ -54,7 +45,7 @@ const getTagColor = (variant: string) => {
   {
     hasMoreTags && (
       <span
-        class={`more-indicator inline-flex items-center gap-1 ${compact ? 'px-2.5 py-1 text-sm' : 'px-3 py-1.5 text-base'} rounded-full border font-medium ${getTagColor(variant)}`}
+        class={`more-indicator inline-flex items-center gap-1 ${compact ? 'px-2.5 py-1 text-sm' : 'px-3 py-1.5 text-base'} text-body-muted rounded-full border font-medium`}
       >
         <span aria-hidden="true">⋯</span>
         <span>+{remainingCount} more</span>
@@ -64,48 +55,28 @@ const getTagColor = (variant: string) => {
 </div>
 
 <style>
-  /* Enhanced tag styling */
-  .tag-display {
-    /* Container styles */
-  }
-
   .tag-item {
-    transition: all 0.2s ease;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease,
+      transform 0.2s ease;
     backdrop-filter: blur(4px);
   }
 
-  /* Tag icon styling */
-  .tag-icon {
-    font-size: 0.875em;
-    opacity: 0.8;
-  }
-
-  /* Tag text styling */
   .tag-text {
     font-weight: 500;
     letter-spacing: -0.01em;
   }
 
-  /* Tag count styling */
-  .tag-count {
-    font-weight: 400;
-    opacity: 0.75;
-  }
-
-  /* More indicator styling */
   .more-indicator {
     transition: all 0.2s ease;
   }
 
-  /* Enhanced hover effects */
   .tag-item:hover {
     transform: translateY(-1px);
-    box-shadow:
-      0 4px 6px -1px rgb(0 0 0 / 0.1),
-      0 2px 4px -1px rgb(0 0 0 / 0.06);
   }
 
-  /* Respect reduced motion preferences */
   @media (prefers-reduced-motion: reduce) {
     .tag-item,
     .more-indicator {

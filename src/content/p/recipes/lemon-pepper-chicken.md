@@ -20,9 +20,6 @@ tags:
   - cooking
   - recipes
   - food
-  - family
-  - nutrition
-  - health
 draft: false
 featured: false
 published: true

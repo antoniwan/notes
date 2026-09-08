@@ -12,7 +12,6 @@ category:
 tags:
   - mental-health
   - self-care
-  - wellness
   - consciousness
   - emotional-regulation
   - self-improvement

@@ -19,7 +19,6 @@ tags:
   - values
   - responsibility
   - discipline
-  - self-mastery
   - power
   - consciousness
 draft: false

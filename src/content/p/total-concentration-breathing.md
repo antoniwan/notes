@@ -14,7 +14,6 @@ tags:
   - breathing
   - mindfulness
   - mental-health
-  - wellness
   - self-care
   - meditation
   - self-improvement

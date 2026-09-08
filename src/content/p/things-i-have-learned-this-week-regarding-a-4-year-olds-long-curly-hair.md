@@ -21,9 +21,6 @@ tags:
   - learning
   - conscious-parenting
   - child-development
-  - self-care
-  - wellness
-  - tips
   - family-dynamics
 draft: false
 featured: false
