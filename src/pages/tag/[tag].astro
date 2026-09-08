@@ -8,10 +8,10 @@ import { tagMetaDescription } from '../../data/pageMeta';
 import { getTagMetadata } from '../../data/tags';
 import { filterPostsByTag, getAllUniqueTags, getTagStatistics } from '../../utils/tagProcessing';
 import { canonicalizeTag } from '../../utils/tagVocabulary';
-import { isCollectionListed } from '../../utils/publishFilters';
+import { isTagListedPost } from '../../utils/recipes';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog', ({ data }) => isCollectionListed(data));
+  const posts = await getCollection('blog', (entry) => isTagListedPost(entry));
   // Only build canonical tag pages that actually have posts.
   // Alias URLs are permanent-redirected via astro.config redirects.
   const tags = getAllUniqueTags(posts);
@@ -28,7 +28,7 @@ const tagMeta = getTagMetadata(canonicalTag);
 const tagLabel = tagMeta.name;
 const tagBlurb = tagMeta.description;
 
-const posts = await getCollection('blog', ({ data }) => isCollectionListed(data));
+const posts = await getCollection('blog', (entry) => isTagListedPost(entry));
 const { totalPosts, relatedTags } = getTagStatistics(canonicalTag, posts);
 const tagPosts = filterPostsByTag(posts, canonicalTag);
 const seoDescription = tagMetaDescription(canonicalTag, totalPosts);

@@ -16,11 +16,16 @@ export function isCookbookListedPost(post: Pick<CollectionEntry<'blog'>, 'id' | 
 }
 
 /**
- * Category pages and counts: listed writings, not household recipes.
- * Recipes keep `category` on the dish page; they list on Cookbook and Everything.
+ * Category and tag pages and counts: listed writings, not household recipes.
+ * Recipes keep `category` and `tags` on the dish page; they list on Cookbook and Everything.
  */
 export function isCategoryListedPost(post: Pick<CollectionEntry<'blog'>, 'id' | 'data'>): boolean {
   return isCollectionListed(post.data) && !isRecipePost(post);
+}
+
+/** Same listing set as categories: essays only. */
+export function isTagListedPost(post: Pick<CollectionEntry<'blog'>, 'id' | 'data'>): boolean {
+  return isCategoryListedPost(post);
 }
 
 export function recipeContentsLetter(title: string): string {

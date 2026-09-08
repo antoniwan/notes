@@ -5,6 +5,7 @@ import {
   isCategoryListedPost,
   isCookbookListedPost,
   isRecipePost,
+  isTagListedPost,
   recipeContentsLetter,
 } from './recipes';
 import { findRelatedPosts } from './tagProcessing';
@@ -59,6 +60,13 @@ describe('isCategoryListedPost', () => {
         post('on-cooking-on-everything-and-foundations-es', { language: ['es'] }),
       ),
     ).toBe(false);
+  });
+});
+
+describe('isTagListedPost', () => {
+  it('keeps essays and drops household recipes', () => {
+    expect(isTagListedPost(post('i-didnt-start-cooking-for-love'))).toBe(true);
+    expect(isTagListedPost(post('recipes/lemon-pepper-chicken'))).toBe(false);
   });
 });
 

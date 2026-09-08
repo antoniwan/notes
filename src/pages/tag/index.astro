@@ -7,10 +7,10 @@ import ContentFormPrelude from '../../components/tag/ContentFormPrelude.astro';
 import { getCollection } from 'astro:content';
 import { PAGE_META } from '../../data/pageMeta';
 import { calculateTagStats } from '../../utils/tagProcessing';
-import { isCollectionListed } from '../../utils/publishFilters';
+import { isTagListedPost } from '../../utils/recipes';
 
 // Get all posts and calculate tag counts
-const posts = await getCollection('blog', ({ data }) => isCollectionListed(data));
+const posts = await getCollection('blog', (entry) => isTagListedPost(entry));
 
 // Calculate tag counts (canonicalized through tag processing helpers)
 const { tagCounts } = calculateTagStats(posts);

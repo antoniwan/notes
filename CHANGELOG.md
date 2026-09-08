@@ -7,6 +7,12 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.15.2] — 2026-09-08
+
+### Changed
+
+- Tag index, tag pages, search tag results, and 404 topic chips use the same essay-only listing as categories. Household recipes stay on Cookbook and Everything.
+
 ## [6.15.1] — 2026-09-08
 
 ### Changed

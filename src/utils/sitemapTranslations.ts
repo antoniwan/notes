@@ -150,8 +150,10 @@ function loadSitemapMeta(): SitemapMeta {
       bumpLastmod(lastmodByUrl, sitemapPageUrl(`/category/${category}`), lastmod);
     }
 
-    for (const tag of canonicalizeTags(asStringArray(data.tags))) {
-      bumpLastmod(lastmodByUrl, sitemapPageUrl(`/tag/${tag}`), lastmod);
+    if (!isRecipeId(postId)) {
+      for (const tag of canonicalizeTags(asStringArray(data.tags))) {
+        bumpLastmod(lastmodByUrl, sitemapPageUrl(`/tag/${tag}`), lastmod);
+      }
     }
 
     const group = data.translationGroup;

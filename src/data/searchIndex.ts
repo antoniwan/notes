@@ -3,6 +3,7 @@ import { categories } from './categories';
 import { getTagMetadata } from './tags';
 import { calculateTagStats } from '../utils/tagProcessing';
 import { isListingEligiblePost, isSearchEligiblePost } from '../utils/publishFilters';
+import { isRecipePost } from '../utils/recipes';
 
 /** Static list of pages for search (public reader surfaces only). */
 const PAGE_SEARCH_DATA = [
@@ -84,7 +85,7 @@ async function buildSearchData() {
     icon: category.icon,
   }));
 
-  const { tagCounts } = calculateTagStats(listedPosts);
+  const { tagCounts } = calculateTagStats(listedPosts.filter((post) => !isRecipePost(post)));
   const tagSearchData = Object.entries(tagCounts).map(([tag, count]) => {
     const metadata = getTagMetadata(tag);
     return {

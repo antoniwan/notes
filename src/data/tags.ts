@@ -360,7 +360,7 @@ const TAG_DESCRIPTIONS: Record<string, string> = {
   memoir: 'Lived memory, told as narrative',
   reflection: 'Looking at a moment until it tells the truth',
   cooking: 'Food made at home, and why we cook',
-  recipes: 'Dishes you can cook from',
+  recipes: 'The idea of a recipe, not the cookbook',
   food: 'What we eat, and what it means',
   nutrition: 'How food meets the body',
   'self-care': 'Tending the body so the rest can stand',

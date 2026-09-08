@@ -26,7 +26,7 @@ English is the listing language. Spanish is a twin: language toggle, title searc
 ## How it is built
 
 - **10 categories** (for example On Parenting; Psychology, Roughly; On Politics; Metaspace; DIY & Creation) — essays only; household recipes list on the Cookbook and Everything. See `src/data/categories.ts`
-- **Tags** — idea map for readers; **Tag management** is an author overview (noindex). Tags describe content, not the site name
+- **Tags** — idea map for readers (essays only; household recipes list on the Cookbook and Everything); **Tag management** is an author overview (noindex). Tags describe content, not the site name
 - **Dark and light theme**, including system preference
 - **Responsive layout** for small and large screens
 - **Reading time** — remark plugin (`minutesRead`). Hidden on recipe cards and dish pages

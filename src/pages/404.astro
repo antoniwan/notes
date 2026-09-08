@@ -4,9 +4,9 @@ import NotFoundQuote from '../components/NotFoundQuote.astro';
 import { PAGE_META } from '../data/pageMeta';
 import { getCollection } from 'astro:content';
 import { getAllUniqueTags } from '../utils/tagProcessing';
-import { isCollectionListed } from '../utils/publishFilters';
+import { isTagListedPost } from '../utils/recipes';
 
-const posts = await getCollection('blog', ({ data }) => isCollectionListed(data));
+const posts = await getCollection('blog', (entry) => isTagListedPost(entry));
 const existingTags = getAllUniqueTags(posts);
 ---
 
