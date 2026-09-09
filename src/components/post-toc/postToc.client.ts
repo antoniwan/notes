@@ -22,6 +22,7 @@ function initPostToc() {
     return heading ? [{ link, heading }] : [];
   });
   const desktop = window.matchMedia(DESKTOP_QUERY);
+  const afterword = document.querySelector<HTMLElement>('.post-afterword');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const controller = new AbortController();
   const { signal } = controller;
@@ -39,11 +40,19 @@ function initPostToc() {
   const closePanel = (restoreFocus = true) => {
     if (!isOpen()) return;
     setOpen(false);
-    if (restoreFocus && !desktop.matches) trigger.focus({ preventScroll: true });
+    if (restoreFocus && !desktop.matches && !trigger.hidden) trigger.focus({ preventScroll: true });
+  };
+
+  const updateTriggerVisibility = () => {
+    const pastArticle =
+      !desktop.matches &&
+      Boolean(afterword && afterword.getBoundingClientRect().top <= window.innerHeight);
+    trigger.hidden = pastArticle;
+    if (pastArticle) closePanel(false);
   };
 
   const openPanel = () => {
-    if (desktop.matches) return;
+    if (desktop.matches || trigger.hidden) return;
     setOpen(true);
     const target = activeLink || entries[0]?.link || closeButton;
     target?.focus({ preventScroll: true });
@@ -52,6 +61,7 @@ function initPostToc() {
 
   const updateActiveLink = () => {
     frame = 0;
+    updateTriggerVisibility();
     activeLink = undefined;
     for (const entry of entries) {
       if (entry.heading.getBoundingClientRect().top <= headingOffset) activeLink = entry.link;
@@ -80,6 +90,7 @@ function initPostToc() {
   const syncViewport = () => {
     const focused = document.activeElement;
     setOpen(false);
+    updateTriggerVisibility();
     if (desktop.matches) {
       trigger.removeAttribute('aria-haspopup');
       panel.removeAttribute('role');
@@ -91,7 +102,7 @@ function initPostToc() {
       trigger.setAttribute('aria-haspopup', 'dialog');
       panel.setAttribute('role', 'dialog');
       panel.setAttribute('aria-modal', 'false');
-      if (focused instanceof Node && panel.contains(focused)) {
+      if (!trigger.hidden && focused instanceof Node && panel.contains(focused)) {
         trigger.focus({ preventScroll: true });
       }
     }
@@ -166,6 +177,7 @@ function initPostToc() {
   window.addEventListener('scroll', scheduleUpdate, { passive: true, signal });
   window.addEventListener('resize', updateHeadingOffset, { passive: true, signal });
   window.addEventListener('hashchange', scheduleUpdate, { signal });
+  window.addEventListener('pageshow', scheduleUpdate, { signal });
   desktop.addEventListener('change', syncViewport, { signal });
   document.addEventListener(
     'astro:before-swap',

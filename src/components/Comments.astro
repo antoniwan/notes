@@ -1,214 +1,290 @@
 ---
 import { commentsConfig } from '../config/comments';
 import { generateCanonicalUrl } from '../utils/seo';
-import PostSectionBreak from './PostSectionBreak.astro';
 
+interface Props {
+  language?: 'en' | 'es';
+}
+
+const { language = 'en' } = Astro.props;
 const pageUrl = generateCanonicalUrl(Astro.url.pathname);
 const { host, siteId } = commentsConfig;
+const copy =
+  language === 'es'
+    ? {
+        heading: 'Deje una nota',
+        invitation: 'Puede compartir una reflexión o hacer una pregunta en los comentarios.',
+        email: 'Si prefiere escribir en privado, puede enviarme un correo a',
+        subject: 'Sobre su escrito',
+        idle: 'Los comentarios se cargarán al llegar a esta sección.',
+        loading: 'Cargando los comentarios…',
+        failed:
+          'No se pudo abrir el espacio de comentarios. Puede intentarlo de nuevo o escribirme por correo.',
+        load: 'Cargar comentarios',
+        retry: 'Intentar de nuevo',
+        reload: 'Volver a cargar los comentarios',
+        noScript:
+          'Los comentarios necesitan JavaScript. También puede escribirme por correo mediante el enlace de arriba.',
+      }
+    : {
+        heading: 'Leave a note',
+        invitation: 'Share a thought or ask a question in the comments.',
+        email: 'For a private note, you can email me at',
+        subject: 'About your writing',
+        idle: 'Comments will load when you reach this section.',
+        loading: 'Loading comments…',
+        failed: 'The comment box could not be opened. You can try again or write to me by email.',
+        load: 'Load comments',
+        retry: 'Try again',
+        reload: 'Reload comments',
+        noScript: 'Comments need JavaScript. You can also write to me using the email link above.',
+      };
+const email = 'antonio@builds.software';
+const emailUrl = `mailto:${email}?subject=${encodeURIComponent(copy.subject)}&body=${encodeURIComponent(pageUrl)}`;
 ---
 
-<div class="comments-section mt-8">
-  <PostSectionBreak />
-  <h2 class="mb-2 text-2xl font-bold text-[rgb(var(--color-text))]">💬 Leave a note</h2>
-  <p class="text-body-muted mb-4">
-    Share your thoughts, ask questions, or simply let me know what resonated with you. I read and
-    respond to every comment personally. Sign in with your favorite social account to participate.
-  </p>
-
+<section id="comments" class="comments-section" aria-labelledby="comments-heading" lang={language}>
+  <header class="comments-introduction">
+    <h2 id="comments-heading">{copy.heading}</h2>
+    <p>{copy.invitation}</p>
+    <p>{copy.email} <a href={emailUrl}>{email}</a>.</p>
+  </header>
   <div
     id="comments-container"
-    class="remark42-container overflow-hidden rounded-lg bg-[rgb(var(--color-bg))]"
+    class="remark42-container"
     data-host={host}
     data-site-id={siteId}
     data-page-url={pageUrl}
+    data-language={language}
+    data-loading={copy.loading}
+    data-failed={copy.failed}
+    data-retry={copy.retry}
+    data-reload={copy.reload}
   >
+    <div class="comments-feedback" data-comments-feedback hidden>
+      <p role="status" aria-live="polite" aria-atomic="true" data-comments-status>{copy.idle}</p>
+      <button type="button" data-comments-retry aria-controls="remark42">{copy.load}</button>
+    </div>
     <div id="remark42"></div>
-    <noscript>
-      <p class="text-body-muted p-8 text-center">Please enable JavaScript to view comments.</p>
-    </noscript>
+    <noscript><p class="comments-noscript">{copy.noScript}</p></noscript>
   </div>
-</div>
+</section>
 
 <script>
   import type { Remark42Instance } from '../types/comments';
   import {
     buildRemark42Config,
     createRemark42Instance,
-    whenRemark42Ready,
+    loadRemark42Script,
+    waitForRemark42Frame,
   } from '../utils/remark42.client';
   import { THEME_CHANGE_EVENT } from '../utils/themeEvents';
 
-  // Store the current Remark42 instance so we can destroy it on SPA navigation
-  let remark42Instance: Remark42Instance | null = null;
+  let activeContainer: HTMLElement | null = null;
+  let dispose: (() => void) | null = null;
 
-  // Store the lazy-load observer so we can disconnect it on navigation (avoids leak when user never scrolls to comments)
-  let lazyLoadObserver: IntersectionObserver | null = null;
+  function clearComments() {
+    dispose?.();
+    dispose = null;
+    activeContainer = null;
+  }
 
-  function initRemark42() {
-    // Always destroy any existing instance on navigation, even if the new page has no comments.
-    // This prevents keeping an instance alive that's still attached to DOM nodes removed by Astro.
-    if (window.REMARK42 && remark42Instance) {
-      try {
-        remark42Instance.destroy();
-      } catch {
-        // Instance may already be torn down
-      }
-      remark42Instance = null;
-    }
-
-    // Disconnect any previous lazy-load observer to avoid leaking one per navigation (view transitions)
-    if (lazyLoadObserver) {
-      lazyLoadObserver.disconnect();
-      lazyLoadObserver = null;
-    }
-
+  function initComments() {
     const container = document.getElementById('comments-container');
+    if (container && container === activeContainer) return;
+    clearComments();
     if (!container) return;
+    const node = container.querySelector<HTMLElement>('#remark42');
+    const feedback = container.querySelector<HTMLElement>('[data-comments-feedback]');
+    const status = container.querySelector<HTMLElement>('[data-comments-status]');
+    const retry = container.querySelector<HTMLButtonElement>('[data-comments-retry]');
+    const { host, siteId, pageUrl, language } = container.dataset;
+    if (!node || !feedback || !status || !retry || !host || !siteId || !pageUrl) return;
+    activeContainer = container;
+    feedback.hidden = false;
+    // An earlier page's slow embed download can finish after navigation.
+    window.remark_config = buildRemark42Config(
+      host,
+      siteId,
+      pageUrl,
+      language === 'es' ? 'es' : 'en',
+    );
 
-    const host = container.dataset.host;
-    const siteId = container.dataset.siteId;
-    const pageUrl = container.dataset.pageUrl ?? window.location.href;
+    let instance: Remark42Instance | null = null;
+    let request: AbortController | null = null;
+    let observer: IntersectionObserver | null = null;
+    let loading = false;
 
-    if (!host || !siteId) return;
-
-    const node = document.getElementById('remark42');
-    if (!node) return;
-
-    if (window.REMARK42) {
-      remark42Instance = createRemark42Instance(node, host, siteId, pageUrl);
-      return;
-    }
-
-    // Script not loaded yet: load it, then create instance when REMARK42 is ready
-    function loadScript() {
-      const scriptEl = document.querySelector(`script[src="${host}/web/embed.js"]`);
-      if (scriptEl) {
-        whenRemark42Ready(() => {
-          const cont = document.getElementById('comments-container');
-          const el = document.getElementById('remark42');
-          const h = cont?.dataset.host;
-          const sid = cont?.dataset.siteId;
-          const url = cont?.dataset.pageUrl ?? window.location.href;
-          if (!el || !h || !sid) return;
-          if (remark42Instance) {
-            try {
-              remark42Instance.destroy();
-            } catch {}
-            remark42Instance = null;
-          }
-          remark42Instance = createRemark42Instance(el, h, sid, url);
-        });
-        return;
+    function destroyInstance() {
+      if (instance) {
+        try {
+          instance.destroy();
+        } catch {
+          // The embed may already have removed its frame during navigation.
+        }
+        instance = null;
       }
-
-      if (!host || !siteId) return;
-
-      // Remark42 embed.js reads window.remark_config on load; set it so they don't throw (reading 'host' of undefined)
-      window.remark_config = buildRemark42Config(host, siteId, pageUrl);
-
-      const script = document.createElement('script');
-      script.src = `${host}/web/embed.js`;
-      script.async = true;
-      script.defer = true;
-      script.onload = () => {
-        whenRemark42Ready(() => {
-          const cont = document.getElementById('comments-container');
-          const el = document.getElementById('remark42');
-          const h = cont?.dataset.host;
-          const sid = cont?.dataset.siteId;
-          const url = cont?.dataset.pageUrl ?? window.location.href;
-          if (!el || !h || !sid) return;
-          remark42Instance = createRemark42Instance(el, h, sid, url);
-        });
-      };
-      document.head.appendChild(script);
     }
 
-    // Lazy load: only load when comments section is near the viewport
+    async function loadComments() {
+      if (loading) return;
+      loading = true;
+      observer?.disconnect();
+      request?.abort();
+      request = new AbortController();
+      const { signal } = request;
+      destroyInstance();
+      status!.hidden = false;
+      status!.textContent = container!.dataset.loading ?? '';
+      retry!.disabled = true;
+      node!.setAttribute('aria-busy', 'true');
+      const locale = language === 'es' ? 'es' : 'en';
+
+      try {
+        await loadRemark42Script(buildRemark42Config(host!, siteId!, pageUrl!, locale), { signal });
+        if (signal.aborted || !container!.isConnected) return;
+        instance = createRemark42Instance(node!, host!, siteId!, pageUrl!, locale);
+        await waitForRemark42Frame(node!, host!, { signal });
+        if (signal.aborted) return;
+        // The widget owns thread-fetch errors. Its initialization signal only
+        // confirms the comment box booted, not that comments were retrieved.
+        status!.hidden = true;
+        retry!.textContent = container!.dataset.reload ?? '';
+      } catch {
+        if (signal.aborted) return;
+        destroyInstance();
+        status!.hidden = false;
+        status!.textContent = container!.dataset.failed ?? '';
+        retry!.textContent = container!.dataset.retry ?? '';
+      } finally {
+        if (!signal.aborted) {
+          loading = false;
+          retry!.disabled = false;
+          node!.removeAttribute('aria-busy');
+        }
+      }
+    }
+
+    retry.addEventListener('click', loadComments);
+    dispose = () => {
+      request?.abort();
+      observer?.disconnect();
+      retry.removeEventListener('click', loadComments);
+      destroyInstance();
+    };
+
     if ('IntersectionObserver' in window) {
-      lazyLoadObserver = new IntersectionObserver(
+      observer = new IntersectionObserver(
         (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting && lazyLoadObserver) {
-              loadScript();
-              lazyLoadObserver.disconnect();
-              lazyLoadObserver = null;
-            }
-          });
+          if (entries.some((entry) => entry.isIntersecting)) void loadComments();
         },
         { rootMargin: '200px' },
       );
-      lazyLoadObserver.observe(container);
+      observer.observe(container);
     } else {
-      loadScript();
+      void loadComments();
     }
   }
 
-  // Theme sync: update Remark42 when theme changes
-  function updateRemark42Theme() {
-    const isDark = document.documentElement.classList.contains('dark');
-    const theme = isDark ? 'dark' : 'light';
-
-    if (window.REMARK42) {
-      try {
-        window.REMARK42.changeTheme(theme);
-      } catch {
-        // Remark42 not ready yet
-      }
+  function updateTheme() {
+    const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    try {
+      window.REMARK42?.changeTheme?.(theme);
+    } catch {
+      // Theme changes can arrive before the iframe finishes initializing.
     }
   }
 
-  // Register theme and navigation listeners only once to avoid leaks when this script
-  // re-runs on each Astro view transition (new listeners would stack and fire repeatedly).
   const win = window as Window & { __commentsListenersInstalled?: boolean };
   if (!win.__commentsListenersInstalled) {
     win.__commentsListenersInstalled = true;
-
-    window.addEventListener(THEME_CHANGE_EVENT, () => {
-      setTimeout(updateRemark42Theme, 100);
-    });
-
-    const themeObserver = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-          setTimeout(updateRemark42Theme, 100);
-        }
-      });
-    });
-    themeObserver.observe(document.documentElement, {
+    window.addEventListener(THEME_CHANGE_EVENT, updateTheme);
+    new MutationObserver(updateTheme).observe(document.documentElement, {
       attributes: true,
       attributeFilter: ['class'],
     });
-
-    // Re-initialize on every view transition; relies on Astro's astro:page-load (no re-init on plain full reload).
-    document.addEventListener('astro:page-load', initRemark42);
+    document.addEventListener('astro:before-swap', clearComments);
+    document.addEventListener('astro:page-load', initComments);
+    window.addEventListener('pagehide', clearComments);
+    window.addEventListener('pageshow', initComments);
   }
-
-  // Also initialize on regular page load for non-view-transition navigation
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initRemark42);
+    document.addEventListener('DOMContentLoaded', initComments, { once: true });
   } else {
-    initRemark42();
+    initComments();
   }
 </script>
 
 <style>
-  /* Global h2/p margins are sized for article body; zero them here so the
-     thread sits on the article instead of after a padded void. */
-  .comments-section h2 {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
+  .comments-section {
+    scroll-margin-top: calc(var(--site-header-height) + 2rem);
   }
-
-  .comments-section > p {
-    margin-top: 0;
+  .comments-introduction {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .comments-introduction h2 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 2.4vw, 2rem);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  .comments-introduction p,
+  .comments-noscript {
+    max-width: 62ch;
+    margin: 0;
+    font-size: 1.125rem;
+    line-height: 1.75;
+  }
+  .comments-introduction a {
+    color: rgb(var(--color-accent));
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    overflow-wrap: anywhere;
+  }
+  .comments-feedback {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.5rem;
     margin-bottom: 1rem;
   }
-
-  :global(#remark42) {
-    min-height: 0;
+  .comments-feedback p {
+    max-width: 62ch;
+    margin: 0;
+    color: rgb(var(--color-text-muted));
+    font-size: 1rem;
+    line-height: 1.6;
   }
-
+  .comments-feedback button {
+    min-height: 44px;
+    padding: 0.5rem 0;
+    border: 0;
+    background: transparent;
+    color: rgb(var(--color-accent));
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.5;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    cursor: pointer;
+  }
+  .comments-feedback button:disabled {
+    color: rgb(var(--color-text-muted));
+    cursor: wait;
+  }
+  .comments-section :is(a, button):focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 4px;
+  }
+  .comments-section [hidden] {
+    display: none !important;
+  }
+  :global(#remark42) {
+    min-width: 0;
+  }
   :global(.dark #remark42) {
     color-scheme: dark;
   }

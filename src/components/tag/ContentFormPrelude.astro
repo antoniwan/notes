@@ -49,12 +49,6 @@ const templates = selectPreludeTemplates(candidates, PRELUDE_THEME_LIMIT);
 }
 
 <style>
-  .sentence-browse {
-    padding: 1.5rem;
-    border-radius: var(--radius-lg);
-    background: rgb(var(--color-bg-alt));
-  }
-
   .sentence-browse h2 {
     margin: 0 0 2rem;
     font-family: var(--font-heading);
@@ -85,7 +79,7 @@ const templates = selectPreludeTemplates(candidates, PRELUDE_THEME_LIMIT);
   }
 
   .sentence-lead {
-    font-weight: 600;
+    font-weight: 400;
   }
 
   .sentence-list a {
@@ -105,11 +99,7 @@ const templates = selectPreludeTemplates(candidates, PRELUDE_THEME_LIMIT);
     outline-offset: 4px;
   }
 
-  @media (min-width: 768px) {
-    .sentence-browse {
-      padding: 2rem;
-    }
-
+  @media (min-width: 1024px) {
     .sentence-list {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 2rem 2.5rem;

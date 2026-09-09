@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { findRelatedPosts } from '../utils/tagProcessing';
-import PostSectionBreak from './PostSectionBreak.astro';
+import { isSpanishPrimary } from '../utils/publishFilters';
 import PostCard from './PostCard.astro';
 
 interface Props {
@@ -11,17 +11,25 @@ interface Props {
 
 const { currentPost, allPosts } = Astro.props;
 const relatedPosts = currentPost && allPosts ? findRelatedPosts(currentPost, allPosts, 4) : [];
+const isSpanish = currentPost ? isSpanishPrimary(currentPost.data) : false;
 ---
 
-{
-  relatedPosts.length > 0 && (
-    <section class="related-posts" aria-labelledby="related-posts-heading">
-      <PostSectionBreak />
-      <header class="related-heading">
-        <h2 id="related-posts-heading">💡 Continue Reading</h2>
-        <p>The rest is yours to explore.</p>
-      </header>
-      <div class="postcards-grid related-grid">
+<section class="related-posts" aria-labelledby="related-posts-heading">
+  <header class="related-heading">
+    <h2 id="related-posts-heading">{isSpanish ? 'Seguir leyendo' : 'Continue reading'}</h2>
+    {
+      relatedPosts.length > 0 && (
+        <p>
+          {isSpanish
+            ? 'Más escritos sobre estos temas, en inglés.'
+            : 'More writings on these themes.'}
+        </p>
+      )
+    }
+  </header>
+  {
+    relatedPosts.length > 0 && (
+      <div class="postcards-grid related-grid" lang="en">
         {relatedPosts.map((post) => (
           <PostCard
             post={post}
@@ -32,17 +40,16 @@ const relatedPosts = currentPost && allPosts ? findRelatedPosts(currentPost, all
           />
         ))}
       </div>
-      <a href="/everything" class="related-browse">
-        Browse All Writings <span aria-hidden="true">↗</span>
-      </a>
-    </section>
-  )
-}
+    )
+  }
+  <a href="/everything" class="related-browse">
+    {isSpanish ? 'Explorar todos los escritos (en inglés)' : 'Browse all writings'}
+  </a>
+</section>
 
 <style>
   .related-posts {
-    margin-top: 2rem;
-    scroll-margin-top: 6rem;
+    scroll-margin-top: calc(var(--site-header-height) + 1.5rem);
   }
 
   .related-heading {
@@ -50,19 +57,20 @@ const relatedPosts = currentPost && allPosts ? findRelatedPosts(currentPost, all
   }
 
   .related-heading h2 {
-    margin: 0 0 0.65rem;
+    margin: 0;
     font-family: var(--font-heading);
-    font-size: 2rem;
+    font-size: clamp(1.6rem, 2.4vw, 2rem);
     font-weight: 600;
     line-height: 1.2;
     letter-spacing: -0.025em;
   }
 
   .related-heading p {
-    margin: 0;
+    max-width: 62ch;
+    margin: 1rem 0 0;
     color: rgb(var(--color-text-muted));
-    font-size: 1rem;
-    line-height: 1.65;
+    font-size: 1.125rem;
+    line-height: 1.75;
   }
 
   .related-grid {
@@ -71,20 +79,42 @@ const relatedPosts = currentPost && allPosts ? findRelatedPosts(currentPost, all
     gap: 2.5rem 2rem;
   }
 
+  .related-posts .related-grid :global(article.postcard .postcard-meta) {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .related-posts .related-grid :global(article.postcard .postcard-description) {
+    display: block;
+    font-size: 1rem;
+    line-height: 1.75;
+    overflow: visible;
+    -webkit-line-clamp: unset;
+  }
+
   .related-browse {
     display: inline-flex;
     align-items: center;
-    gap: 1rem;
+    min-height: 2.75rem;
     margin-top: 2rem;
-    padding: 0.5rem 0;
+    padding-block: 0.5rem;
     color: rgb(var(--color-accent));
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.5;
     font-weight: 600;
-    text-decoration: none;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .related-heading + .related-browse {
+    margin-top: 0;
   }
 
   .related-browse:hover {
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
+    color: rgb(var(--color-accent-hover));
   }
 
   .related-browse:focus-visible {
@@ -92,7 +122,7 @@ const relatedPosts = currentPost && allPosts ? findRelatedPosts(currentPost, all
     outline-offset: 4px;
   }
 
-  @media (min-width: 640px) {
+  @media (min-width: 768px) {
     .related-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }

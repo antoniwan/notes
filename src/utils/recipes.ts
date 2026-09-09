@@ -42,6 +42,8 @@ export function findMoreRecipes(
   allPosts: CollectionEntry<'blog'>[],
   maxCount: number = 4,
 ): CollectionEntry<'blog'>[] {
+  if (maxCount <= 0) return [];
+
   const currentLang = currentPost.data.language?.[0] ?? 'en';
   const currentGroup = currentPost.data.translationGroup;
 
@@ -49,12 +51,12 @@ export function findMoreRecipes(
     .filter((post) => {
       if (post.id === currentPost.id) return false;
       if (!isRecipePost(post)) return false;
-      if (!isPublicPost(post.data, { includeFuture: true })) return false;
+      if (!isPublicPost(post.data)) return false;
       const lang = post.data.language?.[0] ?? 'en';
       if (lang !== currentLang) return false;
       if (currentGroup && post.data.translationGroup === currentGroup) return false;
       return true;
     })
-    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf() || a.id.localeCompare(b.id))
     .slice(0, maxCount);
 }

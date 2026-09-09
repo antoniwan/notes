@@ -187,42 +187,6 @@ const { class: className = '', postId } = Astro.props;
     return match ? match[1] : null;
   }
 
-  function showReadToast() {
-    // Create lightweight toast notification
-    const toast = document.createElement('div');
-    toast.className =
-      'fixed bottom-32 left-1/2 transform -translate-x-1/2 bg-[rgb(var(--color-bg))] border border-[rgb(var(--color-border))] text-[rgb(var(--color-text))] px-3 py-2 rounded-lg shadow-lg z-40 theme-transition flex items-center gap-2 text-sm';
-
-    // Add read icon and message
-    toast.innerHTML = `
-			<svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-				<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-			</svg>
-			<span>Read</span>
-		`;
-
-    document.body.appendChild(toast);
-
-    // Add entrance animation
-    toast.style.opacity = '0';
-    toast.style.transform = 'translate(-50%, 10px) scale(0.95)';
-
-    requestAnimationFrame(() => {
-      toast.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-      toast.style.opacity = '1';
-      toast.style.transform = 'translate(-50%, 0) scale(1)';
-    });
-
-    // Remove after 2.5 seconds with exit animation
-    setTimeout(() => {
-      toast.style.opacity = '0';
-      toast.style.transform = 'translate(-50%, -10px) scale(0.95)';
-      setTimeout(() => {
-        toast.remove();
-      }, 300);
-    }, 2500);
-  }
-
   function updateReadingProgress() {
     const scrolled = window.scrollY;
     const articleBounds = article?.getBoundingClientRect();
@@ -257,7 +221,6 @@ const { class: className = '', postId } = Astro.props;
       if (currentPostId) {
         tracker.markAsRead(currentPostId, progress);
         hasMarkedAsRead = true;
-        showReadToast();
       }
     }
 

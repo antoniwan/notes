@@ -130,6 +130,40 @@ describe('findMoreRecipes', () => {
     const more = findMoreRecipes(current, [current, esTwin, enOther, esOther]);
     expect(more.map((item) => item.id)).toEqual(['recipes/habichuelas-guisadas-en']);
   });
+
+  it('excludes drafts, unpublished dishes and future dishes even when passed directly', () => {
+    const current = post('recipes/current');
+    const draft = post('recipes/draft', { draft: true });
+    const unpublished = post('recipes/unpublished', { published: false });
+    const future = post('recipes/future', { pubDate: new Date('9999-01-01T00:00:00.000Z') });
+    const available = post('recipes/available');
+
+    expect(findMoreRecipes(current, [current, draft, unpublished, future, available])).toEqual([
+      available,
+    ]);
+  });
+
+  it('keeps Spanish recipe recommendations in Spanish and excludes the same work', () => {
+    const current = post('recipes/current-es', { language: ['es'], translationGroup: 'current' });
+    const duplicate = post('recipes/same-work', { language: ['es'], translationGroup: 'current' });
+    const english = post('recipes/other-en');
+    const spanish = post('recipes/other-es', { language: ['es'] });
+
+    expect(findMoreRecipes(current, [current, duplicate, english, spanish])).toEqual([spanish]);
+  });
+
+  it('keeps equal-date results deterministic, respects limits and preserves input order', () => {
+    const current = post('recipes/current');
+    const a = post('recipes/a');
+    const b = post('recipes/b');
+    const c = post('recipes/c');
+    const allPosts = [c, b, current, a];
+
+    expect(findMoreRecipes(current, allPosts, 2)).toEqual([a, b]);
+    expect(findMoreRecipes(current, allPosts, 0)).toEqual([]);
+    expect(findMoreRecipes(current, allPosts, -1)).toEqual([]);
+    expect(allPosts).toEqual([c, b, current, a]);
+  });
 });
 
 describe('findRelatedPosts recipe exclusion', () => {

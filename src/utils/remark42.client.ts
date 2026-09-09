@@ -1,72 +1,152 @@
 import type { Remark42Instance } from '../types/comments';
 
-/** Shared embed config so the script bootstrap and createInstance stay in sync. */
-export function buildRemark42Config(host: string, siteId: string, pageUrl: string) {
-  const isDark = document.documentElement.classList.contains('dark');
+type CommentLanguage = 'en' | 'es';
+type CommentTheme = 'dark' | 'light';
+interface LoadOptions {
+  signal?: AbortSignal;
+  timeoutMs?: number;
+}
+
+/** Keep bootstrap and explicit instances on the same thread, theme, and locale. */
+export function buildRemark42Config(
+  host: string,
+  siteId: string,
+  pageUrl: string,
+  language: CommentLanguage = 'en',
+  theme: CommentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light',
+) {
   return {
     host,
     site_id: siteId,
     url: pageUrl,
-    theme: (isDark ? 'dark' : 'light') as 'dark' | 'light',
+    theme,
+    locale: language,
     components: ['embed'] as const,
-    // Nobody uses the Remark42 marketing link; keep the thread chrome only.
     no_footer: true,
   };
 }
 
-function hideRemark42Footer(node: HTMLElement, attempt = 0) {
-  const iframe = node.querySelector('iframe');
-  if (!iframe) {
-    if (attempt < 20) {
-      window.setTimeout(() => hideRemark42Footer(node, attempt + 1), 50);
-    }
-    return;
-  }
+/** Wait for the embed API, reporting network errors and bounded startup failures. */
+export function loadRemark42Script(
+  config: ReturnType<typeof buildRemark42Config>,
+  { signal, timeoutMs = 15000 }: LoadOptions = {},
+): Promise<void> {
+  if (signal?.aborted) return Promise.reject(new DOMException('Aborted', 'AbortError'));
+  if (typeof window.REMARK42?.createInstance === 'function') return Promise.resolve();
 
-  const apply = () => {
-    try {
-      const doc = iframe.contentDocument;
-      if (!doc || doc.getElementById('notes-hide-remark42-footer')) return;
-      const style = doc.createElement('style');
-      style.id = 'notes-hide-remark42-footer';
-      style.textContent =
-        '.root__copyright{display:none!important;margin:0!important;height:0!important;overflow:hidden!important}';
-      doc.head.appendChild(style);
-    } catch {
-      // Cross-origin: no_footer on the config is the primary hide.
-    }
-  };
+  return new Promise((resolve, reject) => {
+    const src = `${config.host.replace(/\/+$/, '')}/web/embed.js`;
+    const existing = Array.from(document.scripts).find((script) => script.src === src);
+    const script = existing ?? document.createElement('script');
+    let settled = false;
 
-  apply();
-  iframe.addEventListener('load', apply);
+    const cleanup = () => {
+      window.clearTimeout(timer);
+      window.removeEventListener('REMARK42::ready', ready);
+      script.removeEventListener('load', ready);
+      script.removeEventListener('error', failed);
+      signal?.removeEventListener('abort', aborted);
+    };
+    const finish = (error?: Error) => {
+      if (settled) return;
+      settled = true;
+      cleanup();
+      if (error) reject(error);
+      else resolve();
+    };
+    const ready = () => {
+      if (typeof window.REMARK42?.createInstance === 'function') finish();
+    };
+    const failed = () => {
+      // A failed request can be fetched again. Keep slow requests for retries,
+      // so two copies cannot bootstrap while the first is still downloading.
+      script.remove();
+      finish(new Error('The comments script could not be loaded.'));
+    };
+    const aborted = () => finish(new DOMException('Aborted', 'AbortError'));
+    const timer = window.setTimeout(
+      () => finish(new Error('The comments service did not become ready in time.')),
+      timeoutMs,
+    );
+
+    window.remark_config = config;
+    window.addEventListener('REMARK42::ready', ready);
+    script.addEventListener('load', ready);
+    script.addEventListener('error', failed);
+    signal?.addEventListener('abort', aborted, { once: true });
+
+    if (!existing) {
+      script.src = src;
+      script.async = true;
+      script.defer = true;
+      // A request can fail after its caller timed out or left the page.
+      // Do not leave that failed element blocking the next retry.
+      script.addEventListener('error', () => script.remove(), { once: true });
+      document.head.appendChild(script);
+    }
+    ready();
+  });
 }
 
-/**
- * Create a Remark42 embed instance. Call only when window.REMARK42 is defined.
- */
+/** Only trust the mounted widget's own initialization message. */
+export function isRemark42FrameReady(
+  event: Pick<MessageEvent, 'origin' | 'source' | 'data'>,
+  host: string,
+  frameWindow: Window | null,
+): boolean {
+  return Boolean(
+    frameWindow &&
+    event.source === frameWindow &&
+    event.origin === new URL(host).origin &&
+    event.data &&
+    typeof event.data === 'object' &&
+    !Array.isArray(event.data) &&
+    event.data.inited === true,
+  );
+}
+
+/** Widget initialization is distinct from successful retrieval of its comments. */
+export function waitForRemark42Frame(
+  node: HTMLElement,
+  host: string,
+  { signal, timeoutMs = 15000 }: LoadOptions = {},
+): Promise<void> {
+  if (signal?.aborted) return Promise.reject(new DOMException('Aborted', 'AbortError'));
+  return new Promise((resolve, reject) => {
+    const finish = (error?: Error) => {
+      window.clearTimeout(timer);
+      window.removeEventListener('message', receive);
+      signal?.removeEventListener('abort', aborted);
+      if (error) reject(error);
+      else resolve();
+    };
+    const receive = (event: MessageEvent) => {
+      const frame = node.querySelector('iframe');
+      if (isRemark42FrameReady(event, host, frame?.contentWindow ?? null)) finish();
+    };
+    const aborted = () => finish(new DOMException('Aborted', 'AbortError'));
+    const timer = window.setTimeout(
+      () => finish(new Error('The comments box did not initialize in time.')),
+      timeoutMs,
+    );
+    window.addEventListener('message', receive);
+    signal?.addEventListener('abort', aborted, { once: true });
+  });
+}
+
+/** Replace the bootstrap or previous instance instead of adding another iframe. */
 export function createRemark42Instance(
   node: HTMLElement,
   host: string,
   siteId: string,
   pageUrl: string,
+  language: CommentLanguage = 'en',
 ): Remark42Instance {
-  const instance = window.REMARK42!.createInstance({
-    node,
-    ...buildRemark42Config(host, siteId, pageUrl),
-  });
-  // Footer CSS is inside the iframe; apply after the frame paints.
-  requestAnimationFrame(() => hideRemark42Footer(node));
-  return instance;
-}
-
-/**
- * Run callback when REMARK42 is ready (now or later). Handles race where
- * embed.js sets REMARK42 and dispatches REMARK42::ready before our onload/listener runs.
- */
-export function whenRemark42Ready(cb: () => void): void {
-  if (window.REMARK42) {
-    cb();
-    return;
-  }
-  window.addEventListener('REMARK42::ready', cb, { once: true });
+  const api = window.REMARK42;
+  if (!api) throw new Error('The comments API is unavailable.');
+  api.destroy?.();
+  node.replaceChildren();
+  const config = buildRemark42Config(host, siteId, pageUrl, language);
+  window.remark_config = config;
+  return api.createInstance({ node, ...config });
 }

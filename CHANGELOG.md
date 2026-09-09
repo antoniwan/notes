@@ -7,6 +7,31 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.20.0] — 2026-09-09
+
+### Added
+
+- Comments speak the post’s language, offer a private email, and say when the box is idle, loading, or failed.
+- Leave a note jumps to comments after the article. Continue reading and More recipes stay on the page even without cards, with a browse link.
+- Spanish posts label that afterword in Spanish and name that related writings and the cookbook index are in English.
+
+### Changed
+
+- Related writings and more recipes use the same post cards as listings, and sit before comments.
+- Related writings only recommend a shared subject. Form tags, featured recency, translations, drafts, and recipes no longer fill the grid.
+- More recipes stay in the same language and skip unpublished or future dishes.
+- On this page hides on phones once you reach the afterword.
+- Tag sentence doors no longer sit in a padded box.
+
+### Fixed
+
+- Comment embed aborts and tears down on navigation instead of stacking iframes or leaking a failed script.
+- Related and more-recipe order is stable when scores or dates match.
+
+### Removed
+
+- The Read toast when an essay is marked read.
+
 ## [6.19.0] — 2026-09-09
 
 ### Added

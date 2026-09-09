@@ -253,29 +253,42 @@ const isSpanish = contentLanguage.contentLanguage === 'es';
       </article>
 
       <div class="post-afterword">
-        <details class="post-mobile-details">
-          <summary
-            >{
-              isSpanish ? 'Temas y detalles de este artículo' : 'Topics and article details'
-            }</summary
-          >
-          <PostDetails
-            categoryItems={categoryItems}
-            tags={tags}
-            pubDate={pubDate}
-            updatedDate={updatedDate}
-            language={contentLanguage.contentLanguage}
-          />
-          <div class="post-share">
-            <SocialShare
-              title={title}
-              description={description}
-              url={canonical}
-              variant="horizontal"
+        <div
+          class:list={[
+            'post-finish-actions',
+            { 'post-finish-actions--topics-only': !showComments },
+          ]}
+        >
+          <details class="post-mobile-details">
+            <summary
+              >{
+                isSpanish ? 'Temas y detalles de este artículo' : 'Topics and article details'
+              }</summary
+            >
+            <PostDetails
+              categoryItems={categoryItems}
+              tags={tags}
+              pubDate={pubDate}
+              updatedDate={updatedDate}
+              language={contentLanguage.contentLanguage}
             />
-          </div>
-        </details>
-        {showComments && <Comments />}
+            <div class="post-share">
+              <SocialShare
+                title={title}
+                description={description}
+                url={canonical}
+                variant="horizontal"
+              />
+            </div>
+          </details>
+          {
+            showComments && (
+              <a class="post-comment-jump" href="#comments">
+                {isSpanish ? 'Dejar una nota' : 'Leave a note'}
+              </a>
+            )
+          }
+        </div>
         {
           rest.currentPost && isRecipePost(rest.currentPost) ? (
             <MoreRecipes currentPost={rest.currentPost} allPosts={rest.allPosts} />
@@ -283,6 +296,7 @@ const isSpanish = contentLanguage.contentLanguage === 'es';
             <RelatedPosts currentPost={rest.currentPost} allPosts={rest.allPosts} />
           )
         }
+        {showComments && <Comments language={contentLanguage.contentLanguage} />}
       </div>
     </div>
   </Container>
@@ -425,8 +439,41 @@ const isSpanish = contentLanguage.contentLanguage === 'es';
   }
 
   .post-afterword {
-    max-width: 48rem;
     width: 100%;
+    margin-top: clamp(3.5rem, 7vw, 6rem);
+  }
+
+  .post-finish-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1rem 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .post-comment-jump {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    color: rgb(var(--color-accent));
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.5;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .post-comment-jump:hover {
+    color: rgb(var(--color-accent-hover));
+  }
+
+  .post-comment-jump:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 4px;
+  }
+
+  .post-afterword :global(.comments-section) {
+    margin-top: clamp(3.5rem, 7vw, 6rem);
   }
 
   .post-article :global(.post-prose hr) {
@@ -513,8 +560,9 @@ const isSpanish = contentLanguage.contentLanguage === 'es';
   }
 
   .post-mobile-details {
-    margin-top: 2.5rem;
-    padding-block: 1rem;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
   }
 
   .post-mobile-details > summary {
@@ -598,6 +646,9 @@ const isSpanish = contentLanguage.contentLanguage === 'es';
       grid-row: 3;
     }
     .post-mobile-details {
+      display: none;
+    }
+    .post-finish-actions--topics-only {
       display: none;
     }
   }
