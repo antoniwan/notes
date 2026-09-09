@@ -7,7 +7,7 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
-From [6.13.2] onward, technical work in this file was built with GPT Astra.
+[6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
 ## [6.21.0] — 2026-09-09
 
@@ -25,7 +25,7 @@ From [6.13.2] onward, technical work in this file was built with GPT Astra.
 
 ### Notes
 
-- This reader redesign — navigation, type, children’s books, and the rest of the chrome — was designed and shipped with GPT Astra in about a day or two.
+- Closes the [6.13.2]–[6.21.0] Codex and Astra push. This reader redesign — navigation, type, children’s books, and the rest of the chrome — was the last of it, designed and shipped in about a day or two.
 
 ## [6.20.0] — 2026-09-09
 
@@ -207,7 +207,7 @@ Reading-layout pass built with GPT Astra at Max reasoning effort.
 
 ### Notes
 
-- First technical pass built with GPT Astra. Later entries in this file are the same unless a section says otherwise.
+- Opens the Codex and Astra batch (full power, Max) that runs through [6.21.0].
 
 ## [6.13.1] — 2026-09-05
 
