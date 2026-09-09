@@ -7,6 +7,8 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+From [6.13.2] onward, technical work in this file was built with GPT Astra.
+
 ## [6.21.0] — 2026-09-09
 
 ### Added
@@ -23,7 +25,7 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 ### Notes
 
-- This reader redesign — navigation, type, children’s books, and the rest of the chrome — was designed and shipped with GPT-5.4 Astra in about a day or two.
+- This reader redesign — navigation, type, children’s books, and the rest of the chrome — was designed and shipped with GPT Astra in about a day or two.
 
 ## [6.20.0] — 2026-09-09
 
@@ -172,7 +174,7 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 - Search arrow keys move focus onto results. Escape keeps you in the field.
 - Phone search and menu keep `aria-expanded` in sync and close each other. Theme toggle names the theme you will switch to.
 
-Chrome pass built with GPT-6 Astra at Max reasoning effort.
+Chrome pass built with GPT Astra at Max reasoning effort.
 
 ## [6.14.0] — 2026-09-08
 
@@ -195,13 +197,17 @@ Chrome pass built with GPT-6 Astra at Max reasoning effort.
 - Wide tables and code scroll inside the article instead of clipping, and focus outlines stay visible.
 - Floating reading controls respect safe-area insets. The local service-worker badge stays off article previews.
 
-Reading-layout pass built with GPT-6 Astra at Max reasoning effort.
+Reading-layout pass built with GPT Astra at Max reasoning effort.
 
 ## [6.13.2] — 2026-09-08
 
 ### Fixed
 
 - Desktop post sidebar stays below the header while you read. Long tag lists scroll inside the sidebar instead of clipping off the screen.
+
+### Notes
+
+- First technical pass built with GPT Astra. Later entries in this file are the same unless a section says otherwise.
 
 ## [6.13.1] — 2026-09-05
 
