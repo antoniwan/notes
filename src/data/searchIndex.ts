@@ -35,7 +35,7 @@ const PAGE_SEARCH_DATA = [
     id: 'library',
     title: 'Library',
     description: 'Books on the shelf that shape these notes',
-    url: '/library',
+    url: '/library/books',
   },
   {
     type: 'page',

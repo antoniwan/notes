@@ -20,6 +20,7 @@ describe('POST_REDIRECTS + buildSeoRedirects', () => {
     expect(POST_REDIRECTS['/p/it-isnt-too-much-pressure']).toBe('/p/on-parental-pressure');
     expect(POST_REDIRECTS['/p/fasting-ground-flow']).toBe('/p/fasting-metabolic-ritual');
     expect(POST_REDIRECTS['/p/lemon-pepper-chicken']).toBe('/p/recipes/lemon-pepper-chicken');
+    expect(POST_REDIRECTS['/library']).toBe('/library/books');
   });
 
   it('includes post redirects and tag-alias redirects without trailing-slash duplicates', () => {

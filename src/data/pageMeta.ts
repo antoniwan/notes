@@ -16,7 +16,6 @@ export const PAGE_META = {
   '/everything': 'Complete archive of published notes, listed newest first.',
   '/guided-path':
     'Published notes grouped by season and year. Reading progress is stored on this device.',
-  '/library': 'Catalog of books used as sources in Notes, by reading status and shelf.',
   '/library/books':
     'Searchable catalog of books in the Notes library, filterable by status, shelf, title, or author.',
   '/recipes':

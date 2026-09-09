@@ -39,6 +39,7 @@ export const POST_REDIRECTS: Record<string, string> = {
   '/p/core-values-freedom': '/p/the-definition-and-practice-of-my-core-values-make-me-free',
   '/p/reflexion-palabras-transformacion': '/tag/transformation',
   '/p/lemon-pepper-chicken': '/p/recipes/lemon-pepper-chicken',
+  '/library': '/library/books',
 };
 
 /**
