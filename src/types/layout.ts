@@ -42,7 +42,15 @@ export interface BaseLayoutProps {
   /** schema.org inLanguage value (defaults to en-US). */
   inLanguage?: string;
   // Structured data specific
-  structuredDataType?: 'website' | 'article' | 'category' | 'tag';
+  structuredDataType?: 'website' | 'article' | 'category' | 'tag' | 'recipe';
+  recipeIngredient?: string[];
+  recipeInstructions?: string[];
+  prepTime?: string;
+  cookTime?: string;
+  totalTime?: string;
+  recipeYield?: string;
+  recipeCategory?: string;
+  recipeCuisine?: string;
   structuredDataIdentifier?: string;
   posts?: CollectionEntry<'blog'>[]; // For category/tag pages
   // Enhanced structured data options

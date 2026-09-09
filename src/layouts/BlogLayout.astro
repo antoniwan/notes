@@ -48,6 +48,7 @@ const imageCredit = rest.currentPost?.data.imageCredit;
 const imageCreditUrl = rest.currentPost?.data.imageCreditUrl;
 const imageLicense = rest.currentPost?.data.imageLicense;
 const isRecipe = rest.currentPost ? isRecipePost(rest.currentPost) : false;
+const recipeData = isRecipe ? rest.currentPost?.data : undefined;
 const estimatedWordCount = (() => {
   if (!minutesRead || typeof minutesRead !== 'string') return undefined;
   const match = minutesRead.match(/(\d+)/);
@@ -92,7 +93,15 @@ const isSpanish = contentLanguage.contentLanguage === 'es';
   author={author}
   keywords={keywords}
   type="article"
-  structuredDataType="article"
+  structuredDataType={isRecipe ? 'recipe' : 'article'}
+  recipeIngredient={recipeData?.recipeIngredient}
+  recipeInstructions={recipeData?.recipeInstructions}
+  prepTime={recipeData?.prepTime}
+  cookTime={recipeData?.cookTime}
+  totalTime={recipeData?.totalTime}
+  recipeYield={recipeData?.recipeYield}
+  recipeCategory={recipeData?.recipeCategory}
+  recipeCuisine={recipeData?.recipeCuisine}
   tableOfContents={tableOfContents}
   hasComments={showComments}
   featured={rest.featured}

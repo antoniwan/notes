@@ -14,7 +14,7 @@ export interface StructuredDataOptions {
   title: string;
   description: string;
   path: string;
-  type?: 'website' | 'article' | 'category' | 'tag';
+  type?: 'website' | 'article' | 'category' | 'tag' | 'recipe';
   // Article-specific fields
   pubDate?: Date;
   updatedDate?: Date;
@@ -33,6 +33,36 @@ export interface StructuredDataOptions {
   draft?: boolean;
   inLanguage?: string;
   wordCount?: number;
+  // Recipe-specific fields (omit from JSON-LD when empty)
+  recipeIngredient?: string[];
+  recipeInstructions?: string[];
+  prepTime?: string;
+  cookTime?: string;
+  totalTime?: string;
+  recipeYield?: string;
+  recipeCategory?: string;
+  recipeCuisine?: string;
+}
+
+function presentString(value?: string): string | undefined {
+  const trimmed = value?.trim();
+  return trimmed ? trimmed : undefined;
+}
+
+function presentList(value?: string[]): string[] | undefined {
+  if (!value?.length) return undefined;
+  const cleaned = value.map((item) => item.trim()).filter(Boolean);
+  return cleaned.length > 0 ? cleaned : undefined;
+}
+
+/** Accept ISO-8601 durations or a minute count; omit anything else. */
+export function toIso8601Duration(value?: string): string | undefined {
+  const trimmed = presentString(value);
+  if (!trimmed) return undefined;
+  if (/^P/i.test(trimmed)) return trimmed.toUpperCase();
+  const minutes = Number(trimmed);
+  if (Number.isFinite(minutes) && minutes > 0) return `PT${Math.round(minutes)}M`;
+  return undefined;
 }
 
 // Generate enhanced structured data with improved SEO
@@ -56,6 +86,14 @@ export function generateStructuredData(options: StructuredDataOptions) {
     draft = false,
     inLanguage = 'en-US',
     wordCount,
+    recipeIngredient,
+    recipeInstructions,
+    prepTime,
+    cookTime,
+    totalTime,
+    recipeYield,
+    recipeCategory,
+    recipeCuisine,
   } = options;
 
   const url = generateCanonicalUrl(path);
@@ -246,6 +284,51 @@ export function generateStructuredData(options: StructuredDataOptions) {
     };
 
     schemas.push(breadcrumbSchema);
+  } else if (type === 'recipe') {
+    const ingredients = presentList(recipeIngredient);
+    const instructions = presentList(recipeInstructions);
+    const prep = toIso8601Duration(prepTime);
+    const cook = toIso8601Duration(cookTime);
+    const total = toIso8601Duration(totalTime);
+    const yieldValue = presentString(recipeYield);
+    const dishCategory = presentString(recipeCategory);
+    const cuisine = presentString(recipeCuisine);
+    const keywordValue = keywords.length > 0 ? keywords.join(', ') : undefined;
+
+    const recipeSchema: Record<string, unknown> = {
+      '@context': 'https://schema.org',
+      '@type': 'Recipe',
+      name: title,
+      description,
+      url,
+      inLanguage,
+      author: {
+        '@type': 'Person',
+        name: AUTHOR.name,
+        url: AUTHOR.url,
+      },
+    };
+
+    if (heroImage) recipeSchema.image = generateImageUrl(heroImage);
+    if (pubDate) recipeSchema.datePublished = pubDate.toISOString();
+    if (updatedDate) recipeSchema.dateModified = updatedDate.toISOString();
+    if (keywordValue) recipeSchema.keywords = keywordValue;
+    if (ingredients) recipeSchema.recipeIngredient = ingredients;
+    if (instructions) {
+      recipeSchema.recipeInstructions = instructions.map((text, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text,
+      }));
+    }
+    if (prep) recipeSchema.prepTime = prep;
+    if (cook) recipeSchema.cookTime = cook;
+    if (total) recipeSchema.totalTime = total;
+    if (yieldValue) recipeSchema.recipeYield = yieldValue;
+    if (dishCategory) recipeSchema.recipeCategory = dishCategory;
+    if (cuisine) recipeSchema.recipeCuisine = cuisine;
+
+    schemas.push(recipeSchema);
   } else if ((type === 'category' || type === 'tag') && posts.length > 0) {
     schemas.push({
       '@context': 'https://schema.org',
@@ -600,6 +683,11 @@ export function validateStructuredData(schema: any): {
     if (!schema.headline) warnings.push('BlogPosting should include headline');
     if (!schema.author) warnings.push('BlogPosting should include author');
     if (!schema.datePublished) warnings.push('BlogPosting should include datePublished');
+  }
+
+  if (schema['@type'] === 'Recipe') {
+    if (!schema.name) warnings.push('Recipe should include name');
+    if (!schema.author) warnings.push('Recipe should include author');
   }
 
   if (schema['@type'] === 'Person') {

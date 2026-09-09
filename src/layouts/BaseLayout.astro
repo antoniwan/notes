@@ -49,6 +49,14 @@ const {
   locale,
   inLanguage = 'en-US',
   wordCount,
+  recipeIngredient,
+  recipeInstructions,
+  prepTime,
+  cookTime,
+  totalTime,
+  recipeYield,
+  recipeCategory,
+  recipeCuisine,
 } = Astro.props;
 
 const seoDescription = metaDescription || description;
@@ -80,6 +88,14 @@ const structuredData = generateStructuredData({
   draft,
   inLanguage,
   wordCount,
+  recipeIngredient,
+  recipeInstructions,
+  prepTime,
+  cookTime,
+  totalTime,
+  recipeYield,
+  recipeCategory,
+  recipeCuisine,
 });
 ---
 

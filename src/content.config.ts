@@ -66,6 +66,16 @@ const blog = defineCollection({
     // SEO fields (simplified)
     keywords: z.array(z.string()).optional(),
 
+    // Recipe structured data (optional; omit rather than empty)
+    recipeIngredient: z.array(z.string()).optional(),
+    recipeInstructions: z.array(z.string()).optional(),
+    prepTime: z.string().optional(),
+    cookTime: z.string().optional(),
+    totalTime: z.string().optional(),
+    recipeYield: z.string().optional(),
+    recipeCategory: z.string().optional(),
+    recipeCuisine: z.string().optional(),
+
     // Comments
     showComments: z
       .boolean()
