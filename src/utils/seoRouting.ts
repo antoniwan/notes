@@ -30,8 +30,12 @@ export const POST_REDIRECTS: Record<string, string> = {
   '/p/it-isnt-too-much-pressure': '/p/on-parental-pressure',
   '/p/fasting-ground-flow': '/p/fasting-metabolic-ritual',
   '/p/core-values-freedom': '/p/the-definition-and-practice-of-my-core-values-make-me-free',
-  '/p/reflexion-palabras-transformacion': '/tag/transformation',
   '/p/lemon-pepper-chicken': '/p/recipes/lemon-pepper-chicken',
+};
+
+/** Non-post URL moves (indexes, tags, retired pages). */
+export const PAGE_REDIRECTS: Record<string, string> = {
+  '/p/reflexion-palabras-transformacion': '/tag/transformation',
   '/library': '/library/books',
 };
 
@@ -59,6 +63,7 @@ export function buildSeoRedirects(): Record<string, string> {
   return {
     ...buildTagAliasRedirects(),
     ...POST_REDIRECTS,
+    ...PAGE_REDIRECTS,
     ...WRITING_INSIGHTS_REDIRECTS,
   };
 }

@@ -94,6 +94,11 @@
       "source": "/p",
       "destination": "/everything",
       "permanent": true
+    },
+    {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap-index.xml",
+      "statusCode": 301
     }
   ],
   "rewrites": [

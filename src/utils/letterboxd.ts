@@ -3,6 +3,8 @@
  * Expects LETTERBOXD_RSS_URL in env — same shape as https://letterboxd.com/{user}/rss/
  */
 
+import letterboxdFallback from '../data/letterboxdFallback.json';
+
 /** Public diary URL from a member profile (e.g. …/username/ → …/username/diary/). */
 export function letterboxdDiaryUrlFromProfile(profileUrl: string): string {
   const raw = profileUrl?.trim();
@@ -49,6 +51,22 @@ function extractPosterFromBlock(block: string): string | null {
   return m?.[1] ?? null;
 }
 
+function fallbackWatches(limit: number, reason: string): LetterboxdWatch[] {
+  const films = (letterboxdFallback as LetterboxdWatch[]).slice(0, Math.max(0, limit));
+  console.error(
+    [
+      '',
+      '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!',
+      `[letterboxd] ${reason}`,
+      'Using committed fallback src/data/letterboxdFallback.json.',
+      `About page will show ${films.length} last-known watches (may be stale).`,
+      '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!',
+      '',
+    ].join('\n'),
+  );
+  return films;
+}
+
 export async function fetchLetterboxdRecent(
   rssUrl: string,
   limit: number,
@@ -65,10 +83,10 @@ export async function fetchLetterboxdRecent(
       signal: AbortSignal.timeout(12_000),
     });
     if (!res.ok) {
-      console.warn(
-        `[letterboxd] LETTERBOXD_RSS_URL is set but fetch failed (HTTP ${res.status}): ${url}`,
+      return fallbackWatches(
+        limit,
+        `LETTERBOXD_RSS_URL is set but fetch failed (HTTP ${res.status}): ${url}`,
       );
-      return [];
     }
 
     const xml = await res.text();
@@ -99,12 +117,15 @@ export async function fetchLetterboxdRecent(
     }
 
     if (out.length === 0) {
-      console.warn(`[letterboxd] LETTERBOXD_RSS_URL is set but no diary items were parsed: ${url}`);
+      return fallbackWatches(
+        limit,
+        `LETTERBOXD_RSS_URL is set but no diary items were parsed: ${url}`,
+      );
     }
 
     return out;
   } catch (error) {
-    console.warn(`[letterboxd] LETTERBOXD_RSS_URL is set but fetch threw: ${url}`, error);
-    return [];
+    const detail = error instanceof Error ? error.message : String(error);
+    return fallbackWatches(limit, `LETTERBOXD_RSS_URL is set but fetch threw: ${url} (${detail})`);
   }
 }
