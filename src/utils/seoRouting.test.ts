@@ -72,9 +72,9 @@ describe('shouldIncludeInSitemap', () => {
 
   it('excludes only author tools and API hub paths', () => {
     expect(shouldIncludeInSitemap('https://notes.antoniwan.online/brain-science')).toBe(false);
-    expect(shouldIncludeInSitemap('https://notes.antoniwan.online/writing-insights')).toBe(false);
+    expect(shouldIncludeInSitemap('https://notes.antoniwan.online/writing-insights')).toBe(true);
     expect(shouldIncludeInSitemap('https://notes.antoniwan.online/writing-insights/cadence')).toBe(
-      false,
+      true,
     );
     expect(shouldIncludeInSitemap('https://notes.antoniwan.online/tag-management')).toBe(false);
     expect(shouldIncludeInSitemap('https://notes.antoniwan.online/api')).toBe(false);

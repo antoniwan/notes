@@ -13,13 +13,6 @@ export const SEO_EXCLUDED_PATHS = [
   '/brain-science/topics',
   '/brain-science/patterns',
   '/brain-science/meta',
-  '/writing-insights',
-  '/writing-insights/insights',
-  '/writing-insights/cadence',
-  '/writing-insights/evolution',
-  '/writing-insights/topics',
-  '/writing-insights/patterns',
-  '/writing-insights/meta',
 ] as const;
 
 /** Old dashboard subpaths → Writing Insights. `/brain-science` itself stays as the origin note. */
