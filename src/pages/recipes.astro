@@ -4,7 +4,6 @@ import DefaultImage from '../components/DefaultImage.astro';
 import { getCollection } from 'astro:content';
 import { PAGE_META } from '../data/pageMeta';
 import { getSpanishTwinGroups } from '../utils/translationUtils';
-import { isSpanishPrimary } from '../utils/publishFilters';
 import { isCookbookListedPost, recipeContentsLetter } from '../utils/recipes';
 
 const recipes = (await getCollection('blog', (entry) => isCookbookListedPost(entry))).sort(
@@ -123,9 +122,15 @@ const contents = [...byLetter.entries()].sort(([a], [b]) => a.localeCompare(b));
                   </div>
                   <div class="cookbook-plate__caption">
                     <h3 class="cookbook-plate__title">{recipe.data.title}</h3>
-                    {hasSpanish && !isSpanishPrimary(recipe.data) && (
-                      <span class="cookbook-plate__es" lang="es" aria-label="Disponible en español">
-                        ES
+                    {hasSpanish && (
+                      <span
+                        class="tag-chip tag-chip--subtle cookbook-plate__es inline-flex items-center rounded-full border px-2.5 py-1 text-sm font-medium"
+                        data-tag-family="kitchen"
+                      >
+                        <span aria-hidden="true" lang="es">
+                          ES
+                        </span>
+                        <span class="sr-only">Spanish version available</span>
                       </span>
                     )}
                   </div>
@@ -464,11 +469,7 @@ const contents = [...byLetter.entries()].sort(([a], [b]) => a.localeCompare(b));
 
   .cookbook-plate__es {
     flex: 0 0 auto;
-    color: rgb(var(--color-accent));
-    font-family: var(--font-sans);
-    font-size: 0.875rem;
-    font-weight: 700;
-    line-height: 1.5;
+    align-self: center;
   }
 
   .cookbook-letter a:hover,
