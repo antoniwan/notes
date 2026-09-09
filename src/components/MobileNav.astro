@@ -1,18 +1,40 @@
 ---
-import { SOCIAL_LINKS } from '../consts';
-import { mainNavigation } from '../data/navigation';
+import Logo from './Logo.astro';
+import {
+  readingLinks,
+  collectionLinks,
+  contactLinks,
+  siteToolLinks,
+} from '../data/readerNavigation';
 import { getSortedCategories } from '../utils/categoryUtils';
-import { isMainNavItemActive, isNavDropdownItemActive } from '../utils/navActive';
-import { generateCanonicalUrl } from '../utils/seo';
+import { isNavDropdownItemActive } from '../utils/navActive';
 
 const sortedCategories = await getSortedCategories();
 const pathname = Astro.url.pathname;
-const navigation = [{ href: '/', label: 'Home' }, ...mainNavigation];
-const socialLinks = [
-  { href: SOCIAL_LINKS.bluesky, label: 'Bluesky' },
-  { href: SOCIAL_LINKS.github, label: 'GitHub' },
-  { href: 'https://www.youtube.com/@Antoniwan777', label: 'YouTube' },
-];
+const entryDescriptions: Record<string, string> = {
+  '/everything': 'The full archive, with images.',
+  '/guided-path': 'A place to start reading.',
+};
+const entryLinks = readingLinks.filter((link) => link.href in entryDescriptions);
+const browseLinks = readingLinks.filter((link) => !(link.href in entryDescriptions));
+const collectionDescriptions: Record<string, string> = {
+  '/books': 'Stories I wrote',
+  '/recipes': 'Recipes from my kitchen',
+  '/library/books': 'Books on my shelf',
+};
+const primaryContactLinks = contactLinks.filter(
+  (link) => link.href === '/about' || link.href.startsWith('mailto:'),
+);
+const secondaryContactLinks = contactLinks.filter((link) => !primaryContactLinks.includes(link));
+function currentLocation(href: string) {
+  if (pathname === href) return 'page';
+  if (
+    (href === '/category' && pathname.startsWith('/category/')) ||
+    isNavDropdownItemActive(href, pathname)
+  )
+    return 'location';
+  return undefined;
+}
 ---
 
 <button
@@ -37,14 +59,10 @@ const socialLinks = [
   </svg>
 </button>
 
-<dialog
-  id="mobile-menu"
-  class="mobile-menu"
-  aria-labelledby="mobile-menu-title"
-  data-share-url={generateCanonicalUrl(pathname)}
->
+<dialog id="mobile-menu" class="mobile-menu" aria-labelledby="mobile-menu-title">
   <div class="mobile-menu__header">
-    <span id="mobile-menu-title">Menu</span>
+    <span id="mobile-menu-title" class="sr-only">Menu</span>
+    <Logo class="mobile-menu__brand" />
     <button id="close-mobile-menu" class="mobile-menu__close" type="button" aria-label="Close menu">
       <svg
         width="21"
@@ -76,115 +94,165 @@ const socialLinks = [
       Search the notes
     </button>
     <nav class="mobile-menu__navigation" aria-label="Mobile navigation">
-      {
-        navigation.map((item) => {
-          const isActive = isMainNavItemActive(item.href, pathname);
-          if (!('dropdown' in item) || !item.dropdown) {
-            return (
-              <a
-                class="mobile-menu__primary"
-                href={item.href}
-                aria-current={isActive ? 'page' : undefined}
-              >
-                {item.label}
-              </a>
-            );
-          }
-          const isCategories = item.href === '/category';
-          return (
-            <details class="mobile-menu__group" data-active={isActive ? 'true' : undefined}>
-              <summary class="mobile-menu__primary">
-                {item.label}
-                <svg
-                  class="mobile-menu__chevron"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.7"
-                  aria-hidden="true"
+      <section class="mobile-menu__section" aria-labelledby="mobile-menu-read">
+        <h2 id="mobile-menu-read" class="mobile-menu__label">Read</h2>
+        <ul class="mobile-menu__links mobile-menu__entries">
+          {
+            entryLinks.map((link) => (
+              <li>
+                <a
+                  class="mobile-menu__entry"
+                  href={link.href}
+                  aria-current={currentLocation(link.href)}
                 >
-                  <path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </summary>
-              <div class="mobile-menu__children">
-                {isCategories && (
-                  <a
-                    class="mobile-menu__overview"
-                    href="/category"
-                    aria-current={pathname === '/category' ? 'page' : undefined}
-                  >
-                    All categories <span aria-hidden="true">↗</span>
-                  </a>
-                )}
-                {isCategories
-                  ? sortedCategories.map((category) => {
-                      const href = `/category/${category.id}`;
-                      return (
-                        <a
-                          href={href}
-                          aria-current={
-                            isNavDropdownItemActive(href, pathname) ? 'page' : undefined
-                          }
-                        >
-                          <span>{category.name}</span>
-                          <span
-                            class="mobile-menu__count"
-                            aria-label={`${category.postCount} articles`}
-                          >
-                            {category.postCount}
-                          </span>
-                        </a>
-                      );
-                    })
-                  : (item.dropdown.items ?? []).map((child) => (
-                      <a
-                        href={child.href}
-                        aria-current={
-                          isNavDropdownItemActive(child.href, pathname) ? 'page' : undefined
-                        }
-                      >
-                        {child.label}
-                      </a>
-                    ))}
-              </div>
-            </details>
-          );
-        })
-      }
-    </nav>
-    <div class="mobile-menu__extras">
-      <button id="mobile-share-button" class="mobile-menu__share" type="button">
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.7"
-          aria-hidden="true"
+                  <span class="mobile-menu__entry-title">{link.label}</span>
+                  <span class="mobile-menu__description">{entryDescriptions[link.href]}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <ul class="mobile-menu__links mobile-menu__links--paired mobile-menu__browse">
+          {
+            browseLinks.map((link) => (
+              <li>
+                <a
+                  class="mobile-menu__primary"
+                  href={link.href}
+                  aria-current={currentLocation(link.href)}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <details
+          class="mobile-menu__group mobile-menu__group--secondary"
+          data-active={pathname.startsWith('/category/') ? 'true' : undefined}
         >
-          <path
-            d="M12 15V3m-4 4 4-4 4 4M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"
-            stroke-linecap="round"
-            stroke-linejoin="round"></path>
-        </svg>
-        Share this page
-      </button>
-      <p id="mobile-share-status" class="mobile-menu__status" role="status" aria-live="polite"></p>
-      <p class="mobile-menu__label">Elsewhere</p>
-      <div class="mobile-menu__social">
-        {
-          socialLinks.map((link) => (
-            <a href={link.href} target="_blank" rel="noopener noreferrer">
-              {link.label}
-              <span aria-hidden="true">↗</span>
-            </a>
-          ))
-        }
-      </div>
-    </div>
+          <summary class="mobile-menu__primary">
+            Choose a category
+            <svg
+              class="mobile-menu__chevron"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              aria-hidden="true"
+            >
+              <path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </summary>
+          <div class="mobile-menu__children">
+            {
+              sortedCategories.map((category) => {
+                const href = '/category/' + category.id;
+                return (
+                  <a href={href} aria-current={currentLocation(href)}>
+                    <span>{category.name}</span>
+                    <span class="mobile-menu__count" aria-label={category.postCount + ' writings'}>
+                      {category.postCount}
+                    </span>
+                  </a>
+                );
+              })
+            }
+          </div>
+        </details>
+      </section>
+
+      <section
+        class="mobile-menu__section mobile-menu__collections"
+        aria-labelledby="mobile-menu-collections"
+      >
+        <h2 id="mobile-menu-collections" class="mobile-menu__label">Collections</h2>
+        <ul class="mobile-menu__links">
+          {
+            collectionLinks.map((link) => (
+              <li>
+                <a
+                  class="mobile-menu__collection"
+                  href={link.href}
+                  aria-current={currentLocation(link.href)}
+                >
+                  <span class="mobile-menu__collection-title">{link.label}</span>
+                  <span class="mobile-menu__description">{collectionDescriptions[link.href]}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section class="mobile-menu__section" aria-labelledby="mobile-menu-contact">
+        <h2 id="mobile-menu-contact" class="mobile-menu__label">About &amp; contact</h2>
+        <ul class="mobile-menu__links mobile-menu__links--paired">
+          {
+            primaryContactLinks.map((link) => (
+              <li>
+                <a
+                  class="mobile-menu__primary"
+                  href={link.href}
+                  aria-current={currentLocation(link.href)}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <ul class="mobile-menu__links mobile-menu__links--paired mobile-menu__secondary-links">
+          {
+            secondaryContactLinks.map((link) => (
+              <li>
+                <a
+                  class="mobile-menu__primary"
+                  href={link.href}
+                  aria-current={currentLocation(link.href)}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <details
+        class="mobile-menu__group mobile-menu__group--secondary mobile-menu__tools"
+        data-active={siteToolLinks.some((link) => isNavDropdownItemActive(link.href, pathname))
+          ? 'true'
+          : undefined}
+      >
+        <summary class="mobile-menu__primary">
+          Site tools
+          <svg
+            class="mobile-menu__chevron"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            aria-hidden="true"
+          >
+            <path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </summary>
+        <div class="mobile-menu__children">
+          {
+            siteToolLinks.map((link) => (
+              <a href={link.href} aria-current={currentLocation(link.href)}>
+                {link.label}
+              </a>
+            ))
+          }
+        </div>
+      </details>
+    </nav>
   </div>
 </dialog>
 
@@ -282,8 +350,8 @@ const socialLinks = [
       link.addEventListener('click', (event) => {
         if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)
           return;
-        if (link.target === '_blank') {
-          closeMenu('link-selection', false);
+        if (link.target === '_blank' || link.protocol === 'mailto:') {
+          closeMenu('link-selection');
           return;
         }
         event.preventDefault();
@@ -294,28 +362,6 @@ const socialLinks = [
       closeMenu('search', false, true, () => {
         document.dispatchEvent(new CustomEvent('mobile-nav:open-search'));
       });
-    });
-    document.querySelector('#mobile-share-button')?.addEventListener('click', async () => {
-      const status = document.querySelector<HTMLElement>('#mobile-share-status');
-      const url =
-        menu.dataset.shareUrl ||
-        document.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.href;
-      if (!url || !status) return;
-      status.textContent = '';
-      if (navigator.share) {
-        try {
-          await navigator.share({ title: document.title, url });
-          return;
-        } catch (error) {
-          if (error instanceof Error && error.name === 'AbortError') return;
-        }
-      }
-      try {
-        await navigator.clipboard.writeText(url);
-        status.textContent = 'Link copied.';
-      } catch {
-        status.textContent = 'Couldn’t copy the link. Use your browser’s Share option.';
-      }
     });
   }
 </script>
@@ -333,13 +379,11 @@ const socialLinks = [
     color: rgb(var(--color-text));
     cursor: pointer;
   }
-
   .mobile-menu-trigger:hover,
   .mobile-menu__close:hover {
     color: rgb(var(--color-accent));
     background: rgb(var(--color-accent) / 0.07);
   }
-
   .mobile-menu {
     position: fixed;
     inset: 0;
@@ -351,38 +395,36 @@ const socialLinks = [
     padding: 0;
     overflow-y: auto;
     overscroll-behavior: contain;
+    scroll-padding-block: calc(var(--site-header-height) + 1rem) 1.5rem;
     border: 0;
     color: rgb(var(--color-text));
     background: rgb(var(--color-bg));
     font-family: var(--font-sans);
   }
-
   .mobile-menu::backdrop {
     background: rgb(0 0 0 / 0.32);
     backdrop-filter: blur(3px);
   }
-
   .mobile-menu__header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
     display: flex;
+    background: rgb(var(--color-bg));
     min-height: var(--site-header-height);
     align-items: center;
     justify-content: space-between;
     padding: 0.5rem 1rem;
   }
-
-  #mobile-menu-title {
-    font-family: var(--font-heading);
-    font-size: 1.625rem;
-    font-weight: 600;
+  .mobile-menu__header :global(.mobile-menu__brand) {
+    min-height: 44px;
   }
-
   .mobile-menu__content {
     display: flex;
     min-height: calc(100dvh - var(--site-header-height));
     flex-direction: column;
-    padding: 0.75rem 1rem max(1.5rem, env(safe-area-inset-bottom));
+    padding: 0.5rem 1rem max(1.5rem, env(safe-area-inset-bottom));
   }
-
   .mobile-menu__search {
     display: flex;
     width: 100%;
@@ -390,63 +432,136 @@ const socialLinks = [
     align-items: center;
     gap: 0.75rem;
     padding: 0.75rem 1rem;
-    border-radius: 0.625rem;
-    color: rgb(var(--color-accent));
-    background: rgb(var(--color-accent) / 0.07);
-    font-size: 0.9375rem;
+    border-radius: var(--radius-lg);
+    color: rgb(var(--color-text-muted));
+    background: rgb(var(--color-bg-alt));
+    font-size: 1rem;
+    line-height: 1.5;
     text-align: left;
     cursor: pointer;
   }
-
-  .mobile-menu__navigation {
-    display: grid;
-    gap: 0.375rem;
-    padding-block: 1.25rem 2rem;
-  }
-
-  .mobile-menu__primary {
-    display: flex;
-    min-height: 48px;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 0.625rem 0.75rem;
-    border-radius: 0.625rem;
-    font-size: 1.0625rem;
-    font-weight: 500;
-    line-height: 1.4;
-    cursor: pointer;
-  }
-
-  summary {
-    list-style: none;
-  }
-
-  summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .mobile-menu__primary:hover,
-  .mobile-menu__primary[aria-current],
-  .mobile-menu__group[data-active] > summary {
+  .mobile-menu__search:hover {
     color: rgb(var(--color-accent));
     background: rgb(var(--color-accent) / 0.07);
   }
-
+  .mobile-menu__navigation {
+    display: grid;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+  }
+  .mobile-menu__section {
+    min-width: 0;
+  }
+  .mobile-menu__label {
+    margin: 0 0 0.5rem;
+    padding-inline: 0.75rem;
+    color: rgb(var(--color-text-muted));
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .mobile-menu__links {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .mobile-menu__links > li {
+    margin: 0;
+  }
+  .mobile-menu__entries {
+    display: grid;
+    gap: 0.5rem;
+  }
+  .mobile-menu__entry,
+  .mobile-menu__collection {
+    display: flex;
+    min-height: 44px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    padding: 0.75rem;
+    border-radius: var(--radius-md);
+    color: rgb(var(--color-text));
+    text-decoration: none;
+  }
+  .mobile-menu__entry-title {
+    font-family: var(--font-heading);
+    font-size: 1.625rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+  }
+  .mobile-menu__description {
+    color: rgb(var(--color-text-muted));
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .mobile-menu__links--paired {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 0.5rem;
+  }
+  .mobile-menu__browse {
+    margin-top: 0.75rem;
+  }
+  .mobile-menu__primary {
+    display: flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.625rem 0.75rem;
+    border-radius: var(--radius-md);
+    color: rgb(var(--color-text));
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .mobile-menu__collections {
+    padding: 1rem 0.5rem 0.5rem;
+    border-radius: var(--radius-lg);
+    background: rgb(var(--color-accent) / 0.06);
+  }
+  .mobile-menu__collection {
+    gap: 0.125rem;
+    padding-block: 0.625rem;
+  }
+  .mobile-menu__collection-title {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+  .mobile-menu__secondary-links .mobile-menu__primary,
+  .mobile-menu__group--secondary > summary {
+    color: rgb(var(--color-text-muted));
+    font-weight: 400;
+  }
+  .mobile-menu__tools {
+    margin-top: -0.5rem;
+  }
+  summary {
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
   .mobile-menu__chevron {
+    flex-shrink: 0;
     color: rgb(var(--color-text-muted));
     transition: transform 160ms ease;
   }
-
   .mobile-menu__group[open] .mobile-menu__chevron {
     transform: rotate(180deg);
   }
-
   .mobile-menu__children {
     display: grid;
     padding: 0.25rem 0.25rem 0.75rem 0.75rem;
   }
-
   .mobile-menu__children a {
     display: flex;
     min-height: 44px;
@@ -454,101 +569,47 @@ const socialLinks = [
     justify-content: space-between;
     gap: 1rem;
     padding: 0.625rem 0.75rem;
-    border-radius: 0.5rem;
+    border-radius: var(--radius-md);
     color: rgb(var(--color-text-muted));
-    font-size: 0.9375rem;
-    line-height: 1.4;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-decoration: none;
   }
-
-  .mobile-menu__children a:hover,
-  .mobile-menu__children a[aria-current],
-  .mobile-menu__children .mobile-menu__overview {
-    color: rgb(var(--color-accent));
-  }
-
-  .mobile-menu__children a:hover,
-  .mobile-menu__children a[aria-current] {
-    background: rgb(var(--color-accent) / 0.07);
-  }
-
   .mobile-menu__count {
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     font-variant-numeric: tabular-nums;
   }
-
-  .mobile-menu__extras {
-    margin-top: auto;
-    padding-inline: 0.75rem;
-  }
-
-  .mobile-menu__share {
-    display: inline-flex;
-    min-height: 44px;
-    align-items: center;
-    gap: 0.625rem;
-    color: rgb(var(--color-text-muted));
-    font-size: 0.875rem;
-    cursor: pointer;
-  }
-
-  .mobile-menu__status {
-    margin: 0;
-    color: rgb(var(--color-text-muted));
-    font-size: 0.8125rem;
-    line-height: 1.5;
-  }
-
-  .mobile-menu__label {
-    margin: 1.25rem 0 0;
-    color: rgb(var(--color-text-muted));
-    font-size: 0.6875rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .mobile-menu__social {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0 1.25rem;
-  }
-
-  .mobile-menu__social a {
-    display: inline-flex;
-    min-height: 44px;
-    align-items: center;
-    gap: 0.375rem;
-    color: rgb(var(--color-text-muted));
-    font-size: 0.8125rem;
-  }
-
-  .mobile-menu__share:hover,
-  .mobile-menu__social a:hover {
+  .mobile-menu
+    :is(
+      .mobile-menu__primary,
+      .mobile-menu__entry,
+      .mobile-menu__collection,
+      .mobile-menu__children a
+    ):is(:hover, [aria-current]),
+  .mobile-menu__group[data-active] > summary {
     color: rgb(var(--color-accent));
+    background: rgb(var(--color-accent) / 0.07);
   }
-
+  .mobile-menu__collections .mobile-menu__collection[aria-current] {
+    background: rgb(var(--color-bg) / 0.8);
+  }
   a:focus-visible,
   button:focus-visible,
   summary:focus-visible {
     outline: 2px solid rgb(var(--color-accent));
     outline-offset: 2px;
   }
-
   @media (min-width: 768px) {
-    .mobile-menu__header {
-      padding-inline: 1.5rem;
-    }
+    .mobile-menu__header,
     .mobile-menu__content {
       padding-inline: 1.5rem;
     }
   }
-
   @media (min-width: 1280px) {
     .mobile-menu-trigger {
       display: none;
     }
   }
-
   @media (prefers-reduced-motion: reduce) {
     .mobile-menu__chevron {
       transition: none;

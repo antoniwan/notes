@@ -1,86 +1,56 @@
-/**
- * Normalize URL pathname for comparisons (trailing slashes, except root).
- */
+/** Normalize trailing slashes without changing the root pathname. */
 export function normalizePathname(pathname: string): string {
   if (!pathname || pathname === '/') return '/';
   return pathname.replace(/\/+$/, '') || '/';
 }
 
-/** True when pathname is under /category (index or /category/slug). */
-function isUnderCategory(p: string): boolean {
-  return p === '/category' || p.startsWith('/category/');
+function isWithin(pathname: string, root: string): boolean {
+  return pathname === root || pathname.startsWith(`${root}/`);
 }
 
-/**
- * Resources nav groups the archive, tag index, tag detail pages, writing-insights,
- * the /brain-science origin note, tag-management, library books, and the cookbook.
- */
-function isRecipeUrl(p: string): boolean {
-  return p === '/recipes' || p.startsWith('/p/recipes/') || p === '/p/recipes';
+function isRecipeUrl(pathname: string): boolean {
+  return isWithin(pathname, '/recipes') || isWithin(pathname, '/p/recipes');
 }
 
-function isUnderResourcesSection(p: string): boolean {
-  if (p === '/everything') return true;
-  if (p === '/tag' || (p.startsWith('/tag/') && !p.startsWith('/tag-management'))) {
-    return true;
-  }
-  if (p === '/tag-management' || p.startsWith('/tag-management/')) return true;
-  if (p === '/writing-insights' || p.startsWith('/writing-insights/')) return true;
-  if (p === '/brain-science' || p.startsWith('/brain-science/')) return true;
-  if (p === '/library/books' || p.startsWith('/library/books/')) return true;
-  if (isRecipeUrl(p)) return true;
-  return false;
-}
-
-/**
- * Whether the top-level main nav item should show the active state.
- */
+/** Top-level groups are distinct from their individual destination links. */
 export function isMainNavItemActive(href: string, pathname: string): boolean {
   const p = normalizePathname(pathname);
   const h = normalizePathname(href);
 
-  if (h === '/category') {
-    return isUnderCategory(p);
+  if (h === '/tag') return isWithin(p, '/tag') || isWithin(p, '/category');
+  if (h === '/books') {
+    return isWithin(p, '/books') || isWithin(p, '/library/books') || isRecipeUrl(p);
   }
 
-  if (h === '/tag') {
-    return isUnderResourcesSection(p);
-  }
-
-  return p === h;
+  return isNavDropdownItemActive(h, p);
 }
 
-const dropdownActiveClasses =
+export const dropdownActiveClasses =
   'bg-[rgb(var(--color-accent))]/10 text-[rgb(var(--color-accent))] font-medium';
 
-export { dropdownActiveClasses };
-
-/**
- * Active state for a dropdown link (category slug, Resources sub-item, etc.).
- */
+/** Destination matching is shared with mobile navigation, including its site tools. */
 export function isNavDropdownItemActive(itemHref: string, pathname: string): boolean {
   const p = normalizePathname(pathname);
   const h = normalizePathname(itemHref);
 
-  if (h === '/tag') {
-    return p === '/tag' || (p.startsWith('/tag/') && !p.startsWith('/tag-management'));
-  }
+  if (h === '/recipes') return isRecipeUrl(p);
 
-  if (h === '/writing-insights') {
-    return p === '/writing-insights' || p.startsWith('/writing-insights/');
-  }
-
-  if (h.startsWith('/category/')) {
-    return p === h || p.startsWith(`${h}/`);
-  }
-
-  if (h === '/library/books') {
-    return p === '/library/books' || p.startsWith('/library/books/');
-  }
-
-  if (h === '/recipes') {
-    return isRecipeUrl(p);
-  }
+  const sections = [
+    '/tag',
+    '/category',
+    '/books',
+    '/library/books',
+    '/writing-insights',
+    '/tag-management',
+    '/brain-science',
+  ];
+  if (sections.some((section) => isWithin(h, section))) return isWithin(p, h);
 
   return p === h;
+}
+
+/** A section link remains current on descendants without claiming to be that page. */
+export function getNavLinkCurrent(href: string, pathname: string): 'page' | 'location' | undefined {
+  if (!isNavDropdownItemActive(href, pathname)) return undefined;
+  return normalizePathname(href) === normalizePathname(pathname) ? 'page' : 'location';
 }

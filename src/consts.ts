@@ -46,7 +46,7 @@ export const SITE_URL = 'https://notes.antoniwan.online';
 // Author Information
 export const AUTHOR: Author = {
   name: 'Antonio Rodriguez Martinez',
-  email: 'antoniwan@icloud.com',
+  email: 'antonio@builds.software',
   url: 'https://antoniwan.online',
   github: 'antoniwan',
   linkedin: 'antoniwan',

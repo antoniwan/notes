@@ -11,6 +11,8 @@ export const PAGE_META = {
   '/': 'Essays, household recipes, and notes on fatherhood, family, work, and daily life.',
   '/about':
     'About Antonio Rodríguez Martínez, who keeps field notes at Notes: father, stepfather, software builder, and recovering overthinker.',
+  '/books':
+    'Two bilingual children’s picture books by Antonio Rodríguez Martínez: The Bent One and Mia, the Sun, and the Moon. Read in English or Spanish.',
   '/everything': 'Complete archive of published notes, listed newest first.',
   '/guided-path':
     'Published notes grouped by season and year. Reading progress is stored on this device.',

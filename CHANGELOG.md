@@ -7,6 +7,24 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.21.0] — 2026-09-09
+
+### Added
+
+- Children’s books (`/books`) lists two bilingual picture books, The Bent One and Mia, the Sun, and the Moon, with covers, schema, and search.
+- Homepage and About link those books. Each card opens its own English/Spanish reader.
+
+### Changed
+
+- Main nav is reader-first: Everything, Guided Path, Browse (Topics and Categories), Collections (children’s books, Cookbook, Book Library), and About.
+- Mobile menu and footer use the same Read / Collections / Connect groups. Writing Insights and Tag Management sit under Site tools, not in the top nav.
+- Contact email is `antonio@builds.software`. About asks people to write rather than pointing at meta-tools.
+- Body type and tap targets step up across cards, nav, tags, post chrome, and the table of contents so reading type is not smaller than 0.875rem.
+
+### Notes
+
+- This reader redesign — navigation, type, children’s books, and the rest of the chrome — was designed and shipped with GPT-5.4 Astra in about a day or two.
+
 ## [6.20.0] — 2026-09-09
 
 ### Added

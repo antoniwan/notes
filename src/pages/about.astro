@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Container from '../components/Container.astro';
 import LatestWatched from '../components/LatestWatched.astro';
 import { PAGE_META } from '../data/pageMeta';
+import { AUTHOR } from '../consts';
 import { fetchLetterboxdRecent } from '../utils/letterboxd';
 
 const rssUrl = import.meta.env.LETTERBOXD_RSS_URL ?? '';
@@ -121,6 +122,12 @@ const topics: AboutTopic[] = [
             valve, a creative output, and part of my art practice. I also write to learn a fuckton
             of things, it's very effective.
           </p>
+          <p>
+            I wrote two bilingual children's books for my kids and my nephew:{' '}
+            <a href="/books#the-bent-one">The Bent One</a> and{' '}
+            <a href="/books#mia-the-sun-and-the-moon">Mia, the Sun, and the Moon</a>. They are part
+            of that art practice, stories to read together in English and Spanish.
+          </p>
         </div>
 
         <div class="about-pictures">
@@ -202,13 +209,12 @@ const topics: AboutTopic[] = [
       </div>
 
       <div class="about-closing">
-        <section class="about-tools" aria-labelledby="about-tools-heading">
-          <h2 id="about-tools-heading" class="about-closing__heading">On this site</h2>
+        <section class="about-contact" aria-labelledby="about-contact-heading">
+          <h2 id="about-contact-heading" class="about-closing__heading">Write to me</h2>
           <p>
-            I built a few <strong>meta-tools</strong> to see my own patterns more clearly.{' '}
-            <a href="/writing-insights">Writing Insights</a> charts writing cadence and lexicon buckets
-            over time.{' '}
-            <a href="/tag-management">Tag management</a> shows how I file ideas.
+            I’m mostly inactive on social media. If you want to respond to an essay, ask about a
+            book, or talk about the writing,{' '}
+            <a href={'mailto:' + AUTHOR.email}>email me</a>.
           </p>
         </section>
         <footer class="about-disclaimer">
@@ -291,6 +297,8 @@ const topics: AboutTopic[] = [
 
   .about-story p {
     margin: 0 0 1.4rem;
+    font-size: inherit;
+    line-height: inherit;
   }
 
   .about-story p:last-child {

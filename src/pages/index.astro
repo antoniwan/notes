@@ -2,6 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Container from '../components/Container.astro';
 import HighlightsMasonry from '../components/HighlightsMasonry.astro';
+import AuthoredBookCard from '../components/AuthoredBookCard.astro';
+import { authoredBooks } from '../data/authoredBooks';
 import { PAGE_META } from '../data/pageMeta';
 import { getHighlights, getHighlightsByCategory } from '../utils/highlights';
 
@@ -36,6 +38,19 @@ const highlightsByCategory = await getHighlightsByCategory();
       </header>
     </HighlightsMasonry>
 
+    <section class="home-books" aria-labelledby="home-books-heading">
+      <header class="home-books__heading">
+        <div>
+          <h2 id="home-books-heading">Children’s books</h2>
+          <p>Stories I wrote for my children and my nephew, in English and Spanish.</p>
+        </div>
+        <a href="/books">Explore the books <span aria-hidden="true">↗</span></a>
+      </header>
+      <div class="home-books__grid">
+        {authoredBooks.map((book) => <AuthoredBookCard book={book} compact />)}
+      </div>
+    </section>
+
     <section class="home-why" aria-labelledby="home-why-heading">
       <div class="home-why__heading">
         <h2 id="home-why-heading">Why this space exists right now</h2>
@@ -56,6 +71,61 @@ const highlightsByCategory = await getHighlightsByCategory();
 </BaseLayout>
 
 <style>
+  .home-books {
+    margin-top: clamp(3.5rem, 7vw, 6rem);
+  }
+  .home-books__heading {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: end;
+    gap: 1rem 2rem;
+    margin-bottom: 2rem;
+  }
+  .home-books h2 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 2.4vw, 2rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+  }
+  .home-books__heading p {
+    max-width: 62ch;
+    margin: 1rem 0 0;
+    color: rgb(var(--color-text-muted));
+    font-size: 1.125rem;
+    line-height: 1.75;
+  }
+  .home-books__heading a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 2.75rem;
+    color: rgb(var(--color-accent));
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  .home-books__heading a:hover {
+    color: rgb(var(--color-accent-hover));
+  }
+  .home-books__heading a:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 4px;
+  }
+  .home-books__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem 3rem;
+  }
+  @media (min-width: 1024px) {
+    .home-books__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
   .home-intro {
     min-width: 0;
     padding: 0.75rem 0 1rem;

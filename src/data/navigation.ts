@@ -1,58 +1,33 @@
-export interface NavigationItem {
-  href: string;
-  label: string;
+import { collectionLinks, type ReaderLink } from './readerNavigation';
+
+export interface NavigationItem extends ReaderLink {
   dropdown?: {
     label: string;
-    items?: {
-      href: string;
-      label: string;
-      icon?: string;
-    }[];
+    items: ReaderLink[];
   };
 }
 
-/** All hrefs omit trailing slashes to match `trailingSlash: 'never'`. */
+/** Group hrefs identify their first destination; summaries open the native disclosure. */
 export const mainNavigation: NavigationItem[] = [
+  { href: '/everything', label: 'Everything' },
   { href: '/guided-path', label: 'Guided Path' },
   {
-    href: '/category',
-    label: 'Categories',
+    href: '/tag',
+    label: 'Browse',
     dropdown: {
-      label: 'Browse Categories',
+      label: 'Find a subject',
+      items: [
+        { href: '/tag', label: 'Topics' },
+        { href: '/category', label: 'Categories' },
+      ],
     },
   },
   {
-    href: '/tag',
-    label: 'Resources',
+    href: '/books',
+    label: 'Collections',
     dropdown: {
-      label: 'Tools & Resources',
-      items: [
-        {
-          href: '/everything',
-          label: 'Everything',
-          icon: '📝',
-        },
-        {
-          href: '/tag',
-          label: 'Tags',
-          icon: '🏷️',
-        },
-        {
-          href: '/writing-insights',
-          label: 'Writing Insights',
-          icon: '🧠',
-        },
-        {
-          href: '/library/books',
-          label: 'Book Library',
-          icon: '📚',
-        },
-        {
-          href: '/recipes',
-          label: 'Cookbook',
-          icon: '📖',
-        },
-      ],
+      label: 'Explore a collection',
+      items: collectionLinks,
     },
   },
   { href: '/about', label: 'About' },

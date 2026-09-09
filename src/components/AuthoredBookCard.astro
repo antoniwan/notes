@@ -1,0 +1,153 @@
+---
+import type { AuthoredBook } from '../data/authoredBooks';
+
+interface Props {
+  book: AuthoredBook;
+  compact?: boolean;
+  imageLoading?: 'eager' | 'lazy';
+}
+
+const { book, compact = false, imageLoading = 'lazy' } = Astro.props;
+const Heading = compact ? 'h3' : 'h2';
+const destination = compact ? `/books#${book.id}` : book.readerUrl;
+---
+
+<article
+  class:list={['authored-book', { 'authored-book--compact': compact }]}
+  id={compact ? undefined : book.id}
+>
+  <div class="authored-book__image">
+    <img
+      src={book.image}
+      alt={book.imageAlt}
+      width={book.imageWidth}
+      height={book.imageHeight}
+      loading={imageLoading}
+    />
+  </div>
+  <div class="authored-book__body">
+    <Heading>{book.title}</Heading>
+    {
+      !compact && (
+        <p class="authored-book__translation" lang="es">
+          {book.spanishTitle}
+        </p>
+      )
+    }
+    <p class="authored-book__description">{compact ? book.summary : book.description}</p>
+    {!compact && <p class="authored-book__language">Read in English or Spanish.</p>}
+    <a
+      href={destination}
+      aria-label={compact ? `Explore the book: ${book.title}` : `Read the book: ${book.title}`}
+    >
+      {compact ? 'Explore the book' : 'Read the book'}
+      <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+</article>
+
+<style>
+  .authored-book {
+    min-width: 0;
+    scroll-margin-top: calc(var(--site-header-height) + 2rem);
+  }
+  .authored-book__image {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background: rgb(var(--color-bg-alt));
+  }
+  .authored-book__image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    object-fit: contain;
+  }
+  .authored-book__body {
+    padding-top: 2rem;
+  }
+  .authored-book :is(h2, h3) {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 2.4vw, 2rem);
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    text-wrap: pretty;
+  }
+  .authored-book__translation {
+    margin: 0.75rem 0 0;
+    color: rgb(var(--color-text-muted));
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    line-height: 1.75;
+  }
+  .authored-book__description {
+    max-width: 62ch;
+    margin: 1.5rem 0 0;
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    line-height: 1.75;
+  }
+  .authored-book__language {
+    margin: 1rem 0 0;
+    color: rgb(var(--color-text-muted));
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+  .authored-book a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 2.75rem;
+    margin-top: 1rem;
+    color: rgb(var(--color-accent));
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  .authored-book a:hover {
+    color: rgb(var(--color-accent-hover));
+  }
+  .authored-book a:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 4px;
+  }
+  .authored-book--compact {
+    display: grid;
+    grid-template-columns: 6rem minmax(0, 1fr);
+    align-items: start;
+    gap: 1rem;
+  }
+  .authored-book--compact .authored-book__image {
+    aspect-ratio: 4 / 3;
+  }
+  .authored-book--compact .authored-book__body {
+    padding: 0;
+  }
+  .authored-book--compact h3 {
+    font-size: clamp(1.25rem, 1.7vw, 1.6rem);
+    letter-spacing: -0.015em;
+  }
+  .authored-book--compact .authored-book__description {
+    margin-top: 0.75rem;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+  .authored-book--compact a {
+    margin-top: 0.5rem;
+  }
+  @media (min-width: 768px) {
+    .authored-book--compact {
+      grid-template-columns: 8rem minmax(0, 1fr);
+      gap: 1.5rem;
+    }
+  }
+</style>

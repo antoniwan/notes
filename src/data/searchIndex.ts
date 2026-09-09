@@ -1,5 +1,6 @@
 import { getCollection } from 'astro:content';
 import { categories } from './categories';
+import { authoredBooks } from './authoredBooks';
 import { getTagMetadata } from './tags';
 import { calculateTagStats } from '../utils/tagProcessing';
 import { isListingEligiblePost, isSearchEligiblePost } from '../utils/publishFilters';
@@ -7,6 +8,21 @@ import { isRecipePost } from '../utils/recipes';
 
 /** Static list of pages for search (public reader surfaces only). */
 const PAGE_SEARCH_DATA = [
+  {
+    type: 'page',
+    id: 'authored-books',
+    title: 'Children’s books',
+    description:
+      'Bilingual picture books in English and Spanish, written by Antonio Rodriguez Martinez',
+    url: '/books',
+  },
+  ...authoredBooks.map((book) => ({
+    type: 'page',
+    id: `authored-book-${book.id}`,
+    title: book.title,
+    description: `${book.spanishTitle}. ${book.summary} A bilingual children's book in English and Spanish.`,
+    url: `/books#${book.id}`,
+  })),
   {
     type: 'page',
     id: 'about',

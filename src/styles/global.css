@@ -985,6 +985,12 @@
   font-family: var(--font-serif);
 }
 
+/* Reading paragraphs follow their prose measure's type size. The global p
+   rule otherwise overrides the larger size set on the article container. */
+.post-prose :where(p) {
+  font-size: inherit;
+}
+
 .post-prose :where(h1, h2, h3, h4, h5, h6) {
   font-family: var(--font-heading);
 }

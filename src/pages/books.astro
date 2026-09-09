@@ -1,0 +1,78 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import AuthoredBookCard from '../components/AuthoredBookCard.astro';
+import { authoredBooks } from '../data/authoredBooks';
+import { PAGE_META } from '../data/pageMeta';
+import { AUTHOR, SITE_URL } from '../consts';
+
+const bookCollection = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Children’s books by Antonio Rodríguez Martínez',
+  url: `${SITE_URL}/books`,
+  itemListElement: authoredBooks.map((book, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Book',
+      name: book.title,
+      alternateName: book.spanishTitle,
+      description: book.description,
+      url: book.readerUrl,
+      image: `${SITE_URL}${book.image}`,
+      inLanguage: ['en', 'es'],
+      bookFormat: 'https://schema.org/EBook',
+      license: 'https://creativecommons.org/licenses/by-nc/4.0/',
+      author: { '@type': 'Person', name: AUTHOR.name, url: AUTHOR.url },
+    },
+  })),
+};
+---
+
+<PageLayout
+  title="Children’s books"
+  description="Two picture books I wrote for my children and my nephew, in English and Spanish."
+  metaDescription={PAGE_META['/books']}
+  descriptionClass="books-intro"
+  path="/books"
+  mode="chrome"
+>
+  <div class="books-page">
+    <div class="authored-books">
+      {authoredBooks.map((book) => <AuthoredBookCard book={book} imageLoading="eager" />)}
+    </div>
+    <p class="books-reading-note">
+      Each book opens in its own reader, where you can choose English or Español.
+    </p>
+  </div>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(bookCollection)} />
+</PageLayout>
+
+<style>
+  :global(.books-intro) {
+    max-width: 62ch;
+    font-size: 1.125rem;
+    line-height: 1.75;
+  }
+  .books-page {
+    padding-top: 2rem;
+    padding-bottom: clamp(4rem, 7vw, 7rem);
+  }
+  .authored-books {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(3.5rem, 7vw, 6rem) 3rem;
+  }
+  .books-reading-note {
+    max-width: 62ch;
+    margin: 3rem 0 0;
+    color: rgb(var(--color-text-muted));
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+  @media (min-width: 768px) {
+    .authored-books {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

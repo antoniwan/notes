@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="A red line with a little bend">
+  <rect width="1200" height="630" fill="#f7f4ef"/>
+  <!-- Canonical bent path, scaled for the social card -->
+  <g transform="translate(240 355) scale(7.2)">
+    <path
+      d="M 0 0 L 32 1.5 L 40 -9 L 48 1 L 100 0"
+      fill="none"
+      stroke="#c0182a"
+      stroke-width="2.2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </g>
+</svg>
