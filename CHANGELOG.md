@@ -9,6 +9,22 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.22.0] — 2026-09-09
+
+### Added
+
+- Deleted `/blog`, `/categories`, `/search`, `/p`, and `/ciencia-cerebral` URLs permanently redirect to today's pages, so inbound links stop 404ing.
+- Recipe pages emit Recipe JSON-LD. Essays still emit BlogPosting.
+- Post pages emit BreadcrumbList JSON-LD from the same trail the visible breadcrumbs show.
+- Writing Insights is in the sitemap and can be indexed.
+- Cookbook plates with a Spanish twin show an ES chip.
+
+### Changed
+
+- `/library` redirects to `/library/books`, so search only has one book catalogue URL.
+- `/sitemap.xml` redirects at Vercel instead of through a page.
+- If Letterboxd is down at build time, About keeps the last known watches instead of shipping an empty list.
+
 ## [6.21.0] — 2026-09-09
 
 ### Added
