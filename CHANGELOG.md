@@ -7,6 +7,18 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.18.0] — 2026-09-09
+
+### Added
+
+- Cookbook search finds a dish by name without needing accents, punctuation, or the full title. The query stays in the URL.
+- Book library search matches title or author the same way. Status and shelf filters also persist in the URL.
+
+### Changed
+
+- Book library is an A–Z card catalogue instead of a table.
+- Cookbook A–Z index sits behind a browse control. Empty search shows a clear empty state.
+
 ## [6.17.0] — 2026-09-09
 
 ### Added

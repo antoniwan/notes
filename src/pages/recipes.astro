@@ -34,7 +34,8 @@ const contents = [...byLetter.entries()].sort(([a], [b]) => a.localeCompare(b));
 <PageLayout
   title="Cookbook"
   heading="Cookbook"
-  description="What we actually cook at home — arroz, sofrito, pancakes for Mia, and the rest. Look a dish up by name. Plates are below."
+  description="What we actually cook at home: arroz, sofrito, pancakes for Mia, and the rest."
+  descriptionClass="text-base md:text-lg cookbook-intro"
   metaDescription={PAGE_META['/recipes']}
   path="/recipes"
   structuredDataType="website"
@@ -42,117 +43,380 @@ const contents = [...byLetter.entries()].sort(([a], [b]) => a.localeCompare(b));
   contentClass="cookbook max-w-none"
 >
   {
-    contents.length > 0 ? (
-      <>
-        <section class="cookbook-contents" aria-labelledby="cookbook-contents-heading">
-          <h2 id="cookbook-contents-heading">Index</h2>
-          <div class="cookbook-contents__cols">
-            {contents.map(([letter, dishes]) => (
-              <div class="cookbook-letter">
-                <h3>{letter}</h3>
-                <ul>
-                  {dishes.map((recipe) => (
-                    <li>
-                      <a href={`/p/${recipe.id}`}>{recipe.data.title}</a>
-                    </li>
-                  ))}
-                </ul>
+    recipes.length > 0 ? (
+      <div class="cookbook-browser" data-cookbook>
+        <div class="cookbook-discovery">
+          <form class="cookbook-search" role="search" aria-label="Find a recipe" hidden>
+            <label for="recipe-search">Find a dish</label>
+            <div class="cookbook-search__controls">
+              <input
+                id="recipe-search"
+                name="q"
+                type="search"
+                placeholder="Search recipes by name"
+                autocomplete="off"
+                aria-controls="cookbook-plates-grid cookbook-index"
+              />
+              <button type="button" class="cookbook-clear" data-clear-search hidden>
+                Clear search
+              </button>
+            </div>
+          </form>
+
+          <details class="cookbook-contents">
+            <summary>Browse the alphabetical index</summary>
+            <nav id="cookbook-index" aria-label="Recipes, A to Z">
+              <div class="cookbook-contents__cols">
+                {contents.map(([letter, dishes]) => (
+                  <div class="cookbook-letter" data-index-group>
+                    <h2>{letter}</h2>
+                    <ul role="list">
+                      {dishes.map((recipe) => (
+                        <li data-index-dish data-title={recipe.data.title}>
+                          <a href={`/p/${recipe.id}`}>{recipe.data.title}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </section>
+              <p class="cookbook-index-empty" data-index-empty hidden>
+                No dishes match your search.
+              </p>
+            </nav>
+          </details>
+        </div>
 
         <section class="cookbook-plates" aria-labelledby="cookbook-plates-heading">
-          <h2 id="cookbook-plates-heading">Plates</h2>
-          <div class="cookbook-plates__grid">
-            {plates.map(({ recipe, hasSpanish }) => (
-              <a href={`/p/${recipe.id}`} class="cookbook-plate">
-                <div class="cookbook-plate__image">
-                  {recipe.data.heroImage ? (
-                    <img
-                      src={recipe.data.heroImage}
-                      alt=""
-                      class="cookbook-plate__img"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <DefaultImage
-                      alt=""
-                      seed={recipe.id}
-                      className="cookbook-plate__img"
-                      loading="lazy"
-                      width={800}
-                      height={500}
-                    />
-                  )}
-                </div>
-                <span class="cookbook-plate__caption">
-                  <span class="cookbook-plate__title">{recipe.data.title}</span>
-                  {hasSpanish && !isSpanishPrimary(recipe.data) && (
-                    <span class="cookbook-plate__es" lang="es">
-                      ES
-                    </span>
-                  )}
-                </span>
-              </a>
+          <div class="cookbook-plates__heading">
+            <h2 id="cookbook-plates-heading">From our kitchen</h2>
+            <p data-recipe-count role="status" aria-live="polite" aria-atomic="true">
+              {recipes.length} {recipes.length === 1 ? 'recipe' : 'recipes'}
+            </p>
+          </div>
+
+          <ul class="cookbook-plates__grid" id="cookbook-plates-grid" role="list">
+            {plates.map(({ recipe, hasSpanish }, index) => (
+              <li data-recipe-plate data-title={recipe.data.title}>
+                <a href={`/p/${recipe.id}`} class="cookbook-plate">
+                  <div class="cookbook-plate__image">
+                    {recipe.data.heroImage ? (
+                      <img
+                        src={recipe.data.heroImage}
+                        alt=""
+                        class="cookbook-plate__img"
+                        loading={index === 0 ? 'eager' : 'lazy'}
+                        fetchpriority={index === 0 ? 'high' : 'auto'}
+                        decoding="async"
+                      />
+                    ) : (
+                      <DefaultImage
+                        alt=""
+                        seed={recipe.id}
+                        className="cookbook-plate__img"
+                        loading={index === 0 ? 'eager' : 'lazy'}
+                        priority={index === 0}
+                        width={800}
+                        height={500}
+                      />
+                    )}
+                  </div>
+                  <div class="cookbook-plate__caption">
+                    <h3 class="cookbook-plate__title">{recipe.data.title}</h3>
+                    {hasSpanish && !isSpanishPrimary(recipe.data) && (
+                      <span class="cookbook-plate__es" lang="es" aria-label="Disponible en español">
+                        ES
+                      </span>
+                    )}
+                  </div>
+                </a>
+              </li>
             ))}
+          </ul>
+
+          <div class="cookbook-empty" data-recipe-empty hidden>
+            <h3>No dishes found</h3>
+            <p>Try another dish name, or clear your search to see every recipe.</p>
+            <button type="button" class="cookbook-clear" data-clear-search>
+              Clear search
+            </button>
           </div>
         </section>
-      </>
+      </div>
     ) : (
-      <p class="text-body-muted">No recipes yet.</p>
+      <p class="cookbook-unavailable">No recipes yet.</p>
     )
   }
 </PageLayout>
 
+<script>
+  import { matchesCatalogSearch } from '../utils/catalogSearch';
+
+  const cookbook = document.querySelector<HTMLElement>('[data-cookbook]');
+  const search = cookbook?.querySelector<HTMLFormElement>('.cookbook-search');
+  const input = search?.querySelector<HTMLInputElement>('input[type="search"]');
+
+  if (cookbook && search && input) {
+    const plates = [...cookbook.querySelectorAll<HTMLElement>('[data-recipe-plate]')];
+    const indexDishes = [...cookbook.querySelectorAll<HTMLElement>('[data-index-dish]')];
+    const groups = [...cookbook.querySelectorAll<HTMLElement>('[data-index-group]')];
+    const count = cookbook.querySelector<HTMLElement>('[data-recipe-count]');
+    const empty = cookbook.querySelector<HTMLElement>('[data-recipe-empty]');
+    const indexEmpty = cookbook.querySelector<HTMLElement>('[data-index-empty]');
+    const clear = search.querySelector<HTMLButtonElement>('[data-clear-search]');
+
+    const update = () => {
+      const query = input.value;
+      let visible = 0;
+
+      for (const plate of plates) {
+        plate.hidden = !matchesCatalogSearch(query, plate.dataset.title ?? '');
+        if (!plate.hidden) visible += 1;
+      }
+
+      for (const dish of indexDishes) {
+        dish.hidden = !matchesCatalogSearch(query, dish.dataset.title ?? '');
+      }
+
+      for (const group of groups) {
+        group.hidden = !group.querySelector('[data-index-dish]:not([hidden])');
+      }
+
+      if (count) {
+        count.textContent = query.trim()
+          ? `${visible} of ${plates.length} recipes`
+          : `${plates.length} ${plates.length === 1 ? 'recipe' : 'recipes'}`;
+      }
+      if (empty) empty.hidden = visible > 0;
+      if (indexEmpty) indexEmpty.hidden = visible > 0;
+      if (clear) clear.hidden = !query.trim();
+    };
+
+    const writeQuery = () => {
+      const url = new URL(window.location.href);
+      const query = input.value.trim();
+      if (query) url.searchParams.set('q', query);
+      else url.searchParams.delete('q');
+      window.history.replaceState(window.history.state, '', url);
+    };
+
+    const readQuery = () => {
+      input.value = new URLSearchParams(window.location.search).get('q') ?? '';
+      update();
+    };
+
+    search.hidden = false;
+    readQuery();
+
+    input.addEventListener('input', () => {
+      update();
+      writeQuery();
+    });
+
+    search.addEventListener('submit', (event) => {
+      event.preventDefault();
+      update();
+      writeQuery();
+    });
+
+    for (const button of cookbook.querySelectorAll<HTMLButtonElement>('[data-clear-search]')) {
+      button.addEventListener('click', () => {
+        input.value = '';
+        update();
+        writeQuery();
+        input.focus();
+      });
+    }
+
+    window.addEventListener('popstate', readQuery);
+    window.addEventListener('pageshow', readQuery);
+  }
+</script>
+
 <style>
-  .cookbook-contents h2,
-  .cookbook-plates h2 {
-    margin: 0 0 1.5rem;
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
+  :global(.cookbook-intro) {
+    max-width: 62ch;
   }
 
-  .cookbook-plates {
-    margin-top: 3.5rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgb(var(--color-border) / 0.45);
+  .cookbook-browser {
+    display: grid;
+    gap: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 4rem;
+  }
+
+  .cookbook-browser [hidden] {
+    display: none !important;
+  }
+
+  .cookbook-discovery {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .cookbook-search {
+    max-width: 44rem;
+  }
+
+  .cookbook-search label {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  .cookbook-search__controls {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.75rem 1rem;
+  }
+
+  .cookbook-search input {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 3rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgb(var(--color-border));
+    border-radius: var(--radius-lg);
+    background: rgb(var(--color-bg-alt));
+    color: rgb(var(--color-text));
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .cookbook-search input::placeholder {
+    color: rgb(var(--color-text-muted));
+    opacity: 1;
+  }
+
+  .cookbook-clear {
+    min-height: 2.75rem;
+    padding: 0.5rem 0;
+    border: 0;
+    background: transparent;
+    color: rgb(var(--color-accent));
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    text-align: left;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    cursor: pointer;
+  }
+
+  .cookbook-contents summary {
+    width: fit-content;
+    min-height: 2.75rem;
+    padding-block: 0.5rem;
+    color: rgb(var(--color-accent));
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.75;
+    cursor: pointer;
+  }
+
+  .cookbook-contents nav {
+    margin-top: 1rem;
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    background: rgb(var(--color-bg-alt));
+  }
+
+  .cookbook-contents__cols {
+    column-count: 1;
+    column-gap: 2.5rem;
+  }
+
+  .cookbook-letter {
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+  }
+
+  .cookbook-letter:last-child {
+    margin-bottom: 0;
+  }
+
+  .cookbook-letter h2 {
+    margin: 0 0 0.75rem;
+    color: rgb(var(--color-text-muted));
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+
+  .cookbook-letter ul,
+  .cookbook-plates__grid {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .cookbook-letter li,
+  .cookbook-plates__grid > li {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .cookbook-letter a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding-block: 0.5rem;
+    color: rgb(var(--color-text));
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    line-height: 1.5;
+    text-decoration: none;
+  }
+
+  .cookbook-plates__heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .cookbook-plates__heading h2,
+  .cookbook-empty h3 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 2.4vw, 2rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+  }
+
+  .cookbook-plates__heading p {
+    margin: 0;
+    color: rgb(var(--color-text-muted));
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.5;
   }
 
   .cookbook-plates__grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.75rem 1.25rem;
-    margin: 0;
-  }
-
-  @media (min-width: 640px) {
-    .cookbook-plates__grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 2rem 1.5rem;
-    }
-  }
-
-  @media (min-width: 960px) {
-    .cookbook-plates__grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
   }
 
   .cookbook-plate {
     display: flex;
     flex-direction: column;
-    gap: 0.55rem;
-    text-decoration: none;
+    gap: 1rem;
     color: inherit;
-    outline: none;
-  }
-
-  .cookbook-plate:focus-visible {
-    outline: 2px solid rgb(var(--color-accent));
-    outline-offset: 3px;
+    text-decoration: none;
+    border-radius: var(--radius-lg);
   }
 
   .cookbook-plate__image {
@@ -167,12 +431,12 @@ const contents = [...byLetter.entries()].sort(([a], [b]) => a.localeCompare(b));
   .cookbook-plate__image :global(img) {
     position: absolute;
     inset: 0;
+    display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    display: block;
     margin: 0;
     border: none;
+    object-fit: cover;
     transition: transform 0.45s var(--animation-easing-out);
   }
 
@@ -184,74 +448,95 @@ const contents = [...byLetter.entries()].sort(([a], [b]) => a.localeCompare(b));
   .cookbook-plate__caption {
     display: flex;
     align-items: baseline;
-    gap: 0.5rem;
+    gap: 0.75rem;
   }
 
   .cookbook-plate__title {
-    font-family: var(--font-heading);
-    font-size: 1.15rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    line-height: 1.25;
+    margin: 0;
     color: rgb(var(--color-text));
+    font-family: var(--font-heading);
+    font-size: clamp(1.25rem, 1.7vw, 1.6rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    overflow-wrap: anywhere;
   }
 
   .cookbook-plate__es {
-    font-family: var(--font-sans);
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
+    flex: 0 0 auto;
     color: rgb(var(--color-accent));
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.5;
   }
 
-  .cookbook-contents__cols {
-    column-count: 1;
-    column-gap: 2.5rem;
+  .cookbook-letter a:hover,
+  .cookbook-plate:hover .cookbook-plate__title,
+  .cookbook-clear:hover {
+    color: rgb(var(--color-accent-hover));
   }
 
-  @media (min-width: 640px) {
+  .cookbook-plate:focus-visible,
+  .cookbook-letter a:focus-visible,
+  .cookbook-contents summary:focus-visible,
+  .cookbook-search input:focus-visible,
+  .cookbook-clear:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 4px;
+  }
+
+  .cookbook-empty {
+    display: grid;
+    justify-items: start;
+    gap: 1rem;
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    background: rgb(var(--color-bg-alt));
+  }
+
+  .cookbook-empty p,
+  .cookbook-index-empty,
+  .cookbook-unavailable {
+    margin: 0;
+    max-width: 62ch;
+    color: rgb(var(--color-text-muted));
+    font-size: 1.125rem;
+    line-height: 1.7;
+  }
+
+  @media (min-width: 768px) {
+    .cookbook-browser {
+      gap: 2.5rem;
+      padding-bottom: 5rem;
+    }
+
+    .cookbook-contents nav {
+      padding: 2rem;
+    }
+
     .cookbook-contents__cols {
       column-count: 2;
     }
+
+    .cookbook-plates__heading {
+      margin-bottom: 2rem;
+    }
+
+    .cookbook-plates__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2.5rem;
+    }
   }
 
-  .cookbook-letter {
-    break-inside: avoid;
-    margin-bottom: 1.35rem;
-  }
+  @media (min-width: 1024px) {
+    .cookbook-plates__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
 
-  .cookbook-letter h3 {
-    margin: 0 0 0.35rem;
-    font-family: var(--font-sans);
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgb(var(--color-text-muted));
-  }
-
-  .cookbook-letter ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .cookbook-letter li {
-    margin: 0;
-  }
-
-  .cookbook-letter a {
-    display: inline-block;
-    padding: 0.15rem 0;
-    font-family: var(--font-heading);
-    font-size: 1.05rem;
-    line-height: 1.35;
-    color: rgb(var(--color-text));
-    text-decoration: none;
-  }
-
-  .cookbook-letter a:hover {
-    color: rgb(var(--color-accent));
+    .cookbook-contents__cols {
+      column-count: 3;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
