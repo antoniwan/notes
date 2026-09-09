@@ -57,6 +57,7 @@ const {
   recipeYield,
   recipeCategory,
   recipeCuisine,
+  additionalSchemas = [],
 } = Astro.props;
 
 const seoDescription = metaDescription || description;
@@ -141,7 +142,7 @@ const structuredData = generateStructuredData({
 
     <main id="main-content" role="main" class="animate-fade-in grow">
       <!-- Structured Data -->
-      <StructuredData data={structuredData} />
+      <StructuredData data={structuredData} additionalSchemas={additionalSchemas} />
 
       <slot />
     </main>

@@ -252,38 +252,6 @@ export function generateStructuredData(options: StructuredDataOptions) {
     };
 
     schemas.push(articleSchema);
-
-    // Add breadcrumb schema for blog posts
-    const breadcrumbSchema = {
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'Home',
-          item: SITE_URL,
-        },
-        ...(category.length > 0
-          ? [
-              {
-                '@type': 'ListItem',
-                position: 2,
-                name: category[0],
-                item: generateCanonicalUrl(`/category/${category[0]}`),
-              },
-            ]
-          : []),
-        {
-          '@type': 'ListItem',
-          position: category.length > 0 ? 3 : 2,
-          name: title,
-          item: url,
-        },
-      ],
-    };
-
-    schemas.push(breadcrumbSchema);
   } else if (type === 'recipe') {
     const ingredients = presentList(recipeIngredient);
     const instructions = presentList(recipeInstructions);
@@ -422,6 +390,21 @@ export function generateFAQSchema(questions: Array<{ question: string; answer: s
         '@type': 'Answer',
         text: q.answer,
       },
+    })),
+  };
+}
+
+export function generateBreadcrumbSchema(items: Array<{ name: string; url: string }>) {
+  if (!items.length) return null;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: item.url,
     })),
   };
 }

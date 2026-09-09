@@ -14,6 +14,8 @@ import PostTocModal from '../components/post-toc/PostTocModal.astro';
 import { generateCanonicalUrl, normalizeSeoPath } from '../utils/seo';
 import { resolveContentLanguage } from '../utils/publishFilters';
 import { isRecipePost } from '../utils/recipes';
+import { generateBreadcrumbSchema } from '../utils/structuredData';
+import { breadcrumbItemsForSchema, buildPostBreadcrumbItems } from '../utils/postBreadcrumbs';
 import type { BlogLayoutProps } from '../types/layout';
 
 interface Props extends BlogLayoutProps {}
@@ -77,6 +79,15 @@ const postId = rest.currentPost?.id || '';
 const postSlug = postId; // Alias for backward compatibility in template
 const primaryCategory = categoryItems[0] || null;
 const isSpanish = contentLanguage.contentLanguage === 'es';
+const breadcrumbItems = buildPostBreadcrumbItems({
+  title,
+  isRecipe,
+  isSpanish,
+  primaryCategory,
+});
+const breadcrumbSchema = generateBreadcrumbSchema(
+  breadcrumbItemsForSchema(breadcrumbItems, canonical),
+);
 ---
 
 <BaseLayout
@@ -111,23 +122,13 @@ const isSpanish = contentLanguage.contentLanguage === 'es';
   locale={contentLanguage.ogLocale}
   inLanguage={contentLanguage.inLanguage}
   wordCount={estimatedWordCount}
+  additionalSchemas={breadcrumbSchema ? [breadcrumbSchema] : []}
   {...rest}
   hreflangAlternates={hreflangAlternates}
 >
   <Container class="post-shell">
     <div class="post-breadcrumbs">
-      <Breadcrumbs
-        items={[
-          { label: isSpanish ? 'Inicio' : 'Home', href: '/' },
-          ...(isRecipe
-            ? [{ label: isSpanish ? 'Recetario' : 'Cookbook', href: '/recipes' }]
-            : primaryCategory
-              ? [{ label: primaryCategory.name, href: `/category/${primaryCategory.id}` }]
-              : []),
-          { label: title },
-        ]}
-        class="text-sm"
-      />
+      <Breadcrumbs items={breadcrumbItems} class="text-sm" />
     </div>
 
     <div class="post-layout">

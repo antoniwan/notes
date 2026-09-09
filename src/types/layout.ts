@@ -60,6 +60,7 @@ export interface BaseLayoutProps {
   draft?: boolean;
   /** Approximate word count for Article JSON-LD when known. */
   wordCount?: number;
+  additionalSchemas?: unknown[];
   // PageHeader options
   showTitle?: boolean; // Whether to show the H1 title in PageHeader (default: true)
   // Reading progress

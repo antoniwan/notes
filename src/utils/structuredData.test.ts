@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { generateStructuredData, toIso8601Duration } from './structuredData';
+import {
+  generateBreadcrumbSchema,
+  generateStructuredData,
+  toIso8601Duration,
+} from './structuredData';
 
 describe('generateStructuredData articleSection', () => {
   it('prefers category over tags', () => {
@@ -80,6 +84,7 @@ describe('generateStructuredData recipe', () => {
     const list = Array.isArray(schemas) ? schemas : [schemas];
     expect(list.some((s) => s['@type'] === 'BlogPosting')).toBe(true);
     expect(list.some((s) => s['@type'] === 'Recipe')).toBe(false);
+    expect(list.some((s) => s['@type'] === 'BreadcrumbList')).toBe(false);
   });
 
   it('omits timing and ingredient keys when they have no data', () => {
@@ -113,5 +118,33 @@ describe('toIso8601Duration', () => {
     expect(toIso8601Duration('20')).toBe('PT20M');
     expect(toIso8601Duration('')).toBeUndefined();
     expect(toIso8601Duration('soon')).toBeUndefined();
+  });
+});
+
+describe('generateBreadcrumbSchema', () => {
+  it('returns null for an empty trail', () => {
+    expect(generateBreadcrumbSchema([])).toBeNull();
+  });
+
+  it('numbers ListItem positions from 1', () => {
+    const schema = generateBreadcrumbSchema([
+      { name: 'Home', url: 'https://notes.antoniwan.online/' },
+      { name: 'Cookbook', url: 'https://notes.antoniwan.online/recipes' },
+    ]);
+    expect(schema?.['@type']).toBe('BreadcrumbList');
+    expect(schema?.itemListElement).toEqual([
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://notes.antoniwan.online/',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Cookbook',
+        item: 'https://notes.antoniwan.online/recipes',
+      },
+    ]);
   });
 });
