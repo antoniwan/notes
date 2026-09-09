@@ -13,10 +13,11 @@ Release history: [CHANGELOG.md](./CHANGELOG.md)
 ## What a reader sees
 
 - **Writing** — essays and notes in `src/content/p/` (Markdown and MDX)
-- **Cookbook** — `/recipes` is a plate grid plus A–Z contents. Recipes ship at `/p/recipes/<slug>`. English listed; Spanish via the dish toggle
-- **Book library** — books on the shelf, under `/library` and `/library/books`
-- **Paths in** — Guided Path (seasonal order, progress in the browser only), Everything (English archive), categories, tags as an idea map, header search
-- **Home** — highlight masonry for `featured` English posts
+- **Cookbook** — `/recipes` is a plate grid plus A–Z contents. Recipes ship at `/p/recipes/<slug>`. English listed; Spanish via the dish toggle; an ES chip marks plates that have a Spanish twin
+- **Children’s books** — `/books`, two picture books he wrote, each opening in its own bilingual (English/Español) reader
+- **Book library** — books he has read, at `/library/books`. `/library` alone 301s there
+- **Paths in** — Guided Path (seasonal order, progress in the browser only), Everything (English archive), Categories, Topics (the tag index, read as an idea map for browsing subjects), header search. The main nav groups these under **Browse** (Topics, Categories) and **Collections** (Children’s books, Cookbook, Book library)
+- **Home** — a hero ("I write to live it"), three entry links (Start here → Guided Path, Browse topics, Everything), Highlights masonry for `featured` English posts, a Children’s books teaser, and a short "why this space exists" note
 - **Writing Insights** (`/writing-insights`) — cadence, topics, lexicon. `/brain-science` is the origin note; old dashboard subpaths 301
 - **Feeds** — RSS (`/rss.xml`) and JSON Feed (`/feed.json`). Spanish stays out of feeds, same as listings
 - **Quotes API** — `GET /api/quotes` (Stoic excerpts, other philosophy, lines from posts; optional `?kind=`)
@@ -66,7 +67,7 @@ For production builds of the **About** page, Letterboxd “latest watched” nee
 
 If they are missing, that block on About simply won’t have fresh data (or may be empty depending on fallbacks).
 
-Remark42 uses `PUBLIC_REMARK42_HOST` and `PUBLIC_REMARK42_SITE_ID` when you turn comments on — see `docs/comments-setup.md`. Both are listed in `.env.example`.
+Remark42 uses `PUBLIC_REMARK42_HOST` and `PUBLIC_REMARK42_SITE_ID` when you turn comments on — see `docs/comments-setup.md`. A third variable, `REMARK42_UPSTREAM_ORIGIN`, is the upstream Remark42 origin; Vercel can't interpolate env vars into `vercel.json`, so after changing it, run `pnpm run sync-remark42-rewrite` and commit the updated `vercel.json` (CI verifies this with `pnpm run check-remark42-rewrite`). All three are listed in `.env.example`.
 
 ## Scripts
 
@@ -76,6 +77,7 @@ Remark42 uses `PUBLIC_REMARK42_HOST` and `PUBLIC_REMARK42_SITE_ID` when you turn
 | `pnpm run build`                    | Builds social JPG/PNG from AVIF (skipped when fingerprints + files match), then `astro build` |
 | `pnpm run preview`                  | Serves the production build locally                                                           |
 | `pnpm test`                         | Vitest unit tests (publish filters, SEO routing, feed HTML, quotes helpers)                   |
+| `pnpm run test:watch`               | Vitest in watch mode                                                                          |
 | `pnpm changelog:since`              | Commits + file groups since the previous version (for CHANGELOG drafts)                       |
 | `pnpm run check`                    | `astro check` (TypeScript / Astro diagnostics)                                                |
 | `pnpm run lint`                     | ESLint                                                                                        |
@@ -87,6 +89,8 @@ Remark42 uses `PUBLIC_REMARK42_HOST` and `PUBLIC_REMARK42_SITE_ID` when you turn
 | `pnpm run validate-structured-data` | Smoke-checks structured-data module exports                                                   |
 | `pnpm run generate-social-images`   | AVIF → JPEG/PNG under `public/social/` only (same logic as the start of `pnpm run build`)     |
 | `pnpm run generate-favicons`        | Favicon assets                                                                                |
+| `pnpm run sync-remark42-rewrite`    | Regenerates the Remark42 rewrite in `vercel.json` from `REMARK42_UPSTREAM_ORIGIN`             |
+| `pnpm run check-remark42-rewrite`   | CI check that `vercel.json`'s Remark42 rewrite matches `REMARK42_UPSTREAM_ORIGIN`             |
 | `pnpm run analyze`                  | Runs `astro build` only (no social-image step), then Vercel static-build analysis             |
 | `pnpm run lighthouse`               | Lighthouse HTML report (start dev server first)                                               |
 | `pnpm run performance`              | Runs `pnpm run build`, then `pnpm run analyze`                                                |
@@ -117,8 +121,10 @@ notes/
 │   │   └── recipes/    # Household recipes → /p/recipes/<slug>
 │   ├── data/            # Categories, navigation, socialImageManifest.ts, socialImageFingerprints.json, …
 │   ├── layouts/
-│   ├── pages/           # Routes (cookbook, category, tag, writing-insights, api, …)
-│   │   └── recipes.astro
+│   ├── pages/           # Routes (books, category, library, tag, writing-insights, api, …)
+│   │   ├── books.astro          # Children's books (/books)
+│   │   ├── library/books.astro  # Book library (/library/books)
+│   │   └── recipes.astro        # Cookbook (/recipes)
 │   ├── styles/
 │   ├── utils/
 │   └── types/
@@ -146,21 +152,27 @@ Using Cursor AI in this repo: [docs/cursor-agent-skills.md](docs/cursor-agent-sk
 
 ## Documentation in `docs/`
 
-| File                                                                              | Topic                                    |
-| --------------------------------------------------------------------------------- | ---------------------------------------- |
-| [frontmatter-spec.md](docs/frontmatter-spec.md)                                   | Post frontmatter                         |
-| [tag-policy.md](docs/tag-policy.md)                                               | Signal-first tag policy                  |
-| [tag-vocabulary.md](docs/tag-vocabulary.md)                                       | Canonical vocabulary                     |
-| [tag-cleanup-assessment-2026-04-10.md](docs/tag-cleanup-assessment-2026-04-10.md) | Current cleanup audit                    |
-| [multilingual-setup.md](docs/multilingual-setup.md)                               | EN/ES linking                            |
-| [comments-setup.md](docs/comments-setup.md)                                       | Remark42                                 |
-| [quotes-api.md](docs/quotes-api.md)                                               | `/api/quotes`                            |
-| [structured-data-optimization.md](docs/structured-data-optimization.md)           | Schema.org                               |
-| [performance-optimization.md](docs/performance-optimization.md)                   | Performance notes                        |
-| [roadmap.md](docs/roadmap.md)                                                     | Ideas, product audit, technical roadmap  |
-| [TECHNICAL-AUDIT.md](docs/TECHNICAL-AUDIT.md)                                     | System map, integrations, technical debt |
-| [cursor-agent-skills.md](docs/cursor-agent-skills.md)                             | Cursor agent skill guide                 |
-| [midjourney-og-image-prompts.md](docs/midjourney-og-image-prompts.md)             | Image prompt notes                       |
+| File                                                                                | Topic                                            |
+| ----------------------------------------------------------------------------------- | ------------------------------------------------ |
+| [frontmatter-spec.md](docs/frontmatter-spec.md)                                     | Post frontmatter                                 |
+| [tag-policy.md](docs/tag-policy.md)                                                 | Signal-first tag policy                          |
+| [tag-vocabulary.md](docs/tag-vocabulary.md)                                         | Canonical vocabulary                             |
+| [tag-cleanup-assessment-2026-04-10.md](docs/tag-cleanup-assessment-2026-04-10.md)   | Tag cleanup audit (Apr 2026)                     |
+| [tag-vocabulary-migration-v1.md](docs/tag-vocabulary-migration-v1.md)               | Tag vocabulary migration, v1 notes               |
+| [tag-system-cleanup-2026-09.md](docs/tag-system-cleanup-2026-09.md)                 | Tag system cleanup, continuity report (Sep 2026) |
+| [multilingual-setup.md](docs/multilingual-setup.md)                                 | EN/ES linking                                    |
+| [comments-setup.md](docs/comments-setup.md)                                         | Remark42                                         |
+| [quotes-api.md](docs/quotes-api.md)                                                 | `/api/quotes`                                    |
+| [structured-data-optimization.md](docs/structured-data-optimization.md)             | Schema.org                                       |
+| [performance-optimization.md](docs/performance-optimization.md)                     | Performance notes                                |
+| [seo-routing-cleanup-2026-09.md](docs/seo-routing-cleanup-2026-09.md)               | SEO and routing cleanup task notes (Sep 2026)    |
+| [brain-science.md](docs/brain-science.md)                                           | Writing Insights audit and execution map         |
+| [article-reading-ui-audit-2026-09.md](docs/article-reading-ui-audit-2026-09.md)     | Article reading UI audit (Sep 2026)              |
+| [homepage-audit-owner-brief-2026-09.md](docs/homepage-audit-owner-brief-2026-09.md) | Homepage audit, owner-as-client brief (Sep 2026) |
+| [roadmap.md](docs/roadmap.md)                                                       | Ideas, product audit, technical roadmap          |
+| [TECHNICAL-AUDIT.md](docs/TECHNICAL-AUDIT.md)                                       | System map, integrations, technical debt         |
+| [cursor-agent-skills.md](docs/cursor-agent-skills.md)                               | Cursor agent skill guide                         |
+| [midjourney-og-image-prompts.md](docs/midjourney-og-image-prompts.md)               | Image prompt notes                               |
 
 ## Private generated materials
 
