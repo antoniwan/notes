@@ -59,6 +59,41 @@
       ],
       "destination": "https://notes.antoniwan.online/:path*",
       "permanent": true
+    },
+    {
+      "source": "/blog",
+      "destination": "/everything",
+      "permanent": true
+    },
+    {
+      "source": "/blog/:slug*",
+      "destination": "/p/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/categories",
+      "destination": "/category",
+      "permanent": true
+    },
+    {
+      "source": "/categories/:slug*",
+      "destination": "/category/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/ciencia-cerebral/:path*",
+      "destination": "/writing-insights",
+      "permanent": true
+    },
+    {
+      "source": "/search",
+      "destination": "/everything",
+      "permanent": true
+    },
+    {
+      "source": "/p",
+      "destination": "/everything",
+      "permanent": true
     }
   ],
   "rewrites": [
