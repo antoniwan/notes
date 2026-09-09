@@ -1,0 +1,388 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { SeasonalChapter } from '../utils/guidedPath';
+
+interface Props {
+  chapters: SeasonalChapter<CollectionEntry<'blog'>>[];
+  totalPosts: number;
+  firstPost: CollectionEntry<'blog'>;
+}
+
+const { chapters, totalPosts, firstPost } = Astro.props;
+const years = [...new Set(chapters.map((chapter) => chapter.year))];
+---
+
+<aside class="season-sidebar" aria-label="Your reading place and seasons">
+  <div class="reading-place">
+    <div class="reading-place__intro">
+      <h2>Your place</h2>
+      <p class="reading-place__summary" data-reading-summary aria-live="polite" hidden></p>
+      <p class="reading-place__privacy">Progress is saved in this browser.</p>
+    </div>
+    <div class="reading-place__next">
+      <a
+        class="next-unread"
+        aria-describedby="next-reading-title"
+        href={`/p/${firstPost.id}`}
+        data-next-unread
+      >
+        <span data-next-label>Start reading</span><span aria-hidden="true">↗</span>
+      </a>
+      <p class="next-title" id="next-reading-title" data-next-title>{firstPost.data.title}</p>
+      <p class="path-complete" data-path-complete hidden>
+        You're caught up. Every writing in this path is marked read.
+      </p>
+    </div>
+  </div>
+
+  <details class="mobile-seasons" data-season-picker>
+    <summary>
+      <span>Choose a season</span>
+      <span class="mobile-seasons__current"
+        ><span data-current-season>{chapters[0].title}</span>
+        <span aria-hidden="true">⌄</span></span
+      >
+    </summary>
+    <nav aria-label="Seasons" class="season-groups">
+      {
+        years.map((year) => (
+          <div class="season-year">
+            <h3>{year}</h3>
+            <ul role="list">
+              {chapters
+                .filter((chapter) => chapter.year === year)
+                .map((chapter) => (
+                  <li>
+                    <a href={`#${chapter.id}`} data-season-link={chapter.id}>
+                      <span>{chapter.season}</span>
+                      <span
+                        class="season-count"
+                        aria-label={`${chapter.posts.length} ${chapter.posts.length === 1 ? 'writing' : 'writings'}`}
+                      >
+                        {chapter.posts.length}
+                      </span>
+                    </a>
+                  </li>
+                ))}
+            </ul>
+          </div>
+        ))
+      }
+    </nav>
+  </details>
+
+  <nav class="desktop-seasons" aria-label="Seasons">
+    <h2 class="season-nav-label">Seasons</h2>
+    <div class="season-groups">
+      {
+        years.map((year) => (
+          <div class="season-year">
+            <h3>{year}</h3>
+            <ul role="list">
+              {chapters
+                .filter((chapter) => chapter.year === year)
+                .map((chapter) => (
+                  <li>
+                    <a href={`#${chapter.id}`} data-season-link={chapter.id}>
+                      <span>{chapter.season}</span>
+                      <span
+                        class="season-count"
+                        aria-label={`${chapter.posts.length} ${chapter.posts.length === 1 ? 'writing' : 'writings'}`}
+                      >
+                        {chapter.posts.length}
+                      </span>
+                    </a>
+                  </li>
+                ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </nav>
+  <noscript
+    ><p class="reading-place__privacy">
+      Enable JavaScript to show your reading progress. All {totalPosts} writings are available below.
+    </p></noscript
+  >
+</aside>
+
+<script>
+  const sections = Array.from(document.querySelectorAll<HTMLElement>('[data-season]'));
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-season-link]'));
+  const picker = document.querySelector<HTMLDetailsElement>('[data-season-picker]');
+  const currentLabel = document.querySelector<HTMLElement>('[data-current-season]');
+  let currentId = '';
+
+  function setCurrent(section: HTMLElement) {
+    if (currentId === section.id) return;
+    currentId = section.id;
+    sections.forEach((item) => item.toggleAttribute('data-active-season', item === section));
+    links.forEach((link) => {
+      if (link.dataset.seasonLink === section.id) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+    if (currentLabel) currentLabel.textContent = section.querySelector('h2')?.textContent ?? '';
+  }
+
+  links.forEach((link) => {
+    link.addEventListener('click', (event) => {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)
+        return;
+      const section = sections.find((item) => item.id === link.dataset.seasonLink);
+      if (!section) return;
+      event.preventDefault();
+      if (picker) picker.open = false;
+      if (window.location.hash !== link.hash) history.pushState(null, '', link.hash);
+      setCurrent(section);
+      section.querySelector<HTMLElement>('h2')?.focus({ preventScroll: true });
+      section.scrollIntoView({ behavior: 'instant', block: 'start' });
+    });
+  });
+
+  let scheduled = false;
+  function updateCurrent() {
+    const headerHeight =
+      document.querySelector('.site-header')?.getBoundingClientRect().height ?? 72;
+    const threshold = headerHeight + 96;
+    const current =
+      sections.filter((section) => section.getBoundingClientRect().top <= threshold).at(-1) ??
+      sections[0];
+    if (current) setCurrent(current);
+    scheduled = false;
+  }
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (!scheduled) {
+        scheduled = true;
+        requestAnimationFrame(updateCurrent);
+      }
+    },
+    { passive: true },
+  );
+  window.addEventListener('resize', updateCurrent);
+  updateCurrent();
+</script>
+
+<style>
+  .season-sidebar {
+    min-width: 0;
+  }
+  .reading-place {
+    display: grid;
+    gap: 1.5rem;
+    padding: 1.25rem;
+    border-radius: var(--radius-lg);
+    background: color-mix(in srgb, rgb(var(--color-primary)) 12%, rgb(var(--color-bg)));
+  }
+  .reading-place h2 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  .reading-place__summary {
+    margin: 0.75rem 0 0;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    font-variant-numeric: tabular-nums;
+  }
+  .reading-place__privacy {
+    margin: 0.5rem 0 0;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: rgb(var(--color-text-muted));
+  }
+  .next-unread {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    min-height: 2.85rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    background: rgb(var(--color-primary));
+    color: rgb(var(--color-on-primary));
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.5;
+    text-decoration: none;
+  }
+  .next-unread:hover {
+    background: rgb(var(--color-primary-hover));
+  }
+  .next-title,
+  .path-complete {
+    margin: 0.75rem 0 0;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: rgb(var(--color-text-muted));
+  }
+  .next-title {
+    max-width: 40ch;
+  }
+  .mobile-seasons {
+    margin-top: 1.5rem;
+    border-radius: var(--radius-md);
+    background: rgb(var(--color-bg-alt));
+  }
+  .mobile-seasons summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 3rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.5;
+    cursor: pointer;
+    list-style: none;
+  }
+  .mobile-seasons summary::-webkit-details-marker {
+    display: none;
+  }
+  .mobile-seasons__current {
+    color: rgb(var(--color-accent));
+  }
+  .mobile-seasons[open] .mobile-seasons__current > :last-child {
+    display: inline-block;
+    transform: rotate(180deg);
+  }
+  .mobile-seasons .season-groups {
+    padding: 0.75rem 1rem 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  }
+  .desktop-seasons {
+    display: none;
+  }
+  .season-groups {
+    display: grid;
+    gap: 1.5rem;
+  }
+  .season-nav-label,
+  .season-year h3 {
+    margin: 0 0 0.5rem;
+    color: rgb(var(--color-text-muted));
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+  .season-nav-label {
+    margin-bottom: 1.5rem;
+  }
+  .season-year ul {
+    display: grid;
+    gap: 0.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .season-year li {
+    margin: 0;
+    padding: 0;
+  }
+  .season-year a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 2.75rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-md);
+    color: rgb(var(--color-text));
+    font-size: 1rem;
+    line-height: 1.5;
+    text-decoration: none;
+  }
+  .season-year a:hover {
+    background: rgb(var(--color-surface-2));
+  }
+  .season-year a[aria-current] {
+    background: rgb(var(--color-accent) / 0.08);
+    color: rgb(var(--color-accent));
+    font-weight: 600;
+  }
+  .season-count {
+    color: rgb(var(--color-text-muted));
+    font-size: 0.875rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .next-unread:focus-visible,
+  .season-year a:focus-visible,
+  summary:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 4px;
+  }
+  [hidden] {
+    display: none !important;
+  }
+  @media (min-width: 600px) {
+    .reading-place {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 2.5rem;
+    }
+  }
+  @media (min-width: 1200px) {
+    .season-sidebar {
+      position: sticky;
+      top: calc(var(--site-header-height) + 1.5rem);
+      display: flex;
+      flex-direction: column;
+      max-height: calc(100dvh - var(--site-header-height) - 3rem);
+    }
+    .reading-place {
+      grid-template-columns: 1fr;
+      flex-shrink: 0;
+    }
+    .desktop-seasons {
+      display: block;
+      margin-top: 2rem;
+      overflow-y: auto;
+      padding: 0.25rem 0.5rem 0.5rem 0.25rem;
+      scrollbar-width: thin;
+    }
+    .mobile-seasons {
+      display: none;
+    }
+  }
+  @media (max-width: 599px) {
+    .reading-place {
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.75rem 1rem;
+      padding: 1rem;
+    }
+    .reading-place__intro {
+      display: contents;
+    }
+    .reading-place h2,
+    .reading-place__summary {
+      grid-column: 1;
+      margin: 0;
+    }
+    .reading-place__privacy {
+      grid-column: 1 / -1;
+      margin: 0;
+    }
+    .reading-place__next {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      align-self: center;
+    }
+    .next-title,
+    .next-unread > [aria-hidden] {
+      display: none;
+    }
+  }
+  @media (min-width: 1200px) {
+    .next-title {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+    }
+  }
+</style>

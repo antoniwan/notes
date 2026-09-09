@@ -20,14 +20,9 @@ export async function getStaticPaths() {
 }
 
 const { category } = Astro.props;
-
-// Get all posts in this category
 const posts = await getCollection('blog', (entry) => isCategoryListedPost(entry));
-
-// Filter posts by category and organize them
 const categoryPosts = posts.filter((post) => post.data.category?.includes(category.id));
 
-// Separate posts where this category is primary vs secondary
 const primaryCategoryPosts = categoryPosts
   .filter((post) => post.data.category?.[0] === category.id)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -38,6 +33,7 @@ const secondaryCategoryPosts = categoryPosts
   )
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
+const hasBothGroups = primaryCategoryPosts.length > 0 && secondaryCategoryPosts.length > 0;
 const robots = categoryPosts.length > 0 ? 'index, follow' : 'noindex, follow';
 ---
 
@@ -52,137 +48,230 @@ const robots = categoryPosts.length > 0 ? 'index, follow' : 'noindex, follow';
   posts={categoryPosts}
 >
   <Container>
-    <Container maxWidth="container" padding="none">
-      {/* Category header + browse-all CTA */}
-      <div class="mb-8 md:mb-10">
-        <PageHeader
-          title={`${category.icon} ${category.name}`}
-          description={category.description}
-        />
-        <div class="mt-4 md:mt-6">
-          <a
-            href="/category"
-            class="theme-transition inline-flex items-center gap-2 rounded-full border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg-alt))] px-4 py-2 text-sm font-medium text-[rgb(var(--color-text))] hover:border-[rgb(var(--color-primary))]/40 hover:bg-[rgb(var(--color-primary))]/10 hover:text-[rgb(var(--color-primary))] focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:ring-offset-1 focus:outline-hidden"
-          >
-            <span aria-hidden="true">📂</span>
-            See all categories
-          </a>
-        </div>
+    <div class="subject-page">
+      <PageHeader
+        title={`${category.icon} ${category.name}`}
+        description={category.description}
+        descriptionClass="text-base md:text-lg max-w-[62ch]"
+      />
+
+      <div class="subject-navigation">
+        <a class="subject-back" href="/category">
+          <span aria-hidden="true">←</span>
+          All categories
+        </a>
+        {
+          hasBothGroups && (
+            <nav aria-label="On this category page" class="subject-jumps">
+              <a href="#writings-heading">
+                Writings <span>{primaryCategoryPosts.length}</span>
+              </a>
+              <a href="#related-writings-heading">
+                Related <span>{secondaryCategoryPosts.length}</span>
+              </a>
+            </nav>
+          )
+        }
       </div>
 
-      {/* Primary Category Posts Section */}
-      {
-        primaryCategoryPosts.length > 0 && (
-          <div class="mb-16 md:mb-20">
-            <div class="postcards-grid grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
-              {primaryCategoryPosts.map((post) => (
-                <PostCard post={post} featured={post.data.featured} />
-              ))}
-            </div>
-          </div>
-        )
-      }
+      <div class="subject-collections">
+        {
+          primaryCategoryPosts.length > 0 && (
+            <section id="writings" class="subject-collection" aria-labelledby="writings-heading">
+              <div class="collection-heading">
+                <h2 id="writings-heading" tabindex="-1">
+                  Writings
+                </h2>
+                <p class="collection-count">
+                  {primaryCategoryPosts.length}{' '}
+                  {primaryCategoryPosts.length === 1 ? 'writing' : 'writings'}
+                </p>
+              </div>
+              <div class="postcards-grid subject-grid">
+                {primaryCategoryPosts.map((post, index) => (
+                  <PostCard
+                    post={post}
+                    featured={post.data.featured}
+                    headingAs="h3"
+                    imageLoading={index === 0 ? 'eager' : 'lazy'}
+                  />
+                ))}
+              </div>
+            </section>
+          )
+        }
 
-      {/* Secondary Category Posts Section */}
-      {
-        secondaryCategoryPosts.length > 0 && (
-          <div class="mb-16 md:mb-20">
-            <div class="mb-8 space-y-2 md:mb-12">
-              <h2
-                class="text-heading text-[rgb(var(--color-text))]"
-                style="line-height: 1.3; margin: 0;"
-              >
-                Related {category.name} Writings
-              </h2>
-              <p
-                class="text-body-large text-body-muted leading-relaxed"
-                style="margin: 0; line-height: 1.6;"
-              >
-                Writings that touch on {category.name} as a secondary topic
-              </p>
-            </div>
-            <div class="postcards-grid grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
-              {secondaryCategoryPosts.map((post) => (
-                <PostCard post={post} featured={post.data.featured} />
-              ))}
-            </div>
-          </div>
-        )
-      }
+        {
+          secondaryCategoryPosts.length > 0 && (
+            <section
+              id="related-writings"
+              class="subject-collection"
+              aria-labelledby="related-writings-heading"
+            >
+              <div class="collection-heading">
+                <h2 id="related-writings-heading" tabindex="-1">
+                  Related writings
+                </h2>
+                <p class="collection-count">
+                  {secondaryCategoryPosts.length}{' '}
+                  {secondaryCategoryPosts.length === 1 ? 'writing' : 'writings'}
+                </p>
+                <p class="collection-description">
+                  Writings that touch on {category.name} as a secondary topic.
+                </p>
+              </div>
+              <div class="postcards-grid subject-grid">
+                {secondaryCategoryPosts.map((post, index) => (
+                  <PostCard
+                    post={post}
+                    featured={post.data.featured}
+                    headingAs="h3"
+                    imageLoading={
+                      primaryCategoryPosts.length === 0 && index === 0 ? 'eager' : 'lazy'
+                    }
+                  />
+                ))}
+              </div>
+            </section>
+          )
+        }
 
-      {/* Empty State */}
-      {
-        categoryPosts.length === 0 && (
-          <div class="py-12 text-center">
-            <p class="text-body-large text-body-muted leading-relaxed">
-              No writings found in this category yet.
-            </p>
-          </div>
-        )
-      }
-    </Container>
+        {
+          categoryPosts.length === 0 && (
+            <p class="subject-empty">No writings found in this category yet.</p>
+          )
+        }
+      </div>
+    </div>
   </Container>
 </BaseLayout>
 
 <style>
-  /* Smooth transitions for dark mode */
-  main {
-    transition:
-      background-color 0.2s ease,
-      color 0.2s ease;
+  .subject-page {
+    padding-bottom: clamp(4rem, 7vw, 6rem);
   }
 
-  /* Enhanced spacing and typography */
-  .text-lg {
-    line-height: 1.75;
+  .subject-navigation {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 2rem;
   }
 
-  .text-xl {
-    line-height: 1.6;
+  .subject-back,
+  .subject-jumps a {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgb(var(--color-accent));
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
   }
 
-  .text-2xl {
-    line-height: 1.4;
+  .subject-back:hover,
+  .subject-jumps a:hover {
+    color: rgb(var(--color-accent-hover));
   }
 
-  .text-3xl {
-    line-height: 1.3;
+  .subject-back:focus-visible,
+  .subject-jumps a:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 4px;
+    border-radius: 2px;
   }
 
-  /* Enhanced spacing for better visual hierarchy */
-  .space-y-8 > * + * {
-    margin-top: 2rem;
+  .subject-jumps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
   }
 
-  .space-y-10 > * + * {
+  .subject-jumps a span {
+    color: rgb(var(--color-text-muted));
+    font-size: 0.875rem;
+    font-variant-numeric: tabular-nums;
+    font-weight: 400;
+  }
+
+  .subject-collections {
+    display: grid;
+    gap: clamp(4rem, 7vw, 6rem);
     margin-top: 2.5rem;
   }
 
-  /* Respect reduced motion preferences */
-  @media (prefers-reduced-motion: reduce) {
-    main {
-      transition: none !important;
+  .subject-collection {
+    min-width: 0;
+    scroll-margin-top: calc(var(--site-header-height, 4rem) + 2rem);
+  }
+
+  .collection-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.75rem 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .collection-heading h2 {
+    margin: 0;
+    scroll-margin-top: calc(var(--site-header-height, 4rem) + 2rem);
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 2.4vw, 2rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+  }
+
+  .collection-count {
+    margin: 0;
+    color: rgb(var(--color-text-muted));
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .collection-description,
+  .subject-empty {
+    flex-basis: 100%;
+    max-width: 62ch;
+    margin: 0;
+    color: rgb(var(--color-text-muted));
+    font-size: 1.125rem;
+    line-height: 1.7;
+    text-wrap: pretty;
+  }
+
+  .subject-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .subject-collections {
+      margin-top: 3rem;
+    }
+
+    .collection-heading {
+      margin-bottom: 2.5rem;
+    }
+
+    .subject-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2.5rem;
     }
   }
 
-  /* Responsive typography adjustments */
-  @media (max-width: 768px) {
-    /* Tighter spacing on mobile */
-    .space-y-8 > * + * {
-      margin-top: 1.5rem;
-    }
-
-    .space-y-10 > * + * {
-      margin-top: 2rem;
-    }
-
-    /* Mobile-specific spacing */
-    .mb-16 {
-      margin-bottom: 3rem;
-    }
-
-    .mb-20 {
-      margin-bottom: 4rem;
+  @media (min-width: 1024px) {
+    .subject-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
 </style>

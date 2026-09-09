@@ -41,7 +41,7 @@ describe('getSitemapLastmodByUrl', () => {
   it('sets listing pages to the newest related post', () => {
     const home = lastmodByUrl.get(sitemapPageUrl('/'));
     const category = lastmodByUrl.get(sitemapPageUrl('/category/integration-growth'));
-    const tag = lastmodByUrl.get(sitemapPageUrl('/tag/integration'));
+    const tag = lastmodByUrl.get(sitemapPageUrl('/tag/parenting'));
     const cookbook = lastmodByUrl.get(sitemapPageUrl('/recipes'));
     expect(home).toBeInstanceOf(Date);
     expect(category).toBeInstanceOf(Date);

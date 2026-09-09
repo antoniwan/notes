@@ -7,6 +7,20 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.17.0] — 2026-09-09
+
+### Added
+
+- Guided Path groups writings by calendar season, with a place to resume, a next unread door, and a season index.
+- Category cards keep their emoji in front of the name so the A–Z directory is easier to scan.
+- Everything jumps by year instead of infinite scroll.
+
+### Changed
+
+- Categories is one A–Z directory. The most-written ranking and the secondary chip list are gone.
+- Category rooms split Writings from Related, with a jump between them when both exist.
+- Guided Path seasons stay open instead of collapsing. Progress is a read count, not a percent bar.
+
 ## [6.16.0] — 2026-09-08
 
 ### Added

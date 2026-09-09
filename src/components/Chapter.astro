@@ -1,593 +1,220 @@
 ---
+import type { CollectionEntry } from 'astro:content';
 import { getCategoryNameFromIds } from '../utils/categoryUtils';
 import { calculateReadingTimeFromMarkdown } from '../utils/readingTime';
 import { isRecipePost } from '../utils/recipes';
 
 export interface Props {
-  posts: any[];
+  posts: CollectionEntry<'blog'>[];
   chapterTitle: string;
   chapterId: string;
-  defaultExpanded?: boolean;
 }
 
-const { posts, chapterTitle, chapterId, defaultExpanded = true } = Astro.props;
+const { posts, chapterTitle, chapterId } = Astro.props;
+const shortDate = new Intl.DateTimeFormat('en-US', {
+  month: 'short',
+  day: 'numeric',
+  timeZone: 'UTC',
+});
 ---
 
-<div class="book-chapter">
-  <button
-    class="chapter-header"
-    aria-expanded={defaultExpanded}
-    aria-controls={`chapter-${chapterId}`}
-  >
-    <div class="chapter-title-section">
-      <h2 class="chapter-title">{chapterTitle}</h2>
-      <div class="chapter-meta">
-        <span class="post-count">({posts.length} writings)</span>
-        <div class="chapter-progress" data-chapter-id={chapterId}>
-          <div class="progress-bar">
-            <div class="progress-fill" data-chapter-id={chapterId}></div>
-          </div>
-          <span class="progress-text" data-chapter-id={chapterId}>0%</span>
-        </div>
-      </div>
+<section class="book-chapter" id={chapterId} data-season aria-labelledby={`heading-${chapterId}`}>
+  <header class="chapter-header">
+    <div>
+      <h2 class="chapter-title" id={`heading-${chapterId}`} tabindex="-1">{chapterTitle}</h2>
+      <p class="chapter-count">{posts.length} {posts.length === 1 ? 'writing' : 'writings'}</p>
     </div>
-    <svg
-      class="expand-icon"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-      style={`transform: rotate(${defaultExpanded ? '180deg' : '0deg'})`}
-    >
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"
-      ></path>
-    </svg>
-  </button>
-
-  <div class={`chapter-content ${!defaultExpanded ? 'collapsed' : ''}`} id={`chapter-${chapterId}`}>
+    <span class="chapter-progress" data-chapter-read hidden></span>
+  </header>
+  <ol class="post-list">
     {
-      posts.length > 0 ? (
-        <ol class="post-list">
-          {posts.map((post, index) => {
-            const categoryName = getCategoryNameFromIds(post.data.category);
-            const isRecipe = isRecipePost(post);
-            const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
-            return (
-              <li class="post-item">
-                <a href={`/p/${post.id}`} class="post-link" data-post-slug={post.id}>
-                  <span class="post-number">{index + 1}.</span>
-                  <div class="post-content">
-                    <span class="post-title">{post.data.title}</span>
-                    {(isRecipe || categoryName) && (
-                      <span class="post-labels">
-                        {isRecipe && <span class="post-kind">Recipe</span>}
-                        {isRecipe && categoryName && (
-                          <span class="post-labels__sep" aria-hidden="true">
-                            ·
-                          </span>
-                        )}
-                        {categoryName && <span class="post-category">{categoryName}</span>}
-                      </span>
-                    )}
-                  </div>
-                  <div class="post-status">
-                    <span class="read-status" data-post-slug={post.id}>
-                      <span class="status-icon">⭕</span>
-                      <span class="status-text">Unread</span>
-                    </span>
-                    {readingTime && !isRecipe && (
-                      <span class="reading-time" data-post-slug={post.id}>
-                        {readingTime}
-                      </span>
-                    )}
-                  </div>
-                </a>
-              </li>
-            );
-          })}
-        </ol>
-      ) : (
-        <p class="empty-state">No writings yet in this chapter.</p>
-      )
+      posts.map((post, index) => {
+        const categoryName = getCategoryNameFromIds(post.data.category);
+        const isRecipe = isRecipePost(post);
+        const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
+        return (
+          <li class="post-item" data-guided-post={post.id}>
+            <a href={`/p/${post.id}`} class="post-link">
+              <span class="post-number" aria-hidden="true">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <div class="post-content">
+                <h3 class="post-title">{post.data.title}</h3>
+                <div class="post-meta">
+                  <time datetime={post.data.pubDate.toISOString()}>
+                    {shortDate.format(post.data.pubDate)}
+                  </time>
+                  {isRecipe && <span>Recipe</span>}
+                  {categoryName && <span class="post-category">{categoryName}</span>}
+                </div>
+                {post.data.description && <p class="post-description">{post.data.description}</p>}
+              </div>
+              <div class="post-status">
+                {readingTime && !isRecipe && <span>{readingTime}</span>}
+                <span class="read-status" data-read-status hidden>
+                  Unread
+                </span>
+              </div>
+            </a>
+          </li>
+        );
+      })
     }
-  </div>
-</div>
-
-<script>
-  // ReadStateService is initialized by ReadStateServiceInit component in BaseLayout
-  // Get the singleton instance (typed as any for client script)
-  const readStateService: any = (window as any).ReadStateService?.getInstance
-    ? (window as any).ReadStateService.getInstance()
-    : undefined;
-
-  function updateIndicators() {
-    if (!readStateService) return; // Exit early if service not available
-
-    document.querySelectorAll('.read-status').forEach((statusElement) => {
-      const statusEl = statusElement as HTMLElement;
-      const postSlug = statusEl.dataset.postSlug;
-      const iconElement = statusEl.querySelector('.status-icon') as HTMLElement | null;
-      const textElement = statusEl.querySelector('.status-text') as HTMLElement | null;
-
-      if (!postSlug || !iconElement || !textElement) return;
-
-      const isRead = readStateService.isRead(postSlug);
-      const readingTimeElement = document.querySelector(
-        `.reading-time[data-post-slug="${postSlug}"]`,
-      ) as HTMLElement | null;
-
-      if (isRead) {
-        iconElement.textContent = '✅';
-        textElement.textContent = 'Read';
-        statusEl.classList.add('read');
-        if (readingTimeElement) {
-          readingTimeElement.style.display = 'none';
-        }
-      } else {
-        iconElement.textContent = '⭕';
-        textElement.textContent = 'Unread';
-        statusEl.classList.remove('read');
-        if (readingTimeElement) {
-          readingTimeElement.style.display = 'inline';
-        }
-      }
-    });
-
-    // Update chapter progress
-    updateChapterProgress();
-  }
-
-  function updateChapterProgress() {
-    document.querySelectorAll('.chapter-progress').forEach((progressElement) => {
-      const progressEl = progressElement as HTMLElement;
-      const chapterId = progressEl.dataset.chapterId;
-      if (!chapterId) return;
-
-      const chapterContent = document.getElementById(`chapter-${chapterId}`);
-      if (!chapterContent) return;
-
-      const posts = chapterContent.querySelectorAll('.post-item');
-      const readPosts = chapterContent.querySelectorAll('.post-item .read-status.read');
-
-      const totalPosts = posts.length;
-      const readCount = readPosts.length;
-      const percentage = totalPosts > 0 ? Math.round((readCount / totalPosts) * 100) : 0;
-
-      // Update progress bar
-      const progressFill = progressEl.querySelector('.progress-fill') as HTMLElement | null;
-      if (progressFill) {
-        progressFill.style.width = `${percentage}%`;
-      }
-
-      // Update progress text
-      const progressText = progressEl.querySelector('.progress-text') as HTMLElement | null;
-      if (progressText) {
-        progressText.textContent = `${percentage}%`;
-      }
-
-      // Add completion class for styling
-      if (percentage === 100) {
-        progressEl.classList.add('completed');
-      } else {
-        progressEl.classList.remove('completed');
-      }
-    });
-  }
-
-  // Chapter expand/collapse functionality
-  class ChapterManager {
-    constructor() {
-      this.init();
-    }
-
-    init(): void {
-      // Add click handlers to chapter headers
-      document.querySelectorAll('.chapter-header').forEach((header) => {
-        const headerEl = header as HTMLElement;
-        headerEl.addEventListener('click', (e) => {
-          e.preventDefault();
-          this.toggleChapter(headerEl);
-        });
-      });
-    }
-
-    toggleChapter(header: HTMLElement): void {
-      const isExpanded = header.getAttribute('aria-expanded') === 'true';
-      const contentId = header.getAttribute('aria-controls');
-      if (!contentId) return;
-
-      const content = document.getElementById(contentId);
-      const icon = header.querySelector('.expand-icon') as HTMLElement | null;
-      if (!icon) return;
-
-      if (isExpanded) {
-        // Collapse
-        header.setAttribute('aria-expanded', 'false');
-        if (content) content.classList.add('collapsed');
-        icon.style.transform = 'rotate(0deg)';
-      } else {
-        // Expand
-        header.setAttribute('aria-expanded', 'true');
-        if (content) content.classList.remove('collapsed');
-        icon.style.transform = 'rotate(180deg)';
-      }
-    }
-  }
-
-  let unsubscribe = null;
-
-  function initChapterFeatures() {
-    new ChapterManager();
-    updateIndicators();
-  }
-
-  if (readStateService) {
-    unsubscribe = readStateService.subscribeToAll(() => {
-      updateIndicators();
-    });
-
-    // Initial update
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initChapterFeatures);
-    } else {
-      initChapterFeatures();
-    }
-  } else {
-    // Initialize chapter manager even if service not available
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => {
-        new ChapterManager();
-      });
-    } else {
-      new ChapterManager();
-    }
-  }
-
-  // Cleanup on page unload
-  window.addEventListener('beforeunload', () => {
-    if (typeof unsubscribe === 'function') {
-      unsubscribe();
-    }
-  });
-</script>
+  </ol>
+</section>
 
 <style>
   .book-chapter {
-    margin-bottom: 1.25rem;
-    border: 1px solid rgb(var(--color-border) / 0.55);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    background: rgb(var(--color-bg));
-  }
-
-  .book-chapter:last-child {
-    margin-bottom: 0;
-  }
-
-  .chapter-header {
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 1.25rem 1.35rem;
-    background: rgb(var(--color-bg-alt));
-    border: none;
-    cursor: pointer;
-    text-align: left;
-    transition: background-color 0.2s ease;
-  }
-
-  @media (min-width: 768px) {
-    .chapter-header {
-      align-items: center;
-      padding: 1.35rem 1.75rem;
-    }
-  }
-
-  .chapter-header:hover {
-    background: rgb(var(--color-surface-2));
-  }
-
-  .chapter-header:focus-visible {
-    outline: 2px solid rgb(var(--color-accent));
-    outline-offset: -2px;
-  }
-
-  .chapter-title-section {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.55rem;
-    flex: 1;
     min-width: 0;
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    background: rgb(var(--color-bg-alt));
+    scroll-margin-top: calc(var(--site-header-height) + 2rem);
   }
-
-  @media (min-width: 768px) {
-    .chapter-title-section {
-      flex-direction: row;
-      align-items: center;
-      gap: 1.25rem;
-    }
+  .book-chapter[data-active-season] {
+    background: color-mix(in srgb, rgb(var(--color-accent)) 6%, rgb(var(--color-bg)));
+    box-shadow: inset 3px 0 0 rgb(var(--color-accent));
   }
-
-  .chapter-title {
-    font-family: var(--font-heading);
-    font-size: 1.35rem;
-    font-weight: 700;
-    letter-spacing: -0.015em;
-    line-height: 1.25;
-    color: rgb(var(--color-text));
-    margin: 0;
+  .book-chapter[data-active-season] .chapter-title {
+    color: rgb(var(--color-accent));
   }
-
-  @media (min-width: 768px) {
-    .chapter-title {
-      font-size: 1.5rem;
-    }
-  }
-
-  .chapter-meta {
+  .chapter-header {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    gap: 0.75rem 1.25rem;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 2rem;
   }
-
-  @media (min-width: 768px) {
-    .chapter-meta {
-      margin-left: auto;
-    }
-  }
-
-  .post-count {
-    font-family: var(--font-sans);
-    font-size: 0.85rem;
-    color: rgb(var(--color-text-muted));
-    font-weight: 500;
-  }
-
-  .chapter-progress {
-    display: flex;
-    align-items: center;
-    gap: 0.55rem;
-    min-width: 7rem;
-  }
-
-  .progress-bar {
-    width: 4.5rem;
-    height: 0.4rem;
-    background: rgb(var(--color-border));
-    border-radius: 999px;
-    overflow: hidden;
-  }
-
-  .progress-fill {
-    height: 100%;
-    background: rgb(var(--color-primary));
-    border-radius: 999px;
-    width: 0%;
-    transition: width 0.3s ease;
-  }
-
-  .chapter-progress.completed .progress-fill {
-    background: rgb(var(--color-success));
-  }
-
-  .progress-text {
-    font-size: 0.75rem;
+  .chapter-title {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: clamp(1.75rem, 2.6vw, 2.25rem);
+    line-height: 1.15;
     font-weight: 600;
+    letter-spacing: -0.025em;
+    scroll-margin-top: calc(var(--site-header-height) + 2rem);
+  }
+  .chapter-count,
+  .chapter-progress {
+    margin: 0.75rem 0 0;
     color: rgb(var(--color-text-muted));
-    min-width: 2.25rem;
-    text-align: right;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.6;
     font-variant-numeric: tabular-nums;
   }
-
-  .chapter-progress.completed .progress-text {
+  .chapter-progress.is-complete {
     color: rgb(var(--color-success));
   }
-
-  .expand-icon {
-    width: 1.35rem;
-    height: 1.35rem;
-    flex-shrink: 0;
-    margin-top: 0.2rem;
-    color: rgb(var(--color-text-muted));
-    transition: transform 0.2s ease;
-  }
-
-  @media (min-width: 768px) {
-    .expand-icon {
-      margin-top: 0;
-    }
-  }
-
-  /* Grid collapse avoids clipping long seasons (old max-height: 2000px bug) */
-  .chapter-content {
-    display: grid;
-    grid-template-rows: 1fr;
-    transition:
-      grid-template-rows 0.28s ease,
-      opacity 0.2s ease;
-    opacity: 1;
-  }
-
-  .chapter-content.collapsed {
-    grid-template-rows: 0fr;
-    opacity: 0;
-  }
-
-  .chapter-content > * {
-    overflow: hidden;
-  }
-
   .post-list {
-    list-style: none;
-    padding: 0.35rem 0;
+    display: grid;
+    gap: 2rem;
     margin: 0;
+    padding: 0;
+    list-style: none;
   }
-
   .post-item {
     margin: 0;
-    border-bottom: 1px solid rgb(var(--color-border) / 0.55);
+    min-width: 0;
   }
-
-  .post-item:last-child {
-    border-bottom: none;
-  }
-
   .post-link {
     display: grid;
-    grid-template-columns: 2.25rem minmax(0, 1fr);
-    gap: 0.35rem 0.85rem;
+    grid-template-columns: 1.5rem minmax(0, 1fr);
+    gap: 0.75rem 1rem;
     align-items: start;
-    padding: 1.1rem 1.35rem;
-    text-decoration: none;
+    padding: 0.5rem;
+    margin: -0.5rem;
+    border-radius: var(--radius-md);
     color: rgb(var(--color-text));
-    transition: background-color 0.2s ease;
+    text-decoration: none;
+    transition: background-color 160ms ease;
   }
-
-  @media (min-width: 768px) {
-    .post-link {
-      grid-template-columns: 2.5rem minmax(0, 1fr) auto;
-      align-items: center;
-      gap: 0.85rem 1.1rem;
-      padding: 1.2rem 1.75rem;
-    }
-  }
-
   .post-link:hover {
     background: rgb(var(--color-bg-alt));
   }
-
+  .post-link:hover .post-title {
+    color: rgb(var(--color-accent));
+  }
   .post-link:focus-visible {
     outline: 2px solid rgb(var(--color-accent));
-    outline-offset: -2px;
+    outline-offset: 4px;
   }
-
   .post-number {
-    font-family: var(--font-sans);
-    font-weight: 600;
-    font-variant-numeric: tabular-nums;
+    padding-top: 0.25rem;
     color: rgb(var(--color-text-muted));
+    font-size: 0.875rem;
+    font-variant-numeric: tabular-nums;
     line-height: 1.5;
   }
-
   .post-content {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
     min-width: 0;
   }
-
   .post-title {
+    margin: 0;
     font-family: var(--font-heading);
-    font-size: 1.05rem;
+    font-size: clamp(1.25rem, 1.7vw, 1.6rem);
     font-weight: 600;
-    line-height: 1.35;
-    letter-spacing: -0.01em;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    text-wrap: pretty;
   }
-
-  @media (min-width: 768px) {
-    .post-title {
-      font-size: 1.1rem;
-    }
-  }
-
-  .post-labels {
+  .post-meta {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    column-gap: 0.4rem;
-    row-gap: 0.1rem;
-    font-family: var(--font-sans);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    line-height: 1.4;
-  }
-
-  .post-kind {
+    gap: 0.375rem 1rem;
+    margin-top: 0.75rem;
     color: rgb(var(--color-text-muted));
+    font-size: 0.875rem;
+    line-height: 1.5;
   }
-
-  .post-labels__sep {
-    color: rgb(var(--color-text-muted));
-    opacity: 0.45;
-    user-select: none;
-  }
-
   .post-category {
     color: rgb(var(--color-accent));
   }
-
+  .post-description {
+    max-width: 62ch;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    margin: 0.75rem 0 0;
+    color: rgb(var(--color-text-muted));
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
   .post-status {
+    grid-column: 2;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    gap: 0.55rem 0.75rem;
-    grid-column: 2;
+    gap: 0.5rem 1rem;
+    color: rgb(var(--color-text-muted));
+    font-size: 0.875rem;
+    line-height: 1.5;
   }
-
+  .read-status.is-read {
+    color: rgb(var(--color-success));
+    font-weight: 600;
+  }
   @media (min-width: 768px) {
+    .book-chapter {
+      padding: 2rem;
+    }
+    .post-list {
+      gap: 2.5rem;
+    }
+    .post-link {
+      grid-template-columns: 1.5rem minmax(0, 1fr) 6rem;
+    }
     .post-status {
-      grid-column: auto;
-      justify-self: end;
+      grid-column: 3;
+      flex-direction: column;
+      align-items: flex-end;
+      padding-top: 0.25rem;
     }
   }
-
-  .read-status {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.2rem 0.65rem;
-    border-radius: var(--radius-sm);
-    background: transparent;
-    border: 1px solid rgb(var(--color-border));
-    transition:
-      background-color 0.2s ease,
-      border-color 0.2s ease,
-      color 0.2s ease;
-  }
-
-  .read-status.read {
-    background: rgb(var(--color-success) / 0.1);
-    color: rgb(var(--color-success));
-    border-color: rgb(var(--color-success) / 0.28);
-  }
-
-  .status-icon {
-    font-size: 0.8rem;
-  }
-
-  .status-text {
-    font-size: 0.7rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
-
-  .reading-time {
-    font-family: var(--font-sans);
-    font-size: 0.8rem;
-    color: rgb(var(--color-text-muted));
-    white-space: nowrap;
-  }
-
-  .empty-state {
-    color: rgb(var(--color-text-muted));
-    font-style: italic;
-    padding: 1.75rem;
-    text-align: center;
-    margin: 0;
-  }
-
   @media (prefers-reduced-motion: reduce) {
-    .chapter-content,
-    .expand-icon,
-    .progress-fill,
-    .post-link,
-    .read-status {
+    .post-link {
       transition: none;
     }
   }
