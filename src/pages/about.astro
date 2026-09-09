@@ -1,11 +1,12 @@
 ---
-import PageLayout from '../layouts/PageLayout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Container from '../components/Container.astro';
 import LatestWatched from '../components/LatestWatched.astro';
 import { PAGE_META } from '../data/pageMeta';
 import { fetchLetterboxdRecent } from '../utils/letterboxd';
 
 const rssUrl = import.meta.env.LETTERBOXD_RSS_URL ?? '';
-const profileUrl = import.meta.env.LETTERBOXD_PROFILE_URL ?? 'https://letterboxd.com/';
+const profileUrl = import.meta.env.LETTERBOXD_PROFILE_URL ?? 'https://letterboxd.com/antoniwan/';
 
 const letterboxdFilms = await fetchLetterboxdRecent(rssUrl, 12);
 
@@ -75,439 +76,495 @@ const topics: AboutTopic[] = [
 ];
 ---
 
-<PageLayout
+<BaseLayout
   title="About Antonio Rodríguez Martínez"
   description="I write from home as a stay-at-home and remote-working father, and as a stepfather, while I practice patience, temperance, and grounded leadership."
   metaDescription={PAGE_META['/about']}
   path="/about"
-  contentClass="about-shell max-w-none"
-  descriptionClass="max-w-[46rem] text-base md:text-lg"
 >
-  <div class="about-columns">
-    <div class="about-columns__main">
-      <figure class="about-hero">
-        <img
-          src="/images/mia-y-yo-anime.avif"
-          alt="Antonio Rodríguez Martínez and his daughter Mia, illustrated in anime style."
-          class="about-hero__img"
-          width={1200}
-          height={675}
-          loading="eager"
-          decoding="async"
-        />
-      </figure>
+  <Container>
+    <div class="about-shell">
+      <header class="about-heading">
+        <p class="about-kicker">About</p>
+        <h1 class="about-name">Antonio Rodríguez Martínez</h1>
+        <p class="about-description">
+          I write from home as a stay-at-home and remote-working father, and as a stepfather, while
+          I practice patience, temperance, and grounded leadership.
+        </p>
+      </header>
 
-      <div class="about-story">
-        <p>
-          For a long time I could explain things with precision, but daily life still exposed the
-          gaps between what I believed, or thought I believed, and how I actually moved. Naming the
-          gap was super useful. Closing it is the real work, and where I am today.
-        </p>
-        <p>
-          I am a boyfriend, a father to a 6-year-old daughter, stepfather to a 2-year-old and a
-          21-year-old, and a stay-at-home remote-working parent of an infant. My beautiful blended
-          family is where I learn the most. Leadership for me is practical: patience under pressure,
-          temperance when I am tired, and choosing presence over ego.
-        </p>
-        <p>
-          I still build systems: digital, emotional, and relational. I care deeply about code,
-          strategy, and craft. I am a technical program manager and developer. I write to practice
-          what I claim, in small repeated actions.
-        </p>
-        <p>
-          This site is where I test ideas against life. If something I write is true, it should hold
-          up in my home, my work, and my relationships. I also write for fun. Writing is a valve, a
-          creative output, and part of my art practice. I also write to learn a fuckton of things,
-          it's very effective.
-        </p>
+      <div class="about-introduction">
+        <div class="about-story">
+          <p class="about-story__opening">
+            For a long time I could explain things with precision, but daily life still exposed the
+            gaps between what I believed, or thought I believed, and how I actually moved. Naming
+            the gap was super useful. Closing it is the real work, and where I am today.
+          </p>
+          <p>
+            I am a boyfriend, a father to a 6-year-old daughter, stepfather to a 2-year-old and a
+            21-year-old, and a stay-at-home remote-working parent of an infant. My beautiful blended
+            family is where I learn the most. Leadership for me is practical: patience under
+            pressure, temperance when I am tired, and choosing presence over ego.
+          </p>
+          <p>
+            I also keep a <a href="/recipes">Cookbook</a> with recipes we actually cook at home, from
+            arroz and sofrito to pancakes for Mia.
+          </p>
+          <p>
+            I still build systems: digital, emotional, and relational. I care deeply about code,
+            strategy, and craft. I am a technical program manager and developer. I write to practice
+            what I claim, in small repeated actions.
+          </p>
+          <p>
+            This site is where I test ideas against life. If something I write is true, it should
+            hold up in my home, my work, and my relationships. I also write for fun. Writing is a
+            valve, a creative output, and part of my art practice. I also write to learn a fuckton
+            of things, it's very effective.
+          </p>
+        </div>
+
+        <div class="about-pictures">
+          <figure class="about-portrait">
+            <img
+              src="/images/mia-y-yo-anime.avif"
+              alt="Antonio Rodríguez Martínez and his daughter Mia, illustrated in anime style."
+              width={1200}
+              height={800}
+              loading="eager"
+              decoding="async"
+            />
+          </figure>
+
+          <a href="/recipes" class="about-cookbook">
+            <div class="about-cookbook__image">
+              <img
+                src="/images/2026/cast-iron-flank-steak.avif"
+                alt=""
+                width={2400}
+                height={3600}
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <span class="about-cookbook__caption">
+              <span class="about-cookbook__title">Cookbook</span>
+              <span class="about-cookbook__destination"
+                >Recipes <span aria-hidden="true">↗</span></span
+              >
+            </span>
+          </a>
+        </div>
       </div>
 
       <section class="about-topics" aria-labelledby="about-topics-heading">
-        <h2 id="about-topics-heading" class="about-section-title">What these notes cover</h2>
-        <p class="about-topics__intro">
-          Working notes from real life, organized as a map rather than a finished system.
-        </p>
+        <div class="about-section-heading">
+          <h2 id="about-topics-heading" class="about-section-title">What these notes cover</h2>
+          <p class="about-topics__intro">
+            Working notes from real life, organized as a map rather than a finished system.
+          </p>
+        </div>
         <ul class="about-topics__list">
           {
-            topics.map((t) => (
+            topics.map((topic) => (
               <li class="about-topics__item">
-                <span class="about-topics__emoji" aria-hidden="true">
-                  {t.emoji}
-                </span>
-                <span class="about-topics__copy">
-                  {t.categoryId ? (
-                    <a
-                      href={`/category/${t.categoryId}`}
-                      class="about-topics__label about-topics__label--link"
-                    >
-                      {t.label}
-                    </a>
-                  ) : (
-                    <span class="about-topics__label">{t.label}</span>
-                  )}
-                  <span class="about-topics__hint">{t.hint}</span>
-                </span>
+                {topic.categoryId ? (
+                  <a href={`/category/${topic.categoryId}`} class="about-topic about-topic--link">
+                    <span class="about-topic__emoji" aria-hidden="true">
+                      {topic.emoji}
+                    </span>
+                    <span class="about-topic__copy">
+                      <span class="about-topic__label">{topic.label}</span>
+                      <span class="about-topic__hint">{topic.hint}</span>
+                    </span>
+                    <span class="about-topic__arrow" aria-hidden="true">
+                      ↗
+                    </span>
+                  </a>
+                ) : (
+                  <div class="about-topic">
+                    <span class="about-topic__emoji" aria-hidden="true">
+                      {topic.emoji}
+                    </span>
+                    <span class="about-topic__copy">
+                      <span class="about-topic__label">{topic.label}</span>
+                      <span class="about-topic__hint">{topic.hint}</span>
+                    </span>
+                  </div>
+                )}
               </li>
             ))
           }
         </ul>
       </section>
-    </div>
 
-    <aside class="about-columns__rail" aria-label="Site tools, watching, and links">
-      <section class="about-rail__section about-tools" aria-labelledby="about-tools-heading">
-        <h2 id="about-tools-heading" class="about-rail__heading">On this site</h2>
-        <p class="about-tools__text">
-          I built a few <strong>meta-tools</strong> to see my own patterns more clearly.{' '}
-          <a href="/writing-insights">Writing Insights</a> charts writing cadence and lexicon buckets
-          over time.{' '}
-          <a href="/tag-management">Tag management</a> shows how I file ideas.
-        </p>
-      </section>
-
-      <div class="about-rail__section about-rail__watched">
+      <div class="about-films">
         <LatestWatched films={letterboxdFilms} profileUrl={profileUrl} />
       </div>
-    </aside>
-  </div>
 
-  <footer class="about-disclaimer">
-    <h2 class="about-disclaimer__title">Disclaimer</h2>
-    <p class="about-disclaimer__text">
-      The wisdom, practices, and digital craft shared here come from personal experience and
-      exploration. None of it is medical, legal, psychological, or professional advice. Please talk
-      to qualified people when you need that kind of guidance.
-    </p>
-  </footer>
-</PageLayout>
+      <div class="about-closing">
+        <section class="about-tools" aria-labelledby="about-tools-heading">
+          <h2 id="about-tools-heading" class="about-closing__heading">On this site</h2>
+          <p>
+            I built a few <strong>meta-tools</strong> to see my own patterns more clearly.{' '}
+            <a href="/writing-insights">Writing Insights</a> charts writing cadence and lexicon buckets
+            over time.{' '}
+            <a href="/tag-management">Tag management</a> shows how I file ideas.
+          </p>
+        </section>
+        <footer class="about-disclaimer">
+          <h2 class="about-closing__heading">Disclaimer</h2>
+          <p>
+            The wisdom, practices, and digital craft shared here come from personal experience and
+            exploration. None of it is medical, legal, psychological, or professional advice. Please
+            talk to qualified people when you need that kind of guidance.
+          </p>
+        </footer>
+      </div>
+    </div>
+  </Container>
+</BaseLayout>
 
 <style>
   .about-shell {
-    padding-bottom: 4rem;
+    --about-body-size: 1.125rem;
+    --about-heading-size: clamp(1.65rem, 2.5vw, 2rem);
+    padding-block: clamp(2rem, 5vw, 4.5rem) clamp(4rem, 7vw, 7rem);
   }
 
-  .about-hero {
-    margin: 0 0 1.5rem;
-    width: 100%;
-    min-width: 0;
+  .about-heading {
+    margin-bottom: clamp(2rem, 4vw, 3.5rem);
   }
 
-  .about-hero__img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  .about-columns {
-    display: block;
-  }
-
-  @media (min-width: 1024px) {
-    .about-columns {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 22rem);
-      gap: 2.5rem 3rem;
-      align-items: stretch;
-    }
-  }
-
-  @media (min-width: 1280px) {
-    .about-columns {
-      grid-template-columns: minmax(0, 1fr) minmax(0, 26rem);
-      gap: 3rem 4rem;
-    }
-  }
-
-  .about-columns__main {
-    min-width: 0;
-  }
-
-  .about-columns__rail {
-    min-width: 0;
-    margin-top: 2.5rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgb(var(--color-border) / 0.85);
+  .about-kicker {
     display: flex;
-    flex-direction: column;
-    gap: 2.25rem;
-  }
-
-  @media (min-width: 1024px) {
-    .about-columns__rail {
-      margin-top: 0;
-      padding-top: 0;
-      border-top: none;
-      border-left: 1px solid rgb(var(--color-border) / 0.65);
-      padding-left: 2.5rem;
-      gap: 2.5rem;
-    }
-  }
-
-  @media (min-width: 1280px) {
-    .about-columns__rail {
-      padding-left: 3rem;
-      gap: 2.75rem;
-    }
-  }
-
-  /* Shared rail headings (child components don’t receive parent scoped CSS) */
-  :global(.about-rail__heading) {
-    font-family: var(--font-heading);
-    font-size: clamp(1.35rem, 2.5vw, 1.65rem);
-    font-weight: 700;
-    line-height: 1.25;
-    letter-spacing: -0.02em;
-    color: rgb(var(--color-text));
-    margin: 0 0 0.5rem;
-  }
-
-  .about-rail__watched {
-    min-width: 0;
-  }
-
-  @media (min-width: 1024px) {
-    .about-links {
-      margin-top: auto;
-      padding-top: 2rem;
-      border-top: 1px solid rgb(var(--color-border) / 0.55);
-    }
-  }
-
-  .about-lead {
-    margin-bottom: 1.75rem;
-  }
-
-  .about-lead__kicker {
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0 0 1.1rem;
     color: rgb(var(--color-text-muted));
-    margin: 0 0 0.35rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    line-height: 1.4;
+    text-transform: uppercase;
   }
 
-  .about-lead__text {
-    font-family: var(--font-heading);
-    font-size: clamp(1.35rem, 2.8vw, 1.85rem);
-    font-weight: 600;
-    line-height: 1.35;
-    letter-spacing: -0.02em;
-    color: rgb(var(--color-text));
+  .about-kicker::before {
+    width: 2rem;
+    height: 3px;
+    background: rgb(var(--color-primary));
+    content: '';
+  }
+
+  .about-name {
     margin: 0;
-    max-width: 38rem;
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 600;
+    letter-spacing: -0.055em;
+    line-height: 1.06;
+    text-wrap: balance;
+  }
+
+  .about-description {
+    max-width: 69ch;
+    margin: 1.5rem 0 0;
+    color: rgb(var(--color-text-muted));
+    font-family: var(--font-sans);
+    font-size: var(--about-body-size);
+    line-height: 1.7;
+  }
+
+  .about-introduction {
+    display: grid;
+    gap: 2.75rem;
+    align-items: start;
   }
 
   .about-story {
-    font-size: 1.05rem;
+    max-width: 62ch;
+    min-width: 0;
+    font-family: var(--font-serif);
+    font-size: var(--about-body-size);
     line-height: 1.75;
-    color: rgb(var(--color-text));
-    max-width: 44rem;
   }
 
   .about-story p {
-    margin-top: 0;
-    margin-bottom: 1.1rem;
+    margin: 0 0 1.4rem;
   }
 
   .about-story p:last-child {
     margin-bottom: 0;
   }
 
-  .about-section-title {
-    font-family: var(--font-heading);
-    font-size: clamp(1.25rem, 2.2vw, 1.5rem);
-    font-weight: 700;
-    line-height: 1.25;
-    letter-spacing: -0.02em;
-    color: rgb(var(--color-text));
+  .about-story a,
+  .about-closing a {
+    color: rgb(var(--color-accent));
+    text-decoration: underline;
+    text-decoration-color: rgb(var(--color-accent) / 0.4);
+    text-underline-offset: 0.18em;
+    transition: text-decoration-color 160ms ease;
+  }
+
+  .about-story a:hover,
+  .about-closing a:hover {
+    text-decoration-color: currentColor;
+  }
+
+  .about-pictures {
+    min-width: 0;
+    display: grid;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  .about-portrait {
     margin: 0;
+    border-top: 4px solid rgb(var(--color-primary));
   }
 
-  .about-topics {
-    margin-top: 3rem;
-    padding-top: 2.25rem;
-    border-top: 1px solid rgb(var(--color-border) / 0.65);
+  .about-portrait img {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 
-  .about-topics .about-section-title {
-    margin-bottom: 0.5rem;
+  .about-cookbook {
+    display: block;
+    color: rgb(var(--color-text));
+    text-decoration: none;
+  }
+
+  .about-cookbook__image {
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    background: rgb(var(--color-bg-alt));
+  }
+
+  .about-cookbook__image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 55%;
+    transition: transform 400ms ease;
+  }
+
+  .about-cookbook__caption {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.9rem 0 1rem;
+    border-bottom: 1px solid rgb(var(--color-border) / 0.75);
+  }
+
+  .about-cookbook__title {
+    font-family: var(--font-heading);
+    font-size: var(--about-heading-size);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.2;
+  }
+
+  .about-cookbook__destination {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    color: rgb(var(--color-accent));
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .about-cookbook__destination > span {
+    font-size: var(--about-body-size);
+    line-height: 1;
+  }
+
+  .about-cookbook:hover .about-cookbook__image img {
+    transform: scale(1.035);
+  }
+
+  .about-cookbook:hover .about-cookbook__title {
+    color: rgb(var(--color-accent));
+  }
+
+  .about-topics,
+  .about-films {
+    margin-top: clamp(3.5rem, 7vw, 6rem);
+    padding-top: clamp(2rem, 4vw, 3rem);
+    border-top: 1px solid rgb(var(--color-border) / 0.8);
+  }
+
+  .about-section-heading {
+    display: grid;
+    gap: 1rem;
+    align-items: end;
+    margin-bottom: 2rem;
+  }
+
+  .about-section-title {
+    max-width: 18ch;
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: var(--about-heading-size);
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    line-height: 1.15;
+    text-wrap: balance;
   }
 
   .about-topics__intro {
-    margin: 0 0 1.25rem;
-    font-size: 1rem;
-    line-height: 1.65;
+    max-width: 43ch;
+    margin: 0;
     color: rgb(var(--color-text-muted));
-    max-width: 40rem;
+    font-family: var(--font-sans);
+    font-size: var(--about-body-size);
+    line-height: 1.65;
   }
 
   .about-topics__list {
-    list-style: none;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0 2rem;
     margin: 0;
     padding: 0;
-    column-count: 1;
-    column-gap: 2rem;
+    list-style: none;
+  }
+
+  .about-topics__item {
+    min-width: 0;
+    border-top: 1px solid rgb(var(--color-border) / 0.55);
+  }
+
+  .about-topic {
+    display: flex;
+    height: 100%;
+    align-items: start;
+    gap: 0.75rem;
+    padding: 1.35rem 0;
+    color: rgb(var(--color-text));
+    text-decoration: none;
+  }
+
+  .about-topic__emoji {
+    flex-shrink: 0;
+    font-size: var(--about-body-size);
+    line-height: 1.5;
+  }
+
+  .about-topic__copy {
+    display: grid;
+    gap: 0.4rem;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .about-topic__label {
+    font-family: var(--font-heading);
+    font-size: var(--about-body-size);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.4;
+  }
+
+  .about-topic__hint {
+    max-width: 33ch;
+    color: rgb(var(--color-text-muted));
+    font-family: var(--font-sans);
+    font-size: var(--about-body-size);
+    line-height: 1.6;
+  }
+
+  .about-topic__arrow {
+    flex-shrink: 0;
+    color: rgb(var(--color-accent));
+    font-size: var(--about-body-size);
+    line-height: 1.4;
+    transition: transform 160ms ease;
+  }
+
+  .about-topic--link:hover .about-topic__label {
+    color: rgb(var(--color-accent));
+  }
+
+  .about-topic--link:hover .about-topic__arrow {
+    transform: translate(2px, -2px);
+  }
+
+  .about-closing {
+    display: grid;
+    gap: 2.5rem;
+    margin-top: clamp(3.5rem, 6vw, 5rem);
+    padding-top: 2rem;
+    border-top: 1px solid rgb(var(--color-border) / 0.75);
+  }
+
+  .about-closing__heading {
+    margin: 0 0 1rem;
+    font-family: var(--font-heading);
+    font-size: var(--about-heading-size);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+  }
+
+  .about-closing p {
+    max-width: 58ch;
+    margin: 0;
+    color: rgb(var(--color-text-muted));
+    font-family: var(--font-sans);
+    font-size: var(--about-body-size);
+    line-height: 1.75;
+  }
+
+  .about-story a:focus-visible,
+  .about-closing a:focus-visible,
+  .about-topic--link:focus-visible,
+  .about-cookbook:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 5px;
   }
 
   @media (min-width: 640px) {
     .about-topics__list {
-      column-count: 2;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 
-  .about-topics__item {
-    break-inside: avoid;
-    display: flex;
-    gap: 0.6rem;
-    align-items: flex-start;
-    margin-bottom: 1rem;
-    font-size: 0.9375rem;
-    line-height: 1.5;
-  }
+  @media (min-width: 960px) {
+    .about-introduction {
+      grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
+      column-gap: clamp(2.5rem, 5vw, 5rem);
+    }
 
-  .about-topics__emoji {
-    flex-shrink: 0;
-    font-size: 1.1rem;
-    line-height: 1.4;
-    margin-top: 0.1rem;
-  }
+    .about-section-heading {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      column-gap: 4rem;
+    }
 
-  .about-topics__copy {
-    display: flex;
-    flex-direction: column;
-    gap: 0.15rem;
-    min-width: 0;
-  }
+    .about-topics__list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      column-gap: clamp(1.5rem, 3vw, 3rem);
+    }
 
-  .about-topics__label {
-    font-weight: 600;
-    color: rgb(var(--color-text));
-  }
-
-  .about-topics__label--link {
-    text-decoration: none;
-    color: inherit;
-    transition: color var(--animation-duration-normal) var(--animation-easing-default);
-  }
-
-  .about-topics__label--link:hover {
-    color: rgb(var(--color-accent));
-  }
-
-  .about-topics__label--link:focus {
-    outline: none;
-  }
-
-  .about-topics__label--link:focus-visible {
-    outline: 2px solid rgb(var(--color-accent));
-    outline-offset: 2px;
-    border-radius: 2px;
-  }
-
-  .about-topics__hint {
-    color: rgb(var(--color-text-muted));
-    font-size: 0.875rem;
-    line-height: 1.5;
-  }
-
-  .about-links__list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .about-links__item {
-    border-bottom: 1px solid rgb(var(--color-border) / 0.4);
-  }
-
-  .about-links__item:last-child {
-    border-bottom: none;
-  }
-
-  .about-links__anchor {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.55rem 0;
-    text-decoration: none;
-    color: inherit;
-    transition: color var(--animation-duration-normal) var(--animation-easing-default);
-  }
-
-  .about-links__anchor:hover .about-links__label {
-    color: rgb(var(--color-accent));
-  }
-
-  .about-links__anchor:focus {
-    outline: none;
-  }
-
-  .about-links__anchor:focus-visible {
-    outline: 2px solid rgb(var(--color-accent));
-    outline-offset: 2px;
-  }
-
-  .about-links__emoji {
-    flex-shrink: 0;
-    font-size: 1.05rem;
-    line-height: 1;
-    width: 1.5rem;
-    text-align: center;
-  }
-
-  .about-links__label {
-    font-weight: 500;
-    font-size: 0.9375rem;
-    color: rgb(var(--color-text));
-    line-height: 1.4;
-  }
-
-  .about-tools {
-    margin: 0;
-    padding: 0;
-    border: none;
-  }
-
-  .about-tools__text {
-    margin: 0;
-    font-size: 0.9375rem;
-    line-height: 1.7;
-    color: rgb(var(--color-text-muted));
-  }
-
-  .about-tools__text :global(a) {
-    color: rgb(var(--color-accent));
-    font-weight: 500;
-  }
-
-  .about-disclaimer {
-    margin-top: 4rem;
-    padding-top: 2.25rem;
-    border-top: 1px solid rgb(var(--color-border) / 0.85);
-    max-width: 42rem;
-  }
-
-  .about-disclaimer__title {
-    font-family: var(--font-heading);
-    font-size: 1rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: rgb(var(--color-text-muted));
-    margin: 0 0 0.65rem;
-  }
-
-  .about-disclaimer__text {
-    margin: 0;
-    font-size: 0.9375rem;
-    line-height: 1.7;
-    color: rgb(var(--color-text-muted));
+    .about-closing {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: clamp(3rem, 7vw, 7rem);
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .about-links__anchor,
-    .about-topics__label--link {
+    .about-cookbook__image img,
+    .about-topic__arrow,
+    .about-story a,
+    .about-closing a {
       transition: none;
+    }
+
+    .about-cookbook:hover .about-cookbook__image img,
+    .about-topic--link:hover .about-topic__arrow {
+      transform: none;
     }
   }
 </style>

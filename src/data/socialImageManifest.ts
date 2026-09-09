@@ -175,6 +175,8 @@ export const SOCIAL_IMAGE_MANIFEST: Record<string, string> = {
   '/images/2026/fasting-hurts.avif': '/social/images/2026/fasting-hurts-social.jpg',
   '/images/2026/fettuccine-with-seared-chicken.avif':
     '/social/images/2026/fettuccine-with-seared-chicken-social.jpg',
+  '/images/2026/forging-stronghand-terminal-september-2026.avif':
+    '/social/images/2026/forging-stronghand-terminal-september-2026-social.jpg',
   '/images/2026/fried-chicken-tender-nuggets.avif':
     '/social/images/2026/fried-chicken-tender-nuggets-social.jpg',
   '/images/2026/friendly-ai.avif': '/social/images/2026/friendly-ai-social.jpg',

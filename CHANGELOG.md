@@ -7,6 +7,21 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.16.0] — 2026-09-08
+
+### Added
+
+- Homepage intro sits in Highlights, with two lead cards beside the heading.
+- Filtering Highlights with an intro shows a jump control back to those leads.
+- About links the Cookbook beside the portrait, with a recipe photo as the door.
+- Continue Reading on essays uses the same PostCard grid as listings.
+
+### Changed
+
+- Homepage and About share the BaseLayout and Container shell instead of PageLayout.
+- Post cards drop the boxed border. Hover lives on the title and photo.
+- Letterboxd on About stays as a heading when the diary feed is empty, and posters sit in a wider gallery.
+
 ## [6.15.7] — 2026-09-08
 
 ### Fixed

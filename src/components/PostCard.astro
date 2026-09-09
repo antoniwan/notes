@@ -12,10 +12,22 @@ interface Props {
   featured?: boolean;
   compact?: boolean;
   showFeaturedIndicator?: boolean;
+  idPrefix?: string;
+  imageLoading?: 'eager' | 'lazy';
+  headingAs?: 'h2' | 'h3';
 }
 
-const { post, featured = false, compact = false, showFeaturedIndicator = true } = Astro.props;
+const {
+  post,
+  featured = false,
+  compact = false,
+  showFeaturedIndicator = true,
+  idPrefix = 'postcard',
+  imageLoading = 'lazy',
+  headingAs = 'h2',
+} = Astro.props;
 const { data } = post;
+const Heading = headingAs;
 
 const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
 const isRecipe = isRecipePost(post);
@@ -28,7 +40,7 @@ const hasSpanishTwin =
 ---
 
 <article
-  class="interactive-card postcard group relative overflow-hidden"
+  class="postcard group relative"
   class:list={{
     'featured-card': featured,
     'compact-card': compact,
@@ -47,13 +59,13 @@ const hasSpanishTwin =
           src={data.heroImage}
           alt={data.imageAlt || data.title}
           class="postcard-image"
-          loading="lazy"
+          loading={imageLoading}
         />
       ) : (
         <DefaultImage
           alt={data.title}
           className="postcard-image"
-          loading="lazy"
+          loading={imageLoading}
           width={1200}
           height={750}
         />
@@ -129,9 +141,9 @@ const hasSpanishTwin =
       }
     </div>
 
-    <h2 id={`postcard-title-${post.id}`} class="postcard-title">
+    <Heading id={`${idPrefix}-title-${post.id}`} class="postcard-title">
       <a href={`/p/${post.id}`} class="postcard-link">{data.title}</a>
-    </h2>
+    </Heading>
 
     {data.description && <p class="postcard-description">{data.description}</p>}
   </div>
@@ -150,9 +162,11 @@ const hasSpanishTwin =
       if (!postSlug || !dot) return;
 
       const isRead = readStateService.isRead(postSlug);
-      const readingTimeElement = document.querySelector(
-        `.reading-time-display[data-post-slug="${postSlug}"]`,
-      ) as HTMLElement | null;
+      const readingTimeElement = indicator
+        .closest('article')
+        ?.querySelector(
+          `.reading-time-display[data-post-slug="${postSlug}"]`,
+        ) as HTMLElement | null;
       const readingTimeSep = readingTimeElement?.previousElementSibling as HTMLElement | null;
 
       if (isRead) {
@@ -248,14 +262,11 @@ const hasSpanishTwin =
     max-width: 100%;
     margin: 0;
     box-sizing: border-box;
-    overflow: hidden;
-    border: 1px solid rgb(var(--color-border) / 0.45);
-    border-radius: var(--radius-lg);
-    background: rgb(var(--color-bg));
+    overflow: visible;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
     box-shadow: none;
-    transition:
-      border-color 0.2s ease,
-      box-shadow 0.2s ease;
   }
 
   :global(.prose) article.postcard :is(h1, h2, h3, h4, h5, h6, p, time, span, a, header),
@@ -267,15 +278,8 @@ const hasSpanishTwin =
   article.postcard .postcard-body {
     display: flex;
     flex-direction: column;
-    gap: 0.55rem;
-    padding: 1rem 1.1rem 1.15rem;
-  }
-
-  @media (min-width: 640px) {
-    article.postcard .postcard-body {
-      padding: 1.15rem 1.25rem 1.35rem;
-      gap: 0.65rem;
-    }
+    gap: 0.65rem;
+    padding: 1rem 0 0;
   }
 
   article.postcard .postcard-meta {
@@ -285,8 +289,8 @@ const hasSpanishTwin =
     column-gap: 0.45rem;
     row-gap: 0.15rem;
     font-family: var(--font-sans);
-    font-size: 0.72rem;
-    letter-spacing: 0.02em;
+    font-size: 0.68rem;
+    letter-spacing: 0.035em;
     line-height: 1.4;
     color: rgb(var(--color-text-muted));
     text-transform: uppercase;
@@ -311,7 +315,7 @@ const hasSpanishTwin =
 
   .postcard-meta__featured {
     font-weight: 700;
-    color: rgb(var(--color-primary));
+    color: rgb(var(--color-accent));
   }
 
   .postcard-meta__es {
@@ -328,23 +332,13 @@ const hasSpanishTwin =
   article.postcard .postcard-title {
     display: block;
     font-family: var(--font-heading);
-    font-size: 1.05rem;
-    line-height: 1.3;
-    font-weight: 700;
+    font-size: clamp(1.25rem, 1.7vw, 1.6rem);
+    font-weight: 600;
+    line-height: 1.2;
     letter-spacing: -0.015em;
     color: rgb(var(--color-text));
-  }
-
-  @media (min-width: 640px) {
-    article.postcard .postcard-title {
-      font-size: 1.2rem;
-    }
-  }
-
-  @media (min-width: 768px) {
-    article.postcard .postcard-title {
-      font-size: 1.28rem;
-    }
+    text-wrap: pretty;
+    overflow: visible;
   }
 
   article.postcard .postcard-link {
@@ -365,11 +359,11 @@ const hasSpanishTwin =
   article.postcard .postcard-description {
     display: -webkit-box;
     font-family: var(--font-sans);
-    font-size: 0.9rem;
-    line-height: 1.55;
+    font-size: 0.9375rem;
+    line-height: 1.6;
     color: rgb(var(--color-text-muted));
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     overflow: hidden;
   }
 
@@ -377,6 +371,7 @@ const hasSpanishTwin =
     position: relative;
     width: 100%;
     aspect-ratio: 16 / 10;
+    border-radius: var(--radius-lg);
     margin: 0;
     padding: 0;
     background: rgb(var(--color-bg-alt));
@@ -418,18 +413,12 @@ const hasSpanishTwin =
     cursor: default !important;
   }
 
-  .featured-card {
-    border-color: rgb(var(--color-primary) / 0.55);
-    box-shadow: inset 3px 0 0 rgb(var(--color-primary));
-  }
-
   article.postcard.compact-card .postcard-body {
-    padding: 0.75rem 0.9rem 0.95rem;
+    padding: 0.75rem 0 0;
   }
 
-  article.postcard:hover {
-    border-color: rgb(var(--color-accent) / 0.35);
-    box-shadow: var(--shadow-soft);
+  article.postcard:hover .postcard-link {
+    color: rgb(var(--color-accent));
   }
 
   article.postcard:hover .image-container :global(img) {
@@ -438,10 +427,11 @@ const hasSpanishTwin =
 
   article.postcard:focus-within {
     outline: 2px solid rgb(var(--color-accent));
-    outline-offset: 2px;
+    outline-offset: 4px;
   }
 
   :global(.postcards-grid) {
+    row-gap: 2.5rem;
     margin-top: 0;
     margin-bottom: 0;
   }

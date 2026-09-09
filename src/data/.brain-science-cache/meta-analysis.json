@@ -53,7 +53,7 @@
     },
     {
       "id": "como-proteger-ninos-digital",
-      "bodyLength": 4489,
+      "bodyLength": 4482,
       "pubDate": "2025-05-01T00:00:00.000Z"
     },
     {
@@ -63,7 +63,7 @@
     },
     {
       "id": "customizing-chatgpt",
-      "bodyLength": 2468,
+      "bodyLength": 2448,
       "pubDate": "2025-05-01T18:16:00.000Z"
     },
     {
@@ -83,17 +83,17 @@
     },
     {
       "id": "empathy-as-a-shield",
-      "bodyLength": 4470,
+      "bodyLength": 4373,
       "pubDate": "2025-08-24T17:30:07.300Z"
     },
     {
       "id": "fasting-metabolic-ritual",
-      "bodyLength": 2238,
+      "bodyLength": 2231,
       "pubDate": "2025-05-02T08:00:00.000Z"
     },
     {
       "id": "fear-control-politics",
-      "bodyLength": 4328,
+      "bodyLength": 4182,
       "pubDate": "2025-04-01T00:00:00.000Z"
     },
     {
@@ -102,13 +102,18 @@
       "pubDate": "2025-04-28T00:00:00.000Z"
     },
     {
+      "id": "forging-stronghand-terminal-september-2026",
+      "bodyLength": 9629,
+      "pubDate": "2026-09-08T12:00:00.000Z"
+    },
+    {
       "id": "good-sheep",
-      "bodyLength": 43507,
+      "bodyLength": 43329,
       "pubDate": "2025-08-03T17:25:00.000Z"
     },
     {
       "id": "guia-ipad-es",
-      "bodyLength": 2421,
+      "bodyLength": 2414,
       "pubDate": "2025-05-01T10:30:00.000Z"
     },
     {
@@ -118,7 +123,7 @@
     },
     {
       "id": "i-became-what-i-used-to-mock",
-      "bodyLength": 8127,
+      "bodyLength": 8089,
       "pubDate": "2025-07-17T15:00:00.000Z"
     },
     {
@@ -163,12 +168,12 @@
     },
     {
       "id": "love-is-the-final-revolution",
-      "bodyLength": 6962,
+      "bodyLength": 6896,
       "pubDate": "2025-08-13T12:20:00.000Z"
     },
     {
       "id": "mercy-through-the-blade",
-      "bodyLength": 7782,
+      "bodyLength": 6074,
       "pubDate": "2025-04-26T00:00:00.000Z"
     },
     {
@@ -178,7 +183,7 @@
     },
     {
       "id": "my-mental-health-routine-unfiltered",
-      "bodyLength": 1724,
+      "bodyLength": 1722,
       "pubDate": "2025-04-21T00:26:07.406Z"
     },
     {
@@ -193,12 +198,12 @@
     },
     {
       "id": "notes-on-puerto-rico-sin-pie-forzao",
-      "bodyLength": 53251,
+      "bodyLength": 53243,
       "pubDate": "2026-02-19T02:45:00.000Z"
     },
     {
       "id": "notes-on-puerto-rico-sin-pie-forzao-es",
-      "bodyLength": 55330,
+      "bodyLength": 55322,
       "pubDate": "2026-02-19T02:45:00.000Z"
     },
     {
@@ -213,7 +218,7 @@
     },
     {
       "id": "on-clear-signals",
-      "bodyLength": 4356,
+      "bodyLength": 4348,
       "pubDate": "2025-11-30T14:30:00.000Z"
     },
     {
@@ -248,7 +253,7 @@
     },
     {
       "id": "on-simplicity-and-peace-of-mind",
-      "bodyLength": 3968,
+      "bodyLength": 3962,
       "pubDate": "2024-10-04T18:40:28.388Z"
     },
     {
@@ -548,7 +553,7 @@
     },
     {
       "id": "the-joy-of-building-my-own-digital-sandbox-april-2026",
-      "bodyLength": 17016,
+      "bodyLength": 17013,
       "pubDate": "2026-04-10T12:00:00.000Z"
     },
     {
@@ -573,12 +578,12 @@
     },
     {
       "id": "toddler-internet-safety",
-      "bodyLength": 4141,
+      "bodyLength": 4134,
       "pubDate": "2025-05-01T00:00:00.000Z"
     },
     {
       "id": "total-concentration-breathing",
-      "bodyLength": 2446,
+      "bodyLength": 2437,
       "pubDate": "2025-05-06T07:15:00.000Z"
     },
     {
@@ -643,6 +648,88 @@
     }
   ],
   "analyses": [
+    {
+      "postTitle": "Forging the 'Stronghand' Terminal — September 2026 Update",
+      "postSlug": "forging-stronghand-terminal-september-2026",
+      "postDate": "2026-09-08T12:00:00.000Z",
+      "metaLanguageCount": 2,
+      "metaLanguagePatterns": [
+        {
+          "phrase": "writing behaves, because the prose in that post was doing",
+          "type": "writing-about-writing",
+          "context": "sentence",
+          "sentence": "But if he'd take one note from me it would be this: watch how the writing behaves, because the prose in that post was doing exactly what the config was doing",
+          "confidence": 0.9
+        },
+        {
+          "phrase": "my thinking",
+          "type": "meta-cognition",
+          "context": "sentence",
+          "sentence": "** 1,359 live markdown notes in Obsidian, on `C:`, which is where my thinking lives",
+          "confidence": 0.85
+        }
+      ],
+      "selfAwarenessScore": 14,
+      "writingAsSubject": true,
+      "writingAsTool": false,
+      "recursiveThinking": false,
+      "sentiment": {
+        "score": 0,
+        "comparative": 0,
+        "calculation": [],
+        "tokens": [
+          "but",
+          "if",
+          "he'd",
+          "take",
+          "one",
+          "note",
+          "from",
+          "me",
+          "it",
+          "would",
+          "be",
+          "this",
+          "watch",
+          "how",
+          "the",
+          "writing",
+          "behaves",
+          "because",
+          "the",
+          "prose",
+          "in",
+          "that",
+          "post",
+          "was",
+          "doing",
+          "exactly",
+          "what",
+          "the",
+          "config",
+          "was",
+          "doing",
+          "1",
+          "359",
+          "live",
+          "markdown",
+          "notes",
+          "in",
+          "obsidian",
+          "on",
+          "c",
+          "which",
+          "is",
+          "where",
+          "my",
+          "thinking",
+          "lives"
+        ],
+        "words": [],
+        "positive": [],
+        "negative": []
+      }
+    },
     {
       "postTitle": "Captured, Not Pathetic",
       "postSlug": "captured-not-pathetic",
@@ -6697,7 +6784,7 @@
           "environment",
           "—",
           "almost",
-          "unknow"
+          "unknowingl"
         ],
         "words": [
           "clean",
@@ -8124,9 +8211,12 @@
       "writingAsTool": false,
       "recursiveThinking": false,
       "sentiment": {
-        "score": 6,
-        "comparative": 0.061224489795918366,
+        "score": 9,
+        "comparative": 0.09473684210526316,
         "calculation": [
+          {
+            "glad": 3
+          },
           {
             "wish": 1
           },
@@ -8150,14 +8240,11 @@
           }
         ],
         "tokens": [
-          ">",
           "a",
           "note",
           "before",
           "we",
           "begin",
-          ">",
-          ">",
           "this",
           "essay",
           "might",
@@ -8176,7 +8263,6 @@
           "at",
           "the",
           "messenger",
-          ">",
           "let",
           "me",
           "be",
@@ -8247,9 +8333,11 @@
           "magical",
           "day",
           "and",
-          "i'm"
+          "i'm",
+          "glad"
         ],
         "words": [
+          "glad",
           "wish",
           "broke",
           "loved",
@@ -8259,6 +8347,7 @@
           "please"
         ],
         "positive": [
+          "glad",
           "wish",
           "loved",
           "enjoyed",
@@ -9290,7 +9379,7 @@
       "recursiveThinking": false,
       "sentiment": {
         "score": 6,
-        "comparative": 0.07058823529411765,
+        "comparative": 0.07317073170731707,
         "calculation": [
           {
             "🌌": 2
@@ -9353,7 +9442,6 @@
           "embrace",
           "the",
           "pause",
-          ">",
           "repeat",
           "for",
           "4–10",
@@ -9362,8 +9450,6 @@
           "on",
           "your",
           "intention",
-          ">",
-          ">",
           "-",
           "🔥",
           "focus",
@@ -9374,7 +9460,6 @@
           "open",
           "upright",
           "posture",
-          ">",
           "-",
           "🌊",
           "calm",
@@ -9385,7 +9470,6 @@
           "closed",
           "soften",
           "body",
-          ">",
           "-",
           "🌌",
           "sleep",
@@ -9393,7 +9477,9 @@
           "lying",
           "down",
           "continue",
-          "unt"
+          "until",
+          "body",
+          "r"
         ],
         "words": [
           "🌌",
@@ -9479,7 +9565,6 @@
           "dominion",
           "over",
           "impulse",
-          ">",
           "i'm",
           "not",
           "starving",
@@ -9515,7 +9600,8 @@
           "|",
           "blood",
           "glucose",
-          "rises"
+          "rises",
+          "insu"
         ],
         "words": [
           "rises",
@@ -10150,7 +10236,7 @@
           "una",
           "responsabilidad",
           "ética",
-          ">"
+          "los"
         ],
         "words": [
           "no",
@@ -10179,7 +10265,7 @@
       "recursiveThinking": false,
       "sentiment": {
         "score": -3,
-        "comparative": -0.034482758620689655,
+        "comparative": -0.03409090909090909,
         "calculation": [
           {
             "no": -1
@@ -10263,7 +10349,6 @@
           "preparado",
           "para",
           "ver",
-          ">",
           "la",
           "mente",
           "de",
@@ -10278,7 +10363,9 @@
           "que",
           "siembres",
           "ahora",
-          "florecerá"
+          "florecerá",
+          "o",
+          "se"
         ],
         "words": [
           "no",
@@ -10393,7 +10480,6 @@
           "ready",
           "to",
           "handle",
-          ">",
           "a",
           "child's",
           "mind",
@@ -10410,7 +10496,8 @@
           "bloom—or",
           "rot—later",
           "---",
-          "\ud83d"
+          "🛡️",
+          "why"
         ],
         "words": [
           "fertile",
@@ -10794,7 +10881,7 @@
           "phrase": "i understand",
           "type": "self-reflection",
           "context": "sentence",
-          "sentence": "**\n\n> I understand that healing and growth are deeply personal journeys",
+          "sentence": "I understand that healing and growth are deeply personal journeys",
           "confidence": 0.8
         }
       ],
@@ -10804,14 +10891,13 @@
       "recursiveThinking": false,
       "sentiment": {
         "score": 2,
-        "comparative": 0.18181818181818182,
+        "comparative": 0.2,
         "calculation": [
           {
             "growth": 2
           }
         ],
         "tokens": [
-          ">",
           "i",
           "understand",
           "that",
@@ -11320,14 +11406,17 @@
       "writingAsTool": false,
       "recursiveThinking": false,
       "sentiment": {
-        "score": -5,
-        "comparative": -0.0625,
+        "score": -11,
+        "comparative": -0.14285714285714285,
         "calculation": [
           {
-            "inability": -2
+            "rig": -1
           },
           {
-            "🚨": 3
+            "fear": -2
+          },
+          {
+            "inability": -2
           },
           {
             "sickness": -2
@@ -11343,26 +11432,6 @@
           }
         ],
         "tokens": [
-          "🧠",
-          "if",
-          "your",
-          "politics",
-          "obsess",
-          "over",
-          "control",
-          "you're",
-          "not",
-          "well",
-          "originally",
-          "published",
-          "april",
-          "1",
-          "2025",
-          "–",
-          "updated",
-          "march",
-          "12",
-          "2026",
           ">",
           "you",
           "are",
@@ -11377,13 +11446,13 @@
           "own",
           "sickness",
           ">",
+          ">",
           "—",
           "me",
           "watching",
           "the",
           "news",
           "again",
-          "🚨",
           "control",
           "is",
           "not",
@@ -11422,21 +11491,40 @@
           "manage",
           "it",
           "you",
-          "call"
+          "call",
+          "it",
+          "traditional",
+          "values",
+          "i",
+          "call",
+          "it",
+          "unchecked",
+          "fear",
+          "wearing",
+          "a",
+          "badge",
+          "these",
+          "obsessions—about",
+          "gender",
+          "sexuality",
+          "reproductive",
+          "rig"
         ],
         "words": [
+          "rig",
+          "fear",
           "inability",
-          "🚨",
           "sickness",
           "losing",
           "evil",
           "fighting"
         ],
         "positive": [
-          "🚨",
           "fighting"
         ],
         "negative": [
+          "rig",
+          "fear",
           "inability",
           "sickness",
           "losing",

@@ -1,5 +1,6 @@
 ---
-import PageLayout from '../layouts/PageLayout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Container from '../components/Container.astro';
 import HighlightsMasonry from '../components/HighlightsMasonry.astro';
 import { PAGE_META } from '../data/pageMeta';
 import { getHighlights, getHighlightsByCategory } from '../utils/highlights';
@@ -8,91 +9,204 @@ const highlights = await getHighlights();
 const highlightsByCategory = await getHighlightsByCategory();
 ---
 
-<PageLayout
+<BaseLayout
   title="Notes"
-  heading="I write to live it."
   description="I enjoy writing from my life as a stay-at-home and remote-working father, and as a stepfather, while I practice patience, temperance, and grounded leadership."
   metaDescription={PAGE_META['/']}
   path="/"
   structuredDataType="website"
-  contentClass="home-shell max-w-none"
-  descriptionClass="max-w-[46rem] text-base md:text-lg"
 >
-  <nav class="home-paths" aria-label="Ways into the writing">
-    <a href="/guided-path" class="home-paths__link">Start here</a>
-    <span class="home-paths__sep" aria-hidden="true">·</span>
-    <a href="/tag" class="home-paths__link">Browse topics</a>
-    <span class="home-paths__sep" aria-hidden="true">·</span>
-    <a href="/everything" class="home-paths__link">Everything</a>
-  </nav>
+  <Container class="home-shell">
+    <HighlightsMasonry posts={highlights} postsByCategory={highlightsByCategory}>
+      <header slot="intro" class="home-intro">
+        <h1>I write <em>to live it.</em></h1>
+        <p class="home-intro__description">
+          I enjoy writing from my life as a stay-at-home and remote-working father, and as a
+          stepfather, while I practice patience, temperance, and grounded leadership.
+        </p>
+        <nav class="home-paths" aria-label="Ways into the writing">
+          <a href="/guided-path" class="home-paths__start">
+            Start here <span aria-hidden="true">↗</span>
+          </a>
+          <div class="home-paths__browse">
+            <a href="/tag">Browse topics <span aria-hidden="true">↗</span></a>
+            <a href="/everything">Everything <span aria-hidden="true">↗</span></a>
+          </div>
+        </nav>
+      </header>
+    </HighlightsMasonry>
 
-  <HighlightsMasonry posts={highlights} postsByCategory={highlightsByCategory} />
-
-  <section class="home-why" aria-labelledby="home-why-heading">
-    <h2 id="home-why-heading">Why this space exists right now</h2>
-    <p>
-      This space keeps me accountable to what I claim to value. I use it to document the gap between
-      what I know and what I actually do, then close that gap in public and in private, even when
-      nobody is watching.
-    </p>
-    <p>
-      I also write for fun. This is a valve for pressure, a creative output, and in many ways, art.
-      You will still find experiments and unfinished thoughts here. The difference is the standard:
-      less performance, more practice.
-    </p>
-  </section>
-</PageLayout>
+    <section class="home-why" aria-labelledby="home-why-heading">
+      <div class="home-why__heading">
+        <h2 id="home-why-heading">Why this space exists right now</h2>
+        <a href="/about">More about me <span aria-hidden="true">↗</span></a>
+      </div>
+      <p>
+        This space keeps me accountable to what I claim to value. I use it to document the gap
+        between what I know and what I actually do, then close that gap in public and in private,
+        even when nobody is watching.
+      </p>
+      <p>
+        I also write for fun. This is a valve for pressure, a creative output, and in many ways,
+        art. You will still find experiments and unfinished thoughts here. The difference is the
+        standard: less performance, more practice.
+      </p>
+    </section>
+  </Container>
+</BaseLayout>
 
 <style>
+  .home-intro {
+    min-width: 0;
+    padding: 0.75rem 0 1rem;
+  }
+
+  .home-intro h1 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: clamp(3.75rem, 6.4vw, 5.75rem);
+    font-weight: 600;
+    line-height: 1.03;
+    letter-spacing: -0.055em;
+  }
+
+  .home-intro h1 em {
+    display: block;
+    color: rgb(var(--color-accent));
+    font-weight: 500;
+  }
+
+  .home-intro__description {
+    max-width: 36ch;
+    margin: 1.75rem 0 0;
+    font-size: clamp(1rem, 1.35vw, 1.125rem);
+    line-height: 1.8;
+    color: rgb(var(--color-text-muted));
+    text-wrap: pretty;
+  }
+
   .home-paths {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 0.35rem 0.15rem;
-    margin: 0.15rem 0 0.25rem;
-    font-family: var(--font-sans);
-    font-size: 0.95rem;
-    line-height: 1.5;
-  }
-
-  .home-paths__link {
-    color: rgb(var(--color-text));
+    gap: 1.1rem 1.5rem;
+    margin-top: 2rem;
+    font-size: 0.875rem;
     font-weight: 600;
-    text-decoration: none;
-    text-underline-offset: 0.2em;
   }
 
-  .home-paths__link:hover {
+  .home-paths a,
+  .home-why a {
+    text-decoration: none;
+    transition: color 160ms ease;
+  }
+
+  .home-paths__start {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    min-height: 2.85rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    background: rgb(var(--color-primary));
+    color: rgb(var(--color-on-primary));
+  }
+
+  .home-paths__start:hover {
+    background: rgb(var(--color-primary-hover));
+  }
+
+  .home-paths__browse {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .home-paths__browse a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 2rem;
+    color: rgb(var(--color-text));
+  }
+
+  .home-paths__browse a span {
+    color: rgb(var(--color-accent));
+  }
+
+  .home-paths__browse a:hover,
+  .home-why a:hover {
     color: rgb(var(--color-accent));
     text-decoration: underline;
+    text-underline-offset: 0.25em;
   }
 
-  .home-paths__sep {
-    color: rgb(var(--color-text-muted));
-    opacity: 0.55;
-    padding: 0 0.55rem;
-    user-select: none;
+  .home-paths a:focus-visible,
+  .home-why a:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 5px;
+    border-radius: 2px;
   }
 
   .home-why {
-    margin-top: 3rem;
-    max-width: 42rem;
+    display: grid;
+    gap: 1.75rem;
+    margin: 4rem 0 5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgb(var(--color-border));
   }
 
   .home-why h2 {
+    margin: 0 0 1rem;
+    max-width: 18ch;
     font-family: var(--font-heading);
-    margin-top: 0;
+    font-size: clamp(1.6rem, 2.4vw, 2rem);
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+  }
+
+  .home-why a {
+    display: inline-block;
+    padding: 0.25rem 0;
+    color: rgb(var(--color-accent));
+    font-size: 0.9rem;
+    font-weight: 600;
   }
 
   .home-why p {
+    margin: 0;
     font-family: var(--font-serif);
-    font-size: clamp(1.02rem, 0.98rem + 0.2vw, 1.12rem);
+    font-size: 1.15rem;
     line-height: 1.75;
   }
 
   @media (min-width: 768px) {
     .home-why {
-      margin-top: 4rem;
+      grid-template-columns: 0.85fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-top: 5rem;
+      padding-top: 3rem;
+    }
+  }
+
+  @media (max-width: 599px) {
+    .home-intro {
+      padding: 0 0 0.5rem;
+    }
+
+    .home-intro__description {
+      max-width: 42ch;
+      margin-top: 1.35rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-paths a,
+    .home-why a {
+      transition: none;
     }
   }
 </style>
