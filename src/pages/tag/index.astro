@@ -1,95 +1,432 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import PageHeader from '../../components/PageHeader.astro';
+import PageLayout from '../../layouts/PageLayout.astro';
 import TagCard from '../../components/TagCard.astro';
-import Container from '../../components/Container.astro';
 import ContentFormPrelude from '../../components/tag/ContentFormPrelude.astro';
 import { getCollection } from 'astro:content';
 import { PAGE_META } from '../../data/pageMeta';
-import { calculateTagStats } from '../../utils/tagProcessing';
+import { getTagMetadata } from '../../data/tags';
 import { isTagListedPost } from '../../utils/recipes';
+import { calculateTagStats } from '../../utils/tagProcessing';
 
-// Get all posts and calculate tag counts
 const posts = await getCollection('blog', (entry) => isTagListedPost(entry));
-
-// Calculate tag counts (canonicalized through tag processing helpers)
 const { tagCounts } = calculateTagStats(posts);
-
-// Sort tags by count (most popular first)
-const sortedTagCounts = Object.entries(tagCounts)
-  .sort(([, a], [, b]) => b - a)
-  .map(([tag, count]) => ({ tag, count }));
-
-// Get top tags for quick access
-const topTags = sortedTagCounts.slice(0, 12);
+const topics = Object.entries(tagCounts)
+  .map(([tag, count]) => ({ tag, count }))
+  .sort((a, b) => a.tag.localeCompare(b.tag, 'en', { sensitivity: 'base' }));
+const byLetter = new Map<string, typeof topics>();
+for (const topic of topics) {
+  const letter = topic.tag.charAt(0).toUpperCase();
+  const group = byLetter.get(letter) ?? [];
+  group.push(topic);
+  byLetter.set(letter, group);
+}
+const groups = [...byLetter.entries()];
 ---
 
-<BaseLayout
+<PageLayout
   title="Tags"
-  description="An idea map. Follow a room to find writings that share it."
+  description="Follow a sentence, or find a topic you have in mind."
+  descriptionClass="text-base md:text-lg topics-intro"
   metaDescription={PAGE_META['/tag']}
   path="/tag"
   structuredDataType="website"
+  mode="chrome"
 >
-  <Container>
-    <Container maxWidth="container" padding="none">
-      <PageHeader
-        title="Tags"
-        description="An idea map. Follow a room to find writings that share it."
-      />
+  <div class="topics-page" data-topics-page>
+    {
+      topics.length > 0 ? (
+        <>
+          <div class="topics-tools">
+            <form class="topics-search" role="search" aria-label="Find a topic" hidden>
+              <label for="topic-search">Search topics</label>
+              <div class="topics-search__controls">
+                <input
+                  id="topic-search"
+                  name="q"
+                  type="search"
+                  placeholder="Fatherhood, Puerto Rico, technology…"
+                  autocomplete="off"
+                  aria-controls="topic-directory"
+                />
+                <button type="button" class="topics-clear" data-clear-topics hidden>
+                  Clear search
+                </button>
+              </div>
+            </form>
+            <a class="topics-jump" href="#all-topics" data-topics-jump>
+              All topics A–Z ↓
+            </a>
+          </div>
 
-      {Object.keys(tagCounts).length > 0 && <ContentFormPrelude tagCounts={tagCounts} />}
+          <div data-sentence-browse>
+            <ContentFormPrelude tagCounts={tagCounts} />
+          </div>
 
-      {
-        topTags.length > 0 && (
-          <section class="mb-12">
-            <h2 class="text-heading mb-6 text-[rgb(var(--color-text))]">
-              Rooms with the most writings
-            </h2>
-            <div class="motion-stagger flex flex-wrap gap-2">
-              {topTags.map(({ tag, count }) => (
-                <TagCard tag={tag} count={count} size="lg" showCount={true} />
+          <section class="topic-directory" id="topic-directory" aria-labelledby="all-topics">
+            <div class="topic-directory__heading">
+              <h2 id="all-topics" tabindex="-1">
+                All topics A–Z
+              </h2>
+              <p data-topic-count role="status" aria-live="polite" aria-atomic="true">
+                {topics.length} topics
+              </p>
+            </div>
+            <p class="topics-key">Numbers show the writings in each topic.</p>
+            <nav class="topic-alphabet" aria-label="Jump to a topic letter" data-topic-alphabet>
+              {groups.map(([letter]) => (
+                <a href={`#topics-${letter}`}>{letter}</a>
+              ))}
+            </nav>
+
+            <div class="topic-columns">
+              {groups.map(([letter, items]) => (
+                <section class="topic-letter" data-topic-group aria-labelledby={`topics-${letter}`}>
+                  <h3 id={`topics-${letter}`} tabindex="-1">
+                    {letter}
+                  </h3>
+                  <ul role="list">
+                    {items.map(({ tag, count }) => (
+                      <li data-topic data-tag={tag} data-name={getTagMetadata(tag).name}>
+                        <TagCard
+                          tag={tag}
+                          count={count}
+                          size="md"
+                          variant="subtle"
+                          className="topic-link"
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                </section>
               ))}
             </div>
+
+            <div class="topics-empty" data-topics-empty hidden>
+              <h3>No topics match</h3>
+              <p>Try a shorter word, or clear your search to explore the writing.</p>
+              <button type="button" class="topics-clear" data-clear-topics>
+                Clear search
+              </button>
+            </div>
           </section>
-        )
-      }
+        </>
+      ) : (
+        <p class="topics-unavailable">No topics yet.</p>
+      )
+    }
+  </div>
+</PageLayout>
 
-      <section>
-        <h2 class="text-heading mb-6 text-[rgb(var(--color-text))]">Every idea</h2>
-        <div class="rounded-lg bg-[rgb(var(--color-bg-alt))]/5 p-6">
-          <div class="flex flex-wrap gap-2">
-            {
-              sortedTagCounts.map(({ tag, count }) => (
-                <TagCard tag={tag} count={count} size="md" variant="subtle" showCount={true} />
-              ))
-            }
-          </div>
-        </div>
-      </section>
+<script>
+  import { matchesCatalogSearch } from '../../utils/catalogSearch';
 
-      {/* Empty State */}
-      {
-        Object.keys(tagCounts).length === 0 && (
-          <div class="py-12 text-center">
-            <p class="text-body-large text-body-muted">No tags found yet.</p>
-          </div>
-        )
+  const page = document.querySelector<HTMLElement>('[data-topics-page]');
+  const form = page?.querySelector<HTMLFormElement>('.topics-search');
+  const input = form?.querySelector<HTMLInputElement>('#topic-search');
+  if (page && form && input) {
+    const topics = [...page.querySelectorAll<HTMLElement>('[data-topic]')];
+    const groups = [...page.querySelectorAll<HTMLElement>('[data-topic-group]')];
+    const sentences = page.querySelector<HTMLElement>('[data-sentence-browse]');
+    const jump = page.querySelector<HTMLElement>('[data-topics-jump]');
+    const alphabet = page.querySelector<HTMLElement>('[data-topic-alphabet]');
+    const heading = page.querySelector<HTMLElement>('#all-topics');
+    const count = page.querySelector<HTMLElement>('[data-topic-count]');
+    const empty = page.querySelector<HTMLElement>('[data-topics-empty]');
+    const clear = form.querySelector<HTMLButtonElement>('[data-clear-topics]');
+
+    const update = () => {
+      const query = input.value.trim();
+      let visible = 0;
+      for (const topic of topics) {
+        topic.hidden = !matchesCatalogSearch(
+          query,
+          topic.dataset.tag ?? '',
+          topic.dataset.name ?? '',
+        );
+        if (!topic.hidden) visible++;
       }
-    </Container>
-  </Container>
-</BaseLayout>
+      for (const group of groups) {
+        group.hidden = !group.querySelector('[data-topic]:not([hidden])');
+      }
+      if (sentences) sentences.hidden = Boolean(query);
+      if (jump) jump.hidden = Boolean(query);
+      if (alphabet) alphabet.hidden = Boolean(query);
+      if (heading) heading.textContent = query ? 'Matching topics' : 'All topics A–Z';
+      if (count)
+        count.textContent = query
+          ? `${visible} of ${topics.length} topics`
+          : `${topics.length} topics`;
+      if (empty) empty.hidden = visible > 0;
+      if (clear) clear.hidden = !query;
+    };
+
+    const writeQuery = () => {
+      const url = new URL(window.location.href);
+      const query = input.value.trim();
+      if (query) url.searchParams.set('q', query);
+      else url.searchParams.delete('q');
+      window.history.replaceState(window.history.state, '', url);
+    };
+
+    const readQuery = () => {
+      input.value = new URLSearchParams(window.location.search).get('q') ?? '';
+      update();
+    };
+
+    form.hidden = false;
+    readQuery();
+    input.addEventListener('input', () => {
+      update();
+      writeQuery();
+    });
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      update();
+      writeQuery();
+    });
+    for (const button of page.querySelectorAll<HTMLButtonElement>('[data-clear-topics]')) {
+      button.addEventListener('click', () => {
+        input.value = '';
+        update();
+        writeQuery();
+        input.focus();
+      });
+    }
+    window.addEventListener('popstate', readQuery);
+    window.addEventListener('pageshow', readQuery);
+  }
+</script>
 
 <style>
-  main {
-    transition:
-      background-color 0.2s ease,
-      color 0.2s ease;
+  :global(.topics-intro) {
+    max-width: 62ch;
   }
-
-  @media (prefers-reduced-motion: reduce) {
-    main {
-      transition: none !important;
+  .topics-page {
+    display: grid;
+    gap: 2rem;
+    padding-top: 1rem;
+    padding-bottom: clamp(4rem, 7vw, 7rem);
+  }
+  .topics-page [hidden] {
+    display: none !important;
+  }
+  .topics-tools {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 1rem 2rem;
+  }
+  .topics-search {
+    flex: 1 1 32rem;
+    max-width: 44rem;
+    min-width: 0;
+    margin: 0;
+  }
+  .topics-search label {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 600;
+  }
+  .topics-search__controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .topics-search input {
+    flex: 1 1 0;
+    width: 100%;
+    min-width: 0;
+    min-height: 3rem;
+    margin: 0;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgb(var(--color-border));
+    border-radius: var(--radius-lg);
+    background: rgb(var(--color-bg-alt));
+    color: rgb(var(--color-text));
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .topics-search input::placeholder {
+    color: rgb(var(--color-text-muted));
+    opacity: 1;
+  }
+  .topics-clear,
+  .topics-jump {
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+    min-height: 2.75rem;
+    padding: 0.5rem 0;
+    border: 0;
+    background: transparent;
+    color: rgb(var(--color-accent));
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  .topics-clear:hover,
+  .topics-jump:hover {
+    color: rgb(var(--color-accent-hover));
+  }
+  .topic-directory {
+    margin-top: clamp(1.5rem, 3vw, 3rem);
+  }
+  .topic-directory__heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem 1.5rem;
+  }
+  .topic-directory__heading h2,
+  .topics-empty h3 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 2.4vw, 2rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+  }
+  .topic-directory__heading p,
+  .topics-key {
+    margin: 0;
+    color: rgb(var(--color-text-muted));
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    font-variant-numeric: tabular-nums;
+  }
+  .topics-key {
+    margin-top: 0.75rem;
+  }
+  .topic-alphabet {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1.5rem 0 2rem;
+  }
+  .topic-alphabet a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    border-radius: var(--radius-md);
+    background: rgb(var(--color-bg-alt));
+    color: rgb(var(--color-accent));
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .topic-alphabet a:hover {
+    background: rgb(var(--color-surface-2));
+  }
+  .topic-columns {
+    margin-top: 2rem;
+    column-gap: 2.5rem;
+  }
+  .topic-letter {
+    break-inside: avoid;
+    margin-bottom: 2rem;
+  }
+  .topic-letter h3 {
+    margin: 0 0 1rem;
+    font-family: var(--font-heading);
+    font-size: clamp(1.25rem, 1.7vw, 1.6rem);
+    line-height: 1.2;
+    font-weight: 600;
+  }
+  #all-topics,
+  .topic-letter h3 {
+    scroll-margin-top: calc(var(--site-header-height) + 2rem);
+  }
+  #all-topics:focus,
+  .topic-letter h3:focus {
+    outline: none;
+  }
+  .topic-letter ul {
+    display: grid;
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  .topic-letter li {
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+  }
+  .topics-page :global(.topic-link) {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 2.75rem;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.5;
+    color: rgb(var(--color-text));
+    backdrop-filter: none;
+  }
+  .topics-page :global(.topic-link .tag-text) {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+  .topics-page :global(.topic-link .tag-count) {
+    flex: 0 0 auto;
+    font-variant-numeric: tabular-nums;
+    color: rgb(var(--color-text-muted));
+    opacity: 1;
+  }
+  .topics-page :global(.topic-link:focus-visible) {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 4px;
+  }
+  .topics-empty {
+    display: grid;
+    justify-items: start;
+    gap: 1rem;
+    padding: 2rem;
+    background: rgb(var(--color-bg-alt));
+    border-radius: var(--radius-lg);
+  }
+  .topics-empty p,
+  .topics-unavailable {
+    margin: 0;
+    max-width: 62ch;
+    font-size: 1.125rem;
+    line-height: 1.75;
+    color: rgb(var(--color-text-muted));
+  }
+  .topics-search input:focus-visible,
+  .topics-clear:focus-visible,
+  .topics-jump:focus-visible,
+  .topic-alphabet a:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 4px;
+  }
+  @media (min-width: 768px) {
+    .topics-page {
+      gap: 2.5rem;
+    }
+    .topic-columns {
+      column-count: 2;
+    }
+  }
+  @media (min-width: 1024px) {
+    .topic-columns {
+      column-count: 3;
     }
   }
 </style>

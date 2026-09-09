@@ -1,5 +1,6 @@
 ---
 import { getTagFamily } from '../../data/tagFamilies';
+import { getTagMetadata } from '../../data/tags';
 import { formatPreludeConnectors } from '../../utils/tag/contentFormTags';
 import {
   buildPreludeTemplateCandidates,
@@ -12,31 +13,29 @@ interface Props {
 }
 
 const { tagCounts } = Astro.props;
-
-const tagLink = (tag: string) => `/tag/${encodeURIComponent(tag)}`;
-const asHashTag = (tag: string) => `#${tag}`;
 const candidates = buildPreludeTemplateCandidates({ tagCounts });
 const templates = selectPreludeTemplates(candidates, PRELUDE_THEME_LIMIT);
 ---
 
 {
   templates.length > 0 && (
-    <section class="mb-6">
-      <ul class="text-body-muted list-disc space-y-1.5 pl-5 text-sm leading-relaxed">
+    <section class="sentence-browse" aria-labelledby="sentence-browse-heading">
+      <h2 id="sentence-browse-heading">Ways into the writing</h2>
+      <ul class="sentence-list" role="list">
         {templates.map((template) => {
           const connectors = formatPreludeConnectors(template.tags.length);
           return (
             <li>
-              {template.prefix}
+              <span class="sentence-lead">{template.prefix}</span>
               {template.tags.map((tag, index) => (
                 <>
                   <span>{connectors[index] ?? ', '}</span>
                   <a
-                    href={tagLink(tag)}
-                    class="tag-chip tag-chip--underline font-medium"
+                    href={`/tag/${encodeURIComponent(tag)}`}
+                    class="tag-chip tag-chip--underline"
                     data-tag-family={getTagFamily(tag)}
                   >
-                    {asHashTag(tag)}
+                    {getTagMetadata(tag).name}
                   </a>
                 </>
               ))}
@@ -48,3 +47,72 @@ const templates = selectPreludeTemplates(candidates, PRELUDE_THEME_LIMIT);
     </section>
   )
 }
+
+<style>
+  .sentence-browse {
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    background: rgb(var(--color-bg-alt));
+  }
+
+  .sentence-browse h2 {
+    margin: 0 0 2rem;
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 2.4vw, 2rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+  }
+
+  .sentence-list {
+    display: grid;
+    gap: 1.5rem 2.5rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .sentence-list li {
+    min-width: 0;
+    max-width: 62ch;
+    padding: 0;
+    margin: 0;
+    color: rgb(var(--color-text));
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    line-height: 1.75;
+    text-wrap: pretty;
+  }
+
+  .sentence-lead {
+    font-weight: 600;
+  }
+
+  .sentence-list a {
+    color: rgb(var(--color-accent));
+    font-weight: 500;
+    text-decoration-color: rgb(var(--color-accent) / 0.5);
+    text-decoration-thickness: 1px;
+  }
+
+  .sentence-list a:hover {
+    color: rgb(var(--color-accent-hover));
+    text-decoration-color: currentColor;
+  }
+
+  .sentence-list a:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 4px;
+  }
+
+  @media (min-width: 768px) {
+    .sentence-browse {
+      padding: 2rem;
+    }
+
+    .sentence-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2rem 2.5rem;
+    }
+  }
+</style>

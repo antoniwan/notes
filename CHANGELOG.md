@@ -7,6 +7,18 @@ Versioning follows [SemVer](https://semver.org/).
 
 When bumping `package.json` version, run `pnpm changelog:since` (or follow the project skill) and prepend a new section.
 
+## [6.19.0] — 2026-09-09
+
+### Added
+
+- Tag map search finds a topic without needing hyphens or matching letter case. The query stays in the URL.
+- Topics jump A–Z by letter, with a skip to the full directory.
+
+### Changed
+
+- Tags is a sentence map plus an A–Z directory. The most-written ranking and the chip cloud are gone.
+- Sentence doors and the A–Z list use readable topic names, not hashtags.
+
 ## [6.18.0] — 2026-09-09
 
 ### Added

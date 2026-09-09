@@ -1,5 +1,6 @@
 ---
 import { getTagFamily } from '../data/tagFamilies';
+import { getTagMetadata } from '../data/tags';
 
 interface Props {
   tag: string;
@@ -35,11 +36,11 @@ const sizeClasses = {
 ---
 
 <a
-  href={`/tag/${tag}`}
+  href={`/tag/${encodeURIComponent(tag)}`}
   data-tag-family={family}
   class={`tag-chip tag-card group inline-flex items-center gap-2 ${sizeClasses[size]} ${variantClass} rounded-full border font-medium interactive-button focus:outline-hidden ${className}`}
 >
-  <span class="tag-text">#{tag}</span>
+  <span class="tag-text">{getTagMetadata(tag).name}</span>
   {
     showCount && (
       <span class="tag-count text-sm leading-relaxed font-normal opacity-75">{count}</span>
