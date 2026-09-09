@@ -24,7 +24,6 @@ export interface SocialLinks {
 
 export interface SEOConfig {
   defaultImage: string;
-  defaultImageAlt: string;
   defaultHeroImage: string;
   defaultLocale: string;
   defaultRobots: string;
@@ -66,8 +65,6 @@ export const SOCIAL_LINKS: SocialLinks = {
 // SEO Configuration
 export const SEO_CONFIG: SEOConfig = {
   defaultImage: assetConfig.images.defaultSocial,
-  defaultImageAlt:
-    'Reality hurts. I look anyway. Raw reflections on fatherhood, masculinity, culture, and modern collapse.',
   defaultHeroImage: assetConfig.images.defaultHero,
   defaultLocale: 'en_US',
   defaultRobots: 'index, follow',
@@ -82,41 +79,3 @@ export const SEO_CONFIG: SEOConfig = {
 // Disclaimer Text
 export const DISCLAIMER_TEXT =
   'The wisdom, practices, and digital alchemy shared here flow from personal experience and creative exploration. None of this constitutes medical, legal, psychological, or professional advice. Please consult qualified professionals for such guidance.';
-
-// Site Taglines and Messaging
-export const SITE_TAGLINES = {
-  main: 'Reality hurts. I look anyway.',
-  subtitle:
-    'Dispatches from a fractured mind navigating fatherhood, masculinity, cultura, and modern collapse — one burning question at a time.',
-  description: 'Raw reflections. No filter. Some philosophy. Occasional beauty.',
-  quote: 'Notes from the soft heart inside the hard world.',
-  spanish: 'Caos, cultura, y curiosidad sin permiso.',
-  mind: 'A mind on fire. A soul at work.',
-  status: 'Still learning. Still breaking. Still here.',
-};
-
-// SEO Keywords for better discoverability
-export const SEO_KEYWORDS = [
-  'thinking',
-  'fatherhood',
-  'cooking',
-  'recipes',
-  'masculinity',
-  'culture',
-  'modern collapse',
-  'philosophy',
-  'personal reflection',
-  'parenting',
-  'identity',
-  'growth',
-  'raw thoughts',
-  'cultural navigation',
-  'mindfulness',
-  'self-improvement',
-  'personal development',
-  'modern life',
-  'authenticity',
-  'vulnerability',
-  'strength',
-  'resilience',
-];
