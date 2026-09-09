@@ -270,11 +270,7 @@ const breadcrumbSchema = generateBreadcrumbSchema(
           ]}
         >
           <details class="post-mobile-details">
-            <summary
-              >{
-                isSpanish ? 'Temas y detalles de este artículo' : 'Topics and article details'
-              }</summary
-            >
+            <summary>{isSpanish ? 'Detalles del artículo' : 'Article details'}</summary>
             <PostDetails
               categoryItems={categoryItems}
               tags={tags}

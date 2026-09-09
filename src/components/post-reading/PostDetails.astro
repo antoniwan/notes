@@ -20,8 +20,8 @@ const moreCategories = categoryItems.slice(3);
 <div class="post-details">
   {
     categoryItems.length > 0 && (
-      <nav aria-label={isSpanish ? 'Temas relacionados' : 'Related topics'}>
-        <h2 class="details-label">{isSpanish ? 'Explorar temas' : 'Explore topics'}</h2>
+      <nav aria-label={isSpanish ? 'Categorías relacionadas' : 'Related categories'}>
+        <h2 class="details-label">{isSpanish ? 'Explorar categorías' : 'Explore categories'}</h2>
         <ul class="topic-list">
           {visibleCategories.map((item) => (
             <li>

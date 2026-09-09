@@ -9,6 +9,13 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.22.1] — 2026-09-09
+
+### Changed
+
+- Browse copy says Topics to match the nav. `/tag` URLs are unchanged. Posts still label their chips as Tags.
+- About drops the line under every “What these notes cover” item, plus the bars on the portrait and Cookbook.
+
 ## [6.22.0] — 2026-09-09
 
 ### Added
