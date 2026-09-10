@@ -5,6 +5,7 @@ import LatestWatched from '../components/LatestWatched.astro';
 import { PAGE_META } from '../data/pageMeta';
 import { AUTHOR } from '../consts';
 import { fetchLetterboxdRecent } from '../utils/letterboxd';
+import HeroImage from '../components/HeroImage.astro';
 
 const rssUrl = import.meta.env.LETTERBOXD_RSS_URL ?? '';
 const profileUrl = import.meta.env.LETTERBOXD_PROFILE_URL ?? 'https://letterboxd.com/antoniwan/';
@@ -132,26 +133,17 @@ const topics: AboutTopic[] = [
 
         <div class="about-pictures">
           <figure class="about-portrait">
-            <img
+            <HeroImage
               src="/images/mia-y-yo-anime.avif"
               alt="Antonio Rodríguez Martínez and his daughter Mia, illustrated in anime style."
-              width={1200}
-              height={800}
-              loading="eager"
-              decoding="async"
+              variant="article"
+              priority={true}
             />
           </figure>
 
           <a href="/recipes" class="about-cookbook">
             <div class="about-cookbook__image">
-              <img
-                src="/images/2026/cast-iron-flank-steak.avif"
-                alt=""
-                width={2400}
-                height={3600}
-                loading="lazy"
-                decoding="async"
-              />
+              <HeroImage src="/images/2026/cast-iron-flank-steak.avif" alt="" variant="card" />
             </div>
             <span class="about-cookbook__caption">
               <span class="about-cookbook__title">Cookbook</span>
@@ -329,7 +321,7 @@ const topics: AboutTopic[] = [
     margin: 0;
   }
 
-  .about-portrait img {
+  .about-portrait :global(img) {
     display: block;
     width: 100%;
     height: auto;
@@ -347,7 +339,7 @@ const topics: AboutTopic[] = [
     background: rgb(var(--color-bg-alt));
   }
 
-  .about-cookbook__image img {
+  .about-cookbook__image :global(img) {
     display: block;
     width: 100%;
     height: 100%;
@@ -387,7 +379,7 @@ const topics: AboutTopic[] = [
     line-height: 1;
   }
 
-  .about-cookbook:hover .about-cookbook__image img {
+  .about-cookbook:hover .about-cookbook__image :global(img) {
     transform: scale(1.035);
   }
 
@@ -560,14 +552,14 @@ const topics: AboutTopic[] = [
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .about-cookbook__image img,
+    .about-cookbook__image :global(img),
     .about-topic__arrow,
     .about-story a,
     .about-closing a {
       transition: none;
     }
 
-    .about-cookbook:hover .about-cookbook__image img,
+    .about-cookbook:hover .about-cookbook__image :global(img),
     .about-topic--link:hover .about-topic__arrow {
       transform: none;
     }

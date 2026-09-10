@@ -1,0 +1,71 @@
+---
+/**
+ * The single contract for rendering a post's hero art (R20).
+ *
+ * Emits a responsive `<img>` with `srcset`/`sizes` when the source has been
+ * moved under `src/assets/images/`, and falls back to the plain `<img>` this
+ * replaced when it has not — so a path still living in `public/` renders
+ * exactly as before rather than disappearing.
+ *
+ * Delivery only: same file, same aspect ratio, same crop. The CSS class decides
+ * framing, as it did before; this changes which *size* of the image is sent.
+ */
+import { Image } from 'astro:assets';
+import { HERO_QUALITY, HERO_SIZES, HERO_WIDTHS, resolveHeroImage } from '../utils/heroImages';
+
+interface Props {
+  /** The `/images/…` string from frontmatter. */
+  src: string;
+  alt: string;
+  class?: string;
+  /** Which painted box this appears in. */
+  variant: keyof typeof HERO_SIZES;
+  /** Above-the-fold art should be eager and high priority; cards should not. */
+  priority?: boolean;
+  loading?: 'eager' | 'lazy';
+  width?: number;
+  height?: number;
+}
+
+const {
+  src,
+  alt,
+  class: className = '',
+  variant,
+  priority = false,
+  loading = priority ? 'eager' : 'lazy',
+  width,
+  height,
+} = Astro.props;
+
+const resolved = resolveHeroImage(src);
+const sizes = HERO_SIZES[variant];
+---
+
+{
+  resolved ? (
+    <Image
+      src={resolved}
+      alt={alt}
+      {...(className ? { class: className } : {})}
+      widths={HERO_WIDTHS}
+      sizes={sizes}
+      format="avif"
+      quality={HERO_QUALITY}
+      loading={loading}
+      decoding="async"
+      {...(priority ? { fetchpriority: 'high' as const } : {})}
+    />
+  ) : (
+    <img
+      src={src}
+      alt={alt}
+      {...(className ? { class: className } : {})}
+      loading={loading}
+      decoding="async"
+      {...(priority ? { fetchpriority: 'high' } : {})}
+      {...(width ? { width } : {})}
+      {...(height ? { height } : {})}
+    />
+  )
+}

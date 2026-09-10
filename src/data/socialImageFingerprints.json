@@ -1,6 +1,10 @@
 {
   "version": 2,
   "sources": {
+    "/images/0_uLjrPcjl6O6biWBM.jpg": {
+      "sha256": "c65fe1141adf1de4ecd63ff9b9a441ac3519cc4de8f5e70f94ba259310a81c89",
+      "social": "/social/images/0_uLjrPcjl6O6biWBM-social.jpg"
+    },
     "/images/2025/broken-signals.avif": {
       "sha256": "fb2e7434bda74a3a05ad385fb21cef4c0ccc477a7434ac5f67011203d235ff79",
       "social": "/social/images/2025/broken-signals-social.jpg"
@@ -385,6 +389,10 @@
       "sha256": "9cce22a6246faf4fd2f675598710383b72efe0fb81129c43510d22a4b568888a",
       "social": "/social/images/2026/empathy-and-compassion-social.jpg"
     },
+    "/images/2026/empathy-sword-edges.png": {
+      "sha256": "3c53225c7f979aa292ac0a7ea03b47aa69bf2dfe07b037055ce391298edc3c26",
+      "social": "/social/images/2026/empathy-sword-edges-social.jpg"
+    },
     "/images/2026/escaping-the-feeds.avif": {
       "sha256": "aa80ec893184828b7099eb68dbd5bae04762e174f0e01696adbcc3b6a31a01ca",
       "social": "/social/images/2026/escaping-the-feeds-social.jpg"
@@ -453,6 +461,10 @@
       "sha256": "675b98e1da984875b715fcd74ed11da666bd7092f17803f7f019b5825191d407",
       "social": "/social/images/2026/lemon-pepper-chicken-social.jpg"
     },
+    "/images/2026/lgtm-antoniwan.jpg": {
+      "sha256": "20e0f7e1a3a848de3d383fabfd54de2f913ab1a67fd1d3f5f64cdef0060949c0",
+      "social": "/social/images/2026/lgtm-antoniwan-social.jpg"
+    },
     "/images/2026/love_for_cooking.avif": {
       "sha256": "3a4f5d23f76f0f8f7f0767efa8b303e3090c548df7dc0eb05d36ee00c479f8d4",
       "social": "/social/images/2026/love_for_cooking-social.jpg"
@@ -500,6 +512,18 @@
     "/images/2026/perfect-crispy-oven-drumsticks.avif": {
       "sha256": "99abc16299cfc5efa3f1b29470d6bf42ad98d224f03b8d85967bab317882292e",
       "social": "/social/images/2026/perfect-crispy-oven-drumsticks-social.jpg"
+    },
+    "/images/2026/practice-values.jpg": {
+      "sha256": "5f68ac2b56264c24e231039b67a31395ebb9db69be0af5f2fc469084a2a62d31",
+      "social": "/social/images/2026/practice-values-social.jpg"
+    },
+    "/images/2026/serenity.jpg": {
+      "sha256": "4a913b7463476d0fb43972d860820e2594499181d48ce36c7265457468ed616d",
+      "social": "/social/images/2026/serenity-social.jpg"
+    },
+    "/images/2026/sharpen-your-tools.jpg": {
+      "sha256": "5b03a608b5a49bd0e61c2c1d8f02fa77bb6515833c5f3a751c10425194203174",
+      "social": "/social/images/2026/sharpen-your-tools-social.jpg"
     },
     "/images/2026/shaved-carrots.avif": {
       "sha256": "2d042c022f051c1e245fac5433c02121968e41764c16a55052fa3c5e0b314f52",
@@ -564,6 +588,10 @@
     "/images/anime-souls.avif": {
       "sha256": "7c172792586fdd52bddfafef42f4e6a413e00efaf080d06a6ecf025abcbacfc4",
       "social": "/social/images/anime-souls-social.jpg"
+    },
+    "/images/beef-heart-comparison-chart.png": {
+      "sha256": "c0dc4b262e37918f09bc9ffda87e9feee0c903901e531d47ff1916201b0e7319",
+      "social": "/social/images/beef-heart-comparison-chart-social.jpg"
     },
     "/images/breathing-deep.avif": {
       "sha256": "fda8620161b8cb1c9f483b95d9238910ef13787790532a26d8b38871636ce348",
@@ -969,6 +997,10 @@
       "sha256": "a9754b0f7678ebf803073fee7ea04ccff579885debf4bbfc63f1333e42cefa0f",
       "social": "/social/images/grief-social.jpg"
     },
+    "/images/guia-padres.jpg": {
+      "sha256": "003a8f001187ce043613b4bdd6f037b45eeaa21095567b3ebfb7722fdffbe327",
+      "social": "/social/images/guia-padres-social.jpg"
+    },
     "/images/guia-practica-padres-conscientes.avif": {
       "sha256": "6a0cb589d883812f3b02ac5c14a8873ee53686a65c0222cc001344a1fb8c7ac7",
       "social": "/social/images/guia-practica-padres-conscientes-social.jpg"
@@ -985,6 +1017,10 @@
       "sha256": "39968a1aba172c189c230d5255b2dd4ffa2450c2f0ce80a63b5d89ea42a7090c",
       "social": "/social/images/i-lose-mia-social.jpg"
     },
+    "/images/life-statement.webp": {
+      "sha256": "f53d57628e8513b2ce9460f60d94762f702e8b6d851a27e5633d3d91cc5a3ad4",
+      "social": "/social/images/life-statement-social.jpg"
+    },
     "/images/lord-take-us-all.avif": {
       "sha256": "da01356a1c1957acdf2b12ed26afcb92c7c67a9796f6b5e2ab15da778ce345dc",
       "social": "/social/images/lord-take-us-all-social.jpg"
@@ -997,6 +1033,10 @@
       "sha256": "a7a13844fe65a9d050901b12d64d8283927020a47c1ea3c593a84d718e7a9a7c",
       "social": "/social/images/maslows-hierarchy-of-needs-social.jpg"
     },
+    "/images/mia-long-hair.webp": {
+      "sha256": "4b2ddf46689a705d34e9e257434cc4fb65e9777bfb1884029363f9d56498ee3b",
+      "social": "/social/images/mia-long-hair-social.jpg"
+    },
     "/images/mia-y-yo-anime.avif": {
       "sha256": "dceabde8310b181033be79010c367d9705177c8461e60bd4f1f2cf4de1058017",
       "social": "/social/images/mia-y-yo-anime-social.jpg"
@@ -1004,6 +1044,10 @@
     "/images/notes-og-abstract.avif": {
       "sha256": "f2af58f7eaf94b9e4dae13b65b7cd18d747c69fb162613aff3f882f446c31c95",
       "social": "/social/images/notes-og-abstract-social.jpg"
+    },
+    "/images/saitama-okay.webp": {
+      "sha256": "38314386650fb4ac301f2fa59747a8c6bc72cb95252448c69d13c90002976568",
+      "social": "/social/images/saitama-okay-social.jpg"
     },
     "/images/self-control.avif": {
       "sha256": "358e0327f7783c96aede0e70d172ca1d43361fa9ddcdd7f548bdcaaea34cdc7b",
@@ -1056,6 +1100,10 @@
     "/images/vs-code-signals.avif": {
       "sha256": "1ff9faa9de1f3776fb10d88284bbc6f92da43463eb11a6a37a85b9ced4b43b08",
       "social": "/social/images/vs-code-signals-social.jpg"
+    },
+    "/images/waaaat.jpg": {
+      "sha256": "b2bacc247b75ad24e0228ca48a20d2ca976f1c6d0a547f77af28456893b22e1c",
+      "social": "/social/images/waaaat-social.jpg"
     },
     "/symbols/lightsaber.avif": {
       "sha256": "cab621604f67e367c4280bcddaab4b5756edc845ff99bc6bfc24840ad2e1244b",

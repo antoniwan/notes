@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import FormattedDate from './FormattedDate.astro';
 import DefaultImage from './DefaultImage.astro';
+import HeroImage from './HeroImage.astro';
 import { calculateReadingTimeFromMarkdown } from '../utils/readingTime';
 import { getSpanishTwinGroups } from '../utils/translationUtils';
 import { isSpanishPrimary } from '../utils/publishFilters';
@@ -55,10 +56,11 @@ const hasSpanishTwin =
   <div class="image-container relative overflow-hidden">
     {
       data.heroImage ? (
-        <img
+        <HeroImage
           src={data.heroImage}
           alt={data.imageAlt || data.title}
           class="postcard-image"
+          variant="card"
           loading={imageLoading}
         />
       ) : (

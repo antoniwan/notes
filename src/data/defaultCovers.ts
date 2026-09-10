@@ -1,7 +1,10 @@
 import { readdirSync } from 'fs';
 import { join } from 'path';
 
-const DEFAULT_COVERS_DIR = join(process.cwd(), 'public', 'images', 'default_covers');
+// Moved under src/ so Astro can generate responsive derivatives (R20). The
+// returned URLs keep their /images/… shape, which is what every other consumer
+// — the social manifest, feeds, structured data — is keyed on.
+const DEFAULT_COVERS_DIR = join(process.cwd(), 'src', 'assets', 'images', 'default_covers');
 const FALLBACK_IMAGE = '/images/default.avif';
 
 /**
