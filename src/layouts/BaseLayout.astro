@@ -19,6 +19,7 @@ import type { BaseLayoutProps } from '../types/layout';
 interface Props extends BaseLayoutProps {}
 
 const searchData = await getSearchData();
+const searchDataJson = JSON.stringify(searchData);
 
 const {
   title,
@@ -137,7 +138,10 @@ const structuredData = generateStructuredData({
     >
 
     <ReadStateServiceInit />
-    <Header searchData={searchData} />
+    <script define:vars={{ searchDataJson }} is:inline>
+      window.searchData = JSON.parse(searchDataJson);
+    </script>
+    <Header />
     <ReadingProgress postId={postId} />
 
     <main id="main-content" role="main" class="animate-fade-in grow">
@@ -157,50 +161,61 @@ const structuredData = generateStructuredData({
     <!-- Service Worker Registration -->
     <ServiceWorkerRegistration />
 
-    <!-- Image Modal -->
-    <div id="imageModal" class="image-modal">
-      <button class="close-btn" onclick="closeImageModal()">&times;</button>
+    <!-- Article image lightbox -->
+    <dialog id="imageModal" class="image-modal" aria-label="Expanded article image">
+      <button class="close-btn" type="button" aria-label="Close expanded image">&times;</button>
       <img id="modalImage" src="" alt="" />
-    </div>
+    </dialog>
 
     <script is:inline>
-      // Image modal functionality
-      function openImageModal(imageSrc, imageAlt) {
-        const modal = document.getElementById('imageModal');
-        const modalImage = document.getElementById('modalImage');
+      const modal = document.getElementById('imageModal');
+      const modalImage = document.getElementById('modalImage');
+      const closeButton = modal?.querySelector('.close-btn');
+      let activeImage = null;
+      let previousBodyOverflow = '';
 
-        modalImage.src = imageSrc;
-        modalImage.alt = imageAlt;
-        modal.classList.add('show');
+      function openImageModal(image) {
+        if (!(modal instanceof HTMLDialogElement) || !(modalImage instanceof HTMLImageElement))
+          return;
+
+        activeImage = image;
+        modalImage.src = image.currentSrc || image.src;
+        modalImage.alt = image.alt;
+        previousBodyOverflow = document.body.style.overflow;
         document.body.style.overflow = 'hidden';
+        modal.showModal();
+        closeButton?.focus();
       }
 
       function closeImageModal() {
-        const modal = document.getElementById('imageModal');
-        modal.classList.remove('show');
-        document.body.style.overflow = 'auto';
+        if (modal instanceof HTMLDialogElement && modal.open) modal.close();
       }
 
-      // Close modal when clicking outside the image
-      document.getElementById('imageModal').addEventListener('click', function (e) {
-        if (e.target === this) {
-          closeImageModal();
-        }
+      closeButton?.addEventListener('click', closeImageModal);
+      modal?.addEventListener('click', function (event) {
+        if (event.target === modal) closeImageModal();
+      });
+      modal?.addEventListener('close', function () {
+        document.body.style.overflow = previousBodyOverflow;
+        if (activeImage instanceof HTMLImageElement) activeImage.focus();
+        activeImage = null;
       });
 
-      // Close modal with Escape key
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') {
-          closeImageModal();
-        }
-      });
-
-      // Make blog post images clickable for modal
       document.addEventListener('DOMContentLoaded', function () {
-        const proseImages = document.querySelectorAll('.prose img');
-        proseImages.forEach(function (img) {
-          img.addEventListener('click', function () {
-            openImageModal(this.src, this.alt);
+        document.querySelectorAll('.prose img').forEach(function (image) {
+          if (!(image instanceof HTMLImageElement) || image.closest('a')) return;
+
+          image.tabIndex = 0;
+          image.setAttribute('role', 'button');
+          image.setAttribute(
+            'aria-label',
+            image.alt ? `View larger: ${image.alt}` : 'View image larger',
+          );
+          image.addEventListener('click', () => openImageModal(image));
+          image.addEventListener('keydown', (event) => {
+            if (event.key !== 'Enter' && event.key !== ' ') return;
+            event.preventDefault();
+            openImageModal(image);
           });
         });
       });

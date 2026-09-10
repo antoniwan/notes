@@ -18,6 +18,7 @@ export const INDEXNOW_FALLBACK_ENDPOINT = 'https://www.bing.com/indexnow';
 export const INDEXNOW_KEY_FILENAME = `${INDEXNOW_KEY}.txt`;
 
 const INDEXNOW_BATCH_LIMIT = 10_000;
+const INDEXNOW_TIMEOUT_MS = 12_000;
 
 export type IndexNowLogger = {
   info: (message: string) => void;
@@ -58,7 +59,7 @@ export function buildIndexNowPayload(urlList: string[], siteUrl = SITE_URL): Ind
 
 /** IndexNow verifies ownership by fetching the live key file; skip until that URL serves the key. */
 export async function isIndexNowKeyLive(
-  options: { fetchImpl?: typeof fetch; siteUrl?: string } = {},
+  options: { fetchImpl?: typeof fetch; siteUrl?: string; signal?: AbortSignal } = {},
 ): Promise<boolean> {
   const fetchImpl = options.fetchImpl ?? fetch;
   const keyLocation = getIndexNowKeyLocation(options.siteUrl);
@@ -66,6 +67,7 @@ export async function isIndexNowKeyLive(
     const res = await fetchImpl(keyLocation, {
       method: 'GET',
       headers: { accept: 'text/plain' },
+      signal: options.signal ?? AbortSignal.timeout(INDEXNOW_TIMEOUT_MS),
     });
     if (!res.ok) return false;
     return (await res.text()).trim() === INDEXNOW_KEY;
@@ -134,7 +136,12 @@ export function readSitemapXmlFiles(dir: URL): string[] {
 
 export async function submitIndexNow(
   urlList: string[],
-  options: { fetchImpl?: typeof fetch; siteUrl?: string; endpoint?: string } = {},
+  options: {
+    fetchImpl?: typeof fetch;
+    siteUrl?: string;
+    endpoint?: string;
+    signal?: AbortSignal;
+  } = {},
 ): Promise<{ status: number; ok: boolean; body: string }> {
   const fetchImpl = options.fetchImpl ?? fetch;
   const endpoint = options.endpoint ?? INDEXNOW_ENDPOINT;
@@ -143,6 +150,7 @@ export async function submitIndexNow(
     method: 'POST',
     headers: { 'content-type': 'application/json; charset=utf-8' },
     body: JSON.stringify(payload),
+    signal: options.signal ?? AbortSignal.timeout(INDEXNOW_TIMEOUT_MS),
   });
   const body = await res.text().catch(() => '');
   return { status: res.status, ok: res.status === 200 || res.status === 202, body };
@@ -154,10 +162,12 @@ export async function pingIndexNowFromSitemapDir(
     logger?: IndexNowLogger;
     env?: NodeJS.ProcessEnv;
     fetchImpl?: typeof fetch;
+    timeoutMs?: number;
   } = {},
 ): Promise<'skipped' | 'empty' | 'submitted' | 'failed'> {
   const env = options.env ?? process.env;
   const logger = options.logger ?? { info() {}, warn() {} };
+  const signal = AbortSignal.timeout(options.timeoutMs ?? INDEXNOW_TIMEOUT_MS);
 
   if (!shouldSubmitIndexNow(env)) {
     logger.info('IndexNow skipped (not a production publish)');
@@ -172,7 +182,7 @@ export async function pingIndexNowFromSitemapDir(
     }
 
     const fetchImpl = options.fetchImpl;
-    if (!(await isIndexNowKeyLive({ fetchImpl }))) {
+    if (!(await isIndexNowKeyLive({ fetchImpl, signal }))) {
       logger.info('IndexNow skipped (live key file not reachable yet)');
       return 'skipped';
     }
@@ -180,11 +190,12 @@ export async function pingIndexNowFromSitemapDir(
     let lastStatus = 0;
     for (let i = 0; i < urls.length; i += INDEXNOW_BATCH_LIMIT) {
       const batch = urls.slice(i, i + INDEXNOW_BATCH_LIMIT);
-      let result = await submitIndexNow(batch, { fetchImpl });
+      let result = await submitIndexNow(batch, { fetchImpl, signal });
       if (!result.ok && result.status === 403) {
         result = await submitIndexNow(batch, {
           fetchImpl,
           endpoint: INDEXNOW_FALLBACK_ENDPOINT,
+          signal,
         });
       }
       lastStatus = result.status;

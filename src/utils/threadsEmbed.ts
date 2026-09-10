@@ -10,6 +10,12 @@ const OEMBED_ENDPOINTS = [
 
 const SCRIPT_TAG_PATTERN = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
 const THREADS_POST_PATH = /threads\.(?:com|net)\/(?:@[^/]+\/post\/|t\/)([A-Za-z0-9_-]+)/i;
+const THREADS_FETCH_TIMEOUT_MS = 8_000;
+
+type ThreadsFetchOptions = {
+  fetchImpl?: typeof fetch;
+  timeoutMs?: number;
+};
 
 /** Canonical post URL for oEmbed (strips tracking query params). */
 export function normalizeThreadsPostUrl(url: string): string {
@@ -21,8 +27,14 @@ export function normalizeThreadsPostUrl(url: string): string {
   return trimmed.split('?')[0] ?? trimmed;
 }
 
-export async function fetchThreadsOEmbed(url: string, maxwidth = 540): Promise<ThreadsOEmbed> {
+export async function fetchThreadsOEmbed(
+  url: string,
+  maxwidth = 540,
+  options: ThreadsFetchOptions = {},
+): Promise<ThreadsOEmbed> {
   const canonicalUrl = normalizeThreadsPostUrl(url);
+  const fetchImpl = options.fetchImpl ?? fetch;
+  const signal = AbortSignal.timeout(options.timeoutMs ?? THREADS_FETCH_TIMEOUT_MS);
   let lastError: Error | null = null;
 
   for (const base of OEMBED_ENDPOINTS) {
@@ -31,7 +43,7 @@ export async function fetchThreadsOEmbed(url: string, maxwidth = 540): Promise<T
     endpoint.searchParams.set('maxwidth', String(maxwidth));
 
     try {
-      const response = await fetch(endpoint);
+      const response = await fetchImpl(endpoint, { signal });
       if (!response.ok) {
         lastError = new Error(`Threads oEmbed failed (${response.status}) via ${base}`);
         continue;

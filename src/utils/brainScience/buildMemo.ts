@@ -2,12 +2,37 @@
  * Build-process memo helpers for expensive analytics used across many Astro pages.
  * Caches live for the lifetime of the Node build process only.
  */
+import { createHash } from 'node:crypto';
 
-export function postsSignature(posts: Array<{ id: string; body?: string }>): string {
-  return posts
-    .map((p) => `${p.id}:${(p.body || '').length}`)
-    .sort()
-    .join('|');
+type PostSignatureInput = {
+  id: string;
+  body?: string;
+  data?: {
+    title?: string;
+    pubDate?: Date | string;
+    tags?: string[];
+  };
+};
+
+export function contentDigest(value: string): string {
+  return createHash('sha256').update(value).digest('hex');
+}
+
+export function postsSignature(posts: PostSignatureInput[]): string {
+  const normalized = posts
+    .map((post) => ({
+      id: post.id,
+      body: post.body || '',
+      title: post.data?.title || '',
+      pubDate:
+        post.data?.pubDate instanceof Date
+          ? post.data.pubDate.toISOString()
+          : (post.data?.pubDate ?? ''),
+      tags: [...(post.data?.tags ?? [])].sort(),
+    }))
+    .sort((a, b) => a.id.localeCompare(b.id));
+
+  return contentDigest(JSON.stringify(normalized));
 }
 
 export function createMemoBySignature<TInput extends { length: number }, TResult>(

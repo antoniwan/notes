@@ -1,21 +1,13 @@
 ---
 interface Props {
-  searchData: unknown[];
   class?: string;
   placeholder?: string;
 }
 
-const {
-  searchData,
-  class: className = '',
-  placeholder = 'Search writings, pages...',
-} = Astro.props;
+const { class: className = '', placeholder = 'Search writings, pages...' } = Astro.props;
 
 // Generate unique ID for this search instance
 const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
-
-// Serialize search data for client-side use
-const searchDataJson = JSON.stringify(searchData);
 ---
 
 <div class={`search-container relative ${className}`}>
@@ -100,11 +92,6 @@ const searchDataJson = JSON.stringify(searchData);
   </div>
 </div>
 
-<script define:vars={{ searchDataJson }} is:inline>
-  // Make search data globally available
-  window.searchData = JSON.parse(searchDataJson);
-</script>
-
 <script>
   // Search functionality
   class SearchBar {
@@ -116,6 +103,7 @@ const searchDataJson = JSON.stringify(searchData);
     private clearBtn: HTMLButtonElement | null;
     private debounceTimer: ReturnType<typeof setTimeout> | null = null;
     private isSearching = false;
+    private searchRequestId = 0;
 
     constructor(searchId: string) {
       this.input = document.getElementById(searchId) as HTMLInputElement;
@@ -193,6 +181,7 @@ const searchDataJson = JSON.stringify(searchData);
 
     handleInput() {
       const query = this.input?.value.trim() || '';
+      this.searchRequestId += 1;
 
       // Show/hide clear button
       if (this.clearBtn) {
@@ -202,10 +191,12 @@ const searchDataJson = JSON.stringify(searchData);
       // Clear previous timer
       if (this.debounceTimer) {
         clearTimeout(this.debounceTimer);
+        this.debounceTimer = null;
       }
 
       // Debounce search
       this.debounceTimer = setTimeout(() => {
+        this.debounceTimer = null;
         if (query.length >= 2) {
           this.performSearch(query);
         } else {
@@ -217,14 +208,17 @@ const searchDataJson = JSON.stringify(searchData);
     async performSearch(query: string) {
       if (this.isSearching) return;
 
+      const requestId = this.searchRequestId;
       this.isSearching = true;
       this.showLoading();
 
       try {
         // Simulate search - replace with actual search implementation
         const results = await this.searchPosts(query);
+        if (requestId !== this.searchRequestId || this.input?.value.trim() !== query) return;
         this.displayResults(results);
       } catch (error) {
+        if (requestId !== this.searchRequestId || this.input?.value.trim() !== query) return;
         this.showNoResults();
       } finally {
         this.isSearching = false;
@@ -533,6 +527,11 @@ const searchDataJson = JSON.stringify(searchData);
     }
 
     clearSearch() {
+      this.searchRequestId += 1;
+      if (this.debounceTimer) {
+        clearTimeout(this.debounceTimer);
+        this.debounceTimer = null;
+      }
       if (this.input) {
         this.input.value = '';
         this.input.focus();

@@ -2,6 +2,7 @@
  * Shared body-text metrics for Writing Insights pages (routes under /writing-insights).
  * Keeps Flesch / word / sentence heuristics in one place so routes don't reimplement them.
  */
+import { contentDigest } from './buildMemo';
 
 export interface BasicTextMetrics {
   wordCount: number;
@@ -104,7 +105,7 @@ export function analyzeBasicTextMetrics(content: string): BasicTextMetrics {
 
 /** Memoized per post id for the build process (shared across Brain Science routes). */
 export function getBasicTextMetricsForPost(postId: string, content: string): BasicTextMetrics {
-  const key = `${postId}:${content.length}`;
+  const key = `${postId}:${contentDigest(content)}`;
   const cached = basicMetricsByKey.get(key);
   if (cached) return cached;
   const metrics = analyzeBasicTextMetrics(content);

@@ -4,6 +4,7 @@ import {
   countLexiconHits,
   estimateReadingMinutes,
   fleschReadingEase,
+  getBasicTextMetricsForPost,
   perThousand,
 } from './textAnalysis';
 import { ogLocaleAlternatesFromHreflang } from '../ogLocale';
@@ -38,6 +39,14 @@ describe('textAnalysis basics', () => {
     expect(longRate).toBe(1);
     expect(shortRate).toBeGreaterThan(longRate);
     expect(perThousand(hits, 0)).toBe(0);
+  });
+
+  it('does not reuse metrics for a same-length content edit', () => {
+    const first = getBasicTextMetricsForPost('same-post', 'One sentence.');
+    const edited = getBasicTextMetricsForPost('same-post', 'No punctuation');
+
+    expect(first.sentenceCount).toBe(1);
+    expect(edited.sentenceCount).toBe(0);
   });
 });
 
