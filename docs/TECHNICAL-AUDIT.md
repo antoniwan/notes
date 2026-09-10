@@ -7,6 +7,11 @@
 
 This document is the system map the constitution already points at. It records what the product _is_ technically, where docs/code drift, and which gaps are closed vs deferred.
 
+**Revised 2026-09-10** (audit date above is preserved on purpose): the toolchain row
+in §2, the gate table in §7, and the cache note in §10 were corrected against the
+`codex/optimization-roadmap` work. Everything else still describes the 2026-07-28
+snapshot and has not been re-verified.
+
 ---
 
 ## 1. Product shape (one sentence)
@@ -17,17 +22,17 @@ Public field notes (essays, household recipes, book library) on a **hybrid Astro
 
 ## 2. Stack (truth)
 
-| Layer           | Actual (resolved)                                                                       | Docs that were wrong                               |
-| --------------- | --------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| Framework       | **Astro 7.x** (`astro@7.1.4`)                                                           | README / constitution / specify-rules said Astro 6 |
-| Output          | **Hybrid** — default static + `prerender = false` on quotes                             | README said “static output”                        |
-| Adapter         | `@astrojs/vercel@11`                                                                    | OK                                                 |
-| UI              | Tailwind CSS 4 + Vite plugin; Astro Fonts (DM Sans, Fraunces, Literata, JetBrains Mono) | OK                                                 |
-| Content         | MD/MDX via `@astrojs/mdx`, collection `blog`                                            | OK                                                 |
-| Language        | TypeScript 5.9                                                                          | OK                                                 |
-| Package manager | pnpm (CI: pnpm 10, Node 22.12)                                                          | OK                                                 |
-| Image           | Sharp; AVIF sources → social JPEG/PNG                                                   | OK                                                 |
-| Analysis        | `sentiment`, `reading-time`, brain-science utils                                        | OK                                                 |
+| Layer           | Actual (resolved)                                                                             | Docs that were wrong                               |
+| --------------- | --------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| Framework       | **Astro 7.x** (`astro@7.2.2` as of 2026-09-10)                                                | README / constitution / specify-rules said Astro 6 |
+| Output          | **Hybrid** — default static + `prerender = false` on quotes                                   | README said “static output”                        |
+| Adapter         | `@astrojs/vercel@11`                                                                          | OK                                                 |
+| UI              | Tailwind CSS 4 + Vite plugin; Astro Fonts (DM Sans, Fraunces, Source Serif 4, JetBrains Mono) | OK                                                 |
+| Content         | MD/MDX via `@astrojs/mdx`, collection `blog`                                                  | OK                                                 |
+| Language        | TypeScript 5.9                                                                                | OK                                                 |
+| Package manager | pnpm 12.3.4 (`packageManager`), Node 22.12.0 (`.nvmrc`); CI reads both                        | OK                                                 |
+| Image           | Sharp; AVIF sources → social JPEG/PNG                                                         | OK                                                 |
+| Analysis        | `sentiment`, `reading-time`, brain-science utils                                              | OK                                                 |
 
 ---
 
@@ -114,16 +119,18 @@ No accounts. No server-side reading progress. Constitution principle IV applies.
 
 ## 7. Quality gates (actual vs claimed)
 
-| Gate                                | Status                                                  |
-| ----------------------------------- | ------------------------------------------------------- |
-| `pnpm run format:check`             | CI                                                      |
-| `pnpm run check`                    | CI                                                      |
-| `pnpm run lint`                     | CI                                                      |
-| `pnpm run build`                    | CI (+ social image step)                                |
-| `pnpm run validate-feeds`           | **Wired** — needs `dist/` from a prior build            |
-| `pnpm run audit-frontmatter`        | **Wired** — walks `src/content/p`                       |
-| `pnpm run validate-structured-data` | **Wired** — smoke-checks structured-data module surface |
-| Unit / e2e tests                    | **None** (constitution acknowledges this)               |
+| Gate                                | Status                                                   |
+| ----------------------------------- | -------------------------------------------------------- |
+| `pnpm run format:check`             | CI                                                       |
+| `pnpm run check`                    | CI                                                       |
+| `pnpm run lint`                     | CI                                                       |
+| `pnpm run build`                    | CI (+ social image step)                                 |
+| `pnpm run validate-feeds`           | CI, after the build (needs `dist/`)                      |
+| `pnpm run audit-frontmatter`        | CI, before the build — walks `src/content/p`             |
+| `pnpm run validate-structured-data` | CI — smoke-checks structured-data module surface only    |
+| `pnpm run check-remark42-rewrite`   | CI — `vercel.json` rewrite vs `REMARK42_UPSTREAM_ORIGIN` |
+| Unit tests (`pnpm test`)            | CI — see §9 for coverage                                 |
+| Browser / e2e tests                 | **None** — Playwright is installed but unconfigured      |
 
 ---
 
@@ -168,7 +175,7 @@ Unit tests (`pnpm test`) cover publish filters, SEO routing, feed HTML sanitizat
 
 ## 10. Scaling risks (known)
 
-- Writing Insights lexicons live in `src/utils/brainScience/vocabulary.ts` (EN+ES). Flesch / word / sentence metrics + objective metrics + sentiment + posts fetch are memoized for the build process. Meta disk cache is versioned (v2); signature still ignores title and same-length body edits.
+- Writing Insights lexicons live in `src/utils/brainScience/vocabulary.ts` (EN+ES). Flesch / word / sentence metrics + objective metrics + sentiment + posts fetch are memoized for the build process. The meta disk cache is versioned (v3) and its signature hashes title + body plus `pubDate`, so same-length body edits and title changes invalidate (corrected 2026-09-10).
 - Dual redirect tables invite drift (host rules stay on Vercel; path redirects in Astro).
 - Graphify graph may lag HEAD; refresh with `graphify update .` after code changes.
 

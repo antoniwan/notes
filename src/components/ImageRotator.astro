@@ -24,6 +24,8 @@ const {
 if (!images || images.length === 0) {
   return null;
 }
+
+const canAutoRotate = autoRotate && images.length > 1;
 ---
 
 <div
@@ -103,6 +105,40 @@ if (!images || images.length === 0) {
           </div>
         )
       }
+
+      <!-- Autoplay control. Hidden until the script takes over so readers without
+           JavaScript never see a dead button. The script also sets the label to
+           match the state rotation actually starts in. -->
+      {
+        canAutoRotate && (
+          <button class="rotator-playback" type="button" data-playing="true" hidden>
+            <svg
+              class="rotator-icon rotator-icon-pause"
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <rect x="6" y="5" width="4" height="14" rx="1" />
+              <rect x="14" y="5" width="4" height="14" rx="1" />
+            </svg>
+            <svg
+              class="rotator-icon rotator-icon-play"
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <polygon points="7,4 20,12 7,20" />
+            </svg>
+            <span class="rotator-playback-label">Pause slideshow</span>
+          </button>
+        )
+      }
     </div>
 
     <!-- Thumbnail navigation -->
@@ -177,6 +213,31 @@ if (!images || images.length === 0) {
     @apply absolute top-4 right-4 rounded-full bg-black/50 px-3 py-1 text-sm font-medium text-white;
   }
 
+  .rotator-playback {
+    @apply absolute top-4 left-4 flex items-center justify-center rounded-full bg-black/50 p-2 text-white transition-colors duration-200 hover:bg-black/70;
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* The display utility above would otherwise beat the UA rule for [hidden]. */
+  .rotator-playback[hidden] {
+    display: none;
+  }
+
+  .rotator-playback:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 2px;
+  }
+
+  .rotator-playback-label {
+    @apply sr-only;
+  }
+
+  .rotator-playback[data-playing='true'] .rotator-icon-play,
+  .rotator-playback[data-playing='false'] .rotator-icon-pause {
+    display: none;
+  }
+
   .thumbnail-container {
     @apply mt-4 flex gap-2 overflow-x-auto pb-2;
   }
@@ -230,6 +291,15 @@ if (!images || images.length === 0) {
     private autoRotate: boolean;
     private rotationSpeed: number;
     private rotationInterval: number | null;
+    private playbackBtn: HTMLButtonElement | null;
+    private reducedMotion: MediaQueryList;
+    // The reader's explicit choice. Nothing but the playback button changes it,
+    // so moving the pointer away never resumes a slideshow they paused.
+    private userPaused = false;
+    // Transient reasons to hold: pointer over the rotator, keyboard focus inside
+    // it, or a backgrounded tab.
+    private hovered = false;
+    private focused = false;
 
     constructor(container: HTMLElement) {
       this.container = container;
@@ -239,6 +309,8 @@ if (!images || images.length === 0) {
       this.autoRotate = container.dataset.autoRotate === 'true';
       this.rotationSpeed = parseInt(container.dataset.rotationSpeed || '5000');
       this.rotationInterval = null;
+      this.playbackBtn = container.querySelector('.rotator-playback');
+      this.reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
       this.init();
     }
@@ -270,13 +342,70 @@ if (!images || images.length === 0) {
     }
 
     private setupAutoRotation(): void {
-      if (this.autoRotate && this.images.length > 1) {
-        this.startAutoRotation();
+      if (!this.autoRotate || this.images.length <= 1) return;
 
-        // Pause auto-rotation on hover
-        this.container.addEventListener('mouseenter', () => this.stopAutoRotation());
-        this.container.addEventListener('mouseleave', () => this.startAutoRotation());
+      // Readers who ask for reduced motion start paused rather than losing the
+      // control entirely; they can still opt in.
+      this.userPaused = this.reducedMotion.matches;
+
+      this.container.addEventListener('mouseenter', () => {
+        this.hovered = true;
+        this.syncRotation();
+      });
+      this.container.addEventListener('mouseleave', () => {
+        this.hovered = false;
+        this.syncRotation();
+      });
+      // Focus inside the rotator holds rotation so a keyboard reader is not
+      // moved out from under themselves. The playback control is excluded, or
+      // pressing Play would be cancelled by the focus it just received.
+      const holdsFocus = (node: EventTarget | null): boolean =>
+        node instanceof Node && this.container.contains(node) && node !== this.playbackBtn;
+
+      this.container.addEventListener('focusin', (event) => {
+        this.focused = holdsFocus(event.target);
+        this.syncRotation();
+      });
+      this.container.addEventListener('focusout', (event) => {
+        this.focused = holdsFocus((event as FocusEvent).relatedTarget);
+        this.syncRotation();
+      });
+      document.addEventListener('visibilitychange', () => this.syncRotation());
+      this.reducedMotion.addEventListener('change', (event) => {
+        // A reader turning the preference on mid-visit should stop advancing.
+        if (event.matches) this.userPaused = true;
+        this.syncRotation();
+      });
+
+      if (this.playbackBtn) {
+        this.playbackBtn.hidden = false;
+        this.playbackBtn.addEventListener('click', () => {
+          this.userPaused = !this.userPaused;
+          this.syncRotation();
+        });
       }
+
+      this.syncRotation();
+    }
+
+    private shouldRotate(): boolean {
+      return !this.userPaused && !this.hovered && !this.focused && !document.hidden;
+    }
+
+    private syncRotation(): void {
+      if (this.shouldRotate()) this.startAutoRotation();
+      else this.stopAutoRotation();
+      this.updatePlaybackControl();
+    }
+
+    // The button reports the reader's own choice, not the transient hover/focus
+    // holds, so hovering never makes the label flicker to "Play".
+    private updatePlaybackControl(): void {
+      if (!this.playbackBtn) return;
+      const playing = !this.userPaused;
+      this.playbackBtn.dataset.playing = playing ? 'true' : 'false';
+      const label = this.playbackBtn.querySelector('.rotator-playback-label');
+      if (label) label.textContent = playing ? 'Pause slideshow' : 'Play slideshow';
     }
 
     private startAutoRotation(): void {
@@ -342,8 +471,11 @@ if (!images || images.length === 0) {
   }
 
   // Initialize all image rotators on the page
-  document.addEventListener('DOMContentLoaded', () => {
+  function initializeRotators() {
     const rotators = document.querySelectorAll('.image-rotator');
     rotators.forEach((rotator) => new ImageRotator(rotator as HTMLElement));
-  });
+  }
+  if (document.readyState === 'loading')
+    document.addEventListener('DOMContentLoaded', initializeRotators, { once: true });
+  else initializeRotators();
 </script>

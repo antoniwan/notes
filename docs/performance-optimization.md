@@ -2,7 +2,13 @@
 
 ## Overview
 
-This document outlines the comprehensive performance optimizations implemented for the Blog to improve First Contentful Paint (FCP) and Largest Contentful Paint (LCP) metrics, following Astro blog best practices.
+This document outlines the performance optimizations implemented for the Blog to improve First Contentful Paint (FCP) and Largest Contentful Paint (LCP) metrics, following Astro blog best practices.
+
+> **Accuracy note — 2026-09-10.** Parts of this guide describe intended practice
+> rather than verified current behavior, and no field Core Web Vitals data backs
+> the targets below. The font, testing-command, and image sections were corrected
+> against the code on this date. Treat the remaining sections as guidance to
+> re-verify before citing, and measure before claiming an improvement.
 
 ## Core Web Vitals Targets
 
@@ -15,26 +21,21 @@ This document outlines the comprehensive performance optimizations implemented f
 
 ### 1. Font Loading Optimization
 
-#### Critical Font Preloading
+#### Fonts actually in use
 
-- Preload critical fonts (Open Sans 400, 600, Source Serif Pro 600) using `@font-face` with `font-display: swap`
-- Implement font preloading in HTML head for above-the-fold content
-- Use system font fallbacks to prevent invisible text during font loading
+Fonts are configured through Astro's `fonts` integration in `astro.config.mjs`, not
+hand-written `@font-face` rules. The four families are **DM Sans**, **Fraunces**,
+**Source Serif 4**, and **JetBrains Mono**. (Earlier revisions of this document
+named Open Sans and Source Serif Pro; neither is in the project.)
 
-```css
-@font-face {
-  font-family: 'Open Sans';
-  font-weight: 400;
-  font-display: swap;
-  src: url('...') format('woff2');
-}
-```
+Astro emits the `@font-face` rules, fallback metrics, and preload hints for the
+subsets it decides are needed. Do not add parallel `@font-face` declarations —
+they would compete with what the integration generates.
 
-#### Font Loading Strategy
-
-- **Critical fonts**: Loaded immediately with preload
-- **Additional weights**: Loaded asynchronously with `display=swap`
-- **Fallback fonts**: System fonts used until custom fonts load
+A build copies 41 font files into the output. That is the number of files
+generated across families, weights, and subsets; it is **not** the number any
+single page downloads. Measure real font transfer per route before treating it as
+a problem.
 
 ### 2. Critical CSS Inlining
 
@@ -136,12 +137,14 @@ pnpm run lighthouse
 pnpm run audit-performance
 ```
 
-#### Build Analysis
+`pnpm run lighthouse` writes an HTML report and `pnpm run audit-performance`
+writes performance-only JSON, both under `reports/` (gitignored). Each starts and
+stops its own `astro preview` server, so run `pnpm run build` first — they measure
+`dist/` and fail if it is missing.
 
-```bash
-pnpm run analyze
-pnpm run performance
-```
+The former `analyze` and `performance` scripts were removed on 2026-09-10: they
+shelled out to `@astrojs/vercel/static-build`, which the installed adapter does
+not provide, and `performance` ran the full build twice.
 
 ### Monitoring in Development
 

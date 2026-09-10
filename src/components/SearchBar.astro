@@ -52,12 +52,18 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
     </button>
   </div>
 
+  <!-- Polite status for assistive technology. Lives outside the dropdown so it is
+       announced even while the results region is hidden. -->
+  <p id={`${searchId}-status`} class="sr-only" role="status" aria-live="polite" aria-atomic="true">
+  </p>
+
   <!-- Search Results Dropdown -->
   <div
     id={`${searchId}-results`}
     class="search-dropdown hidden"
     role="region"
     aria-label="Search results"
+    aria-busy="false"
   >
     <!-- Loading State -->
     <div id={`${searchId}-loading`} class="text-body-muted hidden p-8 text-center">
@@ -101,6 +107,7 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
     private loading: HTMLElement | null;
     private noResults: HTMLElement | null;
     private clearBtn: HTMLButtonElement | null;
+    private status: HTMLElement | null;
     private debounceTimer: ReturnType<typeof setTimeout> | null = null;
     private isSearching = false;
     private searchRequestId = 0;
@@ -112,6 +119,7 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
       this.loading = document.getElementById(`${searchId}-loading`) as HTMLElement;
       this.noResults = document.getElementById(`${searchId}-no-results`) as HTMLElement;
       this.clearBtn = document.getElementById(`${searchId}-clear`) as HTMLButtonElement;
+      this.status = document.getElementById(`${searchId}-status`) as HTMLElement;
 
       this.init();
     }
@@ -200,6 +208,7 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
         if (query.length >= 2) {
           this.performSearch(query);
         } else {
+          this.announce('');
           this.hideResults();
         }
       }, 300);
@@ -211,17 +220,19 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
       const requestId = this.searchRequestId;
       this.isSearching = true;
       this.showLoading();
+      this.announce('Searching');
 
       try {
         // Simulate search - replace with actual search implementation
         const results = await this.searchPosts(query);
         if (requestId !== this.searchRequestId || this.input?.value.trim() !== query) return;
-        this.displayResults(results);
+        this.displayResults(results, query);
       } catch (error) {
         if (requestId !== this.searchRequestId || this.input?.value.trim() !== query) return;
-        this.showNoResults();
+        this.showNoResults(query);
       } finally {
         this.isSearching = false;
+        this.setBusy(false);
       }
     }
 
@@ -320,14 +331,14 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
       }));
     }
 
-    displayResults(results: any[]) {
+    displayResults(results: any[], query = '') {
       if (!this.resultsList) return;
 
       this.hideLoading();
       this.hideNoResults();
 
       if (results.length === 0) {
-        this.showNoResults();
+        this.showNoResults(query);
         return;
       }
 
@@ -446,6 +457,9 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
       });
 
       this.showResults();
+      this.announce(
+        `${results.length} ${results.length === 1 ? 'result' : 'results'}${this.forQuery(query)}. Use the arrow keys to review them.`,
+      );
     }
 
     getTypeConfig(type: string) {
@@ -498,6 +512,7 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
       if (this.results) {
         this.results.classList.add('hidden');
       }
+      this.setBusy(false);
       // Hide clear button when closing results without navigating
       if (this.clearBtn) {
         this.clearBtn.classList.add('hidden');
@@ -508,6 +523,7 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
       if (this.loading) this.loading.classList.remove('hidden');
       if (this.noResults) this.noResults.classList.add('hidden');
       if (this.resultsList) this.resultsList.innerHTML = '';
+      this.setBusy(true);
       this.showResults();
     }
 
@@ -515,11 +531,12 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
       if (this.loading) this.loading.classList.add('hidden');
     }
 
-    showNoResults() {
+    showNoResults(query = '') {
       if (this.noResults) this.noResults.classList.remove('hidden');
       if (this.loading) this.loading.classList.add('hidden');
       if (this.resultsList) this.resultsList.replaceChildren();
       this.showResults();
+      this.announce(`No results found${this.forQuery(query)}.`);
     }
 
     hideNoResults() {
@@ -536,10 +553,25 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
         this.input.value = '';
         this.input.focus();
       }
+      this.announce('');
       this.hideResults();
       if (this.clearBtn) {
         this.clearBtn.classList.add('hidden');
       }
+    }
+
+    announce(message: string) {
+      if (!this.status || this.status.textContent === message) return;
+      this.status.textContent = message;
+    }
+
+    setBusy(busy: boolean) {
+      this.results?.setAttribute('aria-busy', busy ? 'true' : 'false');
+    }
+
+    forQuery(query: string): string {
+      const trimmed = query.trim();
+      return trimmed ? ` for ${trimmed}` : '';
     }
 
     handleArrowKeys(key: string) {
