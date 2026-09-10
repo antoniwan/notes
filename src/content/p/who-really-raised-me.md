@@ -1,11 +1,10 @@
 ---
 title: Who, really, raised me?
 description: >-
-  A deep dive into the fictional characters that shaped my values, from
-  childhood cartoons to adult anime. Discover how Samurai X, Dragon Ball Z,
-  Berserk, and especially One Punch Man's Saitama became my true mentors,
-  teaching me about discipline, brotherhood, pain as power, and the loneliness
-  of mastery.
+  Which fictional characters shaped my values, from childhood cartoons to
+  adult anime — and what Samurai X, Dragon Ball Z, Berserk, and especially
+  One Punch Man's Saitama taught me about discipline, brotherhood, and the
+  loneliness of mastery.
 pubDate: '2025-04-17T13:56:47.953Z'
 updatedDate: '2026-08-27T16:54:00.000Z'
 language:

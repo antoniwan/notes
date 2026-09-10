@@ -1,8 +1,9 @@
 ---
 title: Reflections From a Tough Weekend
 description: >-
-  A raw and honest reflection on processing emotional pain, self-healing, and
-  the journey towards emotional wellbeing.
+  A raw journal entry written to get through a painful weekend: notes to
+  myself on loneliness, an emotionally abusive relationship, and staying
+  kind while I heal.
 pubDate: '2024-05-14'
 language:
   - en

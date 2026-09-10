@@ -2,12 +2,15 @@ import fs from 'node:fs';
 import path from 'node:path';
 import type { CollectionEntry } from 'astro:content';
 import type { WritingPhilosophyAnalysis } from './metaAnalysis';
+import { contentDigest } from './buildMemo';
+
+const CACHE_VERSION = 3;
 
 interface MetaAnalysisCache {
-  version: 2;
+  version: typeof CACHE_VERSION;
   postsSignature: Array<{
     id: string;
-    bodyLength: number;
+    contentHash: string;
     pubDate: string | null;
   }>;
   analyses: WritingPhilosophyAnalysis[];
@@ -22,7 +25,7 @@ function buildPostsSignature(
   return posts
     .map((post) => ({
       id: post.id,
-      bodyLength: (post.body || '').length,
+      contentHash: contentDigest(`${post.data.title}\0${post.body || ''}`),
       pubDate:
         post.data.pubDate instanceof Date
           ? post.data.pubDate.toISOString()
@@ -40,7 +43,7 @@ export function loadMetaAnalysisCache(
     const raw = fs.readFileSync(CACHE_FILE, 'utf8');
     const parsed = JSON.parse(raw) as MetaAnalysisCache;
 
-    if (parsed.version !== 2 || !Array.isArray(parsed.postsSignature)) return null;
+    if (parsed.version !== CACHE_VERSION || !Array.isArray(parsed.postsSignature)) return null;
 
     const currentSignature = buildPostsSignature(posts);
 
@@ -49,7 +52,7 @@ export function loadMetaAnalysisCache(
     for (let i = 0; i < currentSignature.length; i += 1) {
       const a = currentSignature[i];
       const b = parsed.postsSignature[i];
-      if (!b || a.id !== b.id || a.bodyLength !== b.bodyLength || a.pubDate !== b.pubDate) {
+      if (!b || a.id !== b.id || a.contentHash !== b.contentHash || a.pubDate !== b.pubDate) {
         return null;
       }
     }
@@ -74,7 +77,7 @@ export function saveMetaAnalysisCache(
     }
 
     const cache: MetaAnalysisCache = {
-      version: 2,
+      version: CACHE_VERSION,
       postsSignature: buildPostsSignature(posts),
       analyses,
     };

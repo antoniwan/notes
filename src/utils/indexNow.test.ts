@@ -184,4 +184,29 @@ describe('pingIndexNowFromSitemapDir', () => {
       }),
     ).resolves.toBe('empty');
   });
+
+  it('fails within the configured total request budget', async () => {
+    const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'indexnow-'));
+    fs.writeFileSync(
+      path.join(tmp, 'sitemap-0.xml'),
+      `<urlset><url><loc>https://notes.antoniwan.online/p/foo</loc></url></urlset>`,
+    );
+    const fetchImpl = vi.fn(
+      (_url: string | URL | Request, init?: RequestInit) =>
+        new Promise<Response>((_resolve, reject) => {
+          init?.signal?.addEventListener('abort', () => reject(init.signal?.reason), {
+            once: true,
+          });
+        }),
+    ) as unknown as typeof fetch;
+
+    await expect(
+      pingIndexNowFromSitemapDir(pathToFileURL(tmp), {
+        env: { VERCEL_ENV: 'production' },
+        fetchImpl,
+        timeoutMs: 10,
+      }),
+    ).resolves.toBe('skipped');
+    expect(fetchImpl).toHaveBeenCalledTimes(1);
+  });
 });

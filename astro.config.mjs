@@ -159,11 +159,6 @@ export default defineConfig({
         usePolling: false,
       },
       hmr: true,
-      // Optimize dev server performance
-      fs: {
-        // Limit file system access for faster startup
-        strict: false,
-      },
     },
     build: {
       cssMinify: true,

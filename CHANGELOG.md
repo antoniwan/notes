@@ -9,6 +9,22 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.22.2] — 2026-09-10
+
+### Changed
+
+- Search data is emitted once per page, reducing initial HTML while keeping desktop and mobile search behavior.
+- CI now checks frontmatter, structured-data exports, the Remark42 rewrite, and generated feeds around the production build.
+- Writing Insights caches use content-aware hashes, so title and same-length body edits refresh analytics without discarding valid cached work.
+- Optional Threads and IndexNow requests share explicit build-time deadlines.
+- Article images open in a keyboard-accessible dialog, and scrolling respects reduced-motion preferences.
+
+### Fixed
+
+- Clearing search cannot reopen stale debounced results.
+- Social-image metadata drops entries when source AVIF files are removed.
+- Vite development file serving uses its strict filesystem boundary.
+
 ## [6.22.1] — 2026-09-09
 
 ### Changed

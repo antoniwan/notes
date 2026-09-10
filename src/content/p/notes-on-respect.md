@@ -1,8 +1,8 @@
 ---
 title: Notes on Respect
 description: >-
-  A personal reflection on the transformative power of respect, self-worth, and
-  healthy boundaries in personal growth and relationships.
+  How getting healthy changed the way people treat me, and what I've learned
+  about respect, self-worth, and boundaries along the way.
 pubDate: '2024-05-07'
 language:
   - en

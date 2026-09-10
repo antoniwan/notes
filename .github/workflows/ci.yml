@@ -50,5 +50,17 @@ jobs:
       - name: Run ESLint
         run: pnpm run lint
 
+      - name: Audit content frontmatter
+        run: pnpm run audit-frontmatter
+
+      - name: Check structured-data module
+        run: pnpm run validate-structured-data
+
+      - name: Check Remark42 rewrite
+        run: pnpm run check-remark42-rewrite
+
       - name: Build project
         run: pnpm run build
+
+      - name: Validate generated feeds
+        run: pnpm run validate-feeds

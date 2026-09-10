@@ -1,9 +1,9 @@
 ---
 title: On Self-Discovery, Self-Awareness, Value-Based Living
 description: >-
-  A journey through self-awareness, challenging negative self-talk, and
-  discovering the transformative power of value-based decision making in
-  everyday life.
+  Catching an intrusive negative thought, reviewing a month of memories to
+  counter it, and a night alone at a concert that made me question why I
+  was really there.
 pubDate: '2024-03-25T14:15:00.000Z'
 language:
   - en

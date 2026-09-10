@@ -1,649 +1,649 @@
 {
-  "version": 2,
+  "version": 3,
   "postsSignature": [
     {
       "id": "an-hour-of-hair-brushing-what-my-daughter-taught-me-about-time",
-      "bodyLength": 7142,
+      "contentHash": "8758e6070cb65f3bd982b233f905815ed37652cdc7b699ce15dc0af4498abce2",
       "pubDate": "2025-07-28T14:14:00.000Z"
     },
     {
       "id": "an-invitation-to-the-end-of-wealth-worship-and-the-beginning-of-a-human-future",
-      "bodyLength": 8555,
+      "contentHash": "0bfc35cf241da5829c112c0451cf18d63e740ca33b3907c94c3ecb2baaa16a03",
       "pubDate": "2025-11-07T15:29:00.000Z"
     },
     {
       "id": "arithmetic-presencia",
-      "bodyLength": 1475,
+      "contentHash": "b73d9088438a9e428aaee1e9f96055c44a14cce9d6fb93e2a1841bf25f120477",
       "pubDate": "2026-02-08T12:00:00.000Z"
     },
     {
       "id": "beef-heart-nutrition",
-      "bodyLength": 3921,
+      "contentHash": "2dc0c80cbaabdb07e57c980c05ab7fffb7b6ccca8d089dcc466dcb035c12655b",
       "pubDate": "2025-05-01T16:45:00.000Z"
     },
     {
       "id": "bend-dont-break-learning-to-flow-again",
-      "bodyLength": 18427,
+      "contentHash": "c100c897941dba4faf117fe5e83317ad64bdf4817a0ec08e182eb4fc9ce6d9b1",
       "pubDate": "2025-07-30T23:15:00.000Z"
     },
     {
       "id": "boundaries-miscalibration-unconditional-love",
-      "bodyLength": 7847,
+      "contentHash": "bf85ede5a691f4a3aa7d86d1f4009c6b14f04de587f373a97866ff82050c5762",
       "pubDate": "2026-01-16T13:50:00.000Z"
     },
     {
       "id": "boundaries-miscalibration-unconditional-love-es",
-      "bodyLength": 8414,
+      "contentHash": "058b89352fdd9f2feec1de7bc42270ce6e2e44e0e1037d02353ff3bac1200c25",
       "pubDate": "2026-01-16T13:50:00.000Z"
     },
     {
       "id": "brief-notes-on-finding-serenity-in-self-control",
-      "bodyLength": 1276,
+      "contentHash": "8d1aa21499938396a0234a6a00bad655d6f4ecb2161a2b92cac1111ad49e712c",
       "pubDate": "2024-07-29T17:08:22.762Z"
     },
     {
       "id": "briefly-on-empathy-as-a-double-edged-sword",
-      "bodyLength": 935,
+      "contentHash": "795265047d0c6ae587f0fa8a21be1f02909aeff3640231dee61496cbc81fddd4",
       "pubDate": "2024-07-29T17:12:19.944Z"
     },
     {
       "id": "captured-not-pathetic",
-      "bodyLength": 18802,
+      "contentHash": "362de5ee69463345482e03a0a3d9e784dd66aea1df2b670a883461214d70807a",
       "pubDate": "2026-09-07T22:00:00.000Z"
     },
     {
       "id": "como-proteger-ninos-digital",
-      "bodyLength": 4482,
+      "contentHash": "61ba005a6ace26dc3a615d384d6ad0faeaa25faf246919d44263beb3932b712f",
       "pubDate": "2025-05-01T00:00:00.000Z"
     },
     {
       "id": "conquering-imposter-syndrome-with-evidence-based-journaling",
-      "bodyLength": 2428,
+      "contentHash": "5aaf3ceb7d5c6cb34ab8c005829a02a3cafaec1629c95981d9337156701616bf",
       "pubDate": "2024-07-24T16:21:33.037Z"
     },
     {
       "id": "customizing-chatgpt",
-      "bodyLength": 2448,
+      "contentHash": "01462f9adaa1e0200897b47842e486417af4256cea3726b899b06ef5ec415192",
       "pubDate": "2025-05-01T18:16:00.000Z"
     },
     {
       "id": "el-problema-de-prometeo",
-      "bodyLength": 44179,
+      "contentHash": "507a4cd93d918ef449a7dda0c16f3fd81e31ab7fb354cada7f3bd12a60ac7ad1",
       "pubDate": "2025-12-16T19:00:00.000Z"
     },
     {
       "id": "el-trickle-down-si-llego",
-      "bodyLength": 14079,
+      "contentHash": "f7a0ef0d84691bb614e367c45f1d34f519d16443767d430355568a8dd8233306",
       "pubDate": "2026-08-12T14:25:00.000Z"
     },
     {
       "id": "embracing-the-spiritual-abyss-an-atheists-search-for-meaning",
-      "bodyLength": 4226,
+      "contentHash": "eebda28a9a0c9de23d6bc74ca8ce203d93ffe37883b5dc8f8ad21259bab26822",
       "pubDate": "2024-06-03T17:27:29.382Z"
     },
     {
       "id": "empathy-as-a-shield",
-      "bodyLength": 4373,
+      "contentHash": "2388b340147200c3c854eae44f51ad282a51013ae27e7dc616042bcd5d1e3643",
       "pubDate": "2025-08-24T17:30:07.300Z"
     },
     {
       "id": "fasting-metabolic-ritual",
-      "bodyLength": 2231,
+      "contentHash": "839e10a33565fa4f130c167eb1c6491ca7213a4de0aa2b85f8180d44f05f9358",
       "pubDate": "2025-05-02T08:00:00.000Z"
     },
     {
       "id": "fear-control-politics",
-      "bodyLength": 4182,
+      "contentHash": "e0d8f8b402f856d88b3d9b14be72eff6e01c0b871e8f133e3c5acaff7c2b4c68",
       "pubDate": "2025-04-01T00:00:00.000Z"
     },
     {
       "id": "forging-stronghand-terminal",
-      "bodyLength": 5408,
+      "contentHash": "fd1299cad81879bf83f059a2bf6355e110a7b5e23820c2cf44c4531ec58cad22",
       "pubDate": "2025-04-28T00:00:00.000Z"
     },
     {
       "id": "forging-stronghand-terminal-september-2026",
-      "bodyLength": 9629,
+      "contentHash": "e6ea110dc74797d371c3c5a3234378f0ed20a6776d91ae4a63a8def3817d3eb5",
       "pubDate": "2026-09-08T12:00:00.000Z"
     },
     {
       "id": "good-sheep",
-      "bodyLength": 43329,
+      "contentHash": "17a9accc079f13a4e336bc28cb752f609bce5b74d72213383f78b64470a57c45",
       "pubDate": "2025-08-03T17:25:00.000Z"
     },
     {
       "id": "guia-ipad-es",
-      "bodyLength": 2414,
+      "contentHash": "ba78648e0b7783fe6ba14badfe7b492ff080cbc1c7dd2e2e03f9ffe370b66100",
       "pubDate": "2025-05-01T10:30:00.000Z"
     },
     {
       "id": "happiness-is-moments",
-      "bodyLength": 1329,
+      "contentHash": "fa5603c616135b2741eada13e94035a2b429ecf4ae4aa2f5761d3c30c8885f7b",
       "pubDate": "2026-05-20T23:18:01.000Z"
     },
     {
       "id": "i-became-what-i-used-to-mock",
-      "bodyLength": 8089,
+      "contentHash": "861d127a5fb23edc63e84ec408359d77156b1df86e5e9a85dd4b3e98cb363e75",
       "pubDate": "2025-07-17T15:00:00.000Z"
     },
     {
       "id": "i-didnt-start-cooking-for-love",
-      "bodyLength": 7421,
+      "contentHash": "8277029b5e79e48e23e296edb28cefecfa4127771697489da1bd10d5469ab737",
       "pubDate": "2026-09-01T17:30:00.000Z"
     },
     {
       "id": "if-god-had-gentle-parented-us",
-      "bodyLength": 16223,
+      "contentHash": "011ceeefe77b84135262770109b9547e6a6d191544d97935870ceacdf51e0225",
       "pubDate": "2026-07-14T20:00:00.000Z"
     },
     {
       "id": "illuminalganti",
-      "bodyLength": 2981,
+      "contentHash": "652bdae624086ae4bae1dd2558d3b5ec0ea7365f491bde704f7588b461a7e6e3",
       "pubDate": "2025-05-01T15:45:00.000Z"
     },
     {
       "id": "intelligence-burns",
-      "bodyLength": 3180,
+      "contentHash": "e3a1549e146b79ce2932e8a2d5c10d79f1c0fadd2954f5d9b3dfbabf89f10dfb",
       "pubDate": "2025-10-31T00:00:00.000Z"
     },
     {
       "id": "la-felicidad-son-momentos",
-      "bodyLength": 1380,
+      "contentHash": "76b8e4a1378439ce3cb12b20491496bd458ae45bd86ed4318f7bf1acb15b81fe",
       "pubDate": "2026-05-20T23:18:01.000Z"
     },
     {
       "id": "la-primera-pared",
-      "bodyLength": 4789,
+      "contentHash": "44400c6e2df22b22959252c169e40f7f0163eaf9e38623358d4570f2f7c18941",
       "pubDate": "2025-12-29T22:50:00.000Z"
     },
     {
       "id": "learning-construction-self",
-      "bodyLength": 2414,
+      "contentHash": "e36e71d76ce0ef7d515eafc3bf531dd188dacd9bdb5901303776068aceeb15bf",
       "pubDate": "2024-07-15T16:45:00.000Z"
     },
     {
       "id": "life-statement-transformation",
-      "bodyLength": 3506,
+      "contentHash": "23fb5a0919501a6d900897014bdf57875b677807e2076b66d3390ee7569ddca2",
       "pubDate": "2024-04-27T08:50:00.000Z"
     },
     {
       "id": "love-is-the-final-revolution",
-      "bodyLength": 6896,
+      "contentHash": "e04fb4f2711debd5997b516b0e4b0e87f8ad7f60133135d820ba3eb2bd29af13",
       "pubDate": "2025-08-13T12:20:00.000Z"
     },
     {
       "id": "mercy-through-the-blade",
-      "bodyLength": 6074,
+      "contentHash": "bd1b39a3d240638250d461310b15328448295ed50a88e6aff0cc50305d510b8c",
       "pubDate": "2025-04-26T00:00:00.000Z"
     },
     {
       "id": "my-crimson-desert-review-after-200-hours",
-      "bodyLength": 51737,
+      "contentHash": "40c640992394a69a5b3f269bae2425f865241e29431751ea66d99b8965723db7",
       "pubDate": "2026-04-29T14:17:00.000Z"
     },
     {
       "id": "my-mental-health-routine-unfiltered",
-      "bodyLength": 1722,
+      "contentHash": "d29f2a2f5f6afc5274d3b0f8fd3a8345f6ac866cb290364d092ec967dd011740",
       "pubDate": "2025-04-21T00:26:07.406Z"
     },
     {
       "id": "note-to-self-on-being-a-conscious-parent",
-      "bodyLength": 3993,
+      "contentHash": "0706eadfce0b9f2660d3c755b5a08d0a83fb6237bd012063542adaeb9defb63e",
       "pubDate": "2024-05-05T00:00:00.000Z"
     },
     {
       "id": "note-to-self-to-be-or-what-not-to-be",
-      "bodyLength": 1018,
+      "contentHash": "5f39457fc44db42d6a4e26951cbca5f2e0f7794b172d8642a3991bd4a8d48c2b",
       "pubDate": "2024-05-31T15:55:06.032Z"
     },
     {
       "id": "notes-on-puerto-rico-sin-pie-forzao",
-      "bodyLength": 53243,
+      "contentHash": "6d6f26ba536d1b81c4da42ee0548e2124b345ce38f9f8d2641bdfd5a6befda5c",
       "pubDate": "2026-02-19T02:45:00.000Z"
     },
     {
       "id": "notes-on-puerto-rico-sin-pie-forzao-es",
-      "bodyLength": 55322,
+      "contentHash": "b1f08b7b948dd3bdfbcb1cddaeccbfae2297cf27fecd57b5db9ec6517e83ccfe",
       "pubDate": "2026-02-19T02:45:00.000Z"
     },
     {
       "id": "notes-on-respect",
-      "bodyLength": 3787,
+      "contentHash": "2ed60dd959aaaddf15c3cd49609a711218df936352156a485465b10654541499",
       "pubDate": "2024-05-07T00:00:00.000Z"
     },
     {
       "id": "notes-on-self-control",
-      "bodyLength": 2667,
+      "contentHash": "eb24565b7fb427ea39f87273d8162649a06520ff409c4138d5bc79869a2b3f36",
       "pubDate": "2024-05-06T00:00:00.000Z"
     },
     {
       "id": "on-clear-signals",
-      "bodyLength": 4348,
+      "contentHash": "d41a604e6c6b02d227b1d2864327d0d24a28739254b54814e7b4cbcd74f55801",
       "pubDate": "2025-11-30T14:30:00.000Z"
     },
     {
       "id": "on-cooking-on-everything-and-foundations",
-      "bodyLength": 607,
+      "contentHash": "082578f1d3c6318d8eaf873e6b0f773400eba47a3f45ef3a4a715f70257c0abc",
       "pubDate": "2024-09-15T13:06:14.100Z"
     },
     {
       "id": "on-feeling-overpowered",
-      "bodyLength": 3341,
+      "contentHash": "236b8c4b45d1e5d9208fa0138cf4302101648683ca84b086c686fda921175c72",
       "pubDate": "2024-05-29T14:41:25.408Z"
     },
     {
       "id": "on-leadership-and-leadership-adjacent-things-april-2026",
-      "bodyLength": 74718,
+      "contentHash": "6ba7dcaca97a713196a797e575504e63751daf893575bbc886dffbc1015f92fe",
       "pubDate": "2026-04-03T17:00:00.000Z"
     },
     {
       "id": "on-limits-growth-and-the-meaning-of-my-life",
-      "bodyLength": 1985,
+      "contentHash": "4899b42532c7cd4df37eab19282e21c420947acfd384e3088068b10f798f94f0",
       "pubDate": "2024-05-14T00:00:00.000Z"
     },
     {
       "id": "on-overcoming-analysis-paralysis",
-      "bodyLength": 5463,
+      "contentHash": "58bda60328768737b059c19d4344d76d4cc7087647460eaa52b938101be24f33",
       "pubDate": "2024-12-04T15:25:09.221Z"
     },
     {
       "id": "on-parental-pressure",
-      "bodyLength": 9010,
+      "contentHash": "f82c222ac23b2ab4c3966e6f4b341bc6329d126f7701675e53655e9f205e9422",
       "pubDate": "2026-06-03T12:00:00.000Z"
     },
     {
       "id": "on-simplicity-and-peace-of-mind",
-      "bodyLength": 3962,
+      "contentHash": "536f0ad759b3b2ef761723d790adc5b009bfeced51a79fcb048133df7f5b8945",
       "pubDate": "2024-10-04T18:40:28.388Z"
     },
     {
       "id": "on-testing-relationships",
-      "bodyLength": 5043,
+      "contentHash": "b396bb0c646dc3ed997e18ea6bc43c7d3bd714f430ed42757942583706875de0",
       "pubDate": "2025-12-02T15:00:00.000Z"
     },
     {
       "id": "on-the-application-of-empathy-and-compassion",
-      "bodyLength": 6425,
+      "contentHash": "5d9a5d742e158a4ff137164751fd9ffc97a687484302d46fa85900e1f568f5d2",
       "pubDate": "2024-09-15T14:11:07.796Z"
     },
     {
       "id": "pa-la-nena-que-vive-en-ti",
-      "bodyLength": 1110,
+      "contentHash": "f9e49d854454fc51996d72a3d6145cb2d2bbb260f12db1aae4a3dfda6475caf6",
       "pubDate": "2025-04-21T12:21:28.540Z"
     },
     {
       "id": "power-intentional-living",
-      "bodyLength": 3035,
+      "contentHash": "8dfb0b81a13f62f129b51978c515fd9ef83ebb049338fb27697a00f2f2ac5426",
       "pubDate": "2024-03-25T14:15:00.000Z"
     },
     {
       "id": "presentando-vastitas-omniparens",
-      "bodyLength": 24813,
+      "contentHash": "d7cbef34818f6c6900b70cb855cf86dda513da950b90629b2b07bd57c74e5fc7",
       "pubDate": "2026-07-27T13:45:00.000Z"
     },
     {
       "id": "presenting-vastitas-omniparens",
-      "bodyLength": 23495,
+      "contentHash": "474d097c6a25289edfc1284d11853a96453d163881785b84a7ecaf60b9c1e5a1",
       "pubDate": "2026-07-27T13:45:00.000Z"
     },
     {
       "id": "quien-soy-hoy-reporte-de-progreso-de-recuperacion",
-      "bodyLength": 6485,
+      "contentHash": "fc0af6a8a91f6cb8ff335d0aee99e549b0306b182e900c73a7b8372c54b83460",
       "pubDate": "2025-08-06T11:00:00.000Z"
     },
     {
       "id": "recipes/arepas-de-calabaza",
-      "bodyLength": 2267,
+      "contentHash": "2b452a233d7b013f47dc956389c1db2bbcd56060d485de8f555489fcd7d29336",
       "pubDate": "2026-03-04T14:00:00.000Z"
     },
     {
       "id": "recipes/arroz-con-gandules",
-      "bodyLength": 1305,
+      "contentHash": "4634dbb4db2694946d0a62a218388882cfa97526309b493c2e7d8eed0270e4ff",
       "pubDate": "2026-08-06T14:00:00.000Z"
     },
     {
       "id": "recipes/arroz-con-gandules-en",
-      "bodyLength": 1263,
+      "contentHash": "dd481c345f20bf6b61fa85db7bfa42d998cb552b62452eef899046e8d0f10f10",
       "pubDate": "2026-08-06T14:00:00.000Z"
     },
     {
       "id": "recipes/arroz-con-pollo",
-      "bodyLength": 2645,
+      "contentHash": "59f270a052f2698400dc64cb0fdc97cc7e421600b0a16165205bd119bbc50e87",
       "pubDate": "2026-07-23T14:00:00.000Z"
     },
     {
       "id": "recipes/arroz-con-pollo-en",
-      "bodyLength": 2537,
+      "contentHash": "f6213f36335b9518b6f101deb5c174c9540fb6b9f3c51edc854b161fcb800cff",
       "pubDate": "2026-07-23T14:00:00.000Z"
     },
     {
       "id": "recipes/asopao-de-pollo",
-      "bodyLength": 1865,
+      "contentHash": "d5cc86044ca71df5a4cc92c4d59bbced5c4d3ccfbe767b0b647f1f6ec6a1b34b",
       "pubDate": "2026-08-27T14:00:00.000Z"
     },
     {
       "id": "recipes/asopao-de-pollo-en",
-      "bodyLength": 1819,
+      "contentHash": "25a6c0a12fd7eac5263aaa52d0b37f135e75efd7a0a00e995136cda9fc35c1ce",
       "pubDate": "2026-08-27T14:00:00.000Z"
     },
     {
       "id": "recipes/banana-oat-bread",
-      "bodyLength": 527,
+      "contentHash": "a9f52d7442252f16f3fa905c8c57f3438cd46954f7c1579f5cf88da3b9755381",
       "pubDate": "2025-02-21T14:00:00.000Z"
     },
     {
       "id": "recipes/brocoli-con-sabor",
-      "bodyLength": 878,
+      "contentHash": "b8d2f4b973003c5467a6cce972490904c7a2231f832b3ece300b9b8e6362cab3",
       "pubDate": "2022-06-01T14:00:00.000Z"
     },
     {
       "id": "recipes/brocoli-con-sabor-en",
-      "bodyLength": 842,
+      "contentHash": "1c79eea4e8478c3d48119c5f59055f5d6160b3be3308220907a7edf5f591cc0f",
       "pubDate": "2022-06-01T14:00:00.000Z"
     },
     {
       "id": "recipes/brown-butter-gourmet-brownies",
-      "bodyLength": 3275,
+      "contentHash": "a98d7e858e7ef568f7c00741496f07879162f68ddb6dd8e1d8b580c4b2e07d3e",
       "pubDate": "2026-05-29T14:00:00.000Z"
     },
     {
       "id": "recipes/cast-iron-flank-steak",
-      "bodyLength": 1052,
+      "contentHash": "f9fcdc3c91537d9baeb59be25ae8f1f7990a93303f44ba55d04b50ed07caf11f",
       "pubDate": "2026-03-18T14:00:00.000Z"
     },
     {
       "id": "recipes/chilean-sea-bass",
-      "bodyLength": 965,
+      "contentHash": "b00c64bd4ec9d64aa0a7b2f87ecae90b88ebb626df3c5c3895cda9df9f9c12bf",
       "pubDate": "2022-08-31T14:00:00.000Z"
     },
     {
       "id": "recipes/coquito-de-moni",
-      "bodyLength": 672,
+      "contentHash": "fa28bce0cdaf29fee89f59b6d08098abc3939c21616599f6cd8fbf4055a7ffe9",
       "pubDate": "2026-08-10T00:00:00.000Z"
     },
     {
       "id": "recipes/coquito-de-moni-en",
-      "bodyLength": 667,
+      "contentHash": "8ee0bf0d7006bc8412cf131fd3e95368381fc6e563651771013c365df0729142",
       "pubDate": "2026-08-10T00:00:00.000Z"
     },
     {
       "id": "recipes/easy-breakfast-guacamole-toast",
-      "bodyLength": 967,
+      "contentHash": "6561f88be1ca9878b7d3147f3244bddbbbdeafc1246511200dd1b4df67180673",
       "pubDate": "2026-07-11T14:00:00.000Z"
     },
     {
       "id": "recipes/fettuccine-with-seared-chicken",
-      "bodyLength": 4625,
+      "contentHash": "b79d0c0a5e1bf0e679aca1615183b8ff4e2686ae252bdf37065cc37470b49f79",
       "pubDate": "2026-08-21T14:00:00.000Z"
     },
     {
       "id": "recipes/fried-chicken-tender-nuggets",
-      "bodyLength": 1321,
+      "contentHash": "87d09935bc72da6fa0dc2e2042d710b1723cacbf486abf80d9bc205a5e01c37b",
       "pubDate": "2022-09-25T14:00:00.000Z"
     },
     {
       "id": "recipes/fried-chicken-tender-nuggets-en",
-      "bodyLength": 1293,
+      "contentHash": "40c289a3ce47b697d45d86ac133968393431befdda0e0b55eb766ebae7202607",
       "pubDate": "2022-09-25T14:00:00.000Z"
     },
     {
       "id": "recipes/habichuelas-guisadas",
-      "bodyLength": 1588,
+      "contentHash": "9ce9f0827931384c954c9677bd04592f2413b8dae7ba7ccc6005b6026e8da22c",
       "pubDate": "2026-07-04T14:00:00.000Z"
     },
     {
       "id": "recipes/habichuelas-guisadas-en",
-      "bodyLength": 1495,
+      "contentHash": "aeec08a2af71fdb28fe7d24e8838f6fce4910350d783165e16e18604a94eace2",
       "pubDate": "2026-07-04T14:00:00.000Z"
     },
     {
       "id": "recipes/lamb-loin-chops-al-vino-con-vegetales",
-      "bodyLength": 1182,
+      "contentHash": "7d2d293e32093a1277bef3809e40e0380271c10ba1fbc8f0bfeb440352429636",
       "pubDate": "2026-04-15T14:00:00.000Z"
     },
     {
       "id": "recipes/lamb-loin-chops-al-vino-con-vegetales-en",
-      "bodyLength": 1137,
+      "contentHash": "49edb8509ce58c0952f7a8300194abe96fec53410b6f2cf5bb6338086b3bc50b",
       "pubDate": "2026-04-15T14:00:00.000Z"
     },
     {
       "id": "recipes/lemon-pepper-chicken",
-      "bodyLength": 1350,
+      "contentHash": "c02a998452870522ae3bbe443b1b5ba11d26cba24d4e8bbaf81e11a64598a85f",
       "pubDate": "2025-05-02T00:00:00.000Z"
     },
     {
       "id": "recipes/mias-chicken-nuggets",
-      "bodyLength": 1154,
+      "contentHash": "249b86cbe6dc3b5903167f0d047820c9cde481961dcdfa19f38fc5a8d68935ce",
       "pubDate": "2025-01-10T00:00:00.000Z"
     },
     {
       "id": "recipes/mias-chicken-nuggets-en",
-      "bodyLength": 1071,
+      "contentHash": "4bd846fd38972e8c0ce657f43744c71e6fc0c074b507b633795ab183f2505d52",
       "pubDate": "2025-01-10T00:00:00.000Z"
     },
     {
       "id": "recipes/mias-cinnamon-pancakes",
-      "bodyLength": 595,
+      "contentHash": "f52d66131339bb9c08f6ff7f19d1136ebf94a01a90c1bc9ad3230ebc318d5a4b",
       "pubDate": "2022-07-18T00:00:00.000Z"
     },
     {
       "id": "recipes/mias-vegan-cupcakes",
-      "bodyLength": 1106,
+      "contentHash": "56d056c4bc2467e89f23903a4fae79e12698d3b15d75cecc1da38047e1a19f57",
       "pubDate": "2023-02-20T00:00:00.000Z"
     },
     {
       "id": "recipes/pancakes-sin-huevo-para-mia-luna",
-      "bodyLength": 637,
+      "contentHash": "dcea2cf1b3a98b4a5ee1c1389f250f9805ce25d21d908cd33f19ce357f1ed269",
       "pubDate": "2022-05-24T00:00:00.000Z"
     },
     {
       "id": "recipes/pancakes-sin-huevo-para-mia-luna-en",
-      "bodyLength": 561,
+      "contentHash": "9a0db1a25efe1d0a2049e223f08a86e1e7ec5aeeb62caa0e1053b1efb6e420ea",
       "pubDate": "2022-05-24T00:00:00.000Z"
     },
     {
       "id": "recipes/pastel-de-banana",
-      "bodyLength": 978,
+      "contentHash": "ddeb93c3f9ec5010144bc3f54aa84f2c9ef7bddb2b33e066f6d2d44b6cc48f1b",
       "pubDate": "2026-06-10T00:00:00.000Z"
     },
     {
       "id": "recipes/pastel-de-banana-en",
-      "bodyLength": 893,
+      "contentHash": "f6ab56c4250389261b5e3b9866eb1ac5245c5255198385643315d6b048c2498e",
       "pubDate": "2026-06-10T00:00:00.000Z"
     },
     {
       "id": "recipes/patatas-bravas",
-      "bodyLength": 1680,
+      "contentHash": "c588da817df35efc6c1d6937f0451badfcc8b3ff1fdffa79af3485776ff03036",
       "pubDate": "2026-04-29T14:00:00.000Z"
     },
     {
       "id": "recipes/perfect-crispy-oven-drumsticks",
-      "bodyLength": 1732,
+      "contentHash": "ac2165ec0e79e7b4698b5b39098359cbff9059db1c675140540b0e7a33ceb021",
       "pubDate": "2026-07-28T14:00:00.000Z"
     },
     {
       "id": "recipes/shaved-carrots",
-      "bodyLength": 478,
+      "contentHash": "0ab2c1f33991d75067d82971823ae900d469327a53aed038c1576974c89fe0e8",
       "pubDate": "2022-08-11T14:00:00.000Z"
     },
     {
       "id": "recipes/simple-baked-chicken-breasts",
-      "bodyLength": 1011,
+      "contentHash": "c42de58b21050c30b08b8cc90cf1c9aa60954bf0859aa882b4cee73ae57fd66d",
       "pubDate": "2026-04-01T14:00:00.000Z"
     },
     {
       "id": "recipes/sofrito",
-      "bodyLength": 1642,
+      "contentHash": "12d09e6b3be3758695d791cb8e10e037668bfe1b88c7280152ff8ab87f605474",
       "pubDate": "2026-06-20T14:00:00.000Z"
     },
     {
       "id": "recipes/sofrito-en",
-      "bodyLength": 1555,
+      "contentHash": "3f2641fbfb0fbe46b24bc6a14416085ce55497271cebb2d843596abfce2770bb",
       "pubDate": "2026-06-20T14:00:00.000Z"
     },
     {
       "id": "recipes/turkey-patties",
-      "bodyLength": 975,
+      "contentHash": "cd7a38b2091dc0fb1282194480049de469856342854bc3428a844edae7181c32",
       "pubDate": "2026-05-24T00:00:00.000Z"
     },
     {
       "id": "redirigir-curiosidad-sexual-infantil",
-      "bodyLength": 9830,
+      "contentHash": "857036950da3aeaf8223f17ef590083014e4071fabdf5daca51ce03051b00ba2",
       "pubDate": "2025-05-06T16:30:00.000Z"
     },
     {
       "id": "reflections-from-a-tough-weekend",
-      "bodyLength": 2463,
+      "contentHash": "755f15ac964fb562ea393c6168804b29600ef71b7dd336e6ed61ccee182a51d0",
       "pubDate": "2024-05-14T00:00:00.000Z"
     },
     {
       "id": "rolling-back-main-and-why-you-shouldnt-have-to",
-      "bodyLength": 31456,
+      "contentHash": "7a749d6e9def6200115237e90318c26c5db14864d195c0a4c1eced479472e5a6",
       "pubDate": "2026-03-09T16:30:00.000Z"
     },
     {
       "id": "season-of-becoming",
-      "bodyLength": 1273,
+      "contentHash": "b04223024fa698ea7d587b403d0df4f2a2e99d6bb727d6f76fdafa08d5bbccb4",
       "pubDate": "2025-11-06T12:00:00.000Z"
     },
     {
       "id": "sharpen-your-tools",
-      "bodyLength": 2400,
+      "contentHash": "bbe796346da1a6ad80fe98c5ee836ca6fe23792a9525f6517544ab440f520e09",
       "pubDate": "2024-07-31T13:49:32.330Z"
     },
     {
       "id": "some-books-for-self-transcendence",
-      "bodyLength": 3063,
+      "contentHash": "d0f2c2157e67c2a8c593e3a9f25c6cc559210305971be2d555ed4f3d9d5eb2ac",
       "pubDate": "2024-05-24T00:00:00.000Z"
     },
     {
       "id": "some-notes-on-overcoming-emotional-pain",
-      "bodyLength": 2970,
+      "contentHash": "caf78b7c6a7fbb361db76927a33a5d2835cd32b609565b493956dd9c0282fe25",
       "pubDate": "2024-05-01T00:00:00.000Z"
     },
     {
       "id": "symbols-of-power",
-      "bodyLength": 11502,
+      "contentHash": "d97509b3a92109d6a6d025a95111b785b9abfff0ab906127287e5907b562888b",
       "pubDate": "2024-07-06T11:20:00.000Z"
     },
     {
       "id": "the-definition-and-practice-of-my-core-values-make-me-free",
-      "bodyLength": 687,
+      "contentHash": "5b607c2d637d2840bf0aad250200190230b1b1f44e15e221dd968456cac0c6e1",
       "pubDate": "2024-04-29T13:22:16.829Z"
     },
     {
       "id": "the-feeling-is-not-the-problem",
-      "bodyLength": 10353,
+      "contentHash": "647258f62182452d8006f4cd263f0c4945709e330f411a0edec24cc5cb2707bf",
       "pubDate": "2026-02-22T23:28:00.000Z"
     },
     {
       "id": "the-first-wall",
-      "bodyLength": 4375,
+      "contentHash": "9d20321e6a7a7ab2b54ba1f5eba79c1e5579b97fde7d257d10c3c3221ba0886f",
       "pubDate": "2025-12-29T22:50:00.000Z"
     },
     {
       "id": "the-inner-work-truly-never-ends",
-      "bodyLength": 3854,
+      "contentHash": "44db51224e0b3a645fab945b0ce5bf04937c1c4a595ce58ec7bb996db07572e8",
       "pubDate": "2024-06-01T13:36:42.676Z"
     },
     {
       "id": "the-joy-of-building-my-own-digital-sandbox",
-      "bodyLength": 6528,
+      "contentHash": "5d021aca7f24c90cc3268eb11435a00bc7e382196bb64f06b215d34279c0561d",
       "pubDate": "2025-07-29T22:00:00.000Z"
     },
     {
       "id": "the-joy-of-building-my-own-digital-sandbox-april-2026",
-      "bodyLength": 17013,
+      "contentHash": "cd88941639d0dd1efeedaa150aa44a24aa4509619b7dea3d88e42dc5482c1540",
       "pubDate": "2026-04-10T12:00:00.000Z"
     },
     {
       "id": "the-paradox-of-modernity-progress-without-peace",
-      "bodyLength": 6537,
+      "contentHash": "39a5665da72b86d59e76857c0b4e2f530348b576f27a2ad52858d7e383496b5a",
       "pubDate": "2025-07-16T20:00:00.000Z"
     },
     {
       "id": "the-prometheus-problem",
-      "bodyLength": 39231,
+      "contentHash": "6d4c7cc1bcaa1b7662e2af0364fee4cd5523fc22cf83ead6a77a25f95dd0f780",
       "pubDate": "2025-12-16T19:00:00.000Z"
     },
     {
       "id": "the-rhythm-of-grief-summer-days-and-letting-go",
-      "bodyLength": 1793,
+      "contentHash": "39c2a0a413c21f25b89a04303276a0fbca08c15b627c089e63804d53bbb5b646",
       "pubDate": "2025-08-23T15:20:00.000Z"
     },
     {
       "id": "things-i-have-learned-this-week-regarding-a-4-year-olds-long-curly-hair",
-      "bodyLength": 2037,
+      "contentHash": "d194e94f4b9f90af5e085b239c1709bb7d18ec64c6a35bbab6dd8e1425c463f6",
       "pubDate": "2024-05-29T18:01:30.848Z"
     },
     {
       "id": "toddler-internet-safety",
-      "bodyLength": 4134,
+      "contentHash": "68709ebb282c8750c8380eae5b2176f897f5db9d71dd72d486bc24bcc966a043",
       "pubDate": "2025-05-01T00:00:00.000Z"
     },
     {
       "id": "total-concentration-breathing",
-      "bodyLength": 2437,
+      "contentHash": "16c2e237959c44a7a738b8872b26ee715fdede5eb3813b110799aedb5229ff6e",
       "pubDate": "2025-05-06T07:15:00.000Z"
     },
     {
       "id": "transforming-life-through-values",
-      "bodyLength": 20690,
+      "contentHash": "d3785d92c3569661c4420abd69ee24b43036458769bf9d145c2f4f94cc1cc658",
       "pubDate": "2024-04-28T00:00:00.000Z"
     },
     {
       "id": "una-invitacion-al-fin-de-la-adoracion-de-la-riqueza-y-al-comienzo-de-un-futuro-humano",
-      "bodyLength": 8287,
+      "contentHash": "0160ff743fe67cb74f793f6910dd8271bd7d7c09231007ad57b7dbd2d6a8c381",
       "pubDate": "2025-11-07T15:29:00.000Z"
     },
     {
       "id": "vs-code-title-bar-signaling",
-      "bodyLength": 4996,
+      "contentHash": "d99668cb5a8cd642a5944d9c82d95d1893d2c3875cc801765fbcf9c9a67fbc8c",
       "pubDate": "2025-05-15T00:00:00.000Z"
     },
     {
       "id": "what-are-we-even-calling-democracy",
-      "bodyLength": 1154,
+      "contentHash": "9ee78c084ef9ac4c682c3e903a5143d92cd707893ffa80abfb0aac57d932610d",
       "pubDate": "2025-07-02T13:07:00.000Z"
     },
     {
       "id": "what-happens-when-you-leave-the-algorithm-behind",
-      "bodyLength": 1317,
+      "contentHash": "ab41757fed8ecaa533c2d5f91263c9df1e9e5567f0ec42c2e6416265d573ca66",
       "pubDate": "2025-04-30T12:52:40.726Z"
     },
     {
       "id": "what-phrases-did-your-dad-install-on-you",
-      "bodyLength": 11764,
+      "contentHash": "9415bad97ca92d492d3aa0bd645a3ceae4b0c42f564d67f3db7c8d2c33a16584",
       "pubDate": "2026-08-27T19:00:00.000Z"
     },
     {
       "id": "who-i-am-today-a-recovery-progress-report",
-      "bodyLength": 5983,
+      "contentHash": "f945a5260134f3446dec842f6aff7936ef29927aa47ec907ada718a659565452",
       "pubDate": "2025-08-06T11:00:00.000Z"
     },
     {
       "id": "who-really-raised-me",
-      "bodyLength": 8299,
+      "contentHash": "30017de3968c9a2b2d91600c8fe7e011e87e5d3f8c8b5ae1872fbd2f2201a89e",
       "pubDate": "2025-04-17T13:56:47.953Z"
     },
     {
       "id": "why-electric-cars-cant-look-like-electric-cars",
-      "bodyLength": 22726,
+      "contentHash": "db1460dc53cafa4c38efccd62b9758f081bab608ff1db9b22e83ad3c9442a335",
       "pubDate": "2025-08-16T15:00:00.000Z"
     },
     {
       "id": "why-i-built-buildssoftware-and-what-im-building-next",
-      "bodyLength": 1871,
+      "contentHash": "cf789cf3e92eeeea1e998a9d27217a08c2976822386bdd6e15373a3585e0d7ec",
       "pubDate": "2025-04-30T18:11:38.423Z"
     },
     {
       "id": "why-i-turned-off-notifications-again",
-      "bodyLength": 4849,
+      "contentHash": "3f735580e424d77db8526289bc766b44295172196ad0e59bfc007ae2ebfd580d",
       "pubDate": "2025-11-28T20:30:00.000Z"
     },
     {
       "id": "you-are-joking-right",
-      "bodyLength": 4502,
+      "contentHash": "eb86536e2514b66687bbef2e7989af676ff9f1a2bb3536097d6eb27fe4774dc7",
       "pubDate": "2025-04-08T13:20:17.106Z"
     }
   ],
