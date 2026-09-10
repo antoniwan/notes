@@ -93,12 +93,52 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
       </div>
     </div>
 
+    <!-- Error State. A failed corpus fetch must not read as "no results". -->
+    <div id={`${searchId}-error`} class="text-body-muted hidden p-8 text-center">
+      <div class="flex flex-col items-center space-y-4">
+        <div class="space-y-2">
+          <p class="text-base font-semibold">Search is unavailable</p>
+          <p class="text-sm opacity-75">
+            The search index could not be loaded. Check your connection and try again.
+          </p>
+        </div>
+      </div>
+    </div>
+
     <!-- Results List -->
     <div id={`${searchId}-results-list`} class="search-results-list"></div>
   </div>
 </div>
 
 <script>
+  /**
+   * R19: the corpus is fetched once per page load instead of being inlined into
+   * every page. Both SearchBar instances (desktop and mobile) share this one
+   * promise, so switching between them never refetches.
+   *
+   * A failed load is not memoized — the next search retries — so a reader who
+   * was briefly offline is not stuck with a dead search box for the visit.
+   */
+  let searchDataPromise: Promise<any[]> | null = null;
+
+  function loadSearchData(): Promise<any[]> {
+    if (searchDataPromise) return searchDataPromise;
+
+    const url = (window as any).__searchIndexUrl || '/search-index.json';
+    searchDataPromise = fetch(url, { credentials: 'same-origin' })
+      .then((response) => {
+        if (!response.ok) throw new Error(`search index responded ${response.status}`);
+        return response.json();
+      })
+      .then((data) => (Array.isArray(data) ? data : []))
+      .catch((error) => {
+        searchDataPromise = null;
+        throw error;
+      });
+
+    return searchDataPromise;
+  }
+
   // Search functionality
   class SearchBar {
     private input: HTMLInputElement | null;
@@ -108,6 +148,7 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
     private noResults: HTMLElement | null;
     private clearBtn: HTMLButtonElement | null;
     private status: HTMLElement | null;
+    private errorState: HTMLElement | null;
     private debounceTimer: ReturnType<typeof setTimeout> | null = null;
     private isSearching = false;
     private searchRequestId = 0;
@@ -120,6 +161,7 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
       this.noResults = document.getElementById(`${searchId}-no-results`) as HTMLElement;
       this.clearBtn = document.getElementById(`${searchId}-clear`) as HTMLButtonElement;
       this.status = document.getElementById(`${searchId}-status`) as HTMLElement;
+      this.errorState = document.getElementById(`${searchId}-error`) as HTMLElement;
 
       this.init();
     }
@@ -132,8 +174,12 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
         this.handleInput();
       });
 
-      // Focus events
+      // Focus events. Loading the corpus starts here, before the first
+      // keystroke, so the request overlaps typing rather than following it.
       this.input?.addEventListener('focus', () => {
+        loadSearchData().catch(() => {
+          /* surfaced by showError() when a search actually runs */
+        });
         const hasQuery = !!this.input?.value.trim();
         if (hasQuery) {
           this.showResults();
@@ -229,7 +275,8 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
         this.displayResults(results, query);
       } catch (error) {
         if (requestId !== this.searchRequestId || this.input?.value.trim() !== query) return;
-        this.showNoResults(query);
+        // Retrying is just searching again: loadSearchData() forgets a failure.
+        this.showError();
       } finally {
         this.isSearching = false;
         this.setBusy(false);
@@ -237,8 +284,7 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
     }
 
     async searchPosts(query: string) {
-      // Get the search data from the global variable
-      const searchData = (window as any).searchData || [];
+      const searchData = await loadSearchData();
 
       if (!searchData || searchData.length === 0) {
         return [];
@@ -336,6 +382,7 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
 
       this.hideLoading();
       this.hideNoResults();
+      if (this.errorState) this.errorState.classList.add('hidden');
 
       if (results.length === 0) {
         this.showNoResults(query);
@@ -522,6 +569,7 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
     showLoading() {
       if (this.loading) this.loading.classList.remove('hidden');
       if (this.noResults) this.noResults.classList.add('hidden');
+      if (this.errorState) this.errorState.classList.add('hidden');
       if (this.resultsList) this.resultsList.innerHTML = '';
       this.setBusy(true);
       this.showResults();
@@ -534,9 +582,19 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
     showNoResults(query = '') {
       if (this.noResults) this.noResults.classList.remove('hidden');
       if (this.loading) this.loading.classList.add('hidden');
+      if (this.errorState) this.errorState.classList.add('hidden');
       if (this.resultsList) this.resultsList.replaceChildren();
       this.showResults();
       this.announce(`No results found${this.forQuery(query)}.`);
+    }
+
+    showError() {
+      if (this.errorState) this.errorState.classList.remove('hidden');
+      if (this.noResults) this.noResults.classList.add('hidden');
+      if (this.loading) this.loading.classList.add('hidden');
+      if (this.resultsList) this.resultsList.replaceChildren();
+      this.showResults();
+      this.announce('Search is unavailable. The search index could not be loaded.');
     }
 
     hideNoResults() {

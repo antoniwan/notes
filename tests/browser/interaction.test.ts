@@ -184,6 +184,71 @@ describe('search (R01, R10)', () => {
     }
   });
 
+  test('fetches the corpus once, on intent, and shares it between both controls', async () => {
+    const { page, context, goto } = await openPage({ viewport: VIEWPORTS.desktop });
+    try {
+      const requested: string[] = [];
+      page.on('request', (request) => {
+        const path = new URL(request.url()).pathname;
+        if (path === '/search-index.json') requested.push(path);
+      });
+
+      await goto('/');
+      const id = await visibleSearch(page);
+
+      // R19: nothing is fetched until the reader shows intent.
+      expect(requested).toHaveLength(0);
+      // And the corpus is no longer inlined into the document.
+      expect(await page.content()).not.toContain('searchDataJson');
+
+      await page.locator(`#${id}`).focus();
+      await expect.poll(() => requested.length, { timeout: 5_000 }).toBe(1);
+
+      await page.locator(`#${id}`).fill('electric');
+      await expect
+        .poll(() => page.locator(`#${id}-status`).textContent(), { timeout: 5_000 })
+        .toMatch(/\d+ results? for/);
+
+      // Focusing the other control must reuse the shared promise, not refetch.
+      const other = await page.evaluate(() => {
+        const inputs = [...document.querySelectorAll<HTMLInputElement>('input[id^="search-"]')];
+        return inputs[inputs.length - 1]?.id ?? null;
+      });
+      if (other && other !== id) {
+        await page.locator(`#${other}`).focus();
+        await page.waitForTimeout(500);
+      }
+      expect(requested).toHaveLength(1);
+    } finally {
+      await context.close();
+    }
+  });
+
+  test('a failed corpus load says so instead of claiming no results', async () => {
+    const { page, context, goto } = await openPage({ viewport: VIEWPORTS.desktop });
+    try {
+      await page.route('**/search-index.json*', (route) => route.abort());
+
+      await goto('/');
+      const id = await visibleSearch(page);
+      await page.locator(`#${id}`).fill('electric');
+
+      const status = page.locator(`#${id}-status`);
+      await expect.poll(() => status.textContent(), { timeout: 5_000 }).toMatch(/unavailable/i);
+      expect(await page.locator(`#${id}-error`).isVisible()).toBe(true);
+      // "No results found" would be a lie about a network failure.
+      expect(await page.locator(`#${id}-no-results`).isVisible()).toBe(false);
+
+      // Retrying is just searching again — the failure is not memoized.
+      await page.unroute('**/search-index.json*');
+      await page.locator(`#${id}`).fill('electric cars');
+      await expect.poll(() => status.textContent(), { timeout: 5_000 }).toMatch(/\d+ results? for/);
+      expect(await page.locator(`#${id}-error`).isVisible()).toBe(false);
+    } finally {
+      await context.close();
+    }
+  });
+
   test('works from the mobile search panel too', async () => {
     const { page, context, goto } = await openPage({ viewport: VIEWPORTS.mobile });
     try {

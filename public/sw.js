@@ -19,6 +19,9 @@
  * `/social/` (30.3 MB of Open Graph cards) is never cached: those exist for
  * crawlers and link previews, and a reader never displays one.
  *
+ * The search corpus is cached once fetched, so search keeps working offline
+ * after it has been used once. It is not precached — the shell stays small.
+ *
  * ## Cache layout
  *
  * Every cache name begins with CACHE_PREFIX. Activation deletes only caches
@@ -59,6 +62,12 @@ const SHELL_FILES = [
 ];
 
 const ASSET_EXTENSIONS = /\.(css|js|mjs|woff2?|ttf|otf|eot)$/i;
+/**
+ * The search corpus (R19). Matched by path rather than extension so the 1 MB
+ * `/feed.json` is not swept in with it. Its URL carries the release version, so
+ * a deploy misses the cached copy and refetches.
+ */
+const SEARCH_INDEX_PATH = '/search-index.json';
 // AVIF is this site's primary image format. Its absence from the old matcher
 // meant no article image was ever cached.
 const IMAGE_EXTENSIONS = /\.(avif|webp|png|jpe?g|gif|svg|ico)$/i;
@@ -163,7 +172,7 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  if (ASSET_EXTENSIONS.test(url.pathname)) {
+  if (ASSET_EXTENSIONS.test(url.pathname) || url.pathname === SEARCH_INDEX_PATH) {
     event.respondWith(cacheFirst(event, ASSET_CACHE));
     return;
   }

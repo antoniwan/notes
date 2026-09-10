@@ -8,7 +8,7 @@ import StructuredData from '../components/StructuredData.astro';
 import PerformanceMonitor from '../components/PerformanceMonitor.astro';
 import ServiceWorkerRegistration from '../components/ServiceWorkerRegistration.astro';
 import ReadStateServiceInit from '../components/ReadStateServiceInit.astro';
-import { getSearchData } from '../data/searchIndex';
+import * as pkg from '../../package.json';
 import { SITE_DESCRIPTION, AUTHOR } from '../consts';
 import { generateKeywords, generateImageAlt } from '../utils/seo';
 import { generateStructuredData } from '../utils/structuredData';
@@ -18,8 +18,11 @@ import type { BaseLayoutProps } from '../types/layout';
 
 interface Props extends BaseLayoutProps {}
 
-const searchData = await getSearchData();
-const searchDataJson = JSON.stringify(searchData);
+// R19: the corpus is no longer inlined. It is fetched once, on first search
+// intent, from /search-index.json — see src/pages/search-index.json.js. The URL
+// carries the release version so a deploy busts both the HTTP cache and the
+// service worker's copy.
+const searchIndexUrl = `/search-index.json?v=${encodeURIComponent(pkg.version ?? 'dev')}`;
 
 const {
   title,
@@ -138,8 +141,8 @@ const structuredData = generateStructuredData({
     >
 
     <ReadStateServiceInit />
-    <script define:vars={{ searchDataJson }} is:inline>
-      window.searchData = JSON.parse(searchDataJson);
+    <script define:vars={{ searchIndexUrl }} is:inline>
+      window.__searchIndexUrl = searchIndexUrl;
     </script>
     <Header />
     <ReadingProgress postId={postId} />
