@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import DefaultImage from '../components/DefaultImage.astro';
+import HeroImage from '../components/HeroImage.astro';
 import { getCollection } from 'astro:content';
 import { PAGE_META } from '../data/pageMeta';
 import { getSpanishTwinGroups } from '../utils/translationUtils';
@@ -100,13 +101,12 @@ const contents = [...byLetter.entries()].sort(([a], [b]) => a.localeCompare(b));
                 <a href={`/p/${recipe.id}`} class="cookbook-plate">
                   <div class="cookbook-plate__image">
                     {recipe.data.heroImage ? (
-                      <img
+                      <HeroImage
                         src={recipe.data.heroImage}
                         alt=""
                         class="cookbook-plate__img"
-                        loading={index === 0 ? 'eager' : 'lazy'}
-                        fetchpriority={index === 0 ? 'high' : 'auto'}
-                        decoding="async"
+                        variant="card"
+                        priority={index === 0}
                       />
                     ) : (
                       <DefaultImage

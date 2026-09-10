@@ -9,6 +9,47 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.24.0] — 2026-09-10
+
+Responsive images (R20), the last item from the September 10 audit roadmap.
+
+### Added
+
+- Hero art is now served at a size that suits the screen asking for it. Every
+  card, article hero, Cookbook plate, and no-hero fallback cover ships a
+  `srcset` at 400/800/1200 with a `sizes` hint describing its real painted box.
+
+### Changed
+
+- Hero images moved from `public/images/` to `src/assets/images/` so Astro can
+  process them. `heroImage` frontmatter is unchanged — a small resolver maps the
+  existing `/images/…` string onto the moved file, so feeds, Open Graph tags,
+  structured data, and search keep reading exactly what they did before.
+- Search result thumbnails are 200px derivatives instead of full-size hero art.
+- Social cards are now generated for non-AVIF hero art too, so every post has a
+  real Open Graph image rather than falling back to its raw source file.
+- The social image manifest is written in sorted order, so it stops churning
+  when the scan order changes.
+
+### Fixed
+
+- Images on phones. A 390px screen was downloading byte-identical images to a
+  1440px desktop, because nothing on the site had a `srcset` at all:
+
+  | Page          | before    | after    |
+  | ------------- | --------- | -------- |
+  | `/everything` | 29,032 KB | 1,169 KB |
+  | Home          | 2,755 KB  | 667 KB   |
+  | An article    | 587 KB    | 201 KB   |
+
+  Desktop improves too — `/everything` goes from 29,032 KB to 3,203 KB — and the
+  two are now genuinely different, which is the point.
+
+- The Cookbook thumbnail on About had lost its crop and focal point.
+  `object-fit: cover` and `object-position: center 55%` were written as
+  component-scoped rules that stopped matching once the image moved into a
+  shared component, so a tall photo was being squashed into a wide frame.
+
 ## [6.23.0] — 2026-09-10
 
 Second half of the September 10 audit roadmap (R10–R21). Every item was checked

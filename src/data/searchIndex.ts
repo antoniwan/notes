@@ -1,4 +1,6 @@
 import { getCollection } from 'astro:content';
+import { getImage } from 'astro:assets';
+import { resolveHeroImage } from '../utils/heroImages';
 import { categories } from './categories';
 import { authoredBooks } from './authoredBooks';
 import { getTagMetadata } from './tags';
@@ -74,23 +76,42 @@ export async function getSearchData() {
   return searchDataPromise;
 }
 
+/**
+ * Search results show a small thumbnail. Hero art now lives under `src/` so
+ * Astro can optimize it (R20), which means the raw `/images/…` path no longer
+ * exists in the output — a result row would have rendered a broken image. Each
+ * hero is resolved to a 200px derivative instead, which is also far lighter
+ * than the full-size original these rows used to pull.
+ */
+async function thumbnailFor(heroImage: string | undefined): Promise<string | undefined> {
+  if (!heroImage) return undefined;
+  const resolved = resolveHeroImage(heroImage);
+  if (!resolved) return heroImage; // Still in public/, still served as-is.
+  const optimized = await getImage({ src: resolved, width: 200, format: 'avif', quality: 45 });
+  return optimized.src;
+}
+
 async function buildSearchData() {
   const posts = await getCollection('blog', ({ data }) => isSearchEligiblePost(data));
   const listedPosts = posts.filter((post) => isListingEligiblePost(post.data));
 
-  const postSearchData = posts.map((post) => ({
-    type: 'post',
-    slug: post.id,
-    title: post.data.title,
-    description: post.data.description,
-    category: post.data.category,
-    tags: post.data.tags,
-    heroImage: post.data.heroImage,
-    url: `/p/${post.id}`,
-    author: post.data.author,
-    keywords: post.data.keywords,
-    language: post.data.language,
-  }));
+  // Async because each hero is resolved to a small derivative; Promise.all so
+  // the 200px encodes happen in parallel rather than one post at a time.
+  const postSearchData = await Promise.all(
+    posts.map(async (post) => ({
+      type: 'post',
+      slug: post.id,
+      title: post.data.title,
+      description: post.data.description,
+      category: post.data.category,
+      tags: post.data.tags,
+      heroImage: await thumbnailFor(post.data.heroImage),
+      url: `/p/${post.id}`,
+      author: post.data.author,
+      keywords: post.data.keywords,
+      language: post.data.language,
+    })),
+  );
 
   const categorySearchData = categories.map((category) => ({
     type: 'category',

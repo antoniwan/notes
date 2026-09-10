@@ -2,7 +2,9 @@
 // Cover fallback for posts without a hero image.
 // Fills the parent frame (hero banner, postcard, rotator) with object-cover.
 
+import { Image } from 'astro:assets';
 import { getDefaultCoverUrls } from '../data/defaultCovers';
+import { HERO_QUALITY, HERO_WIDTHS, resolveHeroImage } from '../utils/heroImages';
 
 interface Props {
   alt?: string;
@@ -37,19 +39,41 @@ const selectedImage = defaultImages[Math.abs(hash) % defaultImages.length];
 
 const finalLoading = priority ? 'eager' : loading;
 const fetchPriority = priority ? 'high' : 'auto';
+
+// These covers moved under src/ with the hero art, so the same resolver gives
+// them a srcset. Before this they carried a `sizes` attribute with no `srcset`
+// to select from, which does nothing: a 1536px cover was painted into a 358px
+// box on /everything, fourteen times over.
+const resolved = resolveHeroImage(selectedImage);
 ---
 
-<img
-  src={selectedImage}
-  alt={alt}
-  class:list={[className, 'default-cover', priority && 'priority-image']}
-  loading={finalLoading}
-  fetchpriority={fetchPriority}
-  sizes={sizes}
-  decoding="async"
-  width={width}
-  height={height}
-/>
+{
+  resolved ? (
+    <Image
+      src={resolved}
+      alt={alt}
+      class:list={[className, 'default-cover', priority && 'priority-image']}
+      widths={HERO_WIDTHS}
+      sizes={sizes}
+      format="avif"
+      quality={HERO_QUALITY}
+      loading={finalLoading}
+      fetchpriority={fetchPriority}
+      decoding="async"
+    />
+  ) : (
+    <img
+      src={selectedImage}
+      alt={alt}
+      class:list={[className, 'default-cover', priority && 'priority-image']}
+      loading={finalLoading}
+      fetchpriority={fetchPriority}
+      decoding="async"
+      width={width}
+      height={height}
+    />
+  )
+}
 
 <style>
   .default-cover {
