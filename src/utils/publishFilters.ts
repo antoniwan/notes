@@ -1,6 +1,23 @@
 import type { CollectionEntry } from 'astro:content';
+import {
+  isFeedEligibleMeta,
+  isListingEligibleMeta,
+  isPublicMeta,
+  isSpanishPrimaryMeta,
+  normalizePostMeta,
+} from './publishEligibility.mjs';
 
 type PostData = CollectionEntry<'blog'>['data'];
+
+/**
+ * The rules themselves live in `publishEligibility.mjs`, which has no Astro or
+ * Vite dependency, so `astro.config.mjs` and plain Node build scripts can apply
+ * exactly the same logic. This file is the `astro:content` adapter over it, plus
+ * the one rule that genuinely depends on the environment (`isCollectionListed`).
+ */
+function meta(data: PostData) {
+  return normalizePostMeta(data as unknown as Record<string, unknown>);
+}
 
 export interface PublishFilterOptions {
   /** Override "now" for tests / deterministic builds. */
@@ -14,13 +31,7 @@ export interface PublishFilterOptions {
 
 /** Post is publicly live: not draft, not unpublished, and not embargoed by pubDate. */
 export function isPublicPost(data: PostData, options: PublishFilterOptions = {}): boolean {
-  if (data.draft) return false;
-  if (data.published === false) return false;
-
-  const includeFuture = options.includeFuture ?? false;
-  if (!includeFuture && data.pubDate > (options.now ?? new Date())) return false;
-
-  return true;
+  return isPublicMeta(meta(data), options);
 }
 
 /**
@@ -35,7 +46,7 @@ export function isCollectionPublic(data: PostData, options: PublishFilterOptions
 
 /** True when the post's primary language is Spanish. */
 export function isSpanishPrimary(data: PostData): boolean {
-  return (data.language?.[0] ?? 'en') === 'es';
+  return isSpanishPrimaryMeta(meta(data));
 }
 
 /**
@@ -64,8 +75,7 @@ export function isHomepageHighlight(data: PostData, options: PublishFilterOption
  * Spanish stays reachable via language toggle, title search, SEO, and direct URL.
  */
 export function isFeedEligiblePost(data: PostData, options: PublishFilterOptions = {}): boolean {
-  if (!isPublicPost(data, options)) return false;
-  return !isSpanishPrimary(data);
+  return isFeedEligibleMeta(meta(data), options);
 }
 
 /**
@@ -73,8 +83,7 @@ export function isFeedEligiblePost(data: PostData, options: PublishFilterOptions
  * Spanish does not appear on Everything, category, tag, 404, or Guided Path.
  */
 export function isListingEligiblePost(data: PostData, options: PublishFilterOptions = {}): boolean {
-  if (!isPublicPost(data, options)) return false;
-  return !isSpanishPrimary(data);
+  return isListingEligibleMeta(meta(data), options);
 }
 
 /**

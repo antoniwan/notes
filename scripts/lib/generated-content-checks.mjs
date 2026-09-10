@@ -1,3 +1,9 @@
+import {
+  isPublicMeta,
+  isSpanishPrimaryMeta,
+  normalizePostMeta,
+} from '../../src/utils/publishEligibility.mjs';
+
 /**
  * Contract checks for the generated site.
  *
@@ -98,22 +104,16 @@ export function checkFeedIdsUnique(items, label) {
 }
 
 /**
- * Decides whether a post should be publicly reachable, mirroring
- * `isPublicPost` in src/utils/publishFilters.ts. Kept as a plain-JS copy because
- * build scripts cannot import the TypeScript module; the drift risk is the point
- * of R21 and is called out there.
+ * Publication rules come from the shared module rather than a copy. These two
+ * wrappers keep this file's frontmatter-shaped call sites readable.
  */
 export function isPublicFrontmatter(data, now = new Date()) {
-  if (data.draft) return false;
-  if (data.published === false) return false;
-  if (data.pubDate && new Date(data.pubDate) > now) return false;
-  return true;
+  return isPublicMeta(normalizePostMeta(data), { now });
 }
 
 /** Feeds and listings carry English posts only; Spanish stays reachable by URL. */
 export function isSpanishPrimaryFrontmatter(data) {
-  const language = Array.isArray(data.language) ? data.language[0] : data.language;
-  return (language ?? 'en') === 'es';
+  return isSpanishPrimaryMeta(normalizePostMeta(data));
 }
 
 /**
