@@ -88,7 +88,12 @@ export function createDistServer() {
   });
 }
 
-/** Starts the server, rejecting with a readable message on a busy port. */
+/**
+ * Starts the server and resolves with its origin.
+ *
+ * Port 0 asks the OS for a free port, so the origin is read back from the bound
+ * address rather than from the requested port.
+ */
 export function listen(server, { host, port }) {
   return new Promise((ready, reject) => {
     server.once('error', (error) => {
@@ -98,7 +103,11 @@ export function listen(server, { host, port }) {
       }
       reject(error);
     });
-    server.listen(port, host, () => ready(`http://${host}:${port}`));
+    server.listen(port, host, () => {
+      const address = server.address();
+      const boundPort = typeof address === 'object' && address ? address.port : port;
+      ready(`http://${host}:${boundPort}`);
+    });
   });
 }
 

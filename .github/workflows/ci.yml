@@ -64,3 +64,10 @@ jobs:
 
       - name: Validate generated feeds
         run: pnpm run validate-feeds
+
+      # After the build: these journeys drive the real dist/client output.
+      - name: Install Chromium for browser journeys
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Run browser regression journeys
+        run: pnpm run test:browser

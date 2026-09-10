@@ -101,6 +101,7 @@ Remark42 uses `PUBLIC_REMARK42_HOST` and `PUBLIC_REMARK42_SITE_ID` when you turn
 | `pnpm run preview:vercel`           | `astro preview` — needs the Vercel CLI installed                                              |
 | `pnpm test`                         | Vitest unit tests (publish filters, SEO routing, feed HTML, quotes helpers)                   |
 | `pnpm run test:watch`               | Vitest in watch mode                                                                          |
+| `pnpm run test:browser`             | Browser regression journeys against `dist/client` (build first; see below)                    |
 | `pnpm changelog:since`              | Commits + file groups since the previous version (for CHANGELOG drafts)                       |
 | `pnpm run check`                    | `astro check` (TypeScript / Astro diagnostics)                                                |
 | `pnpm run lint`                     | ESLint                                                                                        |
@@ -118,6 +119,26 @@ Remark42 uses `PUBLIC_REMARK42_HOST` and `PUBLIC_REMARK42_SITE_ID` when you turn
 | `pnpm run audit-performance`        | Same, performance category only, JSON output                                                  |
 
 CI’s format step **checks**; it does not rewrite or open a follow-up commit. After `pnpm install`, a pre-commit hook runs Prettier on staged files so commits already match that check.
+
+### Browser regression journeys
+
+`pnpm run test:browser` drives headless Chromium over the real build output —
+lightbox keyboard journey, search announcements and rapid clear, carousel pause
+including reduced motion, mobile navigation focus return, theme persistence, and
+EN/ES routing — at 390, 768, and 1440 pixels.
+
+It needs a completed `pnpm run build` and does not build for you: building inside
+the test run would make a failure ambiguous between the build and the behavior.
+First run also needs the browser binary:
+
+```bash
+pnpm exec playwright install chromium
+```
+
+These use the `playwright` library through Vitest rather than `@playwright/test`,
+so the repo keeps one test runner. They are a separate command from `pnpm test`
+so the unit suite stays fast. Service workers are blocked in the test context —
+offline behavior needs its own suite with explicit lifecycle steps.
 
 ### Previewing and measuring a build locally
 

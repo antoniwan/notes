@@ -31,6 +31,7 @@
     "check": "astro check",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:browser": "vitest run --config vitest.browser.config.ts",
     "validate-feeds": "node scripts/validate-feeds.mjs",
     "audit-frontmatter": "node scripts/audit-frontmatter.mjs",
     "validate-structured-data": "node scripts/validate-structured-data.mjs",
