@@ -47,14 +47,24 @@ English is the listing language. Spanish is a twin: language toggle, title searc
 
 ## Toolchain
 
-| Tool    | Version               | Source of truth                            |
-| ------- | --------------------- | ------------------------------------------ |
-| Node.js | 22.12.0 (`>=22.12.0`) | `.nvmrc`, `engines.node` in `package.json` |
-| pnpm    | 12.3.4                | `packageManager` in `package.json`         |
+| Tool    | Version          | Source of truth                            |
+| ------- | ---------------- | ------------------------------------------ |
+| Node.js | 22.12.0 (`22.x`) | `.nvmrc`, `engines.node` in `package.json` |
+| pnpm    | 12.3.4           | `packageManager` in `package.json`         |
 
 CI reads both from those files — `actions/setup-node` uses `node-version-file: .nvmrc`
 and `pnpm/action-setup` uses the `packageManager` field — so there is no separate
 version to keep in sync in `.github/workflows/ci.yml`.
+
+`engines.node` is capped to a single major on purpose. **Vercel reads
+`engines.node` and it overrides the Node version in Project Settings**, so an
+open range such as `>=22.12.0` silently promotes production to the newest major
+Node — and keeps doing so as new ones ship. `22.x` keeps production, CI, and
+`.nvmrc` on the same major.
+
+pnpm does not enforce `engines` unless `engine-strict` is set, so a newer local
+Node still installs and runs. It is not the tested target, though: run `nvm use`
+in this directory to pick up `.nvmrc` before trusting a local result.
 
 Locally, `corepack enable` makes `pnpm` in this directory resolve to the pinned
 version. Without corepack, install pnpm 12 yourself; older majors may not
