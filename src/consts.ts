@@ -24,6 +24,7 @@ export interface SocialLinks {
 
 export interface SEOConfig {
   defaultImage: string;
+  defaultImageAlt: string;
   defaultHeroImage: string;
   defaultLocale: string;
   defaultRobots: string;
@@ -65,6 +66,8 @@ export const SOCIAL_LINKS: SocialLinks = {
 // SEO Configuration
 export const SEO_CONFIG: SEOConfig = {
   defaultImage: assetConfig.images.defaultSocial,
+  defaultImageAlt:
+    'Illustration of a person sitting cross-legged on a rock, wearing a dark hoodie and red pants, with swirling blue, teal, and purple smoke rising from the collar in place of a head, set against a starry night sky and pink-blossomed trees.',
   defaultHeroImage: assetConfig.images.defaultHero,
   defaultLocale: 'en_US',
   defaultRobots: 'index, follow',

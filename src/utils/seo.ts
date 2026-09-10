@@ -103,7 +103,8 @@ export function generateMetaTags(config: SEOConfig): MetaTags {
   }
   const canonical = path ? generateCanonicalUrl(path) : '';
   const ogImage = generateImageUrl(heroImage);
-  const ogImageAlt = imageAlt || `${title} - ${SITE_TITLE}`;
+  const ogImageAlt =
+    imageAlt || (heroImage ? `${title} - ${SITE_TITLE}` : SEO_CONFIG.defaultImageAlt);
   const ogType = detectOGType(pubDate, type);
 
   return {

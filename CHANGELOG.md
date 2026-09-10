@@ -9,6 +9,13 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.22.3] — 2026-09-10
+
+### Changed
+
+- Default OG/Twitter card image updated to a new piece of abstract artwork.
+- Pages without a specific hero image now get an honest, objective `og:image:alt` description of the default artwork instead of a generic title-only fallback.
+
 ## [6.22.2] — 2026-09-10
 
 ### Changed
