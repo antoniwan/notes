@@ -5,6 +5,8 @@
   "compilerOptions": {
     "strict": true,
     "strictNullChecks": true,
-    "types": ["astro/client"]
+    "types": ["astro/client"],
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   }
 }

@@ -9,6 +9,68 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.23.0] — 2026-09-10
+
+Second half of the September 10 audit roadmap (R10–R21). Every item was checked
+by planting the regression it guards against and confirming the gate caught it.
+
+### Added
+
+- Search announces its outcome to screen readers — result counts, no results,
+  and a distinct "Search is unavailable" state — and clearing leaves nothing
+  stale behind.
+- Slideshows have a persistent play/pause button. Rotation now holds for a
+  reader's pause, pointer hover, keyboard focus, and backgrounded tabs, and a
+  manual pause survives the pointer moving away. Reduced motion never
+  auto-advances but can be opted into.
+- Offline reading. Article pages, their images, and the browse pages you have
+  opened stay readable without a connection.
+- `/search-index.json`, the search corpus as one cacheable asset.
+- A browser regression suite (24 journeys over the built site) and a
+  generated-content validator, both wired into CI.
+- Node and pnpm versions pinned in the repo, with CI reading them from
+  `.nvmrc` and `packageManager` rather than repeating them.
+
+### Changed
+
+- The search corpus is fetched once on first search instead of being inlined
+  into every page. Compressed HTML drops about 40% per page (47.8 KB → 28.6 KB
+  gzip on a sample article; 10.28 MB → 5.37 MB across the site).
+- The service worker was rewritten around an explicit offline promise. It caches
+  what you actually read rather than pre-downloading the site, which measured at
+  about 118 MB of reader-facing output.
+- Lint now covers 214 files across `.js`, `.mjs`, `.cjs`, `.ts`, and `.astro`,
+  up from 131 files with eight Astro-only rules. TypeScript files were being
+  skipped silently.
+- Publication rules (drafts, scheduling, language policy) have a single
+  definition shared by the site, the sitemap, and the build validators.
+- `pnpm run preview` serves the built site directly. `astro preview` needs the
+  Vercel CLI and is now `preview:vercel`.
+
+### Fixed
+
+- Editing a Spanish note no longer bumps the sitemap `lastmod` of English-only
+  listings. `/tag/children` and `/tag/digital-safety` were carrying dates from
+  Spanish posts those pages never list.
+- Recipes no longer bump category-page `lastmod`; category and tag pages list
+  essays.
+- `engines.node` is pinned to a single major, so Vercel stops overriding the
+  project's configured Node version and auto-upgrading on each new release.
+- Article images are cached for offline use. AVIF, this site's main image
+  format, was missing from the service worker's matcher entirely.
+- Browse pages other than `/` and `/p/` had no offline behaviour at all.
+- A service-worker upgrade no longer deletes unrelated caches on the origin.
+- An unescaped `>` in the Writing Insights source.
+
+### Removed
+
+- `FeaturedWritingsRotator` and `LazyPosts`, which had no consumers.
+- Placeholder push-notification and background-sync handlers with no feature
+  behind them.
+- The `analyze` and `performance` scripts. `analyze` called a Vercel adapter
+  entry point that does not exist, and `performance` chained into it after a
+  redundant build.
+
 ## [6.22.3] — 2026-09-10
 
 ### Changed

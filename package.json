@@ -1,7 +1,7 @@
 {
   "name": "notes blog",
   "type": "module",
-  "version": "6.22.3",
+  "version": "6.23.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/antoniwan/notes.git"
@@ -9,7 +9,7 @@
   "homepage": "https://notes.antoniwan.online",
   "packageManager": "pnpm@12.3.4",
   "engines": {
-    "node": ">=22.12.0",
+    "node": "22.x",
     "pnpm": ">=12"
   },
   "scripts": {
@@ -31,9 +31,11 @@
     "check": "astro check",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:browser": "vitest run --config vitest.browser.config.ts",
     "validate-feeds": "node scripts/validate-feeds.mjs",
     "audit-frontmatter": "node scripts/audit-frontmatter.mjs",
     "validate-structured-data": "node scripts/validate-structured-data.mjs",
+    "validate-generated-content": "node scripts/validate-generated-content.mjs",
     "changelog:since": "node scripts/changelog-since.mjs",
     "sync-remark42-rewrite": "node scripts/sync-remark42-rewrite.mjs",
     "check-remark42-rewrite": "node scripts/sync-remark42-rewrite.mjs --check"
@@ -64,6 +66,7 @@
     "@typescript-eslint/parser": "^8.59.2",
     "eslint": "^10.3.0",
     "eslint-plugin-astro": "^1.7.0",
+    "fast-xml-parser": "5.3.8",
     "lint-staged": "^17.3.0",
     "playwright": "1.55.0",
     "prettier": "^3.8.3",

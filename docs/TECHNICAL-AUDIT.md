@@ -119,18 +119,40 @@ No accounts. No server-side reading progress. Constitution principle IV applies.
 
 ## 7. Quality gates (actual vs claimed)
 
-| Gate                                | Status                                                   |
-| ----------------------------------- | -------------------------------------------------------- |
-| `pnpm run format:check`             | CI                                                       |
-| `pnpm run check`                    | CI                                                       |
-| `pnpm run lint`                     | CI                                                       |
-| `pnpm run build`                    | CI (+ social image step)                                 |
-| `pnpm run validate-feeds`           | CI, after the build (needs `dist/`)                      |
-| `pnpm run audit-frontmatter`        | CI, before the build — walks `src/content/p`             |
-| `pnpm run validate-structured-data` | CI — smoke-checks structured-data module surface only    |
-| `pnpm run check-remark42-rewrite`   | CI — `vercel.json` rewrite vs `REMARK42_UPSTREAM_ORIGIN` |
-| Unit tests (`pnpm test`)            | CI — see §9 for coverage                                 |
-| Browser / e2e tests                 | **None** — Playwright is installed but unconfigured      |
+| Gate                                | Status                                                        |
+| ----------------------------------- | ------------------------------------------------------------- |
+| `pnpm run format:check`             | CI                                                            |
+| `pnpm run check`                    | CI — also owns unused locals/params (see below)               |
+| `pnpm run lint`                     | CI — coverage detailed below                                  |
+| `pnpm run build`                    | CI (+ social image step)                                      |
+| `pnpm run validate-feeds`           | CI, after the build (needs `dist/`)                           |
+| `pnpm run audit-frontmatter`        | CI, before the build — walks `src/content/p`                  |
+| `pnpm run validate-structured-data` | CI — smoke-checks structured-data module surface only         |
+| `pnpm run check-remark42-rewrite`   | CI — `vercel.json` rewrite vs `REMARK42_UPSTREAM_ORIGIN`      |
+| Unit tests (`pnpm test`)            | CI — see §9 for coverage                                      |
+| Browser / e2e tests                 | CI — 22 journeys over `dist/client` (`pnpm run test:browser`) |
+
+**Lint coverage (corrected 2026-09-10).** Before this pass `eslint .` reached 131
+files and applied exactly 8 rules to each — all `eslint-plugin-astro` deprecated-API
+checks. `.ts` files matched no config block at all and were skipped silently, plain
+`.js`/`.mjs` got the Astro rules and no JavaScript rules, and
+`src/pages/writing-insights/**` was excluded outright. A green `pnpm run lint`
+therefore established very little.
+
+It now reaches 214 files with a correctness rule set applied to `.js`, `.mjs`,
+`.cjs`, `.ts`, and `.astro`, and no source directory is excluded. Removing the
+Writing Insights exclusion surfaced one real defect: an unescaped `>` in
+`insights.astro` that the Astro compiler tolerates but `astro-eslint-parser`
+cannot parse.
+
+Unused symbols are split by language on purpose. Core `no-unused-vars` cannot read
+TypeScript type positions — it reports every parameter name in a function type as
+an unused argument — so it runs on plain JavaScript only, and `noUnusedLocals` /
+`noUnusedParameters` in `tsconfig.json` cover TypeScript through `astro check`.
+Both halves were confirmed by planting a deliberate violation in each file class.
+
+Still uncovered: type-aware lint rules. Adding `typescript-eslint` would bring
+them, at the cost of a new devDependency.
 
 ---
 
