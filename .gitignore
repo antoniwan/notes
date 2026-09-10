@@ -42,3 +42,6 @@ docs/materials/*
 
 # graphify knowledge-graph cache (regenerate with `graphify update .`)
 graphify-out/
+
+# local Lighthouse output (pnpm run lighthouse / audit-performance)
+reports/

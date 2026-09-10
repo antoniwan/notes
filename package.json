@@ -7,18 +7,22 @@
     "url": "https://github.com/antoniwan/notes.git"
   },
   "homepage": "https://notes.antoniwan.online",
+  "packageManager": "pnpm@12.3.4",
+  "engines": {
+    "node": ">=22.12.0",
+    "pnpm": ">=12"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "build": "node scripts/generate-social-images.js && astro build",
-    "preview": "astro preview",
+    "preview": "node scripts/serve-dist.mjs",
+    "preview:vercel": "astro preview",
     "astro": "astro",
     "generate-social-images": "node scripts/generate-social-images.js",
     "generate-favicons": "node scripts/generate-favicons.js",
-    "analyze": "astro build && npx @astrojs/vercel/static-build",
-    "lighthouse": "npx lighthouse http://localhost:4321 --output=html --output-path=./lighthouse-report.html",
-    "performance": "pnpm run build && pnpm run analyze",
-    "audit-performance": "pnpm run build && npx lighthouse http://localhost:4321 --only-categories=performance --output=json --output-path=./performance-audit.json",
+    "lighthouse": "node scripts/lighthouse.mjs",
+    "audit-performance": "node scripts/lighthouse.mjs --performance-only",
     "prepare": "simple-git-hooks",
     "format": "prettier --write .",
     "format:check": "prettier --check .",

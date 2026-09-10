@@ -45,18 +45,40 @@ English is the listing language. Spanish is a twin: language toggle, title searc
 - Tailwind CSS
 - [Sharp](https://sharp.pixelplumbing.com/) — used by the social-image step to resize AVIF sources to JPEG/PNG
 
+## Toolchain
+
+| Tool    | Version               | Source of truth                            |
+| ------- | --------------------- | ------------------------------------------ |
+| Node.js | 22.12.0 (`>=22.12.0`) | `.nvmrc`, `engines.node` in `package.json` |
+| pnpm    | 12.3.4                | `packageManager` in `package.json`         |
+
+CI reads both from those files — `actions/setup-node` uses `node-version-file: .nvmrc`
+and `pnpm/action-setup` uses the `packageManager` field — so there is no separate
+version to keep in sync in `.github/workflows/ci.yml`.
+
+Locally, `corepack enable` makes `pnpm` in this directory resolve to the pinned
+version. Without corepack, install pnpm 12 yourself; older majors may not
+understand every key in `pnpm-workspace.yaml`.
+
+`pnpm-workspace.yaml` also carries dependency `overrides` (tar, minimatch,
+fast-xml-parser, ajv, rollup, devalue). They are deliberate pins, not leftovers —
+review them against a fresh advisory check before changing or removing any.
+
 ## Quick start
 
 ```bash
 git clone https://github.com/antoniwan/notes.git
 cd notes
-pnpm install
+corepack enable
+pnpm install --frozen-lockfile
 pnpm run dev
 ```
 
 Then open `http://localhost:4321`.
 
-This repo expects **pnpm**; you can use npm or yarn if you change commands yourself.
+`--frozen-lockfile` is what CI runs; use it locally too unless you are
+deliberately changing dependencies. This repo expects **pnpm**; you can use npm
+or yarn if you change commands yourself.
 
 ## Environment variables (optional)
 
@@ -75,7 +97,8 @@ Remark42 uses `PUBLIC_REMARK42_HOST` and `PUBLIC_REMARK42_SITE_ID` when you turn
 | ----------------------------------- | --------------------------------------------------------------------------------------------- |
 | `pnpm run dev`                      | Dev server                                                                                    |
 | `pnpm run build`                    | Builds social JPG/PNG from AVIF (skipped when fingerprints + files match), then `astro build` |
-| `pnpm run preview`                  | Serves the production build locally                                                           |
+| `pnpm run preview`                  | Serves prerendered `dist/client` on :4321 (no Vercel CLI needed; see caveat below)            |
+| `pnpm run preview:vercel`           | `astro preview` — needs the Vercel CLI installed                                              |
 | `pnpm test`                         | Vitest unit tests (publish filters, SEO routing, feed HTML, quotes helpers)                   |
 | `pnpm run test:watch`               | Vitest in watch mode                                                                          |
 | `pnpm changelog:since`              | Commits + file groups since the previous version (for CHANGELOG drafts)                       |
@@ -91,12 +114,27 @@ Remark42 uses `PUBLIC_REMARK42_HOST` and `PUBLIC_REMARK42_SITE_ID` when you turn
 | `pnpm run generate-favicons`        | Favicon assets                                                                                |
 | `pnpm run sync-remark42-rewrite`    | Regenerates the Remark42 rewrite in `vercel.json` from `REMARK42_UPSTREAM_ORIGIN`             |
 | `pnpm run check-remark42-rewrite`   | CI check that `vercel.json`'s Remark42 rewrite matches `REMARK42_UPSTREAM_ORIGIN`             |
-| `pnpm run analyze`                  | Runs `astro build` only (no social-image step), then Vercel static-build analysis             |
-| `pnpm run lighthouse`               | Lighthouse HTML report (start dev server first)                                               |
-| `pnpm run performance`              | Runs `pnpm run build`, then `pnpm run analyze`                                                |
-| `pnpm run audit-performance`        | Full `pnpm run build`, then Lighthouse performance JSON                                       |
+| `pnpm run lighthouse`               | Lighthouse HTML report against `dist/`; starts and stops its own preview server               |
+| `pnpm run audit-performance`        | Same, performance category only, JSON output                                                  |
 
 CI’s format step **checks**; it does not rewrite or open a follow-up commit. After `pnpm install`, a pre-commit hook runs Prettier on staged files so commits already match that check.
+
+### Previewing and measuring a build locally
+
+`pnpm run preview` serves `dist/client` from `scripts/serve-dist.mjs`. It shows the
+prerendered pages and assets; it does **not** serve the on-demand `/api/quotes`
+route or apply any `vercel.json` redirect, rewrite, header, or compression rule.
+Verify host behavior against a deployment URL, not against this server.
+
+`astro preview` (`pnpm run preview:vercel`) is delegated to the Vercel CLI by
+`@astrojs/vercel`. Without that CLI installed it fails with "Preview server
+process exited before becoming ready", which is why it is no longer the default
+`preview` script.
+
+`pnpm run lighthouse` and `pnpm run audit-performance` start and stop that same
+static server themselves, so run `pnpm run build` first and nothing else. Reports
+land in `reports/` (gitignored). They measure localhost over plain HTTP — useful
+as a before/after baseline, not as field performance.
 
 ## Build (social images)
 

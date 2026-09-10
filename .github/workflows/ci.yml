@@ -24,15 +24,15 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-social-images-
 
+      # No version here on purpose: action-setup reads package.json's
+      # packageManager field, so CI and local development cannot drift.
       - name: Set up pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 10
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22.12.0
+          node-version-file: .nvmrc
           cache: pnpm
 
       - name: Install dependencies
