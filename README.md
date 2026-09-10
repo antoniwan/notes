@@ -93,32 +93,56 @@ Remark42 uses `PUBLIC_REMARK42_HOST` and `PUBLIC_REMARK42_SITE_ID` when you turn
 
 ## Scripts
 
-| Command                             | What it does                                                                                  |
-| ----------------------------------- | --------------------------------------------------------------------------------------------- |
-| `pnpm run dev`                      | Dev server                                                                                    |
-| `pnpm run build`                    | Builds social JPG/PNG from AVIF (skipped when fingerprints + files match), then `astro build` |
-| `pnpm run preview`                  | Serves prerendered `dist/client` on :4321 (no Vercel CLI needed; see caveat below)            |
-| `pnpm run preview:vercel`           | `astro preview` — needs the Vercel CLI installed                                              |
-| `pnpm test`                         | Vitest unit tests (publish filters, SEO routing, feed HTML, quotes helpers)                   |
-| `pnpm run test:watch`               | Vitest in watch mode                                                                          |
-| `pnpm run test:browser`             | Browser regression journeys against `dist/client` (build first; see below)                    |
-| `pnpm changelog:since`              | Commits + file groups since the previous version (for CHANGELOG drafts)                       |
-| `pnpm run check`                    | `astro check` (TypeScript / Astro diagnostics)                                                |
-| `pnpm run lint`                     | ESLint                                                                                        |
-| `pnpm run lint:fix`                 | ESLint with `--fix`                                                                           |
-| `pnpm run format`                   | Prettier write                                                                                |
-| `pnpm run format:check`             | Prettier check (CI verifier; does not rewrite files)                                          |
-| `pnpm run audit-frontmatter`        | Required-field / language sanity check on `src/content/p`                                     |
-| `pnpm run validate-feeds`           | Validates `dist/rss.xml` + `dist/feed.json` (run after build)                                 |
-| `pnpm run validate-structured-data` | Smoke-checks structured-data module exports                                                   |
-| `pnpm run generate-social-images`   | AVIF → JPEG/PNG under `public/social/` only (same logic as the start of `pnpm run build`)     |
-| `pnpm run generate-favicons`        | Favicon assets                                                                                |
-| `pnpm run sync-remark42-rewrite`    | Regenerates the Remark42 rewrite in `vercel.json` from `REMARK42_UPSTREAM_ORIGIN`             |
-| `pnpm run check-remark42-rewrite`   | CI check that `vercel.json`'s Remark42 rewrite matches `REMARK42_UPSTREAM_ORIGIN`             |
-| `pnpm run lighthouse`               | Lighthouse HTML report against `dist/`; starts and stops its own preview server               |
-| `pnpm run audit-performance`        | Same, performance category only, JSON output                                                  |
+| Command                               | What it does                                                                                  |
+| ------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `pnpm run dev`                        | Dev server                                                                                    |
+| `pnpm run build`                      | Builds social JPG/PNG from AVIF (skipped when fingerprints + files match), then `astro build` |
+| `pnpm run preview`                    | Serves prerendered `dist/client` on :4321 (no Vercel CLI needed; see caveat below)            |
+| `pnpm run preview:vercel`             | `astro preview` — needs the Vercel CLI installed                                              |
+| `pnpm test`                           | Vitest unit tests (publish filters, SEO routing, feed HTML, quotes helpers)                   |
+| `pnpm run test:watch`                 | Vitest in watch mode                                                                          |
+| `pnpm run test:browser`               | Browser regression journeys against `dist/client` (build first; see below)                    |
+| `pnpm changelog:since`                | Commits + file groups since the previous version (for CHANGELOG drafts)                       |
+| `pnpm run check`                      | `astro check` (TypeScript / Astro diagnostics)                                                |
+| `pnpm run lint`                       | ESLint                                                                                        |
+| `pnpm run lint:fix`                   | ESLint with `--fix`                                                                           |
+| `pnpm run format`                     | Prettier write                                                                                |
+| `pnpm run format:check`               | Prettier check (CI verifier; does not rewrite files)                                          |
+| `pnpm run audit-frontmatter`          | Required-field / language sanity check on `src/content/p`                                     |
+| `pnpm run validate-feeds`             | Validates `dist/rss.xml` + `dist/feed.json` (run after build)                                 |
+| `pnpm run validate-structured-data`   | Smoke-checks structured-data module exports (source only)                                     |
+| `pnpm run validate-generated-content` | Parses the built site: JSON-LD, RSS XML, feed ids, canonicals, local assets, drafts           |
+| `pnpm run generate-social-images`     | AVIF → JPEG/PNG under `public/social/` only (same logic as the start of `pnpm run build`)     |
+| `pnpm run generate-favicons`          | Favicon assets                                                                                |
+| `pnpm run sync-remark42-rewrite`      | Regenerates the Remark42 rewrite in `vercel.json` from `REMARK42_UPSTREAM_ORIGIN`             |
+| `pnpm run check-remark42-rewrite`     | CI check that `vercel.json`'s Remark42 rewrite matches `REMARK42_UPSTREAM_ORIGIN`             |
+| `pnpm run lighthouse`                 | Lighthouse HTML report against `dist/`; starts and stops its own preview server               |
+| `pnpm run audit-performance`          | Same, performance category only, JSON output                                                  |
 
 CI’s format step **checks**; it does not rewrite or open a follow-up commit. After `pnpm install`, a pre-commit hook runs Prettier on staged files so commits already match that check.
+
+### Generated content contracts
+
+`pnpm run validate-generated-content` runs after a build and parses the emitted
+bytes rather than the source:
+
+- every representative surface's JSON-LD parses and carries `@context` / `@type`
+- `rss.xml` is well-formed XML by a real parser — a substring check passes on an
+  unescaped `&` or an unbalanced tag, which are the faults that break readers
+- feed ids are unique, and RSS and JSON Feed carry the same posts
+- canonical URL, feed entry URL, and JSON-LD identity agree
+- site-local `og:image` targets and internal links resolve to real files
+- drafts, `published: false`, and future-dated posts appear nowhere; public
+  English posts appear everywhere they should; Spanish twins stay out of feeds
+
+Surfaces covered: homepage, `/everything`, `/writing-insights`, an English essay,
+a Spanish twin, and a recipe. External URLs are never fetched — a release must
+not fail because someone else's site is down. Remote link health, if wanted, is a
+separate optional report.
+
+The rules live in `scripts/lib/generated-content-checks.mjs` as pure functions
+with unit tests in `pnpm test`, because the repo has no draft or future-dated
+post to exercise them against.
 
 ### Browser regression journeys
 
