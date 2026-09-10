@@ -8,7 +8,7 @@ export const assetConfig = {
     defaultHero: '/images/default.avif',
 
     // Default OG/Twitter card (1200×630 JPEG from generate-social-images)
-    defaultSocial: '/social/images/default-social.jpg',
+    defaultSocial: '/social/images/notes-og-abstract-social.jpg',
 
     // Site logo
     logo: '/sh-sh-logo.svg',

@@ -1001,6 +1001,10 @@
       "sha256": "dceabde8310b181033be79010c367d9705177c8461e60bd4f1f2cf4de1058017",
       "social": "/social/images/mia-y-yo-anime-social.jpg"
     },
+    "/images/notes-og-abstract.avif": {
+      "sha256": "838edcbe386a585c8a57786f825dbe9c9f4220ee2b98139684d01eed33837b00",
+      "social": "/social/images/notes-og-abstract-social.jpg"
+    },
     "/images/self-control.avif": {
       "sha256": "358e0327f7783c96aede0e70d172ca1d43361fa9ddcdd7f548bdcaaea34cdc7b",
       "social": "/social/images/self-control-social.jpg"

@@ -339,6 +339,7 @@ export const SOCIAL_IMAGE_MANIFEST: Record<string, string> = {
   '/images/lost-af.avif': '/social/images/lost-af-social.jpg',
   '/images/maslows-hierarchy-of-needs.avif': '/social/images/maslows-hierarchy-of-needs-social.jpg',
   '/images/mia-y-yo-anime.avif': '/social/images/mia-y-yo-anime-social.jpg',
+  '/images/notes-og-abstract.avif': '/social/images/notes-og-abstract-social.jpg',
   '/images/self-control.avif': '/social/images/self-control-social.jpg',
   '/images/symbols-of-power.avif': '/social/images/symbols-of-power-social.jpg',
   '/images/symbols/dragon-slayer.avif': '/social/images/symbols/dragon-slayer-social.jpg',
