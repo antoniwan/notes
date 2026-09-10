@@ -144,6 +144,30 @@ The rules live in `scripts/lib/generated-content-checks.mjs` as pure functions
 with unit tests in `pnpm test`, because the repo has no draft or future-dated
 post to exercise them against.
 
+### Offline behaviour
+
+`public/sw.js` makes one promise: **everything you have already opened stays
+readable offline** — article pages, their images, the browse pages you navigated
+through, and the site's CSS, JS, and fonts. Anything never opened is not
+available offline, and `/offline.html` says so.
+
+It does not pre-download the site. Measured on this build, reader-facing output
+is about 118 MB: 25.9 MB of article HTML across 129 posts (~205 KB per page),
+67.3 MB of images, and ~24 MB of listing pages. Precaching that on a first visit
+would cost more data than most phone plans enjoy and be re-fetched on every
+deploy. Caching as you read reaches the same practical result for a few hundred
+KB per article.
+
+Never cached: `/api/*` (quotes, the Remark42 proxy) is network-only, `/social/*`
+(30.3 MB of Open Graph cards a reader never displays) is skipped entirely, and
+cross-origin requests are left alone.
+
+Caches are named `notes-<kind>-v<version>`, and an upgrade deletes only caches
+carrying that prefix, so a cache belonging to anything else on the origin
+survives. Page, asset, and image caches have entry ceilings (120/120/250),
+trimmed FIFO. `pnpm run test:browser` covers activation, upgrade, the offline
+journeys, and what must never be stored.
+
 ### Browser regression journeys
 
 `pnpm run test:browser` drives headless Chromium over the real build output —

@@ -119,18 +119,18 @@ No accounts. No server-side reading progress. Constitution principle IV applies.
 
 ## 7. Quality gates (actual vs claimed)
 
-| Gate                                | Status                                                   |
-| ----------------------------------- | -------------------------------------------------------- |
-| `pnpm run format:check`             | CI                                                       |
-| `pnpm run check`                    | CI — also owns unused locals/params (see below)          |
-| `pnpm run lint`                     | CI — coverage detailed below                             |
-| `pnpm run build`                    | CI (+ social image step)                                 |
-| `pnpm run validate-feeds`           | CI, after the build (needs `dist/`)                      |
-| `pnpm run audit-frontmatter`        | CI, before the build — walks `src/content/p`             |
-| `pnpm run validate-structured-data` | CI — smoke-checks structured-data module surface only    |
-| `pnpm run check-remark42-rewrite`   | CI — `vercel.json` rewrite vs `REMARK42_UPSTREAM_ORIGIN` |
-| Unit tests (`pnpm test`)            | CI — see §9 for coverage                                 |
-| Browser / e2e tests                 | **None** — Playwright is installed but unconfigured      |
+| Gate                                | Status                                                        |
+| ----------------------------------- | ------------------------------------------------------------- |
+| `pnpm run format:check`             | CI                                                            |
+| `pnpm run check`                    | CI — also owns unused locals/params (see below)               |
+| `pnpm run lint`                     | CI — coverage detailed below                                  |
+| `pnpm run build`                    | CI (+ social image step)                                      |
+| `pnpm run validate-feeds`           | CI, after the build (needs `dist/`)                           |
+| `pnpm run audit-frontmatter`        | CI, before the build — walks `src/content/p`                  |
+| `pnpm run validate-structured-data` | CI — smoke-checks structured-data module surface only         |
+| `pnpm run check-remark42-rewrite`   | CI — `vercel.json` rewrite vs `REMARK42_UPSTREAM_ORIGIN`      |
+| Unit tests (`pnpm test`)            | CI — see §9 for coverage                                      |
+| Browser / e2e tests                 | CI — 22 journeys over `dist/client` (`pnpm run test:browser`) |
 
 **Lint coverage (corrected 2026-09-10).** Before this pass `eslint .` reached 131
 files and applied exactly 8 rules to each — all `eslint-plugin-astro` deprecated-API
