@@ -5,8 +5,10 @@ description: >-
   lead to overwhelm. Explores the tension between compassion and
   self-preservation.
 pubDate: '2024-07-29T17:12:19.944Z'
+updatedDate: '2026-09-10T10:56:46-04:00'
 language:
   - en
+heroImage: /images/2026/empathy-sword-edges.png
 category:
   - metaspace
   - integration-growth
