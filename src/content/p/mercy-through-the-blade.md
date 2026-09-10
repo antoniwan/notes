@@ -1,9 +1,9 @@
 ---
 title: 'Mercy Through the Blade: The Silent Law of Leadership'
 description: >-
-  A deep exploration of authentic leadership, the warrior's dilemma between
-  truth and comfort, and the sacred responsibility of wielding power with grace
-  and ferocity.
+  On leadership as choosing hard truths over comfortable ones — why softening
+  reality to spare feelings can do more harm than telling people what they
+  need to hear.
 pubDate: '2025-04-26T00:00:00.000Z'
 updatedDate: '2026-09-08T16:15:00-04:00'
 language:

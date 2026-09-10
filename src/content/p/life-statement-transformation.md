@@ -1,9 +1,9 @@
 ---
 title: Why Creating a Life Statement Has Helped Me So Much
 description: >-
-  A personal journey of self-discovery through creating a life statement,
-  exploring the gap between values and actions, and finding clarity in personal
-  identity.
+  After my daughter was born, I noticed a gap between the "family first" man
+  I thought I was and where my time actually went. Writing a personal
+  mission statement is how I closed it.
 pubDate: '2024-04-27T08:50:00.000Z'
 language:
   - en
