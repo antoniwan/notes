@@ -33,15 +33,14 @@ const HREFLANG_BY_LANG: Record<string, string> = {
 
 const CONTENT_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../content/p');
 
-const LISTING_PATHS = [
-  '/',
-  '/everything',
-  '/guided-path',
-  '/category',
-  '/tag',
-  '/rss.xml',
-  '/feed.json',
-];
+/** Listings that carry recipes alongside essays. */
+const LISTING_PATHS = ['/', '/everything', '/category', '/tag', '/rss.xml', '/feed.json'];
+
+/**
+ * Listings that carry essays only — see `isGuidedPathListedPost` in
+ * utils/recipes.ts. A new dish does not change what the reading path holds.
+ */
+const ESSAY_LISTING_PATHS = ['/guided-path'];
 
 type SitemapMeta = {
   linksByCanonicalUrl: Map<string, SitemapLangLink[]>;
@@ -135,6 +134,10 @@ export function buildSitemapIndex(
       if (isRecipeId(postId)) {
         bumpLastmod(lastmodByUrl, sitemapPageUrl('/recipes'), lastmod);
       } else {
+        for (const listingPath of ESSAY_LISTING_PATHS) {
+          bumpLastmod(lastmodByUrl, sitemapPageUrl(listingPath), lastmod);
+        }
+
         // Category and tag pages list essays, not recipes — see
         // `isCategoryListedPost` / `isTagListedPost` in utils/recipes.ts. The
         // tag side already had this guard; the category side did not.

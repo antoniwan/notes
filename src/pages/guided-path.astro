@@ -4,10 +4,10 @@ import Chapter from '../components/Chapter.astro';
 import SeasonNavigation from '../components/SeasonNavigation.astro';
 import { getCollection } from 'astro:content';
 import { PAGE_META } from '../data/pageMeta';
-import { isGuidedPathEligiblePost } from '../utils/publishFilters';
+import { isGuidedPathListedPost } from '../utils/recipes';
 import { groupPostsBySeason } from '../utils/guidedPath';
 
-const allPosts = await getCollection('blog', ({ data }) => isGuidedPathEligiblePost(data));
+const allPosts = await getCollection('blog', (post) => isGuidedPathListedPost(post));
 const chapters = groupPostsBySeason(allPosts);
 const firstPost = chapters[0]?.posts[0];
 const totalPosts = chapters.reduce((total, chapter) => total + chapter.posts.length, 0);

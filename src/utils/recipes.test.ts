@@ -4,6 +4,7 @@ import {
   findMoreRecipes,
   isCategoryListedPost,
   isCookbookListedPost,
+  isGuidedPathListedPost,
   isRecipePost,
   isTagListedPost,
   recipeContentsLetter,
@@ -67,6 +68,20 @@ describe('isTagListedPost', () => {
   it('keeps essays and drops household recipes', () => {
     expect(isTagListedPost(post('i-didnt-start-cooking-for-love'))).toBe(true);
     expect(isTagListedPost(post('recipes/lemon-pepper-chicken'))).toBe(false);
+  });
+});
+
+describe('isGuidedPathListedPost', () => {
+  it('keeps essays on the reading path and drops recipes', () => {
+    expect(isGuidedPathListedPost(post('i-didnt-start-cooking-for-love'))).toBe(true);
+    expect(isGuidedPathListedPost(post('recipes/lemon-pepper-chicken'))).toBe(false);
+    expect(isGuidedPathListedPost(post('recipes/arroz-con-pollo-en'))).toBe(false);
+  });
+
+  it('still hides Spanish essays', () => {
+    expect(
+      isGuidedPathListedPost(post('presentando-vastitas-omniparens', { language: ['es'] })),
+    ).toBe(false);
   });
 });
 

@@ -9,6 +9,32 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.27.0] — 2026-09-11
+
+The Guided Path is a reading path again.
+
+### Changed
+
+- **Recipes no longer list on the Guided Path.** 27 English dishes sat in the
+  seasonal chapters between the essays, so reading the site straight through
+  handed you a braise partway through a thought. A recipe is reference material
+  you open while cooking, not something a reader works through season by season.
+
+  They stay where they belong: the Cookbook at `/recipes`, Everything, the RSS
+  and JSON feeds, and their own tags and category on the dish page. The new
+  `isGuidedPathListedPost` is the same guard `isCategoryListedPost` and
+  `isTagListedPost` already applied to category and tag pages — it just had no
+  equivalent on the path.
+
+- A new recipe no longer bumps `lastmod` for `/guided-path` in the sitemap. It
+  was telling crawlers the reading path had changed when nothing on it had.
+
+### Notes
+
+A recipe still bumps `lastmod` on the `/category` and `/tag` index pages, which
+also list essays only. Same class of mistake, older than this one, left for its
+own change.
+
 ## [6.26.0] — 2026-09-10
 
 Astro 7.3.2 and `@astrojs/mdx` v8, plus a 404 the image migration left behind.
