@@ -8,7 +8,7 @@ import { calculateReadingTimeFromMarkdown } from '../../utils/readingTime';
 import { AUTHOR } from '../../consts';
 import { getCategoryDisplayItems, getCategoryNameFromIds } from '../../utils/categoryUtils';
 import { isCollectionPublic } from '../../utils/publishFilters';
-import { preparePostHtml, stripHeadingMarkup } from '../../utils/wrapTablesInHtml';
+import { stripHeadingMarkup } from '../../utils/headingText';
 
 export const prerender = true;
 
@@ -26,8 +26,6 @@ interface Props {
 
 const { post, allPosts } = Astro.props;
 const { Content } = await render(post);
-const isMdx = post.filePath?.endsWith('.mdx') ?? false;
-const bodyHtml = isMdx ? undefined : preparePostHtml(post.rendered?.html);
 
 // Use reading time from remark plugin when present; otherwise compute from body
 const minutesRead = post.data.minutesRead ?? calculateReadingTimeFromMarkdown(post.body || '');
@@ -116,5 +114,14 @@ const translationData = await getTranslationData(post, allPosts);
   currentPost={post}
   allPosts={allPosts}
 >
-  {bodyHtml ? <div class="contents" set:html={bodyHtml} /> : <Content />}
+  {
+    /*
+    Always `<Content />`. Injecting `post.rendered.html` with `set:html` skipped
+    Astro's own render step, which is what replaces the `__ASTRO_IMAGE_`
+    placeholders that Markdown images compile to — so a relative image in a `.md`
+    post shipped a broken placeholder instead of an optimized `<img>`. The two
+    HTML fix-ups that injection existed for are now rehype plugins.
+  */
+  }
+  <Content />
 </BlogLayout>

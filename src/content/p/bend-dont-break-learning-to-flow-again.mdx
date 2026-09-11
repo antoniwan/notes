@@ -23,6 +23,9 @@ published: true
 showComments: true
 ---
 
+import { Image } from 'astro:assets';
+import img1 from '../../assets/images/maslows-hierarchy-of-needs.avif';
+
 There was a time — not long ago — when I thought I could optimize my way to being the near-perfect human. I had **33 core values** mapped out like some kind of life operating system. Accountability, Authenticity, Balance, Efficiency, Honesty, Integrity, Kindness, Responsibility... the whole fucking alphabet of human virtue.
 
 _Notably absent from this list: anything about money management, because apparently I can optimize everything except my ability to save cash. I'm a fucking wizard at spending it though. Priorities, right?_
@@ -124,9 +127,14 @@ I wasn't practicing philosophy. I was performing philosophy while my nervous sys
 Here's the plot twist nobody warns you about: **I actually made it to the top of Maslow's pyramid**.
 
 <figure class="my-8">
-  <img src="/images/maslows-hierarchy-of-needs.avif" alt="Maslow's Hierarchy of Needs pyramid showing physiological, safety, love/belonging, esteem, and self-actualization needs" class="w-full max-w-2xl mx-auto rounded-lg shadow-lg">
-  <figcaption class="text-center text-sm text-gray-600 dark:text-gray-400 mt-2">
-    Maslow's Hierarchy of Needs - I climbed this entire pyramid, only to discover that success doesn't guarantee peace
+  <Image
+    src={img1}
+    alt="Maslow's Hierarchy of Needs pyramid showing physiological, safety, love/belonging, esteem, and self-actualization needs"
+    class="mx-auto w-full max-w-2xl rounded-lg shadow-lg"
+  />
+  <figcaption class="mt-2 text-center text-sm text-gray-600 dark:text-gray-400">
+    Maslow's Hierarchy of Needs - I climbed this entire pyramid, only to discover that success
+    doesn't guarantee peace
   </figcaption>
 </figure>
 

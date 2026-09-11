@@ -34,7 +34,7 @@ Every project, every piece of work, either belongs to the Vault (long-term memor
 
 Clear. Brutal. Freeing.
 
-![Screenshot of Hard Drive Space](/images/1_hZS3n1fhg_eDQTmqxg8O2w.png)
+![Screenshot of Hard Drive Space](../../assets/images/1_hZS3n1fhg_eDQTmqxg8O2w.png)
 
 ## FREEDOM!
 
@@ -48,8 +48,8 @@ Today, I'm sharing the exact steps I took to build my personal development termi
 
 I replaced the default Windows Terminal with [WezTerm](https://wezfurlong.org/wezterm/) (Wez Furlong, 2024).
 
-![Before](/images/1_JMkniJ9RmTng62SL37WSBA.png)
-![After](/images/1_wjEXa_8z9DI8Wq4zMCBqig.png)
+![Before](../../assets/images/1_JMkniJ9RmTng62SL37WSBA.png)
+![After](../../assets/images/1_wjEXa_8z9DI8Wq4zMCBqig.png)
 
 **Before WezTerm, after WezTerm**
 
@@ -119,7 +119,7 @@ Set-Alias work "cd F:\Dev\Work"
 
 Simple structure = simple mind = powerful output.
 
-![New Terminal](/images/1_UVQ9Lyp4yJ3dnpMbnSIOCQ.png)
+![New Terminal](../../assets/images/1_UVQ9Lyp4yJ3dnpMbnSIOCQ.png)
 
 **Absolute magic!**
 
@@ -137,7 +137,7 @@ By building a terminal intentionally:
 This wasn't about "fancy customization."
 This was about forging a sharper interface with reality. This is about moving with **INTENTION!** And when your interface is sharp, your spirit sharpens too.
 
-![I love my new terminal and how it renders things](/images/1_Fdmjbqh4eRaDwA12bYERgw.png)
+![I love my new terminal and how it renders things](../../assets/images/1_Fdmjbqh4eRaDwA12bYERgw.png)
 **MAGIC!!!**
 
 ## Closing Words

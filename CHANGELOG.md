@@ -9,6 +9,45 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.25.0] — 2026-09-10
+
+Post-body images now get the same treatment as hero art, and some machinery that
+was working around the framework is gone.
+
+### Added
+
+- `image.layout: 'constrained'` with breakpoints starting at 400. Every image
+  Astro processes now emits a `srcset`, including images inside post bodies.
+  Hero art keeps its own measured `widths`/`sizes`, which override the defaults.
+
+### Changed
+
+- All 24 post-body images moved to `src/assets/images/`, so Astro processes
+  them. Markdown references became relative paths; four posts whose images sit
+  inside `<figure>` markup became `.mdx` and import their images.
+- Post pages render with `<Content />` instead of injecting `post.rendered.html`
+  with `set:html`. Verified across all 129 posts: the only difference in the
+  output is the removal of a `display: contents` wrapper, which generates no box.
+
+### Fixed
+
+- Images referenced from Markdown could never work. The page injected raw
+  rendered HTML, skipping the step that turns Astro's `__ASTRO_IMAGE_`
+  placeholders into real `<img>` elements, so a relative image shipped a broken
+  placeholder. Nothing in the repo used one, which is why it went unnoticed.
+- `symbols-of-power` referenced `/symbols/lightsaber.avif`, which sat outside the
+  images folder its six siblings used. It is now imported like the rest.
+
+### Removed
+
+- `unwrapHeadingEmphasis` and `preparePostHtml`. The first flattened bold and
+  italics inside headings; **no heading in any of the 129 posts uses either**.
+  The second also duplicated, as a regex over HTML, what the `rehypeWrapTables`
+  plugin already did on the tree.
+- `wrapTablesInHtml.ts` is now `headingText.ts` and holds only
+  `stripHeadingMarkup`, which earns its place: two headings use backtick code
+  spans that should not appear as literal characters in a TOC label.
+
 ## [6.24.1] — 2026-09-10
 
 Documentation accuracy and a guard, after the responsive-image move.

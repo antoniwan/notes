@@ -109,7 +109,7 @@ Y toda esa pequeñez resulta ser un regalo, cosa que me tomó décadas entender.
 
 Soy _tan_ poca cosa que puedo hacer que todo sea importante para mí. Si importáramos a la escala de _ella_, el hogar nunca bastaría, ¿verdad? Como no importamos, el hogar es todo. Y la misma diferencia de tamaño que hace sagrada mi parte hace más liviano todo lo demás, porque si soy nada frente a ella, también lo es lo que me toque cargar esta semana. No se va y no deja de doler. Solo vuelve a su tamaño real, que era el tamaño que siempre tuvo mientras yo lo trataba como el tamaño de todo.
 
-![Flor de lirio en blanco y negro granulado sobre un campo oscuro, estambres nítidos al centro](/images/2026/vastitas-flower.avif)
+![Flor de lirio en blanco y negro granulado sobre un campo oscuro, estambres nítidos al centro](../../assets/images/2026/vastitas-flower.avif)
 
 <h2 id="por-que-la-llamo-ella" class="toc-only">Por qué la llamo ella</h2>
 

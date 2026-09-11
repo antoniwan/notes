@@ -51,7 +51,7 @@ By the time we apply for a loan, accept a job, or open a feed, many of these dec
 
 Credit ratings were developed to help investors judge the risk of lending, and investors originally paid to read them. In the 1970s, the major agencies moved toward being paid by the issuers whose securities they rated. The party seeking a favorable assessment became the paying customer. A Senate investigation found that agencies weakened standards while competing for issuers' business. The investor still received something called a credit rating, but part of the attempt to be careful had been entrusted to an institution with a commercial reason to make risk look better. [SEC account of the change](https://www.sec.gov/newsroom/speeches-statements/crenshaw-statement-credit-ratings-060723). [Senate investigation, 2011](https://www.govinfo.gov/content/pkg/GOVPUB-Y4_G74_9-PURL-gpo8060/pdf/GOVPUB-Y4_G74_9-PURL-gpo8060.pdf).
 
-![High view of a concrete irrigation canal cutting between green irrigated fields and dry land, water churning at a side gate under low sun](/images/2026/irrigation-canal.avif)
+![High view of a concrete irrigation canal cutting between green irrigated fields and dry land, water churning at a side gate under low sun](../../assets/images/2026/irrigation-canal.avif)
 
 Look at that canal. Those of us farming upstream can take water before it reaches those of us downstream, but we may need the downstream farmers' help maintaining the shared works. That dependence gives us a reason to bargain despite our unequal positions. Elinor Ostrom and Roy Gardner studied how arrangements like this can sustain cooperation. The people farther from the water can have a claim that matters because the people nearest it need their contribution. [Ostrom and Gardner, 1993](https://www.aeaweb.org/articles?id=10.1257%2Fjep.7.4.93).
 
@@ -65,7 +65,7 @@ The person off-grid still arrives with other people's tools. This is where the w
 
 The alpha fable works this way. It takes our ordinary desire for agency, protection, and belonging and turns the person beside us into a rival for rank. The people who sell that story can gain attention, money, votes, customers, cheaper labor, or compliance, depending on where they sell it. We receive the feeling of power, they receive people less likely to recognize a shared interest or act together, and the fable divides us.
 
-![CNN graphic showing Hung Cao beneath the headline “Trump's nominee for Navy secretary once said military needs ‘alpha males and alpha females’”](/images/2026/hung-cao-alpha-males-cnn.avif)
+![CNN graphic showing Hung Cao beneath the headline “Trump's nominee for Navy secretary once said military needs ‘alpha males and alpha females’”](../../assets/images/2026/hung-cao-alpha-males-cnn.avif)
 
 _CNN, September 2, 2026. Hung Cao, Trump's nominee for Navy secretary, said during a 2024 Senate debate that the military needed “alpha males and alpha females.” [Source.](https://www.cnn.com/2026/09/02/politics/hung-cao-trump-nominee-navy-secretary)_
 
