@@ -1,9 +1,33 @@
 {
   "version": 2,
   "sources": {
+    "/images/0_IX7q73frWncrfQkv.png": {
+      "sha256": "8e4c4d982235a8b14ac52c300bdeb7c91633e43e1f531352be5a3fdf7279e82c",
+      "social": "/social/images/0_IX7q73frWncrfQkv-social.jpg"
+    },
     "/images/0_uLjrPcjl6O6biWBM.jpg": {
       "sha256": "c65fe1141adf1de4ecd63ff9b9a441ac3519cc4de8f5e70f94ba259310a81c89",
       "social": "/social/images/0_uLjrPcjl6O6biWBM-social.jpg"
+    },
+    "/images/1_Fdmjbqh4eRaDwA12bYERgw.png": {
+      "sha256": "b211f2a216160f27d39636cc316ef4eb1abef924287cb3c834acf59b95a2a2dd",
+      "social": "/social/images/1_Fdmjbqh4eRaDwA12bYERgw-social.jpg"
+    },
+    "/images/1_JMkniJ9RmTng62SL37WSBA.png": {
+      "sha256": "0d33a39361b77ae1511693d59ec8e1904439d97a2e4470ea1f2936e48ef1f68d",
+      "social": "/social/images/1_JMkniJ9RmTng62SL37WSBA-social.jpg"
+    },
+    "/images/1_UVQ9Lyp4yJ3dnpMbnSIOCQ.png": {
+      "sha256": "bd93813d7db26ea569fa0063cfc60b054e44c6a779b951c9d809ce5adebd0732",
+      "social": "/social/images/1_UVQ9Lyp4yJ3dnpMbnSIOCQ-social.jpg"
+    },
+    "/images/1_hZS3n1fhg_eDQTmqxg8O2w.png": {
+      "sha256": "a6091f5761e3cde5451a9c22f0e8d87f2ff056af2d928aafc55db639a024709d",
+      "social": "/social/images/1_hZS3n1fhg_eDQTmqxg8O2w-social.jpg"
+    },
+    "/images/1_wjEXa_8z9DI8Wq4zMCBqig.png": {
+      "sha256": "35b164a54dd8f88ca91d6ccb13b7e6fe7b88d15b21425961f501abe2a25d8068",
+      "social": "/social/images/1_wjEXa_8z9DI8Wq4zMCBqig-social.jpg"
     },
     "/images/2025/broken-signals.avif": {
       "sha256": "fb2e7434bda74a3a05ad385fb21cef4c0ccc477a7434ac5f67011203d235ff79",
@@ -593,9 +617,21 @@
       "sha256": "c0dc4b262e37918f09bc9ffda87e9feee0c903901e531d47ff1916201b0e7319",
       "social": "/social/images/beef-heart-comparison-chart-social.jpg"
     },
+    "/images/breathe-move-act.jpeg": {
+      "sha256": "50e8f5f8ddfd734c060cc3dc7b7b5d6f1533b268647a968f23d95e6f41ea0d4a",
+      "social": "/social/images/breathe-move-act-social.jpg"
+    },
     "/images/breathing-deep.avif": {
       "sha256": "fda8620161b8cb1c9f483b95d9238910ef13787790532a26d8b38871636ce348",
       "social": "/social/images/breathing-deep-social.jpg"
+    },
+    "/images/builds-software-speed-desktop.jpeg": {
+      "sha256": "2845812e7cdf57418bae5bfc837d504d6b3f86c98f777e60443627fd64fc6176",
+      "social": "/social/images/builds-software-speed-desktop-social.jpg"
+    },
+    "/images/builds-software-speed-mobile.jpeg": {
+      "sha256": "5c313653fda9406f6499a3cc25dc6b8c43a04504d0e07a760417fd8918adbee2",
+      "social": "/social/images/builds-software-speed-mobile-social.jpg"
     },
     "/images/cattoo.avif": {
       "sha256": "56ca5c9cbe5e08187566478bccbf54ad59479a2eb6a988bb291e9af85c880e88",
@@ -656,6 +692,10 @@
     "/images/default_covers/wizards666_explore_infinity_and_chaos_--chaos_70_--ar_32_--we_946a9dac-b5c1-477b-b06f-2c43b810ffef_2.avif": {
       "sha256": "b1988c5719d50cf1946dadb40c1d9cba4c22b90bb4e1bc17bd709af38828f017",
       "social": "/social/images/default_covers/wizards666_explore_infinity_and_chaos_--chaos_70_--ar_32_--we_946a9dac-b5c1-477b-b06f-2c43b810ffef_2-social.jpg"
+    },
+    "/images/empathy-mutual-solution.jpeg": {
+      "sha256": "56a5460dec9f3249b06c6816d6ccf46b9d7295fbdcfa988e2facacd270b1798f",
+      "social": "/social/images/empathy-mutual-solution-social.jpg"
     },
     "/images/empathy.avif": {
       "sha256": "35231809baaebfb2c93def122296abf3fa502534f675b7c887767111e2bd843a",
@@ -1049,6 +1089,10 @@
       "sha256": "38314386650fb4ac301f2fa59747a8c6bc72cb95252448c69d13c90002976568",
       "social": "/social/images/saitama-okay-social.jpg"
     },
+    "/images/saitama-sensei.jpeg": {
+      "sha256": "58f001bf2606912976e5cdd553fd5c25a3ed6945529c3e5dd89d4c821fb7c8a3",
+      "social": "/social/images/saitama-sensei-social.jpg"
+    },
     "/images/self-control.avif": {
       "sha256": "358e0327f7783c96aede0e70d172ca1d43361fa9ddcdd7f548bdcaaea34cdc7b",
       "social": "/social/images/self-control-social.jpg"
@@ -1060,6 +1104,10 @@
     "/images/symbols/dragon-slayer.avif": {
       "sha256": "4ccd75c96acaab58528dcadc05a5ce08af83332773416e93d2350f60eb8340ec",
       "social": "/social/images/symbols/dragon-slayer-social.jpg"
+    },
+    "/images/symbols/lightsaber.avif": {
+      "sha256": "cab621604f67e367c4280bcddaab4b5756edc845ff99bc6bfc24840ad2e1244b",
+      "social": "/social/images/symbols/lightsaber-social.jpg"
     },
     "/images/symbols/ma5c.avif": {
       "sha256": "336f09e45b9cd3f10e1c7c2a25050d3bfd1300b64aef70714d7c106989f135ed",
@@ -1104,10 +1152,6 @@
     "/images/waaaat.jpg": {
       "sha256": "b2bacc247b75ad24e0228ca48a20d2ca976f1c6d0a547f77af28456893b22e1c",
       "social": "/social/images/waaaat-social.jpg"
-    },
-    "/symbols/lightsaber.avif": {
-      "sha256": "cab621604f67e367c4280bcddaab4b5756edc845ff99bc6bfc24840ad2e1244b",
-      "social": "/social/symbols/lightsaber-social.jpg"
     }
   }
 }
