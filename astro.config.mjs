@@ -140,13 +140,6 @@ export default defineConfig({
     service: {
       entrypoint: 'astro/assets/services/sharp',
     },
-    // Gives every Astro-processed image a srcset, including Markdown images in
-    // post bodies, which otherwise emit a single size. `responsiveStyles` stays
-    // off (the default): the site frames its own images, and Astro's global
-    // image styles would fight that. Breakpoints start at 400 because the
-    // default set starts at 640, which is already larger than a card paints.
-    layout: 'constrained',
-    breakpoints: [400, 640, 800, 1024, 1200, 1600],
     domains: ['notes.antoniwan.online'],
     remotePatterns: [
       {

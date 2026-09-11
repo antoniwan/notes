@@ -9,6 +9,31 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.25.1] — 2026-09-10
+
+Reverts the `image.layout` half of 6.25.0. It was a bad trade and the build log
+made that obvious.
+
+### Changed
+
+- Removed `image.layout: 'constrained'`. It gives Markdown images a `srcset`, but
+  it also sets each image's `src` to its _intrinsic_ width — so every hero got a
+  full-size re-encode it never served. On a 3024px source that is an 839 KB
+  encode taking three to five seconds, once per image. Generated assets go from
+  **662 to 507**, and files generated but referenced by nothing from **96 to 5**.
+- Post-body images now request `format="avif"` to match their sources. Astro
+  defaults to WebP, which is less efficient than the AVIF originals: one article
+  went from 201 KB of images to 250 KB before this, and back to 206 KB after.
+
+### Notes
+
+Body images keep the real win — they are processed and correctly sized instead
+of being served at full resolution from `public/`. They do not get a `srcset`,
+which costs little: all 24 are below the fold, lazy, and 1.3 MB in total.
+
+Hero art is unchanged and re-verified byte-identical: 667 KB on the homepage,
+1,169 KB on `/everything`, mobile.
+
 ## [6.25.0] — 2026-09-10
 
 Post-body images now get the same treatment as hero art, and some machinery that
