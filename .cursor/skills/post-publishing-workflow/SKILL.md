@@ -44,7 +44,11 @@ Ship content updates safely without breaking listings, feeds, or post pages.
 ## Repo Style Notes
 
 - Keep `description` plain, concise, and readable in search previews.
-- Prefer hero image paths under `/images/...` that map to files in `public/images/`.
+- Hero image files go in `src/assets/images/`, not `public/images/`. The
+  frontmatter path stays `/images/...` — `src/utils/heroImages.ts` maps it to
+  the real file. Only images referenced from inside a post body belong in
+  `public/images/`. A hero in the wrong folder still renders but loses its
+  responsive sizes, and `pnpm run validate-generated-content` fails on it.
 - Keep categories/tags aligned with existing repo taxonomy and avoid one-off labels unless intentional.
 - Tags are reader-first (see `docs/tag-policy.md`): describe ideas, never `notes` / `note` / `nota` / `notas`.
 

@@ -200,7 +200,18 @@ const structuredData = generateStructuredData({
       });
       modal?.addEventListener('close', function () {
         document.body.style.overflow = previousBodyOverflow;
-        if (activeImage instanceof HTMLImageElement) activeImage.focus();
+
+        // A native <dialog> restores focus to whatever was focused before
+        // showModal(), and that restoration can land after this handler runs.
+        // Focusing synchronously here is a race the browser sometimes wins,
+        // dropping the reader back on an unrelated control instead of the image
+        // they opened. Waiting a frame makes ours the last word.
+        const target = activeImage;
+        if (target instanceof HTMLImageElement) {
+          requestAnimationFrame(function () {
+            target.focus();
+          });
+        }
         activeImage = null;
       });
 

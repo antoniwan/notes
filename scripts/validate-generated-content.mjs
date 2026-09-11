@@ -30,6 +30,7 @@ import { XMLParser, XMLValidator } from 'fast-xml-parser';
 import {
   checkCanonicalConsistency,
   checkFeedIdsUnique,
+  checkHeroesAreResponsive,
   checkJsonLd,
   checkLocalAssets,
   checkLocalLinks,
@@ -100,6 +101,16 @@ function extractOgImage(html) {
     html,
     /<meta[^>]*property=["']og:image["'][^>]*content=["']([^"']+)["']/i,
   );
+}
+
+/** The post hero, which BlogLayout renders inside `.post-hero__frame`. */
+function extractHero(html) {
+  const frame = html.match(/<div class="post-hero__frame"[\s\S]{0,1500}?<\/div>/);
+  if (!frame) return null;
+  const img = frame[0].match(/<img[^>]*>/);
+  if (!img) return null;
+  const src = img[0].match(/src="([^"]+)"/);
+  return { src: src ? src[1] : '(unknown)', hasSrcset: /srcset=/.test(img[0]) };
 }
 
 function extractHrefs(html) {
@@ -284,6 +295,7 @@ const feedUrlBySlug = new Map(
 // A check that inspects nothing passes exactly like a check that inspects
 // everything. These counters make that difference visible in the output.
 let jsonLdBlocksSeen = 0;
+let heroesSeen = 0;
 let linksSeen = 0;
 let assetsSeen = 0;
 
@@ -320,6 +332,22 @@ for (const { label, sitePath } of surfaces) {
   problems.push(...checkLocalLinks(hrefs, outputHas, REDIRECT_PREFIXES, label));
 }
 
+// Every post, not a sample: the failure this guards against is one hero put in
+// the wrong folder, which six representative pages would almost always miss.
+const heroes = [];
+for (const { slug } of posts) {
+  if (!emittedSlugs.has(slug)) continue;
+  const html = readPage(`/p/${slug}`);
+  if (!html) continue;
+  const hero = extractHero(html);
+  if (!hero) continue;
+  heroesSeen += 1;
+  heroes.push({ label: `/p/${slug}`, src: hero.src, hasSrcset: hero.hasSrcset });
+}
+problems.push(...checkHeroesAreResponsive(heroes));
+
+if (heroesSeen === 0) problems.push('no hero images were inspected - the extractor found nothing');
+
 if (jsonLdBlocksSeen === 0) problems.push('no JSON-LD was inspected — the extractor found nothing');
 if (linksSeen === 0)
   problems.push('no internal links were inspected — the extractor found nothing');
@@ -327,7 +355,7 @@ if (assetsSeen === 0) problems.push('no og:image was inspected — the extractor
 
 notes.push(
   `${surfaces.length} surfaces · ${jsonLdBlocksSeen} ld+json blocks · ` +
-    `${linksSeen} internal links · ${assetsSeen} og:images`,
+    `${linksSeen} internal links / ${heroesSeen} heroes · ${assetsSeen} og:images`,
 );
 
 // --- Report ------------------------------------------------------------------

@@ -219,19 +219,53 @@ as a before/after baseline, not as field performance.
 
 `pnpm run build` runs `scripts/generate-social-images.js` before `astro build`.
 
-Hero images are stored as AVIF under `public/`. Many preview surfaces still expect JPEG, so the script writes **1200×630** cover-cropped JPEGs under `public/social/` (names end with `-social.jpg`). The mapping lives in `src/data/socialImageManifest.ts`. Posts without a `heroImage` share `/social/images/default-social.jpg`.
+Many preview surfaces still expect JPEG, so the script writes **1200×630**
+cover-cropped JPEGs under `public/social/` (names end with `-social.jpg`). The
+mapping lives in `src/data/socialImageManifest.ts`. Posts without a `heroImage`
+share `/social/images/default-social.jpg`.
 
-Each AVIF is hashed (SHA-256). If the hash matches `src/data/socialImageFingerprints.json` and the output file is on disk, that file is skipped. After adding or changing AVIFs, run `pnpm run build` or `pnpm run generate-social-images` and commit the updated manifest, fingerprints, and any new files under `public/social/`.
+It scans both image roots: `public/` (AVIF only — that folder also holds book
+covers and icons that have no business on a social card) and
+`src/assets/images/` (all formats, since everything there is hero art).
+
+Each source is hashed (SHA-256). If the hash matches
+`src/data/socialImageFingerprints.json` and the output file is on disk, that file
+is skipped. After adding or changing hero art, run `pnpm run build` or
+`pnpm run generate-social-images` and commit the updated manifest, fingerprints,
+and any new files under `public/social/`.
 
 CI restores `public/social/` from cache when possible (see `.github/workflows/ci.yml`). Timing depends on how many images need encoding; routine builds with everything already up to date stay short.
+
+## Where images go
+
+This one matters, and it is easy to get wrong.
+
+| Image                            | Put it in            | Why                                |
+| -------------------------------- | -------------------- | ---------------------------------- |
+| A post's `heroImage`             | `src/assets/images/` | Astro generates 400/800/1200 sizes |
+| An image used inside a post body | `public/images/`     | Referenced by URL from Markdown    |
+| Book covers, icons, favicons     | `public/`            | Never processed                    |
+
+Frontmatter does not change: `heroImage: '/images/2026/my-post.avif'` still
+refers to `src/assets/images/2026/my-post.avif`. `src/utils/heroImages.ts` maps
+the one to the other, which is why the feeds, Open Graph tags, structured data,
+and search index all keep reading the same string they always did.
+
+A hero left in `public/images/` still renders — it falls back to a plain `<img>`
+— but it ships one full-size file to every screen, which is the whole problem
+responsive images solved. `pnpm run validate-generated-content` checks every post
+and fails with the offending slug if a hero has no `srcset`.
 
 ## Project layout
 
 ```text
 notes/
-├── public/              # Static assets; generated social JPEG/PNG live under public/social/
+├── public/              # Unprocessed assets: book covers, icons, in-body post images
+│   ├── images/          # Images referenced by URL from post bodies
+│   └── social/          # Generated 1200x630 social JPEGs
 ├── scripts/             # generate-social-images.js, generate-favicons.js
 ├── src/
+│   ├── assets/images/   # Hero art — Astro generates responsive sizes from here
 │   ├── components/      # Astro components (shared + feature folders like brain-science/)
 │   ├── config/          # Comments, storage, assets
 │   ├── content/p/       # Essays and notes (Markdown / MDX)

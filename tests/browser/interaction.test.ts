@@ -14,6 +14,10 @@ describe('article image lightbox (R08)', () => {
   test('opens from the keyboard, traps focus, and restores it on Escape', async () => {
     const { page, context, goto } = await openPage({ viewport: VIEWPORTS.desktop });
     try {
+      // HTMLElement.focus() silently does nothing when the browsing context is
+      // not focused, so a focus assertion flakes depending on which test file
+      // ran before this one. bringToFront() makes the context deterministic.
+      await page.bringToFront();
       await goto(LIGHTBOX_POST);
 
       const image = page.locator('.prose img[role="button"]').first();
@@ -42,11 +46,15 @@ describe('article image lightbox (R08)', () => {
       await page.keyboard.press('Escape');
       await expect.poll(() => dialog.evaluate((d: HTMLDialogElement) => d.open)).toBe(false);
 
-      // Focus must come back to the image the reader opened, not the page top.
-      expect(await page.evaluate(() => document.activeElement?.getAttribute('role'))).toBe(
-        'button',
-      );
-      expect(await page.evaluate(() => document.body.style.overflow)).toBe(bodyOverflowBefore);
+      // The dialog's `close` event fires asynchronously, and focus restoration
+      // is deliberately deferred a frame so it wins against the browser's own
+      // restore. Both post-close assertions therefore poll rather than sample.
+      await expect
+        .poll(() => page.evaluate(() => document.activeElement?.getAttribute('role')))
+        .toBe('button');
+      await expect
+        .poll(() => page.evaluate(() => document.body.style.overflow))
+        .toBe(bodyOverflowBefore);
     } finally {
       await context.close();
     }
@@ -55,6 +63,8 @@ describe('article image lightbox (R08)', () => {
   test('restores focus to the image even when focus was elsewhere on open', async () => {
     const { page, context, goto } = await openPage({ viewport: VIEWPORTS.desktop });
     try {
+      // See the note above: focus() needs a focused browsing context.
+      await page.bringToFront();
       await goto(LIGHTBOX_POST);
 
       // <dialog> natively returns focus to whatever was focused before
@@ -74,13 +84,10 @@ describe('article image lightbox (R08)', () => {
       await page.keyboard.press('Escape');
       await expect.poll(() => dialog.evaluate((d: HTMLDialogElement) => d.open)).toBe(false);
 
-      const landedOn = await page.evaluate(() => ({
-        tag: document.activeElement?.tagName,
-        role: document.activeElement?.getAttribute('role'),
-        id: document.activeElement?.id,
-      }));
-      expect(landedOn.tag).toBe('IMG');
-      expect(landedOn.role).toBe('button');
+      await expect.poll(() => page.evaluate(() => document.activeElement?.tagName)).toBe('IMG');
+      expect(await page.evaluate(() => document.activeElement?.getAttribute('role'))).toBe(
+        'button',
+      );
     } finally {
       await context.close();
     }

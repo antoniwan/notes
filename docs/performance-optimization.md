@@ -53,12 +53,33 @@ a problem.
 
 ### 3. Image Optimization
 
-#### Enhanced Image Component
+#### Responsive hero art (implemented 2026-09-10)
 
-- Implement responsive image sizing with `sizes` attribute
+Hero images live in `src/assets/images/` so Astro processes them, and render
+through `src/components/HeroImage.astro`, which emits AVIF at 400/800/1200 with
+a `sizes` hint per surface. `src/utils/heroImages.ts` holds the widths, the
+quality, and the reasoning behind both.
+
+Before this, nothing on the site had a `srcset` at all, so a 390px phone
+downloaded the same bytes as a 1440px desktop. Images an arriving visitor
+actually loads, mobile:
+
+| Page          | before    | after  |
+| ------------- | --------- | ------ |
+| `/everything` | ~2,769 KB | 210 KB |
+| Home          | ~691 KB   | 198 KB |
+| An article    | ~347 KB   | 146 KB |
+
+Two caveats worth keeping, because they were nearly reported wrong. A
+scroll-to-bottom measurement of `/everything` showed 29 MB before and 1.2 MB
+after; that is a real worst case but **not** what a visitor pays on arrival,
+because 97 of 107 images are lazy. And Core Web Vitals never measured any of
+this: LCP grades the first viewport, so the site scored well throughout. What
+improved is data cost for people who scroll or pay per megabyte, plus the
+article hero, which was the one eager oversized image on the critical path.
+
 - Use `loading="eager"` for above-the-fold images
 - Implement `fetchpriority="high"` for LCP images
-- Support AVIF and WebP formats with fallbacks
 
 #### Image Loading Strategy
 

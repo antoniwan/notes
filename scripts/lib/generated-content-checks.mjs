@@ -208,6 +208,31 @@ export function checkCanonicalConsistency({ label, canonical, feedUrl, jsonLdUrl
 }
 
 /**
+ * Hero art must be served responsively (R20).
+ *
+ * Astro can only optimize images under `src/`. A hero dropped into
+ * `public/images/` still renders — `HeroImage` falls back to a plain `<img>` —
+ * so nothing errors and nothing looks broken. It just silently ships one
+ * full-size file to every screen, which is the exact defect R20 removed. That
+ * failure mode is invisible without a check, so this is the check.
+ *
+ * @param {{ label: string, src: string, hasSrcset: boolean }[]} heroes
+ */
+export function checkHeroesAreResponsive(heroes) {
+  const problems = [];
+
+  for (const { label, src, hasSrcset } of heroes) {
+    if (hasSrcset) continue;
+    problems.push(
+      `${label}: hero image ${src} has no srcset. Move it from public/images/ to ` +
+        `src/assets/images/ so Astro can generate responsive sizes.`,
+    );
+  }
+
+  return problems;
+}
+
+/**
  * Site-internal links in a page must resolve, except paths the host redirects.
  *
  * @param {string[]} hrefs

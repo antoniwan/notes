@@ -56,11 +56,19 @@ updatedDate: '2025-05-15T10:30:00.000Z'
 
 ### `heroImage` (string)
 
-Primary image for social sharing and post display
+Primary image for social sharing and post display.
 
 ```yaml
 heroImage: '/images/beef-heart-comparison-chart.png'
 ```
+
+The path stays `/images/...`, but **the file belongs in
+`src/assets/images/`** — so this example lives at
+`src/assets/images/beef-heart-comparison-chart.png`. `src/utils/heroImages.ts`
+maps the frontmatter string onto the file, which is what lets Astro emit
+400/800/1200 responsive sizes while feeds, Open Graph tags, and search keep
+reading the same string. Images used inside the post body stay in
+`public/images/`.
 
 ### `imageAlt` (string)
 

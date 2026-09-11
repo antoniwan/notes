@@ -12,7 +12,7 @@ Append this to every prompt (or keep it at the end of the paste):
 --ar 1200:630 --v 7 --stylize 200 --style raw --no text, watermark, logo, letters, signature, caption, typography
 ```
 
-Then: upscale → download → convert to AVIF → save under `public/images/2026/<slug>.avif` → set `heroImage: /images/2026/<slug>.avif` in frontmatter → run `pnpm run generate-social-images`.
+Then: upscale → download → convert to AVIF → save under **`src/assets/images/2026/<slug>.avif`** → set `heroImage: /images/2026/<slug>.avif` in frontmatter (the path keeps its `/images/` shape) → run `pnpm run generate-social-images`.
 
 Keep the focal subject in the **center third**. The on-page hero crops to a shorter 1200×450 banner; OG uses the full 1200×630.
 
@@ -20,7 +20,7 @@ Keep the focal subject in the **center third**. The on-page hero crops to a shor
 
 ## Default cover pool (placeholders)
 
-Drop these into `public/images/default_covers/` as `default-1.avif` … `default-8.avif` (replace the current 3:2 set). Same parameters as above. Site vibe: raw, cosmic, hand-made, a little weird, no letters.
+Drop these into `src/assets/images/default_covers/` as `default-1.avif` … `default-8.avif` (replace the current 3:2 set). Same parameters as above. Site vibe: raw, cosmic, hand-made, a little weird, no letters.
 
 **1 — night chart**
 

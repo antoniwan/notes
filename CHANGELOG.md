@@ -9,6 +9,40 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.24.1] — 2026-09-10
+
+Documentation accuracy and a guard, after the responsive-image move.
+
+### Added
+
+- `validate-generated-content` now checks every post's hero image and fails with
+  the offending slug if one has no `srcset`. A hero left in `public/images/`
+  still renders, so the mistake is invisible without a check — this makes it
+  loud. Verified by moving a hero back and watching the gate name it.
+
+### Changed
+
+- README gained a "Where images go" table, and the project layout now shows
+  `src/assets/images/`. The post-publishing skill, `docs/frontmatter-spec.md`,
+  and `docs/midjourney-og-image-prompts.md` were all still telling authors to
+  save hero art to `public/images/`, which would have silently produced
+  unoptimized images on the next post.
+- `docs/performance-optimization.md` records the real arrival-cost numbers, and
+  notes that the widely-quoted 29 MB figure was a scroll-to-bottom worst case,
+  not what a visitor pays.
+
+### Fixed
+
+- Intermittent focus loss after closing the article lightbox (see 6.24.0).
+
+### Removed
+
+- `meta-descriptions-export.md`, a stale generated export listing 84 posts when
+  the site has 129, referenced by nothing.
+- `measure-bs.js`, a throwaway Playwright script hardcoded to a local URL.
+- `.eslintrc.cjs`. ESLint 10 uses flat config and ignores it entirely, so it was
+  dead and misleading — editing it would have had no effect.
+
 ## [6.24.0] — 2026-09-10
 
 Responsive images (R20), the last item from the September 10 audit roadmap.
@@ -31,6 +65,16 @@ Responsive images (R20), the last item from the September 10 audit roadmap.
 - The social image manifest is written in sorted order, so it stops churning
   when the scan order changes.
 
+### Deployment note
+
+The first production build on Vercel took **15m 59s**, encoding 341 image
+derivatives from scratch. Local measurement had suggested about 2m 9s for a cold
+build, so budget for roughly eight times that on Vercel rather than trusting the
+local figure. Warm local rebuilds stay near 20s because Astro caches derivatives
+under `node_modules/.astro`; whether Vercel preserves that cache between deploys
+has not been verified, and is the first thing to check if later builds are also
+slow. Nothing about this affects visitors — it is deploy cost only.
+
 ### Fixed
 
 - Images on phones. A 390px screen was downloading byte-identical images to a
@@ -44,6 +88,12 @@ Responsive images (R20), the last item from the September 10 audit roadmap.
 
   Desktop improves too — `/everything` goes from 29,032 KB to 3,203 KB — and the
   two are now genuinely different, which is the point.
+
+- A race in the article lightbox. A native `<dialog>` restores focus to whatever
+  was focused before it opened, and that restoration could land _after_ the
+  layout's own focus call, dropping the reader on an unrelated control instead
+  of the image they had opened. It happens intermittently, which is how it went
+  unnoticed; focus restoration now waits a frame so it reliably wins.
 
 - The Cookbook thumbnail on About had lost its crop and focal point.
   `object-fit: cover` and `object-position: center 55%` were written as
