@@ -9,6 +9,23 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.27.1] — 2026-09-11
+
+The `lastmod` bug 6.27.0 named in its own notes.
+
+### Fixed
+
+- **A new recipe no longer bumps `lastmod` for the `/category` and `/tag` index
+  pages.** Both build their counts from `isCategoryListedPost` and
+  `isTagListedPost`, which drop recipes, so a new dish never changed a thing on
+  either page — the sitemap said otherwise on every one. The individual
+  `/category/<id>` and `/tag/<id>` pages already had the guard; their indexes did
+  not, which is the same gap `/guided-path` had one version ago.
+
+  `LISTING_PATHS` now means what its name says: listings that carry recipes
+  alongside essays, which is the homepage, Everything, and the two feeds.
+  Everything else moved to `ESSAY_LISTING_PATHS`.
+
 ## [6.27.0] — 2026-09-11
 
 The Guided Path is a reading path again.

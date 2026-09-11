@@ -165,11 +165,15 @@ describe('sitemap lastmod attribution', () => {
 
     // Category, tag and Guided Path pages list essays only, so they must not.
     // See isCategoryListedPost / isTagListedPost / isGuidedPathListedPost.
-    expect(index.lastmodByUrl.get(sitemapPageUrl('/category/parenting'))?.toISOString()).toBe(
-      essayDate,
-    );
-    expect(index.lastmodByUrl.get(sitemapPageUrl('/tag/parenting'))?.toISOString()).toBe(essayDate);
-    expect(index.lastmodByUrl.get(sitemapPageUrl('/guided-path'))?.toISOString()).toBe(essayDate);
+    for (const essayOnly of [
+      '/category',
+      '/category/parenting',
+      '/tag',
+      '/tag/parenting',
+      '/guided-path',
+    ]) {
+      expect(index.lastmodByUrl.get(sitemapPageUrl(essayOnly))?.toISOString()).toBe(essayDate);
+    }
   });
 
   it('still clusters EN/ES translation pairs', () => {

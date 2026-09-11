@@ -34,13 +34,15 @@ const HREFLANG_BY_LANG: Record<string, string> = {
 const CONTENT_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../content/p');
 
 /** Listings that carry recipes alongside essays. */
-const LISTING_PATHS = ['/', '/everything', '/category', '/tag', '/rss.xml', '/feed.json'];
+const LISTING_PATHS = ['/', '/everything', '/rss.xml', '/feed.json'];
 
 /**
- * Listings that carry essays only — see `isGuidedPathListedPost` in
- * utils/recipes.ts. A new dish does not change what the reading path holds.
+ * Listings that carry essays only — see `isGuidedPathListedPost`,
+ * `isCategoryListedPost` and `isTagListedPost` in utils/recipes.ts. The category
+ * and tag index pages build their counts from those same filters, so a new dish
+ * changes nothing on them either.
  */
-const ESSAY_LISTING_PATHS = ['/guided-path'];
+const ESSAY_LISTING_PATHS = ['/guided-path', '/category', '/tag'];
 
 type SitemapMeta = {
   linksByCanonicalUrl: Map<string, SitemapLangLink[]>;
@@ -138,9 +140,8 @@ export function buildSitemapIndex(
           bumpLastmod(lastmodByUrl, sitemapPageUrl(listingPath), lastmod);
         }
 
-        // Category and tag pages list essays, not recipes — see
-        // `isCategoryListedPost` / `isTagListedPost` in utils/recipes.ts. The
-        // tag side already had this guard; the category side did not.
+        // Individual category and tag pages list essays, not recipes, on the
+        // same rules as their index pages above.
         for (const category of meta.category) {
           bumpLastmod(lastmodByUrl, sitemapPageUrl(`/category/${category}`), lastmod);
         }
