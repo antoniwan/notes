@@ -36,7 +36,7 @@ Compassion helped me stop being so blind to life and taught me about **empathy**
 
 Before we go further, I want to mention that **compassion** and **empathy** are closely related. Still, these are distinct concepts, not mutually exclusive. I see **empathy** as an emotional value, feeling or understanding another person’s emotions, and **compassion** as an actionable value that focuses on the desire to help, assist, or reduce suffering for another person. I use **empathy** to understand the emotions that are possibly being felt and why, to understand the vibe. I then use **compassion** to implement actions that will defuse or alleviate whatever the situation is. Applying **empathy** and **compassion allows me to** act **kindly** for myself and others.
 
-![Venn diagram of my needs, your needs, and possible solutions overlapping at a mutual solution](/images/empathy-mutual-solution.jpeg)
+![Venn diagram of my needs, your needs, and possible solutions overlapping at a mutual solution](../../assets/images/empathy-mutual-solution.jpeg)
 
 Now that I’m not turning my eye blind to my wants and needs, and I can understand and communicate for myself and others what my expectations are and what my problems are, I can set boundaries or act within my value systems and be truthful with myself through my behavior and habits. Now that I’m also able to understand the needs, wants, and expectations of others, I’m able to use compassion to find common ground and resolve conflicts in a way that makes sense for all parties involved. I’m able to be perceived and act kindly!
 

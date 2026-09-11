@@ -1,11 +1,11 @@
 // @ts-check
 import { defineConfig, fontProviders } from 'astro/config';
-import { unified } from '@astrojs/markdown-remark';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import vercel from '@astrojs/vercel';
 import { SITE_URL } from './src/consts';
+import { unified } from '@astrojs/markdown-remark';
 import { remarkReadingTime } from './remark-reading-time.mjs';
 import { remarkDemoteMarkdownH1 } from './src/utils/remarkDemoteMarkdownH1.mjs';
 import { remarkPostSectionBreak } from './src/utils/remarkPostSectionBreak.mjs';
@@ -120,6 +120,9 @@ export default defineConfig({
       theme: 'github-dark',
       wrap: true,
     },
+    // `processor: unified({...})` is the current API. The flat
+    // `markdown.remarkPlugins` / `rehypePlugins` / `gfm` / `smartypants` keys
+    // are deprecated in Astro 7 and warn on startup.
     processor: unified({
       remarkPlugins: [remarkReadingTime, remarkDemoteMarkdownH1, remarkPostSectionBreak],
       rehypePlugins: [rehypeWrapTables],
@@ -137,6 +140,13 @@ export default defineConfig({
     service: {
       entrypoint: 'astro/assets/services/sharp',
     },
+    // Gives every Astro-processed image a srcset, including Markdown images in
+    // post bodies, which otherwise emit a single size. `responsiveStyles` stays
+    // off (the default): the site frames its own images, and Astro's global
+    // image styles would fight that. Breakpoints start at 400 because the
+    // default set starts at 640, which is already larger than a card paints.
+    layout: 'constrained',
+    breakpoints: [400, 640, 800, 1024, 1200, 1600],
     domains: ['notes.antoniwan.online'],
     remotePatterns: [
       {

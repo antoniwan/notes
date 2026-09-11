@@ -25,6 +25,10 @@ published: true
 showComments: true
 ---
 
+import { Image } from 'astro:assets';
+import img1 from '../../assets/images/mia-y-yo-anime.avif';
+import img2 from '../../assets/images/saitama-sensei.jpeg';
+
 I've been thinking a lot about who raised me to be who I am. And I'm preparing an essay about that. _But this one is not about that._ This one is about the **fictional characters** that raised me.
 
 When I think about what I value today, throughout my life, from childhood to now, I can only admit that fictional characters have influenced me heavily in my upbringing, my emotions, my feelings, and my paradigms. _It's absolutely insane!!! Jajaja_
@@ -49,8 +53,8 @@ I was able to identify many of the emotions tied to each. Here's how it goes.
 There's more. But these are the main ones.
 
 <figure class="post-inline-figure">
-  <img
-    src="/images/mia-y-yo-anime.avif"
+  <Image
+    src={img1}
     alt="My daughter and I talking about magic fruit"
     loading="lazy"
     decoding="async"
@@ -76,12 +80,7 @@ Now that I'm older, the characters influencing or giving me joy are different. N
 ## Saitama
 
 <figure class="post-inline-figure">
-  <img
-    src="/images/saitama-sensei.jpeg"
-    alt="Saitama from One Punch Man"
-    loading="lazy"
-    decoding="async"
-  />
+  <Image src={img2} alt="Saitama from One Punch Man" loading="lazy" decoding="async" />
   <figcaption>Sensei…</figcaption>
 </figure>
 

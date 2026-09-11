@@ -107,7 +107,7 @@ And all of that smallness turns out to be a gift, which took me decades to under
 
 I am _so_ insignificant that I can make everything significant to me. If we mattered on _her_ scale, home would never be enough, no? Because we do not, home is everything. And the same asymmetry that makes my portion sacred makes everything else lighter, because if I am nothing against her then so is whatever I happen to be carrying this week. It does not go away and it does not stop hurting. It just goes back to its actual size, which was the size it always was while I was treating it as the size of everything.
 
-![Grainy black-and-white lily bloom on a dark field, stamens sharp at the center](/images/2026/vastitas-flower.avif)
+![Grainy black-and-white lily bloom on a dark field, stamens sharp at the center](../../assets/images/2026/vastitas-flower.avif)
 
 <h2 id="why-i-call-her-she" class="toc-only">Why I call her she</h2>
 

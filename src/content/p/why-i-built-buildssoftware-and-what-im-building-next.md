@@ -47,9 +47,9 @@ Because social platforms aren’t enough. Because algorithms don’t deserve my 
 
 _Site built with Next.js, Tailwind, Cursor AI, and a lot of heart._
 
-![Vercel Speed Insights showing a 100 Real Experience Score on mobile](/images/builds-software-speed-mobile.jpeg)
+![Vercel Speed Insights showing a 100 Real Experience Score on mobile](../../assets/images/builds-software-speed-mobile.jpeg)
 
-![Vercel Speed Insights showing a 100 Real Experience Score on desktop](/images/builds-software-speed-desktop.jpeg)
+![Vercel Speed Insights showing a 100 Real Experience Score on desktop](../../assets/images/builds-software-speed-desktop.jpeg)
 
 _100/100 Real Experience Score on desktop and mobile._
 

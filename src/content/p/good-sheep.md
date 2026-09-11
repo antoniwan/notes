@@ -50,7 +50,7 @@ The sheep machine isn't just processing our time and money - it's processing our
 
 Universal Studios was just the moment of clarity. The sheep machine is everywhere, and it's been running for over 150 years. And we've been conditioned to love our own systematic abuse.
 
-![Fun times](/images/lord-take-us-all.avif)
+![Fun times](../../assets/images/lord-take-us-all.avif)
 _Whenever you are ready Lord, take us all_
 
 ## The Taste of Our Own Destruction

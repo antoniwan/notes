@@ -25,6 +25,15 @@ published: true
 showComments: true
 ---
 
+import { Image } from 'astro:assets';
+import img1 from '../../assets/images/symbols/narsil.avif';
+import img2 from '../../assets/images/symbols/master-sword.avif';
+import img3 from '../../assets/images/symbols/ma5c.avif';
+import img4 from '../../assets/images/symbols/mjolnir.avif';
+import img5 from '../../assets/images/symbols/dragon-slayer.avif';
+import img6 from '../../assets/images/symbols/vegvisir.avif';
+import img7 from '../../assets/images/symbols/lightsaber.avif';
+
 I've been thinking about getting a tattoo—or many—but I can't pull the trigger. There's something about having a "clean" body that feels sacred. Still, the idea of _customizing_ it, of turning my body into a living archive of meaning, also deeply appeals to me.
 
 But I don't want just ink. I want **symbols of power** etched into my skin—reminders of who I am and who I'm becoming. They would be sigils of therapy, experience, insight, reading, integrating. Weapons and artifacts that offer strength: like armor, or a shield, like a sword, or a dagger, or the _Death Note_, or Narsil. Each depending on the occasion. Extra tools. Extra push.
@@ -34,12 +43,7 @@ But I don't want just ink. I want **symbols of power** etched into my skin—rem
 ### Narsil
 
 <figure class="post-inline-figure">
-  <img
-    src="/images/symbols/narsil.avif"
-    alt="Narsil, the sword that was broken"
-    loading="lazy"
-    decoding="async"
-  />
+  <Image src={img1} alt="Narsil, the sword that was broken" loading="lazy" decoding="async" />
   <figcaption>The sword that was broken</figcaption>
 </figure>
 
@@ -48,8 +52,8 @@ Narsil, for me, represents the permanent struggle of human will against evil. Th
 ### Master Sword
 
 <figure class="post-inline-figure">
-  <img
-    src="/images/symbols/master-sword.avif"
+  <Image
+    src={img2}
     alt="Young Link pulling the Master Sword out of its pedestal"
     loading="lazy"
     decoding="async"
@@ -62,8 +66,8 @@ The Master Sword is iconic—a weapon that chooses its wielder, that tests their
 ### MA5C assault rifle
 
 <figure class="post-inline-figure">
-  <img
-    src="/images/symbols/ma5c.avif"
+  <Image
+    src={img3}
     alt="Master Chief holding the MA5C assault rifle"
     loading="lazy"
     decoding="async"
@@ -76,8 +80,8 @@ The MA5C is my tool of precision—a weapon that represents human ingenuity and 
 ### Mjölnir
 
 <figure class="post-inline-figure">
-  <img
-    src="/images/symbols/mjolnir.avif"
+  <Image
+    src={img4}
     alt="Mjölnir as depicted in the God of War games"
     loading="lazy"
     decoding="async"
@@ -90,8 +94,8 @@ Mjölnir needs no explanation—it's the hammer that commands the storm, the wea
 ### Dragon Slayer
 
 <figure class="post-inline-figure">
-  <img
-    src="/images/symbols/dragon-slayer.avif"
+  <Image
+    src={img5}
     alt="Guts from Berserk wielding Dragon Slayer"
     loading="lazy"
     decoding="async"
@@ -104,12 +108,7 @@ Dragon Slayer is a sword made to kill dragons—a weapon so massive it was never
 ### Vegvisir
 
 <figure class="post-inline-figure">
-  <img
-    src="/images/symbols/vegvisir.avif"
-    alt="Vegvisir, an Icelandic magical stave"
-    loading="lazy"
-    decoding="async"
-  />
+  <Image src={img6} alt="Vegvisir, an Icelandic magical stave" loading="lazy" decoding="async" />
   <figcaption>The wayfinder rune</figcaption>
 </figure>
 
@@ -122,8 +121,8 @@ The Vegvisir is an Icelandic magical stave—a compass that guides its bearer th
 ### Lightsaber
 
 <figure class="post-inline-figure">
-  <img
-    src="/symbols/lightsaber.avif"
+  <Image
+    src={img7}
     alt="A lightsaber blade tuned to the soul of its wielder"
     loading="lazy"
     decoding="async"

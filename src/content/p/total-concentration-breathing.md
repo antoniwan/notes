@@ -35,7 +35,7 @@ Repeat for **4–10 rounds** based on your intention:
 - 🌊 **Calm & Reset**: 8–10 rounds, eyes closed, soften body
 - 🌌 **Sleep & Surrender**: Lying down, continue until body relaxes
 
-![Total Concentration Breathing!](/images/tcb.avif)
+![Total Concentration Breathing!](../../assets/images/tcb.avif)
 
 ## 📖 Glossary of Key Terms and Values
 

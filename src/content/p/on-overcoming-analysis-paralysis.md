@@ -38,7 +38,7 @@ After all, this is not a guide or idea to completing your goals; no, this is a g
 
 As you practice this approach and the steps, you can elaborate on what works best for you and even complicate it! For myself, I’m able to add a “decision-making” step in between my steps; below, I’m adding a graph that shows my thought process. I hope it’s helpful in your development of this skill of overcoming paralysis.
 
-![Flowchart: breathe until calm, then take a physical step to get moving](/images/breathe-move-act.jpeg)
+![Flowchart: breathe until calm, then take a physical step to get moving](../../assets/images/breathe-move-act.jpeg)
 
 _Breathe, move, act._
 
