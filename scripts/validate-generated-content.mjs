@@ -34,6 +34,7 @@ import {
   checkJsonLd,
   checkLocalAssets,
   checkLocalLinks,
+  checkPreloadTargets,
   checkPublishEligibility,
   REQUIRED_SITE_SCHEMA_TYPES,
 } from './lib/generated-content-checks.mjs';
@@ -111,6 +112,18 @@ function extractHero(html) {
   if (!img) return null;
   const src = img[0].match(/src="([^"]+)"/);
   return { src: src ? src[1] : '(unknown)', hasSrcset: /srcset=/.test(img[0]) };
+}
+
+/** Every `<link rel="preload">` href, plus any imagesrcset candidates. */
+function extractPreloads(html) {
+  const out = [];
+  for (const tag of html.matchAll(/<link[^>]+rel="preload"[^>]*>/g)) {
+    const href = tag[0].match(/\shref="([^"]+)"/);
+    if (href) out.push(href[1]);
+    const set = tag[0].match(/imagesrcset="([^"]+)"/);
+    if (set) for (const c of set[1].split(',')) out.push(c.trim().split(' ')[0]);
+  }
+  return out;
 }
 
 function extractHrefs(html) {
@@ -296,6 +309,7 @@ const feedUrlBySlug = new Map(
 // everything. These counters make that difference visible in the output.
 let jsonLdBlocksSeen = 0;
 let heroesSeen = 0;
+let preloadsSeen = 0;
 let linksSeen = 0;
 let assetsSeen = 0;
 
@@ -327,6 +341,15 @@ for (const { label, sitePath } of surfaces) {
     ...checkLocalAssets([{ label: `${label} og:image`, url: ogImage }], outputHas, SITE_ORIGIN),
   );
 
+  const preloads = extractPreloads(html);
+  preloadsSeen += preloads.length;
+  problems.push(
+    ...checkPreloadTargets(
+      preloads.map((href) => ({ label, href })),
+      outputHas,
+    ),
+  );
+
   const hrefs = extractHrefs(html);
   linksSeen += hrefs.filter((href) => href.startsWith('/') && !href.startsWith('//')).length;
   problems.push(...checkLocalLinks(hrefs, outputHas, REDIRECT_PREFIXES, label));
@@ -355,7 +378,7 @@ if (assetsSeen === 0) problems.push('no og:image was inspected — the extractor
 
 notes.push(
   `${surfaces.length} surfaces · ${jsonLdBlocksSeen} ld+json blocks · ` +
-    `${linksSeen} internal links / ${heroesSeen} heroes · ${assetsSeen} og:images`,
+    `${linksSeen} internal links / ${heroesSeen} heroes / ${preloadsSeen} preloads · ${assetsSeen} og:images`,
 );
 
 // --- Report ------------------------------------------------------------------

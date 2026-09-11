@@ -233,6 +233,31 @@ export function checkHeroesAreResponsive(heroes) {
 }
 
 /**
+ * Preload hints must point at something real.
+ *
+ * A `<link rel="preload">` failing is silent: the page still renders, the
+ * browser just wastes a request on a 404. When hero art moved under `src/`, the
+ * preload kept pointing at the old `public/` path and every post with a hero
+ * requested a missing file — 115 pages, invisible except in a network panel.
+ *
+ * @param {{ label: string, href: string }[]} preloads
+ * @param {(sitePath: string) => boolean} exists
+ */
+export function checkPreloadTargets(preloads, exists) {
+  const problems = [];
+
+  for (const { label, href } of preloads) {
+    if (!href || !href.startsWith('/') || href.startsWith('//')) continue;
+    const clean = href.split('?')[0].split('#')[0];
+    if (!exists(clean)) {
+      problems.push(`${label}: preload target ${clean} does not exist in the output`);
+    }
+  }
+
+  return problems;
+}
+
+/**
  * Site-internal links in a page must resolve, except paths the host redirects.
  *
  * @param {string[]} hrefs

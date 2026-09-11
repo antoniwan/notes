@@ -2,7 +2,8 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
-import { Font } from 'astro:assets';
+import { Font, getImage } from 'astro:assets';
+import { HERO_QUALITY, HERO_SIZES, HERO_WIDTHS, resolveHeroImage } from '../utils/heroImages';
 import { SITE_TITLE, SITE_DESCRIPTION, AUTHOR, SEO_CONFIG } from '../consts';
 import { generateMetaTags, DEFAULT_LOCALE } from '../utils/seo';
 import { ogLocaleAlternatesFromHreflang } from '../utils/ogLocale';
@@ -42,6 +43,30 @@ const {
   htmlLang = 'en',
 } = Astro.props;
 
+/**
+ * Preload the article hero, matching exactly what `HeroImage` renders.
+ *
+ * This used to preload the raw `heroImage` frontmatter string. Once hero art
+ * moved under `src/assets/` for responsive sizing, that path stopped existing
+ * and every post with a hero requested a 404 — 115 of them. A preload also has
+ * to carry the same `imagesrcset`/`imagesizes` as the `<img>`, or the browser
+ * fetches one candidate for the preload and a different one for the element.
+ *
+ * The `!heroImage` branch that preloaded `/images/default.avif` is gone too: the
+ * fallback cover is chosen by `DefaultImage` from `default_covers/`, so that
+ * preload pulled an image the page never displayed.
+ */
+const resolvedHero = resolveHeroImage(heroImage);
+const heroPreload = resolvedHero
+  ? await getImage({
+      src: resolvedHero,
+      widths: HERO_WIDTHS,
+      sizes: HERO_SIZES.article,
+      format: 'avif',
+      quality: HERO_QUALITY,
+    })
+  : null;
+
 // Generate optimized meta tags with proper heroImage prioritization
 const metaTags = generateMetaTags({
   title,
@@ -73,8 +98,16 @@ const updatedDateISO = updatedDate?.toISOString();
 <!-- Font preloading handled by Astro Fonts API -->
 
 <!-- Critical Resource Preloading -->
-{heroImage && <link rel="preload" href={heroImage} as="image" />}
-{!heroImage && <link rel="preload" href="/images/default.avif" as="image" />}
+{
+  heroPreload && (
+    <link
+      rel="preload"
+      as="image"
+      imagesrcset={heroPreload.srcSet.attribute}
+      imagesizes={HERO_SIZES.article}
+    />
+  )
+}
 
 <!-- Theme & Color -->
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />

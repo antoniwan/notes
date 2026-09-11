@@ -9,6 +9,44 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.26.0] — 2026-09-10
+
+Astro 7.3.2 and `@astrojs/mdx` v8, plus a 404 the image migration left behind.
+
+### Fixed
+
+- **Every post with a hero image was requesting a file that does not exist.**
+  `BaseHead` preloaded the raw `heroImage` frontmatter path, and that path
+  stopped resolving in 6.24.0 when hero art moved under `src/assets/` for
+  responsive sizing. 115 pages, one wasted 404 each. It fails silently — the page
+  renders fine and only a network panel shows it.
+
+  The preload now carries `imagesrcset` and `imagesizes` matching the rendered
+  `<img>` exactly, so the browser preloads the same candidate it goes on to use
+  rather than fetching one file twice.
+
+- Removed the `!heroImage` preload of `/images/default.avif`. Posts without a
+  hero show a cover picked by `DefaultImage` from `default_covers/`, so that
+  preload pulled an image the page never displayed.
+
+### Added
+
+- `validate-generated-content` now checks preload targets, including every
+  `imagesrcset` candidate. A broken preload is invisible without a check, which
+  is exactly how this one survived two releases.
+
+### Changed
+
+- `@astrojs/mdx` v7.0.5 → v8.0.1, Astro 7.2.2 → 7.3.2. Verified against the four
+  posts converted to MDX in 6.25.0: all render with their figures and captions
+  intact.
+
+### Notes
+
+Vercel does preserve Astro's image cache between deploys — an earlier changelog
+entry left that open. The deploy after 6.25.1 took about a minute instead of
+sixteen, because almost nothing needed re-encoding.
+
 ## [6.25.1] — 2026-09-10
 
 Reverts the `image.layout` half of 6.25.0. It was a bad trade and the build log
