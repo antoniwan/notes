@@ -27,6 +27,7 @@ export const SOCIAL_IMAGE_MANIFEST: Record<string, string> = {
   '/images/2026/arroz-con-pollo.avif': '/social/images/2026/arroz-con-pollo-social.jpg',
   '/images/2026/asopao-de-pollo.avif': '/social/images/2026/asopao-de-pollo-social.jpg',
   '/images/2026/banana-oat-bread.avif': '/social/images/2026/banana-oat-bread-social.jpg',
+  '/images/2026/briefly-on-the-tao.avif': '/social/images/2026/briefly-on-the-tao-social.jpg',
   '/images/2026/brocoli-con-sabor.avif': '/social/images/2026/brocoli-con-sabor-social.jpg',
   '/images/2026/brown-butter-gourmet-brownies.avif':
     '/social/images/2026/brown-butter-gourmet-brownies-social.jpg',
