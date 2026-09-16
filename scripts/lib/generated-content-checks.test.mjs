@@ -99,12 +99,13 @@ describe('publication eligibility', () => {
     const posts = [
       { slug: 'essay', data: live },
       { slug: 'ensayo', data: { ...live, language: ['es'] } },
+      { slug: 'recipes/sofrito', data: live },
       { slug: 'wip', data: { ...live, draft: true } },
     ];
-    // The Spanish twin gets a page but no feed entry; the draft gets neither.
+    // Spanish twin and household recipe get a page but no feed entry; draft gets neither.
     const problems = checkPublishEligibility(
       posts,
-      new Set(['essay', 'ensayo']),
+      new Set(['essay', 'ensayo', 'recipes/sofrito']),
       new Set(['essay']),
       now,
     );
@@ -143,6 +144,17 @@ describe('publication eligibility', () => {
       'essay: public but no page was emitted',
       'essay: public English post is missing from the feeds',
     ]);
+  });
+
+  test('fails when a household recipe reaches the feeds', () => {
+    const posts = [{ slug: 'recipes/sofrito', data: live }];
+    const problems = checkPublishEligibility(
+      posts,
+      new Set(['recipes/sofrito']),
+      new Set(['recipes/sofrito']),
+      now,
+    );
+    expect(problems[0]).toMatch(/household recipe must not appear in the feeds/);
   });
 });
 

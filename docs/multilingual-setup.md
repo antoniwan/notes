@@ -73,7 +73,7 @@ English cards whose `translationGroup` has a public Spanish sibling show an **ES
 - **English posts** appear in:
   - Homepage highlight masonry (when `featured: true`)
   - Category / tag / everything listings
-  - RSS/JSON feeds
+  - RSS/JSON feeds (essays only; household recipes stay on Cookbook)
   - Guided Path (when eligible)
   - Search
 - **Spanish posts** (`language: ["es"]`) are:

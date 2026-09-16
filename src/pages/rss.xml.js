@@ -1,7 +1,7 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL, AUTHOR } from '../consts';
-import { isFeedEligiblePost } from '../utils/publishFilters';
+import { isFeedListedPost } from '../utils/recipes';
 import {
   buildFeedItemHtml,
   enclosureMimeType,
@@ -10,8 +10,7 @@ import {
 } from '../utils/feedContent';
 
 export async function GET() {
-  const posts = await getCollection('blog');
-  const publishedPosts = posts.filter((post) => isFeedEligiblePost(post.data));
+  const publishedPosts = await getCollection('blog', (entry) => isFeedListedPost(entry));
 
   const sortedPosts = publishedPosts.sort(
     (a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf(),

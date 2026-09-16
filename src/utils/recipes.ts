@@ -1,9 +1,11 @@
 import type { CollectionEntry } from 'astro:content';
 import {
   isCollectionListed,
+  isFeedEligiblePost,
   isGuidedPathEligiblePost,
   isListingEligiblePost,
   isPublicPost,
+  type PublishFilterOptions,
 } from './publishFilters';
 
 /** Recipe posts live under `src/content/p/recipes/` and ship at `/p/recipes/<slug>`. */
@@ -42,6 +44,17 @@ export function isGuidedPathListedPost(
   post: Pick<CollectionEntry<'blog'>, 'id' | 'data'>,
 ): boolean {
   return isGuidedPathEligiblePost(post.data) && !isRecipePost(post);
+}
+
+/**
+ * RSS and JSON Feed: public English essays.
+ * Household recipes stay on Cookbook; they are not a second stream in syndication.
+ */
+export function isFeedListedPost(
+  post: Pick<CollectionEntry<'blog'>, 'id' | 'data'>,
+  options: PublishFilterOptions = {},
+): boolean {
+  return isFeedEligiblePost(post.data, options) && !isRecipePost(post);
 }
 
 export function recipeContentsLetter(title: string): string {

@@ -4,6 +4,7 @@ import {
   findMoreRecipes,
   isCategoryListedPost,
   isCookbookListedPost,
+  isFeedListedPost,
   isGuidedPathListedPost,
   isRecipePost,
   isTagListedPost,
@@ -68,6 +69,20 @@ describe('isTagListedPost', () => {
   it('keeps essays and drops household recipes', () => {
     expect(isTagListedPost(post('i-didnt-start-cooking-for-love'))).toBe(true);
     expect(isTagListedPost(post('recipes/lemon-pepper-chicken'))).toBe(false);
+  });
+});
+
+describe('isFeedListedPost', () => {
+  it('keeps essays and drops household recipes', () => {
+    expect(isFeedListedPost(post('i-didnt-start-cooking-for-love'))).toBe(true);
+    expect(isFeedListedPost(post('recipes/lemon-pepper-chicken'))).toBe(false);
+  });
+
+  it('still hides Spanish twins and drafts', () => {
+    expect(
+      isFeedListedPost(post('on-cooking-on-everything-and-foundations-es', { language: ['es'] })),
+    ).toBe(false);
+    expect(isFeedListedPost(post('i-didnt-start-cooking-for-love', { draft: true }))).toBe(false);
   });
 });
 

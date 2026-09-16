@@ -19,7 +19,7 @@ Release history: [CHANGELOG.md](./CHANGELOG.md)
 - **Paths in** — Guided Path (seasonal order, progress in the browser only), Everything (English archive), Categories, Topics (the tag index, read as an idea map for browsing subjects), header search. The main nav groups these under **Browse** (Topics, Categories) and **Collections** (Children’s books, Cookbook, Book library)
 - **Home** — a hero ("I write to live it"), three entry links (Start here → Guided Path, Browse topics, Everything), Highlights masonry for `featured` English posts, a Children’s books teaser, and a short "why this space exists" note
 - **Writing Insights** (`/writing-insights`) — cadence, topics, lexicon. `/brain-science` is the origin note; old dashboard subpaths 301
-- **Feeds** — RSS (`/rss.xml`) and JSON Feed (`/feed.json`). Spanish stays out of feeds, same as listings
+- **Feeds** — RSS (`/rss.xml`) and JSON Feed (`/feed.json`). Spanish and household recipes stay out of feeds
 - **Quotes API** — `GET /api/quotes` (Stoic excerpts, other philosophy, lines from posts; optional `?kind=`)
 
 English is the listing language. Spanish is a twin: language toggle, title search, SEO, direct URL. Not a second card stream. Details: [docs/multilingual-setup.md](docs/multilingual-setup.md).
@@ -143,7 +143,7 @@ bytes rather than the source:
 - canonical URL, feed entry URL, and JSON-LD identity agree
 - site-local `og:image` targets and internal links resolve to real files
 - drafts, `published: false`, and future-dated posts appear nowhere; public
-  English posts appear everywhere they should; Spanish twins stay out of feeds
+  English essays appear in feeds; Spanish twins and household recipes stay out
 
 Surfaces covered: homepage, `/everything`, `/writing-insights`, an English essay,
 a Spanish twin, and a recipe. External URLs are never fetched — a release must

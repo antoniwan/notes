@@ -116,6 +116,11 @@ export function isSpanishPrimaryFrontmatter(data) {
   return isSpanishPrimaryMeta(normalizePostMeta(data));
 }
 
+/** Same rule as `isRecipeId` in src/utils/recipes.ts. */
+function isRecipeSlug(slug) {
+  return slug === 'recipes' || String(slug).startsWith('recipes/');
+}
+
 /**
  * Nothing withheld may be published, and nothing public may go missing.
  *
@@ -146,6 +151,8 @@ export function checkPublishEligibility(posts, emittedSlugs, feedSlugs, now = ne
 
     if (isSpanishPrimaryFrontmatter(data)) {
       if (inFeed) problems.push(`${slug}: Spanish-primary post must not appear in the feeds`);
+    } else if (isRecipeSlug(slug)) {
+      if (inFeed) problems.push(`${slug}: household recipe must not appear in the feeds`);
     } else if (!inFeed) {
       problems.push(`${slug}: public English post is missing from the feeds`);
     }

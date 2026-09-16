@@ -139,7 +139,7 @@ describe('sitemap lastmod attribution', () => {
     );
   });
 
-  it('keeps recipes off category, tag and Guided Path pages', () => {
+  it('keeps recipes off category, tag, Guided Path, and feeds', () => {
     const index = buildSitemapIndex(
       [
         entry('essay', {
@@ -163,14 +163,17 @@ describe('sitemap lastmod attribution', () => {
     expect(index.lastmodByUrl.get(sitemapPageUrl('/recipes'))?.toISOString()).toBe(recipeDate);
     expect(index.lastmodByUrl.get(sitemapPageUrl('/everything'))?.toISOString()).toBe(recipeDate);
 
-    // Category, tag and Guided Path pages list essays only, so they must not.
-    // See isCategoryListedPost / isTagListedPost / isGuidedPathListedPost.
+    // Category, tag, Guided Path, and feeds list essays only, so they must not.
+    // See isCategoryListedPost / isTagListedPost / isGuidedPathListedPost /
+    // isFeedListedPost.
     for (const essayOnly of [
       '/category',
       '/category/parenting',
       '/tag',
       '/tag/parenting',
       '/guided-path',
+      '/rss.xml',
+      '/feed.json',
     ]) {
       expect(index.lastmodByUrl.get(sitemapPageUrl(essayOnly))?.toISOString()).toBe(essayDate);
     }

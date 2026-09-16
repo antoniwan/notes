@@ -34,7 +34,13 @@ const HREFLANG_BY_LANG: Record<string, string> = {
 const CONTENT_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../content/p');
 
 /** Listings that carry recipes alongside essays. */
-const LISTING_PATHS = ['/', '/everything', '/rss.xml', '/feed.json'];
+const LISTING_PATHS = ['/', '/everything'];
+
+/**
+ * Feeds carry essays only — see `isFeedListedPost`. A new dish must not move
+ * `/rss.xml` or `/feed.json` lastmod.
+ */
+const FEED_PATHS = ['/rss.xml', '/feed.json'];
 
 /**
  * Listings that carry essays only — see `isGuidedPathListedPost`,
@@ -136,6 +142,9 @@ export function buildSitemapIndex(
       if (isRecipeId(postId)) {
         bumpLastmod(lastmodByUrl, sitemapPageUrl('/recipes'), lastmod);
       } else {
+        for (const listingPath of FEED_PATHS) {
+          bumpLastmod(lastmodByUrl, sitemapPageUrl(listingPath), lastmod);
+        }
         for (const listingPath of ESSAY_LISTING_PATHS) {
           bumpLastmod(lastmodByUrl, sitemapPageUrl(listingPath), lastmod);
         }
