@@ -70,3 +70,4 @@ The caldero:
 - Achiote oil: low heat, ½ cup oil with 2 tablespoons achiote seeds until it turns red. Strain. Fridge. One tablespoon colors the pot.
 - Homemade sazón (1½ tsp = 1 packet): 1 tbsp ground achiote, 1 tbsp garlic powder, 1 tbsp cumin, 1 tbsp ground cilantro, 1½ tsp oregano, 1 tsp black pepper, ½ tbsp salt.
 - If you are setting aside a portion for a baby who is learning to eat, take it out before adding the alcaparrado.
+- Chicken broth: if you do not have it, 3 cups water + 1 Knorr chicken bouillon cube. Todo con Knorr sabe mejor.

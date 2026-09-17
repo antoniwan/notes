@@ -71,3 +71,4 @@ El caldero:
 - Aceite de achiote: fuego bajo, ½ taza de aceite con 2 cucharadas de semillas de achiote hasta que se ponga rojo. Cuela. Nevera. Una cucharada pinta el caldero.
 - Sazón casero (1½ cdta = 1 sobre): 1 cda achiote molido, 1 cda ajo en polvo, 1 cda comino, 1 cda cilantro molido, 1½ cdta orégano, 1 cdta pimienta negra, ½ cda sal.
 - Si vas a apartar una porción para un bebé que está aprendiendo a comer, sácala antes de echar el alcaparrado.
+- Caldo de pollo: si no tienes, 3 tazas de agua y 1 cubito Knorr. Todo con Knorr sabe mejor.
