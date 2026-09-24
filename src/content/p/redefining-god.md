@@ -202,7 +202,7 @@ What's left is everything, and everything includes the grandmother and the soldi
 
 ## Sources
 
-### III. Puerto Rico, 1512
+**III. Puerto Rico, 1512**
 
 - **Taíno creation myths**, written down by Ramón Pané. [Wikipedia](https://en.wikipedia.org/wiki/Ta%C3%ADno_creation_myths)
 - **Indigenous mitochondrial DNA**, about 61 percent (Juan Martínez-Cruzado). [ICT News](https://ictnews.org/archive/indigenous-puerto-rico-dna-evidence-upsets-established-history/)
@@ -210,12 +210,12 @@ What's left is everything, and everything includes the grandmother and the soldi
 - **Alonso Manso.** [Wikipedia](https://en.wikipedia.org/wiki/Alonso_Manso)
 - **The Spanish Inquisition.** [Wikipedia](https://en.wikipedia.org/wiki/Spanish_Inquisition)
 
-### IV. Puerto Rico, 1899
+**IV. Puerto Rico, 1899**
 
 - **Nine denominations divide the island**, 1899. [Christian Century](https://christiancentury.org/blog-post/practicing-liberation/colonial-gospel-puerto-rico)
 - **Proyecto Dignidad.** [Wikipedia](https://en.wikipedia.org/wiki/Proyecto_Dignidad)
 
-### V. Gaza, Amalek, the pulpits
+**V. Gaza, Amalek, the pulpits**
 
 - **Children killed in Gaza.** 20,179 through October 2025, and about one a day since the ceasefire. [UNICEF USA](https://www.unicefusa.org/stories/more-50000-children-killed-or-injured-gaza) · [Al Jazeera on UNICEF, August 2026](https://www.aljazeera.com/news/2026/8/6/unicef-says-one-child-killed-per-day-in-gaza-since-ceasefire-2)
 - **UN commission of inquiry.** Genocide finding, 16 September 2025. [OHCHR](https://www.ohchr.org/en/press-releases/2025/09/israel-has-committed-genocide-gaza-strip-un-commission-finds) · [CNN](https://www.cnn.com/2025/09/16/middleeast/israel-gaza-genocide-un-commission-report-intl)
@@ -224,7 +224,7 @@ What's left is everything, and everything includes the grandmother and the soldi
 - **The end-times script.** [Political Research Associates](https://politicalresearch.org/2020/07/09/end-times-antisemitism)
 - **Christians United for Israel**, and John Hagee's "hunter" sermon. In 2008 he said the words had been twisted. [Wikipedia](https://en.wikipedia.org/wiki/Christians_United_for_Israel) · [Christianity Today](https://www.christianitytoday.com/news/2008/may/explaining-hagees-hitler-comments.html) · [Slate](https://slate.com/news-and-politics/2018/05/israel-embassy-pastor-said-hitler-was-sent-by-god.html)
 
-### V. The catalog
+**V. The catalog**
 
 The relay in section V, in the order it is told.
 
@@ -255,7 +255,7 @@ The relay in section V, in the order it is told.
 - The Rohingya, 2017
 - **January 6, 2021**, including banners that said "Jesus Saves." [Christian Chronicle](https://christianchronicle.org/christian-nationalism-on-display-in-u-s-capitol-riot/)
 
-### VI. How God kept dying
+**VI. How God kept dying**
 
 - **Nietzsche, _The Gay Science_.** §125, the madman in the marketplace. [German History in Documents and Images](https://ghdi.ghi-dc.org/pdf/eng/307_Nietzsche_God%20is%20Dead_81.pdf). §108, the shadow in the caves: "God is dead; but given the way of men, there may still be caves for thousands of years in which his shadow will be shown." Walter Kaufmann's translation.
 - **Ludwig Feuerbach.** [Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/ludwig-feuerbach/)
@@ -267,11 +267,11 @@ The relay in section V, in the order it is told.
 - **Cornelius Rhoads.** The 1931 letter, and the investigations that followed. [Wikipedia](https://en.wikipedia.org/wiki/Cornelius_P._Rhoads)
 - **Herbicides on Puerto Rican forests**, 1956–1967, including an enhanced Agent Orange. Fort Detrick and Dow. [Rainbow Herbicides](https://en.wikipedia.org/wiki/Rainbow_Herbicides) · [Military Times](https://www.militarytimes.com/news/your-military/2020/01/30/new-list-of-agent-orange-test-and-storage-sites-omits-more-than-40-previously-identified-locations/)
 
-### VII. Other traditions
+**VII. Other traditions**
 
 Checked 23 September 2026.
 
-What passes:
+**What passes**
 
 - **Analects 15.23** in James Legge's numbering (15.24 in others). "Is not reciprocity such a word? What you do not want done to yourself, do not do to others." [Legge](https://monadnock.net/confucius/analects-15.html)
 - **Hillel, Talmud Shabbat 31a.** "What is hateful to you, do not do to your fellow: this is the whole Torah; the rest is the explanation; go and learn." [Sefaria](https://www.sefaria.org/Shabbat.31a)
@@ -279,14 +279,14 @@ What passes:
 - **Udanavarga 5:18.** "Hurt not others in ways that you yourself would find hurtful." [The Golden Rule](https://en.wikipedia.org/wiki/Golden_Rule)
 - **Quran 5:32**, Sahih International. The verse says this was ordained for the Children of Israel. [Quran.com](https://quran.com/5/32)
 
-What fails:
+**What fails**
 
 - **Quran 9:29**, Sahih International. "Fight those who do not believe... from among those who were given the Scripture, until they pay the tax, willingly submitting, fully humbled." [Quran.com](https://quran.com/9/29)
 - **Sahih al-Bukhari 6922.** "Whoever changed his Islamic religion, then kill him." [Sunnah.com](https://sunnah.com/bukhari:6922)
 - **Manusmriti 8.270.** "If a once-born person insults a twice-born one with gross abuse, he should suffer the cutting off of his tongue; as he is of low origin." [Wisdom Library](https://www.wisdomlib.org/hinduism/book/manusmriti-with-the-commentary-of-medhatithi/d/doc201203.html)
 - **Mahavamsa, chapter 25** (Wilhelm Geiger). "Only one and a half human beings have been slain here by thee... Unbelievers and men of evil life were the rest, not more to be esteemed than beasts." [Vipassana.com](https://vipassana.com/resources/mahavamsa/mhv25.html)
 
-### VIII. In place of the chooser
+**VIII. In place of the chooser**
 
 - **Spinoza.** [Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/spinoza/)
 - **Einstein, 1929**, on Spinoza's God. [Jewish Telegraphic Agency](https://www.jta.org/archive/professor-einstein-declares-his-faith-in-spinozas-god)
