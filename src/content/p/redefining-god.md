@@ -202,38 +202,94 @@ What's left is everything, and everything includes the grandmother and the soldi
 
 ## Sources
 
-- Humberto Vidal explosion, 21 Nov 1996, 8:35 a.m., 33 dead: [Wikipedia](https://en.wikipedia.org/wiki/Humberto_Vidal_explosion)
-- UN Commission of Inquiry, genocide finding, 16 Sep 2025: [OHCHR](https://www.ohchr.org/en/press-releases/2025/09/israel-has-committed-genocide-gaza-strip-un-commission-finds) · [CNN](https://www.cnn.com/2025/09/16/middleeast/israel-gaza-genocide-un-commission-report-intl)
-- Children killed in Gaza (20,179 to Oct 2025; ~1/day post-ceasefire): [UNICEF USA](https://www.unicefusa.org/stories/more-50000-children-killed-or-injured-gaza) · [Al Jazeera on UNICEF, Aug 2026](https://www.aljazeera.com/news/2026/8/6/unicef-says-one-child-killed-per-day-in-gaza-since-ceasefire-2)
-- Amalek quote, 28 Oct 2023: [ABC News (Australia)](https://www.abc.net.au/news/2024-01-31/biblical-story-amalek-south-africa-icj-genocide-case-israel/103403552)
-- Pew 2013, 82% vs 40%: [Pew](https://www.pewresearch.org/short-reads/2013/10/03/more-white-evangelicals-than-american-jews-say-god-gave-israel-to-the-jewish-people/)
-- CUFI, Hagee: [Wikipedia](https://en.wikipedia.org/wiki/Christians_United_for_Israel)
-- End-times script: [Political Research Associates](https://politicalresearch.org/2020/07/09/end-times-antisemitism)
-- Requerimiento: [SFU](https://www.sfu.ca/~palys/Requerimiento.pdf) · Alonso Manso: [Wikipedia](https://en.wikipedia.org/wiki/Alonso_Manso) · Spanish Inquisition: [Wikipedia](https://en.wikipedia.org/wiki/Spanish_Inquisition)
-- Taíno myths (Pané): [Wikipedia](https://en.wikipedia.org/wiki/Ta%C3%ADno_creation_myths) · mtDNA 61%: [ICT News](https://ictnews.org/archive/indigenous-puerto-rico-dna-evidence-upsets-established-history/)
-- 1899 division of PR: [Christian Century](https://christiancentury.org/blog-post/practicing-liberation/colonial-gospel-puerto-rico) · Proyecto Dignidad: [Wikipedia](https://en.wikipedia.org/wiki/Proyecto_Dignidad)
-- Nietzsche §125: [GHDI](https://ghdi.ghi-dc.org/pdf/eng/307_Nietzsche_God%20is%20Dead_81.pdf) · Feuerbach: [SEP](https://plato.stanford.edu/entries/ludwig-feuerbach/) · Spinoza: [SEP](https://plato.stanford.edu/entries/spinoza/) · Einstein 1929: [JTA](https://www.jta.org/archive/professor-einstein-declares-his-faith-in-spinozas-god)
-- Contraceptive trials, Río Piedras 1956: [Wikipedia](https://en.wikipedia.org/wiki/Contraceptive_trials_in_Puerto_Rico) · [PBS American Experience](https://www.pbs.org/wgbh/americanexperience/features/pill-puerto-rico-pill-trials)
-- Sterilization, 34% by 1965: [Wikipedia](https://en.wikipedia.org/wiki/U.S._sterilization_policies_in_Puerto_Rico)
-- Cornelius Rhoads letter and investigations: [Wikipedia](https://en.wikipedia.org/wiki/Cornelius_P._Rhoads)
-- Agent Orange testing in PR (Fort Detrick, Dow): [Wikipedia, Rainbow Herbicides](https://en.wikipedia.org/wiki/Rainbow_Herbicides)
-- Transatlantic slave trade ~12.5M embarked: [Atlantic slave trade](https://en.wikipedia.org/wiki/Atlantic_slave_trade) · [SlaveVoyages database](https://en.wikipedia.org/wiki/Voyages:_The_Trans-Atlantic_Slave_Trade_Database)
-- Hiroshima ~140,000 / Nagasaki ~74,000 by end of 1945: [City of Hiroshima](https://www.city.hiroshima.lg.jp/english/peace/1029875/1010074.html) · [Bulletin of the Atomic Scientists](https://thebulletin.org/2020/08/counting-the-dead-at-hiroshima-and-nagasaki/)
-- Catalog in movement V: Joshua 10:40; Mexica migration and Huitzilopochtli; Mandate of Heaven; Rhineland massacres 1096; Béziers 1209 (quote attributed via Caesarius of Heisterbach); Almohad persecution and Maimonides; Dum Diversas 1452 / Inter caetera 1493; Alhambra Decree 1492 / Morisco expulsion 1609; St. Bartholomew's Day 1572; Cromwell's Drogheda letter 1649; European witch trials and Salem 1692; Thirty Years' War; curse of Ham and slavery; Manifest Destiny (O'Sullivan 1845); Blood River vow 1838 and apartheid theology; Taiping Rebellion; Mountain Meadows 1857; State Shinto; "Gott mit uns"; Partition 1947; Babri 1992 / Gujarat 2002; Srebrenica 1995; Lord's Resistance Army; ISIS and the Yazidis 2014; Rohingya 2017; January 6, 2021
-- Nietzsche, _The Gay Science_ §108 ("God is dead; but given the way of men, there may still be caves for thousands of years in which his shadow will be shown"), Kaufmann translation
-- UDHR: adopted 10 Dec 1948 (48–0, 8 abstentions); not legally binding: [Drafting of the UDHR](https://en.wikipedia.org/wiki/Drafting_of_the_Universal_Declaration_of_Human_Rights) · Maritain, introduction, UNESCO, _Human Rights: Comments and Interpretations_, UNESCO/PHS/3(rev.), 25 July 1948, p. 1 (verified via [Canopy Forum](https://canopyforum.org/2020/06/16/a-non-theoretical-justification-of-human-rights-part-1/) and Glendon in [First Things](https://firstthings.com/reflections-on-the-udhr/))
-- Hagee "hunter" sermon and 2008 response: [Christianity Today](https://www.christianitytoday.com/news/2008/may/explaining-hagees-hitler-comments.html) · [Slate](https://slate.com/news-and-politics/2018/05/israel-embassy-pastor-said-hitler-was-sent-by-god.html)
-- Béziers quote (Caesarius of Heisterbach, "dixisse fertur"; doubted by historians): [Arnaud Amalric](https://en.wikipedia.org/wiki/Arnaud_Amalric)
-- Herbicides sprayed in PR forests 1956–1967: [Military Times](https://www.militarytimes.com/news/your-military/2020/01/30/new-list-of-agent-orange-test-and-storage-sites-omits-more-than-40-previously-identified-locations/)
-- "Jesus Saves" and other signs on January 6: [Christian Chronicle](https://christianchronicle.org/christian-nationalism-on-display-in-u-s-capitol-riot/)
-- Movement VII, other traditions (verified 2026-09-23):
-  - Analects 15.23 in Legge's numbering (15.24 in others): "Is not reciprocity such a word? What you do not want done to yourself, do not do to others." [Monadnock, Legge](https://monadnock.net/confucius/analects-15.html)
-  - Hillel, Talmud Shabbat 31a: "What is hateful to you, do not do to your fellow: this is the whole Torah; the rest is the explanation; go and learn." [Sefaria](https://www.sefaria.org/Shabbat.31a)
-  - Mahabharata, Anushasana Parva, Section CXIII (Ganguli): "One should never do that to another which one regards as injurious to one's own self." [Sacred Texts](http://www.sacred-texts.com/hin/m13/m13b078.htm)
-  - Udanavarga 5:18: "Hurt not others in ways that you yourself would find hurtful." [Golden Rule](https://en.wikipedia.org/wiki/Golden_Rule)
-  - Quran 5:32 (Sahih Intl.; ordained "for the Children of Israel"): [Quran.com](https://quran.com/5/32)
-  - Quran 9:29 (Sahih Intl.): "Fight those who do not believe... from among those who were given the Scripture, until they pay the tax, willingly submitting, fully humbled." [Quran.com](https://quran.com/9/29)
-  - Sahih al-Bukhari 6922: "Whoever changed his Islamic religion, then kill him." [Sunnah.com](https://sunnah.com/bukhari:6922)
-  - Manusmriti 8.270: "If a once-born person insults a twice-born one with gross abuse, he should suffer the cutting off of his tongue; as he is of low origin." [Wisdom Library](https://www.wisdomlib.org/hinduism/book/manusmriti-with-the-commentary-of-medhatithi/d/doc201203.html)
-  - Chandogya Upanishad 6.8.7, Uddalaka to Svetaketu, "tat tvam asi" ("you are that"), used in movement VIII: [Mahāvākyas](https://en.wikipedia.org/wiki/Mah%C4%81v%C4%81kyas) · [Chandogya Upanishad](https://en.wikipedia.org/wiki/Chandogya_Upanishad)
-  - Mahavamsa ch. 25 (Geiger): "Only one and a half human beings have been slain here by thee... Unbelievers and men of evil life were the rest, not more to be esteemed than beasts." [Vipassana.com](https://vipassana.com/resources/mahavamsa/mhv25.html)
+### III. Puerto Rico, 1512
+
+- **Taíno creation myths**, written down by Ramón Pané. [Wikipedia](https://en.wikipedia.org/wiki/Ta%C3%ADno_creation_myths)
+- **Indigenous mitochondrial DNA**, about 61 percent (Juan Martínez-Cruzado). [ICT News](https://ictnews.org/archive/indigenous-puerto-rico-dna-evidence-upsets-established-history/)
+- **The Requerimiento**, 1513. [Simon Fraser University, PDF](https://www.sfu.ca/~palys/Requerimiento.pdf)
+- **Alonso Manso.** [Wikipedia](https://en.wikipedia.org/wiki/Alonso_Manso)
+- **The Spanish Inquisition.** [Wikipedia](https://en.wikipedia.org/wiki/Spanish_Inquisition)
+
+### IV. Puerto Rico, 1899
+
+- **Nine denominations divide the island**, 1899. [Christian Century](https://christiancentury.org/blog-post/practicing-liberation/colonial-gospel-puerto-rico)
+- **Proyecto Dignidad.** [Wikipedia](https://en.wikipedia.org/wiki/Proyecto_Dignidad)
+
+### V. Gaza, Amalek, the pulpits
+
+- **Children killed in Gaza.** 20,179 through October 2025, and about one a day since the ceasefire. [UNICEF USA](https://www.unicefusa.org/stories/more-50000-children-killed-or-injured-gaza) · [Al Jazeera on UNICEF, August 2026](https://www.aljazeera.com/news/2026/8/6/unicef-says-one-child-killed-per-day-in-gaza-since-ceasefire-2)
+- **UN commission of inquiry.** Genocide finding, 16 September 2025. [OHCHR](https://www.ohchr.org/en/press-releases/2025/09/israel-has-committed-genocide-gaza-strip-un-commission-finds) · [CNN](https://www.cnn.com/2025/09/16/middleeast/israel-gaza-genocide-un-commission-report-intl)
+- **The Amalek quote**, 28 October 2023. [ABC News (Australia)](https://www.abc.net.au/news/2024-01-31/biblical-story-amalek-south-africa-icj-genocide-case-israel/103403552)
+- **Pew, 2013.** 82 percent of white American evangelicals, 40 percent of American Jews. [Pew](https://www.pewresearch.org/short-reads/2013/10/03/more-white-evangelicals-than-american-jews-say-god-gave-israel-to-the-jewish-people/)
+- **The end-times script.** [Political Research Associates](https://politicalresearch.org/2020/07/09/end-times-antisemitism)
+- **Christians United for Israel**, and John Hagee's "hunter" sermon. In 2008 he said the words had been twisted. [Wikipedia](https://en.wikipedia.org/wiki/Christians_United_for_Israel) · [Christianity Today](https://www.christianitytoday.com/news/2008/may/explaining-hagees-hitler-comments.html) · [Slate](https://slate.com/news-and-politics/2018/05/israel-embassy-pastor-said-hitler-was-sent-by-god.html)
+
+### V. The catalog
+
+The relay in section V, in the order it is told.
+
+- Joshua 10:40
+- The Mexica migration, and Huitzilopochtli
+- The Mandate of Heaven
+- The Rhineland massacres, 1096
+- **Béziers, 1209.** The "kill them all, God will know his own" line is Caesarius of Heisterbach, _dixisse fertur_. Historians doubt it was said. The town was massacred anyway. [Arnaud Amalric](https://en.wikipedia.org/wiki/Arnaud_Amalric)
+- Almohad persecution, and Maimonides
+- _Dum Diversas_, 1452, and _Inter caetera_, 1493
+- The Alhambra Decree, 1492, and the Morisco expulsion, 1609
+- St. Bartholomew's Day, 1572
+- Cromwell's letter on Drogheda, 1649
+- Witch trials in Europe, and Salem, 1692
+- The Thirty Years' War
+- The curse of Ham, read as permission for slavery
+- Manifest Destiny (John O'Sullivan, 1845)
+- The Blood River vow, 1838, and apartheid theology
+- The Taiping Rebellion
+- Mountain Meadows, 1857
+- State Shinto
+- _Gott mit uns_
+- Partition, 1947
+- The Babri mosque, 1992, and Gujarat, 2002
+- Srebrenica, 1995
+- The Lord's Resistance Army
+- The Islamic State and the Yazidis, 2014
+- The Rohingya, 2017
+- **January 6, 2021**, including banners that said "Jesus Saves." [Christian Chronicle](https://christianchronicle.org/christian-nationalism-on-display-in-u-s-capitol-riot/)
+
+### VI. How God kept dying
+
+- **Nietzsche, _The Gay Science_.** §125, the madman in the marketplace. [German History in Documents and Images](https://ghdi.ghi-dc.org/pdf/eng/307_Nietzsche_God%20is%20Dead_81.pdf). §108, the shadow in the caves: "God is dead; but given the way of men, there may still be caves for thousands of years in which his shadow will be shown." Walter Kaufmann's translation.
+- **Ludwig Feuerbach.** [Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/ludwig-feuerbach/)
+- **The Humberto Vidal explosion.** 21 November 1996, 8:35 a.m., 33 dead. [Wikipedia](https://en.wikipedia.org/wiki/Humberto_Vidal_explosion)
+- **The transatlantic slave trade.** About 12.5 million people embarked. [Atlantic slave trade](https://en.wikipedia.org/wiki/Atlantic_slave_trade) · [SlaveVoyages](https://en.wikipedia.org/wiki/Voyages:_The_Trans-Atlantic_Slave_Trade_Database)
+- **Hiroshima and Nagasaki.** About 140,000 and 74,000 dead by the end of 1945. [City of Hiroshima](https://www.city.hiroshima.lg.jp/english/peace/1029875/1010074.html) · [Bulletin of the Atomic Scientists](https://thebulletin.org/2020/08/counting-the-dead-at-hiroshima-and-nagasaki/)
+- **The pill trials in Río Piedras**, 1956. [Wikipedia](https://en.wikipedia.org/wiki/Contraceptive_trials_in_Puerto_Rico) · [PBS American Experience](https://www.pbs.org/wgbh/americanexperience/features/pill-puerto-rico-pill-trials)
+- **Sterilization.** 34 percent of Puerto Rican women of childbearing age by 1965. [Wikipedia](https://en.wikipedia.org/wiki/U.S._sterilization_policies_in_Puerto_Rico)
+- **Cornelius Rhoads.** The 1931 letter, and the investigations that followed. [Wikipedia](https://en.wikipedia.org/wiki/Cornelius_P._Rhoads)
+- **Herbicides on Puerto Rican forests**, 1956–1967, including an enhanced Agent Orange. Fort Detrick and Dow. [Rainbow Herbicides](https://en.wikipedia.org/wiki/Rainbow_Herbicides) · [Military Times](https://www.militarytimes.com/news/your-military/2020/01/30/new-list-of-agent-orange-test-and-storage-sites-omits-more-than-40-previously-identified-locations/)
+
+### VII. Other traditions
+
+Checked 23 September 2026.
+
+What passes:
+
+- **Analects 15.23** in James Legge's numbering (15.24 in others). "Is not reciprocity such a word? What you do not want done to yourself, do not do to others." [Legge](https://monadnock.net/confucius/analects-15.html)
+- **Hillel, Talmud Shabbat 31a.** "What is hateful to you, do not do to your fellow: this is the whole Torah; the rest is the explanation; go and learn." [Sefaria](https://www.sefaria.org/Shabbat.31a)
+- **Mahabharata, Anushasana Parva, section CXIII** (Kisari Mohan Ganguli). "One should never do that to another which one regards as injurious to one's own self." [Sacred Texts](http://www.sacred-texts.com/hin/m13/m13b078.htm)
+- **Udanavarga 5:18.** "Hurt not others in ways that you yourself would find hurtful." [The Golden Rule](https://en.wikipedia.org/wiki/Golden_Rule)
+- **Quran 5:32**, Sahih International. The verse says this was ordained for the Children of Israel. [Quran.com](https://quran.com/5/32)
+
+What fails:
+
+- **Quran 9:29**, Sahih International. "Fight those who do not believe... from among those who were given the Scripture, until they pay the tax, willingly submitting, fully humbled." [Quran.com](https://quran.com/9/29)
+- **Sahih al-Bukhari 6922.** "Whoever changed his Islamic religion, then kill him." [Sunnah.com](https://sunnah.com/bukhari:6922)
+- **Manusmriti 8.270.** "If a once-born person insults a twice-born one with gross abuse, he should suffer the cutting off of his tongue; as he is of low origin." [Wisdom Library](https://www.wisdomlib.org/hinduism/book/manusmriti-with-the-commentary-of-medhatithi/d/doc201203.html)
+- **Mahavamsa, chapter 25** (Wilhelm Geiger). "Only one and a half human beings have been slain here by thee... Unbelievers and men of evil life were the rest, not more to be esteemed than beasts." [Vipassana.com](https://vipassana.com/resources/mahavamsa/mhv25.html)
+
+### VIII. In place of the chooser
+
+- **Spinoza.** [Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/spinoza/)
+- **Einstein, 1929**, on Spinoza's God. [Jewish Telegraphic Agency](https://www.jta.org/archive/professor-einstein-declares-his-faith-in-spinozas-god)
+- **Chandogya Upanishad 6.8.7.** Uddalaka to Svetaketu: _tat tvam asi_, "you are that." [Mahāvākyas](https://en.wikipedia.org/wiki/Mah%C4%81v%C4%81kyas) · [Chandogya Upanishad](https://en.wikipedia.org/wiki/Chandogya_Upanishad)
+- **The Universal Declaration of Human Rights.** Adopted 10 December 1948, 48 to 0, with 8 abstentions. Not legally binding. [Drafting of the UDHR](https://en.wikipedia.org/wiki/Drafting_of_the_Universal_Declaration_of_Human_Rights)
+- **Jacques Maritain**, introduction, UNESCO, _Human Rights: Comments and Interpretations_, UNESCO/PHS/3(rev.), 25 July 1948, page 1. [Canopy Forum](https://canopyforum.org/2020/06/16/a-non-theoretical-justification-of-human-rights-part-1/) · [Mary Ann Glendon, First Things](https://firstthings.com/reflections-on-the-udhr/)
