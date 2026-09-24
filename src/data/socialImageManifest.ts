@@ -229,6 +229,8 @@ export const SOCIAL_IMAGE_MANIFEST: Record<string, string> = {
     '/social/images/2026/redefining-god/golden-throne-social.jpg',
   '/images/2026/redefining-god/relay-race.avif':
     '/social/images/2026/redefining-god/relay-race-social.jpg',
+  '/images/2026/redefining-god/scary-broom.avif':
+    '/social/images/2026/redefining-god/scary-broom-social.jpg',
   '/images/2026/serenity.jpg': '/social/images/2026/serenity-social.jpg',
   '/images/2026/sharpen-your-tools.jpg': '/social/images/2026/sharpen-your-tools-social.jpg',
   '/images/2026/shaved-carrots.avif': '/social/images/2026/shaved-carrots-social.jpg',
