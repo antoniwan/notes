@@ -11,52 +11,50 @@ const pathname = Astro.url.pathname;
 ---
 
 <nav class:list={['site-navigation', className]} aria-label="Main navigation" data-site-navigation>
-  {
-    mainNavigation.map((item) => {
-      const isActive = isMainNavItemActive(item.href, pathname);
-      if (!item.dropdown) {
-        return (
-          <a
-            class="site-navigation__link"
-            href={item.href}
-            aria-current={getNavLinkCurrent(item.href, pathname)}
-          >
-            {item.label}
-          </a>
-        );
-      }
-
+  {mainNavigation.map((item) => {
+    const isActive = isMainNavItemActive(item.href, pathname);
+    if (!item.dropdown) {
       return (
-        <details class="nav-disclosure" data-active={isActive ? 'true' : undefined}>
-          <summary class="site-navigation__link">
-            {item.label}
-            <svg
-              class="nav-chevron"
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.7"
-              aria-hidden="true"
-            >
-              <path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </summary>
-          <div class="nav-disclosure__panel">
-            <p class="nav-disclosure__label">{item.dropdown.label}</p>
-            <div class="nav-disclosure__links">
-              {item.dropdown.items.map((child) => (
-                <a href={child.href} aria-current={getNavLinkCurrent(child.href, pathname)}>
-                  <span>{child.label}</span>
-                </a>
-              ))}
-            </div>
-          </div>
-        </details>
+        <a
+          class="site-navigation__link"
+          href={item.href}
+          aria-current={getNavLinkCurrent(item.href, pathname)}
+        >
+          {item.label}
+        </a>
       );
-    })
-  }
+    }
+
+    return (
+      <details class="nav-disclosure" data-active={isActive ? 'true' : undefined}>
+        <summary class="site-navigation__link">
+          {item.label}
+          <svg
+            class="nav-chevron"
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            aria-hidden="true"
+          >
+            <path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </summary>
+        <div class="nav-disclosure__panel">
+          <p class="nav-disclosure__label">{item.dropdown.label}</p>
+          <div class="nav-disclosure__links">
+            {item.dropdown.items.map((child) => (
+              <a href={child.href} aria-current={getNavLinkCurrent(child.href, pathname)}>
+                <span>{child.label}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </details>
+    );
+  })}
 </nav>
 
 <script>

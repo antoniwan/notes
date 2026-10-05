@@ -21,45 +21,47 @@ const shortDate = new Intl.DateTimeFormat('en-US', {
 <section class="book-chapter" id={chapterId} data-season aria-labelledby={`heading-${chapterId}`}>
   <header class="chapter-header">
     <div>
-      <h2 class="chapter-title" id={`heading-${chapterId}`} tabindex="-1">{chapterTitle}</h2>
-      <p class="chapter-count">{posts.length} {posts.length === 1 ? 'writing' : 'writings'}</p>
+      <h2 class="chapter-title" id={`heading-${chapterId}`} tabindex="-1">
+        {chapterTitle}
+      </h2>
+      <p class="chapter-count">
+        {posts.length} {posts.length === 1 ? 'writing' : 'writings'}
+      </p>
     </div>
     <span class="chapter-progress" data-chapter-read hidden></span>
   </header>
   <ol class="post-list">
-    {
-      posts.map((post, index) => {
-        const categoryName = getCategoryNameFromIds(post.data.category);
-        const isRecipe = isRecipePost(post);
-        const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
-        return (
-          <li class="post-item" data-guided-post={post.id}>
-            <a href={`/p/${post.id}`} class="post-link">
-              <span class="post-number" aria-hidden="true">
-                {String(index + 1).padStart(2, '0')}
+    {posts.map((post, index) => {
+      const categoryName = getCategoryNameFromIds(post.data.category);
+      const isRecipe = isRecipePost(post);
+      const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
+      return (
+        <li class="post-item" data-guided-post={post.id}>
+          <a href={`/p/${post.id}`} class="post-link">
+            <span class="post-number" aria-hidden="true">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <div class="post-content">
+              <h3 class="post-title">{post.data.title}</h3>
+              <div class="post-meta">
+                <time datetime={post.data.pubDate.toISOString()}>
+                  {shortDate.format(post.data.pubDate)}
+                </time>
+                {isRecipe && <span>Recipe</span>}
+                {categoryName && <span class="post-category">{categoryName}</span>}
+              </div>
+              {post.data.description && <p class="post-description">{post.data.description}</p>}
+            </div>
+            <div class="post-status">
+              {readingTime && !isRecipe && <span>{readingTime}</span>}
+              <span class="read-status" data-read-status hidden>
+                Unread
               </span>
-              <div class="post-content">
-                <h3 class="post-title">{post.data.title}</h3>
-                <div class="post-meta">
-                  <time datetime={post.data.pubDate.toISOString()}>
-                    {shortDate.format(post.data.pubDate)}
-                  </time>
-                  {isRecipe && <span>Recipe</span>}
-                  {categoryName && <span class="post-category">{categoryName}</span>}
-                </div>
-                {post.data.description && <p class="post-description">{post.data.description}</p>}
-              </div>
-              <div class="post-status">
-                {readingTime && !isRecipe && <span>{readingTime}</span>}
-                <span class="read-status" data-read-status hidden>
-                  Unread
-                </span>
-              </div>
-            </a>
-          </li>
-        );
-      })
-    }
+            </div>
+          </a>
+        </li>
+      );
+    })}
   </ol>
 </section>
 

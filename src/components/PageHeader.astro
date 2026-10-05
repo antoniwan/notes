@@ -36,17 +36,15 @@ const TitleTag = as;
     >
       {title}
     </TitleTag>
-    {
-      description && (
-        <p
-          class:list={[
-            'text-body-muted m-0 max-w-none leading-[1.65]',
-            descriptionClass || 'text-base md:text-lg',
-          ]}
-        >
-          {description}
-        </p>
-      )
-    }
+    {description && (
+      <p
+        class:list={[
+          'text-body-muted m-0 max-w-none leading-[1.65]',
+          descriptionClass || 'text-base md:text-lg',
+        ]}
+      >
+        {description}
+      </p>
+    )}
   </div>
 </Container>

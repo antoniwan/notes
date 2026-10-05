@@ -49,7 +49,9 @@ const statusLabels: Record<BookStatus, string> = {
         <span>Shelf</span>
         <select id="library-shelf-filter" name="shelf" aria-controls="library-books">
           <option value="">All shelves</option>
-          {shelves.map((shelf) => <option value={shelf}>{shelf}</option>)}
+          {shelves.map((shelf) => (
+            <option value={shelf}>{shelf}</option>
+          ))}
         </select>
       </label>
     </form>
@@ -67,33 +69,31 @@ const statusLabels: Record<BookStatus, string> = {
     </div>
 
     <ul class="library-books" id="library-books" aria-label="Book catalogue" role="list">
-      {
-        catalogue.map((book) => (
-          <li
-            class="book-row"
-            data-book
-            data-title={book.title}
-            data-author={book.author}
-            data-status={book.status}
-            data-shelf={book.shelf}
-          >
-            <div class="book-main">
-              <h2>{book.title}</h2>
-              <p>{book.author}</p>
+      {catalogue.map((book) => (
+        <li
+          class="book-row"
+          data-book
+          data-title={book.title}
+          data-author={book.author}
+          data-status={book.status}
+          data-shelf={book.shelf}
+        >
+          <div class="book-main">
+            <h2>{book.title}</h2>
+            <p>{book.author}</p>
+          </div>
+          <dl class="book-details">
+            <div>
+              <dt>Shelf</dt>
+              <dd>{book.shelf}</dd>
             </div>
-            <dl class="book-details">
-              <div>
-                <dt>Shelf</dt>
-                <dd>{book.shelf}</dd>
-              </div>
-              <div>
-                <dt>Reading status</dt>
-                <dd>{statusLabels[book.status]}</dd>
-              </div>
-            </dl>
-          </li>
-        ))
-      }
+            <div>
+              <dt>Reading status</dt>
+              <dd>{statusLabels[book.status]}</dd>
+            </div>
+          </dl>
+        </li>
+      ))}
     </ul>
 
     <div class="library-empty" data-library-empty hidden>

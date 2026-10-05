@@ -17,36 +17,34 @@ const candidates = buildPreludeTemplateCandidates({ tagCounts });
 const templates = selectPreludeTemplates(candidates, PRELUDE_THEME_LIMIT);
 ---
 
-{
-  templates.length > 0 && (
-    <section class="sentence-browse" aria-labelledby="sentence-browse-heading">
-      <h2 id="sentence-browse-heading">Ways into the writing</h2>
-      <ul class="sentence-list" role="list">
-        {templates.map((template) => {
-          const connectors = formatPreludeConnectors(template.tags.length);
-          return (
-            <li>
-              <span class="sentence-lead">{template.prefix}</span>
-              {template.tags.map((tag, index) => (
-                <>
-                  <span>{connectors[index] ?? ', '}</span>
-                  <a
-                    href={`/tag/${encodeURIComponent(tag)}`}
-                    class="tag-chip tag-chip--underline"
-                    data-tag-family={getTagFamily(tag)}
-                  >
-                    {getTagMetadata(tag).name}
-                  </a>
-                </>
-              ))}
-              {template.suffix ? ` ${template.suffix}` : ''}.
-            </li>
-          );
-        })}
-      </ul>
-    </section>
-  )
-}
+{templates.length > 0 && (
+  <section class="sentence-browse" aria-labelledby="sentence-browse-heading">
+    <h2 id="sentence-browse-heading">Ways into the writing</h2>
+    <ul class="sentence-list" role="list">
+      {templates.map((template) => {
+        const connectors = formatPreludeConnectors(template.tags.length);
+        return (
+          <li>
+            <span class="sentence-lead">{template.prefix}</span>
+            {template.tags.map((tag, index) => (
+              <>
+                <span>{connectors[index] ?? ', '}</span>
+                <a
+                  href={`/tag/${encodeURIComponent(tag)}`}
+                  class="tag-chip tag-chip--underline"
+                  data-tag-family={getTagFamily(tag)}
+                >
+                  {getTagMetadata(tag).name}
+                </a>
+              </>
+            ))}
+            {template.suffix ? ` ${template.suffix}` : ''}.
+          </li>
+        );
+      })}
+    </ul>
+  </section>
+)}
 
 <style>
   .sentence-browse h2 {

@@ -35,11 +35,9 @@ const isDev = import.meta.env.DEV;
 ---
 
 <div class="mb-6">
-  {
-    title && (
-      <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:text-lg">{title}</h3>
-    )
-  }
+  {title && (
+    <h3 class="mb-4 text-base font-semibold text-[rgb(var(--color-text))] md:text-lg">{title}</h3>
+  )}
   <div
     class="relative h-64 w-full rounded-[var(--radius-lg)] border border-[rgb(var(--color-border))]/50 bg-[rgb(var(--color-bg-alt))] p-2 md:h-80 md:p-3"
     id={`chart-container-${id}`}
@@ -52,10 +50,7 @@ const isDev = import.meta.env.DEV;
     >
       <div class="flex flex-col items-center space-y-3">
         <div class="relative">
-          <div
-            class="h-8 w-8 animate-spin rounded-full border-4 border-[rgb(var(--color-border))] border-t-[rgb(var(--color-accent))]"
-          >
-          </div>
+          <div class="h-8 w-8 animate-spin rounded-full border-4 border-[rgb(var(--color-border))] border-t-[rgb(var(--color-accent))]"></div>
         </div>
         <p class="text-body-muted text-sm">Calculating data...</p>
       </div>

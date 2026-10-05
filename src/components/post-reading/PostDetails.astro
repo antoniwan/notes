@@ -18,72 +18,64 @@ const moreCategories = categoryItems.slice(3);
 ---
 
 <div class="post-details">
-  {
-    categoryItems.length > 0 && (
-      <nav aria-label={isSpanish ? 'Categorías relacionadas' : 'Related categories'}>
-        <h2 class="details-label">{isSpanish ? 'Explorar categorías' : 'Explore categories'}</h2>
-        <ul class="topic-list">
-          {visibleCategories.map((item) => (
-            <li>
-              <a href={`/category/${item.id}`}>
-                {item.name}
-                <span aria-hidden="true">↗</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-        {moreCategories.length > 0 && (
-          <details class="more-topics">
-            <summary>
-              {isSpanish
-                ? `Ver ${moreCategories.length} más`
-                : `Show ${moreCategories.length} more`}
-            </summary>
-            <ul class="topic-list">
-              {moreCategories.map((item) => (
-                <li>
-                  <a href={`/category/${item.id}`}>
-                    {item.name}
-                    <span aria-hidden="true">↗</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </details>
-        )}
-      </nav>
-    )
-  }
-  {
-    tags.length > 0 && (
-      <details class="tag-details">
-        <summary>
-          {isSpanish ? 'Etiquetas' : 'Tags'} <span class="tag-count">{tags.length}</span>
-        </summary>
-        <ul class="tag-list">
-          {tags.map((tag) => (
-            <li>
-              <a
-                class="tag-chip tag-chip--plain"
-                data-tag-family={getTagFamily(tag)}
-                href={`/tag/${tag}`}
-              >
-                #{tag}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </details>
-    )
-  }
-  {
-    updatedDate && pubDate && updatedDate.getTime() !== pubDate.getTime() && (
-      <p class="updated-date">
-        {isSpanish ? 'Actualizado el ' : 'Updated '}
-        <FormattedDate date={updatedDate} format="short" />
-      </p>
-    )
-  }
+  {categoryItems.length > 0 && (
+    <nav aria-label={isSpanish ? 'Categorías relacionadas' : 'Related categories'}>
+      <h2 class="details-label">{isSpanish ? 'Explorar categorías' : 'Explore categories'}</h2>
+      <ul class="topic-list">
+        {visibleCategories.map((item) => (
+          <li>
+            <a href={`/category/${item.id}`}>
+              {item.name}
+              <span aria-hidden="true">↗</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      {moreCategories.length > 0 && (
+        <details class="more-topics">
+          <summary>
+            {isSpanish ? `Ver ${moreCategories.length} más` : `Show ${moreCategories.length} more`}
+          </summary>
+          <ul class="topic-list">
+            {moreCategories.map((item) => (
+              <li>
+                <a href={`/category/${item.id}`}>
+                  {item.name}
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
+    </nav>
+  )}
+  {tags.length > 0 && (
+    <details class="tag-details">
+      <summary>
+        {isSpanish ? 'Etiquetas' : 'Tags'} <span class="tag-count">{tags.length}</span>
+      </summary>
+      <ul class="tag-list">
+        {tags.map((tag) => (
+          <li>
+            <a
+              class="tag-chip tag-chip--plain"
+              data-tag-family={getTagFamily(tag)}
+              href={`/tag/${tag}`}
+            >
+              #{tag}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </details>
+  )}
+  {updatedDate && pubDate && updatedDate.getTime() !== pubDate.getTime() && (
+    <p class="updated-date">
+      {isSpanish ? 'Actualizado el ' : 'Updated '}
+      <FormattedDate date={updatedDate} format="short" />
+    </p>
+  )}
 </div>
 
 <style>

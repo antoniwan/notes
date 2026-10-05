@@ -30,85 +30,83 @@ const viewCounts = Object.fromEntries(views.map((view) => [view.id, view.posts.l
 ---
 
 <section class="highlights-section" aria-labelledby="highlights-heading" data-highlights-container>
-  {
-    hasIntro && (
-      <div class="highlights-opening">
-        <div class="highlights-intro">
-          <slot name="intro" />
-        </div>
-        {views.map((view) => (
-          <div
-            class="highlights-view highlights-leads"
-            id={`highlights-${view.id}-start`}
-            tabindex="-1"
-            data-view={view.id}
-            aria-hidden={view.id !== 'all' ? 'true' : 'false'}
-            hidden={view.id !== 'all'}
-          >
-            {view.leads.map((post, index) => (
-              <div class:list={['highlights-lead', { 'highlights-lead--second': index === 1 }]}>
-                <PostCard
-                  post={post}
-                  showFeaturedIndicator={false}
-                  idPrefix={`highlights-${view.id}`}
-                  imageLoading={view.id === 'all' ? 'eager' : 'lazy'}
-                />
-              </div>
-            ))}
-          </div>
-        ))}
+  {hasIntro && (
+    <div class="highlights-opening">
+      <div class="highlights-intro">
+        <slot name="intro" />
       </div>
-    )
-  }
+      {views.map((view) => (
+        <div
+          class="highlights-view highlights-leads"
+          id={`highlights-${view.id}-start`}
+          tabindex="-1"
+          data-view={view.id}
+          aria-hidden={view.id !== 'all' ? 'true' : 'false'}
+          hidden={view.id !== 'all'}
+        >
+          {view.leads.map((post, index) => (
+            <div class:list={['highlights-lead', { 'highlights-lead--second': index === 1 }]}>
+              <PostCard
+                post={post}
+                showFeaturedIndicator={false}
+                idPrefix={`highlights-${view.id}`}
+                imageLoading={view.id === 'all' ? 'eager' : 'lazy'}
+              />
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  )}
 
   <header class="highlights-header">
     <div class="highlights-heading">
-      <h2 id="highlights-heading" class="highlights-title">Highlights</h2>
+      <h2 id="highlights-heading" class="highlights-title">
+        Highlights
+      </h2>
       <p class="highlights-subtitle">
         Hand-picked writings from recent seasons: a curated starting point, not a full index.
       </p>
     </div>
 
-    {
-      availableCategories.length > 0 && (
-        <div class="highlights-filters" aria-label="Filter highlights by category" role="group">
+    {availableCategories.length > 0 && (
+      <div class="highlights-filters" aria-label="Filter highlights by category" role="group">
+        <button
+          type="button"
+          class="filter-chip is-active"
+          data-filter="all"
+          aria-label="Show all highlights"
+          aria-pressed="true"
+        >
+          All
+        </button>
+        {availableCategories.map((category, index) => (
           <button
             type="button"
-            class="filter-chip is-active"
-            data-filter="all"
-            aria-label="Show all highlights"
-            aria-pressed="true"
+            class="filter-chip"
+            class:list={{ 'is-extra': index >= PRIMARY_CATEGORY_LIMIT }}
+            data-filter={category.id}
+            data-category-name={category.name}
+            aria-label={`Show posts in ${category.name}`}
+            aria-pressed="false"
           >
-            All
+            {category.icon && <span aria-hidden="true">{category.icon}</span>}
+            <span>{category.name}</span>
           </button>
-          {availableCategories.map((category, index) => (
-            <button
-              type="button"
-              class="filter-chip"
-              class:list={{ 'is-extra': index >= PRIMARY_CATEGORY_LIMIT }}
-              data-filter={category.id}
-              data-category-name={category.name}
-              aria-label={`Show posts in ${category.name}`}
-              aria-pressed="false"
-            >
-              {category.icon && <span aria-hidden="true">{category.icon}</span>}
-              <span>{category.name}</span>
-            </button>
-          ))}
-          {availableCategories.length > PRIMARY_CATEGORY_LIMIT && (
-            <button
-              type="button"
-              class="filter-chip filter-chip--more"
-              data-toggle-more
-              aria-label="Show more categories"
-              aria-expanded="false"
-            >
-              More <span aria-hidden="true">+</span>
-            </button>
-          )}
-        </div>
-      )
-    }
+        ))}
+        {availableCategories.length > PRIMARY_CATEGORY_LIMIT && (
+          <button
+            type="button"
+            class="filter-chip filter-chip--more"
+            data-toggle-more
+            aria-label="Show more categories"
+            aria-expanded="false"
+          >
+            More <span aria-hidden="true">+</span>
+          </button>
+        )}
+      </div>
+    )}
   </header>
 
   <div class="highlights-feedback">
@@ -121,39 +119,35 @@ const viewCounts = Object.fromEntries(views.map((view) => [view.id, view.posts.l
     >
       Showing {posts.length} highlights (All categories)
     </p>
-    {
-      hasIntro && (
-        <a class="highlights-jump" data-highlights-jump href="#highlights-all-start" hidden>
-          View these highlights <span aria-hidden="true">↑</span>
-        </a>
-      )
-    }
+    {hasIntro && (
+      <a class="highlights-jump" data-highlights-jump href="#highlights-all-start" hidden>
+        View these highlights <span aria-hidden="true">↑</span>
+      </a>
+    )}
   </div>
 
-  {
-    views.map((view) => (
-      <div
-        class="highlights-masonry highlights-view"
-        data-view={view.id}
-        aria-hidden={view.id !== 'all' ? 'true' : 'false'}
-        hidden={view.id !== 'all'}
-      >
-        {view.slots.map((slot) => (
-          <div
-            class="masonry-item"
-            class:list={[`span-${slot.span}`]}
-            style={`grid-row: ${slot.rowIndex + 1}; grid-column: ${slot.colStart} / span ${slot.span};`}
-          >
-            <PostCard
-              post={slot.post}
-              showFeaturedIndicator={false}
-              idPrefix={`highlights-${view.id}`}
-            />
-          </div>
-        ))}
-      </div>
-    ))
-  }
+  {views.map((view) => (
+    <div
+      class="highlights-masonry highlights-view"
+      data-view={view.id}
+      aria-hidden={view.id !== 'all' ? 'true' : 'false'}
+      hidden={view.id !== 'all'}
+    >
+      {view.slots.map((slot) => (
+        <div
+          class="masonry-item"
+          class:list={[`span-${slot.span}`]}
+          style={`grid-row: ${slot.rowIndex + 1}; grid-column: ${slot.colStart} / span ${slot.span};`}
+        >
+          <PostCard
+            post={slot.post}
+            showFeaturedIndicator={false}
+            idPrefix={`highlights-${view.id}`}
+          />
+        </div>
+      ))}
+    </div>
+  ))}
 </section>
 
 <script is:inline define:vars={{ viewCounts }}>

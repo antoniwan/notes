@@ -49,29 +49,21 @@ const nonPreferredTags = sortedTags.filter(([tag]) => !PREFERRED_TAG_SET.has(tag
 
       {/* Statistics Overview */}
       <div class="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <div
-          class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] p-4"
-        >
+        <div class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] p-4">
           <div class="text-2xl font-bold text-[rgb(var(--color-primary))]">{totalTags}</div>
           <div class="text-body-muted text-sm">Total Tags</div>
         </div>
-        <div
-          class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] p-4"
-        >
+        <div class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] p-4">
           <div class="text-2xl font-bold text-[rgb(var(--color-primary))]">{totalTagInstances}</div>
           <div class="text-body-muted text-sm">Tag Instances</div>
         </div>
-        <div
-          class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] p-4"
-        >
+        <div class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] p-4">
           <div class="text-2xl font-bold text-[rgb(var(--color-primary))]">
             {avgTagsPerPost.toFixed(1)}
           </div>
           <div class="text-body-muted text-sm">Avg Tags/Post</div>
         </div>
-        <div
-          class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] p-4"
-        >
+        <div class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] p-4">
           <div class="text-2xl font-bold text-[rgb(var(--color-primary))]">{postsWithManyTags}</div>
           <div class="text-body-muted text-sm">Writings with 10+ Tags</div>
         </div>
@@ -80,77 +72,67 @@ const nonPreferredTags = sortedTags.filter(([tag]) => !PREFERRED_TAG_SET.has(tag
       {/* Tag Distribution */}
       <div class="mb-8 grid grid-cols-1 gap-8 lg:grid-cols-2">
         {/* Top Tags */}
-        <div
-          class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] p-6"
-        >
+        <div class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] p-6">
           <h3 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]">
             Top Tags by Frequency
           </h3>
           <div class="space-y-3">
-            {
-              topTags.map(([tag, count]) => (
-                <div class="flex items-center justify-between rounded-sm border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg))] p-3">
-                  <div class="flex items-center gap-2">
-                    <a
-                      href={`/tag/${tag}`}
-                      class="font-medium text-[rgb(var(--color-accent))] hover:underline"
-                    >
-                      #{tag}
-                    </a>
-                    <span class="text-body-muted text-xs">(weight: {tagWeights[tag]})</span>
-                  </div>
-                  <span class="text-sm font-medium text-[rgb(var(--color-text))]">
-                    {count} writings
-                  </span>
+            {topTags.map(([tag, count]) => (
+              <div class="flex items-center justify-between rounded-sm border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg))] p-3">
+                <div class="flex items-center gap-2">
+                  <a
+                    href={`/tag/${tag}`}
+                    class="font-medium text-[rgb(var(--color-accent))] hover:underline"
+                  >
+                    #{tag}
+                  </a>
+                  <span class="text-body-muted text-xs">(weight: {tagWeights[tag]})</span>
                 </div>
-              ))
-            }
+                <span class="text-sm font-medium text-[rgb(var(--color-text))]">
+                  {count} writings
+                </span>
+              </div>
+            ))}
           </div>
         </div>
 
         {/* Posts with Many Tags */}
-        <div
-          class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] p-6"
-        >
+        <div class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] p-6">
           <h3 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]">
             Writings with Many Tags (10+)
           </h3>
           <div class="space-y-3">
-            {
-              posts
-                .filter((post) => (post.data.tags?.length || 0) > 10)
-                .sort((a, b) => (b.data.tags?.length || 0) - (a.data.tags?.length || 0))
-                .slice(0, 10)
-                .map((post) => (
-                  <div class="rounded-sm border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg))] p-3">
-                    <div class="mb-2 flex items-center justify-between">
-                      <a
-                        href={`/p/${post.id}`}
-                        class="line-clamp-1 font-medium text-[rgb(var(--color-accent))] hover:underline"
-                      >
-                        {post.data.title}
-                      </a>
-                      <span class="text-sm font-medium text-[rgb(var(--color-text))]">
-                        {post.data.tags?.length} tags
-                      </span>
-                    </div>
-                    <TagDisplay
-                      tags={post.data.tags || []}
-                      maxVisible={5}
-                      showMoreIndicator={true}
-                      compact={true}
-                    />
+            {posts
+              .filter((post) => (post.data.tags?.length || 0) > 10)
+              .sort((a, b) => (b.data.tags?.length || 0) - (a.data.tags?.length || 0))
+              .slice(0, 10)
+              .map((post) => (
+                <div class="rounded-sm border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg))] p-3">
+                  <div class="mb-2 flex items-center justify-between">
+                    <a
+                      href={`/p/${post.id}`}
+                      class="line-clamp-1 font-medium text-[rgb(var(--color-accent))] hover:underline"
+                    >
+                      {post.data.title}
+                    </a>
+                    <span class="text-sm font-medium text-[rgb(var(--color-text))]">
+                      {post.data.tags?.length} tags
+                    </span>
                   </div>
-                ))
-            }
+                  <TagDisplay
+                    tags={post.data.tags || []}
+                    maxVisible={5}
+                    showMoreIndicator={true}
+                    compact={true}
+                  />
+                </div>
+              ))}
           </div>
         </div>
       </div>
 
       <div class="mb-8 grid grid-cols-1 gap-8 lg:grid-cols-2">
-        <div
-          class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] p-6"
-        >
+        <div class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] p-6">
           <h3 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]">
             Preferred Vocabulary Coverage
           </h3>
@@ -168,28 +150,22 @@ const nonPreferredTags = sortedTags.filter(([tag]) => !PREFERRED_TAG_SET.has(tag
             </p>
           </div>
         </div>
-        <div
-          class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] p-6"
-        >
+        <div class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] p-6">
           <h3 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]">
             Non-Preferred Tags (Top by frequency)
           </h3>
           <div class="flex flex-wrap gap-2">
-            {
-              nonPreferredTags.slice(0, 25).map(([tag, count]) => (
-                <div class="rounded-full border border-[rgb(var(--color-border))]/30 px-3 py-1 text-sm">
-                  #{tag} ({count})
-                </div>
-              ))
-            }
+            {nonPreferredTags.slice(0, 25).map(([tag, count]) => (
+              <div class="rounded-full border border-[rgb(var(--color-border))]/30 px-3 py-1 text-sm">
+                #{tag} ({count})
+              </div>
+            ))}
           </div>
         </div>
       </div>
 
       {/* Recommendations */}
-      <div
-        class="mb-8 rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] p-6"
-      >
+      <div class="mb-8 rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] p-6">
         <h3 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]">
           Tag Management Recommendations
         </h3>
@@ -197,52 +173,50 @@ const nonPreferredTags = sortedTags.filter(([tag]) => !PREFERRED_TAG_SET.has(tag
           <div class="flex items-start gap-3">
             <span class="mt-0.5 text-[rgb(var(--color-accent))]">💡</span>
             <div>
-              <strong>Limit tags per writing:</strong> Consider reducing writings with more than 10 tags
-              to improve readability and focus.
+              <strong>Limit tags per writing:</strong> Consider reducing writings with more than 10
+              tags to improve readability and focus.
             </div>
           </div>
           <div class="flex items-start gap-3">
             <span class="mt-0.5 text-[rgb(var(--color-accent))]">🏷️</span>
             <div>
-              <strong>Use consistent tagging:</strong> Standardize tag names and avoid near-duplicates
-              (e.g., "social-issues" vs "social-critique").
+              <strong>Use consistent tagging:</strong> Standardize tag names and avoid
+              near-duplicates (e.g., "social-issues" vs "social-critique").
             </div>
           </div>
           <div class="flex items-start gap-3">
             <span class="mt-0.5 text-[rgb(var(--color-accent))]">📊</span>
             <div>
-              <strong>Focus on high-weight tags:</strong> Prioritize tags with higher importance weights
-              for better categorization.
+              <strong>Focus on high-weight tags:</strong> Prioritize tags with higher importance
+              weights for better categorization.
             </div>
           </div>
           <div class="flex items-start gap-3">
             <span class="mt-0.5 text-[rgb(var(--color-accent))]">🎯</span>
             <div>
-              <strong>Consider tag consolidation:</strong> Merge low-frequency tags with similar meanings
-              to reduce tag sprawl.
+              <strong>Consider tag consolidation:</strong> Merge low-frequency tags with similar
+              meanings to reduce tag sprawl.
             </div>
           </div>
         </div>
       </div>
 
       {/* Low Frequency Tags */}
-      {
-        lowFrequencyTags.length > 0 && (
-          <div class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] p-6">
-            <h3 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]">
-              Low Frequency Tags (≤2 writings)
-            </h3>
-            <div class="flex flex-wrap gap-2">
-              {lowFrequencyTags.map(([tag, count]) => (
-                <div class="flex items-center gap-1 rounded-full border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg))] px-3 py-1">
-                  <span class="text-body-muted text-sm">#{tag}</span>
-                  <span class="text-body-muted text-xs">({count})</span>
-                </div>
-              ))}
-            </div>
+      {lowFrequencyTags.length > 0 && (
+        <div class="rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] p-6">
+          <h3 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]">
+            Low Frequency Tags (≤2 writings)
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            {lowFrequencyTags.map(([tag, count]) => (
+              <div class="flex items-center gap-1 rounded-full border border-[rgb(var(--color-border))]/30 bg-[rgb(var(--color-bg))] px-3 py-1">
+                <span class="text-body-muted text-sm">#{tag}</span>
+                <span class="text-body-muted text-xs">({count})</span>
+              </div>
+            ))}
           </div>
-        )
-      }
+        </div>
+      )}
     </Container>
   </Container>
 </BaseLayout>

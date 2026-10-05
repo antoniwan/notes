@@ -1,7 +1,7 @@
 ---
 /**
  * Random quote from /api/quotes for the 404 page.
- * Visual language: same left-border callout as Disclaimer + TagDisplay-style topic chips.
+ * Visual language: left-border callout + TagDisplay-style topic chips.
  */
 import { PREFERRED_TAGS } from '../data/tagVocabulary';
 import { getTagFamily } from '../data/tagFamilies';
@@ -31,7 +31,8 @@ const tagFamilyBySlug = Object.fromEntries(
     <div id="nfq-loading" class="flex items-center gap-3 py-1">
       <span
         class="inline-block h-2 w-2 shrink-0 animate-pulse rounded-full bg-[rgb(var(--color-primary))]"
-        aria-hidden="true"></span>
+        aria-hidden="true"
+      ></span>
       <p class="text-body-muted m-0 text-sm">Loading quote…</p>
     </div>
 
@@ -60,8 +61,9 @@ const tagFamilyBySlug = Object.fromEntries(
             id="nfq-source-link"
             href="#"
             class="theme-transition text-sm font-medium text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/35 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]/70"
-            >Read the piece</a
           >
+            Read the piece
+          </a>
         </p>
       </blockquote>
 

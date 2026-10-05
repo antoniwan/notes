@@ -159,9 +159,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
     title={pageInfo?.title || 'Cadence'}
     description={pageInfo?.description || 'Publish dates by month and weekday.'}
   >
-    <div
-      class="mb-6 flex flex-wrap gap-x-10 gap-y-5 border-b border-[rgb(var(--color-border))]/50 pb-6 md:mb-8 md:gap-x-12 md:pb-8"
-    >
+    <div class="mb-6 flex flex-wrap gap-x-10 gap-y-5 border-b border-[rgb(var(--color-border))]/50 pb-6 md:mb-8 md:gap-x-12 md:pb-8">
       <div title="Longest run with ≤7 days between adjacent posts">
         <div class="text-2xl font-semibold text-[rgb(var(--color-text))] tabular-nums md:text-3xl">
           {longestStreak}
@@ -202,36 +200,41 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
           <a
             href="#monthly"
             class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]"
-            >Monthly</a
           >
+            Monthly
+          </a>
         </li>
         <li class="m-0 p-0">
           <a
             href="#calendar"
             class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]"
-            >Weekday / season</a
           >
+            Weekday / season
+          </a>
         </li>
         <li class="m-0 p-0">
           <a
             href="#streaks"
             class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]"
-            >Streaks &amp; gaps</a
           >
+            Streaks &amp; gaps
+          </a>
         </li>
         <li class="m-0 p-0">
           <a
             href="#balanced"
             class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]"
-            >Regularity</a
           >
+            Regularity
+          </a>
         </li>
         <li class="m-0 p-0">
           <a
             href="#summary"
             class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]"
-            >Narrative summary</a
           >
+            Narrative summary
+          </a>
         </li>
       </ul>
     </nav>
@@ -244,9 +247,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
         Streak share is streaks ÷ (streaks + dry spells). The last row compares the last 30 days to
         average posts per month.
       </p>
-      <table
-        class="w-full max-w-lg border-collapse border-t border-b border-[rgb(var(--color-border))] text-sm tabular-nums"
-      >
+      <table class="w-full max-w-lg border-collapse border-t border-b border-[rgb(var(--color-border))] text-sm tabular-nums">
         <tbody>
           <tr class="border-b border-[rgb(var(--color-border))]/35">
             <td class="text-body-muted py-2 pr-4">Streak share</td>
@@ -256,9 +257,9 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
           </tr>
           <tr class="border-b border-[rgb(var(--color-border))]/35">
             <td class="text-body-muted py-2 pr-4">Avg posts / month</td>
-            <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]"
-              >{avgPostsPerMonth}</td
-            >
+            <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]">
+              {avgPostsPerMonth}
+            </td>
           </tr>
           <tr>
             <td class="text-body-muted py-2 pr-4">30d vs avg</td>
@@ -271,26 +272,24 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
     </div>
 
     {/* Monthly Activity Chart */}
-    {
-      postingFrequencyTimeSeries.labels.length > 0 && (
-        <section id="monthly" class="mb-10 scroll-mt-28 md:mb-12">
-          <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
-            Monthly publishing frequency
-          </h2>
-          <p class="text-body-muted mb-6 max-w-3xl text-sm">
-            Posts per calendar month, from first <code class="font-mono text-xs">pubDate</code> to
-            last.
-          </p>
-          <TimeSeriesChart
-            id="monthly-posting-frequency"
-            labels={postingFrequencyTimeSeries.labels}
-            datasets={postingFrequencyTimeSeries.datasets}
-            title="Posts Published Per Month"
-            yAxisLabel="Number of Posts"
-          />
-        </section>
-      )
-    }
+    {postingFrequencyTimeSeries.labels.length > 0 && (
+      <section id="monthly" class="mb-10 scroll-mt-28 md:mb-12">
+        <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
+          Monthly publishing frequency
+        </h2>
+        <p class="text-body-muted mb-6 max-w-3xl text-sm">
+          Posts per calendar month, from first <code class="font-mono text-xs">pubDate</code> to
+          last.
+        </p>
+        <TimeSeriesChart
+          id="monthly-posting-frequency"
+          labels={postingFrequencyTimeSeries.labels}
+          datasets={postingFrequencyTimeSeries.datasets}
+          title="Posts Published Per Month"
+          yAxisLabel="Number of Posts"
+        />
+      </section>
+    )}
 
     <section
       id="calendar"
@@ -303,17 +302,15 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
         <p class="text-body-muted mb-4 text-xs">
           Weekday of each post’s <code class="font-mono text-[0.65rem]">pubDate</code>.
         </p>
-        {
-          dayOfWeekChart.labels.length > 0 && (
-            <BarChart
-              id="day-of-week-chart"
-              labels={dayOfWeekChart.labels}
-              datasets={dayOfWeekChart.datasets}
-              title="Posts by Day of Week"
-              yAxisLabel="Post Count"
-            />
-          )
-        }
+        {dayOfWeekChart.labels.length > 0 && (
+          <BarChart
+            id="day-of-week-chart"
+            labels={dayOfWeekChart.labels}
+            datasets={dayOfWeekChart.datasets}
+            title="Posts by Day of Week"
+            yAxisLabel="Post Count"
+          />
+        )}
       </div>
 
       <div>
@@ -324,17 +321,15 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
           Calendar month of <code class="font-mono text-[0.65rem]">pubDate</code>, summed across
           years.
         </p>
-        {
-          monthOfYearChart.labels.length > 0 && (
-            <BarChart
-              id="month-of-year-chart"
-              labels={monthOfYearChart.labels}
-              datasets={monthOfYearChart.datasets}
-              title="Posts by Month of Year"
-              yAxisLabel="Post Count"
-            />
-          )
-        }
+        {monthOfYearChart.labels.length > 0 && (
+          <BarChart
+            id="month-of-year-chart"
+            labels={monthOfYearChart.labels}
+            datasets={monthOfYearChart.datasets}
+            title="Posts by Month of Year"
+            yAxisLabel="Post Count"
+          />
+        )}
       </div>
     </section>
 
@@ -353,78 +348,63 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
       <h3 class="text-body-muted mb-3 text-sm font-semibold tracking-wide uppercase">
         Top streaks
       </h3>
-      <div
-        class="mb-10 divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40"
-      >
-        {
-          sortedStreaks.slice(0, 10).map((streak, index) => (
-            <div class="flex flex-wrap items-baseline justify-between gap-3 py-2.5">
-              <div class="min-w-0">
-                <span class="text-body-muted mr-2 font-mono text-xs">{index + 1}.</span>
-                <span class="text-sm font-medium text-[rgb(var(--color-text))]">
-                  {streak.length} posts / {streak.days} days
-                </span>
-                <span class="text-body-muted mt-0.5 block text-xs sm:mt-0 sm:inline sm:before:content-['_·_']">
-                  {format(streak.startDate, 'MMM d, yyyy')} –{' '}
-                  {format(streak.endDate, 'MMM d, yyyy')}
-                </span>
-              </div>
-              <div
-                class="text-body-muted text-sm tabular-nums"
-                title="Mean posts per day across span"
-              >
-                {Math.round((streak.length / streak.days) * 100) / 100}/day
-              </div>
+      <div class="mb-10 divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40">
+        {sortedStreaks.slice(0, 10).map((streak, index) => (
+          <div class="flex flex-wrap items-baseline justify-between gap-3 py-2.5">
+            <div class="min-w-0">
+              <span class="text-body-muted mr-2 font-mono text-xs">{index + 1}.</span>
+              <span class="text-sm font-medium text-[rgb(var(--color-text))]">
+                {streak.length} posts / {streak.days} days
+              </span>
+              <span class="text-body-muted mt-0.5 block text-xs sm:mt-0 sm:inline sm:before:content-['_·_']">
+                {format(streak.startDate, 'MMM d, yyyy')} – {format(streak.endDate, 'MMM d, yyyy')}
+              </span>
             </div>
-          ))
-        }
+            <div
+              class="text-body-muted text-sm tabular-nums"
+              title="Mean posts per day across span"
+            >
+              {Math.round((streak.length / streak.days) * 100) / 100}/day
+            </div>
+          </div>
+        ))}
       </div>
 
       <h3 class="text-body-muted mb-3 text-sm font-semibold tracking-wide uppercase">
         Largest gaps
       </h3>
-      <div
-        class="mb-10 divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40"
-      >
-        {
-          sortedDrySpells.slice(0, 5).map((spell, index) => (
-            <div class="flex flex-wrap items-baseline justify-between gap-3 py-2.5">
-              <div class="min-w-0">
-                <span class="text-body-muted mr-2 font-mono text-xs">{index + 1}.</span>
-                <span class="text-sm font-medium text-[rgb(var(--color-text))]">
-                  {spell.days} days
-                </span>
-                <span class="text-body-muted mt-0.5 block text-xs sm:mt-0 sm:inline sm:before:content-['_·_']">
-                  {format(spell.startDate, 'MMM d, yyyy')} – {format(spell.endDate, 'MMM d, yyyy')}
-                </span>
-              </div>
-              <div class="text-body-muted text-sm tabular-nums">
-                ~{Math.round(spell.days / 7)} wk
-              </div>
+      <div class="mb-10 divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40">
+        {sortedDrySpells.slice(0, 5).map((spell, index) => (
+          <div class="flex flex-wrap items-baseline justify-between gap-3 py-2.5">
+            <div class="min-w-0">
+              <span class="text-body-muted mr-2 font-mono text-xs">{index + 1}.</span>
+              <span class="text-sm font-medium text-[rgb(var(--color-text))]">
+                {spell.days} days
+              </span>
+              <span class="text-body-muted mt-0.5 block text-xs sm:mt-0 sm:inline sm:before:content-['_·_']">
+                {format(spell.startDate, 'MMM d, yyyy')} – {format(spell.endDate, 'MMM d, yyyy')}
+              </span>
             </div>
-          ))
-        }
+            <div class="text-body-muted text-sm tabular-nums">~{Math.round(spell.days / 7)} wk</div>
+          </div>
+        ))}
       </div>
 
       <h3 class="text-body-muted mb-3 text-sm font-semibold tracking-wide uppercase">
         Busiest calendar months (top 5)
       </h3>
       <div class="overflow-x-auto">
-        <table
-          class="w-full max-w-md border-collapse border-t border-b border-[rgb(var(--color-border))] text-sm tabular-nums"
-        >
+        <table class="w-full max-w-md border-collapse border-t border-b border-[rgb(var(--color-border))] text-sm tabular-nums">
           <tbody>
-            {
-              productiveMonths.map((month, index) => (
-                <tr class="border-b border-[rgb(var(--color-border))]/35 last:border-0">
-                  <td class="text-body-muted py-2 pr-4 font-mono text-xs">{index + 1}</td>
-                  <td class="py-2 pr-4 text-[rgb(var(--color-text))]">{month.label}</td>
-                  <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]">
-                    {month.count}
-                  </td>
-                </tr>
-              ))
-            }
+            {productiveMonths.map((month, index) => (
+              <tr class="border-b border-[rgb(var(--color-border))]/35 last:border-0">
+                <td class="text-body-muted py-2 pr-4 font-mono text-xs">{index + 1}</td>
+                <td class="py-2 pr-4 text-[rgb(var(--color-text))]">{month.label}</td>
+                <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]">
+                  {month.count}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -439,16 +419,18 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
       </p>
 
       <div class="overflow-x-auto">
-        <table
-          class="mb-10 w-full max-w-2xl border-collapse border-t border-b border-[rgb(var(--color-border))] text-sm tabular-nums"
-        >
+        <table class="mb-10 w-full max-w-2xl border-collapse border-t border-b border-[rgb(var(--color-border))] text-sm tabular-nums">
           <thead>
-            <tr
-              class="text-body-muted border-b border-[rgb(var(--color-border))] text-left text-[0.65rem] font-semibold tracking-wider uppercase"
-            >
-              <th scope="col" class="py-2 pr-4 font-medium">Metric</th>
-              <th scope="col" class="py-2 pr-4 font-medium">Score</th>
-              <th scope="col" class="py-2 font-medium">Grade</th>
+            <tr class="text-body-muted border-b border-[rgb(var(--color-border))] text-left text-[0.65rem] font-semibold tracking-wider uppercase">
+              <th scope="col" class="py-2 pr-4 font-medium">
+                Metric
+              </th>
+              <th scope="col" class="py-2 pr-4 font-medium">
+                Score
+              </th>
+              <th scope="col" class="py-2 font-medium">
+                Grade
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -475,9 +457,9 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
               </td>
             </tr>
             <tr>
-              <td class="py-2.5 pr-4 text-[rgb(var(--color-text))]"
-                >Length stability (inverse var.)</td
-              >
+              <td class="py-2.5 pr-4 text-[rgb(var(--color-text))]">
+                Length stability (inverse var.)
+              </td>
               <td class="text-body-muted py-2.5 pr-4">
                 {100 - objectiveMetrics.consistencyMetrics.qualityVariance}/100
               </td>
@@ -494,52 +476,46 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'cadence');
       <GradeExplainer explanations={gradeExplanations} />
 
       {/* Strengths */}
-      {
-        balancedAnalysis.strengths.length > 0 && (
-          <div class="mb-6 md:mb-8">
-            <h3 class="mb-4 text-lg font-medium text-[rgb(var(--color-text))]">Strengths</h3>
-            <div class="space-y-3">
-              {balancedAnalysis.strengths.map((insight) => (
-                <div class="border-b border-[rgb(var(--color-border))] py-3 last:border-b-0">
-                  <div class="text-sm text-[rgb(var(--color-text))]" set:html={insight.text} />
-                </div>
-              ))}
-            </div>
+      {balancedAnalysis.strengths.length > 0 && (
+        <div class="mb-6 md:mb-8">
+          <h3 class="mb-4 text-lg font-medium text-[rgb(var(--color-text))]">Strengths</h3>
+          <div class="space-y-3">
+            {balancedAnalysis.strengths.map((insight) => (
+              <div class="border-b border-[rgb(var(--color-border))] py-3 last:border-b-0">
+                <div class="text-sm text-[rgb(var(--color-text))]" set:html={insight.text} />
+              </div>
+            ))}
           </div>
-        )
-      }
+        </div>
+      )}
 
       {/* Challenges */}
-      {
-        balancedAnalysis.challenges.length > 0 && (
-          <div class="mb-6 md:mb-8">
-            <h3 class="mb-4 text-lg font-medium text-[rgb(var(--color-text))]">Challenges</h3>
-            <div class="space-y-3">
-              {balancedAnalysis.challenges.map((insight) => (
-                <div class="border-b border-[rgb(var(--color-border))] py-3 last:border-b-0">
-                  <div class="text-sm text-[rgb(var(--color-text))]" set:html={insight.text} />
-                </div>
-              ))}
-            </div>
+      {balancedAnalysis.challenges.length > 0 && (
+        <div class="mb-6 md:mb-8">
+          <h3 class="mb-4 text-lg font-medium text-[rgb(var(--color-text))]">Challenges</h3>
+          <div class="space-y-3">
+            {balancedAnalysis.challenges.map((insight) => (
+              <div class="border-b border-[rgb(var(--color-border))] py-3 last:border-b-0">
+                <div class="text-sm text-[rgb(var(--color-text))]" set:html={insight.text} />
+              </div>
+            ))}
           </div>
-        )
-      }
+        </div>
+      )}
 
       {/* Neutral/Objective */}
-      {
-        balancedAnalysis.neutral.length > 0 && (
-          <div class="mb-6 md:mb-8">
-            <h3 class="mb-4 text-lg font-medium text-[rgb(var(--color-text))]">Just the counts</h3>
-            <div class="space-y-3">
-              {balancedAnalysis.neutral.map((insight) => (
-                <div class="border-b border-[rgb(var(--color-border))] py-3 last:border-b-0">
-                  <div class="text-sm text-[rgb(var(--color-text))]" set:html={insight.text} />
-                </div>
-              ))}
-            </div>
+      {balancedAnalysis.neutral.length > 0 && (
+        <div class="mb-6 md:mb-8">
+          <h3 class="mb-4 text-lg font-medium text-[rgb(var(--color-text))]">Just the counts</h3>
+          <div class="space-y-3">
+            {balancedAnalysis.neutral.map((insight) => (
+              <div class="border-b border-[rgb(var(--color-border))] py-3 last:border-b-0">
+                <div class="text-sm text-[rgb(var(--color-text))]" set:html={insight.text} />
+              </div>
+            ))}
           </div>
-        )
-      }
+        </div>
+      )}
     </section>
 
     <BrainScienceNarrativeSummary insights={insights} summary={summary} />

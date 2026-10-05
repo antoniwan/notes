@@ -83,13 +83,12 @@ const swUrl = `/sw.js?v=${encodeURIComponent(pkg.version ?? 'dev')}`;
   }
 </script>
 
-<!-- Service Worker Status Indicator (Development Only) -->{
-  import.meta.env.DEV && (
-    <div class="sw-status-indicator" id="sw-status">
-      <span>SW: --</span>
-    </div>
-  )
-}
+<!-- Service Worker Status Indicator (Development Only) -->
+{import.meta.env.DEV && (
+  <div class="sw-status-indicator" id="sw-status">
+    <span>SW: --</span>
+  </div>
+)}
 
 <style>
   .sw-update-notification {

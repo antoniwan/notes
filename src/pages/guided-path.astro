@@ -21,20 +21,18 @@ const totalPosts = chapters.reduce((total, chapter) => total + chapter.posts.len
   path="/guided-path"
   mode="chrome"
 >
-  {
-    firstPost ? (
-      <div class="guided-path" data-guided-path>
-        <SeasonNavigation chapters={chapters} totalPosts={totalPosts} firstPost={firstPost} />
-        <div class="chapters" id="season-reading-list">
-          {chapters.map((chapter) => (
-            <Chapter posts={chapter.posts} chapterTitle={chapter.title} chapterId={chapter.id} />
-          ))}
-        </div>
+  {firstPost ? (
+    <div class="guided-path" data-guided-path>
+      <SeasonNavigation chapters={chapters} totalPosts={totalPosts} firstPost={firstPost} />
+      <div class="chapters" id="season-reading-list">
+        {chapters.map((chapter) => (
+          <Chapter posts={chapter.posts} chapterTitle={chapter.title} chapterId={chapter.id} />
+        ))}
       </div>
-    ) : (
-      <p class="guided-empty">The first season will appear here when there is writing to read.</p>
-    )
-  }
+    </div>
+  ) : (
+    <p class="guided-empty">The first season will appear here when there is writing to read.</p>
+  )}
 </PageLayout>
 
 <script>

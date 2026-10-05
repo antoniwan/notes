@@ -36,128 +36,118 @@ const canAutoRotate = autoRotate && images.length > 1;
   <div class="rotator-container">
     <!-- Main image display -->
     <div class="main-image-container">
-      {
-        images.map((image, index) => (
-          <div
-            class={`main-image ${index === 0 ? 'active' : ''}`}
-            data-index={index}
-            role="img"
-            aria-label={image.alt}
-            aria-hidden={index === 0 ? 'false' : 'true'}
-            style={`background-image: url('${image.src}')`}
-          >
-            <div class="image-overlay">
-              {image.caption && (
-                <div class="image-caption">
-                  <p>{image.caption}</p>
-                </div>
-              )}
-            </div>
+      {images.map((image, index) => (
+        <div
+          class={`main-image ${index === 0 ? 'active' : ''}`}
+          data-index={index}
+          role="img"
+          aria-label={image.alt}
+          aria-hidden={index === 0 ? 'false' : 'true'}
+          style={`background-image: url('${image.src}')`}
+        >
+          <div class="image-overlay">
+            {image.caption && (
+              <div class="image-caption">
+                <p>{image.caption}</p>
+              </div>
+            )}
           </div>
-        ))
-      }
+        </div>
+      ))}
 
       <!-- Navigation arrows -->
-      {
-        showNavigation && images.length > 1 && (
-          <>
-            <button class="nav-arrow nav-prev" aria-label="Previous image">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <polyline points="15,18 9,12 15,6" />
-              </svg>
-            </button>
-            <button class="nav-arrow nav-next" aria-label="Next image">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <polyline points="9,18 15,12 9,6" />
-              </svg>
-            </button>
-          </>
-        )
-      }
+      {showNavigation && images.length > 1 && (
+        <>
+          <button class="nav-arrow nav-prev" aria-label="Previous image">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="15,18 9,12 15,6" />
+            </svg>
+          </button>
+          <button class="nav-arrow nav-next" aria-label="Next image">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="9,18 15,12 9,6" />
+            </svg>
+          </button>
+        </>
+      )}
 
       <!-- Image counter -->
-      {
-        images.length > 1 && (
-          <div class="image-counter">
-            <span class="current-index">1</span>
-            <span class="separator">/</span>
-            <span class="total-count">{images.length}</span>
-          </div>
-        )
-      }
+      {images.length > 1 && (
+        <div class="image-counter">
+          <span class="current-index">1</span>
+          <span class="separator">/</span>
+          <span class="total-count">{images.length}</span>
+        </div>
+      )}
 
       <!-- Autoplay control. Hidden until the script takes over so readers without
            JavaScript never see a dead button. The script also sets the label to
            match the state rotation actually starts in. -->
-      {
-        canAutoRotate && (
-          <button class="rotator-playback" type="button" data-playing="true" hidden>
-            <svg
-              class="rotator-icon rotator-icon-pause"
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <rect x="6" y="5" width="4" height="14" rx="1" />
-              <rect x="14" y="5" width="4" height="14" rx="1" />
-            </svg>
-            <svg
-              class="rotator-icon rotator-icon-play"
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <polygon points="7,4 20,12 7,20" />
-            </svg>
-            <span class="rotator-playback-label">Pause slideshow</span>
-          </button>
-        )
-      }
+      {canAutoRotate && (
+        <button class="rotator-playback" type="button" data-playing="true" hidden>
+          <svg
+            class="rotator-icon rotator-icon-pause"
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <rect x="6" y="5" width="4" height="14" rx="1" />
+            <rect x="14" y="5" width="4" height="14" rx="1" />
+          </svg>
+          <svg
+            class="rotator-icon rotator-icon-play"
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <polygon points="7,4 20,12 7,20" />
+          </svg>
+          <span class="rotator-playback-label">Pause slideshow</span>
+        </button>
+      )}
     </div>
 
     <!-- Thumbnail navigation -->
-    {
-      showThumbnails && images.length > 1 && (
-        <div class="thumbnail-container">
-          {images.map((image, index) => (
-            <button
-              class={`thumbnail ${index === 0 ? 'active' : ''}`}
-              data-index={index}
-              aria-label={image.alt}
-              aria-current={index === 0 ? 'true' : undefined}
-            >
-              <img src={image.src} alt="" loading="lazy" />
-            </button>
-          ))}
-        </div>
-      )
-    }
+    {showThumbnails && images.length > 1 && (
+      <div class="thumbnail-container">
+        {images.map((image, index) => (
+          <button
+            class={`thumbnail ${index === 0 ? 'active' : ''}`}
+            data-index={index}
+            aria-label={image.alt}
+            aria-current={index === 0 ? 'true' : undefined}
+          >
+            <img src={image.src} alt="" loading="lazy" />
+          </button>
+        ))}
+      </div>
+    )}
   </div>
 </div>
 

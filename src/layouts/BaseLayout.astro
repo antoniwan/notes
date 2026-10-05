@@ -126,19 +126,17 @@ const structuredData = generateStructuredData({
     <!-- Load Speed Insights asynchronously -->
     <SpeedInsights />
   </head>
-  <body
-    class="flex min-h-screen flex-col bg-[rgb(var(--color-bg))] text-[rgb(var(--color-text))] antialiased"
-  >
+  <body class="flex min-h-screen flex-col bg-[rgb(var(--color-bg))] text-[rgb(var(--color-text))] antialiased">
     <script>
       // Prevent FOUC in Firefox
       document.documentElement.classList.add('ready');
     </script>
-
     <a
       href="#main-content"
       class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-sm focus:bg-[rgb(var(--color-bg))] focus:px-4 focus:py-2 focus:shadow-lg focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:ring-offset-2"
-      >Skip to main content</a
     >
+      Skip to main content
+    </a>
 
     <ReadStateServiceInit />
     <script define:vars={{ searchIndexUrl }} is:inline>
@@ -166,7 +164,9 @@ const structuredData = generateStructuredData({
 
     <!-- Article image lightbox -->
     <dialog id="imageModal" class="image-modal" aria-label="Expanded article image">
-      <button class="close-btn" type="button" aria-label="Close expanded image">&times;</button>
+      <button class="close-btn" type="button" aria-label="Close expanded image">
+        &times;
+      </button>
       <img id="modalImage" src="" alt="" />
     </dialog>
 

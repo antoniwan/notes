@@ -134,46 +134,37 @@ const breadcrumbSchema = generateBreadcrumbSchema(
 
     <div class="post-layout">
       <header class="post-heading" id="post-heading">
-        {
-          primaryCategory && (
-            <a
-              class="post-eyebrow"
-              href={isRecipe ? '/recipes' : `/category/${primaryCategory.id}`}
-            >
-              <span aria-hidden="true" class="post-eyebrow__mark" />
-              {isRecipe
-                ? isSpanish
-                  ? 'Del recetario'
-                  : 'From the cookbook'
-                : primaryCategory.name}
-            </a>
-          )
-        }
-        <h1 id="post-title" class="post-title">{title}</h1>
+        {primaryCategory && (
+          <a class="post-eyebrow" href={isRecipe ? '/recipes' : `/category/${primaryCategory.id}`}>
+            <span aria-hidden="true" class="post-eyebrow__mark" />
+            {isRecipe ? (isSpanish ? 'Del recetario' : 'From the cookbook') : primaryCategory.name}
+          </a>
+        )}
+        <h1 id="post-title" class="post-title">
+          {title}
+        </h1>
         {description && <p class="post-description">{description}</p>}
         <div class="post-byline">
           {pubDate && <FormattedDate date={pubDate} format="long" />}
           {minutesRead && !isRecipe && <span class="post-duration">{minutesRead}</span>}
           <span class="post-read-status" data-read-status data-post-slug={postSlug} hidden></span>
         </div>
-        {
-          translationData?.hasTranslations && (
-            <div class="post-language">
-              <LanguageToggle
-                translations={translationData.translations}
-                currentLanguage={translationData.currentLanguage}
-                currentPath={translationData.currentPath}
-              />
-            </div>
-          )
-        }
+        {translationData?.hasTranslations && (
+          <div class="post-language">
+            <LanguageToggle
+              translations={translationData.translations}
+              currentLanguage={translationData.currentLanguage}
+              currentPath={translationData.currentPath}
+            />
+          </div>
+        )}
       </header>
 
       <aside
         class="post-sidebar scrollbar-subtle-y"
-        aria-label={isSpanish
-          ? 'Navegación y detalles del artículo'
-          : 'Article navigation and details'}
+        aria-label={
+          isSpanish ? 'Navegación y detalles del artículo' : 'Article navigation and details'
+        }
       >
         <PostTocModal
           tableOfContents={tableOfContents}
@@ -201,56 +192,52 @@ const breadcrumbSchema = generateBreadcrumbSchema(
       <article class="post-article" aria-labelledby="post-title">
         <div class="post-hero">
           <div class="post-hero__frame">
-            {
-              heroImage ? (
-                <HeroImage
-                  src={heroImage}
-                  alt={imageAlt || title}
-                  class="h-full w-full object-cover"
-                  variant="article"
-                  priority={true}
-                  width={1200}
-                  height={450}
-                />
-              ) : (
-                <DefaultImage
-                  alt={imageAlt || title}
-                  className="h-full w-full"
-                  loading="eager"
-                  priority={true}
-                  width={1200}
-                  height={450}
-                />
-              )
-            }
+            {heroImage ? (
+              <HeroImage
+                src={heroImage}
+                alt={imageAlt || title}
+                class="h-full w-full object-cover"
+                variant="article"
+                priority={true}
+                width={1200}
+                height={450}
+              />
+            ) : (
+              <DefaultImage
+                alt={imageAlt || title}
+                className="h-full w-full"
+                loading="eager"
+                priority={true}
+                width={1200}
+                height={450}
+              />
+            )}
           </div>
-          {
-            imageCredit && (
-              <p class="text-body-muted mt-2 text-sm leading-relaxed">
-                {contentLanguage.contentLanguage === 'es' ? 'Foto: ' : 'Photo: '}
-                {imageCreditUrl ? (
-                  <a
-                    href={imageCreditUrl}
-                    class="underline decoration-[rgb(var(--color-border))] underline-offset-2 hover:text-[rgb(var(--color-accent))]"
-                    rel="noopener noreferrer"
-                  >
-                    {imageCredit}
-                  </a>
-                ) : (
-                  imageCredit
-                )}
-                {imageLicense ? ` · ${imageLicense}` : ''}
-                {imageCreditUrl?.includes('wikimedia.org')
-                  ? ' via Wikimedia Commons'
-                  : imageCreditUrl?.includes('flickr.com')
-                    ? ' via Flickr'
-                    : imageCreditUrl?.includes('unsplash.com')
-                      ? ' via Unsplash'
-                      : ''}
-                . Converted to AVIF.
-              </p>
-            )
-          }
+          {imageCredit && (
+            <p class="text-body-muted mt-2 text-sm leading-relaxed">
+              {contentLanguage.contentLanguage === 'es' ? 'Foto: ' : 'Photo: '}
+              {imageCreditUrl ? (
+                <a
+                  href={imageCreditUrl}
+                  class="underline decoration-[rgb(var(--color-border))] underline-offset-2 hover:text-[rgb(var(--color-accent))]"
+                  rel="noopener noreferrer"
+                >
+                  {imageCredit}
+                </a>
+              ) : (
+                imageCredit
+              )}
+              {imageLicense ? ` · ${imageLicense}` : ''}
+              {imageCreditUrl?.includes('wikimedia.org')
+                ? ' via Wikimedia Commons'
+                : imageCreditUrl?.includes('flickr.com')
+                  ? ' via Flickr'
+                  : imageCreditUrl?.includes('unsplash.com')
+                    ? ' via Unsplash'
+                    : ''}
+              . Converted to AVIF.
+            </p>
+          )}
         </div>
 
         <div
@@ -287,21 +274,17 @@ const breadcrumbSchema = generateBreadcrumbSchema(
               />
             </div>
           </details>
-          {
-            showComments && (
-              <a class="post-comment-jump" href="#comments">
-                {isSpanish ? 'Dejar una nota' : 'Leave a note'}
-              </a>
-            )
-          }
+          {showComments && (
+            <a class="post-comment-jump" href="#comments">
+              {isSpanish ? 'Dejar una nota' : 'Leave a note'}
+            </a>
+          )}
         </div>
-        {
-          rest.currentPost && isRecipePost(rest.currentPost) ? (
-            <MoreRecipes currentPost={rest.currentPost} allPosts={rest.allPosts} />
-          ) : (
-            <RelatedPosts currentPost={rest.currentPost} allPosts={rest.allPosts} />
-          )
-        }
+        {rest.currentPost && isRecipePost(rest.currentPost) ? (
+          <MoreRecipes currentPost={rest.currentPost} allPosts={rest.allPosts} />
+        ) : (
+          <RelatedPosts currentPost={rest.currentPost} allPosts={rest.allPosts} />
+        )}
         {showComments && <Comments language={contentLanguage.contentLanguage} />}
       </div>
     </div>

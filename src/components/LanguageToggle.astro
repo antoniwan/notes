@@ -37,22 +37,20 @@ const languageFlags: Record<string, string> = {
 };
 ---
 
-{
-  otherTranslations.length > 0 && (
-    <div class="language-toggle">
-      <span class="language-label">Also available in:</span>
-      {otherTranslations.map((translation) => (
-        <a
-          href={translation.path}
-          class="language-link"
-          title={`Read in ${languageNames[translation.language[0]]}`}
-        >
-          {languageFlags[translation.language[0]]} {languageNames[translation.language[0]]}
-        </a>
-      ))}
-    </div>
-  )
-}
+{otherTranslations.length > 0 && (
+  <div class="language-toggle">
+    <span class="language-label">Also available in:</span>
+    {otherTranslations.map((translation) => (
+      <a
+        href={translation.path}
+        class="language-link"
+        title={`Read in ${languageNames[translation.language[0]]}`}
+      >
+        {languageFlags[translation.language[0]]} {languageNames[translation.language[0]]}
+      </a>
+    ))}
+  </div>
+)}
 
 <style>
   @reference '../styles/global.css';

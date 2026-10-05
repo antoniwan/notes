@@ -394,21 +394,22 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
 
 <BaseLayout
   title="Language over time - Writing Insights"
-  description={pageInfo?.description ||
-    'Flesch reading ease, a word-pattern count, and tag counts over time.'}
+  description={
+    pageInfo?.description || 'Flesch reading ease, a word-pattern count, and tag counts over time.'
+  }
   path="/writing-insights/evolution"
   structuredDataType="website"
 >
   <BrainScienceLayout
     currentPage="/writing-insights/evolution"
     title={pageInfo?.title || 'Language over time'}
-    description={pageInfo?.description ||
-      'Flesch reading ease, a word-pattern count, and tag counts over time.'}
+    description={
+      pageInfo?.description ||
+      'Flesch reading ease, a word-pattern count, and tag counts over time.'
+    }
   >
     {/* Snapshot row — notebook-style, no cards */}
-    <div
-      class="mb-6 flex flex-wrap gap-x-10 gap-y-5 border-b border-[rgb(var(--color-border))]/50 pb-6 md:mb-8 md:gap-x-14 md:pb-8"
-    >
+    <div class="mb-6 flex flex-wrap gap-x-10 gap-y-5 border-b border-[rgb(var(--color-border))]/50 pb-6 md:mb-8 md:gap-x-14 md:pb-8">
       <div title="Quarters with published posts (calendar quarters)">
         <div class="text-2xl font-semibold text-[rgb(var(--color-text))] tabular-nums md:text-3xl">
           {quarters.length}
@@ -447,143 +448,144 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
           <a
             href="#readability-chart"
             class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]"
-            >Readability chart</a
           >
+            Readability chart
+          </a>
         </li>
         <li class="m-0 p-0">
           <a
             href="#by-period"
             class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]"
-            >By period</a
           >
+            By period
+          </a>
         </li>
         <li class="m-0 p-0">
           <a
             href="#topics"
             class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]"
-            >Tags</a
           >
+            Tags
+          </a>
         </li>
         <li class="m-0 p-0">
           <a
             href="#quarters"
             class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]"
-            >Quarter table</a
           >
+            Quarter table
+          </a>
         </li>
         <li class="m-0 p-0">
           <a
             href="#format-mix"
             class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]"
-            >Format checks</a
           >
+            Format checks
+          </a>
         </li>
         <li class="m-0 p-0">
           <a
             href="#definitions"
             class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]"
-            >Flesch formula</a
           >
+            Flesch formula
+          </a>
         </li>
         <li class="m-0 p-0">
           <a
             href="#summary"
             class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]"
-            >Narrative summary</a
           >
+            Narrative summary
+          </a>
         </li>
       </ul>
     </nav>
 
-    {
-      /* Readability + heuristic (line colors match legend — explicit colors preserved by TimeSeriesChart) */
-    }
-    {
-      complexityTimeSeries.length > 0 && (
-        <section
-          id="readability-chart"
-          class="mb-10 scroll-mt-28 md:mb-12"
-          aria-labelledby="readability-heading"
+    {/* Readability + heuristic (line colors match legend — explicit colors preserved by TimeSeriesChart) */}
+    {complexityTimeSeries.length > 0 && (
+      <section
+        id="readability-chart"
+        class="mb-10 scroll-mt-28 md:mb-12"
+        aria-labelledby="readability-heading"
+      >
+        <h2
+          id="readability-heading"
+          class="mb-2 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl"
         >
-          <h2
-            id="readability-heading"
-            class="mb-2 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl"
-          >
-            Readability &amp; word-pattern index
-          </h2>
-          <p class="text-body-muted mb-4 max-w-3xl text-sm leading-relaxed">
-            Mean Flesch and mean word-pattern score per quarter. Both lines share one axis; the
-            units are not the same.
-          </p>
+          Readability &amp; word-pattern index
+        </h2>
+        <p class="text-body-muted mb-4 max-w-3xl text-sm leading-relaxed">
+          Mean Flesch and mean word-pattern score per quarter. Both lines share one axis; the units
+          are not the same.
+        </p>
 
-          <details class="mb-5" open>
-            <summary class="cursor-pointer list-none text-sm font-medium text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/25 underline-offset-4 marker:content-none [&::-webkit-details-marker]:hidden">
-              How to read the two lines
-            </summary>
-            <div class="text-body-muted mt-3 space-y-3 border-l-2 border-[rgb(var(--color-border))]/60 pl-4 text-sm leading-relaxed">
-              <p class="m-0 flex flex-wrap items-start gap-2">
-                <span
-                  class="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-[rgb(var(--color-accent))]"
-                  aria-hidden="true"
-                />
-                <span>
-                  <strong class="text-[rgb(var(--color-text))]">
-                    Flesch reading ease (violet).
-                  </strong>{' '}
-                  Higher = shorter words and sentences on the formula. Syllables are counted by
-                  vowel groups. English scores often fall between 30 and 70.
-                </span>
-              </p>
-              <p class="m-0 flex flex-wrap items-start gap-2">
-                <span
-                  class="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-[rgb(var(--color-primary))]"
-                  aria-hidden="true"
-                />
-                <span>
-                  <strong class="text-[rgb(var(--color-text))]">
-                    Word-pattern composite (marigold).
-                  </strong>{' '}
-                  Word-list hits for discourse, curiosity, and reflection, plus a length term (
-                  <code class="rounded-sm bg-[rgb(var(--color-bg-alt))] px-1 py-0.5 font-mono text-xs">
-                    words÷50
-                  </code>
-                  ). Longer posts score higher by construction.
-                </span>
-              </p>
-              <p class="m-0 text-xs md:text-sm">
-                Both series share one scale. A move in one line is not comparable in size to a move
-                in the other.
-              </p>
-            </div>
-          </details>
-
-          <div class="-mx-1 md:mx-0">
-            <TimeSeriesChart
-              id="complexity-evolution"
-              labels={complexityTimeSeries.map((q) => q.label)}
-              datasets={[
-                {
-                  label: 'Flesch reading ease (avg)',
-                  data: complexityTimeSeries.map((q) => (isNaN(q.complexity) ? 0 : q.complexity)),
-                  borderColor: 'rgb(147, 51, 234)',
-                  backgroundColor: 'rgba(147, 51, 234, 0.12)',
-                },
-                {
-                  label: 'Word-pattern composite (avg)',
-                  data: complexityTimeSeries.map((q) =>
-                    isNaN(q.intellectualDepth) ? 0 : q.intellectualDepth,
-                  ),
-                  borderColor: 'rgb(34, 197, 94)',
-                  backgroundColor: 'rgba(34, 197, 94, 0.12)',
-                },
-              ]}
-              title=""
-              yAxisLabel="Mixed units — see legend"
-            />
+        <details class="mb-5" open>
+          <summary class="cursor-pointer list-none text-sm font-medium text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/25 underline-offset-4 marker:content-none [&::-webkit-details-marker]:hidden">
+            How to read the two lines
+          </summary>
+          <div class="text-body-muted mt-3 space-y-3 border-l-2 border-[rgb(var(--color-border))]/60 pl-4 text-sm leading-relaxed">
+            <p class="m-0 flex flex-wrap items-start gap-2">
+              <span
+                class="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-[rgb(var(--color-accent))]"
+                aria-hidden="true"
+              />
+              <span>
+                <strong class="text-[rgb(var(--color-text))]">Flesch reading ease (violet).</strong>{' '}
+                Higher = shorter words and sentences on the formula. Syllables are counted by vowel
+                groups. English scores often fall between 30 and 70.
+              </span>
+            </p>
+            <p class="m-0 flex flex-wrap items-start gap-2">
+              <span
+                class="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-[rgb(var(--color-primary))]"
+                aria-hidden="true"
+              />
+              <span>
+                <strong class="text-[rgb(var(--color-text))]">
+                  Word-pattern composite (marigold).
+                </strong>{' '}
+                Word-list hits for discourse, curiosity, and reflection, plus a length term (
+                <code class="rounded-sm bg-[rgb(var(--color-bg-alt))] px-1 py-0.5 font-mono text-xs">
+                  words÷50
+                </code>
+                ). Longer posts score higher by construction.
+              </span>
+            </p>
+            <p class="m-0 text-xs md:text-sm">
+              Both series share one scale. A move in one line is not comparable in size to a move in
+              the other.
+            </p>
           </div>
-        </section>
-      )
-    }
+        </details>
+
+        <div class="-mx-1 md:mx-0">
+          <TimeSeriesChart
+            id="complexity-evolution"
+            labels={complexityTimeSeries.map((q) => q.label)}
+            datasets={[
+              {
+                label: 'Flesch reading ease (avg)',
+                data: complexityTimeSeries.map((q) => (isNaN(q.complexity) ? 0 : q.complexity)),
+                borderColor: 'rgb(147, 51, 234)',
+                backgroundColor: 'rgba(147, 51, 234, 0.12)',
+              },
+              {
+                label: 'Word-pattern composite (avg)',
+                data: complexityTimeSeries.map((q) =>
+                  isNaN(q.intellectualDepth) ? 0 : q.intellectualDepth,
+                ),
+                borderColor: 'rgb(34, 197, 94)',
+                backgroundColor: 'rgba(34, 197, 94, 0.12)',
+              },
+            ]}
+            title=""
+            yAxisLabel="Mixed units — see legend"
+          />
+        </div>
+      </section>
+    )}
 
     <section id="by-period" class="mb-10 scroll-mt-28 md:mb-12" aria-labelledby="by-period-heading">
       <h2
@@ -596,57 +598,51 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
         The archive split into three equal groups by publish order. Bars mix units.
       </p>
 
-      {
-        periodComparisonChart.labels.length > 0 && (
-          <div class="-mx-1 mb-10 md:mx-0">
-            <BarChart
-              id="period-comparison-chart"
-              labels={periodComparisonChart.labels}
-              datasets={periodComparisonChart.datasets}
-              title=""
-              yAxisLabel="Mixed units — see intro"
-            />
-          </div>
-        )
-      }
+      {periodComparisonChart.labels.length > 0 && (
+        <div class="-mx-1 mb-10 md:mx-0">
+          <BarChart
+            id="period-comparison-chart"
+            labels={periodComparisonChart.labels}
+            datasets={periodComparisonChart.datasets}
+            title=""
+            yAxisLabel="Mixed units — see intro"
+          />
+        </div>
+      )}
 
       <details class="mb-10">
-        <summary
-          class="cursor-pointer list-none text-sm font-medium text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/25 underline-offset-4 marker:content-none [&::-webkit-details-marker]:hidden"
-        >
+        <summary class="cursor-pointer list-none text-sm font-medium text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/25 underline-offset-4 marker:content-none [&::-webkit-details-marker]:hidden">
           Notes from the period split
         </summary>
         <p class="text-body-muted mt-3 max-w-3xl text-xs leading-relaxed md:text-sm">
           Impact tags are assigned on this page only.
         </p>
         <div class="mt-4 divide-y divide-[rgb(var(--color-border))]/40">
-          {
-            intellectualInsights.map((insight, index) => (
-              <article class="py-5 first:pt-2">
-                <div class="mb-2 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-                  <span class="text-body-muted font-mono text-xs">{index + 1}.</span>
-                  <span
-                    class={`text-[0.65rem] font-medium tracking-wide uppercase ${
-                      insight.impact === 'High'
-                        ? 'text-[rgb(var(--color-text))]'
-                        : insight.impact === 'Medium'
-                          ? 'text-body-muted'
-                          : 'text-body-muted'
-                    }`}
-                  >
-                    {insight.impact}
-                  </span>
-                </div>
-                <p class="mb-2 text-sm font-medium text-[rgb(var(--color-text))]">
-                  {insight.insight}
-                </p>
-                <p class="text-body-muted mb-0 text-xs leading-relaxed md:text-sm">
-                  {insight.evidence}
-                </p>
-                <p class="text-body-muted mt-2 mb-0 text-xs italic">{insight.reflection}</p>
-              </article>
-            ))
-          }
+          {intellectualInsights.map((insight, index) => (
+            <article class="py-5 first:pt-2">
+              <div class="mb-2 flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                <span class="text-body-muted font-mono text-xs">{index + 1}.</span>
+                <span
+                  class={`text-[0.65rem] font-medium tracking-wide uppercase ${
+                    insight.impact === 'High'
+                      ? 'text-[rgb(var(--color-text))]'
+                      : insight.impact === 'Medium'
+                        ? 'text-body-muted'
+                        : 'text-body-muted'
+                  }`}
+                >
+                  {insight.impact}
+                </span>
+              </div>
+              <p class="mb-2 text-sm font-medium text-[rgb(var(--color-text))]">
+                {insight.insight}
+              </p>
+              <p class="text-body-muted mb-0 text-xs leading-relaxed md:text-sm">
+                {insight.evidence}
+              </p>
+              <p class="text-body-muted mt-2 mb-0 text-xs italic">{insight.reflection}</p>
+            </article>
+          ))}
         </div>
       </details>
 
@@ -660,12 +656,16 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
       <div class="overflow-x-auto">
         <table class="w-full min-w-128 border-collapse text-left text-sm">
           <thead>
-            <tr
-              class="text-body-muted border-b-2 border-[rgb(var(--color-border))] text-[0.65rem] font-semibold tracking-wider uppercase"
-            >
-              <th scope="col" class="py-2 pr-4 font-medium">Period</th>
-              <th scope="col" class="py-2 pr-4 text-right font-medium tabular-nums">Posts</th>
-              <th scope="col" class="py-2 pr-4 text-right font-medium tabular-nums">Avg words</th>
+            <tr class="text-body-muted border-b-2 border-[rgb(var(--color-border))] text-[0.65rem] font-semibold tracking-wider uppercase">
+              <th scope="col" class="py-2 pr-4 font-medium">
+                Period
+              </th>
+              <th scope="col" class="py-2 pr-4 text-right font-medium tabular-nums">
+                Posts
+              </th>
+              <th scope="col" class="py-2 pr-4 text-right font-medium tabular-nums">
+                Avg words
+              </th>
               <th
                 scope="col"
                 class="py-2 pr-4 text-right font-medium tabular-nums"
@@ -673,56 +673,59 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
               >
                 Flesch
               </th>
-              <th scope="col" class="py-2 pr-4 text-right font-medium tabular-nums">W.-pattern Σ</th
-              >
-              <th scope="col" class="py-2 pr-4 text-right font-medium tabular-nums">Curiosity</th>
-              <th scope="col" class="py-2 text-right font-medium tabular-nums">Reflective</th>
+              <th scope="col" class="py-2 pr-4 text-right font-medium tabular-nums">
+                W.-pattern Σ
+              </th>
+              <th scope="col" class="py-2 pr-4 text-right font-medium tabular-nums">
+                Curiosity
+              </th>
+              <th scope="col" class="py-2 text-right font-medium tabular-nums">
+                Reflective
+              </th>
             </tr>
           </thead>
           <tbody>
-            {
-              periodStatsOrdered.map((period) => (
-                <tr class="border-b border-[rgb(var(--color-border))]/35 last:border-0">
-                  <th
-                    scope="row"
-                    class="py-2.5 pr-4 font-medium text-[rgb(var(--color-text))] capitalize"
-                  >
-                    {period.period}
-                  </th>
-                  <td class="py-2.5 pr-4 text-right text-[rgb(var(--color-text))] tabular-nums">
-                    {period.postCount}
-                  </td>
-                  <td class="py-2.5 pr-4 text-right text-[rgb(var(--color-text))] tabular-nums">
-                    {period.avgWordCount}
-                  </td>
-                  <td
-                    class={`py-2.5 pr-4 text-right tabular-nums ${
-                      maxPeriodFlesch > 0 && period.avgComplexity >= maxPeriodFlesch * 0.8
-                        ? 'text-[rgb(var(--color-text))]'
-                        : maxPeriodFlesch > 0 && period.avgComplexity >= maxPeriodFlesch * 0.5
+            {periodStatsOrdered.map((period) => (
+              <tr class="border-b border-[rgb(var(--color-border))]/35 last:border-0">
+                <th
+                  scope="row"
+                  class="py-2.5 pr-4 font-medium text-[rgb(var(--color-text))] capitalize"
+                >
+                  {period.period}
+                </th>
+                <td class="py-2.5 pr-4 text-right text-[rgb(var(--color-text))] tabular-nums">
+                  {period.postCount}
+                </td>
+                <td class="py-2.5 pr-4 text-right text-[rgb(var(--color-text))] tabular-nums">
+                  {period.avgWordCount}
+                </td>
+                <td
+                  class={`py-2.5 pr-4 text-right tabular-nums ${
+                    maxPeriodFlesch > 0 && period.avgComplexity >= maxPeriodFlesch * 0.8
+                      ? 'text-[rgb(var(--color-text))]'
+                      : maxPeriodFlesch > 0 && period.avgComplexity >= maxPeriodFlesch * 0.5
+                        ? 'text-body-muted'
+                        : maxPeriodFlesch > 0 && period.avgComplexity >= maxPeriodFlesch * 0.2
                           ? 'text-body-muted'
-                          : maxPeriodFlesch > 0 && period.avgComplexity >= maxPeriodFlesch * 0.2
+                          : maxPeriodFlesch > 0
                             ? 'text-body-muted'
-                            : maxPeriodFlesch > 0
-                              ? 'text-body-muted'
-                              : 'text-[rgb(var(--color-text))]'
-                    }`}
-                    title="Avg Flesch reading ease — higher tends to mean simpler wording"
-                  >
-                    {period.avgComplexity}
-                  </td>
-                  <td class="py-2.5 pr-4 text-right text-[rgb(var(--color-text))] tabular-nums">
-                    {period.avgIntellectualDepth}
-                  </td>
-                  <td class="py-2.5 pr-4 text-right text-[rgb(var(--color-text))] tabular-nums">
-                    {period.avgCuriosityCount}
-                  </td>
-                  <td class="py-2.5 text-right text-[rgb(var(--color-text))] tabular-nums">
-                    {period.avgWisdomCount}
-                  </td>
-                </tr>
-              ))
-            }
+                            : 'text-[rgb(var(--color-text))]'
+                  }`}
+                  title="Avg Flesch reading ease — higher tends to mean simpler wording"
+                >
+                  {period.avgComplexity}
+                </td>
+                <td class="py-2.5 pr-4 text-right text-[rgb(var(--color-text))] tabular-nums">
+                  {period.avgIntellectualDepth}
+                </td>
+                <td class="py-2.5 pr-4 text-right text-[rgb(var(--color-text))] tabular-nums">
+                  {period.avgCuriosityCount}
+                </td>
+                <td class="py-2.5 text-right text-[rgb(var(--color-text))] tabular-nums">
+                  {period.avgWisdomCount}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -745,25 +748,23 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
           Count in the last third minus count in the first third, as a percent of the first third.
         </p>
         <div class="divide-y divide-[rgb(var(--color-border))]/40">
-          {
-            growingTopics.map((topic, index) => (
-              <div class="flex items-baseline justify-between gap-4 py-2.5 first:pt-0">
-                <div class="min-w-0">
-                  <span class="text-body-muted mr-2 font-mono text-xs">{index + 1}.</span>
-                  <span class="text-sm font-medium text-[rgb(var(--color-text))]">{topic.tag}</span>
-                  <span class="text-body-muted mt-0.5 block text-xs sm:mt-0 sm:inline sm:before:content-['_·_']">
-                    {topic.earlyCount} → {topic.recentCount}
-                  </span>
-                </div>
-                <div
-                  class="shrink-0 text-sm font-medium text-[rgb(var(--color-text))] tabular-nums"
-                  title={`Growth rate: ${Math.round(topic.growthRate)}% increase from early to recent`}
-                >
-                  +{Math.round(topic.growthRate)}%
-                </div>
+          {growingTopics.map((topic, index) => (
+            <div class="flex items-baseline justify-between gap-4 py-2.5 first:pt-0">
+              <div class="min-w-0">
+                <span class="text-body-muted mr-2 font-mono text-xs">{index + 1}.</span>
+                <span class="text-sm font-medium text-[rgb(var(--color-text))]">{topic.tag}</span>
+                <span class="text-body-muted mt-0.5 block text-xs sm:mt-0 sm:inline sm:before:content-['_·_']">
+                  {topic.earlyCount} → {topic.recentCount}
+                </span>
               </div>
-            ))
-          }
+              <div
+                class="shrink-0 text-sm font-medium text-[rgb(var(--color-text))] tabular-nums"
+                title={`Growth rate: ${Math.round(topic.growthRate)}% increase from early to recent`}
+              >
+                +{Math.round(topic.growthRate)}%
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -776,25 +777,23 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
         </h3>
         <p class="text-body-muted mb-4 text-xs">Same formula, negative values.</p>
         <div class="divide-y divide-[rgb(var(--color-border))]/40">
-          {
-            decliningTopics.map((topic, index) => (
-              <div class="flex items-baseline justify-between gap-4 py-2.5 first:pt-0">
-                <div class="min-w-0">
-                  <span class="text-body-muted mr-2 font-mono text-xs">{index + 1}.</span>
-                  <span class="text-sm font-medium text-[rgb(var(--color-text))]">{topic.tag}</span>
-                  <span class="text-body-muted mt-0.5 block text-xs sm:mt-0 sm:inline sm:before:content-['_·_']">
-                    {topic.earlyCount} → {topic.recentCount}
-                  </span>
-                </div>
-                <div
-                  class="shrink-0 text-sm font-medium text-[rgb(var(--color-text))] tabular-nums"
-                  title={`Decline rate: ${Math.round(topic.growthRate)}%`}
-                >
-                  {Math.round(topic.growthRate)}%
-                </div>
+          {decliningTopics.map((topic, index) => (
+            <div class="flex items-baseline justify-between gap-4 py-2.5 first:pt-0">
+              <div class="min-w-0">
+                <span class="text-body-muted mr-2 font-mono text-xs">{index + 1}.</span>
+                <span class="text-sm font-medium text-[rgb(var(--color-text))]">{topic.tag}</span>
+                <span class="text-body-muted mt-0.5 block text-xs sm:mt-0 sm:inline sm:before:content-['_·_']">
+                  {topic.earlyCount} → {topic.recentCount}
+                </span>
               </div>
-            ))
-          }
+              <div
+                class="shrink-0 text-sm font-medium text-[rgb(var(--color-text))] tabular-nums"
+                title={`Decline rate: ${Math.round(topic.growthRate)}%`}
+              >
+                {Math.round(topic.growthRate)}%
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -811,61 +810,67 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
         Last eight calendar quarters, newest first. Flesch is computed from the body.
       </p>
       <div class="overflow-x-auto">
-        <table
-          class="w-full min-w-144 border-collapse border-t border-b border-[rgb(var(--color-border))] text-left text-sm"
-        >
+        <table class="w-full min-w-144 border-collapse border-t border-b border-[rgb(var(--color-border))] text-left text-sm">
           <thead>
-            <tr
-              class="text-body-muted border-b border-[rgb(var(--color-border))] text-[0.65rem] font-semibold tracking-wider uppercase"
-            >
-              <th scope="col" class="px-3 py-2.5 whitespace-nowrap">Quarter</th>
-              <th scope="col" class="px-3 py-2.5 text-right tabular-nums">Posts</th>
-              <th scope="col" class="px-3 py-2.5 text-right tabular-nums">Avg words</th>
-              <th scope="col" class="px-3 py-2.5 text-right tabular-nums">Flesch ~</th>
-              <th scope="col" class="min-w-40 px-3 py-2.5">Top tags</th>
-              <th scope="col" class="min-w-32 px-3 py-2.5">Categories</th>
+            <tr class="text-body-muted border-b border-[rgb(var(--color-border))] text-[0.65rem] font-semibold tracking-wider uppercase">
+              <th scope="col" class="px-3 py-2.5 whitespace-nowrap">
+                Quarter
+              </th>
+              <th scope="col" class="px-3 py-2.5 text-right tabular-nums">
+                Posts
+              </th>
+              <th scope="col" class="px-3 py-2.5 text-right tabular-nums">
+                Avg words
+              </th>
+              <th scope="col" class="px-3 py-2.5 text-right tabular-nums">
+                Flesch ~
+              </th>
+              <th scope="col" class="min-w-40 px-3 py-2.5">
+                Top tags
+              </th>
+              <th scope="col" class="min-w-32 px-3 py-2.5">
+                Categories
+              </th>
             </tr>
           </thead>
           <tbody>
-            {
-              quarters
-                .slice(-8)
-                .reverse()
-                .map((quarter) => (
-                  <tr class="border-b border-[rgb(var(--color-border))]/50 last:border-0">
-                    <th
-                      scope="row"
-                      class="px-3 py-2.5 font-medium whitespace-nowrap text-[rgb(var(--color-text))]"
-                    >
-                      {quarter.label}
-                    </th>
-                    <td class="px-3 py-2.5 text-right text-[rgb(var(--color-text))] tabular-nums">
-                      {quarter.posts}
-                    </td>
-                    <td class="px-3 py-2.5 text-right text-[rgb(var(--color-text))] tabular-nums">
-                      {quarter.avgWordCount}
-                    </td>
-                    <td
-                      class="px-3 py-2.5 text-right text-[rgb(var(--color-text))] tabular-nums"
-                      title="Average Flesch reading ease — higher tends to mean simpler wording (approximate syllables)."
-                    >
-                      {quarter.avgComplexity}
-                    </td>
-                    <td class="text-body-muted px-3 py-2.5 align-top text-xs leading-snug">
-                      {quarter.topTags
-                        .slice(0, 4)
-                        .map((t) => `${t.tag} (${t.count})`)
-                        .join(' · ')}
-                    </td>
-                    <td class="text-body-muted px-3 py-2.5 align-top text-xs leading-snug">
-                      {quarter.topCategories
-                        .slice(0, 3)
-                        .map((c) => `${c.cat} (${c.count})`)
-                        .join(' · ')}
-                    </td>
-                  </tr>
-                ))
-            }
+            {quarters
+              .slice(-8)
+              .reverse()
+              .map((quarter) => (
+                <tr class="border-b border-[rgb(var(--color-border))]/50 last:border-0">
+                  <th
+                    scope="row"
+                    class="px-3 py-2.5 font-medium whitespace-nowrap text-[rgb(var(--color-text))]"
+                  >
+                    {quarter.label}
+                  </th>
+                  <td class="px-3 py-2.5 text-right text-[rgb(var(--color-text))] tabular-nums">
+                    {quarter.posts}
+                  </td>
+                  <td class="px-3 py-2.5 text-right text-[rgb(var(--color-text))] tabular-nums">
+                    {quarter.avgWordCount}
+                  </td>
+                  <td
+                    class="px-3 py-2.5 text-right text-[rgb(var(--color-text))] tabular-nums"
+                    title="Average Flesch reading ease — higher tends to mean simpler wording (approximate syllables)."
+                  >
+                    {quarter.avgComplexity}
+                  </td>
+                  <td class="text-body-muted px-3 py-2.5 align-top text-xs leading-snug">
+                    {quarter.topTags
+                      .slice(0, 4)
+                      .map((t) => `${t.tag} (${t.count})`)
+                      .join(' · ')}
+                  </td>
+                  <td class="text-body-muted px-3 py-2.5 align-top text-xs leading-snug">
+                    {quarter.topCategories
+                      .slice(0, 3)
+                      .map((c) => `${c.cat} (${c.count})`)
+                      .join(' · ')}
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>
@@ -886,8 +891,7 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
       <p class="text-body-muted mb-4 max-w-3xl text-xs leading-relaxed md:text-sm">
         Points for code, links, images, quotes, questions, examples, and posts over 1,000 words.
       </p>
-      <pre
-        class="text-body-muted mb-5 max-w-3xl overflow-x-auto border-l-2 border-[rgb(var(--color-border))]/70 pl-3 font-mono text-[0.7rem] leading-relaxed">(code fences / inline code ? 2 : 0) + (URLs ? 1 : 0) + (images ? 1 : 0) + (blockquotes ? 1 : 0)
+      <pre class="text-body-muted mb-5 max-w-3xl overflow-x-auto border-l-2 border-[rgb(var(--color-border))]/70 pl-3 font-mono text-[0.7rem] leading-relaxed">(code fences / inline code ? 2 : 0) + (URLs ? 1 : 0) + (images ? 1 : 0) + (blockquotes ? 1 : 0)
 + (? in body ? 1 : 0) + (e.g./such as cues ? 1 : 0) + (words &gt; 1000 ? 2 : 0)
 + (word-pattern composite &gt; 10 ? 2 : 0)</pre>
       <table class="w-full max-w-md border-collapse text-sm tabular-nums">
@@ -901,7 +905,9 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
             </td>
           </tr>
           <tr class="border-b border-[rgb(var(--color-border))]/35">
-            <td class="text-body-muted py-2 pr-4" title="External URLs"> Posts with links </td>
+            <td class="text-body-muted py-2 pr-4" title="External URLs">
+              Posts with links
+            </td>
             <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]">
               {maturityIndicators.filter((post) => post.hasLinks).length}
             </td>
@@ -930,18 +936,15 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'evolution');
       id="definitions"
       class="mb-10 scroll-mt-28 border-t border-[rgb(var(--color-border))] pt-8 md:mb-12"
     >
-      <summary
-        class="cursor-pointer list-none text-lg font-semibold text-[rgb(var(--color-text))] marker:content-none md:text-xl [&::-webkit-details-marker]:hidden"
-      >
+      <summary class="cursor-pointer list-none text-lg font-semibold text-[rgb(var(--color-text))] marker:content-none md:text-xl [&::-webkit-details-marker]:hidden">
         The Flesch formula
       </summary>
       <p class="text-body-muted mt-4 max-w-3xl text-sm leading-relaxed">
         English formula. Syllables are counted by vowel groups, which under-counts Spanish.
       </p>
-      <code
-        class="text-body-muted mt-3 block max-w-3xl rounded-sm bg-[rgb(var(--color-bg-alt))] px-2 py-1 font-mono text-xs"
-        >206.835 − 1.015×(words÷sentences) − 84.6×(syllables÷words)</code
-      >
+      <code class="text-body-muted mt-3 block max-w-3xl rounded-sm bg-[rgb(var(--color-bg-alt))] px-2 py-1 font-mono text-xs">
+        206.835 − 1.015×(words÷sentences) − 84.6×(syllables÷words)
+      </code>
     </details>
 
     <BrainScienceNarrativeSummary insights={insights} summary={summary} />

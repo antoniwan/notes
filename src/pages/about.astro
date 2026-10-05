@@ -109,8 +109,8 @@ const topics: AboutTopic[] = [
             pressure, temperance when I am tired, and choosing presence over ego.
           </p>
           <p>
-            I also keep a <a href="/recipes">Cookbook</a> with recipes we actually cook at home, from
-            arroz and sofrito to pancakes for Mia.
+            I also keep a <a href="/recipes">Cookbook</a> with recipes we actually cook at home,
+            from arroz and sofrito to pancakes for Mia.
           </p>
           <p>
             I still build systems: digital, emotional, and relational. I care deeply about code,
@@ -147,9 +147,9 @@ const topics: AboutTopic[] = [
             </div>
             <span class="about-cookbook__caption">
               <span class="about-cookbook__title">Cookbook</span>
-              <span class="about-cookbook__destination"
-                >Recipes <span aria-hidden="true">↗</span></span
-              >
+              <span class="about-cookbook__destination">
+                Recipes <span aria-hidden="true">↗</span>
+              </span>
             </span>
           </a>
         </div>
@@ -157,42 +157,42 @@ const topics: AboutTopic[] = [
 
       <section class="about-topics" aria-labelledby="about-topics-heading">
         <div class="about-section-heading">
-          <h2 id="about-topics-heading" class="about-section-title">What these notes cover</h2>
+          <h2 id="about-topics-heading" class="about-section-title">
+            What these notes cover
+          </h2>
           <p class="about-topics__intro">
             Working notes from real life, organized as a map rather than a finished system.
           </p>
         </div>
         <ul class="about-topics__list">
-          {
-            topics.map((topic) => (
-              <li class="about-topics__item">
-                {topic.categoryId ? (
-                  <a href={`/category/${topic.categoryId}`} class="about-topic about-topic--link">
-                    <span class="about-topic__emoji" aria-hidden="true">
-                      {topic.emoji}
-                    </span>
-                    <span class="about-topic__copy">
-                      <span class="about-topic__label">{topic.label}</span>
-                      <span class="about-topic__hint">{topic.hint}</span>
-                    </span>
-                    <span class="about-topic__arrow" aria-hidden="true">
-                      ↗
-                    </span>
-                  </a>
-                ) : (
-                  <div class="about-topic">
-                    <span class="about-topic__emoji" aria-hidden="true">
-                      {topic.emoji}
-                    </span>
-                    <span class="about-topic__copy">
-                      <span class="about-topic__label">{topic.label}</span>
-                      <span class="about-topic__hint">{topic.hint}</span>
-                    </span>
-                  </div>
-                )}
-              </li>
-            ))
-          }
+          {topics.map((topic) => (
+            <li class="about-topics__item">
+              {topic.categoryId ? (
+                <a href={`/category/${topic.categoryId}`} class="about-topic about-topic--link">
+                  <span class="about-topic__emoji" aria-hidden="true">
+                    {topic.emoji}
+                  </span>
+                  <span class="about-topic__copy">
+                    <span class="about-topic__label">{topic.label}</span>
+                    <span class="about-topic__hint">{topic.hint}</span>
+                  </span>
+                  <span class="about-topic__arrow" aria-hidden="true">
+                    ↗
+                  </span>
+                </a>
+              ) : (
+                <div class="about-topic">
+                  <span class="about-topic__emoji" aria-hidden="true">
+                    {topic.emoji}
+                  </span>
+                  <span class="about-topic__copy">
+                    <span class="about-topic__label">{topic.label}</span>
+                    <span class="about-topic__hint">{topic.hint}</span>
+                  </span>
+                </div>
+              )}
+            </li>
+          ))}
         </ul>
       </section>
 
@@ -202,11 +202,12 @@ const topics: AboutTopic[] = [
 
       <div class="about-closing">
         <section class="about-contact" aria-labelledby="about-contact-heading">
-          <h2 id="about-contact-heading" class="about-closing__heading">Write to me</h2>
+          <h2 id="about-contact-heading" class="about-closing__heading">
+            Write to me
+          </h2>
           <p>
             I’m mostly inactive on social media. If you want to respond to an essay, ask about a
-            book, or talk about the writing,{' '}
-            <a href={'mailto:' + AUTHOR.email}>email me</a>.
+            book, or talk about the writing, <a href={'mailto:' + AUTHOR.email}>email me</a>.
           </p>
         </section>
         <footer class="about-disclaimer">

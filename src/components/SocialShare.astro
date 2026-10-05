@@ -21,145 +21,139 @@ const platforms = generateShareUrls(title, currentUrl, description);
 ---
 
 {/* Floating Action Button (Mobile) */}
-{
-  variant === 'floating' && (
-    <div class="fixed right-6 bottom-6 z-40 md:hidden" data-share-url={currentUrl}>
-      <button
-        id="share-fab"
-        class="theme-transition flex h-14 w-14 items-center justify-center rounded-full bg-[rgb(var(--color-accent))] text-[rgb(var(--color-on-accent))] shadow-lg hover:bg-[rgb(var(--color-accent-hover))] focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:ring-offset-2 focus:outline-hidden"
-        aria-label="Share this writing"
-      >
-        <span class="text-xl">📤</span>
-      </button>
-
-      {/* Share Menu */}
-      <div
-        id="share-menu"
-        class="absolute right-0 bottom-16 hidden min-w-[200px] rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg))] p-2 shadow-lg"
-      >
-        <div class="space-y-1">
-          {platforms.map((platform) => (
-            <button
-              class={`theme-transition flex w-full items-center gap-3 rounded-md px-3 py-2 text-left text-sm hover:bg-[rgb(var(--color-bg-alt))] ${platform.color}`}
-              data-platform={platform.name.toLowerCase()}
-              data-url={platform.url}
-              data-action={platform.action}
-            >
-              <span class="text-base">{platform.icon}</span>
-              <span>{platform.name}</span>
-            </button>
-          ))}
-        </div>
-      </div>
-    </div>
-  )
-}
-
-{
-  isArticleShare && (
-    <div class:list={['article-share', className]} data-article-share data-share-url={currentUrl}>
-      <div class="article-share__actions">
-        <button
-          type="button"
-          class="article-share__copy"
-          data-platform="copy link"
-          data-action="copy"
-          data-url={currentUrl}
-          aria-label="Copy link to this writing"
-        >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.6"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <path d="M10 13a5 5 0 0 0 7 .2l3-3a5 5 0 0 0-7-7l-1.7 1.7" />
-            <path d="M14 11a5 5 0 0 0-7-.2l-3 3a5 5 0 0 0 7 7l1.7-1.7" />
-          </svg>
-          <span>Copy link</span>
-        </button>
-        <button
-          type="button"
-          id={`${variant}-share-toggle`}
-          class="article-share__toggle"
-          aria-label="More ways to share this writing"
-          aria-expanded="false"
-          aria-controls={`${variant}-share-menu`}
-        >
-          <span>Share</span>
-          <svg
-            class="article-share__chevron"
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.6"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <path d="m6 9 6 6 6-6" />
-          </svg>
-        </button>
-      </div>
-      <div id={`${variant}-share-menu`} class="article-share__choices hidden">
-        {platforms
-          .filter((platform) => platform.action !== 'copy')
-          .map((platform) => (
-            <button
-              type="button"
-              class="article-share__platform"
-              data-platform={platform.name.toLowerCase()}
-              data-url={platform.url}
-              aria-label={`Share on ${platform.name === 'Twitter' ? 'X / Twitter' : platform.name}`}
-            >
-              <span>
-                {platform.name === 'Twitter'
-                  ? 'X / Twitter'
-                  : platform.name === 'BlueSky'
-                    ? 'Bluesky'
-                    : platform.name}
-              </span>
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.6"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M7 17 17 7M7 7h10v10" />
-              </svg>
-            </button>
-          ))}
-      </div>
-      <p class="article-share__status" role="status" aria-live="polite" aria-atomic="true" />
-    </div>
-  )
-}
-{/* Simple Share Button */}
-{
-  variant === 'button' && (
+{variant === 'floating' && (
+  <div class="fixed right-6 bottom-6 z-40 md:hidden" data-share-url={currentUrl}>
     <button
-      id="share-button"
-      data-share-url={currentUrl}
-      class={`theme-transition inline-flex items-center gap-2 rounded-lg bg-[rgb(var(--color-bg-alt))] px-4 py-2 text-[rgb(var(--color-text))] hover:bg-[rgb(var(--color-bg-alt))]/80 focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:outline-hidden ${className}`}
+      id="share-fab"
+      class="theme-transition flex h-14 w-14 items-center justify-center rounded-full bg-[rgb(var(--color-accent))] text-[rgb(var(--color-on-accent))] shadow-lg hover:bg-[rgb(var(--color-accent-hover))] focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:ring-offset-2 focus:outline-hidden"
       aria-label="Share this writing"
     >
-      <span class="text-base">📤</span>
-      <span class="text-sm font-medium">Share</span>
+      <span class="text-xl">📤</span>
     </button>
-  )
-}
+
+    {/* Share Menu */}
+    <div
+      id="share-menu"
+      class="absolute right-0 bottom-16 hidden min-w-[200px] rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg))] p-2 shadow-lg"
+    >
+      <div class="space-y-1">
+        {platforms.map((platform) => (
+          <button
+            class={`theme-transition flex w-full items-center gap-3 rounded-md px-3 py-2 text-left text-sm hover:bg-[rgb(var(--color-bg-alt))] ${platform.color}`}
+            data-platform={platform.name.toLowerCase()}
+            data-url={platform.url}
+            data-action={platform.action}
+          >
+            <span class="text-base">{platform.icon}</span>
+            <span>{platform.name}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+  </div>
+)}
+
+{isArticleShare && (
+  <div class:list={['article-share', className]} data-article-share data-share-url={currentUrl}>
+    <div class="article-share__actions">
+      <button
+        type="button"
+        class="article-share__copy"
+        data-platform="copy link"
+        data-action="copy"
+        data-url={currentUrl}
+        aria-label="Copy link to this writing"
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M10 13a5 5 0 0 0 7 .2l3-3a5 5 0 0 0-7-7l-1.7 1.7" />
+          <path d="M14 11a5 5 0 0 0-7-.2l-3 3a5 5 0 0 0 7 7l1.7-1.7" />
+        </svg>
+        <span>Copy link</span>
+      </button>
+      <button
+        type="button"
+        id={`${variant}-share-toggle`}
+        class="article-share__toggle"
+        aria-label="More ways to share this writing"
+        aria-expanded="false"
+        aria-controls={`${variant}-share-menu`}
+      >
+        <span>Share</span>
+        <svg
+          class="article-share__chevron"
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </button>
+    </div>
+    <div id={`${variant}-share-menu`} class="article-share__choices hidden">
+      {platforms
+        .filter((platform) => platform.action !== 'copy')
+        .map((platform) => (
+          <button
+            type="button"
+            class="article-share__platform"
+            data-platform={platform.name.toLowerCase()}
+            data-url={platform.url}
+            aria-label={`Share on ${platform.name === 'Twitter' ? 'X / Twitter' : platform.name}`}
+          >
+            <span>
+              {platform.name === 'Twitter'
+                ? 'X / Twitter'
+                : platform.name === 'BlueSky'
+                  ? 'Bluesky'
+                  : platform.name}
+            </span>
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M7 17 17 7M7 7h10v10" />
+            </svg>
+          </button>
+        ))}
+    </div>
+    <p class="article-share__status" role="status" aria-live="polite" aria-atomic="true" />
+  </div>
+)}
+{/* Simple Share Button */}
+{variant === 'button' && (
+  <button
+    id="share-button"
+    data-share-url={currentUrl}
+    class={`theme-transition inline-flex items-center gap-2 rounded-lg bg-[rgb(var(--color-bg-alt))] px-4 py-2 text-[rgb(var(--color-text))] hover:bg-[rgb(var(--color-bg-alt))]/80 focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:outline-hidden ${className}`}
+    aria-label="Share this writing"
+  >
+    <span class="text-base">📤</span>
+    <span class="text-sm font-medium">Share</span>
+  </button>
+)}
 
 <script>
   interface ShareControl {

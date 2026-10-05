@@ -120,21 +120,16 @@ const headingId = `review-verdict-${String(snapped).replace('.', '-')}`;
       {scoreLine(snapped)}
     </span>
     <span class="text-body-muted pb-1 text-[1.35rem] leading-none font-light">/</span>
-    <span
-      class="text-[1.875rem] leading-none font-semibold text-[rgb(var(--color-accent))] tabular-nums"
-      >{SCALE}</span
-    >
+    <span class="text-[1.875rem] leading-none font-semibold text-[rgb(var(--color-accent))] tabular-nums">
+      {SCALE}
+    </span>
   </div>
-  {
-    showOutOfFive && alternateFive !== null ? (
-      <p class="text-body-muted mt-1 text-xs tabular-nums">{alternateFive}</p>
-    ) : (
-      ''
-    )
-  }
-  <p
-    class="mt-3 border-t border-[rgb(var(--color-border))] pt-2.5 font-serif text-lg leading-snug font-semibold tracking-tight text-[rgb(var(--color-text))]"
-  >
+  {showOutOfFive && alternateFive !== null ? (
+    <p class="text-body-muted mt-1 text-xs tabular-nums">{alternateFive}</p>
+  ) : (
+    ''
+  )}
+  <p class="mt-3 border-t border-[rgb(var(--color-border))] pt-2.5 font-serif text-lg leading-snug font-semibold tracking-tight text-[rgb(var(--color-text))]">
     {label}
   </p>
 </aside>

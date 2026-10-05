@@ -15,43 +15,41 @@ const { items, class: className = '' } = Astro.props;
   aria-label="Breadcrumb"
 >
   <ol class="m-0 flex list-none items-center space-x-2 p-0">
-    {
-      items.map((item, index) => (
-        <li class="m-0 flex items-center p-0">
-          {index > 0 && (
-            <svg
-              class="text-body-muted mx-2 h-4 w-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          )}
+    {items.map((item, index) => (
+      <li class="m-0 flex items-center p-0">
+        {index > 0 && (
+          <svg
+            class="text-body-muted mx-2 h-4 w-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        )}
 
-          {item.href ? (
-            <a
-              href={item.href}
-              class="link-muted leading-relaxed"
-              aria-current={index === items.length - 1 ? 'page' : undefined}
-            >
-              {item.label}
-            </a>
-          ) : (
-            <span
-              class="leading-relaxed font-medium text-[rgb(var(--color-text))]"
-              aria-current="page"
-            >
-              {item.label}
-            </span>
-          )}
-        </li>
-      ))
-    }
+        {item.href ? (
+          <a
+            href={item.href}
+            class="link-muted leading-relaxed"
+            aria-current={index === items.length - 1 ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        ) : (
+          <span
+            class="leading-relaxed font-medium text-[rgb(var(--color-text))]"
+            aria-current="page"
+          >
+            {item.label}
+          </span>
+        )}
+      </li>
+    ))}
   </ol>
 </nav>

@@ -17,31 +17,27 @@ const isSpanish = currentPost ? isSpanishPrimary(currentPost.data) : false;
 <section class="related-posts" aria-labelledby="related-posts-heading">
   <header class="related-heading">
     <h2 id="related-posts-heading">{isSpanish ? 'Seguir leyendo' : 'Continue reading'}</h2>
-    {
-      relatedPosts.length > 0 && (
-        <p>
-          {isSpanish
-            ? 'Más escritos sobre estos temas, en inglés.'
-            : 'More writings on these themes.'}
-        </p>
-      )
-    }
+    {relatedPosts.length > 0 && (
+      <p>
+        {isSpanish
+          ? 'Más escritos sobre estos temas, en inglés.'
+          : 'More writings on these themes.'}
+      </p>
+    )}
   </header>
-  {
-    relatedPosts.length > 0 && (
-      <div class="postcards-grid related-grid" lang="en">
-        {relatedPosts.map((post) => (
-          <PostCard
-            post={post}
-            compact
-            headingAs="h3"
-            idPrefix="related"
-            showFeaturedIndicator={false}
-          />
-        ))}
-      </div>
-    )
-  }
+  {relatedPosts.length > 0 && (
+    <div class="postcards-grid related-grid" lang="en">
+      {relatedPosts.map((post) => (
+        <PostCard
+          post={post}
+          compact
+          headingAs="h3"
+          idPrefix="related"
+          showFeaturedIndicator={false}
+        />
+      ))}
+    </div>
+  )}
   <a href="/everything" class="related-browse">
     {isSpanish ? 'Explorar todos los escritos (en inglés)' : 'Browse all writings'}
   </a>

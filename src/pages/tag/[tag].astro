@@ -67,91 +67,81 @@ const seoDescription = tagMetaDescription(canonicalTag, totalPosts);
           </a>
         </div>
 
-        {
-          showCookbookNotice && (
-            <div class="mt-6">
-              <CookbookNotice recipeCount={cookbookCount} />
-            </div>
-          )
-        }
+        {showCookbookNotice && (
+          <div class="mt-6">
+            <CookbookNotice recipeCount={cookbookCount} />
+          </div>
+        )}
 
-        {
-          (totalPosts > 0 || relatedTags.length > 0) && (
-            <div class="mt-6 flex flex-wrap items-center gap-4">
-              {totalPosts > 0 && (
-                <div
-                  class="tag-chip flex items-center gap-2 rounded-lg border px-4 py-2"
-                  data-tag-family={tagFamily}
-                >
-                  <span class="text-base leading-relaxed font-medium">
-                    {totalPosts === 1 ? `${totalPosts} writing` : `${totalPosts} writings`}
-                  </span>
-                </div>
-              )}
+        {(totalPosts > 0 || relatedTags.length > 0) && (
+          <div class="mt-6 flex flex-wrap items-center gap-4">
+            {totalPosts > 0 && (
+              <div
+                class="tag-chip flex items-center gap-2 rounded-lg border px-4 py-2"
+                data-tag-family={tagFamily}
+              >
+                <span class="text-base leading-relaxed font-medium">
+                  {totalPosts === 1 ? `${totalPosts} writing` : `${totalPosts} writings`}
+                </span>
+              </div>
+            )}
 
-              {relatedTags.length > 0 && (
-                <div class="flex items-center gap-2 rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] px-4 py-2">
-                  <span class="text-base leading-relaxed font-medium text-[rgb(var(--color-text))]">
-                    {relatedTags.length} related topics
-                  </span>
-                </div>
-              )}
-            </div>
-          )
-        }
+            {relatedTags.length > 0 && (
+              <div class="flex items-center gap-2 rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-alt))] px-4 py-2">
+                <span class="text-base leading-relaxed font-medium text-[rgb(var(--color-text))]">
+                  {relatedTags.length} related topics
+                </span>
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Tag Posts */}
-      {
-        tagPosts.length > 0 && (
-          <div class="space-y-6">
-            <div class="mb-6 flex items-center justify-end">
-              <div class="text-body-muted text-base leading-relaxed">Newest first</div>
-            </div>
-
-            <div class="postcards-grid grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
-              {tagPosts.map((post) => (
-                <PostCard post={post} featured={post.data.featured} />
-              ))}
-            </div>
+      {tagPosts.length > 0 && (
+        <div class="space-y-6">
+          <div class="mb-6 flex items-center justify-end">
+            <div class="text-body-muted text-base leading-relaxed">Newest first</div>
           </div>
-        )
-      }
+
+          <div class="postcards-grid grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+            {tagPosts.map((post) => (
+              <PostCard post={post} featured={post.data.featured} />
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Related Tags */}
-      {
-        relatedTags.length > 0 && (
-          <div class="mt-8">
-            <h2 class="text-subheading mb-4 text-[rgb(var(--color-text))]">Related topics</h2>
-            <div class="flex flex-wrap gap-1.5">
-              {relatedTags.map(({ tag: relatedTag, count }: { tag: string; count: number }) => (
-                <TagCard tag={relatedTag} count={count} size="sm" showCount={true} />
-              ))}
-            </div>
+      {relatedTags.length > 0 && (
+        <div class="mt-8">
+          <h2 class="text-subheading mb-4 text-[rgb(var(--color-text))]">Related topics</h2>
+          <div class="flex flex-wrap gap-1.5">
+            {relatedTags.map(({ tag: relatedTag, count }: { tag: string; count: number }) => (
+              <TagCard tag={relatedTag} count={count} size="sm" showCount={true} />
+            ))}
           </div>
-        )
-      }
+        </div>
+      )}
 
       {/* Empty State */}
-      {
-        tagPosts.length === 0 && !showCookbookNotice && (
-          <div class="py-12 text-center">
-            <div class="mx-auto max-w-md">
-              <h3 class="text-subheading mb-2 text-[rgb(var(--color-text))]">No writings found</h3>
-              <p class="text-body-large text-body-muted mb-6 leading-relaxed">
-                No writings live in {tagLabel} yet.
-              </p>
-              <a
-                href="/tag"
-                class="theme-transition inline-flex items-center gap-2 rounded-lg bg-[rgb(var(--color-accent))] px-4 py-2 text-base leading-relaxed text-[rgb(var(--color-on-accent))] hover:bg-[rgb(var(--color-accent-hover))]"
-              >
-                <span>←</span>
-                <span>Every idea</span>
-              </a>
-            </div>
+      {tagPosts.length === 0 && !showCookbookNotice && (
+        <div class="py-12 text-center">
+          <div class="mx-auto max-w-md">
+            <h3 class="text-subheading mb-2 text-[rgb(var(--color-text))]">No writings found</h3>
+            <p class="text-body-large text-body-muted mb-6 leading-relaxed">
+              No writings live in {tagLabel} yet.
+            </p>
+            <a
+              href="/tag"
+              class="theme-transition inline-flex items-center gap-2 rounded-lg bg-[rgb(var(--color-accent))] px-4 py-2 text-base leading-relaxed text-[rgb(var(--color-on-accent))] hover:bg-[rgb(var(--color-accent-hover))]"
+            >
+              <span>←</span>
+              <span>Every idea</span>
+            </a>
           </div>
-        )
-      }
+        </div>
+      )}
     </Container>
   </Container>
 </BaseLayout>

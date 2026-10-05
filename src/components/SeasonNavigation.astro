@@ -26,9 +26,12 @@ const years = [...new Set(chapters.map((chapter) => chapter.year))];
         href={`/p/${firstPost.id}`}
         data-next-unread
       >
-        <span data-next-label>Start reading</span><span aria-hidden="true">↗</span>
+        <span data-next-label>Start reading</span>
+        <span aria-hidden="true">↗</span>
       </a>
-      <p class="next-title" id="next-reading-title" data-next-title>{firstPost.data.title}</p>
+      <p class="next-title" id="next-reading-title" data-next-title>
+        {firstPost.data.title}
+      </p>
       <p class="path-complete" data-path-complete hidden>
         You're caught up. Every writing in this path is marked read.
       </p>
@@ -38,73 +41,70 @@ const years = [...new Set(chapters.map((chapter) => chapter.year))];
   <details class="mobile-seasons" data-season-picker>
     <summary>
       <span>Choose a season</span>
-      <span class="mobile-seasons__current"
-        ><span data-current-season>{chapters[0].title}</span>
-        <span aria-hidden="true">⌄</span></span
-      >
+      <span class="mobile-seasons__current">
+        <span data-current-season>{chapters[0].title}</span>
+        <span aria-hidden="true">⌄</span>
+      </span>
     </summary>
     <nav aria-label="Seasons" class="season-groups">
-      {
-        years.map((year) => (
-          <div class="season-year">
-            <h3>{year}</h3>
-            <ul role="list">
-              {chapters
-                .filter((chapter) => chapter.year === year)
-                .map((chapter) => (
-                  <li>
-                    <a href={`#${chapter.id}`} data-season-link={chapter.id}>
-                      <span>{chapter.season}</span>
-                      <span
-                        class="season-count"
-                        aria-label={`${chapter.posts.length} ${chapter.posts.length === 1 ? 'writing' : 'writings'}`}
-                      >
-                        {chapter.posts.length}
-                      </span>
-                    </a>
-                  </li>
-                ))}
-            </ul>
-          </div>
-        ))
-      }
+      {years.map((year) => (
+        <div class="season-year">
+          <h3>{year}</h3>
+          <ul role="list">
+            {chapters
+              .filter((chapter) => chapter.year === year)
+              .map((chapter) => (
+                <li>
+                  <a href={`#${chapter.id}`} data-season-link={chapter.id}>
+                    <span>{chapter.season}</span>
+                    <span
+                      class="season-count"
+                      aria-label={`${chapter.posts.length} ${chapter.posts.length === 1 ? 'writing' : 'writings'}`}
+                    >
+                      {chapter.posts.length}
+                    </span>
+                  </a>
+                </li>
+              ))}
+          </ul>
+        </div>
+      ))}
     </nav>
   </details>
 
   <nav class="desktop-seasons" aria-label="Seasons">
     <h2 class="season-nav-label">Seasons</h2>
     <div class="season-groups">
-      {
-        years.map((year) => (
-          <div class="season-year">
-            <h3>{year}</h3>
-            <ul role="list">
-              {chapters
-                .filter((chapter) => chapter.year === year)
-                .map((chapter) => (
-                  <li>
-                    <a href={`#${chapter.id}`} data-season-link={chapter.id}>
-                      <span>{chapter.season}</span>
-                      <span
-                        class="season-count"
-                        aria-label={`${chapter.posts.length} ${chapter.posts.length === 1 ? 'writing' : 'writings'}`}
-                      >
-                        {chapter.posts.length}
-                      </span>
-                    </a>
-                  </li>
-                ))}
-            </ul>
-          </div>
-        ))
-      }
+      {years.map((year) => (
+        <div class="season-year">
+          <h3>{year}</h3>
+          <ul role="list">
+            {chapters
+              .filter((chapter) => chapter.year === year)
+              .map((chapter) => (
+                <li>
+                  <a href={`#${chapter.id}`} data-season-link={chapter.id}>
+                    <span>{chapter.season}</span>
+                    <span
+                      class="season-count"
+                      aria-label={`${chapter.posts.length} ${chapter.posts.length === 1 ? 'writing' : 'writings'}`}
+                    >
+                      {chapter.posts.length}
+                    </span>
+                  </a>
+                </li>
+              ))}
+          </ul>
+        </div>
+      ))}
     </div>
   </nav>
-  <noscript
-    ><p class="reading-place__privacy">
-      Enable JavaScript to show your reading progress. All {totalPosts} writings are available below.
-    </p></noscript
-  >
+  <noscript>
+    <p class="reading-place__privacy">
+      Enable JavaScript to show your reading progress. All {totalPosts} writings are available
+      below.
+    </p>
+  </noscript>
 </aside>
 
 <script>
