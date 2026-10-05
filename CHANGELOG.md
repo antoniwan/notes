@@ -9,6 +9,17 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.28.0] — 2026-10-05
+
+### Added
+
+- Inline Mermaid flowcharts and state diagrams rendered as SVG during Markdown compilation, without a browser runtime. Diagrams have accessible titles and descriptions, distinct SVG IDs, local fonts, light/dark colors, keyboard scrolling, and print sizing.
+- An authoring guide and renderer checks for diagram accessibility, escaped labels, multiple instances, and unchanged ordinary code fences.
+
+### Fixed
+
+- Household recipes stay off RSS and JSON feeds, and new recipes no longer change the feeds' sitemap modification dates. Feed validation checks the same rule.
+
 ## [6.27.1] — 2026-09-11
 
 The `lastmod` bug 6.27.0 named in its own notes.

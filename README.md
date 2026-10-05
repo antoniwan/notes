@@ -10,6 +10,8 @@ Live site: [notes.antoniwan.online](https://notes.antoniwan.online)
 
 Release history: [CHANGELOG.md](./CHANGELOG.md)
 
+Inline diagram authoring: [Mermaid flowcharts and state diagrams](docs/mermaid-diagrams.md).
+
 ## What a reader sees
 
 - **Writing** — essays and notes in `src/content/p/` (Markdown and MDX)

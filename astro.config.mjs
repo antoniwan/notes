@@ -9,6 +9,7 @@ import { unified } from '@astrojs/markdown-remark';
 import { remarkReadingTime } from './remark-reading-time.mjs';
 import { remarkDemoteMarkdownH1 } from './src/utils/remarkDemoteMarkdownH1.mjs';
 import { remarkPostSectionBreak } from './src/utils/remarkPostSectionBreak.mjs';
+import { remarkMermaid } from './src/utils/remarkMermaid.mjs';
 import { rehypeWrapTables } from './src/utils/rehypeWrapTables.mjs';
 import { buildSeoRedirects, shouldIncludeInSitemap } from './src/utils/seoRouting';
 import { indexNowIntegration } from './src/utils/indexNow';
@@ -124,7 +125,12 @@ export default defineConfig({
     // `markdown.remarkPlugins` / `rehypePlugins` / `gfm` / `smartypants` keys
     // are deprecated in Astro 7 and warn on startup.
     processor: unified({
-      remarkPlugins: [remarkReadingTime, remarkDemoteMarkdownH1, remarkPostSectionBreak],
+      remarkPlugins: [
+        remarkReadingTime,
+        remarkDemoteMarkdownH1,
+        remarkPostSectionBreak,
+        remarkMermaid,
+      ],
       rehypePlugins: [rehypeWrapTables],
       gfm: true,
       smartypants: true,

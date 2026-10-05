@@ -969,6 +969,48 @@
   max-width: 100% !important;
 }
 
+/* Build-time Mermaid keeps readable labels inside a keyboard-scrollable region. */
+.prose .mermaid-diagram__viewport {
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  padding: 0.75rem;
+  border: 1px solid rgb(var(--color-border));
+  border-radius: 0.5rem;
+}
+
+.prose .mermaid-diagram__viewport:focus-visible {
+  outline: 2px solid rgb(var(--color-accent));
+  outline-offset: 3px;
+}
+
+.prose .mermaid-diagram svg {
+  display: block;
+  width: var(--diagram-width);
+  height: auto;
+  max-width: none !important;
+  margin-inline: auto;
+}
+
+.prose .mermaid-diagram figcaption {
+  margin-top: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: rgb(var(--color-text-muted));
+}
+
+@media print {
+  .prose .mermaid-diagram__viewport {
+    overflow: visible;
+    padding: 0;
+    border: 0;
+  }
+
+  .prose .mermaid-diagram svg {
+    width: 100%;
+    max-width: 100% !important;
+  }
+}
+
 /* Tailwind Typography flushes first/last cells to the measure. Bordered
    essay tables need that padding back. */
 .prose :is(th, td):first-child,
