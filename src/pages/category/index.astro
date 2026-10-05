@@ -33,24 +33,22 @@ const alphabetical = categories
         description="Choose a subject to find the writings filed there. From A to Z."
       />
 
-      {
-        alphabetical.length > 0 ? (
-          <section class="category-directory" aria-label="Categories, A to Z">
-            <ul class="category-grid" role="list">
-              {alphabetical.map((category) => (
-                <li>
-                  <CategoryCard category={category} postCount={postCounts[category.id]} />
-                </li>
-              ))}
-            </ul>
-          </section>
-        ) : (
-          <section class="category-empty" aria-labelledby="category-empty-heading">
-            <h2 id="category-empty-heading">Nothing filed yet</h2>
-            <p>Categories will populate once drafts are published.</p>
-          </section>
-        )
-      }
+      {alphabetical.length > 0 ? (
+        <section class="category-directory" aria-label="Categories, A to Z">
+          <ul class="category-grid" role="list">
+            {alphabetical.map((category) => (
+              <li>
+                <CategoryCard category={category} postCount={postCounts[category.id]} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : (
+        <section class="category-empty" aria-labelledby="category-empty-heading">
+          <h2 id="category-empty-heading">Nothing filed yet</h2>
+          <p>Categories will populate once drafts are published.</p>
+        </section>
+      )}
 
       <aside class="category-disclaimer" aria-labelledby="category-disclaimer-heading">
         <h2 id="category-disclaimer-heading">Fair warning</h2>
@@ -62,8 +60,8 @@ const alphabetical = categories
             has lost it, you are not wrong.
           </p>
           <p>
-            <a href="/tag">Topics</a> follow how the ideas actually connect. Categories are just where
-            each note got stamped first.
+            <a href="/tag">Topics</a> follow how the ideas actually connect. Categories are just
+            where each note got stamped first.
           </p>
         </div>
       </aside>

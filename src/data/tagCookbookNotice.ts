@@ -6,8 +6,6 @@ import { canonicalizeTag } from '../utils/tagVocabulary';
  */
 export const COOKBOOK_NOTICE_TAGS = ['recipes', 'cooking', 'food'] as const;
 
-export type CookbookNoticeTag = (typeof COOKBOOK_NOTICE_TAGS)[number];
-
 export function tagHasCookbookNotice(tag: string): boolean {
   return (COOKBOOK_NOTICE_TAGS as readonly string[]).includes(canonicalizeTag(tag));
 }

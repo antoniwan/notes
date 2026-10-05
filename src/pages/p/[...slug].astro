@@ -114,14 +114,12 @@ const translationData = await getTranslationData(post, allPosts);
   currentPost={post}
   allPosts={allPosts}
 >
-  {
-    /*
+  {/*
     Always `<Content />`. Injecting `post.rendered.html` with `set:html` skipped
     Astro's own render step, which is what replaces the `__ASTRO_IMAGE_`
     placeholders that Markdown images compile to — so a relative image in a `.md`
     post shipped a broken placeholder instead of an optimized `<img>`. The two
     HTML fix-ups that injection existed for are now rehype plugins.
-  */
-  }
+  */}
   <Content />
 </BlogLayout>

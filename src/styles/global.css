@@ -1062,8 +1062,8 @@
   margin-top: 0.65rem;
 }
 
-/* Shared ✦ divisor: comments / related / recipes use the current accent
-   (`done`). In-essay Sources/References use `--almost` (same hue, quieter). */
+/* ✦ divisor in the accent hue. In-essay Sources/References use `--almost`
+   (same hue, quieter); remarkPostSectionBreak emits the markup. */
 .post-section-break {
   display: flex;
   justify-content: center;
@@ -1076,12 +1076,6 @@
 
 .post-section-break--almost {
   opacity: 0.45;
-}
-
-.comments-section .post-section-break,
-.related-posts .post-section-break,
-.more-recipes .post-section-break {
-  margin-top: 0;
 }
 
 .post-prose .post-section-break + :where(h2) {

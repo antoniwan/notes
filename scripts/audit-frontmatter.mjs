@@ -5,7 +5,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import yaml from 'js-yaml';
+import { loadFrontmatterYaml } from '../src/utils/frontmatterYaml.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const contentDir = path.join(root, 'src', 'content', 'p');
@@ -37,7 +37,7 @@ function parseFrontmatter(raw, file) {
   }
   const block = raw.slice(3, end).replace(/^\r?\n/, '');
   try {
-    return yaml.load(block);
+    return loadFrontmatterYaml(block);
   } catch (e) {
     errors.push(`${file}: YAML parse error — ${e.message}`);
     return null;

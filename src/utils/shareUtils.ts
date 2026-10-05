@@ -62,27 +62,3 @@ export function generateShareUrls(
     },
   ];
 }
-
-export function validateShareUrl(url: string): boolean {
-  try {
-    const urlObj = new URL(url);
-    return urlObj.protocol === 'http:' || urlObj.protocol === 'https:';
-  } catch {
-    return false;
-  }
-}
-
-export function getCanonicalUrl(pathname: string, baseUrl: string = ''): string {
-  // If baseUrl is provided, use it
-  if (baseUrl) {
-    return baseUrl.endsWith('/') ? baseUrl + pathname.slice(1) : baseUrl + pathname;
-  }
-
-  // Otherwise, construct from current location
-  if (typeof window !== 'undefined') {
-    return window.location.origin + pathname;
-  }
-
-  // Fallback for SSR
-  return pathname;
-}

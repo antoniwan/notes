@@ -39,7 +39,9 @@ const bookCollection = {
 >
   <div class="books-page">
     <div class="authored-books">
-      {authoredBooks.map((book) => <AuthoredBookCard book={book} imageLoading="eager" />)}
+      {authoredBooks.map((book) => (
+        <AuthoredBookCard book={book} imageLoading="eager" />
+      ))}
     </div>
     <p class="books-reading-note">
       Each book opens in its own reader, where you can choose English or Español.

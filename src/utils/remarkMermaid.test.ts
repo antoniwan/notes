@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { XMLValidator } from 'fast-xml-parser';
+import { SyntaxValidator } from 'fast-xml-validator';
 import { renderMermaidFigure, remarkMermaid } from './remarkMermaid.mjs';
 
 const source = `flowchart TD
@@ -13,7 +13,7 @@ describe('build-time Mermaid', () => {
   it('renders labelled SVG with local fonts and no browser script or external import', () => {
     const html = renderMermaidFigure(source);
     const svg = html.match(/<svg[\s\S]*<\/svg>/)?.[0] ?? '';
-    expect(XMLValidator.validate(svg)).toBe(true);
+    expect(SyntaxValidator.validate(svg)).toBe(true);
     expect(html).toContain('role="img"');
     expect(html).toContain('aria-labelledby="diagram-');
     expect(html).toContain('aria-describedby="diagram-');
@@ -49,7 +49,7 @@ describe('build-time Mermaid', () => {
     );
     expect(html).toContain('Cost $&amp; and $1</title>');
     const svg = html.match(/<svg[\s\S]*<\/svg>/)?.[0] ?? '';
-    expect(XMLValidator.validate(svg)).toBe(true);
+    expect(SyntaxValidator.validate(svg)).toBe(true);
   });
 
   it('rejects unsupported or unlabelled diagrams', () => {

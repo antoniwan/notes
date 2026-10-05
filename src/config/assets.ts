@@ -32,6 +32,3 @@ export const assetConfig = {
   // Robots file
   robots: '/robots.txt',
 };
-
-// Type for asset configuration
-export type AssetConfig = typeof assetConfig;

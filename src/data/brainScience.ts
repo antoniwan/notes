@@ -163,20 +163,3 @@ export const BRAIN_SCIENCE_CONFIG: BrainScienceConfig = {
     balancedSentiment: 40, // Target 40% neutral content
   },
 };
-
-// Helper functions
-export function getBrainSciencePage(path: string): BrainSciencePage | undefined {
-  return BRAIN_SCIENCE_PAGES.find((page) => page.path === path);
-}
-
-export function getBrainSciencePageById(id: string): BrainSciencePage | undefined {
-  return BRAIN_SCIENCE_PAGES.find((page) => page.id === id);
-}
-
-export function getAllBrainSciencePages(): BrainSciencePage[] {
-  return BRAIN_SCIENCE_PAGES;
-}
-
-export function getBrainScienceConfig(): BrainScienceConfig {
-  return BRAIN_SCIENCE_CONFIG;
-}

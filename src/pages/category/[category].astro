@@ -60,87 +60,77 @@ const robots = categoryPosts.length > 0 ? 'index, follow' : 'noindex, follow';
           <span aria-hidden="true">←</span>
           All categories
         </a>
-        {
-          hasBothGroups && (
-            <nav aria-label="On this category page" class="subject-jumps">
-              <a href="#writings-heading">
-                Writings <span>{primaryCategoryPosts.length}</span>
-              </a>
-              <a href="#related-writings-heading">
-                Related <span>{secondaryCategoryPosts.length}</span>
-              </a>
-            </nav>
-          )
-        }
+        {hasBothGroups && (
+          <nav aria-label="On this category page" class="subject-jumps">
+            <a href="#writings-heading">
+              Writings <span>{primaryCategoryPosts.length}</span>
+            </a>
+            <a href="#related-writings-heading">
+              Related <span>{secondaryCategoryPosts.length}</span>
+            </a>
+          </nav>
+        )}
       </div>
 
       <div class="subject-collections">
-        {
-          primaryCategoryPosts.length > 0 && (
-            <section id="writings" class="subject-collection" aria-labelledby="writings-heading">
-              <div class="collection-heading">
-                <h2 id="writings-heading" tabindex="-1">
-                  Writings
-                </h2>
-                <p class="collection-count">
-                  {primaryCategoryPosts.length}{' '}
-                  {primaryCategoryPosts.length === 1 ? 'writing' : 'writings'}
-                </p>
-              </div>
-              <div class="postcards-grid subject-grid">
-                {primaryCategoryPosts.map((post, index) => (
-                  <PostCard
-                    post={post}
-                    featured={post.data.featured}
-                    headingAs="h3"
-                    imageLoading={index === 0 ? 'eager' : 'lazy'}
-                  />
-                ))}
-              </div>
-            </section>
-          )
-        }
+        {primaryCategoryPosts.length > 0 && (
+          <section id="writings" class="subject-collection" aria-labelledby="writings-heading">
+            <div class="collection-heading">
+              <h2 id="writings-heading" tabindex="-1">
+                Writings
+              </h2>
+              <p class="collection-count">
+                {primaryCategoryPosts.length}{' '}
+                {primaryCategoryPosts.length === 1 ? 'writing' : 'writings'}
+              </p>
+            </div>
+            <div class="postcards-grid subject-grid">
+              {primaryCategoryPosts.map((post, index) => (
+                <PostCard
+                  post={post}
+                  featured={post.data.featured}
+                  headingAs="h3"
+                  imageLoading={index === 0 ? 'eager' : 'lazy'}
+                />
+              ))}
+            </div>
+          </section>
+        )}
 
-        {
-          secondaryCategoryPosts.length > 0 && (
-            <section
-              id="related-writings"
-              class="subject-collection"
-              aria-labelledby="related-writings-heading"
-            >
-              <div class="collection-heading">
-                <h2 id="related-writings-heading" tabindex="-1">
-                  Related writings
-                </h2>
-                <p class="collection-count">
-                  {secondaryCategoryPosts.length}{' '}
-                  {secondaryCategoryPosts.length === 1 ? 'writing' : 'writings'}
-                </p>
-                <p class="collection-description">
-                  Writings that touch on {category.name} as a secondary topic.
-                </p>
-              </div>
-              <div class="postcards-grid subject-grid">
-                {secondaryCategoryPosts.map((post, index) => (
-                  <PostCard
-                    post={post}
-                    featured={post.data.featured}
-                    headingAs="h3"
-                    imageLoading={
-                      primaryCategoryPosts.length === 0 && index === 0 ? 'eager' : 'lazy'
-                    }
-                  />
-                ))}
-              </div>
-            </section>
-          )
-        }
+        {secondaryCategoryPosts.length > 0 && (
+          <section
+            id="related-writings"
+            class="subject-collection"
+            aria-labelledby="related-writings-heading"
+          >
+            <div class="collection-heading">
+              <h2 id="related-writings-heading" tabindex="-1">
+                Related writings
+              </h2>
+              <p class="collection-count">
+                {secondaryCategoryPosts.length}{' '}
+                {secondaryCategoryPosts.length === 1 ? 'writing' : 'writings'}
+              </p>
+              <p class="collection-description">
+                Writings that touch on {category.name} as a secondary topic.
+              </p>
+            </div>
+            <div class="postcards-grid subject-grid">
+              {secondaryCategoryPosts.map((post, index) => (
+                <PostCard
+                  post={post}
+                  featured={post.data.featured}
+                  headingAs="h3"
+                  imageLoading={primaryCategoryPosts.length === 0 && index === 0 ? 'eager' : 'lazy'}
+                />
+              ))}
+            </div>
+          </section>
+        )}
 
-        {
-          categoryPosts.length === 0 && (
-            <p class="subject-empty">No writings found in this category yet.</p>
-          )
-        }
+        {categoryPosts.length === 0 && (
+          <p class="subject-empty">No writings found in this category yet.</p>
+        )}
       </div>
     </div>
   </Container>

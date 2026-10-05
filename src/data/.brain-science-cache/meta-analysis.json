@@ -47,8 +47,13 @@
       "pubDate": "2024-07-29T17:12:19.944Z"
     },
     {
+      "id": "briefly-on-the-tao",
+      "contentHash": "f0205f4059a83eab6d6180256e7f6062e1b3575d406740307a24bae9e479e19a",
+      "pubDate": "2026-09-15T13:40:00.000Z"
+    },
+    {
       "id": "captured-not-pathetic",
-      "contentHash": "63b02e4e367149644fac7463b306a6b4777f8e4a2972aad6e722714666b0505a",
+      "contentHash": "3d8c64c648df43fa58534f04b3abca78f716badd24d6fb078f1f49bc00eb5c15",
       "pubDate": "2026-09-07T22:00:00.000Z"
     },
     {
@@ -272,6 +277,11 @@
       "pubDate": "2025-04-21T12:21:28.540Z"
     },
     {
+      "id": "panda-and-wolf",
+      "contentHash": "1ea6633f605c4af2b4800929492432d1a9df2fc94a0a87161b1f6fc2e767e1a6",
+      "pubDate": "2026-10-05T18:52:00.000Z"
+    },
+    {
       "id": "power-intentional-living",
       "contentHash": "8dfb0b81a13f62f129b51978c515fd9ef83ebb049338fb27697a00f2f2ac5426",
       "pubDate": "2024-03-25T14:15:00.000Z"
@@ -308,12 +318,12 @@
     },
     {
       "id": "recipes/arroz-con-pollo",
-      "contentHash": "59f270a052f2698400dc64cb0fdc97cc7e421600b0a16165205bd119bbc50e87",
+      "contentHash": "4d9508094ab80e4de96a0a870764f804052592933b4f29fa55d584a45b2cab4f",
       "pubDate": "2026-07-23T14:00:00.000Z"
     },
     {
       "id": "recipes/arroz-con-pollo-en",
-      "contentHash": "f6213f36335b9518b6f101deb5c174c9540fb6b9f3c51edc854b161fcb800cff",
+      "contentHash": "507e58153255f883fdeb41ae3aaf7c4e60efd0692fa7b590a591a04bb49d57d5",
       "pubDate": "2026-07-23T14:00:00.000Z"
     },
     {
@@ -487,6 +497,11 @@
       "pubDate": "2026-05-24T00:00:00.000Z"
     },
     {
+      "id": "redefining-god",
+      "contentHash": "f314d90f0e5ac9577c0b665cf6c0437cf42f5cf69611882b33cd6a81a2d03714",
+      "pubDate": "2026-09-23T22:30:00.000Z"
+    },
+    {
       "id": "redirigir-curiosidad-sexual-infantil",
       "contentHash": "857036950da3aeaf8223f17ef590083014e4071fabdf5daca51ce03051b00ba2",
       "pubDate": "2025-05-06T16:30:00.000Z"
@@ -648,6 +663,317 @@
     }
   ],
   "analyses": [
+    {
+      "postTitle": "Panda and Wolf: Two Vaults to Map a Person",
+      "postSlug": "panda-and-wolf",
+      "postDate": "2026-10-05T18:52:00.000Z",
+      "metaLanguageCount": 3,
+      "metaLanguagePatterns": [
+        {
+          "phrase": "writing, experiments, imported research, and a growing pi",
+          "type": "writing-about-writing",
+          "context": "sentence",
+          "sentence": "It carried my writing, experiments, imported research, and a growing pile of agent features",
+          "confidence": 0.9
+        },
+        {
+          "phrase": "i see",
+          "type": "self-reflection",
+          "context": "sentence",
+          "sentence": "The way I see it, the models provide the intelligence to read, reason, and make connections",
+          "confidence": 0.8
+        },
+        {
+          "phrase": "i wonder",
+          "type": "self-reflection",
+          "context": "sentence",
+          "sentence": "I wonder how we will tackle this",
+          "confidence": 0.8
+        }
+      ],
+      "selfAwarenessScore": 19,
+      "writingAsSubject": true,
+      "writingAsTool": false,
+      "recursiveThinking": false,
+      "sentiment": {
+        "score": 1,
+        "comparative": 0.02702702702702703,
+        "calculation": [
+          {
+            "growing": 1
+          }
+        ],
+        "tokens": [
+          "it",
+          "carried",
+          "my",
+          "writing",
+          "experiments",
+          "imported",
+          "research",
+          "and",
+          "a",
+          "growing",
+          "pile",
+          "of",
+          "agent",
+          "features",
+          "the",
+          "way",
+          "i",
+          "see",
+          "it",
+          "the",
+          "models",
+          "provide",
+          "the",
+          "intelligence",
+          "to",
+          "read",
+          "reason",
+          "and",
+          "make",
+          "connections",
+          "i",
+          "wonder",
+          "how",
+          "we",
+          "will",
+          "tackle",
+          "this"
+        ],
+        "words": [
+          "growing"
+        ],
+        "positive": [
+          "growing"
+        ],
+        "negative": []
+      }
+    },
+    {
+      "postTitle": "Redefining God",
+      "postSlug": "redefining-god",
+      "postDate": "2026-09-23T22:30:00.000Z",
+      "metaLanguageCount": 0,
+      "metaLanguagePatterns": [],
+      "selfAwarenessScore": 0,
+      "writingAsSubject": false,
+      "writingAsTool": false,
+      "recursiveThinking": false,
+      "sentiment": {
+        "score": 5,
+        "comparative": 0.052083333333333336,
+        "calculation": [
+          {
+            "important": 2
+          },
+          {
+            "best": 3
+          }
+        ],
+        "tokens": [
+          "i",
+          "the",
+          "living",
+          "room",
+          "picture",
+          "a",
+          "living",
+          "room",
+          "a",
+          "little",
+          "after",
+          "eight",
+          "in",
+          "the",
+          "morning",
+          "the",
+          "best",
+          "part",
+          "of",
+          "the",
+          "day",
+          "has",
+          "already",
+          "happened",
+          "somebody",
+          "got",
+          "up",
+          "early",
+          "kissed",
+          "somebody",
+          "set",
+          "the",
+          "dishwasher",
+          "did",
+          "a",
+          "workout",
+          "with",
+          "a",
+          "baby",
+          "on",
+          "the",
+          "mat",
+          "who",
+          "kept",
+          "turning",
+          "it",
+          "into",
+          "a",
+          "game",
+          "and",
+          "then",
+          "a",
+          "toddler",
+          "woke",
+          "up",
+          "and",
+          "everything",
+          "melted",
+          "into",
+          "stretching",
+          "and",
+          "goofing",
+          "around",
+          "on",
+          "the",
+          "floor",
+          "and",
+          "the",
+          "toddler",
+          "found",
+          "some",
+          "object",
+          "in",
+          "the",
+          "house",
+          "a",
+          "toy",
+          "or",
+          "a",
+          "broom",
+          "or",
+          "a",
+          "costume",
+          "piece",
+          "and",
+          "started",
+          "using",
+          "it",
+          "for",
+          "the",
+          "most",
+          "important",
+          "job",
+          "in",
+          "the",
+          "wor"
+        ],
+        "words": [
+          "important",
+          "best"
+        ],
+        "positive": [
+          "important",
+          "best"
+        ],
+        "negative": []
+      }
+    },
+    {
+      "postTitle": "Briefly, on the Tao",
+      "postSlug": "briefly-on-the-tao",
+      "postDate": "2026-09-15T13:40:00.000Z",
+      "metaLanguageCount": 2,
+      "metaLanguagePatterns": [
+        {
+          "phrase": "writing, at 7:22am I had become un-baffled, but yeah, I s",
+          "type": "writing-about-writing",
+          "context": "sentence",
+          "sentence": "It's 12:24pm as I edit this writing, at 7:22am I had become un-baffled, but yeah, I started off at 6:30am today give or take",
+          "confidence": 0.9
+        },
+        {
+          "phrase": "writing, sure, but damn, it was stressful, extra load, ar",
+          "type": "writing-about-writing",
+          "context": "sentence",
+          "sentence": "It gave me this writing, sure, but damn, it was stressful, extra load, artificial and unnecessary",
+          "confidence": 0.9
+        }
+      ],
+      "selfAwarenessScore": 12,
+      "writingAsSubject": true,
+      "writingAsTool": false,
+      "recursiveThinking": false,
+      "sentiment": {
+        "score": -1,
+        "comparative": -0.023255813953488372,
+        "calculation": [
+          {
+            "damn": -2
+          },
+          {
+            "yeah": 1
+          }
+        ],
+        "tokens": [
+          "it's",
+          "12",
+          "24pm",
+          "as",
+          "i",
+          "edit",
+          "this",
+          "writing",
+          "at",
+          "7",
+          "22am",
+          "i",
+          "had",
+          "become",
+          "un-baffled",
+          "but",
+          "yeah",
+          "i",
+          "started",
+          "off",
+          "at",
+          "6",
+          "30am",
+          "today",
+          "give",
+          "or",
+          "take",
+          "it",
+          "gave",
+          "me",
+          "this",
+          "writing",
+          "sure",
+          "but",
+          "damn",
+          "it",
+          "was",
+          "stressful",
+          "extra",
+          "load",
+          "artificial",
+          "and",
+          "unnecessary"
+        ],
+        "words": [
+          "damn",
+          "yeah"
+        ],
+        "positive": [
+          "yeah"
+        ],
+        "negative": [
+          "damn"
+        ]
+      }
+    },
     {
       "postTitle": "Forging the 'Stronghand' Terminal — September 2026 Update",
       "postSlug": "forging-stronghand-terminal-september-2026",

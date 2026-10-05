@@ -47,33 +47,31 @@ const fetchPriority = priority ? 'high' : 'auto';
 const resolved = resolveHeroImage(selectedImage);
 ---
 
-{
-  resolved ? (
-    <Image
-      src={resolved}
-      alt={alt}
-      class:list={[className, 'default-cover', priority && 'priority-image']}
-      widths={HERO_WIDTHS}
-      sizes={sizes}
-      format="avif"
-      quality={HERO_QUALITY}
-      loading={finalLoading}
-      fetchpriority={fetchPriority}
-      decoding="async"
-    />
-  ) : (
-    <img
-      src={selectedImage}
-      alt={alt}
-      class:list={[className, 'default-cover', priority && 'priority-image']}
-      loading={finalLoading}
-      fetchpriority={fetchPriority}
-      decoding="async"
-      width={width}
-      height={height}
-    />
-  )
-}
+{resolved ? (
+  <Image
+    src={resolved}
+    alt={alt}
+    class:list={[className, 'default-cover', priority && 'priority-image']}
+    widths={HERO_WIDTHS}
+    sizes={sizes}
+    format="avif"
+    quality={HERO_QUALITY}
+    loading={finalLoading}
+    fetchpriority={fetchPriority}
+    decoding="async"
+  />
+) : (
+  <img
+    src={selectedImage}
+    alt={alt}
+    class:list={[className, 'default-cover', priority && 'priority-image']}
+    loading={finalLoading}
+    fetchpriority={fetchPriority}
+    decoding="async"
+    width={width}
+    height={height}
+  />
+)}
 
 <style>
   .default-cover {

@@ -15,7 +15,7 @@ Site constants (`SITE_TITLE`, `AUTHOR`, `SEO_CONFIG`, `SOCIAL_LINKS`) live in [`
 | `category/[category]` | `category`           | `CollectionPage` when `posts.length > 0`              |
 | `tag/[tag]`           | `tag`                | `CollectionPage` when `posts.length > 0`              |
 
-Helpers such as FAQ / HowTo / Review / `generateEnhancedStructuredData` exist in the module but are **not wired** into layouts today. Do not assume they appear in page HTML.
+The module has no FAQ, HowTo, or Review schemas. Those helpers were never wired into a layout and were removed in 6.29.0; git history has them if a post ever needs one.
 
 ## Base schemas (every page)
 
@@ -62,17 +62,12 @@ Empty category/tag result sets fall back to the base three schemas only.
 
 ## Unused exports (library only)
 
-| Export                                                     | Intent                               | Wired to HTML?                       |
-| ---------------------------------------------------------- | ------------------------------------ | ------------------------------------ |
-| `generateFAQSchema` / `autoDetectFAQSchema`                | FAQPage from Q&A markdown heuristics | No                                   |
-| `generateEnhancedStructuredData`                           | Base schemas + auto FAQ for articles | No                                   |
-| `generateHowToSchema`                                      | HowTo tutorials                      | No                                   |
-| `generateReviewSchema`                                     | Review / rating                      | No                                   |
-| `generateArticleSchema`                                    | Generic `Article` (vs `BlogPosting`) | No                                   |
-| `generateContentTypeSpecificSchema`                        | Switch for how-to / review / faq     | No                                   |
-| `validateStructuredData` / `generateStructuredDataSummary` | Dev/debug helpers                    | No (CI uses a separate smoke script) |
+| Export                   | Intent                               | Wired to HTML?                       |
+| ------------------------ | ------------------------------------ | ------------------------------------ |
+| `generateArticleSchema`  | Generic `Article` (vs `BlogPosting`) | No                                   |
+| `validateStructuredData` | Dev/debug helper                     | No (CI uses a separate smoke script) |
 
-Wire these only with intentional layout changes and Rich Results expectations — auto-FAQ heuristics are noisy.
+Both stay because the smoke script below requires them. Wire `generateArticleSchema` only with an intentional layout change and Rich Results expectations.
 
 ## Validation
 
@@ -90,15 +85,14 @@ For live checks:
 Optional local helper:
 
 ```ts
-import { validateStructuredData, generateStructuredDataSummary } from '../utils/structuredData';
+import { validateStructuredData } from '../utils/structuredData';
 ```
 
 ## Known gaps / follow-ups
 
 1. Base WebSite / Organization / Person always use `inLanguage: en-US` even on Spanish posts (only `BlogPosting.inLanguage` follows the post).
-2. FAQ / HowTo / Review helpers are dead code unless product wants them on specific posts.
-3. `hasComments` is accepted on options but unused in schema output.
-4. Collection schemas list every post in the page’s `posts` prop — keep that list bounded if indexes grow large.
+2. `hasComments` is accepted on options but unused in schema output.
+3. Collection schemas list every post in the page’s `posts` prop — keep that list bounded if indexes grow large.
 
 ## Related
 

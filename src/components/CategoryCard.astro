@@ -17,18 +17,18 @@ const { category, postCount } = Astro.props;
 >
   <div class="category-card__heading">
     <div class="category-card__name">
-      {
-        category.icon && (
-          <span class="category-card__icon" aria-hidden="true">
-            {category.icon}
-          </span>
-        )
-      }
+      {category.icon && (
+        <span class="category-card__icon" aria-hidden="true">
+          {category.icon}
+        </span>
+      )}
       <h2 id={`category-${category.id}-title`} class="category-card__title">
         {category.name}
       </h2>
     </div>
-    <span class="category-card__arrow" aria-hidden="true">↗</span>
+    <span class="category-card__arrow" aria-hidden="true">
+      ↗
+    </span>
   </div>
   <p id={`category-${category.id}-description`} class="category-card__description">
     {category.description}

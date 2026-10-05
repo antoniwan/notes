@@ -27,13 +27,11 @@ const destination = compact ? `/books#${book.id}` : book.readerUrl;
   </div>
   <div class="authored-book__body">
     <Heading>{book.title}</Heading>
-    {
-      !compact && (
-        <p class="authored-book__translation" lang="es">
-          {book.spanishTitle}
-        </p>
-      )
-    }
+    {!compact && (
+      <p class="authored-book__translation" lang="es">
+        {book.spanishTitle}
+      </p>
+    )}
     <p class="authored-book__description">{compact ? book.summary : book.description}</p>
     {!compact && <p class="authored-book__language">Read in English or Spanish.</p>}
     <a

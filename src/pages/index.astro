@@ -21,7 +21,9 @@ const highlightsByCategory = await getHighlightsByCategory();
   <Container class="home-shell">
     <HighlightsMasonry posts={highlights} postsByCategory={highlightsByCategory}>
       <header slot="intro" class="home-intro">
-        <h1>I write <em>to live it.</em></h1>
+        <h1>
+          I write <em>to live it.</em>
+        </h1>
         <p class="home-intro__description">
           I enjoy writing from my life as a stay-at-home and remote-working father, and as a
           stepfather, while I practice patience, temperance, and grounded leadership.
@@ -31,8 +33,12 @@ const highlightsByCategory = await getHighlightsByCategory();
             Start here <span aria-hidden="true">↗</span>
           </a>
           <div class="home-paths__browse">
-            <a href="/tag">Browse topics <span aria-hidden="true">↗</span></a>
-            <a href="/everything">Everything <span aria-hidden="true">↗</span></a>
+            <a href="/tag">
+              Browse topics <span aria-hidden="true">↗</span>
+            </a>
+            <a href="/everything">
+              Everything <span aria-hidden="true">↗</span>
+            </a>
           </div>
         </nav>
       </header>
@@ -44,17 +50,23 @@ const highlightsByCategory = await getHighlightsByCategory();
           <h2 id="home-books-heading">Children’s books</h2>
           <p>Stories I wrote for my children and my nephew, in English and Spanish.</p>
         </div>
-        <a href="/books">Explore the books <span aria-hidden="true">↗</span></a>
+        <a href="/books">
+          Explore the books <span aria-hidden="true">↗</span>
+        </a>
       </header>
       <div class="home-books__grid">
-        {authoredBooks.map((book) => <AuthoredBookCard book={book} compact />)}
+        {authoredBooks.map((book) => (
+          <AuthoredBookCard book={book} compact />
+        ))}
       </div>
     </section>
 
     <section class="home-why" aria-labelledby="home-why-heading">
       <div class="home-why__heading">
         <h2 id="home-why-heading">Why this space exists right now</h2>
-        <a href="/about">More about me <span aria-hidden="true">↗</span></a>
+        <a href="/about">
+          More about me <span aria-hidden="true">↗</span>
+        </a>
       </div>
       <p>
         This space keeps me accountable to what I claim to value. I use it to document the gap

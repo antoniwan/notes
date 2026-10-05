@@ -5,5 +5,3 @@
  *   window.dispatchEvent(new CustomEvent(THEME_CHANGE_EVENT, { detail: { theme } }));
  */
 export const THEME_CHANGE_EVENT = 'themechange' as const;
-
-export type ThemeChangeEventDetail = { theme?: 'dark' | 'light' };

@@ -42,12 +42,3 @@ export const canonicalizeTags = (tags: string[] = []): string[] =>
   Array.from(new Set(tags.map(canonicalizeTag).filter(Boolean)));
 
 export const isPreferredTag = (tag: string): boolean => PREFERRED_TAG_SET.has(canonicalizeTag(tag));
-
-export const getTagSuggestion = (tag: string): string | null => {
-  const normalized = normalizeTagInput(tag);
-  if (TAG_ALIAS_MAP[normalized]) return TAG_ALIAS_MAP[normalized];
-  return null;
-};
-
-export const getNonPreferredTags = (tags: string[] = []): string[] =>
-  tags.map(canonicalizeTag).filter((tag) => !PREFERRED_TAG_SET.has(tag));

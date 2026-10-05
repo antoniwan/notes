@@ -9,6 +9,91 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.29.0] — 2026-10-05
+
+Maintenance, all of it: every dependency current, a clean audit, and about
+1,250 lines of code nothing used taken out. The built site is the same site.
+
+### Security
+
+- **`pnpm audit` went from 37 advisories (1 critical, 21 high) to none.**
+  - Twenty came from the `overrides` in `pnpm-workspace.yaml`. They were exact
+    pins, and three of the six (tar, devalue, fast-xml-parser) had fallen behind
+    security fixes released after they were written. All six are removed;
+    without them each package resolves to a patched release.
+  - sharp 0.34.5 → 0.35.5, for the libvips and libheif fixes. Astro already used
+    0.35 for its image service, so the install now carries one copy, not two.
+  - Playwright 1.55.0 → 1.63.0. js-yaml, svgo, nanoid, and http-cache-semantics
+    picked up their fixes through ordinary updates.
+  - Vitest 5 and `eslint-plugin-astro` 3 cleared three more.
+  - The last was path-to-regexp 6.1.0, which `@vercel/routing-utils` pins
+    exactly. One override, scoped to that parent, moves it to 6.3.0. The package
+    already ships 6.3.0 beside it to compare the two, and this site's redirects
+    compile to the same routing config under both.
+
+### Changed
+
+- **Major upgrades:** TypeScript 5.9 → 6.0, Vitest 3 → 5, `eslint-plugin-astro`
+  1 → 3, `prettier-plugin-astro` 0.14 → 1.1, js-yaml 4 → 5, and
+  `@vercel/analytics` and `@vercel/speed-insights` 1 → 2.
+- Patch and minor updates: Astro 7.3.2 → 7.3.5, `@astrojs/mdx` 8.0.2,
+  `@astrojs/vercel` 11.0.11, ESLint 10.12.0, `@typescript-eslint/parser` 8.71.0,
+  Prettier 3.9.9, lint-staged 17.6.0, simple-git-hooks 2.14.0, terser 5.51.2,
+  fast-xml-parser 5.11.2.
+- **Checked against the build, not only the tests.** Of 268 HTML pages, 267 are
+  byte-identical to the build from before the major upgrades and the code
+  removal, hashed asset names aside. The other differs by whitespace inside one
+  table cell. Feeds, sitemaps, the search index, and the Vercel routing config
+  did not change.
+- **Frontmatter read from disk still matches what Astro reads.** js-yaml 5
+  loads the bare YAML 1.2 core schema, so an unquoted timestamp stays a string,
+  while Astro itself still parses with js-yaml 4. The frontmatter audit, the
+  generated-content validator, and the sitemap now share
+  `src/utils/frontmatterYaml.mjs`, which adds the timestamp and merge tags back.
+  All 132 posts parse to identical values under both versions.
+- `prettier-plugin-astro` 1.1 lays out template expressions differently, so 67
+  `.astro` files were reformatted. Nothing rendered changed.
+- XML is validated with `fast-xml-validator`. fast-xml-parser 5.11 deprecated
+  its own `XMLValidator` in favor of that package. Same verdicts and messages;
+  it throws on a fault where the old one returned it.
+- `.nvmrc` moves from 22.12.0 to 22.23.3, the current Node 22 release.
+  `eslint-plugin-astro` 3 needs 22.22.3 or later. `engines.node` is still `22.x`.
+- CI actions moved off the deprecated Node 20 runtime, which every run was
+  warning about: `actions/checkout` v7, `actions/cache` v6, `actions/setup-node`
+  v7, `pnpm/action-setup` v6.
+- The build config drops one upstream warning. Astro leaves a dead
+  `"use astro:head-inject"` marker on MDX content modules and Rolldown 1.2.9
+  warns about it once per MDX post (withastro/astro#18087). The filter matches
+  only that message and comes out when Astro ships its fix.
+- The Writing Insights cache is refreshed for the posts published since 6.27.1.
+- `.gitignore` covers env files with one `.env*` rule and an explicit
+  `!.env.example`. The old rules matched `.env.example` too; it stayed in the
+  repo only because it was already tracked.
+
+### Removed
+
+- Six source files nothing imported, 596 lines: `Disclaimer.astro` and its
+  `DISCLAIMER_TEXT` constant, `PostSectionBreak.astro` (unused since 6.20.0; the
+  remark plugin emits the ✦ break) and the CSS rule for the three places it used
+  to render, `brain-science/MetricCard.astro`, `utils/chartTheme.ts`,
+  `utils/excerpt.ts`, and `utils/feedValidation.ts`.
+- 54 exports nothing used, about 650 lines across 18 modules. Removing the
+  first 46 left eight more with no caller. Among them: the FAQ, HowTo, and
+  Review schema helpers that `docs/structured-data-optimization.md` already
+  listed as dead code, eleven quote lookups the quotes API never called, the
+  reading-event dispatchers in `config/storage.ts`, and chart and statistics
+  helpers left over in Writing Insights.
+- `@types/js-yaml`. js-yaml 5 ships its own types.
+- `onlyBuiltDependencies` and `minimumReleaseAgeExclude` from
+  `pnpm-workspace.yaml`. pnpm 11 removed the first in favor of `allowBuilds`,
+  which was already set. The second exempted Astro package releases that have
+  long since aged past the one-day window.
+
+### Notes
+
+- TypeScript stops at 6.0.3. TypeScript 7 is out, but `@astrojs/check` supports
+  5 and 6 and `@typescript-eslint/parser` stops below 6.1.
+
 ## [6.28.0] — 2026-10-05
 
 ### Added

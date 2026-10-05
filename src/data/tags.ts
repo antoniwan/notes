@@ -19,12 +19,6 @@ export interface TagCategory {
   color?: string;
 }
 
-export interface TagStats {
-  tag: string;
-  count: number;
-  size?: number;
-}
-
 const DEFAULT_WEIGHT = 1;
 const DEFAULT_PREFERRED_WEIGHT = 4;
 

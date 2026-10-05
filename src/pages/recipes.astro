@@ -42,116 +42,114 @@ const contents = [...byLetter.entries()].sort(([a], [b]) => a.localeCompare(b));
   mode="chrome"
   contentClass="cookbook max-w-none"
 >
-  {
-    recipes.length > 0 ? (
-      <div class="cookbook-browser" data-cookbook>
-        <div class="cookbook-discovery">
-          <form class="cookbook-search" role="search" aria-label="Find a recipe" hidden>
-            <label for="recipe-search">Find a dish</label>
-            <div class="cookbook-search__controls">
-              <input
-                id="recipe-search"
-                name="q"
-                type="search"
-                placeholder="Search recipes by name"
-                autocomplete="off"
-                aria-controls="cookbook-plates-grid cookbook-index"
-              />
-              <button type="button" class="cookbook-clear" data-clear-search hidden>
-                Clear search
-              </button>
-            </div>
-          </form>
-
-          <details class="cookbook-contents">
-            <summary>Browse the alphabetical index</summary>
-            <nav id="cookbook-index" aria-label="Recipes, A to Z">
-              <div class="cookbook-contents__cols">
-                {contents.map(([letter, dishes]) => (
-                  <div class="cookbook-letter" data-index-group>
-                    <h2>{letter}</h2>
-                    <ul role="list">
-                      {dishes.map((recipe) => (
-                        <li data-index-dish data-title={recipe.data.title}>
-                          <a href={`/p/${recipe.id}`}>{recipe.data.title}</a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-              <p class="cookbook-index-empty" data-index-empty hidden>
-                No dishes match your search.
-              </p>
-            </nav>
-          </details>
-        </div>
-
-        <section class="cookbook-plates" aria-labelledby="cookbook-plates-heading">
-          <div class="cookbook-plates__heading">
-            <h2 id="cookbook-plates-heading">From our kitchen</h2>
-            <p data-recipe-count role="status" aria-live="polite" aria-atomic="true">
-              {recipes.length} {recipes.length === 1 ? 'recipe' : 'recipes'}
-            </p>
-          </div>
-
-          <ul class="cookbook-plates__grid" id="cookbook-plates-grid" role="list">
-            {plates.map(({ recipe, hasSpanish }, index) => (
-              <li data-recipe-plate data-title={recipe.data.title}>
-                <a href={`/p/${recipe.id}`} class="cookbook-plate">
-                  <div class="cookbook-plate__image">
-                    {recipe.data.heroImage ? (
-                      <HeroImage
-                        src={recipe.data.heroImage}
-                        alt=""
-                        class="cookbook-plate__img"
-                        variant="card"
-                        priority={index === 0}
-                      />
-                    ) : (
-                      <DefaultImage
-                        alt=""
-                        seed={recipe.id}
-                        className="cookbook-plate__img"
-                        loading={index === 0 ? 'eager' : 'lazy'}
-                        priority={index === 0}
-                        width={800}
-                        height={500}
-                      />
-                    )}
-                  </div>
-                  <div class="cookbook-plate__caption">
-                    <h3 class="cookbook-plate__title">{recipe.data.title}</h3>
-                    {hasSpanish && (
-                      <span
-                        class="tag-chip tag-chip--subtle cookbook-plate__es inline-flex items-center rounded-full border px-2.5 py-1 text-sm font-medium"
-                        data-tag-family="kitchen"
-                      >
-                        <span aria-hidden="true" lang="es">
-                          ES
-                        </span>
-                        <span class="sr-only">Spanish version available</span>
-                      </span>
-                    )}
-                  </div>
-                </a>
-              </li>
-            ))}
-          </ul>
-
-          <div class="cookbook-empty" data-recipe-empty hidden>
-            <h3>No dishes found</h3>
-            <p>Try another dish name, or clear your search to see every recipe.</p>
-            <button type="button" class="cookbook-clear" data-clear-search>
+  {recipes.length > 0 ? (
+    <div class="cookbook-browser" data-cookbook>
+      <div class="cookbook-discovery">
+        <form class="cookbook-search" role="search" aria-label="Find a recipe" hidden>
+          <label for="recipe-search">Find a dish</label>
+          <div class="cookbook-search__controls">
+            <input
+              id="recipe-search"
+              name="q"
+              type="search"
+              placeholder="Search recipes by name"
+              autocomplete="off"
+              aria-controls="cookbook-plates-grid cookbook-index"
+            />
+            <button type="button" class="cookbook-clear" data-clear-search hidden>
               Clear search
             </button>
           </div>
-        </section>
+        </form>
+
+        <details class="cookbook-contents">
+          <summary>Browse the alphabetical index</summary>
+          <nav id="cookbook-index" aria-label="Recipes, A to Z">
+            <div class="cookbook-contents__cols">
+              {contents.map(([letter, dishes]) => (
+                <div class="cookbook-letter" data-index-group>
+                  <h2>{letter}</h2>
+                  <ul role="list">
+                    {dishes.map((recipe) => (
+                      <li data-index-dish data-title={recipe.data.title}>
+                        <a href={`/p/${recipe.id}`}>{recipe.data.title}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+            <p class="cookbook-index-empty" data-index-empty hidden>
+              No dishes match your search.
+            </p>
+          </nav>
+        </details>
       </div>
-    ) : (
-      <p class="cookbook-unavailable">No recipes yet.</p>
-    )
-  }
+
+      <section class="cookbook-plates" aria-labelledby="cookbook-plates-heading">
+        <div class="cookbook-plates__heading">
+          <h2 id="cookbook-plates-heading">From our kitchen</h2>
+          <p data-recipe-count role="status" aria-live="polite" aria-atomic="true">
+            {recipes.length} {recipes.length === 1 ? 'recipe' : 'recipes'}
+          </p>
+        </div>
+
+        <ul class="cookbook-plates__grid" id="cookbook-plates-grid" role="list">
+          {plates.map(({ recipe, hasSpanish }, index) => (
+            <li data-recipe-plate data-title={recipe.data.title}>
+              <a href={`/p/${recipe.id}`} class="cookbook-plate">
+                <div class="cookbook-plate__image">
+                  {recipe.data.heroImage ? (
+                    <HeroImage
+                      src={recipe.data.heroImage}
+                      alt=""
+                      class="cookbook-plate__img"
+                      variant="card"
+                      priority={index === 0}
+                    />
+                  ) : (
+                    <DefaultImage
+                      alt=""
+                      seed={recipe.id}
+                      className="cookbook-plate__img"
+                      loading={index === 0 ? 'eager' : 'lazy'}
+                      priority={index === 0}
+                      width={800}
+                      height={500}
+                    />
+                  )}
+                </div>
+                <div class="cookbook-plate__caption">
+                  <h3 class="cookbook-plate__title">{recipe.data.title}</h3>
+                  {hasSpanish && (
+                    <span
+                      class="tag-chip tag-chip--subtle cookbook-plate__es inline-flex items-center rounded-full border px-2.5 py-1 text-sm font-medium"
+                      data-tag-family="kitchen"
+                    >
+                      <span aria-hidden="true" lang="es">
+                        ES
+                      </span>
+                      <span class="sr-only">Spanish version available</span>
+                    </span>
+                  )}
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <div class="cookbook-empty" data-recipe-empty hidden>
+          <h3>No dishes found</h3>
+          <p>Try another dish name, or clear your search to see every recipe.</p>
+          <button type="button" class="cookbook-clear" data-clear-search>
+            Clear search
+          </button>
+        </div>
+      </section>
+    </div>
+  ) : (
+    <p class="cookbook-unavailable">No recipes yet.</p>
+  )}
 </PageLayout>
 
 <script>

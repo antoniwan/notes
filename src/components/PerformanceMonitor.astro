@@ -209,28 +209,26 @@
 </style>
 
 <!-- Debug panel (only visible in development) -->
-{
-  import.meta.env.DEV && (
-    <div class="performance-debug" id="performance-debug">
-      <h4>Performance Metrics</h4>
-      <div class="metric" id="fcp-metric">
-        FCP: --
-      </div>
-      <div class="metric" id="lcp-metric">
-        LCP: --
-      </div>
-      <div class="metric" id="fid-metric">
-        FID: --
-      </div>
-      <div class="metric" id="cls-metric">
-        CLS: --
-      </div>
-      <div class="metric" id="ttfb-metric">
-        TTFB: --
-      </div>
+{import.meta.env.DEV && (
+  <div class="performance-debug" id="performance-debug">
+    <h4>Performance Metrics</h4>
+    <div class="metric" id="fcp-metric">
+      FCP: --
     </div>
-  )
-}
+    <div class="metric" id="lcp-metric">
+      LCP: --
+    </div>
+    <div class="metric" id="fid-metric">
+      FID: --
+    </div>
+    <div class="metric" id="cls-metric">
+      CLS: --
+    </div>
+    <div class="metric" id="ttfb-metric">
+      TTFB: --
+    </div>
+  </div>
+)}
 
 <script is:inline define:vars={{ isPerfDebugDev: import.meta.env.DEV }}>
   // @ts-nocheck

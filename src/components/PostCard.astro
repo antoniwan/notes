@@ -54,97 +54,89 @@ const hasSpanishTwin =
   </div>
 
   <div class="image-container relative overflow-hidden">
-    {
-      data.heroImage ? (
-        <HeroImage
-          src={data.heroImage}
-          alt={data.imageAlt || data.title}
-          class="postcard-image"
-          variant="card"
-          loading={imageLoading}
-        />
-      ) : (
-        <DefaultImage
-          alt={data.title}
-          className="postcard-image"
-          loading={imageLoading}
-          width={1200}
-          height={750}
-        />
-      )
-    }
+    {data.heroImage ? (
+      <HeroImage
+        src={data.heroImage}
+        alt={data.imageAlt || data.title}
+        class="postcard-image"
+        variant="card"
+        loading={imageLoading}
+      />
+    ) : (
+      <DefaultImage
+        alt={data.title}
+        className="postcard-image"
+        loading={imageLoading}
+        width={1200}
+        height={750}
+      />
+    )}
   </div>
 
   <div class="postcard-body">
     <div class="postcard-meta">
       <FormattedDate date={data.pubDate} class="postcard-meta__item" />
-      {
-        kindLabel && (
-          <>
-            <span class="postcard-meta__sep" aria-hidden="true">
-              ·
-            </span>
-            <span
-              class="postcard-meta__item postcard-meta__kind"
-              lang={isSpanishPrimary(data) ? 'es' : 'en'}
-            >
-              {kindLabel}
-            </span>
-          </>
-        )
-      }
-      {
-        readingTime && !isRecipe && (
-          <>
-            <span class="postcard-meta__sep" aria-hidden="true">
-              ·
-            </span>
-            <span
-              class="postcard-meta__item reading-time-display"
-              data-post-slug={post.id}
-              data-original-reading-time={readingTime}
-            >
-              {readingTime}
-            </span>
-          </>
-        )
-      }
-      {
-        featured && showFeaturedIndicator && (
-          <>
-            <span class="postcard-meta__sep" aria-hidden="true">
-              ·
-            </span>
-            <span
-              class="postcard-meta__item postcard-meta__featured"
-              role="img"
-              aria-label="Featured post"
-            >
-              Featured
-            </span>
-          </>
-        )
-      }
-      {
-        hasSpanishTwin && (
-          <>
-            <span class="postcard-meta__sep" aria-hidden="true">
-              ·
-            </span>
-            <span
-              class="postcard-meta__item postcard-meta__es"
-              lang="es"
-              aria-label="Also available in Spanish"
-            >
-              ES
-            </span>
-          </>
-        )
-      }
+      {kindLabel && (
+        <>
+          <span class="postcard-meta__sep" aria-hidden="true">
+            ·
+          </span>
+          <span
+            class="postcard-meta__item postcard-meta__kind"
+            lang={isSpanishPrimary(data) ? 'es' : 'en'}
+          >
+            {kindLabel}
+          </span>
+        </>
+      )}
+      {readingTime && !isRecipe && (
+        <>
+          <span class="postcard-meta__sep" aria-hidden="true">
+            ·
+          </span>
+          <span
+            class="postcard-meta__item reading-time-display"
+            data-post-slug={post.id}
+            data-original-reading-time={readingTime}
+          >
+            {readingTime}
+          </span>
+        </>
+      )}
+      {featured && showFeaturedIndicator && (
+        <>
+          <span class="postcard-meta__sep" aria-hidden="true">
+            ·
+          </span>
+          <span
+            class="postcard-meta__item postcard-meta__featured"
+            role="img"
+            aria-label="Featured post"
+          >
+            Featured
+          </span>
+        </>
+      )}
+      {hasSpanishTwin && (
+        <>
+          <span class="postcard-meta__sep" aria-hidden="true">
+            ·
+          </span>
+          <span
+            class="postcard-meta__item postcard-meta__es"
+            lang="es"
+            aria-label="Also available in Spanish"
+          >
+            ES
+          </span>
+        </>
+      )}
     </div>
 
     <Heading id={`${idPrefix}-title-${post.id}`} class="postcard-title">
-      <a href={`/p/${post.id}`} class="postcard-link">{data.title}</a>
+      <a href={`/p/${post.id}`} class="postcard-link">
+        {data.title}
+      </a>
     </Heading>
 
     {data.description && <p class="postcard-description">{data.description}</p>}

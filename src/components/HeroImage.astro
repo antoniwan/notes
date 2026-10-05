@@ -42,30 +42,28 @@ const resolved = resolveHeroImage(src);
 const sizes = HERO_SIZES[variant];
 ---
 
-{
-  resolved ? (
-    <Image
-      src={resolved}
-      alt={alt}
-      {...(className ? { class: className } : {})}
-      widths={HERO_WIDTHS}
-      sizes={sizes}
-      format="avif"
-      quality={HERO_QUALITY}
-      loading={loading}
-      decoding="async"
-      {...(priority ? { fetchpriority: 'high' as const } : {})}
-    />
-  ) : (
-    <img
-      src={src}
-      alt={alt}
-      {...(className ? { class: className } : {})}
-      loading={loading}
-      decoding="async"
-      {...(priority ? { fetchpriority: 'high' } : {})}
-      {...(width ? { width } : {})}
-      {...(height ? { height } : {})}
-    />
-  )
-}
+{resolved ? (
+  <Image
+    src={resolved}
+    alt={alt}
+    {...(className ? { class: className } : {})}
+    widths={HERO_WIDTHS}
+    sizes={sizes}
+    format="avif"
+    quality={HERO_QUALITY}
+    loading={loading}
+    decoding="async"
+    {...(priority ? { fetchpriority: 'high' as const } : {})}
+  />
+) : (
+  <img
+    src={src}
+    alt={alt}
+    {...(className ? { class: className } : {})}
+    loading={loading}
+    decoding="async"
+    {...(priority ? { fetchpriority: 'high' } : {})}
+    {...(width ? { width } : {})}
+    {...(height ? { height } : {})}
+  />
+)}

@@ -12,8 +12,6 @@ const allSchemas = Array.isArray(data)
   : [data, ...additionalSchemas];
 ---
 
-{
-  allSchemas.map((schema) => (
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
-  ))
-}
+{allSchemas.map((schema) => (
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+))}

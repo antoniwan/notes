@@ -123,11 +123,6 @@ export function generateMetaTags(config: SEOConfig): MetaTags {
   };
 }
 
-export interface HreflangAlternate {
-  hreflang: string;
-  href: string;
-}
-
 // Generate keywords from tags and categories
 export function generateKeywords(tags?: string[], categories?: string[]): string[] {
   const keywords: string[] = [];
@@ -141,41 +136,6 @@ export function generateKeywords(tags?: string[], categories?: string[]): string
 // Generate image alt text
 export function generateImageAlt(title: string): string {
   return `${title} - ${SITE_TITLE}`;
-}
-
-// Generate enhanced sitemap data with priority and change frequency
-export function generateSitemapData(
-  urls: Array<{
-    url: string;
-    lastmod?: Date;
-    changefreq?: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never';
-    priority?: number;
-    type?: 'article' | 'category' | 'tag' | 'page';
-  }>,
-) {
-  return urls.map(({ url, lastmod, changefreq, priority, type }) => ({
-    url,
-    lastmod: lastmod?.toISOString(),
-    changefreq: changefreq || (type === 'article' ? 'monthly' : 'weekly'),
-    priority: priority || (type === 'article' ? 0.8 : 0.6),
-  }));
-}
-
-// Generate robots.txt content with enhanced directives
-export function generateRobotsTxt(sitemapUrl: string, additionalRules?: string[]) {
-  const baseRules = [
-    'User-agent: *',
-    'Allow: /',
-    // Utility pages (/test-theme, /tag-management) use meta noindex instead of Disallow
-    // so crawlers can see and honor the robots directive.
-    'Disallow: /temp/',
-    'Disallow: /dev/',
-    'Allow: /rss.xml',
-    'Allow: /feed.json',
-    `Sitemap: ${sitemapUrl}`,
-  ];
-
-  return [...baseRules, ...(additionalRules || [])].join('\n');
 }
 
 export const META_DESCRIPTION_MAX_LENGTH = 160;
@@ -219,5 +179,4 @@ export function generateOptimizedDescription(
 }
 
 // Constants for consistent usage
-export const DEFAULT_ROBOTS = SEO_CONFIG.defaultRobots;
 export const DEFAULT_LOCALE = SEO_CONFIG.defaultLocale;

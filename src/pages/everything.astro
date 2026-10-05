@@ -23,58 +23,56 @@ const archive = years.map((year) => ({
   mode="chrome"
 >
   <div class="archive-page">
-    {
-      sortedPosts.length > 0 ? (
-        <>
-          <div class="archive-directory">
-            <nav class="archive-years" aria-label="Jump to a year">
-              <span class="archive-years__label">Jump to a year</span>
-              <ul role="list">
-                {years.map((year) => (
-                  <li>
-                    <a href={`#year-${year}`}>{year}</a>
+    {sortedPosts.length > 0 ? (
+      <>
+        <div class="archive-directory">
+          <nav class="archive-years" aria-label="Jump to a year">
+            <span class="archive-years__label">Jump to a year</span>
+            <ul role="list">
+              {years.map((year) => (
+                <li>
+                  <a href={`#year-${year}`}>{year}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <p class="archive-total">{sortedPosts.length} writings</p>
+        </div>
+
+        <div class="archive-sections">
+          {archive.map(({ year, posts: yearPosts }, yearIndex) => (
+            <section class="archive-year" aria-labelledby={`year-${year}`}>
+              <header class="archive-year__heading">
+                <h2 id={`year-${year}`} tabindex="-1">
+                  {year}
+                </h2>
+                <p>
+                  {yearPosts.length} {yearPosts.length === 1 ? 'writing' : 'writings'}
+                </p>
+              </header>
+              <ul class="archive-list" role="list">
+                {yearPosts.map((post, index) => (
+                  <li class="archive-entry">
+                    <PostCard
+                      post={post}
+                      featured={post.data.featured}
+                      headingAs="h3"
+                      idPrefix="archive"
+                      imageLoading={yearIndex === 0 && index === 0 ? 'eager' : 'lazy'}
+                    />
                   </li>
                 ))}
               </ul>
-            </nav>
-            <p class="archive-total">{sortedPosts.length} writings</p>
-          </div>
-
-          <div class="archive-sections">
-            {archive.map(({ year, posts: yearPosts }, yearIndex) => (
-              <section class="archive-year" aria-labelledby={`year-${year}`}>
-                <header class="archive-year__heading">
-                  <h2 id={`year-${year}`} tabindex="-1">
-                    {year}
-                  </h2>
-                  <p>
-                    {yearPosts.length} {yearPosts.length === 1 ? 'writing' : 'writings'}
-                  </p>
-                </header>
-                <ul class="archive-list" role="list">
-                  {yearPosts.map((post, index) => (
-                    <li class="archive-entry">
-                      <PostCard
-                        post={post}
-                        featured={post.data.featured}
-                        headingAs="h3"
-                        idPrefix="archive"
-                        imageLoading={yearIndex === 0 && index === 0 ? 'eager' : 'lazy'}
-                      />
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            ))}
-          </div>
-        </>
-      ) : (
-        <div class="archive-empty">
-          <h2>No writings yet</h2>
-          <p>Writings will appear here once they're published.</p>
+            </section>
+          ))}
         </div>
-      )
-    }
+      </>
+    ) : (
+      <div class="archive-empty">
+        <h2>No writings yet</h2>
+        <p>Writings will appear here once they're published.</p>
+      </div>
+    )}
   </div>
 </PageLayout>
 

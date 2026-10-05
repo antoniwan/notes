@@ -25,9 +25,6 @@ export function isMainNavItemActive(href: string, pathname: string): boolean {
   return isNavDropdownItemActive(h, p);
 }
 
-export const dropdownActiveClasses =
-  'bg-[rgb(var(--color-accent))]/10 text-[rgb(var(--color-accent))] font-medium';
-
 /** Destination matching is shared with mobile navigation, including its site tools. */
 export function isNavDropdownItemActive(itemHref: string, pathname: string): boolean {
   const p = normalizePathname(pathname);

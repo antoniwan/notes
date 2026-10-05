@@ -20,7 +20,8 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
           stroke-linecap="round"
           stroke-linejoin="round"
           stroke-width="2"
-          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+        ></path>
       </svg>
     </div>
 
@@ -47,15 +48,21 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
           stroke-linecap="round"
           stroke-linejoin="round"
           stroke-width="2"
-          d="M6 18L18 6M6 6l12 12"></path>
+          d="M6 18L18 6M6 6l12 12"
+        ></path>
       </svg>
     </button>
   </div>
 
   <!-- Polite status for assistive technology. Lives outside the dropdown so it is
        announced even while the results region is hidden. -->
-  <p id={`${searchId}-status`} class="sr-only" role="status" aria-live="polite" aria-atomic="true">
-  </p>
+  <p
+    id={`${searchId}-status`}
+    class="sr-only"
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+  ></p>
 
   <!-- Search Results Dropdown -->
   <div
@@ -70,7 +77,13 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
       <div class="flex flex-col items-center space-y-3">
         <div class="relative">
           <svg class="h-8 w-8 animate-spin" fill="none" viewBox="0 0 24 24">
-            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"
+            <circle
+              class="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              stroke-width="4"
             ></circle>
             <path
               class="opacity-75"

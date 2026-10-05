@@ -51,7 +51,7 @@ English is the listing language. Spanish is a twin: language toggle, title searc
 
 | Tool    | Version          | Source of truth                            |
 | ------- | ---------------- | ------------------------------------------ |
-| Node.js | 22.12.0 (`22.x`) | `.nvmrc`, `engines.node` in `package.json` |
+| Node.js | 22.23.3 (`22.x`) | `.nvmrc`, `engines.node` in `package.json` |
 | pnpm    | 12.3.4           | `packageManager` in `package.json`         |
 
 CI reads both from those files — `actions/setup-node` uses `node-version-file: .nvmrc`
@@ -72,9 +72,14 @@ Locally, `corepack enable` makes `pnpm` in this directory resolve to the pinned
 version. Without corepack, install pnpm 12 yourself; older majors may not
 understand every key in `pnpm-workspace.yaml`.
 
-`pnpm-workspace.yaml` also carries dependency `overrides` (tar, minimatch,
-fast-xml-parser, ajv, rollup, devalue). They are deliberate pins, not leftovers —
-review them against a fresh advisory check before changing or removing any.
+`pnpm-workspace.yaml` carries one dependency override, scoped to the single
+parent that needs it: `@vercel/routing-utils` pins a `path-to-regexp` with an
+open advisory. Keep it that narrow. An exact, unscoped override keeps holding a
+package at that version after its own security fixes ship, which is how this
+file once pinned three vulnerable versions. If an advisory needs an override,
+scope it to the parent, give it a range (`^`) rather than an exact version, say
+why in a comment, and remove it once the parent resolves a patched release
+unaided — `pnpm audit` is the check.
 
 ## Quick start
 

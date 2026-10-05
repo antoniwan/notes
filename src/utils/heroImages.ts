@@ -34,11 +34,6 @@ export function resolveHeroImage(heroImage: string | undefined | null): ImageMet
   return heroModules[toAssetKey(heroImage)]?.default ?? null;
 }
 
-/** True when this path has a moved, optimizable counterpart. */
-export function hasOptimizedHero(heroImage: string | undefined | null): boolean {
-  return resolveHeroImage(heroImage) !== null;
-}
-
 /**
  * Widths generated for hero art, and the quality they are encoded at.
  *

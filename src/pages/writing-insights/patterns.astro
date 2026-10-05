@@ -473,20 +473,20 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
 
 <BaseLayout
   title="Correlations - Writing Insights"
-  description={pageInfo?.description ||
-    'Word count vs lexicon hits, weekday vs Flesch, month vs word count.'}
+  description={
+    pageInfo?.description || 'Word count vs lexicon hits, weekday vs Flesch, month vs word count.'
+  }
   path="/writing-insights/patterns"
   structuredDataType="website"
 >
   <BrainScienceLayout
     currentPage="/writing-insights/patterns"
     title={pageInfo?.title || 'Correlations'}
-    description={pageInfo?.description ||
-      'Word count vs lexicon hits, weekday vs Flesch, month vs word count.'}
+    description={
+      pageInfo?.description || 'Word count vs lexicon hits, weekday vs Flesch, month vs word count.'
+    }
   >
-    <div
-      class="mb-8 flex flex-wrap gap-x-10 gap-y-5 border-b border-[rgb(var(--color-border))]/50 pb-6 md:mb-10 md:gap-x-12 md:pb-8"
-    >
+    <div class="mb-8 flex flex-wrap gap-x-10 gap-y-5 border-b border-[rgb(var(--color-border))]/50 pb-6 md:mb-10 md:gap-x-12 md:pb-8">
       <div>
         <div class="text-2xl font-semibold tabular-nums md:text-3xl">
           {patterns.dayOfWeekPatterns.length}
@@ -523,156 +523,151 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
           <a
             href="#corr-scatter"
             class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4"
-            >Scatter</a
           >
+            Scatter
+          </a>
         </li>
         <li class="m-0 p-0">
           <a
             href="#dow"
             class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4"
-            >Weekday bars</a
           >
+            Weekday bars
+          </a>
         </li>
         <li class="m-0 p-0">
           <a
             href="#season"
             class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4"
-            >Seasonal bars</a
           >
+            Seasonal bars
+          </a>
         </li>
         <li class="m-0 p-0">
           <a
             href="#cycle"
             class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4"
-            >Cycle phases</a
           >
+            Cycle phases
+          </a>
         </li>
         <li class="m-0 p-0">
           <a
             href="#peaks"
             class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4"
-            >Peak stats</a
           >
+            Peak stats
+          </a>
         </li>
       </ul>
     </nav>
 
     {/* Correlation Analysis */}
-    {
-      wordCountEmotionalScatter.datasets[0].data.length > 0 && (
-        <section id="corr-scatter" class="mb-10 scroll-mt-28 md:mb-12">
-          <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
-            Word length vs raw hit count (r = {Math.round(wordEmotionalCorr * 100) / 100})
-          </h2>
-          <p class="text-body-muted mb-6 max-w-3xl text-sm">
-            Same scatter as{' '}
-            <a
-              href="/writing-insights/insights"
-              class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4"
-            >
-              Affect lexicon
-            </a>
-            . Each point is one post. Raw r = {Math.round(wordEmotionalCorr * 100) / 100}; r after
-            dividing by length = {Math.round(wordDensityCorr * 100) / 100}.
-          </p>
-          <ScatterChart
-            id="word-emotional-correlation"
-            datasets={wordCountEmotionalScatter.datasets}
-            title="Word Count vs Emotional Intensity"
-            xAxisLabel="Word Count"
-            yAxisLabel="Emotional Intensity"
-            showRegressionLine={true}
-          />
-        </section>
-      )
-    }
+    {wordCountEmotionalScatter.datasets[0].data.length > 0 && (
+      <section id="corr-scatter" class="mb-10 scroll-mt-28 md:mb-12">
+        <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
+          Word length vs raw hit count (r = {Math.round(wordEmotionalCorr * 100) / 100})
+        </h2>
+        <p class="text-body-muted mb-6 max-w-3xl text-sm">
+          Same scatter as{' '}
+          <a
+            href="/writing-insights/insights"
+            class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4"
+          >
+            Affect lexicon
+          </a>
+          . Each point is one post. Raw r = {Math.round(wordEmotionalCorr * 100) / 100}; r after
+          dividing by length = {Math.round(wordDensityCorr * 100) / 100}.
+        </p>
+        <ScatterChart
+          id="word-emotional-correlation"
+          datasets={wordCountEmotionalScatter.datasets}
+          title="Word Count vs Emotional Intensity"
+          xAxisLabel="Word Count"
+          yAxisLabel="Emotional Intensity"
+          showRegressionLine={true}
+        />
+      </section>
+    )}
 
     {/* Complexity vs Day of Week */}
-    {
-      complexityDayScatter.datasets[0].data.length > 0 && (
-        <div class="mb-8 md:mb-10 lg:mb-12">
-          <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
-            Complexity vs Day of Week
-          </h2>
-          <p class="text-body-muted mb-6 max-w-3xl text-sm">
-            Flesch score of each post, plotted by weekday of{' '}
-            <code class="font-mono text-xs">pubDate</code>. Higher Flesch = shorter words and
-            sentences on the formula.
-          </p>
-          <ScatterChart
-            id="complexity-day-scatter"
-            datasets={complexityDayScatter.datasets}
-            title="Complexity Score by Day of Week"
-            xAxisLabel="Day of Week (0=Sunday, 6=Saturday)"
-            yAxisLabel="Flesch Score"
-          />
-        </div>
-      )
-    }
+    {complexityDayScatter.datasets[0].data.length > 0 && (
+      <div class="mb-8 md:mb-10 lg:mb-12">
+        <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
+          Complexity vs Day of Week
+        </h2>
+        <p class="text-body-muted mb-6 max-w-3xl text-sm">
+          Flesch score of each post, plotted by weekday of{' '}
+          <code class="font-mono text-xs">pubDate</code>. Higher Flesch = shorter words and
+          sentences on the formula.
+        </p>
+        <ScatterChart
+          id="complexity-day-scatter"
+          datasets={complexityDayScatter.datasets}
+          title="Complexity Score by Day of Week"
+          xAxisLabel="Day of Week (0=Sunday, 6=Saturday)"
+          yAxisLabel="Flesch Score"
+        />
+      </div>
+    )}
 
     {/* Day of Week Patterns */}
-    {
-      dayOfWeekBarChart.labels.length > 0 && (
-        <section id="dow" class="mb-10 scroll-mt-28 md:mb-12">
-          <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
-            Weekday aggregates
-          </h2>
-          <p class="text-body-muted mb-6 max-w-3xl text-sm">
-            Productivity = mean word count × number of posts published that weekday.
-          </p>
-          <BarChart
-            id="day-of-week-patterns"
-            labels={dayOfWeekBarChart.labels}
-            datasets={dayOfWeekBarChart.datasets}
-            title="Day of Week Patterns"
-            yAxisLabel="Score / Count"
-          />
-        </section>
-      )
-    }
+    {dayOfWeekBarChart.labels.length > 0 && (
+      <section id="dow" class="mb-10 scroll-mt-28 md:mb-12">
+        <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
+          Weekday aggregates
+        </h2>
+        <p class="text-body-muted mb-6 max-w-3xl text-sm">
+          Productivity = mean word count × number of posts published that weekday.
+        </p>
+        <BarChart
+          id="day-of-week-patterns"
+          labels={dayOfWeekBarChart.labels}
+          datasets={dayOfWeekBarChart.datasets}
+          title="Day of Week Patterns"
+          yAxisLabel="Score / Count"
+        />
+      </section>
+    )}
 
     {/* Seasonal Patterns */}
-    {
-      seasonalBarChart.labels.length > 0 && (
-        <section id="season" class="mb-10 scroll-mt-28 md:mb-12">
-          <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
-            Monthly aggregates
-          </h2>
-          <p class="text-body-muted mb-6 max-w-3xl text-sm">
-            Creativity = mean word count × mean Flesch for posts in that calendar month.
-          </p>
-          <BarChart
-            id="seasonal-patterns"
-            labels={seasonalBarChart.labels}
-            datasets={seasonalBarChart.datasets}
-            title="Seasonal Patterns"
-            yAxisLabel="Score"
-          />
-        </section>
-      )
-    }
+    {seasonalBarChart.labels.length > 0 && (
+      <section id="season" class="mb-10 scroll-mt-28 md:mb-12">
+        <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
+          Monthly aggregates
+        </h2>
+        <p class="text-body-muted mb-6 max-w-3xl text-sm">
+          Creativity = mean word count × mean Flesch for posts in that calendar month.
+        </p>
+        <BarChart
+          id="seasonal-patterns"
+          labels={seasonalBarChart.labels}
+          datasets={seasonalBarChart.datasets}
+          title="Seasonal Patterns"
+          yAxisLabel="Score"
+        />
+      </section>
+    )}
 
     {/* Creative Cycle Phases */}
-    {
-      creativeCycleChart.labels.length > 0 && (
-        <section id="cycle" class="mb-10 scroll-mt-28 md:mb-12">
-          <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
-            Four groups by publish order
-          </h2>
-          <p class="text-body-muted mb-6 max-w-3xl text-sm">
-            Posts numbered 0, 1, 2, 3, 0, 1… in publish order. The four labels are those remainder
-            groups (<code class="font-mono text-xs">postIndex % 4</code>).
-          </p>
-          <BarChart
-            id="creative-cycle-phases"
-            labels={creativeCycleChart.labels}
-            datasets={creativeCycleChart.datasets}
-            title="Creative Cycle Phases"
-            yAxisLabel="Score / Count"
-          />
-        </section>
-      )
-    }
+    {creativeCycleChart.labels.length > 0 && (
+      <section id="cycle" class="mb-10 scroll-mt-28 md:mb-12">
+        <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
+          Four groups by publish order
+        </h2>
+        <p class="text-body-muted mb-6 max-w-3xl text-sm">
+          Posts numbered 0, 1, 2, 3, 0, 1… in publish order. The four labels are those remainder
+          groups (<code class="font-mono text-xs">postIndex % 4</code>).
+        </p>
+        <BarChart
+          id="creative-cycle-phases"
+          labels={creativeCycleChart.labels}
+          datasets={creativeCycleChart.datasets}
+          title="Creative Cycle Phases"
+          yAxisLabel="Score / Count"
+        />
+      </section>
+    )}
 
     <section id="peaks" class="mb-12 scroll-mt-28">
       <h2 class="mb-2 text-lg font-semibold text-[rgb(var(--color-text))] md:text-xl">
@@ -683,47 +678,35 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
         score, and the remainder-group with the highest mean word count.
       </p>
       <div class="overflow-x-auto">
-        <table
-          class="w-full max-w-2xl border-collapse border-t border-b border-[rgb(var(--color-border))] text-sm tabular-nums"
-        >
+        <table class="w-full max-w-2xl border-collapse border-t border-b border-[rgb(var(--color-border))] text-sm tabular-nums">
           <tbody>
             <tr class="border-b border-[rgb(var(--color-border))]/35">
               <td class="text-body-muted py-2 pr-6">Peak weekday composite</td>
               <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]">
-                {
-                  patterns.dayOfWeekPatterns.sort((a, b) => b.productivity - a.productivity)[0]
-                    ?.productivity || 0
-                }
+                {patterns.dayOfWeekPatterns.sort((a, b) => b.productivity - a.productivity)[0]
+                  ?.productivity || 0}
               </td>
               <td class="text-body-muted py-2 pl-4">
-                {
-                  patterns.dayOfWeekPatterns.sort((a, b) => b.productivity - a.productivity)[0]
-                    ?.name || '—'
-                }
+                {patterns.dayOfWeekPatterns.sort((a, b) => b.productivity - a.productivity)[0]
+                  ?.name || '—'}
               </td>
             </tr>
             <tr class="border-b border-[rgb(var(--color-border))]/35">
               <td class="text-body-muted py-2 pr-6">Peak month composite</td>
               <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]">
-                {
-                  patterns.seasonalPatterns.sort((a, b) => b.creativity - a.creativity)[0]
-                    ?.creativity || 0
-                }
+                {patterns.seasonalPatterns.sort((a, b) => b.creativity - a.creativity)[0]
+                  ?.creativity || 0}
               </td>
               <td class="text-body-muted py-2 pl-4">
-                {
-                  patterns.seasonalPatterns.sort((a, b) => b.creativity - a.creativity)[0]?.name ||
-                    '—'
-                }
+                {patterns.seasonalPatterns.sort((a, b) => b.creativity - a.creativity)[0]?.name ||
+                  '—'}
               </td>
             </tr>
             <tr>
               <td class="text-body-muted py-2 pr-6">Peak cycle avg words</td>
               <td class="py-2 text-right font-medium text-[rgb(var(--color-text))]">
-                {
-                  cycleAnalysis.sort((a, b) => b.avgWordCount - a.avgWordCount)[0]?.avgWordCount ||
-                    0
-                }
+                {cycleAnalysis.sort((a, b) => b.avgWordCount - a.avgWordCount)[0]?.avgWordCount ||
+                  0}
               </td>
               <td class="text-body-muted py-2 pl-4">
                 {cycleAnalysis.sort((a, b) => b.avgWordCount - a.avgWordCount)[0]?.phase || '—'}
@@ -744,22 +727,20 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
         label on this page, not a p-value.
       </p>
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-        {
-          patternInsights.map((insight, index) => (
-            <div class="rounded-lg border border-[rgb(var(--color-border))]/50 p-4">
-              <div class="mb-3 flex items-center gap-3">
-                <div class="text-body-muted font-mono text-xs tabular-nums">{index + 1}.</div>
-                <span class="text-body-muted rounded-sm bg-[rgb(var(--color-bg-alt))] px-2 py-1 text-xs">
-                  {insight.confidence} confidence
-                </span>
-              </div>
-              <div class="mb-2 text-sm font-medium text-[rgb(var(--color-text))]">
-                {insight.pattern}: {insight.insight}
-              </div>
-              <div class="text-body-muted text-xs">{insight.evidence}</div>
+        {patternInsights.map((insight, index) => (
+          <div class="rounded-lg border border-[rgb(var(--color-border))]/50 p-4">
+            <div class="mb-3 flex items-center gap-3">
+              <div class="text-body-muted font-mono text-xs tabular-nums">{index + 1}.</div>
+              <span class="text-body-muted rounded-sm bg-[rgb(var(--color-bg-alt))] px-2 py-1 text-xs">
+                {insight.confidence} confidence
+              </span>
             </div>
-          ))
-        }
+            <div class="mb-2 text-sm font-medium text-[rgb(var(--color-text))]">
+              {insight.pattern}: {insight.insight}
+            </div>
+            <div class="text-body-muted text-xs">{insight.evidence}</div>
+          </div>
+        ))}
       </div>
     </div>
 
@@ -773,75 +754,73 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
         score D or F. An A is 93% or more of this archive’s maximum. Hover a letter for the numbers.
       </p>
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {
-          patterns.dayOfWeekPatterns.map((day) => (
-            <div class="rounded-lg bg-[rgb(var(--color-bg))] p-4">
-              <div class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]">{day.name}</div>
-              <div class="space-y-3">
-                <div class="flex justify-between">
-                  <span class="text-body-muted text-sm">Posts:</span>
+        {patterns.dayOfWeekPatterns.map((day) => (
+          <div class="rounded-lg bg-[rgb(var(--color-bg))] p-4">
+            <div class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]">{day.name}</div>
+            <div class="space-y-3">
+              <div class="flex justify-between">
+                <span class="text-body-muted text-sm">Posts:</span>
+                <span
+                  class="text-sm font-medium text-[rgb(var(--color-text))]"
+                  title={`${day.postCount} posts published on ${day.name}`}
+                >
+                  {day.postCount}
+                </span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-body-muted text-sm">Avg Words:</span>
+                <div class="flex items-center gap-2">
                   <span
                     class="text-sm font-medium text-[rgb(var(--color-text))]"
-                    title={`${day.postCount} posts published on ${day.name}`}
+                    title={`Average word count per post on ${day.name}`}
                   >
-                    {day.postCount}
+                    {day.avgWordCount}
+                  </span>
+                  <span
+                    class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(day.wordCountGrade!)}`}
+                    title={relativeGradeTitle(day.avgWordCount, maxWordCount, 'words')}
+                  >
+                    {day.wordCountGrade}
                   </span>
                 </div>
-                <div class="flex justify-between">
-                  <span class="text-body-muted text-sm">Avg Words:</span>
-                  <div class="flex items-center gap-2">
-                    <span
-                      class="text-sm font-medium text-[rgb(var(--color-text))]"
-                      title={`Average word count per post on ${day.name}`}
-                    >
-                      {day.avgWordCount}
-                    </span>
-                    <span
-                      class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(day.wordCountGrade!)}`}
-                      title={relativeGradeTitle(day.avgWordCount, maxWordCount, 'words')}
-                    >
-                      {day.wordCountGrade}
-                    </span>
-                  </div>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-body-muted text-sm">Emotional Intensity:</span>
+                <div class="flex items-center gap-2">
+                  <span
+                    class="text-sm font-medium text-[rgb(var(--color-text))]"
+                    title={`Average emotional intensity score on ${day.name}`}
+                  >
+                    {day.avgEmotionalIntensity}
+                  </span>
+                  <span
+                    class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(day.emotionalGrade!)}`}
+                    title={relativeGradeTitle(day.avgEmotionalIntensity, maxEmotionalIntensity)}
+                  >
+                    {day.emotionalGrade}
+                  </span>
                 </div>
-                <div class="flex justify-between">
-                  <span class="text-body-muted text-sm">Emotional Intensity:</span>
-                  <div class="flex items-center gap-2">
-                    <span
-                      class="text-sm font-medium text-[rgb(var(--color-text))]"
-                      title={`Average emotional intensity score on ${day.name}`}
-                    >
-                      {day.avgEmotionalIntensity}
-                    </span>
-                    <span
-                      class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(day.emotionalGrade!)}`}
-                      title={relativeGradeTitle(day.avgEmotionalIntensity, maxEmotionalIntensity)}
-                    >
-                      {day.emotionalGrade}
-                    </span>
-                  </div>
-                </div>
-                <div class="flex justify-between">
-                  <span class="text-body-muted text-sm">Productivity:</span>
-                  <div class="flex items-center gap-2">
-                    <span
-                      class={`text-sm font-medium ${getGradeColor(day.productivityGrade!)}`}
-                      title={`Productivity score: ${day.productivity} (avg words × post count)`}
-                    >
-                      {day.productivity}
-                    </span>
-                    <span
-                      class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(day.productivityGrade!)}`}
-                      title={relativeGradeTitle(day.productivity, maxProductivity)}
-                    >
-                      {day.productivityGrade}
-                    </span>
-                  </div>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-body-muted text-sm">Productivity:</span>
+                <div class="flex items-center gap-2">
+                  <span
+                    class={`text-sm font-medium ${getGradeColor(day.productivityGrade!)}`}
+                    title={`Productivity score: ${day.productivity} (avg words × post count)`}
+                  >
+                    {day.productivity}
+                  </span>
+                  <span
+                    class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(day.productivityGrade!)}`}
+                    title={relativeGradeTitle(day.productivity, maxProductivity)}
+                  >
+                    {day.productivityGrade}
+                  </span>
                 </div>
               </div>
             </div>
-          ))
-        }
+          </div>
+        ))}
       </div>
     </div>
 
@@ -854,77 +833,73 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
         Same letter scale as the weekday table, for calendar months.
       </p>
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {
-          patterns.seasonalPatterns.map((month) => (
-            <div class="rounded-lg bg-[rgb(var(--color-bg))] p-4">
-              <div class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]">
-                {month.name}
+        {patterns.seasonalPatterns.map((month) => (
+          <div class="rounded-lg bg-[rgb(var(--color-bg))] p-4">
+            <div class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]">{month.name}</div>
+            <div class="space-y-3">
+              <div class="flex justify-between">
+                <span class="text-body-muted text-sm">Posts:</span>
+                <span
+                  class="text-sm font-medium text-[rgb(var(--color-text))]"
+                  title={`${month.postCount} posts published in ${month.name}`}
+                >
+                  {month.postCount}
+                </span>
               </div>
-              <div class="space-y-3">
-                <div class="flex justify-between">
-                  <span class="text-body-muted text-sm">Posts:</span>
+              <div class="flex justify-between">
+                <span class="text-body-muted text-sm">Avg Words:</span>
+                <div class="flex items-center gap-2">
                   <span
                     class="text-sm font-medium text-[rgb(var(--color-text))]"
-                    title={`${month.postCount} posts published in ${month.name}`}
+                    title={`Average word count per post in ${month.name}`}
                   >
-                    {month.postCount}
+                    {month.avgWordCount}
+                  </span>
+                  <span
+                    class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(month.wordCountGrade!)}`}
+                    title={relativeGradeTitle(month.avgWordCount, maxWordCount, 'words')}
+                  >
+                    {month.wordCountGrade}
                   </span>
                 </div>
-                <div class="flex justify-between">
-                  <span class="text-body-muted text-sm">Avg Words:</span>
-                  <div class="flex items-center gap-2">
-                    <span
-                      class="text-sm font-medium text-[rgb(var(--color-text))]"
-                      title={`Average word count per post in ${month.name}`}
-                    >
-                      {month.avgWordCount}
-                    </span>
-                    <span
-                      class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(month.wordCountGrade!)}`}
-                      title={relativeGradeTitle(month.avgWordCount, maxWordCount, 'words')}
-                    >
-                      {month.wordCountGrade}
-                    </span>
-                  </div>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-body-muted text-sm">Complexity:</span>
+                <div class="flex items-center gap-2">
+                  <span
+                    class="text-sm font-medium text-[rgb(var(--color-text))]"
+                    title={`Average Flesch complexity score in ${month.name}`}
+                  >
+                    {month.avgComplexity}
+                  </span>
+                  <span
+                    class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(month.complexityGrade!)}`}
+                    title={relativeGradeTitle(month.avgComplexity, maxComplexity)}
+                  >
+                    {month.complexityGrade}
+                  </span>
                 </div>
-                <div class="flex justify-between">
-                  <span class="text-body-muted text-sm">Complexity:</span>
-                  <div class="flex items-center gap-2">
-                    <span
-                      class="text-sm font-medium text-[rgb(var(--color-text))]"
-                      title={`Average Flesch complexity score in ${month.name}`}
-                    >
-                      {month.avgComplexity}
-                    </span>
-                    <span
-                      class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(month.complexityGrade!)}`}
-                      title={relativeGradeTitle(month.avgComplexity, maxComplexity)}
-                    >
-                      {month.complexityGrade}
-                    </span>
-                  </div>
-                </div>
-                <div class="flex justify-between">
-                  <span class="text-body-muted text-sm">Creativity:</span>
-                  <div class="flex items-center gap-2">
-                    <span
-                      class={`text-sm font-medium ${getGradeColor(month.creativityGrade!)}`}
-                      title={`Creativity score: ${month.creativity} (avg words × complexity)`}
-                    >
-                      {month.creativity}
-                    </span>
-                    <span
-                      class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(month.creativityGrade!)}`}
-                      title={relativeGradeTitle(month.creativity, maxCreativity)}
-                    >
-                      {month.creativityGrade}
-                    </span>
-                  </div>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-body-muted text-sm">Creativity:</span>
+                <div class="flex items-center gap-2">
+                  <span
+                    class={`text-sm font-medium ${getGradeColor(month.creativityGrade!)}`}
+                    title={`Creativity score: ${month.creativity} (avg words × complexity)`}
+                  >
+                    {month.creativity}
+                  </span>
+                  <span
+                    class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(month.creativityGrade!)}`}
+                    title={relativeGradeTitle(month.creativity, maxCreativity)}
+                  >
+                    {month.creativityGrade}
+                  </span>
                 </div>
               </div>
             </div>
-          ))
-        }
+          </div>
+        ))}
       </div>
     </div>
 
@@ -937,77 +912,75 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
         Same letter scale for the <code class="font-mono text-[0.65rem]">index % 4</code> groups.
       </p>
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-        {
-          cycleAnalysis.map((cycle) => (
-            <div class="rounded-lg bg-[rgb(var(--color-bg))] p-4">
-              <div class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]">
-                {cycle.phase}
+        {cycleAnalysis.map((cycle) => (
+          <div class="rounded-lg bg-[rgb(var(--color-bg))] p-4">
+            <div class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))]">
+              {cycle.phase}
+            </div>
+            <div class="space-y-3">
+              <div class="flex justify-between">
+                <span class="text-body-muted text-sm">Posts:</span>
+                <span
+                  class="text-sm font-medium text-[rgb(var(--color-text))]"
+                  title={`${cycle.postCount} posts in ${cycle.phase} phase`}
+                >
+                  {cycle.postCount}
+                </span>
               </div>
-              <div class="space-y-3">
-                <div class="flex justify-between">
-                  <span class="text-body-muted text-sm">Posts:</span>
+              <div class="flex justify-between">
+                <span class="text-body-muted text-sm">Avg Words:</span>
+                <div class="flex items-center gap-2">
                   <span
                     class="text-sm font-medium text-[rgb(var(--color-text))]"
-                    title={`${cycle.postCount} posts in ${cycle.phase} phase`}
+                    title={`Average word count per post in ${cycle.phase} phase`}
                   >
-                    {cycle.postCount}
+                    {cycle.avgWordCount}
+                  </span>
+                  <span
+                    class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(cycle.wordCountGrade!)}`}
+                    title={relativeGradeTitle(cycle.avgWordCount, maxWordCount, 'words')}
+                  >
+                    {cycle.wordCountGrade}
                   </span>
                 </div>
-                <div class="flex justify-between">
-                  <span class="text-body-muted text-sm">Avg Words:</span>
-                  <div class="flex items-center gap-2">
-                    <span
-                      class="text-sm font-medium text-[rgb(var(--color-text))]"
-                      title={`Average word count per post in ${cycle.phase} phase`}
-                    >
-                      {cycle.avgWordCount}
-                    </span>
-                    <span
-                      class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(cycle.wordCountGrade!)}`}
-                      title={relativeGradeTitle(cycle.avgWordCount, maxWordCount, 'words')}
-                    >
-                      {cycle.wordCountGrade}
-                    </span>
-                  </div>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-body-muted text-sm">Emotional Intensity:</span>
+                <div class="flex items-center gap-2">
+                  <span
+                    class="text-sm font-medium text-[rgb(var(--color-text))]"
+                    title={`Average emotional intensity in ${cycle.phase} phase`}
+                  >
+                    {cycle.avgEmotionalIntensity}
+                  </span>
+                  <span
+                    class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(cycle.emotionalGrade!)}`}
+                    title={relativeGradeTitle(cycle.avgEmotionalIntensity, maxEmotionalIntensity)}
+                  >
+                    {cycle.emotionalGrade}
+                  </span>
                 </div>
-                <div class="flex justify-between">
-                  <span class="text-body-muted text-sm">Emotional Intensity:</span>
-                  <div class="flex items-center gap-2">
-                    <span
-                      class="text-sm font-medium text-[rgb(var(--color-text))]"
-                      title={`Average emotional intensity in ${cycle.phase} phase`}
-                    >
-                      {cycle.avgEmotionalIntensity}
-                    </span>
-                    <span
-                      class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(cycle.emotionalGrade!)}`}
-                      title={relativeGradeTitle(cycle.avgEmotionalIntensity, maxEmotionalIntensity)}
-                    >
-                      {cycle.emotionalGrade}
-                    </span>
-                  </div>
-                </div>
-                <div class="flex justify-between">
-                  <span class="text-body-muted text-sm">Complexity:</span>
-                  <div class="flex items-center gap-2">
-                    <span
-                      class="text-sm font-medium text-[rgb(var(--color-text))]"
-                      title={`Average Flesch complexity score in ${cycle.phase} phase`}
-                    >
-                      {cycle.avgComplexity}
-                    </span>
-                    <span
-                      class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(cycle.complexityGrade!)}`}
-                      title={relativeGradeTitle(cycle.avgComplexity, maxComplexity)}
-                    >
-                      {cycle.complexityGrade}
-                    </span>
-                  </div>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-body-muted text-sm">Complexity:</span>
+                <div class="flex items-center gap-2">
+                  <span
+                    class="text-sm font-medium text-[rgb(var(--color-text))]"
+                    title={`Average Flesch complexity score in ${cycle.phase} phase`}
+                  >
+                    {cycle.avgComplexity}
+                  </span>
+                  <span
+                    class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(cycle.complexityGrade!)}`}
+                    title={relativeGradeTitle(cycle.avgComplexity, maxComplexity)}
+                  >
+                    {cycle.complexityGrade}
+                  </span>
                 </div>
               </div>
             </div>
-          ))
-        }
+          </div>
+        ))}
       </div>
     </div>
 
@@ -1020,43 +993,41 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
         Posts that have both tags, and the mean word count of those posts.
       </p>
       <div class="space-y-4">
-        {
-          correlations.tagCombinations.map(([combo, data], index) => {
-            const wordCountGrade = relativeLetterGrade(data.avgWordCount, maxWordCount);
-            return (
-              <div class="flex items-center justify-between gap-4 border-t border-[rgb(var(--color-border))]/40 py-3">
-                <div class="flex min-w-0 items-baseline gap-3">
-                  <div class="text-body-muted w-6 shrink-0 font-mono text-xs tabular-nums">
-                    {index + 1}.
-                  </div>
-                  <div class="min-w-0">
-                    <div class="text-sm font-medium text-[rgb(var(--color-text))]">{combo}</div>
-                    <div class="text-body-muted text-xs">
-                      {data.count} posts with this combination
-                    </div>
-                  </div>
+        {correlations.tagCombinations.map(([combo, data], index) => {
+          const wordCountGrade = relativeLetterGrade(data.avgWordCount, maxWordCount);
+          return (
+            <div class="flex items-center justify-between gap-4 border-t border-[rgb(var(--color-border))]/40 py-3">
+              <div class="flex min-w-0 items-baseline gap-3">
+                <div class="text-body-muted w-6 shrink-0 font-mono text-xs tabular-nums">
+                  {index + 1}.
                 </div>
-                <div class="text-right">
-                  <div class="flex items-center justify-end gap-2">
-                    <span
-                      class={`text-sm font-medium ${getGradeColor(wordCountGrade!)}`}
-                      title={`Average word count when tags "${combo}" are combined`}
-                    >
-                      {data.avgWordCount}
-                    </span>
-                    <span
-                      class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(wordCountGrade!)}`}
-                      title={relativeGradeTitle(data.avgWordCount, maxWordCount, 'words')}
-                    >
-                      {wordCountGrade}
-                    </span>
+                <div class="min-w-0">
+                  <div class="text-sm font-medium text-[rgb(var(--color-text))]">{combo}</div>
+                  <div class="text-body-muted text-xs">
+                    {data.count} posts with this combination
                   </div>
-                  <div class="text-body-muted text-xs">avg words</div>
                 </div>
               </div>
-            );
-          })
-        }
+              <div class="text-right">
+                <div class="flex items-center justify-end gap-2">
+                  <span
+                    class={`text-sm font-medium ${getGradeColor(wordCountGrade!)}`}
+                    title={`Average word count when tags "${combo}" are combined`}
+                  >
+                    {data.avgWordCount}
+                  </span>
+                  <span
+                    class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(wordCountGrade!)}`}
+                    title={relativeGradeTitle(data.avgWordCount, maxWordCount, 'words')}
+                  >
+                    {wordCountGrade}
+                  </span>
+                </div>
+                <div class="text-body-muted text-xs">avg words</div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
 
@@ -1070,45 +1041,41 @@ const pageInfo = BRAIN_SCIENCE_PAGES.find((p) => p.id === 'patterns');
         Flesch &gt; 50.
       </p>
       <div class="space-y-4">
-        {
-          productivePatterns.map((post, index) => {
-            const wordCountGrade = relativeLetterGrade(post.wordCount, maxWordCount);
-            return (
-              <div class="flex items-center justify-between gap-4 border-t border-[rgb(var(--color-border))]/40 py-3">
-                <div class="flex min-w-0 items-baseline gap-3">
-                  <div class="text-body-muted w-6 shrink-0 font-mono text-xs tabular-nums">
-                    {index + 1}.
-                  </div>
-                  <div class="min-w-0">
-                    <div class="text-sm font-medium text-[rgb(var(--color-text))]">
-                      {post.title}
-                    </div>
-                    <div class="text-body-muted text-xs">
-                      {format(post.date, 'MMM d, yyyy')} · {post.pattern}
-                    </div>
-                  </div>
+        {productivePatterns.map((post, index) => {
+          const wordCountGrade = relativeLetterGrade(post.wordCount, maxWordCount);
+          return (
+            <div class="flex items-center justify-between gap-4 border-t border-[rgb(var(--color-border))]/40 py-3">
+              <div class="flex min-w-0 items-baseline gap-3">
+                <div class="text-body-muted w-6 shrink-0 font-mono text-xs tabular-nums">
+                  {index + 1}.
                 </div>
-                <div class="text-right">
-                  <div class="flex items-center justify-end gap-2">
-                    <span
-                      class={`text-sm font-medium ${getGradeColor(wordCountGrade!)}`}
-                      title={`${post.wordCount} words in this post`}
-                    >
-                      {post.wordCount}
-                    </span>
-                    <span
-                      class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(wordCountGrade!)}`}
-                      title={relativeGradeTitle(post.wordCount, maxWordCount, 'words')}
-                    >
-                      {wordCountGrade}
-                    </span>
+                <div class="min-w-0">
+                  <div class="text-sm font-medium text-[rgb(var(--color-text))]">{post.title}</div>
+                  <div class="text-body-muted text-xs">
+                    {format(post.date, 'MMM d, yyyy')} · {post.pattern}
                   </div>
-                  <div class="text-body-muted text-xs">words</div>
                 </div>
               </div>
-            );
-          })
-        }
+              <div class="text-right">
+                <div class="flex items-center justify-end gap-2">
+                  <span
+                    class={`text-sm font-medium ${getGradeColor(wordCountGrade!)}`}
+                    title={`${post.wordCount} words in this post`}
+                  >
+                    {post.wordCount}
+                  </span>
+                  <span
+                    class={`rounded-sm px-1 py-0.5 text-xs font-bold ${getGradeColor(wordCountGrade!)}`}
+                    title={relativeGradeTitle(post.wordCount, maxWordCount, 'words')}
+                  >
+                    {wordCountGrade}
+                  </span>
+                </div>
+                <div class="text-body-muted text-xs">words</div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
 

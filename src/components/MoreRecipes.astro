@@ -17,27 +17,23 @@ const isSpanish = currentPost ? isSpanishPrimary(currentPost.data) : false;
 <section class="more-recipes" aria-labelledby="more-recipes-heading">
   <header class="recipes-heading">
     <h2 id="more-recipes-heading">{isSpanish ? 'Más recetas' : 'More recipes'}</h2>
-    {
-      moreRecipes.length > 0 && (
-        <p>{isSpanish ? 'Otros platos de esta cocina.' : 'Other dishes from this kitchen.'}</p>
-      )
-    }
+    {moreRecipes.length > 0 && (
+      <p>{isSpanish ? 'Otros platos de esta cocina.' : 'Other dishes from this kitchen.'}</p>
+    )}
   </header>
-  {
-    moreRecipes.length > 0 && (
-      <div class="postcards-grid recipes-grid">
-        {moreRecipes.map((post) => (
-          <PostCard
-            post={post}
-            compact
-            headingAs="h3"
-            idPrefix="more-recipes"
-            showFeaturedIndicator={false}
-          />
-        ))}
-      </div>
-    )
-  }
+  {moreRecipes.length > 0 && (
+    <div class="postcards-grid recipes-grid">
+      {moreRecipes.map((post) => (
+        <PostCard
+          post={post}
+          compact
+          headingAs="h3"
+          idPrefix="more-recipes"
+          showFeaturedIndicator={false}
+        />
+      ))}
+    </div>
+  )}
   <a href="/recipes" class="recipes-browse">
     {isSpanish ? 'Explorar el recetario (índice en inglés)' : 'Browse the cookbook'}
   </a>

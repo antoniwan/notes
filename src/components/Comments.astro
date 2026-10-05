@@ -47,7 +47,9 @@ const emailUrl = `mailto:${email}?subject=${encodeURIComponent(copy.subject)}&bo
   <header class="comments-introduction">
     <h2 id="comments-heading">{copy.heading}</h2>
     <p>{copy.invitation}</p>
-    <p>{copy.email} <a href={emailUrl}>{email}</a>.</p>
+    <p>
+      {copy.email} <a href={emailUrl}>{email}</a>.
+    </p>
   </header>
   <div
     id="comments-container"
@@ -62,11 +64,17 @@ const emailUrl = `mailto:${email}?subject=${encodeURIComponent(copy.subject)}&bo
     data-reload={copy.reload}
   >
     <div class="comments-feedback" data-comments-feedback hidden>
-      <p role="status" aria-live="polite" aria-atomic="true" data-comments-status>{copy.idle}</p>
-      <button type="button" data-comments-retry aria-controls="remark42">{copy.load}</button>
+      <p role="status" aria-live="polite" aria-atomic="true" data-comments-status>
+        {copy.idle}
+      </p>
+      <button type="button" data-comments-retry aria-controls="remark42">
+        {copy.load}
+      </button>
     </div>
     <div id="remark42"></div>
-    <noscript><p class="comments-noscript">{copy.noScript}</p></noscript>
+    <noscript>
+      <p class="comments-noscript">{copy.noScript}</p>
+    </noscript>
   </div>
 </section>
 

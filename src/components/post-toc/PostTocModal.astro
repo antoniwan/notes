@@ -14,73 +14,66 @@ const labels =
     : { trigger: 'Contents', title: 'On this page', close: 'Close contents' };
 ---
 
-{
-  hasToc && (
-    <div class="post-toc-container" data-post-toc data-open="false">
-      <button
-        type="button"
-        class="post-toc-trigger"
-        aria-expanded="false"
-        aria-controls="post-toc-modal"
-        data-post-toc-trigger
-      >
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path
-            d="M8 6h12M8 12h12M8 18h12M3 6h.01M3 12h.01M3 18h.01"
-            stroke="currentColor"
-            stroke-width="1.8"
-            stroke-linecap="round"
-          />
-        </svg>
-        {labels.trigger}
-      </button>
+{hasToc && (
+  <div class="post-toc-container" data-post-toc data-open="false">
+    <button
+      type="button"
+      class="post-toc-trigger"
+      aria-expanded="false"
+      aria-controls="post-toc-modal"
+      data-post-toc-trigger
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path
+          d="M8 6h12M8 12h12M8 18h12M3 6h.01M3 12h.01M3 18h.01"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+        />
+      </svg>
+      {labels.trigger}
+    </button>
 
-      <div
-        id="post-toc-modal"
-        class="post-toc-modal"
-        aria-labelledby="post-toc-title"
-        data-post-toc-modal
-      >
-        <div class="post-toc-header">
-          <h2 id="post-toc-title" class="post-toc-title">
-            {labels.title}
-          </h2>
-          <button
-            type="button"
-            class="post-toc-close"
-            aria-label={labels.close}
-            data-post-toc-close
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path
-                d="m6 6 12 12M18 6 6 18"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-              />
-            </svg>
-          </button>
-        </div>
-
-        <nav aria-labelledby="post-toc-title" class="post-toc-nav scrollbar-subtle-y">
-          <ol class="post-toc-list">
-            {tableOfContents.map((item) => (
-              <li
-                class="post-toc-item"
-                data-level={item.level}
-                style={`--toc-indent: ${Math.max(0, item.level - 2)};`}
-              >
-                <a href={`#${item.slug}`} data-post-toc-link={item.slug}>
-                  {item.text}
-                </a>
-              </li>
-            ))}
-          </ol>
-        </nav>
+    <div
+      id="post-toc-modal"
+      class="post-toc-modal"
+      aria-labelledby="post-toc-title"
+      data-post-toc-modal
+    >
+      <div class="post-toc-header">
+        <h2 id="post-toc-title" class="post-toc-title">
+          {labels.title}
+        </h2>
+        <button type="button" class="post-toc-close" aria-label={labels.close} data-post-toc-close>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path
+              d="m6 6 12 12M18 6 6 18"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
       </div>
+
+      <nav aria-labelledby="post-toc-title" class="post-toc-nav scrollbar-subtle-y">
+        <ol class="post-toc-list">
+          {tableOfContents.map((item) => (
+            <li
+              class="post-toc-item"
+              data-level={item.level}
+              style={`--toc-indent: ${Math.max(0, item.level - 2)};`}
+            >
+              <a href={`#${item.slug}`} data-post-toc-link={item.slug}>
+                {item.text}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
     </div>
-  )
-}
+  </div>
+)}
 
 <style>
   .post-toc-trigger[hidden] {

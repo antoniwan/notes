@@ -26,84 +26,80 @@ function starSummary(rating: string | null): { visual: string; a11y: string } | 
     <h2 id="about-watched-heading" class="about-watched__heading">
       Latest things I&apos;ve watched
     </h2>
-    {
-      films.length > 0 ? (
-        <p class="about-watched__lede">
-          Pulled from my{' '}
-          <a href={diaryUrl} target="_blank" rel="noopener noreferrer">
-            Letterboxd diary
-          </a>
-          — same spirit as the <a href="/library/books">book library</a>: I love movies!!!
-        </p>
-      ) : (
-        <p class="about-watched__lede">
-          See my recent watches in my{' '}
-          <a href={diaryUrl} target="_blank" rel="noopener noreferrer">
-            Letterboxd diary
-          </a>
-          , or browse the <a href="/library/books">book library</a>.
-        </p>
-      )
-    }
+    {films.length > 0 ? (
+      <p class="about-watched__lede">
+        Pulled from my{' '}
+        <a href={diaryUrl} target="_blank" rel="noopener noreferrer">
+          Letterboxd diary
+        </a>
+        — same spirit as the <a href="/library/books">book library</a>: I love movies!!!
+      </p>
+    ) : (
+      <p class="about-watched__lede">
+        See my recent watches in my{' '}
+        <a href={diaryUrl} target="_blank" rel="noopener noreferrer">
+          Letterboxd diary
+        </a>
+        , or browse the <a href="/library/books">book library</a>.
+      </p>
+    )}
   </div>
 
-  {
-    films.length > 0 && (
-      <>
-        <ul class="about-watched__gallery">
-          {films.map((film) => {
-            const stars = starSummary(film.memberRating);
-            return (
-              <li class="about-watched__item">
-                <a
-                  href={film.href}
-                  class="about-watched__card"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span class="about-watched__artwork">
-                    {film.posterUrl ? (
-                      <img
-                        src={film.posterUrl}
-                        alt=""
-                        width={200}
-                        height={300}
-                        class="about-watched__poster"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    ) : (
-                      <span
-                        class="about-watched__poster about-watched__poster--placeholder"
-                        aria-hidden="true"
-                      />
+  {films.length > 0 && (
+    <>
+      <ul class="about-watched__gallery">
+        {films.map((film) => {
+          const stars = starSummary(film.memberRating);
+          return (
+            <li class="about-watched__item">
+              <a
+                href={film.href}
+                class="about-watched__card"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span class="about-watched__artwork">
+                  {film.posterUrl ? (
+                    <img
+                      src={film.posterUrl}
+                      alt=""
+                      width={200}
+                      height={300}
+                      class="about-watched__poster"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ) : (
+                    <span
+                      class="about-watched__poster about-watched__poster--placeholder"
+                      aria-hidden="true"
+                    />
+                  )}
+                </span>
+                <span class="about-watched__meta">
+                  <span class="about-watched__title">{film.filmTitle}</span>
+                  <span class="about-watched__details">
+                    {film.filmYear && <span class="about-watched__year">{film.filmYear}</span>}
+                    {stars && (
+                      <span class="about-watched__stars" aria-label={stars.a11y}>
+                        <span aria-hidden="true">{stars.visual}</span>
+                      </span>
                     )}
                   </span>
-                  <span class="about-watched__meta">
-                    <span class="about-watched__title">{film.filmTitle}</span>
-                    <span class="about-watched__details">
-                      {film.filmYear && <span class="about-watched__year">{film.filmYear}</span>}
-                      {stars && (
-                        <span class="about-watched__stars" aria-label={stars.a11y}>
-                          <span aria-hidden="true">{stars.visual}</span>
-                        </span>
-                      )}
-                    </span>
-                    {film.rewatch && <span class="about-watched__rewatch">Rewatch</span>}
-                  </span>
-                </a>
-              </li>
-            );
-          })}
-        </ul>
-        <p class="about-watched__footer">
-          <a href={diaryUrl} target="_blank" rel="noopener noreferrer">
-            Full diary on Letterboxd <span aria-hidden="true">↗</span>
-          </a>
-        </p>
-      </>
-    )
-  }
+                  {film.rewatch && <span class="about-watched__rewatch">Rewatch</span>}
+                </span>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+      <p class="about-watched__footer">
+        <a href={diaryUrl} target="_blank" rel="noopener noreferrer">
+          Full diary on Letterboxd <span aria-hidden="true">↗</span>
+        </a>
+      </p>
+    </>
+  )}
 </section>
 
 <style>

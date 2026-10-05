@@ -98,16 +98,14 @@ const updatedDateISO = updatedDate?.toISOString();
 <!-- Font preloading handled by Astro Fonts API -->
 
 <!-- Critical Resource Preloading -->
-{
-  heroPreload && (
-    <link
-      rel="preload"
-      as="image"
-      imagesrcset={heroPreload.srcSet.attribute}
-      imagesizes={HERO_SIZES.article}
-    />
-  )
-}
+{heroPreload && (
+  <link
+    rel="preload"
+    as="image"
+    imagesrcset={heroPreload.srcSet.attribute}
+    imagesizes={HERO_SIZES.article}
+  />
+)}
 
 <!-- Theme & Color -->
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
@@ -171,11 +169,9 @@ const updatedDateISO = updatedDate?.toISOString();
 <!-- Canonical URL -->
 <link rel="canonical" href={metaTags.canonical} />
 
-{
-  hreflangAlternates.map((alternate) => (
-    <link rel="alternate" hreflang={alternate.hreflang} href={alternate.href} />
-  ))
-}
+{hreflangAlternates.map((alternate) => (
+  <link rel="alternate" hreflang={alternate.hreflang} href={alternate.href} />
+))}
 
 <!-- RSS Feed -->
 <link
@@ -215,7 +211,9 @@ const updatedDateISO = updatedDate?.toISOString();
 <meta property="og:image" content={metaTags.ogImage} />
 <meta property="og:image:alt" content={metaTags.ogImageAlt} />
 <meta property="og:locale" content={metaTags.locale} />
-{ogLocaleAlternates.map((ogLocale) => <meta property="og:locale:alternate" content={ogLocale} />)}
+{ogLocaleAlternates.map((ogLocale) => (
+  <meta property="og:locale:alternate" content={ogLocale} />
+))}
 <meta property="og:site_name" content={SITE_TITLE} />
 
 <!-- Twitter -->

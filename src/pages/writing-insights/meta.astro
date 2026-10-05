@@ -76,9 +76,7 @@ const topPhrases = Object.entries(phraseFrequency)
     title={pageInfo?.title || 'Meta-language'}
     description={pageInfo?.description || 'Counts of writing-about-writing phrases in the body.'}
   >
-    <div
-      class="mb-6 flex flex-wrap gap-x-10 gap-y-5 border-b border-[rgb(var(--color-border))]/50 pb-6 md:mb-8 md:gap-x-14 md:pb-8"
-    >
+    <div class="mb-6 flex flex-wrap gap-x-10 gap-y-5 border-b border-[rgb(var(--color-border))]/50 pb-6 md:mb-8 md:gap-x-14 md:pb-8">
       <div>
         <div class="text-2xl font-semibold text-[rgb(var(--color-text))] tabular-nums md:text-3xl">
           {metaMetrics.avgSelfAwarenessScore}
@@ -117,77 +115,80 @@ const topPhrases = Object.entries(phraseFrequency)
           <a
             href="#evolution-chart"
             class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]"
-            >Time series</a
           >
+            Time series
+          </a>
         </li>
         <li class="m-0 p-0">
           <a
             href="#subject-tool"
             class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]"
-            >Subject vs tool</a
           >
+            Subject vs tool
+          </a>
         </li>
         <li class="m-0 p-0">
           <a
             href="#top-posts"
             class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]"
-            >Flagged posts</a
           >
+            Flagged posts
+          </a>
         </li>
         <li class="m-0 p-0">
           <a
             href="#phrases"
             class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]"
-            >Phrases</a
           >
+            Phrases
+          </a>
         </li>
         <li class="m-0 p-0">
           <a
             href="#readout"
             class="text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/30 underline-offset-4 hover:decoration-[rgb(var(--color-accent))]"
-            >Readout</a
           >
+            Readout
+          </a>
         </li>
       </ul>
     </nav>
 
     {/* Writing Philosophy Evolution Timeline */}
-    {
-      evolutionData.length > 0 &&
-        evolutionLabels.length > 0 &&
-        evolutionSelfAwareness.length > 0 &&
-        evolutionMetaFrequency.length > 0 && (
-          <section id="evolution-chart" class="mb-10 scroll-mt-28 md:mb-12">
-            <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
-              Meta signals by quarter
-            </h2>
-            <p class="text-body-muted mb-6 max-w-3xl text-sm">
-              Detector score and meta-phrase count per quarter, drawn on one axis. The units are not
-              the same.
-            </p>
-            <TimeSeriesChart
-              id="writing-philosophy-evolution"
-              labels={evolutionLabels}
-              datasets={[
-                {
-                  label: 'Self-Awareness Score',
-                  data: evolutionSelfAwareness,
-                  borderColor: 'rgb(var(--color-accent))',
-                  backgroundColor: 'rgba(var(--color-accent), 0.1)',
-                },
-                {
-                  label: 'Meta-Language Frequency',
-                  data: evolutionMetaFrequency,
-                  borderColor: 'rgb(147, 51, 234)',
-                  backgroundColor: 'rgba(147, 51, 234, 0.1)',
-                },
-              ]}
-              title="Self-Awareness & Meta-Language Over Time"
-              yAxisLabel="Score / Frequency"
-            />
-          </section>
-        )
-    }
+    {evolutionData.length > 0 &&
+      evolutionLabels.length > 0 &&
+      evolutionSelfAwareness.length > 0 &&
+      evolutionMetaFrequency.length > 0 && (
+        <section id="evolution-chart" class="mb-10 scroll-mt-28 md:mb-12">
+          <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
+            Meta signals by quarter
+          </h2>
+          <p class="text-body-muted mb-6 max-w-3xl text-sm">
+            Detector score and meta-phrase count per quarter, drawn on one axis. The units are not
+            the same.
+          </p>
+          <TimeSeriesChart
+            id="writing-philosophy-evolution"
+            labels={evolutionLabels}
+            datasets={[
+              {
+                label: 'Self-Awareness Score',
+                data: evolutionSelfAwareness,
+                borderColor: 'rgb(var(--color-accent))',
+                backgroundColor: 'rgba(var(--color-accent), 0.1)',
+              },
+              {
+                label: 'Meta-Language Frequency',
+                data: evolutionMetaFrequency,
+                borderColor: 'rgb(147, 51, 234)',
+                backgroundColor: 'rgba(147, 51, 234, 0.1)',
+              },
+            ]}
+            title="Self-Awareness & Meta-Language Over Time"
+            yAxisLabel="Score / Frequency"
+          />
+        </section>
+      )}
 
     <section
       id="subject-tool"
@@ -208,8 +209,7 @@ const topPhrases = Object.entries(phraseFrequency)
                 <div
                   class="h-2 rounded-full bg-blue-500"
                   style={`width: ${(metaMetrics.writingAsSubjectCount / metaMetrics.totalPosts) * 100}%`}
-                >
-                </div>
+                ></div>
               </div>
               <span class="text-sm font-medium text-[rgb(var(--color-text))]">
                 {Math.round((metaMetrics.writingAsSubjectCount / metaMetrics.totalPosts) * 100)}%
@@ -223,8 +223,7 @@ const topPhrases = Object.entries(phraseFrequency)
                 <div
                   class="h-2 rounded-full bg-green-500"
                   style={`width: ${(metaMetrics.writingAsToolCount / metaMetrics.totalPosts) * 100}%`}
-                >
-                </div>
+                ></div>
               </div>
               <span class="text-sm font-medium text-[rgb(var(--color-text))]">
                 {Math.round((metaMetrics.writingAsToolCount / metaMetrics.totalPosts) * 100)}%
@@ -239,23 +238,17 @@ const topPhrases = Object.entries(phraseFrequency)
           Pattern type hits (post occurrences)
         </h2>
         <p class="text-body-muted mb-4 text-sm">How many posts matched each detector type.</p>
-        <div
-          class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40"
-        >
-          {
-            Object.entries(patternTypes)
-              .sort(([, a], [, b]) => b - a)
-              .map(([type, count]) => (
-                <div class="flex items-center justify-between py-2 text-sm">
-                  <span class="text-[rgb(var(--color-text))]">
-                    {type.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase())}
-                  </span>
-                  <span class="font-medium text-[rgb(var(--color-text))] tabular-nums">
-                    {count}
-                  </span>
-                </div>
-              ))
-          }
+        <div class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40">
+          {Object.entries(patternTypes)
+            .sort(([, a], [, b]) => b - a)
+            .map(([type, count]) => (
+              <div class="flex items-center justify-between py-2 text-sm">
+                <span class="text-[rgb(var(--color-text))]">
+                  {type.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase())}
+                </span>
+                <span class="font-medium text-[rgb(var(--color-text))] tabular-nums">{count}</span>
+              </div>
+            ))}
         </div>
       </div>
     </section>
@@ -267,109 +260,101 @@ const topPhrases = Object.entries(phraseFrequency)
       <p class="text-body-muted mb-6 max-w-3xl text-sm">
         Posts ranked by detector score (pattern hits in the body).
       </p>
-      <div
-        class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40"
-      >
-        {
-          mostSelfAware.map((analysis, index) => (
-            <article class="py-5 first:pt-0">
-              <div class="mb-2 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-                <span class="text-body-muted font-mono text-xs">{index + 1}.</span>
-                <a
-                  href={`/p/${analysis.postSlug}`}
-                  class="text-base font-semibold text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/25 underline-offset-2 hover:decoration-[rgb(var(--color-accent))]"
-                >
-                  {analysis.postTitle}
-                </a>
-              </div>
-              <div class="text-body-muted mb-3 text-xs">
-                {format(analysis.postDate, 'MMM d, yyyy')} · score {analysis.selfAwarenessScore}/100
-                · {analysis.metaLanguageCount} patterns
-                {analysis.recursiveThinking ? ' · recursive flagged' : ''}
-                {analysis.writingAsSubject ? ' · subject flagged' : ''}
-              </div>
-              {analysis.metaLanguagePatterns.length > 0 && (
-                <div class="border-l-2 border-[rgb(var(--color-border))]/60 pl-3">
-                  <div class="text-body-muted mb-1 text-[0.65rem] font-medium tracking-wide uppercase">
-                    Sample hits
-                  </div>
-                  {analysis.metaLanguagePatterns.slice(0, 2).map((pattern) => (
-                    <p class="text-body-muted my-1 text-xs italic">
-                      “{pattern.sentence.substring(0, 150)}…”
-                    </p>
-                  ))}
+      <div class="divide-y divide-[rgb(var(--color-border))]/40 border-t border-[rgb(var(--color-border))]/40">
+        {mostSelfAware.map((analysis, index) => (
+          <article class="py-5 first:pt-0">
+            <div class="mb-2 flex flex-wrap items-baseline gap-x-2 gap-y-1">
+              <span class="text-body-muted font-mono text-xs">{index + 1}.</span>
+              <a
+                href={`/p/${analysis.postSlug}`}
+                class="text-base font-semibold text-[rgb(var(--color-accent))] underline decoration-[rgb(var(--color-accent))]/25 underline-offset-2 hover:decoration-[rgb(var(--color-accent))]"
+              >
+                {analysis.postTitle}
+              </a>
+            </div>
+            <div class="text-body-muted mb-3 text-xs">
+              {format(analysis.postDate, 'MMM d, yyyy')} · score {analysis.selfAwarenessScore}/100 ·{' '}
+              {analysis.metaLanguageCount} patterns
+              {analysis.recursiveThinking ? ' · recursive flagged' : ''}
+              {analysis.writingAsSubject ? ' · subject flagged' : ''}
+            </div>
+            {analysis.metaLanguagePatterns.length > 0 && (
+              <div class="border-l-2 border-[rgb(var(--color-border))]/60 pl-3">
+                <div class="text-body-muted mb-1 text-[0.65rem] font-medium tracking-wide uppercase">
+                  Sample hits
                 </div>
-              )}
-            </article>
-          ))
-        }
+                {analysis.metaLanguagePatterns.slice(0, 2).map((pattern) => (
+                  <p class="text-body-muted my-1 text-xs italic">
+                    “{pattern.sentence.substring(0, 150)}…”
+                  </p>
+                ))}
+              </div>
+            )}
+          </article>
+        ))}
       </div>
     </section>
 
     {/* Writings About Writing */}
-    {
-      writingAboutWriting.length > 0 && (
-        <section class="mb-10 scroll-mt-28 md:mb-12">
-          <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
-            Writings that discuss writing
-          </h2>
-          <p class="text-body-muted mb-6 max-w-3xl text-sm">
-            Posts that matched the writing-about-writing detector.
-          </p>
-          <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {writingAboutWriting.slice(0, 12).map((analysis) => (
-              <a
-                href={`/p/${analysis.postSlug}`}
-                class="group block rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-secondary))] p-4 transition-all hover:border-[rgb(var(--color-accent))] hover:bg-[rgb(var(--color-accent))]/5"
-              >
-                <div class="mb-2 text-sm font-medium text-[rgb(var(--color-text))] group-hover:text-[rgb(var(--color-accent))]">
-                  {analysis.postTitle}
-                </div>
-                <div class="text-body-muted mb-3 text-xs">
-                  {format(analysis.postDate, 'MMM d, yyyy')}
-                </div>
-                <div class="flex flex-wrap gap-1">
+    {writingAboutWriting.length > 0 && (
+      <section class="mb-10 scroll-mt-28 md:mb-12">
+        <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
+          Writings that discuss writing
+        </h2>
+        <p class="text-body-muted mb-6 max-w-3xl text-sm">
+          Posts that matched the writing-about-writing detector.
+        </p>
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {writingAboutWriting.slice(0, 12).map((analysis) => (
+            <a
+              href={`/p/${analysis.postSlug}`}
+              class="group block rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg-secondary))] p-4 transition-all hover:border-[rgb(var(--color-accent))] hover:bg-[rgb(var(--color-accent))]/5"
+            >
+              <div class="mb-2 text-sm font-medium text-[rgb(var(--color-text))] group-hover:text-[rgb(var(--color-accent))]">
+                {analysis.postTitle}
+              </div>
+              <div class="text-body-muted mb-3 text-xs">
+                {format(analysis.postDate, 'MMM d, yyyy')}
+              </div>
+              <div class="flex flex-wrap gap-1">
+                <span class="rounded-sm bg-[rgb(var(--color-bg-alt))] px-2 py-0.5 text-xs text-[rgb(var(--color-text-muted))]">
+                  {analysis.metaLanguageCount} patterns
+                </span>
+                {analysis.recursiveThinking && (
                   <span class="rounded-sm bg-[rgb(var(--color-bg-alt))] px-2 py-0.5 text-xs text-[rgb(var(--color-text-muted))]">
-                    {analysis.metaLanguageCount} patterns
+                    Recursive
                   </span>
-                  {analysis.recursiveThinking && (
-                    <span class="rounded-sm bg-[rgb(var(--color-bg-alt))] px-2 py-0.5 text-xs text-[rgb(var(--color-text-muted))]">
-                      Recursive
-                    </span>
-                  )}
-                </div>
-              </a>
-            ))}
-          </div>
-        </section>
-      )
-    }
+                )}
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
 
-    {
-      topPhrases.length > 0 && (
-        <section id="phrases" class="mb-10 scroll-mt-28 md:mb-12">
-          <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
-            Repeated phrases
-          </h2>
-          <p class="text-body-muted mb-6 max-w-3xl text-sm">
-            Phrases from those matches, lowercased, longer than three characters, counted.
-          </p>
-          <div class="overflow-x-auto">
-            <table class="w-full min-w-80 border-collapse border-t border-b border-[rgb(var(--color-border))] text-sm">
-              <tbody>
-                {topPhrases.map(([phrase, count], index) => (
-                  <tr class="border-b border-[rgb(var(--color-border))]/35 last:border-0">
-                    <td class="text-body-muted py-2 pr-3 font-mono text-xs">{index + 1}</td>
-                    <td class="py-2 pr-4 text-[rgb(var(--color-text))]">“{phrase}”</td>
-                    <td class="text-body-muted py-2 text-right tabular-nums">{count}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
-      )
-    }
+    {topPhrases.length > 0 && (
+      <section id="phrases" class="mb-10 scroll-mt-28 md:mb-12">
+        <h2 class="mb-4 text-lg font-semibold text-[rgb(var(--color-text))] md:mb-6 md:text-xl">
+          Repeated phrases
+        </h2>
+        <p class="text-body-muted mb-6 max-w-3xl text-sm">
+          Phrases from those matches, lowercased, longer than three characters, counted.
+        </p>
+        <div class="overflow-x-auto">
+          <table class="w-full min-w-80 border-collapse border-t border-b border-[rgb(var(--color-border))] text-sm">
+            <tbody>
+              {topPhrases.map(([phrase, count], index) => (
+                <tr class="border-b border-[rgb(var(--color-border))]/35 last:border-0">
+                  <td class="text-body-muted py-2 pr-3 font-mono text-xs">{index + 1}</td>
+                  <td class="py-2 pr-4 text-[rgb(var(--color-text))]">“{phrase}”</td>
+                  <td class="text-body-muted py-2 text-right tabular-nums">{count}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    )}
 
     <section
       id="readout"
@@ -383,13 +368,11 @@ const topPhrases = Object.entries(phraseFrequency)
           <h3 class="mb-2 text-base font-medium text-[rgb(var(--color-text))]">Detector score</h3>
           <p class="text-body-muted text-sm">
             Mean score is {metaMetrics.avgSelfAwarenessScore}/100
-            {
-              metaMetrics.avgSelfAwarenessScore >= 70
-                ? ' (70 or higher: the lists matched often).'
-                : metaMetrics.avgSelfAwarenessScore >= 40
-                  ? ' (40–69: the lists matched on some posts).'
-                  : ' (below 40: the lists matched rarely).'
-            }
+            {metaMetrics.avgSelfAwarenessScore >= 70
+              ? ' (70 or higher: the lists matched often).'
+              : metaMetrics.avgSelfAwarenessScore >= 40
+                ? ' (40–69: the lists matched on some posts).'
+                : ' (below 40: the lists matched rarely).'}
           </p>
         </div>
 
@@ -403,30 +386,26 @@ const topPhrases = Object.entries(phraseFrequency)
           </p>
         </div>
 
-        {
-          metaMetrics.recursiveThinkingCount > 0 && (
-            <div>
-              <h3 class="mb-2 text-base font-medium text-[rgb(var(--color-text))]">
-                Recursive-thought detector
-              </h3>
-              <p class="text-body-muted text-sm">
-                Matched {metaMetrics.recursiveThinkingCount}{' '}
-                {metaMetrics.recursiveThinkingCount === 1 ? 'post' : 'posts'}.
-              </p>
-            </div>
-          )
-        }
+        {metaMetrics.recursiveThinkingCount > 0 && (
+          <div>
+            <h3 class="mb-2 text-base font-medium text-[rgb(var(--color-text))]">
+              Recursive-thought detector
+            </h3>
+            <p class="text-body-muted text-sm">
+              Matched {metaMetrics.recursiveThinkingCount}{' '}
+              {metaMetrics.recursiveThinkingCount === 1 ? 'post' : 'posts'}.
+            </p>
+          </div>
+        )}
 
         <div>
           <h3 class="mb-2 text-base font-medium text-[rgb(var(--color-text))]">
             First quarter vs last
           </h3>
           <p class="text-body-muted text-sm">
-            {
-              evolutionData.length > 0
-                ? `Across ${evolutionData.length} quarters, meta-phrase density ${evolutionData[evolutionData.length - 1].metaLanguageFrequency > evolutionData[0].metaLanguageFrequency ? 'rose' : 'fell'} from the first quarter to the latest.`
-                : 'Fewer than two quarters in the series.'
-            }
+            {evolutionData.length > 0
+              ? `Across ${evolutionData.length} quarters, meta-phrase density ${evolutionData[evolutionData.length - 1].metaLanguageFrequency > evolutionData[0].metaLanguageFrequency ? 'rose' : 'fell'} from the first quarter to the latest.`
+              : 'Fewer than two quarters in the series.'}
           </p>
         </div>
       </div>

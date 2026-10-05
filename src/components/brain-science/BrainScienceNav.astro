@@ -10,29 +10,27 @@ const { currentPage, showNavLinks = true } = Astro.props;
 const allPages = BRAIN_SCIENCE_PAGES;
 ---
 
-{
-  showNavLinks && (
-    <nav class="bs-nav" aria-label="Writing Insights sections">
-      <ul class="bs-nav__list">
-        {allPages.map((page) => {
-          const isActive = page.path === currentPage;
-          return (
-            <li>
-              <a
-                href={page.path}
-                class:list={['bs-nav__link', { 'is-active': isActive }]}
-                aria-current={isActive ? 'page' : undefined}
-              >
-                <span class="bs-nav__label-short">{page.title.split(' ')[0]}</span>
-                <span class="bs-nav__label-full">{page.title}</span>
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-    </nav>
-  )
-}
+{showNavLinks && (
+  <nav class="bs-nav" aria-label="Writing Insights sections">
+    <ul class="bs-nav__list">
+      {allPages.map((page) => {
+        const isActive = page.path === currentPage;
+        return (
+          <li>
+            <a
+              href={page.path}
+              class:list={['bs-nav__link', { 'is-active': isActive }]}
+              aria-current={isActive ? 'page' : undefined}
+            >
+              <span class="bs-nav__label-short">{page.title.split(' ')[0]}</span>
+              <span class="bs-nav__label-full">{page.title}</span>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </nav>
+)}
 
 <style>
   .bs-nav {

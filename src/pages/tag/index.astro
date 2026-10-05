@@ -33,87 +33,85 @@ const groups = [...byLetter.entries()];
   mode="chrome"
 >
   <div class="topics-page" data-topics-page>
-    {
-      topics.length > 0 ? (
-        <>
-          <div class="topics-tools">
-            <form class="topics-search" role="search" aria-label="Find a topic" hidden>
-              <label for="topic-search">Search topics</label>
-              <div class="topics-search__controls">
-                <input
-                  id="topic-search"
-                  name="q"
-                  type="search"
-                  placeholder="Fatherhood, Puerto Rico, technology…"
-                  autocomplete="off"
-                  aria-controls="topic-directory"
-                />
-                <button type="button" class="topics-clear" data-clear-topics hidden>
-                  Clear search
-                </button>
-              </div>
-            </form>
-            <a class="topics-jump" href="#all-topics" data-topics-jump>
-              All topics A–Z ↓
-            </a>
-          </div>
-
-          <div data-sentence-browse>
-            <ContentFormPrelude tagCounts={tagCounts} />
-          </div>
-
-          <section class="topic-directory" id="topic-directory" aria-labelledby="all-topics">
-            <div class="topic-directory__heading">
-              <h2 id="all-topics" tabindex="-1">
-                All topics A–Z
-              </h2>
-              <p data-topic-count role="status" aria-live="polite" aria-atomic="true">
-                {topics.length} topics
-              </p>
-            </div>
-            <p class="topics-key">Numbers show the writings in each topic.</p>
-            <nav class="topic-alphabet" aria-label="Jump to a topic letter" data-topic-alphabet>
-              {groups.map(([letter]) => (
-                <a href={`#topics-${letter}`}>{letter}</a>
-              ))}
-            </nav>
-
-            <div class="topic-columns">
-              {groups.map(([letter, items]) => (
-                <section class="topic-letter" data-topic-group aria-labelledby={`topics-${letter}`}>
-                  <h3 id={`topics-${letter}`} tabindex="-1">
-                    {letter}
-                  </h3>
-                  <ul role="list">
-                    {items.map(({ tag, count }) => (
-                      <li data-topic data-tag={tag} data-name={getTagMetadata(tag).name}>
-                        <TagCard
-                          tag={tag}
-                          count={count}
-                          size="md"
-                          variant="subtle"
-                          className="topic-link"
-                        />
-                      </li>
-                    ))}
-                  </ul>
-                </section>
-              ))}
-            </div>
-
-            <div class="topics-empty" data-topics-empty hidden>
-              <h3>No topics match</h3>
-              <p>Try a shorter word, or clear your search to explore the writing.</p>
-              <button type="button" class="topics-clear" data-clear-topics>
+    {topics.length > 0 ? (
+      <>
+        <div class="topics-tools">
+          <form class="topics-search" role="search" aria-label="Find a topic" hidden>
+            <label for="topic-search">Search topics</label>
+            <div class="topics-search__controls">
+              <input
+                id="topic-search"
+                name="q"
+                type="search"
+                placeholder="Fatherhood, Puerto Rico, technology…"
+                autocomplete="off"
+                aria-controls="topic-directory"
+              />
+              <button type="button" class="topics-clear" data-clear-topics hidden>
                 Clear search
               </button>
             </div>
-          </section>
-        </>
-      ) : (
-        <p class="topics-unavailable">No topics yet.</p>
-      )
-    }
+          </form>
+          <a class="topics-jump" href="#all-topics" data-topics-jump>
+            All topics A–Z ↓
+          </a>
+        </div>
+
+        <div data-sentence-browse>
+          <ContentFormPrelude tagCounts={tagCounts} />
+        </div>
+
+        <section class="topic-directory" id="topic-directory" aria-labelledby="all-topics">
+          <div class="topic-directory__heading">
+            <h2 id="all-topics" tabindex="-1">
+              All topics A–Z
+            </h2>
+            <p data-topic-count role="status" aria-live="polite" aria-atomic="true">
+              {topics.length} topics
+            </p>
+          </div>
+          <p class="topics-key">Numbers show the writings in each topic.</p>
+          <nav class="topic-alphabet" aria-label="Jump to a topic letter" data-topic-alphabet>
+            {groups.map(([letter]) => (
+              <a href={`#topics-${letter}`}>{letter}</a>
+            ))}
+          </nav>
+
+          <div class="topic-columns">
+            {groups.map(([letter, items]) => (
+              <section class="topic-letter" data-topic-group aria-labelledby={`topics-${letter}`}>
+                <h3 id={`topics-${letter}`} tabindex="-1">
+                  {letter}
+                </h3>
+                <ul role="list">
+                  {items.map(({ tag, count }) => (
+                    <li data-topic data-tag={tag} data-name={getTagMetadata(tag).name}>
+                      <TagCard
+                        tag={tag}
+                        count={count}
+                        size="md"
+                        variant="subtle"
+                        className="topic-link"
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ))}
+          </div>
+
+          <div class="topics-empty" data-topics-empty hidden>
+            <h3>No topics match</h3>
+            <p>Try a shorter word, or clear your search to explore the writing.</p>
+            <button type="button" class="topics-clear" data-clear-topics>
+              Clear search
+            </button>
+          </div>
+        </section>
+      </>
+    ) : (
+      <p class="topics-unavailable">No topics yet.</p>
+    )}
   </div>
 </PageLayout>
 

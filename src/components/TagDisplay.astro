@@ -31,27 +31,23 @@ const variantClass = {
 ---
 
 <div class={`tag-display flex flex-wrap items-center gap-1.5 ${className}`}>
-  {
-    visibleTags.map((tag) => (
-      <a
-        href={`/tag/${tag}`}
-        data-tag-family={getTagFamily(tag)}
-        class={`tag-chip tag-item inline-flex items-center gap-1.5 ${compact ? 'px-2.5 py-1 text-sm' : 'px-3 py-1.5 text-base'} ${variantClass} interactive-button rounded-full border font-medium focus:outline-hidden`}
-      >
-        <span class="tag-text">#{tag}</span>
-      </a>
-    ))
-  }
-  {
-    hasMoreTags && (
-      <span
-        class={`more-indicator inline-flex items-center gap-1 ${compact ? 'px-2.5 py-1 text-sm' : 'px-3 py-1.5 text-base'} text-body-muted rounded-full border font-medium`}
-      >
-        <span aria-hidden="true">⋯</span>
-        <span>+{remainingCount} more</span>
-      </span>
-    )
-  }
+  {visibleTags.map((tag) => (
+    <a
+      href={`/tag/${tag}`}
+      data-tag-family={getTagFamily(tag)}
+      class={`tag-chip tag-item inline-flex items-center gap-1.5 ${compact ? 'px-2.5 py-1 text-sm' : 'px-3 py-1.5 text-base'} ${variantClass} interactive-button rounded-full border font-medium focus:outline-hidden`}
+    >
+      <span class="tag-text">#{tag}</span>
+    </a>
+  ))}
+  {hasMoreTags && (
+    <span
+      class={`more-indicator inline-flex items-center gap-1 ${compact ? 'px-2.5 py-1 text-sm' : 'px-3 py-1.5 text-base'} text-body-muted rounded-full border font-medium`}
+    >
+      <span aria-hidden="true">⋯</span>
+      <span>+{remainingCount} more</span>
+    </span>
+  )}
 </div>
 
 <style>
