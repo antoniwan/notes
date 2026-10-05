@@ -220,8 +220,6 @@ I asked Claude one last question: at this rate, how much time and money will it 
 
 The queue is big AF because I'm migrating about 2,500 Markdown files into this little system. Think about it as a funnel with a bottleneck. My prediction: a cold start of this vault will not have such big queues if the user is disciplined. And if you journal consistently, you will answer queue items with your Daily's content.
 
-A week in, I wrote: “I think I'm realizing that if I want to use Panda and Wolf heavily I have to adopt and use workspaces versus branches (?) maybe I just need one or the other because today I'm doing everything live in main and that has a big risk, doesn't it? More to think on.”
-
 The main limiting factor for me to digest and tidy is context cost: $$$, token usage. I'm doing some things to lower costs, and my next post will probably focus only on that: the cost of doing this shit, the cost of time, effort, and models, and how much it's decreasing on one end versus increasing on the other.
 
 ## I want this in your hands
