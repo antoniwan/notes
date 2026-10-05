@@ -3,7 +3,7 @@
 Auto-generated from all feature plans. Last updated: 2026-07-28
 
 ## Active Technologies
-- TypeScript 5.x + Astro 7.x + Astro, Tailwind CSS, existing layout/components, content collection pipeline
+- TypeScript 6.x + Astro 7.x + Astro, Tailwind CSS, existing layout/components, content collection pipeline
 - Hybrid output: static prerender by default; on-demand server route for `GET /api/quotes`
 - Browser-local state only for read status / Guided Path (existing behavior); no new server storage
 

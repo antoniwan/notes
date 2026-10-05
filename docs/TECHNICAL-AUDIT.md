@@ -24,13 +24,13 @@ Public field notes (essays, household recipes, book library) on a **hybrid Astro
 
 | Layer           | Actual (resolved)                                                                             | Docs that were wrong                               |
 | --------------- | --------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| Framework       | **Astro 7.x** (`astro@7.2.2` as of 2026-09-10)                                                | README / constitution / specify-rules said Astro 6 |
+| Framework       | **Astro 7.x** (`astro@7.3.5` as of 2026-10-05)                                                | README / constitution / specify-rules said Astro 6 |
 | Output          | **Hybrid** — default static + `prerender = false` on quotes                                   | README said “static output”                        |
 | Adapter         | `@astrojs/vercel@11`                                                                          | OK                                                 |
 | UI              | Tailwind CSS 4 + Vite plugin; Astro Fonts (DM Sans, Fraunces, Source Serif 4, JetBrains Mono) | OK                                                 |
 | Content         | MD/MDX via `@astrojs/mdx`, collection `blog`                                                  | OK                                                 |
-| Language        | TypeScript 5.9                                                                                | OK                                                 |
-| Package manager | pnpm 12.3.4 (`packageManager`), Node 22.12.0 (`.nvmrc`); CI reads both                        | OK                                                 |
+| Language        | TypeScript 6.0                                                                                | OK                                                 |
+| Package manager | pnpm 12.3.4 (`packageManager`), Node 22.23.3 (`.nvmrc`); CI reads both                        | OK                                                 |
 | Image           | Sharp; AVIF sources → social JPEG/PNG                                                         | OK                                                 |
 | Analysis        | `sentiment`, `reading-time`, brain-science utils                                              | OK                                                 |
 

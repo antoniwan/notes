@@ -11,8 +11,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import yaml from 'js-yaml';
 import { SITE_URL } from '../consts';
+import { loadFrontmatterYaml } from './frontmatterYaml.mjs';
 import { canonicalizeTags } from './tagVocabulary';
 import { isRecipeId } from './recipes';
 import {
@@ -74,7 +74,7 @@ function parseFrontmatter(raw: string): Record<string, unknown> | null {
   if (end === -1) return null;
   const block = raw.slice(3, end).replace(/^\r?\n/, '');
   try {
-    const data = yaml.load(block);
+    const data = loadFrontmatterYaml(block);
     return data && typeof data === 'object' ? (data as Record<string, unknown>) : null;
   } catch {
     return null;

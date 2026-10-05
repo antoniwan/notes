@@ -24,9 +24,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import yaml from 'js-yaml';
-import { XMLParser, XMLValidator } from 'fast-xml-parser';
+import { XMLParser } from 'fast-xml-parser';
+import { SyntaxValidator } from 'fast-xml-validator';
 
+import { loadFrontmatterYaml } from '../src/utils/frontmatterYaml.mjs';
 import {
   checkCanonicalConsistency,
   checkFeedIdsUnique,
@@ -170,7 +171,7 @@ function readFrontmatter(file) {
   const end = raw.indexOf('\n---', 3);
   if (end === -1) return null;
   try {
-    return yaml.load(raw.slice(3, end).replace(/^\r?\n/, '')) ?? {};
+    return loadFrontmatterYaml(raw.slice(3, end).replace(/^\r?\n/, '')) ?? {};
   } catch (error) {
     problems.push(`${path.relative(root, file)}: unreadable frontmatter (${error.message})`);
     return null;
@@ -216,10 +217,16 @@ if (fs.existsSync(rssPath)) {
   // A real XML parse. The previous check looked for substrings, which passes on
   // an unescaped ampersand or an unbalanced tag — the two faults that actually
   // break feed readers.
-  const validity = XMLValidator.validate(rssRaw);
-  if (validity !== true) {
-    const { code, msg, line, col } = validity.err ?? {};
-    problems.push(`rss.xml is not well-formed XML: ${code} ${msg} (line ${line}, col ${col})`);
+  // SyntaxValidator throws on the first fault instead of returning it.
+  let xmlFault = null;
+  try {
+    SyntaxValidator.validate(rssRaw);
+  } catch (err) {
+    xmlFault = err;
+  }
+  if (xmlFault) {
+    const { code, message, line, col } = xmlFault;
+    problems.push(`rss.xml is not well-formed XML: ${code} ${message} (line ${line}, col ${col})`);
   } else {
     const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '@' });
     const parsed = parser.parse(rssRaw);
