@@ -1,9 +1,7 @@
 ---
 title: 'Panda and Wolf: Two Vaults to Map a Person'
 description: >-
-  I set out to tidy an Obsidian vault and spend fewer tokens. A week later I had
-  two vaults, Panda and Wolf, one rule about honesty, and a question: am I
-  mapping a person?
+  I set out to tidy an Obsidian vault and spend fewer tokens. A week later I had Panda and Wolf, one rule about honesty, and a question: am I mapping a person?
 pubDate: '2026-10-05T15:00:00-04:00'
 language:
   - en
