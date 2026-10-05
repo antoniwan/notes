@@ -21,17 +21,6 @@ export function median(values: number[]): number {
 }
 
 /**
- * Calculate standard deviation
- */
-export function standardDeviation(values: number[]): number {
-  if (values.length === 0) return 0;
-  const avg = mean(values);
-  const squareDiffs = values.map((val) => Math.pow(val - avg, 2));
-  const avgSquareDiff = mean(squareDiffs);
-  return Math.sqrt(avgSquareDiff);
-}
-
-/**
  * Calculate correlation coefficient between two arrays
  * Returns value between -1 and 1
  */
@@ -58,44 +47,6 @@ export function correlation(x: number[], y: number[]): number {
 }
 
 /**
- * Calculate linear regression slope and intercept
- */
-export function linearRegression(
-  x: number[],
-  y: number[],
-): {
-  slope: number;
-  intercept: number;
-  rSquared: number;
-} {
-  if (x.length !== y.length || x.length === 0) {
-    return { slope: 0, intercept: 0, rSquared: 0 };
-  }
-
-  const n = x.length;
-  const sumX = x.reduce((sum, val) => sum + val, 0);
-  const sumY = y.reduce((sum, val) => sum + val, 0);
-  const sumXY = x.reduce((sum, val, i) => sum + val * y[i], 0);
-  const sumXX = x.reduce((sum, val) => sum + val * val, 0);
-
-  const slope = (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX);
-  const intercept = (sumY - slope * sumX) / n;
-
-  // Calculate R-squared
-  const meanY = mean(y);
-  let ssRes = 0;
-  let ssTot = 0;
-  for (let i = 0; i < n; i++) {
-    const predicted = slope * x[i] + intercept;
-    ssRes += Math.pow(y[i] - predicted, 2);
-    ssTot += Math.pow(y[i] - meanY, 2);
-  }
-  const rSquared = ssTot === 0 ? 0 : 1 - ssRes / ssTot;
-
-  return { slope, intercept, rSquared };
-}
-
-/**
  * Calculate percentile of a value in an array
  */
 export function percentile(values: number[], percentile: number): number {
@@ -113,15 +64,4 @@ export function variance(values: number[]): number {
   const avg = mean(values);
   const squareDiffs = values.map((val) => Math.pow(val - avg, 2));
   return mean(squareDiffs);
-}
-
-/**
- * Calculate coefficient of variation (CV) as percentage
- */
-export function coefficientOfVariation(values: number[]): number {
-  if (values.length === 0) return 0;
-  const avg = mean(values);
-  if (avg === 0) return 0;
-  const stdDev = standardDeviation(values);
-  return (stdDev / avg) * 100;
 }

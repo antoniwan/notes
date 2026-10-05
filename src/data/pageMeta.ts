@@ -27,8 +27,6 @@ export const PAGE_META = {
   '/404': 'This page does not exist. A random quote from the site archive is shown instead.',
 } as const;
 
-export type PageMetaPath = keyof typeof PAGE_META;
-
 /** Factual meta descriptions for category listing pages, keyed by category id. */
 export const CATEGORY_META: Record<string, string> = {
   'art-expression': 'Notes on art, aesthetics, and creative work. Category: Art & Expression.',

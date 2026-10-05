@@ -292,17 +292,3 @@ export function calculateImprovementAreas(
 
   return improvementAreas;
 }
-
-/**
- * Get sentiment thresholds from config
- */
-export function getSentimentThresholds() {
-  return config.thresholds.sentimentThresholds;
-}
-
-/**
- * Get improvement targets from config
- */
-export function getImprovementTargets() {
-  return config.improvementTargets;
-}

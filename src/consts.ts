@@ -78,7 +78,3 @@ export const SEO_CONFIG: SEOConfig = {
   organizationLogoWidth: 512,
   organizationLogoHeight: 512,
 };
-
-// Disclaimer Text
-export const DISCLAIMER_TEXT =
-  'The wisdom, practices, and digital alchemy shared here flow from personal experience and creative exploration. None of this constitutes medical, legal, psychological, or professional advice. Please consult qualified professionals for such guidance.';

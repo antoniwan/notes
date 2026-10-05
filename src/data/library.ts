@@ -905,10 +905,3 @@ export const books: Book[] = [
     status: 'to-read',
   },
 ];
-
-export const libraryStats = {
-  totalBooks: books.length,
-  readCount: books.filter((book) => book.status === 'read').length,
-  currentlyReadingCount: books.filter((book) => book.status === 'in-progress').length,
-  toReadCount: books.filter((book) => book.status === 'to-read').length,
-};

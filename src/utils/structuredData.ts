@@ -376,24 +376,6 @@ export function generateStructuredData(options: StructuredDataOptions) {
   return schemas.length === 1 ? schemas[0] : schemas;
 }
 
-// Generate FAQ schema for content that might benefit from it
-export function generateFAQSchema(questions: Array<{ question: string; answer: string }>) {
-  if (!questions || questions.length === 0) return null;
-
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: questions.map((q) => ({
-      '@type': 'Question',
-      name: q.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: q.answer,
-      },
-    })),
-  };
-}
-
 export function generateBreadcrumbSchema(items: Array<{ name: string; url: string }>) {
   if (!items.length) return null;
 
@@ -406,142 +388,6 @@ export function generateBreadcrumbSchema(items: Array<{ name: string; url: strin
       name: item.name,
       item: item.url,
     })),
-  };
-}
-
-// Generate HowTo schema for tutorial/instructional content
-export function generateHowToSchema(options: {
-  name: string;
-  description: string;
-  steps: Array<{ name: string; text: string; image?: string }>;
-  totalTime?: string;
-  tools?: string[];
-  materials?: string[];
-}) {
-  const { name, description, steps, totalTime, tools, materials } = options;
-
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'HowTo',
-    name,
-    description,
-    ...(totalTime && { totalTime }),
-    ...(tools &&
-      tools.length > 0 && {
-        tool: tools.map((tool) => ({
-          '@type': 'HowToTool',
-          name: tool,
-        })),
-      }),
-    ...(materials &&
-      materials.length > 0 && {
-        material: materials.map((material) => ({
-          '@type': 'HowToMaterial',
-          name: material,
-        })),
-      }),
-    step: steps.map((step, index) => ({
-      '@type': 'HowToStep',
-      position: index + 1,
-      name: step.name,
-      text: step.text,
-      ...(step.image && {
-        image: generateImageUrl(step.image),
-      }),
-    })),
-  };
-}
-
-// Auto-detect FAQ content from markdown and generate schema
-export function autoDetectFAQSchema(content: string): any | null {
-  // Look for common FAQ patterns in markdown
-  const faqPatterns = [
-    // Q&A format with ## or ### headers
-    /##\s*(?:Q|Question|FAQ|Frequently Asked Question)[:\s]*([^\n]+)/gi,
-    /###\s*(?:Q|Question|FAQ|Frequently Asked Question)[:\s]*([^\n]+)/gi,
-    // Bold questions followed by answers
-    /\*\*([^*]+)\*\*\s*\n+([^*\n]+(?:\n[^*\n]+)*)/g,
-    // Questions ending with question marks followed by answers
-    /([^.!?]+\?)\s*\n+([^.!?]+(?:\n[^.!?]+)*)/g,
-  ];
-
-  const questions: Array<{ question: string; answer: string }> = [];
-
-  // Try to extract questions and answers
-  for (const pattern of faqPatterns) {
-    const matches = content.matchAll(pattern);
-    for (const match of matches) {
-      if (match[1] && match[2]) {
-        const question = match[1].trim();
-        const answer = match[2].trim();
-
-        // Filter out very short or very long Q&As
-        if (
-          question.length > 10 &&
-          question.length < 200 &&
-          answer.length > 20 &&
-          answer.length < 1000
-        ) {
-          questions.push({ question, answer });
-        }
-      }
-    }
-  }
-
-  // If we found reasonable FAQ content, generate schema
-  if (questions.length >= 2) {
-    return generateFAQSchema(questions);
-  }
-
-  return null;
-}
-
-// Generate Review schema for review/rating content
-export function generateReviewSchema(options: {
-  name: string;
-  description: string;
-  rating?: number;
-  bestRating?: number;
-  worstRating?: number;
-  author: string;
-  reviewBody: string;
-  itemReviewed?: string;
-}) {
-  const {
-    name,
-    description,
-    rating,
-    bestRating = 5,
-    worstRating = 1,
-    author,
-    reviewBody,
-    itemReviewed,
-  } = options;
-
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Review',
-    name,
-    description,
-    ...(rating && {
-      reviewRating: {
-        '@type': 'Rating',
-        ratingValue: rating,
-        bestRating,
-        worstRating,
-      },
-    }),
-    author: {
-      '@type': 'Person',
-      name: author,
-    },
-    reviewBody,
-    ...(itemReviewed && {
-      itemReviewed: {
-        '@type': 'Thing',
-        name: itemReviewed,
-      },
-    }),
   };
 }
 
@@ -598,43 +444,6 @@ export function generateArticleSchema(options: {
     ...(articleSection && { articleSection }),
     inLanguage: 'en-US',
   };
-}
-
-// Enhanced structured data generation with automatic FAQ detection
-export function generateEnhancedStructuredData(
-  options: StructuredDataOptions & { content?: string },
-) {
-  const baseSchemas = generateStructuredData(options);
-
-  // If we have content and it's an article, try to auto-detect FAQ content
-  if (options.content && options.type === 'article') {
-    const faqSchema = autoDetectFAQSchema(options.content);
-    if (faqSchema) {
-      // If baseSchemas is an array, add FAQ schema to it
-      if (Array.isArray(baseSchemas)) {
-        return [...baseSchemas, faqSchema];
-      } else {
-        return [baseSchemas, faqSchema];
-      }
-    }
-  }
-
-  return baseSchemas;
-}
-
-// Generate structured data for specific content types
-export function generateContentTypeSpecificSchema(contentType: string, options: any) {
-  switch (contentType) {
-    case 'tutorial':
-    case 'how-to':
-      return generateHowToSchema(options);
-    case 'review':
-      return generateReviewSchema(options);
-    case 'faq':
-      return generateFAQSchema(options.questions || []);
-    default:
-      return null;
-  }
 }
 
 // Validate structured data for common issues
@@ -717,18 +526,4 @@ export function validateStructuredData(schema: any): {
     errors,
     warnings,
   };
-}
-
-// Generate structured data summary for debugging
-export function generateStructuredDataSummary(schemas: any[]): string {
-  const summary = schemas.map((schema, index) => {
-    const validation = validateStructuredData(schema);
-    return `Schema ${index + 1} (${schema['@type'] || 'Unknown'}): ${
-      validation.isValid ? 'Valid' : 'Invalid'
-    }${validation.errors.length > 0 ? ` - Errors: ${validation.errors.join(', ')}` : ''}${
-      validation.warnings.length > 0 ? ` - Warnings: ${validation.warnings.join(', ')}` : ''
-    }`;
-  });
-
-  return summary.join('\n');
 }

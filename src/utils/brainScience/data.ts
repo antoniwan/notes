@@ -1,15 +1,6 @@
 import { getCollection } from 'astro:content';
-import {
-  format,
-  startOfMonth,
-  endOfMonth,
-  eachMonthOfInterval,
-  eachWeekOfInterval,
-  getDay,
-  getMonth,
-} from 'date-fns';
+import { format, startOfMonth, endOfMonth, eachMonthOfInterval, getDay, getMonth } from 'date-fns';
 import { getTagWeight, MASLOW_CATEGORIES } from '../../data/tags';
-import { categories } from '../../data/categories';
 import type { CollectionEntry } from 'astro:content';
 import { isCollectionPublic } from '../publishFilters';
 import { countLexiconHits } from './textAnalysis';
@@ -33,13 +24,6 @@ export interface TagFrequency {
 
 export interface MonthlyPostData {
   month: string;
-  label: string;
-  count: number;
-  date: Date;
-}
-
-export interface WeeklyPostData {
-  week: string;
   label: string;
   count: number;
   date: Date;
@@ -155,32 +139,6 @@ export function calculateTagFrequency(
 }
 
 /**
- * Calculate category frequency
- */
-export function calculateCategoryFrequency(
-  posts: CollectionEntry<'blog'>[],
-): Array<{ id: string; name: string; count: number; percentage: number }> {
-  const categoryFrequency = posts.reduce(
-    (acc, post) => {
-      post.data.category?.forEach((cat) => {
-        acc[cat] = (acc[cat] || 0) + 1;
-      });
-      return acc;
-    },
-    {} as Record<string, number>,
-  );
-
-  return categories
-    .map((category) => ({
-      id: category.id,
-      name: category.name,
-      count: categoryFrequency[category.id] || 0,
-      percentage: Math.round(((categoryFrequency[category.id] || 0) / posts.length) * 100),
-    }))
-    .filter((cat) => cat.count > 0);
-}
-
-/**
  * Calculate Maslow hierarchy analysis
  */
 export function calculateMaslowAnalysis(posts: CollectionEntry<'blog'>[]): Array<{
@@ -240,44 +198,6 @@ export function calculateMonthlyPosts(
       label: format(month, 'MMM yyyy'),
       count: postsInMonth,
       date: month,
-    };
-  });
-}
-
-/**
- * Calculate weekly posting frequency
- */
-export function calculateWeeklyPosts(
-  posts: CollectionEntry<'blog'>[],
-  firstPostDate?: Date,
-  lastPostDate?: Date,
-): WeeklyPostData[] {
-  if (!firstPostDate || !lastPostDate) {
-    const sortedPosts = [...posts].sort(
-      (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
-    );
-    firstPostDate = sortedPosts[0]?.data.pubDate;
-    lastPostDate = sortedPosts[sortedPosts.length - 1]?.data.pubDate;
-  }
-
-  if (!firstPostDate || !lastPostDate) {
-    return [];
-  }
-
-  return eachWeekOfInterval({
-    start: firstPostDate,
-    end: lastPostDate,
-  }).map((week) => {
-    const weekStart = week;
-    const weekEnd = new Date(week.getTime() + 6 * 24 * 60 * 60 * 1000);
-    const postsInWeek = posts.filter(
-      (post) => post.data.pubDate >= weekStart && post.data.pubDate <= weekEnd,
-    ).length;
-    return {
-      week: format(week, 'yyyy-MM-dd'),
-      label: format(week, 'MMM d'),
-      count: postsInWeek,
-      date: week,
     };
   });
 }
@@ -472,102 +392,4 @@ export function calculateEmotionalPosts(
 
     return exclamationCount + emotionalWordCount > threshold;
   }).length;
-}
-
-/**
- * Prepare time series data for charts
- */
-export function prepareTimeSeriesData(
-  posts: CollectionEntry<'blog'>[],
-  interval: 'month' | 'quarter' | 'year',
-  metricFn: (post: CollectionEntry<'blog'>) => number,
-): Array<{ label: string; date: Date; value: number }> {
-  if (posts.length === 0) return [];
-
-  const sortedPosts = [...posts].sort(
-    (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
-  );
-  const firstDate = sortedPosts[0].data.pubDate;
-  const lastDate = sortedPosts[sortedPosts.length - 1].data.pubDate;
-
-  const intervals: Date[] = [];
-  let currentDate = new Date(firstDate);
-
-  while (currentDate <= lastDate) {
-    intervals.push(new Date(currentDate));
-
-    if (interval === 'month') {
-      currentDate.setMonth(currentDate.getMonth() + 1);
-    } else if (interval === 'quarter') {
-      currentDate.setMonth(currentDate.getMonth() + 3);
-    } else {
-      currentDate.setFullYear(currentDate.getFullYear() + 1);
-    }
-  }
-
-  return intervals.map((intervalDate) => {
-    const intervalStart = new Date(intervalDate);
-    const intervalEnd = new Date(intervalDate);
-
-    if (interval === 'month') {
-      intervalEnd.setMonth(intervalEnd.getMonth() + 1);
-    } else if (interval === 'quarter') {
-      intervalEnd.setMonth(intervalEnd.getMonth() + 3);
-    } else {
-      intervalEnd.setFullYear(intervalEnd.getFullYear() + 1);
-    }
-
-    const postsInInterval = sortedPosts.filter(
-      (post) => post.data.pubDate >= intervalStart && post.data.pubDate < intervalEnd,
-    );
-
-    const value =
-      postsInInterval.length > 0
-        ? postsInInterval.reduce((sum, post) => sum + metricFn(post), 0) / postsInInterval.length
-        : 0;
-
-    let label: string;
-    if (interval === 'month') {
-      label = format(intervalDate, 'MMM yyyy');
-    } else if (interval === 'quarter') {
-      const quarter = Math.floor(intervalDate.getMonth() / 3) + 1;
-      label = `Q${quarter} ${intervalDate.getFullYear()}`;
-    } else {
-      label = intervalDate.getFullYear().toString();
-    }
-
-    return { label, date: intervalDate, value: Math.round(value * 100) / 100 };
-  });
-}
-
-/**
- * Calculate correlation between two metrics
- */
-export function calculateCorrelation(
-  posts: CollectionEntry<'blog'>[],
-  metric1Fn: (post: CollectionEntry<'blog'>) => number,
-  metric2Fn: (post: CollectionEntry<'blog'>) => number,
-): number {
-  if (posts.length < 2) return 0;
-
-  const values1 = posts.map(metric1Fn);
-  const values2 = posts.map(metric2Fn);
-
-  const mean1 = values1.reduce((sum, val) => sum + val, 0) / values1.length;
-  const mean2 = values2.reduce((sum, val) => sum + val, 0) / values2.length;
-
-  let numerator = 0;
-  let sumSq1 = 0;
-  let sumSq2 = 0;
-
-  for (let i = 0; i < values1.length; i++) {
-    const diff1 = values1[i] - mean1;
-    const diff2 = values2[i] - mean2;
-    numerator += diff1 * diff2;
-    sumSq1 += diff1 * diff1;
-    sumSq2 += diff2 * diff2;
-  }
-
-  const denominator = Math.sqrt(sumSq1 * sumSq2);
-  return denominator === 0 ? 0 : numerator / denominator;
 }
