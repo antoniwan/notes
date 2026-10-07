@@ -12,8 +12,8 @@ export interface AuthoredBook {
 }
 
 // Existing story art and titles from the author's book repositories:
-// https://github.com/antoniwan/the-bent-one (public/og.svg)
-// https://github.com/antoniwan/book-sun-and-moon (public/cover.jpg)
+// https://github.com/Strong-Hands-Soft-Heart/the-bent-one (public/og.svg)
+// https://github.com/Strong-Hands-Soft-Heart/book-sun-and-moon (public/cover.jpg)
 // Story and artwork retain their CC BY-NC 4.0 license.
 export const authoredBooks: AuthoredBook[] = [
   {
