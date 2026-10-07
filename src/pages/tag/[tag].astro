@@ -12,6 +12,7 @@ import { getTagFamily } from '../../data/tagFamilies';
 import { getTagMetadata } from '../../data/tags';
 import { filterPostsByTag, getAllUniqueTags, getTagStatistics } from '../../utils/tagProcessing';
 import { canonicalizeTag } from '../../utils/tagVocabulary';
+import { isThinTag } from '../../utils/sitemapTranslations';
 import { isCookbookListedPost, isTagListedPost } from '../../utils/recipes';
 
 export async function getStaticPaths() {
@@ -50,6 +51,7 @@ const seoDescription = tagMetaDescription(canonicalTag, totalPosts);
   metaDescription={seoDescription}
   path={`/tag/${canonicalTag}`}
   structuredDataType="tag"
+  robots={isThinTag(canonicalTag) ? 'noindex, follow' : undefined}
   structuredDataIdentifier={canonicalTag}
   posts={tagPosts}
 >

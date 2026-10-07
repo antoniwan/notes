@@ -16,6 +16,7 @@ import { indexNowIntegration } from './src/utils/indexNow';
 import {
   getSitemapLastmodByUrl,
   getSitemapTranslationLinksByUrl,
+  isThinTagUrl,
 } from './src/utils/sitemapTranslations';
 
 /** Vite connect middleware: `/path/` → `/path` before Astro trailingSlash 404. */
@@ -97,7 +98,8 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap({
-      filter: shouldIncludeInSitemap,
+      // Thin tag pages (fewer than TAG_INDEX_MIN_POSTS essays) are noindex; keep them out too.
+      filter: (page) => shouldIncludeInSitemap(page) && !isThinTagUrl(page),
       // Slug-based EN/ES pairs (translationGroup) — not path-prefix i18n.
       // lastmod + links maps are filesystem-derived (safe to import at config load).
       serialize(item) {

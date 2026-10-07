@@ -26,12 +26,19 @@ import type { PostMeta } from './publishEligibility.mjs';
 
 export type SitemapLangLink = { url: string; lang: string };
 
+/** Same values as the page head's hreflang links. No region: es-ES would target Spain. */
 const HREFLANG_BY_LANG: Record<string, string> = {
-  en: 'en-US',
-  es: 'es-ES',
+  en: 'en',
+  es: 'es',
 };
 
-const CONTENT_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../content/p');
+// Relative to this file at config load. Inside a built page this module runs from
+// a bundled chunk, so fall back to the project root (where Astro and Vercel build).
+const CONTENT_DIR =
+  [
+    path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../content/p'),
+    path.resolve(process.cwd(), 'src/content/p'),
+  ].find((dir) => fs.existsSync(dir)) ?? path.resolve(process.cwd(), 'src/content/p');
 
 /** Listings that carry recipes alongside essays. */
 const LISTING_PATHS = ['/', '/everything'];
@@ -53,7 +60,15 @@ const ESSAY_LISTING_PATHS = ['/guided-path', '/category', '/tag'];
 type SitemapMeta = {
   linksByCanonicalUrl: Map<string, SitemapLangLink[]>;
   lastmodByUrl: Map<string, Date>;
+  /** Essays per canonical tag, on the same rules as the tag pages' lastmod. */
+  tagPostCount: Map<string, number>;
 };
+
+/**
+ * Tag pages with fewer essays than this stay up for readers, but are kept out of
+ * the sitemap and marked noindex: one-post tag pages read as thin to search engines.
+ */
+export const TAG_INDEX_MIN_POSTS = 3;
 
 let sitemapMeta: SitemapMeta | null = null;
 
@@ -120,6 +135,7 @@ export function buildSitemapIndex(
   const now = options.now ?? new Date();
   const byGroup = new Map<string, Array<{ lang: string; url: string }>>();
   const lastmodByUrl = new Map<string, Date>();
+  const tagPostCount = new Map<string, number>();
 
   for (const { postId, meta } of entries) {
     if (!isPublicMeta(meta, { now })) continue;
@@ -156,6 +172,7 @@ export function buildSitemapIndex(
         }
         for (const tag of canonicalizeTags(meta.tags)) {
           bumpLastmod(lastmodByUrl, sitemapPageUrl(`/tag/${tag}`), lastmod);
+          tagPostCount.set(tag, (tagPostCount.get(tag) ?? 0) + 1);
         }
       }
     }
@@ -179,7 +196,7 @@ export function buildSitemapIndex(
     }
   }
 
-  return { linksByCanonicalUrl, lastmodByUrl };
+  return { linksByCanonicalUrl, lastmodByUrl, tagPostCount };
 }
 
 /** Reads the content directory and builds the index from it, once. */
@@ -193,8 +210,7 @@ function loadSitemapMeta(): SitemapMeta {
     entries.push({ postId: postIdFromFile(file), meta: normalizePostMeta(data) });
   }
 
-  const { linksByCanonicalUrl, lastmodByUrl } = buildSitemapIndex(entries);
-  sitemapMeta = { linksByCanonicalUrl, lastmodByUrl };
+  sitemapMeta = buildSitemapIndex(entries);
   return sitemapMeta;
 }
 
@@ -213,4 +229,15 @@ export function getSitemapTranslationLinksByUrl(): Map<string, SitemapLangLink[]
  */
 export function getSitemapLastmodByUrl(): Map<string, Date> {
   return loadSitemapMeta().lastmodByUrl;
+}
+
+/** True when a tag page should be hidden from search engines (see TAG_INDEX_MIN_POSTS). */
+export function isThinTag(tag: string): boolean {
+  return (loadSitemapMeta().tagPostCount.get(tag) ?? 0) < TAG_INDEX_MIN_POSTS;
+}
+
+/** isThinTag for a sitemap URL; false for anything that is not a tag page. */
+export function isThinTagUrl(pageUrl: string): boolean {
+  const match = new URL(pageUrl).pathname.match(/^\/tag\/([^/]+)\/?$/);
+  return match ? isThinTag(decodeURIComponent(match[1])) : false;
 }

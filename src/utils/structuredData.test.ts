@@ -6,7 +6,7 @@ import {
 } from './structuredData';
 
 describe('generateStructuredData articleSection', () => {
-  it('prefers category over tags', () => {
+  it('uses the primary category by its display name', () => {
     const schemas = generateStructuredData({
       title: 'Test',
       description: 'Desc',
@@ -19,10 +19,11 @@ describe('generateStructuredData articleSection', () => {
     const article = (Array.isArray(schemas) ? schemas : [schemas]).find(
       (s) => s['@type'] === 'BlogPosting',
     );
-    expect(article?.articleSection).toBe('psychology');
+    expect(article?.articleSection).toBe('Psychology, Roughly');
+    expect(article?.about).toEqual([{ '@type': 'Thing', name: 'Psychology, Roughly' }]);
   });
 
-  it('falls back to tags when no category', () => {
+  it('leaves articleSection out when there is no category', () => {
     const schemas = generateStructuredData({
       title: 'Test',
       description: 'Desc',
@@ -34,7 +35,7 @@ describe('generateStructuredData articleSection', () => {
     const article = (Array.isArray(schemas) ? schemas : [schemas]).find(
       (s) => s['@type'] === 'BlogPosting',
     );
-    expect(article?.articleSection).toBe('empathy, growth, mindfulness');
+    expect(article?.articleSection).toBeUndefined();
   });
 });
 

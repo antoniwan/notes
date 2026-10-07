@@ -121,7 +121,7 @@ export type ContentLanguageMeta = {
   htmlLang: 'en' | 'es';
   contentLanguage: 'en' | 'es';
   ogLocale: 'en_US' | 'es_ES';
-  inLanguage: 'en-US' | 'es-ES';
+  inLanguage: 'en-US' | 'es';
 };
 
 /** Map post `language` frontmatter to HTML / Open Graph / JSON-LD language tags. */
@@ -132,7 +132,7 @@ export function resolveContentLanguage(language?: string[]): ContentLanguageMeta
       htmlLang: 'es',
       contentLanguage: 'es',
       ogLocale: 'es_ES',
-      inLanguage: 'es-ES',
+      inLanguage: 'es',
     };
   }
   return {

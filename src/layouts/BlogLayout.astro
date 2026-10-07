@@ -15,6 +15,7 @@ import PostTocModal from '../components/post-toc/PostTocModal.astro';
 import { generateCanonicalUrl, normalizeSeoPath } from '../utils/seo';
 import { resolveContentLanguage } from '../utils/publishFilters';
 import { isRecipePost } from '../utils/recipes';
+import { recipeFromMarkdown } from '../utils/recipeSections';
 import { generateBreadcrumbSchema } from '../utils/structuredData';
 import { breadcrumbItemsForSchema, buildPostBreadcrumbItems } from '../utils/postBreadcrumbs';
 import type { BlogLayoutProps } from '../types/layout';
@@ -52,6 +53,7 @@ const imageCreditUrl = rest.currentPost?.data.imageCreditUrl;
 const imageLicense = rest.currentPost?.data.imageLicense;
 const isRecipe = rest.currentPost ? isRecipePost(rest.currentPost) : false;
 const recipeData = isRecipe ? rest.currentPost?.data : undefined;
+const recipeText = isRecipe ? recipeFromMarkdown(rest.currentPost?.body) : undefined;
 const estimatedWordCount = (() => {
   if (!minutesRead || typeof minutesRead !== 'string') return undefined;
   const match = minutesRead.match(/(\d+)/);
@@ -106,8 +108,8 @@ const breadcrumbSchema = generateBreadcrumbSchema(
   keywords={keywords}
   type="article"
   structuredDataType={isRecipe ? 'recipe' : 'article'}
-  recipeIngredient={recipeData?.recipeIngredient}
-  recipeInstructions={recipeData?.recipeInstructions}
+  recipeIngredient={recipeData?.recipeIngredient ?? recipeText?.ingredients}
+  recipeInstructions={recipeData?.recipeInstructions ?? recipeText?.instructions}
   prepTime={recipeData?.prepTime}
   cookTime={recipeData?.cookTime}
   totalTime={recipeData?.totalTime}

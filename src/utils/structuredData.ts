@@ -1,5 +1,6 @@
 import type { CollectionEntry } from 'astro:content';
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL, AUTHOR } from '../consts';
+import { categories } from '../data/categories';
 import { generateCanonicalUrl, generateImageUrl } from './seo';
 
 // Enhanced structured data options
@@ -49,6 +50,11 @@ export const authorRef = {
   url: AUTHOR.url,
 };
 
+/** A category's display name ("On Systems & Strategy"), not its id ("systems-strategy"). */
+function categoryName(id: string): string {
+  return categories.find((category) => category.id === id)?.name ?? id;
+}
+
 function presentString(value?: string): string | undefined {
   const trimmed = value?.trim();
   return trimmed ? trimmed : undefined;
@@ -86,9 +92,6 @@ export function generateStructuredData(options: StructuredDataOptions) {
     identifier,
     category = [],
     tags = [],
-    tableOfContents = false,
-    featured = false,
-    draft = false,
     inLanguage = 'en-US',
     wordCount,
     recipeIngredient,
@@ -139,13 +142,7 @@ export function generateStructuredData(options: StructuredDataOptions) {
       })(),
       url: url,
       inLanguage,
-      // Prefer primary category; otherwise a short tag summary; else a stable default.
-      articleSection:
-        category.length > 0
-          ? category[0]
-          : tags.length > 0
-            ? tags.slice(0, 3).join(', ')
-            : 'Personal Growth',
+      ...(category.length > 0 && { articleSection: categoryName(category[0]) }),
       ...(typeof wordCount === 'number' && wordCount > 0 && { wordCount }),
       // Enhanced article properties
       mainEntityOfPage: {
@@ -161,19 +158,8 @@ export function generateStructuredData(options: StructuredDataOptions) {
       ...(category.length > 0 && {
         about: category.map((cat) => ({
           '@type': 'Thing',
-          name: cat,
+          name: categoryName(cat),
         })),
-      }),
-      // Enhanced metadata
-      ...(featured && { isAccessibleForFree: true }),
-      ...(draft && { isAccessibleForFree: false }),
-      // Reading experience indicators
-      ...(tableOfContents && {
-        hasPart: {
-          '@type': 'WebPageElement',
-          name: 'Table of Contents',
-          description: 'Structured navigation for this article',
-        },
       }),
     };
 
@@ -242,7 +228,7 @@ export function generateStructuredData(options: StructuredDataOptions) {
             author: authorRef,
             image: generateImageUrl(post.data.heroImage),
             keywords: post.data.tags?.join(', '),
-            articleSection: post.data.category?.join(', '),
+            articleSection: post.data.category?.map(categoryName).join(', '),
             timeRequired: (() => {
               if (post.data.minutesRead && typeof post.data.minutesRead === 'string') {
                 // Extract minutes from "X min read" format

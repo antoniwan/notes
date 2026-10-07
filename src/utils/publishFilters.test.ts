@@ -135,7 +135,7 @@ describe('resolveContentLanguage', () => {
       htmlLang: 'es',
       contentLanguage: 'es',
       ogLocale: 'es_ES',
-      inLanguage: 'es-ES',
+      inLanguage: 'es',
     });
   });
 

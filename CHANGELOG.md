@@ -9,6 +9,45 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.32.0] — 2026-10-07
+
+### Added
+
+- **Recipe structured data has ingredients and steps.** All 39 recipes were
+  marked as `Recipe` with no `recipeIngredient` or `recipeInstructions`, so
+  search engines could not show them as recipes. `src/utils/recipeSections.ts`
+  reads the bullets under `## Ingredients` and the numbered steps under
+  `## Method` from each recipe's Markdown at build time. Frontmatter values
+  still win when a recipe sets them.
+- **Thin tag pages are hidden from search engines.** A tag page with fewer
+  than 3 essays (`TAG_INDEX_MIN_POSTS`) stays up for readers but is
+  `noindex, follow` and left out of the sitemap: 65 of 105 tag pages on this
+  date. One count (`isThinTag` in `sitemapTranslations.ts`) decides both.
+
+### Changed
+
+- **Plain language tags.** JSON-LD `inLanguage` for Spanish is `es` (was
+  `es-ES`, Spain), and the sitemap's hreflang links are `en` and `es` (were
+  `en-US` and `es-ES`), the same values as the page head.
+- **Category names in post structured data.** `articleSection` and `about`
+  use the category's name ("On Systems & Strategy"), not its id. A post with
+  no category has no `articleSection` (it was a list of tag ids, or
+  "Personal Growth").
+- "Pa' la nena que vive en ti" is marked Spanish (`language: es`), which it
+  is. Like every Spanish-primary post, it now stays out of the English
+  listings and feeds.
+
+### Removed
+
+- From BlogPosting: the `hasPart` "Table of Contents" element and the
+  `isAccessibleForFree` flag tied to `featured` and `draft`. Together they
+  looked like paywall markup, and Notes has no paywall.
+
+### Fixed
+
+- `sitemapTranslations.ts` finds `src/content/p` from inside a built page too
+  (it looked next to the bundled chunk), so a page can use its counts.
+
 ## [6.31.1] — 2026-10-07
 
 ### Fixed
