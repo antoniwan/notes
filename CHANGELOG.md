@@ -9,6 +9,23 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.30.0] — 2026-10-07
+
+The site now has a front door for agents, per the
+[llms.txt proposal](https://llmstxt.org) (v2, August 2026).
+
+### Added
+
+- **`/llms.txt`**: a markdown guide to the site. It lists every public post,
+  newest first, in three sections (Essays, En español, Recipes), each with its
+  publish date and description. It is built from the same collection and the
+  same publish filter as the post pages, so it never lists a draft.
+- **`/p/<slug>.md`**: every post as markdown. A short header (title,
+  description, author, dates, language, canonical URL) and then the post body.
+  MDX `import` lines are dropped; they mean nothing outside the build.
+- **Head links**: every page links `/llms.txt` with `rel="describedby"`. Every
+  post links its `.md` copy with `rel="alternate"` and `type="text/markdown"`.
+
 ## [6.29.0] — 2026-10-05
 
 Maintenance, all of it: every dependency current, a clean audit, and about

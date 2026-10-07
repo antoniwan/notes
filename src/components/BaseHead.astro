@@ -56,6 +56,10 @@ const {
  * fallback cover is chosen by `DefaultImage` from `default_covers/`, so that
  * preload pulled an image the page never displayed.
  */
+/** Every post at `/p/<slug>` also ships as markdown at `/p/<slug>.md` (see `pages/p/[...slug].md.ts`). */
+const markdownAlternate =
+  path && /^\/p\/.+/.test(path) ? new URL(`${path.slice(1)}.md`, Astro.site) : undefined;
+
 const resolvedHero = resolveHeroImage(heroImage);
 const heroPreload = resolvedHero
   ? await getImage({
@@ -191,6 +195,10 @@ const updatedDateISO = updatedDate?.toISOString();
 
 <!-- Sitemap -->
 <link rel="sitemap" href={new URL('sitemap-index.xml', Astro.site)} />
+
+<!-- For agents (llmstxt.org): the site guide, and this page as markdown -->
+<link rel="describedby" href={new URL('llms.txt', Astro.site)} />
+{markdownAlternate && <link rel="alternate" type="text/markdown" href={markdownAlternate} />}
 
 <!-- Primary Meta Tags -->
 <title>{metaTags.title}</title>
