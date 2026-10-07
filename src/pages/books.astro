@@ -3,7 +3,8 @@ import PageLayout from '../layouts/PageLayout.astro';
 import AuthoredBookCard from '../components/AuthoredBookCard.astro';
 import { authoredBooks } from '../data/authoredBooks';
 import { PAGE_META } from '../data/pageMeta';
-import { AUTHOR, SITE_URL } from '../consts';
+import { SITE_URL } from '../consts';
+import { authorRef } from '../utils/structuredData';
 
 const bookCollection = {
   '@context': 'https://schema.org',
@@ -23,7 +24,13 @@ const bookCollection = {
       inLanguage: ['en', 'es'],
       bookFormat: 'https://schema.org/EBook',
       license: 'https://creativecommons.org/licenses/by-nc/4.0/',
-      author: { '@type': 'Person', name: AUTHOR.name, url: AUTHOR.url },
+      author: authorRef,
+      publisher: {
+        '@type': 'Organization',
+        '@id': 'https://www.stronghandssoftheart.com/#organization',
+        name: 'Strong Hands, Soft Heart LLC',
+        url: 'https://www.stronghandssoftheart.com',
+      },
     },
   })),
 };

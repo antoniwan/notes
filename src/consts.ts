@@ -5,21 +5,14 @@ import { assetConfig } from './config/assets';
 
 // TypeScript interfaces for better type safety
 export interface Author {
+  /** The one ID for Antonio in structured data, defined on antoniwan.online. */
+  id: string;
   name: string;
+  alternateName: string[];
   email: string;
   url: string;
   github: string;
   linkedin: string;
-}
-
-export interface SocialLinks {
-  github: string;
-  linkedin: string;
-  bluesky: string;
-  buildsSoftware: string;
-  strongHands: string;
-  twitter: string;
-  threads: string;
 }
 
 export interface SEOConfig {
@@ -30,10 +23,6 @@ export interface SEOConfig {
   defaultRobots: string;
   googleSiteVerification: string;
   twitterHandle: string;
-  organizationName: string;
-  organizationLogo: string;
-  organizationLogoWidth: number;
-  organizationLogoHeight: number;
 }
 
 // Site Information
@@ -45,22 +34,13 @@ export const SITE_URL = 'https://notes.antoniwan.online';
 
 // Author Information
 export const AUTHOR: Author = {
+  id: 'https://antoniwan.online/#person',
   name: 'Antonio Rodriguez Martinez',
+  alternateName: ['Antonio Rodríguez Martínez', 'antoniwan'],
   email: 'antonio@builds.software',
   url: 'https://antoniwan.online',
   github: 'antoniwan',
   linkedin: 'antoniwan',
-};
-
-// Social Media Links
-export const SOCIAL_LINKS: SocialLinks = {
-  github: 'https://github.com/antoniwan',
-  linkedin: 'https://linkedin.com/in/antoniwan',
-  bluesky: 'https://bsky.app/profile/antoniwan.online',
-  buildsSoftware: 'https://builds.software',
-  strongHands: 'https://stronghandssoftheart.com',
-  twitter: 'https://twitter.com/antoniwan',
-  threads: 'https://www.threads.com/@_antoniwan',
 };
 
 // SEO Configuration
@@ -73,8 +53,4 @@ export const SEO_CONFIG: SEOConfig = {
   defaultRobots: 'index, follow',
   googleSiteVerification: 'gUubXvBv6tFsaZTQd5vS1VUGHlaMTOyf110X3yn7jiY',
   twitterHandle: '@antoniwan',
-  organizationName: 'Antonio Rodriguez Martinez',
-  organizationLogo: assetConfig.images.logo,
-  organizationLogoWidth: 512,
-  organizationLogoHeight: 512,
 };

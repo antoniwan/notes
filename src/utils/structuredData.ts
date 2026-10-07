@@ -1,12 +1,5 @@
 import type { CollectionEntry } from 'astro:content';
-import {
-  SITE_TITLE,
-  SITE_DESCRIPTION,
-  SITE_URL,
-  AUTHOR,
-  SOCIAL_LINKS,
-  SEO_CONFIG,
-} from '../consts';
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL, AUTHOR } from '../consts';
 import { generateCanonicalUrl, generateImageUrl } from './seo';
 
 // Enhanced structured data options
@@ -43,6 +36,18 @@ export interface StructuredDataOptions {
   recipeCategory?: string;
   recipeCuisine?: string;
 }
+
+/**
+ * Antonio, as every schema on Notes names him. antoniwan.online holds the full
+ * Person under the same @id; Notes points at it instead of describing him again.
+ */
+export const authorRef = {
+  '@type': 'Person',
+  '@id': AUTHOR.id,
+  name: AUTHOR.name,
+  alternateName: AUTHOR.alternateName,
+  url: AUTHOR.url,
+};
 
 function presentString(value?: string): string | undefined {
   const trimmed = value?.trim();
@@ -107,74 +112,7 @@ export function generateStructuredData(options: StructuredDataOptions) {
     description: SITE_DESCRIPTION,
     url: SITE_URL,
     inLanguage: 'en-US',
-    publisher: {
-      '@type': 'Person',
-      name: AUTHOR.name,
-      url: AUTHOR.url,
-    },
-  });
-
-  // Enhanced Organization schema
-  schemas.push({
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: SEO_CONFIG.organizationName,
-    url: SITE_URL,
-    inLanguage: 'en-US',
-    logo: {
-      '@type': 'ImageObject',
-      url: generateImageUrl(SEO_CONFIG.organizationLogo),
-      width: SEO_CONFIG.organizationLogoWidth,
-      height: SEO_CONFIG.organizationLogoHeight,
-    },
-    sameAs: Object.values(SOCIAL_LINKS),
-    // Enhanced organization details
-    description: SITE_DESCRIPTION,
-    foundingDate: '2024', // Adjust based on your actual founding date
-    areaServed: 'Worldwide',
-    serviceType: 'Personal field notes',
-  });
-
-  // Enhanced Person schema for author
-  schemas.push({
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: AUTHOR.name,
-    url: AUTHOR.url,
-    inLanguage: 'en-US',
-    sameAs: [SOCIAL_LINKS.twitter, SOCIAL_LINKS.github, SOCIAL_LINKS.bluesky],
-    jobTitle: 'Software Engineer & Writer',
-    worksFor: {
-      '@type': 'Organization',
-      name: SEO_CONFIG.organizationName,
-    },
-    knowsAbout: [
-      'Software Development',
-      'Personal Growth',
-      'Mental Health',
-      'Parenting',
-      'Technology',
-      'Thinking',
-      'Fatherhood',
-      'Cooking',
-      'Masculinity',
-      'Culture',
-      'Modern Collapse',
-      'Philosophy',
-      'Cultural Navigation',
-    ],
-    // Enhanced author details
-    description:
-      'Software engineer and writer. Field notes on fatherhood, cooking, and modern life.',
-    alumniOf: {
-      '@type': 'Organization',
-      name: 'Software Engineering Community',
-    },
-    hasOccupation: {
-      '@type': 'Occupation',
-      name: 'Software Engineer',
-      description: "Building digital solutions and exploring technology's impact on modern life",
-    },
+    publisher: authorRef,
   });
 
   // Type-specific schemas
@@ -188,20 +126,8 @@ export function generateStructuredData(options: StructuredDataOptions) {
       image: generateImageUrl(heroImage),
       datePublished: pubDate.toISOString(),
       dateModified: updatedDate?.toISOString() || pubDate.toISOString(),
-      author: {
-        '@type': 'Person',
-        name: AUTHOR.name,
-        url: AUTHOR.url,
-      },
-      publisher: {
-        '@type': 'Organization',
-        name: SEO_CONFIG.organizationName,
-        url: SITE_URL,
-        logo: {
-          '@type': 'ImageObject',
-          url: generateImageUrl(SEO_CONFIG.organizationLogo),
-        },
-      },
+      author: authorRef,
+      publisher: authorRef,
       keywords: keywords.join(', '),
       timeRequired: (() => {
         if (minutesRead && typeof minutesRead === 'string') {
@@ -270,11 +196,7 @@ export function generateStructuredData(options: StructuredDataOptions) {
       description,
       url,
       inLanguage,
-      author: {
-        '@type': 'Person',
-        name: AUTHOR.name,
-        url: AUTHOR.url,
-      },
+      author: authorRef,
     };
 
     if (heroImage) recipeSchema.image = generateImageUrl(heroImage);
@@ -317,11 +239,7 @@ export function generateStructuredData(options: StructuredDataOptions) {
             url: generateCanonicalUrl(`/p/${post.id}`),
             datePublished: post.data.pubDate.toISOString(),
             dateModified: post.data.updatedDate?.toISOString() || post.data.pubDate.toISOString(),
-            author: {
-              '@type': 'Person',
-              name: AUTHOR.name,
-              url: AUTHOR.url,
-            },
+            author: authorRef,
             image: generateImageUrl(post.data.heroImage),
             keywords: post.data.tags?.join(', '),
             articleSection: post.data.category?.join(', '),

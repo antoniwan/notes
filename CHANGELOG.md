@@ -9,6 +9,30 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.31.1] — 2026-10-07
+
+### Fixed
+
+- **Structured data names Antonio once, the same way as antoniwan.online.**
+  Every schema that names him (the WebSite publisher, each BlogPosting's
+  author and publisher, recipes, topic lists, and `/books`) now uses one
+  reference, `authorRef`: the ID `https://antoniwan.online/#person`, both
+  spellings of the name, and antoniwan.online as his URL. antoniwan.online
+  1.4.0 holds the full Person under that ID.
+- `/books` names Strong Hands, Soft Heart LLC as the publisher of both books.
+
+### Removed
+
+- **The Organization schema on every page.** It described Antonio as an
+  organization, with the company logo, `builds.software` (now a redirect), and
+  the company site as the same entity. Notes is his own writing, not the
+  company's.
+- **The separate Person schema on every page.** Its job title ("Software
+  Engineer & Writer"), employer, "alumni of", and topic list were out of date
+  and contradicted antoniwan.online.
+- `SOCIAL_LINKS` and the `organization*` fields of `SEO_CONFIG`, which only
+  those two schemas read.
+
 ## [6.31.0] — 2026-10-07
 
 ### Added
