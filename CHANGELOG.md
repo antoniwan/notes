@@ -9,6 +9,16 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.31.0] — 2026-10-07
+
+### Added
+
+- **`/latest.json`**: the 10 newest posts as a small JSON Feed (title, link,
+  date, summary; no post bodies). It uses the same filter and order as
+  `/feed.json`, which carries every post in full and weighs over 1 MB.
+  antoniwan.online reads it to keep its Writing list current between its own
+  builds. About 4 KB.
+
 ## [6.30.1] — 2026-10-07
 
 ### Removed
