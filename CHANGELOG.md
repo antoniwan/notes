@@ -9,6 +9,16 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.30.1] — 2026-10-07
+
+### Removed
+
+- **Host redirects for `antoniwan.blog` and `www.antoniwan.blog`** in
+  `vercel.json`. The domain is no longer registered (no registry record on
+  October 7, 2026) and is off the Vercel project, so the rules could never
+  match. The host redirects for `blog.antoniwan.com`, `blog.antoniwan.online`,
+  and `vault.antoniwan.online` stay.
+
 ## [6.30.0] — 2026-10-07
 
 The site now has a front door for agents, per the
