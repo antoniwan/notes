@@ -40,10 +40,11 @@ const canAutoRotate = autoRotate && images.length > 1;
         <div
           class={`main-image ${index === 0 ? 'active' : ''}`}
           data-index={index}
+          data-src={image.src}
           role="img"
           aria-label={image.alt}
           aria-hidden={index === 0 ? 'false' : 'true'}
-          style={`background-image: url('${image.src}')`}
+          style={index === 0 ? `background-image: url(${JSON.stringify(image.src)})` : undefined}
         >
           <div class="image-overlay">
             {image.caption && (
@@ -143,7 +144,11 @@ const canAutoRotate = autoRotate && images.length > 1;
             aria-label={image.alt}
             aria-current={index === 0 ? 'true' : undefined}
           >
-            <img src={image.src} alt="" loading="lazy" />
+            {index === 0 ? (
+              <img src={image.src} data-src={image.src} alt="" loading="lazy" decoding="async" />
+            ) : (
+              <img data-src={image.src} alt="" loading="lazy" decoding="async" />
+            )}
           </button>
         ))}
       </div>
@@ -308,8 +313,48 @@ const canAutoRotate = autoRotate && images.length > 1;
     private init(): void {
       this.setupNavigation();
       this.setupThumbnails();
+      this.setupThumbnailObserver();
       this.setupAutoRotation();
       this.updateDisplay();
+    }
+
+    /** CSS backgrounds cannot be lazy-loaded, so only current ± 1 get a url. */
+    private ensureSlideLoaded(index: number): void {
+      const image = this.images[index];
+      if (!(image instanceof HTMLElement)) return;
+      if (image.style.backgroundImage) return;
+      const src = image.dataset.src;
+      if (!src) return;
+      image.style.backgroundImage = `url(${JSON.stringify(src)})`;
+    }
+
+    private setupThumbnailObserver(): void {
+      const thumbs = this.container.querySelectorAll<HTMLImageElement>('.thumbnail img[data-src]');
+      if (!thumbs.length) return;
+
+      const loadThumb = (img: HTMLImageElement) => {
+        const src = img.dataset.src;
+        if (!src || img.getAttribute('src') === src) return;
+        img.src = src;
+      };
+
+      const scroller = this.container.querySelector('.thumbnail-container');
+      if (!('IntersectionObserver' in window) || !(scroller instanceof HTMLElement)) {
+        thumbs.forEach(loadThumb);
+        return;
+      }
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            if (entry.target instanceof HTMLImageElement) loadThumb(entry.target);
+            observer.unobserve(entry.target);
+          }
+        },
+        { root: scroller, rootMargin: '80px' },
+      );
+      thumbs.forEach((img) => observer.observe(img));
     }
 
     private setupNavigation(): void {
@@ -431,6 +476,13 @@ const canAutoRotate = autoRotate && images.length > 1;
     }
 
     private updateDisplay(): void {
+      const last = this.images.length;
+      this.ensureSlideLoaded(this.currentIndex);
+      if (last > 1) {
+        this.ensureSlideLoaded((this.currentIndex + 1) % last);
+        this.ensureSlideLoaded((this.currentIndex - 1 + last) % last);
+      }
+
       // Update main images
       this.images.forEach((image: Element, index: number) => {
         const isActive = index === this.currentIndex;

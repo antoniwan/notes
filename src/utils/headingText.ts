@@ -1,8 +1,8 @@
 /**
  * Heading text helpers for the table of contents.
  *
- * The TOC is built from the raw Markdown source, so a heading written as
- * `## **Title**` would otherwise show its markers as literal text.
+ * Astro heading `text` can still contain Markdown markers, so a heading
+ * written as `## **Title**` would otherwise show those markers in the TOC.
  */
 
 /** Strip `**`, `_`, and backticks so TOC labels read as plain text. */

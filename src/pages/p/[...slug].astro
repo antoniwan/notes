@@ -8,7 +8,7 @@ import { calculateReadingTimeFromMarkdown } from '../../utils/readingTime';
 import { AUTHOR } from '../../consts';
 import { getCategoryDisplayItems, getCategoryNameFromIds } from '../../utils/categoryUtils';
 import { isCollectionPublic } from '../../utils/publishFilters';
-import { stripHeadingMarkup } from '../../utils/headingText';
+import { tableOfContentsFromHeadings } from '../../utils/postToc';
 
 export const prerender = true;
 
@@ -25,7 +25,7 @@ interface Props {
 }
 
 const { post, allPosts } = Astro.props;
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
 
 // Use reading time from remark plugin when present; otherwise compute from body
 const minutesRead = post.data.minutesRead ?? calculateReadingTimeFromMarkdown(post.body || '');
@@ -42,52 +42,7 @@ const author = post.data.author || AUTHOR.name;
 const categoryName = getCategoryNameFromIds(post.data.category);
 const categoryItems = getCategoryDisplayItems(post.data.category);
 
-// Generate table of contents from markdown headings and optional HTML heading anchors
-// (e.g. <h2 class="toc-only" id="..."> for visually hidden section markers).
-const headingRegex = /^(?:(#{2,3})\s+(.+)|<h([23])(\s[^>]*)?>(.*?)<\/h\3>)/gm;
-const slugCounts = new Map<string, number>();
-const toSlug = (value: string) =>
-  value
-    .toLowerCase()
-    .normalize('NFKD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^\w\s-]/g, '')
-    .trim()
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-');
-const withUniqueSlug = (baseSlug: string) => {
-  const count = slugCounts.get(baseSlug) ?? 0;
-  slugCounts.set(baseSlug, count + 1);
-  return count === 0 ? baseSlug : `${baseSlug}-${count}`;
-};
-const tableOfContents = [...(post.body?.matchAll(headingRegex) ?? [])]
-  .map((match) => {
-    if (match[1]) {
-      const level = match[1].length;
-      const trimmedText = stripHeadingMarkup(match[2] || '');
-      const slug = withUniqueSlug(toSlug(trimmedText));
-      return { text: trimmedText, slug, level };
-    }
-
-    const level = Number(match[3]);
-    const attrs = match[4] ?? '';
-    const trimmedText = stripHeadingMarkup((match[5] || '').replace(/<[^>]+>/g, ''));
-    const idFromAttr = attrs.match(/\bid=["']([^"']+)["']/i)?.[1];
-    const slug = idFromAttr || withUniqueSlug(toSlug(trimmedText));
-    if (idFromAttr) {
-      slugCounts.set(idFromAttr, (slugCounts.get(idFromAttr) ?? 0) + 1);
-    }
-    return { text: trimmedText, slug, level };
-  })
-  .filter((item) => item.text.length > 0 && item.slug.length > 0);
-
-if (tableOfContents.length > 0) {
-  tableOfContents.unshift({
-    text: 'Top',
-    slug: 'post-top',
-    level: 1,
-  });
-}
+const tableOfContents = tableOfContentsFromHeadings(headings);
 
 // Get translation data
 const translationData = await getTranslationData(post, allPosts);

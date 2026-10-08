@@ -9,6 +9,28 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.34.0] — 2026-10-08
+
+### Fixed
+
+- **The first visit no longer reloads.** The service worker still takes
+  control with `skipWaiting` and `clients.claim`, but the page reloads on
+  `controllerchange` only when this tab already had a worker. A first visit
+  used to reload, lose a typed comment, and often count as two page views.
+  **Update Now** talks to the waiting worker, not the one already in control.
+- **Slideshows load the current slide, not the whole gallery.** The Crimson
+  Desert review was requesting 68 full-size images (about 15 MB) on first
+  paint, because every slide used a CSS `background-image`. Only the current
+  slide and its two neighbours get a URL. Thumbnails load when they enter
+  the strip.
+- **Table of contents links match the headings on the page.** The TOC used a
+  second slugger that stripped accents, `&`, and emoji, so 103 of 554
+  heading links in 22 posts did nothing. It now uses the heading ids Astro
+  already put on the article, so Spanish headings and emoji headings resolve.
+- **Kitchen tag chips meet contrast in light mode.** Chip text was marigold
+  on white at 1.87:1. It is now a darker gold (`140 80 0`) so recipe tags
+  meet 4.5:1. Buttons still use the bright marigold.
+
 ## [6.33.1] — 2026-10-08
 
 ### Changed
