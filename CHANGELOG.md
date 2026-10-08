@@ -9,6 +9,14 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.32.1] — 2026-10-08
+
+### Changed
+
+- **`/llms.txt` links the How I write note.** The Optional list now points
+  to `/about#how-i-write`, so AI readers learn that some pieces are written by
+  hand and others with AI models drafting and revising.
+
 ## [6.32.0] — 2026-10-07
 
 ### Added
