@@ -127,7 +127,7 @@ What would I do with forever? Learn everything first. Walk everywhere I can walk
 
 Real honor, universal honor. That's what you do with that kind of power. Spider-Man had it right: with great power comes great responsibility.
 
-## Cyber-Samurai
+## "Cyber-Samurai"
 
 At work, these models make me a badass cyber-samurai, I think. I like visualizing myself slicing through JIRA work items. Since January, we'd been trying to fix how our product identification works. Then our senior product designer told me to look at the length of the identifiers. With the help of one of the newer frontier models we were able to crack open a new concept, kinda mathematical, and changed our whole approach. The models and some creative thinking, and in days we had it validated, built and shipped. It runs on math and computer science I knew about but didn't understand and now product identification works like magic. Very fun! At least for me, I take the time to learn what the fuck I'm implementing and why, and what I can't learn in the moment goes into my Panda learning or discovery queues.
 
