@@ -520,6 +520,25 @@ const breadcrumbSchema = generateBreadcrumbSchema(
     overflow: visible;
   }
 
+  /* Links that leave Notes get a small raised ↗ (rehypeExternalLinks adds the class at
+     build). The second `content` gives screen readers "external link" where supported. */
+  .post-article :global(.post-prose a.link-external::after) {
+    content: '↗';
+    content: '↗' / ', external link';
+    /* Inline, not inline-block: an inline-block lets the next comma wrap to a new line. */
+    display: inline;
+    margin-inline-start: 0.1em;
+    color: rgb(var(--color-text-muted));
+    font-size: 0.75em;
+    line-height: 1;
+    vertical-align: super;
+    text-decoration: none;
+  }
+
+  .post-article :global(.post-prose a.link-external:is(:hover, :focus-visible)::after) {
+    color: rgb(var(--color-accent));
+  }
+
   /* Collapsible sections in post bodies: a plain <details class="post-collapsible"> in
      the Markdown. Native HTML with no script, so it works in .md and .mdx alike. */
   .post-article :global(.post-prose details.post-collapsible) {

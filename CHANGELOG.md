@@ -9,6 +9,19 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.33.0] — 2026-10-08
+
+### Added
+
+- **Links that leave Notes show a small ↗.** A new rehype step,
+  `src/utils/rehypeExternalLinks.mjs`, adds `link-external` at build time to
+  every Markdown link whose host is not `notes.antoniwan.online`, including
+  Antonio's other sites. The post layout draws a small raised arrow after
+  those links, muted until hover or focus, and screen readers hear "external
+  link" where the browser supports CSS alt text. Links that only wrap an image
+  and raw HTML embeds are left alone. No script; links still open in the same
+  tab.
+
 ## [6.32.4] — 2026-10-08
 
 ### Added
