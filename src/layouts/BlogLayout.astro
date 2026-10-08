@@ -520,6 +520,35 @@ const breadcrumbSchema = generateBreadcrumbSchema(
     overflow: visible;
   }
 
+  /* Collapsible sections in post bodies: a plain <details class="post-collapsible"> in
+     the Markdown. Native HTML with no script, so it works in .md and .mdx alike. */
+  .post-article :global(.post-prose details.post-collapsible) {
+    margin-block: 1.5rem;
+    padding: 0 1rem;
+    border: 1px solid rgb(var(--color-border));
+    border-radius: 0.5rem;
+  }
+
+  .post-article :global(.post-prose details.post-collapsible > summary) {
+    min-height: 2.75rem;
+    align-content: center;
+    cursor: pointer;
+    color: rgb(var(--color-accent));
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+
+  .post-article :global(.post-prose details.post-collapsible > summary:focus-visible) {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  .post-article :global(.post-prose details.post-collapsible[open]) {
+    padding-bottom: 0.5rem;
+  }
+
   .post-article :global(.post-prose :is(thead, tbody, tfoot, tr, th, td)) {
     max-width: none;
   }

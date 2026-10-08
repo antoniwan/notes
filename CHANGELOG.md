@@ -9,6 +9,18 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.32.4] — 2026-10-08
+
+### Added
+
+- **Collapsible sections in posts.** A post can fold a long list or aside
+  with plain HTML in its Markdown: `<details class="post-collapsible">`, a
+  `<summary>` line, a blank line, the Markdown, a blank line, and
+  `</details>`. It is the native element the site already uses for post
+  details and the recipe index, with no script, so it works in `.md` and
+  `.mdx` posts. The summary uses the accent color and keeps a visible focus
+  ring. First use: the film list in Front Row to the End of the World.
+
 ## [6.32.3] — 2026-10-08
 
 ### Fixed

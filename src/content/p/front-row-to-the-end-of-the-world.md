@@ -38,6 +38,9 @@ I've always been one of those people who wants to live through the end of the wo
 
 It started when I was a kid. I watched all the old sci-fi, _The Day the Earth Stood Still_, _Alien_, _Aliens_, almost in the order it came out: as _estrenos_ on Puerto Rico TV, or on tapes my dad and I rented at the Blockbuster. We saw everything together. I was born in '86, so the older ones we caught later. A few more ends of the world that stuck with me:
 
+<details class="post-collapsible">
+<summary>The list: 44 movies, 1968 to 2025</summary>
+
 - _Planet of the Apes_ (1968): we did it to ourselves.
 - _The Andromeda Strain_ (1971): a fallen satellite brings back a microbe that kills a whole town.
 - _WarGames_ (1983): a military computer nearly starts World War III because it thinks it's playing a game.
@@ -82,6 +85,8 @@ It started when I was a kid. I watched all the old sci-fi, _The Day the Earth St
 - _Atlas_ (2024): a rogue AI plans to wipe out most of humanity, and an analyst who hates AI has to trust one to stop it.
 - _Mission: Impossible – The Final Reckoning_ (2025): the Entity goes after the world's nuclear weapons.
 - _Good Luck, Have Fun, Don't Die_ (2025): a man from the future recruits a diner to stop a rogue AI.
+
+</details>
 
 I still love this stuff. So this week, when I finally understood the data center craze, I felt like that kid again. OpenAI, Anthropic, Google, Meta and xAI are building data centers the size of freaking towns to train synthetic minds exponentially bigger than the current models, which already do some things better than almost anyone alive (coding, [gold-medal math olympiad proofs](https://www.entrepreneur.com/business-news/google-openai-models-win-gold-at-high-school-math-contest/494914)). I didn't really feel too much dread. A big part of me wants to be saved by a kind superintelligence. That's a straight up fact.
 
