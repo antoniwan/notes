@@ -9,6 +9,14 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.33.1] — 2026-10-08
+
+### Changed
+
+- **The external-link arrow is smaller and lighter.** It drops from 0.75em to
+  0.55em, at a light weight and 55% opacity, so it marks the link without
+  pulling the eye. It still turns accent on hover and focus.
+
 ## [6.33.0] — 2026-10-08
 
 ### Added

@@ -527,9 +527,10 @@ const breadcrumbSchema = generateBreadcrumbSchema(
     content: '↗' / ', external link';
     /* Inline, not inline-block: an inline-block lets the next comma wrap to a new line. */
     display: inline;
-    margin-inline-start: 0.1em;
-    color: rgb(var(--color-text-muted));
-    font-size: 0.75em;
+    margin-inline-start: 0.08em;
+    color: rgb(var(--color-text-muted) / 0.55);
+    font-size: 0.55em;
+    font-weight: 300;
     line-height: 1;
     vertical-align: super;
     text-decoration: none;
