@@ -509,10 +509,14 @@ const breadcrumbSchema = generateBreadcrumbSchema(
     -webkit-overflow-scrolling: touch;
   }
 
+  /* Narrow tables size to their content; wide ones stop at the column (or 40rem on
+     small screens) so long cells wrap instead of scrolling sideways forever.
+     `!important` beats global.css, which sets `max-width: none !important` on prose tables. */
   .post-article :global(.post-prose .table-scroll table) {
     margin: 0;
     width: max-content;
     min-width: 100%;
+    max-width: max(100%, 40rem) !important;
     overflow: visible;
   }
 

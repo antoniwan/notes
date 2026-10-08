@@ -9,6 +9,23 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.32.3] — 2026-10-08
+
+### Fixed
+
+- **Wide post tables wrap instead of scrolling forever.** Tables inside a post
+  were sized to their content (`width: max-content`), so a table with
+  sentences in its cells became one long line per row, about 3,100 pixels
+  wide in a 690-pixel column. They now stop at the column width, or at 40rem
+  on small screens, and long cells wrap. Narrow tables still size to their
+  content.
+
+### Changed
+
+- **`/llms.txt` says where cover images come from.** The How I write line now
+  adds that most cover images are Midjourney results, matching the new note on
+  the About page.
+
 ## [6.32.2] — 2026-10-08
 
 ### Fixed

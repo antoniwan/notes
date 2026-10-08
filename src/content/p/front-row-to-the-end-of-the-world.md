@@ -85,17 +85,15 @@ It started when I was a kid. I watched all the old sci-fi, _The Day the Earth St
 
 I still love this stuff. So this week, when I finally understood the data center craze, I felt like that kid again. OpenAI, Anthropic, Google, Meta and xAI are building data centers the size of freaking towns to train synthetic minds exponentially bigger than the current models, which already do some things better than almost anyone alive (coding, [gold-medal math olympiad proofs](https://www.entrepreneur.com/business-news/google-openai-models-win-gold-at-high-school-math-contest/494914)). I didn't really feel too much dread. A big part of me wants to be saved by a kind superintelligence. That's a straight up fact.
 
-<figure class="post-inline-figure post-inline-figure--center">
-  <img src="/images/2026/front-row-to-the-end-of-the-world/training-compute.svg" alt="Scatter chart of the computing power used to train 468 notable AI models from 2012 to 2026, on a log scale. The dots climb from about 10 to the 17th operations for AlexNet in 2012 to about 10 to the 27th for GPT-6 Astra in 2026, with AlphaGo Zero, GPT-3, GPT-4 and Grok 4 marked along the way." width="760" height="494" loading="lazy" decoding="async" />
-  <figcaption>Source: Epoch AI, Notable AI Models dataset, downloaded October 8, 2026. 468 models since 2012; most figures are Epoch's estimates.</figcaption>
-</figure>
+![Scatter chart of the computing power used to train 468 notable AI models from 2012 to 2026, on a log scale. The dots climb from about 10 to the 17th operations for AlexNet in 2012 to about 10 to the 27th for GPT-6 Astra in 2026, with AlphaGo Zero, GPT-3, GPT-4 and Grok 4 marked along the way.](/images/2026/front-row-to-the-end-of-the-world/training-compute.svg)
+
+_Source: Epoch AI, Notable AI Models dataset, downloaded October 8, 2026. 468 models since 2012; most figures are Epoch's estimates._
 
 [Epoch AI](https://epoch.ai/about) is a nonprofit, basically a bunch of people who really know the math and science behind this stuff, and they keep count. They say the computing power used to train the biggest models [grows four to five times every year](https://epoch.ai/blog/training-compute-of-frontier-ai-models-grows-by-4-5x-per-year). Do the math: at four times a year, that's 4, 16, 64, 256, then 1,024 times bigger after just five years, and about a million times bigger after ten. Go a little faster than that for 14 years, and you get the two billion in the chart above.
 
-<figure class="post-inline-figure post-inline-figure--center">
-  <img src="/images/2026/front-row-to-the-end-of-the-world/next-brains.svg" alt="Bar chart on a normal scale: GPT-3 and GPT-4 are too small to see, GPT-6 Astra is a sliver, and the training run Epoch AI projects as possible by 2030 fills the whole bar, about 10,000 times GPT-4." width="760" height="336" loading="lazy" decoding="async" />
-  <figcaption>Source: Epoch AI, Notable AI Models dataset and “Can AI scaling continue through 2030?” (August 2024).</figcaption>
-</figure>
+![Bar chart on a normal scale: GPT-3 and GPT-4 are too small to see, GPT-6 Astra is a sliver, and the training run Epoch AI projects as possible by 2030 fills the whole bar, about 10,000 times GPT-4.](/images/2026/front-row-to-the-end-of-the-world/next-brains.svg)
+
+_Source: Epoch AI, Notable AI Models dataset and “Can AI scaling continue through 2030?” (August 2024)._
 
 That last bar, that big one, isn't a model any lab has announced. It's Epoch AI's [best guess](https://epoch.ai/blog/can-ai-scaling-continue-through-2030) at the biggest training run the world could pull off by 2030, with the electricity, computer chips and data it will have by then.
 
@@ -139,12 +137,11 @@ Plenty of it turns into something concrete: restored furniture, a new product, a
 
 I mean, give me a fabricator like Tony Stark's in the _Iron Man_ movies, one of those sci-fi 3D printers that builds anything (another dream of mine, honestly), plus a frontier model, and I'd build everything, then I'd try to build a suit to protect my family from the evil Batman from earlier. The model would do the engineering and the science, the fabricator would do the building, and I'd "just have to prompt it," right? Today's models can already do a lot of the engineering and the science. And they're just going to get much smarter? And we want to have them recursively upgrade and enhance themselves and their capabilities? Wait a second, I've seen this movie!!
 
-<figure class="post-inline-figure post-inline-figure--center">
-  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-    <iframe src="https://giphy.com/embed/HekrB46ZE0f5K" style="position: absolute; inset: 0; width: 100%; height: 100%;" loading="lazy" frameBorder="0" class="giphy-embed" allowFullScreen title="T-1000 wagging its finger, Terminator 2"></iframe>
-  </div>
-  <figcaption><a href="https://giphy.com/gifs/terminator-2-judgment-day-HekrB46ZE0f5K">via GIPHY</a></figcaption>
-</figure>
+<div class="post-video-embed" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin: 2rem 0 0.5rem;">
+  <iframe src="https://giphy.com/embed/HekrB46ZE0f5K" style="position: absolute; inset: 0; width: 100%; height: 100%;" loading="lazy" frameBorder="0" class="giphy-embed" allowFullScreen title="T-1000 wagging its finger, Terminator 2"></iframe>
+</div>
+
+<p><small><a href="https://giphy.com/gifs/terminator-2-judgment-day-HekrB46ZE0f5K">via GIPHY</a></small></p>
 
 ## The next Leonarda
 
@@ -191,10 +188,9 @@ That's what I'd do with that kind of power. And what are our powerful men doing 
 
 Here's what bugs me about the money. At Musk's level, the limits most of us live with (a budget, a boss, a bank that can say no) barely exist. He could have Batman's toys and Tony Stark's lab at the same time if he put his mind to it. Am I exaggerating? A little. He can't buy every company and every soul on the planet. But he can afford to ignore almost anyone who tells him no.
 
-<figure class="post-inline-figure post-inline-figure--center">
-  <img src="/images/2026/front-row-to-the-end-of-the-world/money-scale.svg" alt="Bar chart on a normal scale: one dollar, a hundred dollars, a million and a billion are too small to see. A trillion dollars and Elon Musk's $1.04 trillion fill the chart. Counting one dollar per second, a trillion takes about 31,688 years." width="760" height="500" loading="lazy" decoding="async" />
-  <figcaption>Source: Musk's net worth from the Bloomberg Billionaires Index, October 5, 2026 (via The Standard). Everything else is arithmetic.</figcaption>
-</figure>
+![Bar chart on a normal scale: one dollar, a hundred dollars, a million and a billion are too small to see. A trillion dollars and Elon Musk's $1.04 trillion fill the chart. Counting one dollar per second, a trillion takes about 31,688 years.](/images/2026/front-row-to-the-end-of-the-world/money-scale.svg)
+
+_Source: Musk's net worth from the Bloomberg Billionaires Index, October 5, 2026 (via The Standard). Everything else is arithmetic._
 
 Who tells them no? Seriously, who says no to these CEOs? To the people playing with fire while they sign statements saying it could burn us all. With that much money, a fine is just a price. In 2018, Musk and Tesla [each paid $20 million](https://foxbusiness.com/technology/tesla-musk-sec-funding-secured-settlement-approved-by-judge) to the SEC, the government's stock market watchdog, over a tweet it said misled investors. Last December, the European Union [fined X €120 million](https://iapp.org/news/a/european-commission-fines-x-120m-euros-for-dsa-violations), about $140 million, partly for selling the blue "verified" checkmark to anyone who paid, without checking who they were. Next to a trillion dollars, that's pocket change, so they can pay and keep going. They're building AI that could end human civilization, and we're paying for it, with our subscriptions, our clicks and our taxes. The child in me rejoices!! jajaja. Who slows down the AI-race? Who's our Lucius Fox? Our Stark? Our Saitama? Is anybody stepping in?
 
@@ -213,5 +209,3 @@ And my own wallet? I don't use his stuff, except the empty X account where I've 
 What should you do? I'm not going to tell you. I don't even do that at home. People need to decide for themselves; that's the whole point of being whole human beings. The data and the ideas are in front of you. Watch the Gates video, see how you feel, and talk about it with someone.
 
 I still want to see the end of the world. I still want forever. Best bet, AI lets me upload my brain somewhere. I don't even know anymore, lol!
-
-_Cover image made with Midjourney._
