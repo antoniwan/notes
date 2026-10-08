@@ -50,6 +50,16 @@ export interface DynamicInsight {
     'sentiment' | 'consistency' | 'productivity' | 'quality' | 'challenges' | 'growth' | 'neutral';
 }
 
+/** Streaks over streaks-plus-gaps. Null when both lists are empty (0 / 0). */
+export function streakCycleRatio(
+  streaks: ReadonlyArray<unknown>,
+  drySpells: ReadonlyArray<unknown>,
+): number | null {
+  const cycles = streaks.length + drySpells.length;
+  if (cycles === 0) return null;
+  return streaks.length / cycles;
+}
+
 export function generateDynamicInsights(
   data: InsightData,
   pageType: string,
@@ -234,16 +244,16 @@ export function generateDynamicInsights(
         category: 'productivity',
       });
 
-      // Consistency analysis (objective)
-      const consistencyScore =
-        data.writingStreaks.length / (data.writingStreaks.length + data.drySpells.length);
-      insights.push({
-        type: 'objective',
-        text: `Writing consistency ratio: <span class="font-semibold">${Math.round(consistencyScore * 100)}%</span> (streaks vs dry spells)`,
-        color: 'text-gray-500',
-        weight: 3,
-        category: 'consistency',
-      });
+      const consistencyScore = streakCycleRatio(data.writingStreaks, data.drySpells);
+      if (consistencyScore !== null) {
+        insights.push({
+          type: 'objective',
+          text: `Writing consistency ratio: <span class="font-semibold">${Math.round(consistencyScore * 100)}%</span> (streaks vs dry spells)`,
+          color: 'text-gray-500',
+          weight: 3,
+          category: 'consistency',
+        });
+      }
       break;
 
     case 'evolution':
@@ -380,16 +390,16 @@ export function generateDynamicInsights(
         });
       }
 
-      // Pattern consistency (objective)
-      const patternConsistency =
-        data.writingStreaks.length / (data.writingStreaks.length + data.drySpells.length);
-      insights.push({
-        type: 'objective',
-        text: `Pattern consistency: <span class="font-semibold">${Math.round(patternConsistency * 100)}%</span> predictable cycles`,
-        color: 'text-gray-500',
-        weight: 3,
-        category: 'consistency',
-      });
+      const patternConsistency = streakCycleRatio(data.writingStreaks, data.drySpells);
+      if (patternConsistency !== null) {
+        insights.push({
+          type: 'objective',
+          text: `Pattern consistency: <span class="font-semibold">${Math.round(patternConsistency * 100)}%</span> predictable cycles`,
+          color: 'text-gray-500',
+          weight: 3,
+          category: 'consistency',
+        });
+      }
       break;
 
     case 'meta':

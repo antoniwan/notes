@@ -1,4 +1,5 @@
 import { STRIPPED_TAGS, TAG_ALIAS_MAP } from '../data/tagVocabulary';
+import { getBuiltTagSlugs } from './sitemapTranslations';
 import { normalizeTagInput } from './tagVocabulary';
 
 /** Paths that should never appear in the sitemap or be indexed. */
@@ -42,8 +43,11 @@ export const PAGE_REDIRECTS: Record<string, string> = {
 /**
  * Build permanent redirects from tag aliases to their canonical tag pages.
  * Keys are normalized URL slugs (spaces → hyphens).
+ * If the canonical page is not built, send the alias to `/tag` instead of a 404.
  */
-export function buildTagAliasRedirects(): Record<string, string> {
+export function buildTagAliasRedirects(
+  builtTags: ReadonlySet<string> = getBuiltTagSlugs(),
+): Record<string, string> {
   const redirects: Record<string, string> = {};
 
   for (const stripped of STRIPPED_TAGS) {
@@ -53,7 +57,8 @@ export function buildTagAliasRedirects(): Record<string, string> {
   for (const [alias, canonical] of Object.entries(TAG_ALIAS_MAP)) {
     const aliasSlug = normalizeTagInput(alias);
     if (!aliasSlug || !canonical || aliasSlug === canonical) continue;
-    redirects[`/tag/${aliasSlug}`] = `/tag/${canonical}`;
+    const target = builtTags.has(canonical) ? `/tag/${canonical}` : '/tag';
+    redirects[`/tag/${aliasSlug}`] = target;
   }
 
   return redirects;

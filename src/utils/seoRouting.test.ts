@@ -4,9 +4,11 @@ import {
   POST_REDIRECTS,
   WRITING_INSIGHTS_REDIRECTS,
   buildSeoRedirects,
+  buildTagAliasRedirects,
   normalizePathname,
   shouldIncludeInSitemap,
 } from './seoRouting';
+import { getBuiltTagSlugs } from './sitemapTranslations';
 
 describe('normalizePathname', () => {
   it('keeps root and strips trailing slashes', () => {
@@ -41,15 +43,25 @@ describe('POST_REDIRECTS + PAGE_REDIRECTS + buildSeoRedirects', () => {
     // Alias map should produce at least one /tag/... redirect when aliases exist
     const tagRedirects = Object.keys(redirects).filter((k) => k.startsWith('/tag/'));
     expect(tagRedirects.length).toBeGreaterThan(0);
-    expect(redirects['/tag/limites']).toBe('/tag/boundaries');
-    expect(redirects['/tag/recuperacion']).toBe('/tag/recovery');
-    expect(redirects['/tag/escritura']).toBe('/tag/writing');
-    expect(redirects['/tag/poem']).toBe('/tag/poems');
-    expect(redirects['/tag/essay']).toBe('/tag/essays');
+    const built = getBuiltTagSlugs();
+    expect(redirects['/tag/limites']).toBe(built.has('boundaries') ? '/tag/boundaries' : '/tag');
+    expect(redirects['/tag/recuperacion']).toBe(built.has('recovery') ? '/tag/recovery' : '/tag');
+    expect(redirects['/tag/escritura']).toBe(built.has('writing') ? '/tag/writing' : '/tag');
+    expect(redirects['/tag/poem']).toBe(built.has('poems') ? '/tag/poems' : '/tag');
+    expect(redirects['/tag/essay']).toBe(built.has('essays') ? '/tag/essays' : '/tag');
     expect(redirects['/tag/essays']).toBeUndefined();
-    expect(redirects['/tag/development']).toBe('/tag/software-development');
+    expect(redirects['/tag/development']).toBe(
+      built.has('software-development') ? '/tag/software-development' : '/tag',
+    );
     expect(redirects['/tag/notes']).toBe('/tag');
     expect(redirects['/tag/nota']).toBe('/tag');
+  });
+
+  it('sends a tag alias to /tag when the canonical page is not built', () => {
+    const redirects = buildTagAliasRedirects(new Set(['boundaries']));
+    expect(redirects['/tag/limites']).toBe('/tag/boundaries');
+    expect(redirects['/tag/essay']).toBe('/tag');
+    expect(redirects['/tag/notes']).toBe('/tag');
   });
 
   it('301s old Writing Insights subpaths and leaves the origin page in place', () => {

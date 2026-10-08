@@ -9,6 +9,19 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.34.1] — 2026-10-08
+
+### Fixed
+
+- **Writing Insights counts English essays only.** It used every public post,
+  so the 39 recipes and the Spanish twins sat in the totals. “Cooking” looked
+  like a third of the writing. The dashboard now uses the same listing set as
+  the tag pages. Pattern-consistency copy is omitted when there are no streaks
+  or dry spells, so `/writing-insights/patterns` no longer shows `NaN%`.
+- **Tag aliases no longer 301 onto a 404.** An alias such as `/tag/verdad`
+  used to send readers to `/tag/truth` even when that page was not built. If
+  the canonical tag has no page, the alias now goes to `/tag`.
+
 ## [6.34.0] — 2026-10-08
 
 ### Fixed

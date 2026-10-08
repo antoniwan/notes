@@ -13,6 +13,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SITE_URL } from '../consts';
 import { loadFrontmatterYaml } from './frontmatterYaml.mjs';
+import { COOKBOOK_NOTICE_TAGS } from '../data/tagCookbookNotice';
 import { canonicalizeTags } from './tagVocabulary';
 import { isRecipeId } from './recipes';
 import {
@@ -234,6 +235,18 @@ export function getSitemapLastmodByUrl(): Map<string, Date> {
 /** True when a tag page should be hidden from search engines (see TAG_INDEX_MIN_POSTS). */
 export function isThinTag(tag: string): boolean {
   return (loadSitemapMeta().tagPostCount.get(tag) ?? 0) < TAG_INDEX_MIN_POSTS;
+}
+
+/**
+ * Tag slugs that get a page: essays on listed English posts, plus kitchen
+ * doors that always point at Cookbook. Same set as `tag/[tag].astro`.
+ */
+export function getBuiltTagSlugs(): Set<string> {
+  const slugs = new Set<string>(COOKBOOK_NOTICE_TAGS);
+  for (const [tag, count] of loadSitemapMeta().tagPostCount) {
+    if (count > 0) slugs.add(tag);
+  }
+  return slugs;
 }
 
 /** isThinTag for a sitemap URL; false for anything that is not a tag page. */

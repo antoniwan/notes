@@ -2,7 +2,7 @@ import { getCollection } from 'astro:content';
 import { format, startOfMonth, endOfMonth, eachMonthOfInterval, getDay, getMonth } from 'date-fns';
 import { getTagWeight, MASLOW_CATEGORIES } from '../../data/tags';
 import type { CollectionEntry } from 'astro:content';
-import { isCollectionPublic } from '../publishFilters';
+import { isTagListedPost } from '../recipes';
 import { countLexiconHits } from './textAnalysis';
 import { EMOTIONAL_WORDS, GROWTH_KEYWORDS, GROWTH_TAGS } from './vocabulary';
 
@@ -68,12 +68,13 @@ export interface StreakMetrics {
 let brainSciencePostsPromise: Promise<CollectionEntry<'blog'>[]> | null = null;
 
 /**
- * Get all published blog posts (memoized for the build process).
- * Brain Science pages share this result so the collection is walked once.
+ * Get English essays only (memoized for the build process).
+ * Writing Insights is a picture of the writing, not the cookbook or Spanish twins.
+ * Pages share this result so the collection is walked once.
  */
 export async function getBrainSciencePosts(): Promise<CollectionEntry<'blog'>[]> {
   if (!brainSciencePostsPromise) {
-    brainSciencePostsPromise = getCollection('blog', ({ data }) => isCollectionPublic(data)).then(
+    brainSciencePostsPromise = getCollection('blog', (entry) => isTagListedPost(entry)).then(
       (posts) => posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()),
     );
   }
