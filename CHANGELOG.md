@@ -9,6 +9,16 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.32.2] — 2026-10-08
+
+### Fixed
+
+- **CI matches the schema Notes already ships.** 6.31.1 stopped emitting
+  Organization JSON-LD on purpose (Antonio is a Person). The generated-content
+  check still required it, so every push since then failed. The check now
+  requires WebSite only. `astro check` also failed on an unused `tags`
+  binding left in `generateStructuredData` after 6.32.0 stopped reading it.
+
 ## [6.32.1] — 2026-10-08
 
 ### Changed

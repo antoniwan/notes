@@ -1,6 +1,7 @@
 import { describe, expect, test } from 'vitest';
 
 import {
+  REQUIRED_SITE_SCHEMA_TYPES,
   checkCanonicalConsistency,
   checkFeedIdsUnique,
   checkJsonLd,
@@ -17,11 +18,14 @@ describe('checkJsonLd', () => {
   test('accepts well-formed blocks that carry the required types', () => {
     const blocks = [
       JSON.stringify({ '@context': 'https://schema.org', '@type': 'WebSite', name: 'Notes' }),
-      JSON.stringify({ '@context': 'https://schema.org', '@type': 'Organization', name: 'Notes' }),
     ];
     expect(
-      checkJsonLd(blocks, { label: 'page', requiredTypes: ['WebSite', 'Organization'] }),
+      checkJsonLd(blocks, { label: 'page', requiredTypes: REQUIRED_SITE_SCHEMA_TYPES }),
     ).toEqual([]);
+  });
+
+  test('the site contract requires WebSite only', () => {
+    expect(REQUIRED_SITE_SCHEMA_TYPES).toEqual(['WebSite']);
   });
 
   test('rejects malformed JSON', () => {

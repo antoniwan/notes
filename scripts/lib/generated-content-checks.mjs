@@ -17,8 +17,8 @@ import {
  * the contract holds.
  */
 
-/** JSON-LD every page is expected to carry. */
-export const REQUIRED_SITE_SCHEMA_TYPES = ['WebSite', 'Organization'];
+/** JSON-LD every page is expected to carry. Notes names Antonio as Person, not Organization. */
+export const REQUIRED_SITE_SCHEMA_TYPES = ['WebSite'];
 
 /**
  * Parses and shallow-validates JSON-LD blocks lifted from one page.

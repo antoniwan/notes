@@ -91,7 +91,6 @@ export function generateStructuredData(options: StructuredDataOptions) {
     posts = [],
     identifier,
     category = [],
-    tags = [],
     inLanguage = 'en-US',
     wordCount,
     recipeIngredient,
