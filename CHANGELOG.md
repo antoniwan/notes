@@ -9,6 +9,29 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.34.2] — 2026-10-08
+
+### Added
+
+- **Baseline security headers on pages.** `vercel.json` now sends
+  `X-Content-Type-Options: nosniff`, `Referrer-Policy:
+strict-origin-when-cross-origin`, a locked-down `Permissions-Policy`, and
+  `Content-Security-Policy: frame-ancestors 'self'`. The rule skips `/api/`,
+  so the Remark42 rewrite keeps its own CSP and the comment iframe still
+  loads.
+
+### Changed
+
+- **`docs/structured-data-optimization.md` matches the live schemas.** It no
+  longer describes Organization, Person graphs, `es-ES`, paywall flags, or
+  TOC `hasPart`. Those left the code in 6.31.1 and 6.32.0.
+
+### Fixed
+
+- **Tag chips do not link to missing tag pages.** A chip whose slug has no
+  page (often a tag that only a Spanish post uses) renders as text. Kitchen
+  doors and tags with essays still link.
+
 ## [6.34.1] — 2026-10-08
 
 ### Fixed

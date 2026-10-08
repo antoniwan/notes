@@ -1,5 +1,6 @@
 ---
 import { getTagFamily } from '../data/tagFamilies';
+import { tagPageHref } from '../utils/tagPages';
 
 interface Props {
   tags: string[];
@@ -31,15 +32,19 @@ const variantClass = {
 ---
 
 <div class={`tag-display flex flex-wrap items-center gap-1.5 ${className}`}>
-  {visibleTags.map((tag) => (
-    <a
-      href={`/tag/${tag}`}
-      data-tag-family={getTagFamily(tag)}
-      class={`tag-chip tag-item inline-flex items-center gap-1.5 ${compact ? 'px-2.5 py-1 text-sm' : 'px-3 py-1.5 text-base'} ${variantClass} interactive-button rounded-full border font-medium focus:outline-hidden`}
-    >
-      <span class="tag-text">#{tag}</span>
-    </a>
-  ))}
+  {visibleTags.map((tag) => {
+    const href = tagPageHref(tag);
+    const chipClass = `tag-chip tag-item inline-flex items-center gap-1.5 ${compact ? 'px-2.5 py-1 text-sm' : 'px-3 py-1.5 text-base'} ${variantClass} rounded-full border font-medium focus:outline-hidden`;
+    return href ? (
+      <a href={href} data-tag-family={getTagFamily(tag)} class={`${chipClass} interactive-button`}>
+        <span class="tag-text">#{tag}</span>
+      </a>
+    ) : (
+      <span data-tag-family={getTagFamily(tag)} class={chipClass}>
+        <span class="tag-text">#{tag}</span>
+      </span>
+    );
+  })}
   {hasMoreTags && (
     <span
       class={`more-indicator inline-flex items-center gap-1 ${compact ? 'px-2.5 py-1 text-sm' : 'px-3 py-1.5 text-base'} text-body-muted rounded-full border font-medium`}

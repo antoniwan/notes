@@ -2,63 +2,62 @@
 
 How Notes emits Schema.org JSON-LD. Source of truth: [`src/utils/structuredData.ts`](../src/utils/structuredData.ts), rendered by [`StructuredData.astro`](../src/components/StructuredData.astro) from [`BaseLayout.astro`](../src/layouts/BaseLayout.astro).
 
-Site constants (`SITE_TITLE`, `AUTHOR`, `SEO_CONFIG`, `SOCIAL_LINKS`) live in [`src/consts.ts`](../src/consts.ts). Image URLs go through `generateImageUrl()` (social-safe JPEG/PNG when a manifest variant exists). Canonical URLs never use trailing slashes (`trailingSlash: 'never'`).
+Site constants (`SITE_TITLE`, `AUTHOR`, `SEO_CONFIG`) live in [`src/consts.ts`](../src/consts.ts). Image URLs go through `generateImageUrl()` (social-safe JPEG/PNG when a manifest variant exists). Canonical URLs never use trailing slashes (`trailingSlash: 'never'`).
+
+Do not emit an `Organization` node for Antonio. 6.31.1 removed it. Every schema that names him uses `authorRef`: a `Person` with `@id` `https://antoniwan.online/#person`. antoniwan.online holds the full Person. Notes points at it.
 
 ## Production path
 
 `BaseLayout` always calls `generateStructuredData(...)` and emits one `<script type="application/ld+json">` per schema object.
 
-| Layout / page prop    | `structuredDataType` | Extra schemas beyond base set                         |
-| --------------------- | -------------------- | ----------------------------------------------------- |
-| Default / most pages  | `website`            | none                                                  |
-| `BlogLayout` (posts)  | `article`            | `BlogPosting` + `BreadcrumbList` (requires `pubDate`) |
-| `category/[category]` | `category`           | `CollectionPage` when `posts.length > 0`              |
-| `tag/[tag]`           | `tag`                | `CollectionPage` when `posts.length > 0`              |
+| Layout / page prop    | `structuredDataType` | Extra schemas beyond WebSite             |
+| --------------------- | -------------------- | ---------------------------------------- |
+| Default / most pages  | `website`            | none                                     |
+| `BlogLayout` (essays) | `article`            | `BlogPosting` (requires `pubDate`)       |
+| `BlogLayout` (dishes) | `recipe`             | `Recipe`                                 |
+| `category/[category]` | `category`           | `CollectionPage` when `posts.length > 0` |
+| `tag/[tag]`           | `tag`                | `CollectionPage` when `posts.length > 0` |
 
-The module has no FAQ, HowTo, or Review schemas. Those helpers were never wired into a layout and were removed in 6.29.0; git history has them if a post ever needs one.
+Post pages also attach a `BreadcrumbList` from `generateBreadcrumbSchema` as an extra schema. The module has no FAQ, HowTo, or Review helpers. Those were never wired into a layout and were removed in 6.29.0.
 
-## Base schemas (every page)
+## Base schema (every page)
 
 Always emitted first:
 
-1. **WebSite** — `name: Notes`, site description/URL, `inLanguage: en-US`, `publisher` as Person. **No `SearchAction`** (site search is client-only; there is no crawlable `/search?q=` endpoint).
-2. **Organization** — `name` from `SEO_CONFIG.organizationName` (author name), logo via `generateImageUrl`, `sameAs: Object.values(SOCIAL_LINKS)`, foundingDate `2024`, areaServed / serviceType strings.
-3. **Person** (author) — `AUTHOR` fields, subset `sameAs` (twitter, github, bluesky), `knowsAbout` topic list, occupation metadata.
+1. **WebSite** — `name: Notes`, site description/URL, `inLanguage: en-US`, `publisher` as `authorRef`. **No `SearchAction`** (site search is client-only; there is no crawlable `/search?q=` endpoint).
+
+There is no separate Organization or Person graph on Notes pages.
 
 ## Article pages (`type: 'article'`)
 
-Requires `pubDate`. Emits:
-
-### BlogPosting
-
-Notable fields:
+Requires `pubDate`. Emits **BlogPosting**:
 
 - `headline`, `description`, `image`, `datePublished`, `dateModified` (falls back to `pubDate`)
-- `author` / `publisher` (Person / Organization with logo)
+- `author` / `publisher` as `authorRef`
 - `keywords` (comma-joined), `timeRequired` as `PTnM` when `minutesRead` parses
-- `url` (canonical), `inLanguage` from layout (post language → `en-US` / `es-ES`)
+- `url` (canonical), `inLanguage` from the layout (`en-US` or `es`)
 - `wordCount` when provided (> 0)
 - `mainEntityOfPage`, `isPartOf` → Blog named `Notes`
-- `about` from `category[]` as `Thing`s when categories exist
-- `articleSection`: primary `category[0]` if present; else first three tags joined; else `"Personal Growth"`
-- `featured` → `isAccessibleForFree: true`; `draft` → `isAccessibleForFree: false`
-- TOC present → `hasPart` WebPageElement named “Table of Contents”
+- When the post has categories: `articleSection` is the primary category **display name**, and `about` is a `Thing` per category name
+- A post with no category has no `articleSection` and no `about`
 
-### BreadcrumbList
+It does not set `isAccessibleForFree`, `hasPart`, or tag lists as `articleSection`.
 
-`Home` → optional first category (`/category/{id}`) → post title. Positions adjust when no category.
+## Recipe pages (`type: 'recipe'`)
+
+Emits **Recipe** instead of BlogPosting. Ingredients and steps come from `recipeSections.ts` (the `## Ingredients` / `## Method` blocks) unless frontmatter already set them. Empty timing and ingredient keys are omitted.
 
 ## Collection pages (`category` / `tag`)
 
 Only when `posts` is non-empty. Emits **CollectionPage** with:
 
-- `mainEntity` → `ItemList` of compact `BlogPosting` items (headline, description, url, dates, author, image, keywords, articleSection, timeRequired)
+- `mainEntity` → `ItemList` of compact `BlogPosting` items
 - Nested `breadcrumb`: Home → Categories|Tags index → current page
-- Category pages with `identifier`: `about` Thing
+- Category pages with `identifier`: `about` Thing (the identifier string, not the display name)
 - Tag pages with `identifier`: `keywords: identifier`
-- Collection `inLanguage` is hardcoded `en-US` (not post-language-aware)
+- Collection `inLanguage` is hardcoded `en-US`
 
-Empty category/tag result sets fall back to the base three schemas only.
+Empty category/tag result sets fall back to WebSite only.
 
 ## Unused exports (library only)
 
@@ -67,7 +66,7 @@ Empty category/tag result sets fall back to the base three schemas only.
 | `generateArticleSchema`  | Generic `Article` (vs `BlogPosting`) | No                                   |
 | `validateStructuredData` | Dev/debug helper                     | No (CI uses a separate smoke script) |
 
-Both stay because the smoke script below requires them. Wire `generateArticleSchema` only with an intentional layout change and Rich Results expectations.
+Both stay because the smoke script below requires them. `generateArticleSchema` still names `publisher` as Organization. That helper is not used on the site. Do not use it as a model for live JSON-LD.
 
 ## Validation
 
@@ -75,23 +74,17 @@ Both stay because the smoke script below requires them. Wire `generateArticleSch
 pnpm run validate-structured-data
 ```
 
-Smoke-checks that `structuredData.ts` still exports `generateStructuredData`, `generateArticleSchema`, and `validateStructuredData`, and mentions core Schema.org types. It does **not** crawl live HTML or call Google’s Rich Results Test.
+Smoke-checks that `structuredData.ts` still exports `generateStructuredData`, `generateArticleSchema`, and `validateStructuredData`, and mentions core Schema.org types. It does **not** crawl live HTML or call Google’s Rich Results Test. Generated pages are checked by `pnpm run validate-generated-content`, which requires `WebSite` on every sampled page.
 
 For live checks:
 
 - [Google Rich Results Test](https://search.google.com/test/rich-results)
 - Search Console → Enhancements / Experience reports after deploy
 
-Optional local helper:
-
-```ts
-import { validateStructuredData } from '../utils/structuredData';
-```
-
 ## Known gaps / follow-ups
 
-1. Base WebSite / Organization / Person always use `inLanguage: en-US` even on Spanish posts (only `BlogPosting.inLanguage` follows the post).
-2. `hasComments` is accepted on options but unused in schema output.
+1. Base WebSite always uses `inLanguage: en-US`, even on Spanish posts (only `BlogPosting.inLanguage` / `Recipe.inLanguage` follow the post).
+2. `hasComments`, `featured`, `draft`, and `tags` are accepted on options but unused in schema output.
 3. Collection schemas list every post in the page’s `posts` prop — keep that list bounded if indexes grow large.
 
 ## Related

@@ -1,6 +1,7 @@
 ---
 import type { CategoryDisplayItem } from '../../types/layout';
 import { getTagFamily } from '../../data/tagFamilies';
+import { tagPageHref } from '../../utils/tagPages';
 import FormattedDate from '../FormattedDate.astro';
 
 interface Props {
@@ -56,17 +57,22 @@ const moreCategories = categoryItems.slice(3);
         {isSpanish ? 'Etiquetas' : 'Tags'} <span class="tag-count">{tags.length}</span>
       </summary>
       <ul class="tag-list">
-        {tags.map((tag) => (
-          <li>
-            <a
-              class="tag-chip tag-chip--plain"
-              data-tag-family={getTagFamily(tag)}
-              href={`/tag/${tag}`}
-            >
-              #{tag}
-            </a>
-          </li>
-        ))}
+        {tags.map((tag) => {
+          const href = tagPageHref(tag);
+          return (
+            <li>
+              {href ? (
+                <a class="tag-chip tag-chip--plain" data-tag-family={getTagFamily(tag)} href={href}>
+                  #{tag}
+                </a>
+              ) : (
+                <span class="tag-chip tag-chip--plain" data-tag-family={getTagFamily(tag)}>
+                  #{tag}
+                </span>
+              )}
+            </li>
+          );
+        })}
       </ul>
     </details>
   )}
