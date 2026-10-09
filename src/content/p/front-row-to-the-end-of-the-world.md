@@ -91,7 +91,7 @@ I think it all started when I was a kid. I watched all the old sci-fi, _The Day 
 
 I still love this stuff, all the sci-fi. So this week, when I finally understood the data center craze, I felt like that kid again. OpenAI, Anthropic, Google, Meta and xAI are building data centers the size of freaking towns to train synthetic minds exponentially bigger than the current models, which already do some things better than almost anyone alive (coding, [gold-medal math olympiad proofs](https://www.entrepreneur.com/business-news/google-openai-models-win-gold-at-high-school-math-contest/494914)). I didn't really feel too much dread. None of this scares me, and neither do the movies; I enjoy them. A big part of me wants to be saved by a kind superintelligence. That's a straight up fact.
 
-![Scatter chart of the computing power used to train 468 notable AI models from 2012 to 2026, on a log scale. The dots climb from about 10 to the 17th operations for AlexNet in 2012 to about 10 to the 27th for GPT-6 Astra in 2026, with AlphaGo Zero, GPT-3, GPT-4 and Grok 4 marked along the way.](/images/2026/front-row-to-the-end-of-the-world/training-compute.svg)
+![Scatter chart of the computing power used to train 468 notable AI models from 2012 to 2026, on a log scale. The dots climb from about 10 to the 17th operations for AlexNet in 2012 to about 10 to the 27th for GPT-6 Astra in 2026, with AlphaGo Zero, GPT-3, GPT-4 and Grok 4 marked along the way. A dashed line joins AlexNet to GPT-6 Astra: two billion times more.](/images/2026/front-row-to-the-end-of-the-world/training-compute.svg)
 
 _Source: Epoch AI, Notable AI Models dataset, downloaded October 8, 2026. 468 models since 2012; most figures are Epoch's estimates._
 
