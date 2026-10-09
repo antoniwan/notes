@@ -37,7 +37,7 @@ translationGroup: front-row-to-the-end-of-the-world
 
 I've always been one of those people who wants to live through the end of the world. An extinction-level event, the big one, whatever it turns out to be: I want to be there to see it and live it.
 
-I think it all started when I was a kid. I watched all the old sci-fi, _The Day the Earth Stood Still_, _Alien_, _Aliens_, almost in the order it came out: as _estrenos_ on Puerto Rico TV, or on tapes my dad and I rented at the Blockbuster. We saw everything together. I was born in '86, so the older ones we caught later. A few more end-of-the-world movies that stuck with me:
+I think it all started when I was a kid. I watched all the old sci-fi, _The Day the Earth Stood Still_, _Alien_, _Aliens_, almost in the order it came out: as _estrenos_ on Puerto Rico TV, or on tapes we rented at the Blockbuster. We saw everything together: my dad, my mom, my baby sister and me. I was born in '86, so the older ones we caught later. A few more end-of-the-world movies that stuck with me:
 
 <details class="post-collapsible">
 <summary>The list: 44 movies, 1968 to 2025</summary>

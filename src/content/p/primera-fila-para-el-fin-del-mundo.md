@@ -37,7 +37,7 @@ translationGroup: front-row-to-the-end-of-the-world
 
 Siempre he sido de esa gente que quiere vivir el fin del mundo. Un evento de extinción, el grande, lo que sea que termine siendo: yo quiero estar ahí para verlo y vivirlo.
 
-Yo creo que todo empezó cuando yo era chiquito. Vi todo el sci-fi (ciencia ficción) viejo, _The Day the Earth Stood Still_, _Alien_, _Aliens_, casi en el orden en que salían: como estrenos en la televisión de Puerto Rico, o en las cintas que mi papá y yo alquilábamos en el Blockbuster. Lo veíamos todo juntos. Yo nací en el '86, así que las más viejas las vimos después. Otras movies (películas) del fin del mundo que se me quedaron grabadas:
+Yo creo que todo empezó cuando yo era chiquito. Vi todo el sci-fi (ciencia ficción) viejo, _The Day the Earth Stood Still_, _Alien_, _Aliens_, casi en el orden en que salían: como estrenos en la televisión de Puerto Rico, o en las cintas que alquilábamos en el Blockbuster. Lo veíamos todo juntos: mi papá, mi mamá, mi hermanita y yo. Yo nací en el '86, así que las más viejas las vimos después. Otras movies (películas) del fin del mundo que se me quedaron grabadas:
 
 <details class="post-collapsible">
 <summary>La lista: 44 películas, de 1968 a 2025</summary>
