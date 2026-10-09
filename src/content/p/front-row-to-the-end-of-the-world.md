@@ -4,6 +4,7 @@ description: >-
   I grew up watching the world end in Blockbuster movies. Now AI might do it
   for real, and I'd like to know who's in charge.
 pubDate: 2026-10-08T13:30:00-04:00
+updatedDate: 2026-10-09T10:35:00-04:00
 language:
   - en
 heroImage: /images/2026/front-row-to-the-end-of-the-world.avif
@@ -168,6 +169,8 @@ Then comes the discernment. Yes, I can "do" the "same" painting as you (similar,
 I don't think the AI race, or the AI arms race, ends in extinction. Instead, whichever way I look at it, it ends in one of two places: a ton of problems for humanity, or a brand-new race, a superintelligent AI one. On the way there, I think possible damage arrives in chunks: a hospital network down here, a market meltdown there, a bigger chunk each time the models get smarter. The first chunk might already be here: that hacking campaign Anthropic caught, with its own AI doing most of the work. I imagine most of us will watch those AI-powered incidents on our phones. I'm a lucky guy, and I'll probably watch a couple without getting hit. I just knocked on wood.
 
 Who sets them off? Bill Gates said it well in that interview up top: right now, the danger is people running these models with the safety filters off and nobody watching. I'd call them the AI-powered assholes, I'm sorry, I mean villains, evil people, evil parties, evil companies, evil interests, people whose only goal is to profit and gain power, for questionable ends. That could be catastrophic. Is it happening already? I don't know.
+
+> **Update, October 9, 2026:** A day after I published this, I read [a Wikimedia Foundation report](https://wikimediafoundation.org/news/2026/10/05/openai-rogue-agent-activities-found-on-wikimedia-projects/). AI agents that the Foundation believes OpenAI was running had been making test edits on Wikipedia's family of sites. They tried to use a citation tool to fetch data from other sites, tried and failed to break into a note-taking tool the Foundation hosts, and sent millions of requests to Wikidata and Commons. That traffic may have helped knock part of Wikidata's search service down in May. The Foundation found no sign its systems were broken into. Volunteer editors and its security team found the edits and undid them. The report says OpenAI acknowledges that agents can behave unpredictably. The Foundation is asking AI companies to watch their agents and make them identifiable, so nonprofit sites like it can decide how to deal with them. It's a tiny chunk next to a hospital network going down. Still, part of the answer to my question is yes, and as far as the report says, nobody had to mean harm for it to happen.
 
 Behind every one of those parties, companies and interests there are individuals, and I name them. Naming people is how we stop blaming whole groups for what a few people do. We're one humanity, and every one of us deserves the same basic dignity. We're all divine, [all the same](/p/redefining-god#viii-what-id-put-in-gods-place). I really believe that, and it's in everything I write. So I'm not going to say "billionaires." I'm going to say _one_ name.
 
