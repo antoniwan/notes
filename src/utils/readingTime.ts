@@ -33,3 +33,13 @@ export function calculateReadingTimeFromMarkdown(markdown: string): string {
 
   return calculateReadingTime(plainText);
 }
+
+/**
+ * Put a reading time label in the post's language
+ * @param readingTime - A label from the reading-time package (e.g., "3 min read")
+ * @param language - The post's language
+ * @returns "3 min read" for English, "3 min de lectura" for Spanish
+ */
+export function localizeReadingTime(readingTime: string, language: 'en' | 'es'): string {
+  return language === 'es' ? readingTime.replace(/min read$/, 'min de lectura') : readingTime;
+}

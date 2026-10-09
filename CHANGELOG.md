@@ -9,6 +9,18 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.34.3] — 2026-10-09
+
+### Fixed
+
+- **Spanish notes read in Spanish around the text.** The byline date, the
+  updated date and the reading time now say “8 de octubre de 2026”,
+  “Actualizado el 9 oct 2026” and “30 min de lectura”. The language toggle,
+  the share buttons, their copy message and the image zoom labels are in
+  Spanish too. English notes do not change. `FormattedDate` takes a
+  `language` prop and uses `es-PR`; `localizeReadingTime` relabels the
+  reading time.
+
 ## [6.34.2] — 2026-10-08
 
 ### Added

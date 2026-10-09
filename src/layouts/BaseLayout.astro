@@ -163,8 +163,16 @@ const structuredData = generateStructuredData({
     <ServiceWorkerRegistration />
 
     <!-- Article image lightbox -->
-    <dialog id="imageModal" class="image-modal" aria-label="Expanded article image">
-      <button class="close-btn" type="button" aria-label="Close expanded image">
+    <dialog
+      id="imageModal"
+      class="image-modal"
+      aria-label={htmlLang === 'es' ? 'Imagen ampliada del artículo' : 'Expanded article image'}
+    >
+      <button
+        class="close-btn"
+        type="button"
+        aria-label={htmlLang === 'es' ? 'Cerrar la imagen ampliada' : 'Close expanded image'}
+      >
         &times;
       </button>
       <img id="modalImage" src="" alt="" />
@@ -221,9 +229,15 @@ const structuredData = generateStructuredData({
 
           image.tabIndex = 0;
           image.setAttribute('role', 'button');
+          const isSpanish = document.documentElement.lang === 'es';
+          const viewLarger = isSpanish ? 'Ver más grande' : 'View larger';
           image.setAttribute(
             'aria-label',
-            image.alt ? `View larger: ${image.alt}` : 'View image larger',
+            image.alt
+              ? `${viewLarger}: ${image.alt}`
+              : isSpanish
+                ? 'Ver la imagen más grande'
+                : 'View image larger',
           );
           image.addEventListener('click', () => openImageModal(image));
           image.addEventListener('keydown', (event) => {

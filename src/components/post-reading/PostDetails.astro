@@ -79,7 +79,7 @@ const moreCategories = categoryItems.slice(3);
   {updatedDate && pubDate && updatedDate.getTime() !== pubDate.getTime() && (
     <p class="updated-date">
       {isSpanish ? 'Actualizado el ' : 'Updated '}
-      <FormattedDate date={updatedDate} format="short" />
+      <FormattedDate date={updatedDate} format="short" language={language} />
     </p>
   )}
 </div>

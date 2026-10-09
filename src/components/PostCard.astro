@@ -3,7 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import FormattedDate from './FormattedDate.astro';
 import DefaultImage from './DefaultImage.astro';
 import HeroImage from './HeroImage.astro';
-import { calculateReadingTimeFromMarkdown } from '../utils/readingTime';
+import { calculateReadingTimeFromMarkdown, localizeReadingTime } from '../utils/readingTime';
 import { getSpanishTwinGroups } from '../utils/translationUtils';
 import { isSpanishPrimary } from '../utils/publishFilters';
 import { isRecipePost } from '../utils/recipes';
@@ -30,7 +30,11 @@ const {
 const { data } = post;
 const Heading = headingAs;
 
-const readingTime = calculateReadingTimeFromMarkdown(post.body || '');
+const cardLanguage = isSpanishPrimary(data) ? 'es' : 'en';
+const readingTime = localizeReadingTime(
+  calculateReadingTimeFromMarkdown(post.body || ''),
+  cardLanguage,
+);
 const isRecipe = isRecipePost(post);
 const kindLabel = isRecipe ? (isSpanishPrimary(data) ? 'Receta' : 'Recipe') : null;
 const spanishTwinGroups = await getSpanishTwinGroups();
@@ -75,7 +79,7 @@ const hasSpanishTwin =
 
   <div class="postcard-body">
     <div class="postcard-meta">
-      <FormattedDate date={data.pubDate} class="postcard-meta__item" />
+      <FormattedDate date={data.pubDate} language={cardLanguage} class="postcard-meta__item" />
       {kindLabel && (
         <>
           <span class="postcard-meta__sep" aria-hidden="true">

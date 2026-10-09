@@ -8,9 +8,37 @@ interface Props {
   url?: string;
   variant?: 'floating' | 'horizontal' | 'vertical' | 'button';
   className?: string;
+  language?: 'en' | 'es';
 }
 
-const { title, description = '', url = '', variant = 'floating', className = '' } = Astro.props;
+const {
+  title,
+  description = '',
+  url = '',
+  variant = 'floating',
+  className = '',
+  language = 'en',
+} = Astro.props;
+const isSpanish = language === 'es';
+const labels = isSpanish
+  ? {
+      copyLink: 'Copiar enlace',
+      copyLinkAria: 'Copiar el enlace a este escrito',
+      share: 'Compartir',
+      shareMoreAria: 'Más formas de compartir este escrito',
+      shareOn: 'Compartir en',
+      copied: 'Enlace copiado.',
+      copyFailed: 'No se pudo copiar el enlace. Inténtelo de nuevo.',
+    }
+  : {
+      copyLink: 'Copy link',
+      copyLinkAria: 'Copy link to this writing',
+      share: 'Share',
+      shareMoreAria: 'More ways to share this writing',
+      shareOn: 'Share on',
+      copied: 'Link copied.',
+      copyFailed: 'Could not copy the link. Please try again.',
+    };
 
 // Resolve against the public site so local previews still share the canonical article.
 const currentUrl = generateCanonicalUrl(url || Astro.url.pathname);
@@ -54,7 +82,13 @@ const platforms = generateShareUrls(title, currentUrl, description);
 )}
 
 {isArticleShare && (
-  <div class:list={['article-share', className]} data-article-share data-share-url={currentUrl}>
+  <div
+    class:list={['article-share', className]}
+    data-article-share
+    data-share-url={currentUrl}
+    data-copied-message={labels.copied}
+    data-copy-failed-message={labels.copyFailed}
+  >
     <div class="article-share__actions">
       <button
         type="button"
@@ -62,7 +96,7 @@ const platforms = generateShareUrls(title, currentUrl, description);
         data-platform="copy link"
         data-action="copy"
         data-url={currentUrl}
-        aria-label="Copy link to this writing"
+        aria-label={labels.copyLinkAria}
       >
         <svg
           width="16"
@@ -78,17 +112,17 @@ const platforms = generateShareUrls(title, currentUrl, description);
           <path d="M10 13a5 5 0 0 0 7 .2l3-3a5 5 0 0 0-7-7l-1.7 1.7" />
           <path d="M14 11a5 5 0 0 0-7-.2l-3 3a5 5 0 0 0 7 7l1.7-1.7" />
         </svg>
-        <span>Copy link</span>
+        <span>{labels.copyLink}</span>
       </button>
       <button
         type="button"
         id={`${variant}-share-toggle`}
         class="article-share__toggle"
-        aria-label="More ways to share this writing"
+        aria-label={labels.shareMoreAria}
         aria-expanded="false"
         aria-controls={`${variant}-share-menu`}
       >
-        <span>Share</span>
+        <span>{labels.share}</span>
         <svg
           class="article-share__chevron"
           width="14"
@@ -114,7 +148,7 @@ const platforms = generateShareUrls(title, currentUrl, description);
             class="article-share__platform"
             data-platform={platform.name.toLowerCase()}
             data-url={platform.url}
-            aria-label={`Share on ${platform.name === 'Twitter' ? 'X / Twitter' : platform.name}`}
+            aria-label={`${labels.shareOn} ${platform.name === 'Twitter' ? 'X / Twitter' : platform.name}`}
           >
             <span>
               {platform.name === 'Twitter'
@@ -211,10 +245,7 @@ const platforms = generateShareUrls(title, currentUrl, description);
 
         if (action === 'copy') {
           const copied = await copyToClipboard(getShareUrl(button));
-          showFeedback(
-            button,
-            copied ? 'Link copied.' : 'Could not copy the link. Please try again.',
-          );
+          showFeedback(button, getCopyMessage(button, copied));
         } else if (url && url !== '#') {
           window.open(url, '_blank', 'noopener,noreferrer');
         }
@@ -243,10 +274,7 @@ const platforms = generateShareUrls(title, currentUrl, description);
           }
         } else {
           const copied = await copyToClipboard(getShareUrl(nativeShareButton));
-          showFeedback(
-            nativeShareButton,
-            copied ? 'Link copied.' : 'Could not copy the link. Please try again.',
-          );
+          showFeedback(nativeShareButton, getCopyMessage(nativeShareButton, copied));
         }
       });
     }
@@ -263,6 +291,12 @@ const platforms = generateShareUrls(title, currentUrl, description);
       document.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.href ||
       window.location.href
     );
+  }
+
+  function getCopyMessage(button: HTMLElement, copied: boolean): string {
+    const messages = button.closest<HTMLElement>('[data-article-share]')?.dataset;
+    if (copied) return messages?.copiedMessage || 'Link copied.';
+    return messages?.copyFailedMessage || 'Could not copy the link. Please try again.';
   }
 
   async function copyToClipboard(text: string): Promise<boolean> {

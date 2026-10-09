@@ -15,6 +15,7 @@ import PostTocModal from '../components/post-toc/PostTocModal.astro';
 import { generateCanonicalUrl, normalizeSeoPath } from '../utils/seo';
 import { resolveContentLanguage } from '../utils/publishFilters';
 import { isRecipePost } from '../utils/recipes';
+import { localizeReadingTime } from '../utils/readingTime';
 import { recipeFromMarkdown } from '../utils/recipeSections';
 import { generateBreadcrumbSchema } from '../utils/structuredData';
 import { breadcrumbItemsForSchema, buildPostBreadcrumbItems } from '../utils/postBreadcrumbs';
@@ -147,8 +148,18 @@ const breadcrumbSchema = generateBreadcrumbSchema(
         </h1>
         {description && <p class="post-description">{description}</p>}
         <div class="post-byline">
-          {pubDate && <FormattedDate date={pubDate} format="long" />}
-          {minutesRead && !isRecipe && <span class="post-duration">{minutesRead}</span>}
+          {pubDate && (
+            <FormattedDate
+              date={pubDate}
+              format="long"
+              language={contentLanguage.contentLanguage}
+            />
+          )}
+          {minutesRead && !isRecipe && (
+            <span class="post-duration">
+              {localizeReadingTime(minutesRead, contentLanguage.contentLanguage)}
+            </span>
+          )}
           <span class="post-read-status" data-read-status data-post-slug={postSlug} hidden></span>
         </div>
         {translationData?.hasTranslations && (
@@ -186,6 +197,7 @@ const breadcrumbSchema = generateBreadcrumbSchema(
               description={description}
               url={canonical}
               variant="vertical"
+              language={contentLanguage.contentLanguage}
             />
           </div>
         </div>
@@ -273,6 +285,7 @@ const breadcrumbSchema = generateBreadcrumbSchema(
                 description={description}
                 url={canonical}
                 variant="horizontal"
+                language={contentLanguage.contentLanguage}
               />
             </div>
           </details>

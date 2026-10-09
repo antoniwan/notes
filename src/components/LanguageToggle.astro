@@ -12,7 +12,8 @@ export interface Props {
   currentLanguage?: string;
 }
 
-const { translations, currentPath } = Astro.props;
+const { translations, currentPath, currentLanguage = 'en' } = Astro.props;
+const isSpanish = currentLanguage === 'es';
 
 // Filter out current post and sort by language
 const otherTranslations = translations
@@ -30,6 +31,12 @@ const languageNames: Record<string, string> = {
   es: 'Español',
 };
 
+// Language names inside a Spanish sentence ("Leer en inglés")
+const spanishLanguageNames: Record<string, string> = {
+  en: 'inglés',
+  es: 'español',
+};
+
 // Language flags
 const languageFlags: Record<string, string> = {
   en: '🇺🇸',
@@ -39,12 +46,18 @@ const languageFlags: Record<string, string> = {
 
 {otherTranslations.length > 0 && (
   <div class="language-toggle">
-    <span class="language-label">Also available in:</span>
+    <span class="language-label">
+      {isSpanish ? 'También disponible en:' : 'Also available in:'}
+    </span>
     {otherTranslations.map((translation) => (
       <a
         href={translation.path}
         class="language-link"
-        title={`Read in ${languageNames[translation.language[0]]}`}
+        title={
+          isSpanish
+            ? `Leer en ${spanishLanguageNames[translation.language[0]]}`
+            : `Read in ${languageNames[translation.language[0]]}`
+        }
       >
         {languageFlags[translation.language[0]]} {languageNames[translation.language[0]]}
       </a>
