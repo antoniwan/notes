@@ -38,7 +38,10 @@ Pan-fried turkey patties with a crisp golden crust and heat from crushed red pep
 
 ## Equipment
 
+- Bowl
 - Cast iron skillet
+- Spatula, to flip
+- Instant-read thermometer
 
 ## Method
 

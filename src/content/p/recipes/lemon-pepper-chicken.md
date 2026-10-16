@@ -40,9 +40,14 @@ Bone-in, skin-on chicken thighs on a wire rack. Lemon-pepper in the oven. Honey 
 
 ## Equipment
 
+- Paper towels
+- Knife and cutting board, for the lemons
+- Zester or fine grater
 - Wire rack
 - Baking sheet
 - Drip tray underneath (optional)
+- Small baking dish, for the lemons
+- Pastry brush, for the honey
 
 ## Method
 

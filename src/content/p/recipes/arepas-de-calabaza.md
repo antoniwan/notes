@@ -40,7 +40,14 @@ Pumpkin arepas of mashed calabaza and harina de maíz precocida. Sear in a pan, 
 
 ## Equipment
 
+- Vegetable peeler
+- Knife and cutting board
+- Pot with a lid
+- Colander, to drain
+- Potato masher or fork
+- Grater, for the cheese (optional)
 - Cast iron or nonstick pan
+- Spatula, to flip
 - Oven, preheated to 400°F / 200°C
 
 ## Method

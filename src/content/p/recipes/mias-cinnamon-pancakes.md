@@ -39,7 +39,10 @@ One-part flour pancakes with cinnamon and nutritional yeast. Oat milk. Cook in a
 
 ## Equipment
 
+- Sifter or fine-mesh strainer
+- Bowl
 - Frying pan
+- Spatula, to flip
 
 ## Method
 

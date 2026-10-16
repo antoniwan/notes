@@ -45,6 +45,7 @@ Habichuelas rosadas de lata, cubito de [sofrito](/p/recipes/sofrito) y calabaza.
 
 ## Equipment
 
+- Cuchillo y tabla de cortar
 - Caldero u olla ancha
 
 ## Method

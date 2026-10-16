@@ -44,6 +44,7 @@ Recaíto verde de ajíes dulces, recao, cilantro, ajo y pimiento. Se procesa has
 
 ## Equipment
 
+- Cuchillo y tabla de cortar
 - Procesador de alimentos o licuadora
 - Bandejas de cubitos de hielo
 - Bolsa ziploc

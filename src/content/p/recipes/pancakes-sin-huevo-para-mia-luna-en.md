@@ -42,6 +42,7 @@ Egg-free pancakes of flour, baking powder, cinnamon, oil, and water or oat milk.
 
 - Bowl
 - Frying pan
+- Spatula, to flip
 
 ## Method
 

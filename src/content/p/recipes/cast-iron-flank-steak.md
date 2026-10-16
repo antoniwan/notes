@@ -36,7 +36,11 @@ Flank steak, about 1 to 1½ inches thick, salted and seared in a smoking-hot cas
 
 ## Equipment
 
+- Paper towels
 - Cast iron skillet
+- Tongs
+- Instant-read thermometer
+- Knife and cutting board
 
 ## Method
 

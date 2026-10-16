@@ -44,7 +44,9 @@ Muslos sin pellejo, cubito de [sofrito](/p/recipes/sofrito) y caldo de caja. Que
 
 ## Equipment
 
+- Papel toalla
 - Caldero
+- Colador fino, para enjuagar el arroz
 
 ## Method
 

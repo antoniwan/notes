@@ -42,8 +42,12 @@ Dry-brined drumsticks tossed with aluminum-free baking powder and spices, then r
 
 ## Equipment
 
+- Paper towels
+- Knife and cutting board, for the vegetables
+- Bowl, to toss the drumsticks
 - Wire rack
 - Sheet pan
+- Instant-read thermometer
 
 ## Method
 

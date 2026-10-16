@@ -40,7 +40,10 @@ Egg-free cupcakes of flour, oil, water, vinegar, and vanilla. Oven at 350°F, ab
 
 ## Equipment
 
+- Sifter or fine-mesh strainer
+- Bowl
 - Lined cupcake pan
+- Toothpick or cake tester
 
 ## Method
 

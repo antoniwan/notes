@@ -44,7 +44,11 @@ Chuletas de lomo de cordero selladas en cast iron con ajo, romero, vino tinto y 
 
 ## Equipment
 
+- Papel toalla
+- Cuchillo y tabla de cortar
+- Bowl, para los vegetales
 - Sartén de cast iron
+- Pinzas
 
 ## Method
 

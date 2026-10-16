@@ -50,7 +50,10 @@ The caldero:
 
 ## Equipment
 
+- Paper towels
+- Knife and cutting board, for the garlic
 - Caldero with a lid
+- Tongs
 
 ## Method
 

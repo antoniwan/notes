@@ -47,6 +47,8 @@ Egg-free cake of ripe bananas. Avocado oil, vinegar, and baking soda. Oven at 35
 - Greased pan
 - Large bowl
 - Masher or fork
+- Spatula, to fold
+- Toothpick
 
 ## Method
 

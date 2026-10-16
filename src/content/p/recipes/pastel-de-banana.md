@@ -47,6 +47,8 @@ Bizcocho de guineo maduro, sin huevo. Aceite de aguacate, vinagre y baking soda.
 - Molde engrasado
 - Bol grande
 - Majador o tenedor
+- Espátula, para incorporar
+- Palillo
 
 ## Method
 

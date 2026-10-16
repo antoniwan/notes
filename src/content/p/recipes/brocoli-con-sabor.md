@@ -39,6 +39,8 @@ Brócoli a la sartén. Sal, aceite, y un chorro de agua con tapa. Unos 15 minuto
 
 ## Equipment
 
+- Cuchillo y tabla de cortar
+- Bowl donde puedas mezclar
 - Sartén con tapa
 
 ## Method

@@ -43,6 +43,7 @@ Canned pink beans, a cube of [sofrito](/p/recipes/sofrito-en), and pumpkin. The 
 
 ## Equipment
 
+- Knife and cutting board
 - Caldero or wide pot
 
 ## Method

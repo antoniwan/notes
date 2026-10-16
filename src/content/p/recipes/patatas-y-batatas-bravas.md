@@ -38,7 +38,10 @@ Serves 2 adults and a toddler.
 
 ## Equipment
 
+- Vegetable peeler
+- Knife and cutting board
 - Large pot
+- Colander, to drain
 - Big bowl
 - Rubber spatula
 - 2 wire racks, each over a sheet pan

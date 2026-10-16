@@ -51,7 +51,10 @@ El caldero:
 
 ## Equipment
 
+- Papel toalla
+- Cuchillo y tabla de cortar, para el ajo
 - Caldero con tapa
+- Pinzas
 
 ## Method
 

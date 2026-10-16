@@ -39,6 +39,8 @@ Broccoli in a skillet. Salt, oil, and a splash of water under a lid. About 15 mi
 
 ## Equipment
 
+- Knife and cutting board
+- Bowl, big enough to mix
 - Skillet with a lid
 
 ## Method

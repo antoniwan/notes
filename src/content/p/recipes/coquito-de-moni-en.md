@@ -44,6 +44,9 @@ Coquito of condensed milk, evaporated milk, cream of coconut, yolks, vanilla, ci
 
 ## Equipment
 
+- Whisk or fork
+- Strainer
+- Large bowl or pitcher, to mix
 - Funnel
 - 4 to 5 large bottles
 

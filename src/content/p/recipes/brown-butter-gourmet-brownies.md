@@ -47,8 +47,12 @@ Fudgy brownies with brown butter, melted dark chocolate, cocoa, and chocolate ch
 
 - 8x8 metal pan (metal gives better edges than glass)
 - Parchment paper, with overhang on two sides for lifting
+- Light-colored saucepan
+- Knife and cutting board, for the chocolate
+- Sifter or fine-mesh strainer
 - Two bowls, whisk, spatula
 - Optional: hand mixer or stand mixer for the egg step
+- Toothpick
 
 ## Method
 

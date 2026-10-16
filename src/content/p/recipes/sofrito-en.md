@@ -44,6 +44,7 @@ Green recaíto of ajíes dulces, recao, cilantro, garlic, and bell pepper. Proce
 
 ## Equipment
 
+- Knife and cutting board
 - Food processor or blender
 - Ice cube trays
 - Ziploc bag

@@ -41,6 +41,8 @@ Chicken tenderloins, olive oil, salt, paprika, and flour. Fry until golden, abou
 - Fork
 - Paper towel
 - Bowl
+- Sieve, for the flour
+- Frying pan
 
 ## Method
 

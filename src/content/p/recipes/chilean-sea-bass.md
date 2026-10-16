@@ -39,7 +39,10 @@ Chilean sea bass fillets seasoned and pan-fried in butter or oil with garlic. Le
 
 ## Equipment
 
+- Paper towels
+- Knife and cutting board, for the garlic and lemon
 - Nonstick pan
+- Fish spatula
 
 ## Method
 

@@ -44,7 +44,11 @@ Lamb loin chops seared in cast iron with garlic, rosemary, red wine, and vegetab
 
 ## Equipment
 
+- Paper towels
+- Knife and cutting board
+- Bowl, for the vegetables
 - Cast iron skillet
+- Tongs
 
 ## Method
 

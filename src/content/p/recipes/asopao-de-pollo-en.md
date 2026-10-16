@@ -44,7 +44,9 @@ Skinless thighs, a cube of [sofrito](/p/recipes/sofrito-en), and boxed broth. It
 
 ## Equipment
 
+- Paper towels
 - Caldero
+- Fine-mesh strainer, to rinse the rice
 
 ## Method
 

@@ -43,6 +43,9 @@ Coquito de leche condensada, evaporada, crema de coco, yemas, vainilla, canela, 
 
 ## Equipment
 
+- Batidor o tenedor
+- Colador
+- Bowl grande o jarra, para mezclar
 - Embudo
 - 4 a 5 botellas grandes
 

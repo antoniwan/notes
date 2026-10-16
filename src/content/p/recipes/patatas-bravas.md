@@ -47,6 +47,17 @@ Crispy potatoes with brava sauce. Parboil, then fry, roast, or air-fry. The sauc
 - (optional) squeeze of lemon
 - (optional) salt, for the aioli
 
+## Equipment
+
+- Vegetable peeler
+- Knife and cutting board
+- Pot
+- Colander, to drain
+- To crisp, one of: a skillet; a big bowl, a rubber spatula, and wire racks over sheet pans; or an air fryer
+- Small pan, for the sauce
+- Blender (optional), for a smooth sauce
+- Small bowl and a grater, for the aioli
+
 ## Method
 
 1. Put the potatoes in cold salted water. Bring to a boil and simmer 5 to 7 minutes, until the edges soften. Drain and steam-dry a few minutes.

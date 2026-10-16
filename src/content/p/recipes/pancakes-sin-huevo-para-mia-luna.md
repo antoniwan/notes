@@ -42,6 +42,7 @@ Pancakes sin huevo de harina, baking powder, canela, aceite y agua o leche de av
 
 - Bowl
 - Sartén
+- Espátula, para voltear
 
 ## Method
 

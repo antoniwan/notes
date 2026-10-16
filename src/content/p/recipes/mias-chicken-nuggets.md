@@ -42,6 +42,8 @@ Tenderloins de pollo, aceite de oliva, sal, paprika y harina. Se fríen hasta do
 - Tenedor
 - Papel toalla
 - Bowl
+- Colador, para la harina
+- Sartén
 
 ## Method
 

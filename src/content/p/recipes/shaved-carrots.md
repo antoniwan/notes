@@ -34,6 +34,9 @@ Carrot shavings tossed with flour, cinnamon, and confectioner's sugar. Air fryer
 
 ## Equipment
 
+- Vegetable peeler, to shave the carrots
+- Kitchen towel
+- Large bowl
 - Air fryer
 
 ## Method
