@@ -220,6 +220,8 @@ export const SOCIAL_IMAGE_MANIFEST: Record<string, string> = {
   '/images/2026/panda-and-wolf.avif': '/social/images/2026/panda-and-wolf-social.jpg',
   '/images/2026/pastel-de-banana.avif': '/social/images/2026/pastel-de-banana-social.jpg',
   '/images/2026/patatas-bravas.avif': '/social/images/2026/patatas-bravas-social.jpg',
+  '/images/2026/patatas-y-batatas-bravas.avif':
+    '/social/images/2026/patatas-y-batatas-bravas-social.jpg',
   '/images/2026/perfect-crispy-oven-drumsticks.avif':
     '/social/images/2026/perfect-crispy-oven-drumsticks-social.jpg',
   '/images/2026/practice-values.jpg': '/social/images/2026/practice-values-social.jpg',

@@ -4,6 +4,7 @@ description: >-
   Parboiled potatoes crisped in a pan, oven, or air fryer. Brava sauce of
   paprika, tomato, and vinegar.
 pubDate: '2026-04-29T10:00:00-04:00'
+updatedDate: '2026-10-16T07:30:00-04:00'
 language:
   - en
 heroImage: /images/2026/patatas-bravas.avif
@@ -49,7 +50,7 @@ Crispy potatoes with brava sauce. Parboil, then fry, roast, or air-fry. The sauc
 ## Method
 
 1. Put the potatoes in cold salted water. Bring to a boil and simmer 5 to 7 minutes, until the edges soften. Drain and steam-dry a few minutes.
-2. Crisp the potatoes. Pan: generous olive oil on medium-high, fry until golden, 8 to 10 minutes, salt at once. Oven: toss with olive oil and salt, roast at 425°F for 25 to 30 minutes, flipping halfway. Air fryer: toss with olive oil and salt, 400°F for 15 to 20 minutes, shaking halfway.
+2. Crisp the potatoes. Pan: generous olive oil on medium-high, fry until golden, 8 to 10 minutes, salt at once. Oven: season in a big bowl with three light passes of fine salt and olive oil, folded gently with a rubber spatula (see Notes). Spread on wire racks over sheet pans and roast at 425°F for 30 minutes. Air fryer: season the same way, 400°F for 15 to 20 minutes, shaking halfway.
 3. In a small pan, heat 1 tablespoon olive oil. Garlic 20 to 30 seconds. Add tomato paste, smoked paprika, and hot paprika. Stir. Add broth or water and vinegar. Simmer 5 minutes until thick. Salt to taste. Blend if you want it smooth.
 4. Pile the potatoes. Spoon over the brava. If using aioli, mix the mayo, grated garlic, lemon, and salt, then drizzle. Eat hot.
 
@@ -58,3 +59,6 @@ Crispy potatoes with brava sauce. Parboil, then fry, roast, or air-fry. The sauc
 - A bit of smoked paprika on the finished potatoes changes the plate.
 - If the sauce tastes flat, a tiny splash of vinegar. If it is too acidic, a pinch of sugar.
 - Best hot and crisp. Do not let them sit.
+- Big-bowl seasoning: sprinkle fine salt over all the potatoes, drizzle a little olive oil, and fold with a rubber spatula; do it three times. Fold gently so the potatoes stay whole: only the salt should rough up the surface, and that gives the texture. Three passes of about ¼ tsp each made a big batch (3 huge potatoes and 3 huge sweet potatoes) savory, not too salty.
+- Not tried yet: 1 minute under a high broiler at the end of the oven method should make them crunchier.
+- Sweet potato version: [Patatas y Batatas Bravas](/p/recipes/patatas-y-batatas-bravas).

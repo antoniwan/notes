@@ -545,6 +545,10 @@
       "sha256": "0b9f5c44b029c49b114fdf082394b87a92af168dc1eefaf99318440cd3189682",
       "social": "/social/images/2026/patatas-bravas-social.jpg"
     },
+    "/images/2026/patatas-y-batatas-bravas.avif": {
+      "sha256": "2ca2080bf2cac3777e9564d7f9b948956e9f7f2c23c2b6d88c417db716d78da4",
+      "social": "/social/images/2026/patatas-y-batatas-bravas-social.jpg"
+    },
     "/images/2026/perfect-crispy-oven-drumsticks.avif": {
       "sha256": "99abc16299cfc5efa3f1b29470d6bf42ad98d224f03b8d85967bab317882292e",
       "social": "/social/images/2026/perfect-crispy-oven-drumsticks-social.jpg"
@@ -586,7 +590,7 @@
       "social": "/social/images/2026/sharpen-your-tools-social.jpg"
     },
     "/images/2026/shaved-carrots.avif": {
-      "sha256": "2d042c022f051c1e245fac5433c02121968e41764c16a55052fa3c5e0b314f52",
+      "sha256": "b241911d67cbdb238b13eb6389d0d13b92a70a1c7fde8437edea2c46f2c72d3f",
       "social": "/social/images/2026/shaved-carrots-social.jpg"
     },
     "/images/2026/simple-baked-chicken-breasts.avif": {

@@ -8,7 +8,8 @@ language:
   - en
 heroImage: /images/2026/shaved-carrots.avif
 imageAlt: >-
-  Thin carrot shavings tossed with flour in a steel bowl on a white counter
+  Flat illustration of orange carrot ribbons dusted with white specks in a grey
+  bowl, seen from above
 category:
   - diy-creation
 subcategory: Recipes
