@@ -41,6 +41,15 @@ Chicken tenders, pounded to even thickness, seasoned, breaded, and fried. Four t
 - (optional) 1 tablespoon of whatever other seasonings you want
 - Approximately 2 inches of hot vegetable oil; avocado oil preferred
 
+## Equipment
+
+- Meat mallet
+- Fork or whisk, for the eggs
+- Two medium-large containers
+- Deep pan or pot, for 2 inches of oil
+- Tongs
+- Wire rack or paper towels, to rest
+
 ## Method
 
 1. Pound the chicken so every tender is the same thickness.

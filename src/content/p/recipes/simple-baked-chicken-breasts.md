@@ -34,6 +34,15 @@ Chicken breasts seasoned with salt, black pepper, and paprika, pounded to even t
 - Black pepper
 - Paprika (or other seasonings as desired)
 
+## Equipment
+
+- Paper towels
+- Plastic wrap
+- Meat mallet
+- Baking dish
+- Instant-read thermometer
+- Aluminum foil
+
 ## Method
 
 1. Pat the chicken completely dry.

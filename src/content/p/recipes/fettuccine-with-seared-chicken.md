@@ -54,6 +54,7 @@ Fettuccine with seared chicken, blistered Campari tomatoes, and broccolini. Jarr
 - Heatproof measuring cup, to reserve pasta water
 - Knife and cutting board
 - Microplane or fine grater, for the cheese and lemon zest
+- Meat mallet or rolling pin, if you pound the chicken
 - Paper towels
 - Large skillet
 - Tongs and a spatula

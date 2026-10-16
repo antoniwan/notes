@@ -41,6 +41,15 @@ Tenders de pollo, martillados al mismo grosor, adobados, empanizados y fritos. C
 - (optional) 1 tablespoon of whatever other seasonings you want
 - Approximately 2 inches of hot vegetable oil; avocado oil preferred
 
+## Equipment
+
+- Martillo de carne
+- Tenedor o batidor, para los huevos
+- Dos envases medianos-grandes
+- Sartén honda u olla, para 2 pulgadas de aceite
+- Pinzas
+- Rejilla o papel toalla, para reposar
+
 ## Method
 
 1. Martilla el pollo para que todos los tenders tengan el mismo grosor.

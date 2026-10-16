@@ -39,6 +39,12 @@ Banana bread of mashed bananas, oat milk, honey, oats, and flour. Mix all the in
 - 1 cup oats
 - 2 tablespoons oil, preferably
 
+## Equipment
+
+- Large bowl
+- Fork, to mash the bananas
+- Loaf pan
+
 ## Method
 
 1. Mix all the ingredients until combined.

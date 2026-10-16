@@ -36,6 +36,14 @@ Mashed avocado on toast. Salt and a squeeze of lime or lemon. About 10 minutes. 
 - 1 squeeze lime or lemon juice
 - 2 slices bread
 
+## Equipment
+
+- Toaster
+- Knife and cutting board
+- Spoon
+- Bowl
+- Fork, to mash
+
 ## Method
 
 1. Toast the bread.
