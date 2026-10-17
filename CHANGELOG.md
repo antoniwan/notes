@@ -9,6 +9,14 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.37.0] — 2026-10-17
+
+### Changed
+
+- Move the latest-watched component to Movies in antoniwan.online Collections.
+- Remove the Letterboxd fetcher and its environment-variable requirements from Notes.
+- Keep legacy About movie-section anchors working through a browser redirect.
+
 ## [6.36.0] — 2026-10-17
 
 ### Changed

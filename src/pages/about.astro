@@ -1,16 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Container from '../components/Container.astro';
-import LatestWatched from '../components/LatestWatched.astro';
 import { PAGE_META } from '../data/pageMeta';
 import { AUTHOR } from '../consts';
-import { fetchLetterboxdRecent } from '../utils/letterboxd';
 import HeroImage from '../components/HeroImage.astro';
-
-const rssUrl = import.meta.env.LETTERBOXD_RSS_URL ?? '';
-const profileUrl = import.meta.env.LETTERBOXD_PROFILE_URL ?? 'https://letterboxd.com/antoniwan/';
-
-const letterboxdFilms = await fetchLetterboxdRecent(rssUrl, 12);
 
 type AboutTopic = {
   label: string;
@@ -199,10 +192,6 @@ const topics: AboutTopic[] = [
         </ul>
       </section>
 
-      <div class="about-films">
-        <LatestWatched films={letterboxdFilms} profileUrl={profileUrl} />
-      </div>
-
       <div class="about-closing">
         <section class="about-contact" aria-labelledby="about-contact-heading">
           <h2 id="about-contact-heading" class="about-closing__heading">
@@ -224,6 +213,11 @@ const topics: AboutTopic[] = [
       </div>
     </div>
   </Container>
+  <script is:inline>
+    if (window.location.hash === '#about-watched-heading') {
+      window.location.replace('https://antoniwan.online/collections/movies#latest-watches');
+    }
+  </script>
 </BaseLayout>
 
 <style>
@@ -391,8 +385,7 @@ const topics: AboutTopic[] = [
     color: rgb(var(--color-accent));
   }
 
-  .about-topics,
-  .about-films {
+  .about-topics {
     margin-top: clamp(3.5rem, 7vw, 6rem);
     padding-top: clamp(2rem, 4vw, 3rem);
     border-top: 1px solid rgb(var(--color-border) / 0.8);

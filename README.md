@@ -107,12 +107,7 @@ or yarn if you change commands yourself.
 
 ## Environment variables (optional)
 
-For production builds of the **About** page, Letterboxd “latest watched” needs RSS URLs. Copy `.env.example` to `.env.local` and set:
-
-- `LETTERBOXD_PROFILE_URL`
-- `LETTERBOXD_RSS_URL`
-
-If they are missing, that block on About simply won’t have fresh data (or may be empty depending on fallbacks).
+The Letterboxd movie collection and latest watches now live at `antoniwan.online/collections/movies`. Notes no longer fetches the diary feed.
 
 Remark42 uses `PUBLIC_REMARK42_HOST` and `PUBLIC_REMARK42_SITE_ID` when you turn comments on — see `docs/comments-setup.md`. A third variable, `REMARK42_UPSTREAM_ORIGIN`, is the upstream Remark42 origin; Vercel can't interpolate env vars into `vercel.json`, so after changing it, run `pnpm run sync-remark42-rewrite` and commit the updated `vercel.json` (CI verifies this with `pnpm run check-remark42-rewrite`). All three are listed in `.env.example`.
 
