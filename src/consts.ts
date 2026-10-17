@@ -29,7 +29,7 @@ export interface SEOConfig {
 export const SITE_TITLE = 'Notes';
 export const SHORT_SITE_TITLE = 'Notes';
 export const SITE_DESCRIPTION =
-  'Field notes from a life in progress: essays, household recipes, fatherhood, cooking, culture, and work.';
+  'Field notes from a life in progress: essays, fatherhood, cooking, culture, and work.';
 export const SITE_URL = 'https://notes.antoniwan.online';
 
 // Author Information

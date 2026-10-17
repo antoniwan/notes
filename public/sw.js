@@ -160,6 +160,19 @@ self.addEventListener('fetch', (event) => {
   // another origin's files in this site's cache.
   if (!isSameOrigin(url)) return;
 
+  const recipePath = url.pathname.match(/^\/(?:p|blog)\/recipes\/([^/]+)\/?$/);
+  const flatRecipe = url.pathname.match(/^\/(?:p|blog)\/(lemon-pepper-chicken(?:\.md)?)\/?$/);
+  const recipeSlug = recipePath?.[1] ?? flatRecipe?.[1];
+  if (recipeSlug || /^\/recipes\/?$/.test(url.pathname)) {
+    const destination = new URL(
+      recipeSlug ? `/recipes/${recipeSlug}` : '/',
+      'https://cookbook.antoniwan.online',
+    );
+    destination.search = url.search;
+    event.respondWith(Response.redirect(destination.href, 301));
+    return;
+  }
+
   if (url.pathname.startsWith('/api/')) {
     event.respondWith(handleApiRequest(request));
     return;

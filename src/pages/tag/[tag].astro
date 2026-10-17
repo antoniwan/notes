@@ -13,7 +13,7 @@ import { getTagMetadata } from '../../data/tags';
 import { filterPostsByTag, getAllUniqueTags, getTagStatistics } from '../../utils/tagProcessing';
 import { canonicalizeTag } from '../../utils/tagVocabulary';
 import { isThinTag } from '../../utils/sitemapTranslations';
-import { isCookbookListedPost, isTagListedPost } from '../../utils/recipes';
+import { isTagListedPost } from '../../utils/recipes';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', (entry) => isTagListedPost(entry));
@@ -39,9 +39,6 @@ const posts = await getCollection('blog', (entry) => isTagListedPost(entry));
 const { totalPosts, relatedTags } = getTagStatistics(canonicalTag, posts);
 const tagPosts = filterPostsByTag(posts, canonicalTag);
 const showCookbookNotice = tagHasCookbookNotice(canonicalTag);
-const cookbookCount = showCookbookNotice
-  ? (await getCollection('blog', (entry) => isCookbookListedPost(entry))).length
-  : 0;
 const seoDescription = tagMetaDescription(canonicalTag, totalPosts);
 ---
 
@@ -71,7 +68,7 @@ const seoDescription = tagMetaDescription(canonicalTag, totalPosts);
 
         {showCookbookNotice && (
           <div class="mt-6">
-            <CookbookNotice recipeCount={cookbookCount} />
+            <CookbookNotice />
           </div>
         )}
 

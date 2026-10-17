@@ -41,7 +41,6 @@ const CONTENT_DIR =
     path.resolve(process.cwd(), 'src/content/p'),
   ].find((dir) => fs.existsSync(dir)) ?? path.resolve(process.cwd(), 'src/content/p');
 
-/** Listings that carry recipes alongside essays. */
 const LISTING_PATHS = ['/', '/everything'];
 
 /**
@@ -139,7 +138,7 @@ export function buildSitemapIndex(
   const tagPostCount = new Map<string, number>();
 
   for (const { postId, meta } of entries) {
-    if (!isPublicMeta(meta, { now })) continue;
+    if (isRecipeId(postId) || !isPublicMeta(meta, { now })) continue;
 
     const lastmod = lastmodForMeta(meta);
     if (!lastmod) continue;
@@ -156,25 +155,18 @@ export function buildSitemapIndex(
         bumpLastmod(lastmodByUrl, sitemapPageUrl(listingPath), lastmod);
       }
 
-      if (isRecipeId(postId)) {
-        bumpLastmod(lastmodByUrl, sitemapPageUrl('/recipes'), lastmod);
-      } else {
-        for (const listingPath of FEED_PATHS) {
-          bumpLastmod(lastmodByUrl, sitemapPageUrl(listingPath), lastmod);
-        }
-        for (const listingPath of ESSAY_LISTING_PATHS) {
-          bumpLastmod(lastmodByUrl, sitemapPageUrl(listingPath), lastmod);
-        }
-
-        // Individual category and tag pages list essays, not recipes, on the
-        // same rules as their index pages above.
-        for (const category of meta.category) {
-          bumpLastmod(lastmodByUrl, sitemapPageUrl(`/category/${category}`), lastmod);
-        }
-        for (const tag of canonicalizeTags(meta.tags)) {
-          bumpLastmod(lastmodByUrl, sitemapPageUrl(`/tag/${tag}`), lastmod);
-          tagPostCount.set(tag, (tagPostCount.get(tag) ?? 0) + 1);
-        }
+      for (const listingPath of FEED_PATHS) {
+        bumpLastmod(lastmodByUrl, sitemapPageUrl(listingPath), lastmod);
+      }
+      for (const listingPath of ESSAY_LISTING_PATHS) {
+        bumpLastmod(lastmodByUrl, sitemapPageUrl(listingPath), lastmod);
+      }
+      for (const category of meta.category) {
+        bumpLastmod(lastmodByUrl, sitemapPageUrl(`/category/${category}`), lastmod);
+      }
+      for (const tag of canonicalizeTags(meta.tags)) {
+        bumpLastmod(lastmodByUrl, sitemapPageUrl(`/tag/${tag}`), lastmod);
+        tagPostCount.set(tag, (tagPostCount.get(tag) ?? 0) + 1);
       }
     }
 

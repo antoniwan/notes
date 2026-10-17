@@ -2,9 +2,13 @@
 
 [![Version](https://img.shields.io/github/package-json/v/antoniwan/notes)](https://github.com/antoniwan/notes/releases)
 
-Field notes from a life being lived: essays, household recipes, and the books on the shelf. Fatherhood, cooking, culture, work. English and Spanish, with links between twins.
+Field notes from a life being lived: essays, fatherhood, cooking, culture, work, and the books on the shelf. English and Spanish, with links between twins.
 
-This is not a magazine. It is not a recipe site with a blog attached. One public notebook. Essays and recipes share the same collection. Recipes live under `/p/recipes/` and list on the Cookbook.
+This is not a magazine. It is a public notebook. Family recipes now live at [Cookbook](https://cookbook.antoniwan.online/).
+
+The October 17, 2026 cutover replaces the earlier shared recipe collection. Recipe source files remain as historical records, outside the public collection.
+
+Migration routes, release checks, and recovery instructions are in the [Cookbook cutover guide](docs/cookbook-cutover.md).
 
 Live site: [notes.antoniwan.online](https://notes.antoniwan.online)
 
@@ -15,7 +19,7 @@ Inline diagram authoring: [Mermaid flowcharts and state diagrams](docs/mermaid-d
 ## What a reader sees
 
 - **Writing** — essays and notes in `src/content/p/` (Markdown and MDX)
-- **Cookbook** — `/recipes` is a plate grid plus A–Z contents. Recipes ship at `/p/recipes/<slug>`. English listed; Spanish via the dish toggle; an ES chip marks plates that have a Spanish twin
+- **Cookbook** — family recipes live at `cookbook.antoniwan.online`. `/recipes` and the old recipe pages redirect there, including Spanish and Markdown URLs
 - **Children’s books** — `/books`, two picture books he wrote, each opening in its own bilingual (English/Español) reader
 - **Book library** — books he has read, at `/library/books`. `/library` alone 301s there
 - **Paths in** — Guided Path (seasonal order, progress in the browser only), Everything (English archive), Categories, Topics (the tag index, read as an idea map for browsing subjects), header search. The main nav groups these under **Browse** (Topics, Categories) and **Collections** (Children’s books, Cookbook, Book library)
@@ -28,8 +32,8 @@ English is the listing language. Spanish is a twin: language toggle, title searc
 
 ## How it is built
 
-- **10 categories** (for example On Parenting; Psychology, Roughly; On Politics; Metaspace; DIY & Creation) — essays only; household recipes list on the Cookbook and Everything. See `src/data/categories.ts`
-- **Tags** — idea map for readers (essays only; household recipes list on the Cookbook and Everything); **Tag management** is an author overview (noindex). Tags describe content, not the site name
+- **10 categories** (for example On Parenting; Psychology, Roughly; On Politics; Metaspace; DIY & Creation) — essays only. Household recipes live on Cookbook. See `src/data/categories.ts`
+- **Tags** — idea map for readers (essays only); **Tag management** is an author overview (noindex). Tags describe content, not the site name
 - **Dark and light theme**, including system preference
 - **Responsive layout** for small and large screens
 - **Reading time** — remark plugin (`minutesRead`). Hidden on recipe cards and dish pages

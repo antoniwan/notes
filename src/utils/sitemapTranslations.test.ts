@@ -31,10 +31,10 @@ describe('getSitemapLastmodByUrl', () => {
     expect(lastmodByUrl.get(url)?.toISOString()).toBe('2026-09-05T20:40:00.000Z');
   });
 
-  it('uses nested content paths as post ids', () => {
+  it('excludes migrated recipe paths from sitemap metadata', () => {
     const nested = sitemapPageUrl('/p/recipes/lemon-pepper-chicken');
     const oldFlat = sitemapPageUrl('/p/lemon-pepper-chicken');
-    expect(lastmodByUrl.has(nested)).toBe(true);
+    expect(lastmodByUrl.has(nested)).toBe(false);
     expect(lastmodByUrl.has(oldFlat)).toBe(false);
   });
 
@@ -46,7 +46,7 @@ describe('getSitemapLastmodByUrl', () => {
     expect(home).toBeInstanceOf(Date);
     expect(category).toBeInstanceOf(Date);
     expect(tag).toBeInstanceOf(Date);
-    expect(cookbook).toBeInstanceOf(Date);
+    expect(cookbook).toBeUndefined();
     expect(home!.valueOf()).toBeGreaterThanOrEqual(category!.valueOf());
   });
 });

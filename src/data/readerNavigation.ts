@@ -1,4 +1,5 @@
 import { AUTHOR } from '../consts';
+import { COOKBOOK_URL } from './cookbook';
 
 export interface ReaderLink {
   href: string;
@@ -14,7 +15,7 @@ export const readingLinks: ReaderLink[] = [
 
 export const collectionLinks: ReaderLink[] = [
   { href: '/books', label: 'Children’s books' },
-  { href: '/recipes', label: 'Cookbook' },
+  { href: COOKBOOK_URL + '/', label: 'Cookbook' },
   { href: '/library/books', label: 'Book Library' },
 ];
 

@@ -189,6 +189,7 @@ for (const file of walkContent(contentDir)) {
     .replace(/\.mdx?$/i, '')
     .split(path.sep)
     .join('/');
+  if (slug.startsWith('recipes/')) continue;
   posts.push({ slug, data });
 }
 notes.push(`${posts.length} source posts`);
@@ -275,6 +276,54 @@ const emittedSlugs = new Set(
 );
 problems.push(...checkPublishEligibility(posts, emittedSlugs, feedSlugs));
 
+const recipeMigration = JSON.parse(
+  fs.readFileSync(path.join(root, 'src/data/cookbookRecipes.json'), 'utf8'),
+);
+const deploymentRoutes = JSON.parse(
+  fs.readFileSync(path.join(root, '.vercel/output/config.json'), 'utf8'),
+).routes;
+const searchRecords = JSON.parse(fs.readFileSync(path.join(dist, 'search-index.json'), 'utf8'));
+if (
+  searchRecords.some(
+    (record) =>
+      record.slug?.startsWith('recipes/') ||
+      record.url === '/recipes' ||
+      record.url?.startsWith('/p/recipes/'),
+  )
+) {
+  problems.push('migrated recipes remain in the search index');
+}
+for (const file of ['llms.txt', 'everything/index.html', 'sitemap-0.xml']) {
+  const text = fs.readFileSync(path.join(dist, file), 'utf8');
+  if (/\/p\/recipes\//.test(text))
+    problems.push(`${file}: migrated recipe URLs remain in public output`);
+}
+for (const recipe of recipeMigration) {
+  for (const prefix of ['/p/recipes/', '/blog/recipes/']) {
+    for (const suffix of ['', '.md']) {
+      const source = prefix + recipe.slug + suffix;
+      const route = deploymentRoutes.find(
+        (entry) => entry.src && new RegExp(entry.src).test(source),
+      );
+      if (
+        route?.status !== 301 ||
+        route?.headers?.Location !==
+          `https://cookbook.antoniwan.online/recipes/${recipe.slug}${suffix}`
+      ) {
+        problems.push(`${source}: emitted redirect does not reach the exact Cookbook destination`);
+      }
+    }
+  }
+  const html = readPage('/p/recipes/' + recipe.slug);
+  if (html && /<article\b/.test(html))
+    problems.push(`${recipe.slug}: archived recipe body was emitted`);
+  const markdown = path.join(dist, 'p/recipes/' + recipe.slug + '.md');
+  if (fs.existsSync(markdown) && /^# /m.test(fs.readFileSync(markdown, 'utf8'))) {
+    problems.push(`${recipe.slug}: archived recipe Markdown was emitted`);
+  }
+}
+notes.push(`${recipeMigration.length} migrated recipe routes excluded from Notes records`);
+
 // --- Representative pages ----------------------------------------------------
 
 /**
@@ -290,21 +339,15 @@ const englishEssay = posts.find(
   ({ slug, data }) => !slug.includes('/') && (data.language?.[0] ?? 'en') === 'en',
 )?.slug;
 const spanishTwin = pickSlug((data) => (data.language?.[0] ?? 'en') === 'es');
-// Recipes are identified by their location in the collection, which is what
-// determines their route, rather than by a tag that may or may not be set.
-const recipe = posts.find(({ slug }) => slug.startsWith('recipes/'))?.slug ?? null;
-
 const surfaces = [
   { label: 'homepage', sitePath: '/' },
   { label: 'index (everything)', sitePath: '/everything' },
   { label: 'writing insights', sitePath: '/writing-insights' },
   englishEssay && { label: `english essay (${englishEssay})`, sitePath: `/p/${englishEssay}` },
   spanishTwin && { label: `spanish twin (${spanishTwin})`, sitePath: `/p/${spanishTwin}` },
-  recipe && { label: `recipe (${recipe})`, sitePath: `/p/${recipe}` },
 ].filter(Boolean);
 
 if (!spanishTwin) problems.push('no Spanish-primary post found in source — coverage gap');
-if (!recipe) notes.push('no recipe post in source; that surface was not exercised');
 
 const feedUrlBySlug = new Map(
   [...jsonItems, ...rssItems]

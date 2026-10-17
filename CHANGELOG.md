@@ -9,6 +9,22 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.35.0] — 2026-10-17
+
+### Changed
+
+- Move the public home of all 40 recipe pages to cookbook.antoniwan.online.
+- Exclude archived recipe sources from the Notes collection, archive, search, exports, and sitemap metadata.
+- Link navigation, kitchen topic notices, and About directly to Cookbook.
+- Replace the borrowed About-page recipe photograph with Cookbook's decorative pattern.
+- Keep the existing writing URLs, feed identifiers, and latest-writing contract.
+
+### Added
+
+- Add permanent redirects for recipe pages, Markdown endpoints, and older recipe aliases.
+- Handle recipe redirects before offline cache access in the service worker.
+- Record the migration manifest, regression checks, and recovery instructions.
+
 ## [6.34.3] — 2026-10-09
 
 ### Fixed

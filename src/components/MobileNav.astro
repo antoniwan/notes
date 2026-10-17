@@ -19,7 +19,7 @@ const entryLinks = readingLinks.filter((link) => link.href in entryDescriptions)
 const browseLinks = readingLinks.filter((link) => !(link.href in entryDescriptions));
 const collectionDescriptions: Record<string, string> = {
   '/books': 'Stories I wrote',
-  '/recipes': 'Recipes from my kitchen',
+  'https://cookbook.antoniwan.online/': 'Recipes from my kitchen',
   '/library/books': 'Books on my shelf',
 };
 const primaryContactLinks = contactLinks.filter(

@@ -22,7 +22,9 @@ describe('POST_REDIRECTS + PAGE_REDIRECTS + buildSeoRedirects', () => {
   it('maps known renamed posts to their replacements', () => {
     expect(POST_REDIRECTS['/p/it-isnt-too-much-pressure']).toBe('/p/on-parental-pressure');
     expect(POST_REDIRECTS['/p/fasting-ground-flow']).toBe('/p/fasting-metabolic-ritual');
-    expect(POST_REDIRECTS['/p/lemon-pepper-chicken']).toBe('/p/recipes/lemon-pepper-chicken');
+    expect(POST_REDIRECTS['/p/lemon-pepper-chicken']).toBe(
+      'https://cookbook.antoniwan.online/recipes/lemon-pepper-chicken',
+    );
     expect(POST_REDIRECTS['/library']).toBeUndefined();
     expect(POST_REDIRECTS['/p/reflexion-palabras-transformacion']).toBeUndefined();
   });
@@ -89,6 +91,14 @@ describe('shouldIncludeInSitemap', () => {
 
   it('includes tag detail pages', () => {
     expect(shouldIncludeInSitemap('https://notes.antoniwan.online/tag/parenting')).toBe(true);
+  });
+
+  it('excludes recipe redirects from the Notes sitemap', () => {
+    expect(shouldIncludeInSitemap('https://notes.antoniwan.online/recipes')).toBe(false);
+    expect(shouldIncludeInSitemap('https://notes.antoniwan.online/p/recipes/sofrito')).toBe(false);
+    expect(shouldIncludeInSitemap('https://notes.antoniwan.online/p/recipes/sofrito.md')).toBe(
+      false,
+    );
   });
 
   it('excludes only author tools and API hub paths', () => {

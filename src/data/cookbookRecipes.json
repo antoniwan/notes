@@ -1,0 +1,186 @@
+[
+  {
+    "slug": "arepas-de-calabaza",
+    "language": "en"
+  },
+  {
+    "slug": "arroz-con-gandules-en",
+    "language": "en",
+    "translationGroup": "arroz-con-gandules"
+  },
+  {
+    "slug": "arroz-con-gandules",
+    "language": "es",
+    "translationGroup": "arroz-con-gandules"
+  },
+  {
+    "slug": "arroz-con-pollo-en",
+    "language": "en",
+    "translationGroup": "arroz-con-pollo"
+  },
+  {
+    "slug": "arroz-con-pollo",
+    "language": "es",
+    "translationGroup": "arroz-con-pollo"
+  },
+  {
+    "slug": "asopao-de-pollo-en",
+    "language": "en",
+    "translationGroup": "asopao-de-pollo"
+  },
+  {
+    "slug": "asopao-de-pollo",
+    "language": "es",
+    "translationGroup": "asopao-de-pollo"
+  },
+  {
+    "slug": "banana-oat-bread",
+    "language": "en"
+  },
+  {
+    "slug": "brocoli-con-sabor-en",
+    "language": "en",
+    "translationGroup": "brocoli-con-sabor"
+  },
+  {
+    "slug": "brocoli-con-sabor",
+    "language": "es",
+    "translationGroup": "brocoli-con-sabor"
+  },
+  {
+    "slug": "brown-butter-gourmet-brownies",
+    "language": "en"
+  },
+  {
+    "slug": "cast-iron-flank-steak",
+    "language": "en"
+  },
+  {
+    "slug": "chilean-sea-bass",
+    "language": "en"
+  },
+  {
+    "slug": "coquito-de-moni-en",
+    "language": "en",
+    "translationGroup": "coquito-de-moni"
+  },
+  {
+    "slug": "coquito-de-moni",
+    "language": "es",
+    "translationGroup": "coquito-de-moni"
+  },
+  {
+    "slug": "easy-breakfast-guacamole-toast",
+    "language": "en"
+  },
+  {
+    "slug": "fettuccine-with-seared-chicken",
+    "language": "en"
+  },
+  {
+    "slug": "fried-chicken-tender-nuggets-en",
+    "language": "en",
+    "translationGroup": "fried-chicken-tender-nuggets"
+  },
+  {
+    "slug": "fried-chicken-tender-nuggets",
+    "language": "es",
+    "translationGroup": "fried-chicken-tender-nuggets"
+  },
+  {
+    "slug": "habichuelas-guisadas-en",
+    "language": "en",
+    "translationGroup": "habichuelas-guisadas"
+  },
+  {
+    "slug": "habichuelas-guisadas",
+    "language": "es",
+    "translationGroup": "habichuelas-guisadas"
+  },
+  {
+    "slug": "lamb-loin-chops-al-vino-con-vegetales-en",
+    "language": "en",
+    "translationGroup": "lamb-loin-chops-al-vino-con-vegetales"
+  },
+  {
+    "slug": "lamb-loin-chops-al-vino-con-vegetales",
+    "language": "es",
+    "translationGroup": "lamb-loin-chops-al-vino-con-vegetales"
+  },
+  {
+    "slug": "lemon-pepper-chicken",
+    "language": "en"
+  },
+  {
+    "slug": "mias-chicken-nuggets-en",
+    "language": "en",
+    "translationGroup": "mias-chicken-nuggets"
+  },
+  {
+    "slug": "mias-chicken-nuggets",
+    "language": "es",
+    "translationGroup": "mias-chicken-nuggets"
+  },
+  {
+    "slug": "mias-cinnamon-pancakes",
+    "language": "en"
+  },
+  {
+    "slug": "mias-vegan-cupcakes",
+    "language": "en"
+  },
+  {
+    "slug": "pancakes-sin-huevo-para-mia-luna-en",
+    "language": "en",
+    "translationGroup": "pancakes-sin-huevo-para-mia-luna"
+  },
+  {
+    "slug": "pancakes-sin-huevo-para-mia-luna",
+    "language": "es",
+    "translationGroup": "pancakes-sin-huevo-para-mia-luna"
+  },
+  {
+    "slug": "pastel-de-banana-en",
+    "language": "en",
+    "translationGroup": "pastel-de-banana"
+  },
+  {
+    "slug": "pastel-de-banana",
+    "language": "es",
+    "translationGroup": "pastel-de-banana"
+  },
+  {
+    "slug": "patatas-bravas",
+    "language": "en"
+  },
+  {
+    "slug": "patatas-y-batatas-bravas",
+    "language": "en"
+  },
+  {
+    "slug": "perfect-crispy-oven-drumsticks",
+    "language": "en"
+  },
+  {
+    "slug": "shaved-carrots",
+    "language": "en"
+  },
+  {
+    "slug": "simple-baked-chicken-breasts",
+    "language": "en"
+  },
+  {
+    "slug": "sofrito-en",
+    "language": "en",
+    "translationGroup": "sofrito"
+  },
+  {
+    "slug": "sofrito",
+    "language": "es",
+    "translationGroup": "sofrito"
+  },
+  {
+    "slug": "turkey-patties",
+    "language": "en"
+  }
+]

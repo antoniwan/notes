@@ -1,4 +1,5 @@
 import { STRIPPED_TAGS, TAG_ALIAS_MAP } from '../data/tagVocabulary';
+import { buildCookbookRedirects } from '../data/cookbook';
 import { getBuiltTagSlugs } from './sitemapTranslations';
 import { normalizeTagInput } from './tagVocabulary';
 
@@ -31,7 +32,7 @@ export const POST_REDIRECTS: Record<string, string> = {
   '/p/it-isnt-too-much-pressure': '/p/on-parental-pressure',
   '/p/fasting-ground-flow': '/p/fasting-metabolic-ritual',
   '/p/core-values-freedom': '/p/the-definition-and-practice-of-my-core-values-make-me-free',
-  '/p/lemon-pepper-chicken': '/p/recipes/lemon-pepper-chicken',
+  '/p/lemon-pepper-chicken': 'https://cookbook.antoniwan.online/recipes/lemon-pepper-chicken',
 };
 
 /** Non-post URL moves (indexes, tags, retired pages). */
@@ -70,6 +71,7 @@ export function buildSeoRedirects(): Record<string, string> {
     ...POST_REDIRECTS,
     ...PAGE_REDIRECTS,
     ...WRITING_INSIGHTS_REDIRECTS,
+    ...buildCookbookRedirects(),
   };
 }
 
@@ -89,6 +91,7 @@ export function shouldIncludeInSitemap(pageUrl: string): boolean {
   }
 
   if ((SEO_EXCLUDED_PATHS as readonly string[]).includes(pathname)) return false;
+  if (buildCookbookRedirects()[pathname]) return false;
 
   return true;
 }

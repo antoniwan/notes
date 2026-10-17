@@ -139,7 +139,7 @@ describe('sitemap lastmod attribution', () => {
     );
   });
 
-  it('keeps recipes off category, tag, Guided Path, and feeds', () => {
+  it('keeps migrated recipes out of all Notes sitemap metadata', () => {
     const index = buildSitemapIndex(
       [
         entry('essay', {
@@ -157,11 +157,9 @@ describe('sitemap lastmod attribution', () => {
     );
 
     const essayDate = '2026-01-01T00:00:00.000Z';
-    const recipeDate = '2026-08-01T00:00:00.000Z';
-
-    // The Cookbook and Everything both list recipes, so they move.
-    expect(index.lastmodByUrl.get(sitemapPageUrl('/recipes'))?.toISOString()).toBe(recipeDate);
-    expect(index.lastmodByUrl.get(sitemapPageUrl('/everything'))?.toISOString()).toBe(recipeDate);
+    expect(index.lastmodByUrl.has(sitemapPageUrl('/recipes'))).toBe(false);
+    expect(index.lastmodByUrl.has(sitemapPageUrl('/p/recipes/sofrito'))).toBe(false);
+    expect(index.lastmodByUrl.get(sitemapPageUrl('/everything'))?.toISOString()).toBe(essayDate);
 
     // Category, tag, Guided Path, and feeds list essays only, so they must not.
     // See isCategoryListedPost / isTagListedPost / isGuidedPathListedPost /

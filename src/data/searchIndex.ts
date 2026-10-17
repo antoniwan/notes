@@ -41,13 +41,6 @@ const PAGE_SEARCH_DATA = [
   },
   {
     type: 'page',
-    id: 'cookbook',
-    title: 'Cookbook',
-    description: 'Household dishes, listed by name',
-    url: '/recipes',
-  },
-  {
-    type: 'page',
     id: 'everything',
     title: 'Everything',
     description: 'Full archive of all notes',

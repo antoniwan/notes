@@ -21,7 +21,7 @@ const dateSchema = z
 
 const blog = defineCollection({
   // Load Markdown and MDX files in the `src/content/p/` directory.
-  loader: glob({ base: './src/content/p', pattern: '**/*.{md,mdx}' }),
+  loader: glob({ base: './src/content/p', pattern: ['**/*.{md,mdx}', '!recipes/**'] }),
   // Type-check frontmatter using a schema
   schema: z.object({
     // Required fields

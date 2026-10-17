@@ -1,10 +1,5 @@
 ---
-interface Props {
-  recipeCount: number;
-}
-
-const { recipeCount } = Astro.props;
-const countLabel = recipeCount === 1 ? '1 recipe' : `${recipeCount} recipes`;
+import { COOKBOOK_URL } from '../../data/cookbook';
 ---
 
 <aside
@@ -23,10 +18,9 @@ const countLabel = recipeCount === 1 ? '1 recipe' : `${recipeCount} recipes`;
     </p>
   </div>
   <a
-    href="/recipes"
+    href={COOKBOOK_URL + '/'}
     class="btn-primary theme-transition mt-4 inline-flex min-h-11 items-center gap-2 rounded-full px-4 py-2 text-sm"
   >
     Open the Cookbook
-    <span class="tabular-nums opacity-80">({countLabel})</span>
   </a>
 </aside>
