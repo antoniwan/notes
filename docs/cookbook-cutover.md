@@ -22,7 +22,11 @@ The route manifest is [src/data/cookbookRecipes.json](../src/data/cookbookRecipe
 
 The flat chicken aliases also support their Markdown suffix. Redirects preserve query parameters and retain the selected language.
 
-Vercel applies the migration rules before generic host, alias, and trailing-slash rules. This avoids an intermediate Notes destination for recipe requests.
+Canonical Notes recipe URLs redirect directly to Cookbook with HTTP 301. The migration rules precede generic alias rules.
+
+The adapter first normalizes trailing-slash URLs with HTTP 308. Legacy domains can first redirect through the canonical Notes host.
+
+These existing normalization steps add permanent redirect hops. They do not change the final recipe, language, or query parameters.
 
 Astro also defines exact redirects from the manifest. The service worker handles migrated recipe requests before reading cached pages.
 
