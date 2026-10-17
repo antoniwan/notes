@@ -13,7 +13,6 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SITE_URL } from '../consts';
 import { loadFrontmatterYaml } from './frontmatterYaml.mjs';
-import { COOKBOOK_NOTICE_TAGS } from '../data/tagCookbookNotice';
 import { canonicalizeTags } from './tagVocabulary';
 import { isRecipeId } from './recipes';
 import {
@@ -234,7 +233,7 @@ export function isThinTag(tag: string): boolean {
  * doors that always point at Cookbook. Same set as `tag/[tag].astro`.
  */
 export function getBuiltTagSlugs(): Set<string> {
-  const slugs = new Set<string>(COOKBOOK_NOTICE_TAGS);
+  const slugs = new Set<string>();
   for (const [tag, count] of loadSitemapMeta().tagPostCount) {
     if (count > 0) slugs.add(tag);
   }

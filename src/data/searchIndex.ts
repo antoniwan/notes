@@ -2,7 +2,6 @@ import { getCollection } from 'astro:content';
 import { getImage } from 'astro:assets';
 import { resolveHeroImage } from '../utils/heroImages';
 import { categories } from './categories';
-import { authoredBooks } from './authoredBooks';
 import { getTagMetadata } from './tags';
 import { calculateTagStats } from '../utils/tagProcessing';
 import { isListingEligiblePost, isSearchEligiblePost } from '../utils/publishFilters';
@@ -12,32 +11,10 @@ import { isRecipePost } from '../utils/recipes';
 const PAGE_SEARCH_DATA = [
   {
     type: 'page',
-    id: 'authored-books',
-    title: 'Children’s books',
-    description:
-      'Bilingual picture books in English and Spanish, written by Antonio Rodriguez Martinez',
-    url: '/books',
-  },
-  ...authoredBooks.map((book) => ({
-    type: 'page',
-    id: `authored-book-${book.id}`,
-    title: book.title,
-    description: `${book.spanishTitle}. ${book.summary} A bilingual children's book in English and Spanish.`,
-    url: `/books#${book.id}`,
-  })),
-  {
-    type: 'page',
     id: 'about',
     title: 'About',
     description: 'Learn more about the author and this site',
     url: '/about',
-  },
-  {
-    type: 'page',
-    id: 'library',
-    title: 'Library',
-    description: 'Books on the shelf that shape these notes',
-    url: '/library/books',
   },
   {
     type: 'page',

@@ -9,6 +9,21 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.36.0] — 2026-10-17
+
+### Changed
+
+- Move the reading library to antoniwan.online/collections/books and redirect its old URLs.
+- Redirect the authored-book catalogue to the existing personal-site Projects section, preserving book fragments.
+- Remove Cookbook and Collections from desktop navigation, mobile navigation, the footer, and search.
+- Remove the homepage authored-book teaser and dedicated Cookbook topic notices.
+- Preserve cooking essays, recipe redirects, writing URLs, and feed identifiers.
+
+### Added
+
+- Handle catalogue redirects before offline cache access.
+- Add navigation and catalogue migration regression checks.
+
 ## [6.35.0] — 2026-10-17
 
 ### Changed

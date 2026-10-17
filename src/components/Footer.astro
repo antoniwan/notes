@@ -1,13 +1,12 @@
 ---
 import { AUTHOR } from '../consts';
-import { readingLinks, collectionLinks, contactLinks } from '../data/readerNavigation';
+import { readingLinks, contactLinks } from '../data/readerNavigation';
 import Logo from './Logo.astro';
 import Container from './Container.astro';
 import pkg from '../../package.json';
 
 const footerGroups = [
   { id: 'reading', label: 'Read', links: readingLinks },
-  { id: 'collections', label: 'Collections', links: collectionLinks },
   { id: 'connect', label: 'Connect', links: contactLinks },
 ];
 ---
@@ -169,7 +168,7 @@ const footerGroups = [
 
   @media (min-width: 640px) {
     .footer-directory {
-      grid-template-columns: minmax(0, 1.35fr) repeat(3, minmax(0, 1fr));
+      grid-template-columns: minmax(0, 1.35fr) repeat(2, minmax(0, 1fr));
       gap: 2rem;
     }
 

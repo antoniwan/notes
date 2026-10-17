@@ -30,7 +30,7 @@ describe('POST_REDIRECTS + PAGE_REDIRECTS + buildSeoRedirects', () => {
   });
 
   it('keeps non-post moves in PAGE_REDIRECTS', () => {
-    expect(PAGE_REDIRECTS['/library']).toBe('/library/books');
+    expect(PAGE_REDIRECTS['/library']).toBe('https://antoniwan.online/collections/books');
     expect(PAGE_REDIRECTS['/p/reflexion-palabras-transformacion']).toBe('/tag/transformation');
   });
 
@@ -39,7 +39,7 @@ describe('POST_REDIRECTS + PAGE_REDIRECTS + buildSeoRedirects', () => {
     expect(redirects['/p/core-values-freedom']).toBe(
       '/p/the-definition-and-practice-of-my-core-values-make-me-free',
     );
-    expect(redirects['/library']).toBe('/library/books');
+    expect(redirects['/library']).toBe('https://antoniwan.online/collections/books');
     expect(redirects['/p/reflexion-palabras-transformacion']).toBe('/tag/transformation');
     expect(redirects['/p/core-values-freedom/']).toBeUndefined();
     // Alias map should produce at least one /tag/... redirect when aliases exist

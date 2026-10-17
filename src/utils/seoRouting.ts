@@ -38,7 +38,10 @@ export const POST_REDIRECTS: Record<string, string> = {
 /** Non-post URL moves (indexes, tags, retired pages). */
 export const PAGE_REDIRECTS: Record<string, string> = {
   '/p/reflexion-palabras-transformacion': '/tag/transformation',
-  '/library': '/library/books',
+  '/library': 'https://antoniwan.online/collections/books',
+  '/library/books': 'https://antoniwan.online/collections/books',
+  '/books': 'https://antoniwan.online/projects',
+  '/tag/recipes': '/tag/cooking',
 };
 
 /**
@@ -92,6 +95,7 @@ export function shouldIncludeInSitemap(pageUrl: string): boolean {
 
   if ((SEO_EXCLUDED_PATHS as readonly string[]).includes(pathname)) return false;
   if (buildCookbookRedirects()[pathname]) return false;
+  if (['/books', '/library', '/library/books', '/tag/recipes'].includes(pathname)) return false;
 
   return true;
 }

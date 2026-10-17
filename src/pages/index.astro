@@ -2,8 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Container from '../components/Container.astro';
 import HighlightsMasonry from '../components/HighlightsMasonry.astro';
-import AuthoredBookCard from '../components/AuthoredBookCard.astro';
-import { authoredBooks } from '../data/authoredBooks';
 import { PAGE_META } from '../data/pageMeta';
 import { getHighlights, getHighlightsByCategory } from '../utils/highlights';
 
@@ -43,23 +41,6 @@ const highlightsByCategory = await getHighlightsByCategory();
         </nav>
       </header>
     </HighlightsMasonry>
-
-    <section class="home-books" aria-labelledby="home-books-heading">
-      <header class="home-books__heading">
-        <div>
-          <h2 id="home-books-heading">Children’s books</h2>
-          <p>Stories I wrote for my children and my nephew, in English and Spanish.</p>
-        </div>
-        <a href="/books">
-          Explore the books <span aria-hidden="true">↗</span>
-        </a>
-      </header>
-      <div class="home-books__grid">
-        {authoredBooks.map((book) => (
-          <AuthoredBookCard book={book} compact />
-        ))}
-      </div>
-    </section>
 
     <section class="home-why" aria-labelledby="home-why-heading">
       <div class="home-why__heading">

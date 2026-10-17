@@ -1,6 +1,21 @@
 {
   "redirects": [
     {
+      "source": "/library/books",
+      "destination": "https://antoniwan.online/collections/books",
+      "statusCode": 301
+    },
+    {
+      "source": "/library",
+      "destination": "https://antoniwan.online/collections/books",
+      "statusCode": 301
+    },
+    {
+      "source": "/books",
+      "destination": "https://antoniwan.online/projects",
+      "statusCode": 301
+    },
+    {
       "source": "/recipes",
       "destination": "https://cookbook.antoniwan.online/",
       "statusCode": 301

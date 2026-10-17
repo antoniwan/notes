@@ -1,4 +1,4 @@
-import { collectionLinks, type ReaderLink } from './readerNavigation';
+import type { ReaderLink } from './readerNavigation';
 
 export interface NavigationItem extends ReaderLink {
   dropdown?: {
@@ -20,14 +20,6 @@ export const mainNavigation: NavigationItem[] = [
         { href: '/tag', label: 'Topics' },
         { href: '/category', label: 'Categories' },
       ],
-    },
-  },
-  {
-    href: '/books',
-    label: 'Collections',
-    dropdown: {
-      label: 'Explore a collection',
-      items: collectionLinks,
     },
   },
   { href: '/about', label: 'About' },

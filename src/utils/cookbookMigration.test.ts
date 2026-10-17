@@ -3,7 +3,7 @@ import { runInNewContext } from 'node:vm';
 import { describe, expect, it } from 'vitest';
 import { COOKBOOK_URL, cookbookRecipes, buildCookbookRedirects } from '../data/cookbook';
 import { buildSeoRedirects } from './seoRouting';
-import { collectionLinks } from '../data/readerNavigation';
+import { mainNavigation } from '../data/navigation';
 
 describe('Cookbook cutover', () => {
   it('accounts for every archived recipe and preserves all language-specific slugs', () => {
@@ -52,9 +52,9 @@ describe('Cookbook cutover', () => {
         /^https:\/\/cookbook\.antoniwan\.online\//,
       );
     }
-    expect(collectionLinks.find((link) => link.label === 'Cookbook')?.href).toBe(
-      COOKBOOK_URL + '/',
-    );
+    expect(
+      mainNavigation.some((item) => item.label === 'Collections' || item.label === 'Cookbook'),
+    ).toBe(false);
   });
 
   it('redirects migrated recipe requests before consulting offline caches', () => {

@@ -1,5 +1,4 @@
 import { AUTHOR } from '../consts';
-import { COOKBOOK_URL } from './cookbook';
 
 export interface ReaderLink {
   href: string;
@@ -11,12 +10,6 @@ export const readingLinks: ReaderLink[] = [
   { href: '/guided-path', label: 'Guided Path' },
   { href: '/tag', label: 'Topics' },
   { href: '/category', label: 'Categories' },
-];
-
-export const collectionLinks: ReaderLink[] = [
-  { href: '/books', label: 'Children’s books' },
-  { href: COOKBOOK_URL + '/', label: 'Cookbook' },
-  { href: '/library/books', label: 'Book Library' },
 ];
 
 export const contactLinks: ReaderLink[] = [

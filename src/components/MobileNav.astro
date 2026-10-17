@@ -1,11 +1,6 @@
 ---
 import Logo from './Logo.astro';
-import {
-  readingLinks,
-  collectionLinks,
-  contactLinks,
-  siteToolLinks,
-} from '../data/readerNavigation';
+import { readingLinks, contactLinks, siteToolLinks } from '../data/readerNavigation';
 import { getSortedCategories } from '../utils/categoryUtils';
 import { isNavDropdownItemActive } from '../utils/navActive';
 
@@ -17,11 +12,6 @@ const entryDescriptions: Record<string, string> = {
 };
 const entryLinks = readingLinks.filter((link) => link.href in entryDescriptions);
 const browseLinks = readingLinks.filter((link) => !(link.href in entryDescriptions));
-const collectionDescriptions: Record<string, string> = {
-  '/books': 'Stories I wrote',
-  'https://cookbook.antoniwan.online/': 'Recipes from my kitchen',
-  '/library/books': 'Books on my shelf',
-};
 const primaryContactLinks = contactLinks.filter(
   (link) => link.href === '/about' || link.href.startsWith('mailto:'),
 );
@@ -160,29 +150,6 @@ function currentLocation(href: string) {
             })}
           </div>
         </details>
-      </section>
-
-      <section
-        class="mobile-menu__section mobile-menu__collections"
-        aria-labelledby="mobile-menu-collections"
-      >
-        <h2 id="mobile-menu-collections" class="mobile-menu__label">
-          Collections
-        </h2>
-        <ul class="mobile-menu__links">
-          {collectionLinks.map((link) => (
-            <li>
-              <a
-                class="mobile-menu__collection"
-                href={link.href}
-                aria-current={currentLocation(link.href)}
-              >
-                <span class="mobile-menu__collection-title">{link.label}</span>
-                <span class="mobile-menu__description">{collectionDescriptions[link.href]}</span>
-              </a>
-            </li>
-          ))}
-        </ul>
       </section>
 
       <section class="mobile-menu__section" aria-labelledby="mobile-menu-contact">

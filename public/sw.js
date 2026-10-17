@@ -160,6 +160,19 @@ self.addEventListener('fetch', (event) => {
   // another origin's files in this site's cache.
   if (!isSameOrigin(url)) return;
 
+  const collectionMoves = {
+    '/library': 'https://antoniwan.online/collections/books',
+    '/library/books': 'https://antoniwan.online/collections/books',
+    '/books': 'https://antoniwan.online/projects',
+  };
+  const collectionDestination = collectionMoves[url.pathname.replace(/\/+$/, '')];
+  if (collectionDestination) {
+    const destination = new URL(collectionDestination);
+    destination.search = url.search;
+    event.respondWith(Response.redirect(destination.href, 301));
+    return;
+  }
+
   const recipePath = url.pathname.match(/^\/(?:p|blog)\/recipes\/([^/]+)\/?$/);
   const flatRecipe = url.pathname.match(/^\/(?:p|blog)\/(lemon-pepper-chicken(?:\.md)?)\/?$/);
   const recipeSlug = recipePath?.[1] ?? flatRecipe?.[1];

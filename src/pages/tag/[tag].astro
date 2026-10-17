@@ -3,11 +3,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/PostCard.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import Container from '../../components/Container.astro';
-import CookbookNotice from '../../components/tag/CookbookNotice.astro';
 import TagCard from '../../components/TagCard.astro';
 import { getCollection } from 'astro:content';
 import { tagMetaDescription } from '../../data/pageMeta';
-import { COOKBOOK_NOTICE_TAGS, tagHasCookbookNotice } from '../../data/tagCookbookNotice';
 import { getTagFamily } from '../../data/tagFamilies';
 import { getTagMetadata } from '../../data/tags';
 import { filterPostsByTag, getAllUniqueTags, getTagStatistics } from '../../utils/tagProcessing';
@@ -20,7 +18,6 @@ export async function getStaticPaths() {
   // Canonical tag pages with writings, plus kitchen doors that still need a
   // Cookbook pointer even when no essay uses the tag.
   const tags = new Set(getAllUniqueTags(posts));
-  for (const slug of COOKBOOK_NOTICE_TAGS) tags.add(slug);
 
   return [...tags].map((tag) => ({
     params: { tag },
@@ -38,7 +35,6 @@ const tagFamily = getTagFamily(canonicalTag);
 const posts = await getCollection('blog', (entry) => isTagListedPost(entry));
 const { totalPosts, relatedTags } = getTagStatistics(canonicalTag, posts);
 const tagPosts = filterPostsByTag(posts, canonicalTag);
-const showCookbookNotice = tagHasCookbookNotice(canonicalTag);
 const seoDescription = tagMetaDescription(canonicalTag, totalPosts);
 ---
 
@@ -65,12 +61,6 @@ const seoDescription = tagMetaDescription(canonicalTag, totalPosts);
             Every idea
           </a>
         </div>
-
-        {showCookbookNotice && (
-          <div class="mt-6">
-            <CookbookNotice />
-          </div>
-        )}
 
         {(totalPosts > 0 || relatedTags.length > 0) && (
           <div class="mt-6 flex flex-wrap items-center gap-4">
@@ -124,7 +114,7 @@ const seoDescription = tagMetaDescription(canonicalTag, totalPosts);
       )}
 
       {/* Empty State */}
-      {tagPosts.length === 0 && !showCookbookNotice && (
+      {tagPosts.length === 0 && (
         <div class="py-12 text-center">
           <div class="mx-auto max-w-md">
             <h3 class="text-subheading mb-2 text-[rgb(var(--color-text))]">No writings found</h3>

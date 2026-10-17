@@ -12,6 +12,10 @@ Migration routes, release checks, and recovery instructions are in the [Cookbook
 
 Live site: [notes.antoniwan.online](https://notes.antoniwan.online)
 
+Correction, October 17, 2026: the reading library moved to antoniwan.online/collections/books. Authored books already belong in its Projects section.
+
+Notes navigation now contains Everything, Guided Path, Browse, and About. Cookbook and Collections no longer appear in its navigation or search.
+
 Release history: [CHANGELOG.md](./CHANGELOG.md)
 
 Inline diagram authoring: [Mermaid flowcharts and state diagrams](docs/mermaid-diagrams.md).
@@ -20,10 +24,10 @@ Inline diagram authoring: [Mermaid flowcharts and state diagrams](docs/mermaid-d
 
 - **Writing** — essays and notes in `src/content/p/` (Markdown and MDX)
 - **Cookbook** — family recipes live at `cookbook.antoniwan.online`. `/recipes` and the old recipe pages redirect there, including Spanish and Markdown URLs
-- **Children’s books** — `/books`, two picture books he wrote, each opening in its own bilingual (English/Español) reader
-- **Book library** — books he has read, at `/library/books`. `/library` alone 301s there
-- **Paths in** — Guided Path (seasonal order, progress in the browser only), Everything (English archive), Categories, Topics (the tag index, read as an idea map for browsing subjects), header search. The main nav groups these under **Browse** (Topics, Categories) and **Collections** (Children’s books, Cookbook, Book library)
-- **Home** — a hero ("I write to live it"), three entry links (Start here → Guided Path, Browse topics, Everything), Highlights masonry for `featured` English posts, a Children’s books teaser, and a short "why this space exists" note
+- **Authored books** — `/books` redirects to Projects on `antoniwan.online`. The existing bilingual readers remain available.
+- **Reading library** — `/library` and `/library/books` redirect to `antoniwan.online/collections/books`.
+- **Paths in** — Guided Path, Everything, Browse (Topics and Categories), About, and header search.
+- **Home** — a writing hero, three entry links, Highlights for featured English posts, and a short purpose note.
 - **Writing Insights** (`/writing-insights`) — cadence, topics, lexicon. `/brain-science` is the origin note; old dashboard subpaths 301
 - **Feeds** — RSS (`/rss.xml`) and JSON Feed (`/feed.json`). Spanish and household recipes stay out of feeds
 - **Quotes API** — `GET /api/quotes` (Stoic excerpts, other philosophy, lines from posts; optional `?kind=`)
@@ -283,10 +287,7 @@ notes/
 │   │   └── recipes/    # Household recipes → /p/recipes/<slug>
 │   ├── data/            # Categories, navigation, socialImageManifest.ts, socialImageFingerprints.json, …
 │   ├── layouts/
-│   ├── pages/           # Routes (books, category, library, tag, writing-insights, api, …)
-│   │   ├── books.astro          # Children's books (/books)
-│   │   ├── library/books.astro  # Book library (/library/books)
-│   │   └── recipes.astro        # Cookbook (/recipes)
+│   ├── pages/           # Routes (category, tag, writing-insights, api, …)
 │   ├── styles/
 │   ├── utils/
 │   └── types/

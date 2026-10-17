@@ -4,7 +4,6 @@ import { AUTHOR, SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '../consts';
 import { isCollectionPublic, isSpanishPrimary } from '../utils/publishFilters';
 import { isRecipePost } from '../utils/recipes';
 import { llmsListItem } from '../utils/llmsTxt';
-import { COOKBOOK_URL } from '../data/cookbook';
 
 export const prerender = true;
 
@@ -35,7 +34,6 @@ ${spanish.map(llmsListItem).join('\n')}
 - [About](${SITE_URL}/about): who writes this site and why
 - [How I write](${SITE_URL}/about#how-i-write): some pieces are written by hand, others with AI models drafting and revising; most cover images are Midjourney results
 - [Everything](${SITE_URL}/everything): every post, as an HTML index
-- [Cookbook](${COOKBOOK_URL}/): family recipes at their separate home
 - [RSS feed](${SITE_URL}/rss.xml): English essays with full text
 - [JSON Feed](${SITE_URL}/feed.json): the same essays as JSON
 - [antoniwan.online](${AUTHOR.url}): links to everything else ${AUTHOR.name} makes

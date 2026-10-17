@@ -2,9 +2,9 @@ import { describe, expect, it } from 'vitest';
 import { tagPageHref } from './tagPages';
 
 describe('tagPageHref', () => {
-  it('links kitchen doors that always have a page', () => {
+  it('links cooking essays without a retired recipe shelf', () => {
     expect(tagPageHref('cooking')).toBe('/tag/cooking');
-    expect(tagPageHref('recipes')).toBe('/tag/recipes');
+    expect(tagPageHref('recipes')).toBeNull();
   });
 
   it('returns null for a slug with no tag page', () => {

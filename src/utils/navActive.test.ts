@@ -1,6 +1,5 @@
 import { describe, expect, it } from 'vitest';
 import { mainNavigation } from '../data/navigation';
-import { collectionLinks } from '../data/readerNavigation';
 import {
   getNavLinkCurrent,
   isMainNavItemActive,
@@ -14,16 +13,12 @@ describe('desktop navigation destinations', () => {
       'Everything',
       'Guided Path',
       'Browse',
-      'Collections',
       'About',
     ]);
     expect(mainNavigation.find((item) => item.label === 'Browse')?.dropdown?.items).toEqual([
       { href: '/tag', label: 'Topics' },
       { href: '/category', label: 'Categories' },
     ]);
-    expect(mainNavigation.find((item) => item.label === 'Collections')?.dropdown?.items).toBe(
-      collectionLinks,
-    );
     const destinations = mainNavigation.flatMap((item) =>
       item.dropdown ? item.dropdown.items.map((child) => child.href) : [item.href],
     );
@@ -42,12 +37,6 @@ describe('main navigation groups', () => {
     ['/tag/parenting', 'Browse'],
     ['/category', 'Browse'],
     ['/category/parenting/', 'Browse'],
-    ['/books', 'Collections'],
-    ['/books/a-picture-book', 'Collections'],
-    ['/recipes', 'Collections'],
-    ['/p/recipes/sofrito-en/', 'Collections'],
-    ['/library/books', 'Collections'],
-    ['/library/books/a-book', 'Collections'],
     ['/about', 'About'],
   ])('marks exactly the intended group for %s', (pathname, label) => {
     expect(
@@ -66,6 +55,9 @@ describe('main navigation groups', () => {
     '/brain-science',
     '/p/the-feeling-is-not-the-problem',
     '/category-administration',
+    '/books',
+    '/library/books',
+    '/recipes',
     '/bookshelf',
     '/library/bookshelf',
     '/p/recipes-unrelated',
