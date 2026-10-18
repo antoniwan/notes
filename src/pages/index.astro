@@ -7,6 +7,10 @@ import { getHighlights, getHighlightsByCategory } from '../utils/highlights';
 
 const highlights = await getHighlights();
 const highlightsByCategory = await getHighlightsByCategory();
+const writingReasons = ['to live it', 'for fun', 'to check myself', 'to learn', 'to let it out'];
+const writingReasonsText = writingReasons
+  .map((reason, index) => (index === writingReasons.length - 1 ? `and ${reason}` : reason))
+  .join(', ');
 ---
 
 <BaseLayout
@@ -19,9 +23,53 @@ const highlightsByCategory = await getHighlightsByCategory();
   <Container class="home-shell">
     <HighlightsMasonry posts={highlights} postsByCategory={highlightsByCategory}>
       <header slot="intro" class="home-intro">
-        <h1>
-          I write <em>to live it.</em>
-        </h1>
+        <div class="home-intro__heading" data-writing-heading>
+          <h1>
+            <span class="sr-only">I write {writingReasonsText}.</span>
+            <span aria-hidden="true">
+              I write
+              <em class="home-intro__reasons">
+                {writingReasons.map((reason, index) => (
+                  <span
+                    class:list={['home-intro__reason', { 'is-current': index === 0 }]}
+                    data-writing-reason
+                  >
+                    {reason}.
+                  </span>
+                ))}
+              </em>
+            </span>
+          </h1>
+          <button
+            class="home-intro__motion"
+            type="button"
+            aria-label="Pause changing headline"
+            title="Pause changing headline"
+            data-writing-playback
+            hidden
+          >
+            <svg
+              class="home-intro__pause"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M4 3h3v10H4zm5 0h3v10H9z" />
+            </svg>
+            <svg
+              class="home-intro__play"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="m5 2 9 6-9 6z" />
+            </svg>
+          </button>
+        </div>
         <p class="home-intro__description">
           I enjoy writing from my life as a stay-at-home and remote-working father, and as a
           stepfather, while I practice patience, temperance, and grounded leadership.
@@ -62,6 +110,98 @@ const highlightsByCategory = await getHighlightsByCategory();
     </section>
   </Container>
 </BaseLayout>
+
+<script>
+  // TypeScript keeps the headline behavior with the existing Astro page.
+  let disposeHeadline: (() => void) | undefined;
+
+  function initializeHeadline() {
+    disposeHeadline?.();
+    const heading = document.querySelector<HTMLElement>('[data-writing-heading]');
+    const phrases = Array.from(
+      heading?.querySelectorAll<HTMLElement>('[data-writing-reason]') || [],
+    );
+    const playback = heading?.querySelector<HTMLButtonElement>('[data-writing-playback]');
+    if (!heading || !playback || phrases.length < 2) return;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const listeners = new AbortController();
+    const options = { signal: listeners.signal };
+    let current = Math.max(
+      0,
+      phrases.findIndex((phrase) => phrase.classList.contains('is-current')),
+    );
+    let userPaused = playback.dataset.paused === 'true';
+    let completed = heading.dataset.completed === 'true';
+    let timer: number | undefined;
+
+    function showPhrase(index: number) {
+      phrases[current].classList.remove('is-current');
+      current = index;
+      phrases[current].classList.add('is-current');
+    }
+
+    function stop() {
+      window.clearInterval(timer);
+      timer = undefined;
+    }
+
+    function advance() {
+      if (current === phrases.length - 1) {
+        showPhrase(0);
+        completed = true;
+        heading!.dataset.completed = 'true';
+        sync();
+      } else {
+        showPhrase(current + 1);
+      }
+    }
+
+    function sync() {
+      stop();
+      if (!playback) return;
+      playback.hidden = reducedMotion.matches || completed;
+      playback.dataset.paused = String(userPaused);
+      const label = userPaused ? 'Resume changing headline' : 'Pause changing headline';
+      playback.setAttribute('aria-label', label);
+      playback.title = label;
+
+      if (reducedMotion.matches) {
+        showPhrase(0);
+      } else if (!completed && !userPaused && !document.hidden) {
+        timer = window.setInterval(advance, 6000);
+      }
+    }
+
+    playback.addEventListener(
+      'click',
+      () => {
+        userPaused = !userPaused;
+        sync();
+      },
+      options,
+    );
+    reducedMotion.addEventListener('change', sync, options);
+    document.addEventListener('visibilitychange', sync, options);
+    disposeHeadline = () => {
+      stop();
+      listeners.abort();
+    };
+    sync();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeHeadline, { once: true });
+  } else {
+    initializeHeadline();
+  }
+  document.addEventListener('astro:page-load', initializeHeadline);
+  document.addEventListener('astro:before-swap', () => disposeHeadline?.());
+  window.addEventListener('pagehide', () => disposeHeadline?.());
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted) initializeHeadline();
+  });
+</script>
 
 <style>
   .home-books {
@@ -134,9 +274,62 @@ const highlightsByCategory = await getHighlightsByCategory();
   }
 
   .home-intro h1 em {
-    display: block;
+    display: grid;
     color: rgb(var(--color-accent));
+    font-size: 0.85em;
     font-weight: 500;
+  }
+
+  .home-intro__heading {
+    position: relative;
+  }
+
+  .home-intro__reason {
+    grid-area: 1 / 1;
+    opacity: 0;
+    filter: blur(2px);
+    transform: translateY(0.08em);
+    transition:
+      opacity 500ms ease,
+      filter 500ms ease,
+      transform 500ms ease;
+  }
+
+  .home-intro__reason.is-current {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+
+  .home-intro__motion {
+    position: absolute;
+    inset-block-start: 0.2rem;
+    inset-inline-end: 0;
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    background: transparent;
+    color: rgb(var(--color-text-muted));
+    cursor: pointer;
+  }
+
+  .home-intro__motion[hidden],
+  .home-intro__motion:not([data-paused='true']) .home-intro__play,
+  .home-intro__motion[data-paused='true'] .home-intro__pause {
+    display: none;
+  }
+
+  .home-intro__motion:hover {
+    background: rgb(var(--color-bg-alt));
+    color: rgb(var(--color-accent));
+  }
+
+  .home-intro__motion:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 3px;
   }
 
   .home-intro__description {
@@ -260,6 +453,10 @@ const highlightsByCategory = await getHighlightsByCategory();
       padding: 0 0 0.5rem;
     }
 
+    .home-intro h1 em {
+      font-size: clamp(2.75rem, 13vw, 0.85em);
+    }
+
     .home-intro__description {
       max-width: 42ch;
       margin-top: 1.35rem;
@@ -267,6 +464,12 @@ const highlightsByCategory = await getHighlightsByCategory();
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .home-intro__reason {
+      filter: none;
+      transform: none;
+      transition: none;
+    }
+
     .home-paths a,
     .home-why a {
       transition: none;

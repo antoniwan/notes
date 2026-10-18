@@ -9,6 +9,13 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.37.1] — 2026-10-18
+
+### Changed
+
+- Let the homepage headline show five reasons for writing. Hold each phrase for six seconds, then finish on “to live it.”
+- Keep the heading stable on small screens. Support pause, reduced motion, and a fixed heading for screen readers.
+
 ## [6.37.0] — 2026-10-17
 
 ### Changed
