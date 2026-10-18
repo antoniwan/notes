@@ -4,76 +4,11 @@ import Container from '../components/Container.astro';
 import { PAGE_META } from '../data/pageMeta';
 import { AUTHOR } from '../consts';
 import HeroImage from '../components/HeroImage.astro';
-
-type AboutTopic = {
-  label: string;
-  hint: string;
-  emoji: string;
-  /** Matches `/category/[category]` when set (see `src/data/categories.ts`). */
-  categoryId?: string;
-};
-
-// Curated voice list for About — not a full category dump (see `src/data/categories.ts`).
-const topics: AboutTopic[] = [
-  {
-    label: 'Integration & Growth',
-    hint: 'Trying to live what I already understand',
-    emoji: '\u{1F9D8}\u{1F3FD}\u{200D}\u{2642}\u{FE0F}',
-    categoryId: 'integration-growth',
-  },
-  {
-    label: 'On Parenting',
-    hint: 'Presence with my kids, the sacred in the ordinary',
-    emoji: '\u{1F468}\u{200D}\u{1F469}\u{200D}\u{1F467}\u{200D}\u{1F466}',
-    categoryId: 'parenting',
-  },
-  {
-    label: 'Love & Revolution',
-    hint: 'A home rooted in kindness; love as the final revolution',
-    emoji: '\u{1F49C}',
-  },
-  {
-    label: 'Psychology, Roughly',
-    hint: "Human behavior, healing, clear signals, the body's wisdom",
-    emoji: '\u{1F9E0}',
-    categoryId: 'psychology',
-  },
-  {
-    label: 'On Politics & Culture',
-    hint: 'Power, norms, dignity that need not be earned',
-    emoji: '\u{2696}\u{FE0F}',
-    categoryId: 'politics',
-  },
-  {
-    label: 'Art & Expression',
-    hint: 'Creative soul, truth-telling, aesthetic power',
-    emoji: '\u{1F3B5}',
-    categoryId: 'art-expression',
-  },
-  {
-    label: 'On Systems & Strategy',
-    hint: 'Digital power, code, tools that matter',
-    emoji: '\u{1F4BB}',
-    categoryId: 'systems-strategy',
-  },
-  {
-    label: 'DIY & Creation',
-    hint: 'Physical builds, handmade goods, crafting',
-    emoji: '\u{1F6E0}\u{FE0F}',
-    categoryId: 'diy-creation',
-  },
-  {
-    label: 'Metaspace',
-    hint: 'Reflections on the journey itself — the why and how',
-    emoji: '\u{1F300}',
-    categoryId: 'metaspace',
-  },
-];
 ---
 
 <BaseLayout
   title="About Antonio Rodríguez Martínez"
-  description="I write from home as a stay-at-home and remote-working father, and as a stepfather, while I practice patience, temperance, and grounded leadership."
+  description="Field notes on family, work, and trying to live what I believe."
   metaDescription={PAGE_META['/about']}
   path="/about"
 >
@@ -83,51 +18,33 @@ const topics: AboutTopic[] = [
         <p class="about-kicker">About</p>
         <h1 class="about-name">Antonio Rodríguez Martínez</h1>
         <p class="about-description">
-          I write from home as a stay-at-home and remote-working father, and as a stepfather, while
-          I practice patience, temperance, and grounded leadership.
+          Field notes on family, work, and trying to live what I believe.
         </p>
       </header>
 
       <div class="about-introduction">
         <div class="about-story">
           <p class="about-story__opening">
-            For a long time I could explain things with precision, but daily life still exposed the
-            gaps between what I believed, or thought I believed, and how I actually moved. Naming
-            the gap was super useful. Closing it is the real work, and where I am today.
+            For a long time I could explain things with precision, but daily life exposed the gap
+            between what I believed and how I moved. Closing it is the real work.
           </p>
           <p>
-            I am a boyfriend, a father to a 6-year-old daughter, stepfather to a 2-year-old and a
-            21-year-old, and a stay-at-home remote-working parent of an infant. My beautiful blended
-            family is where I learn the most. Leadership for me is practical: patience under
-            pressure, temperance when I am tired, and choosing presence over ego.
+            I am a boyfriend, father, and stepfather. My beautiful blended family is where I learn
+            the most. Leadership for me is practical: patience under pressure, temperance when I am
+            tired, and choosing presence over ego.
+          </p>
+          <p>
+            I am a technical program manager and developer who works from home. I care deeply about
+            code, strategy, and craft. Here I test ideas against life: they should hold up at home,
+            at work, and in my relationships.
+          </p>
+          <p>
+            Writing is also a valve, part of my art practice, and a way to learn a fuckton of
+            things. It's very effective, and I write for fun too.
           </p>
           <p>
             I also keep a <a href="https://cookbook.antoniwan.online/">Cookbook</a> with recipes we
             actually cook at home, from arroz and sofrito to pancakes for Mia.
-          </p>
-          <p>
-            I still build systems: digital, emotional, and relational. I care deeply about code,
-            strategy, and craft. I am a technical program manager and developer. I write to practice
-            what I claim, in small repeated actions.
-          </p>
-          <p>
-            This site is where I test ideas against life. If something I write is true, it should
-            hold up in my home, my work, and my relationships. I also write for fun. Writing is a
-            valve, a creative output, and part of my art practice. I also write to learn a fuckton
-            of things, it's very effective.
-          </p>
-          <p id="how-i-write">
-            How I write: some pieces I write by hand, start to finish. Others I write with AI
-            models. I bring the thinking, from my life, my daily notes and long conversations, and
-            the models draft, revise, find sources and sometimes build charts. I decide what stays,
-            edit what I keep, and stand behind everything I publish. I don't label every piece, so
-            any essay here may have had that help. The long version is in{' '}
-            <a href="/p/panda-and-wolf">Panda and Wolf</a>.
-          </p>
-          <p id="cover-images">
-            Cover images: most are Midjourney results from my prompts. I edit some and leave others
-            as they came out. Some are my own pictures, drawings and creations, but as of today,
-            most are not.
           </p>
           <p>
             I wrote two bilingual children's books for my kids and my nephew:{' '}
@@ -135,7 +52,17 @@ const topics: AboutTopic[] = [
             <a href="https://antoniwan.online/projects#mia-the-sun-and-the-moon">
               Mia, the Sun, and the Moon
             </a>
-            . They are part of that art practice, stories to read together in English and Spanish.
+            . Stories to read together in English and Spanish.
+          </p>
+          <p id="how-i-write">
+            How I write: some pieces I write by hand; others with AI. I bring the thinking from my
+            life, daily notes, and conversations. Models help draft, revise, find sources, and build
+            charts. I edit, decide what stays, and stand behind everything I publish. Any essay may
+            include that help. More in <a href="/p/panda-and-wolf">Panda and Wolf</a>.
+          </p>
+          <p id="cover-images">
+            Cover images: most come from my Midjourney prompts, sometimes edited. Others are my own
+            photos, drawings, and creations.
           </p>
         </div>
 
@@ -157,39 +84,10 @@ const topics: AboutTopic[] = [
             What these notes cover
           </h2>
           <p class="about-topics__intro">
-            Working notes from real life, organized as a map rather than a finished system.
+            Parenting, growth, psychology, politics, art, systems, and the ordinary things that
+            connect them. <a href="/tag">Explore the topics</a>.
           </p>
         </div>
-        <ul class="about-topics__list">
-          {topics.map((topic) => (
-            <li class="about-topics__item">
-              {topic.categoryId ? (
-                <a href={`/category/${topic.categoryId}`} class="about-topic about-topic--link">
-                  <span class="about-topic__emoji" aria-hidden="true">
-                    {topic.emoji}
-                  </span>
-                  <span class="about-topic__copy">
-                    <span class="about-topic__label">{topic.label}</span>
-                    <span class="about-topic__hint">{topic.hint}</span>
-                  </span>
-                  <span class="about-topic__arrow" aria-hidden="true">
-                    ↗
-                  </span>
-                </a>
-              ) : (
-                <div class="about-topic">
-                  <span class="about-topic__emoji" aria-hidden="true">
-                    {topic.emoji}
-                  </span>
-                  <span class="about-topic__copy">
-                    <span class="about-topic__label">{topic.label}</span>
-                    <span class="about-topic__hint">{topic.hint}</span>
-                  </span>
-                </div>
-              )}
-            </li>
-          ))}
-        </ul>
       </section>
 
       <div class="about-closing">
@@ -198,16 +96,15 @@ const topics: AboutTopic[] = [
             Write to me
           </h2>
           <p>
-            I’m mostly inactive on social media. If you want to respond to an essay, ask about a
-            book, or talk about the writing, <a href={'mailto:' + AUTHOR.email}>email me</a>.
+            I’m mostly inactive on social media. To talk about an essay, a book, or the writing,{' '}
+            <a href={'mailto:' + AUTHOR.email}>email me</a>.
           </p>
         </section>
         <footer class="about-disclaimer">
           <h2 class="about-closing__heading">Disclaimer</h2>
           <p>
-            The wisdom, practices, and digital craft shared here come from personal experience and
-            exploration. None of it is medical, legal, psychological, or professional advice. Please
-            talk to qualified people when you need that kind of guidance.
+            These notes draw on personal experience. They are not medical, legal, psychological, or
+            professional advice. Talk to qualified people when you need that guidance.
           </p>
         </footer>
       </div>
@@ -296,6 +193,7 @@ const topics: AboutTopic[] = [
   }
 
   .about-story a,
+  .about-topics a,
   .about-closing a {
     color: rgb(var(--color-accent));
     text-decoration: underline;
@@ -305,6 +203,7 @@ const topics: AboutTopic[] = [
   }
 
   .about-story a:hover,
+  .about-topics a:hover,
   .about-closing a:hover {
     text-decoration-color: currentColor;
   }
@@ -395,7 +294,6 @@ const topics: AboutTopic[] = [
     display: grid;
     gap: 1rem;
     align-items: end;
-    margin-bottom: 2rem;
   }
 
   .about-section-title {
@@ -416,74 +314,6 @@ const topics: AboutTopic[] = [
     font-family: var(--font-sans);
     font-size: var(--about-body-size);
     line-height: 1.65;
-  }
-
-  .about-topics__list {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0.75rem 2rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .about-topics__item {
-    min-width: 0;
-  }
-
-  .about-topic {
-    display: flex;
-    height: 100%;
-    align-items: start;
-    gap: 0.75rem;
-    padding: 0.65rem 0;
-    color: rgb(var(--color-text));
-    text-decoration: none;
-  }
-
-  .about-topic__emoji {
-    flex-shrink: 0;
-    font-size: var(--about-body-size);
-    line-height: 1.5;
-  }
-
-  .about-topic__copy {
-    display: grid;
-    gap: 0.4rem;
-    flex: 1;
-    min-width: 0;
-  }
-
-  .about-topic__label {
-    font-family: var(--font-heading);
-    font-size: var(--about-body-size);
-    font-weight: 600;
-    letter-spacing: -0.015em;
-    line-height: 1.4;
-  }
-
-  .about-topic__hint {
-    max-width: 33ch;
-    color: rgb(var(--color-text-muted));
-    font-family: var(--font-sans);
-    font-size: var(--about-body-size);
-    line-height: 1.6;
-  }
-
-  .about-topic__arrow {
-    flex-shrink: 0;
-    color: rgb(var(--color-accent));
-    font-size: var(--about-body-size);
-    line-height: 1.4;
-    transition: transform 160ms ease;
-  }
-
-  .about-topic--link:hover .about-topic__label {
-    color: rgb(var(--color-accent));
-  }
-
-  .about-topic--link:hover .about-topic__arrow {
-    transform: translate(2px, -2px);
   }
 
   .about-closing {
@@ -513,17 +343,11 @@ const topics: AboutTopic[] = [
   }
 
   .about-story a:focus-visible,
+  .about-topics a:focus-visible,
   .about-closing a:focus-visible,
-  .about-topic--link:focus-visible,
   .about-cookbook:focus-visible {
     outline: 2px solid rgb(var(--color-accent));
     outline-offset: 5px;
-  }
-
-  @media (min-width: 640px) {
-    .about-topics__list {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
   }
 
   @media (min-width: 960px) {
@@ -537,11 +361,6 @@ const topics: AboutTopic[] = [
       column-gap: 4rem;
     }
 
-    .about-topics__list {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      column-gap: clamp(1.5rem, 3vw, 3rem);
-    }
-
     .about-closing {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       column-gap: clamp(3rem, 7vw, 7rem);
@@ -550,14 +369,13 @@ const topics: AboutTopic[] = [
 
   @media (prefers-reduced-motion: reduce) {
     .about-cookbook__image :global(img),
-    .about-topic__arrow,
     .about-story a,
+    .about-topics a,
     .about-closing a {
       transition: none;
     }
 
-    .about-cookbook:hover .about-cookbook__image :global(img),
-    .about-topic--link:hover .about-topic__arrow {
+    .about-cookbook:hover .about-cookbook__image :global(img) {
       transform: none;
     }
   }
