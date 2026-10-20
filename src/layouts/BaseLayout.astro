@@ -154,6 +154,15 @@ const structuredData = generateStructuredData({
 
     <Footer />
     <BackToTop />
+    <!-- A reader's search stays out of analytics: Browse carries it in ?q=, and the page view
+         would otherwise send the full URL. This runs before the Analytics element reads it. -->
+    <script is:inline>
+      window.webAnalyticsBeforeSend = (event) => {
+        const url = new URL(event.url);
+        url.searchParams.delete('q');
+        return { ...event, url: url.href };
+      };
+    </script>
     <Analytics />
 
     <!-- Performance Monitoring (development only) -->

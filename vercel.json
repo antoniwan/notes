@@ -115,7 +115,7 @@
     },
     {
       "source": "/search",
-      "destination": "/archive",
+      "destination": "/browse",
       "permanent": true
     },
     {

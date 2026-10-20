@@ -1,40 +1,50 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
-import TagCard from '../components/TagCard.astro';
-import CategoryCard from '../components/CategoryCard.astro';
-import { categories } from '../data/categories';
+import PostCard from '../components/PostCard.astro';
+import TopicIndex from '../components/browse/TopicIndex.astro';
 import ContentFormPrelude from '../components/tag/ContentFormPrelude.astro';
 import { getCollection } from 'astro:content';
+import * as pkg from '../../package.json';
 import { PAGE_META } from '../data/pageMeta';
+import { getTagFamily } from '../data/tagFamilies';
 import { getTagMetadata } from '../data/tags';
-import { isCategoryListedPost, isTagListedPost } from '../utils/recipes';
+import { isTagListedPost } from '../utils/recipes';
 import { calculateTagStats } from '../utils/tagProcessing';
+import { canonicalizeTags } from '../utils/tagVocabulary';
 
-const posts = await getCollection('blog', (entry) => isTagListedPost(entry));
+/**
+ * Browse, words first. One box searches every word of the English essays; the 14 sentences
+ * and the A–Z rows run that search in place. Without JS there is no box, and every word opens
+ * its topic page.
+ */
+
+// Newest first, then by id: the order of the word index's essays (browse-words.json.ts).
+const posts = (await getCollection('blog', (entry) => isTagListedPost(entry))).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf() || a.id.localeCompare(b.id),
+);
 const { tagCounts } = calculateTagStats(posts);
 const topics = Object.entries(tagCounts)
-  .map(([tag, count]) => ({ tag, count }))
-  .sort((a, b) => a.tag.localeCompare(b.tag, 'en', { sensitivity: 'base' }));
-const byLetter = new Map<string, typeof topics>();
-for (const topic of topics) {
-  const letter = topic.tag.charAt(0).toUpperCase();
-  const group = byLetter.get(letter) ?? [];
-  group.push(topic);
-  byLetter.set(letter, group);
-}
-const groups = [...byLetter.entries()];
+  .sort(([a], [b]) => a.localeCompare(b, 'en', { sensitivity: 'base' }))
+  .map(([slug, count]) => ({
+    slug,
+    name: getTagMetadata(slug).name,
+    count,
+    family: getTagFamily(slug),
+  }));
 
-// Categories: where each note got filed first, A to Z, each with its count.
-const categoryPosts = await getCollection('blog', (entry) => isCategoryListedPost(entry));
-const categoryCounts = Object.fromEntries(
-  categories.map((c) => [
-    c.id,
-    categoryPosts.filter((post) => post.data.category?.includes(c.id)).length,
-  ]),
-) as Record<string, number>;
-const listedCategories = categories
-  .filter((category) => categoryCounts[category.id] > 0)
-  .sort((a, b) => a.name.localeCompare(b.name));
+// Every essay ships as a hidden card. The search reads each card's title and description from the
+// card itself, and its topics from data-topics, so only body words need a fetch.
+const cards = posts.map((post) => ({
+  post,
+  date: post.data.pubDate.toISOString().slice(0, 10),
+  topicNames: canonicalizeTags(post.data.tags)
+    .map((tag) => getTagMetadata(tag).name)
+    .join('|'),
+}));
+
+// Body words come from the word index, fetched on first intent. The URL carries the release
+// version, as the header's search index does, so a deploy busts the HTTP and service worker caches.
+const wordsUrl = `/browse-words.json?v=${encodeURIComponent(pkg.version ?? 'dev')}`;
 ---
 
 <PageLayout
@@ -44,342 +54,388 @@ const listedCategories = categories
   structuredDataType="website"
   mode="chrome"
 >
-  {listedCategories.length > 0 && (
-    <section class="browse-categories" id="categories" aria-labelledby="categories-heading">
-      <h2 id="categories-heading" tabindex="-1">
-        Categories
-      </h2>
-      <ul class="category-grid" role="list">
-        {listedCategories.map((category) => (
-          <li>
-            <CategoryCard category={category} postCount={categoryCounts[category.id]} />
+  <div class="browse-page">
+    <form
+      class="browse-search"
+      role="search"
+      aria-labelledby="browse-q-label"
+      data-words-url={wordsUrl}
+    >
+      <label id="browse-q-label" for="browse-q">
+        Find a writing
+      </label>
+      <div class="browse-search__row">
+        <input
+          id="browse-q"
+          name="q"
+          type="search"
+          autocomplete="off"
+          spellcheck="false"
+          enterkeyhint="search"
+          aria-controls="browse-results"
+          placeholder="Dad, Puerto Rico, money, God…"
+        />
+        <button type="button" class="browse-clear" aria-label="Clear search" hidden>
+          Clear
+        </button>
+      </div>
+      <p class="sr-only" id="browse-status" role="status" aria-live="polite" aria-atomic="true"></p>
+    </form>
+    <noscript>
+      <style is:inline>
+        .browse-search {
+          display: none;
+        }
+      </style>
+    </noscript>
+    <script is:inline>
+      // Before first paint: a ?q= link shows its query in the box and keeps the sentences from
+      // flashing in before the results replace them. The module script clears the flag after it
+      // renders.
+      (function () {
+        const query = new URLSearchParams(location.search).get('q');
+        if (!query || query.trim().length < 2) return;
+        document.getElementById('browse-q').value = query;
+        document.documentElement.setAttribute('data-browse-q', '');
+      })();
+    </script>
+    <section id="browse-results" class="browse-results" aria-labelledby="results-heading" hidden>
+      <div class="browse-results__head">
+        <h2 id="results-heading" tabindex="-1" class="heading-section"></h2>
+        <p class="browse-results__aside" hidden></p>
+      </div>
+      <ol class="browse-grid" role="list">
+        {cards.map(({ post, date, topicNames }) => (
+          <li data-slug={post.id} data-date={date} data-topics={topicNames} hidden>
+            <PostCard post={post} headingAs="h3" idPrefix="browse" />
           </li>
         ))}
-      </ul>
-      <aside class="category-disclaimer" aria-labelledby="category-disclaimer-heading">
-        <h3 id="category-disclaimer-heading">Fair warning</h3>
-        <div class="category-disclaimer__copy">
-          <p>
-            I opened a category the way a stranger would. The organization is a nightmare. It kind
-            of has to be: these notes do not concentrate into a clean shape of any kind, so a pile
-            of one topic is not the best way to read me. If it looks like the person who filed this
-            has lost it, you are not wrong.
-          </p>
-          <p>
-            <a href="#topics">Topics</a> follow how the ideas actually connect. Categories are just
-            where each note got stamped first.
-          </p>
-        </div>
-      </aside>
+      </ol>
+      <button type="button" class="browse-more" hidden>
+        Show more
+      </button>
     </section>
-  )}
 
-  <div class="topics-page" id="topics" data-topics-page>
-    {topics.length > 0 ? (
-      <>
-        <div class="topics-tools">
-          <form class="topics-search" role="search" aria-label="Find a topic" hidden>
-            <label for="topic-search">Search topics</label>
-            <div class="topics-search__controls">
-              <input
-                id="topic-search"
-                name="q"
-                type="search"
-                placeholder="Fatherhood, Puerto Rico, technology…"
-                autocomplete="off"
-                aria-controls="topic-directory"
-              />
-              <button type="button" class="topics-clear" data-clear-topics hidden>
-                Clear search
-              </button>
-            </div>
-          </form>
-          <a class="topics-jump" href="#all-topics" data-topics-jump>
-            All topics A–Z ↓
-          </a>
-        </div>
-
-        <div data-sentence-browse>
-          <ContentFormPrelude tagCounts={tagCounts} />
-        </div>
-
-        <section class="topic-directory" id="topic-directory" aria-labelledby="all-topics">
-          <div class="topic-directory__heading">
-            <h2 id="all-topics" tabindex="-1">
-              All topics A–Z
-            </h2>
-            <p data-topic-count role="status" aria-live="polite" aria-atomic="true">
-              {topics.length} topics
-            </p>
-          </div>
-          <p class="topics-key">Numbers show the writings in each topic.</p>
-          <nav class="topic-alphabet" aria-label="Jump to a topic letter" data-topic-alphabet>
-            {groups.map(([letter]) => (
-              <a href={`#topics-${letter}`}>{letter}</a>
-            ))}
-          </nav>
-
-          <div class="topic-columns">
-            {groups.map(([letter, items]) => (
-              <section class="topic-letter" data-topic-group aria-labelledby={`topics-${letter}`}>
-                <h3 id={`topics-${letter}`} tabindex="-1">
-                  {letter}
-                </h3>
-                <ul role="list">
-                  {items.map(({ tag, count }) => (
-                    <li data-topic data-tag={tag} data-name={getTagMetadata(tag).name}>
-                      <TagCard
-                        tag={tag}
-                        count={count}
-                        size="md"
-                        variant="subtle"
-                        className="topic-link"
-                      />
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            ))}
-          </div>
-
-          <div class="topics-empty" data-topics-empty hidden>
-            <h3>No topics match</h3>
-            <p>Try a shorter word, or clear your search to explore the writing.</p>
-            <button type="button" class="topics-clear" data-clear-topics>
-              Clear search
-            </button>
-          </div>
-        </section>
-      </>
-    ) : (
-      <p class="topics-unavailable">No topics yet.</p>
-    )}
+    <div class="browse-rest">
+      <details id="topics" class="browse-topics">
+        <summary>Every topic, A to Z</summary>
+        <TopicIndex topics={topics} headingLevel={2} />
+      </details>
+      <div data-browse-ways>
+        <ContentFormPrelude tagCounts={tagCounts} />
+      </div>
+    </div>
   </div>
 </PageLayout>
 
 <script>
-  import { matchesCatalogSearch } from '../utils/catalogSearch';
+  import {
+    queryWords,
+    searchEssays,
+    type BrowseEssay,
+    type WordIndex,
+  } from '../utils/browseSearch';
 
-  const page = document.querySelector<HTMLElement>('[data-topics-page]');
-  const form = page?.querySelector<HTMLFormElement>('.topics-search');
-  const input = form?.querySelector<HTMLInputElement>('#topic-search');
-  if (page && form && input) {
-    const topics = [...page.querySelectorAll<HTMLElement>('[data-topic]')];
-    const groups = [...page.querySelectorAll<HTMLElement>('[data-topic-group]')];
-    const sentences = page.querySelector<HTMLElement>('[data-sentence-browse]');
-    const jump = page.querySelector<HTMLElement>('[data-topics-jump]');
-    const alphabet = page.querySelector<HTMLElement>('[data-topic-alphabet]');
-    const heading = page.querySelector<HTMLElement>('#all-topics');
-    const count = page.querySelector<HTMLElement>('[data-topic-count]');
-    const empty = page.querySelector<HTMLElement>('[data-topics-empty]');
-    const clear = form.querySelector<HTMLButtonElement>('[data-clear-topics]');
+  const PAGE_SIZE = 9;
+  const TYPING_DELAY = 150;
+  const SEARCHING = 'Searching the full text…';
+  const UNLOADED = 'Titles, descriptions, and topics only: the full text didn’t load.';
+  // Every sentence word and every A–Z row runs a search instead of opening its topic page.
+  const WORD_LINKS = '[data-browse-ways] a, .topic-row';
 
-    const update = () => {
-      const query = input.value.trim();
-      let visible = 0;
-      for (const topic of topics) {
-        topic.hidden = !matchesCatalogSearch(
-          query,
-          topic.dataset.tag ?? '',
-          topic.dataset.name ?? '',
-        );
-        if (!topic.hidden) visible++;
-      }
-      for (const group of groups) {
-        group.hidden = !group.querySelector('[data-topic]:not([hidden])');
-      }
-      if (sentences) sentences.hidden = Boolean(query);
-      if (jump) jump.hidden = Boolean(query);
-      if (alphabet) alphabet.hidden = Boolean(query);
-      if (heading) heading.textContent = query ? 'Matching topics' : 'All topics A–Z';
-      if (count)
-        count.textContent = query
-          ? `${visible} of ${topics.length} topics`
-          : `${topics.length} topics`;
-      if (empty) empty.hidden = visible > 0;
-      if (clear) clear.hidden = !query;
-    };
-
-    const writeQuery = () => {
-      const url = new URL(window.location.href);
-      const query = input.value.trim();
-      if (query) url.searchParams.set('q', query);
-      else url.searchParams.delete('q');
-      window.history.replaceState(window.history.state, '', url);
-    };
-
-    const readQuery = () => {
-      input.value = new URLSearchParams(window.location.search).get('q') ?? '';
-      update();
-    };
-
-    form.hidden = false;
-    readQuery();
-    input.addEventListener('input', () => {
-      update();
-      writeQuery();
-    });
-    form.addEventListener('submit', (event) => {
-      event.preventDefault();
-      update();
-      writeQuery();
-    });
-    for (const button of page.querySelectorAll<HTMLButtonElement>('[data-clear-topics]')) {
-      button.addEventListener('click', () => {
-        input.value = '';
-        update();
-        writeQuery();
-        input.focus();
-      });
-    }
-    window.addEventListener('popstate', readQuery);
-    window.addEventListener('pageshow', readQuery);
+  /** A piece of this page's own markup, above. Missing is a bug in this file, not a state. */
+  function part<T extends Element>(selector: string): T {
+    const element = document.querySelector<T>(selector);
+    if (!element) throw new Error(`browse: ${selector} is missing`);
+    return element;
   }
+
+  const page = part<HTMLElement>('.browse-page');
+  const form = part<HTMLFormElement>('.browse-search');
+  const input = part<HTMLInputElement>('#browse-q');
+  const clear = part<HTMLButtonElement>('.browse-clear');
+  const status = part<HTMLElement>('#browse-status');
+  const results = part<HTMLElement>('#browse-results');
+  const heading = part<HTMLElement>('#results-heading');
+  const aside = part<HTMLElement>('.browse-results__aside');
+  const grid = part<HTMLOListElement>('.browse-grid');
+  const more = part<HTMLButtonElement>('.browse-more');
+  const rest = part<HTMLElement>('.browse-rest');
+  const fold = part<HTMLDetailsElement>('#topics');
+
+  const items = [...grid.querySelectorAll<HTMLLIElement>(':scope > li')];
+  const itemBySlug = new Map(items.map((item) => [item.dataset.slug ?? '', item]));
+  const essays: BrowseEssay[] = items.map((item) => ({
+    slug: item.dataset.slug ?? '',
+    date: item.dataset.date ?? '',
+    title: item.querySelector('.postcard-title')?.textContent?.trim() ?? '',
+    description: item.querySelector('.postcard-description')?.textContent?.trim() ?? '',
+    topics: item.dataset.topics ? item.dataset.topics.split('|') : [],
+    // Browse searches every essay; nothing narrows it to one topic.
+    topicSlugs: [],
+  }));
+
+  const wordsUrl = form.dataset.wordsUrl;
+  let index: WordIndex | null = null;
+  // 'absent' when the page ships no word index: the search then reads titles, descriptions, and
+  // topics only, and says nothing about the full text.
+  let indexState: 'absent' | 'idle' | 'loading' | 'ready' | 'failed' = wordsUrl ? 'idle' : 'absent';
+  let ranked: HTMLLIElement[] = [];
+  let shown = 0;
+  let typingTimer: number | undefined;
+
+  /**
+   * Fetches the word index once per visit, on the first sign of a search. A failed load stays
+   * failed: the results say the full text is missing rather than refetching on every keystroke.
+   */
+  function ensureIndex() {
+    if (indexState !== 'idle' || !wordsUrl) return;
+    indexState = 'loading';
+    fetch(wordsUrl, { credentials: 'same-origin' })
+      .then((response) => {
+        if (!response.ok) throw new Error(`browse words responded ${response.status}`);
+        return response.json() as Promise<WordIndex>;
+      })
+      .then((data) => {
+        if (!Array.isArray(data?.s) || !data.w) throw new Error('browse words are malformed');
+        index = data;
+        indexState = 'ready';
+      })
+      .catch(() => {
+        indexState = 'failed';
+      })
+      .then(() => {
+        // The mentions join the results already on screen, without resetting 'Show more'.
+        if (!results.hidden) render({ keepShown: true });
+      });
+  }
+
+  /** The heading counts the named writings; the aside, the ones that only mention the words. */
+  function describe(named: number, mentioned: number, query: string) {
+    const quoted = `“${query.trim().replace(/\s+/g, ' ')}”`;
+    if (named > 0) {
+      const title = `${named} ${named === 1 ? 'writing' : 'writings'} for ${quoted}`;
+      if (indexState === 'loading') return { title, note: SEARCHING };
+      if (indexState === 'failed') return { title, note: UNLOADED };
+      return { title, note: mentioned > 0 ? `Mentioned in ${mentioned} more` : '' };
+    }
+    // No false 'No writing' while the body words are still on their way.
+    if (indexState === 'loading') return { title: SEARCHING, note: '' };
+    if (mentioned > 0) {
+      const verb = mentioned === 1 ? 'writing mentions' : 'writings mention';
+      return { title: `${mentioned} ${verb} ${quoted}`, note: '' };
+    }
+    return {
+      title: `No writing mentions ${quoted}`,
+      note: indexState === 'failed' ? UNLOADED : '',
+    };
+  }
+
+  function reveal(count: number) {
+    shown = Math.min(count, ranked.length);
+    const visible = new Set(ranked.slice(0, shown));
+    for (const item of items) item.hidden = !visible.has(item);
+    const remaining = ranked.length - shown;
+    more.hidden = remaining === 0;
+    if (remaining > 0) more.textContent = `Show ${Math.min(PAGE_SIZE, remaining)} more`;
+  }
+
+  function render({ keepShown = false } = {}) {
+    const query = input.value;
+    const searching = queryWords(query).length > 0;
+    results.hidden = !searching;
+    clear.hidden = !searching;
+
+    if (!searching) {
+      ranked = [];
+      reveal(0);
+      rest.hidden = false;
+      status.textContent = '';
+    } else {
+      ensureIndex();
+      const { named, mentioned } = searchEssays({ essays, index, query });
+      ranked = [...named, ...mentioned].flatMap((slug) => itemBySlug.get(slug) ?? []);
+      // DOM order is rank order. A card already in its place is not moved, so a focused card keeps
+      // its focus when the mentions arrive.
+      ranked.forEach((item, position) => {
+        const current = grid.children[position];
+        if (current !== item) grid.insertBefore(item, current ?? null);
+      });
+      reveal(keepShown ? Math.max(shown, PAGE_SIZE) : PAGE_SIZE);
+
+      const { title, note } = describe(named.length, mentioned.length, query);
+      heading.textContent = title;
+      aside.textContent = note;
+      aside.hidden = !note;
+      // With no match, the sentences and the A–Z show below as the way forward.
+      rest.hidden = ranked.length > 0 || indexState === 'loading';
+      status.textContent = note ? `${title}. ${note}` : title;
+    }
+    document.documentElement.removeAttribute('data-browse-q');
+  }
+
+  /** Typing edits the current history entry; only following a word adds one. */
+  function writeQuery() {
+    const url = new URL(window.location.href);
+    const query = input.value.trim();
+    if (queryWords(query).length > 0) url.searchParams.set('q', query);
+    else url.searchParams.delete('q');
+    window.history.replaceState(window.history.state, '', url);
+  }
+
+  function readQuery({ keepShown = false } = {}) {
+    window.clearTimeout(typingTimer);
+    input.value = new URLSearchParams(window.location.search).get('q') ?? '';
+    render({ keepShown });
+  }
+
+  function clearSearch() {
+    window.clearTimeout(typingTimer);
+    input.value = '';
+    render();
+    writeQuery();
+    input.focus();
+  }
+
+  /** #topics and #topics-{letter} open the fold, then scroll to it or to the letter. */
+  function revealTopics(behavior: ScrollBehavior) {
+    const id = window.location.hash.slice(1);
+    if (id !== 'topics' && !id.startsWith('topics-')) return;
+    fold.open = true;
+    document.getElementById(id)?.scrollIntoView({ behavior });
+  }
+
+  const searchHref = (word: string) => `${window.location.pathname}?q=${encodeURIComponent(word)}`;
+
+  const wordLinkFrom = (target: EventTarget | null) =>
+    target instanceof Element ? target.closest<HTMLAnchorElement>(WORD_LINKS) : null;
+
+  // A row names its topic in data-q; a sentence link, in its own text.
+  for (const link of page.querySelectorAll<HTMLAnchorElement>(WORD_LINKS)) {
+    const word = link.dataset.q ?? link.textContent?.trim() ?? '';
+    link.dataset.q = word;
+    // Middle-click, a new tab, and a copied link all give the results, not the topic page.
+    link.href = searchHref(word);
+  }
+
+  form.addEventListener('focusin', ensureIndex);
+  page.addEventListener('pointerdown', (event) => {
+    if (wordLinkFrom(event.target)) ensureIndex();
+  });
+  page.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' && wordLinkFrom(event.target)) ensureIndex();
+  });
+
+  input.addEventListener('input', () => {
+    window.clearTimeout(typingTimer);
+    typingTimer = window.setTimeout(() => {
+      render();
+      writeQuery();
+    }, TYPING_DELAY);
+  });
+  input.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape' || !input.value) return;
+    event.preventDefault();
+    clearSearch();
+  });
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    window.clearTimeout(typingTimer);
+    render();
+    writeQuery();
+    if (results.hidden) return;
+    // Leaving the box closes a phone's keyboard; the heading is where the results begin.
+    input.blur();
+    heading.focus({ preventScroll: true });
+  });
+  clear.addEventListener('click', clearSearch);
+
+  more.addEventListener('click', () => {
+    const first = ranked[shown];
+    reveal(shown + PAGE_SIZE);
+    first?.querySelector<HTMLAnchorElement>('.postcard-link')?.focus();
+  });
+
+  page.addEventListener('click', (event) => {
+    const link = wordLinkFrom(event.target);
+    if (!link || event.defaultPrevented || event.button !== 0) return;
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    const word = link.dataset.q ?? '';
+    // Back returns to this spot: the same sentence, or the same row in the open fold.
+    window.history.replaceState({ ...window.history.state, browseScrollY: window.scrollY }, '');
+    window.history.pushState({}, '', searchHref(word));
+    window.clearTimeout(typingTimer);
+    input.value = word;
+    render();
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    heading.focus({ preventScroll: true });
+  });
+
+  window.addEventListener('popstate', (event) => {
+    // Only Back from results brings the sentences and the fold back, so only then can the browser's
+    // own scroll restore come too early to reach them. Any other Back, such as from a letter jump,
+    // restores itself, and the saved spot may be older than that.
+    const restWasHidden = rest.hidden;
+    readQuery();
+    const scrollY = (event.state as { browseScrollY?: unknown } | null)?.browseScrollY;
+    if (restWasHidden && !rest.hidden && typeof scrollY === 'number') {
+      requestAnimationFrame(() => window.scrollTo({ top: scrollY, behavior: 'instant' }));
+    }
+  });
+  window.addEventListener('pageshow', (event) => {
+    // Back from an essay finds the results as they were left, 'Show more' cards included.
+    if (event.persisted) readQuery({ keepShown: true });
+  });
+  // An open fold is already where it should be: the browser scrolled to a letter jump itself, and
+  // Back to a row has its place restored by popstate, which this scroll would undo.
+  window.addEventListener('hashchange', () => {
+    if (!fold.open) revealTopics('auto');
+  });
+
+  // The box works from first paint, so a reader may have typed before this script ran: their words
+  // win over the URL's. Otherwise the box takes the URL's query.
+  const urlQuery = new URLSearchParams(window.location.search).get('q') ?? '';
+  if (input.value && input.value !== urlQuery) {
+    render();
+    writeQuery();
+  } else {
+    readQuery();
+  }
+  revealTopics('instant');
 </script>
 
 <style>
-  /* ---------- Categories, first on Browse (moved from the old /category page). */
-  .browse-categories {
-    margin-bottom: 4rem;
-    scroll-margin-top: calc(var(--site-header-height) + 1.5rem);
-  }
-
-  .browse-categories > h2 {
-    margin: 0 0 1.5rem;
-    font-family: var(--font-heading);
-    font-size: clamp(1.6rem, 2.4vw, 2rem);
-    font-weight: 600;
-    line-height: var(--leading-tight);
-    letter-spacing: -0.025em;
-  }
-
-  #topics {
-    scroll-margin-top: calc(var(--site-header-height) + 1.5rem);
-  }
-
-  .category-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 2rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .category-grid > li {
-    min-width: 0;
-    margin: 0;
-    padding: 0;
-  }
-
-  .category-disclaimer {
-    display: grid;
-    gap: 1.5rem;
-    margin-top: 3.5rem;
-  }
-
-  .category-disclaimer h3 {
-    margin: 0;
-    font-family: var(--font-heading);
-    font-size: clamp(1.6rem, 2.4vw, 2rem);
-    font-weight: 600;
-    line-height: var(--leading-tight);
-    letter-spacing: -0.025em;
-  }
-
-  .category-disclaimer__copy {
-    display: grid;
-    gap: 1.5rem;
-    min-width: 0;
-    max-width: var(--measure);
-  }
-
-  .category-disclaimer p {
-    margin: 0;
-    font-size: 1.125rem;
-    line-height: var(--leading-relaxed);
-    color: rgb(var(--color-text-muted));
-    text-wrap: pretty;
-  }
-
-  .category-disclaimer a {
-    color: rgb(var(--color-accent));
-    font-weight: 600;
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
-  }
-
-  .category-disclaimer a:hover {
-    color: rgb(var(--color-accent-hover));
-  }
-
-  .category-disclaimer a:focus-visible {
-    outline: 2px solid rgb(var(--color-accent));
-    outline-offset: 4px;
-    border-radius: 2px;
-  }
-
-  @media (min-width: 768px) {
-    .category-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 2.5rem;
-    }
-
-    .category-disclaimer {
-      grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-      gap: 2.5rem;
-      margin-top: 5rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .category-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .category-disclaimer {
-      margin-top: 6rem;
-    }
-  }
-
-  .topics-page {
-    display: grid;
-    gap: 2rem;
+  .browse-page {
     padding-top: 1rem;
     padding-bottom: round(nearest, clamp(4rem, 7vw, 7rem), 4px);
   }
-  .topics-page [hidden] {
+  .browse-page [hidden] {
     display: none !important;
   }
-  .topics-tools {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-end;
-    gap: 1rem 2rem;
+  /* A ?q= link hides the sentences before first paint (the inline script above sets the flag). */
+  :global(:root[data-browse-q]) .browse-rest {
+    display: none;
   }
-  .topics-search {
-    flex: 1 1 32rem;
-    max-width: none;
-    min-width: 0;
-    margin: 0;
-  }
-  .topics-search label {
+
+  /* ---------- The box. */
+  .browse-search label {
     display: block;
-    margin-bottom: 0.75rem;
+    margin: 0 0 0.75rem;
     font-family: var(--font-sans);
     font-size: 1rem;
-    line-height: var(--leading-normal);
     font-weight: 600;
+    line-height: var(--leading-normal);
   }
-  .topics-search__controls {
+  .browse-search__row {
     display: flex;
     align-items: center;
     gap: 1rem;
   }
-  .topics-search input {
-    flex: 1 1 0;
-    width: 100%;
+  .browse-search input {
+    flex: 1 1 auto;
     min-width: 0;
+    max-width: var(--measure);
     min-height: 3rem;
     margin: 0;
     padding: 0.75rem 1rem;
@@ -391,15 +447,20 @@ const listedCategories = categories
     font-size: 1rem;
     line-height: var(--leading-normal);
   }
-  .topics-search input::placeholder {
+  .browse-search input::placeholder {
     color: rgb(var(--color-text-muted));
     opacity: 1;
   }
-  .topics-clear,
-  .topics-jump {
+  /* Clear is the one clear control. */
+  .browse-search input::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .browse-clear,
+  .browse-more {
     display: inline-flex;
     align-items: center;
-    flex: 0 0 auto;
+    flex: none;
     min-height: 2.75rem;
     padding: 0.5rem 0;
     border: 0;
@@ -409,35 +470,34 @@ const listedCategories = categories
     font-size: 1rem;
     font-weight: 600;
     line-height: var(--leading-normal);
-    cursor: pointer;
     text-decoration: underline;
     text-underline-offset: 0.2em;
+    cursor: pointer;
   }
-  .topics-clear:hover,
-  .topics-jump:hover {
+  .browse-clear:hover,
+  .browse-more:hover {
     color: rgb(var(--color-accent-hover));
   }
-  .topic-directory {
-    margin-top: round(nearest, clamp(1.5rem, 3vw, 3rem), 4px);
+
+  /* ---------- Results: photographs on Home's twelve-column grid. */
+  .browse-results {
+    margin-top: 2.5rem;
   }
-  .topic-directory__heading {
+  .browse-results__head {
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
     justify-content: space-between;
-    gap: 1rem 1.5rem;
+    gap: 0.75rem 1rem;
+    margin-bottom: 1.5rem;
   }
-  .topic-directory__heading h2,
-  .topics-empty h3 {
-    margin: 0;
-    font-family: var(--font-heading);
-    font-size: clamp(1.6rem, 2.4vw, 2rem);
-    font-weight: 600;
-    line-height: var(--leading-tight);
-    letter-spacing: -0.025em;
+  /* Only script focuses the heading, so it draws no ring. The base :focus-visible ring is a
+     box-shadow, not an outline, so that goes too. */
+  .browse-results__head h2:focus {
+    outline: none;
+    box-shadow: none;
   }
-  .topic-directory__heading p,
-  .topics-key {
+  .browse-results__aside {
     margin: 0;
     color: rgb(var(--color-text-muted));
     font-family: var(--font-sans);
@@ -445,129 +505,91 @@ const listedCategories = categories
     line-height: var(--leading-normal);
     font-variant-numeric: tabular-nums;
   }
-  .topics-key {
-    margin-top: 0.75rem;
+  .browse-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--grid-gap);
+    row-gap: 2.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
-  .topic-alphabet {
+  .browse-grid > li {
+    grid-column: span 12;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+  }
+  .browse-more {
+    margin-top: 2rem;
+  }
+
+  /* ---------- At rest: the A–Z fold, then the sentences. */
+  .browse-topics {
+    margin-top: 1rem;
+    scroll-margin-top: calc(var(--site-header-height) + 2rem);
+  }
+  .browse-topics > summary {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin: 1.5rem 0 2rem;
-  }
-  .topic-alphabet a {
-    display: inline-flex;
-    justify-content: center;
     align-items: center;
-    min-width: 2.75rem;
+    gap: 0.5rem;
+    width: fit-content;
     min-height: 2.75rem;
-    border-radius: var(--radius-md);
-    background: rgb(var(--color-bg-alt));
+    list-style: none;
     color: rgb(var(--color-accent));
     font-family: var(--font-sans);
     font-size: 1rem;
     font-weight: 600;
-    text-decoration: none;
-  }
-  .topic-alphabet a:hover {
-    background: rgb(var(--color-surface-2));
-  }
-  .topic-columns {
-    margin-top: 2rem;
-    column-gap: 2.5rem;
-  }
-  .topic-letter {
-    break-inside: avoid;
-    margin-bottom: 2rem;
-  }
-  .topic-letter h3 {
-    margin: 0 0 1rem;
-    font-family: var(--font-heading);
-    font-size: clamp(1.25rem, 1.7vw, 1.6rem);
-    line-height: var(--leading-tight);
-    font-weight: 600;
-  }
-  #all-topics,
-  .topic-letter h3 {
-    scroll-margin-top: calc(var(--site-header-height) + 2rem);
-  }
-  #all-topics:focus,
-  .topic-letter h3:focus {
-    outline: none;
-  }
-  .topic-letter ul {
-    display: grid;
-    gap: 0.5rem;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-  .topic-letter li {
-    min-width: 0;
-    padding: 0;
-    margin: 0;
-  }
-  .topics-page :global(.topic-link) {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    min-height: 2.75rem;
-    gap: 1rem;
-    padding: 0.75rem 1rem;
-    border-radius: var(--radius-md);
-    font-family: var(--font-sans);
-    font-size: 1rem;
     line-height: var(--leading-normal);
-    color: rgb(var(--color-text));
-    backdrop-filter: none;
+    cursor: pointer;
   }
-  .topics-page :global(.topic-link .tag-text) {
-    min-width: 0;
-    overflow-wrap: anywhere;
+  .browse-topics > summary::-webkit-details-marker {
+    display: none;
   }
-  .topics-page :global(.topic-link .tag-count) {
-    flex: 0 0 auto;
-    font-variant-numeric: tabular-nums;
-    color: rgb(var(--color-text-muted));
-    opacity: 1;
+  /* Text presentation, so no platform draws the marker as an emoji; screen readers skip it. */
+  .browse-topics > summary::before {
+    content: '\25B6\FE0E';
+    content: '\25B6\FE0E' / '';
+    font-size: 0.75rem;
+    transition: transform 0.2s ease;
   }
-  .topics-page :global(.topic-link:focus-visible) {
+  .browse-topics[open] > summary::before {
+    transform: rotate(90deg);
+  }
+  .browse-topics > summary:hover {
+    color: rgb(var(--color-accent-hover));
+  }
+  .browse-topics > :global(.topic-index) {
+    margin-top: 1.5rem;
+  }
+  .browse-rest > [data-browse-ways] {
+    margin-top: 3rem;
+  }
+
+  .browse-search input:focus-visible,
+  .browse-clear:focus-visible,
+  .browse-more:focus-visible,
+  .browse-topics > summary:focus-visible {
     outline: 2px solid rgb(var(--color-accent));
     outline-offset: 4px;
+    /* The base layer's ring is a box-shadow with a white offset, which would double this one and
+       show as a white band in dark mode. */
+    box-shadow: none;
   }
-  .topics-empty {
-    display: grid;
-    justify-items: start;
-    gap: 1rem;
-    padding: 2rem;
-    background: rgb(var(--color-bg-alt));
-    border-radius: var(--radius-lg);
-  }
-  .topics-empty p,
-  .topics-unavailable {
-    margin: 0;
-    max-width: var(--measure);
-    font-size: 1.125rem;
-    line-height: var(--leading-relaxed);
-    color: rgb(var(--color-text-muted));
-  }
-  .topics-search input:focus-visible,
-  .topics-clear:focus-visible,
-  .topics-jump:focus-visible,
-  .topic-alphabet a:focus-visible {
-    outline: 2px solid rgb(var(--color-accent));
-    outline-offset: 4px;
-  }
+
   @media (min-width: 768px) {
-    .topics-page {
-      gap: 2.5rem;
-    }
-    .topic-columns {
-      column-count: 2;
+    .browse-grid > li {
+      grid-column: span 6;
     }
   }
   @media (min-width: 1024px) {
-    .topic-columns {
-      column-count: 3;
+    .browse-grid > li {
+      grid-column: span 4;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .browse-topics > summary::before {
+      transition: none;
     }
   }
 </style>

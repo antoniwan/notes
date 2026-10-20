@@ -1,43 +1,25 @@
 import { describe, expect, it } from 'vitest';
-import { matchesCatalogSearch } from './catalogSearch';
+import { normalizeCatalogText } from './catalogSearch';
 
-describe('matchesCatalogSearch', () => {
-  it('matches without requiring accents or matching letter case', () => {
-    expect(matchesCatalogSearch('BRENE', 'Brené Brown')).toBe(true);
-    expect(matchesCatalogSearch('platano', 'Plátano')).toBe(true);
+describe('normalizeCatalogText', () => {
+  it('drops accents and letter case', () => {
+    expect(normalizeCatalogText('Brené Brown')).toBe('brene brown');
+    expect(normalizeCatalogText('PLÁTANO')).toBe('platano');
   });
 
-  it('matches words across title and author in either order', () => {
-    expect(matchesCatalogSearch('aurelius meditations', 'Meditations', 'Marcus Aurelius')).toBe(
-      true,
-    );
+  it('drops apostrophes, straight or curly, without splitting the word', () => {
+    expect(normalizeCatalogText('Mia’s Cinnamon Pancakes')).toBe('mias cinnamon pancakes');
+    expect(normalizeCatalogText("Mia's")).toBe('mias');
+    expect(normalizeCatalogText('Miaʼs')).toBe('mias');
   });
 
-  it('allows omitted words in a dish name', () => {
-    expect(matchesCatalogSearch('pollo arroz', 'Arroz con Pollo')).toBe(true);
+  it('turns punctuation and spacing into single spaces', () => {
+    expect(normalizeCatalogText('  Lemon-Pepper   Chicken!  ')).toBe('lemon pepper chicken');
+    expect(normalizeCatalogText('[pollo|turkey]')).toBe('pollo turkey');
   });
 
-  it('treats punctuation and spacing as word boundaries', () => {
-    expect(matchesCatalogSearch('  lemon pepper  ', 'Lemon-Pepper Chicken Thighs')).toBe(true);
-    expect(matchesCatalogSearch('mias', 'Mia’s Cinnamon Pancakes')).toBe(true);
-    expect(matchesCatalogSearch('mias', "Mia's Cinnamon Pancakes")).toBe(true);
-    expect(matchesCatalogSearch('mia cinnamon', 'Mia’s Cinnamon Pancakes')).toBe(true);
-  });
-
-  it('preserves partial-word matching while typing', () => {
-    expect(matchesCatalogSearch('medit', 'Meditations')).toBe(true);
-  });
-
-  it('requires all meaningful search words to match', () => {
-    expect(matchesCatalogSearch('arroz turkey', 'Arroz con Pollo')).toBe(false);
-  });
-
-  it('shows all entries for a blank or punctuation-only query', () => {
-    expect(matchesCatalogSearch('   ', 'Meditations')).toBe(true);
-    expect(matchesCatalogSearch('---', 'Sofrito')).toBe(true);
-  });
-
-  it('does not treat search text as an expression', () => {
-    expect(matchesCatalogSearch('[pollo|turkey]', 'Arroz con Pollo')).toBe(false);
+  it('keeps digits and leaves punctuation-only text empty', () => {
+    expect(normalizeCatalogText('Notes 2026')).toBe('notes 2026');
+    expect(normalizeCatalogText('---')).toBe('');
   });
 });

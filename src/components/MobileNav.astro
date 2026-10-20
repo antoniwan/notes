@@ -5,7 +5,7 @@ import { isNavDropdownItemActive } from '../utils/navActive';
 
 const pathname = Astro.url.pathname;
 const entryDescriptions: Record<string, string> = {
-  '/browse': 'Categories and topics, A to Z.',
+  '/browse': 'Search every writing, or follow a topic.',
   '/archive': 'Every note, newest first.',
 };
 const entryLinks = readingLinks.filter((link) => link.href in entryDescriptions);

@@ -178,6 +178,35 @@ describe('the offline promise', () => {
     }
   });
 
+  test('Browse keeps its word index after one search, and reloads offline', async () => {
+    const { page, context, goto } = await openWithServiceWorker();
+    try {
+      await goto('/');
+      await waitForController(page);
+
+      await goto('/browse?q=dad');
+      await expect
+        .poll(() => page.locator('.browse-results__aside').innerText())
+        .toMatch(/^Mentioned in \d+ more$/);
+      await page.waitForTimeout(1_000);
+
+      const names = await cacheNames(page);
+      const assetCache = names.find((name) => name.includes('assets'));
+      expect(assetCache).toBeTruthy();
+      expect(await cachedUrls(page, assetCache!)).toContain('/browse-words.json');
+
+      await stopServing();
+      await page.reload({ waitUntil: 'load' });
+      expect(await page.title()).toMatch(/^Browse/);
+      await expect
+        .poll(() => page.locator('.browse-results__aside').innerText())
+        .toMatch(/^Mentioned in \d+ more$/);
+    } finally {
+      await resumeServing();
+      await context.close();
+    }
+  });
+
   test('article images are cached, which AVIF never was before', async () => {
     const { page, context, goto } = await openWithServiceWorker();
     try {

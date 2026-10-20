@@ -53,6 +53,14 @@
   font-family: var(--font-sans);
   @apply text-sm leading-snug font-medium tracking-normal;
 }
+@utility heading-section {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 2.4vw, 2rem);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+  letter-spacing: -0.025em;
+  margin: 0;
+}
 @utility animate-fade-up {
   animation: fade-up var(--animation-duration-slow) var(--animation-easing-out) both;
 }
@@ -379,6 +387,7 @@
     --color-error: 220 120 120;
     --color-highlight: 255 196 20;
     --tag-kinship: 255 148 160;
+    --tag-kitchen: 236 204 72;
     --tag-island: 88 208 196;
     --tag-repair: 140 196 160;
     --tag-becoming: 255 176 96;
@@ -510,7 +519,7 @@
   }
 
   a:focus {
-    @apply ring-2 ring-[rgb(var(--color-accent))] ring-offset-2 outline-hidden;
+    @apply ring-2 ring-[rgb(var(--color-accent))] ring-offset-2 ring-offset-[rgb(var(--color-bg))] outline-hidden;
   }
 
   /* Forms */
@@ -641,7 +650,7 @@
 
   /* Focus outline */
   :focus-visible {
-    @apply ring-2 ring-[rgb(var(--color-accent))] ring-offset-2 outline-hidden;
+    @apply ring-2 ring-[rgb(var(--color-accent))] ring-offset-2 ring-offset-[rgb(var(--color-bg))] outline-hidden;
   }
 
   .theme-transition {
