@@ -4,6 +4,7 @@ import {
   buildWordIndex,
   normalizeCatalogText,
   plainTextFromMarkdown,
+  pluralStem,
   queryWords,
   searchEssays,
   STOPWORDS,
@@ -124,6 +125,28 @@ describe('queryWords', () => {
   it('keeps the stopwords when nothing else is left', () => {
     expect(queryWords('the who')).toEqual(['the', 'who']);
     expect(queryWords('a ?')).toEqual([]);
+  });
+
+  it('turns a plural into the start it shares with its singular', () => {
+    expect(queryWords('Poems')).toEqual(['poem']);
+    expect(queryWords('poem poems')).toEqual(['poem']);
+    expect(queryWords('Boundaries')).toEqual(['boundar']);
+    expect(queryWords('Values Relationships')).toEqual(['value', 'relationship']);
+    expect(queryWords('wishes boxes glasses')).toEqual(['wish', 'box', 'glass']);
+    expect(queryWords('dads')).toEqual(['dad']);
+  });
+});
+
+describe('pluralStem', () => {
+  it('leaves words that only look plural alone', () => {
+    for (const word of ['loss', 'focus', 'crisis', 'jesus', 'yes', 'dad', 'ai']) {
+      expect(pluralStem(word)).toBe(word);
+    }
+  });
+
+  it('keeps a short -ies word whole rather than cut it to nothing', () => {
+    expect(pluralStem('cries')).toBe('crie');
+    expect(pluralStem('stories')).toBe('stor');
   });
 });
 
