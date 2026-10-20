@@ -9,7 +9,7 @@ export interface NavigationItem extends ReaderLink {
 
 /** Group hrefs identify their first destination; summaries open the native disclosure. */
 export const mainNavigation: NavigationItem[] = [
-  { href: '/archive', label: 'Archive' },
   { href: '/browse', label: 'Browse' },
+  { href: '/archive', label: 'Archive' },
   { href: '/about', label: 'About' },
 ];

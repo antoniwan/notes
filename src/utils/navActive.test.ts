@@ -9,7 +9,7 @@ import {
 
 describe('desktop navigation destinations', () => {
   it('is three plain links, reading first, and keeps site tools out', () => {
-    expect(mainNavigation.map((item) => item.label)).toEqual(['Archive', 'Browse', 'About']);
+    expect(mainNavigation.map((item) => item.label)).toEqual(['Browse', 'Archive', 'About']);
     expect(mainNavigation.every((item) => !item.dropdown)).toBe(true);
     const destinations = mainNavigation.flatMap((item) =>
       item.dropdown ? item.dropdown.items.map((child) => child.href) : [item.href],

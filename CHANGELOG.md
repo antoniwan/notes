@@ -15,8 +15,8 @@ Notes is for reading, and for searching for something to read. Antonio: "Everyth
 
 ### Changed
 
-- The navigation is three plain links: **Archive**, **Browse**, and **About**, with search in the header. The Browse dropdown is gone. The mobile menu has Browse and Archive under Read, with no category list, because Browse has one.
-- **Browse** (`/browse`) is one page: the categories (with the "Fair warning" note), then the topic search, "Ways into the writing", and every topic A–Z. It replaces the separate Topics (`/tag`) and Categories (`/category`) index pages. A topic or category page links back to its part of Browse, and the site marks Browse current there.
+- The navigation is three plain links: **Browse**, **Archive**, and **About**, with search in the header. The Browse dropdown is gone. The mobile menu has Browse and Archive under Read, with no category list, because Browse has one.
+- **Browse** (`/browse`) is one page, with no intro paragraph (its section headings say what each part is): the categories (with the "Fair warning" note), then the topic search, "Ways into the writing", and every topic A–Z. It replaces the separate Topics (`/tag`) and Categories (`/category`) index pages. A topic or category page links back to its part of Browse, and the site marks Browse current there.
 - **Everything is the Archive**, at `/archive`.
 - Home's two ways in are Browse, then Archive. The "Start here" button went to Guided Path.
 

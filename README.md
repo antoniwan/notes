@@ -14,7 +14,7 @@ Live site: [notes.antoniwan.online](https://notes.antoniwan.online)
 
 Correction, October 17, 2026: the reading library moved to antoniwan.online/collections/books. Authored books already belong in its Projects section.
 
-Notes is for reading and for searching for something to read (October 20, 2026). Its navigation is Archive, Browse, and About, with search in the header. Cookbook and Collections no longer appear in its navigation or search.
+Notes is for reading and for searching for something to read (October 20, 2026). Its navigation is Browse, Archive, and About, with search in the header. Cookbook and Collections no longer appear in its navigation or search.
 
 Release history: [CHANGELOG.md](./CHANGELOG.md)
 
