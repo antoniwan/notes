@@ -8,7 +8,6 @@ Use this guide to run the right Cursor AI skill in the Notes repo.
 - `post-publishing-workflow` — use when editing posts in `src/content/p/` (essays and recipes).
 - `multilingual-content-qa` — use for EN/ES translation pairs and toggles.
 - `release-quality-gate` — use before PR or merge.
-- `brain-science-audit` — use when touching brain-science pages/utils.
 - `content-strategy-map` — audit latest 30 posts and generate topic ideas.
 
 ## Where Skills Live
@@ -17,7 +16,6 @@ Use this guide to run the right Cursor AI skill in the Notes repo.
 - `.cursor/skills/post-publishing-workflow/SKILL.md`
 - `.cursor/skills/multilingual-content-qa/SKILL.md`
 - `.cursor/skills/release-quality-gate/SKILL.md`
-- `.cursor/skills/brain-science-audit/SKILL.md`
 - `.cursor/skills/content-strategy-map/SKILL.md`
 
 ## How To Use Skills (Simple)
@@ -32,7 +30,6 @@ Use prompts like:
 - "I edited `src/content/p/my-post.md`. Use `post-publishing-workflow` and fix issues."
 - "I added EN and ES versions. Use `multilingual-content-qa` and verify toggles."
 - "Run `release-quality-gate` for this branch and fix clear failures."
-- "I changed `src/pages/writing-insights/`. Run `brain-science-audit`."
 - "This touches pages, layouts, and SEO. Use `astro-webmaster-notes`."
 - "Use `content-strategy-map` to audit the latest 30 posts and save a dated topic map report."
 

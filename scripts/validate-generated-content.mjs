@@ -342,7 +342,6 @@ const spanishTwin = pickSlug((data) => (data.language?.[0] ?? 'en') === 'es');
 const surfaces = [
   { label: 'homepage', sitePath: '/' },
   { label: 'index (everything)', sitePath: '/everything' },
-  { label: 'writing insights', sitePath: '/writing-insights' },
   englishEssay && { label: `english essay (${englishEssay})`, sitePath: `/p/${englishEssay}` },
   spanishTwin && { label: `spanish twin (${spanishTwin})`, sitePath: `/p/${spanishTwin}` },
 ].filter(Boolean);

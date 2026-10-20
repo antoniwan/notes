@@ -197,7 +197,7 @@ const groups = [...byLetter.entries()];
 
 <style>
   :global(.topics-intro) {
-    max-width: 62ch;
+    max-width: var(--measure);
   }
   .topics-page {
     display: grid;
@@ -216,7 +216,7 @@ const groups = [...byLetter.entries()];
   }
   .topics-search {
     flex: 1 1 32rem;
-    max-width: 44rem;
+    max-width: none;
     min-width: 0;
     margin: 0;
   }
@@ -402,7 +402,7 @@ const groups = [...byLetter.entries()];
   .topics-empty p,
   .topics-unavailable {
     margin: 0;
-    max-width: 62ch;
+    max-width: var(--measure);
     font-size: 1.125rem;
     line-height: 1.75;
     color: rgb(var(--color-text-muted));

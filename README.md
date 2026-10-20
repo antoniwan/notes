@@ -28,7 +28,7 @@ Inline diagram authoring: [Mermaid flowcharts and state diagrams](docs/mermaid-d
 - **Reading library** — `/library` and `/library/books` redirect to `antoniwan.online/collections/books`.
 - **Paths in** — Guided Path, Everything, Browse (Topics and Categories), About, and header search.
 - **Home** — a writing hero, three entry links, Highlights for featured English posts, and a short purpose note.
-- **Writing Insights** (`/writing-insights`) — cadence, topics, lexicon. `/brain-science` is the origin note; old dashboard subpaths 301
+- **Writing Insights** was removed on October 20, 2026; it was not for readers. `/writing-insights`, `/brain-science`, and their old subpaths 301 to the home page.
 - **Feeds** — RSS (`/rss.xml`) and JSON Feed (`/feed.json`). Spanish and household recipes stay out of feeds
 - **Quotes API** — `GET /api/quotes` (Stoic excerpts, other philosophy, lines from posts; optional `?kind=`)
 
@@ -155,7 +155,7 @@ bytes rather than the source:
 - drafts, `published: false`, and future-dated posts appear nowhere; public
   English essays appear in feeds; Spanish twins and household recipes stay out
 
-Surfaces covered: homepage, `/everything`, `/writing-insights`, an English essay,
+Surfaces covered: homepage, `/everything`, an English essay,
 a Spanish twin, and a recipe. External URLs are never fetched — a release must
 not fail because someone else's site is down. Remote link health, if wanted, is a
 separate optional report.
@@ -276,13 +276,13 @@ notes/
 ├── scripts/             # generate-social-images.js, generate-favicons.js
 ├── src/
 │   ├── assets/images/   # Hero art — Astro generates responsive sizes from here
-│   ├── components/      # Astro components (shared + feature folders like brain-science/)
+│   ├── components/      # Astro components (shared + feature folders like post-toc/)
 │   ├── config/          # Comments, storage, assets
 │   ├── content/p/       # Essays and notes (Markdown / MDX)
 │   │   └── recipes/    # Household recipes → /p/recipes/<slug>
 │   ├── data/            # Categories, navigation, socialImageManifest.ts, socialImageFingerprints.json, …
 │   ├── layouts/
-│   ├── pages/           # Routes (category, tag, writing-insights, api, …)
+│   ├── pages/           # Routes (category, tag, guided-path, api, …)
 │   ├── styles/
 │   ├── utils/
 │   └── types/
@@ -324,7 +324,6 @@ Using Cursor AI in this repo: [docs/cursor-agent-skills.md](docs/cursor-agent-sk
 | [structured-data-optimization.md](docs/structured-data-optimization.md)             | Schema.org                                       |
 | [performance-optimization.md](docs/performance-optimization.md)                     | Performance notes                                |
 | [seo-routing-cleanup-2026-09.md](docs/seo-routing-cleanup-2026-09.md)               | SEO and routing cleanup task notes (Sep 2026)    |
-| [brain-science.md](docs/brain-science.md)                                           | Writing Insights audit and execution map         |
 | [article-reading-ui-audit-2026-09.md](docs/article-reading-ui-audit-2026-09.md)     | Article reading UI audit (Sep 2026)              |
 | [homepage-audit-owner-brief-2026-09.md](docs/homepage-audit-owner-brief-2026-09.md) | Homepage audit, owner-as-client brief (Sep 2026) |
 | [roadmap.md](docs/roadmap.md)                                                       | Ideas, product audit, technical roadmap          |

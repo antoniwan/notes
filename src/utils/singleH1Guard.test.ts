@@ -40,7 +40,7 @@ describe('single H1 guardrails', () => {
           if (!entry.name.endsWith('.astro')) continue;
           const src = readFileSync(join(root, rel), 'utf8');
           const count = countRawH1(src);
-          // PageHeader may reference h1 via dynamic tag; BrainScienceLayout has one intentional h1.
+          // PageHeader may reference h1 via dynamic tag.
           if (count > 1) offenders.push(`${rel}: ${count} <h1>`);
         }
       };

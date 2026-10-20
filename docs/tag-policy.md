@@ -1,6 +1,6 @@
 # Tag Policy (Reader-First)
 
-The site is called Notes. Every writing here is already a note. Tags are **not** a second name for the site, a label for the author, a knob for SEO, or fuel for Writing Insights.
+The site is called Notes. Every writing here is already a note. Tags are **not** a second name for the site, a label for the author, or a knob for SEO.
 
 Tags exist so a **reader** can browse, navigate, map ideas, and follow how ideas connect.
 
@@ -30,7 +30,7 @@ If (3) wins, drop the tag.
 - **Idea-mapping** — related tags should be ideas that actually share pages (co-occurrence), not a popularity contest.
 - **Interconnectivity** — the graph is thematic. Form is optional and rare.
 
-Writing Insights, Maslow buckets, and tag weights are **downstream**. They follow the preferred idea list. They do not get to demand extra tags on posts.
+Maslow buckets and tag weights are **downstream**. They follow the preferred idea list. They do not get to demand extra tags on posts.
 
 ## Canonical format
 

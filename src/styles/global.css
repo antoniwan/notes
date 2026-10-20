@@ -220,24 +220,6 @@
   & .search-result-item--keyboard-active:hover {
     background-color: color-mix(in srgb, rgb(var(--color-accent)) 26%, rgb(var(--color-bg)));
   }
-
-  & .brain-science-content table {
-    background: rgb(var(--color-bg-alt));
-    outline-color: rgb(var(--color-border) / 0.65);
-    box-shadow: inset 0 1px 0 0 rgb(255 255 255 / 0.04);
-  }
-
-  & .brain-science-content thead {
-    background: rgb(var(--color-surface-2));
-  }
-
-  & .brain-science-content tbody tr:nth-child(even) td {
-    background-color: rgb(var(--color-accent) / 0.06);
-  }
-
-  & .brain-science-content tbody tr:nth-child(even) th[scope='row'] {
-    background-color: rgb(var(--color-accent) / 0.06);
-  }
 }
 @utility search-dropdown {
   /* Simplified search dropdown */
@@ -280,37 +262,6 @@
   /* Text body muted utility - for excerpts, summaries, and descriptions */
   @apply text-[rgb(var(--color-text-muted))];
 }
-@utility brain-science-content {
-  /* Brain Science: lift data tables off near-black canvas (charts use component panels separately) */
-  & table {
-    background-color: rgb(var(--color-bg));
-    outline: 1px solid rgb(var(--color-border) / 0.55);
-    outline-offset: -1px;
-  }
-
-  & thead {
-    background-color: rgb(var(--color-bg-alt));
-  }
-
-  .dark & table {
-    background: rgb(var(--color-bg-alt));
-    outline-color: rgb(var(--color-border) / 0.65);
-    box-shadow: inset 0 1px 0 0 rgb(255 255 255 / 0.04);
-  }
-
-  .dark & thead {
-    background: rgb(var(--color-surface-2));
-  }
-
-  .dark & tbody tr:nth-child(even) td {
-    background-color: rgb(var(--color-accent) / 0.06);
-  }
-
-  .dark & tbody tr:nth-child(even) th[scope='row'] {
-    background-color: rgb(var(--color-accent) / 0.06);
-  }
-}
-
 /* Custom base styles */
 @layer base {
   :root {
@@ -371,6 +322,13 @@
     --animation-easing-in: cubic-bezier(0.4, 0, 1, 1);
     --animation-easing-out: cubic-bezier(0, 0, 0.2, 1);
     --animation-easing-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Layout widths. A layout sets the width and a component fills it; nothing else caps a block.
+       --measure is the one reading width: every paragraph, intro, and description stops here, and
+       the essay column is this wide, so a page's text shares one right edge. --measure-title is the
+       short line of a display heading. */
+    --measure: 45rem;
+    --measure-title: 18ch;
 
     /* Matches Header inner bar (h-16 / md:h-18). Sticky chrome uses this. */
     --site-header-height: 4rem;
@@ -1035,7 +993,7 @@
 }
 
 .post-prose {
-  max-width: 72ch !important;
+  max-width: var(--measure) !important;
   margin-left: auto !important;
   margin-right: auto !important;
   font-family: var(--font-serif);

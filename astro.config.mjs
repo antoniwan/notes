@@ -214,10 +214,6 @@ export default defineConfig({
               // Other vendor dependencies
               return 'vendor';
             }
-            // Split brain-science utilities into separate chunk
-            if (id.includes('brainScience') || id.includes('brain-science')) {
-              return 'brain-science';
-            }
           },
         },
       },

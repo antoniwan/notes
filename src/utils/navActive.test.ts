@@ -23,7 +23,6 @@ describe('desktop navigation destinations', () => {
       item.dropdown ? item.dropdown.items.map((child) => child.href) : [item.href],
     );
     expect(new Set(destinations).size).toBe(destinations.length);
-    expect(destinations).not.toContain('/writing-insights');
     expect(destinations).not.toContain('/tag-management');
   });
 });
@@ -48,11 +47,8 @@ describe('main navigation groups', () => {
 
   it.each([
     '/',
-    '/writing-insights',
-    '/writing-insights/data',
     '/tag-management',
     '/tag-management/audit',
-    '/brain-science',
     '/p/the-feeling-is-not-the-problem',
     '/category-administration',
     '/books',
@@ -89,7 +85,6 @@ describe('destination active states', () => {
   });
 
   it('keeps mobile site-tool links independent from Topics', () => {
-    expect(isNavDropdownItemActive('/writing-insights', '/writing-insights/data')).toBe(true);
     expect(isNavDropdownItemActive('/tag-management', '/tag-management/audit')).toBe(true);
     expect(isNavDropdownItemActive('/tag', '/tag-management')).toBe(false);
     expect(isNavDropdownItemActive('/tag', '/tag-management/audit')).toBe(false);

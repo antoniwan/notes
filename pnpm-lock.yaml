@@ -157,9 +157,6 @@ importers:
       reading-time:
         specifier: ^1.5.0
         version: 1.5.0
-      sentiment:
-        specifier: ^5.0.2
-        version: 5.0.2
       sharp:
         specifier: ^0.35.5
         version: 0.35.5(@types/node@24.19.1)
@@ -3087,10 +3084,6 @@ packages:
     resolution: {integrity: sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==}
     engines: {node: '>=10'}
     hasBin: true
-
-  sentiment@5.0.2:
-    resolution: {integrity: sha512-ZeC3y0JsOYTdwujt5uOd7ILJNilbgFzUtg/LEG4wUv43LayFNLZ28ec8+Su+h3saHlJmIwYxBzfDHHZuiMA15g==}
-    engines: {node: '>=8.0'}
 
   sharp@0.35.5:
     resolution: {integrity: sha512-Ywn4OnzGukp7CDMrp08RQ50YKmuwG47brZgIVPTvBaaAfQlRlygrRqSrxdCiL9M+LlzLBiJ68IR1QqvzHyjC7g==}
@@ -6798,8 +6791,6 @@ snapshots:
   sax@1.6.1: {}
 
   semver@7.8.5: {}
-
-  sentiment@5.0.2: {}
 
   sharp@0.35.5(@types/node@24.19.1):
     dependencies:

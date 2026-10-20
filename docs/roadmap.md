@@ -24,7 +24,7 @@ This section is a **checkpoint** so the roadmap does not read like the site is o
 - **Reading & discovery**: full-text **search** (build-time index), **categories**, **tags** as a reader idea map (index, per-tag pages; **tag management** is author-only). See [tag-policy.md](./tag-policy.md) and the 2026-09 [continuity report](./tag-system-cleanup-2026-09.md).
 - **Posts**: automatic **reading time**, **reading progress** (`localStorage`), markdown-derived **table of contents**, **EN/ES** linking via `translationGroup` (Spanish is off listings; English cards show an ES marker; toggle / search / SEO / URL remain the paths in), **related posts** at the bottom via overlapping tags (“Continue reading”).
 - **Home**: **highlight** masonry for published posts marked `featured: true`.
-- **Writing Insights** (`/writing-insights`): multi-page **stats and charts** (cadence, topics, lexicon buckets, etc.). `/brain-science` is the origin note; old subpaths 301. See [brain-science.md](./brain-science.md).
+- **Writing Insights**: removed on October 20, 2026 (Antonio: "it's not important for readers"). Its URLs 301 to the home page.
 - **Library**: dedicated **books** pages (see §4).
 - **Cookbook** (`/recipes`): household recipes as a plate grid plus A–Z contents. Under Resources, next to the book library.
 - **Feeds & APIs**: **RSS**, **JSON Feed**, **GET `/api/quotes`**.
@@ -362,8 +362,7 @@ _None queued._
 
 ## 9. Writing Insights (Brain Science) — 2026-08-29
 
-- **Status**: In progress (dashboards live at `/writing-insights`; origin note at `/brain-science`)
-- **Tracking:** [brain-science.md](./brain-science.md)
+- **Status**: Removed, October 20, 2026. Antonio: "destroy writing insights from the sites, it's not important for readers". The pages, components, data, cache, and the `sentiment` dependency are gone; `/writing-insights`, `/brain-science`, and their subpaths 301 to the home page. The history below is kept as a record.
 
 The old name overclaimed. The section is build-time counts and lexicon votes over published Markdown, not psychology. Public chrome says **Writing Insights**. Dashboards are at `/writing-insights`. `/brain-science` is a short first-person origin note. Old dashboard subpaths 301.
 

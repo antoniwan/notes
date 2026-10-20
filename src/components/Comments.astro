@@ -241,7 +241,7 @@ const emailUrl = `mailto:${email}?subject=${encodeURIComponent(copy.subject)}&bo
   }
   .comments-introduction p,
   .comments-noscript {
-    max-width: 62ch;
+    max-width: var(--measure);
     margin: 0;
     font-size: 1.125rem;
     line-height: 1.75;
@@ -260,7 +260,7 @@ const emailUrl = `mailto:${email}?subject=${encodeURIComponent(copy.subject)}&bo
     margin-bottom: 1rem;
   }
   .comments-feedback p {
-    max-width: 62ch;
+    max-width: var(--measure);
     margin: 0;
     color: rgb(var(--color-text-muted));
     font-size: 1rem;

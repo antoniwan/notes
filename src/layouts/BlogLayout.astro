@@ -317,7 +317,7 @@ const breadcrumbSchema = generateBreadcrumbSchema(
 
   .post-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: minmax(0, var(--measure));
     width: 100%;
   }
 
@@ -361,7 +361,6 @@ const breadcrumbSchema = generateBreadcrumbSchema(
 
   .post-description {
     margin: 1.25rem 0 0;
-    max-width: 42rem;
     color: rgb(var(--color-text-muted));
     font-size: clamp(1.0625rem, 0.95rem + 0.35vw, 1.25rem);
     line-height: 1.65;
@@ -431,7 +430,7 @@ const breadcrumbSchema = generateBreadcrumbSchema(
   }
 
   .post-article :global(.post-prose) {
-    max-width: 68ch !important;
+    max-width: none !important;
     margin-inline: 0 !important;
     overflow-x: auto !important;
     overflow-y: visible !important;
@@ -664,7 +663,7 @@ const breadcrumbSchema = generateBreadcrumbSchema(
     }
     .post-layout {
       max-width: none;
-      grid-template-columns: 14rem minmax(0, 1fr);
+      grid-template-columns: 14rem minmax(0, var(--measure));
       column-gap: clamp(3rem, 5vw, 4.5rem);
     }
     .post-heading {

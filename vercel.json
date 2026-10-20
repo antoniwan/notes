@@ -110,7 +110,7 @@
     },
     {
       "source": "/ciencia-cerebral/:path*",
-      "destination": "/writing-insights",
+      "destination": "/",
       "permanent": true
     },
     {

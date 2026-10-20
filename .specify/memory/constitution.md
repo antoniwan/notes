@@ -78,7 +78,7 @@ to spot without intentional checks.
   without explicit governance amendment.
 - **Component placement:** Feature-specific components MUST live under
   `src/components/<feature>/` and primarily serve pages under the matching route segment (e.g.
-  `src/pages/brain-science/`). Shared UI remains at `src/components/` root. This reduces coupling
+  `src/components/post-toc/` for posts). Shared UI remains at `src/components/` root. This reduces coupling
   and matches existing README conventions.
 - **Performance posture:** Avoid patterns that multiply expensive work per page at build or request
   time (e.g. redundant `getCollection` in global layouts, repeated filesystem walks in hot paths)

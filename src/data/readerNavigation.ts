@@ -19,7 +19,4 @@ export const contactLinks: ReaderLink[] = [
   { href: '/rss.xml', label: 'Follow via RSS' },
 ];
 
-export const siteToolLinks: ReaderLink[] = [
-  { href: '/writing-insights', label: 'Writing Insights' },
-  { href: '/tag-management', label: 'Tag Management' },
-];
+export const siteToolLinks: ReaderLink[] = [{ href: '/tag-management', label: 'Tag Management' }];

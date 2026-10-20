@@ -249,7 +249,7 @@ const archive = years.map((year) => ({
     }
 
     .archive-entry :global(article.postcard .postcard-description) {
-      max-width: 62ch;
+      max-width: var(--measure);
       -webkit-line-clamp: 4;
     }
 

@@ -4,28 +4,24 @@ import { getBuiltTagSlugs } from './sitemapTranslations';
 import { normalizeTagInput } from './tagVocabulary';
 
 /** Paths that should never appear in the sitemap or be indexed. */
-export const SEO_EXCLUDED_PATHS = [
-  '/tag-management',
-  '/sitemap.xml',
-  '/api',
-  '/brain-science',
-  '/brain-science/insights',
-  '/brain-science/cadence',
-  '/brain-science/evolution',
-  '/brain-science/topics',
-  '/brain-science/patterns',
-  '/brain-science/meta',
-] as const;
+export const SEO_EXCLUDED_PATHS = ['/tag-management', '/sitemap.xml', '/api'] as const;
 
-/** Old dashboard subpaths → Writing Insights. `/brain-science` itself stays as the origin note. */
-export const WRITING_INSIGHTS_REDIRECTS: Record<string, string> = {
-  '/brain-science/insights': '/writing-insights/insights',
-  '/brain-science/cadence': '/writing-insights/cadence',
-  '/brain-science/evolution': '/writing-insights/evolution',
-  '/brain-science/topics': '/writing-insights/topics',
-  '/brain-science/patterns': '/writing-insights/patterns',
-  '/brain-science/meta': '/writing-insights/meta',
-};
+/** Writing Insights and its origin note, Brain Science, were removed on October 20, 2026: they were
+ * not for readers. Every page they had goes home. */
+const RETIRED_INSIGHTS_PAGES = [
+  '',
+  '/insights',
+  '/cadence',
+  '/evolution',
+  '/topics',
+  '/patterns',
+  '/meta',
+];
+export const RETIRED_INSIGHTS_REDIRECTS: Record<string, string> = Object.fromEntries(
+  ['/writing-insights', '/brain-science'].flatMap((base) =>
+    RETIRED_INSIGHTS_PAGES.map((page) => [base + page, '/']),
+  ),
+);
 
 /** Soft-deleted or renamed posts → permanent replacements. */
 export const POST_REDIRECTS: Record<string, string> = {
@@ -73,7 +69,7 @@ export function buildSeoRedirects(): Record<string, string> {
     ...buildTagAliasRedirects(),
     ...POST_REDIRECTS,
     ...PAGE_REDIRECTS,
-    ...WRITING_INSIGHTS_REDIRECTS,
+    ...RETIRED_INSIGHTS_REDIRECTS,
     ...buildCookbookRedirects(),
   };
 }

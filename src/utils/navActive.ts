@@ -32,15 +32,7 @@ export function isNavDropdownItemActive(itemHref: string, pathname: string): boo
 
   if (h === '/recipes') return isRecipeUrl(p);
 
-  const sections = [
-    '/tag',
-    '/category',
-    '/books',
-    '/library/books',
-    '/writing-insights',
-    '/tag-management',
-    '/brain-science',
-  ];
+  const sections = ['/tag', '/category', '/books', '/library/books', '/tag-management'];
   if (sections.some((section) => isWithin(h, section))) return isWithin(p, h);
 
   return p === h;

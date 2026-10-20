@@ -37,9 +37,8 @@ const correctnessRules = {
   'no-sparse-arrays': 'error',
   'no-template-curly-in-string': 'error',
   // 'no-unmodified-loop-condition' is left off: it cannot see a binding mutated
-  // through a method, so `while (d <= end) { d.setMonth(...) }` in
-  // brainScience/data.ts reads as an infinite loop to it. Not in ESLint's
-  // recommended set for the same reason.
+  // through a method, so `while (d <= end) { d.setMonth(...) }` reads as an
+  // infinite loop to it. Not in ESLint's recommended set for the same reason.
   'no-unreachable': 'error',
   'no-unsafe-finally': 'error',
   'no-unsafe-negation': 'error',

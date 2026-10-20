@@ -160,7 +160,7 @@ import HeroImage from '../components/HeroImage.astro';
   }
 
   .about-description {
-    max-width: 69ch;
+    max-width: var(--measure);
     margin: 1.5rem 0 0;
     color: rgb(var(--color-text-muted));
     font-family: var(--font-sans);
@@ -175,7 +175,7 @@ import HeroImage from '../components/HeroImage.astro';
   }
 
   .about-story {
-    max-width: 62ch;
+    max-width: var(--measure);
     min-width: 0;
     font-family: var(--font-serif);
     font-size: var(--about-body-size);
@@ -297,7 +297,7 @@ import HeroImage from '../components/HeroImage.astro';
   }
 
   .about-section-title {
-    max-width: 18ch;
+    max-width: var(--measure-title);
     margin: 0;
     font-family: var(--font-heading);
     font-size: var(--about-heading-size);
@@ -308,7 +308,7 @@ import HeroImage from '../components/HeroImage.astro';
   }
 
   .about-topics__intro {
-    max-width: 43ch;
+    max-width: var(--measure);
     margin: 0;
     color: rgb(var(--color-text-muted));
     font-family: var(--font-sans);
@@ -334,7 +334,7 @@ import HeroImage from '../components/HeroImage.astro';
   }
 
   .about-closing p {
-    max-width: 58ch;
+    max-width: var(--measure);
     margin: 0;
     color: rgb(var(--color-text-muted));
     font-family: var(--font-sans);
@@ -350,20 +350,14 @@ import HeroImage from '../components/HeroImage.astro';
     outline-offset: 5px;
   }
 
+  /* One two-column grid for the whole page: the introduction, the topics head, and the closing
+     share their column edges. */
   @media (min-width: 960px) {
-    .about-introduction {
-      grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
-      column-gap: clamp(2.5rem, 5vw, 5rem);
-    }
-
-    .about-section-heading {
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      column-gap: 4rem;
-    }
-
+    .about-introduction,
+    .about-section-heading,
     .about-closing {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      column-gap: clamp(3rem, 7vw, 7rem);
+      column-gap: 4rem;
     }
   }
 

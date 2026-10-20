@@ -162,7 +162,8 @@ export default {
         '6xl': '72rem',
         '7xl': '80rem',
 
-        // Content widths
+        // Content widths. measure is the site's one reading width (--measure in global.css).
+        measure: 'var(--measure)',
         prose: '65ch',
         'prose-wide': '85ch',
 

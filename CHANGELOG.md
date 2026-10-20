@@ -9,6 +9,19 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.38.0] — 2026-10-20
+
+### Removed
+
+- Remove Writing Insights and its Brain Science origin note. Antonio: “destroy writing insights from the sites, it's not important for readers.” Its pages, charts, data, build cache, and the `sentiment` dependency are gone. `/writing-insights`, `/brain-science`, and every old subpath 301 to the home page; `/ciencia-cerebral` does too. The footer and site-tool links no longer name it.
+
+### Changed
+
+- Composition: the layout sets the width, and a block does not cap its own. One reading width, `--measure` (45rem), replaces about ten separate text caps (62ch, 69ch, 68ch, 58ch, 43ch, 42rem, 48rem, 72ch, and others). Every paragraph, intro, and description stops at it. Display headings share `--measure-title`. Tailwind exposes it as `max-w-measure`.
+- Essays read in one column, `--measure` wide, beside the contents rail. The title, description, hero, text, and afterword share one left edge and one right edge. Before this change they had four right edges.
+- About uses one two-column grid for the introduction, the topics head, and the closing, so their columns line up.
+- The Topics search fills its row instead of stopping at 44rem. Text inside a card fills the card.
+
 ## [6.37.1] — 2026-10-18
 
 ### Changed
