@@ -1,6 +1,6 @@
 # Frontmatter Specification
 
-This document defines the frontmatter format for all posts in Notes: essays and household recipes in `src/content/p/`.
+This document defines the frontmatter format for the essays and notes in `src/content/p/`. Recipes moved to cookbook.antoniwan.online; their source files under `src/content/p/recipes/` are kept as records and are not built.
 
 ## Reading Time System
 

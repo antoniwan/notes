@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { buildPreludeTemplateCandidates, selectPreludeTemplates } from './preludeTemplates';
+import {
+  buildPreludeTemplateCandidates,
+  formatPreludeConnectors,
+  selectPreludeTemplates,
+} from './preludeTemplates';
 
 const counts = (entries: Record<string, number>): Record<string, number> => entries;
 
@@ -139,5 +143,13 @@ describe('selectPreludeTemplates', () => {
       { excludeTags: ['memoir', 'reflection'] },
     );
     expect(selected.map((item) => item.id)).toEqual(['family']);
+  });
+});
+
+describe('formatPreludeConnectors', () => {
+  it('handles 1, 2, and many items', () => {
+    expect(formatPreludeConnectors(1)).toEqual([' ']);
+    expect(formatPreludeConnectors(2)).toEqual([' ', ' and ']);
+    expect(formatPreludeConnectors(3)).toEqual([' ', ', ', ', and ']);
   });
 });

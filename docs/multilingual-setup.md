@@ -8,7 +8,7 @@ The multilingual system is how field notes exist in English and Spanish:
 
 - Publish content in multiple languages (currently English and Spanish)
 - Link related translations via shared IDs
-- Keep Spanish out of English browse surfaces (Everything, category, tags, homepage, Guided Path, RSS/JSON feeds, Continue reading)
+- Keep Spanish out of English listing surfaces (Archive, Browse, category, tags, homepage, RSS/JSON feeds, Continue reading)
 - Let readers reach Spanish from the language toggle on the English note, from title search, from SEO, or via a direct URL
 - Display language toggles for easy switching between versions
 
@@ -72,18 +72,17 @@ English cards whose `translationGroup` has a public Spanish sibling show an **ES
 
 - **English posts** appear in:
   - Homepage highlight masonry (when `featured: true`)
-  - Category / tag / everything listings
-  - RSS/JSON feeds (essays only; household recipes stay on Cookbook)
-  - Guided Path (when eligible)
+  - Archive, Browse, and the category and tag pages
+  - RSS/JSON feeds (essays only)
   - Search
 - **Spanish posts** (`language: ["es"]`) are:
   - Accessible via direct URL
   - Discoverable via the language toggle when `translationGroup` is set
   - Discoverable via search (title, description, tags)
   - Indexable for SEO (sitemap, hreflang)
-  - Excluded from RSS/JSON feeds, `/everything`, category/tag indexes, homepage Highlights, Guided Path, and Continue reading (via `isListingEligiblePost` / `isFeedEligiblePost`)
+  - Excluded from RSS/JSON feeds, Archive, Browse, category and tag pages, homepage Highlights, and Continue reading (via `isListingEligiblePost` / `isFeedEligiblePost`)
 
-**Guided Path** always excludes Spanish posts. Read Spanish via the language toggle on the English note.
+Read Spanish via the language toggle on the English note.
 
 Spanish-only notes without an English pair stay indexable with `lang="es"` metadata. They do not appear as listing cards. Add a `translationGroup` only when a real pair exists.
 

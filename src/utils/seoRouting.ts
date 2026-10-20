@@ -4,7 +4,7 @@ import { getBuiltTagSlugs } from './sitemapTranslations';
 import { normalizeTagInput } from './tagVocabulary';
 
 /** Paths that should never appear in the sitemap or be indexed. */
-export const SEO_EXCLUDED_PATHS = ['/tag-management', '/sitemap.xml', '/api'] as const;
+export const SEO_EXCLUDED_PATHS = ['/sitemap.xml', '/api'] as const;
 
 /** Writing Insights and its origin note, Brain Science, were removed on October 20, 2026: they were
  * not for readers. Every page they had goes home. */
@@ -44,6 +44,8 @@ export const PAGE_REDIRECTS: Record<string, string> = {
   '/tag': '/browse',
   '/category': '/browse',
   '/guided-path': '/browse',
+  // Tag Management was an author overview of tag usage, not for readers.
+  '/tag-management': '/browse',
 };
 
 /**

@@ -209,3 +209,16 @@ export const selectPreludeTemplates = (
 
   return selected;
 };
+
+/** The words between a sentence's topic links: "A", "A and B", "A, B, and C". */
+export const formatPreludeConnectors = (itemsCount: number): string[] => {
+  if (itemsCount <= 0) return [];
+  if (itemsCount === 1) return [' '];
+  if (itemsCount === 2) return [' ', ' and '];
+
+  return Array.from({ length: itemsCount }, (_, index) => {
+    if (index === 0) return ' ';
+    if (index === itemsCount - 1) return ', and ';
+    return ', ';
+  });
+};

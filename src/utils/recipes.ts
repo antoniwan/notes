@@ -2,12 +2,15 @@ import type { CollectionEntry } from 'astro:content';
 import {
   isCollectionListed,
   isFeedEligiblePost,
-  isListingEligiblePost,
-  isPublicPost,
   type PublishFilterOptions,
 } from './publishFilters';
 
-/** Recipe posts live under `src/content/p/recipes/` and ship at `/p/recipes/<slug>`. */
+/**
+ * Recipe posts live under `src/content/p/recipes/`. They moved to cookbook.antoniwan.online: the
+ * content loader skips them and `/p/recipes/*` redirects there. These rules still keep one off
+ * every Notes listing if it ever reaches the build, and code that reads the folder from disk
+ * (the sitemap, the generated-content checks) skips it by id.
+ */
 export function isRecipeId(id: string): boolean {
   return id === 'recipes' || id.startsWith('recipes/');
 }
@@ -16,15 +19,7 @@ export function isRecipePost(post: Pick<CollectionEntry<'blog'>, 'id'>): boolean
   return isRecipeId(post.id);
 }
 
-/** English, public recipes for the cookbook index. */
-export function isCookbookListedPost(post: Pick<CollectionEntry<'blog'>, 'id' | 'data'>): boolean {
-  return isRecipePost(post) && isListingEligiblePost(post.data);
-}
-
-/**
- * Category and tag pages and counts: listed writings, not household recipes.
- * Recipes keep `category` and `tags` on the dish page; they list on Cookbook and Everything.
- */
+/** Browse, category and tag pages and counts: listed writings, not recipes. */
 export function isCategoryListedPost(post: Pick<CollectionEntry<'blog'>, 'id' | 'data'>): boolean {
   return isCollectionListed(post.data) && !isRecipePost(post);
 }
@@ -34,46 +29,10 @@ export function isTagListedPost(post: Pick<CollectionEntry<'blog'>, 'id' | 'data
   return isCategoryListedPost(post);
 }
 
-/**
- * RSS and JSON Feed: public English essays.
- * Household recipes stay on Cookbook; they are not a second stream in syndication.
- */
+/** RSS and JSON Feed: public English essays. */
 export function isFeedListedPost(
   post: Pick<CollectionEntry<'blog'>, 'id' | 'data'>,
   options: PublishFilterOptions = {},
 ): boolean {
   return isFeedEligiblePost(post.data, options) && !isRecipePost(post);
-}
-
-export function recipeContentsLetter(title: string): string {
-  const ch = title.trim().charAt(0).toUpperCase();
-  return /[A-Z]/.test(ch) ? ch : '#';
-}
-
-/**
- * Other public recipes, newest first.
- * Does not include cooking essays. Returns [] when this is the only recipe.
- */
-export function findMoreRecipes(
-  currentPost: CollectionEntry<'blog'>,
-  allPosts: CollectionEntry<'blog'>[],
-  maxCount: number = 4,
-): CollectionEntry<'blog'>[] {
-  if (maxCount <= 0) return [];
-
-  const currentLang = currentPost.data.language?.[0] ?? 'en';
-  const currentGroup = currentPost.data.translationGroup;
-
-  return allPosts
-    .filter((post) => {
-      if (post.id === currentPost.id) return false;
-      if (!isRecipePost(post)) return false;
-      if (!isPublicPost(post.data)) return false;
-      const lang = post.data.language?.[0] ?? 'en';
-      if (lang !== currentLang) return false;
-      if (currentGroup && post.data.translationGroup === currentGroup) return false;
-      return true;
-    })
-    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf() || a.id.localeCompare(b.id))
-    .slice(0, maxCount);
 }

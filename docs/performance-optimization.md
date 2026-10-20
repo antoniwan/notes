@@ -64,11 +64,11 @@ Before this, nothing on the site had a `srcset` at all, so a 390px phone
 downloaded the same bytes as a 1440px desktop. Images an arriving visitor
 actually loads, mobile:
 
-| Page          | before    | after  |
-| ------------- | --------- | ------ |
-| `/everything` | ~2,769 KB | 210 KB |
-| Home          | ~691 KB   | 198 KB |
-| An article    | ~347 KB   | 146 KB |
+| Page                           | before    | after  |
+| ------------------------------ | --------- | ------ |
+| `/everything` (now `/archive`) | ~2,769 KB | 210 KB |
+| Home                           | ~691 KB   | 198 KB |
+| An article                     | ~347 KB   | 146 KB |
 
 Two caveats worth keeping, because they were nearly reported wrong. A
 scroll-to-bottom measurement of `/everything` showed 29 MB before and 1.2 MB

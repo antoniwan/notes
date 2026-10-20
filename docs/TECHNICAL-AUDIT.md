@@ -74,16 +74,18 @@ Public field notes (essays, household recipes, book library) on a **hybrid Astro
 
 ## 4. Route inventory
 
-| Area         | Routes                                                    | Notes                                                             |
-| ------------ | --------------------------------------------------------- | ----------------------------------------------------------------- |
-| Reading      | `/`, `/p/[...slug]`, `/everything`, `/guided-path`        | Core reader surface                                               |
-| Taxonomy     | `/category`, `/category/[category]`, `/tag`, `/tag/[tag]` | Tag detail pages crawlable but **omitted from sitemap** by design |
-| Author tools | `/brain-science/*`, `/tag-management`                     | `noindex` + sitemap-excluded                                      |
-| Library      | `/library`, `/library/books`                              | Static data in `src/data/library.ts`                              |
-| Cookbook     | `/recipes`, `/p/recipes/[...slug]`                        | Household recipes; English listed; Spanish via dish toggle        |
-| Syndication  | `/rss.xml`, `/feed.json`, `@astrojs/sitemap`              | Feed eligibility ≠ listing eligibility                            |
-| API          | `/api/quotes`                                             | SSR JSON quotes endpoint                                          |
-| System       | `/404`, `/sitemap.xml` → 301 to sitemap-index             |                                                                   |
+Updated October 20, 2026 (v7.3.0). The rest of this audit describes the site as of its date.
+
+| Area        | Routes                                                                                        | Notes                                                          |
+| ----------- | --------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| Reading     | `/`, `/p/[...slug]`, `/archive`, `/browse`                                                    | Browse searches every word through `/browse-words.json`        |
+| Taxonomy    | `/category/[category]`, `/tag/[tag]`                                                          | Thin tag pages stay out of the sitemap by design               |
+| Syndication | `/rss.xml`, `/feed.json`, `/latest.json`, `/llms.txt`, `/p/[...slug].md`, `@astrojs/sitemap`  | Feed eligibility ≠ listing eligibility                         |
+| Search      | `/search-index.json`, `/browse-words.json`                                                    | Fetched on first search; the service worker caches both        |
+| API         | `/api/quotes`                                                                                 | SSR JSON quotes endpoint                                       |
+| System      | `/404`, `/sitemap.xml` → 301 to sitemap-index                                                 |                                                                |
+| Retired     | `/everything`, `/tag`, `/category`, `/guided-path`, `/tag-management`, `/search`              | 301 to Archive or Browse                                       |
+| Moved       | `/writing-insights/*`, `/brain-science/*`, `/library/*`, `/books`, `/recipes`, `/p/recipes/*` | 301 home, to antoniwan.online, or to cookbook.antoniwan.online |
 
 Redirects live in two places: Astro `buildSeoRedirects()` (`src/utils/seoRouting.ts`) and `vercel.json` (legacy hosts + Remark42 rewrite). Prefer adding post/tag redirects in `seoRouting.ts` going forward. Remark42 upstream: set `REMARK42_UPSTREAM_ORIGIN` and run `pnpm run sync-remark42-rewrite` (see `docs/comments-setup.md`).
 
