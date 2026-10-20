@@ -34,13 +34,15 @@ const topics = Object.entries(tagCounts)
 
 // Every essay ships as a hidden card. The search reads each card's title and description from the
 // card itself, and its topics from data-topics, so only body words need a fetch.
-const cards = posts.map((post) => ({
-  post,
-  date: post.data.pubDate.toISOString().slice(0, 10),
-  topicNames: canonicalizeTags(post.data.tags)
-    .map((tag) => getTagMetadata(tag).name)
-    .join('|'),
-}));
+const cards = posts.map((post) => {
+  const tags = canonicalizeTags(post.data.tags);
+  return {
+    post,
+    date: post.data.pubDate.toISOString().slice(0, 10),
+    topicNames: tags.map((tag) => getTagMetadata(tag).name).join('|'),
+    topicSlugs: tags.join('|'),
+  };
+});
 
 // Body words come from the word index, fetched on first intent. The URL carries the release
 // version, as the header's search index does, so a deploy busts the HTTP and service worker caches.
@@ -89,13 +91,17 @@ const wordsUrl = `/browse-words.json?v=${encodeURIComponent(pkg.version ?? 'dev'
       </style>
     </noscript>
     <script is:inline>
-      // Before first paint: a ?q= link shows its query in the box and keeps the sentences from
-      // flashing in before the results replace them. The module script clears the flag after it
-      // renders.
+      // Before first paint: a ?q= link shows its query in the box, and a ?q= or ?topic= link keeps
+      // the sentences from flashing in before the results replace them. The module script clears
+      // the flag after it renders.
       (function () {
-        const query = new URLSearchParams(location.search).get('q');
-        if (!query || query.trim().length < 2) return;
-        document.getElementById('browse-q').value = query;
+        const params = new URLSearchParams(location.search);
+        const query = params.get('q');
+        if (query && query.trim().length >= 2) {
+          document.getElementById('browse-q').value = query;
+        } else if (!params.get('topic')) {
+          return;
+        }
         document.documentElement.setAttribute('data-browse-q', '');
       })();
     </script>
@@ -105,8 +111,14 @@ const wordsUrl = `/browse-words.json?v=${encodeURIComponent(pkg.version ?? 'dev'
         <p class="browse-results__aside" hidden></p>
       </div>
       <ol class="browse-grid" role="list">
-        {cards.map(({ post, date, topicNames }) => (
-          <li data-slug={post.id} data-date={date} data-topics={topicNames} hidden>
+        {cards.map(({ post, date, topicNames, topicSlugs }) => (
+          <li
+            data-slug={post.id}
+            data-date={date}
+            data-topics={topicNames}
+            data-topic-slugs={topicSlugs}
+            hidden
+          >
             <PostCard post={post} headingAs="h3" idPrefix="browse" />
           </li>
         ))}
@@ -140,8 +152,10 @@ const wordsUrl = `/browse-words.json?v=${encodeURIComponent(pkg.version ?? 'dev'
   const TYPING_DELAY = 150;
   const SEARCHING = 'Searching the full text…';
   const UNLOADED = 'Titles, descriptions, and topics only: the full text didn’t load.';
-  // Every sentence word and every A–Z row runs a search instead of opening its topic page.
-  const WORD_LINKS = '[data-browse-ways] a, .topic-row';
+  // Every sentence word and every A–Z row shows its topic's writings here instead of opening the
+  // topic page. A topic is not a word search: "Poems" shows the poems, not every essay that says
+  // "poem".
+  const TOPIC_LINKS = '[data-browse-ways] a, .topic-row';
 
   /** A piece of this page's own markup, above. Missing is a bug in this file, not a state. */
   function part<T extends Element>(selector: string): T {
@@ -163,7 +177,13 @@ const wordsUrl = `/browse-words.json?v=${encodeURIComponent(pkg.version ?? 'dev'
   const rest = part<HTMLElement>('.browse-rest');
   const fold = part<HTMLDetailsElement>('#topics');
 
+  // Newest first, as the server wrote them; a topic lists its writings in this order.
   const items = [...grid.querySelectorAll<HTMLLIElement>(':scope > li')];
+  const topicSlugsOf = new Map(
+    items.map((item) => [item, (item.dataset.topicSlugs ?? '').split('|')]),
+  );
+  /** Topic slug to display name, from the links themselves. */
+  const topicNames = new Map<string, string>();
   const itemBySlug = new Map(items.map((item) => [item.dataset.slug ?? '', item]));
   const essays: BrowseEssay[] = items.map((item) => ({
     slug: item.dataset.slug ?? '',
@@ -171,7 +191,7 @@ const wordsUrl = `/browse-words.json?v=${encodeURIComponent(pkg.version ?? 'dev'
     title: item.querySelector('.postcard-title')?.textContent?.trim() ?? '',
     description: item.querySelector('.postcard-description')?.textContent?.trim() ?? '',
     topics: item.dataset.topics ? item.dataset.topics.split('|') : [],
-    // Browse searches every essay; nothing narrows it to one topic.
+    // The word search covers every essay. A topic is shown apart, from data-topic-slugs.
     topicSlugs: [],
   }));
 
@@ -180,6 +200,8 @@ const wordsUrl = `/browse-words.json?v=${encodeURIComponent(pkg.version ?? 'dev'
   // 'absent' when the page ships no word index: the search then reads titles, descriptions, and
   // topics only, and says nothing about the full text.
   let indexState: 'absent' | 'idle' | 'loading' | 'ready' | 'failed' = wordsUrl ? 'idle' : 'absent';
+  /** The topic being shown, when the box is empty. */
+  let topic = '';
   let ranked: HTMLLIElement[] = [];
   let shown = 0;
   let typingTimer: number | undefined;
@@ -240,13 +262,33 @@ const wordsUrl = `/browse-words.json?v=${encodeURIComponent(pkg.version ?? 'dev'
     if (remaining > 0) more.textContent = `Show ${Math.min(PAGE_SIZE, remaining)} more`;
   }
 
+  /** DOM order is rank order. A card already in its place is not moved, so it keeps its focus. */
+  function arrange() {
+    ranked.forEach((item, position) => {
+      const current = grid.children[position];
+      if (current !== item) grid.insertBefore(item, current ?? null);
+    });
+  }
+
   function render({ keepShown = false } = {}) {
     const query = input.value;
     const searching = queryWords(query).length > 0;
-    results.hidden = !searching;
-    clear.hidden = !searching;
+    const following = !searching && topicNames.has(topic);
+    results.hidden = !searching && !following;
+    clear.hidden = !searching && !following;
 
-    if (!searching) {
+    if (following) {
+      ranked = items.filter((item) => topicSlugsOf.get(item)?.includes(topic));
+      arrange();
+      reveal(keepShown ? Math.max(shown, PAGE_SIZE) : PAGE_SIZE);
+      const count = ranked.length;
+      const noun = count === 1 ? 'writing' : 'writings';
+      heading.textContent = `${count} ${noun} in ${topicNames.get(topic)}`;
+      aside.textContent = '';
+      aside.hidden = true;
+      rest.hidden = true;
+      status.textContent = heading.textContent;
+    } else if (!searching) {
       ranked = [];
       reveal(0);
       rest.hidden = false;
@@ -255,12 +297,7 @@ const wordsUrl = `/browse-words.json?v=${encodeURIComponent(pkg.version ?? 'dev'
       ensureIndex();
       const { named, mentioned } = searchEssays({ essays, index, query });
       ranked = [...named, ...mentioned].flatMap((slug) => itemBySlug.get(slug) ?? []);
-      // DOM order is rank order. A card already in its place is not moved, so a focused card keeps
-      // its focus when the mentions arrive.
-      ranked.forEach((item, position) => {
-        const current = grid.children[position];
-        if (current !== item) grid.insertBefore(item, current ?? null);
-      });
+      arrange();
       reveal(keepShown ? Math.max(shown, PAGE_SIZE) : PAGE_SIZE);
 
       const { title, note } = describe(named.length, mentioned.length, query);
@@ -274,24 +311,29 @@ const wordsUrl = `/browse-words.json?v=${encodeURIComponent(pkg.version ?? 'dev'
     document.documentElement.removeAttribute('data-browse-q');
   }
 
-  /** Typing edits the current history entry; only following a word adds one. */
+  /** Typing edits the current history entry; only following a topic adds one. */
   function writeQuery() {
     const url = new URL(window.location.href);
     const query = input.value.trim();
+    url.searchParams.delete('q');
+    url.searchParams.delete('topic');
     if (queryWords(query).length > 0) url.searchParams.set('q', query);
-    else url.searchParams.delete('q');
+    else if (topic) url.searchParams.set('topic', topic);
     window.history.replaceState(window.history.state, '', url);
   }
 
   function readQuery({ keepShown = false } = {}) {
     window.clearTimeout(typingTimer);
-    input.value = new URLSearchParams(window.location.search).get('q') ?? '';
+    const params = new URLSearchParams(window.location.search);
+    input.value = params.get('q') ?? '';
+    topic = params.get('topic') ?? '';
     render({ keepShown });
   }
 
   function clearSearch() {
     window.clearTimeout(typingTimer);
     input.value = '';
+    topic = '';
     render();
     writeQuery();
     input.focus();
@@ -305,28 +347,27 @@ const wordsUrl = `/browse-words.json?v=${encodeURIComponent(pkg.version ?? 'dev'
     document.getElementById(id)?.scrollIntoView({ behavior });
   }
 
-  const searchHref = (word: string) => `${window.location.pathname}?q=${encodeURIComponent(word)}`;
+  const topicHref = (slug: string) =>
+    `${window.location.pathname}?topic=${encodeURIComponent(slug)}`;
 
-  const wordLinkFrom = (target: EventTarget | null) =>
-    target instanceof Element ? target.closest<HTMLAnchorElement>(WORD_LINKS) : null;
+  const topicLinkFrom = (target: EventTarget | null) =>
+    target instanceof Element ? target.closest<HTMLAnchorElement>(TOPIC_LINKS) : null;
 
-  // A row names its topic in data-q; a sentence link, in its own text.
-  for (const link of page.querySelectorAll<HTMLAnchorElement>(WORD_LINKS)) {
-    const word = link.dataset.q ?? link.textContent?.trim() ?? '';
-    link.dataset.q = word;
-    // Middle-click, a new tab, and a copied link all give the results, not the topic page.
-    link.href = searchHref(word);
+  // Each link's server href is its topic page, /tag/<slug>. A row names its topic in data-q; a
+  // sentence link, in its own text.
+  for (const link of page.querySelectorAll<HTMLAnchorElement>(TOPIC_LINKS)) {
+    const slug = decodeURIComponent(link.pathname.replace(/^\/tag\//, '').replace(/\/$/, ''));
+    topicNames.set(slug, link.dataset.q ?? link.textContent?.trim() ?? slug);
+    link.dataset.topic = slug;
+    // Middle-click, a new tab, and a copied link all give the topic here, not the topic page.
+    link.href = topicHref(slug);
   }
 
   form.addEventListener('focusin', ensureIndex);
-  page.addEventListener('pointerdown', (event) => {
-    if (wordLinkFrom(event.target)) ensureIndex();
-  });
-  page.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter' && wordLinkFrom(event.target)) ensureIndex();
-  });
 
   input.addEventListener('input', () => {
+    // Typing is a word search, so it leaves any topic.
+    topic = '';
     window.clearTimeout(typingTimer);
     typingTimer = window.setTimeout(() => {
       render();
@@ -357,16 +398,17 @@ const wordsUrl = `/browse-words.json?v=${encodeURIComponent(pkg.version ?? 'dev'
   });
 
   page.addEventListener('click', (event) => {
-    const link = wordLinkFrom(event.target);
+    const link = topicLinkFrom(event.target);
     if (!link || event.defaultPrevented || event.button !== 0) return;
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
-    const word = link.dataset.q ?? '';
+    const slug = link.dataset.topic ?? '';
     // Back returns to this spot: the same sentence, or the same row in the open fold.
     window.history.replaceState({ ...window.history.state, browseScrollY: window.scrollY }, '');
-    window.history.pushState({}, '', searchHref(word));
+    window.history.pushState({}, '', topicHref(slug));
     window.clearTimeout(typingTimer);
-    input.value = word;
+    input.value = '';
+    topic = slug;
     render();
     window.scrollTo({ top: 0, behavior: 'instant' });
     heading.focus({ preventScroll: true });

@@ -90,21 +90,34 @@ describe('Browse search', () => {
     }
   });
 
-  test('a sentence word searches in place, and Back returns to the sentences', async () => {
+  test('a sentence word shows only its topic, and Back returns to the sentences', async () => {
     const { page, context, goto } = await openPage({ viewport: VIEWPORTS.mobile });
     try {
       await page.bringToFront();
       await goto('/browse');
 
-      const word = page.locator('.sentence-list a', { hasText: /^Fatherhood$/ }).first();
+      const word = page.locator('.sentence-list a', { hasText: /^Poems$/ }).first();
       await word.click();
 
-      await expect.poll(() => new URL(page.url()).search).toBe('?q=Fatherhood');
+      await expect.poll(() => new URL(page.url()).search).toBe('?topic=poems');
       await expect.poll(() => page.locator('#browse-results').isVisible()).toBe(true);
       await expect
         .poll(() => page.evaluate(() => document.activeElement?.id))
         .toBe('results-heading');
-      expect(await page.locator('.browse-grid li:not([hidden])').count()).toBeGreaterThan(0);
+      expect(await page.locator('#results-heading').innerText()).toMatch(
+        /^\d+ writings? in Poems$/,
+      );
+      // A topic is not a word search: every card shown is tagged with it, and none only
+      // mentions it.
+      const shown = page.locator('.browse-grid li:not([hidden])');
+      expect(await shown.count()).toBeGreaterThan(0);
+      for (const slugs of await shown.evaluateAll((items) =>
+        items.map((item) => (item as HTMLElement).dataset.topicSlugs ?? ''),
+      )) {
+        expect(slugs.split('|')).toContain('poems');
+      }
+      expect(await page.locator('.browse-results__aside').isHidden()).toBe(true);
+      expect(await page.locator('#browse-q').inputValue()).toBe('');
 
       await page.goBack();
       await expect.poll(() => new URL(page.url()).search).toBe('');
