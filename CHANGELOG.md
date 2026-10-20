@@ -15,8 +15,8 @@ Antonio: "this browse page is atrocious... remake it, from scratch". Browse link
 
 ### Changed
 
-- **Browse is one search over every word of the writing.** "Find a writing" matches titles first, then topics and descriptions, then lists the writings that only mention the words ("Mentioned in 9 more"). "dad" finds 10 writings and "money" 17; the header search found 1 and none. A plural also finds its singular: "Poems" finds "poem", and "Boundaries" finds "boundary". Results are photo cards, nine at a time.
-- The 14 "Ways into the writing" sentences sit under the box, word for word. Each word runs that search in place, and Back returns to the sentences where you left them. Without JavaScript there is no box, and each word opens its topic page as before.
+- **Browse is one search over every word of the writing.** "Find a writing" matches titles first, then topics and descriptions, then lists the writings that only mention the words ("Mentioned in 9 more"). "dad" finds 10 writings and "money" 17; the header search found 1 and none. A plural also finds its singular: "boundaries" finds "boundary". Results are photo cards, nine at a time.
+- The 14 "Ways into the writing" sentences sit under the box, word for word. Each word shows only the writings tagged with that topic, in place (`/browse?topic=poems`), and Back returns to the sentences where you left them. Without JavaScript there is no box, and each word opens its topic page as before.
 - Every topic, A to Z, is folded under the box. `/browse#topics` and `/browse#topics-<letter>` open it.
 - A search is a link: `/browse?q=<words>` opens with its results, with no flash of the sentences first.
 - Enter in the header search, with no result highlighted, opens Browse with that search. `/search` now goes to Browse instead of Archive.
@@ -28,7 +28,7 @@ Antonio: "this browse page is atrocious... remake it, from scratch". Browse link
 
 - `/browse-words.json`, the word index (about 67 KB compressed). Browse fetches it once, the first time a reader searches, and the service worker keeps it for offline searches.
 - Reader searches stay out of analytics: the page view drops `q` from the URL before it is sent.
-- Browser journeys for Browse (rest, `?q=`, a sentence word and Back, no match, header Enter) and an offline Browse search.
+- Browser journeys for Browse (rest, `?q=`, a topic word and Back, no match, header Enter) and an offline Browse search.
 
 ### Removed
 
