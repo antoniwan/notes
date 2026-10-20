@@ -292,7 +292,29 @@ const MASLOW_TAG_TO_KEY = new Map<string, MaslowKey>(
   ),
 );
 
+/**
+ * Names that title-casing gets wrong: acronyms, hyphenated compounds that keep
+ * their hyphen, and slugs that stand for an ampersand. Checked before the
+ * title-case fallback, for preferred and long-tail tags alike.
+ */
+export const TAG_DISPLAY_NAMES: Record<string, string> = {
+  ai: 'AI',
+  'ai-agents': 'AI Agents',
+  'art-expression': 'Art & Expression',
+  'co-parenting': 'Co-Parenting',
+  'decision-making': 'Decision-Making',
+  'self-awareness': 'Self-Awareness',
+  'self-care': 'Self-Care',
+  'self-control': 'Self-Control',
+  'self-improvement': 'Self-Improvement',
+  'self-reflection': 'Self-Reflection',
+  'systems-strategy': 'Systems & Strategy',
+};
+
 function displayNameForTag(tag: string): string {
+  if (Object.prototype.hasOwnProperty.call(TAG_DISPLAY_NAMES, tag)) {
+    return TAG_DISPLAY_NAMES[tag];
+  }
   return tag
     .split('-')
     .filter(Boolean)

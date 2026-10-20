@@ -1,4 +1,5 @@
-function normalizeCatalogText(value: string): string {
+/** Lowercase, accent-free, apostrophe-free text with every other non-letter run as one space. */
+export function normalizeCatalogText(value: string): string {
   return value
     .normalize('NFD')
     .replace(/\p{M}/gu, '')
@@ -6,11 +7,4 @@ function normalizeCatalogText(value: string): string {
     .replace(/['’ʼ]/gu, '')
     .replace(/[^\p{L}\p{N}]+/gu, ' ')
     .trim();
-}
-
-/** Match every search word, regardless of case, accents, punctuation, or word order. */
-export function matchesCatalogSearch(query: string, ...values: string[]): boolean {
-  const words = normalizeCatalogText(query).split(/\s+/).filter(Boolean);
-  const text = normalizeCatalogText(values.join(' '));
-  return words.every((word) => text.includes(word));
 }

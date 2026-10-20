@@ -1,0 +1,184 @@
+---
+import type { TagFamilyOrRest } from '../../data/tagFamilies';
+
+/**
+ * Every topic, A to Z: letter jumps, then one group per first letter in
+ * balanced columns that read down. Each row is a family-tinted chip with the
+ * name on the left and its count on the right.
+ */
+interface Topic {
+  slug: string;
+  /** Display name, from getTagMetadata. */
+  name: string;
+  count: number;
+  /** From getTagFamily; tints the row. */
+  family: TagFamilyOrRest;
+}
+
+interface Props {
+  /** Already sorted. Groups follow each slug's first letter. */
+  topics: Topic[];
+  /** The letter headings' level: 2 when no h2 comes before the index, else 3. */
+  headingLevel: 2 | 3;
+  /** Letter heading ids are `${idPrefix}-${letter}`. */
+  idPrefix?: string;
+}
+
+const { topics, headingLevel, idPrefix = 'topics' } = Astro.props;
+const LetterHeading = headingLevel === 2 ? 'h2' : 'h3';
+
+const byLetter = new Map<string, Topic[]>();
+for (const topic of topics) {
+  const letter = topic.slug.charAt(0).toUpperCase();
+  const group = byLetter.get(letter) ?? [];
+  group.push(topic);
+  byLetter.set(letter, group);
+}
+const groups = [...byLetter.entries()];
+---
+
+<div class="topic-index">
+  <nav class="topic-index__letters" aria-label="Jump to a letter">
+    {groups.map(([letter]) => (
+      <a href={`#${idPrefix}-${letter}`}>{letter}</a>
+    ))}
+  </nav>
+
+  <div class="topic-index__columns">
+    {groups.map(([letter, items]) => (
+      <div class="topic-index__group">
+        <LetterHeading class="topic-index__letter" id={`${idPrefix}-${letter}`} tabindex="-1">
+          {letter}
+        </LetterHeading>
+        <ul role="list">
+          {items.map(({ slug, name, count, family }) => (
+            <li>
+              <a
+                class="tag-chip tag-chip--subtle topic-row"
+                data-tag-family={family}
+                href={`/tag/${encodeURIComponent(slug)}`}
+                data-q={name}
+                aria-label={`${name}, ${count} ${count === 1 ? 'writing' : 'writings'}`}
+              >
+                <span class="topic-row__name">{name}</span>
+                <span class="topic-row__count" aria-hidden="true">
+                  {count}
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .topic-index__letters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0 0 2rem;
+  }
+  .topic-index__letters a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    border-radius: var(--radius-md);
+    background: rgb(var(--color-bg-alt));
+    color: rgb(var(--color-accent));
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: var(--leading-normal);
+    text-decoration: none;
+  }
+  .topic-index__letters a:hover {
+    background: rgb(var(--color-surface-2));
+  }
+  .topic-index__columns {
+    column-gap: var(--grid-gap);
+  }
+  .topic-index__group {
+    break-inside: avoid;
+    margin: 0 0 2rem;
+  }
+  .topic-index__letter {
+    margin: 0 0 1rem;
+    font-family: var(--font-heading);
+    font-size: clamp(1.25rem, 1.7vw, 1.6rem);
+    line-height: var(--leading-tight);
+    font-weight: 600;
+    scroll-margin-top: calc(var(--site-header-height) + 2rem);
+  }
+  .topic-index__letter:focus {
+    outline: none;
+    box-shadow: none;
+  }
+  .topic-index ul {
+    display: grid;
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  .topic-index li {
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+  }
+  /* Fill, border color, and hover come from .tag-chip and .tag-chip--subtle. Border width and style
+     are set apart because the shorthand would reset that border color. */
+  .topic-index .topic-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    width: 100%;
+    min-height: 2.75rem;
+    padding: 0.75rem 1rem;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: var(--radius-md);
+    color: rgb(var(--color-text));
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: var(--leading-normal);
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease;
+  }
+  .topic-row__name {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+  .topic-row__count {
+    flex: none;
+    color: rgb(var(--color-text-muted));
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: var(--leading-normal);
+    letter-spacing: 0;
+    font-variant-numeric: tabular-nums;
+  }
+  .topic-index__letters a:focus-visible,
+  .topic-index .topic-row:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 4px;
+  }
+  @media (min-width: 768px) {
+    .topic-index__columns {
+      column-count: 2;
+    }
+  }
+  @media (min-width: 1024px) {
+    .topic-index__columns {
+      column-count: 3;
+    }
+  }
+</style>

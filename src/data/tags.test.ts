@@ -6,6 +6,7 @@ import {
   getTagWeight,
   MASLOW_CATEGORIES,
   MASLOW_TAGS_BY_KEY,
+  TAG_DISPLAY_NAMES,
   TAG_METADATA,
   TAG_WEIGHT_OVERRIDES,
   TAG_WEIGHTS,
@@ -72,6 +73,25 @@ describe('tag analytics follow preferred vocabulary', () => {
     expect(getTagMetadata('healing').description).not.toMatch(/recovery/i);
     expect(getTagMetadata('crimson-desert').name).toBe('Crimson Desert');
     expect(getTagMetadata('crimson-desert').category).toBeUndefined();
+  });
+
+  it('uses a fixed display name before title-casing the slug', () => {
+    expect(getTagMetadata('ai').name).toBe('AI');
+    expect(getTagMetadata('ai-agents').name).toBe('AI Agents');
+    expect(getTagMetadata('art-expression').name).toBe('Art & Expression');
+    expect(getTagMetadata('co-parenting').name).toBe('Co-Parenting');
+    expect(getTagMetadata('self-reflection').name).toBe('Self-Reflection');
+    expect(getTagMetadata('systems-strategy').name).toBe('Systems & Strategy');
+    // Long-tail tags have no TAG_METADATA entry and still get the fixed name.
+    expect(TAG_METADATA['decision-making']).toBeUndefined();
+    expect(getTagMetadata('decision-making').name).toBe('Decision-Making');
+    expect(getTagMetadata('self-control').name).toBe('Self-Control');
+    for (const [tag, name] of Object.entries(TAG_DISPLAY_NAMES)) {
+      expect(getTagMetadata(tag).name, tag).toBe(name);
+    }
+    // Everything else is still title-cased from the slug.
+    expect(getTagMetadata('puerto-rico').name).toBe('Puerto Rico');
+    expect(getTagMetadata('crimson-desert').name).toBe('Crimson Desert');
   });
 
   it('keeps Maslow key lists aligned with exported categories', () => {

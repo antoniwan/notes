@@ -27,7 +27,7 @@ const PAGE_SEARCH_DATA = [
     type: 'page',
     id: 'browse',
     title: 'Browse',
-    description: 'Categories and topics, A to Z',
+    description: 'Search every writing, or follow a topic',
     url: '/browse',
   },
 ];

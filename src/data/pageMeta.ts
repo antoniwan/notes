@@ -17,7 +17,7 @@ export const PAGE_META = {
   '/library/books':
     'Searchable catalog of books in the Notes library, filterable by status, shelf, title, or author.',
   '/browse':
-    'Browse the writings by category, or by topic: an idea map of parenting, fatherhood, healing, Puerto Rico, and the rooms they connect.',
+    'Search every word of the writing on Notes, or follow a topic: an idea map of fatherhood, Puerto Rico, power, healing, and the rooms they connect.',
   '/404': 'This page does not exist. A random quote from the site archive is shown instead.',
 } as const;
 

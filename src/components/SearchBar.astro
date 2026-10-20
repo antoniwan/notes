@@ -681,8 +681,12 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
       ) as HTMLAnchorElement;
       if (highlightedItem && !this.results?.classList.contains('hidden')) {
         highlightedItem.click();
-      } else {
-        // If no item is highlighted, submit the search (you could implement a search page here)
+        return;
+      }
+      // No highlighted row: Browse searches every word of the writing.
+      const query = this.input?.value.trim() ?? '';
+      if (query.length >= 2) {
+        window.location.assign(`/browse?q=${encodeURIComponent(query)}`);
       }
     }
 

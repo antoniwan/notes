@@ -9,6 +9,32 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [7.2.0] — 2026-10-20
+
+Antonio: "this browse page is atrocious... remake it, from scratch". Browse linked to no writing at all: its first screen was ten category cards whose counts added up to 215 for 82 essays, and it ran 5,968px tall at 1440 wide (13,194px on a phone). It is now 1,518px and 2,234px. Two options were built as real pages and compared in screenshots, light and dark, laptop and phone. He chose B, words first.
+
+### Changed
+
+- **Browse is one search over every word of the writing.** "Find a writing" matches titles first, then topics and descriptions, then lists the writings that only mention the words ("Mentioned in 9 more"). "dad" finds 10 writings and "money" 17; the header search found 1 and none. Results are photo cards, nine at a time.
+- The 14 "Ways into the writing" sentences sit under the box, word for word. Each word runs that search in place, and Back returns to the sentences where you left them. Without JavaScript there is no box, and each word opens its topic page as before.
+- Every topic, A to Z, is folded under the box. `/browse#topics` and `/browse#topics-<letter>` open it.
+- A search is a link: `/browse?q=<words>` opens with its results, with no flash of the sentences first.
+- Enter in the header search, with no result highlighted, opens Browse with that search. `/search` now goes to Browse instead of Archive.
+- A category page's back link is "← Browse", and its breadcrumb data points to `/browse`.
+- Topic names read as written: AI, AI Agents, Art & Expression, Co-Parenting, Decision-Making, Self-Awareness (and the other Self- topics), Systems & Strategy.
+- In dark mode, the keyboard focus ring no longer draws a white band inside it, on every page.
+
+### Added
+
+- `/browse-words.json`, the word index (about 67 KB compressed). Browse fetches it once, the first time a reader searches, and the service worker keeps it for offline searches.
+- Reader searches stay out of analytics: the page view drops `q` from the URL before it is sent.
+- Browser journeys for Browse (rest, `?q=`, a sentence word and Back, no match, header Enter) and an offline Browse search.
+
+### Removed
+
+- The categories block on Browse, its "Fair warning" note (cut, by his choice), and `CategoryCard.astro`. Category pages stay, reached from a post's eyebrow and Home's Highlights.
+- The topic-name filter, its three clear buttons, and the labels that repeated it. `matchesCatalogSearch`, which only that filter used; `normalizeCatalogText` stays, with its own tests.
+
 ## [7.1.0] — 2026-10-20
 
 A post page said its category three times and its title twice. Antonio: "the Breadcrumb in Notes, is now completely redundant?" It was. Three reviewers (reader, SEO, design) argued it out against a demo of six options; he chose A+.
