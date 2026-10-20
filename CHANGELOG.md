@@ -9,6 +9,15 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.40.0] — 2026-10-20
+
+### Changed
+
+- Home sits on one grid. The opening, the Highlights head, the masonry, and the closing note share the masonry's twelve columns and one column gap (`--grid-gap`, 1.75rem). The intro takes five columns, and the two leads take seven, split four and three on the same columns. The head and the closing note are thirds, on the masonry's four-column lines. Before this change Home had four column systems (5fr/7fr, 1.25fr/1fr, 0.85fr/1.65fr, and 0.85fr/1fr/1fr) with three gaps.
+- Home's intro text fills its column. It no longer stops at 36ch, or 42ch on phones, so it ends where the headline and links do.
+- Fixed components name their width: `--size-aside` (the footer's line and a floated review verdict, both 14rem), `--size-drawer` (the mobile menu), `--size-toast` (the update notice, now 20rem instead of 300px), `--size-embed` (Threads' 658px), `--size-table-min`, and `--figure-sm`, `--figure-md`, and `--figure-lg` for inline figures. Tailwind exposes `max-w-aside`.
+- `lint:tokens` is strict: every count is zero, so any raw width, line height, off-grid spacing, Tailwind arbitrary value, or half step fails CI.
+
 ## [6.39.0] — 2026-10-20
 
 ### Added

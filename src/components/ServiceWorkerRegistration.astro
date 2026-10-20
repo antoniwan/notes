@@ -107,7 +107,7 @@ const swUrl = `/sw.js?v=${encodeURIComponent(pkg.version ?? 'dev')}`;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     z-index: 10000;
     font-family: system-ui, sans-serif;
-    max-width: 300px;
+    max-width: var(--size-toast);
     animation: slideIn 0.3s ease-out;
   }
 

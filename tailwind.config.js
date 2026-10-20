@@ -202,6 +202,7 @@ export default {
 
         // Content widths. measure is the site's one reading width (--measure in global.css).
         measure: 'var(--measure)',
+        aside: 'min(var(--size-aside), 100%)',
         prose: '65ch',
         'prose-wide': '85ch',
 

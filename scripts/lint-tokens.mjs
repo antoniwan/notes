@@ -10,7 +10,8 @@
  * - line-height    a bare ratio or length; use a named step, var(--leading-*)
  * - spacing        a margin, padding, or gap off the 4px grid (rem not a multiple of 0.25, px of 4
  *                  from 4 up, em from 0.25 up outside round())
- * - max-width      a width a block sets for itself; text uses var(--measure) or var(--measure-title)
+ * - max-width      a width a block sets for itself; text uses var(--measure) or var(--measure-title),
+ *                  a fixed component names a var(--size-*) or var(--figure-*) token
  * - tw-arbitrary   a Tailwind arbitrary width, line height, or spacing (max-w-[…], leading-[…], p-[…])
  * - tw-half-step   a Tailwind 6px or 10px half step (gap-1.5, px-2.5)
  * - invalid-round  two lengths inside one round(), which the browser drops silently
@@ -80,7 +81,7 @@ function badRound(value) {
 const SPACING =
   /^(margin|padding)(-(top|right|bottom|left|block|inline|block-start|block-end|inline-start|inline-end))?$|^(gap|row-gap|column-gap)$/;
 const WIDTH_OK =
-  /^(none|100%|\d+%|max-content|min-content|fit-content|var\(--measure(-title)?\)|unset|inherit|initial)$/;
+  /^(none|100%|\d+%|max-content|min-content|fit-content|unset|inherit|initial|var\(--(measure|size|figure)[a-z-]*\)|(min|max)\((var\(--(measure|size|figure)[a-z-]*\), 100%|100%, var\(--(measure|size|figure)[a-z-]*\))\))$/;
 
 function offGrid(value) {
   if (/round\(/.test(value)) return false;

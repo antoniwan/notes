@@ -333,6 +333,20 @@
        short line of a display heading. */
     --measure: 45rem;
     --measure-title: 18ch;
+    /* Home's editorial grid: twelve columns with one column gap. The opening, the Highlights head,
+       the masonry, and the closing note all sit on it, so every edge on Home is a grid line. */
+    --grid-gap: 1.75rem;
+
+    /* Component sizes: a component that is a fixed thing (a drawer, a toast, an embed, an aside, a
+       figure an author sized) names its width here instead of writing a number. */
+    --size-aside: 14rem; /* the footer's line under the logo, a floated review verdict */
+    --size-drawer: 28rem; /* the mobile menu */
+    --size-toast: 20rem; /* the update notice */
+    --size-embed: 658px; /* Threads' own embed width */
+    --size-table-min: 40rem; /* a wide table scrolls sideways past this */
+    --figure-sm: 18rem;
+    --figure-md: 36rem;
+    --figure-lg: 52rem;
 
     /* Matches Header inner bar (h-16 / md:h-18). Sticky chrome uses this. */
     --site-header-height: 4rem;
@@ -1069,7 +1083,7 @@
 
 /* Floated MDX verdict: allow fixed max width alongside .prose * { max-width: 100% } */
 .post-prose.prose aside.review-verdict-float.review-verdict-float {
-  max-width: min(13.5rem, 100%);
+  max-width: min(var(--size-aside), 100%);
   box-sizing: border-box;
 }
 
@@ -1086,7 +1100,7 @@
   flex-direction: column;
   align-items: stretch;
   width: max-content !important;
-  max-width: min(36rem, 100%) !important;
+  max-width: min(var(--figure-md), 100%) !important;
   margin-inline-start: 0 !important;
   margin-inline-end: auto !important;
   text-align: start !important;
@@ -1110,7 +1124,7 @@
 }
 
 .post-prose.prose figure.post-inline-figure.post-inline-figure--sm {
-  max-width: min(18rem, 100%) !important;
+  max-width: min(var(--figure-sm), 100%) !important;
 }
 
 .post-prose.prose figure.post-inline-figure.post-inline-figure--sm img {
@@ -1118,7 +1132,7 @@
 }
 
 .post-prose.prose figure.post-inline-figure.post-inline-figure--lg {
-  max-width: min(52rem, 100%) !important;
+  max-width: min(var(--figure-lg), 100%) !important;
 }
 
 .post-prose.prose figure.post-inline-figure.post-inline-figure--lg img {

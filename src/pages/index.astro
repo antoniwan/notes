@@ -334,7 +334,6 @@ const writingReasonsText = writingReasons
   }
 
   .home-intro__description {
-    max-width: 36ch;
     margin: 1.75rem 0 0;
     font-size: clamp(1rem, 1.35vw, 1.125rem);
     line-height: var(--leading-relaxed);
@@ -441,9 +440,10 @@ const writingReasonsText = writingReasons
   }
 
   @media (min-width: 768px) {
+    /* Thirds with the grid gap: the same lines as the Highlights masonry's four-column cards. */
     .home-why {
-      grid-template-columns: 0.85fr 1fr 1fr;
-      gap: 2.5rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      column-gap: var(--grid-gap);
       margin-top: 5rem;
       padding-top: 3rem;
     }
@@ -459,7 +459,6 @@ const writingReasonsText = writingReasons
     }
 
     .home-intro__description {
-      max-width: 42ch;
       margin-top: 1.25rem;
     }
   }
