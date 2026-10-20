@@ -5,59 +5,48 @@ import { generateBreadcrumbSchema } from './structuredData';
 import { breadcrumbItemsForSchema, buildPostBreadcrumbItems } from './postBreadcrumbs';
 
 describe('post breadcrumbs', () => {
-  it('keeps the JSON-LD trail identical to the visible crumbs', () => {
-    const currentUrl = generateCanonicalUrl('/p/recipes/sofrito-en');
-    const visual = buildPostBreadcrumbItems({
-      title: 'Sofrito',
-      isRecipe: true,
-      isSpanish: false,
-      primaryCategory: { id: 'diy-creation', name: 'DIY & Creation' },
-    });
-    const schemaItems = breadcrumbItemsForSchema(visual, currentUrl);
-    const schema = generateBreadcrumbSchema(schemaItems);
-
-    expect(visual).toEqual([
-      { label: 'Home', href: '/' },
-      { label: 'Cookbook', href: '/recipes' },
-      { label: 'Sofrito' },
-    ]);
-    expect(schemaItems.map((item) => item.name)).toEqual(visual.map((item) => item.label));
-    expect(schema?.itemListElement.map((item: { name: string }) => item.name)).toEqual(
-      visual.map((item) => item.label),
-    );
-    expect(schema?.itemListElement[0].item).toBe(generateCanonicalUrl('/'));
-    expect(schema?.itemListElement[1].item).toBe(generateCanonicalUrl('/recipes'));
-    expect(schema?.itemListElement[2].item).toBe(currentUrl);
-    expect(schema?.itemListElement[2].item.startsWith(SITE_URL)).toBe(true);
-  });
-
-  it('uses Spanish labels and Cookbook for a recipe twin', () => {
-    const visual = buildPostBreadcrumbItems({
-      title: 'Sofrito',
-      isRecipe: true,
-      isSpanish: true,
-      primaryCategory: { id: 'diy-creation', name: 'DIY & Creation' },
-    });
-    expect(visual.map((item) => item.label)).toEqual(['Inicio', 'Recetario', 'Sofrito']);
-  });
-
-  it('uses the category for a normal essay', () => {
+  it('builds Home, category, title and maps them to JSON-LD', () => {
     const currentUrl = generateCanonicalUrl('/p/good-sheep');
-    const visual = buildPostBreadcrumbItems({
+    const items = buildPostBreadcrumbItems({
       title: 'Good Sheep',
-      isRecipe: false,
       isSpanish: false,
       primaryCategory: { id: 'psychology', name: 'Psychology, Roughly' },
     });
-    const schema = generateBreadcrumbSchema(breadcrumbItemsForSchema(visual, currentUrl));
+    const schema = generateBreadcrumbSchema(breadcrumbItemsForSchema(items, currentUrl));
 
-    expect(visual).toEqual([
+    expect(items).toEqual([
       { label: 'Home', href: '/' },
       { label: 'Psychology, Roughly', href: '/category/psychology' },
       { label: 'Good Sheep' },
     ]);
     expect(schema?.itemListElement.map((item: { name: string }) => item.name)).toEqual(
-      visual.map((item) => item.label),
+      items.map((item) => item.label),
     );
+    expect(schema?.itemListElement[0].item).toBe(generateCanonicalUrl('/'));
+    expect(schema?.itemListElement[1].item).toBe(generateCanonicalUrl('/category/psychology'));
+    expect(schema?.itemListElement[2].item).toBe(currentUrl);
+    expect(schema?.itemListElement[2].item.startsWith(SITE_URL)).toBe(true);
+  });
+
+  it('uses Inicio for a Spanish post', () => {
+    const items = buildPostBreadcrumbItems({
+      title: 'Ovejas buenas',
+      isSpanish: true,
+      primaryCategory: { id: 'psychology', name: 'Psychology, Roughly' },
+    });
+    expect(items.map((item) => item.label)).toEqual([
+      'Inicio',
+      'Psychology, Roughly',
+      'Ovejas buenas',
+    ]);
+  });
+
+  it('goes straight from Home to the title when a post has no category', () => {
+    const items = buildPostBreadcrumbItems({
+      title: 'Loose Note',
+      isSpanish: false,
+      primaryCategory: null,
+    });
+    expect(items).toEqual([{ label: 'Home', href: '/' }, { label: 'Loose Note' }]);
   });
 });

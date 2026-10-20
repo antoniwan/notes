@@ -5,27 +5,27 @@ export type VisualBreadcrumbItem = {
   href?: string;
 };
 
-/** Same trail the visible `<Breadcrumbs>` component renders on a post. */
+/**
+ * The trail for a post's BreadcrumbList JSON-LD. The page shows no breadcrumb row:
+ * the logo is Home, the eyebrow is the category, the H1 is the title.
+ */
 export function buildPostBreadcrumbItems(input: {
   title: string;
-  isRecipe: boolean;
   isSpanish: boolean;
   primaryCategory: { id: string; name: string } | null;
 }): VisualBreadcrumbItem[] {
-  const { title, isRecipe, isSpanish, primaryCategory } = input;
+  const { title, isSpanish, primaryCategory } = input;
 
   return [
     { label: isSpanish ? 'Inicio' : 'Home', href: '/' },
-    ...(isRecipe
-      ? [{ label: isSpanish ? 'Recetario' : 'Cookbook', href: '/recipes' }]
-      : primaryCategory
-        ? [{ label: primaryCategory.name, href: `/category/${primaryCategory.id}` }]
-        : []),
+    ...(primaryCategory
+      ? [{ label: primaryCategory.name, href: `/category/${primaryCategory.id}` }]
+      : []),
     { label: title },
   ];
 }
 
-/** Map visual crumbs to schema.org items. The current page fills in the last URL. */
+/** Map crumbs to schema.org items. The current page fills in the last URL. */
 export function breadcrumbItemsForSchema(
   items: VisualBreadcrumbItem[],
   currentUrl: string,

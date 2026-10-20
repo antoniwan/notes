@@ -28,6 +28,8 @@ describe('main navigation groups', () => {
     ['/tag/parenting', 'Browse'],
     ['/category', 'Browse'],
     ['/category/parenting/', 'Browse'],
+    ['/p/the-feeling-is-not-the-problem', 'Browse'],
+    ['/p/the-feeling-is-not-the-problem/', 'Browse'],
     ['/about', 'About'],
   ])('marks exactly the intended group for %s', (pathname, label) => {
     expect(
@@ -41,14 +43,13 @@ describe('main navigation groups', () => {
     '/',
     '/tag-management',
     '/tag-management/audit',
-    '/p/the-feeling-is-not-the-problem',
     '/category-administration',
     '/books',
     '/library/books',
     '/recipes',
     '/bookshelf',
     '/library/bookshelf',
-    '/p/recipes-unrelated',
+    '/pages',
   ])('does not imply a reader group for %s', (pathname) => {
     expect(mainNavigation.some((item) => isMainNavItemActive(item.href, pathname))).toBe(false);
   });
@@ -59,19 +60,17 @@ describe('destination active states', () => {
     ['/category', '/category/parenting', 'location'],
     ['/tag', '/tag/fatherhood', 'location'],
     ['/books', '/books/a-picture-book', 'location'],
-    ['/recipes', '/p/recipes/sofrito-en', 'location'],
     ['/library/books', '/library/books/a-book', 'location'],
-    ['/recipes', '/recipes/', 'page'],
     ['/tag/', '/tag', 'page'],
     ['/archive', '/archive/', 'page'],
     ['/browse', '/browse', 'page'],
     ['/browse', '/tag/fatherhood', 'location'],
     ['/browse', '/category/parenting', 'location'],
+    ['/browse', '/p/the-feeling-is-not-the-problem', 'location'],
     ['/tag', '/category', undefined],
     ['/books', '/recipes', undefined],
     ['/books', '/library/books', undefined],
     ['/library/books', '/books', undefined],
-    ['/recipes', '/p/a-regular-essay', undefined],
     ['/category/art', '/category/artistic-expression', undefined],
     ['/archive', '/archive-else', undefined],
   ] as const)('gives %s on %s the correct current value', (href, pathname, current) => {

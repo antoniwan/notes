@@ -9,6 +9,21 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [7.1.0] — 2026-10-20
+
+A post page said its category three times and its title twice. Antonio: "the Breadcrumb in Notes, is now completely redundant?" It was. Three reviewers (reader, SEO, design) argued it out against a demo of six options; he chose A+.
+
+### Changed
+
+- On a post, the header marks **Browse** as where you are (`aria-current="location"`), as it already did on topic and category pages. That replaces the breadcrumb as the "you are here".
+- The top space of a post lives on its grid, so the sidebar and the category eyebrow start on one line (56px under the header at 1400px and up; 28px on a phone, as before).
+
+### Removed
+
+- The breadcrumb row above a post ("Home › Category › Title"). The logo is Home, the eyebrow is the category, the H1 is the title. It was already hidden on phones, and on wide screens it started over the sidebar instead of at the title's edge.
+- `Breadcrumbs.astro`, which only that row used. The post's `BreadcrumbList` JSON-LD is unchanged.
+- The recipe branches of the post trail, the eyebrow, and nav matching (Cookbook, "From the cookbook", `/recipes`). Recipe posts are not in the build, and `/recipes` redirects to the cookbook site.
+
 ## [7.0.0] — 2026-10-20
 
 Notes is for reading, and for searching for something to read. Antonio: "Everything is really the Archive, Guided Path can go away I think, Browse then becomes much more relevant, this version of Notes is all about reading things and searching things to read, that's it."

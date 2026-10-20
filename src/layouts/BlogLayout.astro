@@ -8,7 +8,6 @@ import MoreRecipes from '../components/MoreRecipes.astro';
 import Container from '../components/Container.astro';
 import DefaultImage from '../components/DefaultImage.astro';
 import HeroImage from '../components/HeroImage.astro';
-import Breadcrumbs from '../components/Breadcrumbs.astro';
 import SocialShare from '../components/SocialShare.astro';
 import LanguageToggle from '../components/LanguageToggle.astro';
 import PostTocModal from '../components/post-toc/PostTocModal.astro';
@@ -85,7 +84,6 @@ const primaryCategory = categoryItems[0] || null;
 const isSpanish = contentLanguage.contentLanguage === 'es';
 const breadcrumbItems = buildPostBreadcrumbItems({
   title,
-  isRecipe,
   isSpanish,
   primaryCategory,
 });
@@ -131,16 +129,12 @@ const breadcrumbSchema = generateBreadcrumbSchema(
   hreflangAlternates={hreflangAlternates}
 >
   <Container class="post-shell">
-    <div class="post-breadcrumbs">
-      <Breadcrumbs items={breadcrumbItems} class="text-sm" />
-    </div>
-
     <div class="post-layout">
       <header class="post-heading" id="post-heading">
         {primaryCategory && (
-          <a class="post-eyebrow" href={isRecipe ? '/recipes' : `/category/${primaryCategory.id}`}>
+          <a class="post-eyebrow" href={`/category/${primaryCategory.id}`}>
             <span aria-hidden="true" class="post-eyebrow__mark" />
-            {isRecipe ? (isSpanish ? 'Del recetario' : 'From the cookbook') : primaryCategory.name}
+            {primaryCategory.name}
           </a>
         )}
         <h1 id="post-title" class="post-title">
@@ -311,19 +305,17 @@ const breadcrumbSchema = generateBreadcrumbSchema(
     padding-bottom: 3rem;
   }
 
-  .post-breadcrumbs {
-    margin: 1.5rem 0 0;
-  }
-
+  /* The top space lives on the grid, so the sidebar and the heading start on one line. */
   .post-layout {
     display: grid;
     grid-template-columns: minmax(0, var(--measure));
     width: 100%;
+    padding-top: round(nearest, clamp(1.75rem, 4vw, 3.5rem), 4px);
   }
 
   .post-heading {
     min-width: 0;
-    padding-block: round(nearest, clamp(1.75rem, 4vw, 3.5rem), 4px) 2rem;
+    padding-bottom: 2rem;
   }
 
   .post-eyebrow {
@@ -640,15 +632,6 @@ const breadcrumbSchema = generateBreadcrumbSchema(
     padding-top: 1.25rem;
   }
 
-  @media (max-width: 599px) {
-    .post-breadcrumbs {
-      display: none;
-    }
-    .post-heading {
-      padding-top: 1.75rem;
-    }
-  }
-
   @media (min-width: 768px) {
     .post-hero__frame {
       aspect-ratio: 16 / 9;
@@ -657,10 +640,6 @@ const breadcrumbSchema = generateBreadcrumbSchema(
   }
 
   @media (min-width: 1200px) {
-    .post-breadcrumbs {
-      max-width: none;
-      margin-top: 2rem;
-    }
     .post-layout {
       max-width: none;
       grid-template-columns: 14rem minmax(0, var(--measure));
@@ -669,7 +648,6 @@ const breadcrumbSchema = generateBreadcrumbSchema(
     .post-heading {
       grid-column: 2;
       grid-row: 1;
-      padding-top: 2.25rem;
     }
     .post-sidebar {
       display: block;
@@ -678,7 +656,6 @@ const breadcrumbSchema = generateBreadcrumbSchema(
       position: sticky;
       align-self: start;
       top: calc(var(--site-header-height) + 1.5rem);
-      margin-top: 2.5rem;
       max-height: calc(100dvh - var(--site-header-height) - 3rem);
       overflow-y: auto;
       overscroll-behavior: contain;

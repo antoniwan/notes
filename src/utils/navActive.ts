@@ -8,17 +8,13 @@ function isWithin(pathname: string, root: string): boolean {
   return pathname === root || pathname.startsWith(`${root}/`);
 }
 
-function isRecipeUrl(pathname: string): boolean {
-  return isWithin(pathname, '/recipes') || isWithin(pathname, '/p/recipes');
-}
-
 /** Top-level groups are distinct from their individual destination links. */
 export function isMainNavItemActive(href: string, pathname: string): boolean {
   const p = normalizePathname(pathname);
   const h = normalizePathname(href);
 
   if (h === '/books') {
-    return isWithin(p, '/books') || isWithin(p, '/library/books') || isRecipeUrl(p);
+    return isWithin(p, '/books') || isWithin(p, '/library/books');
   }
 
   return isNavDropdownItemActive(h, p);
@@ -29,10 +25,10 @@ export function isNavDropdownItemActive(itemHref: string, pathname: string): boo
   const p = normalizePathname(pathname);
   const h = normalizePathname(itemHref);
 
-  if (h === '/recipes') return isRecipeUrl(p);
-  // Browse is the section for every topic and category page.
+  // Browse is the section for every topic, category, and post page.
+  // A post has no breadcrumb row, so this is its "you are here".
   if (h === '/browse')
-    return isWithin(p, '/browse') || isWithin(p, '/tag') || isWithin(p, '/category');
+    return ['/browse', '/tag', '/category', '/p'].some((root) => isWithin(p, root));
 
   const sections = ['/tag', '/category', '/books', '/library/books', '/tag-management'];
   if (sections.some((section) => isWithin(h, section))) return isWithin(p, h);
