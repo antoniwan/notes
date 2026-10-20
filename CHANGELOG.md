@@ -9,6 +9,32 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [7.3.0] — 2026-10-20
+
+A cleanup release. Antonio: "remove the tag-management sections from this site, do several consolidation passes, coherency, dead code, check obvious things, update things, then update readmes and docs". About 3,000 lines lighter; nothing a reader uses changes.
+
+### Removed
+
+- **Tag Management** (`/tag-management`), the author-only overview of tag usage, and the mobile menu's "Site tools" group, which only linked to it. `/tag-management` 301s to Browse.
+- **Recipe rendering that could no longer run.** Recipes left the build at the October 17 Cookbook cutover, so the "More recipes" block, the Recipe / Receta card label, Recipe structured data, the ingredient and step parser (`recipeSections.ts`), and the recipe frontmatter fields went with them. The recipe source files stay as records, and the listing rules still keep any recipe off Notes.
+- **Leftovers of features that moved off Notes:** the authored-books card, its data, and its two cover images; the 900-line reading-library list (`src/data/library.ts`); the topic chip component Tag Management used; the page descriptions for `/books` and `/library/books`; the nav rule for `/books`.
+- The old memoirs / poems / reflections prelude (`contentFormTags.ts`). Its one live helper, `formatPreludeConnectors`, moved into `preludeTemplates.ts` beside the sentences it joins.
+- Styles nothing used: the mobile menu's old category list and Site tools, About's Cookbook block, and Home's Books block.
+- `getSortedCategories`, the `date-fns` dependency (nothing imported it), the `sentiment` type declarations, and build config for both (`vendor-date` / `vendor-nlp` chunks, dev pre-bundling), plus an `esbuild.logOverride` that Vite 8 no longer reads.
+
+### Changed
+
+- The mobile menu marks where you are with the same rule as the header.
+- Dependencies, within their ranges: Astro 7.4.1, @astrojs/mdx 8.1.0, @astrojs/vercel 11.0.16, @astrojs/markdown-remark 7.3.3, Vitest 5.0.5, ESLint 10.13.0, Prettier 3.9.10, js-yaml 5.5.0, and Playwright 1.64.1 (still pinned exactly). TypeScript stays on 6; 7 is a major.
+
+### Docs
+
+- README, the route map in `docs/TECHNICAL-AUDIT.md`, roadmap, multilingual setup, structured data, frontmatter spec, tag policy, and one agent rule now describe the site as it is: Archive and Browse, no Guided Path, Everything, Tag Management, or recipe pages.
+
+### Known
+
+- `pnpm audit` reports one moderate advisory in `postcss-selector-parser`, reached only through `@tailwindcss/typography`, which pins 6.0.10 exactly. The fix is 7.x. It parses this site's own CSS at build time, so it stays until the plugin moves.
+
 ## [7.2.0] — 2026-10-20
 
 Antonio: "this browse page is atrocious... remake it, from scratch". Browse linked to no writing at all: its first screen was ten category cards whose counts added up to 215 for 82 essays, and it ran 5,968px tall at 1440 wide (13,194px on a phone). It is now 1,518px and 2,234px. Two options were built as real pages and compared in screenshots, light and dark, laptop and phone. He chose B, words first.

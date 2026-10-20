@@ -74,6 +74,7 @@ describe('POST_REDIRECTS + PAGE_REDIRECTS + buildSeoRedirects', () => {
     expect(redirects['/tag']).toBe('/browse');
     expect(redirects['/category']).toBe('/browse');
     expect(redirects['/guided-path']).toBe('/browse');
+    expect(redirects['/tag-management']).toBe('/browse');
   });
 
   it('sends every retired Writing Insights and Brain Science page home', () => {
@@ -107,8 +108,7 @@ describe('shouldIncludeInSitemap', () => {
     );
   });
 
-  it('excludes only author tools and API hub paths', () => {
-    expect(shouldIncludeInSitemap('https://notes.antoniwan.online/tag-management')).toBe(false);
+  it('excludes the API hub', () => {
     expect(shouldIncludeInSitemap('https://notes.antoniwan.online/api')).toBe(false);
   });
 });

@@ -8,14 +8,13 @@ import {
 } from './navActive';
 
 describe('desktop navigation destinations', () => {
-  it('is three plain links, reading first, and keeps site tools out', () => {
+  it('is three plain links, reading first', () => {
     expect(mainNavigation.map((item) => item.label)).toEqual(['Browse', 'Archive', 'About']);
     expect(mainNavigation.every((item) => !item.dropdown)).toBe(true);
     const destinations = mainNavigation.flatMap((item) =>
       item.dropdown ? item.dropdown.items.map((child) => child.href) : [item.href],
     );
     expect(new Set(destinations).size).toBe(destinations.length);
-    expect(destinations).not.toContain('/tag-management');
   });
 });
 
@@ -59,8 +58,6 @@ describe('destination active states', () => {
   it.each([
     ['/category', '/category/parenting', 'location'],
     ['/tag', '/tag/fatherhood', 'location'],
-    ['/books', '/books/a-picture-book', 'location'],
-    ['/library/books', '/library/books/a-book', 'location'],
     ['/tag/', '/tag', 'page'],
     ['/archive', '/archive/', 'page'],
     ['/browse', '/browse', 'page'],
@@ -68,9 +65,6 @@ describe('destination active states', () => {
     ['/browse', '/category/parenting', 'location'],
     ['/browse', '/p/the-feeling-is-not-the-problem', 'location'],
     ['/tag', '/category', undefined],
-    ['/books', '/recipes', undefined],
-    ['/books', '/library/books', undefined],
-    ['/library/books', '/books', undefined],
     ['/category/art', '/category/artistic-expression', undefined],
     ['/archive', '/archive-else', undefined],
   ] as const)('gives %s on %s the correct current value', (href, pathname, current) => {
@@ -78,8 +72,7 @@ describe('destination active states', () => {
     expect(isNavDropdownItemActive(href, pathname)).toBe(current !== undefined);
   });
 
-  it('keeps mobile site-tool links independent from Topics', () => {
-    expect(isNavDropdownItemActive('/tag-management', '/tag-management/audit')).toBe(true);
+  it('does not let a section claim a path that only starts with its name', () => {
     expect(isNavDropdownItemActive('/tag', '/tag-management')).toBe(false);
     expect(isNavDropdownItemActive('/tag', '/tag-management/audit')).toBe(false);
   });

@@ -43,16 +43,12 @@ Requires `pubDate`. Emits **BlogPosting**:
 
 It does not set `isAccessibleForFree`, `hasPart`, or tag lists as `articleSection`.
 
-## Recipe pages (`type: 'recipe'`)
-
-Emits **Recipe** instead of BlogPosting. Ingredients and steps come from `recipeSections.ts` (the `## Ingredients` / `## Method` blocks) unless frontmatter already set them. Empty timing and ingredient keys are omitted.
-
 ## Collection pages (`category` / `tag`)
 
 Only when `posts` is non-empty. Emits **CollectionPage** with:
 
 - `mainEntity` → `ItemList` of compact `BlogPosting` items
-- Nested `breadcrumb`: Home → Categories|Tags index → current page
+- Nested `breadcrumb`: Home → Browse → current page
 - Category pages with `identifier`: `about` Thing (the identifier string, not the display name)
 - Tag pages with `identifier`: `keywords: identifier`
 - Collection `inLanguage` is hardcoded `en-US`

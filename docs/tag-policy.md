@@ -69,7 +69,6 @@ Maslow buckets and tag weights are **downstream**. They follow the preferred ide
   - Aliases: `TAG_ALIAS_MAP`
   - Stripped slugs: `STRIPPED_TAGS`
   - Chip families (display only): `src/data/tagFamilies.ts`
-- Author analytics: `/tag-management` (noindex; not in public nav). Do not retag posts to improve that page.
 - Before merging broad tag changes:
   1. Run `pnpm run check`
   2. Run `pnpm run build`

@@ -203,14 +203,6 @@ export default defineConfig({
               if (id.includes('astro') || id.includes('@astrojs')) {
                 return 'vendor-astro';
               }
-              // Date utilities
-              if (id.includes('date-fns')) {
-                return 'vendor-date';
-              }
-              // NLP and analysis libraries
-              if (id.includes('sentiment')) {
-                return 'vendor-nlp';
-              }
               // Other vendor dependencies
               return 'vendor';
             }
@@ -222,14 +214,9 @@ export default defineConfig({
       devSourcemap: true, // Enable sourcemaps in dev for better HMR
     },
     optimizeDeps: {
-      include: ['@astrojs/mdx', 'date-fns', 'reading-time', 'sentiment'],
+      include: ['@astrojs/mdx', 'reading-time'],
       // Exclude heavy dependencies from pre-bundling in dev
       exclude: [],
-    },
-    // Improve dev server performance
-    esbuild: {
-      // Only process changed files in dev
-      logOverride: { 'this-is-undefined-in-esm': 'silent' },
     },
     // Reduce dev server overhead
     ssr: {

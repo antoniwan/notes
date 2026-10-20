@@ -20,7 +20,7 @@ export function isMainNavItemActive(href: string, pathname: string): boolean {
   return isNavDropdownItemActive(h, p);
 }
 
-/** Destination matching is shared with mobile navigation, including its site tools. */
+/** Destination matching is shared with mobile navigation. */
 export function isNavDropdownItemActive(itemHref: string, pathname: string): boolean {
   const p = normalizePathname(pathname);
   const h = normalizePathname(itemHref);
@@ -30,7 +30,7 @@ export function isNavDropdownItemActive(itemHref: string, pathname: string): boo
   if (h === '/browse')
     return ['/browse', '/tag', '/category', '/p'].some((root) => isWithin(p, root));
 
-  const sections = ['/tag', '/category', '/books', '/library/books', '/tag-management'];
+  const sections = ['/tag', '/category'];
   if (sections.some((section) => isWithin(h, section))) return isWithin(p, h);
 
   return p === h;

@@ -201,61 +201,6 @@ const writingReasonsText = writingReasons
 </script>
 
 <style>
-  .home-books {
-    margin-top: round(nearest, clamp(3.5rem, 7vw, 6rem), 4px);
-  }
-  .home-books__heading {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: end;
-    gap: 1rem 2rem;
-    margin-bottom: 2rem;
-  }
-  .home-books h2 {
-    margin: 0;
-    font-family: var(--font-heading);
-    font-size: clamp(1.6rem, 2.4vw, 2rem);
-    font-weight: 600;
-    line-height: var(--leading-tight);
-    letter-spacing: -0.025em;
-  }
-  .home-books__heading p {
-    max-width: var(--measure);
-    margin: 1rem 0 0;
-    color: rgb(var(--color-text-muted));
-    font-size: 1.125rem;
-    line-height: var(--leading-relaxed);
-  }
-  .home-books__heading a {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    min-height: 2.75rem;
-    color: rgb(var(--color-accent));
-    font-size: 1rem;
-    font-weight: 600;
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
-  }
-  .home-books__heading a:hover {
-    color: rgb(var(--color-accent-hover));
-  }
-  .home-books__heading a:focus-visible {
-    outline: 2px solid rgb(var(--color-accent));
-    outline-offset: 4px;
-  }
-  .home-books__grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 2rem 3rem;
-  }
-  @media (min-width: 1024px) {
-    .home-books__grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-
   .home-intro {
     min-width: 0;
     padding: 0.75rem 0 1rem;

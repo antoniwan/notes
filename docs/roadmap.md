@@ -21,7 +21,7 @@ Field notes. Essays, household recipes, and the books on the shelf. The surface 
 
 This section is a **checkpoint** so the roadmap does not read like the site is only the items below in sections 1–6. For full detail, see [README.md](../README.md).
 
-- **Reading & discovery**: full-text **search** (build-time index), **categories**, **tags** as a reader idea map (index, per-tag pages; **tag management** is author-only). See [tag-policy.md](./tag-policy.md) and the 2026-09 [continuity report](./tag-system-cleanup-2026-09.md).
+- **Reading & discovery**: full-text **search** (build-time index), **categories**, **tags** as a reader idea map (every topic on Browse, per-tag pages). See [tag-policy.md](./tag-policy.md) and the 2026-09 [continuity report](./tag-system-cleanup-2026-09.md).
 - **Posts**: automatic **reading time**, **reading progress** (`localStorage`), markdown-derived **table of contents**, **EN/ES** linking via `translationGroup` (Spanish is off listings; English cards show an ES marker; toggle / search / SEO / URL remain the paths in), **related posts** at the bottom via overlapping tags (“Continue reading”).
 - **Home**: **highlight** masonry for published posts marked `featured: true`.
 - **Writing Insights**: removed on October 20, 2026 (Antonio: "it's not important for readers"). Its URLs 301 to the home page.
@@ -284,16 +284,16 @@ Notes is a **public practice OS**, not a growth blog. The job is to make lived a
 ### Ranked bets
 
 1. **Compress + return** — Formalized TLDRs on cornerstone notes + calm email opt-in (§1, §3). Highest reader leverage per hour.
-2. **Sharpen discovery** — Tag diet (broad tags covering ~half the corpus), named series beyond seasons, curated “Cornerstone Five” for Guided Path / Start Here.
+2. **Sharpen discovery** — Tag diet (broad tags covering ~half the corpus), named series beyond seasons, curated “Cornerstone Five” as a place to start.
 3. **Lineage layer** — Structured sources frontmatter (§5) bridged to Library (§4) so influences are navigable.
 
 ### New ideas from this audit (not yet detailed above)
 
-- **Named series** (fatherhood, Vastitas, Puerto Rico, leadership) — chronological Guided Path is not the same as thematic arcs.
+- **Named series** (fatherhood, Vastitas, Puerto Rico, leadership) — a topic is not the same as a thematic arc.
 - **Vastitas Omniparens hub** — treat the new EN/ES pair as a worldview entry point (related notes, glossary, library links), not a one-off.
 - **Spanish as first-class lane** — pairing quality stays high; Spanish originals stay reachable via toggle, search, SEO, and URL. A Spanish-only site is §10, not a listing change on this site.
 - **Feed or fold thin categories** — write into Culture / Learning / DIY or merge them so taxonomy matches corpus.
-- **Cross-post reading trails** — browser-local progress beyond Guided Path (series / cornerstone trails, still no accounts).
+- **Cross-post reading trails** — browser-local progress beyond read status (series / cornerstone trails, still no accounts).
 - **Comments as rare invitation** — Remark42 stays optional; maybe only on cornerstones.
 - **Browser push** — stay parked; conflicts with the site’s digital-wellness stance. Email first.
 
@@ -396,7 +396,6 @@ Spanish readers should not have to hunt through an English archive. A dedicated 
 ### Open questions
 
 - Path prefix vs subdomain vs a separate “In Spanish” index on this origin.
-- Whether recipes, Guided Path, and Writing Insights get Spanish chrome or stay English.
 - How comments and read-state cookies behave across the two surfaces.
 
 ### Non-goals (for now)

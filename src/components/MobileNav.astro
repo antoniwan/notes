@@ -1,7 +1,7 @@
 ---
 import Logo from './Logo.astro';
-import { readingLinks, contactLinks, siteToolLinks } from '../data/readerNavigation';
-import { isNavDropdownItemActive } from '../utils/navActive';
+import { readingLinks, contactLinks } from '../data/readerNavigation';
+import { getNavLinkCurrent } from '../utils/navActive';
 
 const pathname = Astro.url.pathname;
 const entryDescriptions: Record<string, string> = {
@@ -13,15 +13,7 @@ const primaryContactLinks = contactLinks.filter(
   (link) => link.href === '/about' || link.href.startsWith('mailto:'),
 );
 const secondaryContactLinks = contactLinks.filter((link) => !primaryContactLinks.includes(link));
-function currentLocation(href: string) {
-  if (pathname === href) return 'page';
-  if (
-    (href === '/browse' && (pathname.startsWith('/category/') || pathname.startsWith('/tag/'))) ||
-    isNavDropdownItemActive(href, pathname)
-  )
-    return 'location';
-  return undefined;
-}
+const currentLocation = (href: string) => getNavLinkCurrent(href, pathname);
 ---
 
 <button
@@ -134,38 +126,6 @@ function currentLocation(href: string) {
           ))}
         </ul>
       </section>
-
-      <details
-        class="mobile-menu__group mobile-menu__group--secondary mobile-menu__tools"
-        data-active={
-          siteToolLinks.some((link) => isNavDropdownItemActive(link.href, pathname))
-            ? 'true'
-            : undefined
-        }
-      >
-        <summary class="mobile-menu__primary">
-          Site tools
-          <svg
-            class="mobile-menu__chevron"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.7"
-            aria-hidden="true"
-          >
-            <path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        </summary>
-        <div class="mobile-menu__children">
-          {siteToolLinks.map((link) => (
-            <a href={link.href} aria-current={currentLocation(link.href)}>
-              {link.label}
-            </a>
-          ))}
-        </div>
-      </details>
     </nav>
   </div>
 </dialog>
@@ -247,17 +207,6 @@ function currentLocation(href: string) {
     });
     desktop.addEventListener('change', () => {
       if (desktop.matches) closeMenu('desktop-layout', false);
-    });
-
-    // Native dialog contains focus; native details omit collapsed links from the Tab sequence.
-    menu.querySelectorAll<HTMLDetailsElement>('details').forEach((group) => {
-      group.addEventListener('toggle', () => {
-        if (group.open) {
-          menu.querySelectorAll<HTMLDetailsElement>('details').forEach((other) => {
-            if (other !== group) other.open = false;
-          });
-        }
-      });
     });
 
     menu.querySelectorAll<HTMLAnchorElement>('a[href]').forEach((link) => {
@@ -387,8 +336,7 @@ function currentLocation(href: string) {
     display: grid;
     gap: 0.5rem;
   }
-  .mobile-menu__entry,
-  .mobile-menu__collection {
+  .mobile-menu__entry {
     display: flex;
     min-height: 44px;
     flex-direction: column;
@@ -418,9 +366,6 @@ function currentLocation(href: string) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 0.5rem;
   }
-  .mobile-menu__browse {
-    margin-top: 0.75rem;
-  }
   .mobile-menu__primary {
     display: flex;
     min-height: 44px;
@@ -436,80 +381,16 @@ function currentLocation(href: string) {
     text-decoration: none;
     cursor: pointer;
   }
-  .mobile-menu__collections {
-    padding: 1rem 0.5rem 0.5rem;
-    border-radius: var(--radius-lg);
-    background: rgb(var(--color-accent) / 0.06);
-  }
-  .mobile-menu__collection {
-    gap: 0.25rem;
-    padding-block: 0.75rem;
-  }
-  .mobile-menu__collection-title {
-    font-size: 1rem;
-    font-weight: 600;
-    line-height: var(--leading-normal);
-  }
-  .mobile-menu__secondary-links .mobile-menu__primary,
-  .mobile-menu__group--secondary > summary {
+  .mobile-menu__secondary-links .mobile-menu__primary {
     color: rgb(var(--color-text-muted));
     font-weight: 400;
   }
-  .mobile-menu__tools {
-    margin-top: -0.5rem;
-  }
-  summary {
-    list-style: none;
-  }
-  summary::-webkit-details-marker {
-    display: none;
-  }
-  .mobile-menu__chevron {
-    flex-shrink: 0;
-    color: rgb(var(--color-text-muted));
-    transition: transform 160ms ease;
-  }
-  .mobile-menu__group[open] .mobile-menu__chevron {
-    transform: rotate(180deg);
-  }
-  .mobile-menu__children {
-    display: grid;
-    padding: 0.25rem 0.25rem 0.75rem 0.75rem;
-  }
-  .mobile-menu__children a {
-    display: flex;
-    min-height: 44px;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 0.75rem 0.75rem;
-    border-radius: var(--radius-md);
-    color: rgb(var(--color-text-muted));
-    font-size: 1rem;
-    line-height: var(--leading-normal);
-    text-decoration: none;
-  }
-  .mobile-menu__count {
-    font-size: 0.875rem;
-    font-variant-numeric: tabular-nums;
-  }
-  .mobile-menu
-    :is(
-      .mobile-menu__primary,
-      .mobile-menu__entry,
-      .mobile-menu__collection,
-      .mobile-menu__children a
-    ):is(:hover, [aria-current]),
-  .mobile-menu__group[data-active] > summary {
+  .mobile-menu :is(.mobile-menu__primary, .mobile-menu__entry):is(:hover, [aria-current]) {
     color: rgb(var(--color-accent));
     background: rgb(var(--color-accent) / 0.07);
   }
-  .mobile-menu__collections .mobile-menu__collection[aria-current] {
-    background: rgb(var(--color-bg) / 0.8);
-  }
   a:focus-visible,
-  button:focus-visible,
-  summary:focus-visible {
+  button:focus-visible {
     outline: 2px solid rgb(var(--color-accent));
     outline-offset: 2px;
   }
@@ -525,9 +406,6 @@ function currentLocation(href: string) {
     }
   }
   @media (prefers-reduced-motion: reduce) {
-    .mobile-menu__chevron {
-      transition: none;
-    }
     .mobile-menu::backdrop {
       backdrop-filter: none;
     }

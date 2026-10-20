@@ -24,7 +24,7 @@ Inline diagram authoring: [Mermaid flowcharts and state diagrams](docs/mermaid-d
 
 - **Writing** — essays and notes in `src/content/p/` (Markdown and MDX)
 - **Cookbook** — family recipes live at `cookbook.antoniwan.online`. `/recipes` and the old recipe pages redirect there, including Spanish and Markdown URLs
-- **Authored books** — `/books` redirects to Projects on `antoniwan.online`. The existing bilingual readers remain available.
+- **Authored books** — `/books` redirects to Projects on `antoniwan.online`.
 - **Reading library** — `/library` and `/library/books` redirect to `antoniwan.online/collections/books`.
 - **Paths in** — **Browse** (`/browse`: one search over every word of the English writing; the "Ways into the writing" sentences, whose topic words show that topic's writings in place; and every topic A–Z, folded under the box), **Archive** (`/archive`: every note, newest first), About, and header search. A topic or category page (`/tag/<topic>`, `/category/<id>`) links back to Browse. `/everything`, `/tag`, `/category`, and the removed `/guided-path` 301 to Archive or Browse; `/search` goes to Browse. Enter in the header search opens Browse with that search.
 - **Home** — a writing hero with two ways in (Browse, then Archive), Highlights for featured English posts, and a short purpose note.
@@ -37,10 +37,10 @@ English is the listing language. Spanish is a twin: language toggle, title searc
 ## How it is built
 
 - **10 categories** (for example On Parenting; Psychology, Roughly; On Politics; Metaspace; DIY & Creation) — essays only. Household recipes live on Cookbook. See `src/data/categories.ts`
-- **Tags** — idea map for readers (essays only); **Tag management** is an author overview (noindex). Tags describe content, not the site name
+- **Tags** — idea map for readers (essays only). Tags describe content, not the site name
 - **Dark and light theme**, including system preference
 - **Responsive layout** for small and large screens
-- **Reading time** — remark plugin (`minutesRead`). Hidden on recipe cards and dish pages
+- **Reading time** — remark plugin (`minutesRead`)
 - **Reading progress** on posts — `localStorage` only, no server
 - **Table of contents on long posts** — floating contents control
 - **Schema.org JSON-LD** where it fits the page type
@@ -288,10 +288,10 @@ notes/
 │   ├── components/      # Astro components (shared + feature folders like post-toc/)
 │   ├── config/          # Comments, storage, assets
 │   ├── content/p/       # Essays and notes (Markdown / MDX)
-│   │   └── recipes/    # Household recipes → /p/recipes/<slug>
+│   │   └── recipes/    # Recipe source files, kept as records; not built
 │   ├── data/            # Categories, navigation, socialImageManifest.ts, socialImageFingerprints.json, …
 │   ├── layouts/
-│   ├── pages/           # Routes (category, tag, guided-path, api, …)
+│   ├── pages/           # Routes (browse, archive, category, tag, p, api, …)
 │   ├── styles/
 │   ├── utils/
 │   └── types/
@@ -305,10 +305,10 @@ Feature-specific components live under `src/components/<feature>/` when they are
 
 One collection (`blog` in `src/content.config.ts`). Folder is the discriminator, not a `kind` field:
 
-| Path                              | Public URL          | Listing                                                                                    |
-| --------------------------------- | ------------------- | ------------------------------------------------------------------------------------------ |
-| `src/content/p/<slug>.md`         | `/p/<slug>`         | Archive, Browse, categories, tags, home Highlights, feeds                                  |
-| `src/content/p/recipes/<slug>.md` | `/p/recipes/<slug>` | Cookbook (`/recipes`). Cards say Recipe / Receta. More Recipes instead of Continue reading |
+| Path                              | Public URL            | Listing                                                                                         |
+| --------------------------------- | --------------------- | ----------------------------------------------------------------------------------------------- |
+| `src/content/p/<slug>.md`         | `/p/<slug>`           | Archive, Browse, categories, tags, home Highlights, feeds                                       |
+| `src/content/p/recipes/<slug>.md` | redirects to Cookbook | Not built: the loader skips `recipes/**`, and each URL redirects to `cookbook.antoniwan.online` |
 
 Frontmatter: [docs/frontmatter-spec.md](docs/frontmatter-spec.md).
 Tags: [docs/tag-policy.md](docs/tag-policy.md) and [docs/tag-vocabulary.md](docs/tag-vocabulary.md).

@@ -43,4 +43,4 @@ These should be reviewed for convergence where semantics overlap:
 ## Notes
 
 - Keep niche tags if reused in 3+ posts; otherwise treat as candidates for aliasing or retirement.
-- Content-form tags in the `/tag` prelude are still controlled by `src/utils/tag/contentFormTags.ts`.
+- The "Ways into the writing" sentences on Browse and topic pages come from `src/utils/tag/preludeTemplates.ts`.

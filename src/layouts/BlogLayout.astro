@@ -4,7 +4,6 @@ import PostDetails from '../components/post-reading/PostDetails.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Comments from '../components/Comments.astro';
 import RelatedPosts from '../components/RelatedPosts.astro';
-import MoreRecipes from '../components/MoreRecipes.astro';
 import Container from '../components/Container.astro';
 import DefaultImage from '../components/DefaultImage.astro';
 import HeroImage from '../components/HeroImage.astro';
@@ -13,9 +12,7 @@ import LanguageToggle from '../components/LanguageToggle.astro';
 import PostTocModal from '../components/post-toc/PostTocModal.astro';
 import { generateCanonicalUrl, normalizeSeoPath } from '../utils/seo';
 import { resolveContentLanguage } from '../utils/publishFilters';
-import { isRecipePost } from '../utils/recipes';
 import { localizeReadingTime } from '../utils/readingTime';
-import { recipeFromMarkdown } from '../utils/recipeSections';
 import { generateBreadcrumbSchema } from '../utils/structuredData';
 import { breadcrumbItemsForSchema, buildPostBreadcrumbItems } from '../utils/postBreadcrumbs';
 import type { BlogLayoutProps } from '../types/layout';
@@ -51,9 +48,6 @@ const contentLanguage = resolveContentLanguage(postLanguage);
 const imageCredit = rest.currentPost?.data.imageCredit;
 const imageCreditUrl = rest.currentPost?.data.imageCreditUrl;
 const imageLicense = rest.currentPost?.data.imageLicense;
-const isRecipe = rest.currentPost ? isRecipePost(rest.currentPost) : false;
-const recipeData = isRecipe ? rest.currentPost?.data : undefined;
-const recipeText = isRecipe ? recipeFromMarkdown(rest.currentPost?.body) : undefined;
 const estimatedWordCount = (() => {
   if (!minutesRead || typeof minutesRead !== 'string') return undefined;
   const match = minutesRead.match(/(\d+)/);
@@ -106,15 +100,7 @@ const breadcrumbSchema = generateBreadcrumbSchema(
   author={author}
   keywords={keywords}
   type="article"
-  structuredDataType={isRecipe ? 'recipe' : 'article'}
-  recipeIngredient={recipeData?.recipeIngredient ?? recipeText?.ingredients}
-  recipeInstructions={recipeData?.recipeInstructions ?? recipeText?.instructions}
-  prepTime={recipeData?.prepTime}
-  cookTime={recipeData?.cookTime}
-  totalTime={recipeData?.totalTime}
-  recipeYield={recipeData?.recipeYield}
-  recipeCategory={recipeData?.recipeCategory}
-  recipeCuisine={recipeData?.recipeCuisine}
+  structuredDataType="article"
   tableOfContents={tableOfContents}
   hasComments={showComments}
   featured={rest.featured}
@@ -149,7 +135,7 @@ const breadcrumbSchema = generateBreadcrumbSchema(
               language={contentLanguage.contentLanguage}
             />
           )}
-          {minutesRead && !isRecipe && (
+          {minutesRead && (
             <span class="post-duration">
               {localizeReadingTime(minutesRead, contentLanguage.contentLanguage)}
             </span>
@@ -289,11 +275,7 @@ const breadcrumbSchema = generateBreadcrumbSchema(
             </a>
           )}
         </div>
-        {rest.currentPost && isRecipePost(rest.currentPost) ? (
-          <MoreRecipes currentPost={rest.currentPost} allPosts={rest.allPosts} />
-        ) : (
-          <RelatedPosts currentPost={rest.currentPost} allPosts={rest.allPosts} />
-        )}
+        <RelatedPosts currentPost={rest.currentPost} allPosts={rest.allPosts} />
         {showComments && <Comments language={contentLanguage.contentLanguage} />}
       </div>
     </div>
