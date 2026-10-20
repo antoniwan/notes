@@ -50,6 +50,9 @@ jobs:
       - name: Run ESLint
         run: pnpm run lint
 
+      - name: Check design tokens (rhythm and widths)
+        run: pnpm run lint:tokens
+
       - name: Audit content frontmatter
         run: pnpm run audit-frontmatter
 

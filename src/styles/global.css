@@ -242,14 +242,14 @@
   @apply min-w-0 flex-1 pt-1;
 }
 @utility search-result-title {
-  @apply mt-0 mb-1.5 text-sm leading-tight font-semibold text-[rgb(var(--color-text))];
+  @apply mt-0 mb-2 text-sm leading-tight font-semibold text-[rgb(var(--color-text))];
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
 @utility search-result-description {
-  @apply text-body-muted mt-0 mb-2.5 text-xs leading-relaxed;
+  @apply text-body-muted mt-0 mb-3 text-xs leading-relaxed;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -307,12 +307,15 @@
     --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.05), 0 4px 12px rgb(0 0 0 / 0.04);
     --shadow-lift: 0 4px 16px rgb(0 0 0 / 0.08);
 
-    /* Line heights */
-    --leading-tight: 1.25;
-    --leading-snug: 1.375;
-    --leading-normal: 1.5;
-    --leading-relaxed: 1.75;
-    --leading-loose: 2;
+    /* Line heights: six named steps. Each is a ratio of the element's own font size, rounded to the
+       nearest 4px, so every line of text, at any size, sits on one 4px rhythm. A stylesheet names a
+       step (line-height: var(--leading-relaxed)); it never writes a bare ratio. */
+    --leading-none: round(nearest, 1em, 4px);
+    --leading-tight: round(nearest, 1.25em, 4px);
+    --leading-snug: round(nearest, 1.375em, 4px);
+    --leading-normal: round(nearest, 1.5em, 4px);
+    --leading-relaxed: round(nearest, 1.75em, 4px);
+    --leading-loose: round(nearest, 2em, 4px);
 
     /* Animation */
     --animation-duration-fast: 150ms;
@@ -394,42 +397,42 @@
 
   h1 {
     @apply text-3xl font-black tracking-tight md:text-4xl lg:text-5xl;
-    line-height: 1.15;
+    line-height: var(--leading-tight);
     margin-top: 2rem;
     margin-bottom: 1.25rem;
   }
 
   h2 {
     @apply text-2xl font-bold tracking-tight md:text-3xl;
-    line-height: 1.22;
+    line-height: var(--leading-tight);
     margin-top: 2.25rem;
     margin-bottom: 1rem;
   }
 
   h3 {
     @apply text-xl font-semibold tracking-tight md:text-2xl;
-    line-height: 1.3;
-    margin-top: 1.8rem;
-    margin-bottom: 0.85rem;
+    line-height: var(--leading-tight);
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
   }
 
   h4 {
     @apply text-lg font-semibold tracking-tight md:text-xl;
-    line-height: 1.35;
-    margin-top: 1.4rem;
-    margin-bottom: 0.65rem;
+    line-height: var(--leading-snug);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
   }
 
   h5 {
     @apply text-lg font-semibold md:text-xl;
-    line-height: 1.6;
+    line-height: var(--leading-normal);
     margin-top: 1.25rem;
     margin-bottom: 0.5rem;
   }
 
   h6 {
     @apply text-base font-semibold md:text-lg;
-    line-height: 1.6;
+    line-height: var(--leading-normal);
     margin-top: 1rem;
     margin-bottom: 0.5rem;
   }
@@ -437,7 +440,7 @@
   /* Global paragraph styles - optimized for readability */
   p {
     @apply text-[rgb(var(--color-text))];
-    line-height: 1.72;
+    line-height: var(--leading-relaxed);
     margin-top: 1.25rem;
     margin-bottom: 1.25rem;
     font-size: clamp(1rem, 0.95rem + 0.25vw, 1.1rem);
@@ -521,7 +524,7 @@
   td {
     @apply text-[rgb(var(--color-text))];
     font-size: 0.95rem;
-    line-height: 1.6;
+    line-height: var(--leading-normal);
   }
 
   td:first-child {
@@ -567,7 +570,7 @@
 
   /* Code blocks */
   code {
-    @apply rounded-sm bg-[rgb(var(--color-bg-alt))] px-1.5 py-0.5 font-mono text-sm;
+    @apply rounded-sm bg-[rgb(var(--color-bg-alt))] px-2 py-0.5 font-mono text-sm;
   }
 
   pre {
@@ -1018,7 +1021,7 @@
 .post-prose blockquote p:last-child:not(:first-child) {
   font-style: normal;
   font-size: 0.95em;
-  margin-top: 0.65rem;
+  margin-top: 0.75rem;
 }
 
 /* ✦ divisor in the accent hue. In-essay Sources/References use `--almost`
@@ -1029,7 +1032,7 @@
   margin: 2rem 0 1.25rem;
   color: rgb(var(--color-accent));
   font-size: 0.9rem;
-  line-height: 1;
+  line-height: var(--leading-none);
   opacity: 0.8;
 }
 
@@ -1132,7 +1135,39 @@
 /* Poem block – preserve line breaks, readable line height */
 .a-poem {
   white-space: pre-line;
-  line-height: 1.75;
+  line-height: var(--leading-relaxed);
   margin: 2rem 0;
   font-size: 1.125rem;
+}
+
+/* prose-lg on the 4px rhythm. The typography plugin spaces long text in em (p 1.333em, h2 1.867em
+   above and 1.067em below, li 0.667em, hr 3.111em) and gives headings their own ratios. Here the same
+   em values round to the nearest 4px, and headings take a named step. Only plain Markdown elements:
+   anything with a class of its own, or inside not-prose, keeps its utilities. */
+.prose-lg :where(p, ul, ol):not([class]):not(:where([class~='not-prose'] *)) {
+  margin-block: round(nearest, 1.3333em, 4px);
+}
+.prose-lg :where(li):not([class]):not(:where([class~='not-prose'] *)) {
+  margin-block: round(nearest, 0.6667em, 4px);
+}
+.prose-lg :where(blockquote):not([class]):not(:where([class~='not-prose'] *)) {
+  margin-block: round(nearest, 1.6667em, 4px);
+}
+.prose-lg :where(hr):not([class]):not(:where([class~='not-prose'] *)) {
+  margin-block: round(nearest, 3.1111em, 4px);
+}
+.prose-lg :where(h2):not([class]):not(:where([class~='not-prose'] *)) {
+  margin-top: round(nearest, 1.8667em, 4px);
+  margin-bottom: round(nearest, 1.0667em, 4px);
+  line-height: var(--leading-tight);
+}
+.prose-lg :where(h3):not([class]):not(:where([class~='not-prose'] *)) {
+  margin-top: round(nearest, 1.6667em, 4px);
+  margin-bottom: round(nearest, 0.6667em, 4px);
+  line-height: var(--leading-snug);
+}
+.prose-lg :where(h4):not([class]):not(:where([class~='not-prose'] *)) {
+  margin-top: round(nearest, 1.7778em, 4px);
+  margin-bottom: round(nearest, 0.4444em, 4px);
+  line-height: var(--leading-normal);
 }

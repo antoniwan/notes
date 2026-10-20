@@ -105,7 +105,7 @@ const seoDescription = tagMetaDescription(canonicalTag, totalPosts);
       {relatedTags.length > 0 && (
         <div class="mt-8">
           <h2 class="text-subheading mb-4 text-[rgb(var(--color-text))]">Related topics</h2>
-          <div class="flex flex-wrap gap-1.5">
+          <div class="flex flex-wrap gap-2">
             {relatedTags.map(({ tag: relatedTag, count }: { tag: string; count: number }) => (
               <TagCard tag={relatedTag} count={count} size="sm" showCount={true} />
             ))}

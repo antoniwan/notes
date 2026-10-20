@@ -142,7 +142,7 @@ import Container from './Container.astro';
   }
 
   .site-header__navigation {
-    gap: clamp(1.5rem, 3vw, 3rem);
+    gap: round(nearest, clamp(1.5rem, 3vw, 3rem), 4px);
   }
   .site-header__actions {
     gap: 0.25rem;

@@ -1,7 +1,7 @@
 {
   "name": "notes blog",
   "type": "module",
-  "version": "6.38.0",
+  "version": "6.39.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/antoniwan/notes.git"
@@ -28,6 +28,7 @@
     "format:check": "prettier --check .",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "lint:tokens": "node scripts/lint-tokens.mjs",
     "check": "astro check",
     "test": "vitest run",
     "test:watch": "vitest",

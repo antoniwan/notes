@@ -48,6 +48,14 @@ English is the listing language. Spanish is a twin: language toggle, title searc
 - **Service worker** — registration URL includes the **package version** from `package.json`
 - On **Vercel**: **Web Analytics** and **Speed Insights** in the base layout (they only send data when those products are enabled)
 
+## Design rules
+
+The look lives in `src/styles/global.css` (tokens) and `tailwind.config.js` (the type scale). Three rules keep pages consistent; `pnpm run lint:tokens` checks them in CI.
+
+- **The layout sets the width.** A block does not cap its own width. Running text stops at one reading width, `--measure` (45rem, `max-w-measure`); display headings at `--measure-title`. Essays are one `--measure` column beside the contents rail.
+- **One 4px rhythm.** Line heights are six named steps (`var(--leading-none|tight|snug|normal|relaxed|loose)`), each rounded to 4px for its font size. The Tailwind type scale has fixed line heights on the grid (14/24, 16/28, 18/32, 20/36 …). Margins, padding, and gaps sit on the 4px scale; a fluid value is wrapped in `round(nearest, …, 4px)`.
+- **Counts only go down.** The lint keeps a baseline (`scripts/lint-tokens.baseline.json`) of today's deliberate exceptions. New code meets the rules; after a cleanup, `pnpm run lint:tokens --update` lowers the baseline.
+
 ## Stack
 
 - [Astro](https://astro.build/) 7 — hybrid output (static pages + on-demand `GET /api/quotes`), MDX, `@astrojs/vercel` adapter
@@ -126,6 +134,7 @@ Remark42 uses `PUBLIC_REMARK42_HOST` and `PUBLIC_REMARK42_SITE_ID` when you turn
 | `pnpm run check`                      | `astro check` (TypeScript / Astro diagnostics)                                                |
 | `pnpm run lint`                       | ESLint                                                                                        |
 | `pnpm run lint:fix`                   | ESLint with `--fix`                                                                           |
+| `pnpm run lint:tokens`                | Rhythm and width tokens: fails if raw line heights, off-grid spacing, or stray widths grow    |
 | `pnpm run format`                     | Prettier write                                                                                |
 | `pnpm run format:check`               | Prettier check (CI verifier; does not rewrite files)                                          |
 | `pnpm run audit-frontmatter`          | Required-field / language sanity check on `src/content/p`                                     |

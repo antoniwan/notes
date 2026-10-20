@@ -237,14 +237,14 @@ const emailUrl = `mailto:${email}?subject=${encodeURIComponent(copy.subject)}&bo
     font-family: var(--font-heading);
     font-size: clamp(1.6rem, 2.4vw, 2rem);
     font-weight: 600;
-    line-height: 1.2;
+    line-height: var(--leading-tight);
   }
   .comments-introduction p,
   .comments-noscript {
     max-width: var(--measure);
     margin: 0;
     font-size: 1.125rem;
-    line-height: 1.75;
+    line-height: var(--leading-relaxed);
   }
   .comments-introduction a {
     color: rgb(var(--color-accent));
@@ -264,7 +264,7 @@ const emailUrl = `mailto:${email}?subject=${encodeURIComponent(copy.subject)}&bo
     margin: 0;
     color: rgb(var(--color-text-muted));
     font-size: 1rem;
-    line-height: 1.6;
+    line-height: var(--leading-normal);
   }
   .comments-feedback button {
     min-height: 44px;
@@ -274,7 +274,7 @@ const emailUrl = `mailto:${email}?subject=${encodeURIComponent(copy.subject)}&bo
     color: rgb(var(--color-accent));
     font-family: var(--font-sans);
     font-size: 1rem;
-    line-height: 1.5;
+    line-height: var(--leading-normal);
     text-decoration: underline;
     text-underline-offset: 0.2em;
     cursor: pointer;

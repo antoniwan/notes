@@ -181,18 +181,18 @@ const years = [...new Set(chapters.map((chapter) => chapter.year))];
     font-family: var(--font-heading);
     font-size: 1.25rem;
     font-weight: 600;
-    line-height: 1.2;
+    line-height: var(--leading-tight);
   }
   .reading-place__summary {
     margin: 0.75rem 0 0;
     font-size: 1.125rem;
-    line-height: 1.6;
+    line-height: var(--leading-normal);
     font-variant-numeric: tabular-nums;
   }
   .reading-place__privacy {
     margin: 0.5rem 0 0;
     font-size: 0.875rem;
-    line-height: 1.6;
+    line-height: var(--leading-normal);
     color: rgb(var(--color-text-muted));
   }
   .next-unread {
@@ -207,7 +207,7 @@ const years = [...new Set(chapters.map((chapter) => chapter.year))];
     color: rgb(var(--color-on-primary));
     font-size: 0.875rem;
     font-weight: 600;
-    line-height: 1.5;
+    line-height: var(--leading-normal);
     text-decoration: none;
   }
   .next-unread:hover {
@@ -217,7 +217,7 @@ const years = [...new Set(chapters.map((chapter) => chapter.year))];
   .path-complete {
     margin: 0.75rem 0 0;
     font-size: 0.875rem;
-    line-height: 1.6;
+    line-height: var(--leading-normal);
     color: rgb(var(--color-text-muted));
   }
   .next-title {
@@ -237,7 +237,7 @@ const years = [...new Set(chapters.map((chapter) => chapter.year))];
     padding: 0.75rem 1rem;
     font-size: 0.875rem;
     font-weight: 600;
-    line-height: 1.5;
+    line-height: var(--leading-normal);
     cursor: pointer;
     list-style: none;
   }
@@ -269,7 +269,7 @@ const years = [...new Set(chapters.map((chapter) => chapter.year))];
     font-family: var(--font-sans);
     font-size: 0.875rem;
     font-weight: 600;
-    line-height: 1.5;
+    line-height: var(--leading-normal);
   }
   .season-nav-label {
     margin-bottom: 1.5rem;
@@ -295,7 +295,7 @@ const years = [...new Set(chapters.map((chapter) => chapter.year))];
     border-radius: var(--radius-md);
     color: rgb(var(--color-text));
     font-size: 1rem;
-    line-height: 1.5;
+    line-height: var(--leading-normal);
     text-decoration: none;
   }
   .season-year a:hover {

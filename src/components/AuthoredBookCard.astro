@@ -71,7 +71,7 @@ const destination = compact ? `/books#${book.id}` : book.readerUrl;
     margin: 0;
     font-family: var(--font-heading);
     font-size: clamp(1.6rem, 2.4vw, 2rem);
-    line-height: 1.2;
+    line-height: var(--leading-tight);
     font-weight: 600;
     letter-spacing: -0.025em;
     text-wrap: pretty;
@@ -81,20 +81,20 @@ const destination = compact ? `/books#${book.id}` : book.readerUrl;
     color: rgb(var(--color-text-muted));
     font-family: var(--font-serif);
     font-size: 1.125rem;
-    line-height: 1.75;
+    line-height: var(--leading-relaxed);
   }
   .authored-book__description {
     max-width: var(--measure);
     margin: 1.5rem 0 0;
     font-family: var(--font-serif);
     font-size: 1.125rem;
-    line-height: 1.75;
+    line-height: var(--leading-relaxed);
   }
   .authored-book__language {
     margin: 1rem 0 0;
     color: rgb(var(--color-text-muted));
     font-size: 1rem;
-    line-height: 1.75;
+    line-height: var(--leading-relaxed);
   }
   .authored-book a {
     display: inline-flex;
@@ -106,7 +106,7 @@ const destination = compact ? `/books#${book.id}` : book.readerUrl;
     font-family: var(--font-sans);
     font-size: 1rem;
     font-weight: 600;
-    line-height: 1.5;
+    line-height: var(--leading-normal);
     text-decoration: underline;
     text-underline-offset: 0.2em;
   }
@@ -137,7 +137,7 @@ const destination = compact ? `/books#${book.id}` : book.readerUrl;
     margin-top: 0.75rem;
     font-family: var(--font-sans);
     font-size: 1rem;
-    line-height: 1.75;
+    line-height: var(--leading-relaxed);
   }
   .authored-book--compact a {
     margin-top: 0.5rem;

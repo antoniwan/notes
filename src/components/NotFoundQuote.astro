@@ -74,7 +74,7 @@ const tagFamilyBySlug = Object.fromEntries(
         <p class="text-body-muted mt-0 mb-2 text-xs font-semibold tracking-wider uppercase">
           Related topics
         </p>
-        <div id="nfq-themes" class="flex flex-wrap gap-1.5"></div>
+        <div id="nfq-themes" class="flex flex-wrap gap-2"></div>
       </div>
     </div>
   </div>
@@ -94,9 +94,9 @@ const tagFamilyBySlug = Object.fromEntries(
   };
 
   const TAG_LINK =
-    'tag-chip nfq-topic theme-transition inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-sm font-medium focus:outline-hidden';
+    'tag-chip nfq-topic theme-transition inline-flex items-center gap-1 rounded-full border px-3 py-1 text-sm font-medium focus:outline-hidden';
   const TAG_STATIC =
-    'nfq-topic inline-flex items-center gap-1 rounded-full border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg))] px-2.5 py-1 text-sm font-medium text-body-muted';
+    'nfq-topic inline-flex items-center gap-1 rounded-full border border-[rgb(var(--color-border))] bg-[rgb(var(--color-bg))] px-3 py-1 text-sm font-medium text-body-muted';
 
   let retryCount = 0;
   const maxRetries = 3;
@@ -234,7 +234,7 @@ const tagFamilyBySlug = Object.fromEntries(
     font-family: var(--font-heading);
     font-size: clamp(1.25rem, 2.5vw, 1.75rem);
     font-weight: 600;
-    line-height: 1.35;
+    line-height: var(--leading-snug);
     letter-spacing: -0.02em;
     color: rgb(var(--color-text));
   }

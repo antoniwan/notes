@@ -29,8 +29,8 @@ const variantClass = {
 }[variant];
 
 const sizeClasses = {
-  sm: 'text-sm px-2.5 py-1',
-  md: 'text-base px-3 py-1.5',
+  sm: 'text-sm px-3 py-1',
+  md: 'text-base px-3 py-2',
   lg: 'text-lg px-4 py-2',
 };
 ---
@@ -84,7 +84,7 @@ const sizeClasses = {
   @media (max-width: 768px) {
     .tag-card {
       font-size: 1rem;
-      line-height: 1.5;
+      line-height: var(--leading-normal);
       padding: 0.5rem 0.75rem;
     }
   }

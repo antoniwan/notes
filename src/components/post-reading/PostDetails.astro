@@ -88,10 +88,10 @@ const moreCategories = categoryItems.slice(3);
   .post-details {
     font-family: var(--font-sans);
     font-size: 0.875rem;
-    line-height: 1.5;
+    line-height: var(--leading-normal);
   }
   .details-label {
-    margin: 0 0 0.6rem;
+    margin: 0 0 0.5rem;
     font-family: var(--font-sans);
     color: rgb(var(--color-text-muted));
     font-size: 0.875rem;
@@ -111,7 +111,7 @@ const moreCategories = categoryItems.slice(3);
     justify-content: space-between;
     gap: 0.75rem;
     min-height: 2.75rem;
-    padding-block: 0.35rem;
+    padding-block: 0.25rem;
     color: rgb(var(--color-text-muted));
     text-decoration: none;
     overflow-wrap: anywhere;
@@ -147,12 +147,12 @@ const moreCategories = categoryItems.slice(3);
   .tag-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.25rem 0.65rem;
+    gap: 0.25rem 0.75rem;
     padding: 0.25rem;
   }
   .tag-list a {
     display: inline-block;
-    padding-block: 0.4rem;
+    padding-block: 0.5rem;
     font-size: 0.875rem;
     overflow-wrap: anywhere;
   }
@@ -160,7 +160,7 @@ const moreCategories = categoryItems.slice(3);
     margin: 1rem 0 0;
     color: rgb(var(--color-text-muted));
     font-size: 0.875rem;
-    line-height: 1.6;
+    line-height: var(--leading-normal);
   }
   a:focus-visible:not(.tag-chip),
   summary:focus-visible {

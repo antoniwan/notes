@@ -323,15 +323,15 @@ const breadcrumbSchema = generateBreadcrumbSchema(
 
   .post-heading {
     min-width: 0;
-    padding-block: clamp(1.75rem, 4vw, 3.5rem) 2rem;
+    padding-block: round(nearest, clamp(1.75rem, 4vw, 3.5rem) 2rem, 4px);
   }
 
   .post-eyebrow {
     display: inline-flex;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.5rem;
     min-height: 2rem;
-    margin-bottom: 0.85rem;
+    margin-bottom: 0.75rem;
     color: rgb(var(--color-accent));
     font-family: var(--font-sans);
     font-size: 0.875rem;
@@ -352,7 +352,7 @@ const breadcrumbSchema = generateBreadcrumbSchema(
     margin: 0;
     font-family: var(--font-heading);
     font-size: clamp(2.125rem, 1.4rem + 2.2vw, 3.5rem);
-    line-height: 1.13;
+    line-height: var(--leading-tight);
     font-weight: 700;
     letter-spacing: -0.035em;
     text-wrap: balance;
@@ -363,7 +363,7 @@ const breadcrumbSchema = generateBreadcrumbSchema(
     margin: 1.25rem 0 0;
     color: rgb(var(--color-text-muted));
     font-size: clamp(1.0625rem, 0.95rem + 0.35vw, 1.25rem);
-    line-height: 1.65;
+    line-height: var(--leading-relaxed);
     text-wrap: pretty;
   }
 
@@ -371,12 +371,12 @@ const breadcrumbSchema = generateBreadcrumbSchema(
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 0.5rem 1.1rem;
+    gap: 0.5rem 1rem;
     margin-top: 1.5rem;
     color: rgb(var(--color-text-muted));
     font-family: var(--font-sans);
     font-size: 0.875rem;
-    line-height: 1.6;
+    line-height: var(--leading-normal);
   }
 
   .post-duration {
@@ -410,7 +410,7 @@ const breadcrumbSchema = generateBreadcrumbSchema(
   }
 
   .post-hero {
-    margin-bottom: clamp(2rem, 4vw, 3rem);
+    margin-bottom: round(nearest, clamp(2rem, 4vw, 3rem), 4px);
   }
 
   .post-hero__frame {
@@ -436,14 +436,14 @@ const breadcrumbSchema = generateBreadcrumbSchema(
     overflow-y: visible !important;
     display: flow-root;
     font-size: clamp(1.125rem, 1.025rem + 0.35vw, 1.25rem);
-    line-height: 1.8;
+    line-height: var(--leading-relaxed);
     scroll-margin-top: calc(var(--site-header-height) + 1.5rem);
     overflow-wrap: anywhere;
   }
 
   .post-afterword {
     width: 100%;
-    margin-top: clamp(3.5rem, 7vw, 6rem);
+    margin-top: round(nearest, clamp(3.5rem, 7vw, 6rem), 4px);
   }
 
   .post-finish-actions {
@@ -461,7 +461,7 @@ const breadcrumbSchema = generateBreadcrumbSchema(
     color: rgb(var(--color-accent));
     font-family: var(--font-sans);
     font-size: 1rem;
-    line-height: 1.5;
+    line-height: var(--leading-normal);
     text-decoration: underline;
     text-underline-offset: 0.2em;
   }
@@ -476,7 +476,7 @@ const breadcrumbSchema = generateBreadcrumbSchema(
   }
 
   .post-afterword :global(.comments-section) {
-    margin-top: clamp(3.5rem, 7vw, 6rem);
+    margin-top: round(nearest, clamp(3.5rem, 7vw, 6rem), 4px);
   }
 
   .post-article :global(.post-prose hr) {
@@ -486,7 +486,7 @@ const breadcrumbSchema = generateBreadcrumbSchema(
   }
 
   .post-article :global(.post-prose p) {
-    line-height: 1.8;
+    line-height: var(--leading-relaxed);
   }
 
   .post-article :global(.post-prose > :first-child) {
@@ -543,7 +543,7 @@ const breadcrumbSchema = generateBreadcrumbSchema(
     color: rgb(var(--color-text-muted) / 0.55);
     font-size: 0.55em;
     font-weight: 300;
-    line-height: 1;
+    line-height: var(--leading-none);
     vertical-align: super;
     text-decoration: none;
   }
@@ -591,7 +591,7 @@ const breadcrumbSchema = generateBreadcrumbSchema(
   }
 
   .post-article :global(.post-prose :is(th, td)) {
-    padding-block: 0.7rem;
+    padding-block: 0.75rem;
     padding-inline: 1rem;
   }
 
@@ -664,7 +664,7 @@ const breadcrumbSchema = generateBreadcrumbSchema(
     .post-layout {
       max-width: none;
       grid-template-columns: 14rem minmax(0, var(--measure));
-      column-gap: clamp(3rem, 5vw, 4.5rem);
+      column-gap: round(nearest, clamp(3rem, 5vw, 4.5rem), 4px);
     }
     .post-heading {
       grid-column: 2;

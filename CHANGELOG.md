@@ -9,6 +9,19 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [6.39.0] — 2026-10-20
+
+### Added
+
+- `pnpm run lint:tokens` (`scripts/lint-tokens.mjs`), also a CI step. It counts raw line heights, margins and paddings off the 4px grid, widths a block sets for itself, Tailwind arbitrary widths and spacing, and Tailwind 6px and 10px half steps. Each count may only go down from `scripts/lint-tokens.baseline.json`. Today the first two are at zero; 11 deliberate component widths and 1 arbitrary value are the baseline.
+- A "Design rules" section in the README.
+
+### Changed
+
+- One 4px rhythm. Line heights are six named steps (`--leading-none`, `-tight`, `-snug`, `-normal`, `-relaxed`, `-loose`). Each is a ratio of the element's font size, rounded to the nearest 4px. About 20 bare ratios (1.03 to 1.8) now use them. The Tailwind type scale has fixed line heights on the grid: 14/24, 16/28, 18/32, 20/36, 24/40, 30/40, 36/48, 44/52, 56/60, and 72/72.
+- Margins, paddings, and gaps sit on the 4px scale. 58 off-grid values snapped to the nearest step, and 24 fluid `clamp()` values round to 4px. Long text from the typography plugin (`prose-lg`) rounds its em spacing to the grid, and Tailwind's 6px and 10px half steps moved to 8px and 12px.
+- Measured on Home, Everything, Topics, About, and an essay, at 1440px and 400px wide: every line height and every spacing value is a multiple of 4px.
+
 ## [6.38.0] — 2026-10-20
 
 ### Removed
