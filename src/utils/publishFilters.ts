@@ -80,7 +80,7 @@ export function isFeedEligiblePost(data: PostData, options: PublishFilterOptions
 
 /**
  * Listing eligibility: public English posts only.
- * Spanish does not appear on Everything, category, tag, 404, or Guided Path.
+ * Spanish does not appear on Archive, Browse, category, tag, or 404.
  */
 export function isListingEligiblePost(data: PostData, options: PublishFilterOptions = {}): boolean {
   return isListingEligibleMeta(meta(data), options);
@@ -92,19 +92,6 @@ export function isListingEligiblePost(data: PostData, options: PublishFilterOpti
  */
 export function isSearchEligiblePost(data: PostData, options: PublishFilterOptions = {}): boolean {
   return isPublicPost(data, options);
-}
-
-/**
- * Guided Path is English-primary: never list Spanish posts.
- * Spanish versions stay reachable from the language toggle on the English note.
- * Unlike `isCollectionListed`, this language rule applies in both prod and dev.
- */
-export function isGuidedPathEligiblePost(
-  data: PostData,
-  options: PublishFilterOptions = {},
-): boolean {
-  if (isSpanishPrimary(data)) return false;
-  return isCollectionListed(data, options);
 }
 
 /**

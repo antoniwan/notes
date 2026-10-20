@@ -2,7 +2,6 @@ import type { CollectionEntry } from 'astro:content';
 import {
   isCollectionListed,
   isFeedEligiblePost,
-  isGuidedPathEligiblePost,
   isListingEligiblePost,
   isPublicPost,
   type PublishFilterOptions,
@@ -33,17 +32,6 @@ export function isCategoryListedPost(post: Pick<CollectionEntry<'blog'>, 'id' | 
 /** Same listing set as categories: essays only. */
 export function isTagListedPost(post: Pick<CollectionEntry<'blog'>, 'id' | 'data'>): boolean {
   return isCategoryListedPost(post);
-}
-
-/**
- * Guided Path is a reading path, so it carries essays only.
- * Recipes are reference material you go to when you are cooking, not writing a
- * reader works through season by season; they belong on Cookbook and Everything.
- */
-export function isGuidedPathListedPost(
-  post: Pick<CollectionEntry<'blog'>, 'id' | 'data'>,
-): boolean {
-  return isGuidedPathEligiblePost(post.data) && !isRecipePost(post);
 }
 
 /**

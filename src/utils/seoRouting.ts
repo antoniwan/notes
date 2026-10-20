@@ -38,12 +38,18 @@ export const PAGE_REDIRECTS: Record<string, string> = {
   '/library/books': 'https://antoniwan.online/collections/books',
   '/books': 'https://antoniwan.online/projects',
   '/tag/recipes': '/tag/cooking',
+  // October 20, 2026: Notes is for reading and searching. Everything is the Archive; Topics and
+  // Categories are one Browse page; Guided Path is gone, and Browse is where to start.
+  '/everything': '/archive',
+  '/tag': '/browse',
+  '/category': '/browse',
+  '/guided-path': '/browse',
 };
 
 /**
  * Build permanent redirects from tag aliases to their canonical tag pages.
  * Keys are normalized URL slugs (spaces → hyphens).
- * If the canonical page is not built, send the alias to `/tag` instead of a 404.
+ * If the canonical page is not built, send the alias to `/browse` instead of a 404.
  */
 export function buildTagAliasRedirects(
   builtTags: ReadonlySet<string> = getBuiltTagSlugs(),
@@ -51,13 +57,13 @@ export function buildTagAliasRedirects(
   const redirects: Record<string, string> = {};
 
   for (const stripped of STRIPPED_TAGS) {
-    redirects[`/tag/${stripped}`] = '/tag';
+    redirects[`/tag/${stripped}`] = '/browse';
   }
 
   for (const [alias, canonical] of Object.entries(TAG_ALIAS_MAP)) {
     const aliasSlug = normalizeTagInput(alias);
     if (!aliasSlug || !canonical || aliasSlug === canonical) continue;
-    const target = builtTags.has(canonical) ? `/tag/${canonical}` : '/tag';
+    const target = builtTags.has(canonical) ? `/tag/${canonical}` : '/browse';
     redirects[`/tag/${aliasSlug}`] = target;
   }
 

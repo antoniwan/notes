@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
   isFeedEligiblePost,
-  isGuidedPathEligiblePost,
   isHomepageHighlight,
   isListingEligiblePost,
   isPublicPost,
@@ -75,21 +74,6 @@ describe('isSearchEligiblePost', () => {
 
   it('still hides drafts from search', () => {
     expect(isSearchEligiblePost(post({ language: ['es'], draft: true }), { now })).toBe(false);
-  });
-});
-
-describe('isGuidedPathEligiblePost', () => {
-  it('includes English posts', () => {
-    expect(isGuidedPathEligiblePost(post({ language: ['en'] }), { now })).toBe(true);
-  });
-
-  it('excludes all Spanish posts, including featured', () => {
-    expect(isGuidedPathEligiblePost(post({ language: ['es'], featured: false }), { now })).toBe(
-      false,
-    );
-    expect(isGuidedPathEligiblePost(post({ language: ['es'], featured: true }), { now })).toBe(
-      false,
-    );
   });
 });
 

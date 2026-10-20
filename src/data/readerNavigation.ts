@@ -6,10 +6,8 @@ export interface ReaderLink {
 }
 
 export const readingLinks: ReaderLink[] = [
-  { href: '/everything', label: 'Everything' },
-  { href: '/guided-path', label: 'Guided Path' },
-  { href: '/tag', label: 'Topics' },
-  { href: '/category', label: 'Categories' },
+  { href: '/browse', label: 'Browse' },
+  { href: '/archive', label: 'Archive' },
 ];
 
 export const contactLinks: ReaderLink[] = [

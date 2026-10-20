@@ -17,7 +17,6 @@ export function isMainNavItemActive(href: string, pathname: string): boolean {
   const p = normalizePathname(pathname);
   const h = normalizePathname(href);
 
-  if (h === '/tag') return isWithin(p, '/tag') || isWithin(p, '/category');
   if (h === '/books') {
     return isWithin(p, '/books') || isWithin(p, '/library/books') || isRecipeUrl(p);
   }
@@ -31,6 +30,9 @@ export function isNavDropdownItemActive(itemHref: string, pathname: string): boo
   const h = normalizePathname(itemHref);
 
   if (h === '/recipes') return isRecipeUrl(p);
+  // Browse is the section for every topic and category page.
+  if (h === '/browse')
+    return isWithin(p, '/browse') || isWithin(p, '/tag') || isWithin(p, '/category');
 
   const sections = ['/tag', '/category', '/books', '/library/books', '/tag-management'];
   if (sections.some((section) => isWithin(h, section))) return isWithin(p, h);

@@ -33,7 +33,7 @@ ${spanish.map(llmsListItem).join('\n')}
 
 - [About](${SITE_URL}/about): who writes this site and why
 - [How I write](${SITE_URL}/about#how-i-write): some pieces are written by hand, others with AI models drafting and revising; most cover images are Midjourney results
-- [Everything](${SITE_URL}/everything): every post, as an HTML index
+- [Archive](${SITE_URL}/archive): every post, newest first, as an HTML index
 - [RSS feed](${SITE_URL}/rss.xml): English essays with full text
 - [JSON Feed](${SITE_URL}/feed.json): the same essays as JSON
 - [antoniwan.online](${AUTHOR.url}): links to everything else ${AUTHOR.name} makes

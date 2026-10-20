@@ -1,17 +1,14 @@
 ---
 import Logo from './Logo.astro';
 import { readingLinks, contactLinks, siteToolLinks } from '../data/readerNavigation';
-import { getSortedCategories } from '../utils/categoryUtils';
 import { isNavDropdownItemActive } from '../utils/navActive';
 
-const sortedCategories = await getSortedCategories();
 const pathname = Astro.url.pathname;
 const entryDescriptions: Record<string, string> = {
-  '/everything': 'The full archive, with images.',
-  '/guided-path': 'A place to start reading.',
+  '/browse': 'Categories and topics, A to Z.',
+  '/archive': 'Every note, newest first.',
 };
 const entryLinks = readingLinks.filter((link) => link.href in entryDescriptions);
-const browseLinks = readingLinks.filter((link) => !(link.href in entryDescriptions));
 const primaryContactLinks = contactLinks.filter(
   (link) => link.href === '/about' || link.href.startsWith('mailto:'),
 );
@@ -19,7 +16,7 @@ const secondaryContactLinks = contactLinks.filter((link) => !primaryContactLinks
 function currentLocation(href: string) {
   if (pathname === href) return 'page';
   if (
-    (href === '/category' && pathname.startsWith('/category/')) ||
+    (href === '/browse' && (pathname.startsWith('/category/') || pathname.startsWith('/tag/'))) ||
     isNavDropdownItemActive(href, pathname)
   )
     return 'location';
@@ -104,52 +101,6 @@ function currentLocation(href: string) {
             </li>
           ))}
         </ul>
-        <ul class="mobile-menu__links mobile-menu__links--paired mobile-menu__browse">
-          {browseLinks.map((link) => (
-            <li>
-              <a
-                class="mobile-menu__primary"
-                href={link.href}
-                aria-current={currentLocation(link.href)}
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-        <details
-          class="mobile-menu__group mobile-menu__group--secondary"
-          data-active={pathname.startsWith('/category/') ? 'true' : undefined}
-        >
-          <summary class="mobile-menu__primary">
-            Choose a category
-            <svg
-              class="mobile-menu__chevron"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.7"
-              aria-hidden="true"
-            >
-              <path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-          </summary>
-          <div class="mobile-menu__children">
-            {sortedCategories.map((category) => {
-              const href = '/category/' + category.id;
-              return (
-                <a href={href} aria-current={currentLocation(href)}>
-                  <span>{category.name}</span>
-                  <span class="mobile-menu__count" aria-label={category.postCount + ' writings'}>
-                    {category.postCount}
-                  </span>
-                </a>
-              );
-            })}
-          </div>
-        </details>
       </section>
 
       <section class="mobile-menu__section" aria-labelledby="mobile-menu-contact">

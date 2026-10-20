@@ -1,12 +1,14 @@
 ---
-import PageLayout from '../../layouts/PageLayout.astro';
-import TagCard from '../../components/TagCard.astro';
-import ContentFormPrelude from '../../components/tag/ContentFormPrelude.astro';
+import PageLayout from '../layouts/PageLayout.astro';
+import TagCard from '../components/TagCard.astro';
+import CategoryCard from '../components/CategoryCard.astro';
+import { categories } from '../data/categories';
+import ContentFormPrelude from '../components/tag/ContentFormPrelude.astro';
 import { getCollection } from 'astro:content';
-import { PAGE_META } from '../../data/pageMeta';
-import { getTagMetadata } from '../../data/tags';
-import { isTagListedPost } from '../../utils/recipes';
-import { calculateTagStats } from '../../utils/tagProcessing';
+import { PAGE_META } from '../data/pageMeta';
+import { getTagMetadata } from '../data/tags';
+import { isCategoryListedPost, isTagListedPost } from '../utils/recipes';
+import { calculateTagStats } from '../utils/tagProcessing';
 
 const posts = await getCollection('blog', (entry) => isTagListedPost(entry));
 const { tagCounts } = calculateTagStats(posts);
@@ -21,18 +23,60 @@ for (const topic of topics) {
   byLetter.set(letter, group);
 }
 const groups = [...byLetter.entries()];
+
+// Categories: where each note got filed first, A to Z, each with its count.
+const categoryPosts = await getCollection('blog', (entry) => isCategoryListedPost(entry));
+const categoryCounts = Object.fromEntries(
+  categories.map((c) => [
+    c.id,
+    categoryPosts.filter((post) => post.data.category?.includes(c.id)).length,
+  ]),
+) as Record<string, number>;
+const listedCategories = categories
+  .filter((category) => categoryCounts[category.id] > 0)
+  .sort((a, b) => a.name.localeCompare(b.name));
 ---
 
 <PageLayout
-  title="Topics"
-  description="Follow a sentence, or find a topic you have in mind."
+  title="Browse"
+  description="Pick a category, follow a sentence, or find a topic you have in mind."
   descriptionClass="text-base md:text-lg topics-intro"
-  metaDescription={PAGE_META['/tag']}
-  path="/tag"
+  metaDescription={PAGE_META['/browse']}
+  path="/browse"
   structuredDataType="website"
   mode="chrome"
 >
-  <div class="topics-page" data-topics-page>
+  {listedCategories.length > 0 && (
+    <section class="browse-categories" id="categories" aria-labelledby="categories-heading">
+      <h2 id="categories-heading" tabindex="-1">
+        Categories
+      </h2>
+      <ul class="category-grid" role="list">
+        {listedCategories.map((category) => (
+          <li>
+            <CategoryCard category={category} postCount={categoryCounts[category.id]} />
+          </li>
+        ))}
+      </ul>
+      <aside class="category-disclaimer" aria-labelledby="category-disclaimer-heading">
+        <h3 id="category-disclaimer-heading">Fair warning</h3>
+        <div class="category-disclaimer__copy">
+          <p>
+            I opened a category the way a stranger would. The organization is a nightmare. It kind
+            of has to be: these notes do not concentrate into a clean shape of any kind, so a pile
+            of one topic is not the best way to read me. If it looks like the person who filed this
+            has lost it, you are not wrong.
+          </p>
+          <p>
+            <a href="#topics">Topics</a> follow how the ideas actually connect. Categories are just
+            where each note got stamped first.
+          </p>
+        </div>
+      </aside>
+    </section>
+  )}
+
+  <div class="topics-page" id="topics" data-topics-page>
     {topics.length > 0 ? (
       <>
         <div class="topics-tools">
@@ -116,7 +160,7 @@ const groups = [...byLetter.entries()];
 </PageLayout>
 
 <script>
-  import { matchesCatalogSearch } from '../../utils/catalogSearch';
+  import { matchesCatalogSearch } from '../utils/catalogSearch';
 
   const page = document.querySelector<HTMLElement>('[data-topics-page]');
   const form = page?.querySelector<HTMLFormElement>('.topics-search');
@@ -196,6 +240,110 @@ const groups = [...byLetter.entries()];
 </script>
 
 <style>
+  /* ---------- Categories, first on Browse (moved from the old /category page). */
+  .browse-categories {
+    margin-bottom: 4rem;
+    scroll-margin-top: calc(var(--site-header-height) + 1.5rem);
+  }
+
+  .browse-categories > h2 {
+    margin: 0 0 1.5rem;
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 2.4vw, 2rem);
+    font-weight: 600;
+    line-height: var(--leading-tight);
+    letter-spacing: -0.025em;
+  }
+
+  #topics {
+    scroll-margin-top: calc(var(--site-header-height) + 1.5rem);
+  }
+
+  .category-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .category-grid > li {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .category-disclaimer {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+
+  .category-disclaimer h3 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 2.4vw, 2rem);
+    font-weight: 600;
+    line-height: var(--leading-tight);
+    letter-spacing: -0.025em;
+  }
+
+  .category-disclaimer__copy {
+    display: grid;
+    gap: 1.5rem;
+    min-width: 0;
+    max-width: var(--measure);
+  }
+
+  .category-disclaimer p {
+    margin: 0;
+    font-size: 1.125rem;
+    line-height: var(--leading-relaxed);
+    color: rgb(var(--color-text-muted));
+    text-wrap: pretty;
+  }
+
+  .category-disclaimer a {
+    color: rgb(var(--color-accent));
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .category-disclaimer a:hover {
+    color: rgb(var(--color-accent-hover));
+  }
+
+  .category-disclaimer a:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  @media (min-width: 768px) {
+    .category-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2.5rem;
+    }
+
+    .category-disclaimer {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+      gap: 2.5rem;
+      margin-top: 5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .category-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .category-disclaimer {
+      margin-top: 6rem;
+    }
+  }
+
   :global(.topics-intro) {
     max-width: var(--measure);
   }

@@ -133,7 +133,7 @@ export const DOMAIN_EXTENSION_TAGS = {
 export const CONTENT_FORM_TAGS = ['memoir', 'poems', 'reflection'] as const;
 
 /**
- * Site-name / tautology slugs. Dropped in canonicalize. `/tag/notes` 301s to `/tag`.
+ * Site-name / tautology slugs. Dropped in canonicalize. `/tag/notes` 301s to `/browse`.
  */
 export const STRIPPED_TAGS = ['note', 'notes', 'nota', 'notas'] as const;
 

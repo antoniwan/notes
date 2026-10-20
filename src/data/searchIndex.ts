@@ -18,17 +18,17 @@ const PAGE_SEARCH_DATA = [
   },
   {
     type: 'page',
-    id: 'everything',
-    title: 'Everything',
-    description: 'Full archive of all notes',
-    url: '/everything',
+    id: 'archive',
+    title: 'Archive',
+    description: 'Every note, newest first',
+    url: '/archive',
   },
   {
     type: 'page',
-    id: 'guided-path',
-    title: 'Guided Path',
-    description: 'Seasonal reading order through the notes',
-    url: '/guided-path',
+    id: 'browse',
+    title: 'Browse',
+    description: 'Categories and topics, A to Z',
+    url: '/browse',
   },
 ];
 

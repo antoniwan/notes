@@ -110,7 +110,7 @@ describe('sitemap lastmod attribution', () => {
     );
 
     // English-only surfaces must not claim to have changed on that date.
-    for (const listing of ['/', '/everything', '/guided-path', '/rss.xml', '/feed.json']) {
+    for (const listing of ['/', '/archive', '/rss.xml', '/feed.json']) {
       expect(index.lastmodByUrl.get(sitemapPageUrl(listing))?.toISOString()).toBe(englishEdit);
     }
     expect(index.lastmodByUrl.get(sitemapPageUrl('/category/psychology'))?.toISOString()).toBe(
@@ -159,17 +159,14 @@ describe('sitemap lastmod attribution', () => {
     const essayDate = '2026-01-01T00:00:00.000Z';
     expect(index.lastmodByUrl.has(sitemapPageUrl('/recipes'))).toBe(false);
     expect(index.lastmodByUrl.has(sitemapPageUrl('/p/recipes/sofrito'))).toBe(false);
-    expect(index.lastmodByUrl.get(sitemapPageUrl('/everything'))?.toISOString()).toBe(essayDate);
+    expect(index.lastmodByUrl.get(sitemapPageUrl('/archive'))?.toISOString()).toBe(essayDate);
 
-    // Category, tag, Guided Path, and feeds list essays only, so they must not.
-    // See isCategoryListedPost / isTagListedPost / isGuidedPathListedPost /
-    // isFeedListedPost.
+    // Browse, category, tag, and feeds list essays only, so they must not.
+    // See isCategoryListedPost / isTagListedPost / isFeedListedPost.
     for (const essayOnly of [
-      '/category',
+      '/browse',
       '/category/parenting',
-      '/tag',
       '/tag/parenting',
-      '/guided-path',
       '/rss.xml',
       '/feed.json',
     ]) {

@@ -251,8 +251,10 @@ export function generateStructuredData(options: StructuredDataOptions) {
           {
             '@type': 'ListItem',
             position: 2,
-            name: type === 'category' ? 'Categories' : 'Topics',
-            item: generateCanonicalUrl(type === 'category' ? '/category' : '/tag'),
+            name: 'Browse',
+            item: generateCanonicalUrl(
+              type === 'category' ? '/browse#categories' : '/browse#topics',
+            ),
           },
           {
             '@type': 'ListItem',

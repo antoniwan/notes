@@ -13,15 +13,11 @@ export const PAGE_META = {
     'About Antonio Rodríguez Martínez, who keeps field notes at Notes: father, stepfather, software builder, and recovering overthinker.',
   '/books':
     'Two bilingual children’s picture books by Antonio Rodríguez Martínez: The Bent One and Mia, the Sun, and the Moon. Read in English or Spanish.',
-  '/everything': 'Complete archive of published notes, listed newest first.',
-  '/guided-path':
-    'Published notes grouped by season and year. Reading progress is stored on this device.',
+  '/archive': 'Complete archive of published notes, listed newest first.',
   '/library/books':
     'Searchable catalog of books in the Notes library, filterable by status, shelf, title, or author.',
-  '/category':
-    'Published notes grouped by category, including parenting, psychology, culture, and systems.',
-  '/tag':
-    'An idea map of the writings: parenting, fatherhood, healing, Puerto Rico, and the rooms they connect.',
+  '/browse':
+    'Browse the writings by category, or by topic: an idea map of parenting, fatherhood, healing, Puerto Rico, and the rooms they connect.',
   '/404': 'This page does not exist. A random quote from the site archive is shown instead.',
 } as const;
 

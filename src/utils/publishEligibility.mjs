@@ -111,7 +111,7 @@ export function isFeedEligibleMeta(meta, options = {}) {
 }
 
 /**
- * English listing surfaces: Everything, category, tag, Cookbook, Guided Path,
+ * English listing surfaces: Archive, Browse, category, tag, Cookbook,
  * the homepage, and 404. Same rule as feeds, named separately because the two
  * policies are allowed to diverge later.
  *

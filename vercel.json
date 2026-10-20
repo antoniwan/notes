@@ -90,7 +90,7 @@
     },
     {
       "source": "/blog",
-      "destination": "/everything",
+      "destination": "/archive",
       "permanent": true
     },
     {
@@ -100,7 +100,7 @@
     },
     {
       "source": "/categories",
-      "destination": "/category",
+      "destination": "/browse",
       "permanent": true
     },
     {
@@ -115,12 +115,12 @@
     },
     {
       "source": "/search",
-      "destination": "/everything",
+      "destination": "/archive",
       "permanent": true
     },
     {
       "source": "/p",
-      "destination": "/everything",
+      "destination": "/archive",
       "permanent": true
     },
     {

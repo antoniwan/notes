@@ -40,7 +40,7 @@ export function formatRelativeReadTime(dateString: string): string {
 }
 
 /**
- * Alternative format for Guided Path (shorter format)
+ * Shorter format
  * Returns strings like "Read a day ago" instead of "You read this a day ago"
  */
 export function formatRelativeReadTimeShort(dateString: string): string {

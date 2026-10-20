@@ -14,7 +14,7 @@ Live site: [notes.antoniwan.online](https://notes.antoniwan.online)
 
 Correction, October 17, 2026: the reading library moved to antoniwan.online/collections/books. Authored books already belong in its Projects section.
 
-Notes navigation now contains Everything, Guided Path, Browse, and About. Cookbook and Collections no longer appear in its navigation or search.
+Notes is for reading and for searching for something to read (October 20, 2026). Its navigation is Archive, Browse, and About, with search in the header. Cookbook and Collections no longer appear in its navigation or search.
 
 Release history: [CHANGELOG.md](./CHANGELOG.md)
 
@@ -26,8 +26,8 @@ Inline diagram authoring: [Mermaid flowcharts and state diagrams](docs/mermaid-d
 - **Cookbook** — family recipes live at `cookbook.antoniwan.online`. `/recipes` and the old recipe pages redirect there, including Spanish and Markdown URLs
 - **Authored books** — `/books` redirects to Projects on `antoniwan.online`. The existing bilingual readers remain available.
 - **Reading library** — `/library` and `/library/books` redirect to `antoniwan.online/collections/books`.
-- **Paths in** — Guided Path, Everything, Browse (Topics and Categories), About, and header search.
-- **Home** — a writing hero, three entry links, Highlights for featured English posts, and a short purpose note.
+- **Paths in** — **Browse** (`/browse`: the categories, then every topic A–Z with its search and the "Ways into the writing" sentences), **Archive** (`/archive`: every note, newest first), About, and header search. A topic or category page (`/tag/<topic>`, `/category/<id>`) links back to its part of Browse. `/everything`, `/tag`, `/category`, and the removed `/guided-path` 301 to Archive or Browse.
+- **Home** — a writing hero with two ways in (Browse, then Archive), Highlights for featured English posts, and a short purpose note.
 - **Writing Insights** was removed on October 20, 2026; it was not for readers. `/writing-insights`, `/brain-science`, and their old subpaths 301 to the home page.
 - **Feeds** — RSS (`/rss.xml`) and JSON Feed (`/feed.json`). Spanish and household recipes stay out of feeds
 - **Quotes API** — `GET /api/quotes` (Stoic excerpts, other philosophy, lines from posts; optional `?kind=`)
@@ -164,7 +164,7 @@ bytes rather than the source:
 - drafts, `published: false`, and future-dated posts appear nowhere; public
   English essays appear in feeds; Spanish twins and household recipes stay out
 
-Surfaces covered: homepage, `/everything`, an English essay,
+Surfaces covered: homepage, `/archive`, an English essay,
 a Spanish twin, and a recipe. External URLs are never fetched — a release must
 not fail because someone else's site is down. Remote link health, if wanted, is a
 separate optional report.
@@ -307,7 +307,7 @@ One collection (`blog` in `src/content.config.ts`). Folder is the discriminator,
 
 | Path                              | Public URL          | Listing                                                                                    |
 | --------------------------------- | ------------------- | ------------------------------------------------------------------------------------------ |
-| `src/content/p/<slug>.md`         | `/p/<slug>`         | Everything, categories, tags, home Highlights, Guided Path, feeds                          |
+| `src/content/p/<slug>.md`         | `/p/<slug>`         | Archive, Browse, categories, tags, home Highlights, feeds                                  |
 | `src/content/p/recipes/<slug>.md` | `/p/recipes/<slug>` | Cookbook (`/recipes`). Cards say Recipe / Receta. More Recipes instead of Continue reading |
 
 Frontmatter: [docs/frontmatter-spec.md](docs/frontmatter-spec.md).

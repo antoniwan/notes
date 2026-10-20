@@ -43,7 +43,7 @@ const fetchPriority = priority ? 'high' : 'auto';
 // These covers moved under src/ with the hero art, so the same resolver gives
 // them a srcset. Before this they carried a `sizes` attribute with no `srcset`
 // to select from, which does nothing: a 1536px cover was painted into a 358px
-// box on /everything, fourteen times over.
+// box on /archive, fourteen times over.
 const resolved = resolveHeroImage(selectedImage);
 ---
 
