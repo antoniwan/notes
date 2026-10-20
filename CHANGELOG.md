@@ -15,7 +15,7 @@ Antonio: "this browse page is atrocious... remake it, from scratch". Browse link
 
 ### Changed
 
-- **Browse is one search over every word of the writing.** "Find a writing" matches titles first, then topics and descriptions, then lists the writings that only mention the words ("Mentioned in 9 more"). "dad" finds 10 writings and "money" 17; the header search found 1 and none. Results are photo cards, nine at a time.
+- **Browse is one search over every word of the writing.** "Find a writing" matches titles first, then topics and descriptions, then lists the writings that only mention the words ("Mentioned in 9 more"). "dad" finds 10 writings and "money" 17; the header search found 1 and none. A plural also finds its singular: "Poems" finds "poem", and "Boundaries" finds "boundary". Results are photo cards, nine at a time.
 - The 14 "Ways into the writing" sentences sit under the box, word for word. Each word runs that search in place, and Back returns to the sentences where you left them. Without JavaScript there is no box, and each word opens its topic page as before.
 - Every topic, A to Z, is folded under the box. `/browse#topics` and `/browse#topics-<letter>` open it.
 - A search is a link: `/browse?q=<words>` opens with its results, with no flash of the sentences first.

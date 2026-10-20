@@ -99,7 +99,20 @@ export function queryWords(query: string): string[] {
     (word) => word.length >= 2,
   );
   const meaningful = words.filter((word) => !STOPWORDS.has(word));
-  return meaningful.length > 0 ? meaningful : words;
+  return [...new Set((meaningful.length > 0 ? meaningful : words).map(pluralStem))];
+}
+
+/**
+ * A plural query word becomes the start it shares with its singular, so 'poems'
+ * also finds 'poem', 'boundaries' finds 'boundary', and 'wishes' finds 'wish'.
+ * The stem is a prefix of the plural, so nothing the plural matched is lost.
+ * Words ending in 'ss', 'us', or 'is' (loss, focus, crisis) are not plurals.
+ */
+export function pluralStem(word: string): string {
+  if (word.length < 4 || /(ss|us|is)$/.test(word)) return word;
+  if (word.endsWith('ies') && word.length >= 7) return word.slice(0, -3);
+  if (/(sses|xes|zes|ches|shes)$/.test(word)) return word.slice(0, -2);
+  return word.endsWith('s') ? word.slice(0, -1) : word;
 }
 
 /**
