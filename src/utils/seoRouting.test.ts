@@ -46,24 +46,34 @@ describe('POST_REDIRECTS + PAGE_REDIRECTS + buildSeoRedirects', () => {
     const tagRedirects = Object.keys(redirects).filter((k) => k.startsWith('/tag/'));
     expect(tagRedirects.length).toBeGreaterThan(0);
     const built = getBuiltTagSlugs();
-    expect(redirects['/tag/limites']).toBe(built.has('boundaries') ? '/tag/boundaries' : '/tag');
-    expect(redirects['/tag/recuperacion']).toBe(built.has('recovery') ? '/tag/recovery' : '/tag');
-    expect(redirects['/tag/escritura']).toBe(built.has('writing') ? '/tag/writing' : '/tag');
-    expect(redirects['/tag/poem']).toBe(built.has('poems') ? '/tag/poems' : '/tag');
-    expect(redirects['/tag/essay']).toBe(built.has('essays') ? '/tag/essays' : '/tag');
+    expect(redirects['/tag/limites']).toBe(built.has('boundaries') ? '/tag/boundaries' : '/browse');
+    expect(redirects['/tag/recuperacion']).toBe(
+      built.has('recovery') ? '/tag/recovery' : '/browse',
+    );
+    expect(redirects['/tag/escritura']).toBe(built.has('writing') ? '/tag/writing' : '/browse');
+    expect(redirects['/tag/poem']).toBe(built.has('poems') ? '/tag/poems' : '/browse');
+    expect(redirects['/tag/essay']).toBe(built.has('essays') ? '/tag/essays' : '/browse');
     expect(redirects['/tag/essays']).toBeUndefined();
     expect(redirects['/tag/development']).toBe(
-      built.has('software-development') ? '/tag/software-development' : '/tag',
+      built.has('software-development') ? '/tag/software-development' : '/browse',
     );
-    expect(redirects['/tag/notes']).toBe('/tag');
-    expect(redirects['/tag/nota']).toBe('/tag');
+    expect(redirects['/tag/notes']).toBe('/browse');
+    expect(redirects['/tag/nota']).toBe('/browse');
   });
 
   it('sends a tag alias to /tag when the canonical page is not built', () => {
     const redirects = buildTagAliasRedirects(new Set(['boundaries']));
     expect(redirects['/tag/limites']).toBe('/tag/boundaries');
-    expect(redirects['/tag/essay']).toBe('/tag');
-    expect(redirects['/tag/notes']).toBe('/tag');
+    expect(redirects['/tag/essay']).toBe('/browse');
+    expect(redirects['/tag/notes']).toBe('/browse');
+  });
+
+  it('sends the old reading pages to Archive and Browse', () => {
+    const redirects = buildSeoRedirects();
+    expect(redirects['/everything']).toBe('/archive');
+    expect(redirects['/tag']).toBe('/browse');
+    expect(redirects['/category']).toBe('/browse');
+    expect(redirects['/guided-path']).toBe('/browse');
   });
 
   it('sends every retired Writing Insights and Brain Science page home', () => {

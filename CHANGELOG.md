@@ -9,6 +9,25 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [7.0.0] — 2026-10-20
+
+Notes is for reading, and for searching for something to read. Antonio: "Everything is really the Archive, Guided Path can go away I think, Browse then becomes much more relevant, this version of Notes is all about reading things and searching things to read, that's it."
+
+### Changed
+
+- The navigation is three plain links: **Archive**, **Browse**, and **About**, with search in the header. The Browse dropdown is gone. The mobile menu has Browse and Archive under Read, with no category list, because Browse has one.
+- **Browse** (`/browse`) is one page: the categories (with the "Fair warning" note), then the topic search, "Ways into the writing", and every topic A–Z. It replaces the separate Topics (`/tag`) and Categories (`/category`) index pages. A topic or category page links back to its part of Browse, and the site marks Browse current there.
+- **Everything is the Archive**, at `/archive`.
+- Home's two ways in are Browse, then Archive. The "Start here" button went to Guided Path.
+
+### Removed
+
+- Guided Path (`/guided-path`), its season navigation and chapters, its filters, and their tests.
+
+### Redirects
+
+- `/everything` 301s to `/archive`. `/tag`, `/category`, and `/guided-path` 301 to `/browse`, and so does a tag alias with no page of its own. On Vercel, `/blog`, `/search`, and `/p` go to `/archive`, and `/categories` goes to `/browse`.
+
 ## [6.40.0] — 2026-10-20
 
 ### Changed

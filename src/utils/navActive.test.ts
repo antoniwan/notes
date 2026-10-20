@@ -8,17 +8,9 @@ import {
 } from './navActive';
 
 describe('desktop navigation destinations', () => {
-  it('puts the full archive first and keeps reader groups separate from site tools', () => {
-    expect(mainNavigation.map((item) => item.label)).toEqual([
-      'Everything',
-      'Guided Path',
-      'Browse',
-      'About',
-    ]);
-    expect(mainNavigation.find((item) => item.label === 'Browse')?.dropdown?.items).toEqual([
-      { href: '/tag', label: 'Topics' },
-      { href: '/category', label: 'Categories' },
-    ]);
+  it('is three plain links, reading first, and keeps site tools out', () => {
+    expect(mainNavigation.map((item) => item.label)).toEqual(['Archive', 'Browse', 'About']);
+    expect(mainNavigation.every((item) => !item.dropdown)).toBe(true);
     const destinations = mainNavigation.flatMap((item) =>
       item.dropdown ? item.dropdown.items.map((child) => child.href) : [item.href],
     );
@@ -29,10 +21,10 @@ describe('desktop navigation destinations', () => {
 
 describe('main navigation groups', () => {
   it.each([
-    ['/everything', 'Everything'],
-    ['/everything/', 'Everything'],
-    ['/guided-path', 'Guided Path'],
-    ['/tag', 'Browse'],
+    ['/archive', 'Archive'],
+    ['/archive/', 'Archive'],
+    ['/browse', 'Browse'],
+    ['/browse/', 'Browse'],
     ['/tag/parenting', 'Browse'],
     ['/category', 'Browse'],
     ['/category/parenting/', 'Browse'],
@@ -71,14 +63,17 @@ describe('destination active states', () => {
     ['/library/books', '/library/books/a-book', 'location'],
     ['/recipes', '/recipes/', 'page'],
     ['/tag/', '/tag', 'page'],
-    ['/everything', '/everything/', 'page'],
+    ['/archive', '/archive/', 'page'],
+    ['/browse', '/browse', 'page'],
+    ['/browse', '/tag/fatherhood', 'location'],
+    ['/browse', '/category/parenting', 'location'],
     ['/tag', '/category', undefined],
     ['/books', '/recipes', undefined],
     ['/books', '/library/books', undefined],
     ['/library/books', '/books', undefined],
     ['/recipes', '/p/a-regular-essay', undefined],
     ['/category/art', '/category/artistic-expression', undefined],
-    ['/everything', '/everything-else', undefined],
+    ['/archive', '/archive-else', undefined],
   ] as const)('gives %s on %s the correct current value', (href, pathname, current) => {
     expect(getNavLinkCurrent(href, pathname)).toBe(current);
     expect(isNavDropdownItemActive(href, pathname)).toBe(current !== undefined);

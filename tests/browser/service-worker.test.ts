@@ -163,9 +163,9 @@ describe('the offline promise', () => {
       await goto('/');
       await waitForController(page);
 
-      // '/everything' previously fell through to a plain fetch with no offline
+      // '/archive' (then '/everything') previously fell through to a plain fetch with no offline
       // handling at all — only '/' and '/p/' were treated as pages.
-      await goto('/everything');
+      await goto('/archive');
       const onlineTitle = await page.title();
       await page.waitForTimeout(1_000);
 

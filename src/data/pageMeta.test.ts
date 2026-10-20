@@ -18,9 +18,9 @@ describe('PAGE_META', () => {
     }
   });
 
-  it('describes /tag as an idea map, not an inventory', () => {
-    expect(PAGE_META['/tag'].toLowerCase()).toContain('idea map');
-    expect(PAGE_META['/tag']).not.toMatch(/discover content/i);
+  it('describes /browse as an idea map, not an inventory', () => {
+    expect(PAGE_META['/browse'].toLowerCase()).toContain('idea map');
+    expect(PAGE_META['/browse']).not.toMatch(/discover content/i);
   });
 
   it('stays within the SEO length budget', () => {

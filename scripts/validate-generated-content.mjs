@@ -293,7 +293,7 @@ if (
 ) {
   problems.push('migrated recipes remain in the search index');
 }
-for (const file of ['llms.txt', 'everything/index.html', 'sitemap-0.xml']) {
+for (const file of ['llms.txt', 'archive/index.html', 'sitemap-0.xml']) {
   const text = fs.readFileSync(path.join(dist, file), 'utf8');
   if (/\/p\/recipes\//.test(text))
     problems.push(`${file}: migrated recipe URLs remain in public output`);
@@ -341,7 +341,7 @@ const englishEssay = posts.find(
 const spanishTwin = pickSlug((data) => (data.language?.[0] ?? 'en') === 'es');
 const surfaces = [
   { label: 'homepage', sitePath: '/' },
-  { label: 'index (everything)', sitePath: '/everything' },
+  { label: 'archive', sitePath: '/archive' },
   englishEssay && { label: `english essay (${englishEssay})`, sitePath: `/p/${englishEssay}` },
   spanishTwin && { label: `spanish twin (${spanishTwin})`, sitePath: `/p/${spanishTwin}` },
 ].filter(Boolean);

@@ -40,7 +40,7 @@ const CONTENT_DIR =
     path.resolve(process.cwd(), 'src/content/p'),
   ].find((dir) => fs.existsSync(dir)) ?? path.resolve(process.cwd(), 'src/content/p');
 
-const LISTING_PATHS = ['/', '/everything'];
+const LISTING_PATHS = ['/', '/archive'];
 
 /**
  * Feeds carry essays only — see `isFeedListedPost`. A new dish must not move
@@ -49,12 +49,11 @@ const LISTING_PATHS = ['/', '/everything'];
 const FEED_PATHS = ['/rss.xml', '/feed.json'];
 
 /**
- * Listings that carry essays only — see `isGuidedPathListedPost`,
- * `isCategoryListedPost` and `isTagListedPost` in utils/recipes.ts. The category
- * and tag index pages build their counts from those same filters, so a new dish
- * changes nothing on them either.
+ * Listings that carry essays only — see `isCategoryListedPost` and
+ * `isTagListedPost` in utils/recipes.ts. Browse and the category and tag pages
+ * build their counts from those same filters, so a new dish changes nothing on them.
  */
-const ESSAY_LISTING_PATHS = ['/guided-path', '/category', '/tag'];
+const ESSAY_LISTING_PATHS = ['/browse', '/category', '/tag'];
 
 type SitemapMeta = {
   linksByCanonicalUrl: Map<string, SitemapLangLink[]>;
