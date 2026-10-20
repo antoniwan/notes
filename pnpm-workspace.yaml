@@ -3,15 +3,21 @@ allowBuilds:
   sharp: true
   simple-git-hooks: true
 
-# One scoped override, kept only while its advisory needs it. See the README
+# Scoped overrides, each kept only while its advisory needs it. See the README
 # (Toolchain) before adding another.
 #
 # @vercel/routing-utils pins path-to-regexp 6.1.0 exactly, which carries
 # GHSA-9wv6-86v2-598j (backtracking regular expressions). It already ships
 # 6.3.0 next to it to compare the two, and logs when they disagree; this site's
 # redirects compile to the same routes under both.
+#
+# @tailwindcss/typography 0.5.20 (the latest) pins postcss-selector-parser
+# 6.0.10 exactly, which carries GHSA-rj75-hqrm-r3gf (quadratic selector
+# parsing). The fix is 7.1.6. The site's built CSS is byte-identical under
+# both (checked October 20, 2026). Drop this when the plugin moves to 7.
 overrides:
   '@vercel/routing-utils>path-to-regexp': ^6.3.0
+  '@tailwindcss/typography>postcss-selector-parser': ^7.1.6
 
 peerDependencyRules:
   allowAny:
