@@ -88,9 +88,12 @@ Locally, `corepack enable` makes `pnpm` in this directory resolve to the pinned
 version. Without corepack, install pnpm 12 yourself; older majors may not
 understand every key in `pnpm-workspace.yaml`.
 
-`pnpm-workspace.yaml` carries one dependency override, scoped to the single
-parent that needs it: `@vercel/routing-utils` pins a `path-to-regexp` with an
-open advisory. Keep it that narrow. An exact, unscoped override keeps holding a
+`pnpm-workspace.yaml` carries two dependency overrides, each scoped to the
+single parent that needs it: `@vercel/routing-utils` pins a `path-to-regexp`,
+and `@tailwindcss/typography` pins a `postcss-selector-parser`, each with an
+open advisory. The second crosses a major (6 to 7), so it was checked by
+building the site under both and comparing the CSS: byte-identical. Keep them
+that narrow. An exact, unscoped override keeps holding a
 package at that version after its own security fixes ship, which is how this
 file once pinned three vulnerable versions. If an advisory needs an override,
 scope it to the parent, give it a range (`^`) rather than an exact version, say

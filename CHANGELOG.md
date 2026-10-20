@@ -9,6 +9,19 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [7.3.1] — 2026-10-20
+
+Maintenance. Antonio: "delete the old branches and the unused images, also, let's do that tailwind typography upgrade?"
+
+### Fixed
+
+- `pnpm audit` is clean. `@tailwindcss/typography` 0.5.20, the latest, still pins `postcss-selector-parser` 6.0.10 (GHSA-rj75-hqrm-r3gf), so a scoped override moves it to 7.1.6. That crosses a major, so the site was built under both and every CSS file compared: same names, same bytes. The override comment says when to drop it.
+
+### Removed
+
+- Six images in `public/images/` that nothing referenced: three old Open Graph cards (`notes-og-v2`, `v3`, `v4`), two images from an old import, and the image of a Spanish essay removed earlier, whose URL already redirects.
+- On GitHub, 57 old branches: 46 whose work was already in main, and 11 abandoned experiments. Three branches with unpublished drafts stay: `content/toxic-puerto-rico`, `content/costs-questions`, and `dispatch-pc-game-review`.
+
 ## [7.3.0] — 2026-10-20
 
 A cleanup release. Antonio: "remove the tag-management sections from this site, do several consolidation passes, coherency, dead code, check obvious things, update things, then update readmes and docs". About 3,000 lines lighter; nothing a reader uses changes.
