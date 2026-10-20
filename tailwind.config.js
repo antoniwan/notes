@@ -1,6 +1,42 @@
 import typography from '@tailwindcss/typography';
 import forms from '@tailwindcss/forms';
 
+// prose-lg on the 4px rhythm. The typography plugin spaces long text in em (p 1.333em, h2 1.867em
+// above). Here each of its vertical em values rounds to the nearest 4px, under the plugin's own
+// selectors, so its "flush after a heading", first-child, and last-child rules keep working.
+// Headings take a named line-height step (--leading-* in global.css).
+const round4 = (em) => `round(nearest, ${em}em, 4px)`;
+const block = (top, bottom = top) => ({ marginTop: round4(top), marginBottom: round4(bottom) });
+const PROSE_LG_ROUNDED = {
+  p: block(1.3333333),
+  '[class~="lead"]': block(1.0909091),
+  blockquote: block(1.6666667),
+  h1: { marginBottom: round4(0.8333333) },
+  h2: { ...block(1.8666667, 1.0666667), lineHeight: 'var(--leading-tight)' },
+  h3: { ...block(1.6666667, 0.6666667), lineHeight: 'var(--leading-snug)' },
+  h4: { ...block(1.7777778, 0.4444444), lineHeight: 'var(--leading-normal)' },
+  img: block(1.7777778),
+  picture: block(1.7777778),
+  video: block(1.7777778),
+  figure: block(1.7777778),
+  figcaption: { marginTop: round4(1) },
+  pre: { ...block(2), paddingTop: round4(1), paddingBottom: round4(1) },
+  ol: block(1.3333333),
+  ul: block(1.3333333),
+  li: block(0.6666667),
+  '> ul > li p': block(0.8888889),
+  '> ul > li > p:first-child': { marginTop: round4(1.3333333) },
+  '> ul > li > p:last-child': { marginBottom: round4(1.3333333) },
+  '> ol > li > p:first-child': { marginTop: round4(1.3333333) },
+  '> ol > li > p:last-child': { marginBottom: round4(1.3333333) },
+  'ul ul, ul ol, ol ul, ol ol': block(0.8888889),
+  dl: block(1.3333333),
+  dt: { marginTop: round4(1.3333333) },
+  dd: { marginTop: round4(0.6666667) },
+  hr: block(3.1111111),
+  'thead th': { lineHeight: 'var(--leading-normal)' },
+};
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
@@ -345,6 +381,7 @@ export default {
         },
         lg: {
           css: {
+            ...PROSE_LG_ROUNDED,
             'thead th:first-child': { paddingInlineStart: '1.5rem' },
             'thead th:last-child': { paddingInlineEnd: '1.5rem' },
             'tbody td:first-child, tfoot td:first-child': {

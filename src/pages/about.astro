@@ -121,7 +121,8 @@ import HeroImage from '../components/HeroImage.astro';
   .about-shell {
     --about-body-size: 1.125rem;
     --about-heading-size: clamp(1.65rem, 2.5vw, 2rem);
-    padding-block: round(nearest, clamp(2rem, 5vw, 4.5rem) clamp(4rem, 7vw, 7rem), 4px);
+    padding-block: round(nearest, clamp(2rem, 5vw, 4.5rem), 4px)
+      round(nearest, clamp(4rem, 7vw, 7rem), 4px);
   }
 
   .about-heading {
@@ -303,7 +304,7 @@ import HeroImage from '../components/HeroImage.astro';
     font-size: var(--about-heading-size);
     font-weight: 600;
     letter-spacing: -0.04em;
-    line-height: var(--leading-tight);
+    line-height: var(--leading-display);
     text-wrap: balance;
   }
 

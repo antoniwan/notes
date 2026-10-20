@@ -13,6 +13,7 @@
  * - max-width      a width a block sets for itself; text uses var(--measure) or var(--measure-title)
  * - tw-arbitrary   a Tailwind arbitrary width, line height, or spacing (max-w-[…], leading-[…], p-[…])
  * - tw-half-step   a Tailwind 6px or 10px half step (gap-1.5, px-2.5)
+ * - invalid-round  two lengths inside one round(), which the browser drops silently
  *
  * The baseline (scripts/lint-tokens.baseline.json) holds today's counts. A count may only go down:
  * new code meets the rule, and old exceptions are paid off over time. Lower the baseline with
@@ -43,7 +44,39 @@ const findings = {
   'max-width': [],
   'tw-arbitrary': [],
   'tw-half-step': [],
+  'invalid-round': [],
 };
+
+/**
+ * round() takes one length to round. A shorthand with two lengths inside one round()
+ * (round(nearest, clamp(…) 2rem, 4px)) is invalid CSS, and the browser drops the whole
+ * declaration without a word. Round each length on its own.
+ */
+function badRound(value) {
+  for (let i = value.indexOf('round('); i >= 0; i = value.indexOf('round(', i + 1)) {
+    let depth = 0;
+    let arg = '';
+    const args = [];
+    for (let j = i + 'round('.length; j < value.length; j++) {
+      const c = value[j];
+      if (c === '(') depth++;
+      if (c === ')' && depth-- === 0) break;
+      if (c === ',' && depth === 0) {
+        args.push(arg.trim());
+        arg = '';
+      } else arg += c;
+    }
+    args.push(arg.trim());
+    const rounded = args.length === 3 ? args[1] : args[0];
+    let d = 0;
+    for (const c of rounded) {
+      if (c === '(') d++;
+      else if (c === ')') d--;
+      else if (c === ' ' && d === 0) return true;
+    }
+  }
+  return false;
+}
 const SPACING =
   /^(margin|padding)(-(top|right|bottom|left|block|inline|block-start|block-end|inline-start|inline-end))?$|^(gap|row-gap|column-gap)$/;
 const WIDTH_OK =
@@ -91,6 +124,7 @@ for (const file of files) {
         findings.spacing.push(`${where}  ${prop}: ${value}`);
       if (prop === 'max-width' && !WIDTH_OK.test(value))
         findings['max-width'].push(`${where}  max-width: ${value}`);
+      if (badRound(value)) findings['invalid-round'].push(`${where}  ${prop}: ${value}`);
     }
     void depthMedia;
   }

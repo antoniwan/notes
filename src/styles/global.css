@@ -307,10 +307,11 @@
     --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.05), 0 4px 12px rgb(0 0 0 / 0.04);
     --shadow-lift: 0 4px 16px rgb(0 0 0 / 0.08);
 
-    /* Line heights: six named steps. Each is a ratio of the element's own font size, rounded to the
+    /* Line heights: seven named steps. Each is a ratio of the element's own font size, rounded to the
        nearest 4px, so every line of text, at any size, sits on one 4px rhythm. A stylesheet names a
        step (line-height: var(--leading-relaxed)); it never writes a bare ratio. */
     --leading-none: round(nearest, 1em, 4px);
+    --leading-display: round(nearest, 1.125em, 4px); /* big headline type */
     --leading-tight: round(nearest, 1.25em, 4px);
     --leading-snug: round(nearest, 1.375em, 4px);
     --leading-normal: round(nearest, 1.5em, 4px);
@@ -384,6 +385,28 @@
     line-height: var(--leading-normal);
   }
 
+  /* A line height in this file is a length (a named step rounded to 4px), and a length is what a
+     child inherits. So an element with a smaller font of its own takes a step for that font instead
+     of its parent's line. Any component rule still wins. */
+  :where(
+    small,
+    sub,
+    sup,
+    code,
+    kbd,
+    samp,
+    summary,
+    figcaption,
+    caption,
+    label,
+    button,
+    input,
+    select,
+    textarea
+  ) {
+    line-height: var(--leading-normal);
+  }
+
   /* Typography */
   h1,
   h2,
@@ -397,7 +420,7 @@
 
   h1 {
     @apply text-3xl font-black tracking-tight md:text-4xl lg:text-5xl;
-    line-height: var(--leading-tight);
+    line-height: var(--leading-display);
     margin-top: 2rem;
     margin-bottom: 1.25rem;
   }
@@ -1138,36 +1161,4 @@
   line-height: var(--leading-relaxed);
   margin: 2rem 0;
   font-size: 1.125rem;
-}
-
-/* prose-lg on the 4px rhythm. The typography plugin spaces long text in em (p 1.333em, h2 1.867em
-   above and 1.067em below, li 0.667em, hr 3.111em) and gives headings their own ratios. Here the same
-   em values round to the nearest 4px, and headings take a named step. Only plain Markdown elements:
-   anything with a class of its own, or inside not-prose, keeps its utilities. */
-.prose-lg :where(p, ul, ol):not([class]):not(:where([class~='not-prose'] *)) {
-  margin-block: round(nearest, 1.3333em, 4px);
-}
-.prose-lg :where(li):not([class]):not(:where([class~='not-prose'] *)) {
-  margin-block: round(nearest, 0.6667em, 4px);
-}
-.prose-lg :where(blockquote):not([class]):not(:where([class~='not-prose'] *)) {
-  margin-block: round(nearest, 1.6667em, 4px);
-}
-.prose-lg :where(hr):not([class]):not(:where([class~='not-prose'] *)) {
-  margin-block: round(nearest, 3.1111em, 4px);
-}
-.prose-lg :where(h2):not([class]):not(:where([class~='not-prose'] *)) {
-  margin-top: round(nearest, 1.8667em, 4px);
-  margin-bottom: round(nearest, 1.0667em, 4px);
-  line-height: var(--leading-tight);
-}
-.prose-lg :where(h3):not([class]):not(:where([class~='not-prose'] *)) {
-  margin-top: round(nearest, 1.6667em, 4px);
-  margin-bottom: round(nearest, 0.6667em, 4px);
-  line-height: var(--leading-snug);
-}
-.prose-lg :where(h4):not([class]):not(:where([class~='not-prose'] *)) {
-  margin-top: round(nearest, 1.7778em, 4px);
-  margin-bottom: round(nearest, 0.4444em, 4px);
-  line-height: var(--leading-normal);
 }

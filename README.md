@@ -53,7 +53,7 @@ English is the listing language. Spanish is a twin: language toggle, title searc
 The look lives in `src/styles/global.css` (tokens) and `tailwind.config.js` (the type scale). Three rules keep pages consistent; `pnpm run lint:tokens` checks them in CI.
 
 - **The layout sets the width.** A block does not cap its own width. Running text stops at one reading width, `--measure` (45rem, `max-w-measure`); display headings at `--measure-title`. Essays are one `--measure` column beside the contents rail.
-- **One 4px rhythm.** Line heights are six named steps (`var(--leading-none|tight|snug|normal|relaxed|loose)`), each rounded to 4px for its font size. The Tailwind type scale has fixed line heights on the grid (14/24, 16/28, 18/32, 20/36 …). Margins, padding, and gaps sit on the 4px scale; a fluid value is wrapped in `round(nearest, …, 4px)`.
+- **One 4px rhythm.** Line heights are seven named steps (`var(--leading-none|display|tight|snug|normal|relaxed|loose)`), each rounded to 4px for its font size. The Tailwind type scale has fixed line heights on the grid (14/24, 16/28, 18/32, 20/36 …). Margins, padding, and gaps sit on the 4px scale; a fluid value is wrapped in `round(nearest, …, 4px)`.
 - **Counts only go down.** The lint keeps a baseline (`scripts/lint-tokens.baseline.json`) of today's deliberate exceptions. New code meets the rules; after a cleanup, `pnpm run lint:tokens --update` lowers the baseline.
 
 ## Stack
