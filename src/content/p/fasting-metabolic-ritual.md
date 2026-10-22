@@ -51,8 +51,7 @@ I needed **clarity**. **Stillness**. **Dominion** over impulse. I'm not starving
 
 ## 🍽️ Post-Fast Ritual: Ground + Flow
 
-I broke the fast with a ritual meal. Full recipe and protocol here:  
-👉 [Fasting Ritual: Ground + Flow](/blog/fasting-ground-flow)
+I broke the fast with a ritual meal.
 
 ## 🧠 Mid + Long-Term Effects
 

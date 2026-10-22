@@ -83,7 +83,7 @@ A random Stoic quotes API. `GET /api/quotes` returns quotes from Marcus Aurelius
 
 ### Tag Governance
 
-Tags used to be a mess. I'd slap whatever felt right on a post and move on. Now there's a [canonical tag vocabulary](/tag), a tag policy document, alias normalization (so `essay` and `essays` and `nota` all resolve to the same thing), and a tag management page with analytics-style views. The `/tag` page now opens with a sentence-style prelude linking to content forms — essays, notes, poems, ideas — when they exist on the site. It's a small touch that makes browsing feel intentional instead of random.
+Tags used to be a mess. I'd slap whatever felt right on a post and move on. Now there's a [canonical tag vocabulary](/browse), a tag policy document, alias normalization (so `essay` and `essays` and `nota` all resolve to the same thing), and a tag management page with analytics-style views. The `/tag` page now opens with a sentence-style prelude linking to content forms — essays, notes, poems, ideas — when they exist on the site. It's a small touch that makes browsing feel intentional instead of random.
 
 ### Performance, Always
 
