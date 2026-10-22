@@ -4,6 +4,8 @@ description: A poem about the strangers behind the art I love, and what my feeli
 pubDate: '2026-10-16T12:00:00-04:00'
 language:
   - en
+heroImage: /images/2026/if-i-separate-the-art-from-the-artist.avif
+imageAlt: 'AI illustration: a man in a hoodie stands beside a second figure whose head dissolves into fire, and a third figure made of golden light.'
 category:
   - art-expression
   - culture
