@@ -49,7 +49,7 @@ const seoDescription = tagMetaDescription(canonicalTag, totalPosts);
   posts={tagPosts}
 >
   <Container>
-    <Container maxWidth="container" padding="none">
+    <Container maxWidth="container" padding="none" class="tag-page">
       {/* Tag Header with Stats */}
       <div class="mb-8">
         <PageHeader title={tagLabel} description={tagBlurb} />
@@ -136,6 +136,11 @@ const seoDescription = tagMetaDescription(canonicalTag, totalPosts);
 </BaseLayout>
 
 <style>
+  /* Room above the footer, as on Archive and Browse. Without it, Related topics touched the footer. */
+  :global(.tag-page) {
+    padding-bottom: round(nearest, clamp(4rem, 7vw, 7rem), 4px);
+  }
+
   /* Smooth transitions for dark mode */
   main {
     transition:

@@ -6,6 +6,8 @@ description: >-
 pubDate: '2024-07-15T16:45:00.000Z'
 language:
   - en
+heroImage: /images/2024/learning-construction-self.avif
+imageAlt: 'AI illustration: a small figure sits cross-legged among dark rocks, holding a glowing light while golden roots and green sprouts spread out around them.'
 category:
   - psychology
   - integration-growth

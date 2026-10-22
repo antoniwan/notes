@@ -33,6 +33,14 @@
       "sha256": "efef18fe58c351484565656fa8db0aa62efd3daf9717cef422c6c9ab7f122d87",
       "social": "/social/images/2023/eres-magia-social.jpg"
     },
+    "/images/2024/carrot-cake-portions.avif": {
+      "sha256": "341aba6c62e994b719157e9585abf05b2a3bf50c81ddace2e3a34badda5f2a8d",
+      "social": "/social/images/2024/carrot-cake-portions-social.jpg"
+    },
+    "/images/2024/learning-construction-self.avif": {
+      "sha256": "ae484bd6d43f1f230979e2441e6931c13f7aaed2b458169285548002e1be3af1",
+      "social": "/social/images/2024/learning-construction-self-social.jpg"
+    },
     "/images/2025/broken-signals.avif": {
       "sha256": "fb2e7434bda74a3a05ad385fb21cef4c0ccc477a7434ac5f67011203d235ff79",
       "social": "/social/images/2025/broken-signals-social.jpg"
