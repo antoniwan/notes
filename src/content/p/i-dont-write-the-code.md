@@ -44,10 +44,6 @@ The tokens are going to be bought and used anyway, so I'll buy some and make kic
 | Decisions written down | 170+                                                | 200+                                                                              |
 | Play it                | [uplifttowergame.com](https://uplifttowergame.com)  | Not yet. Support it on [Patreon](https://www.patreon.com/c/antoniwan)             |
 
-<figure class="post-inline-figure post-inline-figure--center">
-  <img src="/images/devlog-1-uplift-card.webp" alt="Uplift&#x27;s link card: its logo, a pixel-art tower with roots, beside a building and trees, with the words &#x27;Build a tower, floor by floor. Keep the elevators moving.&#x27;" width="1200" height="630" loading="lazy" decoding="async" />
-</figure>
-
 ## Uplift: live in three days
 
 Uplift started on October 11 with one sentence, more or less exactly: "i've always loved SimTower, let's build a worth web-based successor for it, let's create the project plan, let's define everything before building anything, help me out."
@@ -58,6 +54,7 @@ Three days after that first sentence, Uplift was live.
 
 <figure class="post-inline-figure post-inline-figure--center">
   <img src="/images/devlog-1-uplift-demo-tower.webp" alt="Uplift&#x27;s demo tower in play: fifteen floors of offices and homes over two basement levels, with the Tower, Objectives, Build, and Map panels open." width="1456" height="816" loading="lazy" decoding="async" />
+  <figcaption>Uplift's demo tower, live in the browser.</figcaption>
 </figure>
 
 Then a friend played it and told me the first minute was confusing: too many panels, nothing to do. That one note became the new start of the game: an empty lot, one prompt, and the panels show up only when you need them. I didn't think of it. I just listened, and decided it was right.
@@ -72,48 +69,18 @@ And yeah, I've been dreaming about Milak since the first time I played Yasuo and
 
 Milak started on the night of October 19. Milak Summir is a name I've used in my RPG runs for years, maybe since the original Guild Wars, and now he is a swordsman for hire who swings a two-handed bastard sword like a pencil. I told Claude, more or less: you're building it, not me, I'll direct the art.
 
-<figure class="post-inline-figure post-inline-figure--center">
-  <img src="/images/devlog-1-milak-mid-stride.webp" alt="Milak mid-stride on dusty ground, his two-handed sword raised." width="624" height="390" loading="lazy" decoding="async" />
-</figure>
-
 And the first thing I directed was no art at all. Milak was a blue capsule swinging at straw dummies until the fight felt right in my hands. Art on a fight that isn't fun is wasted, so it waited. The fight passed that check on October 20, and only then did bodies come in. Most of the job, I think, is deciding what not to build yet.
 
 <figure class="post-inline-figure post-inline-figure--center">
   <img src="/images/devlog-1-milak-plain-shapes.webp" alt="An early Milak: a blue capsule hits straw training dummies." width="1280" height="560" loading="lazy" decoding="async" />
-</figure>
-
-<figure class="post-inline-figure post-inline-figure--center">
-  <img src="/images/devlog-1-milak-ninja-fight.webp" alt="Milak with a real body, in a pool of blood among black-clad ninjas." width="1280" height="455" loading="lazy" decoding="async" />
-</figure>
-
-<figure class="post-inline-figure post-inline-figure--center">
-  <img src="/images/devlog-1-milak-dummy-hit.webp" alt="Milak&#x27;s sword hits a straw dummy and straw flies." width="1280" height="455" loading="lazy" decoding="async" />
-</figure>
-
-<figure class="post-inline-figure post-inline-figure--center">
-  <img src="/images/devlog-1-milak-dummies-spin.webp" alt="Milak spins, and the straw dummies around him break apart." width="1280" height="455" loading="lazy" decoding="async" />
+  <figcaption>Milak before art: a blue capsule, until the fight was fun.</figcaption>
 </figure>
 
 Two days later, it's a different game. Milak has a hunting knife on Q, a real leap with a plunge, blood and bodies that stay, and dummies that break and rise again. The whole keyboard is on screen as his action bars. He has a Journal, a Skills window, quests born from what he does, and a title screen. And the game has a working title now: Lifesworn.
 
 <figure class="post-inline-figure post-inline-figure--center">
-  <img src="/images/devlog-1-milak-practice-yard.webp" alt="Milak bursts a straw dummy for 38 damage in the practice yard, with the practice meter and the whole keyboard drawn on screen as his action bars." width="1280" height="720" loading="lazy" decoding="async" />
-  <figcaption>October 21: the practice yard, with the whole keyboard as the action bars.</figcaption>
-</figure>
-
-<figure class="post-inline-figure post-inline-figure--center">
-  <img src="/images/devlog-1-milak-quest-giver.webp" alt="Milak, sword drawn, beside a man with a yellow exclamation mark over his head; a notice reads &#x27;New quest: Thin the pack&#x27;." width="1280" height="720" loading="lazy" decoding="async" />
-  <figcaption>October 22: a yellow ! over a man with a quest.</figcaption>
-</figure>
-
-<figure class="post-inline-figure post-inline-figure--center">
-  <img src="/images/devlog-1-milak-officer-threat.webp" alt="Milak in a dirt yard near a wolf statue; the target frame reads an Officer as Dangerous: it kills him in about 40 hits, and he needs about 4." width="1280" height="720" loading="lazy" decoding="async" />
-  <figcaption>The threat read: an Officer, dangerous, with the hits it takes each way.</figcaption>
-</figure>
-
-<figure class="post-inline-figure post-inline-figure--center">
   <img src="/images/devlog-1-milak-bag-nightfell.webp" alt="Milak&#x27;s bag laid out like his body, with Nightfell, a legendary sword marked Draft, compared against his plain sword: more crit chance, crit damage, blade damage and swing speed." width="1280" height="720" loading="lazy" decoding="async" />
-  <figcaption>The bag shaped like a man, and Nightfell, a sword he hasn't earned yet.</figcaption>
+  <figcaption>October 22: the bag shaped like a man, and Nightfell, a sword he hasn't earned yet.</figcaption>
 </figure>
 
 ## How I direct Claude
@@ -142,10 +109,6 @@ I don't write the code, but I understand the codebase, completely. That's part o
 Uplift turned into a world-building tool for a novel. Its tower lives in a world I've been writing for years, and on October 19 I told Claude: "If you write it into the game it becomes canon in the universe - think about that". So now it works both ways. When the game needed robots and animals, I picked them, and now they exist in the novel's world too. That world is far enough in the future that a lot of it is guesswork, even for me, and the game keeps asking questions the novel never did: who walks the halls at night, what lives underground, what you find when you dig. Wild.
 
 Milak might do the same thing from the other side. The game is meant to have him thinking as he travels, thoughts and maybe poems, with the player guiding them. That's writing, inside a game. Maybe one day it becomes a story of its own. I don't know yet.
-
-<figure class="post-inline-figure post-inline-figure--center">
-  <img src="/images/devlog-1-milak-inspired-status.webp" alt="Milak, in red, among coloured training dummies; a status card reads &#x27;Inspired: Someone&#x27;s words put fire in him.&#x27;" width="1280" height="720" loading="lazy" decoding="async" />
-</figure>
 
 I already had a place to write about the games. Coincidental, accidental, or intentional? Honestly, a bit of each. Notes was here for over a year before these games existed; that part is an accident. On October 7, four days before Uplift started, I wrote that all of my writing would be free and that people could support me on Patreon if they wanted; the timing is a coincidence. Writing these devlogs here is the intentional part.
 
@@ -204,10 +167,11 @@ It is not magic and it is not free. Claude remembers things about the engine tha
 
 <figure class="post-inline-figure post-inline-figure--center">
   <img src="/images/devlog-1-lifesworn-title.webp" alt="A dark title screen that reads Lifesworn, with Play, Choose a place, and Quit." width="1280" height="720" loading="lazy" decoding="async" />
+  <figcaption>As of October 22, the game opens on a title screen, under its working title.</figcaption>
 </figure>
 
 Every other week I'll write one of these: what got built, what I decided, and what I got wrong. Uplift is playable now, free, in your browser. Milak will have a free demo when the fight is something I'm proud of.
 
 If you want to follow along, I'll ask one thing: [follow me on Patreon, for free](https://www.patreon.com/c/antoniwan), and you'll get each devlog by email when it ships. No ads, ever. Just the games and me making them.
 
-_Screenshots: Uplift's live demo and its link card, October 21, 2026; Milak's own recordings and screenshots, October 20 to 22, 2026; the collage, October 22, 2026. Status as of October 22, 2026._
+_Screenshots: Uplift's live demo, October 21, 2026; Milak's own recordings and screenshots, October 20 to 22, 2026; the collage, October 22, 2026. Status as of October 22, 2026._
