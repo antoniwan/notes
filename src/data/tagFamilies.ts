@@ -118,6 +118,7 @@ export const TAG_FAMILY_MEMBERS: Record<TagFamily, readonly string[]> = {
     'digital-art',
     'education',
     'efficiency',
+    'game-development',
     'learning',
     'learning-projects',
     'memoir',

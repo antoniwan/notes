@@ -82,6 +82,7 @@ export const DOMAIN_EXTENSION_TAGS = {
   ],
   technology: [
     'software-development',
+    'game-development',
     'web-development',
     'typescript',
     'astro',
