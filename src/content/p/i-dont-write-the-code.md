@@ -2,7 +2,9 @@
 title: "I Don't Write the Code"
 description: >-
   I shipped a tower game in three days and started a sword game a week later. Claude wrote every line. Here is what I do, and why I'm saying it.
-pubDate: 2026-10-21T14:00:00-04:00
+pubDate: 2026-10-22T16:00:00-04:00
+heroImage: /images/2026/devlog-1-collage.avif
+imageAlt: "A collage of both games: Uplift's pixel-art tower, rooms, and logo above a dirt yard where Milak swings a huge sword among black-clad ninjas, a wolf, a goblin, and training props."
 language:
   - en
 category:
@@ -25,7 +27,7 @@ showComments: true
 translationGroup: i-dont-write-the-code
 ---
 
-_Devlog 1 · October 21, 2026 · Uplift and Milak_
+_Devlog 1 · October 22, 2026 · Uplift and Milak_
 
 I have a day job and a family, and in the last ten days I put [a tower game on the web](https://uplifttowergame.com) and started building [a sword game](https://www.patreon.com/c/antoniwan) in a real game engine. I did not write a single line of the code for either one. Claude did.
 
@@ -35,12 +37,12 @@ The tokens are going to be bought and used anyway, so I'll buy some and make kic
 
 ## The two games
 
-|                        | Uplift                                              | Milak                                                                      |
-| ---------------------- | --------------------------------------------------- | -------------------------------------------------------------------------- |
-| What it is             | A tower-building game, my take on SimTower          | A 3D action RPG: Milak Summir, a swordsman for hire                        |
-| Where it stands        | Early and playable: a vertical slice, live and free | A combat prototype in plain shapes; its first bodies came in on October 20 |
-| Decisions written down | 170+                                                | 100+                                                                       |
-| Play it                | [uplifttowergame.com](https://uplifttowergame.com)  | Not yet. Support it on [Patreon](https://www.patreon.com/c/antoniwan)      |
+|                        | Uplift                                              | Milak                                                                             |
+| ---------------------- | --------------------------------------------------- | --------------------------------------------------------------------------------- |
+| What it is             | A tower-building game, my take on SimTower          | A 3D action RPG: Milak Summir, a swordsman for hire                               |
+| Where it stands        | Early and playable: a vertical slice, live and free | A playable combat slice: bodies since October 20, a title screen since October 22 |
+| Decisions written down | 170+                                                | 200+                                                                              |
+| Play it                | [uplifttowergame.com](https://uplifttowergame.com)  | Not yet. Support it on [Patreon](https://www.patreon.com/c/antoniwan)             |
 
 <figure class="post-inline-figure post-inline-figure--center">
   <img src="/images/devlog-1-uplift-card.webp" alt="Uplift&#x27;s link card: its logo, a pixel-art tower with roots, beside a building and trees, with the words &#x27;Build a tower, floor by floor. Keep the elevators moving.&#x27;" width="1200" height="630" loading="lazy" decoding="async" />
@@ -92,6 +94,8 @@ And the first thing I directed was no art at all. Milak was a blue capsule swing
   <img src="/images/devlog-1-milak-dummies-spin.webp" alt="Milak spins, and the straw dummies around him break apart." width="1280" height="455" loading="lazy" decoding="async" />
 </figure>
 
+Two days later, it's a different game. Milak has a hunting knife on Q, a real leap with a plunge, blood and bodies that stay, and dummies that break and rise again. The whole keyboard is on screen as his action bars. He has a Journal, a Skills window, quests born from what he does, and a title screen. And the game has a working title now: Lifesworn.
+
 ## How I direct Claude
 
 My rule since October 14: "anything visually, every pixel, every line in this game, is it intentional, is it helpful, does it provide value to the game? always"
@@ -138,7 +142,7 @@ Merriam-Webster made "slop" its [word of the year for 2025](https://techcrunch.c
 Is it low quality? Is it made in quantity? Did anybody review it?
 
 - **Uplift.** It's a work in progress, so parts of it are rough, and I know which ones: there's no sound yet, the rules for stairs aren't right, an empty lot looks the same as an abandoned one, and some buttons sit in the wrong panel. It also holds 60 frames a second with 15,000 people in the tower, every change has to pass its 311 tests before it's committed, and every one of its 170-plus decisions has my words on it. It's one game, not a pile of them. And it's reviewed: I play it, a friend played it and changed its first minute, and every change goes through me.
-- **Milak.** It's two days old, so judge it later. For now: it was a blue capsule until the fight was fun, and the bodies that came in after are free models made by a person, [Quaternius](https://quaternius.com), not generated ones. One game. Nothing got art before it passed my check.
+- **Milak.** It's three days old, so judge it later. For now: it was a blue capsule until the fight was fun, and the bodies that came in after are free models made by a person, [Quaternius](https://quaternius.com), not generated ones. One game. Nothing got art before it passed my check.
 - **This post.** Claude wrote the first draft of it from my notes, and I'm rewriting it. By Willison's test, it isn't slop: I asked for it, and I'm reading every line. By Merriam-Webster's, quality is yours to judge, and that goes for all three. What I can promise is that a person made every call.
 
 By my own moral and ethical standards, Anthropic is a company I'm okay using and paying, by the way. I pay for my plan myself; nobody sponsors me. If I'm wrong about them, leave me a note down there!!
@@ -149,11 +153,11 @@ Making two games without a studio, from October 11 to today, means wearing almos
 
 | Role                  | Who                             | What it looks like                                                                                                |
 | --------------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| Creative director     | Me                              | The vision for both games and the final word on every call: 170+ written decisions in Uplift, 100+ in Milak       |
+| Creative director     | Me                              | The vision for both games and the final word on every call: 170+ written decisions in Uplift, 200+ in Milak       |
 | Game designer         | Me                              | The sword tornado's chain, stamina, Milak's talent web, Uplift's stars and construction crews                     |
 | Art director          | Me                              | League's "hand-painted, yet graphic" look for Milak, every pixel earning its place, which models and fonts go in  |
 | World builder         | Me                              | Uplift's tower lives in a world I've been writing for years, for a novel                                          |
-| Engineer              | Claude                          | Every line of code: 300+ commits in Uplift, 150 in Milak                                                          |
+| Engineer              | Claude                          | Every line of code: 300+ commits in Uplift, nearly 400 in Milak                                                   |
 | Code reviewer         | Me                              | I understand the codebase, completely                                                                             |
 | Producer              | Me, with Claude's plans         | What gets built next and what waits, like plain shapes until the fight was fun                                    |
 | QA and playtesting    | Friends, Claude's tests, and me | Friends send notes; I play both; Uplift has 311 tests every change must pass, and holds 60 fps with 15,000 people |
@@ -178,4 +182,4 @@ Every other week I'll write one of these: what got built, what I decided, and wh
 
 If you want to follow along, I'll ask one thing: [follow me on Patreon, for free](https://www.patreon.com/c/antoniwan), and you'll get each devlog by email when it ships. No ads, ever. Just the games and me making them.
 
-_Screenshots: Uplift's live demo and its link card, October 21, 2026; Milak's own recordings, October 20 and 21, 2026._
+_Screenshots: Uplift's live demo and its link card, October 21, 2026; Milak's own recordings, October 20 and 21, 2026. Status as of October 22, 2026._
