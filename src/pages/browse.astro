@@ -134,7 +134,13 @@ const wordsUrl = `/browse-words.json?v=${encodeURIComponent(pkg.version ?? 'dev'
         <TopicIndex topics={topics} headingLevel={2} />
       </details>
       <div data-browse-ways>
-        <ContentFormPrelude tagCounts={tagCounts} />
+        <ContentFormPrelude
+          tagCounts={tagCounts}
+          posts={posts.map((post) => ({
+            tags: canonicalizeTags(post.data.tags),
+            pubDate: post.data.pubDate,
+          }))}
+        />
       </div>
     </div>
   </div>
@@ -154,8 +160,8 @@ const wordsUrl = `/browse-words.json?v=${encodeURIComponent(pkg.version ?? 'dev'
   const UNLOADED = 'Titles, descriptions, and topics only: the full text didn’t load.';
   // Every sentence word and every A–Z row shows its topic's writings here instead of opening the
   // topic page. A topic is not a word search: "Poems" shows the poems, not every essay that says
-  // "poem".
-  const TOPIC_LINKS = '[data-browse-ways] a, .topic-row';
+  // "poem". The kitchen sentence's Cookbook link is not a topic and stays a plain link.
+  const TOPIC_LINKS = '[data-browse-ways] a.tag-chip, .topic-row';
 
   /** A piece of this page's own markup, above. Missing is a bug in this file, not a state. */
   function part<T extends Element>(selector: string): T {

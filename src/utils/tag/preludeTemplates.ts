@@ -4,6 +4,14 @@ export interface PreludeTemplateCandidate {
   prefix: string;
   tags: string[];
   suffix?: string;
+  /** A closing link after the topics, e.g. the Cookbook site. */
+  link?: PreludeLink;
+}
+
+export interface PreludeLink {
+  lead: string;
+  label: string;
+  href: string;
 }
 
 interface PreludeTemplateInput {
@@ -15,6 +23,7 @@ interface PreludeAxis {
   weight: number;
   prefix: string;
   suffix?: string;
+  link?: PreludeLink;
   allowed: string[];
   /** Included first when present, so the sentence matches its own wording. */
   prefer?: string[];
@@ -26,8 +35,22 @@ interface PreludeAxis {
 export const PRELUDE_THEME_LIMIT = 14;
 
 /**
+ * Where Antonio is now: these sentences open Browse, in this order, whatever the
+ * writing says. Edit this list when life moves; everything below it ranks itself.
+ */
+export const PRELUDE_NOW: string[] = ['family', 'island', 'public-life', 'craft'];
+
+/** A writing's pull on its sentence halves every this many days. */
+export const PRELUDE_HALF_LIFE_DAYS = 180;
+
+/** A sentence with no writing newer than this goes last, until a new piece lands. */
+export const PRELUDE_QUIET_DAYS = 365;
+
+/**
  * Distinct browse axes. One sentence per axis; selection later drops
  * overlapping tags so the map does not collapse into inner-work twice.
+ * `weight` only decides which sentence claims a shared topic; the page order
+ * comes from `orderPreludeTemplates`.
  */
 const PRELUDE_AXES: PreludeAxis[] = [
   {
@@ -94,12 +117,24 @@ const PRELUDE_AXES: PreludeAxis[] = [
     id: 'craft',
     weight: 4,
     prefix: 'The making lives under',
-    allowed: ['learning-projects', 'technology', 'software-development', 'writing', 'metaspace'],
+    allowed: [
+      'learning-projects',
+      'technology',
+      'software-development',
+      'game-development',
+      'writing',
+      'metaspace',
+    ],
   },
   {
     id: 'kitchen',
     weight: 4,
     prefix: 'The kitchen is under',
+    link: {
+      lead: ', and the family recipes are at',
+      label: 'Cookbook',
+      href: 'https://cookbook.antoniwan.online/',
+    },
     allowed: ['cooking', 'food', 'recipes'],
   },
   {
@@ -118,7 +153,7 @@ const PRELUDE_AXES: PreludeAxis[] = [
   {
     id: 'clarity',
     weight: 3,
-    prefix: 'If you want the compass, start with',
+    prefix: 'The compass is in',
     allowed: ['values', 'truth', 'purpose', 'responsibility', 'boundaries'],
   },
   {
@@ -173,6 +208,7 @@ export const buildPreludeTemplateCandidates = ({
       prefix: axis.prefix,
       tags,
       suffix: axis.suffix,
+      link: axis.link,
     });
   }
 
@@ -208,6 +244,68 @@ export const selectPreludeTemplates = (
   }
 
   return selected;
+};
+
+export interface PreludePost {
+  /** Canonical topic slugs. */
+  tags: string[];
+  pubDate: Date;
+}
+
+export interface OrderedPreludeTemplate extends PreludeTemplateCandidate {
+  /** Recent writing under this sentence's topics; newer counts more. */
+  score: number;
+  pinned: boolean;
+  /** Nothing new under its topics in `PRELUDE_QUIET_DAYS`. */
+  quiet: boolean;
+}
+
+export interface OrderPreludeTemplatesOptions {
+  now?: Date;
+  pinned?: string[];
+}
+
+const DAY_MS = 24 * 60 * 60 * 1000;
+
+/**
+ * Page order: the pinned sentences first, in `pinned` order; then the rest by
+ * recent writing; quiet sentences last, by the same score. Ties fall back to id.
+ */
+export const orderPreludeTemplates = (
+  templates: PreludeTemplateCandidate[],
+  posts: PreludePost[],
+  options: OrderPreludeTemplatesOptions = {},
+): OrderedPreludeTemplate[] => {
+  const now = options.now ?? new Date();
+  const pinned = options.pinned ?? PRELUDE_NOW;
+
+  const scored = templates.map((template) => {
+    const tags = new Set(template.tags);
+    let score = 0;
+    let newestAge = Infinity;
+    for (const post of posts) {
+      if (!post.tags.some((tag) => tags.has(tag))) continue;
+      const ageDays = Math.max(0, (now.valueOf() - post.pubDate.valueOf()) / DAY_MS);
+      score += 0.5 ** (ageDays / PRELUDE_HALF_LIFE_DAYS);
+      newestAge = Math.min(newestAge, ageDays);
+    }
+    const isPinned = pinned.includes(template.id);
+    return {
+      ...template,
+      score,
+      pinned: isPinned,
+      quiet: !isPinned && newestAge > PRELUDE_QUIET_DAYS,
+    };
+  });
+
+  const rank = (item: OrderedPreludeTemplate) => (item.pinned ? 0 : item.quiet ? 2 : 1);
+
+  return scored.sort(
+    (a, b) =>
+      rank(a) - rank(b) ||
+      (a.pinned ? pinned.indexOf(a.id) - pinned.indexOf(b.id) : b.score - a.score) ||
+      a.id.localeCompare(b.id),
+  );
 };
 
 /** The words between a sentence's topic links: "A", "A and B", "A, B, and C". */

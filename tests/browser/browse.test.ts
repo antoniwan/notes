@@ -33,6 +33,10 @@ describe('Browse at rest', () => {
       );
       // No categories block any more.
       expect(await page.locator('#categories').count()).toBe(0);
+      // The kitchen sentence's Cookbook link is a plain link, not a topic.
+      expect(
+        await page.locator('.sentence-list a', { hasText: /^Cookbook$/ }).getAttribute('href'),
+      ).toBe('https://cookbook.antoniwan.online/');
 
       await page.waitForTimeout(500);
       expect(wordRequests).toEqual([]);

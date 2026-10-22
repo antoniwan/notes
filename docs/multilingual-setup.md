@@ -8,7 +8,8 @@ The multilingual system is how field notes exist in English and Spanish:
 
 - Publish content in multiple languages (currently English and Spanish)
 - Link related translations via shared IDs
-- Keep Spanish out of English listing surfaces (Archive, Browse, category, tags, homepage, RSS/JSON feeds, Continue reading)
+- Keep Spanish twins out of English listing surfaces (Archive, Browse, category, tags, homepage, RSS/JSON feeds, Continue reading)
+- List Spanish-only writing (no English version) on Browse and the tag pages, marked **Español**
 - Let readers reach Spanish from the language toggle on the English note, from title search, from SEO, or via a direct URL
 - Display language toggles for easy switching between versions
 
@@ -68,6 +69,8 @@ That toggle is the in-site browse path to Spanish. Listing cards do not link to 
 
 English cards whose `translationGroup` has a public Spanish sibling show an **ES** marker. The card still opens the English note. Spanish is one toggle away.
 
+Spanish-only cards (Spanish-primary, no `translationGroup`) show an **Español** marker and carry `lang="es"`, so a reader knows the language before opening.
+
 ### Main Listings Behavior
 
 - **English posts** appear in:
@@ -80,18 +83,19 @@ English cards whose `translationGroup` has a public Spanish sibling show an **ES
   - Discoverable via the language toggle when `translationGroup` is set
   - Discoverable via search (title, description, tags)
   - Indexable for SEO (sitemap, hreflang)
-  - Excluded from RSS/JSON feeds, Archive, Browse, category and tag pages, homepage Highlights, and Continue reading (via `isListingEligiblePost` / `isFeedEligiblePost`)
+  - Excluded from RSS/JSON feeds, Archive, category pages, homepage Highlights, and Continue reading (via `isListingEligiblePost` / `isFeedEligiblePost`)
+  - Twins (with a `translationGroup`) are also excluded from Browse and the tag pages. Spanish-only notes are listed there (`isTopicListed` / `isTopicListingEligibleMeta`)
 
 Read Spanish via the language toggle on the English note.
 
-Spanish-only notes without an English pair stay indexable with `lang="es"` metadata. They do not appear as listing cards. Add a `translationGroup` only when a real pair exists.
+Spanish-only notes without an English pair stay indexable with `lang="es"` metadata. They appear as cards on Browse and their tag pages, marked Español, and nowhere else. Add a `translationGroup` only when a real pair exists: it is what makes a Spanish note a twin.
 
 ## Technical Implementation
 
 ### Components
 
 - **LanguageToggle.astro**: Displays available translations on the post
-- **PostCard.astro**: Shows a non-link ES marker when a Spanish twin exists
+- **PostCard.astro**: Shows a non-link ES marker when a Spanish twin exists, and an Español marker on Spanish-only cards
 - **translationUtils.ts**: Core translation discovery logic
 - **BlogLayout.astro**: Integrates language toggle into post layout
 

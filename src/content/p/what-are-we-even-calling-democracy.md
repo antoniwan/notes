@@ -12,6 +12,7 @@ category:
   - metaspace
 subcategory: Social Commentary
 tags:
+  - poems
   - politics
   - democracy
   - social-justice

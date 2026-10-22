@@ -12,6 +12,7 @@ category:
   - metaspace
 subcategory: Philosophy
 tags:
+  - poems
   - personal-growth
   - learning
   - authenticity

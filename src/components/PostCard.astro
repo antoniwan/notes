@@ -5,7 +5,7 @@ import DefaultImage from './DefaultImage.astro';
 import HeroImage from './HeroImage.astro';
 import { calculateReadingTimeFromMarkdown, localizeReadingTime } from '../utils/readingTime';
 import { getSpanishTwinGroups } from '../utils/translationUtils';
-import { isSpanishPrimary } from '../utils/publishFilters';
+import { isSpanishOnly, isSpanishPrimary } from '../utils/publishFilters';
 
 interface Props {
   post: CollectionEntry<'blog'>;
@@ -34,6 +34,7 @@ const readingTime = localizeReadingTime(
   calculateReadingTimeFromMarkdown(post.body || ''),
   cardLanguage,
 );
+const spanishOnly = isSpanishOnly(data);
 const spanishTwinGroups = await getSpanishTwinGroups();
 const hasSpanishTwin =
   !isSpanishPrimary(data) &&
@@ -48,6 +49,7 @@ const hasSpanishTwin =
     'compact-card': compact,
   }}
   role="article"
+  lang={spanishOnly ? 'es' : undefined}
   data-post-slug={post.id}
 >
   <div class="read-indicator" data-post-slug={post.id}>
@@ -102,6 +104,16 @@ const hasSpanishTwin =
             aria-label="Featured post"
           >
             Featured
+          </span>
+        </>
+      )}
+      {spanishOnly && (
+        <>
+          <span class="postcard-meta__sep" aria-hidden="true">
+            ·
+          </span>
+          <span class="postcard-meta__item postcard-meta__es" lang="es">
+            Español
           </span>
         </>
       )}

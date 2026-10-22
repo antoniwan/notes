@@ -2,6 +2,7 @@ import type { CollectionEntry } from 'astro:content';
 import {
   isCollectionListed,
   isFeedEligiblePost,
+  isTopicListed,
   type PublishFilterOptions,
 } from './publishFilters';
 
@@ -24,9 +25,9 @@ export function isCategoryListedPost(post: Pick<CollectionEntry<'blog'>, 'id' | 
   return isCollectionListed(post.data) && !isRecipePost(post);
 }
 
-/** Same listing set as categories: essays only. */
+/** Browse and tag pages: the category set, plus Spanish-only writing. Not recipes. */
 export function isTagListedPost(post: Pick<CollectionEntry<'blog'>, 'id' | 'data'>): boolean {
-  return isCategoryListedPost(post);
+  return isTopicListed(post.data) && !isRecipePost(post);
 }
 
 /** RSS and JSON Feed: public English essays. */

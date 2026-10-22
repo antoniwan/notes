@@ -3,6 +3,7 @@ import {
   isFeedEligibleMeta,
   isListingEligibleMeta,
   isPublicMeta,
+  isSpanishOnlyMeta,
   isSpanishPrimaryMeta,
   normalizePostMeta,
 } from './publishEligibility.mjs';
@@ -47,6 +48,11 @@ export function isCollectionPublic(data: PostData, options: PublishFilterOptions
 /** True when the post's primary language is Spanish. */
 export function isSpanishPrimary(data: PostData): boolean {
   return isSpanishPrimaryMeta(meta(data));
+}
+
+/** Spanish with no English version: no translationGroup, so no toggle. */
+export function isSpanishOnly(data: PostData): boolean {
+  return isSpanishOnlyMeta(meta(data));
 }
 
 /**
@@ -100,6 +106,16 @@ export function isSearchEligiblePost(data: PostData, options: PublishFilterOptio
  */
 export function isCollectionListed(data: PostData, options: PublishFilterOptions = {}): boolean {
   if (isSpanishPrimary(data)) return false;
+  if (!import.meta.env.PROD) return true;
+  return isPublicPost(data, options);
+}
+
+/**
+ * Browse and tag pages: the Archive rule, plus Spanish-only writing.
+ * Spanish twins stay out; their English post carries the toggle.
+ */
+export function isTopicListed(data: PostData, options: PublishFilterOptions = {}): boolean {
+  if (!isSpanishOnly(data)) return isCollectionListed(data, options);
   if (!import.meta.env.PROD) return true;
   return isPublicPost(data, options);
 }

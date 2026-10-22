@@ -100,6 +100,27 @@ export function isSpanishPrimaryMeta(meta) {
 }
 
 /**
+ * Spanish with no English version to toggle to. A Spanish twin always carries the
+ * translationGroup of its English post; Spanish-only writing has none.
+ *
+ * @param {PostMeta} meta
+ */
+export function isSpanishOnlyMeta(meta) {
+  return isSpanishPrimaryMeta(meta) && !meta.translationGroup;
+}
+
+/**
+ * Topic surfaces (Browse and the tag pages): the English listing, plus
+ * Spanish-only writing, which cards mark Español. Twins stay behind their toggle.
+ *
+ * @param {PostMeta} meta
+ * @param {EligibilityOptions} [options]
+ */
+export function isTopicListingEligibleMeta(meta, options = {}) {
+  return isPublicMeta(meta, options) && (!isSpanishPrimaryMeta(meta) || isSpanishOnlyMeta(meta));
+}
+
+/**
  * Feeds carry public English posts only. Spanish stays reachable through the
  * language toggle, search, SEO, and its direct URL.
  *

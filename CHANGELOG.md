@@ -9,6 +9,22 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [7.4.0] — 2026-10-22
+
+Browse in order of relevance. Antonio: "the topics sentences have to be re-organized, order in order of relevance, context? where we are in our life, what is more valuable for our readers today?"
+
+### Changed
+
+- The "Ways into the writing" sentences no longer follow hand-typed weights. Four pinned sentences open the page, in his order: Fatherhood, Home, When the world gets loud, The making (`PRELUDE_NOW` in `preludeTemplates.ts`). The rest rank by the writing under their topics; a writing's pull halves every 180 days. A sentence with nothing newer than 365 days goes last until a new piece lands. Weights now only decide which sentence claims a shared topic.
+- "If you want the compass, start with" is now "The compass is in": it no longer opens the page.
+- The kitchen sentence ends with a link to Cookbook, where the family recipes live. Browse's topic links are the topic chips only, so that link stays a plain link.
+- The making can show `game-development` once writing carries it.
+
+### Added
+
+- Spanish-only writing (Spanish, no `translationGroup`, so no English version and no toggle) is listed on Browse and its tag pages, with an **Español** marker and `lang="es"` on the card. Archive, categories, the homepage, and the feeds stay English. Spanish twins stay behind their English post's toggle. Three pieces join: _Pa' la nena que vive en ti_, the iPad guide, and the piece on children's curiosity. The sitemap's tag counts and Browse and tag lastmod follow.
+- Poems: _Learning is a Construction of the Self_ and _What Are We Even Calling Democracy Anymore?_ carry the `poems` topic. With _Pa' la nena_, Poems lists 4 writings, up from 1.
+
 ## [7.3.1] — 2026-10-20
 
 Maintenance. Antonio: "delete the old branches and the unused images, also, let's do that tailwind typography upgrade?"

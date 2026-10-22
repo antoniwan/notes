@@ -4,7 +4,9 @@ import {
   isFeedEligibleMeta,
   isListingEligibleMeta,
   isPublicMeta,
+  isSpanishOnlyMeta,
   isSpanishPrimaryMeta,
+  isTopicListingEligibleMeta,
   lastmodForMeta,
   normalizePostMeta,
   toDate,
@@ -111,5 +113,28 @@ describe('eligibility rules', () => {
     const updated = normalizePostMeta({ pubDate: '2026-01-01', updatedDate: '2026-05-05' });
     expect(lastmodForMeta(updated)?.toISOString()).toBe('2026-05-05T00:00:00.000Z');
     expect(lastmodForMeta(normalizePostMeta({}))).toBeNull();
+  });
+});
+
+describe('isTopicListingEligibleMeta', () => {
+  const base = { title: 'x', pubDate: '2026-01-01T00:00:00Z' };
+
+  it('lists English and Spanish-only writing, not Spanish twins', () => {
+    const english = normalizePostMeta({ ...base, language: ['en', 'es'], translationGroup: 'g' });
+    const twin = normalizePostMeta({ ...base, language: ['es'], translationGroup: 'g' });
+    const spanishOnly = normalizePostMeta({ ...base, language: ['es'] });
+
+    expect(isTopicListingEligibleMeta(english, { now: NOW })).toBe(true);
+    expect(isTopicListingEligibleMeta(twin, { now: NOW })).toBe(false);
+    expect(isTopicListingEligibleMeta(spanishOnly, { now: NOW })).toBe(true);
+    expect(isSpanishOnlyMeta(spanishOnly)).toBe(true);
+    expect(isSpanishOnlyMeta(twin)).toBe(false);
+    // The other English listings stay English.
+    expect(isListingEligibleMeta(spanishOnly, { now: NOW })).toBe(false);
+  });
+
+  it('keeps drafts out', () => {
+    const draft = normalizePostMeta({ ...base, language: ['es'], draft: true });
+    expect(isTopicListingEligibleMeta(draft, { now: NOW })).toBe(false);
   });
 });

@@ -17,6 +17,8 @@ import { canonicalizeTags } from './tagVocabulary';
 import { isRecipeId } from './recipes';
 import {
   isListingEligibleMeta,
+  isSpanishOnlyMeta,
+  isTopicListingEligibleMeta,
   isPublicMeta,
   isSpanishPrimaryMeta,
   lastmodForMeta,
@@ -162,6 +164,14 @@ export function buildSitemapIndex(
       for (const category of meta.category) {
         bumpLastmod(lastmodByUrl, sitemapPageUrl(`/category/${category}`), lastmod);
       }
+      for (const tag of canonicalizeTags(meta.tags)) {
+        bumpLastmod(lastmodByUrl, sitemapPageUrl(`/tag/${tag}`), lastmod);
+        tagPostCount.set(tag, (tagPostCount.get(tag) ?? 0) + 1);
+      }
+    } else if (isSpanishOnlyMeta(meta) && isTopicListingEligibleMeta(meta, { now })) {
+      // Spanish-only writing is listed on Browse and its tag pages, nowhere else.
+      bumpLastmod(lastmodByUrl, sitemapPageUrl('/browse'), lastmod);
+      bumpLastmod(lastmodByUrl, sitemapPageUrl('/tag'), lastmod);
       for (const tag of canonicalizeTags(meta.tags)) {
         bumpLastmod(lastmodByUrl, sitemapPageUrl(`/tag/${tag}`), lastmod);
         tagPostCount.set(tag, (tagPostCount.get(tag) ?? 0) + 1);

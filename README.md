@@ -26,7 +26,7 @@ Inline diagram authoring: [Mermaid flowcharts and state diagrams](docs/mermaid-d
 - **Cookbook** — family recipes live at `cookbook.antoniwan.online`. `/recipes` and the old recipe pages redirect there, including Spanish and Markdown URLs
 - **Authored books** — `/books` redirects to Projects on `antoniwan.online`.
 - **Reading library** — `/library` and `/library/books` redirect to `antoniwan.online/collections/books`.
-- **Paths in** — **Browse** (`/browse`: one search over every word of the English writing; the "Ways into the writing" sentences, whose topic words show that topic's writings in place; and every topic A–Z, folded under the box), **Archive** (`/archive`: every note, newest first), About, and header search. A topic or category page (`/tag/<topic>`, `/category/<id>`) links back to Browse. `/everything`, `/tag`, `/category`, and the removed `/guided-path` 301 to Archive or Browse; `/search` goes to Browse. Enter in the header search opens Browse with that search.
+- **Paths in** — **Browse** (`/browse`: one search over every word of the English writing; the "Ways into the writing" sentences, whose topic words show that topic's writings in place: four pinned sentences first (`PRELUDE_NOW`), the rest ranked by recent writing, quiet ones last; and every topic A–Z, folded under the box), **Archive** (`/archive`: every note, newest first), About, and header search. A topic or category page (`/tag/<topic>`, `/category/<id>`) links back to Browse. `/everything`, `/tag`, `/category`, and the removed `/guided-path` 301 to Archive or Browse; `/search` goes to Browse. Enter in the header search opens Browse with that search.
 - **Home** — a writing hero with two ways in (Browse, then Archive), Highlights for featured English posts, and a short purpose note.
 - **Writing Insights** was removed on October 20, 2026; it was not for readers. `/writing-insights`, `/brain-science`, and their old subpaths 301 to the home page.
 - **Feeds** — RSS (`/rss.xml`) and JSON Feed (`/feed.json`). Spanish and household recipes stay out of feeds
@@ -316,7 +316,7 @@ One collection (`blog` in `src/content.config.ts`). Folder is the discriminator,
 Frontmatter: [docs/frontmatter-spec.md](docs/frontmatter-spec.md).
 Tags: [docs/tag-policy.md](docs/tag-policy.md) and [docs/tag-vocabulary.md](docs/tag-vocabulary.md).
 
-Translations: same `translationGroup` on each language version. Spanish stays off English listings; English cards show an ES marker when a twin exists. Details: [docs/multilingual-setup.md](docs/multilingual-setup.md).
+Translations: same `translationGroup` on each language version. Spanish twins stay off English listings; English cards show an ES marker when a twin exists. Spanish-only notes (no `translationGroup`) are listed on Browse and their tag pages, marked Español. Details: [docs/multilingual-setup.md](docs/multilingual-setup.md).
 
 Using Cursor AI in this repo: [docs/cursor-agent-skills.md](docs/cursor-agent-skills.md).
 

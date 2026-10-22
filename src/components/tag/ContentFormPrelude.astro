@@ -4,17 +4,24 @@ import { getTagMetadata } from '../../data/tags';
 import {
   buildPreludeTemplateCandidates,
   formatPreludeConnectors,
+  orderPreludeTemplates,
   PRELUDE_THEME_LIMIT,
   selectPreludeTemplates,
+  type PreludePost,
 } from '../../utils/tag/preludeTemplates';
 
 interface Props {
   tagCounts: Record<string, number>;
+  /** The same writings as `tagCounts`, with canonical tags and dates, for the order. */
+  posts: PreludePost[];
 }
 
-const { tagCounts } = Astro.props;
+const { tagCounts, posts } = Astro.props;
 const candidates = buildPreludeTemplateCandidates({ tagCounts });
-const templates = selectPreludeTemplates(candidates, PRELUDE_THEME_LIMIT);
+const templates = orderPreludeTemplates(
+  selectPreludeTemplates(candidates, PRELUDE_THEME_LIMIT),
+  posts,
+);
 ---
 
 {templates.length > 0 && (
@@ -38,7 +45,14 @@ const templates = selectPreludeTemplates(candidates, PRELUDE_THEME_LIMIT);
                 </a>
               </>
             ))}
-            {template.suffix ? ` ${template.suffix}` : ''}.
+            {template.suffix ? ` ${template.suffix}` : ''}
+            {template.link && (
+              <>
+                {`${template.link.lead} `}
+                <a href={template.link.href}>{template.link.label}</a>
+              </>
+            )}
+            .
           </li>
         );
       })}

@@ -2,6 +2,8 @@ import { describe, expect, it } from 'vitest';
 import {
   buildPreludeTemplateCandidates,
   formatPreludeConnectors,
+  orderPreludeTemplates,
+  PRELUDE_NOW,
   selectPreludeTemplates,
 } from './preludeTemplates';
 
@@ -151,5 +153,84 @@ describe('formatPreludeConnectors', () => {
     expect(formatPreludeConnectors(1)).toEqual([' ']);
     expect(formatPreludeConnectors(2)).toEqual([' ', ' and ']);
     expect(formatPreludeConnectors(3)).toEqual([' ', ', ', ', and ']);
+  });
+});
+
+describe('orderPreludeTemplates', () => {
+  const NOW = new Date('2026-10-22T00:00:00Z');
+  const daysAgo = (days: number) => new Date(NOW.valueOf() - days * 24 * 60 * 60 * 1000);
+  const sentence = (id: string, tags: string[]) => ({ id, weight: 1, prefix: id, tags });
+
+  const templates = [
+    sentence('poems', ['poems']),
+    sentence('family', ['fatherhood', 'parenting']),
+    sentence('study', ['philosophy']),
+    sentence('compass', ['values']),
+    sentence('island', ['puerto-rico']),
+  ];
+  const posts = [
+    { tags: ['poems'], pubDate: daysAgo(400) },
+    { tags: ['fatherhood'], pubDate: daysAgo(500) },
+    { tags: ['philosophy'], pubDate: daysAgo(30) },
+    { tags: ['values'], pubDate: daysAgo(200) },
+    { tags: ['values'], pubDate: daysAgo(210) },
+    { tags: ['values', 'puerto-rico'], pubDate: daysAgo(5) },
+  ];
+
+  it('puts the pinned sentences first, in pin order, even when their writing is old', () => {
+    const ordered = orderPreludeTemplates(templates, posts, {
+      now: NOW,
+      pinned: ['family', 'island'],
+    });
+    expect(ordered.slice(0, 2).map((item) => item.id)).toEqual(['family', 'island']);
+    expect(ordered[0].pinned).toBe(true);
+    expect(ordered[0].quiet).toBe(false);
+  });
+
+  it('ranks the rest by recent writing, then sinks the quiet ones', () => {
+    const ordered = orderPreludeTemplates(templates, posts, { now: NOW, pinned: [] });
+    expect(ordered.map((item) => item.id)).toEqual([
+      'compass',
+      'island',
+      'study',
+      'poems',
+      'family',
+    ]);
+    expect(ordered.filter((item) => item.quiet).map((item) => item.id)).toEqual([
+      'poems',
+      'family',
+    ]);
+  });
+
+  it('counts a writing once per sentence, newer writing counting more', () => {
+    const [compass] = orderPreludeTemplates(
+      [sentence('compass', ['values', 'truth'])],
+      [{ tags: ['values', 'truth'], pubDate: NOW }],
+      { now: NOW, pinned: [] },
+    );
+    expect(compass.score).toBe(1);
+  });
+
+  it('pins sentences that exist', () => {
+    const ids = buildPreludeTemplateCandidates({
+      tagCounts: counts({
+        fatherhood: 3,
+        parenting: 3,
+        'puerto-rico': 3,
+        culture: 3,
+        politics: 3,
+        power: 3,
+        technology: 3,
+        writing: 3,
+      }),
+    }).map((item) => item.id);
+    for (const id of PRELUDE_NOW) expect(ids).toContain(id);
+  });
+
+  it('sends the kitchen sentence on to Cookbook', () => {
+    const kitchen = buildPreludeTemplateCandidates({
+      tagCounts: counts({ cooking: 3, food: 2 }),
+    }).find((item) => item.id === 'kitchen');
+    expect(kitchen?.link?.href).toBe('https://cookbook.antoniwan.online/');
   });
 });
