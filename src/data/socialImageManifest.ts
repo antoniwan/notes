@@ -7,6 +7,7 @@ export const SOCIAL_IMAGE_MANIFEST: Record<string, string> = {
   '/images/1_JMkniJ9RmTng62SL37WSBA.png': '/social/images/1_JMkniJ9RmTng62SL37WSBA-social.jpg',
   '/images/1_UVQ9Lyp4yJ3dnpMbnSIOCQ.png': '/social/images/1_UVQ9Lyp4yJ3dnpMbnSIOCQ-social.jpg',
   '/images/1_wjEXa_8z9DI8Wq4zMCBqig.png': '/social/images/1_wjEXa_8z9DI8Wq4zMCBqig-social.jpg',
+  '/images/2023/eres-magia.avif': '/social/images/2023/eres-magia-social.jpg',
   '/images/2025/broken-signals.avif': '/social/images/2025/broken-signals-social.jpg',
   '/images/2025/hands-touching-each-other.avif':
     '/social/images/2025/hands-touching-each-other-social.jpg',

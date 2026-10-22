@@ -4,6 +4,8 @@ description: Un poema de amor, de noviembre de 2023.
 pubDate: '2023-11-10T12:00:00-05:00'
 language:
   - es
+heroImage: /images/2023/eres-magia.avif
+imageAlt: 'Ilustración hecha con IA: un ojo pintado en colores vivos, con rayos rosados, amarillos, azules y anaranjados que salen de su iris.'
 category:
   - art-expression
 tags:
