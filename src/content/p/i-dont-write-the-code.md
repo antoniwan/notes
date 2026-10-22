@@ -27,8 +27,6 @@ showComments: true
 translationGroup: i-dont-write-the-code
 ---
 
-_Devlog 1 · October 22, 2026 · Uplift and Milak_
-
 I have a day job and a family, and in the last ten days I put [a tower game on the web](https://uplifttowergame.com) and started building [a sword game](https://www.patreon.com/c/antoniwan) in a real game engine. I did not write a single line of the code for either one. Claude did.
 
 A lot of people hate AI in games right now, and some of that hate is earned: there is [a flood of games on Steam](https://kotaku.com/steam-valve-slop-ai-genai-vibe-coding-pc-game-releases-2000746749) that somebody published but nobody seems to have directed, [games where nobody made a call](https://www.pcgamer.com/gaming-industry/steam-week-in-review-steam-next-fest-has-over-8-000-demos-as-worthless-vibe-coded-slop-levels-up/). So this devlog is about the calls I make while the machine types.

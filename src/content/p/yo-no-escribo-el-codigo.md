@@ -27,8 +27,6 @@ showComments: true
 translationGroup: i-dont-write-the-code
 ---
 
-_Devlog 1 · 22 de octubre de 2026 · Uplift y Milak_
-
 Tengo un trabajo y una familia, y en los últimos diez días puse [un juego de torres en la web](https://uplifttowergame.com) y empecé a construir [un juego de espadas](https://www.patreon.com/c/antoniwan) en un game engine (motor de juegos) de verdad. No escribí ni una línea del código de ninguno de los dos. Lo escribió Claude, un AI (IA).
 
 Mucha gente odia el AI en los juegos ahora mismo, y parte de ese odio se lo ganaron: hay [una avalancha de juegos en Steam](https://kotaku.com/steam-valve-slop-ai-genai-vibe-coding-pc-game-releases-2000746749) que alguien publicó pero que nadie parece haber dirigido, [juegos donde nadie tomó una decisión](https://www.pcgamer.com/gaming-industry/steam-week-in-review-steam-next-fest-has-over-8-000-demos-as-worthless-vibe-coded-slop-levels-up/) (los dos artículos están en inglés). Así que este devlog (diario de desarrollo) es sobre las decisiones que yo tomo mientras la máquina escribe.
