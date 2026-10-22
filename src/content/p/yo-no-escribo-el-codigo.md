@@ -96,6 +96,26 @@ Y lo primero que dirigí fue nada de arte. Milak era una cápsula azul dándole 
 
 Dos días después, es otro juego. Milak tiene un cuchillo de caza en la Q, un salto de verdad que cae con la espada, sangre y cuerpos que se quedan, y muñecos que se rompen y se vuelven a levantar. El teclado entero está en pantalla como sus barras de acción. Tiene un Diario, una ventana de Destrezas, misiones que nacen de lo que hace, y una pantalla de título. Y el juego ya tiene un título provisional: Lifesworn.
 
+<figure class="post-inline-figure post-inline-figure--center">
+  <img src="/images/devlog-1-milak-practice-yard.webp" alt="Milak revienta un muñeco de paja con un golpe de 38 en el patio de práctica, con el medidor de práctica y el teclado entero en pantalla como sus barras de acción." width="1280" height="720" loading="lazy" decoding="async" />
+  <figcaption>21 de octubre: el patio de práctica, con el teclado entero como barras de acción.</figcaption>
+</figure>
+
+<figure class="post-inline-figure post-inline-figure--center">
+  <img src="/images/devlog-1-milak-quest-giver.webp" alt="Milak, con la espada desenvainada, al lado de un hombre con un signo de exclamación amarillo sobre la cabeza; un aviso dice &#x27;New quest: Thin the pack&#x27;." width="1280" height="720" loading="lazy" decoding="async" />
+  <figcaption>22 de octubre: un ! amarillo sobre un hombre con una misión.</figcaption>
+</figure>
+
+<figure class="post-inline-figure post-inline-figure--center">
+  <img src="/images/devlog-1-milak-officer-threat.webp" alt="Milak en un patio de tierra cerca de una estatua de lobo; el marco del objetivo dice que un Oficial es peligroso: lo mata en unos 40 golpes, y él necesita unos 4." width="1280" height="720" loading="lazy" decoding="async" />
+  <figcaption>La lectura de amenaza: un Oficial, peligroso, con los golpes que hacen falta de cada lado.</figcaption>
+</figure>
+
+<figure class="post-inline-figure post-inline-figure--center">
+  <img src="/images/devlog-1-milak-bag-nightfell.webp" alt="El bolso de Milak organizado como su cuerpo, con Nightfell, una espada legendaria marcada como borrador, comparada con su espada sencilla: más probabilidad y daño de crítico, más daño de hoja y más velocidad." width="1280" height="720" loading="lazy" decoding="async" />
+  <figcaption>El bolso con forma de hombre, y Nightfell, una espada que todavía no se ha ganado.</figcaption>
+</figure>
+
 ## Cómo dirijo a Claude
 
 Mi regla desde el 14 de octubre: "anything visually, every pixel, every line in this game, is it intentional, is it helpful, does it provide value to the game? always"
@@ -122,6 +142,10 @@ Yo no escribo el código, pero entiendo el codebase, completito. Eso es parte de
 Uplift se convirtió en una herramienta para construir el mundo de una novela. Su torre vive en un mundo que llevo años escribiendo, y el 19 de octubre le dije a Claude: "If you write it into the game it becomes canon in the universe - think about that". Así que ahora funciona para los dos lados. Cuando el juego necesitó robots y animales, yo los escogí, y ahora existen en el mundo de la novela también. Ese mundo está tan lejos en el futuro que mucho de él es adivinanza, hasta para mí, y el juego me sigue haciendo preguntas que la novela nunca me hizo: quién camina por los pasillos de noche, qué vive bajo tierra, qué encuentras cuando escarbas. Una locura.
 
 Milak puede que haga lo mismo desde el otro lado. La idea es que el juego lo tenga pensando mientras viaja, pensamientos y quizás poemas, y que el jugador los vaya guiando. Eso es escribir, dentro de un juego. Quizás un día se convierta en una historia por sí sola. Todavía no lo sé.
+
+<figure class="post-inline-figure post-inline-figure--center">
+  <img src="/images/devlog-1-milak-inspired-status.webp" alt="Milak, en rojo, entre muñecos de práctica de colores; una tarjeta de estado dice &#x27;Inspired: Someone&#x27;s words put fire in him.&#x27;" width="1280" height="720" loading="lazy" decoding="async" />
+</figure>
 
 Yo ya tenía un lugar para escribir sobre los juegos. ¿Coincidencia, accidente o intención? Honestamente, un poco de cada una. Notes existía desde hace más de un año antes de estos juegos; esa parte es un accidente. El 7 de octubre, cuatro días antes de que empezara Uplift, escribí que todo lo que escribo iba a ser gratis y que la gente me podía apoyar en Patreon si quería; el momento es una coincidencia. Escribir estos devlogs aquí es la parte intencional.
 
@@ -178,8 +202,12 @@ No es magia y no es gratis. Claude recuerda cosas del engine que ya no existen, 
 
 ## Lo que viene
 
+<figure class="post-inline-figure post-inline-figure--center">
+  <img src="/images/devlog-1-lifesworn-title.webp" alt="Una pantalla de título oscura que dice Lifesworn, con Play, Choose a place y Quit." width="1280" height="720" loading="lazy" decoding="async" />
+</figure>
+
 Cada dos semanas voy a escribir uno de estos: qué se construyó, qué decidí, y en qué me equivoqué. Uplift ya se puede jugar, gratis, en tu navegador. Milak va a tener un demo gratis cuando la pelea sea algo de lo que esté orgulloso.
 
 Si quieres seguir esto, te voy a pedir una sola cosa: [sígueme en Patreon, gratis](https://www.patreon.com/c/antoniwan), y te llega cada devlog por email cuando salga. Nunca anuncios. Solo los juegos y yo haciéndolos.
 
-_Capturas: el demo en vivo de Uplift y su tarjeta, 21 de octubre de 2026; las grabaciones del propio Milak, 20 y 21 de octubre de 2026. Estado al 22 de octubre de 2026._
+_Capturas: el demo en vivo de Uplift y su tarjeta, 21 de octubre de 2026; las grabaciones y capturas del propio Milak, del 20 al 22 de octubre de 2026; el collage, 22 de octubre de 2026. Estado al 22 de octubre de 2026._

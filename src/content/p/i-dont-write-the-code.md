@@ -96,6 +96,26 @@ And the first thing I directed was no art at all. Milak was a blue capsule swing
 
 Two days later, it's a different game. Milak has a hunting knife on Q, a real leap with a plunge, blood and bodies that stay, and dummies that break and rise again. The whole keyboard is on screen as his action bars. He has a Journal, a Skills window, quests born from what he does, and a title screen. And the game has a working title now: Lifesworn.
 
+<figure class="post-inline-figure post-inline-figure--center">
+  <img src="/images/devlog-1-milak-practice-yard.webp" alt="Milak bursts a straw dummy for 38 damage in the practice yard, with the practice meter and the whole keyboard drawn on screen as his action bars." width="1280" height="720" loading="lazy" decoding="async" />
+  <figcaption>October 21: the practice yard, with the whole keyboard as the action bars.</figcaption>
+</figure>
+
+<figure class="post-inline-figure post-inline-figure--center">
+  <img src="/images/devlog-1-milak-quest-giver.webp" alt="Milak, sword drawn, beside a man with a yellow exclamation mark over his head; a notice reads &#x27;New quest: Thin the pack&#x27;." width="1280" height="720" loading="lazy" decoding="async" />
+  <figcaption>October 22: a yellow ! over a man with a quest.</figcaption>
+</figure>
+
+<figure class="post-inline-figure post-inline-figure--center">
+  <img src="/images/devlog-1-milak-officer-threat.webp" alt="Milak in a dirt yard near a wolf statue; the target frame reads an Officer as Dangerous: it kills him in about 40 hits, and he needs about 4." width="1280" height="720" loading="lazy" decoding="async" />
+  <figcaption>The threat read: an Officer, dangerous, with the hits it takes each way.</figcaption>
+</figure>
+
+<figure class="post-inline-figure post-inline-figure--center">
+  <img src="/images/devlog-1-milak-bag-nightfell.webp" alt="Milak&#x27;s bag laid out like his body, with Nightfell, a legendary sword marked Draft, compared against his plain sword: more crit chance, crit damage, blade damage and swing speed." width="1280" height="720" loading="lazy" decoding="async" />
+  <figcaption>The bag shaped like a man, and Nightfell, a sword he hasn't earned yet.</figcaption>
+</figure>
+
 ## How I direct Claude
 
 My rule since October 14: "anything visually, every pixel, every line in this game, is it intentional, is it helpful, does it provide value to the game? always"
@@ -122,6 +142,10 @@ I don't write the code, but I understand the codebase, completely. That's part o
 Uplift turned into a world-building tool for a novel. Its tower lives in a world I've been writing for years, and on October 19 I told Claude: "If you write it into the game it becomes canon in the universe - think about that". So now it works both ways. When the game needed robots and animals, I picked them, and now they exist in the novel's world too. That world is far enough in the future that a lot of it is guesswork, even for me, and the game keeps asking questions the novel never did: who walks the halls at night, what lives underground, what you find when you dig. Wild.
 
 Milak might do the same thing from the other side. The game is meant to have him thinking as he travels, thoughts and maybe poems, with the player guiding them. That's writing, inside a game. Maybe one day it becomes a story of its own. I don't know yet.
+
+<figure class="post-inline-figure post-inline-figure--center">
+  <img src="/images/devlog-1-milak-inspired-status.webp" alt="Milak, in red, among coloured training dummies; a status card reads &#x27;Inspired: Someone&#x27;s words put fire in him.&#x27;" width="1280" height="720" loading="lazy" decoding="async" />
+</figure>
 
 I already had a place to write about the games. Coincidental, accidental, or intentional? Honestly, a bit of each. Notes was here for over a year before these games existed; that part is an accident. On October 7, four days before Uplift started, I wrote that all of my writing would be free and that people could support me on Patreon if they wanted; the timing is a coincidence. Writing these devlogs here is the intentional part.
 
@@ -178,8 +202,12 @@ It is not magic and it is not free. Claude remembers things about the engine tha
 
 ## What's next
 
+<figure class="post-inline-figure post-inline-figure--center">
+  <img src="/images/devlog-1-lifesworn-title.webp" alt="A dark title screen that reads Lifesworn, with Play, Choose a place, and Quit." width="1280" height="720" loading="lazy" decoding="async" />
+</figure>
+
 Every other week I'll write one of these: what got built, what I decided, and what I got wrong. Uplift is playable now, free, in your browser. Milak will have a free demo when the fight is something I'm proud of.
 
 If you want to follow along, I'll ask one thing: [follow me on Patreon, for free](https://www.patreon.com/c/antoniwan), and you'll get each devlog by email when it ships. No ads, ever. Just the games and me making them.
 
-_Screenshots: Uplift's live demo and its link card, October 21, 2026; Milak's own recordings, October 20 and 21, 2026. Status as of October 22, 2026._
+_Screenshots: Uplift's live demo and its link card, October 21, 2026; Milak's own recordings and screenshots, October 20 to 22, 2026; the collage, October 22, 2026. Status as of October 22, 2026._
