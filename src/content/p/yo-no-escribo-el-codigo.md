@@ -27,7 +27,7 @@ showComments: true
 translationGroup: i-dont-write-the-code
 ---
 
-Tengo un trabajo y una familia, y en los últimos diez días puse [un juego de torres en la web](https://uplifttowergame.com) y empecé a construir [un juego de espadas](https://www.patreon.com/c/antoniwan) en un game engine (motor de juegos) de verdad. No escribí ni una línea del código de ninguno de los dos. Lo escribió Claude, un AI (IA).
+Tengo un trabajo y una familia, y en los últimos diez días puse [un juego de torres en la web](https://uplifttowergame.com) y empecé a construir [un juego de espadas](https://www.patreon.com/antoniwan) en un game engine (motor de juegos) de verdad. No escribí ni una línea del código de ninguno de los dos. Lo escribió Claude, un AI (IA).
 
 Mucha gente odia el AI en los juegos ahora mismo, y parte de ese odio se lo ganaron: hay [una avalancha de juegos en Steam](https://kotaku.com/steam-valve-slop-ai-genai-vibe-coding-pc-game-releases-2000746749) que alguien publicó pero que nadie parece haber dirigido, [juegos donde nadie tomó una decisión](https://www.pcgamer.com/gaming-industry/steam-week-in-review-steam-next-fest-has-over-8-000-demos-as-worthless-vibe-coded-slop-levels-up/) (los dos artículos están en inglés). Así que este devlog (diario de desarrollo) es sobre las decisiones que yo tomo mientras la máquina escribe.
 
@@ -40,7 +40,7 @@ Los tokens del AI se van a comprar y a usar de todas formas, así que voy a comp
 | Qué es              | Un juego de construir torres, mi versión de SimTower                                    | Un RPG de acción en 3D: Milak Summir, un espadachín a sueldo                                |
 | Cómo va             | Temprano y jugable: un vertical slice (una tajada completa del juego), en vivo y gratis | Un tramo de combate jugable: cuerpos desde el 20 de octubre, pantalla de título desde el 22 |
 | Decisiones escritas | Más de 170                                                                              | Más de 200                                                                                  |
-| Jugarlo             | [uplifttowergame.com](https://uplifttowergame.com)                                      | Todavía no. Apóyalo en [Patreon](https://www.patreon.com/c/antoniwan)                       |
+| Jugarlo             | [uplifttowergame.com](https://uplifttowergame.com)                                      | Todavía no. Apóyalo en [Patreon](https://www.patreon.com/antoniwan)                         |
 
 ## Uplift: en vivo en tres días
 
@@ -170,6 +170,6 @@ No es magia y no es gratis. Claude recuerda cosas del engine que ya no existen, 
 
 Cada dos semanas voy a escribir uno de estos: qué se construyó, qué decidí, y en qué me equivoqué. Uplift ya se puede jugar, gratis, en tu navegador. Milak va a tener un demo gratis cuando la pelea sea algo de lo que esté orgulloso.
 
-Si quieres seguir esto, te voy a pedir una sola cosa: [sígueme en Patreon, gratis](https://www.patreon.com/c/antoniwan), y te llega cada devlog por email cuando salga. Nunca anuncios. Solo los juegos y yo haciéndolos.
+Si quieres seguir esto, te voy a pedir una sola cosa: [sígueme en Patreon, gratis](https://www.patreon.com/antoniwan), y te llega cada devlog por email cuando salga. Nunca anuncios. Solo los juegos y yo haciéndolos.
 
 _Capturas: el demo en vivo de Uplift, 21 de octubre de 2026; las grabaciones y capturas del propio Milak, del 20 al 22 de octubre de 2026; el collage, 22 de octubre de 2026. Estado al 22 de octubre de 2026._

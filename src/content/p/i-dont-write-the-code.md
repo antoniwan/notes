@@ -27,7 +27,7 @@ showComments: true
 translationGroup: i-dont-write-the-code
 ---
 
-I have a day job and a family, and in the last ten days I put [a tower game on the web](https://uplifttowergame.com) and started building [a sword game](https://www.patreon.com/c/antoniwan) in a real game engine. I did not write a single line of the code for either one. Claude did.
+I have a day job and a family, and in the last ten days I put [a tower game on the web](https://uplifttowergame.com) and started building [a sword game](https://www.patreon.com/antoniwan) in a real game engine. I did not write a single line of the code for either one. Claude did.
 
 A lot of people hate AI in games right now, and some of that hate is earned: there is [a flood of games on Steam](https://kotaku.com/steam-valve-slop-ai-genai-vibe-coding-pc-game-releases-2000746749) that somebody published but nobody seems to have directed, [games where nobody made a call](https://www.pcgamer.com/gaming-industry/steam-week-in-review-steam-next-fest-has-over-8-000-demos-as-worthless-vibe-coded-slop-levels-up/). So this devlog is about the calls I make while the machine types.
 
@@ -40,7 +40,7 @@ The tokens are going to be bought and used anyway, so I'll buy some and make kic
 | What it is             | A tower-building game, my take on SimTower          | A 3D action RPG: Milak Summir, a swordsman for hire                               |
 | Where it stands        | Early and playable: a vertical slice, live and free | A playable combat slice: bodies since October 20, a title screen since October 22 |
 | Decisions written down | 170+                                                | 200+                                                                              |
-| Play it                | [uplifttowergame.com](https://uplifttowergame.com)  | Not yet. Support it on [Patreon](https://www.patreon.com/c/antoniwan)             |
+| Play it                | [uplifttowergame.com](https://uplifttowergame.com)  | Not yet. Support it on [Patreon](https://www.patreon.com/antoniwan)               |
 
 ## Uplift: live in three days
 
@@ -170,6 +170,6 @@ It is not magic and it is not free. Claude remembers things about the engine tha
 
 Every other week I'll write one of these: what got built, what I decided, and what I got wrong. Uplift is playable now, free, in your browser. Milak will have a free demo when the fight is something I'm proud of.
 
-If you want to follow along, I'll ask one thing: [follow me on Patreon, for free](https://www.patreon.com/c/antoniwan), and you'll get each devlog by email when it ships. No ads, ever. Just the games and me making them.
+If you want to follow along, I'll ask one thing: [follow me on Patreon, for free](https://www.patreon.com/antoniwan), and you'll get each devlog by email when it ships. No ads, ever. Just the games and me making them.
 
 _Screenshots: Uplift's live demo, October 21, 2026; Milak's own recordings and screenshots, October 20 to 22, 2026; the collage, October 22, 2026. Status as of October 22, 2026._
