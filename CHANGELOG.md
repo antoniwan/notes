@@ -23,7 +23,7 @@ Browse in order of relevance. Antonio: "the topics sentences have to be re-organ
 ### Added
 
 - Spanish-only writing (Spanish, no `translationGroup`, so no English version and no toggle) is listed on Browse and its tag pages, with an **Español** marker and `lang="es"` on the card. Archive, categories, the homepage, and the feeds stay English. Spanish twins stay behind their English post's toggle. Three pieces join: _Pa' la nena que vive en ti_, the iPad guide, and the piece on children's curiosity. The sitemap's tag counts and Browse and tag lastmod follow.
-- Poems: _Learning is a Construction of the Self_ and _What Are We Even Calling Democracy Anymore?_ carry the `poems` topic. With _Pa' la nena_, Poems lists 4 writings, up from 1.
+- Poems: _Learning is a Construction of the Self_ carries the `poems` topic. With _Pa' la nena_ and three newly published poems, Poems lists 6 writings, up from 1.
 
 ## [7.3.1] — 2026-10-20
 
