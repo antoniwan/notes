@@ -2,7 +2,7 @@
 title: "I Don't Write the Code"
 description: >-
   I shipped a tower game in three days and started a sword game a week later. Claude wrote every line. Here is what I do, and why I'm saying it.
-pubDate: 2026-10-22T16:00:00-04:00
+pubDate: 2026-10-22T12:00:00-04:00
 heroImage: /images/2026/devlog-1-collage.avif
 imageAlt: "A collage of both games: Uplift's pixel-art tower, rooms, and logo above a dirt yard where Milak swings a huge sword among black-clad ninjas, a wolf, a goblin, and training props."
 language:

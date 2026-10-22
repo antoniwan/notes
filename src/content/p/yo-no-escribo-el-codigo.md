@@ -2,7 +2,7 @@
 title: Yo no escribo el código
 description: >-
   Puse un juego de torres en la web en tres días y empecé un juego de espadas una semana después. Claude escribió cada línea. Esto es lo que hago yo.
-pubDate: 2026-10-22T16:00:00-04:00
+pubDate: 2026-10-22T12:00:00-04:00
 heroImage: /images/2026/devlog-1-collage.avif
 imageAlt: 'Un collage de los dos juegos: la torre, los cuartos y el logo de Uplift en pixel art sobre un patio de tierra donde Milak blande una espada enorme entre ninjas vestidos de negro, un lobo, un goblin y utilería de práctica.'
 language:
