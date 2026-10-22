@@ -18,9 +18,9 @@ tags:
   - software-development
   - writing
   - art-expression
-draft: true
+draft: false
 featured: true
-published: false
+published: true
 showComments: true
 translationGroup: i-dont-write-the-code
 ---
