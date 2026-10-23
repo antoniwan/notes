@@ -2,6 +2,8 @@
 title: 'Faces of Death'
 description: 'The people who authorize violence seem to wear it on their faces. A reading, not a diagnosis, of what the body records when we live against what we claim.'
 pubDate: '2026-10-22T20:00:00.000-04:00'
+heroImage: /images/2026/faces-of-death.avif
+imageAlt: 'Four profiles drawn in ink on ruled ledger paper, growing larger from left to right. The first three are made of jittered lines with red entries; the last is smooth and blank. Tally marks fill the left margin beside a red rule.'
 language:
   - en
 category:
