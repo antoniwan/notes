@@ -672,9 +672,11 @@ const breadcrumbSchema = generateBreadcrumbSchema(
 <script>
   import { formatRelativeReadTime } from '../utils/relativeReadTime.client';
   import '../components/post-toc/postToc.client';
-  import { initPoemAmbience } from '../utils/poemAmbience.client';
 
-  initPoemAmbience();
+  // Poem pages only: the ambience is its own chunk, fetched only when a poem is on the page.
+  if (document.querySelector('.a-poem')) {
+    import('../utils/poemAmbience.client').then(({ initPoemAmbience }) => initPoemAmbience());
+  }
 
   const status = document.querySelector<HTMLElement>('[data-read-status]');
   const postSlug = status?.dataset.postSlug;

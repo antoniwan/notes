@@ -3,7 +3,7 @@
  * - Pond: the pointer leaves faint rings; a tap drops a bigger one; idle drops fall now and then.
  * - Tide: a soft color wash drifts behind the text on a slow, non-repeating hue path.
  * The text itself is never touched (Lantern is CSS only, in global.css). Skipped under
- * prefers-reduced-motion.
+ * prefers-reduced-motion, and the frame loop runs only while the poem is on screen.
  */
 
 const LIGHT_WASH = 0.09;
@@ -73,6 +73,17 @@ export function initPoemAmbience(): void {
       drop(e.clientX, e.clientY, 1);
   });
 
+  // Run the frame loop only while the poem is visible; off screen the page does no work.
+  let running = false;
+  let visible = false;
+  new IntersectionObserver((entries) => {
+    visible = entries.some((entry) => entry.isIntersecting);
+    if (visible && !running) {
+      running = true;
+      requestAnimationFrame(frame);
+    }
+  }).observe(poem);
+
   let nextAmbient = performance.now() + 2500;
   let lastDrift = 0;
   const frame = (t: number) => {
@@ -110,7 +121,11 @@ export function initPoemAmbience(): void {
         `radial-gradient(60% 50% at 30% 35%, hsla(${hue}, 70%, 60%, ${wash}), transparent 70%), ` +
         `radial-gradient(55% 45% at 72% 70%, hsla(${(hue + 60) % 360}, 70%, 60%, ${wash}), transparent 70%)`;
     }
-    requestAnimationFrame(frame);
+    if (visible || rings.length > 0) {
+      requestAnimationFrame(frame);
+    } else {
+      ctx.clearRect(0, 0, width, height);
+      running = false;
+    }
   };
-  requestAnimationFrame(frame);
 }
