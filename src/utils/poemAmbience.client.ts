@@ -1,33 +1,17 @@
 /**
- * Poem pages only: a quiet pond behind the verse. Three layers, all decorative.
+ * Poem pages only: a quiet pond behind the verse. Two layers, both decorative.
  * - Pond: the pointer leaves faint rings; a tap drops a bigger one; idle drops fall now and then.
- * - Tide: a soft color wash drifts behind the text.
- * - Drift: each line carries a faint tint on a slow, non-repeating hue path, at a fixed
- *   OKLCH lightness so contrast against the page never changes.
- * Plus Ink: lines settle in once when the poem scrolls into view.
- * Everything is skipped under prefers-reduced-motion, and the text renders normally without JS.
+ * - Tide: a soft color wash drifts behind the text on a slow, non-repeating hue path.
+ * The text itself is never touched (Lantern is CSS only, in global.css). Skipped under
+ * prefers-reduced-motion.
  */
 
-const LIGHT = { l: 0.27, c: 0.06, wash: 0.09 };
-const DARK = { l: 0.9, c: 0.045, wash: 0.1 };
+const LIGHT_WASH = 0.09;
+const DARK_WASH = 0.1;
 
 export function initPoemAmbience(): void {
   const poem = document.querySelector<HTMLElement>('.a-poem');
   if (!poem || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  const lines = [...poem.querySelectorAll<HTMLElement>('.poem-line')];
-  lines.forEach((line, i) => line.style.setProperty('--poem-line-index', String(i)));
-
-  // Ink: start hidden only once JS is running, then reveal on first sight.
-  poem.classList.add('poem-ink-pending');
-  new IntersectionObserver(
-    (entries, observer) => {
-      if (!entries.some((entry) => entry.isIntersecting)) return;
-      poem.classList.replace('poem-ink-pending', 'poem-ink');
-      observer.disconnect();
-    },
-    { threshold: 0.15 },
-  ).observe(poem);
 
   const tide = document.createElement('div');
   tide.className = 'poem-tide';
@@ -92,7 +76,7 @@ export function initPoemAmbience(): void {
   let nextAmbient = performance.now() + 2500;
   let lastDrift = 0;
   const frame = (t: number) => {
-    const tone = isDark() ? DARK : LIGHT;
+    const wash = isDark() ? DARK_WASH : LIGHT_WASH;
     const hue = ((wander(t, 0) % 360) + 360) % 360;
 
     ctx.clearRect(0, 0, width, height);
@@ -123,11 +107,8 @@ export function initPoemAmbience(): void {
     if (t - lastDrift > 120) {
       lastDrift = t;
       tide.style.background =
-        `radial-gradient(60% 50% at 30% 35%, hsla(${hue}, 70%, 60%, ${tone.wash}), transparent 70%), ` +
-        `radial-gradient(55% 45% at 72% 70%, hsla(${(hue + 60) % 360}, 70%, 60%, ${tone.wash}), transparent 70%)`;
-      lines.forEach((line, i) => {
-        line.style.color = `oklch(${tone.l} ${tone.c} ${wander(t, i).toFixed(1)})`;
-      });
+        `radial-gradient(60% 50% at 30% 35%, hsla(${hue}, 70%, 60%, ${wash}), transparent 70%), ` +
+        `radial-gradient(55% 45% at 72% 70%, hsla(${(hue + 60) % 360}, 70%, 60%, ${wash}), transparent 70%)`;
     }
     requestAnimationFrame(frame);
   };
