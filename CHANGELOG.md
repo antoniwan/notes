@@ -9,6 +9,20 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [7.5.0] — 2026-10-23
+
+Poems read as poems, and the homepage Highlights are a curated set. Antonio: "let's make these readable, legible, beautiful!" and "a shorter Highlights list ... many categories and high-quality content only".
+
+### Changed
+
+- Poems no longer render as a gray monospace code box. `rehypePoemLines` turns the authored `<pre class="a-poem">` into stanzas (`<p>`) of lines (block `<span>`), set in Source Serif 4 as a left-aligned column centered on the measure. Long lines wrap with a hanging indent. Authors keep writing `<pre class="a-poem">`.
+- Highlights go from 36 featured posts to 19 English posts (plus the Spanish twin of I Don't Write the Code). Every category filter keeps at least two posts.
+
+### Added
+
+- Poem pages get a quiet ambience: faint pond ripples follow the pointer (a tap drops a bigger one, idle drops fall now and then) over a slow, non-repeating color wash. Both are decorative canvases behind the page and are skipped under `prefers-reduced-motion`.
+- Lantern: on devices with hover, the poem line under the pointer stays full ink and the rest sit at the muted text tone, which passes WCAG AA in both themes.
+
 ## [7.4.1] — 2026-10-23
 
 Code-only cleanup from a full audit (code, performance, dependencies, accessibility, UI/UX, SEO, product). Antonio: "any code-only enhancements, optimizations, cleanup? upgrades? recommendations?" No post content changed.

@@ -21,7 +21,7 @@ tags:
   - fatherhood
   - joy
 draft: false
-featured: true
+featured: false
 published: true
 showComments: true
 translationGroup: happiness-is-moments

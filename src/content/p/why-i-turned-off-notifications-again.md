@@ -14,7 +14,7 @@ tags:
   - parenting
   - technology
 draft: false
-featured: true
+featured: false
 published: true
 showComments: true
 ---

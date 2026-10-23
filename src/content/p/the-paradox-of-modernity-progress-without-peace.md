@@ -18,7 +18,7 @@ tags:
   - meaning
   - social-issues
 draft: false
-featured: true
+featured: false
 published: true
 showComments: true
 ---
