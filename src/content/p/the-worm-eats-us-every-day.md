@@ -39,7 +39,7 @@ I know the "we" needs care. Some people on this planet are living real deprivati
 
 > "we are not prioritizing their conservation, resourcing, nurturing, reparation, and careful distribution... we let capitalistic interests (Spice) take over"
 
-Here's my stillsuit. I make a good salary, VP-level, director-level, senior, whatever-level fits, and I'm still a blue-collar employee, and I still don't own my own home, have very few savings, am still paying off debt from a previous marriage, and honestly, my first instinct is to say that's on me, I take all the responsibility, and some of it is, but I also know I got here in the dark, nobody handed me the information or the knowledge or the support, I figured every piece of it out alone, the way my dad did, because he was an orphan and he was deprived of things too, and everybody is deprived of something, and that's the point, no? Why are we living like this? Who are the Fremen among us?
+Here's my stillsuit. I make a good salary, and I'm still a blue-collar employee, and I still don't own my own home, have very few savings, am still paying off debt from a previous marriage, and honestly, my first instinct is to say that's on me, I take all the responsibility, and some of it is, but I also know I got here in the dark, nobody handed me the information or the knowledge or the support, I figured most of it out the hard way, the way my dad did, because he was an orphan and he was deprived of things too, and everybody is deprived of something, and that's the point, no? Why are we living like this? Who are the Fremen among us?
 
 My first reaction to the Fremen was a joke:
 
