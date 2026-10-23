@@ -12,6 +12,7 @@ import { remarkPostSectionBreak } from './src/utils/remarkPostSectionBreak.mjs';
 import { remarkMermaid } from './src/utils/remarkMermaid.mjs';
 import { rehypeWrapTables } from './src/utils/rehypeWrapTables.mjs';
 import { rehypeExternalLinks } from './src/utils/rehypeExternalLinks.mjs';
+import { rehypePoemLines } from './src/utils/rehypePoemLines.mjs';
 import { buildSeoRedirects, shouldIncludeInSitemap } from './src/utils/seoRouting';
 import { indexNowIntegration } from './src/utils/indexNow';
 import {
@@ -137,7 +138,7 @@ export default defineConfig({
         remarkPostSectionBreak,
         remarkMermaid,
       ],
-      rehypePlugins: [rehypeWrapTables, rehypeExternalLinks],
+      rehypePlugins: [rehypeWrapTables, rehypeExternalLinks, rehypePoemLines],
       gfm: true,
       smartypants: true,
     }),
