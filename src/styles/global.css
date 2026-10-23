@@ -1189,14 +1189,14 @@
   color: rgb(var(--color-text));
   font-family: var(--font-serif);
   font-size: 1.1875rem;
-  line-height: 1.7;
+  line-height: var(--leading-relaxed);
   letter-spacing: 0.005em;
   overflow-wrap: break-word;
   hyphens: none;
 }
 
 .prose .a-poem .poem-stanza {
-  margin: 0 0 1.5em;
+  margin: 0 0 round(nearest, 1.5em, 4px);
   font-size: inherit;
   line-height: inherit;
 }
@@ -1207,8 +1207,8 @@
 
 .prose .a-poem .poem-line {
   display: block;
-  padding-left: 1.5em;
-  text-indent: -1.5em;
+  padding-left: round(nearest, 1.5em, 4px);
+  text-indent: calc(-1 * round(nearest, 1.5em, 4px));
 }
 
 .prose .a-poem strong {
