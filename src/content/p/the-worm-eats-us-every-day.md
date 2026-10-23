@@ -1,7 +1,7 @@
 ---
 title: 'The Worm Eats Us Every Day'
 description: 'A sandworm ate me twice in Dune: Awakening and I got to walk away. Out here there are no worms, and we live like we are on Arrakis anyway.'
-pubDate: '2026-10-23T09:00:00.000-04:00'
+pubDate: '2026-10-22T20:00:00.000-04:00'
 language:
   - en
 category:
