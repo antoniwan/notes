@@ -1,7 +1,7 @@
 ---
 title: 'Faces of Death'
 description: 'The people who authorize violence seem to wear it on their faces. A reading, not a diagnosis, of what the body records when we live against what we claim.'
-pubDate: '2026-10-23T09:00:00.000-04:00'
+pubDate: '2026-10-22T20:00:00.000-04:00'
 language:
   - en
 category:
