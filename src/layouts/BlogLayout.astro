@@ -672,6 +672,9 @@ const breadcrumbSchema = generateBreadcrumbSchema(
 <script>
   import { formatRelativeReadTime } from '../utils/relativeReadTime.client';
   import '../components/post-toc/postToc.client';
+  import { initPoemAmbience } from '../utils/poemAmbience.client';
+
+  initPoemAmbience();
 
   const status = document.querySelector<HTMLElement>('[data-read-status]');
   const postSlug = status?.dataset.postSlug;
