@@ -1,7 +1,7 @@
 ---
 title: 'I Lost the Argument to an Adjective'
 description: 'I was angry that they called it intelligence. Then I read the adjective, caught my own habit of overclaiming, and ended up worried about coal.'
-pubDate: '2026-10-23T09:00:00.000-04:00'
+pubDate: '2026-10-22T20:00:00.000-04:00'
 language:
   - en
 category:
