@@ -19,7 +19,7 @@ tags:
   - healing
   - love
 draft: false
-featured: true
+featured: false
 published: true
 showComments: true
 heroImage: /images/i-lose-mia.avif

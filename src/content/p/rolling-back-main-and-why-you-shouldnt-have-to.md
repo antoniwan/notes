@@ -25,7 +25,7 @@ keywords:
   - branching
   - ai agents
 draft: false
-featured: true
+featured: false
 published: true
 showComments: true
 ---

@@ -1178,10 +1178,80 @@
   color: transparent !important;
 }
 
-/* Poem block – preserve line breaks, readable line height */
-.a-poem {
-  white-space: pre-line;
+/* Poem block: set as verse, not code. rehypePoemLines turns the authored
+   <pre class="a-poem"> into stanzas (<p>) of lines (block <span>), so each line
+   keeps its break and a long one wraps with a hanging indent. The column is
+   left-aligned and centered on the measure when the poem is narrower. */
+.prose .a-poem {
+  width: fit-content;
+  max-width: 100%;
+  margin: 2.5rem auto;
+  color: rgb(var(--color-text));
+  font-family: var(--font-serif);
+  font-size: 1.1875rem;
   line-height: var(--leading-relaxed);
-  margin: 2rem 0;
-  font-size: 1.125rem;
+  letter-spacing: 0.005em;
+  overflow-wrap: break-word;
+  hyphens: none;
+}
+
+.prose .a-poem .poem-stanza {
+  margin: 0 0 round(nearest, 1.5em, 4px);
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.prose .a-poem .poem-stanza:last-child {
+  margin-bottom: 0;
+}
+
+.prose .a-poem .poem-line {
+  display: block;
+  padding-left: round(nearest, 1.5em, 4px);
+  text-indent: calc(-1 * round(nearest, 1.5em, 4px));
+}
+
+.prose .a-poem strong {
+  font-weight: 600;
+}
+
+/* Poem ambience (poemAmbience.client.ts): a pond canvas and a color wash behind the
+   page. JS adds them only without reduced motion. */
+.poem-pond,
+.poem-tide {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Lantern: on devices with a pointer, the line under it stays full ink and the rest
+   rest at the muted text tone, which still passes WCAG AA in both themes. */
+@media (hover: hover) {
+  .prose .a-poem .poem-line {
+    transition: color 0.35s ease;
+  }
+
+  .prose .a-poem:hover .poem-line {
+    color: rgb(var(--color-text-muted));
+  }
+
+  .prose .a-poem .poem-line:hover {
+    color: rgb(var(--color-text));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prose .a-poem .poem-line {
+    transition: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .prose .a-poem {
+    margin: 2rem 0;
+    font-size: 1.0625rem;
+  }
 }

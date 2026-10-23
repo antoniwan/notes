@@ -22,7 +22,7 @@ tags:
   - ai-agents
   - craftsmanship
 draft: false
-featured: true
+featured: false
 published: true
 showComments: true
 ---

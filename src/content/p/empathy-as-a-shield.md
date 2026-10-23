@@ -15,7 +15,7 @@ tags:
   - emotional-regulation
   - self-reflection
 draft: false
-featured: true
+featured: false
 published: true
 showComments: true
 ---
