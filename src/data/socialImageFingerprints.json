@@ -449,6 +449,10 @@
       "sha256": "aa80ec893184828b7099eb68dbd5bae04762e174f0e01696adbcc3b6a31a01ca",
       "social": "/social/images/2026/escaping-the-feeds-social.jpg"
     },
+    "/images/2026/faces-of-death.avif": {
+      "sha256": "32ed45f148acd8c5132919a1a29e2321b75c01b8584f94bef08d3b0704b7a085",
+      "social": "/social/images/2026/faces-of-death-social.jpg"
+    },
     "/images/2026/fasting-hurts.avif": {
       "sha256": "d535b488a62249db32d690c5217467a432db0eaf6a6114bc64a9e7cacec569d3",
       "social": "/social/images/2026/fasting-hurts-social.jpg"

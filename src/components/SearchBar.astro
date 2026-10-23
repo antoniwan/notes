@@ -101,7 +101,7 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
       <div class="flex flex-col items-center space-y-4">
         <div class="space-y-2">
           <p class="text-base font-semibold">No results found</p>
-          <p class="text-sm opacity-75">Try searching for writings, categories, topics, or pages</p>
+          <p class="text-sm">Try searching for writings, categories, topics, or pages</p>
         </div>
       </div>
     </div>
@@ -111,7 +111,7 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
       <div class="flex flex-col items-center space-y-4">
         <div class="space-y-2">
           <p class="text-base font-semibold">Search is unavailable</p>
-          <p class="text-sm opacity-75">
+          <p class="text-sm">
             The search index could not be loaded. Check your connection and try again.
           </p>
         </div>
@@ -768,7 +768,7 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
   }
   .search-input:focus {
     border-color: rgb(var(--color-accent) / 0.45);
-    outline: 2px solid rgb(var(--color-accent) / 0.2);
+    outline: 2px solid rgb(var(--color-accent));
     outline-offset: 2px;
   }
   .search-input::-webkit-search-cancel-button {

@@ -7,22 +7,21 @@ on:
       - master
   pull_request:
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build-and-check:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
-
-      # Keeps regenerated social JPG/PNG warm between runs until they are committed to git.
-      - name: Restore social derivatives cache
-        uses: actions/cache@v6
-        with:
-          path: public/social
-          key: ${{ runner.os }}-social-images-${{ hashFiles('public/**/*.avif', 'scripts/generate-social-images.js', 'src/data/socialImageFingerprints.json') }}
-          restore-keys: |
-            ${{ runner.os }}-social-images-
 
       # No version here on purpose: action-setup reads package.json's
       # packageManager field, so CI and local development cannot drift.
@@ -64,6 +63,13 @@ jobs:
 
       - name: Build project
         run: pnpm run build
+
+      # The build regenerates social cards and their manifest. They are tracked
+      # in git, so a post merged without its card shows up here instead of in prod.
+      - name: Check generated social images are committed
+        run: |
+          git status --porcelain -- public/social src/data
+          test -z "$(git status --porcelain -- public/social src/data)"
 
       - name: Validate generated feeds
         run: pnpm run validate-feeds

@@ -52,6 +52,7 @@ const languageFlags: Record<string, string> = {
     {otherTranslations.map((translation) => (
       <a
         href={translation.path}
+        hreflang={translation.language[0]}
         class="language-link"
         title={
           isSpanish
@@ -59,7 +60,8 @@ const languageFlags: Record<string, string> = {
             : `Read in ${languageNames[translation.language[0]]}`
         }
       >
-        {languageFlags[translation.language[0]]} {languageNames[translation.language[0]]}
+        <span aria-hidden="true">{languageFlags[translation.language[0]]}</span>{' '}
+        <span lang={translation.language[0]}>{languageNames[translation.language[0]]}</span>
       </a>
     ))}
   </div>

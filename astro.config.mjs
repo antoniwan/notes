@@ -73,6 +73,7 @@ export default defineConfig({
     },
     {
       name: 'Fraunces',
+      fallbacks: ['Georgia', 'serif'],
       cssVariable: '--font-heading',
       provider: fontProviders.fontsource(),
       weights: [400, 500, 600, 700, 800, 900],
@@ -81,6 +82,7 @@ export default defineConfig({
     },
     {
       name: 'Source Serif 4',
+      fallbacks: ['Georgia', 'serif'],
       cssVariable: '--font-serif',
       provider: fontProviders.fontsource(),
       weights: [300, 400, 500, 600, 700, 800],
@@ -89,6 +91,7 @@ export default defineConfig({
     },
     {
       name: 'JetBrains Mono',
+      fallbacks: ['ui-monospace', 'monospace'],
       cssVariable: '--font-mono',
       provider: fontProviders.fontsource(),
       weights: [300, 400, 500, 600, 700],
@@ -182,19 +185,6 @@ export default defineConfig({
         },
       },
       rollupOptions: {
-        // Astro still emits a dead `"use astro:head-inject"` marker on MDX
-        // content modules, and Rolldown 1.2.9+ warns about it once per MDX
-        // post. Build output is unaffected. Remove this filter once the fix
-        // for withastro/astro#18087 is released.
-        onwarn(warning, defaultHandler) {
-          if (
-            warning.code === 'MODULE_LEVEL_DIRECTIVE' &&
-            warning.message.includes('astro:head-inject')
-          ) {
-            return;
-          }
-          defaultHandler(warning);
-        },
         output: {
           manualChunks(id) {
             // Split vendor chunks for better caching

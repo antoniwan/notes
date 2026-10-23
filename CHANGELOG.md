@@ -9,6 +9,36 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [7.4.1] — 2026-10-23
+
+Code-only cleanup from a full audit (code, performance, dependencies, accessibility, UI/UX, SEO, product). Antonio: "any code-only enhancements, optimizations, cleanup? upgrades? recommendations?" No post content changed.
+
+### Fixed
+
+- Threads embeds follow the theme toggle again: the toggle dispatches its event on `window`, and the embed listened on `document`.
+- RSS carries what `rss.xml.js` already asked for. `@astrojs/rss` silently dropped `language`, `ttl`, `image`, `managingEditor`, `webMaster`, `lastBuildDate` and the item `comments` link; they now go through `customData` and `commentsUrl`, with an `atom:link rel="self"`. Item `<author>` is an address with the name in parentheses, as RSS 2.0 expects.
+- The image lightbox no longer turns the gallery thumbnails in `ImageRotator` into a second, nested button (68 axe violations on the Crimson Desert review).
+- Accessible names match visible text: the footer version link and the Spanish "Copiar enlace" button.
+- The search box focus ring and the search helper text reach WCAG contrast; the "Every idea" pill no longer turns marigold on hover.
+- The reading progress bar is decorative (`aria-hidden`), so it no longer sits outside every landmark as an English progressbar.
+- Post heroes and cards with no `imageAlt` use empty alt text instead of repeating the title next to the title.
+- The language toggle marks "English" / "Español" with `lang` and `hreflang` and hides the flag emoji from screen readers.
+- `/offline` is `noindex` and titled "Offline | Notes".
+- The faces-of-death social card and its manifest entry are committed; every build had been regenerating them.
+
+### Changed
+
+- Fonts: only DM Sans 400 and Fraunces 700 are preloaded, not every face of both families. Fraunces and Source Serif 4 fall back to Georgia/serif and JetBrains Mono to a monospace font, instead of sans-serif.
+- Hero `src` fallbacks are the 1200w size, not a full-resolution transform that only srcset-less browsers fetch and every build had to encode. The article preload keeps the same srcset.
+- `article:*` meta only on articles, one `article:tag` per tag. Dropped the non-standard `viewport-height` meta and the preconnects to Vercel hosts that production never calls.
+- JSON-LD escapes `<`, so no title or description can close its script tag.
+- `/images/*` and `/social/*` are cached for an hour with a day of stale-while-revalidate, instead of revalidating on every view.
+- CI: read-only permissions, cancels superseded runs, 30-minute timeout. The social-image cache step is gone (the cards are tracked in git) and a step fails the run when the build produces social cards that were not committed.
+
+### Removed
+
+- `PerformanceMonitor` (dev-only; Speed Insights covers production), the catch-all JSX typing that switched off element checks, the `astro:head-inject` warning filter (fixed upstream in Astro 7.3.6), and the stale `esbuild` build approval in `pnpm-workspace.yaml`.
+
 ## [7.4.0] — 2026-10-22
 
 Browse in order of relevance. Antonio: "the topics sentences have to be re-organized, order in order of relevance, context? where we are in our life, what is more valuable for our readers today?"
