@@ -11,7 +11,13 @@
  * framing, as it did before; this changes which *size* of the image is sent.
  */
 import { Image } from 'astro:assets';
-import { HERO_QUALITY, HERO_SIZES, HERO_WIDTHS, resolveHeroImage } from '../utils/heroImages';
+import {
+  HERO_MAX_WIDTH,
+  HERO_QUALITY,
+  HERO_SIZES,
+  HERO_WIDTHS,
+  resolveHeroImage,
+} from '../utils/heroImages';
 
 interface Props {
   /** The `/images/…` string from frontmatter. */
@@ -47,6 +53,7 @@ const sizes = HERO_SIZES[variant];
     src={resolved}
     alt={alt}
     {...(className ? { class: className } : {})}
+    width={HERO_MAX_WIDTH}
     widths={HERO_WIDTHS}
     sizes={sizes}
     format="avif"

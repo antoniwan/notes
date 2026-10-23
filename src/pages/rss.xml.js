@@ -29,7 +29,8 @@ export async function GET() {
         link: `${SITE_URL}/p/${post.id}`,
         guid: `${SITE_URL}/p/${post.id}`,
         categories: [...new Set([...(post.data.category || []), ...(post.data.tags || [])])],
-        author: post.data.author || AUTHOR.name,
+        // RSS 2.0 wants an address here; the name rides along in parentheses.
+        author: `${AUTHOR.email} (${post.data.author || AUTHOR.name})`,
         content,
         ...(imagePath && {
           enclosure: {
@@ -39,7 +40,7 @@ export async function GET() {
           },
         }),
         ...(post.data.showComments !== false && {
-          comments: `${SITE_URL}/p/${post.id}#comments`,
+          commentsUrl: `${SITE_URL}/p/${post.id}#comments`,
         }),
       };
     }),
@@ -49,18 +50,18 @@ export async function GET() {
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
     site: SITE_URL,
-    language: 'en-US',
-    lastBuildDate: new Date(),
-    ttl: 60,
-    managingEditor: `${AUTHOR.email} (${AUTHOR.name})`,
-    webMaster: `${AUTHOR.email} (${AUTHOR.name})`,
-    image: {
-      url: feedImageUrl(),
-      title: SITE_TITLE,
-      link: SITE_URL,
-      width: 1200,
-      height: 630,
-    },
+    // @astrojs/rss only knows title, description, site and items at the channel
+    // level; everything else has to go through customData or it is dropped.
+    xmlns: { atom: 'http://www.w3.org/2005/Atom' },
+    customData: [
+      `<atom:link href="${SITE_URL}/rss.xml" rel="self" type="application/rss+xml"/>`,
+      '<language>en-us</language>',
+      `<lastBuildDate>${new Date().toUTCString()}</lastBuildDate>`,
+      '<ttl>60</ttl>',
+      `<managingEditor>${AUTHOR.email} (${AUTHOR.name})</managingEditor>`,
+      `<webMaster>${AUTHOR.email} (${AUTHOR.name})</webMaster>`,
+      `<image><url>${feedImageUrl()}</url><title>${SITE_TITLE}</title><link>${SITE_URL}</link></image>`,
+    ].join(''),
     items,
   });
 }

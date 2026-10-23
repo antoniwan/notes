@@ -54,6 +54,11 @@ export function resolveHeroImage(heroImage: string | undefined | null): ImageMet
  * fewer candidates.
  */
 export const HERO_WIDTHS = [400, 800, 1200];
+/**
+ * The `src` fallback size. Without it, `src` is a full-resolution transform that
+ * only srcset-less browsers fetch, yet every build has to encode it.
+ */
+export const HERO_MAX_WIDTH = HERO_WIDTHS[HERO_WIDTHS.length - 1];
 export const HERO_QUALITY = 45;
 
 /**

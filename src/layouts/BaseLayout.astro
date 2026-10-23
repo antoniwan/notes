@@ -5,7 +5,6 @@ import BaseHead from '../components/BaseHead.astro';
 import BackToTop from '../components/BackToTop.astro';
 import ReadingProgress from '../components/ReadingProgress.astro';
 import StructuredData from '../components/StructuredData.astro';
-import PerformanceMonitor from '../components/PerformanceMonitor.astro';
 import ServiceWorkerRegistration from '../components/ServiceWorkerRegistration.astro';
 import ReadStateServiceInit from '../components/ReadStateServiceInit.astro';
 import * as pkg from '../../package.json';
@@ -149,9 +148,6 @@ const structuredData = generateStructuredData({
     </script>
     <Analytics />
 
-    <!-- Performance Monitoring (development only) -->
-    {import.meta.env.DEV && <PerformanceMonitor />}
-
     <!-- Service Worker Registration -->
     <ServiceWorkerRegistration />
 
@@ -168,7 +164,7 @@ const structuredData = generateStructuredData({
       >
         &times;
       </button>
-      <img id="modalImage" src="" alt="" />
+      <img id="modalImage" alt="" />
     </dialog>
 
     <script is:inline>
@@ -218,7 +214,8 @@ const structuredData = generateStructuredData({
 
       document.addEventListener('DOMContentLoaded', function () {
         document.querySelectorAll('.prose img').forEach(function (image) {
-          if (!(image instanceof HTMLImageElement) || image.closest('a')) return;
+          if (!(image instanceof HTMLImageElement) || image.closest('a, button, .image-rotator'))
+            return;
 
           image.tabIndex = 0;
           image.setAttribute('role', 'button');

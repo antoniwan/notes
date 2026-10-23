@@ -60,14 +60,14 @@ const hasSpanishTwin =
     {data.heroImage ? (
       <HeroImage
         src={data.heroImage}
-        alt={data.imageAlt || data.title}
+        alt={data.imageAlt ?? ''}
         class="postcard-image"
         variant="card"
         loading={imageLoading}
       />
     ) : (
       <DefaultImage
-        alt={data.title}
+        alt=""
         className="postcard-image"
         loading={imageLoading}
         width={1200}

@@ -189,7 +189,7 @@ const breadcrumbSchema = generateBreadcrumbSchema(
             {heroImage ? (
               <HeroImage
                 src={heroImage}
-                alt={imageAlt || title}
+                alt={imageAlt ?? ''}
                 class="h-full w-full object-cover"
                 variant="article"
                 priority={true}
@@ -198,7 +198,7 @@ const breadcrumbSchema = generateBreadcrumbSchema(
               />
             ) : (
               <DefaultImage
-                alt={imageAlt || title}
+                alt={imageAlt ?? ''}
                 className="h-full w-full"
                 loading="eager"
                 priority={true}

@@ -3,7 +3,13 @@
 // all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
 import { Font, getImage } from 'astro:assets';
-import { HERO_QUALITY, HERO_SIZES, HERO_WIDTHS, resolveHeroImage } from '../utils/heroImages';
+import {
+  HERO_MAX_WIDTH,
+  HERO_QUALITY,
+  HERO_SIZES,
+  HERO_WIDTHS,
+  resolveHeroImage,
+} from '../utils/heroImages';
 import { SITE_TITLE, SITE_DESCRIPTION, AUTHOR, SEO_CONFIG } from '../consts';
 import { generateMetaTags, DEFAULT_LOCALE } from '../utils/seo';
 import { ogLocaleAlternatesFromHreflang } from '../utils/ogLocale';
@@ -64,6 +70,7 @@ const resolvedHero = resolveHeroImage(heroImage);
 const heroPreload = resolvedHero
   ? await getImage({
       src: resolvedHero,
+      width: HERO_MAX_WIDTH,
       widths: HERO_WIDTHS,
       sizes: HERO_SIZES.article,
       format: 'avif',
@@ -97,7 +104,6 @@ const updatedDateISO = updatedDate?.toISOString();
 <!-- Character Set & Viewport -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="viewport-height" content="100vh" />
 
 <!-- Font preloading handled by Astro Fonts API -->
 
@@ -117,8 +123,8 @@ const updatedDateISO = updatedDate?.toISOString();
 <meta name="color-scheme" content="light dark" />
 
 <!-- Astro 6 Fonts API -->
-<Font cssVariable="--font-sans" preload />
-<Font cssVariable="--font-heading" preload />
+<Font cssVariable="--font-sans" preload={[{ weight: '400', style: 'normal' }]} />
+<Font cssVariable="--font-heading" preload={[{ weight: '700', style: 'normal' }]} />
 <Font cssVariable="--font-serif" />
 <Font cssVariable="--font-mono" />
 
@@ -237,19 +243,23 @@ const updatedDateISO = updatedDate?.toISOString();
 <!-- Article Specific Meta Tags -->
 {pubDateISO && <meta property="article:published_time" content={pubDateISO} />}
 {updatedDateISO && <meta property="article:modified_time" content={updatedDateISO} />}
-{metaTags.keywords && <meta property="article:tag" content={metaTags.keywords} />}
-<meta property="article:author" content={AUTHOR.url} />
-<meta property="article:section" content="Notes" />
+{metaTags.ogType === 'article' && (
+  <>
+    {metaTags.keywords
+      ?.split(',')
+      .map((tag) => tag.trim())
+      .filter(Boolean)
+      .map((tag) => (
+        <meta property="article:tag" content={tag} />
+      ))}
+    <meta property="article:author" content={AUTHOR.url} />
+    <meta property="article:section" content="Notes" />
+  </>
+)}
 
 <!-- Additional Meta Tags -->
 <meta name="format-detection" content="telephone=no" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 
-<!-- Preconnect to external domains for performance -->
+<!-- Vercel Analytics and Speed Insights load first-party from /_vercel, so no preconnects are needed. -->
 <!-- Remark42 comments: preconnect is handled dynamically via the embed script -->
-<link rel="preconnect" href="https://vitals.vercel-insights.com" />
-<link rel="preconnect" href="https://va.vercel-scripts.com" />
-
-<!-- DNS Prefetch for external resources -->
-<link rel="dns-prefetch" href="//vitals.vercel-insights.com" />
-<link rel="dns-prefetch" href="//va.vercel-scripts.com" />

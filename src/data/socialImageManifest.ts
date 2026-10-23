@@ -190,6 +190,7 @@ export const SOCIAL_IMAGE_MANIFEST: Record<string, string> = {
     '/social/images/2026/empathy-and-compassion-social.jpg',
   '/images/2026/empathy-sword-edges.png': '/social/images/2026/empathy-sword-edges-social.jpg',
   '/images/2026/escaping-the-feeds.avif': '/social/images/2026/escaping-the-feeds-social.jpg',
+  '/images/2026/faces-of-death.avif': '/social/images/2026/faces-of-death-social.jpg',
   '/images/2026/fasting-hurts.avif': '/social/images/2026/fasting-hurts-social.jpg',
   '/images/2026/fettuccine-with-seared-chicken.avif':
     '/social/images/2026/fettuccine-with-seared-chicken-social.jpg',

@@ -9,11 +9,7 @@ const { class: className = '', postId } = Astro.props;
 
 <div
   class:list={['fixed top-0 left-0 z-50 h-1 w-full bg-[rgb(var(--color-bg-alt))]', className]}
-  role="progressbar"
-  aria-label="Reading progress"
-  aria-valuemin="0"
-  aria-valuemax="100"
-  aria-valuenow="0"
+  aria-hidden="true"
   data-post-id={postId}
 >
   <div
@@ -176,8 +172,7 @@ const { class: className = '', postId } = Astro.props;
 
   function getCurrentPostId(): string | null {
     // Use Astro's native post.id from data attribute (primary method)
-    const progressBar = document.querySelector('[role="progressbar"]') as HTMLElement;
-    const postId = progressBar?.dataset?.postId;
+    const postId = progressBar.dataset.postId;
     if (postId) return postId;
 
     // Fallback: extract from URL path (stops at first slash, no trailing slash)
@@ -202,11 +197,6 @@ const { class: className = '', postId } = Astro.props;
     if (progress !== lastProgress) {
       readingProgress.style.width = `${progress}%`;
       lastProgress = progress;
-
-      // Update ARIA attributes
-      if (progressBar) {
-        progressBar.setAttribute('aria-valuenow', Math.round(progress).toString());
-      }
     }
 
     // Track max scroll depth for this session
