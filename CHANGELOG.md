@@ -15,7 +15,7 @@ Work from the October 25 roadmap that needed no decision from Antonio. Antonio: 
 
 ### Added
 
-- `/es`: every Spanish piece in one place, newest first, twins included, with its own feed at `/es/rss.xml`. Spanish posts point their "keep reading" link there, Spanish pages advertise the Spanish feed, and the footer links it as "En español".
+- `/es`: every Spanish piece in one place, laid out like Archive (year groups, the same card rows, Spanish labels), twins included, with its own feed at `/es/rss.xml`. Spanish posts point their "keep reading" link there, Spanish pages advertise the Spanish feed, and the footer links it as "En español".
 - Series. An optional `series` (ids in `src/data/series.ts`) and `seriesOrder` in frontmatter give a post "Part N of M" with previous and next links, and each series a page at `/series/<id>`. First three: Game reviews (Crimson Desert, Dispatch), The digital sandbox, The Stronghand terminal.
 - Identity: the author schema lists Patreon, GitHub, LinkedIn, Bluesky and Threads under `sameAs`, and the head carries matching `rel="me"` links.
 - RSS in the footer colophon, next to JSON.

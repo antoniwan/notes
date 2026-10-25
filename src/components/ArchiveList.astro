@@ -1,0 +1,303 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import PostCard from './PostCard.astro';
+
+/**
+ * The year-grouped list of cards behind Archive (`/archive`) and the Spanish
+ * index (`/es`), so both read as the same kind of page.
+ */
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+  lang?: 'en' | 'es';
+  /** Shown next to the total, e.g. the Spanish feed. */
+  feedHref?: string;
+}
+
+const { posts, lang = 'en', feedHref } = Astro.props;
+const es = lang === 'es';
+const sortedPosts = [...posts].sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const years = [...new Set(sortedPosts.map((post) => post.data.pubDate.getUTCFullYear()))];
+const archive = years.map((year) => ({
+  year,
+  posts: sortedPosts.filter((post) => post.data.pubDate.getUTCFullYear() === year),
+}));
+const count = (n: number) =>
+  es ? `${n} ${n === 1 ? 'escrito' : 'escritos'}` : `${n} ${n === 1 ? 'writing' : 'writings'}`;
+---
+
+<div class="archive-page">
+  {sortedPosts.length > 0 ? (
+    <>
+      <div class="archive-directory">
+        <nav class="archive-years" aria-label={es ? 'Ir a un año' : 'Jump to a year'}>
+          <span class="archive-years__label">{es ? 'Ir a un año' : 'Jump to a year'}</span>
+          <ul role="list">
+            {years.map((year) => (
+              <li>
+                <a href={`#year-${year}`}>{year}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <p class="archive-total">
+          {count(sortedPosts.length)}
+          {feedHref && (
+            <>
+              {' · '}
+              <a href={feedHref}>{es ? 'Seguir por RSS' : 'Follow via RSS'}</a>
+            </>
+          )}
+        </p>
+      </div>
+
+      <div class="archive-sections">
+        {archive.map(({ year, posts: yearPosts }, yearIndex) => (
+          <section class="archive-year" aria-labelledby={`year-${year}`}>
+            <header class="archive-year__heading">
+              <h2 id={`year-${year}`} tabindex="-1">
+                {year}
+              </h2>
+              <p>{count(yearPosts.length)}</p>
+            </header>
+            <ul class="archive-list" role="list">
+              {yearPosts.map((post, index) => (
+                <li class="archive-entry">
+                  <PostCard
+                    post={post}
+                    featured={post.data.featured}
+                    headingAs="h3"
+                    idPrefix={es ? 'es' : 'archive'}
+                    showLanguage={!es}
+                    showFeaturedIndicator={!es}
+                    imageLoading={yearIndex === 0 && index === 0 ? 'eager' : 'lazy'}
+                  />
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+    </>
+  ) : (
+    <div class="archive-empty">
+      <h2>{es ? 'Todavía no hay escritos' : 'No writings yet'}</h2>
+      <p>
+        {es
+          ? 'Los escritos aparecerán aquí cuando se publiquen.'
+          : "Writings will appear here once they're published."}
+      </p>
+    </div>
+  )}
+</div>
+
+<style>
+  .archive-page {
+    padding-top: 1rem;
+    padding-bottom: round(nearest, clamp(4rem, 7vw, 7rem), 4px);
+  }
+
+  .archive-directory {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+    margin-bottom: round(nearest, clamp(3rem, 5vw, 4rem), 4px);
+  }
+
+  .archive-years {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.5rem;
+  }
+
+  .archive-total a {
+    color: rgb(var(--color-accent));
+  }
+
+  .archive-years__label,
+  .archive-total,
+  .archive-year__heading p {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: var(--leading-normal);
+    color: rgb(var(--color-text-muted));
+    font-variant-numeric: tabular-nums;
+  }
+
+  .archive-years ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .archive-years li {
+    padding: 0;
+    margin: 0;
+  }
+
+  .archive-years a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    background: rgb(var(--color-bg-alt));
+    color: rgb(var(--color-text));
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: var(--leading-normal);
+    text-decoration: none;
+  }
+
+  .archive-years a:hover,
+  .archive-years a:focus-visible {
+    background: rgb(var(--color-accent) / 0.08);
+    color: rgb(var(--color-accent));
+  }
+
+  .archive-years a:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 4px;
+  }
+
+  .archive-sections {
+    display: grid;
+    gap: round(nearest, clamp(3.5rem, 7vw, 6rem), 4px);
+  }
+
+  .archive-year {
+    display: grid;
+    gap: 2rem;
+    align-items: start;
+    min-width: 0;
+  }
+
+  .archive-year__heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.75rem 1rem;
+  }
+
+  .archive-year__heading h2,
+  .archive-empty h2 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: clamp(1.75rem, 2.6vw, 2.25rem);
+    line-height: var(--leading-display);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    scroll-margin-top: calc(var(--site-header-height) + 2rem);
+  }
+
+  .archive-list {
+    display: grid;
+    gap: 2.5rem;
+    min-width: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .archive-entry {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .archive-empty {
+    display: grid;
+    gap: 1rem;
+    padding-block: 2rem;
+  }
+
+  .archive-empty p {
+    margin: 0;
+    font-size: 1.125rem;
+    line-height: var(--leading-relaxed);
+    color: rgb(var(--color-text-muted));
+  }
+
+  @media (max-width: 767px) {
+    .archive-directory {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.75rem 1rem;
+    }
+
+    .archive-years {
+      display: contents;
+    }
+
+    .archive-years__label {
+      grid-column: 1;
+    }
+
+    .archive-years ul {
+      grid-column: 1 / -1;
+      gap: 0.5rem;
+    }
+
+    .archive-years a {
+      padding-inline: 0.75rem;
+    }
+
+    .archive-total {
+      grid-column: 2;
+      grid-row: 1;
+    }
+  }
+  @media (min-width: 768px) {
+    .archive-entry :global(article.postcard) {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+      align-items: start;
+      gap: 2rem;
+    }
+
+    .archive-entry :global(article.postcard .postcard-body) {
+      padding: 0.25rem 0 0;
+    }
+
+    .archive-entry :global(article.postcard .postcard-description) {
+      max-width: var(--measure);
+      -webkit-line-clamp: 4;
+    }
+
+    .archive-entry :global(article.postcard .read-indicator) {
+      top: 0.75rem;
+      right: auto;
+      left: 0.75rem;
+    }
+
+    .archive-list {
+      gap: 3rem;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .archive-year {
+      grid-template-columns: 7rem minmax(0, 1fr);
+      gap: round(nearest, clamp(3rem, 5vw, 4.5rem), 4px);
+    }
+
+    .archive-year__heading {
+      position: sticky;
+      top: calc(var(--site-header-height) + 2rem);
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .archive-entry :global(article.postcard) {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.65fr);
+      gap: 2.5rem;
+    }
+  }
+</style>

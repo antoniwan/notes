@@ -1,19 +1,19 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
-import PostCard from '../../components/PostCard.astro';
+import ArchiveList from '../../components/ArchiveList.astro';
 import { getCollection } from 'astro:content';
 import { PAGE_META } from '../../data/pageMeta';
 import { isSpanishListed } from '../../utils/publishFilters';
 
 // Spanish has no card stream elsewhere (English is the listing language), so
-// this is the one page that lists every Spanish piece, twins included.
+// this is the one page that lists every Spanish piece, twins included. It
+// reads like Archive on purpose.
 const posts = await getCollection('blog', ({ data }) => isSpanishListed(data));
-const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <PageLayout
   title="En español"
-  description="Todo lo que he escrito en español, de lo más reciente a lo más antiguo. Algunas notas también existen en inglés; otras solo en español."
+  description="Todo lo que he escrito en español, de lo más reciente a lo más antiguo."
   metaDescription={PAGE_META['/es']}
   path="/es"
   structuredDataType="website"
@@ -21,46 +21,5 @@ const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDa
   locale="es_PR"
   mode="chrome"
 >
-  <div class="es-page">
-    <p class="es-meta">
-      {sortedPosts.length}
-      {sortedPosts.length === 1 ? 'escrito' : 'escritos'} ·<a href="/es/rss.xml">Seguir por RSS</a>
-    </p>
-    {sortedPosts.length > 0 ? (
-      <ul class="es-list" role="list">
-        {sortedPosts.map((post, index) => (
-          <li>
-            <PostCard
-              post={post}
-              headingAs="h2"
-              idPrefix="es"
-              imageLoading={index === 0 ? 'eager' : 'lazy'}
-            />
-          </li>
-        ))}
-      </ul>
-    ) : (
-      <p>Todavía no hay escritos en español.</p>
-    )}
-  </div>
+  <ArchiveList posts={posts} lang="es" feedHref="/es/rss.xml" />
 </PageLayout>
-
-<style>
-  .es-page {
-    display: grid;
-    gap: var(--grid-gap);
-  }
-
-  .es-meta {
-    margin: 0;
-    color: rgb(var(--color-text-muted));
-  }
-
-  .es-list {
-    display: grid;
-    gap: var(--grid-gap);
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-</style>
