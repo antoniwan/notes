@@ -353,8 +353,8 @@
     --size-embed: 658px; /* Threads' own embed width */
     --size-table-min: 40rem; /* a wide table scrolls sideways past this */
     --figure-sm: 18rem;
-    --figure-md: 36rem;
-    --figure-lg: 52rem;
+    /* A --wide figure: the column plus 12rem past its right edge. */
+    --figure-wide: calc(100% + 12rem);
 
     /* Matches Header inner bar (h-16 / md:h-18). Sticky chrome uses this. */
     --site-header-height: 4rem;
@@ -1100,25 +1100,20 @@
   max-width: none;
 }
 
-/* Inline figures: cap the FIGURE (not just the image) so captions share the
-   image's width and start edge. `.prose figure { width: 100%; text-align: center }`
-   otherwise leaves a narrower image left-aligned under a full-column caption.
-   Add `post-inline-figure--center` to center the whole unit. */
+/* Inline figures share the text column's edges: an image fills the measure and sits flush with
+   the paragraphs around it, caption included. Only an image smaller than the measure stays at its
+   own width, flush left, so it never stretches blurry. `--center` and `--lg` are older names for
+   the same thing. `--sm` is a deliberately small figure. `--wide` breaks out past the right edge
+   into the free space beside the column, on screens with room for it. */
 .post-prose.prose figure.post-inline-figure {
   display: flex !important;
   flex-direction: column;
   align-items: stretch;
   width: max-content !important;
-  max-width: min(var(--figure-md), 100%) !important;
+  max-width: 100% !important;
   margin-inline-start: 0 !important;
   margin-inline-end: auto !important;
   text-align: start !important;
-}
-
-.post-prose.prose figure.post-inline-figure.post-inline-figure--center {
-  margin-inline-start: auto !important;
-  margin-inline-end: auto !important;
-  text-align: center !important;
 }
 
 .post-prose.prose figure.post-inline-figure img {
@@ -1140,12 +1135,15 @@
   max-height: 12rem !important;
 }
 
-.post-prose.prose figure.post-inline-figure.post-inline-figure--lg {
-  max-width: min(var(--figure-lg), 100%) !important;
-}
+/* The essay column clips sideways overflow (long words, code); a wide figure needs it open. */
+@media (min-width: 1320px) {
+  .post-prose.prose:has(figure.post-inline-figure--wide) {
+    overflow-x: visible !important;
+  }
 
-.post-prose.prose figure.post-inline-figure.post-inline-figure--lg img {
-  max-height: min(85vh, 48rem) !important;
+  .post-prose.prose figure.post-inline-figure.post-inline-figure--wide {
+    max-width: var(--figure-wide) !important;
+  }
 }
 
 .post-prose.prose figure.post-inline-figure figcaption {
@@ -1156,10 +1154,6 @@
   font-size: 0.875rem;
   color: rgb(var(--color-text-muted));
   text-align: start;
-}
-
-.post-prose.prose figure.post-inline-figure.post-inline-figure--center figcaption {
-  text-align: center;
 }
 
 .prose :where(h2, h3, h4) {

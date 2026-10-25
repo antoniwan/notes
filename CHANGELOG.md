@@ -9,6 +9,19 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [7.9.0] — 2026-10-25
+
+Post images now share the text's edges. Antonio didn't like images sitting centered and narrower than the text: figures were capped at 36rem inside a 45rem column, so every image floated about 70px in from both text edges.
+
+### Changed
+
+- Inline figures fill the reading column, flush with the paragraphs around them, caption left-aligned under the image. An image smaller than the column keeps its own width and sits flush left, so it never stretches blurry.
+- `post-inline-figure--center` and `post-inline-figure--lg` now render the same as a plain `post-inline-figure`. Existing posts need no edits.
+
+### Added
+
+- `post-inline-figure--wide`: an opt-in figure that reaches 12rem past the column's right edge into the free space beside it, on screens 1320px and wider. Narrower screens show it at column width.
+
 ## [7.8.1] — 2026-10-25
 
 Category names in sentence case and in Antonio's own words, picked one by one in the project thread. Ids and URLs are unchanged.
