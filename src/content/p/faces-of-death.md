@@ -18,8 +18,8 @@ tags:
   - spirituality
   - fatherhood
   - self-reflection
-draft: true
-published: false
+draft: false
+published: true
 showComments: true
 ---
 
