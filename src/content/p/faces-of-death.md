@@ -33,6 +33,13 @@ I'm not studying these faces, though. I don't have a method. It's more that my b
 
 So why do we still kill each other? I keep landing on money and power. Somebody profits, somebody gets to stay in charge, and the rest of us get handed a story about why it was necessary. I'm sure that's too simple. But every time I peel back the complicated version, money and power are sitting right there underneath it.
 
+And whatever the reason, anyone who takes part in it, whether they pull the trigger or approve the mission from a safe, carpeted distance, has to carry two truths at the same time:
+
+1. Life is sacred.
+2. Life can be ended on command.
+
+I've tried to make those two sentences live in the same moral universe and I can't do it. Civilization seems to manage it, but only by not looking directly at the pair of them.
+
 What really gets me is that most of these men grew up with some version of the same rule. In the Abrahamic world it's about as clear as a rule can be: thou shalt not kill. And then, in very small print, _certain restrictions apply._ Self-defense. Justice. National security. "Necessary force," two words carrying centuries of blood. Get out of here, man. We kept the slogan and industrialized the loophole, and plenty of us, me included, have preached the rule and cheered its exceptions at one point or another. I'm not holding anyone to scripture, since I don't hold myself to it either. I just notice that the one rule almost every tradition agrees on is also the one we've built the most exceptions for.
 
 Still, I keep wondering if anyone really gets away with it. Can a person kill, or order killing, and come out whole on the other side, just because the paperwork said it was allowed? I needed to know if I was crazy for feeling that they can't, so I went looking, and it turns out people have spent whole careers on that question. Dave Grossman's [_On Killing_](https://en.wikipedia.org/wiki/On_Killing) (1995) describes how hard militaries have to work to train ordinary people past their resistance to killing, and what that costs them afterward. Bessel van der Kolk's [_The Body Keeps the Score_](https://en.wikipedia.org/wiki/The_Body_Keeps_the_Score) (2014) is four hundred pages about the body holding on to what the mind won't. Drone operators develop PTSD at [rates comparable to pilots who fly manned aircraft](https://alert.psychnews.org/2013/04/pilots-show-similar-mental-health.html), some of them without ever leaving Nevada. I'm not a scientist and I don't want to stretch any of that into a theory about faces. It just makes me feel a little less alone in sensing that the killing leaves something behind, even when it happens through a screen, a signature, or a vote.
