@@ -29,30 +29,30 @@ translationGroup: i-dont-write-the-code
 
 Tengo un trabajo y una familia, y en los últimos diez días puse [un juego de torres en la web](https://uplifttowergame.com) y empecé a construir [un juego de espadas](https://www.patreon.com/antoniwan) en un game engine (motor de juegos) de verdad. No escribí ni una línea del código de ninguno de los dos. Lo escribió Claude, un AI (IA).
 
-Mucha gente odia el AI en los juegos ahora mismo, y parte de ese odio se lo ganaron: hay [una avalancha de juegos en Steam](https://kotaku.com/steam-valve-slop-ai-genai-vibe-coding-pc-game-releases-2000746749) que alguien publicó pero que nadie parece haber dirigido, [juegos donde nadie tomó una decisión](https://www.pcgamer.com/gaming-industry/steam-week-in-review-steam-next-fest-has-over-8-000-demos-as-worthless-vibe-coded-slop-levels-up/) (los dos artículos están en inglés). Así que este devlog (diario de desarrollo) es sobre las decisiones que yo tomo mientras la máquina escribe.
+Mucha gente detesta el AI en los juegos ahora mismo, y en parte con razón: hay [una avalancha de juegos en Steam](https://kotaku.com/steam-valve-slop-ai-genai-vibe-coding-pc-game-releases-2000746749) que alguien publicó pero que nadie parece haber dirigido, [juegos donde nadie tomó una decisión](https://www.pcgamer.com/gaming-industry/steam-week-in-review-steam-next-fest-has-over-8-000-demos-as-worthless-vibe-coded-slop-levels-up/) (los dos artículos están en inglés). Así que este devlog (diario de desarrollo) es sobre las decisiones que yo tomo mientras la máquina escribe.
 
-Los tokens del AI se van a comprar y a usar de todas formas, así que voy a comprar algunos y hacer juegos brutales con ellos, a la vista de todos. Digo cuándo hay AI en el trabajo, tomo las decisiones, y entiendo lo que construye. El peligro que me preocupa no es alguien como yo haciendo juegos con eso. Es gente corriendo estos modelos sin los seguros puestos y sin nadie mirando.
+Los tokens del AI se van a comprar y a usar de todas formas, así que voy a comprar algunos y hacer juegos brutales con ellos, a la vista de todos. Digo cuándo hay AI en el trabajo, tomo las decisiones, y entiendo lo que construye.
 
 ## Los dos juegos
 
-|                     | Uplift                                                                                  | Milak                                                                                       |
-| ------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| Qué es              | Un juego de construir torres, mi versión de SimTower                                    | Un RPG de acción en 3D: Milak Summir, un espadachín a sueldo                                |
-| Cómo va             | Temprano y jugable: un vertical slice (una tajada completa del juego), en vivo y gratis | Un tramo de combate jugable: cuerpos desde el 20 de octubre, pantalla de título desde el 22 |
-| Decisiones escritas | Más de 170                                                                              | Más de 200                                                                                  |
-| Jugarlo             | [uplifttowergame.com](https://uplifttowergame.com)                                      | Todavía no. Apóyalo en [Patreon](https://www.patreon.com/antoniwan)                         |
+|                     | Uplift                                                                               | Milak                                                                                       |
+| ------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------- |
+| Qué es              | Un juego de construir torres, mi versión de SimTower                                 | Un RPG de acción en 3D: Milak Summir, un espadachín a sueldo                                |
+| Cómo va             | Temprano y jugable: un vertical slice (una tajada completa del juego), live y gratis | Un tramo de combate jugable: cuerpos desde el 20 de octubre, pantalla de título desde el 22 |
+| Decisiones escritas | Más de 170                                                                           | Más de 200                                                                                  |
+| Jugarlo             | [uplifttowergame.com](https://uplifttowergame.com)                                   | Todavía no. Apóyalo en [Patreon](https://www.patreon.com/antoniwan)                         |
 
-## Uplift: en vivo en tres días
+## Uplift: Live en tres días
 
 Uplift empezó el 11 de octubre con una sola oración, casi exacta: "i've always loved SimTower, let's build a worth web-based successor for it, let's create the project plan, let's define everything before building anything, help me out."
 
 Definir todo antes de construir nada. Ese fue todo el método, y todavía lo es. Antes de cualquier código hubo preguntas, muchísimas, y cada respuesta que di se escribió con mis palabras y la fecha. Cuando el código y mis palabras no están de acuerdo, ganan mis palabras, y el código se arregla.
 
-Tres días después de esa primera oración, Uplift estaba en vivo.
+Tres días después de esa primera oración, Uplift estaba live.
 
 <figure class="post-inline-figure post-inline-figure--center">
   <img src="/images/devlog-1-uplift-demo-tower.webp" alt="La torre de demostración de Uplift en juego: quince pisos de oficinas y hogares sobre dos sótanos, con los paneles de Torre, Objetivos, Construir y Mapa abiertos." width="1456" height="816" loading="lazy" decoding="async" />
-  <figcaption>La torre de demostración de Uplift, en vivo en el navegador.</figcaption>
+  <figcaption>La torre de demostración de Uplift, live en el navegador.</figcaption>
 </figure>
 
 Después un amigo lo jugó y me dijo que el primer minuto confundía: demasiados paneles, nada que hacer. Esa sola nota se convirtió en el nuevo comienzo del juego: un solar vacío, una sola instrucción, y los paneles aparecen solo cuando los necesitas. No se me ocurrió a mí. Solo escuché, y decidí que tenía razón.
@@ -172,4 +172,4 @@ Cada dos semanas voy a escribir uno de estos: qué se construyó, qué decidí, 
 
 Si quieres seguir esto, te voy a pedir una sola cosa: [sígueme en Patreon, gratis](https://www.patreon.com/antoniwan), y te llega cada devlog por email cuando salga. Nunca anuncios. Solo los juegos y yo haciéndolos.
 
-_Capturas: el demo en vivo de Uplift, 21 de octubre de 2026; las grabaciones y capturas del propio Milak, del 20 al 22 de octubre de 2026; el collage, 22 de octubre de 2026. Estado al 22 de octubre de 2026._
+_Capturas: el demo live de Uplift, 21 de octubre de 2026; las grabaciones y capturas del propio Milak, del 20 al 22 de octubre de 2026; el collage, 22 de octubre de 2026. Estado al 22 de octubre de 2026._
