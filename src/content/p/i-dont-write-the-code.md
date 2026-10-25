@@ -4,7 +4,7 @@ description: >-
   I shipped a tower game in three days and started a sword game a week later. Claude wrote every line. Here is what I do, and why I'm saying it.
 pubDate: 2026-10-22T12:00:00-04:00
 heroImage: /images/2026/devlog-1-collage.avif
-imageAlt: "A collage of both games: Uplift's pixel-art tower, rooms, and logo above a dirt yard where Milak swings a huge sword among black-clad ninjas, a wolf, a goblin, and training props."
+imageAlt: "A collage of both games: Uplift's pixel-art tower, rooms, and logo above a dirt yard where the swordsman swings a huge sword among black-clad ninjas, a wolf, a goblin, and training props."
 language:
   - en
 category:
@@ -35,16 +35,16 @@ The tokens are going to be bought and used anyway, so I'll buy some and make kic
 
 ## The two games
 
-|                        | Uplift                                              | Milak                                                                             |
+|                        | Uplift                                              | Lifesworn                                                                         |
 | ---------------------- | --------------------------------------------------- | --------------------------------------------------------------------------------- |
-| What it is             | A tower-building game, my take on SimTower          | A 3D action RPG: Milak Summir, a swordsman for hire                               |
+| What it is             | A tower-building game, my take on SimTower          | A 3D action RPG about a swordsman for hire                                        |
 | Where it stands        | Early and playable: a vertical slice, live and free | A playable combat slice: bodies since October 20, a title screen since October 22 |
 | Decisions written down | 170+                                                | 200+                                                                              |
 | Play it                | [uplifttowergame.com](https://uplifttowergame.com)  | Not yet. Support it on [Patreon](https://www.patreon.com/antoniwan)               |
 
 ## Uplift: live in three days
 
-Uplift started on October 11 with one sentence, more or less exactly: "i've always loved SimTower, let's build a worth web-based successor for it, let's create the project plan, let's define everything before building anything, help me out."
+<a href="https://uplifttowergame.com" target="_blank" rel="noopener">Uplift</a> started on October 11 with one sentence, more or less exactly: "i've always loved SimTower, let's build a worth web-based successor for it, let's create the project plan, let's define everything before building anything, help me out."
 
 Define everything before building anything. That was the whole method, and it still is. Before any code there were questions, a lot of them, and every answer I gave got written down with my words and the date. When the code and my words disagree, my words win, and the code gets fixed.
 
@@ -59,25 +59,27 @@ Then a friend played it and told me the first minute was confusing: too many pan
 
 I want more notes like that one, from more people. It's the reason I write devlogs at all.
 
-## Milak: the game I've been dreaming about
+Uplift is free, and it runs in your browser: <a href="https://uplifttowergame.com" target="_blank" rel="noopener">play Uplift</a>.
+
+## Lifesworn: the game I've been dreaming about
 
 The tower experiment, gave me the boost, the confidence to follow my dreams, basically! And my children enjoying my demos is a wild unexplainable sensation and feeling.
 
-And yeah, I've been dreaming about Milak since the first time I played Yasuo and Yone in League of Legends. An RPG action game based solely on the quest of learning combat and martial arts and accumulating that skill and strength for a super fun adventure sandbox game. And this guy, our hero, he's a homebody! He only cares about eating tasty food TBH!
+And yeah, I've been dreaming about this game since the first time I played Yasuo and Yone in League of Legends. An RPG action game based solely on the quest of learning combat and martial arts and accumulating that skill and strength for a super fun adventure sandbox game. And this guy, our hero, he's a homebody! He only cares about eating tasty food TBH!
 
-Milak started on the night of October 19. Milak Summir is a name I've used in my RPG runs for years, maybe since the original Guild Wars, and now he is a swordsman for hire who swings a two-handed bastard sword like a pencil. I told Claude, more or less: you're building it, not me, I'll direct the art.
+Lifesworn started on the night of October 19 under a codename: Milak. Milak Summir is a name I've used in my RPG runs for years, maybe since the original Guild Wars, and he'll be in the game too, as an important NPC. Our hero is a swordsman for hire who swings a two-handed bastard sword like a pencil. I told Claude, more or less: you're building it, not me, I'll direct the art.
 
-And the first thing I directed was no art at all. Milak was a blue capsule swinging at straw dummies until the fight felt right in my hands. Art on a fight that isn't fun is wasted, so it waited. The fight passed that check on October 20, and only then did bodies come in. Most of the job, I think, is deciding what not to build yet.
+And the first thing I directed was no art at all. The hero was a blue capsule swinging at straw dummies until the fight felt right in my hands. Art on a fight that isn't fun is wasted, so it waited. The fight passed that check on October 20, and only then did bodies come in. Most of the job, I think, is deciding what not to build yet.
 
 <figure class="post-inline-figure post-inline-figure--center">
-  <img src="/images/devlog-1-milak-plain-shapes.webp" alt="An early Milak: a blue capsule hits straw training dummies." width="1280" height="560" loading="lazy" decoding="async" />
-  <figcaption>Milak before art: a blue capsule, until the fight was fun.</figcaption>
+  <img src="/images/devlog-1-milak-plain-shapes.webp" alt="An early build: a blue capsule hits straw training dummies." width="1280" height="560" loading="lazy" decoding="async" />
+  <figcaption>Before art: a blue capsule, until the fight was fun.</figcaption>
 </figure>
 
-Two days later, it's a different game. Milak has a hunting knife on Q, a real leap with a plunge, blood and bodies that stay, and dummies that break and rise again. The whole keyboard is on screen as his action bars. He has a Journal, a Skills window, quests born from what he does, and a title screen. And the game has a working title now: Lifesworn.
+Two days later, it's a different game. The swordsman has a hunting knife on Q, a real leap with a plunge, blood and bodies that stay, and dummies that break and rise again. The whole keyboard is on screen as his action bars. He has a Journal, a Skills window, quests born from what he does, and a title screen with the game's new name on it: Lifesworn.
 
 <figure class="post-inline-figure post-inline-figure--center">
-  <img src="/images/devlog-1-milak-bag-nightfell.webp" alt="Milak&#x27;s bag laid out like his body, with Nightfell, a legendary sword marked Draft, compared against his plain sword: more crit chance, crit damage, blade damage and swing speed." width="1280" height="720" loading="lazy" decoding="async" />
+  <img src="/images/devlog-1-milak-bag-nightfell.webp" alt="The swordsman&#x27;s bag laid out like his body, with Nightfell, a legendary sword marked Draft, compared against his plain sword: more crit chance, crit damage, blade damage and swing speed." width="1280" height="720" loading="lazy" decoding="async" />
   <figcaption>October 22: the bag shaped like a man, and Nightfell, a sword he hasn't earned yet.</figcaption>
 </figure>
 
@@ -87,18 +89,18 @@ My rule since October 14: "anything visually, every pixel, every line in this ga
 
 Claude proposes, a lot, and fast. Most of my time goes to saying which of the three options is the game and which two are not. Sometimes none of them is, and I say what is, in my own clumsy words, like the sword tornado, which I described as a coil, a stomp, three swings, and then a 360 that throws "a fucking tornado of dirt, blood, whatever was in that cone". Claude turned that into a move. I played it, and I said what was wrong with it, and we went again.
 
-The science in the swing lab is brilliant. Claude built a tool that poses Milak through every sword animation, traces the tip of the blade, and marks the moment of the blow, with a dummy one meter in front of him for scale. It found that the animations were made for one-handed swords: his 1.65-meter blade went into the floor. So Milak starts with a normal sword now, and he earns the big one later.
+The science in the swing lab is brilliant. Claude built a tool that poses the swordsman through every sword animation, traces the tip of the blade, and marks the moment of the blow, with a dummy one meter in front of him for scale. It found that the animations were made for one-handed swords: his 1.65-meter blade went into the floor. So he starts with a normal sword now, and he earns the big one later.
 
 <figure class="post-inline-figure post-inline-figure--center">
-  <img src="/images/devlog-1-milak-swing-lab.webp" alt="Twelve frames from the swing lab: Milak lifts a huge black sword over his head and brings it down beside a training cylinder, the path of the blade&#x27;s tip traced in yellow." width="1600" height="900" loading="lazy" decoding="async" />
+  <img src="/images/devlog-1-milak-swing-lab.webp" alt="Twelve frames from the swing lab: the swordsman lifts a huge black sword over his head and brings it down beside a training cylinder, the path of the blade&#x27;s tip traced in yellow." width="1600" height="900" loading="lazy" decoding="async" />
 </figure>
 
 <figure class="post-inline-figure post-inline-figure--center">
-  <img src="/images/devlog-1-milak-grip-fix.webp" alt="Before and after the grip fix: on the left Milak&#x27;s sword angles down beside his hand; on the right it extends straight out from his fist at the blow." width="1216" height="560" loading="lazy" decoding="async" />
-  <figcaption>The grip fix of October 21, before and after: the sword now sits in Milak's fist.</figcaption>
+  <img src="/images/devlog-1-milak-grip-fix.webp" alt="Before and after the grip fix: on the left the swordsman&#x27;s sword angles down beside his hand; on the right it extends straight out from his fist at the blow." width="1216" height="560" loading="lazy" decoding="async" />
+  <figcaption>The grip fix of October 21, before and after: the sword now sits in his fist.</figcaption>
 </figure>
 
-What AI does for me is what a studio would do, if I were rich enough to pay one to build Milak.
+What AI does for me is what a studio would do, if I were rich enough to pay one to build Lifesworn.
 
 I don't write the code, but I understand the codebase, completely. That's part of being a game developer. If you aren't doing that, then can you really say you are building a game, just by feel? How will you maintain it? That's how I can maintain it.
 
@@ -106,7 +108,7 @@ I don't write the code, but I understand the codebase, completely. That's part o
 
 Uplift turned into a world-building tool for a novel. Its tower lives in a world I've been writing for years, and on October 19 I told Claude: "If you write it into the game it becomes canon in the universe - think about that". So now it works both ways. When the game needed robots and animals, I picked them, and now they exist in the novel's world too. That world is far enough in the future that a lot of it is guesswork, even for me, and the game keeps asking questions the novel never did: who walks the halls at night, what lives underground, what you find when you dig. Wild.
 
-Milak might do the same thing from the other side. The game is meant to have him thinking as he travels, thoughts and maybe poems, with the player guiding them. That's writing, inside a game. Maybe one day it becomes a story of its own. I don't know yet.
+Lifesworn might do the same thing from the other side. The game is meant to have its hero thinking as he travels, thoughts and maybe poems, with the player guiding them. That's writing, inside a game. Maybe one day it becomes a story of its own. I don't know yet.
 
 I already had a place to write about the games. Coincidental, accidental, or intentional? Honestly, a bit of each. Notes was here for over a year before these games existed; that part is an accident. On October 7, four days before Uplift started, I wrote that all of my writing would be free and that people could support me on Patreon if they wanted; the timing is a coincidence. Writing these devlogs here is the intentional part.
 
@@ -127,49 +129,63 @@ Merriam-Webster made "slop" its [word of the year for 2025](https://techcrunch.c
 Is it low quality? Is it made in quantity? Did anybody review it?
 
 - **Uplift.** It's a work in progress, so parts of it are rough, and I know which ones: there's no sound yet, the rules for stairs aren't right, an empty lot looks the same as an abandoned one, and some buttons sit in the wrong panel. It also holds 60 frames a second with 15,000 people in the tower, every change has to pass its 311 tests before it's committed, and every one of its 170-plus decisions has my words on it. It's one game, not a pile of them. And it's reviewed: I play it, a friend played it and changed its first minute, and every change goes through me.
-- **Milak.** It's three days old, so judge it later. For now: it was a blue capsule until the fight was fun, and the bodies that came in after are free models made by a person, [Quaternius](https://quaternius.com), not generated ones. One game. Nothing got art before it passed my check.
+- **Lifesworn.** It's three days old, so judge it later. For now: it was a blue capsule until the fight was fun, and the bodies that came in after are free models made by a person, [Quaternius](https://quaternius.com), not generated ones. One game. Nothing got art before it passed my check.
 - **This post.** Claude wrote the first draft of it from my notes, and I'm rewriting it. By Willison's test, it isn't slop: I asked for it, and I'm reading every line. By Merriam-Webster's, quality is yours to judge, and that goes for all three. What I can promise is that a person made every call.
 
 By my own moral and ethical standards, Anthropic is a company I'm okay using and paying, by the way. I pay for my plan myself; nobody sponsors me. If I'm wrong about them, leave me a note down there!!
 
 ## The hats I wear
 
-Making two games without a studio, from October 11 to today, means wearing almost every hat.
+Making two games without a studio means trying on a lot of hats. Some of them fit better than others.
 
 | Role                  | Who                             | What it looks like                                                                                                |
 | --------------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| Creative director     | Me                              | The vision for both games and the final word on every call: 170+ written decisions in Uplift, 200+ in Milak       |
-| Game designer         | Me                              | The sword tornado's chain, stamina, Milak's talent web, Uplift's stars and construction crews                     |
-| Art director          | Me                              | League's "hand-painted, yet graphic" look for Milak, every pixel earning its place, which models and fonts go in  |
+| Creative director     | Me                              | Deciding what each game is, and writing it down: 170+ decisions in Uplift, 200+ in Lifesworn                      |
+| Game designer         | Me                              | The sword tornado's chain, stamina, Lifesworn's talent web, Uplift's stars and construction crews                 |
+| Art director          | Me, learning                    | Chasing League's "hand-painted, yet graphic" look for Lifesworn, and picking which free models and fonts go in    |
 | World builder         | Me                              | Uplift's tower lives in a world I've been writing for years, for a novel                                          |
-| Engineer              | Claude                          | Every line of code: 300+ commits in Uplift, nearly 400 in Milak                                                   |
-| Code reviewer         | Me                              | I understand the codebase, completely                                                                             |
+| Engineer              | Claude                          | Every line of code: 300+ commits in Uplift, nearly 400 in Lifesworn                                               |
+| Code reviewer         | Me                              | I read what Claude builds until I understand it, and I'm still learning the engine side                           |
 | Producer              | Me, with Claude's plans         | What gets built next and what waits, like plain shapes until the fight was fun                                    |
 | QA and playtesting    | Friends, Claude's tests, and me | Friends send notes; I play both; Uplift has 311 tests every change must pass, and holds 60 fps with 15,000 people |
-| 3D artist             | Quaternius, and maybe you       | Milak's bodies, clothes, animals, and the yard: free models made by a person                                      |
-| Sound                 | Kenney for now, me later        | Milak's placeholder sounds are Kenney's; Uplift's sound waits on mine                                             |
-| Researcher            | Claude                          | The asset library for Milak, and the market numbers I plan with                                                   |
+| 3D artist             | Quaternius, and maybe you       | Lifesworn's bodies, clothes, animals, and the yard: free models made by a person                                  |
+| Sound                 | Kenney for now, me later        | Lifesworn's placeholder sounds are Kenney's; Uplift's sound waits on mine                                         |
+| Researcher            | Claude                          | The asset library for Lifesworn, and the market numbers I plan with                                               |
 | Writer and translator | Claude drafts, I rewrite        | This devlog, in English and Spanish                                                                               |
 | Marketer              | Me                              | The soft launch, this devlog, the Antonio Builds Games channel, the Patreon page                                  |
 | Community             | Me                              | Playtest links, an anonymous feedback form that files every answer for me, and the comments below                 |
 
-Claude wears the engineer's hat and helps with research, tests, and first drafts. The rest are mine, or belong to the people whose free models and sounds are in Milak.
+Claude wears the engineer's hat and helps with research, tests, and first drafts. I wear the rest, some of them badly, and the models and sounds in Lifesworn belong to the people who made them and gave them away.
 
 If you draw, model, animate, or make sounds, and building these games with me sounds fun, say hi down there. Worst case, we make something cool together. Best case, this is how a little game studio starts, lol. No pressure, I promise. I already wear enough hats to know how heavy they get.
 
-## What went wrong
+## The people who made this possible
 
-It is not magic and it is not free. Claude remembers things about the engine that don't exist anymore, and I learn that when the build breaks. It runs out of quota in the middle of a good week. Uplift's first push cost me $250 of credits and almost a whole week of my plan. And I'm new to making games. I have taste and I have a lot of years of making software, but I'm learning the craft of games in public, here, and I will get things wrong in public too.
+None of this works without open source, and without people who give their work away. Lifesworn runs on [Godot](https://godotengine.org), a free and open-source game engine built by thousands of volunteers and contributors. Honestly, it's a wonderful place to start: it's free, it's light, it opens in seconds, nobody asks for a cut of anything, and the docs read like they were written for someone exactly like me. Uplift runs in the browser, on open-source web libraries that other people wrote and gave away. [Quaternius](https://quaternius.com) and [Kenney](https://kenney.nl) release their models and sounds under CC0, free for anyone to use, and they're what make Lifesworn look and sound like a game. And around all of it there's a community that answers questions, writes docs, records tutorials, and shares what it makes.
+
+So when I say I don't write the code, there's a whole commons underneath that sentence, and the machine that writes my code learned from it too. Thank you, all of you. I'm a beginner in your house, and I'm grateful to be here.
+
+## What's hard
+
+It is not magic and it is not free, and I think the hard part hasn't even started. Claude remembers things about the engine that don't exist anymore, and I learn that when the build breaks. Uplift's first push cost me $250 of credits and almost a whole week of my plan. On October 5 I hit my weekly limit on the first day and upgraded to Claude Max. That night I wrote, "I hope i don't regret this, it's 1,200 a year!"
+
+Since then I've been working about ten hours a day, every day, if I count my real job and the games together. Lifesworn alone has over a thousand commits, and it isn't a week old.
+
+And the road ahead is long. Lifesworn has a roadmap now, and it runs to October 2027: finish what's half-built by the end of November, a first region you can play for five hours by January, outside players trying it with no help from me, an art lock and a freeze in the spring, two more regions and an ending by the summer, then bugs, balance, a closed beta, and the stores. Three regions, maybe fifteen to twenty hours of play, made by one person, a machine, and whoever wants to join.
+
+I wonder if this is sustainable, and I mean all of it: my body, my time with my family, and my wallet. I don't know yet. Ten hours a day for a year is a lot to ask of all three. I'm new to making games. I have taste and a lot of years of making software, but I'm learning the craft of games in public, here, so I'll get things wrong in public too.
+
+And honestly, the pace is already changing. For now, the soap business is going to come first, because Lifesworn is a slower drip and a lot more effort. That's not me giving up on it. Maybe a slower drip just means quality over quantity. Lifesworn will grow at the speed my life allows, and I'll keep telling you how it goes, here.
 
 ## What's next
 
 <figure class="post-inline-figure post-inline-figure--center">
-  <img src="/images/devlog-1-lifesworn-title.webp" alt="A dark title screen that reads Lifesworn, with Play, Choose a place, and Quit." width="1280" height="720" loading="lazy" decoding="async" />
-  <figcaption>As of October 22, the game opens on a title screen, under its working title.</figcaption>
+  <img src="/images/devlog-1-lifesworn-title-v2.webp" alt="A dark title screen with Lifesworn in glowing orange letters above Continue, New Game, Choose a place, Change player, Settings, Credits, and Quit." width="1280" height="720" loading="lazy" decoding="async" />
+  <figcaption>The title screen as of October 25, under its new name.</figcaption>
 </figure>
 
-Every other week I'll write one of these: what got built, what I decided, and what I got wrong. Uplift is playable now, free, in your browser. Milak will have a free demo when the fight is something I'm proud of.
+Every other week I'll write one of these: what got built, what I decided, and what I got wrong. Uplift is playable now, free, in your browser. Lifesworn will have a free demo when the fight is something I'm proud of.
 
 If you want to follow along, I'll ask one thing: [follow me on Patreon, for free](https://www.patreon.com/antoniwan), and you'll get each devlog by email when it ships. No ads, ever. Just the games and me making them.
 
-_Screenshots: Uplift's live demo, October 21, 2026; Milak's own recordings and screenshots, October 20 to 22, 2026; the collage, October 22, 2026. Status as of October 22, 2026._
+_Screenshots: Uplift's live demo, October 21, 2026; Lifesworn's own recordings and screenshots, October 20 to 22, 2026; the collage, October 22, 2026. Status as of October 22, 2026._

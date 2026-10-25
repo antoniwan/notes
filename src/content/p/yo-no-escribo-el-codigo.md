@@ -4,7 +4,7 @@ description: >-
   Puse un juego de torres en la web en tres días y empecé un juego de espadas una semana después. Claude escribió cada línea. Esto es lo que hago yo.
 pubDate: 2026-10-22T12:00:00-04:00
 heroImage: /images/2026/devlog-1-collage.avif
-imageAlt: 'Un collage de los dos juegos: la torre, los cuartos y el logo de Uplift en pixel art sobre un patio de tierra donde Milak blande una espada enorme entre ninjas vestidos de negro, un lobo, un goblin y utilería de práctica.'
+imageAlt: 'Un collage de los dos juegos: la torre, los cuartos y el logo de Uplift en pixel art sobre un patio de tierra donde el espadachín blande una espada enorme entre ninjas vestidos de negro, un lobo, un goblin y utilería de práctica.'
 language:
   - es
 category:
@@ -35,16 +35,16 @@ Los tokens del AI se van a comprar y a usar de todas formas, así que voy a comp
 
 ## Los dos juegos
 
-|                     | Uplift                                                                               | Milak                                                                                       |
+|                     | Uplift                                                                               | Lifesworn                                                                                   |
 | ------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------- |
-| Qué es              | Un juego de construir torres, mi versión de SimTower                                 | Un RPG de acción en 3D: Milak Summir, un espadachín a sueldo                                |
+| Qué es              | Un juego de construir torres, mi versión de SimTower                                 | Un RPG de acción en 3D sobre un espadachín a sueldo                                         |
 | Cómo va             | Temprano y jugable: un vertical slice (una tajada completa del juego), live y gratis | Un tramo de combate jugable: cuerpos desde el 20 de octubre, pantalla de título desde el 22 |
 | Decisiones escritas | Más de 170                                                                           | Más de 200                                                                                  |
 | Jugarlo             | [uplifttowergame.com](https://uplifttowergame.com)                                   | Todavía no. Apóyalo en [Patreon](https://www.patreon.com/antoniwan)                         |
 
 ## Uplift: Live en tres días
 
-Uplift empezó el 11 de octubre con una sola oración, casi exacta: "i've always loved SimTower, let's build a worth web-based successor for it, let's create the project plan, let's define everything before building anything, help me out."
+<a href="https://uplifttowergame.com" target="_blank" rel="noopener">Uplift</a> empezó el 11 de octubre con una sola oración, casi exacta: "i've always loved SimTower, let's build a worth web-based successor for it, let's create the project plan, let's define everything before building anything, help me out."
 
 Definir todo antes de construir nada. Ese fue todo el método, y todavía lo es. Antes de cualquier código hubo preguntas, muchísimas, y cada respuesta que di se escribió con mis palabras y la fecha. Cuando el código y mis palabras no están de acuerdo, ganan mis palabras, y el código se arregla.
 
@@ -59,25 +59,27 @@ Después un amigo lo jugó y me dijo que el primer minuto confundía: demasiados
 
 Quiero más notas como esa, de más gente. Es la razón por la que escribo devlogs.
 
-## Milak: el juego que llevo soñando
+Uplift es gratis, y corre en tu navegador: <a href="https://uplifttowergame.com" target="_blank" rel="noopener">juega Uplift</a>.
+
+## Lifesworn: el juego que llevo soñando
 
 El experimento de la torre me dio el empujón, la confianza para seguir mis sueños, básicamente. Y que mis hijos disfruten mis demos es una sensación que no puedo explicar.
 
-Y sí, llevo soñando con Milak desde la primera vez que jugué con Yasuo y Yone en League of Legends. Un RPG de acción basado nada más en la búsqueda de aprender combate y artes marciales, y de ir acumulando esa destreza y esa fuerza, para un juego sandbox (mundo abierto) de aventura bien divertido. ¡Y este personaje, nuestro héroe, es casero! ¡Lo único que le importa es comer comida sabrosa, la verdad!
+Y sí, llevo soñando con este juego desde la primera vez que jugué con Yasuo y Yone en League of Legends. Un RPG de acción basado nada más en la búsqueda de aprender combate y artes marciales, y de ir acumulando esa destreza y esa fuerza, para un juego sandbox (mundo abierto) de aventura bien divertido. ¡Y este personaje, nuestro héroe, es casero! ¡Lo único que le importa es comer comida sabrosa, la verdad!
 
-Milak empezó la noche del 19 de octubre. Milak Summir es un nombre que he usado en mis partidas de RPG por años, quizás desde el Guild Wars original, y ahora es un espadachín a sueldo que mueve una espada bastarda de dos manos como si fuera un lápiz. Le dije a Claude, más o menos: tú lo construyes, no yo, yo dirijo el arte.
+Lifesworn empezó la noche del 19 de octubre con un nombre clave: Milak. Milak Summir es un nombre que he usado en mis partidas de RPG por años, quizás desde el Guild Wars original, y también va a estar en el juego, como un NPC importante. Nuestro héroe es un espadachín a sueldo que mueve una espada bastarda de dos manos como si fuera un lápiz. Le dije a Claude, más o menos: tú lo construyes, no yo, yo dirijo el arte.
 
-Y lo primero que dirigí fue nada de arte. Milak era una cápsula azul dándole a muñecos de paja hasta que la pelea se sintió bien en mis manos. Arte encima de una pelea que no es divertida es arte perdido, así que esperó. La pelea pasó esa prueba el 20 de octubre, y solo entonces llegaron los cuerpos. Creo que casi todo el trabajo es decidir qué no construir todavía.
+Y lo primero que dirigí fue nada de arte. El héroe era una cápsula azul dándole a muñecos de paja hasta que la pelea se sintió bien en mis manos. Arte encima de una pelea que no es divertida es arte perdido, así que esperó. La pelea pasó esa prueba el 20 de octubre, y solo entonces llegaron los cuerpos. Creo que casi todo el trabajo es decidir qué no construir todavía.
 
 <figure class="post-inline-figure post-inline-figure--center">
-  <img src="/images/devlog-1-milak-plain-shapes.webp" alt="Un Milak temprano: una cápsula azul le pega a muñecos de paja." width="1280" height="560" loading="lazy" decoding="async" />
-  <figcaption>Milak antes del arte: una cápsula azul, hasta que la pelea fue divertida.</figcaption>
+  <img src="/images/devlog-1-milak-plain-shapes.webp" alt="Un build temprano: una cápsula azul le pega a muñecos de paja." width="1280" height="560" loading="lazy" decoding="async" />
+  <figcaption>Antes del arte: una cápsula azul, hasta que la pelea fue divertida.</figcaption>
 </figure>
 
-Dos días después, es otro juego. Milak tiene un cuchillo de caza en la Q, un salto de verdad que cae con la espada, sangre y cuerpos que se quedan, y muñecos que se rompen y se vuelven a levantar. El teclado entero está en pantalla como sus barras de acción. Tiene un Diario, una ventana de Destrezas, misiones que nacen de lo que hace, y una pantalla de título. Y el juego ya tiene un título provisional: Lifesworn.
+Dos días después, es otro juego. El espadachín tiene un cuchillo de caza en la Q, un salto de verdad que cae con la espada, sangre y cuerpos que se quedan, y muñecos que se rompen y se vuelven a levantar. El teclado entero está en pantalla como sus barras de acción. Tiene un Diario, una ventana de Destrezas, misiones que nacen de lo que hace, y una pantalla de título con el nombre nuevo del juego: Lifesworn.
 
 <figure class="post-inline-figure post-inline-figure--center">
-  <img src="/images/devlog-1-milak-bag-nightfell.webp" alt="El bolso de Milak organizado como su cuerpo, con Nightfell, una espada legendaria marcada como borrador, comparada con su espada sencilla: más probabilidad y daño de crítico, más daño de hoja y más velocidad." width="1280" height="720" loading="lazy" decoding="async" />
+  <img src="/images/devlog-1-milak-bag-nightfell.webp" alt="El bolso del espadachín organizado como su cuerpo, con Nightfell, una espada legendaria marcada como borrador, comparada con su espada sencilla: más probabilidad y daño de crítico, más daño de hoja y más velocidad." width="1280" height="720" loading="lazy" decoding="async" />
   <figcaption>22 de octubre: el bolso con forma de hombre, y Nightfell, una espada que todavía no se ha ganado.</figcaption>
 </figure>
 
@@ -87,18 +89,18 @@ Mi regla desde el 14 de octubre: "anything visually, every pixel, every line in 
 
 Claude propone, mucho, y rápido. Casi todo mi tiempo se va en decir cuál de las tres opciones es el juego y cuáles dos no lo son. A veces ninguna lo es, y digo cuál es, con mis palabras torpes, como el tornado de la espada, que describí como un enrosque, un pisotón, tres tajos, y después un 360 que tira "a fucking tornado of dirt, blood, whatever was in that cone". Claude lo convirtió en un movimiento. Lo jugué, dije qué estaba mal, y lo intentamos otra vez.
 
-La ciencia del swing lab (el laboratorio de tajos) es brillante. Claude construyó una herramienta que pone a Milak a hacer cada animación de espada, traza la punta de la hoja, y marca el momento del golpe, con un muñeco a un metro de él para tener escala. Descubrió que las animaciones estaban hechas para espadas de una mano: su hoja de 1.65 metros se metía en el piso. Así que ahora Milak empieza con una espada normal, y la grande se la gana más adelante.
+La ciencia del swing lab (el laboratorio de tajos) es brillante. Claude construyó una herramienta que pone al espadachín a hacer cada animación de espada, traza la punta de la hoja, y marca el momento del golpe, con un muñeco a un metro de él para tener escala. Descubrió que las animaciones estaban hechas para espadas de una mano: su hoja de 1.65 metros se metía en el piso. Así que ahora empieza con una espada normal, y la grande se la gana más adelante.
 
 <figure class="post-inline-figure post-inline-figure--center">
-  <img src="/images/devlog-1-milak-swing-lab.webp" alt="Doce cuadros del swing lab: Milak levanta una espada negra enorme sobre su cabeza y la baja al lado de un cilindro de práctica, con el recorrido de la punta trazado en amarillo." width="1600" height="900" loading="lazy" decoding="async" />
+  <img src="/images/devlog-1-milak-swing-lab.webp" alt="Doce cuadros del swing lab: el espadachín levanta una espada negra enorme sobre su cabeza y la baja al lado de un cilindro de práctica, con el recorrido de la punta trazado en amarillo." width="1600" height="900" loading="lazy" decoding="async" />
 </figure>
 
 <figure class="post-inline-figure post-inline-figure--center">
-  <img src="/images/devlog-1-milak-grip-fix.webp" alt="Antes y después del arreglo del agarre: a la izquierda la espada de Milak cae inclinada al lado de su mano; a la derecha sale derecha de su puño en el golpe." width="1216" height="560" loading="lazy" decoding="async" />
-  <figcaption>El arreglo del agarre del 21 de octubre, antes y después: ahora la espada se queda en el puño de Milak.</figcaption>
+  <img src="/images/devlog-1-milak-grip-fix.webp" alt="Antes y después del arreglo del agarre: a la izquierda la espada del espadachín cae inclinada al lado de su mano; a la derecha sale derecha de su puño en el golpe." width="1216" height="560" loading="lazy" decoding="async" />
+  <figcaption>El arreglo del agarre del 21 de octubre, antes y después: ahora la espada se queda en su puño.</figcaption>
 </figure>
 
-Lo que el AI hace por mí es lo mismo que haría un estudio si yo tuviera el dinero para pagarle a uno para construir Milak.
+Lo que el AI hace por mí es lo mismo que haría un estudio si yo tuviera el dinero para pagarle a uno para construir Lifesworn.
 
 Yo no escribo el código, pero entiendo el codebase, completito. Eso es parte de ser un game developer (desarrollador de juegos). Si no estás haciendo eso, ¿de verdad puedes decir que estás construyendo un juego, nada más por cómo se siente? ¿Cómo lo vas a mantener? Así es como yo lo puedo mantener.
 
@@ -106,7 +108,7 @@ Yo no escribo el código, pero entiendo el codebase, completito. Eso es parte de
 
 Uplift se convirtió en una herramienta para construir el mundo de una novela. Su torre vive en un mundo que llevo años escribiendo, y el 19 de octubre le dije a Claude: "If you write it into the game it becomes canon in the universe - think about that". Así que ahora funciona para los dos lados. Cuando el juego necesitó robots y animales, yo los escogí, y ahora existen en el mundo de la novela también. Ese mundo está tan lejos en el futuro que mucho de él es adivinanza, hasta para mí, y el juego me sigue haciendo preguntas que la novela nunca me hizo: quién camina por los pasillos de noche, qué vive bajo tierra, qué encuentras cuando escarbas. Una locura.
 
-Milak puede que haga lo mismo desde el otro lado. La idea es que el juego lo tenga pensando mientras viaja, pensamientos y quizás poemas, y que el jugador los vaya guiando. Eso es escribir, dentro de un juego. Quizás un día se convierta en una historia por sí sola. Todavía no lo sé.
+Lifesworn puede que haga lo mismo desde el otro lado. La idea es que el juego tenga a su héroe pensando mientras viaja, pensamientos y quizás poemas, y que el jugador los vaya guiando. Eso es escribir, dentro de un juego. Quizás un día se convierta en una historia por sí sola. Todavía no lo sé.
 
 Yo ya tenía un lugar para escribir sobre los juegos. ¿Coincidencia, accidente o intención? Honestamente, un poco de cada una. Notes existía desde hace más de un año antes de estos juegos; esa parte es un accidente. El 7 de octubre, cuatro días antes de que empezara Uplift, escribí que todo lo que escribo iba a ser gratis y que la gente me podía apoyar en Patreon si quería; el momento es una coincidencia. Escribir estos devlogs aquí es la parte intencional.
 
@@ -127,49 +129,63 @@ Merriam-Webster escogió "slop" como su [palabra del año 2025](https://techcrun
 ¿Es de baja calidad? ¿Se hace en cantidad? ¿Alguien lo revisó?
 
 - **Uplift.** Es un trabajo en progreso, así que partes están crudas, y yo sé cuáles: todavía no tiene sonido, las reglas de las escaleras no están bien, un solar vacío se ve igual que uno abandonado, y algunos botones están en el panel equivocado. También aguanta 60 frames por segundo con 15,000 personas en la torre, cada cambio tiene que pasar sus 311 tests antes de entrar, y cada una de sus más de 170 decisiones tiene mis palabras. Es un juego, no un montón. Y está revisado: yo lo juego, un amigo lo jugó y le cambió el primer minuto, y cada cambio pasa por mí.
-- **Milak.** Tiene tres días, así que júzguenlo más adelante. Por ahora: era una cápsula azul hasta que la pelea fue divertida, y los cuerpos que llegaron después son modelos gratis hechos por una persona, [Quaternius](https://quaternius.com), no generados. Un juego. Nada recibió arte antes de pasar mi prueba.
+- **Lifesworn.** Tiene tres días, así que júzguenlo más adelante. Por ahora: era una cápsula azul hasta que la pelea fue divertida, y los cuerpos que llegaron después son modelos gratis hechos por una persona, [Quaternius](https://quaternius.com), no generados. Un juego. Nada recibió arte antes de pasar mi prueba.
 - **Este post.** Claude escribió el primer borrador desde mis notas, y yo lo estoy reescribiendo. Según la prueba de Willison, no es slop: yo lo pedí, y estoy leyendo cada línea. Según la de Merriam-Webster, la calidad la juzgan ustedes, y eso va para los tres. Lo que sí puedo prometer es que una persona tomó cada decisión.
 
 Según mis propios estándares morales y éticos, Anthropic es una compañía que yo estoy bien con usar y pagar, por cierto. Mi plan lo pago yo; nadie me patrocina. Si estoy equivocado sobre ellos, ¡¡déjenme una nota aquí abajo!!
 
 ## Los sombreros que me pongo
 
-Hacer dos juegos sin un estudio, desde el 11 de octubre hasta hoy, es ponerse casi todos los sombreros.
+Hacer dos juegos sin un estudio es probarse un montón de sombreros. Algunos me quedan mejor que otros.
 
-| Rol                                   | Quién                                    | Cómo se ve                                                                                                                                                           |
-| ------------------------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Director creativo                     | Yo                                       | La visión de los dos juegos y la última palabra en cada decisión: más de 170 decisiones escritas en Uplift, más de 200 en Milak                                      |
-| Diseñador de juego                    | Yo                                       | La cadena del tornado de la espada, la stamina (resistencia), el árbol de talentos de Milak, las estrellas y las cuadrillas de construcción de Uplift                |
-| Director de arte                      | Yo                                       | El look "hand-painted, yet graphic" (pintado a mano, pero gráfico) de League para Milak, cada pixel ganándose su lugar, qué modelos y qué fonts (tipografías) entran |
-| Constructor de mundo                  | Yo                                       | La torre de Uplift vive en un mundo que llevo años escribiendo para una novela                                                                                       |
-| Ingeniero                             | Claude                                   | Cada línea de código: más de 300 commits en Uplift, casi 400 en Milak                                                                                                |
-| Revisor del código                    | Yo                                       | Entiendo el codebase, completito                                                                                                                                     |
-| Productor                             | Yo, con los planes de Claude             | Qué se construye ahora y qué espera, como las figuras simples hasta que la pelea fue divertida                                                                       |
-| QA (control de calidad) y playtesting | Mis amigos, los tests de Claude y yo     | Mis amigos me mandan notas; yo juego los dos; Uplift tiene 311 tests que cada cambio tiene que pasar, y aguanta 60 fps con 15,000 personas                           |
-| Artista 3D                            | Quaternius, y quizás tú                  | Los cuerpos, la ropa, los animales y el patio de Milak: modelos gratis hechos por una persona                                                                        |
-| Sonido                                | Kenney por ahora, yo después             | Los sonidos temporeros de Milak son de Kenney; el sonido de Uplift espera por los míos                                                                               |
-| Investigador                          | Claude                                   | La biblioteca de assets (recursos) para Milak, y los números del mercado con los que planifico                                                                       |
-| Escritor y traductor                  | Claude hace el borrador, yo lo reescribo | Este devlog, en inglés y en español                                                                                                                                  |
-| Mercadeo                              | Yo                                       | El soft launch (lanzamiento suave), este devlog, el canal Antonio Builds Games, la página de Patreon                                                                 |
-| Comunidad                             | Yo                                       | Los enlaces para probar, un formulario anónimo que me guarda cada respuesta, y los comentarios aquí abajo                                                            |
+| Rol                                   | Quién                                    | Cómo se ve                                                                                                                                                                 |
+| ------------------------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Director creativo                     | Yo                                       | Decidir qué es cada juego, y escribirlo: más de 170 decisiones en Uplift, más de 200 en Lifesworn                                                                          |
+| Diseñador de juego                    | Yo                                       | La cadena del tornado de la espada, la stamina (resistencia), el árbol de talentos de Lifesworn, las estrellas y las cuadrillas de construcción de Uplift                  |
+| Director de arte                      | Yo, aprendiendo                          | Persiguiendo el look "hand-painted, yet graphic" (pintado a mano, pero gráfico) de League para Lifesworn, y escogiendo qué modelos gratis y qué fonts (tipografías) entran |
+| Constructor de mundo                  | Yo                                       | La torre de Uplift vive en un mundo que llevo años escribiendo para una novela                                                                                             |
+| Ingeniero                             | Claude                                   | Cada línea de código: más de 300 commits en Uplift, casi 400 en Lifesworn                                                                                                  |
+| Revisor del código                    | Yo                                       | Leo lo que Claude construye hasta entenderlo, y todavía estoy aprendiendo la parte del engine                                                                              |
+| Productor                             | Yo, con los planes de Claude             | Qué se construye ahora y qué espera, como las figuras simples hasta que la pelea fue divertida                                                                             |
+| QA (control de calidad) y playtesting | Mis amigos, los tests de Claude y yo     | Mis amigos me mandan notas; yo juego los dos; Uplift tiene 311 tests que cada cambio tiene que pasar, y aguanta 60 fps con 15,000 personas                                 |
+| Artista 3D                            | Quaternius, y quizás tú                  | Los cuerpos, la ropa, los animales y el patio de Lifesworn: modelos gratis hechos por una persona                                                                          |
+| Sonido                                | Kenney por ahora, yo después             | Los sonidos temporeros de Lifesworn son de Kenney; el sonido de Uplift espera por los míos                                                                                 |
+| Investigador                          | Claude                                   | La biblioteca de assets (recursos) para Lifesworn, y los números del mercado con los que planifico                                                                         |
+| Escritor y traductor                  | Claude hace el borrador, yo lo reescribo | Este devlog, en inglés y en español                                                                                                                                        |
+| Mercadeo                              | Yo                                       | El soft launch (lanzamiento suave), este devlog, el canal Antonio Builds Games, la página de Patreon                                                                       |
+| Comunidad                             | Yo                                       | Los enlaces para probar, un formulario anónimo que me guarda cada respuesta, y los comentarios aquí abajo                                                                  |
 
-Claude se pone el sombrero de ingeniero y ayuda con la investigación, los tests y los primeros borradores. Los demás son míos, o de la gente cuyos modelos y sonidos gratis están en Milak.
+Claude se pone el sombrero de ingeniero y ayuda con la investigación, los tests y los primeros borradores. Los demás me los pongo yo, algunos bastante mal, y los modelos y sonidos de Lifesworn son de la gente que los hizo y los regaló.
 
 Si dibujas, modelas, animas o haces sonidos, y construir estos juegos conmigo te suena divertido, salúdame aquí abajo. En el peor de los casos, hacemos algo chévere juntos. En el mejor, así es como empieza un estudio de juegos chiquito, jajaja. Sin presión, te lo prometo. Ya me pongo suficientes sombreros para saber lo mucho que pesan.
 
-## Lo que salió mal
+## La gente que hizo esto posible
 
-No es magia y no es gratis. Claude recuerda cosas del engine que ya no existen, y me entero cuando el build se rompe. Se le acaba la cuota en medio de una buena semana. El primer empujón de Uplift me costó $250 en créditos y casi una semana entera de mi plan. Y soy nuevo haciendo juegos. Tengo gusto y tengo muchos años haciendo software, pero estoy aprendiendo el oficio de los juegos en público, aquí, y también me voy a equivocar en público.
+Nada de esto funciona sin el código abierto, y sin la gente que regala su trabajo. Lifesworn corre en [Godot](https://godotengine.org), un motor de juegos libre y de código abierto que construyen miles de voluntarios y colaboradores. La verdad, es un lugar maravilloso para empezar: es gratis, es liviano, abre en segundos, nadie te pide un pedazo de nada, y la documentación se lee como si la hubieran escrito para alguien exactamente como yo. Uplift corre en el navegador, sobre librerías web de código abierto que otra gente escribió y regaló. [Quaternius](https://quaternius.com) y [Kenney](https://kenney.nl) publican sus modelos y sonidos bajo CC0, gratis para que cualquiera los use, y son lo que hace que Lifesworn se vea y suene como un juego. Y alrededor de todo eso hay una comunidad que contesta preguntas, escribe documentación, graba tutoriales y comparte lo que hace.
+
+Así que cuando digo que yo no escribo el código, hay todo un bien común debajo de esa oración, y la máquina que escribe mi código también aprendió de él. Gracias, a todos. Soy un principiante en su casa, y estoy agradecido de estar aquí.
+
+## Lo difícil
+
+No es magia y no es gratis, y creo que la parte difícil ni ha empezado. Claude recuerda cosas del engine que ya no existen, y me entero cuando el build se rompe. El primer empujón de Uplift me costó $250 en créditos y casi una semana entera de mi plan. El 5 de octubre llegué a mi límite semanal el primer día y subí a Claude Max. Esa noche escribí: "I hope i don't regret this, it's 1,200 a year!"
+
+Desde entonces he estado trabajando como diez horas al día, todos los días, si cuento mi trabajo de verdad y los juegos juntos. Solo Lifesworn tiene más de mil commits, y no tiene ni una semana.
+
+Y el camino por delante es largo. Lifesworn ya tiene un roadmap (hoja de ruta), y llega hasta octubre de 2027: terminar lo que está a medio hacer para finales de noviembre, una primera región que se pueda jugar por cinco horas para enero, jugadores de afuera probándola sin mi ayuda, el arte fijo y el contenido congelado en la primavera, dos regiones más y un final para el verano, y después bugs, balance, un beta cerrado y las tiendas. Tres regiones, quizás de quince a veinte horas de juego, hechas por una persona, una máquina, y quien se quiera unir.
+
+Me pregunto si esto es sostenible, y hablo de todo: mi cuerpo, mi tiempo con mi familia y mi bolsillo. Todavía no lo sé. Diez horas al día por un año es mucho pedirle a los tres. Soy nuevo haciendo juegos. Tengo gusto y muchos años haciendo software, pero estoy aprendiendo el oficio de los juegos en público, aquí, así que también me voy a equivocar en público.
+
+Y la verdad, el ritmo ya está cambiando. Por ahora, el negocio de jabones va primero, porque Lifesworn es un goteo más lento y mucho más esfuerzo. Eso no es rendirme. Quizás un goteo más lento solo quiere decir calidad sobre cantidad. Lifesworn va a crecer a la velocidad que mi vida le permita, y les voy a seguir contando cómo va, aquí.
 
 ## Lo que viene
 
 <figure class="post-inline-figure post-inline-figure--center">
-  <img src="/images/devlog-1-lifesworn-title.webp" alt="Una pantalla de título oscura que dice Lifesworn, con Play, Choose a place y Quit." width="1280" height="720" loading="lazy" decoding="async" />
-  <figcaption>Al 22 de octubre, el juego abre con una pantalla de título, bajo su título provisional.</figcaption>
+  <img src="/images/devlog-1-lifesworn-title-v2.webp" alt="Una pantalla de título oscura con Lifesworn en letras anaranjadas que brillan, sobre Continue, New Game, Choose a place, Change player, Settings, Credits y Quit." width="1280" height="720" loading="lazy" decoding="async" />
+  <figcaption>La pantalla de título al 25 de octubre, con su nombre nuevo.</figcaption>
 </figure>
 
-Cada dos semanas voy a escribir uno de estos: qué se construyó, qué decidí, y en qué me equivoqué. Uplift ya se puede jugar, gratis, en tu navegador. Milak va a tener un demo gratis cuando la pelea sea algo de lo que esté orgulloso.
+Cada dos semanas voy a escribir uno de estos: qué se construyó, qué decidí, y en qué me equivoqué. Uplift ya se puede jugar, gratis, en tu navegador. Lifesworn va a tener un demo gratis cuando la pelea sea algo de lo que esté orgulloso.
 
 Si quieres seguir esto, te voy a pedir una sola cosa: [sígueme en Patreon, gratis](https://www.patreon.com/antoniwan), y te llega cada devlog por email cuando salga. Nunca anuncios. Solo los juegos y yo haciéndolos.
 
-_Capturas: el demo live de Uplift, 21 de octubre de 2026; las grabaciones y capturas del propio Milak, del 20 al 22 de octubre de 2026; el collage, 22 de octubre de 2026. Estado al 22 de octubre de 2026._
+_Capturas: el demo live de Uplift, 21 de octubre de 2026; las grabaciones y capturas del propio Lifesworn, del 20 al 22 de octubre de 2026; el collage, 22 de octubre de 2026. Estado al 22 de octubre de 2026._
