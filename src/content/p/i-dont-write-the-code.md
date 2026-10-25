@@ -173,7 +173,9 @@ Since then I've been working about ten hours a day, every day, if I count my rea
 
 And the road ahead is long. Lifesworn has a roadmap now, and it runs to October 2027: finish what's half-built by the end of November, a first region you can play for five hours by January, outside players trying it with no help from me, an art lock and a freeze in the spring, two more regions and an ending by the summer, then bugs, balance, a closed beta, and the stores. Three regions, maybe fifteen to twenty hours of play, made by one person, a machine, and whoever wants to join.
 
-I wonder if this is sustainable. I don't know yet. I have a family, a day job, and one body, and ten hours a day for a year is a lot to ask of all three. I'm new to making games. I have taste and a lot of years of making software, but I'm learning the craft of games in public, here, so I'll get things wrong in public too. And if the pace has to change, I'll tell you here.
+I wonder if this is sustainable, and I mean all of it: my body, my time with my family, and my wallet. I don't know yet. Ten hours a day for a year is a lot to ask of all three. I'm new to making games. I have taste and a lot of years of making software, but I'm learning the craft of games in public, here, so I'll get things wrong in public too.
+
+And honestly, the pace is already changing. For now, the soap business is going to come first, because Lifesworn is a slower drip and a lot more effort. That's not me giving up on it. Lifesworn will grow at the speed my life allows, and I'll keep telling you how it goes, here.
 
 ## What's next
 

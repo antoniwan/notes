@@ -173,7 +173,9 @@ Desde entonces he estado trabajando como diez horas al día, todos los días, si
 
 Y el camino por delante es largo. Lifesworn ya tiene un roadmap (hoja de ruta), y llega hasta octubre de 2027: terminar lo que está a medio hacer para finales de noviembre, una primera región que se pueda jugar por cinco horas para enero, jugadores de afuera probándola sin mi ayuda, el arte fijo y el contenido congelado en la primavera, dos regiones más y un final para el verano, y después bugs, balance, un beta cerrado y las tiendas. Tres regiones, quizás de quince a veinte horas de juego, hechas por una persona, una máquina, y quien se quiera unir.
 
-Me pregunto si esto es sostenible. Todavía no lo sé. Tengo una familia, un trabajo y un solo cuerpo, y diez horas al día por un año es mucho pedirle a los tres. Soy nuevo haciendo juegos. Tengo gusto y muchos años haciendo software, pero estoy aprendiendo el oficio de los juegos en público, aquí, así que también me voy a equivocar en público. Y si el ritmo tiene que cambiar, se los digo aquí.
+Me pregunto si esto es sostenible, y hablo de todo: mi cuerpo, mi tiempo con mi familia y mi bolsillo. Todavía no lo sé. Diez horas al día por un año es mucho pedirle a los tres. Soy nuevo haciendo juegos. Tengo gusto y muchos años haciendo software, pero estoy aprendiendo el oficio de los juegos en público, aquí, así que también me voy a equivocar en público.
+
+Y la verdad, el ritmo ya está cambiando. Por ahora, el negocio de jabones va primero, porque Lifesworn es un goteo más lento y mucho más esfuerzo. Eso no es rendirme. Lifesworn va a crecer a la velocidad que mi vida le permita, y les voy a seguir contando cómo va, aquí.
 
 ## Lo que viene
 
