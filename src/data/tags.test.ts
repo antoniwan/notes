@@ -78,10 +78,10 @@ describe('tag analytics follow preferred vocabulary', () => {
   it('uses a fixed display name before title-casing the slug', () => {
     expect(getTagMetadata('ai').name).toBe('AI');
     expect(getTagMetadata('ai-agents').name).toBe('AI Agents');
-    expect(getTagMetadata('art-expression').name).toBe('Art & Expression');
+    expect(getTagMetadata('art-expression').name).toBe('Arts and attempts');
     expect(getTagMetadata('co-parenting').name).toBe('Co-Parenting');
     expect(getTagMetadata('self-reflection').name).toBe('Self-Reflection');
-    expect(getTagMetadata('systems-strategy').name).toBe('Systems & Strategy');
+    expect(getTagMetadata('systems-strategy').name).toBe('Software and systems');
     // Long-tail tags have no TAG_METADATA entry and still get the fixed name.
     expect(TAG_METADATA['decision-making']).toBeUndefined();
     expect(getTagMetadata('decision-making').name).toBe('Decision-Making');

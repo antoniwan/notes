@@ -302,7 +302,7 @@ const MASLOW_TAG_TO_KEY = new Map<string, MaslowKey>(
 export const TAG_DISPLAY_NAMES: Record<string, string> = {
   ai: 'AI',
   'ai-agents': 'AI Agents',
-  'art-expression': 'Art & Expression',
+  'art-expression': 'Arts and attempts',
   'co-parenting': 'Co-Parenting',
   'decision-making': 'Decision-Making',
   'self-awareness': 'Self-Awareness',
@@ -310,7 +310,7 @@ export const TAG_DISPLAY_NAMES: Record<string, string> = {
   'self-control': 'Self-Control',
   'self-improvement': 'Self-Improvement',
   'self-reflection': 'Self-Reflection',
-  'systems-strategy': 'Systems & Strategy',
+  'systems-strategy': 'Software and systems',
 };
 
 function displayNameForTag(tag: string): string {

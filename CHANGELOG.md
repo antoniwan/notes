@@ -9,6 +9,16 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [7.8.1] — 2026-10-25
+
+Category names in sentence case and in Antonio's own words, picked one by one in the project thread. Ids and URLs are unchanged.
+
+### Changed
+
+- Category names: Arts and attempts; What is culture?; Do it yourself / DIY; Working on myself; Learning in public; Notes on the notes; On parenting; On politics; Psychology, roughly; On software and systems. "On" stays only where a category carries an opinion.
+- Category descriptions and meta descriptions rewritten in the same plain voice (no more "inner mastery" or "aesthetic power").
+- The `art-expression` and `systems-strategy` tags display as "Arts and attempts" and "Software and systems" to match.
+
 ## [7.8.0] — 2026-10-25
 
 The service worker is retired. Antonio had to hard-refresh Notes in Edge to see current content: "i suspect service workers are doing too much".
