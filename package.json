@@ -1,7 +1,7 @@
 {
   "name": "notes blog",
   "type": "module",
-  "version": "7.5.0",
+  "version": "7.6.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/antoniwan/notes.git"
@@ -29,6 +29,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "lint:tokens": "node scripts/lint-tokens.mjs",
+    "check-image-sizes": "node scripts/check-image-sizes.mjs",
+    "share-drafts": "node scripts/share-drafts.mjs",
     "check": "astro check",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -61,6 +63,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.11",
+    "@axe-core/playwright": "^4.14.0",
     "@tailwindcss/vite": "^4.3.3",
     "@typescript-eslint/parser": "^8.72.0",
     "eslint": "^10.13.0",
