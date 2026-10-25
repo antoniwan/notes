@@ -65,7 +65,7 @@ El experimento de la torre me dio el empujón, la confianza para seguir mis sue�
 
 Y sí, llevo soñando con este juego desde la primera vez que jugué con Yasuo y Yone en League of Legends. Un RPG de acción basado nada más en la búsqueda de aprender combate y artes marciales, y de ir acumulando esa destreza y esa fuerza, para un juego sandbox (mundo abierto) de aventura bien divertido. ¡Y este personaje, nuestro héroe, es casero! ¡Lo único que le importa es comer comida sabrosa, la verdad!
 
-Lifesworn empezó la noche del 19 de octubre con otro nombre: Milak. Milak Summir es un nombre que he usado en mis partidas de RPG por años, quizás desde el Guild Wars original, así que el primer build fue suyo, un espadachín a sueldo que mueve una espada bastarda de dos manos como si fuera un lápiz. Le dije a Claude, más o menos: tú lo construyes, no yo, yo dirijo el arte.
+Lifesworn empezó la noche del 19 de octubre con un nombre clave: Milak. Milak Summir es un nombre que he usado en mis partidas de RPG por años, quizás desde el Guild Wars original, y también va a estar en el juego, como un NPC importante. Nuestro héroe es un espadachín a sueldo que mueve una espada bastarda de dos manos como si fuera un lápiz. Le dije a Claude, más o menos: tú lo construyes, no yo, yo dirijo el arte.
 
 Y lo primero que dirigí fue nada de arte. El héroe era una cápsula azul dándole a muñecos de paja hasta que la pelea se sintió bien en mis manos. Arte encima de una pelea que no es divertida es arte perdido, así que esperó. La pelea pasó esa prueba el 20 de octubre, y solo entonces llegaron los cuerpos. Creo que casi todo el trabajo es decidir qué no construir todavía.
 

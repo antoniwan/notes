@@ -65,7 +65,7 @@ The tower experiment, gave me the boost, the confidence to follow my dreams, bas
 
 And yeah, I've been dreaming about this game since the first time I played Yasuo and Yone in League of Legends. An RPG action game based solely on the quest of learning combat and martial arts and accumulating that skill and strength for a super fun adventure sandbox game. And this guy, our hero, he's a homebody! He only cares about eating tasty food TBH!
 
-Lifesworn started on the night of October 19 under another name: Milak. Milak Summir is a name I've used in my RPG runs for years, maybe since the original Guild Wars, so the first build was his, a swordsman for hire who swings a two-handed bastard sword like a pencil. I told Claude, more or less: you're building it, not me, I'll direct the art.
+Lifesworn started on the night of October 19 under a codename: Milak. Milak Summir is a name I've used in my RPG runs for years, maybe since the original Guild Wars, and he'll be in the game too, as an important NPC. Our hero is a swordsman for hire who swings a two-handed bastard sword like a pencil. I told Claude, more or less: you're building it, not me, I'll direct the art.
 
 And the first thing I directed was no art at all. The hero was a blue capsule swinging at straw dummies until the fight felt right in my hands. Art on a fight that isn't fun is wasted, so it waited. The fight passed that check on October 20, and only then did bodies come in. Most of the job, I think, is deciding what not to build yet.
 
