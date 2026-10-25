@@ -38,7 +38,7 @@ And whatever the reason, anyone who takes part in it, whether they pull the trig
 1. Life is sacred.
 2. Life can be ended on command.
 
-I've tried to make those two sentences live in the same moral universe and I can't do it. "Civilization" seems to manage it, but only by never saying both out loud at the same time. Life is sacred. Life can be ended on command. Pick one, man.
+I've tried to make those two sentences live in the same moral universe and I can't do it. "Civilization" seems to manage it, but only by never saying both out loud at the same time. Life is sacred. Life can be ended on command. Pick one.
 
 What really gets me is that most of these men grew up with some version of the same rule. In the Abrahamic world it's about as clear as a rule can be: thou shalt not kill. And then, in very small print, _certain restrictions apply._ Self-defense. Justice. National security. "Necessary force," two words carrying centuries of blood. Get out of here, man. We kept the slogan and industrialized the loophole, and plenty of us, me included, have preached the rule and cheered its exceptions at one point or another. I'm not holding anyone to scripture, since I don't hold myself to it either. I just notice that the one rule almost every tradition agrees on is also the one we've built the most exceptions for.
 
