@@ -59,6 +59,8 @@ Then a friend played it and told me the first minute was confusing: too many pan
 
 I want more notes like that one, from more people. It's the reason I write devlogs at all.
 
+Uplift is free, and it runs in your browser: <a href="https://uplifttowergame.com" target="_blank" rel="noopener">play Uplift</a>.
+
 ## Lifesworn: the game I've been dreaming about
 
 The tower experiment, gave me the boost, the confidence to follow my dreams, basically! And my children enjoying my demos is a wild unexplainable sensation and feeling.
@@ -134,34 +136,34 @@ By my own moral and ethical standards, Anthropic is a company I'm okay using and
 
 ## The hats I wear
 
-Making two games without a studio, from October 11 to today, means wearing almost every hat.
+Making two games without a studio means trying on a lot of hats. Some of them fit better than others.
 
-| Role                  | Who                             | What it looks like                                                                                                   |
-| --------------------- | ------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Creative director     | Me                              | The vision for both games and the final word on every call: 170+ written decisions in Uplift, 200+ in Lifesworn      |
-| Game designer         | Me                              | The sword tornado's chain, stamina, Lifesworn's talent web, Uplift's stars and construction crews                    |
-| Art director          | Me                              | League's "hand-painted, yet graphic" look for Lifesworn, every pixel earning its place, which models and fonts go in |
-| World builder         | Me                              | Uplift's tower lives in a world I've been writing for years, for a novel                                             |
-| Engineer              | Claude                          | Every line of code: 300+ commits in Uplift, nearly 400 in Lifesworn                                                  |
-| Code reviewer         | Me                              | I understand the codebase, completely                                                                                |
-| Producer              | Me, with Claude's plans         | What gets built next and what waits, like plain shapes until the fight was fun                                       |
-| QA and playtesting    | Friends, Claude's tests, and me | Friends send notes; I play both; Uplift has 311 tests every change must pass, and holds 60 fps with 15,000 people    |
-| 3D artist             | Quaternius, and maybe you       | Lifesworn's bodies, clothes, animals, and the yard: free models made by a person                                     |
-| Sound                 | Kenney for now, me later        | Lifesworn's placeholder sounds are Kenney's; Uplift's sound waits on mine                                            |
-| Researcher            | Claude                          | The asset library for Lifesworn, and the market numbers I plan with                                                  |
-| Writer and translator | Claude drafts, I rewrite        | This devlog, in English and Spanish                                                                                  |
-| Marketer              | Me                              | The soft launch, this devlog, the Antonio Builds Games channel, the Patreon page                                     |
-| Community             | Me                              | Playtest links, an anonymous feedback form that files every answer for me, and the comments below                    |
+| Role                  | Who                             | What it looks like                                                                                                |
+| --------------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Creative director     | Me                              | Deciding what each game is, and writing it down: 170+ decisions in Uplift, 200+ in Lifesworn                      |
+| Game designer         | Me                              | The sword tornado's chain, stamina, Lifesworn's talent web, Uplift's stars and construction crews                 |
+| Art director          | Me, learning                    | Chasing League's "hand-painted, yet graphic" look for Lifesworn, and picking which free models and fonts go in    |
+| World builder         | Me                              | Uplift's tower lives in a world I've been writing for years, for a novel                                          |
+| Engineer              | Claude                          | Every line of code: 300+ commits in Uplift, nearly 400 in Lifesworn                                               |
+| Code reviewer         | Me                              | I read what Claude builds until I understand it, and I'm still learning the engine side                           |
+| Producer              | Me, with Claude's plans         | What gets built next and what waits, like plain shapes until the fight was fun                                    |
+| QA and playtesting    | Friends, Claude's tests, and me | Friends send notes; I play both; Uplift has 311 tests every change must pass, and holds 60 fps with 15,000 people |
+| 3D artist             | Quaternius, and maybe you       | Lifesworn's bodies, clothes, animals, and the yard: free models made by a person                                  |
+| Sound                 | Kenney for now, me later        | Lifesworn's placeholder sounds are Kenney's; Uplift's sound waits on mine                                         |
+| Researcher            | Claude                          | The asset library for Lifesworn, and the market numbers I plan with                                               |
+| Writer and translator | Claude drafts, I rewrite        | This devlog, in English and Spanish                                                                               |
+| Marketer              | Me                              | The soft launch, this devlog, the Antonio Builds Games channel, the Patreon page                                  |
+| Community             | Me                              | Playtest links, an anonymous feedback form that files every answer for me, and the comments below                 |
 
-Claude wears the engineer's hat and helps with research, tests, and first drafts. The rest are mine, or belong to the people whose free models and sounds are in Lifesworn.
+Claude wears the engineer's hat and helps with research, tests, and first drafts. I wear the rest, some of them badly, and the models and sounds in Lifesworn belong to the people who made them and gave them away.
 
 If you draw, model, animate, or make sounds, and building these games with me sounds fun, say hi down there. Worst case, we make something cool together. Best case, this is how a little game studio starts, lol. No pressure, I promise. I already wear enough hats to know how heavy they get.
 
 ## The people who made this possible
 
-None of this works without people I've never met. Lifesworn runs on [Godot](https://godotengine.org), a free and open-source game engine built by thousands of volunteers and contributors, and kept alive by a community that answers questions, writes the docs, records tutorials, and shares what they make for free. And honestly, Godot is a wonderful place to start. It's free, it's light, it opens in seconds, nobody asks for a cut of anything, and the docs read like they were written for someone exactly like me. A lot of what I'm learning about making games, I'm learning from them. Uplift runs on the web, on open-source libraries that other people wrote and gave away too. [Quaternius](https://quaternius.com) and [Kenney](https://kenney.nl) gave away the models and sounds that make Lifesworn look and sound like a game.
+None of this works without open source, and without people who give their work away. Lifesworn runs on [Godot](https://godotengine.org), a free and open-source game engine built by thousands of volunteers and contributors. Honestly, it's a wonderful place to start: it's free, it's light, it opens in seconds, nobody asks for a cut of anything, and the docs read like they were written for someone exactly like me. Uplift runs in the browser, on open-source web libraries that other people wrote and gave away. [Quaternius](https://quaternius.com) and [Kenney](https://kenney.nl) release their models and sounds under CC0, free for anyone to use, and they're what make Lifesworn look and sound like a game. And around all of it there's a community that answers questions, writes docs, records tutorials, and shares what it makes.
 
-So when I say I don't write the code, there's a whole community underneath that sentence. Thank you, all of you. If you're part of the Godot community and you're reading this: I'm a beginner in your house, and I'm grateful to be here.
+So when I say I don't write the code, there's a whole commons underneath that sentence, and the machine that writes my code learned from it too. Thank you, all of you. I'm a beginner in your house, and I'm grateful to be here.
 
 ## What's hard
 
