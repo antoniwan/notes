@@ -1,5 +1,5 @@
 ---
-title: 'Faces of Death'
+title: 'Thou Shalt Not Kill*'
 description: 'I cry at the idea of war in 2026. This is about that grief, and about the eerie feeling I get looking at the faces of the people who keep the killing going.'
 pubDate: '2026-10-22T20:00:00.000-04:00'
 heroImage: /images/2026/faces-of-death.avif
