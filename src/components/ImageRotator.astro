@@ -10,6 +10,12 @@ export interface Props {
   showNavigation?: boolean;
   showThumbnails?: boolean;
   className?: string;
+  /** 'contain' shows each image whole (letterboxed) instead of cropping it to fill. */
+  fit?: 'cover' | 'contain';
+  /** CSS aspect-ratio of the stage, e.g. '5 / 3'. */
+  aspectRatio?: string;
+  /** 'below' moves captions under the stage so they never cover the image. */
+  captionPosition?: 'overlay' | 'below';
 }
 
 const {
@@ -19,6 +25,9 @@ const {
   showNavigation = true,
   showThumbnails = true,
   className = '',
+  fit = 'cover',
+  aspectRatio = '16 / 9',
+  captionPosition = 'overlay',
 } = Astro.props;
 
 if (!images || images.length === 0) {
@@ -26,33 +35,37 @@ if (!images || images.length === 0) {
 }
 
 const canAutoRotate = autoRotate && images.length > 1;
+const captionsBelow = captionPosition === 'below';
 ---
 
 <div
-  class={`image-rotator ${className}`}
+  class={`image-rotator ${fit === 'contain' ? 'fit-contain' : ''} ${className}`}
   data-auto-rotate={autoRotate}
   data-rotation-speed={rotationSpeed}
 >
   <div class="rotator-container">
     <!-- Main image display -->
-    <div class="main-image-container">
+    <div class="main-image-container" style={`aspect-ratio: ${aspectRatio}`}>
       {images.map((image, index) => (
         <div
           class={`main-image ${index === 0 ? 'active' : ''}`}
           data-index={index}
           data-src={image.src}
+          data-caption={image.caption}
           role="img"
           aria-label={image.alt}
           aria-hidden={index === 0 ? 'false' : 'true'}
           style={index === 0 ? `background-image: url(${JSON.stringify(image.src)})` : undefined}
         >
-          <div class="image-overlay">
-            {image.caption && (
-              <div class="image-caption">
-                <p>{image.caption}</p>
-              </div>
-            )}
-          </div>
+          {!captionsBelow && (
+            <div class="image-overlay">
+              {image.caption && (
+                <div class="image-caption">
+                  <p>{image.caption}</p>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       ))}
 
@@ -134,6 +147,12 @@ const canAutoRotate = autoRotate && images.length > 1;
       )}
     </div>
 
+    {captionsBelow && images[0].caption && (
+      <p class="rotator-caption-below" aria-live="polite">
+        {images[0].caption}
+      </p>
+    )}
+
     <!-- Thumbnail navigation -->
     {showThumbnails && images.length > 1 && (
       <div class="thumbnail-container">
@@ -169,7 +188,18 @@ const canAutoRotate = autoRotate && images.length > 1;
 
   .main-image-container {
     @apply relative overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800;
-    aspect-ratio: 16 / 9;
+  }
+
+  .fit-contain .main-image-container {
+    background-color: #111;
+  }
+
+  .fit-contain .main-image {
+    background-size: contain;
+  }
+
+  .rotator-caption-below {
+    @apply mt-3 mb-0 text-sm italic opacity-80;
   }
 
   .main-image {
@@ -500,6 +530,13 @@ const canAutoRotate = autoRotate && images.length > 1;
           thumbnail.removeAttribute('aria-current');
         }
       });
+
+      // Update the caption shown under the stage
+      const captionBelow = this.container.querySelector('.rotator-caption-below');
+      const activeImage = this.images[this.currentIndex];
+      if (captionBelow && activeImage instanceof HTMLElement) {
+        captionBelow.textContent = activeImage.dataset.caption ?? '';
+      }
 
       // Update counter
       const counter = this.container.querySelector('.image-counter');
