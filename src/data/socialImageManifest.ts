@@ -225,6 +225,8 @@ export const SOCIAL_IMAGE_MANIFEST: Record<string, string> = {
   '/images/2026/mias-cinnamon-pancakes.avif':
     '/social/images/2026/mias-cinnamon-pancakes-social.jpg',
   '/images/2026/mias-vegan-cupcakes.avif': '/social/images/2026/mias-vegan-cupcakes-social.jpg',
+  '/images/2026/military-chiefs-collage.avif':
+    '/social/images/2026/military-chiefs-collage-social.jpg',
   '/images/2026/neverending-walk.avif': '/social/images/2026/neverending-walk-social.jpg',
   '/images/2026/nobel-peace-laureates-collage.avif':
     '/social/images/2026/nobel-peace-laureates-collage-social.jpg',
