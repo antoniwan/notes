@@ -170,8 +170,8 @@ It is not magic and it is not free. Claude remembers things about the engine tha
 ## What's next
 
 <figure class="post-inline-figure post-inline-figure--center">
-  <img src="/images/devlog-1-lifesworn-title.webp" alt="A dark title screen that reads Lifesworn, with Play, Choose a place, and Quit." width="1280" height="720" loading="lazy" decoding="async" />
-  <figcaption>As of October 22, the game opens on a title screen, under its new name.</figcaption>
+  <img src="/images/devlog-1-lifesworn-title-v2.webp" alt="A dark title screen with Lifesworn in glowing orange letters above Continue, New Game, Choose a place, Change player, Settings, Credits, and Quit." width="1280" height="720" loading="lazy" decoding="async" />
+  <figcaption>The title screen as of October 25, under its new name.</figcaption>
 </figure>
 
 Every other week I'll write one of these: what got built, what I decided, and what I got wrong. Uplift is playable now, free, in your browser. Lifesworn will have a free demo when the fight is something I'm proud of.
