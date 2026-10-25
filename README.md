@@ -29,10 +29,12 @@ Inline diagram authoring: [Mermaid flowcharts and state diagrams](docs/mermaid-d
 - **Paths in** — **Browse** (`/browse`: one search over every word of the English writing; the "Ways into the writing" sentences, whose topic words show that topic's writings in place: four pinned sentences first (`PRELUDE_NOW`), the rest ranked by recent writing, quiet ones last; and every topic A–Z, folded under the box), **Archive** (`/archive`: every note, newest first), About, and header search. A topic or category page (`/tag/<topic>`, `/category/<id>`) links back to Browse. `/everything`, `/tag`, `/category`, and the removed `/guided-path` 301 to Archive or Browse; `/search` goes to Browse. Enter in the header search opens Browse with that search.
 - **Home** — a writing hero with two ways in (Browse, then Archive), Highlights for featured English posts, and a short purpose note.
 - **Writing Insights** was removed on October 20, 2026; it was not for readers. `/writing-insights`, `/brain-science`, and their old subpaths 301 to the home page.
-- **Feeds** — RSS (`/rss.xml`) and JSON Feed (`/feed.json`). Spanish and household recipes stay out of feeds
-- **Quotes API** — `GET /api/quotes` (Stoic excerpts, other philosophy, lines from posts; optional `?kind=`)
+- **Feeds** — RSS (`/rss.xml`) and JSON Feed (`/feed.json`), English only. Spanish has its own RSS feed at `/es/rss.xml`
+- **En español** — `/es` lists every Spanish piece, twins included, newest first
+- **Series** — posts with `series: <id>` (ids in `src/data/series.ts`) get "Part N of M" links and a page at `/series/<id>`; `seriesOrder` overrides date order
+- **Quotes API** — `GET /api/quotes` (Stoic excerpts, other philosophy, lines from posts; optional `?kind=`). The 404 page no longer calls it: it picks from the same pool, baked into the page
 
-English is the listing language. Spanish is a twin: language toggle, title search, SEO, direct URL. Not a second card stream. Details: [docs/multilingual-setup.md](docs/multilingual-setup.md).
+English is the listing language. Spanish is a twin: language toggle, title search, SEO, direct URL, and the `/es` index with its own feed. Not a second card stream on English pages. Details: [docs/multilingual-setup.md](docs/multilingual-setup.md).
 
 ## How it is built
 
@@ -256,7 +258,9 @@ is skipped. After adding or changing hero art, run `pnpm run build` or
 `pnpm run generate-social-images` and commit the updated manifest, fingerprints,
 and any new files under `public/social/`.
 
-CI restores `public/social/` from cache when possible (see `.github/workflows/ci.yml`). Timing depends on how many images need encoding; routine builds with everything already up to date stay short.
+Social cards in `public/social/` are committed, so the build only regenerates changed ones. CI caches Astro's optimized hero sizes (`node_modules/.astro`) keyed on the images and image settings, and the Playwright browser (see `.github/workflows/ci.yml`). New images over 1 MB fail `pnpm run check-image-sizes`; the files already over it are in `scripts/check-image-sizes.baseline.json` and may only shrink.
+
+Vercel skips the build when a push to `main` only touches docs, specs, tests, `.github`, the README or the changelog (`ignoreCommand` in `vercel.json`), so those pushes don't count against the 100 deploys a day. A scheduled workflow (`.github/workflows/uptime.yml`) checks the live site every six hours; a failure emails the owner. Dependabot opens grouped weekly update PRs.
 
 ## Where images go
 

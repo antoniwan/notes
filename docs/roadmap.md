@@ -15,7 +15,9 @@ I am not promising timelines here. This is a **directional map**, not a contract
 
 ## What this site is
 
-Field notes. Essays, household recipes, and the books on the shelf. The surface got broader on purpose: one public notebook, not a magazine and not a recipe site with a blog attached. English listings; Spanish as a twin. See [README.md](../README.md).
+Field notes: essays, poems, reviews, devlogs. One public notebook, not a magazine. English listings; Spanish as a twin, with its own front door at `/es`. Recipes moved to [Cookbook](https://cookbook.antoniwan.online/) and the book library to antoniwan.online (October 2026). See [README.md](../README.md).
+
+The current prioritized plan (Now / Next / Later, October 25, 2026) lives in the project's roadmap page; the sections below stay as the place to think features through.
 
 ## Shipped today (living surface)
 
@@ -25,9 +27,11 @@ This section is a **checkpoint** so the roadmap does not read like the site is o
 - **Posts**: automatic **reading time**, **reading progress** (`localStorage`), markdown-derived **table of contents**, **EN/ES** linking via `translationGroup` (Spanish is off listings; English cards show an ES marker; toggle / search / SEO / URL remain the paths in), **related posts** at the bottom via overlapping tags (“Continue reading”).
 - **Home**: **highlight** masonry for published posts marked `featured: true`.
 - **Writing Insights**: removed on October 20, 2026 (Antonio: "it's not important for readers"). Its URLs 301 to the home page.
-- **Library**: dedicated **books** pages (see §4).
-- **Cookbook** (`/recipes`): household recipes as a plate grid plus A–Z contents. Under Resources, next to the book library.
-- **Feeds & APIs**: **RSS**, **JSON Feed**, **GET `/api/quotes`**.
+- **Library** and **Cookbook**: moved off Notes in October 2026. `/library`, `/books` and `/recipes` 301 to antoniwan.online and cookbook.antoniwan.online.
+- **Poems**: verse styling with the Pond, Tide and Lantern ambience on poem pages (v7.5.0).
+- **Spanish**: `/es` lists every Spanish piece, with its own feed at `/es/rss.xml`.
+- **Series**: posts with a `series` field link to their neighbors and gather on `/series/<id>`.
+- **Feeds & APIs**: **RSS**, **JSON Feed**, `llms.txt`, **GET `/api/quotes`** (the 404 page no longer calls it; it picks from a pool baked into the page).
 - **Quality & distribution**: **Schema.org** where it fits, optional **Remark42** comments, **service worker** for caching (version bumped on build), **Vercel Web Analytics** and **Speed Insights** in the base layout when those products are enabled on Vercel.
 - **About**: curated topic grid; optional **Letterboxd “latest watched”** when `LETTERBOXD_*` env vars are set.
 
