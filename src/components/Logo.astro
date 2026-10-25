@@ -99,7 +99,8 @@ const paddingClasses = {
         height="1em"
         viewBox="0 0 100 100"
         xmlns="http://www.w3.org/2000/svg"
-        class="fill-current"
+        class="logo-mark fill-current"
+        data-logo-mark
       >
         <polygon
           points="50,0 100,50 50,100 0,50"
@@ -129,7 +130,19 @@ const paddingClasses = {
   )}
 </a>
 
+<script>
+  import { initLogoJiggle } from '../utils/logoJiggle.client';
+
+  initLogoJiggle();
+</script>
+
 <style>
+  /* The diamond spins and squashes around its own center (see logoJiggle.client.ts). */
+  .logo-mark {
+    overflow: visible;
+    transform-origin: 50% 50%;
+  }
+
   /* Respect reduced motion preferences */
   @media (prefers-reduced-motion: reduce) {
     a {
@@ -142,6 +155,9 @@ const paddingClasses = {
       transform: none !important;
     }
     .group:hover span {
+      transform: none !important;
+    }
+    .logo-mark {
       transform: none !important;
     }
   }

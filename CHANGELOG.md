@@ -9,7 +9,7 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
-## [7.6.1] — 2026-10-25
+## [7.7.1] — 2026-10-25
 
 Category names in sentence case and in Antonio's own words, picked one by one in the project thread. Ids and URLs are unchanged.
 
@@ -18,6 +18,12 @@ Category names in sentence case and in Antonio's own words, picked one by one in
 - Category names: Arts and attempts; What is culture?; Do it yourself / DIY; Working on myself; Learning in public; Notes on the notes; On parenting; On politics; Psychology, roughly; On software and systems. "On" stays only where a category carries an opinion.
 - Category descriptions and meta descriptions rewritten in the same plain voice (no more "inner mastery" or "aesthetic power").
 - The `art-expression` and `systems-strategy` tags display as "Arts and attempts" and "Software and systems" to match.
+
+## [7.7.0] — 2026-10-25
+
+### Added
+
+- The diamond in the logo reacts to the mouse. It gets shoved the way the cursor came in, spins with how off-center and how fast it was hit, fidgets while you wiggle over it, gets tugged on the way out, then wobbles back to rest. A damped spring in `src/utils/logoJiggle.client.ts`, about 1 KB, that runs a frame loop only while the mark is moving. Mouse and pen only, nothing under `prefers-reduced-motion`, and the link, its label and focus ring are untouched.
 
 ## [7.6.0] — 2026-10-25
 
