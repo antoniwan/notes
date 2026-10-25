@@ -157,6 +157,12 @@ Claude wears the engineer's hat and helps with research, tests, and first drafts
 
 If you draw, model, animate, or make sounds, and building these games with me sounds fun, say hi down there. Worst case, we make something cool together. Best case, this is how a little game studio starts, lol. No pressure, I promise. I already wear enough hats to know how heavy they get.
 
+## The people who made this possible
+
+None of this works without people I've never met. Lifesworn runs on [Godot](https://godotengine.org), a free and open-source game engine built by thousands of volunteers and contributors, and kept alive by a community that answers questions, writes the docs, records tutorials, and shares what they make for free. A lot of what I'm learning about making games, I'm learning from them. [Quaternius](https://quaternius.com) and [Kenney](https://kenney.nl) gave away the models and sounds that make Lifesworn look and sound like a game.
+
+So when I say I don't write the code, there's a whole community underneath that sentence. Thank you, all of you. If you're part of the Godot community and you're reading this: I'm a beginner in your house, and I'm grateful to be here.
+
 ## What went wrong
 
 It is not magic and it is not free. Claude remembers things about the engine that don't exist anymore, and I learn that when the build breaks. It runs out of quota in the middle of a good week. Uplift's first push cost me $250 of credits and almost a whole week of my plan. And I'm new to making games. I have taste and I have a lot of years of making software, but I'm learning the craft of games in public, here, and I will get things wrong in public too.

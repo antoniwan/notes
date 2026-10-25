@@ -157,6 +157,12 @@ Claude se pone el sombrero de ingeniero y ayuda con la investigación, los tests
 
 Si dibujas, modelas, animas o haces sonidos, y construir estos juegos conmigo te suena divertido, salúdame aquí abajo. En el peor de los casos, hacemos algo chévere juntos. En el mejor, así es como empieza un estudio de juegos chiquito, jajaja. Sin presión, te lo prometo. Ya me pongo suficientes sombreros para saber lo mucho que pesan.
 
+## La gente que hizo esto posible
+
+Nada de esto funciona sin gente que nunca he conocido. Lifesworn corre en [Godot](https://godotengine.org), un motor de juegos libre y de código abierto que construyen miles de voluntarios y colaboradores, y que mantiene viva una comunidad que contesta preguntas, escribe la documentación, graba tutoriales y comparte lo que hace gratis. Mucho de lo que estoy aprendiendo sobre hacer juegos lo estoy aprendiendo de ellos. [Quaternius](https://quaternius.com) y [Kenney](https://kenney.nl) regalaron los modelos y los sonidos que hacen que Lifesworn se vea y suene como un juego.
+
+Así que cuando digo que yo no escribo el código, hay una comunidad entera debajo de esa oración. Gracias, a todos. Si eres parte de la comunidad de Godot y estás leyendo esto: soy un principiante en su casa, y estoy agradecido de estar aquí.
+
 ## Lo que salió mal
 
 No es magia y no es gratis. Claude recuerda cosas del engine que ya no existen, y me entero cuando el build se rompe. Se le acaba la cuota en medio de una buena semana. El primer empujón de Uplift me costó $250 en créditos y casi una semana entera de mi plan. Y soy nuevo haciendo juegos. Tengo gusto y tengo muchos años haciendo software, pero estoy aprendiendo el oficio de los juegos en público, aquí, y también me voy a equivocar en público.
