@@ -24,7 +24,9 @@ const footerGroups = [
           <ul>
             {group.links.map((link) => (
               <li>
-                <a href={link.href}>{link.label}</a>
+                <a href={link.href} lang={link.lang}>
+                  {link.label}
+                </a>
               </li>
             ))}
           </ul>
@@ -48,6 +50,9 @@ const footerGroups = [
 
       <nav class="footer-feeds" aria-label="Site information">
         <a href="/sitemap-index.xml">Sitemap</a>
+        <a href="/rss.xml" title="RSS feed">
+          RSS
+        </a>
         <a href="/feed.json" title="JSON Feed">
           JSON
         </a>

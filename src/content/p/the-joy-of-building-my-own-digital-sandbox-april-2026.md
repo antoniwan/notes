@@ -25,6 +25,7 @@ draft: false
 featured: false
 published: true
 showComments: true
+series: digital-sandbox
 ---
 
 I still fucking love ~~playing~~ working on my blog.

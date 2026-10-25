@@ -183,6 +183,11 @@ const updatedDateISO = updatedDate?.toISOString();
   <link rel="alternate" hreflang={alternate.hreflang} href={alternate.href} />
 ))}
 
+<!-- Identity: profiles that are also the author -->
+{AUTHOR.sameAs.map((href) => (
+  <link rel="me" href={href} />
+))}
+
 <!-- RSS Feed -->
 <link
   rel="alternate"
@@ -190,6 +195,15 @@ const updatedDateISO = updatedDate?.toISOString();
   title={`${SITE_TITLE} - RSS Feed`}
   href={new URL('rss.xml', Astro.site)}
 />
+{htmlLang === 'es' && (
+  <link
+    rel="alternate"
+    type="application/rss+xml"
+    hreflang="es"
+    title={`${SITE_TITLE} en español - RSS`}
+    href={new URL('es/rss.xml', Astro.site)}
+  />
+)}
 
 <!-- JSON Feed -->
 <link

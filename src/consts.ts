@@ -13,6 +13,8 @@ export interface Author {
   url: string;
   github: string;
   linkedin: string;
+  /** Profiles that are also Antonio: `sameAs` in structured data and `rel="me"` in the head. */
+  sameAs: string[];
 }
 
 export interface SEOConfig {
@@ -41,6 +43,13 @@ export const AUTHOR: Author = {
   url: 'https://antoniwan.online',
   github: 'antoniwan',
   linkedin: 'antoniwan',
+  sameAs: [
+    'https://www.patreon.com/antoniwan',
+    'https://github.com/antoniwan',
+    'https://www.linkedin.com/in/antoniwan',
+    'https://bsky.app/profile/antoniwan.online',
+    'https://www.threads.com/@_antoniwan',
+  ],
 };
 
 // SEO Configuration

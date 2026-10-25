@@ -1,0 +1,25 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import ArchiveList from '../../components/ArchiveList.astro';
+import { getCollection } from 'astro:content';
+import { PAGE_META } from '../../data/pageMeta';
+import { isSpanishListed } from '../../utils/publishFilters';
+
+// Spanish has no card stream elsewhere (English is the listing language), so
+// this is the one page that lists every Spanish piece, twins included. It
+// reads like Archive on purpose.
+const posts = await getCollection('blog', ({ data }) => isSpanishListed(data));
+---
+
+<PageLayout
+  title="En español"
+  description="Todo lo que he escrito en español, de lo más reciente a lo más antiguo."
+  metaDescription={PAGE_META['/es']}
+  path="/es"
+  structuredDataType="website"
+  htmlLang="es"
+  locale="es_PR"
+  mode="chrome"
+>
+  <ArchiveList posts={posts} lang="es" feedHref="/es/rss.xml" />
+</PageLayout>

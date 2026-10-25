@@ -1,0 +1,42 @@
+name: Uptime
+
+# Checks the live site every six hours. A failed run emails the repo owner,
+# which is the alert. Nothing here deploys or writes anything.
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check pages, feeds and redirects
+        run: |
+          site=https://notes.antoniwan.online
+          fail=0
+          check() {
+            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 20 "$1")
+            if [ "$code" != "$2" ]; then
+              echo "::error::$1 returned $code, expected $2"
+              fail=1
+            else
+              echo "ok  $code  $1"
+            fi
+          }
+          check "$site/" 200
+          check "$site/p/i-dont-write-the-code" 200
+          check "$site/es" 200
+          check "$site/rss.xml" 200
+          check "$site/feed.json" 200
+          check "$site/api/quotes" 200
+          # Comments live on Railway behind a rewrite.
+          check "$site/api/remark42/web/embed.js" 200
+          # Old homes that must keep pointing at their new sites.
+          check "$site/recipes" 301
+          check "$site/library" 301
+          exit $fail

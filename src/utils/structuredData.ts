@@ -39,6 +39,7 @@ export const authorRef = {
   name: AUTHOR.name,
   alternateName: AUTHOR.alternateName,
   url: AUTHOR.url,
+  sameAs: AUTHOR.sameAs,
 };
 
 /** A category's display name ("On Systems & Strategy"), not its id ("systems-strategy"). */

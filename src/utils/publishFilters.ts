@@ -70,6 +70,16 @@ export function spanishTwinGroupsFromPosts(posts: { data: PostData }[]): Set<str
   return groups;
 }
 
+/**
+ * The Spanish index (`/es`) and its feed: every public Spanish post, twins
+ * included. Dev shows drafts too, like the other listings.
+ */
+export function isSpanishListed(data: PostData, options: PublishFilterOptions = {}): boolean {
+  if (!isSpanishPrimary(data)) return false;
+  if (!import.meta.env.PROD) return true;
+  return isPublicPost(data, options);
+}
+
 /** Homepage Highlights: featured English posts that are publicly live. */
 export function isHomepageHighlight(data: PostData, options: PublishFilterOptions = {}): boolean {
   if (isSpanishPrimary(data)) return false;

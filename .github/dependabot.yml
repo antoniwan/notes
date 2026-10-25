@@ -1,0 +1,22 @@
+# Weekly, grouped updates: one PR for npm packages and one for Actions.
+# Vercel previews are off for non-main branches, so these PRs only cost CI minutes.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 3
+    groups:
+      dependencies:
+        patterns: ['*']
+        update-types: [minor, patch]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    groups:
+      actions:
+        patterns: ['*']

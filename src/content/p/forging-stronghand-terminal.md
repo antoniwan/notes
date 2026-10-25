@@ -19,6 +19,7 @@ draft: false
 featured: false
 published: true
 showComments: true
+series: stronghand-terminal
 ---
 
 "Stronghand" is the name I gave my computer after the latest reformat. I destroyed **EVERYTHING** across all my drives — four disks totaling over 10TB — wiping them clean to zero.

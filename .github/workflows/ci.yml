@@ -52,6 +52,9 @@ jobs:
       - name: Check design tokens (rhythm and widths)
         run: pnpm run lint:tokens
 
+      - name: Check image sizes
+        run: pnpm run check-image-sizes
+
       - name: Audit content frontmatter
         run: pnpm run audit-frontmatter
 
@@ -60,6 +63,15 @@ jobs:
 
       - name: Check Remark42 rewrite
         run: pnpm run check-remark42-rewrite
+
+      # Astro keeps the optimized hero sizes here. Encoding them is most of the
+      # build, so restore them unless an image or the image settings changed.
+      - name: Restore optimized images
+        uses: actions/cache@v4
+        with:
+          path: node_modules/.astro
+          key: astro-images-${{ hashFiles('src/assets/images/**', 'astro.config.mjs', 'src/utils/heroImages.ts', 'pnpm-lock.yaml') }}
+          restore-keys: astro-images-
 
       - name: Build project
         run: pnpm run build
@@ -78,6 +90,12 @@ jobs:
         run: pnpm run validate-generated-content
 
       # After the build: these journeys drive the real dist/client output.
+      - name: Restore Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ hashFiles('pnpm-lock.yaml') }}
+
       - name: Install Chromium for browser journeys
         run: pnpm exec playwright install --with-deps chromium
 

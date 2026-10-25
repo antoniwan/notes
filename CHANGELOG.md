@@ -9,6 +9,31 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [7.6.0] — 2026-10-25
+
+Work from the October 25 roadmap that needed no decision from Antonio. Antonio: "from the roadmap, work on everything you can work autonomously". No post text changed; six posts gained a `series` line.
+
+### Added
+
+- `/es`: every Spanish piece in one place, laid out like Archive (year groups, the same card rows, Spanish labels), twins included, with its own feed at `/es/rss.xml`. Spanish posts point their "keep reading" link there, Spanish pages advertise the Spanish feed, and the footer links it as "En español".
+- Series. An optional `series` (ids in `src/data/series.ts`) and `seriesOrder` in frontmatter give a post "Part N of M" with previous and next links, and each series a page at `/series/<id>`. First three: Game reviews (Crimson Desert, Dispatch), The digital sandbox, The Stronghand terminal.
+- Identity: the author schema lists Patreon, GitHub, LinkedIn, Bluesky and Threads under `sameAs`, and the head carries matching `rel="me"` links.
+- RSS in the footer colophon, next to JSON.
+- Browser journeys: axe (WCAG 2.1 AA, serious and critical) on ten templates in light and dark, and poem pages (verse markup, Pond and Tide layers, skipped under reduced motion, absent on essays).
+- `pnpm run check-image-sizes` in CI: new images over 1 MB fail; the eight already over it are baselined and may only shrink.
+- `pnpm run share-drafts [slug]` prints Bluesky, Threads and free-Patreon drafts for a post from `latest.json`, to edit and post by hand.
+- Dependabot: grouped weekly npm and Actions updates.
+- A scheduled uptime check of pages, feeds, the comments proxy and the old-site redirects.
+
+### Changed
+
+- The 404 quote is picked in the browser from the pool baked into the page, so a missing page no longer waits on, retries, or fails on `/api/quotes`. The API itself is unchanged.
+- RSS channel building moved to `src/utils/rssFeed.js`, shared by both feeds.
+- CI caches Astro's optimized images and the Playwright browser.
+- Vercel skips builds for pushes that only touch docs, specs, tests, `.github`, the README or the changelog, so they don't spend the 100 deploys a day.
+- `/images` and `/social` cache for a day (was an hour); pages send `Cross-Origin-Opener-Policy: same-origin-allow-popups`.
+- `docs/roadmap.md` no longer lists the Library and Cookbook as living on Notes.
+
 ## [7.5.0] — 2026-10-23
 
 Poems read as poems, and the homepage Highlights are a curated set. Antonio: "let's make these readable, legible, beautiful!" and "a shorter Highlights list ... many categories and high-quality content only".

@@ -15,6 +15,8 @@ interface Props {
   idPrefix?: string;
   imageLoading?: 'eager' | 'lazy';
   headingAs?: 'h2' | 'h3';
+  /** Off on pages where every card is Spanish, so "Español" would repeat on each. */
+  showLanguage?: boolean;
 }
 
 const {
@@ -25,6 +27,7 @@ const {
   idPrefix = 'postcard',
   imageLoading = 'lazy',
   headingAs = 'h2',
+  showLanguage = true,
 } = Astro.props;
 const { data } = post;
 const Heading = headingAs;
@@ -35,6 +38,7 @@ const readingTime = localizeReadingTime(
   cardLanguage,
 );
 const spanishOnly = isSpanishOnly(data);
+const showSpanishLabel = spanishOnly && showLanguage;
 const spanishTwinGroups = await getSpanishTwinGroups();
 const hasSpanishTwin =
   !isSpanishPrimary(data) &&
@@ -107,7 +111,7 @@ const hasSpanishTwin =
           </span>
         </>
       )}
-      {spanishOnly && (
+      {showSpanishLabel && (
         <>
           <span class="postcard-meta__sep" aria-hidden="true">
             ·
