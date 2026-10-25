@@ -175,7 +175,7 @@ Y el camino por delante es largo. Lifesworn ya tiene un roadmap (hoja de ruta), 
 
 Me pregunto si esto es sostenible, y hablo de todo: mi cuerpo, mi tiempo con mi familia y mi bolsillo. Todavía no lo sé. Diez horas al día por un año es mucho pedirle a los tres. Soy nuevo haciendo juegos. Tengo gusto y muchos años haciendo software, pero estoy aprendiendo el oficio de los juegos en público, aquí, así que también me voy a equivocar en público.
 
-Y la verdad, el ritmo ya está cambiando. Por ahora, el negocio de jabones va primero, porque Lifesworn es un goteo más lento y mucho más esfuerzo. Eso no es rendirme. Lifesworn va a crecer a la velocidad que mi vida le permita, y les voy a seguir contando cómo va, aquí.
+Y la verdad, el ritmo ya está cambiando. Por ahora, el negocio de jabones va primero, porque Lifesworn es un goteo más lento y mucho más esfuerzo. Eso no es rendirme. Quizás un goteo más lento solo quiere decir calidad sobre cantidad. Lifesworn va a crecer a la velocidad que mi vida le permita, y les voy a seguir contando cómo va, aquí.
 
 ## Lo que viene
 
