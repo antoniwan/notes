@@ -159,7 +159,7 @@ If you draw, model, animate, or make sounds, and building these games with me so
 
 ## The people who made this possible
 
-None of this works without people I've never met. Lifesworn runs on [Godot](https://godotengine.org), a free and open-source game engine built by thousands of volunteers and contributors, and kept alive by a community that answers questions, writes the docs, records tutorials, and shares what they make for free. A lot of what I'm learning about making games, I'm learning from them. [Quaternius](https://quaternius.com) and [Kenney](https://kenney.nl) gave away the models and sounds that make Lifesworn look and sound like a game.
+None of this works without people I've never met. Lifesworn runs on [Godot](https://godotengine.org), a free and open-source game engine built by thousands of volunteers and contributors, and kept alive by a community that answers questions, writes the docs, records tutorials, and shares what they make for free. And honestly, Godot is a wonderful place to start. It's free, it's light, it opens in seconds, nobody asks for a cut of anything, and the docs read like they were written for someone exactly like me. A lot of what I'm learning about making games, I'm learning from them. Uplift runs on the web, on open-source libraries that other people wrote and gave away too. [Quaternius](https://quaternius.com) and [Kenney](https://kenney.nl) gave away the models and sounds that make Lifesworn look and sound like a game.
 
 So when I say I don't write the code, there's a whole community underneath that sentence. Thank you, all of you. If you're part of the Godot community and you're reading this: I'm a beginner in your house, and I'm grateful to be here.
 
