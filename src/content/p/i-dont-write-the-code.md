@@ -163,9 +163,15 @@ None of this works without people I've never met. Lifesworn runs on [Godot](http
 
 So when I say I don't write the code, there's a whole community underneath that sentence. Thank you, all of you. If you're part of the Godot community and you're reading this: I'm a beginner in your house, and I'm grateful to be here.
 
-## What went wrong
+## What's hard
 
-It is not magic and it is not free. Claude remembers things about the engine that don't exist anymore, and I learn that when the build breaks. It runs out of quota in the middle of a good week. Uplift's first push cost me $250 of credits and almost a whole week of my plan. And I'm new to making games. I have taste and I have a lot of years of making software, but I'm learning the craft of games in public, here, and I will get things wrong in public too.
+It is not magic and it is not free, and I think the hard part hasn't even started. Claude remembers things about the engine that don't exist anymore, and I learn that when the build breaks. Uplift's first push cost me $250 of credits and almost a whole week of my plan. On October 5 I hit my weekly limit on the first day and upgraded to Claude Max. That night I wrote, "I hope i don't regret this, it's 1,200 a year!"
+
+Since then I've been working about ten hours a day, every day, if I count my real job and the games together. Lifesworn alone has over a thousand commits, and it isn't a week old.
+
+And the road ahead is long. Lifesworn has a roadmap now, and it runs to October 2027: finish what's half-built by the end of November, a first region you can play for five hours by January, outside players trying it with no help from me, an art lock and a freeze in the spring, two more regions and an ending by the summer, then bugs, balance, a closed beta, and the stores. Three regions, maybe fifteen to twenty hours of play, made by one person, a machine, and whoever wants to join.
+
+I wonder if this is sustainable. I don't know yet. I have a family, a day job, and one body, and ten hours a day for a year is a lot to ask of all three. I'm new to making games. I have taste and a lot of years of making software, but I'm learning the craft of games in public, here, so I'll get things wrong in public too. And if the pace has to change, I'll tell you here.
 
 ## What's next
 

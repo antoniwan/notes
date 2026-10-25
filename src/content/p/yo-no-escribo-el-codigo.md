@@ -163,9 +163,15 @@ Nada de esto funciona sin gente que nunca he conocido. Lifesworn corre en [Godot
 
 Así que cuando digo que yo no escribo el código, hay una comunidad entera debajo de esa oración. Gracias, a todos. Si eres parte de la comunidad de Godot y estás leyendo esto: soy un principiante en su casa, y estoy agradecido de estar aquí.
 
-## Lo que salió mal
+## Lo difícil
 
-No es magia y no es gratis. Claude recuerda cosas del engine que ya no existen, y me entero cuando el build se rompe. Se le acaba la cuota en medio de una buena semana. El primer empujón de Uplift me costó $250 en créditos y casi una semana entera de mi plan. Y soy nuevo haciendo juegos. Tengo gusto y tengo muchos años haciendo software, pero estoy aprendiendo el oficio de los juegos en público, aquí, y también me voy a equivocar en público.
+No es magia y no es gratis, y creo que la parte difícil ni ha empezado. Claude recuerda cosas del engine que ya no existen, y me entero cuando el build se rompe. El primer empujón de Uplift me costó $250 en créditos y casi una semana entera de mi plan. El 5 de octubre llegué a mi límite semanal el primer día y subí a Claude Max. Esa noche escribí: "I hope i don't regret this, it's 1,200 a year!"
+
+Desde entonces he estado trabajando como diez horas al día, todos los días, si cuento mi trabajo de verdad y los juegos juntos. Solo Lifesworn tiene más de mil commits, y no tiene ni una semana.
+
+Y el camino por delante es largo. Lifesworn ya tiene un roadmap (hoja de ruta), y llega hasta octubre de 2027: terminar lo que está a medio hacer para finales de noviembre, una primera región que se pueda jugar por cinco horas para enero, jugadores de afuera probándola sin mi ayuda, el arte fijo y el contenido congelado en la primavera, dos regiones más y un final para el verano, y después bugs, balance, un beta cerrado y las tiendas. Tres regiones, quizás de quince a veinte horas de juego, hechas por una persona, una máquina, y quien se quiera unir.
+
+Me pregunto si esto es sostenible. Todavía no lo sé. Tengo una familia, un trabajo y un solo cuerpo, y diez horas al día por un año es mucho pedirle a los tres. Soy nuevo haciendo juegos. Tengo gusto y muchos años haciendo software, pero estoy aprendiendo el oficio de los juegos en público, aquí, así que también me voy a equivocar en público. Y si el ritmo tiene que cambiar, se los digo aquí.
 
 ## Lo que viene
 
