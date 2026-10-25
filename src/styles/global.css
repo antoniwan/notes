@@ -353,7 +353,8 @@
     --size-embed: 658px; /* Threads' own embed width */
     --size-table-min: 40rem; /* a wide table scrolls sideways past this */
     --figure-sm: 18rem;
-    --figure-breakout: 12rem; /* how far a --wide figure reaches past the column's right edge */
+    /* A --wide figure: the column plus 12rem past its right edge. */
+    --figure-wide: calc(100% + 12rem);
 
     /* Matches Header inner bar (h-16 / md:h-18). Sticky chrome uses this. */
     --site-header-height: 4rem;
@@ -1141,7 +1142,7 @@
   }
 
   .post-prose.prose figure.post-inline-figure.post-inline-figure--wide {
-    max-width: calc(100% + var(--figure-breakout)) !important;
+    max-width: var(--figure-wide) !important;
   }
 }
 
