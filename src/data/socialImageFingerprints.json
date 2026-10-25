@@ -93,6 +93,10 @@
       "sha256": "f1527ea16f5db58e4abc36657c8292410964e079e1c9eb2317c56f69cca508c7",
       "social": "/social/images/2026/arithmetic-social.jpg"
     },
+    "/images/2026/arms-company-ceos-collage.avif": {
+      "sha256": "57c4f1205133309e2fae9f43b09d4034414b0c1324fa2c84ca976503b1ea4f3b",
+      "social": "/social/images/2026/arms-company-ceos-collage-social.jpg"
+    },
     "/images/2026/arroz-con-gandules.avif": {
       "sha256": "2b8ba5335d17a488278706162bcdba2aedea06a5e5f344383cabbe7d743ca858",
       "social": "/social/images/2026/arroz-con-gandules-social.jpg"
@@ -421,6 +425,10 @@
       "sha256": "3cacf72e44e197d32ea693d04111bd23d1b90c31e32570b347cd0967c948ef78",
       "social": "/social/images/2026/cupey-papi-social.jpg"
     },
+    "/images/2026/defence-ministers-collage.avif": {
+      "sha256": "fb107a2cd0212436ad0c2695ed11a64d906c1191bbca563963af68190a1fa1a5",
+      "social": "/social/images/2026/defence-ministers-collage-social.jpg"
+    },
     "/images/2026/devlog-1-collage.avif": {
       "sha256": "4100d76c0f14274d496c3dfb8449e9273701acfd9ba0464bbb5cede563d81346",
       "social": "/social/images/2026/devlog-1-collage-social.jpg"
@@ -436,6 +444,10 @@
     "/images/2026/easy-breakfast-guacamole-toast.avif": {
       "sha256": "21e3d483e32c8ae8e4d81dc4ff532e1c072f0899972dbd6c46b6616dbc5b64b8",
       "social": "/social/images/2026/easy-breakfast-guacamole-toast-social.jpg"
+    },
+    "/images/2026/education-ministers-collage.avif": {
+      "sha256": "44a071fa6cc4fb1ec2b837144709dd5d7626903c199e4d96bac5aa613e1166aa",
+      "social": "/social/images/2026/education-ministers-collage-social.jpg"
     },
     "/images/2026/empathy-and-compassion.avif": {
       "sha256": "9cce22a6246faf4fd2f675598710383b72efe0fb81129c43510d22a4b568888a",
@@ -488,6 +500,10 @@
     "/images/2026/habichuelas-guisadas.avif": {
       "sha256": "51974603cdba81beafda77a6c011e0544c7f0449b0d470266fab050789c329ec",
       "social": "/social/images/2026/habichuelas-guisadas-social.jpg"
+    },
+    "/images/2026/health-ministers-collage.avif": {
+      "sha256": "68d26c8f4b33c05fc64580b19d464d19a7ffa16c5748aae5490846b63c88c7c1",
+      "social": "/social/images/2026/health-ministers-collage-social.jpg"
     },
     "/images/2026/hung-cao-alpha-males-cnn.avif": {
       "sha256": "46efe13e67787779946d9ae738620880c88735b9dd1a68ff0b9b90729b1306a8",
@@ -545,9 +561,17 @@
       "sha256": "5d5910eceed42c94f4bc3cc9c8df9200f21495024d0f5185ff5a91ba650f0663",
       "social": "/social/images/2026/mias-vegan-cupcakes-social.jpg"
     },
+    "/images/2026/military-chiefs-collage.avif": {
+      "sha256": "9223f72dcc8552ea4ccfb6d3dbce7ac9bfc70d4ca72974a7d7ed528be09c74cd",
+      "social": "/social/images/2026/military-chiefs-collage-social.jpg"
+    },
     "/images/2026/neverending-walk.avif": {
       "sha256": "55925c6c77b46b4bdb77c50a0491c574b3b64975b6818047fe0d2f1395f003df",
       "social": "/social/images/2026/neverending-walk-social.jpg"
+    },
+    "/images/2026/nobel-peace-laureates-collage.avif": {
+      "sha256": "fad2f8851f66e11131ea6ae53218bcafd80cfcf9f539991d2844bf26d843ec22",
+      "social": "/social/images/2026/nobel-peace-laureates-collage-social.jpg"
     },
     "/images/2026/notes-on-respect.avif": {
       "sha256": "f177b98e4db94b5204e2d7b479d240a74416c4e4bf0847e090d86e2139bf7045",

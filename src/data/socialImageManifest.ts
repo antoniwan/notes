@@ -27,6 +27,8 @@ export const SOCIAL_IMAGE_MANIFEST: Record<string, string> = {
   '/images/2026/alphas.avif': '/social/images/2026/alphas-social.jpg',
   '/images/2026/arepas-de-calabaza.avif': '/social/images/2026/arepas-de-calabaza-social.jpg',
   '/images/2026/arithmetic.avif': '/social/images/2026/arithmetic-social.jpg',
+  '/images/2026/arms-company-ceos-collage.avif':
+    '/social/images/2026/arms-company-ceos-collage-social.jpg',
   '/images/2026/arroz-con-gandules.avif': '/social/images/2026/arroz-con-gandules-social.jpg',
   '/images/2026/arroz-con-pollo.avif': '/social/images/2026/arroz-con-pollo-social.jpg',
   '/images/2026/asopao-de-pollo.avif': '/social/images/2026/asopao-de-pollo-social.jpg',
@@ -179,6 +181,8 @@ export const SOCIAL_IMAGE_MANIFEST: Record<string, string> = {
   '/images/2026/crimson-desert-review/Crimson Desert_20260429081024.avif':
     '/social/images/2026/crimson-desert-review/Crimson Desert_20260429081024-social.jpg',
   '/images/2026/cupey-papi.avif': '/social/images/2026/cupey-papi-social.jpg',
+  '/images/2026/defence-ministers-collage.avif':
+    '/social/images/2026/defence-ministers-collage-social.jpg',
   '/images/2026/devlog-1-collage.avif': '/social/images/2026/devlog-1-collage-social.jpg',
   '/images/2026/dispatch-review/dispatch-logo-screen.avif':
     '/social/images/2026/dispatch-review/dispatch-logo-screen-social.jpg',
@@ -186,6 +190,8 @@ export const SOCIAL_IMAGE_MANIFEST: Record<string, string> = {
     '/social/images/2026/dispatch-review/dispatch-pc-game-dispatch-social.jpg',
   '/images/2026/easy-breakfast-guacamole-toast.avif':
     '/social/images/2026/easy-breakfast-guacamole-toast-social.jpg',
+  '/images/2026/education-ministers-collage.avif':
+    '/social/images/2026/education-ministers-collage-social.jpg',
   '/images/2026/empathy-and-compassion.avif':
     '/social/images/2026/empathy-and-compassion-social.jpg',
   '/images/2026/empathy-sword-edges.png': '/social/images/2026/empathy-sword-edges-social.jpg',
@@ -204,6 +210,8 @@ export const SOCIAL_IMAGE_MANIFEST: Record<string, string> = {
   '/images/2026/glimmer-chaos.avif': '/social/images/2026/glimmer-chaos-social.jpg',
   '/images/2026/god.avif': '/social/images/2026/god-social.jpg',
   '/images/2026/habichuelas-guisadas.avif': '/social/images/2026/habichuelas-guisadas-social.jpg',
+  '/images/2026/health-ministers-collage.avif':
+    '/social/images/2026/health-ministers-collage-social.jpg',
   '/images/2026/hung-cao-alpha-males-cnn.avif':
     '/social/images/2026/hung-cao-alpha-males-cnn-social.jpg',
   '/images/2026/if-i-separate-the-art-from-the-artist.avif':
@@ -223,7 +231,11 @@ export const SOCIAL_IMAGE_MANIFEST: Record<string, string> = {
   '/images/2026/mias-cinnamon-pancakes.avif':
     '/social/images/2026/mias-cinnamon-pancakes-social.jpg',
   '/images/2026/mias-vegan-cupcakes.avif': '/social/images/2026/mias-vegan-cupcakes-social.jpg',
+  '/images/2026/military-chiefs-collage.avif':
+    '/social/images/2026/military-chiefs-collage-social.jpg',
   '/images/2026/neverending-walk.avif': '/social/images/2026/neverending-walk-social.jpg',
+  '/images/2026/nobel-peace-laureates-collage.avif':
+    '/social/images/2026/nobel-peace-laureates-collage-social.jpg',
   '/images/2026/notes-on-respect.avif': '/social/images/2026/notes-on-respect-social.jpg',
   '/images/2026/oh-fuck.avif': '/social/images/2026/oh-fuck-social.jpg',
   '/images/2026/on-leadership-plus.avif': '/social/images/2026/on-leadership-plus-social.jpg',
