@@ -44,7 +44,7 @@ The tokens are going to be bought and used anyway, so I'll buy some and make kic
 
 ## Uplift: live in three days
 
-Uplift started on October 11 with one sentence, more or less exactly: "i've always loved SimTower, let's build a worth web-based successor for it, let's create the project plan, let's define everything before building anything, help me out."
+<a href="https://uplifttowergame.com" target="_blank" rel="noopener">Uplift</a> started on October 11 with one sentence, more or less exactly: "i've always loved SimTower, let's build a worth web-based successor for it, let's create the project plan, let's define everything before building anything, help me out."
 
 Define everything before building anything. That was the whole method, and it still is. Before any code there were questions, a lot of them, and every answer I gave got written down with my words and the date. When the code and my words disagree, my words win, and the code gets fixed.
 

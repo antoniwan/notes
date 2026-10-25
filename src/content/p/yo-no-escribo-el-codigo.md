@@ -44,7 +44,7 @@ Los tokens del AI se van a comprar y a usar de todas formas, así que voy a comp
 
 ## Uplift: Live en tres días
 
-Uplift empezó el 11 de octubre con una sola oración, casi exacta: "i've always loved SimTower, let's build a worth web-based successor for it, let's create the project plan, let's define everything before building anything, help me out."
+<a href="https://uplifttowergame.com" target="_blank" rel="noopener">Uplift</a> empezó el 11 de octubre con una sola oración, casi exacta: "i've always loved SimTower, let's build a worth web-based successor for it, let's create the project plan, let's define everything before building anything, help me out."
 
 Definir todo antes de construir nada. Ese fue todo el método, y todavía lo es. Antes de cualquier código hubo preguntas, muchísimas, y cada respuesta que di se escribió con mis palabras y la fecha. Cuando el código y mis palabras no están de acuerdo, ganan mis palabras, y el código se arregla.
 
