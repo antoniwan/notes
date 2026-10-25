@@ -210,6 +210,8 @@ export const SOCIAL_IMAGE_MANIFEST: Record<string, string> = {
   '/images/2026/glimmer-chaos.avif': '/social/images/2026/glimmer-chaos-social.jpg',
   '/images/2026/god.avif': '/social/images/2026/god-social.jpg',
   '/images/2026/habichuelas-guisadas.avif': '/social/images/2026/habichuelas-guisadas-social.jpg',
+  '/images/2026/health-ministers-collage.avif':
+    '/social/images/2026/health-ministers-collage-social.jpg',
   '/images/2026/hung-cao-alpha-males-cnn.avif':
     '/social/images/2026/hung-cao-alpha-males-cnn-social.jpg',
   '/images/2026/if-i-separate-the-art-from-the-artist.avif':
