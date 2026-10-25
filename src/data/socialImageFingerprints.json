@@ -549,6 +549,10 @@
       "sha256": "55925c6c77b46b4bdb77c50a0491c574b3b64975b6818047fe0d2f1395f003df",
       "social": "/social/images/2026/neverending-walk-social.jpg"
     },
+    "/images/2026/nobel-peace-laureates-collage.avif": {
+      "sha256": "fad2f8851f66e11131ea6ae53218bcafd80cfcf9f539991d2844bf26d843ec22",
+      "social": "/social/images/2026/nobel-peace-laureates-collage-social.jpg"
+    },
     "/images/2026/notes-on-respect.avif": {
       "sha256": "f177b98e4db94b5204e2d7b479d240a74416c4e4bf0847e090d86e2139bf7045",
       "social": "/social/images/2026/notes-on-respect-social.jpg"
