@@ -27,6 +27,8 @@ export const SOCIAL_IMAGE_MANIFEST: Record<string, string> = {
   '/images/2026/alphas.avif': '/social/images/2026/alphas-social.jpg',
   '/images/2026/arepas-de-calabaza.avif': '/social/images/2026/arepas-de-calabaza-social.jpg',
   '/images/2026/arithmetic.avif': '/social/images/2026/arithmetic-social.jpg',
+  '/images/2026/arms-company-ceos-collage.avif':
+    '/social/images/2026/arms-company-ceos-collage-social.jpg',
   '/images/2026/arroz-con-gandules.avif': '/social/images/2026/arroz-con-gandules-social.jpg',
   '/images/2026/arroz-con-pollo.avif': '/social/images/2026/arroz-con-pollo-social.jpg',
   '/images/2026/asopao-de-pollo.avif': '/social/images/2026/asopao-de-pollo-social.jpg',
