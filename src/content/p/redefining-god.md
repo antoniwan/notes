@@ -4,10 +4,10 @@ description: God is Dead. God is Love.
 pubDate: 2026-09-23T18:30:00-04:00
 language:
   - en
-heroImage: /images/2026/redefining-god/scary-broom.avif
+heroImage: /images/2026/redefining-god/broom.avif
 imageAlt: >-
-  A rustic broom bound with red cord lies across glowing coals and charred
-  wood, with a fire blurred behind it
+  A cartoon toy broom lies on a living room floor between orange cones and
+  tape, with a little girl and a baby on the couch behind it
 category:
   - culture
   - politics
