@@ -1,7 +1,6 @@
 import { readFileSync, readdirSync } from 'node:fs';
-import { runInNewContext } from 'node:vm';
 import { describe, expect, it } from 'vitest';
-import { COOKBOOK_URL, cookbookRecipes, buildCookbookRedirects } from '../data/cookbook';
+import { COOKBOOK_URL, cookbookRecipes } from '../data/cookbook';
 import { buildSeoRedirects } from './seoRouting';
 import { mainNavigation } from '../data/navigation';
 
@@ -55,44 +54,5 @@ describe('Cookbook cutover', () => {
     expect(
       mainNavigation.some((item) => item.label === 'Collections' || item.label === 'Cookbook'),
     ).toBe(false);
-  });
-
-  it('redirects migrated recipe requests before consulting offline caches', () => {
-    const handlers = new Map<string, (event: unknown) => void>();
-    runInNewContext(readFileSync('public/sw.js', 'utf8'), {
-      self: {
-        location: new URL('https://notes.antoniwan.online/sw.js?v=6.35.0'),
-        addEventListener: (name: string, handler: (event: unknown) => void) =>
-          handlers.set(name, handler),
-      },
-      URL,
-      Response,
-      Set,
-      console,
-      caches: new Proxy(
-        {},
-        {
-          get() {
-            throw new Error('Migrated recipes must not consult the Notes cache');
-          },
-        },
-      ),
-    });
-    for (const [source, destination] of Object.entries(buildCookbookRedirects())) {
-      for (const suffix of ['', '/']) {
-        let response: Response | undefined;
-        handlers.get('fetch')!({
-          request: {
-            method: 'GET',
-            url: `https://notes.antoniwan.online${source}${suffix}?from=bookmark`,
-          },
-          respondWith: (value: Response) => {
-            response = value;
-          },
-        });
-        expect(response?.status).toBe(301);
-        expect(response?.headers.get('location')).toBe(destination + '?from=bookmark');
-      }
-    }
   });
 });

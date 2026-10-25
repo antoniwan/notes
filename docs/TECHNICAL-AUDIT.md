@@ -81,7 +81,7 @@ Updated October 20, 2026 (v7.3.0). The rest of this audit describes the site as 
 | Reading     | `/`, `/p/[...slug]`, `/archive`, `/browse`                                                    | Browse searches every word through `/browse-words.json`        |
 | Taxonomy    | `/category/[category]`, `/tag/[tag]`                                                          | Thin tag pages stay out of the sitemap by design               |
 | Syndication | `/rss.xml`, `/feed.json`, `/latest.json`, `/llms.txt`, `/p/[...slug].md`, `@astrojs/sitemap`  | Feed eligibility ≠ listing eligibility                         |
-| Search      | `/search-index.json`, `/browse-words.json`                                                    | Fetched on first search; the service worker caches both        |
+| Search      | `/search-index.json`, `/browse-words.json`                                                    | Fetched on first search                                        |
 | API         | `/api/quotes`                                                                                 | SSR JSON quotes endpoint                                       |
 | System      | `/404`, `/sitemap.xml` → 301 to sitemap-index                                                 |                                                                |
 | Retired     | `/everything`, `/tag`, `/category`, `/guided-path`, `/tag-management`, `/search`              | 301 to Archive or Browse                                       |
@@ -93,16 +93,16 @@ Redirects live in two places: Astro `buildSeoRedirects()` (`src/utils/seoRouting
 
 ## 5. Integration inventory
 
-| Integration         | Where                                                         | Env                                               | Failure mode                           | Docs                               |
-| ------------------- | ------------------------------------------------------------- | ------------------------------------------------- | -------------------------------------- | ---------------------------------- |
-| Vercel Analytics    | `BaseLayout`                                                  | Project toggle                                    | Silent no-op if disabled               | README                             |
-| Speed Insights      | `BaseLayout` `<head>`                                         | Project toggle                                    | Silent no-op                           | README                             |
-| Remark42            | `Comments.astro`, `config/comments.ts`, `vercel.json` rewrite | `PUBLIC_REMARK42_HOST`, `PUBLIC_REMARK42_SITE_ID` | Wrong siteId → empty/wrong thread      | `docs/comments-setup.md`           |
-| Letterboxd          | `about.astro` + `utils/letterboxd.ts` (build fetch)           | `LETTERBOXD_RSS_URL`, `LETTERBOXD_PROFILE_URL`    | Empty block                            | README / `.env.example`            |
-| Threads             | `ThreadsEmbed.astro`                                          | None                                              | Soft-fail to link                      | Code only                          |
-| Service worker      | `public/sw.js` + registration (`?v=` package version)         | None                                              | Stale caches until version bump        | `docs/performance-optimization.md` |
-| Social images       | `scripts/generate-social-images.js`                           | None                                              | Missing JPG/PNG → AVIF in OG (fragile) | README                             |
-| Brain Science cache | `src/data/.brain-science-cache/`                              | None                                              | Cache miss → full NLP at build         | This audit                         |
+| Integration         | Where                                                         | Env                                               | Failure mode                           | Docs                     |
+| ------------------- | ------------------------------------------------------------- | ------------------------------------------------- | -------------------------------------- | ------------------------ |
+| Vercel Analytics    | `BaseLayout`                                                  | Project toggle                                    | Silent no-op if disabled               | README                   |
+| Speed Insights      | `BaseLayout` `<head>`                                         | Project toggle                                    | Silent no-op                           | README                   |
+| Remark42            | `Comments.astro`, `config/comments.ts`, `vercel.json` rewrite | `PUBLIC_REMARK42_HOST`, `PUBLIC_REMARK42_SITE_ID` | Wrong siteId → empty/wrong thread      | `docs/comments-setup.md` |
+| Letterboxd          | `about.astro` + `utils/letterboxd.ts` (build fetch)           | `LETTERBOXD_RSS_URL`, `LETTERBOXD_PROFILE_URL`    | Empty block                            | README / `.env.example`  |
+| Threads             | `ThreadsEmbed.astro`                                          | None                                              | Soft-fail to link                      | Code only                |
+| Service worker      | Retired (7.8.0); `public/sw.js` only unregisters old installs | None                                              | None                                   | README                   |
+| Social images       | `scripts/generate-social-images.js`                           | None                                              | Missing JPG/PNG → AVIF in OG (fragile) | README                   |
+| Brain Science cache | `src/data/.brain-science-cache/`                              | None                                              | Cache miss → full NLP at build         | This audit               |
 
 ---
 

@@ -9,6 +9,20 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [7.8.0] — 2026-10-25
+
+The service worker is retired. Antonio had to hard-refresh Notes in Edge to see current content: "i suspect service workers are doing too much".
+
+### Removed
+
+- The caching service worker, its registration, the "New version available" toast, and `/offline.html`. Pages, CSS, JS, images and the search indexes now come straight from Vercel under its normal cache headers. Offline reading of already-opened pages goes with it.
+
+### Changed
+
+- `public/sw.js` is now a worker that removes itself. Browsers that installed the old one pick it up on their next update check, it deletes the old `notes-` caches (nothing else on the origin) and unregisters. It has no fetch handler, so requests go to the network from the moment it installs.
+- `/sw.js` is served `Cache-Control: no-cache`.
+- The browser suite checks that pages register no worker and that a returning reader's old registration and caches are cleaned up. The worker's copy of the Cookbook and Collections redirects is gone with it; `vercel.json` already handles them.
+
 ## [7.7.0] — 2026-10-25
 
 ### Added

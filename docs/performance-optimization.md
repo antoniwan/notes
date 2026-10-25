@@ -87,20 +87,9 @@ article hero, which was the one eager oversized image on the critical path.
 - **Below-the-fold**: Lazy loading with intersection observer
 - **Responsive images**: Multiple sizes for different viewports
 
-### 4. Service Worker Implementation
+### 4. Service Worker
 
-#### Caching Strategy
-
-- **Static assets**: Cache-first strategy
-- **Pages**: Network-first with cache fallback
-- **API requests**: Network-first with cache fallback
-- **Offline support**: Graceful degradation with offline page
-
-#### Cache Management
-
-- Versioned cache names for easy updates
-- Automatic cache cleanup for old versions
-- Background sync for offline actions
+Retired in 7.8.0. See "No service worker" in the README.
 
 ### 5. Performance Monitoring
 
@@ -112,7 +101,6 @@ article hero, which was the one eager oversized image on the critical path.
 
 #### Performance Marks
 
-- Service worker registration timing
 - Critical rendering path measurement
 - User interaction timing
 
@@ -175,12 +163,6 @@ not provide, and `performance` ran the full build twice.
 - Real-time Core Web Vitals display
 - Color-coded performance status
 
-#### Service Worker Status
-
-- Bottom-left indicator in development
-- Real-time service worker state
-- Update notification system
-
 ## Best Practices Implementation
 
 ### 1. Astro Blog Best Practices
@@ -189,7 +171,6 @@ not provide, and `performance` ran the full build twice.
 - **Image Optimization**: Sharp integration with AVIF/WebP support
 - **CSS Strategy**: Critical CSS inlining with async loading
 - **Font Strategy**: System font fallbacks with custom font loading
-- **Service Worker**: Progressive enhancement with offline support
 
 ### 2. Performance-First Approach
 
@@ -201,8 +182,6 @@ not provide, and `performance` ran the full build twice.
 ### 3. User Experience Optimization
 
 - **Loading States**: Smooth transitions and animations
-- **Offline Support**: Graceful degradation with helpful messaging
-- **Update Notifications**: Seamless service worker updates
 - **Accessibility**: Screen reader support and keyboard navigation
 
 ## Monitoring and Maintenance
@@ -233,7 +212,6 @@ not provide, and `performance` ran the full build twice.
 
 #### Quarterly Optimization Updates
 
-- Update service worker caching strategies
 - Optimize image formats and sizes
 - Review and update critical CSS
 - Analyze font loading performance
@@ -272,27 +250,18 @@ not provide, and `performance` ran the full build twice.
 - Monitor image loading priority
 - Test lazy loading implementation
 
-#### Service Worker Issues
-
-- Check service worker registration
-- Verify cache strategies
-- Monitor offline functionality
-- Test update mechanisms
-
 ### Debug Tools
 
 #### Browser DevTools
 
 - Performance tab for Core Web Vitals
 - Network tab for resource loading
-- Application tab for service worker
 - Console for performance marks
 
 #### Performance Monitoring
 
 - Real-time metrics in development
 - Performance debug panel
-- Service worker status indicator
 - Console logging for debugging
 
 ## Future Optimizations
@@ -339,6 +308,6 @@ See `docs/TECHNICAL-AUDIT.md` for the full system map.
 
 ## Conclusion
 
-This performance optimization implementation provides a solid foundation for excellent Core Web Vitals scores while maintaining the high-quality user experience expected from a modern blog. The combination of critical CSS inlining, font optimization, image optimization, and service worker implementation follows Astro best practices and industry standards for performance.
+This performance optimization implementation provides a solid foundation for excellent Core Web Vitals scores while maintaining the high-quality user experience expected from a modern blog. The combination of critical CSS inlining, font optimization, and image optimization follows Astro best practices and industry standards for performance.
 
 Regular monitoring and continuous improvement will ensure the blog maintains optimal performance as content and features evolve.
