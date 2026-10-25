@@ -100,7 +100,7 @@ Redirects live in two places: Astro `buildSeoRedirects()` (`src/utils/seoRouting
 | Remark42            | `Comments.astro`, `config/comments.ts`, `vercel.json` rewrite | `PUBLIC_REMARK42_HOST`, `PUBLIC_REMARK42_SITE_ID` | Wrong siteId → empty/wrong thread      | `docs/comments-setup.md` |
 | Letterboxd          | `about.astro` + `utils/letterboxd.ts` (build fetch)           | `LETTERBOXD_RSS_URL`, `LETTERBOXD_PROFILE_URL`    | Empty block                            | README / `.env.example`  |
 | Threads             | `ThreadsEmbed.astro`                                          | None                                              | Soft-fail to link                      | Code only                |
-| Service worker      | Retired (7.7.0); `public/sw.js` only unregisters old installs | None                                              | None                                   | README                   |
+| Service worker      | Retired (7.8.0); `public/sw.js` only unregisters old installs | None                                              | None                                   | README                   |
 | Social images       | `scripts/generate-social-images.js`                           | None                                              | Missing JPG/PNG → AVIF in OG (fragile) | README                   |
 | Brain Science cache | `src/data/.brain-science-cache/`                              | None                                              | Cache miss → full NLP at build         | This audit               |
 

@@ -89,7 +89,7 @@ article hero, which was the one eager oversized image on the critical path.
 
 ### 4. Service Worker
 
-Retired in 7.7.0. See "No service worker" in the README.
+Retired in 7.8.0. See "No service worker" in the README.
 
 ### 5. Performance Monitoring
 
