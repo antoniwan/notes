@@ -35,12 +35,12 @@ Los tokens del AI se van a comprar y a usar de todas formas, así que voy a comp
 
 ## Los dos juegos
 
-|                     | Uplift                                                                                  | Milak                                                                                       |
-| ------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| Qué es              | Un juego de construir torres, mi versión de SimTower                                    | Un RPG de acción en 3D: Milak Summir, un espadachín a sueldo                                |
+|                     | Uplift                                                                               | Milak                                                                                       |
+| ------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------- |
+| Qué es              | Un juego de construir torres, mi versión de SimTower                                 | Un RPG de acción en 3D: Milak Summir, un espadachín a sueldo                                |
 | Cómo va             | Temprano y jugable: un vertical slice (una tajada completa del juego), live y gratis | Un tramo de combate jugable: cuerpos desde el 20 de octubre, pantalla de título desde el 22 |
-| Decisiones escritas | Más de 170                                                                              | Más de 200                                                                                  |
-| Jugarlo             | [uplifttowergame.com](https://uplifttowergame.com)                                      | Todavía no. Apóyalo en [Patreon](https://www.patreon.com/antoniwan)                         |
+| Decisiones escritas | Más de 170                                                                           | Más de 200                                                                                  |
+| Jugarlo             | [uplifttowergame.com](https://uplifttowergame.com)                                   | Todavía no. Apóyalo en [Patreon](https://www.patreon.com/antoniwan)                         |
 
 ## Uplift: Live en tres días
 
