@@ -42,7 +42,7 @@ export const authorRef = {
   sameAs: AUTHOR.sameAs,
 };
 
-/** A category's display name ("On Systems & Strategy"), not its id ("systems-strategy"). */
+/** A category's display name ("On software and systems"), not its id ("systems-strategy"). */
 function categoryName(id: string): string {
   return categories.find((category) => category.id === id)?.name ?? id;
 }

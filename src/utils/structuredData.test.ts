@@ -15,8 +15,8 @@ describe('generateStructuredData articleSection', () => {
     const article = (Array.isArray(schemas) ? schemas : [schemas]).find(
       (s) => s['@type'] === 'BlogPosting',
     );
-    expect(article?.articleSection).toBe('Psychology, Roughly');
-    expect(article?.about).toEqual([{ '@type': 'Thing', name: 'Psychology, Roughly' }]);
+    expect(article?.articleSection).toBe('Psychology, roughly');
+    expect(article?.about).toEqual([{ '@type': 'Thing', name: 'Psychology, roughly' }]);
   });
 
   it('leaves articleSection out when there is no category', () => {

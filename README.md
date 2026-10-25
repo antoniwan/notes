@@ -38,7 +38,7 @@ English is the listing language. Spanish is a twin: language toggle, title searc
 
 ## How it is built
 
-- **10 categories** (for example On Parenting; Psychology, Roughly; On Politics; Metaspace; DIY & Creation) — essays only. Household recipes live on Cookbook. See `src/data/categories.ts`
+- **10 categories** (for example On parenting; Psychology, roughly; On politics; Notes on the notes; Do it yourself / DIY) — essays only. Household recipes live on Cookbook. See `src/data/categories.ts`
 - **Tags** — idea map for readers (essays only). Tags describe content, not the site name
 - **Dark and light theme**, including system preference
 - **Responsive layout** for small and large screens

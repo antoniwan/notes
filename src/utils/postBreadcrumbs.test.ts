@@ -10,13 +10,13 @@ describe('post breadcrumbs', () => {
     const items = buildPostBreadcrumbItems({
       title: 'Good Sheep',
       isSpanish: false,
-      primaryCategory: { id: 'psychology', name: 'Psychology, Roughly' },
+      primaryCategory: { id: 'psychology', name: 'Psychology, roughly' },
     });
     const schema = generateBreadcrumbSchema(breadcrumbItemsForSchema(items, currentUrl));
 
     expect(items).toEqual([
       { label: 'Home', href: '/' },
-      { label: 'Psychology, Roughly', href: '/category/psychology' },
+      { label: 'Psychology, roughly', href: '/category/psychology' },
       { label: 'Good Sheep' },
     ]);
     expect(schema?.itemListElement.map((item: { name: string }) => item.name)).toEqual(
@@ -32,11 +32,11 @@ describe('post breadcrumbs', () => {
     const items = buildPostBreadcrumbItems({
       title: 'Ovejas buenas',
       isSpanish: true,
-      primaryCategory: { id: 'psychology', name: 'Psychology, Roughly' },
+      primaryCategory: { id: 'psychology', name: 'Psychology, roughly' },
     });
     expect(items.map((item) => item.label)).toEqual([
       'Inicio',
-      'Psychology, Roughly',
+      'Psychology, roughly',
       'Ovejas buenas',
     ]);
   });

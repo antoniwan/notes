@@ -21,20 +21,22 @@ export const PAGE_META = {
 
 /** Factual meta descriptions for category listing pages, keyed by category id. */
 export const CATEGORY_META: Record<string, string> = {
-  'art-expression': 'Notes on art, aesthetics, and creative work. Category: Art & Expression.',
-  culture: 'Notes on social norms, collective behavior, and culture. Category: On Culture.',
-  'diy-creation': 'Notes on physical builds, handmade work, and making. Category: DIY & Creation.',
+  'art-expression': 'Poems, art, and other things I tried to make. Category: Arts and attempts.',
+  culture: 'Notes on how we live together and what we take for granted. Category: What is culture?',
+  'diy-creation':
+    'Notes on things built, cooked, or set up by hand. Category: Do it yourself / DIY.',
   'integration-growth':
-    'Notes on personal growth, integration, and leadership. Category: Integration & Growth.',
+    'Notes on values, inner work, and growing up, still. Category: Working on myself.',
   'learning-projects':
-    'Notes documenting skills and projects in progress. Category: Learning Projects.',
-  metaspace: 'Notes about this site, the writing process, and method. Category: Metaspace.',
-  parenting: 'Notes on parenting, family dynamics, and raising children. Category: On Parenting.',
-  politics: 'Notes on power, social structures, and political life. Category: On Politics.',
+    'Notes on skills still being learned, written as I go. Category: Learning in public.',
+  metaspace:
+    'Notes about this site, the writing process, and method. Category: Notes on the notes.',
+  parenting: 'Notes on parenting, family dynamics, and raising children. Category: On parenting.',
+  politics: 'Notes on power, social structures, and political life. Category: On politics.',
   psychology:
-    'Notes on human behavior, social dynamics, and mental processes. Category: Psychology, Roughly.',
+    'Notes on human behavior, social dynamics, and mental processes. Category: Psychology, roughly.',
   'systems-strategy':
-    'Notes on software, systems, and strategic design. Category: On Systems & Strategy.',
+    'Notes on software, tools, and how they fit together. Category: On software and systems.',
 };
 
 /** Unique meta description for a category listing page. */
