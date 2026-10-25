@@ -181,6 +181,8 @@ export const SOCIAL_IMAGE_MANIFEST: Record<string, string> = {
   '/images/2026/crimson-desert-review/Crimson Desert_20260429081024.avif':
     '/social/images/2026/crimson-desert-review/Crimson Desert_20260429081024-social.jpg',
   '/images/2026/cupey-papi.avif': '/social/images/2026/cupey-papi-social.jpg',
+  '/images/2026/defence-ministers-collage.avif':
+    '/social/images/2026/defence-ministers-collage-social.jpg',
   '/images/2026/devlog-1-collage.avif': '/social/images/2026/devlog-1-collage-social.jpg',
   '/images/2026/dispatch-review/dispatch-logo-screen.avif':
     '/social/images/2026/dispatch-review/dispatch-logo-screen-social.jpg',
