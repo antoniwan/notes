@@ -59,6 +59,8 @@ Después un amigo lo jugó y me dijo que el primer minuto confundía: demasiados
 
 Quiero más notas como esa, de más gente. Es la razón por la que escribo devlogs.
 
+Uplift es gratis, y corre en tu navegador: <a href="https://uplifttowergame.com" target="_blank" rel="noopener">juega Uplift</a>.
+
 ## Lifesworn: el juego que llevo soñando
 
 El experimento de la torre me dio el empujón, la confianza para seguir mis sueños, básicamente. Y que mis hijos disfruten mis demos es una sensación que no puedo explicar.
@@ -134,34 +136,34 @@ Según mis propios estándares morales y éticos, Anthropic es una compañía qu
 
 ## Los sombreros que me pongo
 
-Hacer dos juegos sin un estudio, desde el 11 de octubre hasta hoy, es ponerse casi todos los sombreros.
+Hacer dos juegos sin un estudio es probarse un montón de sombreros. Algunos me quedan mejor que otros.
 
-| Rol                                   | Quién                                    | Cómo se ve                                                                                                                                                               |
-| ------------------------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Director creativo                     | Yo                                       | La visión de los dos juegos y la última palabra en cada decisión: más de 170 decisiones escritas en Uplift, más de 200 en Lifesworn                                      |
-| Diseñador de juego                    | Yo                                       | La cadena del tornado de la espada, la stamina (resistencia), el árbol de talentos de Lifesworn, las estrellas y las cuadrillas de construcción de Uplift                |
-| Director de arte                      | Yo                                       | El look "hand-painted, yet graphic" (pintado a mano, pero gráfico) de League para Lifesworn, cada pixel ganándose su lugar, qué modelos y qué fonts (tipografías) entran |
-| Constructor de mundo                  | Yo                                       | La torre de Uplift vive en un mundo que llevo años escribiendo para una novela                                                                                           |
-| Ingeniero                             | Claude                                   | Cada línea de código: más de 300 commits en Uplift, casi 400 en Lifesworn                                                                                                |
-| Revisor del código                    | Yo                                       | Entiendo el codebase, completito                                                                                                                                         |
-| Productor                             | Yo, con los planes de Claude             | Qué se construye ahora y qué espera, como las figuras simples hasta que la pelea fue divertida                                                                           |
-| QA (control de calidad) y playtesting | Mis amigos, los tests de Claude y yo     | Mis amigos me mandan notas; yo juego los dos; Uplift tiene 311 tests que cada cambio tiene que pasar, y aguanta 60 fps con 15,000 personas                               |
-| Artista 3D                            | Quaternius, y quizás tú                  | Los cuerpos, la ropa, los animales y el patio de Lifesworn: modelos gratis hechos por una persona                                                                        |
-| Sonido                                | Kenney por ahora, yo después             | Los sonidos temporeros de Lifesworn son de Kenney; el sonido de Uplift espera por los míos                                                                               |
-| Investigador                          | Claude                                   | La biblioteca de assets (recursos) para Lifesworn, y los números del mercado con los que planifico                                                                       |
-| Escritor y traductor                  | Claude hace el borrador, yo lo reescribo | Este devlog, en inglés y en español                                                                                                                                      |
-| Mercadeo                              | Yo                                       | El soft launch (lanzamiento suave), este devlog, el canal Antonio Builds Games, la página de Patreon                                                                     |
-| Comunidad                             | Yo                                       | Los enlaces para probar, un formulario anónimo que me guarda cada respuesta, y los comentarios aquí abajo                                                                |
+| Rol                                   | Quién                                    | Cómo se ve                                                                                                                                                                 |
+| ------------------------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Director creativo                     | Yo                                       | Decidir qué es cada juego, y escribirlo: más de 170 decisiones en Uplift, más de 200 en Lifesworn                                                                          |
+| Diseñador de juego                    | Yo                                       | La cadena del tornado de la espada, la stamina (resistencia), el árbol de talentos de Lifesworn, las estrellas y las cuadrillas de construcción de Uplift                  |
+| Director de arte                      | Yo, aprendiendo                          | Persiguiendo el look "hand-painted, yet graphic" (pintado a mano, pero gráfico) de League para Lifesworn, y escogiendo qué modelos gratis y qué fonts (tipografías) entran |
+| Constructor de mundo                  | Yo                                       | La torre de Uplift vive en un mundo que llevo años escribiendo para una novela                                                                                             |
+| Ingeniero                             | Claude                                   | Cada línea de código: más de 300 commits en Uplift, casi 400 en Lifesworn                                                                                                  |
+| Revisor del código                    | Yo                                       | Leo lo que Claude construye hasta entenderlo, y todavía estoy aprendiendo la parte del engine                                                                              |
+| Productor                             | Yo, con los planes de Claude             | Qué se construye ahora y qué espera, como las figuras simples hasta que la pelea fue divertida                                                                             |
+| QA (control de calidad) y playtesting | Mis amigos, los tests de Claude y yo     | Mis amigos me mandan notas; yo juego los dos; Uplift tiene 311 tests que cada cambio tiene que pasar, y aguanta 60 fps con 15,000 personas                                 |
+| Artista 3D                            | Quaternius, y quizás tú                  | Los cuerpos, la ropa, los animales y el patio de Lifesworn: modelos gratis hechos por una persona                                                                          |
+| Sonido                                | Kenney por ahora, yo después             | Los sonidos temporeros de Lifesworn son de Kenney; el sonido de Uplift espera por los míos                                                                                 |
+| Investigador                          | Claude                                   | La biblioteca de assets (recursos) para Lifesworn, y los números del mercado con los que planifico                                                                         |
+| Escritor y traductor                  | Claude hace el borrador, yo lo reescribo | Este devlog, en inglés y en español                                                                                                                                        |
+| Mercadeo                              | Yo                                       | El soft launch (lanzamiento suave), este devlog, el canal Antonio Builds Games, la página de Patreon                                                                       |
+| Comunidad                             | Yo                                       | Los enlaces para probar, un formulario anónimo que me guarda cada respuesta, y los comentarios aquí abajo                                                                  |
 
-Claude se pone el sombrero de ingeniero y ayuda con la investigación, los tests y los primeros borradores. Los demás son míos, o de la gente cuyos modelos y sonidos gratis están en Lifesworn.
+Claude se pone el sombrero de ingeniero y ayuda con la investigación, los tests y los primeros borradores. Los demás me los pongo yo, algunos bastante mal, y los modelos y sonidos de Lifesworn son de la gente que los hizo y los regaló.
 
 Si dibujas, modelas, animas o haces sonidos, y construir estos juegos conmigo te suena divertido, salúdame aquí abajo. En el peor de los casos, hacemos algo chévere juntos. En el mejor, así es como empieza un estudio de juegos chiquito, jajaja. Sin presión, te lo prometo. Ya me pongo suficientes sombreros para saber lo mucho que pesan.
 
 ## La gente que hizo esto posible
 
-Nada de esto funciona sin gente que nunca he conocido. Lifesworn corre en [Godot](https://godotengine.org), un motor de juegos libre y de código abierto que construyen miles de voluntarios y colaboradores, y que mantiene viva una comunidad que contesta preguntas, escribe la documentación, graba tutoriales y comparte lo que hace gratis. Y la verdad, Godot es un lugar maravilloso para empezar. Es gratis, es liviano, abre en segundos, nadie te pide un pedazo de nada, y la documentación se lee como si la hubieran escrito para alguien exactamente como yo. Mucho de lo que estoy aprendiendo sobre hacer juegos lo estoy aprendiendo de ellos. Uplift corre en la web, sobre librerías de código abierto que otra gente escribió y regaló también. [Quaternius](https://quaternius.com) y [Kenney](https://kenney.nl) regalaron los modelos y los sonidos que hacen que Lifesworn se vea y suene como un juego.
+Nada de esto funciona sin el código abierto, y sin la gente que regala su trabajo. Lifesworn corre en [Godot](https://godotengine.org), un motor de juegos libre y de código abierto que construyen miles de voluntarios y colaboradores. La verdad, es un lugar maravilloso para empezar: es gratis, es liviano, abre en segundos, nadie te pide un pedazo de nada, y la documentación se lee como si la hubieran escrito para alguien exactamente como yo. Uplift corre en el navegador, sobre librerías web de código abierto que otra gente escribió y regaló. [Quaternius](https://quaternius.com) y [Kenney](https://kenney.nl) publican sus modelos y sonidos bajo CC0, gratis para que cualquiera los use, y son lo que hace que Lifesworn se vea y suene como un juego. Y alrededor de todo eso hay una comunidad que contesta preguntas, escribe documentación, graba tutoriales y comparte lo que hace.
 
-Así que cuando digo que yo no escribo el código, hay una comunidad entera debajo de esa oración. Gracias, a todos. Si eres parte de la comunidad de Godot y estás leyendo esto: soy un principiante en su casa, y estoy agradecido de estar aquí.
+Así que cuando digo que yo no escribo el código, hay todo un bien común debajo de esa oración, y la máquina que escribe mi código también aprendió de él. Gracias, a todos. Soy un principiante en su casa, y estoy agradecido de estar aquí.
 
 ## Lo difícil
 
@@ -171,7 +173,9 @@ Desde entonces he estado trabajando como diez horas al día, todos los días, si
 
 Y el camino por delante es largo. Lifesworn ya tiene un roadmap (hoja de ruta), y llega hasta octubre de 2027: terminar lo que está a medio hacer para finales de noviembre, una primera región que se pueda jugar por cinco horas para enero, jugadores de afuera probándola sin mi ayuda, el arte fijo y el contenido congelado en la primavera, dos regiones más y un final para el verano, y después bugs, balance, un beta cerrado y las tiendas. Tres regiones, quizás de quince a veinte horas de juego, hechas por una persona, una máquina, y quien se quiera unir.
 
-Me pregunto si esto es sostenible. Todavía no lo sé. Tengo una familia, un trabajo y un solo cuerpo, y diez horas al día por un año es mucho pedirle a los tres. Soy nuevo haciendo juegos. Tengo gusto y muchos años haciendo software, pero estoy aprendiendo el oficio de los juegos en público, aquí, así que también me voy a equivocar en público. Y si el ritmo tiene que cambiar, se los digo aquí.
+Me pregunto si esto es sostenible, y hablo de todo: mi cuerpo, mi tiempo con mi familia y mi bolsillo. Todavía no lo sé. Diez horas al día por un año es mucho pedirle a los tres. Soy nuevo haciendo juegos. Tengo gusto y muchos años haciendo software, pero estoy aprendiendo el oficio de los juegos en público, aquí, así que también me voy a equivocar en público.
+
+Y la verdad, el ritmo ya está cambiando. Por ahora, el negocio de jabones va primero, porque Lifesworn es un goteo más lento y mucho más esfuerzo. Eso no es rendirme. Quizás un goteo más lento solo quiere decir calidad sobre cantidad. Lifesworn va a crecer a la velocidad que mi vida le permita, y les voy a seguir contando cómo va, aquí.
 
 ## Lo que viene
 
