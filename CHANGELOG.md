@@ -9,6 +9,12 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [7.7.0] — 2026-10-25
+
+### Added
+
+- The diamond in the logo reacts to the mouse. It gets shoved the way the cursor came in, spins with how off-center and how fast it was hit, fidgets while you wiggle over it, gets tugged on the way out, then wobbles back to rest. A damped spring in `src/utils/logoJiggle.client.ts`, about 1 KB, that runs a frame loop only while the mark is moving. Mouse and pen only, nothing under `prefers-reduced-motion`, and the link, its label and focus ring are untouched.
+
 ## [7.6.0] — 2026-10-25
 
 Work from the October 25 roadmap that needed no decision from Antonio. Antonio: "from the roadmap, work on everything you can work autonomously". No post text changed; six posts gained a `series` line.
