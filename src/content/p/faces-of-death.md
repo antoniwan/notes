@@ -18,14 +18,16 @@ tags:
   - spirituality
   - fatherhood
   - self-reflection
-draft: false
-published: true
+draft: true
+published: false
 showComments: true
 ---
 
 Sometimes you see a face, in a photo or across a room, and the question arrives on its own: what the fuck happened to this person? Not old. Not dying. Worn in a very specific way, like they spent decades living inside the blast radius of something and the body never got the memo that it ended.
 
-I people-watch. Always have. And lately I've been collecting these faces, turning them over, comparing them. The people who authorize violence, the generals, the politicians, the strategists, the "stability managers," seem to wear something similar, the same architecture showing up under different flags. The jaw set into what looks like a permanent brace. Eyes that forgot how to rest, or forfeited it, I can't tell which. The skin drifting into that chronic-stress palette: grey, flushed, uneven. I'm sure some of it is age. But it doesn't read like age to me. It reads like a body trying to survive its own contradictions.
+I people-watch. Always have. And now, with the internet and cameras everywhere, I get to watch the faces of world leaders too, all of them. You can open Wikipedia and browse general after general, president after president, and I promise you it's not a fun task. Almost every one of them is a man. Very few women show up in those pictures, so I guess the modern world has been ruled by warlords. Excuse me, statesmen. Sometimes I wish we'd tried a matriarchy, but that's a topic for another essay.
+
+Lately I've been collecting these faces, turning them over, comparing them. The people who authorize violence, the generals, the politicians, the strategists, the "stability managers," seem to wear something similar, the same architecture showing up under different flags. The jaw set into what looks like a permanent brace. Eyes that forgot how to rest, or forfeited it, I can't tell which. The skin drifting into that chronic-stress palette: grey, flushed, uneven. I'm sure some of it is age. But it doesn't read like age to me. It reads like a body trying to survive its own contradictions.
 
 A face doesn't negotiate, really. It just keeps recording whatever the nervous system hands it, year after year, and the owner never gets a vote.
 

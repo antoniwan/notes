@@ -27,7 +27,6 @@ export const VIEWPORTS = {
 let server: Server | null = null;
 let browser: Browser | null = null;
 let baseUrl = '';
-let boundPort = 0;
 
 /** Starts one server and one browser for the whole file. */
 export async function startHarness(): Promise<string> {
@@ -35,7 +34,6 @@ export async function startHarness(): Promise<string> {
   // Port 0 lets the OS pick a free one, so a stray dev server never collides
   // and two test files can never fight over a fixed port.
   baseUrl = await listen(server, { host: '127.0.0.1', port: 0 });
-  boundPort = Number(new URL(baseUrl).port);
   browser = await chromium.launch();
   return baseUrl;
 }
@@ -55,9 +53,10 @@ export interface PageOptions {
   reducedMotion?: 'reduce' | 'no-preference';
   colorScheme?: 'light' | 'dark';
   /**
-   * Interaction journeys block service workers so a cached response from an
-   * earlier run can never stand in for the build under test. The service-worker
-   * suite is the one place that needs them allowed.
+   * Journeys block service workers so a worker left over from an earlier run
+   * can never stand in for the build under test. The service-worker suite,
+   * which checks the retired worker removes itself, is the one place that
+   * needs them allowed.
    */
   serviceWorkers?: 'allow' | 'block';
 }
@@ -75,9 +74,7 @@ export async function openPage(options: PageOptions = {}): Promise<{
     viewport: options.viewport ?? VIEWPORTS.desktop,
     reducedMotion: options.reducedMotion ?? 'no-preference',
     colorScheme: options.colorScheme ?? 'light',
-    // Blocked by default: a cached response from an earlier run must never
-    // stand in for the build under test. tests/browser/service-worker.test.ts
-    // opts back in.
+    // Blocked by default; tests/browser/service-worker.test.ts opts back in.
     serviceWorkers: options.serviceWorkers ?? 'block',
   });
   const page = await context.newPage();
@@ -92,30 +89,6 @@ export async function openPage(options: PageOptions = {}): Promise<{
       await page.goto(`${baseUrl}${path}`, { waitUntil: 'load' });
     },
   };
-}
-
-/**
- * Stops the server so nothing on the origin can be reached.
- *
- * `context.setOffline(true)` is not enough for service-worker tests: it emulates
- * the *page's* network, while the worker's own `fetch()` still reaches the
- * server. An offline assertion written against it passes whether or not the
- * cache is doing anything. Taking the server down is the only way to know.
- */
-export async function stopServing(): Promise<void> {
-  if (!server) return;
-  const closing = new Promise<void>((done) => server!.close(() => done()));
-  // close() only stops new connections; keep-alive sockets would survive it.
-  server.closeAllConnections();
-  await closing;
-  server = null;
-}
-
-/** Brings the origin back up on the same port. */
-export async function resumeServing(): Promise<void> {
-  if (server) return;
-  server = createDistServer();
-  await listen(server, { host: '127.0.0.1', port: boundPort });
 }
 
 /** A post that renders an ImageRotator with autoplay, for the carousel journey. */
