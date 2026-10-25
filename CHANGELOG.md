@@ -9,6 +9,16 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [7.10.0] — 2026-10-25
+
+Rotator images open full size. Antonio wanted to click an image in a rotator, like the faces of humanity grids, and see it at the full width of the screen.
+
+### Added
+
+- Clicking (or pressing Enter on) a rotator's image opens it in a full-screen view at 100% of the screen's width, shrinking only when that would make it taller than the screen. It loads the original image and shows its caption.
+- In the full-size view, arrow keys, swipe, or the on-screen arrows move between the rotator's images, and the rotator underneath follows along. Esc, the close button, or a click on the dark area closes it and puts focus back where it was.
+- Built on the browser's native modal dialog, so focus stays inside it and the page behind can't be reached until it closes. Autoplay pauses while it is open, and the fade-in is skipped for readers who ask for reduced motion.
+
 ## [7.9.0] — 2026-10-25
 
 Post images now share the text's edges. Antonio didn't like images sitting centered and narrower than the text: figures were capped at 36rem inside a 45rem column, so every image floated about 70px in from both text edges.
