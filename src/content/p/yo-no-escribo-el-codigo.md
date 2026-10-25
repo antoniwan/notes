@@ -44,7 +44,7 @@ Los tokens del AI se van a comprar y a usar de todas formas, así que voy a comp
 
 ## Uplift: Live en tres días
 
-Uplift empezó el 11 de octubre con una sola oración, casi exacta: "i've always loved SimTower, let's build a worth web-based successor for it, let's create the project plan, let's define everything before building anything, help me out."
+<a href="https://uplifttowergame.com" target="_blank" rel="noopener">Uplift</a> empezó el 11 de octubre con una sola oración, casi exacta: "i've always loved SimTower, let's build a worth web-based successor for it, let's create the project plan, let's define everything before building anything, help me out."
 
 Definir todo antes de construir nada. Ese fue todo el método, y todavía lo es. Antes de cualquier código hubo preguntas, muchísimas, y cada respuesta que di se escribió con mis palabras y la fecha. Cuando el código y mis palabras no están de acuerdo, ganan mis palabras, y el código se arregla.
 
@@ -157,6 +157,12 @@ Claude se pone el sombrero de ingeniero y ayuda con la investigación, los tests
 
 Si dibujas, modelas, animas o haces sonidos, y construir estos juegos conmigo te suena divertido, salúdame aquí abajo. En el peor de los casos, hacemos algo chévere juntos. En el mejor, así es como empieza un estudio de juegos chiquito, jajaja. Sin presión, te lo prometo. Ya me pongo suficientes sombreros para saber lo mucho que pesan.
 
+## La gente que hizo esto posible
+
+Nada de esto funciona sin gente que nunca he conocido. Lifesworn corre en [Godot](https://godotengine.org), un motor de juegos libre y de código abierto que construyen miles de voluntarios y colaboradores, y que mantiene viva una comunidad que contesta preguntas, escribe la documentación, graba tutoriales y comparte lo que hace gratis. Y la verdad, Godot es un lugar maravilloso para empezar. Es gratis, es liviano, abre en segundos, nadie te pide un pedazo de nada, y la documentación se lee como si la hubieran escrito para alguien exactamente como yo. Mucho de lo que estoy aprendiendo sobre hacer juegos lo estoy aprendiendo de ellos. Uplift corre en la web, sobre librerías de código abierto que otra gente escribió y regaló también. [Quaternius](https://quaternius.com) y [Kenney](https://kenney.nl) regalaron los modelos y los sonidos que hacen que Lifesworn se vea y suene como un juego.
+
+Así que cuando digo que yo no escribo el código, hay una comunidad entera debajo de esa oración. Gracias, a todos. Si eres parte de la comunidad de Godot y estás leyendo esto: soy un principiante en su casa, y estoy agradecido de estar aquí.
+
 ## Lo que salió mal
 
 No es magia y no es gratis. Claude recuerda cosas del engine que ya no existen, y me entero cuando el build se rompe. Se le acaba la cuota en medio de una buena semana. El primer empujón de Uplift me costó $250 en créditos y casi una semana entera de mi plan. Y soy nuevo haciendo juegos. Tengo gusto y tengo muchos años haciendo software, pero estoy aprendiendo el oficio de los juegos en público, aquí, y también me voy a equivocar en público.
@@ -164,8 +170,8 @@ No es magia y no es gratis. Claude recuerda cosas del engine que ya no existen, 
 ## Lo que viene
 
 <figure class="post-inline-figure post-inline-figure--center">
-  <img src="/images/devlog-1-lifesworn-title.webp" alt="Una pantalla de título oscura que dice Lifesworn, con Play, Choose a place y Quit." width="1280" height="720" loading="lazy" decoding="async" />
-  <figcaption>Al 22 de octubre, el juego abre con una pantalla de título, bajo su nombre nuevo.</figcaption>
+  <img src="/images/devlog-1-lifesworn-title-v2.webp" alt="Una pantalla de título oscura con Lifesworn en letras anaranjadas que brillan, sobre Continue, New Game, Choose a place, Change player, Settings, Credits y Quit." width="1280" height="720" loading="lazy" decoding="async" />
+  <figcaption>La pantalla de título al 25 de octubre, con su nombre nuevo.</figcaption>
 </figure>
 
 Cada dos semanas voy a escribir uno de estos: qué se construyó, qué decidí, y en qué me equivoqué. Uplift ya se puede jugar, gratis, en tu navegador. Lifesworn va a tener un demo gratis cuando la pelea sea algo de lo que esté orgulloso.

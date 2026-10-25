@@ -44,7 +44,7 @@ The tokens are going to be bought and used anyway, so I'll buy some and make kic
 
 ## Uplift: live in three days
 
-Uplift started on October 11 with one sentence, more or less exactly: "i've always loved SimTower, let's build a worth web-based successor for it, let's create the project plan, let's define everything before building anything, help me out."
+<a href="https://uplifttowergame.com" target="_blank" rel="noopener">Uplift</a> started on October 11 with one sentence, more or less exactly: "i've always loved SimTower, let's build a worth web-based successor for it, let's create the project plan, let's define everything before building anything, help me out."
 
 Define everything before building anything. That was the whole method, and it still is. Before any code there were questions, a lot of them, and every answer I gave got written down with my words and the date. When the code and my words disagree, my words win, and the code gets fixed.
 
@@ -157,6 +157,12 @@ Claude wears the engineer's hat and helps with research, tests, and first drafts
 
 If you draw, model, animate, or make sounds, and building these games with me sounds fun, say hi down there. Worst case, we make something cool together. Best case, this is how a little game studio starts, lol. No pressure, I promise. I already wear enough hats to know how heavy they get.
 
+## The people who made this possible
+
+None of this works without people I've never met. Lifesworn runs on [Godot](https://godotengine.org), a free and open-source game engine built by thousands of volunteers and contributors, and kept alive by a community that answers questions, writes the docs, records tutorials, and shares what they make for free. And honestly, Godot is a wonderful place to start. It's free, it's light, it opens in seconds, nobody asks for a cut of anything, and the docs read like they were written for someone exactly like me. A lot of what I'm learning about making games, I'm learning from them. Uplift runs on the web, on open-source libraries that other people wrote and gave away too. [Quaternius](https://quaternius.com) and [Kenney](https://kenney.nl) gave away the models and sounds that make Lifesworn look and sound like a game.
+
+So when I say I don't write the code, there's a whole community underneath that sentence. Thank you, all of you. If you're part of the Godot community and you're reading this: I'm a beginner in your house, and I'm grateful to be here.
+
 ## What went wrong
 
 It is not magic and it is not free. Claude remembers things about the engine that don't exist anymore, and I learn that when the build breaks. It runs out of quota in the middle of a good week. Uplift's first push cost me $250 of credits and almost a whole week of my plan. And I'm new to making games. I have taste and I have a lot of years of making software, but I'm learning the craft of games in public, here, and I will get things wrong in public too.
@@ -164,8 +170,8 @@ It is not magic and it is not free. Claude remembers things about the engine tha
 ## What's next
 
 <figure class="post-inline-figure post-inline-figure--center">
-  <img src="/images/devlog-1-lifesworn-title.webp" alt="A dark title screen that reads Lifesworn, with Play, Choose a place, and Quit." width="1280" height="720" loading="lazy" decoding="async" />
-  <figcaption>As of October 22, the game opens on a title screen, under its new name.</figcaption>
+  <img src="/images/devlog-1-lifesworn-title-v2.webp" alt="A dark title screen with Lifesworn in glowing orange letters above Continue, New Game, Choose a place, Change player, Settings, Credits, and Quit." width="1280" height="720" loading="lazy" decoding="async" />
+  <figcaption>The title screen as of October 25, under its new name.</figcaption>
 </figure>
 
 Every other week I'll write one of these: what got built, what I decided, and what I got wrong. Uplift is playable now, free, in your browser. Lifesworn will have a free demo when the fight is something I'm proud of.
