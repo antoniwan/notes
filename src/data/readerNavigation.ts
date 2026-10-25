@@ -3,11 +3,14 @@ import { AUTHOR } from '../consts';
 export interface ReaderLink {
   href: string;
   label: string;
+  /** Set when the label is in another language than the page around it. */
+  lang?: 'es';
 }
 
 export const readingLinks: ReaderLink[] = [
   { href: '/browse', label: 'Browse' },
   { href: '/archive', label: 'Archive' },
+  { href: '/es', label: 'En español', lang: 'es' },
 ];
 
 export const contactLinks: ReaderLink[] = [

@@ -38,8 +38,8 @@ const isSpanish = currentPost ? isSpanishPrimary(currentPost.data) : false;
       ))}
     </div>
   )}
-  <a href="/archive" class="related-browse">
-    {isSpanish ? 'Explorar todos los escritos (en inglés)' : 'Browse all writings'}
+  <a href={isSpanish ? '/es' : '/archive'} class="related-browse">
+    {isSpanish ? 'Todos los escritos en español' : 'Browse all writings'}
   </a>
 </section>
 
