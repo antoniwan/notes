@@ -26,6 +26,7 @@ draft: false
 featured: false
 published: true
 showComments: true
+series: stronghand-terminal
 ---
 
 In April 2025 I wrote about [forging a terminal](/p/forging-stronghand-terminal/) on this machine. WezTerm as the emulator, Oh-My-Posh for the prompt, zoxide for jumping around, nvm and fzf, a `$PROFILE` full of git aliases, and two drives renamed Vault and Forge so the file system would mean something. I called it a cockpit. I meant it, and what follows is not a takedown of that post.

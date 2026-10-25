@@ -1,0 +1,100 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getSeries } from '../data/series';
+import { seriesPosition } from '../utils/series';
+
+interface Props {
+  currentPost?: CollectionEntry<'blog'>;
+  allPosts?: CollectionEntry<'blog'>[];
+  isSpanish?: boolean;
+}
+
+const { currentPost, allPosts = [], isSpanish = false } = Astro.props;
+const position = currentPost ? seriesPosition(currentPost, allPosts) : null;
+const meta = position ? getSeries(position.seriesId) : undefined;
+---
+
+{position && meta && (
+  <nav class="series-nav" aria-labelledby="series-nav-heading">
+    <p id="series-nav-heading" class="series-nav__label">
+      {isSpanish
+        ? `Parte ${position.index + 1} de ${position.total} · `
+        : `Part ${position.index + 1} of ${position.total} in `}
+      <a href={`/series/${meta.id}`}>{meta.title}</a>
+    </p>
+    <ul class="series-nav__links" role="list">
+      {position.previous && (
+        <li class="series-nav__prev">
+          <span>{isSpanish ? 'Anterior' : 'Previous'}</span>
+          <a href={`/p/${position.previous.id}`} rel="prev">
+            {position.previous.data.title}
+          </a>
+        </li>
+      )}
+      {position.next && (
+        <li class="series-nav__next">
+          <span>{isSpanish ? 'Siguiente' : 'Next'}</span>
+          <a href={`/p/${position.next.id}`} rel="next">
+            {position.next.data.title}
+          </a>
+        </li>
+      )}
+    </ul>
+  </nav>
+)}
+
+<style>
+  .series-nav {
+    display: grid;
+    gap: 1rem;
+    border-top: 1px solid rgb(var(--color-border));
+    border-bottom: 1px solid rgb(var(--color-border));
+    padding-block: 1.25rem;
+    font-family: var(--font-sans);
+  }
+
+  .series-nav__label {
+    margin: 0;
+    color: rgb(var(--color-text-muted));
+    font-size: 0.875rem;
+  }
+
+  .series-nav__label a {
+    color: rgb(var(--color-text));
+    font-weight: 600;
+  }
+
+  .series-nav__links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .series-nav__links li {
+    display: grid;
+    gap: 0.25rem;
+    min-width: 0;
+  }
+
+  .series-nav__next {
+    text-align: right;
+  }
+
+  .series-nav__links span {
+    color: rgb(var(--color-text-muted));
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .series-nav__links a {
+    color: rgb(var(--color-accent));
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: rgb(var(--color-accent) / 0.35);
+    text-underline-offset: 4px;
+  }
+</style>

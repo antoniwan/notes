@@ -22,6 +22,7 @@ draft: false
 featured: false
 published: true
 showComments: true
+series: digital-sandbox
 ---
 
 I fucking love working on my blog.

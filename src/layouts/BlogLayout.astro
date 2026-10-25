@@ -4,6 +4,7 @@ import PostDetails from '../components/post-reading/PostDetails.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Comments from '../components/Comments.astro';
 import RelatedPosts from '../components/RelatedPosts.astro';
+import SeriesNav from '../components/SeriesNav.astro';
 import Container from '../components/Container.astro';
 import DefaultImage from '../components/DefaultImage.astro';
 import HeroImage from '../components/HeroImage.astro';
@@ -275,6 +276,7 @@ const breadcrumbSchema = generateBreadcrumbSchema(
             </a>
           )}
         </div>
+        <SeriesNav currentPost={rest.currentPost} allPosts={rest.allPosts} isSpanish={isSpanish} />
         <RelatedPosts currentPost={rest.currentPost} allPosts={rest.allPosts} />
         {showComments && <Comments language={contentLanguage.contentLanguage} />}
       </div>

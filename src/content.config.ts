@@ -3,6 +3,7 @@ import { defineCollection } from 'astro:content';
 import { z } from 'astro/zod';
 import { categories } from './data/categories';
 import type { Category } from './data/categories';
+import { seriesIds } from './data/series';
 import { canonicalizeTags } from './utils/tagVocabulary';
 
 // Create a list of valid category IDs
@@ -59,6 +60,10 @@ const blog = defineCollection({
     authorImage: z.string().optional(),
     authorBio: z.string().optional(),
     featured: z.boolean().optional().default(false),
+
+    // A named series (src/data/series.ts); seriesOrder overrides date order.
+    series: z.enum(seriesIds).optional(),
+    seriesOrder: z.number().int().positive().optional(),
 
     // Translation group for multilingual posts
     translationGroup: z.string().optional(),
