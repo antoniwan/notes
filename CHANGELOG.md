@@ -9,6 +9,18 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [7.10.1] — 2026-10-26
+
+`/llms.txt` points agents to the recipes' new home.
+
+### Changed
+
+- `/llms.txt` lists the Cookbook's own `llms.txt`, since the recipes moved there, and links antoniwan.online's `llms.txt` as Antonio's own site rather than a link page.
+
+### Fixed
+
+- CI's token lint failed on `main` since 7.10.0: the full-size rotator view set `max-width: 100vw`. It now sets `max-width: none`, which the lint allows and which looks the same, since the view's width is already `100vw`.
+
 ## [7.10.0] — 2026-10-25
 
 Rotator images open full size. Antonio wanted to click an image in a rotator, like the faces of humanity grids, and see it at the full width of the screen.
