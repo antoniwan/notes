@@ -32,7 +32,7 @@ Lo que me estoy dando cuenta es que la felicidad son momentos. No es que voy a e
 
 Muchas veces el momento es una apreciación, un cariño: un vaso de agua, una buena comida, tiempo con el bebé. Ahora mismo, mientras hago esto, lo tengo al lado, mirándole los ojos, oyéndolo hacer ruido. Es una memoria bien bonita. Eso es un momento de felicidad.
 
-Esos momentos llegan mediante la acción. Llegan porque pongo esfuerzo en lo mío: cociné, busqué, llamé con intención. Y a veces llegan al revés, cuando me siento a no hacer nada. Ese descanso también es felicidad, pero descansar cuesta. El mundo que nos toca casi siempre te empuja a producir, a estar ocupado, a seguir. El tiempo para no hacer nada es una riqueza de verdad, y no todos pueden cogérselo. Yo tengo ese privilegio y he aprendido a apreciarlo.
+Esos momentos llegan mediante la acción. Llegan porque pongo esfuerzo en lo mío: cociné, busqué, llamé con intención. Y a veces llegan al revés, cuando me siento a no hacer nada. Ese descanso también es felicidad, pero descansar cuesta. El mundo que nos toca casi siempre te empuja a producir, a estar ocupado, a seguir. [El tiempo para no hacer nada es una riqueza de verdad](/p/on-simplicity-and-peace-of-mind), y no todos pueden cogérselo. Yo tengo ese privilegio y he aprendido a apreciarlo.
 
 Por eso, al final de la noche, hago una meditación de agradecimiento. Pienso en esos momentos, por pequeños o grandes que sean. No necesito comprar un carro nuevo para sentir uno; puede ser el cafecito de la mañana. Ese es el punto.
 

@@ -95,7 +95,7 @@ Pero ya no soy peligroso para estar cerca. Eso se siente como progreso.
 
 Esta es documentación de recuperación disfrazada como contenido de desarrollo personal. Es el intento de una persona de construir herramientas para el trabajo de consciencia mientras descubre cómo funciona la consciencia realmente.
 
-Si lo encuentras útil, toma lo que funcione e ignora el resto. Si lo encuentras insufrible, probablemente tengas razón—todavía estoy aprendiendo cómo existir sin ser agotador.
+Si lo encuentras útil, toma lo que funcione e ignora el resto. Si lo encuentras [insufrible](/p/i-became-what-i-used-to-mock), probablemente tengas razón—todavía estoy aprendiendo cómo existir sin ser agotador.
 
 La meta no es convertirme en alguien admirable. La meta es convertirme en alguien seguro. Para mi hija, para las personas que eligen estar en mi vida, y para mí mismo.
 

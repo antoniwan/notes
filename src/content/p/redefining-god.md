@@ -164,7 +164,7 @@ Look at what that leaves. Almost nothing about who God is, except that one line,
 
 I'm an atheist. I don't believe anybody is up there. I'm keeping the word God anyway, on purpose, for everyone who does believe, because the word isn't going anywhere, and if it's going to stay, it might as well mean something that doesn't hurt anybody.
 
-So what would I put in the place of the one who chooses? Everything. The good, the bad, the problems, the evil, the planet, the universe, what we can see and what we can't, what we think and what we'll never think. If there is anything worth calling God, it's the whole thing, and if it's the whole thing it isn't a someone, it doesn't watch, it doesn't want, it doesn't judge, it doesn't choose. There is no chosen people inside everything. There's no promised land inside everything, because it's all the same land. There's no damned. There is only us.
+So what would I put in the place of the one who chooses? [Everything](/p/presenting-vastitas-omniparens). The good, the bad, the problems, the evil, the planet, the universe, what we can see and what we can't, what we think and what we'll never think. If there is anything worth calling God, it's the whole thing, and if it's the whole thing it isn't a someone, it doesn't watch, it doesn't want, it doesn't judge, it doesn't choose. There is no chosen people inside everything. There's no promised land inside everything, because it's all the same land. There's no damned. There is only us.
 
 ![A giant golden throne sits on a suburban curb beside trash bins, a gavel and a ledger in a cardboard box, a dog sniffing the throne](../../assets/images/2026/redefining-god/golden-throne.avif)
 

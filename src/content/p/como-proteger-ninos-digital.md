@@ -62,6 +62,8 @@ El Internet NO es un lugar hecho para niños. Es un campo abierto con belleza, p
    - Bloqueo de contenido explícito
    - Historial de navegación
 
+Si tu hijo usa iPad, armé una [guía paso a paso](/p/guia-ipad-es) para configurarlo.
+
 ### Paso 2: Verifica el historial de navegación
 
 - En **Chrome/Safari/Edge**, revisa el historial manualmente.
@@ -97,6 +99,8 @@ El Internet NO es un lugar hecho para niños. Es un campo abierto con belleza, p
 ---
 
 ## 💬 Cómo hablarles sobre estos temas sin miedo
+
+Para la curiosidad sexual en específico, escribí [una guía por edades](/p/redirigir-curiosidad-sexual-infantil).
 
 - Usa cuentos, analogías, y juegos simbólicos.
 - Enséñales a decir "no" y confiar en su instinto.

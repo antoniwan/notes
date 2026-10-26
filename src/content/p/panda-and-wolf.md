@@ -57,7 +57,7 @@ That is the thing I'm building. Panda gives me direct next steps or actions, so 
 
 ## I had to start over
 
-My previous vault was called FORGE. It carried my writing, experiments, imported research, and a growing pile of agent features. I learned a lot by building it, but I also overengineered it. At some point, maintaining the process became too much of the experience.
+My previous vault was called [FORGE](/p/forging-stronghand-terminal-september-2026). It carried my writing, experiments, imported research, and a growing pile of agent features. I learned a lot by building it, but I also overengineered it. At some point, maintaining the process became too much of the experience.
 
 I also wasn't careful enough about its foundations: choosing what counts as a foundational rule, what framework our input follows, how validation works, even how folders get created. Panda and Wolf bake all of that in from the get-go. FORGE taught me a fuck ton... I also burned so much money on experiments... oh my Vastitas...
 

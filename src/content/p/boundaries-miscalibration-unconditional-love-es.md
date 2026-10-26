@@ -47,7 +47,7 @@ Identifico dos impulsores principales.
 **Primero: compresión de amenaza.**  
 Bajo presión sostenida, colapsé el matiz a favor de la velocidad y la seguridad. Cuando el sistema nervioso está sobrecargado, "cerrarlo de forma decisiva" se siente más seguro que "sostener la complejidad", aun cuando eso implique pasar por alto el matiz y, en ocasiones, la empatía.
 
-Esto puede tomar muchas formas: colgar una llamada de manera abrupta, retirarse intencionalmente, cortar contacto con alguien de forma acalorada, o incluso provocaciones sutiles enmarcadas como validación o prueba. El patrón es velocidad sobre resolución. Esa percepción de amenaza resultaba detonante y exigía una _solución apresurada_.
+Esto puede tomar muchas formas: colgar una llamada de manera abrupta, retirarse intencionalmente, cortar contacto con alguien de forma acalorada, o incluso provocaciones sutiles enmarcadas como validación o [prueba](/p/on-testing-relationships). El patrón es velocidad sobre resolución. Esa percepción de amenaza resultaba detonante y exigía una _solución apresurada_.
 
 **Segundo: confusión de límites.**  
 Trataba los límites y la fuerza emocional como si fueran lo mismo, pero no lo son. Un límite es una restricción que uno se impone a sí mismo. En mi caso, era una cuestión de autorrespeto. La fuerza es otra dimensión. No fuerza física, sino finalidad emocional, temperatura y encuadre de _scorched earth_. Es un sistema de entrega.

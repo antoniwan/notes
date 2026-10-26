@@ -28,11 +28,11 @@ published: true
 showComments: true
 ---
 
-This morning I was hanging out with my family, coffee and my three dailies, the tri-force as I call them: Journey to the Heart (Melody Beattie), The Daily Stoic (Ryan Holiday and Stephen Hanselman) and last, A Calendar of Wisdom (Leo Tolstoy), and I stumbled and fumbled upon this quote attributed to Lao Tzu in Tolstoy's collection, and it stumped me:[^calendar]
+This morning I was hanging out with my family, coffee and [my three dailies, the tri-force as I call them](/p/some-books-for-self-transcendence): Journey to the Heart (Melody Beattie), The Daily Stoic (Ryan Holiday and Stephen Hanselman) and last, A Calendar of Wisdom (Leo Tolstoy), and I stumbled and fumbled upon this quote attributed to Lao Tzu in Tolstoy's collection, and it stumped me:[^calendar]
 
 "A wise man innately knows how to act without searching, because he has the divine within himself. The further you search and seek, the less you know."
 
-I felt activated immediately. Confused and inadequate. I believe this struck a nerve in me because Learning is kind of my thing. Learning anything and everything I can get my hands on to close a self-perceived gap with reality, with Vastitas, my name for the totality, and our observable universe. So anyways, just like I do now with any activations, I try to find the whys and try to... learn... more about the subject matter...
+I felt activated immediately. Confused and inadequate. I believe this struck a nerve in me because Learning is kind of my thing. Learning anything and everything I can get my hands on to close a self-perceived gap with reality, with [Vastitas](/p/presenting-vastitas-omniparens), my name for the totality, and our observable universe. So anyways, just like I do now with any activations, I try to find the whys and try to... learn... more about the subject matter...
 
 So of course I went looking for the source, which meant leaving the book I started in and going after one I didn't even own, the Tao Te Ching itself, luckily LLMs make all of this particularly easy, which makes me wonder, were these books in their training data?
 

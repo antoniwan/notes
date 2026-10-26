@@ -46,7 +46,7 @@ I had two main drivers.
 
 **First: threat compression.** Under sustained pressure, I collapsed nuance in favor of speed and safety. When the nervous system is overloaded, “end it decisively” feels safer than “hold complexity,” bypassing nuance and possibly empathy in the process.
 
-This can look like many things: hanging up a call abruptly, intentionally pulling away or severing contact with someone in a heated manner, subtle provocations framed as validation or testing. The pattern is speed over resolution. That perception of threat felt detonating, and it demanded a _hasty solution_.
+This can look like many things: hanging up a call abruptly, intentionally pulling away or severing contact with someone in a heated manner, subtle provocations framed as validation or [testing](/p/on-testing-relationships). The pattern is speed over resolution. That perception of threat felt detonating, and it demanded a _hasty solution_.
 
 **Second: boundary conflation.** I treated boundaries and emotional force as the same thing but they are not. A boundary is a limit one imposes unto oneself. For me, it was a matter of self-respect. Force is another dimension. Not physical force, but emotional finality, heat, and scorched-earth framing. It is a delivery system. I can apply my boundaries with proportionate force, or not, but suffer the consequences. That nuance matters, but I did not catch the boundary-versus-force distinction until after the fact. Another way to think about this is mixing up _necessity_ with _intensity_.
 
