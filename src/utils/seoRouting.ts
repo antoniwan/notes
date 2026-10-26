@@ -28,6 +28,7 @@ export const POST_REDIRECTS: Record<string, string> = {
   '/p/it-isnt-too-much-pressure': '/p/on-parental-pressure',
   '/p/fasting-ground-flow': '/p/fasting-metabolic-ritual',
   '/p/core-values-freedom': '/p/the-definition-and-practice-of-my-core-values-make-me-free',
+  '/p/faces-of-death': '/p/thou-shalt-not-kill',
   '/p/lemon-pepper-chicken': 'https://cookbook.antoniwan.online/recipes/lemon-pepper-chicken',
 };
 
