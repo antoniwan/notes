@@ -37,7 +37,8 @@ ${spanish.map(llmsListItem).join('\n')}
 - [RSS feed](${SITE_URL}/rss.xml): English essays with full text
 - [JSON Feed](${SITE_URL}/feed.json): the same essays as JSON
 - [En español](${SITE_URL}/es): every Spanish piece, with its own [RSS feed](${SITE_URL}/es/rss.xml)
-- [antoniwan.online](${AUTHOR.url}): links to everything else ${AUTHOR.name} makes
+- [Cookbook](https://cookbook.antoniwan.online/llms.txt): the family recipes, which moved from this site to their own home; old recipe links redirect there
+- [antoniwan.online](${AUTHOR.url}/llms.txt): ${AUTHOR.name}'s own site, with his projects and everything else he makes
 `;
 
   return new Response(body, {
