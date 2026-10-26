@@ -96,15 +96,15 @@ Vercel's Speed Insights shows a **Real Experience Score of 100** right now, base
 
 The code is one half and the writing is the other. Here's what I wrote about, roughly by theme:
 
-**Recovery and becoming.** _Who I Am Today: A Recovery Progress Report_. _Season of Becoming_ — moving from performing growth to living it. _The Feeling Is Not the Problem_ — about what happens when you suppress emotions instead of sitting with them.
+**Recovery and becoming.** _[Who I Am Today: A Recovery Progress Report](/p/who-i-am-today-a-recovery-progress-report)_. _[Season of Becoming](/p/season-of-becoming)_ — moving from performing growth to living it. _[The Feeling Is Not the Problem](/p/the-feeling-is-not-the-problem)_ — about what happens when you suppress emotions instead of sitting with them.
 
-**Love, fatherhood, and boundaries.** _Love Is the Final Revolution_ — kindness as political act. _On Boundaries, Miscalibration, and Relearning Unconditional Love_ — what happens when boundary-setting overcorrects. _The First Wall_ and _On Clear Signals_ — relationships, signals, walls.
+**Love, fatherhood, and boundaries.** _[Love Is the Final Revolution](/p/love-is-the-final-revolution)_ — kindness as political act. _[On Boundaries, Miscalibration, and Relearning Unconditional Love](/p/boundaries-miscalibration-unconditional-love)_ — what happens when boundary-setting overcorrects. _[The First Wall](/p/the-first-wall)_ and _[On Clear Signals](/p/on-clear-signals)_ — relationships, signals, walls.
 
-**Politics and power.** _The Prometheus Problem_ — how AI companies externalize consequences. _Notes on Puerto Rico: Sin Pie Forzao_ — political analysis of the island's situation. _An Invitation to the End of Wealth Worship_ — what comes after treating wealth as religion.
+**Politics and power.** _[The Prometheus Problem](/p/the-prometheus-problem)_ — how AI companies externalize consequences. _[Notes on Puerto Rico: Sin Pie Forzao](/p/notes-on-puerto-rico-sin-pie-forzao)_ — political analysis of the island's situation. _[An Invitation to the End of Wealth Worship](/p/an-invitation-to-the-end-of-wealth-worship-and-the-beginning-of-a-human-future)_ — what comes after treating wealth as religion.
 
-**Craft and building.** _Rolling Back Main (And Why You Shouldn't Have to)_ — a post-mortem of trusting AI too much with git!!! 🫣 _On Leadership and Leadership-Adjacent Things_ — a stupidly long (Sorry, not sorry!) essay on leadership as cost, care, and teaching others to lead.
+**Craft and building.** _[Rolling Back Main (And Why You Shouldn't Have to)](/p/rolling-back-main-and-why-you-shouldnt-have-to)_ — a post-mortem of trusting AI too much with git!!! 🫣 _[On Leadership and Leadership-Adjacent Things](/p/on-leadership-and-leadership-adjacent-things-april-2026)_ — a stupidly long (Sorry, not sorry!) essay on leadership as cost, care, and teaching others to lead.
 
-**Grief and letting go.** _The Rhythm of Grief_ and _Empathy as a Shield_.
+**Grief and letting go.** _[The Rhythm of Grief](/p/the-rhythm-of-grief-summer-days-and-letting-go)_ and _[Empathy as a Shield](/p/empathy-as-a-shield)_.
 
 Eight of these posts were published in both English and Spanish, using translation groups that let readers toggle between languages.
 

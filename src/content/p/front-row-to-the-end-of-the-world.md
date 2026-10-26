@@ -126,7 +126,7 @@ The labs and their CEOs are all playing with proverbial fire, and I love that sh
 
 ## Forever
 
-While I'm confessing, let's call it what it is: I'd love to be immortal. Always have, since I was a little kid. Blame Dracula, Superman, Goku, Vegeta, Kenshin the Hitokiri Battōsai, Dr. Manhattan, Saitama, Garou, Luffy, Naruto, Invincible and the whole idea of God and Satan. It's a sore subject at home, and with my blood relatives too. They say I'm crazy, or silly, or just "ay, Antonio." Nobody entertains it. They scoff it off like it's inappropriate, and I get it.
+While I'm confessing, let's call it what it is: I'd love to be immortal. Always have, since I was a little kid. Blame Dracula, Superman, Goku, Vegeta, [Kenshin the Hitokiri Battōsai](/p/who-really-raised-me), Dr. Manhattan, Saitama, Garou, Luffy, Naruto, Invincible and the whole idea of God and Satan. It's a sore subject at home, and with my blood relatives too. They say I'm crazy, or silly, or just "ay, Antonio." Nobody entertains it. They scoff it off like it's inappropriate, and I get it.
 
 Maybe I reincarnate, maybe not. Hell, I don't want to lose everything I've worked so long for. That's the whole point of the whole foods, the exercise and keeping my cortisol low: living long and living well. The atheist who wants to be immortal, whatever the cost. Narcissistic? Who knows. Selfish? Kinda. Yes. And if anything gets me there, it's a kind superintelligence.
 

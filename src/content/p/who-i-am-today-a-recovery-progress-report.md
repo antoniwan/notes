@@ -95,7 +95,7 @@ But I'm no longer dangerous to be around. That feels like progress.
 
 This is recovery documentation disguised as personal development content. It's one person's attempt to build tools for consciousness work while figuring out how consciousness actually works.
 
-If you find it useful, take what works and ignore the rest. If you find it insufferable, you're probably right—I'm still learning how to exist without being exhausting.
+If you find it useful, take what works and ignore the rest. If you find it [insufferable](/p/i-became-what-i-used-to-mock), you're probably right—I'm still learning how to exist without being exhausting.
 
 The goal isn't to become someone admirable. The goal is to become someone safe. For my daughter, for the people who choose to be in my life, and for myself.
 

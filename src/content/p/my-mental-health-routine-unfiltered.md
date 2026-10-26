@@ -23,7 +23,7 @@ I’ve spent the last 14 days rebuilding my nervous system from the ground up af
 
 Here’s what’s keeping me mentally sharp, emotionally clean, and spiritually dangerous (in the best way):
 
-- **Breathwork** (I call it Total Concentration Breathing 🫁)
+- **Breathwork** (I call it [Total Concentration Breathing](/p/total-concentration-breathing) 🫁)
 - **Writing every single day** (not for likes, for survival)
 - **Gym & stretching** (RPE + failure sets + foam rolling)
 - **Art**—drawing, guitar, design. Expression _is_ medicine.

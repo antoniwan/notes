@@ -22,7 +22,7 @@ published: true
 showComments: true
 ---
 
-My daughter has never cut her hair. She's five now, and it covers her entire back. When she stays with me, she refuses to brush it herself, so I do it for her. It takes about an hour every day.
+My daughter has never cut her hair. She's five now, and it covers her entire back. When she stays with me, she refuses to brush it herself, so I do it for her. It takes [about an hour](/p/things-i-have-learned-this-week-regarding-a-4-year-olds-long-curly-hair) every day.
 
 I used to feel guilty about the screen time. I'd put on TV or video games to keep her still while I worked through each section. I'd catch myself thinking about what else I could be doing — emails to answer, tasks to complete, maybe squeeze in a League of Legends match.
 

@@ -126,7 +126,7 @@ Los laboratorios y sus CEOs (presidentes ejecutivos) están todos jugando con fu
 
 ## Para siempre
 
-Ya que estoy confesando, vamos a llamarlo por su nombre: me encantaría ser inmortal. Siempre lo he querido, desde que era chiquito. La culpa la tienen Drácula, Superman, Goku, Vegeta, Kenshin el Hitokiri Battōsai, el Dr. Manhattan, Saitama, Garou, Luffy, Naruto, Invincible y toda la idea de Dios y Satanás. Es un tema delicado en casa, y con mi familia de sangre también. Dicen que estoy loco, o que son boberías, o nada más "ay, Antonio". Nadie me lo toma en serio. Se ríen y lo echan a un lado, como si fuera algo fuera de lugar, y lo entiendo.
+Ya que estoy confesando, vamos a llamarlo por su nombre: me encantaría ser inmortal. Siempre lo he querido, desde que era chiquito. La culpa la tienen Drácula, Superman, Goku, Vegeta, [Kenshin el Hitokiri Battōsai](/p/who-really-raised-me), el Dr. Manhattan, Saitama, Garou, Luffy, Naruto, Invincible y toda la idea de Dios y Satanás. Es un tema delicado en casa, y con mi familia de sangre también. Dicen que estoy loco, o que son boberías, o nada más "ay, Antonio". Nadie me lo toma en serio. Se ríen y lo echan a un lado, como si fuera algo fuera de lugar, y lo entiendo.
 
 A lo mejor reencarno, a lo mejor no. Carajo, no quiero perder todo lo que tanto me ha costado. Para eso es la comida sin procesar, el ejercicio y mantener el cortisol bajito: para vivir mucho y vivir bien. El ateo que quiere ser inmortal, cueste lo que cueste. ¿Narcisista? Quién sabe. ¿Egoísta? Medio. Sí. Y si algo me lleva hasta allá, es una superinteligencia bondadosa.
 

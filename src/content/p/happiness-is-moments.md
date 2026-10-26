@@ -31,7 +31,7 @@ What I'm noticing is that happiness is moments. It's not that I'll always be hap
 
 A lot of the time the moment is an appreciation, a small kindness: a glass of water, a good meal, time with the baby. Right now, while I do this, I have him next to me, looking into his eyes, hearing him make noise. It's a beautiful memory. That's a moment of happiness.
 
-Those moments come through action. They come because I put effort into my own corner: I cooked, I reached out, I called on purpose. And sometimes they come the other way, when I sit down to do nothing. That rest is happiness too, but rest costs. The world we live in almost always pushes you to produce, to stay busy, to keep going. Time to do nothing is real wealth, and not everyone can take it. I have that privilege, and I've learned to appreciate it.
+Those moments come through action. They come because I put effort into my own corner: I cooked, I reached out, I called on purpose. And sometimes they come the other way, when I sit down to do nothing. That rest is happiness too, but rest costs. The world we live in almost always pushes you to produce, to stay busy, to keep going. [Time to do nothing is real wealth](/p/on-simplicity-and-peace-of-mind), and not everyone can take it. I have that privilege, and I've learned to appreciate it.
 
 So at the end of the night, I do a gratitude meditation. I think about those moments, however small or big they are. I don't need to buy a new car to feel one. It can be the morning coffee. That's the point.
 
