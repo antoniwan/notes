@@ -9,6 +9,14 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [7.10.2] — 2026-10-26
+
+Reading time counts only what a reader reads.
+
+### Fixed
+
+- Reading time no longer counts collapsed `<details>` blocks, MDX imports, or components. _Thou Shalt Not Kill*_ showed 44 min because its photo credits (hundreds of names, licenses, and links) were counted; it now shows 7 min. Posts with a collapsed list, like _Front Row to the End of the World_, drop a little too. Both the post page and the post cards use the new rule.
+
 ## [7.10.1] — 2026-10-26
 
 `/llms.txt` points agents to the recipes' new home.

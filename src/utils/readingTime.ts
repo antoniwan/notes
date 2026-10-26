@@ -19,6 +19,9 @@ export function calculateReadingTimeFromMarkdown(markdown: string): string {
   // Remove markdown syntax to get plain text
   const plainText = markdown
     .replace(/^---[\s\S]*?---/g, '') // Remove frontmatter
+    .replace(/<details[\s>][\s\S]*?<\/details>/gi, '') // Remove collapsed blocks (credits, long lists)
+    .replace(/^import\s.+$/gm, '') // Remove MDX imports
+    .replace(/<[A-Z][\w.]*[\s\S]*?\/>/g, '') // Remove self-closing MDX components
     .replace(/#{1,6}\s+/g, '') // Remove headers
     .replace(/\*\*(.*?)\*\*/g, '$1') // Remove bold
     .replace(/\*(.*?)\*/g, '$1') // Remove italic
