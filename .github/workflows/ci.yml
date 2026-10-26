@@ -67,7 +67,7 @@ jobs:
       # Astro keeps the optimized hero sizes here. Encoding them is most of the
       # build, so restore them unless an image or the image settings changed.
       - name: Restore optimized images
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: node_modules/.astro
           key: astro-images-${{ hashFiles('src/assets/images/**', 'astro.config.mjs', 'src/utils/heroImages.ts', 'pnpm-lock.yaml') }}
@@ -91,7 +91,7 @@ jobs:
 
       # After the build: these journeys drive the real dist/client output.
       - name: Restore Playwright browsers
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/.cache/ms-playwright
           key: playwright-${{ hashFiles('pnpm-lock.yaml') }}
