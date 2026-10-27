@@ -25,10 +25,19 @@ export const FIELD_GUIDE_ROOT = {
 
 export const FIELD_GUIDE_COPY: Record<
   FieldGuideLang,
-  { title: string; description: string; revised: string; origin: string; topic: string }
+  {
+    title: string;
+    /** What the notebook on the index cover says. */
+    cover: [string, string];
+    description: string;
+    revised: string;
+    origin: string;
+    topic: string;
+  }
 > = {
   en: {
     title: 'Field Guide',
+    cover: ['Modern', 'Life'],
     description:
       'Short entries on the concepts, values, and beliefs I keep coming back to. Each one explains one thing, and gets revised when I learn more.',
     revised: 'Last revised',
@@ -37,6 +46,7 @@ export const FIELD_GUIDE_COPY: Record<
   },
   es: {
     title: 'Guía de campo',
+    cover: ['Vida', 'moderna'],
     description:
       'Entradas cortas sobre los conceptos, valores y creencias a los que siempre regreso. Cada una explica una sola cosa, y la reviso cuando aprendo más.',
     revised: 'Revisado por última vez',

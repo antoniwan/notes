@@ -67,9 +67,7 @@ const [titleFirst, ...titleRest] = copy.title.split(' ');
         </a>
       </div>
 
-      <FieldGuideCover
-        lines={[titleFirst, titleRest.join(' ')].map((line) => line.toUpperCase())}
-      />
+      <FieldGuideCover lines={copy.cover.map((line) => line.toUpperCase())} />
     </header>
 
     <div class="guide-shelves">
