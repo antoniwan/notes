@@ -77,7 +77,7 @@ const { label, placeholder, empty, target, reveal = false } = Astro.props;
 <style>
   .guide-search {
     position: relative;
-    max-width: 32rem;
+    max-width: var(--measure);
   }
 
   .guide-search__icon {
@@ -94,7 +94,7 @@ const { label, placeholder, empty, target, reveal = false } = Astro.props;
   .guide-search__input {
     width: 100%;
     min-height: 3rem;
-    padding: 0.625rem 1rem 0.625rem 2.75rem;
+    padding: 0.75rem 1rem 0.75rem 2.75rem;
     border: 1px solid rgb(var(--color-border));
     border-radius: 999px;
     background: rgb(var(--color-surface-1));

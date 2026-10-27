@@ -202,7 +202,7 @@ const slugify = (id: string) =>
     z-index: 5;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.125rem;
+    gap: 0.25rem;
     margin-inline: -0.5rem;
     padding: 0.5rem;
     border-block: 1px solid rgb(var(--color-border));
@@ -361,7 +361,7 @@ const slugify = (id: string) =>
 
   .dict-entry {
     break-inside: avoid;
-    padding: 0.875rem 0 1.125rem;
+    padding: 0.75rem 0 1rem;
   }
 
   .dict-entry__word {
@@ -386,7 +386,7 @@ const slugify = (id: string) =>
 
   .dict-entry__origin {
     display: block;
-    margin-top: 0.125rem;
+    margin-top: 0.25rem;
     color: rgb(var(--color-text-muted));
     font-family: var(--font-heading);
     font-size: 0.875rem;
@@ -394,7 +394,7 @@ const slugify = (id: string) =>
   }
 
   .dict-entry__sense {
-    margin: 0.4rem 0 0;
+    margin: 0.5rem 0 0;
     font-family: var(--font-heading);
     font-size: 1.0625rem;
     line-height: var(--leading-relaxed);
@@ -403,7 +403,7 @@ const slugify = (id: string) =>
 
   .shelf-list--concepts .shelf-group__label {
     font-size: clamp(2.5rem, 5vw, 3.5rem);
-    line-height: 1;
+    line-height: var(--leading-none);
     border-bottom-width: 2px;
   }
 
