@@ -1,0 +1,162 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Container from '../Container.astro';
+import FormattedDate from '../FormattedDate.astro';
+import LanguageToggle from '../LanguageToggle.astro';
+import { FIELD_GUIDE_COPY, FIELD_GUIDE_ROOT, FIELD_GUIDE_SHELVES } from '../../data/fieldGuide';
+import { generateCanonicalUrl } from '../../utils/seo';
+import type { ShelvedEntry } from '../../utils/fieldGuide';
+
+interface Props {
+  item: ShelvedEntry;
+  twin?: ShelvedEntry;
+}
+
+const { item, twin } = Astro.props;
+const { entry, kind, path } = item;
+const lang = entry.data.language;
+const copy = FIELD_GUIDE_COPY[lang];
+const shelf = FIELD_GUIDE_SHELVES[kind][lang];
+const origin = 'origin' in entry.data ? entry.data.origin : undefined;
+const { Content } = await render(entry);
+
+const translations = twin
+  ? [item, twin].map((t) => ({
+      id: t.entry.id,
+      title: t.entry.data.title,
+      language: [t.entry.data.language],
+      path: t.path,
+    }))
+  : [];
+
+const hreflangAlternates = twin
+  ? [
+      ...translations.map((t) => ({
+        hreflang: t.language[0],
+        href: generateCanonicalUrl(t.path),
+      })),
+      {
+        hreflang: 'x-default',
+        href: generateCanonicalUrl(lang === 'en' ? path : twin.path),
+      },
+    ]
+  : undefined;
+---
+
+<BaseLayout
+  title={`${entry.data.title} · ${copy.title}`}
+  description={entry.data.summary}
+  path={path}
+  type="article"
+  structuredDataType="article"
+  updatedDate={entry.data.revised}
+  htmlLang={lang}
+  locale={lang === 'es' ? 'es_PR' : undefined}
+  inLanguage={lang === 'es' ? 'es-PR' : 'en-US'}
+  hreflangAlternates={hreflangAlternates}
+>
+  <Container>
+    <article class="guide-entry" aria-labelledby="guide-entry-title">
+      <header class="guide-entry__header">
+        <p class="guide-entry__eyebrow">
+          <a href={FIELD_GUIDE_ROOT[lang]}>{copy.title}</a>
+          <span aria-hidden="true">·</span>
+          <a href={`${FIELD_GUIDE_ROOT[lang]}#${shelf.segment}`}>{shelf.singular}</a>
+        </p>
+        <h1 id="guide-entry-title" class="guide-entry__title">
+          {entry.data.title}
+        </h1>
+        <p class="guide-entry__summary">{entry.data.summary}</p>
+        <dl class="guide-entry__meta">
+          {origin && (
+            <div>
+              <dt>{copy.origin}</dt>
+              <dd>{origin}</dd>
+            </div>
+          )}
+          <div>
+            <dt>{copy.revised}</dt>
+            <dd>
+              <FormattedDate date={entry.data.revised} language={lang} />
+            </dd>
+          </div>
+        </dl>
+        <LanguageToggle translations={translations} currentPath={path} currentLanguage={lang} />
+      </header>
+
+      <div class="guide-entry__body prose prose-lg max-w-none">
+        <Content />
+      </div>
+    </article>
+  </Container>
+</BaseLayout>
+
+<style>
+  .guide-entry {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding-block: 2rem 4rem;
+  }
+
+  .guide-entry__header {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgb(var(--color-border));
+  }
+
+  .guide-entry__eyebrow {
+    display: flex;
+    gap: 0.5rem;
+    margin: 0;
+    color: rgb(var(--color-text-muted));
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .guide-entry__eyebrow a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .guide-entry__eyebrow a:hover {
+    color: rgb(var(--color-accent));
+  }
+
+  .guide-entry__title {
+    margin: 0;
+    font-family: var(--font-heading);
+    line-height: var(--leading-tight);
+  }
+
+  .guide-entry__summary {
+    margin: 0;
+    color: rgb(var(--color-text-muted));
+    font-size: 1.125rem;
+    line-height: var(--leading-relaxed);
+  }
+
+  .guide-entry__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+    margin: 0;
+    font-size: 0.875rem;
+  }
+
+  .guide-entry__meta dt {
+    color: rgb(var(--color-text-muted));
+  }
+
+  .guide-entry__meta dd {
+    margin: 0;
+  }
+
+  .guide-entry__header :global(.language-toggle) {
+    margin-bottom: 0;
+  }
+</style>

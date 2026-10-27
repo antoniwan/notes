@@ -1,0 +1,14 @@
+---
+import FieldGuideEntryPage from '../../../components/field-guide/FieldGuideEntryPage.astro';
+import { fieldGuidePaths } from '../../../utils/fieldGuide';
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return fieldGuidePaths('en');
+}
+
+const { item, twin } = Astro.props;
+---
+
+<FieldGuideEntryPage item={item} twin={twin} />

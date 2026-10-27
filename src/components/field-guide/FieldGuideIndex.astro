@@ -1,0 +1,214 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Container from '../Container.astro';
+import {
+  FIELD_GUIDE_COPY,
+  FIELD_GUIDE_ROOT,
+  FIELD_GUIDE_SHELVES,
+  fieldGuideKinds,
+  type FieldGuideLang,
+} from '../../data/fieldGuide';
+import { getFieldGuide, type ShelvedEntry } from '../../utils/fieldGuide';
+import { generateCanonicalUrl } from '../../utils/seo';
+import { PAGE_META } from '../../data/pageMeta';
+
+interface Props {
+  lang: FieldGuideLang;
+}
+
+const { lang } = Astro.props;
+const copy = FIELD_GUIDE_COPY[lang];
+const entries = (await getFieldGuide()).filter(({ entry }) => entry.data.language === lang);
+
+// Beliefs read as "Beliefs on dignity", so they group by topic.
+function byTopic(items: ShelvedEntry[]) {
+  const groups = new Map<string, ShelvedEntry[]>();
+  for (const item of items) {
+    const topic = 'topic' in item.entry.data ? item.entry.data.topic : '';
+    groups.set(topic, [...(groups.get(topic) ?? []), item]);
+  }
+  return [...groups.entries()].sort(([a], [b]) => a.localeCompare(b));
+}
+
+const shelves = fieldGuideKinds.map((kind) => ({
+  kind,
+  shelf: FIELD_GUIDE_SHELVES[kind][lang],
+  groups:
+    kind === 'beliefs'
+      ? byTopic(entries.filter((e) => e.kind === kind))
+      : [['', entries.filter((e) => e.kind === kind)] as [string, ShelvedEntry[]]],
+}));
+
+const hreflangAlternates = [
+  { hreflang: 'en', href: generateCanonicalUrl(FIELD_GUIDE_ROOT.en) },
+  { hreflang: 'es', href: generateCanonicalUrl(FIELD_GUIDE_ROOT.es) },
+  { hreflang: 'x-default', href: generateCanonicalUrl(FIELD_GUIDE_ROOT.en) },
+];
+const other = lang === 'en' ? 'es' : 'en';
+---
+
+<BaseLayout
+  title={copy.title}
+  description={copy.description}
+  metaDescription={PAGE_META[FIELD_GUIDE_ROOT[lang]]}
+  path={FIELD_GUIDE_ROOT[lang]}
+  structuredDataType="website"
+  htmlLang={lang}
+  locale={lang === 'es' ? 'es_PR' : undefined}
+  inLanguage={lang === 'es' ? 'es-PR' : 'en-US'}
+  hreflangAlternates={hreflangAlternates}
+>
+  <Container>
+    <div class="guide">
+      <header class="guide-cover">
+        <h1 class="guide-cover__title">{copy.title}</h1>
+        <p class="guide-cover__description">{copy.description}</p>
+        <p class="guide-cover__language">
+          <a href={FIELD_GUIDE_ROOT[other]} hreflang={other} lang={other}>
+            {other === 'es' ? 'En español' : 'In English'}
+          </a>
+        </p>
+      </header>
+
+      {shelves.map(({ shelf, groups }) => (
+        <section class="guide-shelf" id={shelf.segment} aria-labelledby={`${shelf.segment}-title`}>
+          <h2 id={`${shelf.segment}-title`} class="guide-shelf__title">
+            {shelf.name}
+          </h2>
+          <p class="guide-shelf__blurb">{shelf.blurb}</p>
+          {groups.map(([topic, items]) => (
+            <div class="guide-shelf__group">
+              {topic && (
+                <h3 class="guide-shelf__topic">
+                  {copy.topic} {topic}
+                </h3>
+              )}
+              <ul class="guide-shelf__list" role="list">
+                {items.map(({ entry, path }) => (
+                  <li>
+                    <a href={path} class="guide-shelf__entry">
+                      <span class="guide-shelf__entry-title">{entry.data.title}</span>
+                      <span class="guide-shelf__entry-summary">{entry.data.summary}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </section>
+      ))}
+    </div>
+  </Container>
+</BaseLayout>
+
+<style>
+  .guide {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding-block: 2rem 4rem;
+  }
+
+  /* The cover: the title pressed into the page, like a stamped notebook. */
+  .guide-cover {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    padding: 3rem 2rem;
+    border: 1px solid rgb(var(--color-border));
+    border-radius: 0.75rem;
+    background: rgb(var(--color-bg-secondary));
+    text-align: center;
+  }
+
+  .guide-cover__title {
+    margin: 0;
+    color: rgb(var(--color-text-muted));
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    line-height: var(--leading-none);
+    /* Pressed in: a dark edge on top, a light edge below. Muted text keeps it readable. */
+    text-shadow:
+      0 -1px 1px rgb(0 0 0 / 0.45),
+      0 2px 1px rgb(255 255 255 / 0.9);
+  }
+
+  :global(.dark) .guide-cover__title {
+    text-shadow:
+      0 -1px 1px rgb(0 0 0 / 0.9),
+      0 1px 1px rgb(255 255 255 / 0.15);
+  }
+
+  .guide-cover__description {
+    margin: 0 auto;
+    color: rgb(var(--color-text-muted));
+    line-height: var(--leading-relaxed);
+  }
+
+  .guide-cover__language {
+    margin: 0;
+    font-size: 0.875rem;
+  }
+
+  .guide-shelf {
+    margin-bottom: 3rem;
+  }
+
+  .guide-shelf__title {
+    margin: 0 0 0.5rem;
+    font-family: var(--font-heading);
+  }
+
+  .guide-shelf__blurb {
+    margin: 0 0 1.5rem;
+    color: rgb(var(--color-text-muted));
+  }
+
+  .guide-shelf__group + .guide-shelf__group {
+    margin-top: 1.5rem;
+  }
+
+  .guide-shelf__topic {
+    margin: 0 0 0.75rem;
+    color: rgb(var(--color-text-muted));
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .guide-shelf__list {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid rgb(var(--color-border));
+    list-style: none;
+  }
+
+  .guide-shelf__list li {
+    border-bottom: 1px solid rgb(var(--color-border));
+  }
+
+  .guide-shelf__entry {
+    display: grid;
+    gap: 0.25rem;
+    padding-block: 1rem;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .guide-shelf__entry-title {
+    font-weight: 600;
+  }
+
+  .guide-shelf__entry:hover .guide-shelf__entry-title {
+    color: rgb(var(--color-accent));
+  }
+
+  .guide-shelf__entry-summary {
+    color: rgb(var(--color-text-muted));
+    font-size: 0.9375rem;
+    line-height: var(--leading-normal);
+  }
+</style>

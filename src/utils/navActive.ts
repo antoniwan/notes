@@ -30,6 +30,10 @@ export function isNavDropdownItemActive(itemHref: string, pathname: string): boo
   if (h === '/browse')
     return ['/browse', '/tag', '/category', '/p'].some((root) => isWithin(p, root));
 
+  // The Field Guide holds its entries and its Spanish shelf.
+  if (h === '/field-guide')
+    return ['/field-guide', '/es/guia-de-campo'].some((root) => isWithin(p, root));
+
   const sections = ['/tag', '/category'];
   if (sections.some((section) => isWithin(h, section))) return isWithin(p, h);
 

@@ -10,6 +10,7 @@ export interface ReaderLink {
 export const readingLinks: ReaderLink[] = [
   { href: '/browse', label: 'Browse' },
   { href: '/archive', label: 'Archive' },
+  { href: '/field-guide', label: 'Field Guide' },
   { href: '/es', label: 'En español', lang: 'es' },
 ];
 

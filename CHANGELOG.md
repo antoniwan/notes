@@ -9,6 +9,18 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [7.11.0] — 2026-10-27
+
+The Field Guide: a second kind of writing on Notes. Notes are for Antonio; the Field Guide is for the reader. Short entries that explain one thing each, revised in place instead of dated.
+
+### Added
+
+- `/field-guide` with three shelves: Concepts, Values, and Beliefs. Beliefs group by topic ("On dignity"). The title is pressed into the cover like an embossed notebook.
+- Three content collections, `src/content/concepts`, `values`, and `beliefs`, one hand-written file per language. Entries carry `summary`, `revised` (shown as "Last revised"), an optional `origin` for concepts named by someone else, and `topic` for beliefs.
+- Spanish twins at `/es/guia-de-campo`, paired by `translationGroup`, with hreflang alternates and the same language toggle posts use.
+- First entries, in English and Spanish: Locus of control, Honesty, and Dignity from birth.
+- Field Guide in the header, the mobile menu, and the footer's reading links. It stays current on every entry, in both languages.
+
 ## [7.10.2] — 2026-10-26
 
 Reading time counts only what a reader reads.
