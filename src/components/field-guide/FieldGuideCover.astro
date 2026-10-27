@@ -1,0 +1,169 @@
+---
+/**
+ * The Field Guide's cover: an old black notebook, gold lettering half rubbed
+ * off, corners worn through. Decorative only; the page's h1 carries the title.
+ */
+interface Props {
+  lines: string[];
+}
+
+const { lines } = Astro.props;
+---
+
+<svg class="guide-cover" viewBox="0 0 300 400" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="fg-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7a5a1c"></stop>
+      <stop offset="0.3" stop-color="#e9c46a"></stop>
+      <stop offset="0.5" stop-color="#fbe6a2"></stop>
+      <stop offset="0.7" stop-color="#b8892f"></stop>
+      <stop offset="1" stop-color="#d9b25a"></stop>
+    </linearGradient>
+
+    <linearGradient id="fg-spine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#000" stop-opacity="0.7"></stop>
+      <stop offset="0.08" stop-color="#000" stop-opacity="0"></stop>
+      <stop offset="0.1" stop-color="#fff" stop-opacity="0.06"></stop>
+      <stop offset="0.13" stop-color="#000" stop-opacity="0"></stop>
+    </linearGradient>
+
+    <!-- Leather grain. -->
+    <filter id="fg-grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" seed="7"></feTurbulence>
+      <feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 -1.6 0.95"></feColorMatrix>
+      <feComposite in2="SourceGraphic" operator="in"></feComposite>
+    </filter>
+
+    <!-- Big soft scuffs where hands and bags rubbed the cover. -->
+    <filter id="fg-scuff" x="0" y="0" width="100%" height="100%">
+      <feTurbulence
+        type="fractalNoise"
+        baseFrequency="0.018 0.024"
+        numOctaves="4"
+        seed="3"
+      ></feTurbulence>
+      <feColorMatrix values="0 0 0 0 0.55  0 0 0 0 0.5  0 0 0 0 0.45  0 0 0 2.2 -1.25"></feColorMatrix>
+      <feComposite in2="SourceGraphic" operator="in"></feComposite>
+    </filter>
+
+    <!-- Rough, chewed edges. -->
+    <filter id="fg-rough" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence
+        type="fractalNoise"
+        baseFrequency="0.06"
+        numOctaves="2"
+        seed="11"
+      ></feTurbulence>
+      <feDisplacementMap in="SourceGraphic" scale="5"></feDisplacementMap>
+    </filter>
+
+    <!-- Where the gold foil has flaked off. -->
+    <filter id="fg-flake" x="0" y="0" width="100%" height="100%">
+      <feTurbulence
+        type="fractalNoise"
+        baseFrequency="0.05 0.08"
+        numOctaves="3"
+        seed="5"
+      ></feTurbulence>
+      <feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 -9 5.3"></feColorMatrix>
+    </filter>
+    <mask id="fg-worn-gold" maskUnits="userSpaceOnUse" x="0" y="0" width="300" height="400">
+      <rect width="300" height="400" fill="#fff" filter="url(#fg-flake)"></rect>
+    </mask>
+
+    <clipPath id="fg-book">
+      <path
+        d="M6 4 H282 Q296 4 296 18 V382 Q296 396 282 396 H6 Q2 396 2 392 V8 Q2 4 6 4 Z"
+        filter="url(#fg-rough)"
+      ></path>
+    </clipPath>
+
+    <radialGradient id="fg-corner" r="0.5">
+      <stop offset="0" stop-color="#8b8070" stop-opacity="0.55"></stop>
+      <stop offset="1" stop-color="#8b8070" stop-opacity="0"></stop>
+    </radialGradient>
+  </defs>
+
+  <g clip-path="url(#fg-book)">
+    <rect width="300" height="400" fill="#141210"></rect>
+    <rect width="300" height="400" fill="#000" filter="url(#fg-grain)" opacity="0.2"></rect>
+    <rect width="300" height="400" fill="#000" filter="url(#fg-scuff)" opacity="0.4"></rect>
+
+    <!-- Corners rubbed through to the board. -->
+    <circle cx="296" cy="4" r="34" fill="url(#fg-corner)"></circle>
+    <circle cx="296" cy="396" r="44" fill="url(#fg-corner)"></circle>
+    <circle cx="2" cy="398" r="26" fill="url(#fg-corner)"></circle>
+
+    <!-- Scratches. -->
+    <g stroke="#b9ad98" stroke-linecap="round" fill="none" opacity="0.22">
+      <path d="M40 92 L118 70" stroke-width="0.8"></path>
+      <path d="M182 300 Q214 290 262 312" stroke-width="0.6"></path>
+      <path d="M60 330 L96 352" stroke-width="1"></path>
+      <path d="M210 58 L236 120" stroke-width="0.5"></path>
+      <path d="M128 352 L170 344" stroke-width="0.7"></path>
+    </g>
+
+    <rect width="300" height="400" fill="url(#fg-spine)"></rect>
+
+    <!-- The elastic band, stretched and shiny where it's been snapped a thousand times. -->
+    <rect x="252" y="0" width="12" height="400" fill="#050505"></rect>
+    <rect x="253" y="0" width="2" height="400" fill="#fff" opacity="0.08"></rect>
+  </g>
+
+  <!-- Edge wear: a pale line where the leather has rubbed thin. -->
+  <path
+    d="M6 4 H282 Q296 4 296 18 V382 Q296 396 282 396 H6 Q2 396 2 392 V8 Q2 4 6 4 Z"
+    fill="none"
+    stroke="#6f665a"
+    stroke-width="1.5"
+    stroke-opacity="0.6"
+    filter="url(#fg-rough)"
+  ></path>
+
+  <g class="guide-cover__lettering" text-anchor="middle">
+    {lines.map((line, index) => (
+      <text x="128" y={176 + index * 50} fill="#000" opacity="0.7" dy="1.5">
+        {line}
+      </text>
+    ))}
+    <g mask="url(#fg-worn-gold)">
+      {lines.map((line, index) => (
+        <text x="128" y={176 + index * 50} fill="url(#fg-gold)">
+          {line}
+        </text>
+      ))}
+    </g>
+  </g>
+</svg>
+
+<style>
+  .guide-cover {
+    display: block;
+    width: min(100%, 12rem);
+    height: auto;
+    justify-self: center;
+    overflow: visible;
+    filter: drop-shadow(0 18px 24px rgb(0 0 0 / 0.35));
+    transform: rotate(-2deg);
+  }
+
+  .guide-cover__lettering {
+    font-family: var(--font-heading);
+    font-size: 46px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+
+  @media (min-width: 768px) {
+    .guide-cover {
+      width: 16rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .guide-cover {
+      width: 18rem;
+      margin-right: 3rem;
+    }
+  }
+</style>

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Container from '../Container.astro';
+import FieldGuideCover from './FieldGuideCover.astro';
 import {
   FIELD_GUIDE_COPY,
   FIELD_GUIDE_ROOT,
@@ -66,11 +67,9 @@ const [titleFirst, ...titleRest] = copy.title.split(' ');
         </a>
       </div>
 
-      <!-- The notebook itself: the title stamped into the cover. -->
-      <div class="guide-cover" aria-hidden="true">
-        <span class="guide-cover__title">{copy.title}</span>
-        <span class="guide-cover__band"></span>
-      </div>
+      <FieldGuideCover
+        lines={[titleFirst, titleRest.join(' ')].map((line) => line.toUpperCase())}
+      />
     </header>
 
     <div class="guide-shelves">
@@ -157,49 +156,6 @@ const [titleFirst, ...titleRest] = copy.title.split(' ');
     text-underline-offset: 0.25em;
   }
 
-  /* A closed notebook: accent cover, an elastic band, the title debossed tone on tone. */
-  .guide-cover {
-    position: relative;
-    display: grid;
-    place-items: center;
-    width: min(100%, 12rem);
-    aspect-ratio: 3 / 4;
-    justify-self: center;
-    border-radius: 0.25rem 1rem 1rem 0.25rem;
-    background:
-      linear-gradient(90deg, rgb(0 0 0 / 0.18) 0, rgb(0 0 0 / 0) 1.25rem), rgb(var(--color-accent));
-    box-shadow:
-      4px 4px 0 rgb(var(--color-bg)),
-      5px 5px 0 rgb(var(--color-border)),
-      8px 8px 0 rgb(var(--color-bg)),
-      9px 9px 0 rgb(var(--color-border)),
-      0 24px 40px -16px rgb(0 0 0 / 0.35);
-    transform: rotate(-2deg);
-  }
-
-  .guide-cover__title {
-    padding-inline: 1.5rem 3rem;
-    color: rgb(0 0 0 / 0.22);
-    font-family: var(--font-heading);
-    font-size: clamp(1.5rem, 4vw, 2.75rem);
-    font-weight: 800;
-    line-height: var(--leading-tight);
-    letter-spacing: -0.02em;
-    text-align: center;
-    text-shadow:
-      0 1px 0 rgb(255 255 255 / 0.28),
-      0 -1px 0 rgb(0 0 0 / 0.2);
-  }
-
-  .guide-cover__band {
-    position: absolute;
-    inset-block: 0;
-    right: 1.25rem;
-    width: 0.75rem;
-    background: rgb(0 0 0 / 0.3);
-    box-shadow: inset 1px 0 0 rgb(255 255 255 / 0.12);
-  }
-
   .guide-shelves {
     display: grid;
     gap: 3rem;
@@ -280,20 +236,9 @@ const [titleFirst, ...titleRest] = copy.title.split(' ');
       gap: 4rem;
     }
 
-    .guide-cover {
-      width: 16rem;
-    }
-
     .guide-shelves {
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 2.5rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .guide-cover {
-      width: 18rem;
-      margin-right: 3rem;
     }
   }
 </style>
