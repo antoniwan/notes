@@ -8,8 +8,9 @@ import {
   FIELD_GUIDE_COPY,
   FIELD_GUIDE_ROOT,
   FIELD_GUIDE_SHELVES,
-  fieldGuideKinds,
+  fieldGuideShelfPath,
 } from '../../data/fieldGuide';
+import FieldGuideTabs from './FieldGuideTabs.astro';
 import { generateCanonicalUrl } from '../../utils/seo';
 import { getFieldGuide, type ShelvedEntry } from '../../utils/fieldGuide';
 
@@ -26,11 +27,21 @@ const shelf = FIELD_GUIDE_SHELVES[kind][lang];
 const origin = 'origin' in entry.data ? entry.data.origin : undefined;
 const { Content } = await render(entry);
 
-// The sidebar is the whole guide in this language, like a post's "On this page".
-const guide = (await getFieldGuide()).filter((other) => other.entry.data.language === lang);
-const sidebar = fieldGuideKinds
-  .map((k) => ({ shelf: FIELD_GUIDE_SHELVES[k][lang], items: guide.filter((g) => g.kind === k) }))
-  .filter(({ items }) => items.length > 0);
+// The sidebar is a way to move, not a table of contents: back to the shelf,
+// the neighbours on either side, and for a belief, the rest of its topic.
+const shelfItems = (await getFieldGuide()).filter(
+  (other) => other.kind === kind && other.entry.data.language === lang,
+);
+const index = shelfItems.findIndex((other) => other.path === path);
+const previous = index > 0 ? shelfItems[index - 1] : undefined;
+const next = index < shelfItems.length - 1 ? shelfItems[index + 1] : undefined;
+const topic = 'topic' in entry.data ? entry.data.topic : undefined;
+const sameTopic = topic
+  ? shelfItems.filter(
+      (other) => 'topic' in other.entry.data && other.entry.data.topic === topic && other !== item,
+    )
+  : [];
+const shelfPath = fieldGuideShelfPath(kind, lang);
 
 const translations = twin
   ? [item, twin].map((t) => ({
@@ -70,7 +81,7 @@ const hreflangAlternates = twin
   <Container class="guide-entry-shell">
     <div class="guide-entry">
       <header class="guide-entry__heading">
-        <a class="guide-entry__eyebrow" href={`${FIELD_GUIDE_ROOT[lang]}#${shelf.segment}`}>
+        <a class="guide-entry__eyebrow" href={shelfPath}>
           <span aria-hidden="true" class="guide-entry__mark"></span>
           {shelf.singular}
         </a>
@@ -99,20 +110,41 @@ const hreflangAlternates = twin
         <a class="guide-entry__guide-link" href={FIELD_GUIDE_ROOT[lang]}>
           {copy.title}
         </a>
-        {sidebar.map(({ shelf: s, items }) => (
+        <a class="guide-entry__shelf-link" href={shelfPath}>
+          <span aria-hidden="true">←</span>
+          {shelf.name}
+        </a>
+        <div class="guide-entry__steps">
+          {previous && (
+            <a href={previous.path} rel="prev">
+              <span class="guide-entry__label">{copy.previous}</span>
+              {previous.entry.data.title}
+            </a>
+          )}
+          {next && (
+            <a href={next.path} rel="next">
+              <span class="guide-entry__label">{copy.next}</span>
+              {next.entry.data.title}
+            </a>
+          )}
+        </div>
+        {sameTopic.length > 0 && (
           <div class="guide-entry__shelf">
-            <h2 class="guide-entry__label">{s.name}</h2>
+            <h2 class="guide-entry__label">
+              {copy.sameTopic} {topic}
+            </h2>
             <ul>
-              {items.map((other) => (
+              {sameTopic.map((other) => (
                 <li>
-                  <a href={other.path} aria-current={other.path === path ? 'page' : undefined}>
-                    {other.entry.data.title}
-                  </a>
+                  <a href={other.path}>{other.entry.data.title}</a>
                 </li>
               ))}
             </ul>
           </div>
-        ))}
+        )}
+        <div class="guide-entry__tabs">
+          <FieldGuideTabs lang={lang} current={kind} />
+        </div>
       </nav>
 
       <article class="guide-entry__article" aria-labelledby="guide-entry-title">
@@ -224,8 +256,8 @@ const hreflangAlternates = twin
   }
 
   .guide-entry__guide-link {
-    display: inline-block;
-    margin-bottom: 1rem;
+    display: block;
+    margin-bottom: 0.25rem;
     color: rgb(var(--color-text));
     font-family: var(--font-heading);
     font-size: 1.25rem;
@@ -237,8 +269,55 @@ const hreflangAlternates = twin
     color: rgb(var(--color-accent));
   }
 
-  .guide-entry__shelf + .guide-entry__shelf {
-    margin-top: 1.25rem;
+  .guide-entry__shelf-link {
+    display: inline-flex;
+    gap: 0.5rem;
+    align-items: center;
+    min-height: 2.5rem;
+    color: rgb(var(--color-accent));
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .guide-entry__steps {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .guide-entry__steps a {
+    display: grid;
+    gap: 0.125rem;
+    color: rgb(var(--color-text));
+    font-family: var(--font-heading);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    line-height: var(--leading-tight);
+    text-decoration: none;
+  }
+
+  .guide-entry__steps a:hover {
+    color: rgb(var(--color-accent));
+  }
+
+  .guide-entry__steps .guide-entry__label {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .guide-entry__shelf {
+    margin-top: 1.5rem;
+  }
+
+  .guide-entry__tabs {
+    margin-top: 1.5rem;
+  }
+
+  .guide-entry__tabs :global(.guide-tabs a) {
+    min-height: 2.25rem;
+    padding: 0 0.75rem;
+    font-size: 0.8125rem;
   }
 
   .guide-entry__label {

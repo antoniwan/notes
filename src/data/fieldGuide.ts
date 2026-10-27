@@ -33,6 +33,15 @@ export const FIELD_GUIDE_COPY: Record<
     revised: string;
     origin: string;
     topic: string;
+    search: string;
+    searchLabel: string;
+    noResults: string;
+    browseAll: string;
+    entries: string;
+    previous: string;
+    next: string;
+    sameTopic: string;
+    shelves: string;
   }
 > = {
   en: {
@@ -43,6 +52,15 @@ export const FIELD_GUIDE_COPY: Record<
     revised: 'Last revised',
     origin: 'Where it comes from',
     topic: 'On',
+    search: 'Search the guide',
+    searchLabel: 'Search entries',
+    noResults: 'Nothing matches that yet.',
+    browseAll: 'Browse all',
+    entries: 'entries',
+    previous: 'Previous',
+    next: 'Next',
+    sameTopic: 'Also on',
+    shelves: 'Shelves',
   },
   es: {
     title: 'Guía de campo',
@@ -52,6 +70,15 @@ export const FIELD_GUIDE_COPY: Record<
     revised: 'Revisado por última vez',
     origin: 'De dónde viene',
     topic: 'Sobre',
+    search: 'Busca en la guía',
+    searchLabel: 'Buscar entradas',
+    noResults: 'Todavía nada coincide con eso.',
+    browseAll: 'Ver todas',
+    entries: 'entradas',
+    previous: 'Anterior',
+    next: 'Siguiente',
+    sameTopic: 'También sobre',
+    shelves: 'Estantes',
   },
 };
 
@@ -102,4 +129,27 @@ export const FIELD_GUIDE_SHELVES: Record<FieldGuideKind, Record<FieldGuideLang, 
 
 export function fieldGuideEntryPath(kind: FieldGuideKind, lang: FieldGuideLang, slug: string) {
   return `${FIELD_GUIDE_ROOT[lang]}/${FIELD_GUIDE_SHELVES[kind][lang].segment}/${slug}`;
+}
+
+export function fieldGuideShelfPath(kind: FieldGuideKind, lang: FieldGuideLang) {
+  return `${FIELD_GUIDE_ROOT[lang]}/${FIELD_GUIDE_SHELVES[kind][lang].segment}`;
+}
+
+// Articles don't count when sorting, so "La empatía" files under E and "The anchor" under A.
+const LEADING_ARTICLE = /^(the|a|an|el|la|los|las|un|una)\s+/i;
+
+/** The title as it sorts: no leading article, no accents, lower case. */
+export function fieldGuideSortKey(title: string) {
+  return title
+    .replace(LEADING_ARTICLE, '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/^[^a-z0-9]+/i, '')
+    .toLowerCase();
+}
+
+/** The letter an entry files under; digits share "#". */
+export function fieldGuideLetter(title: string) {
+  const first = fieldGuideSortKey(title).charAt(0).toUpperCase();
+  return /[A-Z]/.test(first) ? first : '#';
 }

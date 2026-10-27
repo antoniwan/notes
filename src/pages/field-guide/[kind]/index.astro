@@ -1,0 +1,14 @@
+---
+import FieldGuideShelf from '../../../components/field-guide/FieldGuideShelf.astro';
+import { fieldGuideShelfPaths } from '../../../utils/fieldGuide';
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return fieldGuideShelfPaths('en');
+}
+
+const { kind } = Astro.props;
+---
+
+<FieldGuideShelf kind={kind} lang="en" />

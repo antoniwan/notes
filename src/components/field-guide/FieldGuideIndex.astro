@@ -2,11 +2,13 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Container from '../Container.astro';
 import FieldGuideCover from './FieldGuideCover.astro';
+import FieldGuideSearch from './FieldGuideSearch.astro';
 import {
   FIELD_GUIDE_COPY,
   FIELD_GUIDE_ROOT,
   FIELD_GUIDE_SHELVES,
-  fieldGuideKinds,
+  fieldGuideLetter,
+  fieldGuideShelfPath,
   type FieldGuideLang,
 } from '../../data/fieldGuide';
 import { getFieldGuide, type ShelvedEntry } from '../../utils/fieldGuide';
@@ -25,13 +27,21 @@ function topicOf(item: ShelvedEntry) {
   return 'topic' in item.entry.data ? item.entry.data.topic : undefined;
 }
 
-// Beliefs read as "On dignity", so they sort by topic first.
-const shelves = fieldGuideKinds.map((kind) => ({
-  shelf: FIELD_GUIDE_SHELVES[kind][lang],
-  items: entries
-    .filter((e) => e.kind === kind)
-    .sort((a, b) => (topicOf(a) ?? '').localeCompare(topicOf(b) ?? '')),
-}));
+const concepts = entries.filter((e) => e.kind === 'concepts');
+const values = entries.filter((e) => e.kind === 'values');
+const beliefs = entries.filter((e) => e.kind === 'beliefs');
+const letters = [...new Set(concepts.map((e) => fieldGuideLetter(e.entry.data.title)))].sort();
+const topics = [...new Set(beliefs.map(topicOf).filter(Boolean))].sort() as string[];
+const conceptsPath = fieldGuideShelfPath('concepts', lang);
+const letterHref = (letter: string) =>
+  `${conceptsPath}#g-${letter === '#' ? '-' : letter.toLowerCase()}`;
+const topicHref = (topic: string) =>
+  `${fieldGuideShelfPath('beliefs', lang)}#g-${topic
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')}`;
+const shelf = (kind: 'concepts' | 'values' | 'beliefs') => FIELD_GUIDE_SHELVES[kind][lang];
 
 const hreflangAlternates = [
   { hreflang: 'en', href: generateCanonicalUrl(FIELD_GUIDE_ROOT.en) },
@@ -70,30 +80,83 @@ const [titleFirst, ...titleRest] = copy.title.split(' ');
       <FieldGuideCover lines={copy.cover.map((line) => line.toUpperCase())} />
     </header>
 
-    <div class="guide-shelves">
-      {shelves.map(({ shelf, items }) => (
-        <section class="guide-shelf" id={shelf.segment} aria-labelledby={`${shelf.segment}-title`}>
-          <h2 id={`${shelf.segment}-title`} class="guide-shelf__title">
-            {shelf.name}
-          </h2>
-          <p class="guide-shelf__blurb">{shelf.blurb}</p>
-          <ul class="guide-shelf__list" role="list">
-            {items.map((item) => (
-              <li>
-                <a href={item.path} class="guide-shelf__entry">
-                  {topicOf(item) && (
-                    <span class="guide-shelf__topic">
-                      {copy.topic} {topicOf(item)}
-                    </span>
-                  )}
-                  <span class="guide-shelf__entry-title">{item.entry.data.title}</span>
-                  <span class="guide-shelf__entry-summary">{item.entry.data.summary}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
-      ))}
+    <div class="guide-find">
+      <FieldGuideSearch
+        label={copy.searchLabel}
+        placeholder={copy.search}
+        empty={copy.noResults}
+        target="guide-results"
+        reveal
+      />
+      <ul id="guide-results" class="guide-results" role="list" hidden>
+        {entries.map((item) => (
+          <li data-fg-text={`${item.entry.data.title} ${item.entry.data.summary}`}>
+            <a href={item.path}>
+              <span class="guide-results__kind">
+                {FIELD_GUIDE_SHELVES[item.kind][lang].singular}
+              </span>
+              <span class="guide-results__title">{item.entry.data.title}</span>
+              <span class="guide-results__summary">{item.entry.data.summary}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="guide-doors">
+      <section class="guide-door guide-door--concepts" aria-labelledby="door-concepts">
+        <a class="guide-door__head" href={conceptsPath}>
+          <h2 id="door-concepts">{shelf('concepts').name}</h2>
+          <span class="guide-door__count">
+            {concepts.length} {copy.entries}
+          </span>
+        </a>
+        <p class="guide-door__blurb">{shelf('concepts').blurb}</p>
+        <nav class="guide-door__letters" aria-label="A–Z">
+          {letters.map((letter) => (
+            <a href={letterHref(letter)}>{letter}</a>
+          ))}
+        </nav>
+        <a class="guide-door__more" href={conceptsPath}>
+          {copy.browseAll} <span aria-hidden="true">→</span>
+        </a>
+      </section>
+
+      <section class="guide-door" aria-labelledby="door-values">
+        <a class="guide-door__head" href={fieldGuideShelfPath('values', lang)}>
+          <h2 id="door-values">{shelf('values').name}</h2>
+          <span class="guide-door__count">
+            {values.length} {copy.entries}
+          </span>
+        </a>
+        <p class="guide-door__blurb">{shelf('values').blurb}</p>
+        <ul class="guide-door__chips" role="list">
+          {values.map((item) => (
+            <li>
+              <a href={item.path}>{item.entry.data.title}</a>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="guide-door" aria-labelledby="door-beliefs">
+        <a class="guide-door__head" href={fieldGuideShelfPath('beliefs', lang)}>
+          <h2 id="door-beliefs">{shelf('beliefs').name}</h2>
+          <span class="guide-door__count">
+            {beliefs.length} {copy.entries}
+          </span>
+        </a>
+        <p class="guide-door__blurb">{shelf('beliefs').blurb}</p>
+        <ul class="guide-door__topics" role="list">
+          {topics.map((topic) => (
+            <li>
+              <a href={topicHref(topic)}>
+                {copy.topic} {topic}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
     </div>
   </Container>
 </BaseLayout>
@@ -154,78 +217,185 @@ const [titleFirst, ...titleRest] = copy.title.split(' ');
     text-underline-offset: 0.25em;
   }
 
-  .guide-shelves {
-    display: grid;
-    gap: 3rem;
-    padding-block: 3rem 5rem;
+  .guide-find {
+    padding-block: 2rem;
     border-top: 1px solid rgb(var(--color-border));
   }
 
-  .guide-shelf {
-    min-width: 0;
-    scroll-margin-top: calc(var(--site-header-height) + 1.5rem);
-  }
-
-  .guide-shelf__title {
-    margin: 0;
-    font-family: var(--font-heading);
-    font-size: clamp(1.75rem, 2.4vw, 2.25rem);
-    font-weight: 600;
-    letter-spacing: -0.02em;
-  }
-
-  .guide-shelf__blurb {
-    margin: 0.5rem 0 0;
-    color: rgb(var(--color-text-muted));
-    font-size: 0.9375rem;
-    line-height: var(--leading-normal);
-  }
-
-  .guide-shelf__list {
+  .guide-results {
     display: grid;
-    gap: 1.5rem;
-    margin: 1.5rem 0 0;
+    gap: 0.25rem;
+    max-height: 28rem;
+    margin: 1rem 0 0;
     padding: 0;
+    overflow-y: auto;
     list-style: none;
   }
 
-  .guide-shelf__entry {
+  .guide-results a {
     display: grid;
-    gap: 0.5rem;
+    grid-template-columns: 6rem minmax(0, 1fr);
+    gap: 0.125rem 1rem;
+    padding: 0.625rem 0;
+    border-bottom: 1px solid rgb(var(--color-border) / 0.6);
     color: inherit;
     text-decoration: none;
   }
 
-  .guide-shelf__topic {
+  .guide-results__kind {
+    grid-row: span 2;
+    padding-top: 0.2rem;
     color: rgb(var(--color-text-muted));
-    font-size: 0.875rem;
-    letter-spacing: 0.035em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
   }
 
-  .guide-shelf__entry-title {
+  .guide-results__title {
     font-family: var(--font-heading);
-    font-size: clamp(1.25rem, 1.7vw, 1.6rem);
+    font-size: 1.125rem;
     font-weight: 600;
-    line-height: var(--leading-tight);
-    letter-spacing: -0.015em;
   }
 
-  .guide-shelf__entry:hover .guide-shelf__entry-title {
+  .guide-results__summary {
+    color: rgb(var(--color-text-muted));
+    font-size: 0.9375rem;
+  }
+
+  .guide-results a:hover .guide-results__title {
     color: rgb(var(--color-accent));
   }
 
-  .guide-shelf__entry-summary {
-    color: rgb(var(--color-text-muted));
-    font-size: 1rem;
-    line-height: var(--leading-relaxed);
+  .guide-doors {
+    display: grid;
+    gap: 1.25rem;
+    padding-block: 0.5rem 5rem;
   }
 
-  .guide-shelf__entry:focus-visible,
-  .guide-intro__language:focus-visible {
+  .guide-door {
+    display: grid;
+    align-content: start;
+    gap: 0.75rem;
+    padding: clamp(1.25rem, 3vw, 2rem);
+    border: 1px solid rgb(var(--color-border));
+    border-radius: var(--radius-lg, 12px);
+    background: rgb(var(--color-surface-1));
+  }
+
+  .guide-door__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .guide-door__head h2 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+  }
+
+  .guide-door__head:hover h2 {
+    color: rgb(var(--color-accent));
+  }
+
+  .guide-door__count {
+    color: rgb(var(--color-text-muted));
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .guide-door__blurb {
+    margin: 0;
+    color: rgb(var(--color-text-muted));
+    line-height: var(--leading-normal);
+  }
+
+  .guide-door__letters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin-top: 0.5rem;
+  }
+
+  .guide-door__letters a {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid rgb(var(--color-border));
+    border-radius: var(--radius-md, 6px);
+    color: rgb(var(--color-text));
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .guide-door__letters a:hover {
+    border-color: rgb(var(--color-accent));
+    color: rgb(var(--color-accent));
+  }
+
+  .guide-door__more {
+    width: fit-content;
+    margin-top: 0.25rem;
+    color: rgb(var(--color-accent));
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .guide-door__more:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .guide-door__chips,
+  .guide-door__topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.25rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .guide-door__chips a,
+  .guide-door__topics a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.25rem;
+    padding: 0 0.875rem;
+    border: 1px solid rgb(var(--color-border));
+    border-radius: 999px;
+    color: rgb(var(--color-text));
+    font-size: 0.9375rem;
+    text-decoration: none;
+  }
+
+  .guide-door__topics a {
+    font-family: var(--font-heading);
+    font-style: italic;
+  }
+
+  .guide-door__chips a:hover,
+  .guide-door__topics a:hover {
+    border-color: rgb(var(--color-accent));
+    color: rgb(var(--color-accent));
+  }
+
+  .guide-door a:focus-visible,
+  .guide-results a:focus-visible {
     outline: 2px solid rgb(var(--color-accent));
-    outline-offset: 4px;
-    border-radius: 2px;
+    outline-offset: 2px;
   }
 
   @media (min-width: 768px) {
@@ -234,9 +404,12 @@ const [titleFirst, ...titleRest] = copy.title.split(' ');
       gap: 4rem;
     }
 
-    .guide-shelves {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 2.5rem;
+    .guide-doors {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .guide-door--concepts {
+      grid-column: 1 / -1;
     }
   }
 </style>

@@ -1,0 +1,62 @@
+---
+import {
+  FIELD_GUIDE_COPY,
+  FIELD_GUIDE_SHELVES,
+  fieldGuideKinds,
+  fieldGuideShelfPath,
+  type FieldGuideKind,
+  type FieldGuideLang,
+} from '../../data/fieldGuide';
+
+interface Props {
+  lang: FieldGuideLang;
+  current?: FieldGuideKind;
+}
+
+const { lang, current } = Astro.props;
+---
+
+<nav class="guide-tabs" aria-label={FIELD_GUIDE_COPY[lang].shelves}>
+  {fieldGuideKinds.map((kind) => (
+    <a href={fieldGuideShelfPath(kind, lang)} aria-current={kind === current ? 'page' : undefined}>
+      {FIELD_GUIDE_SHELVES[kind][lang].name}
+    </a>
+  ))}
+</nav>
+
+<style>
+  .guide-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .guide-tabs a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.5rem;
+    padding: 0 1rem;
+    border: 1px solid rgb(var(--color-border));
+    border-radius: 999px;
+    color: rgb(var(--color-text));
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .guide-tabs a:hover {
+    border-color: rgb(var(--color-accent));
+    color: rgb(var(--color-accent));
+  }
+
+  .guide-tabs a[aria-current='page'] {
+    border-color: rgb(var(--color-text));
+    background: rgb(var(--color-text));
+    color: rgb(var(--color-surface-1));
+  }
+
+  .guide-tabs a:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 2px;
+  }
+</style>
