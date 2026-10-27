@@ -20,23 +20,16 @@ const { lang } = Astro.props;
 const copy = FIELD_GUIDE_COPY[lang];
 const entries = (await getFieldGuide()).filter(({ entry }) => entry.data.language === lang);
 
-// Beliefs read as "Beliefs on dignity", so they group by topic.
-function byTopic(items: ShelvedEntry[]) {
-  const groups = new Map<string, ShelvedEntry[]>();
-  for (const item of items) {
-    const topic = 'topic' in item.entry.data ? item.entry.data.topic : '';
-    groups.set(topic, [...(groups.get(topic) ?? []), item]);
-  }
-  return [...groups.entries()].sort(([a], [b]) => a.localeCompare(b));
+function topicOf(item: ShelvedEntry) {
+  return 'topic' in item.entry.data ? item.entry.data.topic : undefined;
 }
 
+// Beliefs read as "On dignity", so they sort by topic first.
 const shelves = fieldGuideKinds.map((kind) => ({
-  kind,
   shelf: FIELD_GUIDE_SHELVES[kind][lang],
-  groups:
-    kind === 'beliefs'
-      ? byTopic(entries.filter((e) => e.kind === kind))
-      : [['', entries.filter((e) => e.kind === kind)] as [string, ShelvedEntry[]]],
+  items: entries
+    .filter((e) => e.kind === kind)
+    .sort((a, b) => (topicOf(a) ?? '').localeCompare(topicOf(b) ?? '')),
 }));
 
 const hreflangAlternates = [
@@ -45,6 +38,7 @@ const hreflangAlternates = [
   { hreflang: 'x-default', href: generateCanonicalUrl(FIELD_GUIDE_ROOT.en) },
 ];
 const other = lang === 'en' ? 'es' : 'en';
+const [titleFirst, ...titleRest] = copy.title.split(' ');
 ---
 
 <BaseLayout
@@ -59,42 +53,48 @@ const other = lang === 'en' ? 'es' : 'en';
   hreflangAlternates={hreflangAlternates}
 >
   <Container>
-    <div class="guide">
-      <header class="guide-cover">
-        <h1 class="guide-cover__title">{copy.title}</h1>
-        <p class="guide-cover__description">{copy.description}</p>
-        <p class="guide-cover__language">
-          <a href={FIELD_GUIDE_ROOT[other]} hreflang={other} lang={other}>
-            {other === 'es' ? 'En español' : 'In English'}
-          </a>
-        </p>
-      </header>
+    <header class="guide-intro">
+      <div class="guide-intro__text">
+        <h1>
+          {titleFirst}
+          <em>{titleRest.join(' ')}</em>
+        </h1>
+        <p class="guide-intro__description">{copy.description}</p>
+        <a class="guide-intro__language" href={FIELD_GUIDE_ROOT[other]} hreflang={other}>
+          <span lang={other}>{other === 'es' ? 'En español' : 'In English'}</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
 
-      {shelves.map(({ shelf, groups }) => (
+      <!-- The notebook itself: the title stamped into the cover. -->
+      <div class="guide-cover" aria-hidden="true">
+        <span class="guide-cover__title">{copy.title}</span>
+        <span class="guide-cover__band"></span>
+      </div>
+    </header>
+
+    <div class="guide-shelves">
+      {shelves.map(({ shelf, items }) => (
         <section class="guide-shelf" id={shelf.segment} aria-labelledby={`${shelf.segment}-title`}>
           <h2 id={`${shelf.segment}-title`} class="guide-shelf__title">
             {shelf.name}
           </h2>
           <p class="guide-shelf__blurb">{shelf.blurb}</p>
-          {groups.map(([topic, items]) => (
-            <div class="guide-shelf__group">
-              {topic && (
-                <h3 class="guide-shelf__topic">
-                  {copy.topic} {topic}
-                </h3>
-              )}
-              <ul class="guide-shelf__list" role="list">
-                {items.map(({ entry, path }) => (
-                  <li>
-                    <a href={path} class="guide-shelf__entry">
-                      <span class="guide-shelf__entry-title">{entry.data.title}</span>
-                      <span class="guide-shelf__entry-summary">{entry.data.summary}</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <ul class="guide-shelf__list" role="list">
+            {items.map((item) => (
+              <li>
+                <a href={item.path} class="guide-shelf__entry">
+                  {topicOf(item) && (
+                    <span class="guide-shelf__topic">
+                      {copy.topic} {topicOf(item)}
+                    </span>
+                  )}
+                  <span class="guide-shelf__entry-title">{item.entry.data.title}</span>
+                  <span class="guide-shelf__entry-summary">{item.entry.data.summary}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </section>
       ))}
     </div>
@@ -102,104 +102,159 @@ const other = lang === 'en' ? 'es' : 'en';
 </BaseLayout>
 
 <style>
-  .guide {
-    max-width: var(--measure);
-    margin: 0 auto;
-    padding-block: 2rem 4rem;
+  /* Same shape as the home intro: a big serif heading with an italic accent line. */
+  .guide-intro {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+    padding-block: round(nearest, clamp(1.75rem, 4vw, 3.5rem), 4px) 3rem;
   }
 
-  /* The cover: the title pressed into the page, like a stamped notebook. */
-  .guide-cover {
-    display: grid;
+  .guide-intro h1 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: clamp(3.75rem, 6.4vw, 5.75rem);
+    font-weight: 600;
+    line-height: var(--leading-none);
+    letter-spacing: -0.055em;
+  }
+
+  .guide-intro h1 em {
+    display: block;
+    color: rgb(var(--color-accent));
+    font-size: 0.85em;
+    font-weight: 500;
+  }
+
+  .guide-intro__description {
+    max-width: var(--measure);
+    margin: 1.75rem 0 0;
+    color: rgb(var(--color-text-muted));
+    font-size: clamp(1rem, 1.35vw, 1.125rem);
+    line-height: var(--leading-relaxed);
+    text-wrap: pretty;
+  }
+
+  .guide-intro__language {
+    display: inline-flex;
+    align-items: center;
     gap: 1rem;
-    margin-bottom: 3rem;
-    padding: 3rem 2rem;
-    border: 1px solid rgb(var(--color-border));
-    border-radius: 0.75rem;
-    background: rgb(var(--color-bg-secondary));
-    text-align: center;
+    min-height: 2.75rem;
+    margin-top: 1.5rem;
+    color: rgb(var(--color-text));
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .guide-intro__language span[aria-hidden] {
+    color: rgb(var(--color-accent));
+  }
+
+  .guide-intro__language:hover {
+    color: rgb(var(--color-accent));
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
+
+  /* A closed notebook: accent cover, an elastic band, the title debossed tone on tone. */
+  .guide-cover {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: min(100%, 12rem);
+    aspect-ratio: 3 / 4;
+    justify-self: center;
+    border-radius: 0.25rem 1rem 1rem 0.25rem;
+    background:
+      linear-gradient(90deg, rgb(0 0 0 / 0.18) 0, rgb(0 0 0 / 0) 1.25rem), rgb(var(--color-accent));
+    box-shadow:
+      4px 4px 0 rgb(var(--color-bg)),
+      5px 5px 0 rgb(var(--color-border)),
+      8px 8px 0 rgb(var(--color-bg)),
+      9px 9px 0 rgb(var(--color-border)),
+      0 24px 40px -16px rgb(0 0 0 / 0.35);
+    transform: rotate(-2deg);
   }
 
   .guide-cover__title {
-    margin: 0;
-    color: rgb(var(--color-text-muted));
+    padding-inline: 1.5rem 3rem;
+    color: rgb(0 0 0 / 0.22);
     font-family: var(--font-heading);
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-size: clamp(1.5rem, 4vw, 2.75rem);
     font-weight: 800;
-    letter-spacing: 0.02em;
-    line-height: var(--leading-none);
-    /* Pressed in: a dark edge on top, a light edge below. Muted text keeps it readable. */
+    line-height: var(--leading-tight);
+    letter-spacing: -0.02em;
+    text-align: center;
     text-shadow:
-      0 -1px 1px rgb(0 0 0 / 0.45),
-      0 2px 1px rgb(255 255 255 / 0.9);
+      0 1px 0 rgb(255 255 255 / 0.28),
+      0 -1px 0 rgb(0 0 0 / 0.2);
   }
 
-  :global(.dark) .guide-cover__title {
-    text-shadow:
-      0 -1px 1px rgb(0 0 0 / 0.9),
-      0 1px 1px rgb(255 255 255 / 0.15);
+  .guide-cover__band {
+    position: absolute;
+    inset-block: 0;
+    right: 1.25rem;
+    width: 0.75rem;
+    background: rgb(0 0 0 / 0.3);
+    box-shadow: inset 1px 0 0 rgb(255 255 255 / 0.12);
   }
 
-  .guide-cover__description {
-    margin: 0 auto;
-    color: rgb(var(--color-text-muted));
-    line-height: var(--leading-relaxed);
-  }
-
-  .guide-cover__language {
-    margin: 0;
-    font-size: 0.875rem;
+  .guide-shelves {
+    display: grid;
+    gap: 3rem;
+    padding-block: 3rem 5rem;
+    border-top: 1px solid rgb(var(--color-border));
   }
 
   .guide-shelf {
-    margin-bottom: 3rem;
+    min-width: 0;
+    scroll-margin-top: calc(var(--site-header-height) + 1.5rem);
   }
 
   .guide-shelf__title {
-    margin: 0 0 0.5rem;
+    margin: 0;
     font-family: var(--font-heading);
+    font-size: clamp(1.75rem, 2.4vw, 2.25rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
   }
 
   .guide-shelf__blurb {
-    margin: 0 0 1.5rem;
+    margin: 0.5rem 0 0;
     color: rgb(var(--color-text-muted));
-  }
-
-  .guide-shelf__group + .guide-shelf__group {
-    margin-top: 1.5rem;
-  }
-
-  .guide-shelf__topic {
-    margin: 0 0 0.75rem;
-    color: rgb(var(--color-text-muted));
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    font-size: 0.9375rem;
+    line-height: var(--leading-normal);
   }
 
   .guide-shelf__list {
     display: grid;
-    margin: 0;
+    gap: 1.5rem;
+    margin: 1.5rem 0 0;
     padding: 0;
-    border-top: 1px solid rgb(var(--color-border));
     list-style: none;
-  }
-
-  .guide-shelf__list li {
-    border-bottom: 1px solid rgb(var(--color-border));
   }
 
   .guide-shelf__entry {
     display: grid;
-    gap: 0.25rem;
-    padding-block: 1rem;
+    gap: 0.5rem;
     color: inherit;
     text-decoration: none;
   }
 
+  .guide-shelf__topic {
+    color: rgb(var(--color-text-muted));
+    font-size: 0.875rem;
+    letter-spacing: 0.035em;
+    text-transform: uppercase;
+  }
+
   .guide-shelf__entry-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.25rem, 1.7vw, 1.6rem);
     font-weight: 600;
+    line-height: var(--leading-tight);
+    letter-spacing: -0.015em;
   }
 
   .guide-shelf__entry:hover .guide-shelf__entry-title {
@@ -208,7 +263,37 @@ const other = lang === 'en' ? 'es' : 'en';
 
   .guide-shelf__entry-summary {
     color: rgb(var(--color-text-muted));
-    font-size: 0.9375rem;
-    line-height: var(--leading-normal);
+    font-size: 1rem;
+    line-height: var(--leading-relaxed);
+  }
+
+  .guide-shelf__entry:focus-visible,
+  .guide-intro__language:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  @media (min-width: 768px) {
+    .guide-intro {
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 4rem;
+    }
+
+    .guide-cover {
+      width: 16rem;
+    }
+
+    .guide-shelves {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 2.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .guide-cover {
+      width: 18rem;
+      margin-right: 3rem;
+    }
   }
 </style>

@@ -4,9 +4,14 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Container from '../Container.astro';
 import FormattedDate from '../FormattedDate.astro';
 import LanguageToggle from '../LanguageToggle.astro';
-import { FIELD_GUIDE_COPY, FIELD_GUIDE_ROOT, FIELD_GUIDE_SHELVES } from '../../data/fieldGuide';
+import {
+  FIELD_GUIDE_COPY,
+  FIELD_GUIDE_ROOT,
+  FIELD_GUIDE_SHELVES,
+  fieldGuideKinds,
+} from '../../data/fieldGuide';
 import { generateCanonicalUrl } from '../../utils/seo';
-import type { ShelvedEntry } from '../../utils/fieldGuide';
+import { getFieldGuide, type ShelvedEntry } from '../../utils/fieldGuide';
 
 interface Props {
   item: ShelvedEntry;
@@ -20,6 +25,12 @@ const copy = FIELD_GUIDE_COPY[lang];
 const shelf = FIELD_GUIDE_SHELVES[kind][lang];
 const origin = 'origin' in entry.data ? entry.data.origin : undefined;
 const { Content } = await render(entry);
+
+// The sidebar is the whole guide in this language, like a post's "On this page".
+const guide = (await getFieldGuide()).filter((other) => other.entry.data.language === lang);
+const sidebar = fieldGuideKinds
+  .map((k) => ({ shelf: FIELD_GUIDE_SHELVES[k][lang], items: guide.filter((g) => g.kind === k) }))
+  .filter(({ items }) => items.length > 0);
 
 const translations = twin
   ? [item, twin].map((t) => ({
@@ -56,107 +67,238 @@ const hreflangAlternates = twin
   inLanguage={lang === 'es' ? 'es-PR' : 'en-US'}
   hreflangAlternates={hreflangAlternates}
 >
-  <Container>
-    <article class="guide-entry" aria-labelledby="guide-entry-title">
-      <header class="guide-entry__header">
-        <p class="guide-entry__eyebrow">
-          <a href={FIELD_GUIDE_ROOT[lang]}>{copy.title}</a>
-          <span aria-hidden="true">·</span>
-          <a href={`${FIELD_GUIDE_ROOT[lang]}#${shelf.segment}`}>{shelf.singular}</a>
-        </p>
+  <Container class="guide-entry-shell">
+    <div class="guide-entry">
+      <header class="guide-entry__heading">
+        <a class="guide-entry__eyebrow" href={`${FIELD_GUIDE_ROOT[lang]}#${shelf.segment}`}>
+          <span aria-hidden="true" class="guide-entry__mark"></span>
+          {shelf.singular}
+        </a>
         <h1 id="guide-entry-title" class="guide-entry__title">
           {entry.data.title}
         </h1>
-        <p class="guide-entry__summary">{entry.data.summary}</p>
-        <dl class="guide-entry__meta">
+        <p class="guide-entry__description">{entry.data.summary}</p>
+        <div class="guide-entry__byline">
+          <span>
+            {copy.revised} <FormattedDate date={entry.data.revised} language={lang} />
+          </span>
           {origin && (
-            <div>
-              <dt>{copy.origin}</dt>
-              <dd>{origin}</dd>
-            </div>
+            <span>
+              {copy.origin}: {origin}
+            </span>
           )}
-          <div>
-            <dt>{copy.revised}</dt>
-            <dd>
-              <FormattedDate date={entry.data.revised} language={lang} />
-            </dd>
+        </div>
+        {twin && (
+          <div class="guide-entry__language">
+            <LanguageToggle translations={translations} currentPath={path} currentLanguage={lang} />
           </div>
-        </dl>
-        <LanguageToggle translations={translations} currentPath={path} currentLanguage={lang} />
+        )}
       </header>
 
-      <div class="guide-entry__body prose prose-lg max-w-none">
-        <Content />
-      </div>
-    </article>
+      <nav class="guide-entry__sidebar" aria-label={copy.title}>
+        <a class="guide-entry__guide-link" href={FIELD_GUIDE_ROOT[lang]}>
+          {copy.title}
+        </a>
+        {sidebar.map(({ shelf: s, items }) => (
+          <div class="guide-entry__shelf">
+            <h2 class="guide-entry__label">{s.name}</h2>
+            <ul>
+              {items.map((other) => (
+                <li>
+                  <a href={other.path} aria-current={other.path === path ? 'page' : undefined}>
+                    {other.entry.data.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </nav>
+
+      <article class="guide-entry__article" aria-labelledby="guide-entry-title">
+        <div class="guide-entry__prose prose prose-lg max-w-none">
+          <Content />
+        </div>
+      </article>
+    </div>
   </Container>
 </BaseLayout>
 
 <style>
-  .guide-entry {
-    max-width: var(--measure);
-    margin: 0 auto;
-    padding-block: 2rem 4rem;
+  :global(.guide-entry-shell) {
+    padding-bottom: 4rem;
   }
 
-  .guide-entry__header {
+  /* Same grid as a post: the guide on the left, the entry on the reading measure. */
+  .guide-entry {
     display: grid;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid rgb(var(--color-border));
+    grid-template-columns: minmax(0, var(--measure));
+    padding-top: round(nearest, clamp(1.75rem, 4vw, 3.5rem), 4px);
+  }
+
+  .guide-entry__heading {
+    min-width: 0;
+    padding-bottom: 2rem;
   }
 
   .guide-entry__eyebrow {
-    display: flex;
+    display: inline-flex;
+    align-items: center;
     gap: 0.5rem;
-    margin: 0;
-    color: rgb(var(--color-text-muted));
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
+    min-height: 2rem;
+    margin-bottom: 0.75rem;
+    color: rgb(var(--color-accent));
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-  }
-
-  .guide-entry__eyebrow a {
-    color: inherit;
     text-decoration: none;
   }
 
-  .guide-entry__eyebrow a:hover {
-    color: rgb(var(--color-accent));
+  .guide-entry__mark {
+    width: 0.5rem;
+    height: 0.5rem;
+    background: rgb(var(--color-primary));
+    transform: rotate(45deg);
   }
 
   .guide-entry__title {
     margin: 0;
     font-family: var(--font-heading);
-    line-height: var(--leading-tight);
+    font-size: clamp(2.125rem, 1.4rem + 2.2vw, 3.5rem);
+    font-weight: 700;
+    line-height: var(--leading-display);
+    letter-spacing: -0.035em;
+    text-wrap: balance;
   }
 
-  .guide-entry__summary {
-    margin: 0;
+  .guide-entry__description {
+    margin: 1.25rem 0 0;
     color: rgb(var(--color-text-muted));
-    font-size: 1.125rem;
+    font-size: clamp(1.0625rem, 0.95rem + 0.35vw, 1.25rem);
+    line-height: var(--leading-relaxed);
+    text-wrap: pretty;
+  }
+
+  .guide-entry__byline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    margin-top: 1.5rem;
+    color: rgb(var(--color-text-muted));
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: var(--leading-normal);
+  }
+
+  .guide-entry__byline :global(time) {
+    color: inherit;
+  }
+
+  .guide-entry__language {
+    margin-top: 1.25rem;
+  }
+
+  .guide-entry__language :global(.language-toggle) {
+    margin-bottom: 0;
+    flex-wrap: wrap;
+  }
+
+  .guide-entry__article {
+    min-width: 0;
+  }
+
+  .guide-entry__prose {
+    font-size: clamp(1.125rem, 1.025rem + 0.35vw, 1.25rem);
     line-height: var(--leading-relaxed);
   }
 
-  .guide-entry__meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 2rem;
-    margin: 0;
-    font-size: 0.875rem;
+  .guide-entry__sidebar {
+    grid-row: 3;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgb(var(--color-border));
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
   }
 
-  .guide-entry__meta dt {
+  .guide-entry__guide-link {
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: rgb(var(--color-text));
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .guide-entry__guide-link:hover {
+    color: rgb(var(--color-accent));
+  }
+
+  .guide-entry__shelf + .guide-entry__shelf {
+    margin-top: 1.25rem;
+  }
+
+  .guide-entry__label {
+    margin: 0 0 0.25rem;
     color: rgb(var(--color-text-muted));
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
   }
 
-  .guide-entry__meta dd {
+  .guide-entry__sidebar ul {
     margin: 0;
+    padding: 0;
+    list-style: none;
   }
 
-  .guide-entry__header :global(.language-toggle) {
-    margin-bottom: 0;
+  .guide-entry__sidebar li a {
+    display: flex;
+    align-items: center;
+    min-height: 2.5rem;
+    color: rgb(var(--color-text-muted));
+    text-decoration: none;
+  }
+
+  .guide-entry__sidebar li a:hover,
+  .guide-entry__sidebar li a[aria-current='page'] {
+    color: rgb(var(--color-accent));
+  }
+
+  .guide-entry__sidebar li a[aria-current='page'] {
+    font-weight: 600;
+  }
+
+  @media (min-width: 1200px) {
+    .guide-entry {
+      grid-template-columns: 14rem minmax(0, var(--measure));
+      column-gap: round(nearest, clamp(3rem, 5vw, 4.5rem), 4px);
+    }
+
+    .guide-entry__heading {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    .guide-entry__article {
+      grid-column: 2;
+      grid-row: 2;
+    }
+
+    .guide-entry__sidebar {
+      grid-column: 1;
+      grid-row: 1 / 3;
+      position: sticky;
+      top: calc(var(--site-header-height) + 1.5rem);
+      align-self: start;
+      margin-top: 0;
+      padding-top: 0.25rem;
+      border-top: 0;
+    }
   }
 </style>
