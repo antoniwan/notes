@@ -240,7 +240,7 @@ const hreflangAlternates = twin
     font-family: var(--font-heading);
     font-size: clamp(1.25rem, 1.1rem + 0.4vw, 1.5rem);
     font-style: italic;
-    line-height: 1.45;
+    line-height: var(--leading-normal);
     text-wrap: pretty;
   }
 
@@ -255,7 +255,7 @@ const hreflangAlternates = twin
 
   .guide-entry__byline > * + *::before {
     content: '·';
-    padding: 0 0.5em;
+    padding: 0 0.5rem;
     color: rgb(var(--color-accent));
   }
 
@@ -290,7 +290,7 @@ const hreflangAlternates = twin
     font-family: var(--font-sans);
     font-size: 0.8125rem;
     font-weight: 700;
-    line-height: 1.2;
+    line-height: var(--leading-tight);
     letter-spacing: 0.12em;
     text-transform: uppercase;
   }
@@ -323,7 +323,7 @@ const hreflangAlternates = twin
 
   .guide-entry__prose :global(h2:last-of-type + ul li::before) {
     content: '→';
-    margin-right: 0.6em;
+    margin-right: 0.5rem;
     color: rgb(var(--color-accent));
   }
 
