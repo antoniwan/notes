@@ -1,6 +1,6 @@
 ---
 title: 'Mejorar'
-summary: 'Ponerme mejor a propósito: de forma continua, con dirección, sin perfeccionismo.'
+summary: 'Un uno por ciento al día no parece mucho. Dale un año.'
 language: es
 translationGroup: improvement
 revised: 2026-10-27

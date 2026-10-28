@@ -17,9 +17,9 @@ export const PAGE_META = {
   '/es':
     'Todo lo que Antonio Rodríguez Martínez ha escrito en español en Notes: ensayos, poemas y notas sobre Puerto Rico, la familia y la vida diaria.',
   '/field-guide':
-    'Short entries on the concepts, values, and beliefs Antonio keeps coming back to, each one explained plainly and revised over time.',
+    "Antonio's pocket dictionary for modern life: short, plain entries on concepts, values, and beliefs. No essay required.",
   '/es/guia-de-campo':
-    'Entradas cortas sobre los conceptos, valores y creencias a los que Antonio siempre regresa, explicadas con sencillez.',
+    'El diccionario de bolsillo de Antonio para la vida moderna: entradas cortas y sencillas sobre conceptos, valores y creencias. Sin ensayos.',
   '/404': 'This page does not exist. A random quote from the site archive is shown instead.',
 } as const;
 

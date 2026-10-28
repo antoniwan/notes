@@ -1,6 +1,6 @@
 ---
 title: 'Responsabilidad'
-summary: 'Responder por lo que me toca, incluyendo lo que viene.'
+summary: 'Un título dice cómo me llaman. La responsabilidad es aquello por lo que cuentan conmigo.'
 language: es
 translationGroup: responsibility
 revised: 2026-10-27

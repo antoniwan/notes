@@ -1,6 +1,6 @@
 ---
 title: 'Improvement'
-summary: 'Getting better on purpose: continuous, directional, not perfectionist.'
+summary: "One percent a day doesn't look like much. Give it a year."
 language: en
 translationGroup: improvement
 revised: 2026-10-27

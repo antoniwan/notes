@@ -1,6 +1,6 @@
 ---
 title: 'Peace'
-summary: "Less something I chase, more a quiet I'm learning to tolerate."
+summary: "Nothing needs fixing right now, and the quiet is enough. I'm still learning to believe it."
 language: en
 translationGroup: peace
 revised: 2026-10-27

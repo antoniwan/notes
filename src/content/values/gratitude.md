@@ -1,6 +1,6 @@
 ---
 title: 'Gratitude'
-summary: 'Saying thank you out loud, especially to the people closest to me.'
+summary: "Gratitude you can see: a thank-you out loud, a favor returned, showing up when it's your turn."
 language: en
 translationGroup: gratitude
 revised: 2026-10-27

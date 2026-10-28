@@ -1,6 +1,6 @@
 ---
 title: 'Paz'
-summary: 'Menos algo que persigo, más una calma que estoy aprendiendo a tolerar.'
+summary: 'Nada necesita arreglo ahora mismo, y el silencio basta. Todavía estoy aprendiendo a creerlo.'
 language: es
 translationGroup: peace
 revised: 2026-10-27
