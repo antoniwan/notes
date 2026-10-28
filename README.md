@@ -4,21 +4,11 @@
 
 Field notes from a life being lived: essays, fatherhood, cooking, culture, work, and the books on the shelf. English and Spanish, with links between twins.
 
-This is not a magazine. It is a public notebook. Family recipes now live at [Cookbook](https://cookbook.antoniwan.online/).
+This is not a magazine. It is a public notebook, for reading and for searching for something to read. Its navigation is Browse, Archive, Field Guide, and About, with search in the header.
 
-The October 17, 2026 cutover replaces the earlier shared recipe collection. Recipe source files remain as historical records, outside the public collection.
+Live site: [notes.antoniwan.online](https://notes.antoniwan.online) · Release history: [CHANGELOG.md](./CHANGELOG.md) · Design rules: [docs/design-system.md](docs/design-system.md) · Agent rules: [CLAUDE.md](CLAUDE.md)
 
-Migration routes, release checks, and recovery instructions are in the [Cookbook cutover guide](docs/cookbook-cutover.md).
-
-Live site: [notes.antoniwan.online](https://notes.antoniwan.online)
-
-Correction, October 17, 2026: the reading library moved to antoniwan.online/collections/books. Authored books already belong in its Projects section.
-
-Notes is for reading and for searching for something to read (October 20, 2026). Its navigation is Browse, Archive, Field Guide, and About, with search in the header. Cookbook and Collections no longer appear in its navigation or search.
-
-Release history: [CHANGELOG.md](./CHANGELOG.md)
-
-Inline diagram authoring: [Mermaid flowcharts and state diagrams](docs/mermaid-diagrams.md).
+**Moved off Notes in October 2026.** Family recipes live at [Cookbook](https://cookbook.antoniwan.online/) (routes, checks, and recovery: [Cookbook cutover guide](docs/cookbook-cutover.md); recipe source files stay as records, outside the build). The reading library lives at antoniwan.online/collections/books, authored books in its Projects section, and the movie diary at antoniwan.online/collections/movies. None of them appear in Notes' navigation or search.
 
 ## What a reader sees
 
@@ -28,7 +18,8 @@ Inline diagram authoring: [Mermaid flowcharts and state diagrams](docs/mermaid-d
 - **Reading library** — `/library` and `/library/books` redirect to `antoniwan.online/collections/books`.
 - **Paths in** — **Browse** (`/browse`: one search over every word of the English writing; the "Ways into the writing" sentences, whose topic words show that topic's writings in place: four pinned sentences first (`PRELUDE_NOW`), the rest ranked by recent writing, quiet ones last; and every topic A–Z, folded under the box), **Archive** (`/archive`: every note, newest first), About, and header search. A topic or category page (`/tag/<topic>`, `/category/<id>`) links back to Browse. `/everything`, `/tag`, `/category`, and the removed `/guided-path` 301 to Archive or Browse; `/search` goes to Browse. Enter in the header search opens Browse with that search.
 - **Field Guide** — `/field-guide` (Spanish: `/es/guia-de-campo`): short entries on Concepts (an A–Z dictionary), Values, and Beliefs (grouped by topic), revised in place instead of dated. One hand-written file per language in `src/content/concepts`, `values`, and `beliefs`. See [docs/field-guide.md](docs/field-guide.md).
-- **Home** — a writing hero with two ways in (Browse, then Archive), Highlights for featured English posts, and a short purpose note.
+- **Home** — a writing hero with two ways in (Browse, then Archive), Highlights, and a short purpose note. Highlights are the public English posts marked `featured: true` (`src/utils/highlights.ts`); there are about twenty, picked by hand.
+- **Poems** — a poem is a `<pre class="a-poem">` block in a post; its page gets the Pond, Tide, and Lantern effects, loaded only there.
 - **Writing Insights** was removed on October 20, 2026; it was not for readers. `/writing-insights`, `/brain-science`, and their old subpaths 301 to the home page.
 - **Feeds** — RSS (`/rss.xml`) and JSON Feed (`/feed.json`), English only. Spanish has its own RSS feed at `/es/rss.xml`
 - **En español** — `/es` lists every Spanish piece, twins included, newest first
@@ -53,11 +44,13 @@ English is the listing language. Spanish is Puerto Rican Spanish (`es_PR`, never
 
 ## Design rules
 
-The look lives in `src/styles/global.css` (tokens) and `tailwind.config.js` (the type scale). Three rules keep pages consistent; `pnpm run lint:tokens` checks them in CI.
+The look lives in `src/styles/global.css` (tokens) and `tailwind.config.js` (the type scale); [docs/design-system.md](docs/design-system.md) explains them and lists the settled choices (purple chrome, gold only inside the Field Guide, fonts, figure widths, poem effects, titles, 4.5:1 contrast). `pnpm run lint:tokens` checks the layout rules in CI, against an all-zero baseline (`scripts/lint-tokens.baseline.json`):
 
-- **The layout sets the width.** A block does not cap its own width. Running text stops at one reading width, `--measure` (45rem, `max-w-measure`); display headings at `--measure-title`. Essays are one `--measure` column beside the contents rail.
-- **One 4px rhythm.** Line heights are seven named steps (`var(--leading-none|display|tight|snug|normal|relaxed|loose)`), each rounded to 4px for its font size. The Tailwind type scale has fixed line heights on the grid (14/24, 16/28, 18/32, 20/36 …). Margins, padding, and gaps sit on the 4px scale; a fluid value is wrapped in `round(nearest, …, 4px)`.
-- **No exceptions.** The lint baseline (`scripts/lint-tokens.baseline.json`) is all zeros: a fixed component names a size token (`--size-*`, `--figure-*`), and Home sits on one twelve-column grid (`--grid-gap`).
+- **The layout sets the width.** A block does not cap its own width. Running text stops at `--measure` (45rem); display headings at `--measure-title`.
+- **One 4px rhythm.** Named line-height steps, spacing on the 4px scale, fluid values wrapped in `round(nearest, …, 4px)`.
+- **Fixed things name a token** (`--size-*`, `--figure-*`), and Home sits on one twelve-column grid (`--grid-gap`).
+
+Page titles are `Title · Notes` (`Title · Field Guide` in the guide), with the bare title for share previews; the full name never appears in a title.
 
 ## Stack
 
@@ -70,7 +63,7 @@ The look lives in `src/styles/global.css` (tokens) and `tailwind.config.js` (the
 
 | Tool    | Version          | Source of truth                            |
 | ------- | ---------------- | ------------------------------------------ |
-| Node.js | 22.23.3 (`22.x`) | `.nvmrc`, `engines.node` in `package.json` |
+| Node.js | 22.23.4 (`22.x`) | `.nvmrc`, `engines.node` in `package.json` |
 | pnpm    | 12.3.4           | `packageManager` in `package.json`         |
 
 CI reads both from those files — `actions/setup-node` uses `node-version-file: .nvmrc`
@@ -120,8 +113,6 @@ deliberately changing dependencies. This repo expects **pnpm**; you can use npm
 or yarn if you change commands yourself.
 
 ## Environment variables (optional)
-
-The Letterboxd movie collection and latest watches now live at `antoniwan.online/collections/movies`. Notes no longer fetches the diary feed.
 
 Remark42 uses `PUBLIC_REMARK42_HOST` and `PUBLIC_REMARK42_SITE_ID` when you turn comments on — see `docs/comments-setup.md`. A third variable, `REMARK42_UPSTREAM_ORIGIN`, is the upstream Remark42 origin; Vercel can't interpolate env vars into `vercel.json`, so after changing it, run `pnpm run sync-remark42-rewrite` and commit the updated `vercel.json` (CI verifies this with `pnpm run check-remark42-rewrite`). All three are listed in `.env.example`.
 
@@ -313,33 +304,41 @@ Tags: [docs/tag-policy.md](docs/tag-policy.md) and [docs/tag-vocabulary.md](docs
 
 Translations: same `translationGroup` on each language version. Spanish twins stay off English listings; English cards show an ES marker when a twin exists. Spanish-only notes (no `translationGroup`) are listed on Browse and their tag pages, marked Español. Details: [docs/multilingual-setup.md](docs/multilingual-setup.md).
 
-Using Cursor AI in this repo: [docs/cursor-agent-skills.md](docs/cursor-agent-skills.md).
+Agents: [CLAUDE.md](CLAUDE.md) holds the rules; Cursor skills are in [docs/cursor-agent-skills.md](docs/cursor-agent-skills.md).
 
 ## Documentation in `docs/`
 
-| File                                                                                | Topic                                            |
-| ----------------------------------------------------------------------------------- | ------------------------------------------------ |
-| [field-guide.md](docs/field-guide.md)                                               | Field Guide shelves, entries, and merges         |
-| [frontmatter-spec.md](docs/frontmatter-spec.md)                                     | Post frontmatter                                 |
-| [tag-policy.md](docs/tag-policy.md)                                                 | Signal-first tag policy                          |
-| [tag-vocabulary.md](docs/tag-vocabulary.md)                                         | Canonical vocabulary                             |
-| [tag-cleanup-assessment-2026-04-10.md](docs/tag-cleanup-assessment-2026-04-10.md)   | Tag cleanup audit (Apr 2026)                     |
-| [tag-vocabulary-migration-v1.md](docs/tag-vocabulary-migration-v1.md)               | Tag vocabulary migration, v1 notes               |
-| [tag-system-cleanup-2026-09.md](docs/tag-system-cleanup-2026-09.md)                 | Tag system cleanup, continuity report (Sep 2026) |
-| [multilingual-setup.md](docs/multilingual-setup.md)                                 | EN/ES linking                                    |
-| [comments-setup.md](docs/comments-setup.md)                                         | Remark42                                         |
-| [quotes-api.md](docs/quotes-api.md)                                                 | `/api/quotes`                                    |
-| [structured-data-optimization.md](docs/structured-data-optimization.md)             | Schema.org                                       |
-| [performance-optimization.md](docs/performance-optimization.md)                     | Performance notes                                |
-| [seo-routing-cleanup-2026-09.md](docs/seo-routing-cleanup-2026-09.md)               | SEO and routing cleanup task notes (Sep 2026)    |
-| [article-reading-ui-audit-2026-09.md](docs/article-reading-ui-audit-2026-09.md)     | Article reading UI audit (Sep 2026)              |
-| [homepage-audit-owner-brief-2026-09.md](docs/homepage-audit-owner-brief-2026-09.md) | Homepage audit, owner-as-client brief (Sep 2026) |
-| [roadmap.md](docs/roadmap.md)                                                       | Ideas, product audit, technical roadmap          |
-| [TECHNICAL-AUDIT.md](docs/TECHNICAL-AUDIT.md)                                       | System map, integrations, technical debt         |
-| [cursor-agent-skills.md](docs/cursor-agent-skills.md)                               | Cursor agent skill guide                         |
-| [cookbook-cutover.md](docs/cookbook-cutover.md)                                     | Cookbook move: routes, checks, recovery          |
-| [mermaid-diagrams.md](docs/mermaid-diagrams.md)                                     | Mermaid diagrams in posts                        |
-| [midjourney-og-image-prompts.md](docs/midjourney-og-image-prompts.md)               | Image prompt notes                               |
+Current guides:
+
+| File                                                                    | Topic                                   |
+| ----------------------------------------------------------------------- | --------------------------------------- |
+| [design-system.md](docs/design-system.md)                               | Colors, type, widths, settled look      |
+| [field-guide.md](docs/field-guide.md)                                   | Field Guide shelves, entries, merges    |
+| [frontmatter-spec.md](docs/frontmatter-spec.md)                         | Post frontmatter                        |
+| [multilingual-setup.md](docs/multilingual-setup.md)                     | EN/ES twins and the `es_PR` locale      |
+| [tag-policy.md](docs/tag-policy.md)                                     | Signal-first tag policy                 |
+| [tag-vocabulary.md](docs/tag-vocabulary.md)                             | Canonical vocabulary                    |
+| [comments-setup.md](docs/comments-setup.md)                             | Remark42                                |
+| [quotes-api.md](docs/quotes-api.md)                                     | `/api/quotes`                           |
+| [structured-data-optimization.md](docs/structured-data-optimization.md) | Schema.org                              |
+| [performance-optimization.md](docs/performance-optimization.md)         | Performance notes                       |
+| [mermaid-diagrams.md](docs/mermaid-diagrams.md)                         | Mermaid diagrams in posts               |
+| [midjourney-og-image-prompts.md](docs/midjourney-og-image-prompts.md)   | Image prompt notes                      |
+| [cookbook-cutover.md](docs/cookbook-cutover.md)                         | Cookbook move: routes, checks, recovery |
+| [cursor-agent-skills.md](docs/cursor-agent-skills.md)                   | Cursor agent skills                     |
+| [roadmap.md](docs/roadmap.md)                                           | Ideas, product audit, technical roadmap |
+| [TECHNICAL-AUDIT.md](docs/TECHNICAL-AUDIT.md)                           | System map, integrations, debt          |
+
+Dated reports, kept as a record (what they describe may have changed since):
+
+| File                                                                                | Topic                                   |
+| ----------------------------------------------------------------------------------- | --------------------------------------- |
+| [tag-cleanup-assessment-2026-04-10.md](docs/tag-cleanup-assessment-2026-04-10.md)   | Tag cleanup audit (Apr 2026)            |
+| [tag-vocabulary-migration-v1.md](docs/tag-vocabulary-migration-v1.md)               | Tag vocabulary migration, v1            |
+| [tag-system-cleanup-2026-09.md](docs/tag-system-cleanup-2026-09.md)                 | Tag system continuity report (Sep 2026) |
+| [seo-routing-cleanup-2026-09.md](docs/seo-routing-cleanup-2026-09.md)               | SEO and routing cleanup (Sep 2026)      |
+| [article-reading-ui-audit-2026-09.md](docs/article-reading-ui-audit-2026-09.md)     | Article reading UI audit (Sep 2026)     |
+| [homepage-audit-owner-brief-2026-09.md](docs/homepage-audit-owner-brief-2026-09.md) | Homepage audit, owner brief (Sep 2026)  |
 
 ## Private generated materials
 

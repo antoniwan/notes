@@ -11,7 +11,7 @@ Auto-generated from all feature plans. Last updated: 2026-07-28
 
 ```text
 src/          # Astro app (pages, layouts, components, content, utils)
-public/       # Static assets + service worker + social derivatives
+public/       # Static assets, social derivatives, and sw.js (a worker that only removes the old one)
 scripts/      # Build helpers + content/feed validators
 docs/         # Specs, audits, setup guides
 specs/        # Specify feature plans
