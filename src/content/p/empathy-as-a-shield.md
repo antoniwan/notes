@@ -68,7 +68,7 @@ Marcus Aurelius said: "You have power over your mind — not outside events. Rea
 
 Modern translation? Stop letting clowns in traffic and randos at the beach hijack your peace.
 
-Bias will always flare up. Judgment will always tempt. But empathy—that's the armor. That's how you walk through lifted trucks, blasting speakers, and clown-world nonsense without burning alive.
+Bias will always flare up. Judgment will always tempt. But empathy—[that's the armor](/field-guide/concepts/empathy-as-armor). That's how you walk through lifted trucks, blasting speakers, and clown-world nonsense without burning alive.
 
 You don't win by burning hotter. You win by refusing to burn at all.
 

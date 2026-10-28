@@ -32,7 +32,7 @@ _To me_, a clean signal is any communication — words, gestures, posture, sound
 
 The 2-year-old is instinct incarnate. Pure raw signal. My 5-year-old is sincerity with legs — chaotic but real AF. When she feels safe, she's open. When she doesn't, she closes up. Both are clean. Both are consistent. The dogs? Walking truth. Breath, weight, micro-movements, no story, no narrative, no hidden agenda. If there’s food, there's no politics — just honest dominance hierarchies like nature intended. My girlfriend meets me where I am; I meet her where she is. No performance. No pretending.
 
-So it's as if I'm not becoming healthier just because I'm doing the inner work (I am, but that's not the point) and I'm becoming healthier because the environment is honest enough that my real nature shows up without armor. An environemnt with clear signals lets my nervous system heal(?). There’s a loop, simple and undeniable for me:
+So it's as if I'm not becoming healthier just because I'm doing the inner work (I am, but that's not the point) and I'm becoming healthier because the environment is honest enough that my real nature shows up without armor. An environemnt with [clear signals](/field-guide/concepts/clear-signals) lets my nervous system heal(?). There’s a loop, simple and undeniable for me:
 
 #### clean signal → clean response → real connection
 

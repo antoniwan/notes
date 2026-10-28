@@ -27,7 +27,7 @@ showComments: true
 translationGroup: happiness-is-moments
 ---
 
-What I'm noticing is that happiness is moments. It's not that I'll always be happy. I'm a happy person because I have moments of happiness, and the more I grow, the more I enjoy them.
+What I'm noticing is that happiness is moments. It's not that I'll always be happy. I'm a happy person because I have [moments of happiness](/field-guide/concepts/happiness), and the more I grow, the more I enjoy them.
 
 A lot of the time the moment is an appreciation, a small kindness: a glass of water, a good meal, time with the baby. Right now, while I do this, I have him next to me, looking into his eyes, hearing him make noise. It's a beautiful memory. That's a moment of happiness.
 

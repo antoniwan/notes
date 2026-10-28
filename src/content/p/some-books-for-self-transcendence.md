@@ -60,12 +60,12 @@ From the Atlas of the Heart, which taught me over 60 different feelings and huma
 
 From how I communicate to understanding the human brain, parenting, and my children, and therefore understanding myself.
 
-- 🔥 **Nonviolent Communication** by Marshall B. Rosenberg
+- 🔥 **[Nonviolent Communication](/field-guide/concepts/nonviolent-communication)** by Marshall B. Rosenberg
 - 🔥 **101 Essays That Will Change The Way You Think** by Brianna Wiest
 - **Thinking, Fast and Slow** by Daniel Kahneman
 - **Attached: The New Science of Adult Attachment and How It Can Help You Find - and Keep - Love** by Amir Levine, Rachel Heller
 - **The Whole-Brain Child: Revolutionary Strategies to Nurture Your Child's Developing Mind** by Daniel J. Siegel, Tina Payne Bryson
-- **No-Drama Discipline: The Whole-Brain Way to Calm the Chaos and Nurture Your Child's Developing Mind** by Daniel J. Siegel, Tina Payne Bryson
+- **[No-Drama Discipline](/field-guide/concepts/no-drama-discipline): The Whole-Brain Way to Calm the Chaos and Nurture Your Child's Developing Mind** by Daniel J. Siegel, Tina Payne Bryson
 - **The Grown-Up's Guide to Teenage Humans: How to Decode Their Behavior, Develop Trust, and Raise a Respectable Adult** by Josh Shipp
 - **The Five Love Languages: How to Express Heartfelt Commitment to Your Mate** by Gary Chapman
 

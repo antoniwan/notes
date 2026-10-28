@@ -46,7 +46,7 @@ We pay premium prices to be herded through corporate processing systems designed
 
 But the most disturbing part? People genuinely enjoy it. They leave Universal Studios happy. They post smiling photos on social media. They plan return visits. Just like they smile while consuming food that's slowly poisoning them, celebrate convenience that's destroying their health, and feel grateful for systems that are systematically degrading their bodies and minds.
 
-The sheep machine isn't just processing our time and money - it's processing our bodies, our health, our very life force. And we've learned to love every minute of it.
+[The sheep machine](/field-guide/concepts/the-sheep-machine) isn't just processing our time and money - it's processing our bodies, our health, our very life force. And we've learned to love every minute of it.
 
 Universal Studios was just the moment of clarity. The sheep machine is everywhere, and it's been running for over 150 years. And we've been conditioned to love our own systematic abuse.
 
