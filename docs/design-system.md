@@ -2,6 +2,8 @@
 
 The rules a change to Notes has to keep. Read this before touching a page, a component, or `src/styles/global.css`. The tokens are the source of truth; this file says what they mean and which choices are settled.
 
+The same system, with live component previews and font files, is the "Notes" design system on claude.ai (https://claude.ai/artifact/DmxvWPrMxjSM3wQvinhHan, private to Antonio). When the two disagree, this repo wins.
+
 ## Color
 
 All colors are RGB triplets on `:root` in `src/styles/global.css`, redefined under `.dark`. Use them as `rgb(var(--color-…))`; never write a raw hex in a component.
