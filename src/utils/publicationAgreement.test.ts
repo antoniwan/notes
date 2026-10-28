@@ -186,7 +186,7 @@ describe('sitemap lastmod attribution', () => {
 
     const links = index.linksByCanonicalUrl.get(sitemapPageUrl('/p/essay'));
     expect(links).toBeTruthy();
-    expect(links!.map((link) => link.lang).sort()).toEqual(['en', 'es']);
+    expect(links!.map((link) => link.lang).sort()).toEqual(['en', 'es-PR']);
     expect(index.linksByCanonicalUrl.get(sitemapPageUrl('/p/ensayo'))).toEqual(links);
 
     // A group of one is not a pair.

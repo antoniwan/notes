@@ -9,6 +9,7 @@ Use this guide to run the right Cursor AI skill in the Notes repo.
 - `multilingual-content-qa` — use for EN/ES translation pairs and toggles.
 - `release-quality-gate` — use before PR or merge.
 - `content-strategy-map` — audit latest 30 posts and generate topic ideas.
+- `version-bump-changelog` — when `package.json` `version` changes, write the CHANGELOG entry.
 
 ## Where Skills Live
 
@@ -17,6 +18,9 @@ Use this guide to run the right Cursor AI skill in the Notes repo.
 - `.cursor/skills/multilingual-content-qa/SKILL.md`
 - `.cursor/skills/release-quality-gate/SKILL.md`
 - `.cursor/skills/content-strategy-map/SKILL.md`
+- `.cursor/skills/version-bump-changelog/SKILL.md`
+
+The same skills are mirrored in `.agents/skills/` for other agents; keep the two copies identical.
 
 ## How To Use Skills (Simple)
 
