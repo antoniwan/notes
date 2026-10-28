@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { SITE_DESCRIPTION } from '../consts';
+import { AUTHOR, SITE_DESCRIPTION } from '../consts';
 import { META_DESCRIPTION_MAX_LENGTH, generateMetaTags, generateOptimizedDescription } from './seo';
 
 describe('generateOptimizedDescription', () => {
@@ -34,5 +34,47 @@ describe('generateMetaTags', () => {
       path: '/guided-path',
     });
     expect(tags.description.length).toBeLessThanOrEqual(META_DESCRIPTION_MAX_LENGTH);
+  });
+});
+
+describe('page titles', () => {
+  it('ends tab titles in a short site name and shares the bare title', () => {
+    const tags = generateMetaTags({
+      title: 'Thou Shalt Not Kill*',
+      path: '/p/thou-shalt-not-kill',
+    });
+    expect(tags.title).toBe('Thou Shalt Not Kill* · Notes');
+    expect(tags.ogTitle).toBe('Thou Shalt Not Kill*');
+  });
+
+  it('lets a section stand in for the site name', () => {
+    const tags = generateMetaTags({
+      title: 'The Vegeta dynamic',
+      titleSuffix: 'Field Guide',
+      path: '/field-guide/concepts/the-vegeta-dynamic',
+    });
+    expect(tags.title).toBe('The Vegeta dynamic · Field Guide');
+    expect(tags.ogTitle).toBe('The Vegeta dynamic');
+  });
+
+  it('names the home page by handle', () => {
+    const tags = generateMetaTags({ title: 'Notes', path: '/' });
+    expect(tags.title).toBe('Notes by antoniwan');
+    expect(tags.ogTitle).toBe('Notes by antoniwan');
+  });
+
+  it('keeps the full name out of every title', () => {
+    for (const config of [
+      { title: 'Notes', path: '/' },
+      { title: 'About', ogTitle: 'About Antonio', path: '/about' },
+      { title: 'En español', path: '/es' },
+      { title: 'Archive', path: '/archive' },
+    ]) {
+      const tags = generateMetaTags(config);
+      for (const t of [tags.title, tags.ogTitle]) {
+        expect(t).not.toContain(AUTHOR.name);
+        expect(t).not.toContain('Rodríguez Martínez');
+      }
+    }
   });
 });

@@ -71,7 +71,9 @@ const slugify = (id: string) =>
 ---
 
 <BaseLayout
-  title={`${shelf.name} · ${copy.title}`}
+  title={shelf.name}
+  titleSuffix={copy.title}
+  ogTitle={`${shelf.name} · ${copy.title}`}
   description={shelf.blurb}
   path={path}
   structuredDataType="website"

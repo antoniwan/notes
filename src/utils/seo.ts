@@ -1,9 +1,27 @@
-import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL, AUTHOR, SEO_CONFIG } from '../consts';
+import {
+  SITE_TITLE,
+  SITE_HOME_TITLE,
+  SITE_DESCRIPTION,
+  SITE_URL,
+  AUTHOR,
+  SEO_CONFIG,
+} from '../consts';
 import { SOCIAL_IMAGE_MANIFEST } from '../data/socialImageManifest';
 
 // Simplified SEO configuration interface
 export interface SEOConfig {
   title: string;
+  /**
+   * Appended to the HTML <title> as "Title · Suffix" so tabs, bookmarks and
+   * history say where a page came from. Defaults to the site name; `false`
+   * leaves the title bare.
+   */
+  titleSuffix?: string | false;
+  /**
+   * Title for share previews. Defaults to the bare page title: every app that
+   * renders og:title already shows the domain or og:site_name next to it.
+   */
+  ogTitle?: string;
   description?: string;
   path?: string;
   heroImage?: string; // Primary image for social sharing
@@ -20,6 +38,7 @@ export interface SEOConfig {
 // Simplified meta tags interface
 export interface MetaTags {
   title: string;
+  ogTitle: string;
   description: string;
   canonical: string;
   ogImage: string;
@@ -75,6 +94,8 @@ export function detectOGType(pubDate?: Date, type?: string): 'article' | 'websit
 export function generateMetaTags(config: SEOConfig): MetaTags {
   const {
     title,
+    titleSuffix = SITE_TITLE,
+    ogTitle: ogTitleOverride,
     description = SITE_DESCRIPTION,
     path,
     heroImage,
@@ -88,19 +109,13 @@ export function generateMetaTags(config: SEOConfig): MetaTags {
     robots = SEO_CONFIG.defaultRobots,
   } = config;
 
-  // Special handling for homepage and different page types
   const isHomepage = path === '/' || path === '';
-  const isAboutPage = path === '/about' || title.toLowerCase().includes('about antonio');
-  const titleSuffix = 'Notes by Antonio Rodriguez Martinez';
-
-  let fullTitle: string;
-  if (isHomepage) {
-    fullTitle = titleSuffix;
-  } else if (isAboutPage) {
-    fullTitle = 'About Antonio Rodriguez Martinez';
-  } else {
-    fullTitle = `${title} | ${titleSuffix}`;
-  }
+  const fullTitle = isHomepage
+    ? SITE_HOME_TITLE
+    : titleSuffix
+      ? `${title} · ${titleSuffix}`
+      : title;
+  const ogTitle = ogTitleOverride ?? (isHomepage ? SITE_HOME_TITLE : title);
   const canonical = path ? generateCanonicalUrl(path) : '';
   const ogImage = generateImageUrl(heroImage);
   const ogImageAlt =
@@ -109,6 +124,7 @@ export function generateMetaTags(config: SEOConfig): MetaTags {
 
   return {
     title: fullTitle,
+    ogTitle,
     description: generateOptimizedDescription(description),
     canonical,
     ogImage,

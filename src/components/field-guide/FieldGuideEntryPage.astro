@@ -67,7 +67,8 @@ const hreflangAlternates = twin
 ---
 
 <BaseLayout
-  title={`${entry.data.title} · ${copy.title}`}
+  title={entry.data.title}
+  titleSuffix={copy.title}
   description={entry.data.summary}
   path={path}
   type="article"

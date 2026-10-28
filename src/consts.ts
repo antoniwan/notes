@@ -30,6 +30,8 @@ export interface SEOConfig {
 // Site Information
 export const SITE_TITLE = 'Notes';
 export const SHORT_SITE_TITLE = 'Notes';
+/** Home page <title> and share title. Other pages read "Title · Notes". */
+export const SITE_HOME_TITLE = 'Notes by antoniwan';
 export const SITE_DESCRIPTION =
   'Field notes from a life in progress: essays, fatherhood, cooking, culture, and work.';
 export const SITE_URL = 'https://notes.antoniwan.online';

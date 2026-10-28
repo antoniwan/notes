@@ -14,6 +14,10 @@ export interface CategoryDisplayItem {
 
 export interface BaseLayoutProps {
   title: string;
+  /** Appended to <title> as "Title · Suffix" (defaults to the site name; false for none). */
+  titleSuffix?: string | false;
+  /** Share-preview title (defaults to the bare `title`). */
+  ogTitle?: string;
   description?: string;
   /**
    * Optional SEO-only description. When set, used for meta/OG/JSON-LD instead of
