@@ -1,6 +1,6 @@
 ---
 title: 'Discipline'
-summary: 'I show up, 100%, for myself first.'
+summary: "Showing up for myself first, so there's enough of me to go around."
 language: en
 translationGroup: discipline
 revised: 2026-10-27

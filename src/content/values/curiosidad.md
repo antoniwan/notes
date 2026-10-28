@@ -1,6 +1,6 @@
 ---
 title: 'Curiosidad'
-summary: 'El motor de casi todo lo que funciona en mi vida.'
+summary: 'Cocina, código, hijos, este sitio. Todo empezó con "¿y eso cómo funciona?"'
 language: es
 translationGroup: curiosity
 revised: 2026-10-27

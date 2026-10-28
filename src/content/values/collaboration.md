@@ -1,6 +1,6 @@
 ---
 title: 'Collaboration'
-summary: 'All the adults in the room working on the same problem.'
+summary: "I'm used to carrying things alone. This is the muscle I'm still building."
 language: en
 translationGroup: collaboration
 revised: 2026-10-27

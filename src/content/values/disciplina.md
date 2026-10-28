@@ -1,6 +1,6 @@
 ---
 title: 'Disciplina'
-summary: 'Me presento, al 100%, para mí primero.'
+summary: 'Cumplir conmigo primero, para que alcance para todos.'
 language: es
 translationGroup: discipline
 revised: 2026-10-27

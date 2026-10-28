@@ -48,8 +48,7 @@ export const FIELD_GUIDE_COPY: Record<
   en: {
     title: 'Field Guide',
     cover: ['Modern', 'Life'],
-    description:
-      'Short entries on the concepts, values, and beliefs I keep coming back to. Each one explains one thing, and gets revised when I learn more.',
+    description: 'A pocket dictionary for modern life. Short, plain, no essay required.',
     revised: 'Revised',
     origin: 'From',
     topic: 'On',
@@ -67,8 +66,7 @@ export const FIELD_GUIDE_COPY: Record<
   es: {
     title: 'Guía de campo',
     cover: ['Vida', 'moderna'],
-    description:
-      'Entradas cortas sobre los conceptos, valores y creencias a los que siempre regreso. Cada una explica una sola cosa, y la reviso cuando aprendo más.',
+    description: 'Un diccionario de bolsillo para la vida moderna. Corto, sencillo, sin ensayos.',
     revised: 'Revisado',
     origin: 'Viene de',
     topic: 'Sobre',

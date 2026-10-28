@@ -1,6 +1,6 @@
 ---
 title: 'Responsibility'
-summary: "Answering for what's mine, including what comes next."
+summary: "A title says what I'm called. Responsibility is what I'm counted on for."
 language: en
 translationGroup: responsibility
 revised: 2026-10-27

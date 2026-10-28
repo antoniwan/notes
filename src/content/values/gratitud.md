@@ -1,6 +1,6 @@
 ---
 title: 'Gratitud'
-summary: 'Dar las gracias en voz alta, sobre todo a la gente más cercana.'
+summary: 'Gratitud que se ve: un gracias en voz alta, un favor devuelto, llegar cuando te toca.'
 language: es
 translationGroup: gratitude
 revised: 2026-10-27

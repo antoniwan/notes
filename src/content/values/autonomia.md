@@ -1,6 +1,6 @@
 ---
 title: 'Autonomía'
-summary: 'Hacerme dueño de mis decisiones y respuestas, y querer esa misma libertad para todos.'
+summary: 'La libertad que quiero para mí se la debo a todos los demás.'
 language: es
 translationGroup: autonomy
 revised: 2026-10-27

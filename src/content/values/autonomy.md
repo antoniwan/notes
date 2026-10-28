@@ -1,6 +1,6 @@
 ---
 title: 'Autonomy'
-summary: 'Owning my choices and responses, and wanting the same freedom for everyone.'
+summary: 'The freedom I want for myself, I owe to everyone else.'
 language: en
 translationGroup: autonomy
 revised: 2026-10-27

@@ -1,6 +1,6 @@
 ---
 title: 'Curiosity'
-summary: 'The engine of most of what works in my life.'
+summary: 'Cooking, code, kids, this site. It all started with "how does that work?"'
 language: en
 translationGroup: curiosity
 revised: 2026-10-27

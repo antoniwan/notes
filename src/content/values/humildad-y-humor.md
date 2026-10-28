@@ -1,6 +1,6 @@
 ---
 title: 'Humildad y humor'
-summary: 'No tomarme demasiado en serio, sobre todo cuando la cosa es seria.'
+summary: 'Puede que el equivocado sea yo. Mejor poder reírme de eso.'
 language: es
 translationGroup: humility-and-humor
 revised: 2026-10-27
