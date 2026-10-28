@@ -22,3 +22,4 @@ Mi mente quiere evaluarlo todo: la comida, el día, la persona, a mí. Cuando su
 - [El que lleva la cuenta](/es/guia-de-campo/conceptos/el-que-lleva-la-cuenta)
 - [Aceptación salvaje](/es/guia-de-campo/conceptos/aceptacion-salvaje)
 - [Amor fati](/es/guia-de-campo/conceptos/el-amor-fati)
+- [Bend, Don't Break: Learning to Flow Again](/p/bend-dont-break-learning-to-flow-again/) (en inglés)

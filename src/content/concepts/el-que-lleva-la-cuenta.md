@@ -21,3 +21,4 @@ El mío funciona con casi todo el mundo, si soy honesto. Cogerlo es el trabajo. 
 - ["Me lo merezco"](/es/guia-de-campo/conceptos/me-lo-merezco)
 - [El ego como herramienta](/es/guia-de-campo/conceptos/el-ego-como-herramienta)
 - [El desprecio](/es/guia-de-campo/conceptos/el-desprecio)
+- [On Leadership and Leadership-Adjacent Things, April 2026](/p/on-leadership-and-leadership-adjacent-things-april-2026/) (en inglés)

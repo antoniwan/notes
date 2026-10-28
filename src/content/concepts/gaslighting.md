@@ -24,3 +24,4 @@ I try to save this word for what it means. When I'm hurt, it's tempting to use t
 - [Concept creep](/field-guide/concepts/concept-creep)
 - [Emotional invalidation](/field-guide/concepts/emotional-invalidation)
 - [Reality assembly](/field-guide/concepts/reality-assembly)
+- [Good Sheep](/p/good-sheep/)

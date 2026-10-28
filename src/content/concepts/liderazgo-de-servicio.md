@@ -22,3 +22,4 @@ Creo en esto, y también me he escondido detrás. Cargar con todo se sentía com
 - [Un senior dirige](/es/guia-de-campo/creencias/un-senior-dirige)
 - [Sé el piso](/es/guia-de-campo/conceptos/se-el-piso)
 - [Locus de control](/es/guia-de-campo/conceptos/locus-de-control)
+- [On Leadership and Leadership-Adjacent Things, April 2026](/p/on-leadership-and-leadership-adjacent-things-april-2026/) (en inglés)

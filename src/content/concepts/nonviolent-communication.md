@@ -27,3 +27,4 @@ A close friend read the book in two days and said it helped him enormously. My o
 - [Communication](/field-guide/values/communication)
 - [Clear signals](/field-guide/concepts/clear-signals)
 - [Boundary conflation](/field-guide/concepts/boundary-conflation)
+- [Some Books for Self-Transcendence](/p/some-books-for-self-transcendence/)

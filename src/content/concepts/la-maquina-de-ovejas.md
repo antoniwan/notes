@@ -19,3 +19,4 @@ Le puse nombre después de una fila de horas en un parque de diversiones, rodead
 - [Captura](/es/guia-de-campo/conceptos/captura)
 - [Optimización de la interacción](/es/guia-de-campo/conceptos/optimizacion-de-la-interaccion)
 - [La trampa de la observación](/es/guia-de-campo/conceptos/la-trampa-de-la-observacion)
+- [Good Sheep](/p/good-sheep/) (en inglés)

@@ -25,3 +25,4 @@ La uso en el tapón, en los comentarios y en la fila del supermercado. "No conoz
 - [Empatía, compasión y autocompasión](/es/guia-de-campo/conceptos/empatia-compasion-y-autocompasion)
 - [Paz](/es/guia-de-campo/valores/paz)
 - [Dignidad desde el nacimiento](/es/guia-de-campo/creencias/dignidad-desde-el-nacimiento)
+- [Empathy as a Shield](/p/empathy-as-a-shield/) (en inglés)

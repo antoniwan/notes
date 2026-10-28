@@ -22,3 +22,4 @@ My mind wants to rate everything: the meal, the day, the person, myself. When I 
 - [The scorekeeper](/field-guide/concepts/the-scorekeeper)
 - [Savage acceptance](/field-guide/concepts/savage-acceptance)
 - [Amor fati](/field-guide/concepts/amor-fati)
+- [Bend, Don't Break: Learning to Flow Again](/p/bend-dont-break-learning-to-flow-again/)

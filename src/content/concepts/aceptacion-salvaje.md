@@ -23,3 +23,4 @@ Mi pregunta de prueba es: ¿esto me da paz?
 - [Pragmatismo antes que orgullo](/es/guia-de-campo/valores/pragmatismo-antes-que-orgullo)
 - [Paz](/es/guia-de-campo/valores/paz)
 - [Deja que el corte fluya](/es/guia-de-campo/conceptos/deja-que-el-corte-fluya)
+- [Bend, Don't Break: Learning to Flow Again](/p/bend-dont-break-learning-to-flow-again/) (en inglés)

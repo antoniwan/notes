@@ -21,3 +21,4 @@ Ponerle nombre cambió cómo veo eso de "ayudar". Hacer una tarea que te pidiero
 
 - [Responsabilidad](/es/guia-de-campo/valores/responsabilidad)
 - [Proveer](/es/guia-de-campo/valores/proveer)
+- [On Leadership and Leadership-Adjacent Things, April 2026](/p/on-leadership-and-leadership-adjacent-things-april-2026/) (en inglés)

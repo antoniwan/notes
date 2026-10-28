@@ -22,3 +22,4 @@ No creo que lo ame todo. Creo que estoy aprendiendo a dejar de discutir con ello
 - [Estoicismo](/es/guia-de-campo/conceptos/estoicismo)
 - [Aceptación salvaje](/es/guia-de-campo/conceptos/aceptacion-salvaje)
 - [El dolor y el sufrimiento son crecimiento](/es/guia-de-campo/creencias/el-dolor-y-el-sufrimiento-son-crecimiento)
+- [My Favorite Symbols of Power](/p/symbols-of-power/) (en inglés)

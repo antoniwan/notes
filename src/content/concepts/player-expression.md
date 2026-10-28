@@ -18,3 +18,4 @@ It's the recurring theme in the games I love, and the thing I'm chasing in the g
 
 - [Autonomy](/field-guide/values/autonomy)
 - [Joy](/field-guide/values/joy)
+- ["Crimson Desert" Game Review](/p/my-crimson-desert-review-after-200-hours/)

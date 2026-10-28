@@ -24,3 +24,4 @@ I first wrote it about AI companies, but it works for anyone, including me. When
 
 - [The Prometheus test](/field-guide/concepts/the-prometheus-test)
 - [Capture](/field-guide/concepts/capture)
+- [The Prometheus Problem](/p/the-prometheus-problem/)

@@ -24,3 +24,4 @@ Lo escribí primero sobre las empresas de IA, pero funciona para cualquiera, inc
 
 - [La prueba de Prometeo](/es/guia-de-campo/conceptos/la-prueba-de-prometeo)
 - [Captura](/es/guia-de-campo/conceptos/captura)
+- [El Problema de Prometeo](/p/el-problema-de-prometeo/)

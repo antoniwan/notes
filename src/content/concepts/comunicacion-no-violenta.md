@@ -27,3 +27,4 @@ Un amigo cercano se leyó el libro en dos días y dijo que le ayudó muchísimo.
 - [Comunicación](/es/guia-de-campo/valores/comunicacion)
 - [Señales claras](/es/guia-de-campo/conceptos/senales-claras)
 - [Confundir el límite con la fuerza](/es/guia-de-campo/conceptos/confundir-el-limite-con-la-fuerza)
+- [Some Books for Self-Transcendence](/p/some-books-for-self-transcendence/) (en inglés)

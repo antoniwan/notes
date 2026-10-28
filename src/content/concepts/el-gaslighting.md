@@ -24,3 +24,4 @@ Trato de guardar esta palabra para lo que significa. Cuando estoy dolido, es ten
 - [El estiramiento de los conceptos](/es/guia-de-campo/conceptos/el-estiramiento-de-los-conceptos)
 - [La invalidación emocional](/es/guia-de-campo/conceptos/la-invalidacion-emocional)
 - [Ensamblar la realidad](/es/guia-de-campo/conceptos/ensamblar-la-realidad)
+- [Good Sheep](/p/good-sheep/) (en inglés)

@@ -25,3 +25,4 @@ También tuve que admitir que estoy dentro de la escala, no por encima: "Sé qu�
 - [El hombre](/es/guia-de-campo/conceptos/el-hombre)
 - [Responsabilidad](/es/guia-de-campo/valores/responsabilidad)
 - [La aniñización](/es/guia-de-campo/conceptos/la-aninizacion)
+- [Redefining God](/p/redefining-god/) (en inglés)

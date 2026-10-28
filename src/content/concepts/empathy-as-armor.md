@@ -25,3 +25,4 @@ I use it in traffic, in comment sections and in grocery lines. "I don't know the
 - [Empathy, compassion and self-compassion](/field-guide/concepts/empathy-compassion-and-self-compassion)
 - [Peace](/field-guide/values/peace)
 - [Dignity from birth](/field-guide/beliefs/dignity-from-birth)
+- [Empathy as a Shield](/p/empathy-as-a-shield/)

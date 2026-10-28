@@ -21,3 +21,4 @@ I don't always manage it. Some days the kids get the tone that was meant for my 
 - [Conduct is what trickles down](/field-guide/concepts/conduct-is-what-trickles-down)
 - [Dignity from birth](/field-guide/beliefs/dignity-from-birth)
 - [A senior leads](/field-guide/beliefs/a-senior-leads)
+- [El Trickle Down Sí Llegó](/p/el-trickle-down-si-llego/)

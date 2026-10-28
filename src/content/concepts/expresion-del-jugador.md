@@ -18,3 +18,4 @@ Es el tema que se repite en los juegos que me encantan, y lo que persigo en el j
 
 - [Autonomía](/es/guia-de-campo/valores/autonomia)
 - [Alegría](/es/guia-de-campo/valores/alegria)
+- ["Crimson Desert" Game Review](/p/my-crimson-desert-review-after-200-hours/) (en inglés)
