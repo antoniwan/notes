@@ -12,7 +12,7 @@ _Intimidad_ is the Spanish word for intimacy, and I use it on purpose. In Englis
 
 ## How it shows up for me
 
-It's the value I rank first, and it's the hardest one for me. Relating to other adults takes a lot out of me. Efficiency, which serves me well at work, works against me here, so I try to notice which room I'm in before I start optimizing. _Templanza_, temperance, is my mom's word, and it's the part of this I practice most.
+It's the value I rank first, and it's the hardest one for me. Relating to other adults takes a lot out of me. Efficiency, which serves me well at work, works against me here, so I try to notice which room I'm in before I start optimizing. [_Templanza_, temperance,](/field-guide/concepts/temperance) is my mom's word, and it's the part of this I practice most.
 
 ## Go next
 

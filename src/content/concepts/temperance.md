@@ -15,7 +15,7 @@ The Catholic Encyclopedia defines it as the habit that lets reason govern our na
 
 ## How it shows up for me
 
-I first asked "what is temperance, and how can I practice it?" in 2024, in a conversation about the difference between a man and a boy. A year later I was telling myself "patience and templanza" while waiting to see if people would stay. It's become a quiet favorite.
+I first asked "what is temperance, and how can I practice it?" in 2024, in a conversation about the difference between a man and a boy. A year later I was telling myself "patience and templanza" while waiting to see if people would stay. _Templanza_ is my mom's word, and it's the part of [intimacy](/field-guide/values/intimidad) I practice most.
 
 ## Go next
 

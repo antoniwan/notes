@@ -15,7 +15,7 @@ La Enciclopedia Católica la define como el hábito que deja que la razón gobie
 
 ## Cómo se ve en mí
 
-La primera vez que pregunté "¿qué es la templanza y cómo la practico?" fue en 2024, en una conversación sobre la diferencia entre un hombre y un muchacho. Un año después me estaba diciendo "paciencia y templanza" mientras esperaba a ver si la gente se quedaba. Se ha vuelto una favorita callada.
+La primera vez que pregunté "¿qué es la templanza y cómo la practico?" fue en 2024, en una conversación sobre la diferencia entre un hombre y un muchacho. Un año después me estaba diciendo "paciencia y templanza" mientras esperaba a ver si la gente se quedaba. _Templanza_ es la palabra de mi mamá, y es la parte de la [intimidad](/es/guia-de-campo/valores/la-intimidad) que más practico.
 
 ## Para seguir
 
