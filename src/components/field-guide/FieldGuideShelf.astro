@@ -1,0 +1,479 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Container from '../Container.astro';
+import FieldGuideSearch from './FieldGuideSearch.astro';
+import FieldGuideTabs from './FieldGuideTabs.astro';
+import {
+  FIELD_GUIDE_COPY,
+  FIELD_GUIDE_ROOT,
+  FIELD_GUIDE_SHELVES,
+  fieldGuideLetter,
+  fieldGuideShelfPath,
+  type FieldGuideKind,
+  type FieldGuideLang,
+} from '../../data/fieldGuide';
+import { fieldGuideDefinition, getFieldGuide, type ShelvedEntry } from '../../utils/fieldGuide';
+import { generateCanonicalUrl } from '../../utils/seo';
+
+interface Props {
+  kind: FieldGuideKind;
+  lang: FieldGuideLang;
+}
+
+const { kind, lang } = Astro.props;
+const copy = FIELD_GUIDE_COPY[lang];
+const shelf = FIELD_GUIDE_SHELVES[kind][lang];
+const path = fieldGuideShelfPath(kind, lang);
+const items = (await getFieldGuide()).filter(
+  (e) => e.kind === kind && e.entry.data.language === lang,
+);
+
+function topicOf(item: ShelvedEntry) {
+  return 'topic' in item.entry.data ? item.entry.data.topic : undefined;
+}
+
+// Concepts file by letter, beliefs by topic; values are few enough for one grid.
+type Group = { id: string; label: string; items: ShelvedEntry[] };
+const groups: Group[] = [];
+if (kind === 'values') {
+  groups.push({ id: 'all', label: '', items });
+} else {
+  for (const item of items) {
+    const key =
+      kind === 'beliefs' ? (topicOf(item) ?? '') : fieldGuideLetter(item.entry.data.title);
+    let group = groups.find((g) => g.id === key);
+    if (!group) {
+      group = {
+        id: key,
+        label: kind === 'beliefs' ? `${copy.topic} ${key}` : key,
+        items: [],
+      };
+      groups.push(group);
+    }
+    group.items.push(item);
+  }
+  groups.sort((a, b) => a.id.localeCompare(b.id));
+}
+
+const letters = kind === 'concepts' ? groups.map((g) => g.id) : [];
+const other = lang === 'en' ? 'es' : 'en';
+const hreflangAlternates = [
+  { hreflang: lang, href: generateCanonicalUrl(path) },
+  { hreflang: other, href: generateCanonicalUrl(fieldGuideShelfPath(kind, other)) },
+  { hreflang: 'x-default', href: generateCanonicalUrl(fieldGuideShelfPath(kind, 'en')) },
+];
+const slugify = (id: string) =>
+  `g-${id
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')}`;
+---
+
+<BaseLayout
+  title={`${shelf.name} · ${copy.title}`}
+  description={shelf.blurb}
+  path={path}
+  structuredDataType="website"
+  htmlLang={lang}
+  locale={lang === 'es' ? 'es_PR' : undefined}
+  inLanguage={lang === 'es' ? 'es-PR' : 'en-US'}
+  hreflangAlternates={hreflangAlternates}
+>
+  <Container class="field-guide">
+    <header class="shelf-head">
+      <a class="shelf-head__crumb" href={FIELD_GUIDE_ROOT[lang]}>
+        <span aria-hidden="true">←</span>
+        {copy.title}
+      </a>
+      <h1 class="shelf-head__title">
+        {shelf.name}
+        <span class="shelf-head__count">{items.length}</span>
+      </h1>
+      <p class="shelf-head__blurb">{shelf.blurb}</p>
+      <FieldGuideTabs lang={lang} current={kind} />
+      <FieldGuideSearch
+        label={copy.searchLabel}
+        placeholder={copy.search}
+        empty={copy.noResults}
+        target="shelf-list"
+      />
+    </header>
+
+    {letters.length > 0 && (
+      <nav class="shelf-letters" aria-label="A–Z">
+        {letters.map((letter) => (
+          <a href={`#${slugify(letter)}`}>{letter}</a>
+        ))}
+      </nav>
+    )}
+
+    <div id="shelf-list" class={`shelf-list shelf-list--${kind}`}>
+      {groups.map((group) => (
+        <section class="shelf-group" id={slugify(group.id)} data-fg-group>
+          {group.label && <h2 class="shelf-group__label">{group.label}</h2>}
+          <ul class="shelf-group__items" role="list">
+            {group.items.map((item) =>
+              kind === 'concepts' ? (
+                <li
+                  class="dict-entry"
+                  data-fg-text={`${item.entry.data.title} ${item.entry.data.summary}`}
+                >
+                  <a class="dict-entry__word" href={item.path}>
+                    {item.entry.data.title}
+                  </a>
+                  {'origin' in item.entry.data && item.entry.data.origin && (
+                    <span class="dict-entry__origin">{item.entry.data.origin}</span>
+                  )}
+                  <p
+                    class="dict-entry__sense"
+                    set:html={fieldGuideDefinition(item.entry.body, item.entry.data.summary)}
+                  />
+                </li>
+              ) : (
+                <li data-fg-text={`${item.entry.data.title} ${item.entry.data.summary}`}>
+                  <a class="shelf-card" href={item.path}>
+                    <span class="shelf-card__title">{item.entry.data.title}</span>
+                    <span class="shelf-card__summary">{item.entry.data.summary}</span>
+                  </a>
+                </li>
+              ),
+            )}
+          </ul>
+        </section>
+      ))}
+    </div>
+  </Container>
+</BaseLayout>
+
+<script>
+  // Mark the letter you're reading in the thumb index.
+  const index = document.querySelector<HTMLElement>('.shelf-letters');
+  if (index) {
+    const links = new Map(
+      [...index.querySelectorAll<HTMLAnchorElement>('a')].map((a) => [a.hash.slice(1), a]),
+    );
+    const mark = (id: string) => {
+      for (const [key, a] of links) {
+        if (key === id) a.setAttribute('aria-current', 'true');
+        else a.removeAttribute('aria-current');
+      }
+    };
+    // A thin band near the top of the screen; the first group in it is the one being read.
+    const inBand = new Set<string>();
+    const order = [...links.keys()];
+    const observer = new IntersectionObserver(
+      (seen) => {
+        for (const e of seen) {
+          if (e.isIntersecting) inBand.add(e.target.id);
+          else inBand.delete(e.target.id);
+        }
+        const current = order.find((id) => inBand.has(id));
+        if (current) mark(current);
+      },
+      { rootMargin: '-20% 0px -70% 0px' },
+    );
+    for (const group of document.querySelectorAll<HTMLElement>('[data-fg-group]')) {
+      if (links.has(group.id)) observer.observe(group);
+    }
+  }
+</script>
+
+<style>
+  .shelf-head {
+    display: grid;
+    gap: 1rem;
+    padding-block: round(nearest, clamp(1.75rem, 4vw, 3rem), 4px) 1.5rem;
+  }
+
+  .shelf-head__crumb {
+    display: inline-flex;
+    gap: 0.5rem;
+    align-items: center;
+    width: fit-content;
+    min-height: 2rem;
+    color: rgb(var(--color-accent));
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  /* On a phone the tabs and the site menu already lead back. */
+  @media (max-width: 767px) {
+    .shelf-head__crumb {
+      display: none;
+    }
+  }
+
+  .shelf-head__title {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 600;
+    line-height: var(--leading-none);
+    letter-spacing: -0.045em;
+  }
+
+  .shelf-head__count {
+    color: rgb(var(--color-accent));
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+
+  .shelf-head__blurb {
+    max-width: var(--measure);
+    margin: 0;
+    color: rgb(var(--color-text-muted));
+    font-size: 1.0625rem;
+    line-height: var(--leading-relaxed);
+  }
+
+  /* A thumb index, gold like the one on the home. It rides under the site header
+     on wide screens and becomes a rail down the right edge on a phone. */
+  .shelf-letters {
+    position: sticky;
+    top: var(--site-header-height);
+    z-index: 30;
+    display: flex;
+    flex-wrap: wrap;
+    margin-inline: -0.5rem;
+    padding: 0.5rem 0.5rem 0.75rem;
+    background: rgb(var(--color-bg));
+    box-shadow: 0 12px 12px -10px rgb(var(--color-bg));
+  }
+
+  .shelf-letters a {
+    flex: none;
+    display: grid;
+    place-items: center;
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+    color: rgb(var(--color-accent));
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .shelf-letters a:hover,
+  .shelf-letters a[aria-current='true'] {
+    color: rgb(var(--color-text));
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.25em;
+  }
+
+  .shelf-letters a:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: -2px;
+  }
+
+  @media (max-width: 767px) {
+    .shelf-letters {
+      position: fixed;
+      top: 50%;
+      right: env(safe-area-inset-right, 0px);
+      flex-direction: column;
+      flex-wrap: nowrap;
+      margin: 0;
+      padding: 0.25rem 0;
+      border-radius: 999px;
+      background: rgb(var(--color-bg) / 0.88);
+      box-shadow: none;
+      transform: translateY(-50%);
+    }
+
+    .shelf-letters a {
+      width: 1.75rem;
+      min-width: 0;
+      min-height: 0;
+      height: 1.3rem;
+      font-size: 0.8125rem;
+    }
+
+    .shelf-list--concepts {
+      padding-right: 1.5rem;
+    }
+  }
+
+  .shelf-list {
+    display: grid;
+    gap: 2.5rem;
+    padding-block: 2rem 5rem;
+  }
+
+  .shelf-group {
+    display: grid;
+    gap: 1rem;
+    scroll-margin-top: calc(var(--site-header-height) + 4.5rem);
+  }
+
+  .shelf-group__label {
+    margin: 0;
+    color: rgb(var(--color-accent));
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  /* Beliefs: the topic sits in the margin, like the index of a book. */
+  .shelf-list--beliefs .shelf-group__label {
+    font-size: 1.375rem;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+
+  @media (min-width: 768px) {
+    .shelf-list--beliefs .shelf-group {
+      grid-template-columns: 12rem minmax(0, 1fr);
+      column-gap: 3rem;
+    }
+
+    .shelf-list--beliefs .shelf-group__label {
+      padding-top: 0.25rem;
+      text-align: right;
+    }
+  }
+
+  .shelf-group__items {
+    display: grid;
+    gap: 0.25rem 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .shelf-card {
+    display: grid;
+    gap: 0.25rem;
+    padding: 0.75rem 0;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .shelf-card__title {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: var(--leading-tight);
+  }
+
+  .shelf-card__summary {
+    display: -webkit-box;
+    overflow: hidden;
+    color: rgb(var(--color-text-muted));
+    font-size: 0.9375rem;
+    line-height: var(--leading-normal);
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .shelf-card:hover .shelf-card__title {
+    color: rgb(var(--color-accent));
+  }
+
+  .shelf-card:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  /* Values and beliefs are few: no boxes, just room between them. */
+  .shelf-list--values .shelf-group__items,
+  .shelf-list--beliefs .shelf-group__items {
+    gap: 1.75rem 3rem;
+  }
+
+  .shelf-list--values .shelf-card,
+  .shelf-list--beliefs .shelf-card {
+    padding: 0;
+  }
+
+  .shelf-list--values .shelf-card__title,
+  .shelf-list--beliefs .shelf-card__title {
+    font-size: 1.375rem;
+    letter-spacing: -0.01em;
+  }
+
+  .shelf-list--values .shelf-card__summary,
+  .shelf-list--beliefs .shelf-card__summary {
+    font-size: 1rem;
+    -webkit-line-clamp: 4;
+  }
+
+  @media (min-width: 640px) {
+    .shelf-group__items {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  /* Concepts read like a dictionary: headword, where it comes from, the sense. */
+  .shelf-list--concepts .shelf-group__items {
+    display: block;
+    columns: 1;
+    column-gap: 3rem;
+    column-rule: 1px solid rgb(var(--color-border));
+  }
+
+  .dict-entry {
+    break-inside: avoid;
+    padding: 0.75rem 0 1rem;
+  }
+
+  .dict-entry__word {
+    color: rgb(var(--color-text));
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: var(--leading-tight);
+    letter-spacing: -0.01em;
+    text-decoration: none;
+  }
+
+  .dict-entry__word:hover {
+    color: rgb(var(--color-accent));
+  }
+
+  .dict-entry__word:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .dict-entry__origin {
+    display: block;
+    margin-top: 0.25rem;
+    color: rgb(var(--color-text-muted));
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    font-style: italic;
+  }
+
+  .dict-entry__sense {
+    margin: 0.5rem 0 0;
+    font-family: var(--font-heading);
+    font-size: 1.0625rem;
+    line-height: var(--leading-relaxed);
+    text-wrap: pretty;
+  }
+
+  .shelf-list--concepts .shelf-group__label {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    line-height: var(--leading-none);
+  }
+
+  @media (min-width: 900px) {
+    .shelf-list--concepts .shelf-group__items {
+      columns: 2;
+    }
+  }
+</style>

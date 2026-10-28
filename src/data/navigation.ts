@@ -11,5 +11,6 @@ export interface NavigationItem extends ReaderLink {
 export const mainNavigation: NavigationItem[] = [
   { href: '/browse', label: 'Browse' },
   { href: '/archive', label: 'Archive' },
+  { href: '/field-guide', label: 'Field Guide' },
   { href: '/about', label: 'About' },
 ];

@@ -41,7 +41,7 @@ But with my son, during these first critical days when bonding is chemical and p
 
 When I watch it happen, something tightens across my upper back and shoulders, moves up into my face. Sometimes tears form. I'm exhausted from no sleep, but I don't think that's it. I think the exhaustion is just lowering my defenses, letting me feel what's already there.
 
-My son is the first male figure I've genuinely loved in my life. Whatever was closed in me around masculine love, closed for reasons I could trace if I wanted to, has opened with him. It's lovely and vulnerable and completely new. So I'm meeting this new form of love, wanting to give my son everything, and immediately encountering something fundamental I cannot provide. The first hard wall appears exactly where the new love lives.
+My son is the first male figure I've genuinely loved in my life. Whatever was closed in me around masculine love, closed for reasons I could trace if I wanted to, has opened with him. It's lovely and vulnerable and completely new. So I'm meeting this new form of love, wanting to give my son everything, and immediately encountering something fundamental I cannot provide. The [first hard wall](/field-guide/concepts/hard-and-soft-limits) appears exactly where the new love lives.
 
 Sitting with these feelings longer I realized the jealousy isn't really about my partner having something I don't. It's not comparative like that. It's about discovering that "I do what I want" was never actually true. I'd been selecting from a menu I didn't realize was pre-filtered. Everything I've ever pursued was within the bounds of my human capability if I just worked hard enough and committed enough hours. But breastfeeding isn't on that menu. It's not a skill gap. It's a wall.
 

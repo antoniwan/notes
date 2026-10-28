@@ -16,6 +16,10 @@ export const PAGE_META = {
     'Search every word of the writing on Notes, or follow a topic: an idea map of fatherhood, Puerto Rico, power, healing, and the rooms they connect.',
   '/es':
     'Todo lo que Antonio Rodríguez Martínez ha escrito en español en Notes: ensayos, poemas y notas sobre Puerto Rico, la familia y la vida diaria.',
+  '/field-guide':
+    'Short entries on the concepts, values, and beliefs Antonio keeps coming back to, each one explained plainly and revised over time.',
+  '/es/guia-de-campo':
+    'Entradas cortas sobre los conceptos, valores y creencias a los que Antonio siempre regresa, explicadas con sencillez.',
   '/404': 'This page does not exist. A random quote from the site archive is shown instead.',
 } as const;
 

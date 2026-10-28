@@ -28,7 +28,7 @@ showComments: true
 translationGroup: happiness-is-moments
 ---
 
-Lo que me estoy dando cuenta es que la felicidad son momentos. No es que voy a estar siempre feliz. Soy una persona feliz porque tengo momentos de felicidad, y cada vez que maduro disfruto más de ellos.
+Lo que me estoy dando cuenta es que la felicidad son momentos. No es que voy a estar siempre feliz. Soy una persona feliz porque tengo [momentos de felicidad](/es/guia-de-campo/conceptos/la-felicidad), y cada vez que maduro disfruto más de ellos.
 
 Muchas veces el momento es una apreciación, un cariño: un vaso de agua, una buena comida, tiempo con el bebé. Ahora mismo, mientras hago esto, lo tengo al lado, mirándole los ojos, oyéndolo hacer ruido. Es una memoria bien bonita. Eso es un momento de felicidad.
 

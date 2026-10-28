@@ -49,7 +49,7 @@ Bajo presión sostenida, colapsé el matiz a favor de la velocidad y la segurida
 
 Esto puede tomar muchas formas: colgar una llamada de manera abrupta, retirarse intencionalmente, cortar contacto con alguien de forma acalorada, o incluso provocaciones sutiles enmarcadas como validación o [prueba](/p/on-testing-relationships). El patrón es velocidad sobre resolución. Esa percepción de amenaza resultaba detonante y exigía una _solución apresurada_.
 
-**Segundo: confusión de límites.**  
+**Segundo: [confusión de límites](/es/guia-de-campo/conceptos/confundir-el-limite-con-la-fuerza).**  
 Trataba los límites y la fuerza emocional como si fueran lo mismo, pero no lo son. Un límite es una restricción que uno se impone a sí mismo. En mi caso, era una cuestión de autorrespeto. La fuerza es otra dimensión. No fuerza física, sino finalidad emocional, temperatura y encuadre de _scorched earth_. Es un sistema de entrega.
 
 Puedo aplicar mis límites con fuerza proporcionada o no hacerlo, pero asumir las consecuencias. Ese matiz importa. No capté plenamente la distinción entre límite y fuerza hasta después de los hechos. Otra forma de pensarlo es haber confundido _necesidad_ con _intensidad_.

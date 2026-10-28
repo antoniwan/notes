@@ -8,8 +8,13 @@ import {
 } from './navActive';
 
 describe('desktop navigation destinations', () => {
-  it('is three plain links, reading first', () => {
-    expect(mainNavigation.map((item) => item.label)).toEqual(['Browse', 'Archive', 'About']);
+  it('is four plain links, reading first', () => {
+    expect(mainNavigation.map((item) => item.label)).toEqual([
+      'Browse',
+      'Archive',
+      'Field Guide',
+      'About',
+    ]);
     expect(mainNavigation.every((item) => !item.dropdown)).toBe(true);
     const destinations = mainNavigation.flatMap((item) =>
       item.dropdown ? item.dropdown.items.map((child) => child.href) : [item.href],
@@ -30,6 +35,9 @@ describe('main navigation groups', () => {
     ['/p/the-feeling-is-not-the-problem', 'Browse'],
     ['/p/the-feeling-is-not-the-problem/', 'Browse'],
     ['/about', 'About'],
+    ['/field-guide', 'Field Guide'],
+    ['/field-guide/concepts/locus-of-control', 'Field Guide'],
+    ['/es/guia-de-campo/creencias/dignidad-desde-el-nacimiento', 'Field Guide'],
   ])('marks exactly the intended group for %s', (pathname, label) => {
     expect(
       mainNavigation

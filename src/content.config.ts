@@ -80,4 +80,41 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+// Field Guide entries (src/data/fieldGuide.ts). Hand-written, one file per
+// language; twins share a translationGroup. `revised` replaces a publish date.
+const fieldGuideBase = {
+  title: z.string(),
+  summary: z.string(),
+  language: z.enum(['en', 'es']).default('en'),
+  translationGroup: z.string().optional(),
+  revised: dateSchema,
+  draft: z.boolean().optional().default(false),
+};
+
+const fieldGuideLoader = (folder: string) =>
+  glob({ base: `./src/content/${folder}`, pattern: '**/*.md' });
+
+const concepts = defineCollection({
+  loader: fieldGuideLoader('concepts'),
+  schema: z.object({
+    ...fieldGuideBase,
+    /** Who named it, when it isn't Antonio's own: "Julian Rotter, 1950s". */
+    origin: z.string().optional(),
+  }),
+});
+
+const values = defineCollection({
+  loader: fieldGuideLoader('values'),
+  schema: z.object(fieldGuideBase),
+});
+
+const beliefs = defineCollection({
+  loader: fieldGuideLoader('beliefs'),
+  schema: z.object({
+    ...fieldGuideBase,
+    /** Groups beliefs on the index: "Beliefs on dignity". */
+    topic: z.string(),
+  }),
+});
+
+export const collections = { blog, concepts, values, beliefs };
