@@ -23,3 +23,4 @@ For most of my life, every wall was soft. Work harder, learn more, and it moved.
 - [Locus of control](/field-guide/concepts/locus-of-control)
 - [Hard work polishes a person](/field-guide/beliefs/hard-work-polishes-a-person)
 - [Accepting uncertainty](/field-guide/concepts/accepting-uncertainty)
+- [The first hard wall](/field-guide/concepts/the-first-hard-wall)

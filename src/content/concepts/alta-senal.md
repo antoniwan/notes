@@ -21,3 +21,4 @@ Un libro para principiantes puede ser alta señal para mí en un campo nuevo y p
 
 - [Señales claras](/es/guia-de-campo/conceptos/senales-claras), una idea distinta sobre las relaciones.
 - [Antibiblioteca](/es/guia-de-campo/conceptos/antibiblioteca)
+- [Fuentes de señal](/es/guia-de-campo/conceptos/fuentes-de-senal)

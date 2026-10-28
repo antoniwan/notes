@@ -21,3 +21,4 @@ A beginner's book can be high signal for me in a new field and pure noise in one
 
 - [Clear signals](/field-guide/concepts/clear-signals), a different idea about relationships.
 - [Anti-library](/field-guide/concepts/anti-library)
+- [Signal sources](/field-guide/concepts/signal-sources)

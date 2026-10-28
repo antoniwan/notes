@@ -22,4 +22,5 @@ This one hit close. For years I would have said I wasn't depressed, I was just b
 - [Anger as signal](/field-guide/concepts/anger-as-signal)
 - [Emotional intelligence](/field-guide/concepts/emotional-intelligence)
 - [Contingent self-worth](/field-guide/concepts/contingent-self-worth)
+- [Situational depression](/field-guide/concepts/situational-depression)
 - [On Leadership and Leadership-Adjacent Things, April 2026](/p/on-leadership-and-leadership-adjacent-things-april-2026/)

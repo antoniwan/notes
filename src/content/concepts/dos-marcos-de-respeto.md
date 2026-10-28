@@ -21,3 +21,4 @@ A todos los demás les doy el estándar generoso. A mí me doy el duro, y para m
 - [La dinámica de Vegeta](/es/guia-de-campo/conceptos/la-dinamica-de-vegeta)
 - [El que lleva la cuenta](/es/guia-de-campo/conceptos/el-que-lleva-la-cuenta)
 - [La autotrascendencia](/es/guia-de-campo/conceptos/la-autotrascendencia)
+- [El respeto es reconocer y contenerse](/es/guia-de-campo/conceptos/el-respeto-es-reconocer-y-contenerse)

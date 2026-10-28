@@ -23,3 +23,4 @@ Durante casi toda mi vida, cada pared fue blanda. Trabaja más, aprende más, y 
 - [Locus de control](/es/guia-de-campo/conceptos/locus-de-control)
 - [El trabajo duro pule a la persona](/es/guia-de-campo/creencias/el-trabajo-duro-pule-a-la-persona)
 - [Aceptar la incertidumbre](/es/guia-de-campo/conceptos/aceptar-la-incertidumbre)
+- [La primera pared dura](/es/guia-de-campo/conceptos/la-primera-pared-dura)

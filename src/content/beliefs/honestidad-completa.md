@@ -26,3 +26,4 @@ Y fallo en esto. Años después de darle ese consejo a mi amigo, me fui de un tr
 - [Honestidad](/es/guia-de-campo/valores/honestidad), el valor detrás de esto.
 - [Integridad](/es/guia-de-campo/valores/integridad)
 - [Las noticias dicen que pasó, no cuánto](/es/guia-de-campo/creencias/las-noticias-dicen-que-paso-no-cuanto)
+- [Verdad radical](/es/guia-de-campo/conceptos/verdad-radical)
