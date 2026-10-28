@@ -17,6 +17,8 @@ import { assetConfig } from '../config/assets';
 
 interface Props {
   title: string;
+  titleSuffix?: string | false;
+  ogTitle?: string;
   description?: string;
   path?: string;
   heroImage?: string; // Primary image for social sharing
@@ -34,6 +36,8 @@ interface Props {
 
 const {
   title,
+  titleSuffix,
+  ogTitle,
   description = SITE_DESCRIPTION,
   path,
   heroImage,
@@ -81,6 +85,8 @@ const heroPreload = resolvedHero
 // Generate optimized meta tags with proper heroImage prioritization
 const metaTags = generateMetaTags({
   title,
+  titleSuffix,
+  ogTitle,
   description,
   path: path || Astro.url.pathname,
   heroImage,
@@ -234,7 +240,7 @@ const updatedDateISO = updatedDate?.toISOString();
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={metaTags.ogType} />
 <meta property="og:url" content={metaTags.canonical} />
-<meta property="og:title" content={metaTags.title} />
+<meta property="og:title" content={metaTags.ogTitle} />
 <meta property="og:description" content={metaTags.description} />
 <meta property="og:image" content={metaTags.ogImage} />
 <meta property="og:image:alt" content={metaTags.ogImageAlt} />
@@ -247,7 +253,7 @@ const updatedDateISO = updatedDate?.toISOString();
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={metaTags.canonical} />
-<meta property="twitter:title" content={metaTags.title} />
+<meta property="twitter:title" content={metaTags.ogTitle} />
 <meta property="twitter:description" content={metaTags.description} />
 <meta property="twitter:image" content={metaTags.ogImage} />
 <meta property="twitter:image:alt" content={metaTags.ogImageAlt} />
