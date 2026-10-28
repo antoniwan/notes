@@ -64,43 +64,44 @@ const [titleFirst, ...titleRest] = copy.title.split(' ');
   hreflangAlternates={hreflangAlternates}
 >
   <Container class="field-guide">
-    <header class="guide-intro">
-      <div class="guide-intro__text">
+    <div class="guide-top">
+      <header class="guide-intro">
         <h1>
-          {titleFirst}
-          <em>{titleRest.join(' ')}</em>
+          {titleFirst} <em>{titleRest.join(' ')}</em>
         </h1>
         <p class="guide-intro__description">{copy.description}</p>
         <a class="guide-intro__language" href={FIELD_GUIDE_ROOT[other]} hreflang={other}>
           <span lang={other}>{other === 'es' ? 'En español' : 'In English'}</span>
           <span aria-hidden="true">↗</span>
         </a>
+      </header>
+
+      <div class="guide-top__cover">
+        <FieldGuideCover lines={copy.cover.map((line) => line.toUpperCase())} />
       </div>
 
-      <FieldGuideCover lines={copy.cover.map((line) => line.toUpperCase())} />
-    </header>
-
-    <div class="guide-find">
-      <FieldGuideSearch
-        label={copy.searchLabel}
-        placeholder={copy.search}
-        empty={copy.noResults}
-        target="guide-results"
-        reveal
-      />
-      <ul id="guide-results" class="guide-results" role="list" hidden>
-        {entries.map((item) => (
-          <li data-fg-text={`${item.entry.data.title} ${item.entry.data.summary}`}>
-            <a href={item.path}>
-              <span class="guide-results__kind">
-                {FIELD_GUIDE_SHELVES[item.kind][lang].singular}
-              </span>
-              <span class="guide-results__title">{item.entry.data.title}</span>
-              <span class="guide-results__summary">{item.entry.data.summary}</span>
-            </a>
-          </li>
-        ))}
-      </ul>
+      <div class="guide-find">
+        <FieldGuideSearch
+          label={copy.searchLabel}
+          placeholder={copy.search}
+          empty={copy.noResults}
+          target="guide-results"
+          reveal
+        />
+        <ul id="guide-results" class="guide-results" role="list" hidden>
+          {entries.map((item) => (
+            <li data-fg-text={`${item.entry.data.title} ${item.entry.data.summary}`}>
+              <a href={item.path}>
+                <span class="guide-results__kind">
+                  {FIELD_GUIDE_SHELVES[item.kind][lang].singular}
+                </span>
+                <span class="guide-results__title">{item.entry.data.title}</span>
+                <span class="guide-results__summary">{item.entry.data.summary}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
 
     <div class="guide-doors">
@@ -162,45 +163,45 @@ const [titleFirst, ...titleRest] = copy.title.split(' ');
 </BaseLayout>
 
 <style>
-  /* Same shape as the home intro: a big serif heading with an italic accent line. */
-  .guide-intro {
+  /* Condensed: title on one line, then the line and search. The cover only shows where there's room for it. */
+  .guide-top {
     display: grid;
-    gap: 3rem;
-    align-items: center;
-    padding-block: round(nearest, clamp(1.25rem, 3vw, 2.5rem), 4px) 2.5rem;
+    padding-top: round(nearest, clamp(1.5rem, 3vw, 2.5rem), 4px);
   }
 
   .guide-intro h1 {
     margin: 0;
     font-family: var(--font-heading);
-    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-size: clamp(2.25rem, 6vw, 3.5rem);
     font-weight: 600;
     line-height: var(--leading-none);
-    letter-spacing: -0.055em;
+    letter-spacing: -0.045em;
   }
 
   .guide-intro h1 em {
-    display: block;
     color: rgb(var(--color-accent));
-    font-size: 0.85em;
     font-weight: 500;
   }
 
   .guide-intro__description {
     max-width: var(--measure);
-    margin: 1.25rem 0 0;
+    margin: 0.75rem 0 0;
     color: rgb(var(--color-text-muted));
-    font-size: clamp(1rem, 1.35vw, 1.125rem);
+    font-size: 1rem;
     line-height: var(--leading-relaxed);
     text-wrap: pretty;
+  }
+
+  .guide-top__cover {
+    display: none;
   }
 
   .guide-intro__language {
     display: inline-flex;
     align-items: center;
     gap: 1rem;
-    min-height: 2.75rem;
-    margin-top: 1rem;
+    min-height: 2.25rem;
+    margin-top: 0.25rem;
     color: rgb(var(--color-text));
     font-size: 0.875rem;
     font-weight: 600;
@@ -218,7 +219,8 @@ const [titleFirst, ...titleRest] = copy.title.split(' ');
   }
 
   .guide-find {
-    padding-block: 0.5rem 3rem;
+    max-width: var(--measure);
+    padding-block: 1rem 3rem;
   }
 
   .guide-results {
@@ -391,9 +393,21 @@ const [titleFirst, ...titleRest] = copy.title.split(' ');
   }
 
   @media (min-width: 768px) {
-    .guide-intro {
+    .guide-top {
       grid-template-columns: minmax(0, 1fr) auto;
-      gap: 4rem;
+      column-gap: 4rem;
+    }
+
+    .guide-top__cover {
+      display: block;
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      align-self: start;
+    }
+
+    .guide-top__cover :global(.guide-cover) {
+      width: 9rem;
+      margin-right: 2rem;
     }
 
     .guide-doors {
