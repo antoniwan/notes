@@ -23,7 +23,7 @@ Mi pregunta de prueba es: ¿esto me da paz?
 
 ## Para seguir
 
-- [Bend, Don't Break: Learning to Flow Again](/p/bend-dont-break-learning-to-flow-again/) (en inglés)
+- [Bend, Don't Break: Learning to Flow Again](/p/bend-dont-break-learning-to-flow-again) (en inglés)
 - [Pragmatismo antes que orgullo](/es/guia-de-campo/valores/pragmatismo-antes-que-orgullo)
 - [El que lleva la cuenta](/es/guia-de-campo/conceptos/el-que-lleva-la-cuenta)
 - [Amor fati](/es/guia-de-campo/conceptos/el-amor-fati)

@@ -20,5 +20,5 @@ Construyo cosas con IA todos los días, así que me ha tocado pensar dónde me p
 ## Para seguir
 
 - [Generado con IA o asistido por IA](/es/guia-de-campo/conceptos/generado-por-ia-vs-asistido-por-ia)
-- [Yo no escribo el código](/p/yo-no-escribo-el-codigo/)
-- [Primera fila para el fin del mundo](/p/primera-fila-para-el-fin-del-mundo/)
+- [Yo no escribo el código](/p/yo-no-escribo-el-codigo)
+- [Primera fila para el fin del mundo](/p/primera-fila-para-el-fin-del-mundo)

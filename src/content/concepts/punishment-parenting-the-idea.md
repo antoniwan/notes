@@ -19,5 +19,5 @@ I see it most when I write. A sentence has to survive a trial before I let it st
 ## Go next
 
 - [The landlord](/field-guide/concepts/the-landlord)
-- [If God had gentle-parented us](/p/if-god-had-gentle-parented-us/)
+- [If God had gentle-parented us](/p/if-god-had-gentle-parented-us)
 - [Perfection](/field-guide/concepts/perfection)

@@ -20,4 +20,4 @@ La uso como vara de medir hasta para cosas grandes. Ese mismo día escribí que 
 
 - [El apego que se aferra](/es/guia-de-campo/conceptos/el-apego-que-se-aferra)
 - [El amor puro](/es/guia-de-campo/conceptos/el-amor-puro)
-- [If God had gentle-parented us](/p/if-god-had-gentle-parented-us/)
+- [If God had gentle-parented us](/p/if-god-had-gentle-parented-us)

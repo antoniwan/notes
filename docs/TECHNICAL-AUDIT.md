@@ -28,11 +28,11 @@ Public field notes (essays, household recipes, book library) on a **hybrid Astro
 | Output          | **Hybrid** — default static + `prerender = false` on quotes                                   | README said “static output”                        |
 | Adapter         | `@astrojs/vercel@11`                                                                          | OK                                                 |
 | UI              | Tailwind CSS 4 + Vite plugin; Astro Fonts (DM Sans, Fraunces, Source Serif 4, JetBrains Mono) | OK                                                 |
-| Content         | MD/MDX via `@astrojs/mdx`, collection `blog`                                                  | OK                                                 |
+| Content         | MD/MDX via `@astrojs/mdx`; collections `blog`, `concepts`, `values`, `beliefs`                | OK                                                 |
 | Language        | TypeScript 6.0                                                                                | OK                                                 |
 | Package manager | pnpm 12.3.4 (`packageManager`), Node 22.23.3 (`.nvmrc`); CI reads both                        | OK                                                 |
 | Image           | Sharp; AVIF sources → social JPEG/PNG                                                         | OK                                                 |
-| Analysis        | `sentiment`, `reading-time`, brain-science utils                                              | OK                                                 |
+| Analysis        | `reading-time`                                                                                | OK                                                 |
 
 ---
 
@@ -76,16 +76,17 @@ Public field notes (essays, household recipes, book library) on a **hybrid Astro
 
 Updated October 20, 2026 (v7.3.0). The rest of this audit describes the site as of its date.
 
-| Area        | Routes                                                                                        | Notes                                                          |
-| ----------- | --------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
-| Reading     | `/`, `/p/[...slug]`, `/archive`, `/browse`                                                    | Browse searches every word through `/browse-words.json`        |
-| Taxonomy    | `/category/[category]`, `/tag/[tag]`                                                          | Thin tag pages stay out of the sitemap by design               |
-| Syndication | `/rss.xml`, `/feed.json`, `/latest.json`, `/llms.txt`, `/p/[...slug].md`, `@astrojs/sitemap`  | Feed eligibility ≠ listing eligibility                         |
-| Search      | `/search-index.json`, `/browse-words.json`                                                    | Fetched on first search                                        |
-| API         | `/api/quotes`                                                                                 | SSR JSON quotes endpoint                                       |
-| System      | `/404`, `/sitemap.xml` → 301 to sitemap-index                                                 |                                                                |
-| Retired     | `/everything`, `/tag`, `/category`, `/guided-path`, `/tag-management`, `/search`              | 301 to Archive or Browse                                       |
-| Moved       | `/writing-insights/*`, `/brain-science/*`, `/library/*`, `/books`, `/recipes`, `/p/recipes/*` | 301 home, to antoniwan.online, or to cookbook.antoniwan.online |
+| Area        | Routes                                                                                                      | Notes                                                          |
+| ----------- | ----------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| Reading     | `/`, `/p/[...slug]`, `/archive`, `/browse`, `/series/[id]`, `/es`                                           | Browse searches every word through `/browse-words.json`        |
+| Field Guide | `/field-guide`, `/field-guide/[kind]/[slug]`, `/es/guia-de-campo`, `/es/guia-de-campo/[kind]/[slug]`        | Merged entries 301 via `PAGE_REDIRECTS`; see `field-guide.md`  |
+| Taxonomy    | `/category/[category]`, `/tag/[tag]`                                                                        | Thin tag pages stay out of the sitemap by design               |
+| Syndication | `/rss.xml`, `/es/rss.xml`, `/feed.json`, `/latest.json`, `/llms.txt`, `/p/[...slug].md`, `@astrojs/sitemap` | Feed eligibility ≠ listing eligibility                         |
+| Search      | `/search-index.json`, `/browse-words.json`                                                                  | Fetched on first search                                        |
+| API         | `/api/quotes`                                                                                               | SSR JSON quotes endpoint                                       |
+| System      | `/404`, `/sitemap.xml` → 301 to sitemap-index                                                               |                                                                |
+| Retired     | `/everything`, `/tag`, `/category`, `/guided-path`, `/tag-management`, `/search`                            | 301 to Archive or Browse                                       |
+| Moved       | `/writing-insights/*`, `/brain-science/*`, `/library/*`, `/books`, `/recipes`, `/p/recipes/*`               | 301 home, to antoniwan.online, or to cookbook.antoniwan.online |
 
 Redirects live in two places: Astro `buildSeoRedirects()` (`src/utils/seoRouting.ts`) and `vercel.json` (legacy hosts + Remark42 rewrite). Prefer adding post/tag redirects in `seoRouting.ts` going forward. Remark42 upstream: set `REMARK42_UPSTREAM_ORIGIN` and run `pnpm run sync-remark42-rewrite` (see `docs/comments-setup.md`).
 
@@ -93,27 +94,25 @@ Redirects live in two places: Astro `buildSeoRedirects()` (`src/utils/seoRouting
 
 ## 5. Integration inventory
 
-| Integration         | Where                                                         | Env                                               | Failure mode                           | Docs                     |
-| ------------------- | ------------------------------------------------------------- | ------------------------------------------------- | -------------------------------------- | ------------------------ |
-| Vercel Analytics    | `BaseLayout`                                                  | Project toggle                                    | Silent no-op if disabled               | README                   |
-| Speed Insights      | `BaseLayout` `<head>`                                         | Project toggle                                    | Silent no-op                           | README                   |
-| Remark42            | `Comments.astro`, `config/comments.ts`, `vercel.json` rewrite | `PUBLIC_REMARK42_HOST`, `PUBLIC_REMARK42_SITE_ID` | Wrong siteId → empty/wrong thread      | `docs/comments-setup.md` |
-| Letterboxd          | `about.astro` + `utils/letterboxd.ts` (build fetch)           | `LETTERBOXD_RSS_URL`, `LETTERBOXD_PROFILE_URL`    | Empty block                            | README / `.env.example`  |
-| Threads             | `ThreadsEmbed.astro`                                          | None                                              | Soft-fail to link                      | Code only                |
-| Service worker      | Retired (7.8.0); `public/sw.js` only unregisters old installs | None                                              | None                                   | README                   |
-| Social images       | `scripts/generate-social-images.js`                           | None                                              | Missing JPG/PNG → AVIF in OG (fragile) | README                   |
-| Brain Science cache | `src/data/.brain-science-cache/`                              | None                                              | Cache miss → full NLP at build         | This audit               |
+| Integration      | Where                                                         | Env                                               | Failure mode                           | Docs                     |
+| ---------------- | ------------------------------------------------------------- | ------------------------------------------------- | -------------------------------------- | ------------------------ |
+| Vercel Analytics | `BaseLayout`                                                  | Project toggle                                    | Silent no-op if disabled               | README                   |
+| Speed Insights   | `BaseLayout` `<head>`                                         | Project toggle                                    | Silent no-op                           | README                   |
+| Remark42         | `Comments.astro`, `config/comments.ts`, `vercel.json` rewrite | `PUBLIC_REMARK42_HOST`, `PUBLIC_REMARK42_SITE_ID` | Wrong siteId → empty/wrong thread      | `docs/comments-setup.md` |
+| Threads          | `ThreadsEmbed.astro`                                          | None                                              | Soft-fail to link                      | Code only                |
+| Service worker   | Retired (7.8.0); `public/sw.js` only unregisters old installs | None                                              | None                                   | README                   |
+| Social images    | `scripts/generate-social-images.js`                           | None                                              | Missing JPG/PNG → AVIF in OG (fragile) | README                   |
 
 ---
 
 ## 6. Client state (privacy)
 
-| Feature                             | Key / mechanism                                                   |
-| ----------------------------------- | ----------------------------------------------------------------- |
-| Theme                               | `localStorage.theme`                                              |
-| Read marks / Guided Path / progress | `blog-read-posts-v1.0` (+ legacy key) via `src/config/storage.ts` |
-| Search                              | Build-time index inlined into Header; client filter only          |
-| Comments                            | Remark42 cookies on comment host (third party)                    |
+| Feature               | Key / mechanism                                                   |
+| --------------------- | ----------------------------------------------------------------- |
+| Theme                 | `localStorage.theme`                                              |
+| Read marks / progress | `blog-read-posts-v1.0` (+ legacy key) via `src/config/storage.ts` |
+| Search                | Build-time index inlined into Header; client filter only          |
+| Comments              | Remark42 cookies on comment host (third party)                    |
 
 No accounts. No server-side reading progress. Constitution principle IV applies.
 

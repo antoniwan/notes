@@ -20,5 +20,5 @@ I build things with AI every day, so I've had to think about where I stand. I wr
 ## Go next
 
 - [AI-generated vs. AI-assisted](/field-guide/concepts/ai-generated-vs-ai-assisted)
-- [I don't write the code](/p/i-dont-write-the-code/)
-- [Front row to the end of the world](/p/front-row-to-the-end-of-the-world/)
+- [I don't write the code](/p/i-dont-write-the-code)
+- [Front row to the end of the world](/p/front-row-to-the-end-of-the-world)

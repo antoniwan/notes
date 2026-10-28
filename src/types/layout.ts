@@ -33,6 +33,8 @@ export interface BaseLayoutProps {
   author?: string;
   keywords?: string[];
   type?: 'website' | 'article';
+  /** Open Graph article:section (defaults to Notes). */
+  articleSection?: string;
   robots?: string;
   hreflangAlternates?: Array<{ hreflang: string; href: string }>;
   /** BCP 47 / HTML lang for the document (defaults to en). */

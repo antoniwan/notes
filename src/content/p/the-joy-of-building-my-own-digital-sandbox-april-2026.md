@@ -30,7 +30,7 @@ series: digital-sandbox
 
 I still fucking love ~~playing~~ working on my blog.
 
-Last July I wrote about [the joy of building my own digital sandbox](/p/the-joy-of-building-my-own-digital-sandbox/) — a love letter to the code, the content, the obsessive tinkering that makes this site feel like mine. Eight months later:
+Last July I wrote about [the joy of building my own digital sandbox](/p/the-joy-of-building-my-own-digital-sandbox) — a love letter to the code, the content, the obsessive tinkering that makes this site feel like mine. Eight months later:
 
 - **550 commits** across **24 merged pull requests**
 - Version jumped from **~2.x** to **5.21.0** — over 90 version bumps

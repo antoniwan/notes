@@ -19,6 +19,6 @@ I'm most vulnerable to it with people who are articulate. Someone who speaks wel
 
 ## Go next
 
-- [Integrity](/field-guide/concepts/integrity)
+- [Integrity](/field-guide/values/integrity)
 - [Physics envy](/field-guide/concepts/physics-envy)
 - [Discernment](/field-guide/concepts/discernment)

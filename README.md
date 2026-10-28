@@ -14,7 +14,7 @@ Live site: [notes.antoniwan.online](https://notes.antoniwan.online)
 
 Correction, October 17, 2026: the reading library moved to antoniwan.online/collections/books. Authored books already belong in its Projects section.
 
-Notes is for reading and for searching for something to read (October 20, 2026). Its navigation is Browse, Archive, and About, with search in the header. Cookbook and Collections no longer appear in its navigation or search.
+Notes is for reading and for searching for something to read (October 20, 2026). Its navigation is Browse, Archive, Field Guide, and About, with search in the header. Cookbook and Collections no longer appear in its navigation or search.
 
 Release history: [CHANGELOG.md](./CHANGELOG.md)
 
@@ -27,6 +27,7 @@ Inline diagram authoring: [Mermaid flowcharts and state diagrams](docs/mermaid-d
 - **Authored books** — `/books` redirects to Projects on `antoniwan.online`.
 - **Reading library** — `/library` and `/library/books` redirect to `antoniwan.online/collections/books`.
 - **Paths in** — **Browse** (`/browse`: one search over every word of the English writing; the "Ways into the writing" sentences, whose topic words show that topic's writings in place: four pinned sentences first (`PRELUDE_NOW`), the rest ranked by recent writing, quiet ones last; and every topic A–Z, folded under the box), **Archive** (`/archive`: every note, newest first), About, and header search. A topic or category page (`/tag/<topic>`, `/category/<id>`) links back to Browse. `/everything`, `/tag`, `/category`, and the removed `/guided-path` 301 to Archive or Browse; `/search` goes to Browse. Enter in the header search opens Browse with that search.
+- **Field Guide** — `/field-guide` (Spanish: `/es/guia-de-campo`): short entries on Concepts (an A–Z dictionary), Values, and Beliefs (grouped by topic), revised in place instead of dated. One hand-written file per language in `src/content/concepts`, `values`, and `beliefs`. See [docs/field-guide.md](docs/field-guide.md).
 - **Home** — a writing hero with two ways in (Browse, then Archive), Highlights for featured English posts, and a short purpose note.
 - **Writing Insights** was removed on October 20, 2026; it was not for readers. `/writing-insights`, `/brain-science`, and their old subpaths 301 to the home page.
 - **Feeds** — RSS (`/rss.xml`) and JSON Feed (`/feed.json`), English only. Spanish has its own RSS feed at `/es/rss.xml`
@@ -47,7 +48,7 @@ English is the listing language. Spanish is a twin: language toggle, title searc
 - **Table of contents on long posts** — floating contents control
 - **Schema.org JSON-LD** where it fits the page type
 - **Comments** — optional [Remark42](https://remark42.com/) when env vars are set (see `docs/comments-setup.md`)
-- **Service worker** — registration URL includes the **package version** from `package.json`
+- **No service worker** — `public/sw.js` only unregisters the old one (see below)
 - On **Vercel**: **Web Analytics** and **Speed Insights** in the base layout (they only send data when those products are enabled)
 
 ## Design rules
@@ -126,32 +127,34 @@ Remark42 uses `PUBLIC_REMARK42_HOST` and `PUBLIC_REMARK42_SITE_ID` when you turn
 
 ## Scripts
 
-| Command                               | What it does                                                                                  |
-| ------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `pnpm run dev`                        | Dev server                                                                                    |
-| `pnpm run build`                      | Builds social JPG/PNG from AVIF (skipped when fingerprints + files match), then `astro build` |
-| `pnpm run preview`                    | Serves prerendered `dist/client` on :4321 (no Vercel CLI needed; see caveat below)            |
-| `pnpm run preview:vercel`             | `astro preview` — needs the Vercel CLI installed                                              |
-| `pnpm test`                           | Vitest unit tests (publish filters, SEO routing, feed HTML, quotes helpers)                   |
-| `pnpm run test:watch`                 | Vitest in watch mode                                                                          |
-| `pnpm run test:browser`               | Browser regression journeys against `dist/client` (build first; see below)                    |
-| `pnpm changelog:since`                | Commits + file groups since the previous version (for CHANGELOG drafts)                       |
-| `pnpm run check`                      | `astro check` (TypeScript / Astro diagnostics)                                                |
-| `pnpm run lint`                       | ESLint                                                                                        |
-| `pnpm run lint:fix`                   | ESLint with `--fix`                                                                           |
-| `pnpm run lint:tokens`                | Rhythm and width tokens: fails if raw line heights, off-grid spacing, or stray widths grow    |
-| `pnpm run format`                     | Prettier write                                                                                |
-| `pnpm run format:check`               | Prettier check (CI verifier; does not rewrite files)                                          |
-| `pnpm run audit-frontmatter`          | Required-field / language sanity check on `src/content/p`                                     |
-| `pnpm run validate-feeds`             | Validates `dist/rss.xml` + `dist/feed.json` (run after build)                                 |
-| `pnpm run validate-structured-data`   | Smoke-checks structured-data module exports (source only)                                     |
-| `pnpm run validate-generated-content` | Parses the built site: JSON-LD, RSS XML, feed ids, canonicals, local assets, drafts           |
-| `pnpm run generate-social-images`     | AVIF → JPEG/PNG under `public/social/` only (same logic as the start of `pnpm run build`)     |
-| `pnpm run generate-favicons`          | Favicon assets                                                                                |
-| `pnpm run sync-remark42-rewrite`      | Regenerates the Remark42 rewrite in `vercel.json` from `REMARK42_UPSTREAM_ORIGIN`             |
-| `pnpm run check-remark42-rewrite`     | CI check that `vercel.json`'s Remark42 rewrite matches `REMARK42_UPSTREAM_ORIGIN`             |
-| `pnpm run lighthouse`                 | Lighthouse HTML report against `dist/`; starts and stops its own preview server               |
-| `pnpm run audit-performance`          | Same, performance category only, JSON output                                                  |
+| Command                               | What it does                                                                                       |
+| ------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `pnpm run dev`                        | Dev server                                                                                         |
+| `pnpm run build`                      | Builds social JPG/PNG from AVIF (skipped when fingerprints + files match), then `astro build`      |
+| `pnpm run preview`                    | Serves prerendered `dist/client` on :4321 (no Vercel CLI needed; see caveat below)                 |
+| `pnpm run preview:vercel`             | `astro preview` — needs the Vercel CLI installed                                                   |
+| `pnpm test`                           | Vitest unit tests (publish filters, SEO routing, feed HTML, quotes helpers)                        |
+| `pnpm run test:watch`                 | Vitest in watch mode                                                                               |
+| `pnpm run test:browser`               | Browser regression journeys against `dist/client` (build first; see below)                         |
+| `pnpm changelog:since`                | Commits + file groups since the previous version (for CHANGELOG drafts)                            |
+| `pnpm run check`                      | `astro check` (TypeScript / Astro diagnostics)                                                     |
+| `pnpm run lint`                       | ESLint                                                                                             |
+| `pnpm run lint:fix`                   | ESLint with `--fix`                                                                                |
+| `pnpm run lint:tokens`                | Rhythm and width tokens: fails if raw line heights, off-grid spacing, or stray widths grow         |
+| `pnpm run format`                     | Prettier write                                                                                     |
+| `pnpm run format:check`               | Prettier check (CI verifier; does not rewrite files)                                               |
+| `pnpm run audit-frontmatter`          | Required-field / language sanity check on `src/content/p`                                          |
+| `pnpm run validate-feeds`             | Validates `dist/rss.xml` + `dist/feed.json` (run after build)                                      |
+| `pnpm run validate-structured-data`   | Smoke-checks structured-data module exports (source only)                                          |
+| `pnpm run validate-generated-content` | Parses the built site: JSON-LD, RSS XML, feed ids, canonicals, local assets, drafts                |
+| `pnpm run generate-social-images`     | AVIF → JPEG/PNG under `public/social/` only (same logic as the start of `pnpm run build`)          |
+| `pnpm run generate-favicons`          | Favicon assets                                                                                     |
+| `pnpm run check-image-sizes`          | Fails on new images over 1 MB (baseline in `scripts/check-image-sizes.baseline.json`)              |
+| `pnpm run share-drafts [slug]`        | Drafts Bluesky, Threads, and Patreon announcement text for a post (reads the build; sends nothing) |
+| `pnpm run sync-remark42-rewrite`      | Regenerates the Remark42 rewrite in `vercel.json` from `REMARK42_UPSTREAM_ORIGIN`                  |
+| `pnpm run check-remark42-rewrite`     | CI check that `vercel.json`'s Remark42 rewrite matches `REMARK42_UPSTREAM_ORIGIN`                  |
+| `pnpm run lighthouse`                 | Lighthouse HTML report against `dist/`; starts and stops its own preview server                    |
+| `pnpm run audit-performance`          | Same, performance category only, JSON output                                                       |
 
 CI’s format step **checks**; it does not rewrite or open a follow-up commit. After `pnpm install`, a pre-commit hook runs Prettier on staged files so commits already match that check.
 
@@ -205,8 +208,7 @@ pnpm exec playwright install chromium
 
 These use the `playwright` library through Vitest rather than `@playwright/test`,
 so the repo keeps one test runner. They are a separate command from `pnpm test`
-so the unit suite stays fast. Service workers are blocked in the test context —
-offline behavior needs its own suite with explicit lifecycle steps.
+so the unit suite stays fast.
 
 ### Previewing and measuring a build locally
 
@@ -282,9 +284,10 @@ notes/
 │   ├── config/          # Comments, storage, assets
 │   ├── content/p/       # Essays and notes (Markdown / MDX)
 │   │   └── recipes/    # Recipe source files, kept as records; not built
-│   ├── data/            # Categories, navigation, socialImageManifest.ts, socialImageFingerprints.json, …
+│   ├── content/concepts/, values/, beliefs/  # Field Guide entries, one file per language
+│   ├── data/            # Categories, navigation, fieldGuide.ts, socialImageManifest.ts, socialImageFingerprints.json, …
 │   ├── layouts/
-│   ├── pages/           # Routes (browse, archive, category, tag, p, api, …)
+│   ├── pages/           # Routes (browse, archive, category, tag, p, field-guide, es/guia-de-campo, api, …)
 │   ├── styles/
 │   ├── utils/
 │   └── types/
@@ -296,12 +299,14 @@ Feature-specific components live under `src/components/<feature>/` when they are
 
 ## Content
 
-One collection (`blog` in `src/content.config.ts`). Folder is the discriminator, not a `kind` field:
+Four collections in `src/content.config.ts`: `blog` for the writing, and `concepts`, `values`, `beliefs` for the Field Guide. In `blog`, the folder is the discriminator, not a `kind` field:
 
 | Path                              | Public URL            | Listing                                                                                         |
 | --------------------------------- | --------------------- | ----------------------------------------------------------------------------------------------- |
 | `src/content/p/<slug>.md`         | `/p/<slug>`           | Archive, Browse, categories, tags, home Highlights, feeds                                       |
 | `src/content/p/recipes/<slug>.md` | redirects to Cookbook | Not built: the loader skips `recipes/**`, and each URL redirects to `cookbook.antoniwan.online` |
+
+Field Guide entries live at `/field-guide/<shelf>/<slug>` and `/es/guia-de-campo/<estante>/<slug>`, listed only on their own shelves. Rules for writing one: [docs/field-guide.md](docs/field-guide.md).
 
 Frontmatter: [docs/frontmatter-spec.md](docs/frontmatter-spec.md).
 Tags: [docs/tag-policy.md](docs/tag-policy.md) and [docs/tag-vocabulary.md](docs/tag-vocabulary.md).
@@ -314,6 +319,7 @@ Using Cursor AI in this repo: [docs/cursor-agent-skills.md](docs/cursor-agent-sk
 
 | File                                                                                | Topic                                            |
 | ----------------------------------------------------------------------------------- | ------------------------------------------------ |
+| [field-guide.md](docs/field-guide.md)                                               | Field Guide shelves, entries, and merges         |
 | [frontmatter-spec.md](docs/frontmatter-spec.md)                                     | Post frontmatter                                 |
 | [tag-policy.md](docs/tag-policy.md)                                                 | Signal-first tag policy                          |
 | [tag-vocabulary.md](docs/tag-vocabulary.md)                                         | Canonical vocabulary                             |
@@ -331,6 +337,8 @@ Using Cursor AI in this repo: [docs/cursor-agent-skills.md](docs/cursor-agent-sk
 | [roadmap.md](docs/roadmap.md)                                                       | Ideas, product audit, technical roadmap          |
 | [TECHNICAL-AUDIT.md](docs/TECHNICAL-AUDIT.md)                                       | System map, integrations, technical debt         |
 | [cursor-agent-skills.md](docs/cursor-agent-skills.md)                               | Cursor agent skill guide                         |
+| [cookbook-cutover.md](docs/cookbook-cutover.md)                                     | Cookbook move: routes, checks, recovery          |
+| [mermaid-diagrams.md](docs/mermaid-diagrams.md)                                     | Mermaid diagrams in posts                        |
 | [midjourney-og-image-prompts.md](docs/midjourney-og-image-prompts.md)               | Image prompt notes                               |
 
 ## Private generated materials

@@ -19,6 +19,6 @@ Soy hiperindependiente desde los dieciséis. Me hizo capaz, y me hizo solitario 
 
 ## Para seguir
 
-- [On leadership and leadership-adjacent things](/p/on-leadership-and-leadership-adjacent-things-april-2026/)
+- [On leadership and leadership-adjacent things](/p/on-leadership-and-leadership-adjacent-things-april-2026)
 - [Colaboración](/es/guia-de-campo/valores/colaboracion)
 - [La parentificación](/es/guia-de-campo/conceptos/la-parentificacion)

@@ -19,6 +19,6 @@ My therapist used this term after a summer with my daughter ended and she went b
 
 ## Go next
 
-- [The rhythm of grief](/p/the-rhythm-of-grief-summer-days-and-letting-go/)
+- [The rhythm of grief](/p/the-rhythm-of-grief-summer-days-and-letting-go)
 - [Anticipatory grief](/field-guide/concepts/anticipatory-grief)
 - [Covert depression](/field-guide/concepts/covert-depression)

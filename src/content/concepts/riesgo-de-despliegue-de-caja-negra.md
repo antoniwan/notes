@@ -20,4 +20,4 @@ Trabajo con estos sistemas todos los días, y me gustan. Precisamente por eso qu
 
 - [Psicosis asociada a la IA](/es/guia-de-campo/conceptos/psicosis-asociada-a-la-ia)
 - [Responsabilidad](/es/guia-de-campo/valores/responsabilidad)
-- [El Problema de Prometeo](/p/el-problema-de-prometeo/)
+- [El Problema de Prometeo](/p/el-problema-de-prometeo)

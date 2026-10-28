@@ -24,4 +24,4 @@ I know the book through its summary and reviews more than a close reading.
 - [Doing, not lecturing](/field-guide/concepts/doing-not-lecturing)
 - [The traffic light](/field-guide/concepts/the-traffic-light)
 - [Attachment theory](/field-guide/concepts/attachment-theory)
-- [Some Books for Self-Transcendence](/p/some-books-for-self-transcendence/)
+- [Some Books for Self-Transcendence](/p/some-books-for-self-transcendence)

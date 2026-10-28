@@ -21,4 +21,4 @@ Cambió cómo hablo de las compañías de tecnología. Parte de la gente adentro
 
 - [La optimización del engagement](/es/guia-de-campo/conceptos/optimizacion-de-la-interaccion)
 - [Historia, incentivos, resultados](/es/guia-de-campo/conceptos/historia-incentivos-resultados)
-- [Primera fila para el fin del mundo](/p/primera-fila-para-el-fin-del-mundo/)
+- [Primera fila para el fin del mundo](/p/primera-fila-para-el-fin-del-mundo)

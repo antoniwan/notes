@@ -20,4 +20,4 @@ I work with these systems every day, and I like them. That's exactly why I want 
 
 - [AI-associated psychosis](/field-guide/concepts/ai-associated-psychosis)
 - [Responsibility](/field-guide/values/responsibility)
-- [The Prometheus Problem](/p/the-prometheus-problem/)
+- [The Prometheus Problem](/p/the-prometheus-problem)

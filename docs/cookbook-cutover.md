@@ -28,7 +28,7 @@ The adapter first normalizes trailing-slash URLs with HTTP 308. Legacy domains c
 
 These existing normalization steps add permanent redirect hops. They do not change the final recipe, language, or query parameters.
 
-Astro also defines exact redirects from the manifest. The service worker handles migrated recipe requests before reading cached pages.
+Astro also defines exact redirects from the manifest.
 
 The namespace redirects do not create missing recipes. A nonexistent Cookbook slug still returns a missing-page response.
 
@@ -78,9 +78,7 @@ The existing modification to src/data/.brain-science-cache/meta-analysis.json is
 
 Host-level redirects require a deployed host. The local static preview does not reproduce Vercel routing rules.
 
-The package version changes the service-worker and search-index cache keys. Existing writing still supports the established offline behavior.
-
-The new worker redirects old recipe requests instead of serving cached recipe HTML. Cookbook does not inherit Notes' offline cache.
+The package version changes the search-index cache key. Notes no longer has a caching service worker (retired in 7.8.0), so nothing serves stale recipe HTML.
 
 ## Recovery
 

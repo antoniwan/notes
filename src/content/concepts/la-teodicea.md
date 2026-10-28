@@ -19,6 +19,6 @@ Esta pregunta es buena parte de por qué soy ateo. Ninguna teodicea que leí pod
 
 ## Para seguir
 
-- [If God had gentle-parented us](/p/if-god-had-gentle-parented-us/)
-- [Redefining God](/p/redefining-god/)
+- [If God had gentle-parented us](/p/if-god-had-gentle-parented-us)
+- [Redefining God](/p/redefining-god)
 - [El nihilismo existencial](/es/guia-de-campo/conceptos/el-nihilismo-existencial)

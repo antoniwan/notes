@@ -19,6 +19,6 @@ Mi terapeuta usó este término cuando terminó un verano con mi hija y ella vol
 
 ## Para seguir
 
-- [The rhythm of grief](/p/the-rhythm-of-grief-summer-days-and-letting-go/)
+- [The rhythm of grief](/p/the-rhythm-of-grief-summer-days-and-letting-go)
 - [El duelo anticipado](/es/guia-de-campo/conceptos/el-duelo-anticipado)
 - [La depresión encubierta](/es/guia-de-campo/conceptos/la-depresion-encubierta)

@@ -18,8 +18,7 @@ interface Props extends BaseLayoutProps {}
 
 // R19: the corpus is no longer inlined. It is fetched once, on first search
 // intent, from /search-index.json — see src/pages/search-index.json.js. The URL
-// carries the release version so a deploy busts both the HTTP cache and the
-// service worker's copy.
+// carries the release version so a deploy busts the HTTP cache.
 const searchIndexUrl = `/search-index.json?v=${encodeURIComponent(pkg.version ?? 'dev')}`;
 
 const {
@@ -37,6 +36,7 @@ const {
   author = AUTHOR.name,
   keywords,
   type,
+  articleSection,
   structuredDataType = 'website',
   structuredDataIdentifier,
   posts = [],
@@ -100,6 +100,7 @@ const structuredData = generateStructuredData({
       author={author}
       keywords={finalKeywords}
       type={type}
+      articleSection={articleSection}
       robots={robots}
       hreflangAlternates={hreflangAlternates}
       locale={locale}

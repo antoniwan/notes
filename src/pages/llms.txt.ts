@@ -36,6 +36,7 @@ ${spanish.map(llmsListItem).join('\n')}
 - [Archive](${SITE_URL}/archive): every post, newest first, as an HTML index
 - [RSS feed](${SITE_URL}/rss.xml): English essays with full text
 - [JSON Feed](${SITE_URL}/feed.json): the same essays as JSON
+- [Field Guide](${SITE_URL}/field-guide): short entries on the concepts, values, and beliefs behind the posts, revised in place; in Spanish at [Guía de campo](${SITE_URL}/es/guia-de-campo)
 - [En español](${SITE_URL}/es): every Spanish piece, with its own [RSS feed](${SITE_URL}/es/rss.xml)
 - [Cookbook](https://cookbook.antoniwan.online/llms.txt): the family recipes, which moved from this site to their own home; old recipe links redirect there
 - [antoniwan.online](${AUTHOR.url}/llms.txt): ${AUTHOR.name}'s own site, with his projects and everything else he makes

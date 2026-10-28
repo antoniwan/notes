@@ -18,6 +18,6 @@ Escribí en 2024: "Me había quedado como un NPC sin vida, tropezando por un rí
 
 ## Para seguir
 
-- [Transforming life through values](/p/transforming-life-through-values/)
+- [Transforming life through values](/p/transforming-life-through-values)
 - [Agencia y comunión](/es/guia-de-campo/conceptos/agencia-y-comunion)
 - [Acción](/es/guia-de-campo/valores/accion)

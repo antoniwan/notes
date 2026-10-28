@@ -18,6 +18,6 @@ Escribí un ensayo completo sobre esto, imaginando qué habría cambiado si Dios
 
 ## Para seguir
 
-- [If God had gentle-parented us](/p/if-god-had-gentle-parented-us/)
+- [If God had gentle-parented us](/p/if-god-had-gentle-parented-us)
 - [Criar la idea a castigo](/es/guia-de-campo/conceptos/criar-la-idea-a-castigo)
 - [La vergüenza](/es/guia-de-campo/conceptos/la-verguenza)

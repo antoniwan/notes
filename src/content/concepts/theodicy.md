@@ -19,6 +19,6 @@ This question is a big part of why I'm an atheist. No theodicy I read could expl
 
 ## Go next
 
-- [If God had gentle-parented us](/p/if-god-had-gentle-parented-us/)
-- [Redefining God](/p/redefining-god/)
+- [If God had gentle-parented us](/p/if-god-had-gentle-parented-us)
+- [Redefining God](/p/redefining-god)
 - [Existential nihilism](/field-guide/concepts/existential-nihilism)

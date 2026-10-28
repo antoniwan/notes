@@ -18,6 +18,6 @@ No quise dejar ir palabras buenas solo porque dejé la religión. Espíritu, alm
 
 ## Para seguir
 
-- [Embracing the spiritual abyss](/p/embracing-the-spiritual-abyss-an-atheists-search-for-meaning/)
-- [Redefining God](/p/redefining-god/)
+- [Embracing the spiritual abyss](/p/embracing-the-spiritual-abyss-an-atheists-search-for-meaning)
+- [Redefining God](/p/redefining-god)
 - [Honestidad](/es/guia-de-campo/valores/honestidad)

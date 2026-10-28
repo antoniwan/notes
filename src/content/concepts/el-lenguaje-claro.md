@@ -20,5 +20,5 @@ Cuando estaba escribiendo sobre la IA, agarré cada experto y cada idea y me pre
 ## Para seguir
 
 - [El premio a la brevedad](/es/guia-de-campo/conceptos/el-premio-a-la-brevedad)
-- [Primera fila para el fin del mundo](/p/primera-fila-para-el-fin-del-mundo/)
+- [Primera fila para el fin del mundo](/p/primera-fila-para-el-fin-del-mundo)
 - [Comunicación](/es/guia-de-campo/valores/comunicacion)

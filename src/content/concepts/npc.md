@@ -18,6 +18,6 @@ I wrote in 2024: "I had stood by like a lifeless NPC, fumbling through a river o
 
 ## Go next
 
-- [Transforming life through values](/p/transforming-life-through-values/)
+- [Transforming life through values](/p/transforming-life-through-values)
 - [Agency and communion](/field-guide/concepts/agency-and-communion)
 - [Action](/field-guide/values/action)

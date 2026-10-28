@@ -1,6 +1,6 @@
 # Frontmatter Specification
 
-This document defines the frontmatter format for the essays and notes in `src/content/p/`. Recipes moved to cookbook.antoniwan.online; their source files under `src/content/p/recipes/` are kept as records and are not built.
+This document defines the frontmatter format for the essays and notes in `src/content/p/`. Recipes moved to cookbook.antoniwan.online; their source files under `src/content/p/recipes/` are kept as records and are not built. Field Guide entries (`src/content/concepts`, `values`, `beliefs`) have their own, shorter frontmatter: see [field-guide.md](./field-guide.md).
 
 ## Reading Time System
 

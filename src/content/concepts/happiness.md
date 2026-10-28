@@ -24,7 +24,7 @@ The trap for me is approving the glimmer later, at my nightly gratitude practice
 
 ## Go next
 
-- [Happiness Is Moments](/p/happiness-is-moments/)
+- [Happiness Is Moments](/p/happiness-is-moments)
 - [Peace](/field-guide/values/peace)
 - [Joy](/field-guide/values/joy)
 - [Integrity](/field-guide/values/integrity)

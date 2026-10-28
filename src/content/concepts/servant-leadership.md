@@ -22,4 +22,4 @@ I believe in it, and I've also hidden behind it. Carrying everything felt like s
 - [A senior leads](/field-guide/beliefs/a-senior-leads)
 - [Be the floor](/field-guide/concepts/be-the-floor)
 - [Locus of control](/field-guide/concepts/locus-of-control)
-- [On Leadership and Leadership-Adjacent Things, April 2026](/p/on-leadership-and-leadership-adjacent-things-april-2026/)
+- [On Leadership and Leadership-Adjacent Things, April 2026](/p/on-leadership-and-leadership-adjacent-things-april-2026)

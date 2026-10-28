@@ -21,4 +21,4 @@ Naming it changed how I look at "helping out." Doing a chore you were asked to d
 
 - [Responsibility](/field-guide/values/responsibility)
 - [Provision](/field-guide/values/provision)
-- [On Leadership and Leadership-Adjacent Things, April 2026](/p/on-leadership-and-leadership-adjacent-things-april-2026/)
+- [On Leadership and Leadership-Adjacent Things, April 2026](/p/on-leadership-and-leadership-adjacent-things-april-2026)

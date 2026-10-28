@@ -21,4 +21,4 @@ Es la idea más humillante que conozco como padre, porque mis hijos copian mis h
 - [Una frase como tapa](/es/guia-de-campo/conceptos/una-frase-como-tapa)
 - [Integridad](/es/guia-de-campo/valores/integridad)
 - [Un senior dirige](/es/guia-de-campo/creencias/un-senior-dirige)
-- [Note to Self: On Being a Conscious Parent](/p/note-to-self-on-being-a-conscious-parent/) (en inglés)
+- [Note to Self: On Being a Conscious Parent](/p/note-to-self-on-being-a-conscious-parent) (en inglés)

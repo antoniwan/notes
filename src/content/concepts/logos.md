@@ -20,5 +20,5 @@ I'm an atheist, and the idea still moves me: that there's an order to things you
 ## Go next
 
 - [Stoicism](/field-guide/concepts/stoicism)
-- [Redefining God](/p/redefining-god/)
+- [Redefining God](/p/redefining-god)
 - [The ever-expanding universe](/field-guide/beliefs/the-ever-expanding-universe)

@@ -88,7 +88,11 @@ const slugify = (id: string) =>
       </a>
       <h1 class="shelf-head__title">
         {shelf.name}
-        <span class="shelf-head__count">{items.length}</span>
+        <span class="shelf-head__count">
+          <span class="sr-only">, </span>
+          {items.length}
+          <span class="sr-only"> {copy.entries}</span>
+        </span>
       </h1>
       <p class="shelf-head__blurb">{shelf.blurb}</p>
       <FieldGuideTabs lang={lang} current={kind} />
@@ -176,6 +180,17 @@ const slugify = (id: string) =>
     for (const group of document.querySelectorAll<HTMLElement>('[data-fg-group]')) {
       if (links.has(group.id)) observer.observe(group);
     }
+    // Jump straight to the letter. The site scrolls smoothly, and across the
+    // whole dictionary that took two seconds and read as lag.
+    index.addEventListener('click', (event) => {
+      const link = (event.target as HTMLElement).closest('a');
+      const group = link && document.getElementById(link.hash.slice(1));
+      if (!link || !group) return;
+      event.preventDefault();
+      group.scrollIntoView({ behavior: 'instant', block: 'start' });
+      history.replaceState(null, '', link.hash);
+      mark(group.id);
+    });
   }
 </script>
 
@@ -286,6 +301,13 @@ const slugify = (id: string) =>
       margin: 0;
       padding: 0.25rem 0;
       border-radius: 999px;
+      /* Centered below the header, and never taller than the screen: on a phone
+         held sideways the rail scrolls instead of losing letters off both ends. */
+      top: calc(50% + var(--site-header-height) / 2);
+      max-height: calc(100dvh - var(--site-header-height) - 1rem);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      scrollbar-width: none;
       background: rgb(var(--color-bg) / 0.88);
       box-shadow: none;
       transform: translateY(-50%);
@@ -295,7 +317,7 @@ const slugify = (id: string) =>
       width: 1.75rem;
       min-width: 0;
       min-height: 0;
-      height: 1.3rem;
+      height: 1.5rem;
       font-size: 0.8125rem;
     }
 

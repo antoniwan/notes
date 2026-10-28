@@ -27,6 +27,8 @@ interface Props {
   keywords?: string[];
   locale?: string;
   type?: 'website' | 'article';
+  /** Open Graph article:section (defaults to Notes). */
+  articleSection?: string;
   robots?: string;
   hreflangAlternates?: Array<{ hreflang: string; href: string }>;
   htmlLang?: 'en' | 'es';
@@ -44,6 +46,7 @@ const {
   keywords = [],
   locale = DEFAULT_LOCALE,
   type,
+  articleSection = 'Notes',
   robots,
   hreflangAlternates = [],
   htmlLang = 'en',
@@ -267,7 +270,7 @@ const updatedDateISO = updatedDate?.toISOString();
         <meta property="article:tag" content={tag} />
       ))}
     <meta property="article:author" content={AUTHOR.url} />
-    <meta property="article:section" content="Notes" />
+    <meta property="article:section" content={articleSection} />
   </>
 )}
 

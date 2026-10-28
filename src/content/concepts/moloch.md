@@ -21,4 +21,4 @@ It changed how I talk about tech companies. Some of the people inside them are k
 
 - [Engagement optimization](/field-guide/concepts/engagement-optimization)
 - [Story, incentives, outcomes](/field-guide/concepts/story-incentives-outcomes)
-- [Front row to the end of the world](/p/front-row-to-the-end-of-the-world/)
+- [Front row to the end of the world](/p/front-row-to-the-end-of-the-world)

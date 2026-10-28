@@ -19,6 +19,6 @@ Soy más vulnerable con la gente que habla bien. Alguien que se expresa bien rec
 
 ## Para seguir
 
-- [Integridad](/es/guia-de-campo/conceptos/integridad)
+- [Integridad](/es/guia-de-campo/valores/integridad)
 - [La envidia de la física](/es/guia-de-campo/conceptos/envidia-de-la-fisica)
 - [El discernimiento](/es/guia-de-campo/conceptos/el-discernimiento)

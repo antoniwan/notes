@@ -26,7 +26,7 @@ Así que doy lo que puedo: lo cargo después de cada comida. No es nada. Simplem
 
 ## Para seguir
 
-- [La primera pared](/p/la-primera-pared/)
+- [La primera pared](/p/la-primera-pared)
 - [Locus de control](/es/guia-de-campo/conceptos/locus-de-control)
 - [Autonomía](/es/guia-de-campo/valores/autonomia)
 - [El trabajo duro pule a la persona](/es/guia-de-campo/creencias/el-trabajo-duro-pule-a-la-persona)

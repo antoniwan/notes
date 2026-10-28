@@ -21,4 +21,4 @@ I caught myself doing exactly this in an argument, moving the goalposts every ti
 
 - [Physics envy](/field-guide/concepts/physics-envy)
 - [Intelligence as heat](/field-guide/concepts/intelligence-as-heat)
-- [Front row to the end of the world](/p/front-row-to-the-end-of-the-world/)
+- [Front row to the end of the world](/p/front-row-to-the-end-of-the-world)

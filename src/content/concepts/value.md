@@ -19,6 +19,6 @@ I asked "define value, let's go deep" one night in 2025, and it sent me down the
 
 ## Go next
 
-- [The definition and practice of my core values make me free](/p/the-definition-and-practice-of-my-core-values-make-me-free/)
+- [The definition and practice of my core values make me free](/p/the-definition-and-practice-of-my-core-values-make-me-free)
 - [Habits audit against values](/field-guide/concepts/habits-audit-against-values)
 - [Integrity](/field-guide/values/integrity)

@@ -21,4 +21,4 @@ Me pillé haciendo exactamente esto en una discusión, moviendo la portería cad
 
 - [La envidia de la física](/es/guia-de-campo/conceptos/envidia-de-la-fisica)
 - [La inteligencia como calor](/es/guia-de-campo/conceptos/la-inteligencia-como-calor)
-- [Primera fila para el fin del mundo](/p/primera-fila-para-el-fin-del-mundo/)
+- [Primera fila para el fin del mundo](/p/primera-fila-para-el-fin-del-mundo)

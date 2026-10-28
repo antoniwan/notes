@@ -23,4 +23,4 @@ Esta me tocó de cerca. Por años habría dicho que no estaba deprimido, que sol
 - [La inteligencia emocional](/es/guia-de-campo/conceptos/inteligencia-emocional)
 - [La autoestima condicionada](/es/guia-de-campo/conceptos/autoestima-condicionada)
 - [La depresión situacional](/es/guia-de-campo/conceptos/la-depresion-situacional)
-- [On Leadership and Leadership-Adjacent Things, April 2026](/p/on-leadership-and-leadership-adjacent-things-april-2026/) (en inglés)
+- [On Leadership and Leadership-Adjacent Things, April 2026](/p/on-leadership-and-leadership-adjacent-things-april-2026) (en inglés)

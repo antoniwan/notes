@@ -50,3 +50,29 @@ describe('getSitemapLastmodByUrl', () => {
     expect(home!.valueOf()).toBeGreaterThanOrEqual(category!.valueOf());
   });
 });
+
+describe('Field Guide in the sitemap', () => {
+  const site = 'https://notes.antoniwan.online';
+
+  it('pairs entry twins and dates them by revised', () => {
+    const links = getSitemapTranslationLinksByUrl().get(
+      `${site}/field-guide/concepts/locus-of-control`,
+    );
+    expect(links?.map((l) => l.lang).sort()).toEqual(['en', 'es']);
+    expect(
+      getSitemapLastmodByUrl().get(`${site}/field-guide/concepts/locus-of-control`),
+    ).toBeInstanceOf(Date);
+  });
+
+  it('pairs the shelves and the front pages', () => {
+    const map = getSitemapTranslationLinksByUrl();
+    expect(
+      map
+        .get(`${site}/field-guide/values`)
+        ?.some((l) => l.url === `${site}/es/guia-de-campo/valores`),
+    ).toBe(true);
+    expect(map.get(`${site}/field-guide`)?.some((l) => l.url === `${site}/es/guia-de-campo`)).toBe(
+      true,
+    );
+  });
+});

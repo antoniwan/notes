@@ -18,7 +18,7 @@ A "do better" used to make me cry with anger. I'd feel the injustice of it, like
 
 ## Go next
 
-- [Transforming life through values](/p/transforming-life-through-values/)
+- [Transforming life through values](/p/transforming-life-through-values)
 - [Improvement](/field-guide/values/improvement)
 - [Feedback is king](/field-guide/beliefs/feedback-is-king)
 - [I'm human and I'm going to make mistakes](/field-guide/beliefs/im-human-and-im-going-to-make-mistakes)

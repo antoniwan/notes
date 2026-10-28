@@ -20,5 +20,5 @@ When I was writing about AI, I took every expert and every idea and asked: can t
 ## Go next
 
 - [Premiums on brevity](/field-guide/concepts/premiums-on-brevity)
-- [Front row to the end of the world](/p/front-row-to-the-end-of-the-world/)
+- [Front row to the end of the world](/p/front-row-to-the-end-of-the-world)
 - [Communication](/field-guide/values/communication)

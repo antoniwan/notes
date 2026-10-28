@@ -25,4 +25,4 @@ I also had to admit I'm inside the ranking, not above it: "I know which parts of
 - [Man](/field-guide/concepts/man)
 - [Responsibility](/field-guide/values/responsibility)
 - [Enchildification](/field-guide/concepts/enchildification)
-- [Redefining God](/p/redefining-god/)
+- [Redefining God](/p/redefining-god)
