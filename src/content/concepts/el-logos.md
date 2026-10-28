@@ -20,5 +20,5 @@ Soy ateo, y la idea igual me conmueve: que hay un orden en las cosas que puedes 
 ## Para seguir
 
 - [Estoicismo](/es/guia-de-campo/conceptos/estoicismo)
-- [Redefining God](/p/redefining-god/)
+- [Redefining God](/p/redefining-god)
 - [El universo que no deja de expandirse](/es/guia-de-campo/creencias/el-universo-en-expansion)

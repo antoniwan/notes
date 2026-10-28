@@ -24,4 +24,4 @@ Conozco el libro más por su resumen y sus reseñas que por una lectura detallad
 - [Hacer, no sermonear](/es/guia-de-campo/conceptos/hacer-no-sermonear)
 - [El semáforo](/es/guia-de-campo/conceptos/el-semaforo)
 - [Teoría del apego](/es/guia-de-campo/conceptos/teoria-del-apego)
-- [Some Books for Self-Transcendence](/p/some-books-for-self-transcendence/) (en inglés)
+- [Some Books for Self-Transcendence](/p/some-books-for-self-transcendence) (en inglés)

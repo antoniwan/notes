@@ -22,4 +22,4 @@ The person who finally told me to get help was a teenager, a kid who shouldn't h
 - [Hyper-independence](/field-guide/concepts/hyper-independence)
 - [Intergenerational patterns](/field-guide/concepts/intergenerational-patterns)
 - [Adverse childhood experiences](/field-guide/concepts/adverse-childhood-experiences)
-- [On Leadership and Leadership-Adjacent Things, April 2026](/p/on-leadership-and-leadership-adjacent-things-april-2026/)
+- [On Leadership and Leadership-Adjacent Things, April 2026](/p/on-leadership-and-leadership-adjacent-things-april-2026)

@@ -26,7 +26,7 @@ So I give what I can: I hold him after every feeding. It's not nothing. It just 
 
 ## Go next
 
-- [The First Wall](/p/the-first-wall/)
+- [The First Wall](/p/the-first-wall)
 - [Locus of control](/field-guide/concepts/locus-of-control)
 - [Autonomy](/field-guide/values/autonomy)
 - [Hard work polishes a person](/field-guide/beliefs/hard-work-polishes-a-person)

@@ -18,6 +18,6 @@ When I realized my kids had learned my price, I was a little impressed and a lit
 
 ## Go next
 
-- [Integrity](/field-guide/concepts/integrity)
+- [Integrity](/field-guide/values/integrity)
 - [No-drama discipline](/field-guide/concepts/no-drama-discipline)
 - [Hard and soft limits](/field-guide/concepts/hard-and-soft-limits)

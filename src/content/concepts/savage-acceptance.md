@@ -23,7 +23,7 @@ My test question is _"¿Esto me da paz?"_ Does this give me peace?
 
 ## Go next
 
-- [Bend, Don't Break: Learning to Flow Again](/p/bend-dont-break-learning-to-flow-again/)
+- [Bend, Don't Break: Learning to Flow Again](/p/bend-dont-break-learning-to-flow-again)
 - [Pragmatism over pride](/field-guide/values/pragmatism-over-pride)
 - [The scorekeeper](/field-guide/concepts/the-scorekeeper)
 - [Amor fati](/field-guide/concepts/amor-fati)

@@ -361,6 +361,8 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
           // Tags get medium priority
           score += 2;
           if (item.weight > 5) score += 1; // Higher weight tags get slight boost
+        } else if (item.type === 'guide') {
+          score += 2;
         } else if (item.type === 'page') {
           // Pages get lower priority
           score += 1;
@@ -386,6 +388,7 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
         author: item.author,
         themes: item.themes,
         icon: item.icon,
+        kind: item.kind,
         language: item.language,
       }));
     }
@@ -450,7 +453,7 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
         headerDiv.appendChild(title);
 
         const primaryLang = Array.isArray(result.language) ? result.language[0] : result.language;
-        if (result.type === 'post' && primaryLang === 'es') {
+        if ((result.type === 'post' || result.type === 'guide') && primaryLang === 'es') {
           const langSpan = document.createElement('span');
           langSpan.className =
             'search-result-type text-xs px-3 py-1 rounded-full bg-[rgb(var(--color-accent))]/10 text-[rgb(var(--color-accent))] font-medium flex-shrink-0';
@@ -462,7 +465,7 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
         if (result.type !== 'post') {
           const typeSpan = document.createElement('span');
           typeSpan.className = `search-result-type text-xs px-3 py-1 rounded-full ${typeConfig.badgeClass} font-medium flex-shrink-0`;
-          typeSpan.textContent = typeConfig.label;
+          typeSpan.textContent = result.kind || typeConfig.label;
           headerDiv.appendChild(typeSpan);
         }
 
@@ -548,6 +551,14 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
 					</svg>`,
           bgClass: 'bg-orange-50 dark:bg-orange-900/30',
           badgeClass: 'bg-orange-100 text-orange-800 dark:bg-orange-900/40 dark:text-orange-200',
+        },
+        guide: {
+          label: 'Field Guide',
+          icon: `<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+					</svg>`,
+          bgClass: 'bg-gray-50 dark:bg-gray-900/30',
+          badgeClass: 'bg-gray-100 text-gray-800 dark:bg-gray-900/40 dark:text-gray-200',
         },
         page: {
           label: 'Page',

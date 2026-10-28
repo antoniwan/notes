@@ -299,14 +299,15 @@
     --color-highlight: 255 214 64;
 
     /* Idea-family chips — eight rooms + rest. Not Maslow. Not 221 hues.
-       Kitchen ink is a darker marigold so chip text meets 4.5:1 on white.
+       Kitchen ink is a darker marigold and Becoming a darker orange, so chip
+       text meets 4.5:1 on white.
        Buttons still use --color-primary. Inner reuses UV violet. */
     --tag-kinship: 176 48 72;
     --tag-kitchen: 140 80 0;
     --tag-island: 8 128 118;
     --tag-inner: var(--color-accent);
     --tag-repair: 56 108 72;
-    --tag-becoming: 196 92 24;
+    --tag-becoming: 180 82 16;
     --tag-public: 156 32 48;
     --tag-craft: 40 80 156;
     --tag-rest: var(--color-text-muted);

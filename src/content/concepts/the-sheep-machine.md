@@ -19,4 +19,4 @@ I named it after a multi-hour line at a theme park, surrounded by people who had
 - [Capture](/field-guide/concepts/capture)
 - [Engagement optimization](/field-guide/concepts/engagement-optimization)
 - [The observation trap](/field-guide/concepts/the-observation-trap)
-- [Good Sheep](/p/good-sheep/)
+- [Good Sheep](/p/good-sheep)

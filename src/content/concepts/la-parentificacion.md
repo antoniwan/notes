@@ -22,4 +22,4 @@ La persona que por fin me dijo que buscara ayuda fue un adolescente, un muchacho
 - [La hiperindependencia](/es/guia-de-campo/conceptos/la-hiperindependencia)
 - [Patrones intergeneracionales](/es/guia-de-campo/conceptos/patrones-intergeneracionales)
 - [Experiencias adversas en la niñez](/es/guia-de-campo/conceptos/experiencias-adversas-en-la-ninez)
-- [On Leadership and Leadership-Adjacent Things, April 2026](/p/on-leadership-and-leadership-adjacent-things-april-2026/) (en inglés)
+- [On Leadership and Leadership-Adjacent Things, April 2026](/p/on-leadership-and-leadership-adjacent-things-april-2026) (en inglés)

@@ -21,4 +21,4 @@ It's the most humbling idea I know as a parent, because my kids copy my phone ha
 - [A phrase as a lid](/field-guide/concepts/a-phrase-as-a-lid)
 - [Integrity](/field-guide/values/integrity)
 - [A senior leads](/field-guide/beliefs/a-senior-leads)
-- [Note to Self: On Being a Conscious Parent](/p/note-to-self-on-being-a-conscious-parent/)
+- [Note to Self: On Being a Conscious Parent](/p/note-to-self-on-being-a-conscious-parent)

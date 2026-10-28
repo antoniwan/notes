@@ -19,5 +19,5 @@ Trato de aplicarle esto a mi propio lado también. Si un principio solo me impor
 ## Para seguir
 
 - [La personalidad jurídica corporativa](/es/guia-de-campo/conceptos/la-personalidad-juridica-corporativa)
-- [Integridad](/es/guia-de-campo/conceptos/integridad)
+- [Integridad](/es/guia-de-campo/valores/integridad)
 - [Integridad](/es/guia-de-campo/valores/integridad)

@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { mainNavigation } from '../data/navigation';
+import { localizeReaderLink } from '../data/readerNavigation';
 import {
   getNavLinkCurrent,
   isMainNavItemActive,
@@ -90,5 +91,22 @@ describe('destination active states', () => {
     expect(normalizePathname('/')).toBe('/');
     expect(normalizePathname('')).toBe('/');
     expect(normalizePathname('/tag///')).toBe('/tag');
+  });
+});
+
+describe('Field Guide link on Spanish pages', () => {
+  it('goes to the Spanish guide and stays current inside it', () => {
+    const link = localizeReaderLink({ href: '/field-guide', label: 'Field Guide' }, 'es');
+    expect(link).toEqual({ href: '/es/guia-de-campo', label: 'Guía de campo', lang: 'es' });
+    expect(getNavLinkCurrent(link.href, '/es/guia-de-campo')).toBe('page');
+    expect(getNavLinkCurrent(link.href, '/es/guia-de-campo/valores/integridad')).toBe('location');
+  });
+
+  it('leaves English pages and other links alone', () => {
+    const browse = { href: '/browse', label: 'Browse' };
+    expect(localizeReaderLink(browse, 'es')).toBe(browse);
+    expect(localizeReaderLink({ href: '/field-guide', label: 'Field Guide' }).href).toBe(
+      '/field-guide',
+    );
   });
 });

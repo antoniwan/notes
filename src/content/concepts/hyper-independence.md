@@ -19,6 +19,6 @@ I've been hyper-independent since I was sixteen. It made me capable, and it made
 
 ## Go next
 
-- [On leadership and leadership-adjacent things](/p/on-leadership-and-leadership-adjacent-things-april-2026/)
+- [On leadership and leadership-adjacent things](/p/on-leadership-and-leadership-adjacent-things-april-2026)
 - [Collaboration](/field-guide/values/collaboration)
 - [Parentification](/field-guide/concepts/parentification)

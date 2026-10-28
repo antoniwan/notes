@@ -7,6 +7,7 @@
  * Provides:
  * - xhtml:link clusters for slug-based EN/ES translationGroup pairs
  * - lastmod dates (updatedDate, else pubDate) for posts and listing pages
+ * - the same for Field Guide entries, paired on translationGroup, dated by `revised`
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -15,6 +16,13 @@ import { SITE_URL } from '../consts';
 import { loadFrontmatterYaml } from './frontmatterYaml.mjs';
 import { canonicalizeTags } from './tagVocabulary';
 import { isRecipeId } from './recipes';
+import {
+  FIELD_GUIDE_ROOT,
+  fieldGuideEntryPath,
+  fieldGuideKinds,
+  fieldGuideShelfPath,
+  type FieldGuideLang,
+} from '../data/fieldGuide';
 import {
   isListingEligibleMeta,
   isSpanishOnlyMeta,
@@ -41,6 +49,8 @@ const CONTENT_DIR =
     path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../content/p'),
     path.resolve(process.cwd(), 'src/content/p'),
   ].find((dir) => fs.existsSync(dir)) ?? path.resolve(process.cwd(), 'src/content/p');
+
+const FIELD_GUIDE_DIR = path.resolve(CONTENT_DIR, '..');
 
 const LISTING_PATHS = ['/', '/archive'];
 
@@ -212,7 +222,52 @@ function loadSitemapMeta(): SitemapMeta {
   }
 
   sitemapMeta = buildSitemapIndex(entries);
+  addFieldGuide(sitemapMeta);
   return sitemapMeta;
+}
+
+/**
+ * Field Guide entries live in their own collections, one file per language,
+ * with `revised` instead of a publish date. Each entry dates itself, its shelf,
+ * and the guide's front page; twins share a translationGroup within a shelf.
+ */
+function addFieldGuide(meta: SitemapMeta) {
+  for (const kind of fieldGuideKinds) {
+    const byGroup = new Map<string, SitemapLangLink[]>();
+    for (const file of walkMarkdownFiles(path.join(FIELD_GUIDE_DIR, kind))) {
+      const data = parseFrontmatter(fs.readFileSync(file, 'utf8'));
+      if (!data || data.draft === true) continue;
+      const lang: FieldGuideLang = data.language === 'es' ? 'es' : 'en';
+      const slug = path.basename(file).replace(/\.(md|mdx)$/i, '');
+      const url = sitemapPageUrl(fieldGuideEntryPath(kind, lang, slug));
+      const revised = data.revised ? new Date(data.revised as string) : null;
+      if (revised && !Number.isNaN(revised.getTime())) {
+        meta.lastmodByUrl.set(url, revised);
+        bumpLastmod(meta.lastmodByUrl, sitemapPageUrl(fieldGuideShelfPath(kind, lang)), revised);
+        bumpLastmod(meta.lastmodByUrl, sitemapPageUrl(FIELD_GUIDE_ROOT[lang]), revised);
+      }
+      if (typeof data.translationGroup !== 'string') continue;
+      const list = byGroup.get(data.translationGroup) ?? [];
+      list.push({ url, lang: HREFLANG_BY_LANG[lang] });
+      byGroup.set(data.translationGroup, list);
+    }
+    byGroup.set(
+      `shelf:${kind}`,
+      (['en', 'es'] as const).map((lang) => ({
+        url: sitemapPageUrl(fieldGuideShelfPath(kind, lang)),
+        lang: HREFLANG_BY_LANG[lang],
+      })),
+    );
+    for (const links of byGroup.values()) {
+      if (links.length < 2) continue;
+      for (const link of links) meta.linksByCanonicalUrl.set(link.url, links);
+    }
+  }
+  const roots = (['en', 'es'] as const).map((lang) => ({
+    url: sitemapPageUrl(FIELD_GUIDE_ROOT[lang]),
+    lang: HREFLANG_BY_LANG[lang],
+  }));
+  for (const link of roots) meta.linksByCanonicalUrl.set(link.url, roots);
 }
 
 /**

@@ -19,5 +19,5 @@ Lo veo más cuando escribo. Una oración tiene que sobrevivir un juicio antes de
 ## Para seguir
 
 - [El casero](/es/guia-de-campo/conceptos/el-casero)
-- [If God had gentle-parented us](/p/if-god-had-gentle-parented-us/)
+- [If God had gentle-parented us](/p/if-god-had-gentle-parented-us)
 - [La perfección](/es/guia-de-campo/conceptos/la-perfeccion)

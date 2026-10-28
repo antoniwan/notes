@@ -21,4 +21,4 @@ Mine runs on almost everyone, if I'm honest. Catching it is the work. When I not
 - ["I deserve it"](/field-guide/concepts/i-deserve-it)
 - [The ego as a tool](/field-guide/concepts/the-ego-as-a-tool)
 - [Contempt](/field-guide/concepts/contempt)
-- [On Leadership and Leadership-Adjacent Things, April 2026](/p/on-leadership-and-leadership-adjacent-things-april-2026/)
+- [On Leadership and Leadership-Adjacent Things, April 2026](/p/on-leadership-and-leadership-adjacent-things-april-2026)

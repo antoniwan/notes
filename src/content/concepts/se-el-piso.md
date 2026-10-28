@@ -21,4 +21,4 @@ No siempre lo logro. Algunos días los nenes reciben el tono que era para mi cor
 - [La conducta es lo que gotea hacia abajo](/es/guia-de-campo/conceptos/la-conducta-es-lo-que-gotea-hacia-abajo)
 - [Dignidad desde el nacimiento](/es/guia-de-campo/creencias/dignidad-desde-el-nacimiento)
 - [Un senior dirige](/es/guia-de-campo/creencias/un-senior-dirige)
-- [El Trickle Down Sí Llegó](/p/el-trickle-down-si-llego/) (en inglés)
+- [El Trickle Down Sí Llegó](/p/el-trickle-down-si-llego) (en inglés)

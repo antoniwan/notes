@@ -22,4 +22,4 @@ I don't think I love all of it. I think I'm learning to stop arguing with it. So
 - [Stoicism](/field-guide/concepts/stoicism)
 - [Savage acceptance](/field-guide/concepts/savage-acceptance)
 - [Pain and suffering are growth](/field-guide/beliefs/pain-and-suffering-are-growth)
-- [My Favorite Symbols of Power](/p/symbols-of-power/)
+- [My Favorite Symbols of Power](/p/symbols-of-power)

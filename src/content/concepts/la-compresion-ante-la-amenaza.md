@@ -21,4 +21,4 @@ Es una de las dos razones por las que mis límites han salido mal calibrados. La
 - [Confundir el límite con la fuerza](/es/guia-de-campo/conceptos/confundir-el-limite-con-la-fuerza)
 - [El semáforo](/es/guia-de-campo/conceptos/el-semaforo)
 - [Respirar](/es/guia-de-campo/conceptos/respirar)
-- [Sobre Límites, Descalibración y Reaprender el Amor Incondicional](/p/boundaries-miscalibration-unconditional-love-es/)
+- [Sobre Límites, Descalibración y Reaprender el Amor Incondicional](/p/boundaries-miscalibration-unconditional-love-es)

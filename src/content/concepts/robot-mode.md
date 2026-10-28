@@ -19,5 +19,5 @@ In my own words: "It's just robot mode, let's perform. I hate it, but I love it 
 ## Go next
 
 - [Speed as identity](/field-guide/concepts/speed-as-identity)
-- [Kaioken](/field-guide/concepts/kaioken)
+- [Kaioken](/field-guide/concepts/the-kaioken)
 - [Velocity loss](/field-guide/concepts/velocity-loss)

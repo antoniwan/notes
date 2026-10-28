@@ -19,6 +19,6 @@ Una noche de 2025 pregunté "define valor, vamos a lo profundo," y eso me llevó
 
 ## Para seguir
 
-- [The definition and practice of my core values make me free](/p/the-definition-and-practice-of-my-core-values-make-me-free/)
+- [The definition and practice of my core values make me free](/p/the-definition-and-practice-of-my-core-values-make-me-free)
 - [Auditar los hábitos contra los valores](/es/guia-de-campo/conceptos/auditoria-de-habitos-y-valores)
 - [Integridad](/es/guia-de-campo/valores/integridad)

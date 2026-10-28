@@ -24,7 +24,7 @@ La trampa para mí es aprobar el destello después, en mi práctica de gratitud 
 
 ## Para seguir
 
-- [La felicidad son momentos](/p/la-felicidad-son-momentos/)
+- [La felicidad son momentos](/p/la-felicidad-son-momentos)
 - [Paz](/es/guia-de-campo/valores/paz)
 - [Alegría](/es/guia-de-campo/valores/alegria)
 - [Integridad](/es/guia-de-campo/valores/integridad)

@@ -11,9 +11,11 @@ interface Props {
   lang?: 'en' | 'es';
   /** Shown next to the total, e.g. the Spanish feed. */
   feedHref?: string;
+  /** Shown after the feed, e.g. the Spanish Field Guide. */
+  extraLinks?: Array<{ href: string; label: string }>;
 }
 
-const { posts, lang = 'en', feedHref } = Astro.props;
+const { posts, lang = 'en', feedHref, extraLinks = [] } = Astro.props;
 const es = lang === 'es';
 const sortedPosts = [...posts].sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const years = [...new Set(sortedPosts.map((post) => post.data.pubDate.getUTCFullYear()))];
@@ -47,6 +49,12 @@ const count = (n: number) =>
               <a href={feedHref}>{es ? 'Seguir por RSS' : 'Follow via RSS'}</a>
             </>
           )}
+          {extraLinks.map((link) => (
+            <>
+              {' · '}
+              <a href={link.href}>{link.label}</a>
+            </>
+          ))}
         </p>
       </div>
 

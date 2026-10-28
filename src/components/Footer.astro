@@ -1,12 +1,21 @@
 ---
 import { AUTHOR } from '../consts';
-import { readingLinks, contactLinks } from '../data/readerNavigation';
+import { readingLinks, contactLinks, localizeReaderLink } from '../data/readerNavigation';
 import Logo from './Logo.astro';
 import Container from './Container.astro';
 import pkg from '../../package.json';
 
+interface Props {
+  lang?: 'en' | 'es';
+}
+
+const { lang = 'en' } = Astro.props;
 const footerGroups = [
-  { id: 'reading', label: 'Read', links: readingLinks },
+  {
+    id: 'reading',
+    label: 'Read',
+    links: readingLinks.map((link) => localizeReaderLink(link, lang)),
+  },
   { id: 'connect', label: 'Connect', links: contactLinks },
 ];
 ---

@@ -1,15 +1,24 @@
 ---
 import Logo from './Logo.astro';
-import { readingLinks, contactLinks } from '../data/readerNavigation';
+import { readingLinks, contactLinks, localizeReaderLink } from '../data/readerNavigation';
 import { getNavLinkCurrent } from '../utils/navActive';
 
+interface Props {
+  class?: string;
+  lang?: 'en' | 'es';
+}
+
+const { lang = 'en' } = Astro.props;
 const pathname = Astro.url.pathname;
 const entryDescriptions: Record<string, string> = {
   '/browse': 'Search every writing, or follow a topic.',
   '/archive': 'Every note, newest first.',
   '/field-guide': 'Concepts, values, and beliefs, explained.',
+  '/es/guia-de-campo': 'Conceptos, valores y creencias, explicados.',
 };
-const entryLinks = readingLinks.filter((link) => link.href in entryDescriptions);
+const entryLinks = readingLinks
+  .filter((link) => link.href in entryDescriptions)
+  .map((link) => localizeReaderLink(link, lang));
 const primaryContactLinks = contactLinks.filter(
   (link) => link.href === '/about' || link.href.startsWith('mailto:'),
 );
@@ -86,6 +95,7 @@ const currentLocation = (href: string) => getNavLinkCurrent(href, pathname);
               <a
                 class="mobile-menu__entry"
                 href={link.href}
+                lang={link.lang}
                 aria-current={currentLocation(link.href)}
               >
                 <span class="mobile-menu__entry-title">{link.label}</span>

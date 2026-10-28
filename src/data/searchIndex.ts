@@ -6,6 +6,8 @@ import { getTagMetadata } from './tags';
 import { calculateTagStats } from '../utils/tagProcessing';
 import { isListingEligiblePost, isSearchEligiblePost } from '../utils/publishFilters';
 import { isRecipePost } from '../utils/recipes';
+import { getFieldGuide } from '../utils/fieldGuide';
+import { FIELD_GUIDE_COPY, FIELD_GUIDE_ROOT, FIELD_GUIDE_SHELVES } from './fieldGuide';
 
 /** Static list of pages for search (public reader surfaces only). */
 const PAGE_SEARCH_DATA = [
@@ -108,9 +110,32 @@ async function buildSearchData() {
 
   const quoteSearchData: unknown[] = [];
 
+  // Field Guide entries in both languages, so "honesty" or "contempt" finds the
+  // entry from the header, not only from the guide's own search.
+  const guideSearchData = [
+    ...(['en', 'es'] as const).map((lang) => ({
+      type: 'guide',
+      id: `field-guide-${lang}`,
+      title: FIELD_GUIDE_COPY[lang].title,
+      description: FIELD_GUIDE_COPY[lang].description,
+      url: FIELD_GUIDE_ROOT[lang],
+      language: lang,
+    })),
+    ...(await getFieldGuide()).map(({ entry, kind, path }) => ({
+      type: 'guide',
+      id: path,
+      title: entry.data.title,
+      description: entry.data.summary,
+      kind: FIELD_GUIDE_SHELVES[kind][entry.data.language].singular,
+      url: path,
+      language: entry.data.language,
+    })),
+  ];
+
   return [
     ...postSearchData,
     ...quoteSearchData,
+    ...guideSearchData,
     ...categorySearchData,
     ...tagSearchData,
     ...PAGE_SEARCH_DATA,

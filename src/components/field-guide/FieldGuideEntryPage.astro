@@ -10,6 +10,7 @@ import {
   fieldGuideShelfPath,
 } from '../../data/fieldGuide';
 import { generateCanonicalUrl } from '../../utils/seo';
+import { generateBreadcrumbSchema } from '../../utils/structuredData';
 import { getFieldGuide, type ShelvedEntry } from '../../utils/fieldGuide';
 
 interface Props {
@@ -43,19 +44,10 @@ const shelfPath = fieldGuideShelfPath(kind, lang);
 
 const twinLabel = twin?.entry.data.language === 'es' ? 'Español' : 'English';
 
-const translations = twin
-  ? [item, twin].map((t) => ({
-      id: t.entry.id,
-      title: t.entry.data.title,
-      language: [t.entry.data.language],
-      path: t.path,
-    }))
-  : [];
-
 const hreflangAlternates = twin
   ? [
-      ...translations.map((t) => ({
-        hreflang: t.language[0],
+      ...[item, twin].map((t) => ({
+        hreflang: t.entry.data.language,
         href: generateCanonicalUrl(t.path),
       })),
       {
@@ -64,6 +56,31 @@ const hreflangAlternates = twin
       },
     ]
   : undefined;
+
+// An entry has no publish date, only "revised", so it is described as a
+// defined term in its shelf rather than as a blog post.
+const url = generateCanonicalUrl(path);
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'DefinedTerm',
+    name: entry.data.title,
+    description: entry.data.summary,
+    url,
+    inLanguage: lang === 'es' ? 'es-PR' : 'en-US',
+    dateModified: entry.data.revised.toISOString(),
+    inDefinedTermSet: {
+      '@type': 'DefinedTermSet',
+      name: `${shelf.name} · ${copy.title}`,
+      url: generateCanonicalUrl(shelfPath),
+    },
+  },
+  generateBreadcrumbSchema([
+    { name: copy.title, url: generateCanonicalUrl(FIELD_GUIDE_ROOT[lang]) },
+    { name: shelf.name, url: generateCanonicalUrl(shelfPath) },
+    { name: entry.data.title, url },
+  ]),
+];
 ---
 
 <BaseLayout
@@ -72,8 +89,9 @@ const hreflangAlternates = twin
   description={entry.data.summary}
   path={path}
   type="article"
-  structuredDataType="article"
+  articleSection={copy.title}
   updatedDate={entry.data.revised}
+  additionalSchemas={schemas}
   htmlLang={lang}
   locale={lang === 'es' ? 'es_PR' : undefined}
   inLanguage={lang === 'es' ? 'es-PR' : 'en-US'}

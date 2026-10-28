@@ -9,6 +9,32 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [7.12.1] — 2026-10-28
+
+A pass over the live site after the Field Guide shipped.
+
+### Fixed
+
+- Nine Field Guide links went to pages that do not exist. Three concepts (and their Spanish twins) linked Integrity as a concept; it is a value. Three English concepts linked Kaioken and Nam-myoho-renge-kyo, which had only Spanish entries; both now have English twins (`the-kaioken`, `nam-myoho-renge-kyo-chant`).
+- 87 links to posts from entries and posts ended in a slash, which cost every click a redirect.
+- Entries described themselves as blog posts with no date, so no structured data came out at all. Each entry is now a `DefinedTerm` in its shelf, with breadcrumbs, and its `article:section` says Field Guide.
+- The sitemap now dates every entry, shelf, and the guide's front page by `revised`, and pairs EN/ES twins, the way it already did for posts.
+- Header search finds Field Guide entries, in both languages, labeled by shelf.
+- On a phone held sideways, the A–Z rail on the Concepts shelf lost letters off both ends; it now fits the screen and scrolls. Its letters are 24px tall, and a letter jumps straight to its group instead of scrolling smoothly for two seconds.
+- Shelf headings read "Concepts250" to screen readers; the count now reads as "250 entries".
+- `/llms.txt` lists the Field Guide.
+- On Spanish pages, the header, menu, and footer link to the Spanish Guía de campo under its Spanish name, and the Spanish home (`/es`) links to it next to its feed.
+- Spanish is Puerto Rican Spanish everywhere: Spanish posts said `es_ES` in Open Graph and plain `es` in JSON-LD; they now say `es_PR` and `es-PR`, like the Field Guide, the Spanish feed, and dates already did.
+- The orange "Becoming" tag chip (seen on the 404 page) had 4.29:1 contrast on white; its ink is darker now, 5.05:1.
+
+### Added
+
+- `src/utils/fieldGuideLinks.test.ts`: every link into the Field Guide, from an entry or a post, must land on a built page or a redirect, and links to posts carry no trailing slash.
+
+### Docs
+
+- README, `docs/field-guide.md`, roadmap, multilingual setup, frontmatter spec, Cookbook cutover, and the technical audit describe the Field Guide and no longer mention the retired service worker, Letterboxd, or brain-science code.
+
 ## [7.12.0] — 2026-10-28
 
 Shorter page titles, and no full name in shared links.
@@ -20,16 +46,17 @@ Shorter page titles, and no full name in shared links.
 - The home page is "Notes by antoniwan". About is "About · Notes" in the tab and "About Antonio" in shares; the full name stays on the page and in the Person structured data.
 - The native share button sends the share title instead of `document.title`.
 
-## [7.11.0] — 2026-10-27
+## [7.11.0] — 2026-10-28
 
 The Field Guide: a second kind of writing on Notes. Notes are for Antonio; the Field Guide is for the reader. Short entries that explain one thing each, revised in place instead of dated.
 
 ### Added
 
-- `/field-guide` with three shelves: Concepts, Values, and Beliefs. Beliefs group by topic ("On dignity"). The title is pressed into the cover like an embossed notebook.
-- Three content collections, `src/content/concepts`, `values`, and `beliefs`, one hand-written file per language. Entries carry `summary`, `revised` (shown as "Last revised"), an optional `origin` for concepts named by someone else, and `topic` for beliefs.
+- `/field-guide` with three shelves: Concepts (an A–Z dictionary with a thumb index), Values, and Beliefs (grouped by topic, "On dignity"), and a search on each shelf. On wide screens the front page shows a worn black notebook with gold lettering ("Modern Life" / "Vida moderna"). Inside the guide the accent is gold (`--color-gold`, darker in light mode); the site header and footer stay purple.
+- Three content collections, `src/content/concepts`, `values`, and `beliefs`, one hand-written file per language. Entries carry `summary`, `revised` (shown as "Revised"), an optional `origin` for concepts named by someone else, and `topic` for beliefs.
 - Spanish twins at `/es/guia-de-campo`, paired by `translationGroup`, with hreflang alternates and the same language toggle posts use.
-- First entries, in English and Spanish: Locus of control, Honesty, and Dignity from birth.
+- 250 concepts, 20 values, and 17 beliefs, in English and Spanish. Entries that said almost the same thing were merged, and their old URLs 301 to the entry that absorbed them (`PAGE_REDIRECTS`): Honor the flame into Honesty, Say-do coherence into Integrity, three happiness entries into Happiness, and others.
+- Entries link back to the posts they come from, and 23 posts link to entries.
 - Field Guide in the header, the mobile menu, and the footer's reading links. It stays current on every entry, in both languages.
 
 ## [7.10.2] — 2026-10-26

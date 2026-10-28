@@ -20,4 +20,4 @@ I use it as a measuring stick even for big things. I wrote the same day that lov
 
 - [Attachment, the clinging kind](/field-guide/concepts/attachment-as-clinging)
 - [Pure love](/field-guide/concepts/pure-love)
-- [If God had gentle-parented us](/p/if-god-had-gentle-parented-us/)
+- [If God had gentle-parented us](/p/if-god-had-gentle-parented-us)

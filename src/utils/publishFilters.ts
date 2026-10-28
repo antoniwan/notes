@@ -133,19 +133,22 @@ export function isTopicListed(data: PostData, options: PublishFilterOptions = {}
 export type ContentLanguageMeta = {
   htmlLang: 'en' | 'es';
   contentLanguage: 'en' | 'es';
-  ogLocale: 'en_US' | 'es_ES';
-  inLanguage: 'en-US' | 'es';
+  ogLocale: 'en_US' | 'es_PR';
+  inLanguage: 'en-US' | 'es-PR';
 };
 
-/** Map post `language` frontmatter to HTML / Open Graph / JSON-LD language tags. */
+/**
+ * Map post `language` frontmatter to HTML / Open Graph / JSON-LD language tags.
+ * Spanish on this site is Puerto Rican Spanish: always es_PR / es-PR, never es_ES.
+ */
 export function resolveContentLanguage(language?: string[]): ContentLanguageMeta {
   const primary = language?.[0] === 'es' ? 'es' : 'en';
   if (primary === 'es') {
     return {
       htmlLang: 'es',
       contentLanguage: 'es',
-      ogLocale: 'es_ES',
-      inLanguage: 'es',
+      ogLocale: 'es_PR',
+      inLanguage: 'es-PR',
     };
   }
   return {

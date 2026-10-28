@@ -18,8 +18,7 @@ interface Props extends BaseLayoutProps {}
 
 // R19: the corpus is no longer inlined. It is fetched once, on first search
 // intent, from /search-index.json — see src/pages/search-index.json.js. The URL
-// carries the release version so a deploy busts both the HTTP cache and the
-// service worker's copy.
+// carries the release version so a deploy busts the HTTP cache.
 const searchIndexUrl = `/search-index.json?v=${encodeURIComponent(pkg.version ?? 'dev')}`;
 
 const {
@@ -39,6 +38,7 @@ const {
   author = AUTHOR.name,
   keywords,
   type,
+  articleSection,
   structuredDataType = 'website',
   structuredDataIdentifier,
   posts = [],
@@ -104,6 +104,7 @@ const structuredData = generateStructuredData({
       author={author}
       keywords={finalKeywords}
       type={type}
+      articleSection={articleSection}
       robots={robots}
       hreflangAlternates={hreflangAlternates}
       locale={locale}
@@ -128,7 +129,7 @@ const structuredData = generateStructuredData({
     <script define:vars={{ searchIndexUrl }} is:inline>
       window.__searchIndexUrl = searchIndexUrl;
     </script>
-    <Header />
+    <Header lang={htmlLang} />
     <ReadingProgress postId={postId} />
 
     <main id="main-content" role="main" class="animate-fade-in grow">
@@ -138,7 +139,7 @@ const structuredData = generateStructuredData({
       <slot />
     </main>
 
-    <Footer />
+    <Footer lang={htmlLang} />
     <BackToTop />
     <!-- A reader's search stays out of analytics: Browse carries it in ?q=, and the page view
          would otherwise send the full URL. This runs before the Analytics element reads it. -->

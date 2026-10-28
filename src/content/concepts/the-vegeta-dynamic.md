@@ -20,5 +20,5 @@ A lot of my drive has been Vegeta: proving someone wrong, outrunning an old vers
 ## Go next
 
 - [Joy](/field-guide/values/joy)
-- [Kaioken](/field-guide/concepts/kaioken)
+- [Kaioken](/field-guide/concepts/the-kaioken)
 - [Hard work polishes a person](/field-guide/beliefs/hard-work-polishes-a-person)

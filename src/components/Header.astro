@@ -5,6 +5,12 @@ import ThemeToggle from './ThemeToggle.astro';
 import MobileNav from './MobileNav.astro';
 import SearchBar from './SearchBar.astro';
 import Container from './Container.astro';
+
+interface Props {
+  lang?: 'en' | 'es';
+}
+
+const { lang = 'en' } = Astro.props;
 ---
 
 <header class="site-header" role="banner">
@@ -13,7 +19,7 @@ import Container from './Container.astro';
       <div class="site-header__navigation">
         <Logo />
         <div class="site-header__desktop-nav">
-          <Navigation />
+          <Navigation lang={lang} />
         </div>
       </div>
       <div class="site-header__actions">
@@ -46,7 +52,7 @@ import Container from './Container.astro';
           <span>Search</span>
         </button>
         <ThemeToggle />
-        <MobileNav class="xl:hidden" />
+        <MobileNav class="xl:hidden" lang={lang} />
       </div>
     </div>
   </Container>

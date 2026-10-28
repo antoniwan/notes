@@ -20,4 +20,4 @@ Mistakes go in too, differently. If I keep making the same mistake, that's a lag
 
 - [Contingent self-worth](/field-guide/concepts/contingent-self-worth)
 - [Claim grounds](/field-guide/concepts/claim-grounds)
-- [Conquering Imposter Syndrome with Evidence-Based Journaling](/p/conquering-imposter-syndrome-with-evidence-based-journaling/)
+- [Conquering Imposter Syndrome with Evidence-Based Journaling](/p/conquering-imposter-syndrome-with-evidence-based-journaling)

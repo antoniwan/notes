@@ -20,4 +20,4 @@ Los errores van también, de otra manera. Si sigo cometiendo el mismo error, esa
 
 - [Autoestima condicionada](/es/guia-de-campo/conceptos/autoestima-condicionada)
 - [Bases de una afirmación](/es/guia-de-campo/conceptos/bases-de-una-afirmacion)
-- [Conquering Imposter Syndrome with Evidence-Based Journaling](/p/conquering-imposter-syndrome-with-evidence-based-journaling/) (en inglés)
+- [Conquering Imposter Syndrome with Evidence-Based Journaling](/p/conquering-imposter-syndrome-with-evidence-based-journaling) (en inglés)

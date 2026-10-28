@@ -2,6 +2,12 @@
 
 This guide explains how to create and manage bilingual content using the automatic translation discovery system.
 
+The Field Guide pairs its EN/ES entries the same way (shared `translationGroup`), but each language has its own URL tree and its own shelves, and `language` is a single value. See [field-guide.md](./field-guide.md).
+
+## Locale
+
+Spanish on this site is Puerto Rican Spanish, always: `es_PR` for Open Graph, `es-PR` for JSON-LD `inLanguage`, dates, and the Spanish RSS feed (`es-pr`). Never `es_ES`. hreflang stays plain `es` (a region there would tell search engines the page is only for readers in Puerto Rico).
+
 ## Overview
 
 The multilingual system is how field notes exist in English and Spanish:
@@ -40,7 +46,7 @@ translationGroup: 'my-unique-article-id'
 
 ### 2. Language Settings
 
-- **English**: `language: ["en"]`. `featured: true` puts it on homepage Highlights. Non-featured English still appears in Everything, category, tags, and feeds.
+- **English**: `language: ["en"]`. `featured: true` puts it on homepage Highlights. Non-featured English still appears in Archive, category, tags, and feeds.
 - **Spanish**: `language: ["es"]`. Never listed on English browse surfaces, even if `featured: true`. Both sides of a pair should use `featured: false` unless the English note is a Highlight.
 - **Language array**: Use `["en"]` for English, `["es"]` for Spanish
 
@@ -160,7 +166,7 @@ interface TranslationData {
 3. Ensure neither post has `draft: true`
 4. Confirm `language` arrays are correctly set
 
-### Spanish showing in Everything / category / tags
+### Spanish showing in Archive / category / tags
 
 - Spanish is excluded by language, not by `featured`
 - Local `astro dev` uses the same listing rule as production for Spanish
@@ -177,7 +183,6 @@ interface TranslationData {
 Planned features:
 
 - Additional language support
-- Language-specific RSS feeds
 - A Spanish-only site or subdomain (the inverse of this site). See [roadmap.md](./roadmap.md)
 - Content synchronization tools
 

@@ -18,6 +18,6 @@ I wrote a whole essay about this, imagining what would have changed if God had g
 
 ## Go next
 
-- [If God had gentle-parented us](/p/if-god-had-gentle-parented-us/)
+- [If God had gentle-parented us](/p/if-god-had-gentle-parented-us)
 - [Punishment-parenting the idea](/field-guide/concepts/punishment-parenting-the-idea)
 - [Shame](/field-guide/concepts/shame)

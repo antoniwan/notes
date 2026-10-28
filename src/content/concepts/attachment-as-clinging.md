@@ -21,4 +21,4 @@ I notice it when I'm already rehearsing the conversation where I get my way. Tha
 
 - [Attachment theory](/field-guide/concepts/attachment-theory), the other meaning
 - [Accepting uncertainty](/field-guide/concepts/accepting-uncertainty)
-- [Nam-myoho-renge-kyo](/field-guide/concepts/nam-myoho-renge-kyo)
+- [Nam-myoho-renge-kyo](/field-guide/concepts/nam-myoho-renge-kyo-chant)

@@ -29,11 +29,12 @@ This section is a **checkpoint** so the roadmap does not read like the site is o
 - **Writing Insights**: removed on October 20, 2026 (Antonio: "it's not important for readers"). Its URLs 301 to the home page.
 - **Library** and **Cookbook**: moved off Notes in October 2026. `/library`, `/books` and `/recipes` 301 to antoniwan.online and cookbook.antoniwan.online.
 - **Poems**: verse styling with the Pond, Tide and Lantern ambience on poem pages (v7.5.0).
+- **Field Guide**: `/field-guide` and `/es/guia-de-campo`, short reader-first entries on Concepts, Values, and Beliefs, revised in place (v7.11.0). See [field-guide.md](./field-guide.md).
 - **Spanish**: `/es` lists every Spanish piece, with its own feed at `/es/rss.xml`.
 - **Series**: posts with a `series` field link to their neighbors and gather on `/series/<id>`.
 - **Feeds & APIs**: **RSS**, **JSON Feed**, `llms.txt`, **GET `/api/quotes`** (the 404 page no longer calls it; it picks from a pool baked into the page).
-- **Quality & distribution**: **Schema.org** where it fits, optional **Remark42** comments, **service worker** for caching (version bumped on build), **Vercel Web Analytics** and **Speed Insights** in the base layout when those products are enabled on Vercel.
-- **About**: curated topic grid; optional **Letterboxd “latest watched”** when `LETTERBOXD_*` env vars are set.
+- **Quality & distribution**: **Schema.org** where it fits, optional **Remark42** comments, **Vercel Web Analytics** and **Speed Insights** in the base layout when those products are enabled on Vercel.
+- **About**: curated topic grid.
 
 **Not the same as §1 TLDRs:** posts already have a required **`description`** in frontmatter for SEO and cards; there is still no dedicated **`tldr`** field, no TL;DR block on the post, and no sitewide **TLDRs** index page.
 
@@ -168,7 +169,7 @@ This section is a **checkpoint** so the roadmap does not read like the site is o
 
 ## 4. Library of sources (books)
 
-- **Status**: Shipped (live on site)
+- **Status**: Moved to antoniwan.online/collections/books in October 2026 (see Shipped today)
 - **Goal**: Give readers an honest view of the books that shape these notes: which ones I own, which I’ve read end‑to‑end, and which I mostly use as references or have only skimmed.
 
 ### What this actually means
