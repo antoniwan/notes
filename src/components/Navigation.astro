@@ -1,23 +1,27 @@
 ---
 import { mainNavigation } from '../data/navigation';
+import { localizeReaderLink } from '../data/readerNavigation';
 import { getNavLinkCurrent, isMainNavItemActive } from '../utils/navActive';
 
 interface Props {
   class?: string;
+  lang?: 'en' | 'es';
 }
 
-const { class: className = '' } = Astro.props;
+const { class: className = '', lang = 'en' } = Astro.props;
+const items = mainNavigation.map((item) => localizeReaderLink(item, lang));
 const pathname = Astro.url.pathname;
 ---
 
 <nav class:list={['site-navigation', className]} aria-label="Main navigation" data-site-navigation>
-  {mainNavigation.map((item) => {
+  {items.map((item) => {
     const isActive = isMainNavItemActive(item.href, pathname);
     if (!item.dropdown) {
       return (
         <a
           class="site-navigation__link"
           href={item.href}
+          lang={item.lang}
           aria-current={getNavLinkCurrent(item.href, pathname)}
         >
           {item.label}

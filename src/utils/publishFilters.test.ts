@@ -118,8 +118,8 @@ describe('resolveContentLanguage', () => {
     expect(resolveContentLanguage(['es'])).toEqual({
       htmlLang: 'es',
       contentLanguage: 'es',
-      ogLocale: 'es_ES',
-      inLanguage: 'es',
+      ogLocale: 'es_PR',
+      inLanguage: 'es-PR',
     });
   });
 

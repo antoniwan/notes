@@ -125,7 +125,7 @@ const structuredData = generateStructuredData({
     <script define:vars={{ searchIndexUrl }} is:inline>
       window.__searchIndexUrl = searchIndexUrl;
     </script>
-    <Header />
+    <Header lang={htmlLang} />
     <ReadingProgress postId={postId} />
 
     <main id="main-content" role="main" class="animate-fade-in grow">
@@ -135,7 +135,7 @@ const structuredData = generateStructuredData({
       <slot />
     </main>
 
-    <Footer />
+    <Footer lang={htmlLang} />
     <BackToTop />
     <!-- A reader's search stays out of analytics: Browse carries it in ?q=, and the page view
          would otherwise send the full URL. This runs before the Analytics element reads it. -->

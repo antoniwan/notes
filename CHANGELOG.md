@@ -23,6 +23,9 @@ A pass over the live site after the Field Guide shipped.
 - On a phone held sideways, the A–Z rail on the Concepts shelf lost letters off both ends; it now fits the screen and scrolls. Its letters are 24px tall, and a letter jumps straight to its group instead of scrolling smoothly for two seconds.
 - Shelf headings read "Concepts250" to screen readers; the count now reads as "250 entries".
 - `/llms.txt` lists the Field Guide.
+- On Spanish pages, the header, menu, and footer link to the Spanish Guía de campo under its Spanish name, and the Spanish home (`/es`) links to it next to its feed.
+- Spanish is Puerto Rican Spanish everywhere: Spanish posts said `es_ES` in Open Graph and plain `es` in JSON-LD; they now say `es_PR` and `es-PR`, like the Field Guide, the Spanish feed, and dates already did.
+- The orange "Becoming" tag chip (seen on the 404 page) had 4.29:1 contrast on white; its ink is darker now, 5.05:1.
 
 ### Added
 

@@ -21,5 +21,10 @@ const posts = await getCollection('blog', ({ data }) => isSpanishListed(data));
   locale="es_PR"
   mode="chrome"
 >
-  <ArchiveList posts={posts} lang="es" feedHref="/es/rss.xml" />
+  <ArchiveList
+    posts={posts}
+    lang="es"
+    feedHref="/es/rss.xml"
+    extraLinks={[{ href: '/es/guia-de-campo', label: 'Guía de campo' }]}
+  />
 </PageLayout>

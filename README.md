@@ -35,7 +35,7 @@ Inline diagram authoring: [Mermaid flowcharts and state diagrams](docs/mermaid-d
 - **Series** — posts with `series: <id>` (ids in `src/data/series.ts`) get "Part N of M" links and a page at `/series/<id>`; `seriesOrder` overrides date order
 - **Quotes API** — `GET /api/quotes` (Stoic excerpts, other philosophy, lines from posts; optional `?kind=`). The 404 page no longer calls it: it picks from the same pool, baked into the page
 
-English is the listing language. Spanish is a twin: language toggle, title search, SEO, direct URL, and the `/es` index with its own feed. Not a second card stream on English pages. Details: [docs/multilingual-setup.md](docs/multilingual-setup.md).
+English is the listing language. Spanish is Puerto Rican Spanish (`es_PR`, never `es_ES`). Spanish is a twin: language toggle, title search, SEO, direct URL, and the `/es` index with its own feed. Not a second card stream on English pages. Details: [docs/multilingual-setup.md](docs/multilingual-setup.md).
 
 ## How it is built
 

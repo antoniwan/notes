@@ -4,6 +4,10 @@ This guide explains how to create and manage bilingual content using the automat
 
 The Field Guide pairs its EN/ES entries the same way (shared `translationGroup`), but each language has its own URL tree and its own shelves, and `language` is a single value. See [field-guide.md](./field-guide.md).
 
+## Locale
+
+Spanish on this site is Puerto Rican Spanish, always: `es_PR` for Open Graph, `es-PR` for JSON-LD `inLanguage`, dates, and the Spanish RSS feed (`es-pr`). Never `es_ES`. hreflang stays plain `es` (a region there would tell search engines the page is only for readers in Puerto Rico).
+
 ## Overview
 
 The multilingual system is how field notes exist in English and Spanish:
