@@ -20,4 +20,4 @@ I didn't want to give up good words just because I gave up religion. Spirit, sou
 
 - [Embracing the spiritual abyss](/p/embracing-the-spiritual-abyss-an-atheists-search-for-meaning/)
 - [Redefining God](/p/redefining-god/)
-- [Honor the flame](/field-guide/values/honor-the-flame)
+- [Honesty](/field-guide/values/honesty)

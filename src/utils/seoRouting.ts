@@ -47,6 +47,9 @@ export const PAGE_REDIRECTS: Record<string, string> = {
   '/guided-path': '/browse',
   // Tag Management was an author overview of tag usage, not for readers.
   '/tag-management': '/browse',
+  // October 28, 2026: Honor the flame folded into Honesty as how I practice it.
+  '/field-guide/values/honor-the-flame': '/field-guide/values/honesty',
+  '/es/guia-de-campo/valores/honrar-la-llama': '/es/guia-de-campo/valores/honestidad',
 };
 
 /**
