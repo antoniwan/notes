@@ -41,6 +41,7 @@ export const FIELD_GUIDE_COPY: Record<
     previous: string;
     next: string;
     sameTopic: string;
+    backTo: string;
     shelves: string;
   }
 > = {
@@ -49,8 +50,8 @@ export const FIELD_GUIDE_COPY: Record<
     cover: ['Modern', 'Life'],
     description:
       'Short entries on the concepts, values, and beliefs I keep coming back to. Each one explains one thing, and gets revised when I learn more.',
-    revised: 'Last revised',
-    origin: 'Where it comes from',
+    revised: 'Revised',
+    origin: 'From',
     topic: 'On',
     search: 'Search the guide',
     searchLabel: 'Search entries',
@@ -60,6 +61,7 @@ export const FIELD_GUIDE_COPY: Record<
     previous: 'Previous',
     next: 'Next',
     sameTopic: 'Also on',
+    backTo: 'Back to',
     shelves: 'Shelves',
   },
   es: {
@@ -67,8 +69,8 @@ export const FIELD_GUIDE_COPY: Record<
     cover: ['Vida', 'moderna'],
     description:
       'Entradas cortas sobre los conceptos, valores y creencias a los que siempre regreso. Cada una explica una sola cosa, y la reviso cuando aprendo más.',
-    revised: 'Revisado por última vez',
-    origin: 'De dónde viene',
+    revised: 'Revisado',
+    origin: 'Viene de',
     topic: 'Sobre',
     search: 'Busca en la guía',
     searchLabel: 'Buscar entradas',
@@ -78,6 +80,7 @@ export const FIELD_GUIDE_COPY: Record<
     previous: 'Anterior',
     next: 'Siguiente',
     sameTopic: 'También sobre',
+    backTo: 'Volver a',
     shelves: 'Estantes',
   },
 };

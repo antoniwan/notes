@@ -3,14 +3,12 @@ import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Container from '../Container.astro';
 import FormattedDate from '../FormattedDate.astro';
-import LanguageToggle from '../LanguageToggle.astro';
 import {
   FIELD_GUIDE_COPY,
   FIELD_GUIDE_ROOT,
   FIELD_GUIDE_SHELVES,
   fieldGuideShelfPath,
 } from '../../data/fieldGuide';
-import FieldGuideTabs from './FieldGuideTabs.astro';
 import { generateCanonicalUrl } from '../../utils/seo';
 import { getFieldGuide, type ShelvedEntry } from '../../utils/fieldGuide';
 
@@ -42,6 +40,8 @@ const sameTopic = topic
     )
   : [];
 const shelfPath = fieldGuideShelfPath(kind, lang);
+
+const twinLabel = twin?.entry.data.language === 'es' ? 'Español' : 'English';
 
 const translations = twin
   ? [item, twin].map((t) => ({
@@ -89,24 +89,36 @@ const hreflangAlternates = twin
           {entry.data.title}
         </h1>
         <p class="guide-entry__description">{entry.data.summary}</p>
-        <div class="guide-entry__byline">
-          <span>
-            {copy.revised} <FormattedDate date={entry.data.revised} language={lang} />
-          </span>
+        <p class="guide-entry__byline">
           {origin && (
             <span>
-              {copy.origin}: {origin}
+              {copy.origin} {origin}
             </span>
           )}
-        </div>
-        {twin && (
-          <div class="guide-entry__language">
-            <LanguageToggle translations={translations} currentPath={path} currentLanguage={lang} />
-          </div>
-        )}
+          <span>
+            {copy.revised}{' '}
+            <FormattedDate date={entry.data.revised} format="short" language={lang} />
+          </span>
+          {twin && (
+            <a
+              href={twin.path}
+              hreflang={twin.entry.data.language}
+              lang={twin.entry.data.language}
+              rel="alternate"
+            >
+              {twinLabel}
+            </a>
+          )}
+        </p>
       </header>
 
-      <nav class="guide-entry__sidebar" aria-label={copy.title}>
+      <nav
+        class:list={[
+          'guide-entry__sidebar',
+          { 'guide-entry__sidebar--topic': sameTopic.length > 0 },
+        ]}
+        aria-label={copy.title}
+      >
         <a class="guide-entry__guide-link" href={FIELD_GUIDE_ROOT[lang]}>
           {copy.title}
         </a>
@@ -142,15 +154,31 @@ const hreflangAlternates = twin
             </ul>
           </div>
         )}
-        <div class="guide-entry__tabs">
-          <FieldGuideTabs lang={lang} current={kind} />
-        </div>
       </nav>
 
       <article class="guide-entry__article" aria-labelledby="guide-entry-title">
         <div class="guide-entry__prose prose prose-lg max-w-none">
           <Content />
         </div>
+        <nav class="guide-entry__turn" aria-label={shelf.name}>
+          {previous ? (
+            <a href={previous.path} rel="prev">
+              <span class="guide-entry__label">← {copy.previous}</span>
+              {previous.entry.data.title}
+            </a>
+          ) : (
+            <span />
+          )}
+          {next && (
+            <a href={next.path} rel="next">
+              <span class="guide-entry__label">{copy.next} →</span>
+              {next.entry.data.title}
+            </a>
+          )}
+          <a class="guide-entry__turn-shelf" href={shelfPath}>
+            {copy.backTo} <b>{shelf.name}</b>
+          </a>
+        </nav>
       </article>
     </div>
   </Container>
@@ -205,36 +233,45 @@ const hreflangAlternates = twin
     text-wrap: balance;
   }
 
+  /* The subtitle is the definition, so it reads like one. */
   .guide-entry__description {
     margin: 1.25rem 0 0;
-    color: rgb(var(--color-text-muted));
-    font-size: clamp(1.0625rem, 0.95rem + 0.35vw, 1.25rem);
-    line-height: var(--leading-relaxed);
+    color: rgb(var(--color-text) / 0.85);
+    font-family: var(--font-heading);
+    font-size: clamp(1.25rem, 1.1rem + 0.4vw, 1.5rem);
+    font-style: italic;
+    line-height: 1.45;
     text-wrap: pretty;
   }
 
+  /* Where it comes from, when it changed, the other language: one quiet line. */
   .guide-entry__byline {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 1.5rem;
-    margin-top: 1.5rem;
+    margin: 1.25rem 0 0;
     color: rgb(var(--color-text-muted));
     font-family: var(--font-sans);
     font-size: 0.875rem;
     line-height: var(--leading-normal);
   }
 
+  .guide-entry__byline > * + *::before {
+    content: '·';
+    padding: 0 0.5em;
+    color: rgb(var(--color-accent));
+  }
+
   .guide-entry__byline :global(time) {
     color: inherit;
   }
 
-  .guide-entry__language {
-    margin-top: 1.25rem;
+  .guide-entry__byline a {
+    color: rgb(var(--color-accent));
+    font-weight: 600;
+    text-decoration: none;
   }
 
-  .guide-entry__language :global(.language-toggle) {
-    margin-bottom: 0;
-    flex-wrap: wrap;
+  .guide-entry__byline a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
   }
 
   .guide-entry__article {
@@ -244,6 +281,119 @@ const hreflangAlternates = twin
   .guide-entry__prose {
     font-size: clamp(1.125rem, 1.025rem + 0.35vw, 1.25rem);
     line-height: var(--leading-relaxed);
+  }
+
+  /* Section names are small gold labels, so the writing leads. */
+  .guide-entry__prose :global(h2) {
+    margin: 2.5rem 0 0.75rem;
+    color: rgb(var(--color-accent));
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .guide-entry__prose :global(h2:first-child) {
+    margin-top: 0;
+  }
+
+  .guide-entry__prose :global(h2 + p) {
+    margin-top: 0;
+  }
+
+  /* Go next: one link per line, led by a gold arrow instead of a bullet. */
+  .guide-entry__prose :global(h2:last-of-type + ul) {
+    display: grid;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .guide-entry__prose :global(h2:last-of-type + ul li) {
+    margin: 0;
+    padding: 0;
+  }
+
+  .guide-entry__prose :global(h2:last-of-type + ul li::marker) {
+    content: none;
+  }
+
+  .guide-entry__prose :global(h2:last-of-type + ul li::before) {
+    content: '→';
+    margin-right: 0.6em;
+    color: rgb(var(--color-accent));
+  }
+
+  .guide-entry__prose :global(h2:last-of-type + ul a) {
+    color: rgb(var(--color-accent));
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    text-decoration: none;
+  }
+
+  .guide-entry__prose :global(h2:last-of-type + ul a:hover) {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  /* The page turn: previous on the left, next on the right, the shelf under them.
+     Wide screens have the sidebar for this instead. */
+  .guide-entry__turn {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 3.5rem;
+  }
+
+  .guide-entry__turn a {
+    display: grid;
+    align-content: start;
+    gap: 0.25rem;
+    color: rgb(var(--color-text));
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    line-height: var(--leading-tight);
+    text-decoration: none;
+  }
+
+  .guide-entry__turn a[rel='next'] {
+    grid-column: 2;
+    text-align: right;
+  }
+
+  .guide-entry__turn .guide-entry__label {
+    color: rgb(var(--color-accent));
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .guide-entry__turn a:hover {
+    color: rgb(var(--color-accent));
+  }
+
+  .guide-entry__turn a.guide-entry__turn-shelf {
+    display: block;
+    grid-column: 1 / -1;
+    justify-self: center;
+    margin-top: 1.25rem;
+    color: rgb(var(--color-text-muted));
+    font-size: 1.0625rem;
+    font-style: italic;
+    text-align: center;
+  }
+
+  .guide-entry__turn-shelf b {
+    color: rgb(var(--color-accent));
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  .guide-entry__turn a:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 3px;
   }
 
   .guide-entry__sidebar {
@@ -310,16 +460,6 @@ const hreflangAlternates = twin
     margin-top: 1.5rem;
   }
 
-  .guide-entry__tabs {
-    margin-top: 1.5rem;
-  }
-
-  .guide-entry__tabs :global(.guide-tabs a) {
-    min-height: 2.25rem;
-    padding: 0 0.75rem;
-    font-size: 0.8125rem;
-  }
-
   .guide-entry__label {
     margin: 0 0 0.25rem;
     color: rgb(var(--color-text-muted));
@@ -353,7 +493,30 @@ const hreflangAlternates = twin
     font-weight: 600;
   }
 
+  /* Below the sidebar breakpoint the page turn does the moving; keep only a belief's topic list. */
+  @media (max-width: 1199px) {
+    .guide-entry__sidebar {
+      display: none;
+    }
+
+    .guide-entry__sidebar--topic {
+      display: block;
+    }
+
+    .guide-entry__sidebar--topic > :not(.guide-entry__shelf) {
+      display: none;
+    }
+
+    .guide-entry__shelf {
+      margin-top: 0;
+    }
+  }
+
   @media (min-width: 1200px) {
+    .guide-entry__turn {
+      display: none;
+    }
+
     .guide-entry {
       grid-template-columns: 14rem minmax(0, var(--measure));
       column-gap: round(nearest, clamp(3rem, 5vw, 4.5rem), 4px);

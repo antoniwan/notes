@@ -146,6 +146,39 @@ const slugify = (id: string) =>
   </Container>
 </BaseLayout>
 
+<script>
+  // Mark the letter you're reading in the thumb index.
+  const index = document.querySelector<HTMLElement>('.shelf-letters');
+  if (index) {
+    const links = new Map(
+      [...index.querySelectorAll<HTMLAnchorElement>('a')].map((a) => [a.hash.slice(1), a]),
+    );
+    const mark = (id: string) => {
+      for (const [key, a] of links) {
+        if (key === id) a.setAttribute('aria-current', 'true');
+        else a.removeAttribute('aria-current');
+      }
+    };
+    // A thin band near the top of the screen; the first group in it is the one being read.
+    const inBand = new Set<string>();
+    const order = [...links.keys()];
+    const observer = new IntersectionObserver(
+      (seen) => {
+        for (const e of seen) {
+          if (e.isIntersecting) inBand.add(e.target.id);
+          else inBand.delete(e.target.id);
+        }
+        const current = order.find((id) => inBand.has(id));
+        if (current) mark(current);
+      },
+      { rootMargin: '-20% 0px -70% 0px' },
+    );
+    for (const group of document.querySelectorAll<HTMLElement>('[data-fg-group]')) {
+      if (links.has(group.id)) observer.observe(group);
+    }
+  }
+</script>
+
 <style>
   .shelf-head {
     display: grid;
@@ -167,6 +200,13 @@ const slugify = (id: string) =>
     text-decoration: none;
   }
 
+  /* On a phone the tabs and the site menu already lead back. */
+  @media (max-width: 767px) {
+    .shelf-head__crumb {
+      display: none;
+    }
+  }
+
   .shelf-head__title {
     display: flex;
     align-items: baseline;
@@ -180,9 +220,10 @@ const slugify = (id: string) =>
   }
 
   .shelf-head__count {
-    color: rgb(var(--color-text-muted));
-    font-family: var(--font-sans);
-    font-size: 1rem;
+    color: rgb(var(--color-accent));
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-style: italic;
     font-weight: 500;
     letter-spacing: 0;
   }
@@ -195,46 +236,72 @@ const slugify = (id: string) =>
     line-height: var(--leading-relaxed);
   }
 
-  /* The A–Z bar rides under the site header so you can jump from anywhere. */
+  /* A thumb index, gold like the one on the home. It rides under the site header
+     on wide screens and becomes a rail down the right edge on a phone. */
   .shelf-letters {
     position: sticky;
     top: var(--site-header-height);
-    z-index: 5;
+    z-index: 30;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.25rem;
     margin-inline: -0.5rem;
-    padding: 0.5rem;
-    border-block: 1px solid rgb(var(--color-border));
-    background: rgb(var(--color-surface-1) / 0.94);
-    backdrop-filter: blur(8px);
-  }
-
-  @media (max-width: 639px) {
-    .shelf-letters {
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
+    padding: 0.5rem 0.5rem 0.75rem;
+    background: rgb(var(--color-bg));
+    box-shadow: 0 12px 12px -10px rgb(var(--color-bg));
   }
 
   .shelf-letters a {
     flex: none;
     display: grid;
     place-items: center;
-    min-width: 2.25rem;
-    min-height: 2.25rem;
-    border-radius: var(--radius-md, 6px);
-    color: rgb(var(--color-text));
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+    color: rgb(var(--color-accent));
     font-family: var(--font-heading);
+    font-size: 1.25rem;
     font-weight: 600;
     text-decoration: none;
   }
 
   .shelf-letters a:hover,
+  .shelf-letters a[aria-current='true'] {
+    color: rgb(var(--color-text));
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.25em;
+  }
+
   .shelf-letters a:focus-visible {
-    background: rgb(var(--color-surface-2));
-    color: rgb(var(--color-accent));
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: -2px;
+  }
+
+  @media (max-width: 767px) {
+    .shelf-letters {
+      position: fixed;
+      top: 50%;
+      right: env(safe-area-inset-right, 0px);
+      flex-direction: column;
+      flex-wrap: nowrap;
+      margin: 0;
+      padding: 0.35rem 0.125rem;
+      border-radius: 999px;
+      background: rgb(var(--color-bg) / 0.88);
+      box-shadow: none;
+      transform: translateY(-50%);
+    }
+
+    .shelf-letters a {
+      width: 1.75rem;
+      min-width: 0;
+      min-height: 0;
+      height: 1.3rem;
+      font-size: 0.8125rem;
+    }
+
+    .shelf-list--concepts {
+      padding-right: 1.5rem;
+    }
   }
 
   .shelf-list {
@@ -251,20 +318,30 @@ const slugify = (id: string) =>
 
   .shelf-group__label {
     margin: 0;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgb(var(--color-border));
     color: rgb(var(--color-accent));
     font-family: var(--font-heading);
     font-size: 1.5rem;
     font-weight: 600;
   }
 
+  /* Beliefs: the topic sits in the margin, like the index of a book. */
   .shelf-list--beliefs .shelf-group__label {
-    color: rgb(var(--color-text-muted));
-    font-family: var(--font-sans);
-    font-size: 0.875rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    font-size: 1.375rem;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+
+  @media (min-width: 768px) {
+    .shelf-list--beliefs .shelf-group {
+      grid-template-columns: 12rem minmax(0, 1fr);
+      column-gap: 3rem;
+    }
+
+    .shelf-list--beliefs .shelf-group__label {
+      padding-top: 0.15rem;
+      text-align: right;
+    }
   }
 
   .shelf-group__items {
@@ -310,34 +387,27 @@ const slugify = (id: string) =>
     border-radius: 2px;
   }
 
-  /* Values and beliefs are few: give each one a card with room to breathe. */
-  .shelf-list--values .shelf-card,
-  .shelf-list--beliefs .shelf-card {
-    height: 100%;
-    padding: 1.25rem;
-    border: 1px solid rgb(var(--color-border));
-    border-radius: var(--radius-lg, 10px);
-    background: rgb(var(--color-surface-1));
-  }
-
+  /* Values and beliefs are few: no boxes, just room between them. */
   .shelf-list--values .shelf-group__items,
   .shelf-list--beliefs .shelf-group__items {
-    gap: 1rem;
+    gap: 1.75rem 3rem;
+  }
+
+  .shelf-list--values .shelf-card,
+  .shelf-list--beliefs .shelf-card {
+    padding: 0;
   }
 
   .shelf-list--values .shelf-card__title,
   .shelf-list--beliefs .shelf-card__title {
-    font-size: 1.3rem;
+    font-size: 1.375rem;
+    letter-spacing: -0.01em;
   }
 
   .shelf-list--values .shelf-card__summary,
   .shelf-list--beliefs .shelf-card__summary {
+    font-size: 1rem;
     -webkit-line-clamp: 4;
-  }
-
-  .shelf-list--values .shelf-card:hover,
-  .shelf-list--beliefs .shelf-card:hover {
-    border-color: rgb(var(--color-accent) / 0.6);
   }
 
   @media (min-width: 640px) {
@@ -346,11 +416,6 @@ const slugify = (id: string) =>
     }
   }
 
-  @media (min-width: 1024px) {
-    .shelf-group__items {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-  }
   /* Concepts read like a dictionary: headword, where it comes from, the sense. */
   .shelf-list--concepts .shelf-group__items {
     display: block;
@@ -404,7 +469,6 @@ const slugify = (id: string) =>
   .shelf-list--concepts .shelf-group__label {
     font-size: clamp(2.5rem, 5vw, 3.5rem);
     line-height: var(--leading-none);
-    border-bottom-width: 2px;
   }
 
   @media (min-width: 900px) {
