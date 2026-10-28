@@ -20,5 +20,5 @@ I've felt it the day before someone I love got on a plane. It didn't look like s
 ## Go next
 
 - [Clean grief](/field-guide/concepts/clean-grief)
-- [Contempt as an exit from grief](/field-guide/concepts/contempt-as-an-exit-from-grief)
+- [Contempt](/field-guide/concepts/contempt)
 - [Presence](/field-guide/values/presence)

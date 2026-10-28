@@ -20,4 +20,4 @@ In cooking it looks like this: choosing the best ingredient for each part of the
 
 - [On Cooking, on Everything, and Foundations](/p/on-cooking-on-everything-and-foundations)
 - [Cooking is love](/field-guide/beliefs/cooking-is-love)
-- [Mastering laziness](/field-guide/concepts/mastering-laziness)
+- [Efficiency or laziness?](/field-guide/concepts/efficiency-or-laziness)

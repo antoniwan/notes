@@ -19,5 +19,5 @@ Trato de aplicarle esto a mi propio lado también. Si un principio solo me impor
 ## Para seguir
 
 - [La personalidad jurídica corporativa](/es/guia-de-campo/conceptos/la-personalidad-juridica-corporativa)
-- [Coherencia entre decir y hacer](/es/guia-de-campo/conceptos/coherencia-entre-decir-y-hacer)
+- [Integridad](/es/guia-de-campo/conceptos/integridad)
 - [Integridad](/es/guia-de-campo/valores/integridad)

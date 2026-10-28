@@ -19,5 +19,5 @@ I try to apply this to my own side too. If I only care about a principle when it
 ## Go next
 
 - [Corporate personhood](/field-guide/concepts/corporate-personhood)
-- [Say-do coherence](/field-guide/concepts/say-do-coherence)
+- [Integrity](/field-guide/concepts/integrity)
 - [Integrity](/field-guide/values/integrity)

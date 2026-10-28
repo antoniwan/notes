@@ -19,5 +19,5 @@ Mi instinto es convertir la tristeza en un proyecto: arreglar algo, culpar algo,
 ## Para seguir
 
 - [El duelo anticipado](/es/guia-de-campo/conceptos/el-duelo-anticipado)
-- [El desprecio como salida del duelo](/es/guia-de-campo/conceptos/el-desprecio-como-salida-del-duelo)
+- [El desprecio](/es/guia-de-campo/conceptos/el-desprecio)
 - [Honestidad](/es/guia-de-campo/valores/honestidad)

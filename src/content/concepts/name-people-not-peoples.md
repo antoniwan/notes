@@ -19,5 +19,5 @@ It's how I try to write about politics and power. "Billionaires" becomes a name 
 ## Go next
 
 - [Dignity from birth](/field-guide/beliefs/dignity-from-birth)
-- [Contempt as an exit from grief](/field-guide/concepts/contempt-as-an-exit-from-grief)
+- [Contempt](/field-guide/concepts/contempt)
 - [Front Row to the End of the World](/p/front-row-to-the-end-of-the-world)

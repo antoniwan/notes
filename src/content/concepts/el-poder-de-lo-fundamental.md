@@ -20,4 +20,4 @@ En la cocina se ve así: escoger el mejor ingrediente para cada parte de la rece
 
 - [On Cooking, on Everything, and Foundations](/p/on-cooking-on-everything-and-foundations), en inglés.
 - [Cocinar es amor](/es/guia-de-campo/creencias/cocinar-es-amor)
-- [Dominar la vagancia](/es/guia-de-campo/conceptos/dominar-la-vagancia)
+- [¿Eficiencia o vagancia?](/es/guia-de-campo/conceptos/eficiencia-o-vagancia)

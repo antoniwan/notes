@@ -20,6 +20,6 @@ I optimized my life for ease, and the cost of admission was obscene. I'm proud o
 
 ## Go next
 
-- [Mastering laziness](/field-guide/concepts/mastering-laziness)
+- [Efficiency or laziness?](/field-guide/concepts/efficiency-or-laziness)
 - [Hard work polishes a person](/field-guide/beliefs/hard-work-polishes-a-person)
 - [Humility and humor](/field-guide/values/humility-and-humor)

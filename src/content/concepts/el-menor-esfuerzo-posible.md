@@ -19,5 +19,4 @@ Vengo de gente que trabajó duro y me enorgullece, pero he aprendido que mi juic
 ## Para seguir
 
 - [El trabajo duro pule a una persona](/es/guia-de-campo/creencias/el-trabajo-duro-pule-a-la-persona)
-- [Dominar la vagancia](/es/guia-de-campo/conceptos/dominar-la-vagancia)
 - [¿Eficiencia o vagancia?](/es/guia-de-campo/conceptos/eficiencia-o-vagancia)

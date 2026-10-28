@@ -19,5 +19,4 @@ I come from people who worked hard and I'm proud of that, but I've learned that 
 ## Go next
 
 - [Hard work polishes a person](/field-guide/beliefs/hard-work-polishes-a-person)
-- [Mastering laziness](/field-guide/concepts/mastering-laziness)
-- [Efficiency or laziness](/field-guide/concepts/efficiency-or-laziness)
+- [Efficiency or laziness?](/field-guide/concepts/efficiency-or-laziness)

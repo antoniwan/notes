@@ -20,6 +20,6 @@ Optimicé mi vida para que fuera fácil, y el costo de entrada fue obsceno. Esto
 
 ## Para seguir
 
-- [Dominar la vagancia](/es/guia-de-campo/conceptos/dominar-la-vagancia)
+- [¿Eficiencia o vagancia?](/es/guia-de-campo/conceptos/eficiencia-o-vagancia)
 - [El trabajo duro pule a la persona](/es/guia-de-campo/creencias/el-trabajo-duro-pule-a-la-persona)
 - [Humildad y humor](/es/guia-de-campo/valores/humildad-y-humor)

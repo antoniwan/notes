@@ -18,6 +18,6 @@ It can pass for peace, and it isn't. When I go kudaranai, I'm not calm, I'm abse
 
 ## Go next
 
-- [Peace vs. happiness](/field-guide/concepts/peace-vs-happiness)
+- [Happiness](/field-guide/concepts/happiness)
 - [Dissociation](/field-guide/concepts/dissociation)
 - [Presence](/field-guide/values/presence)

@@ -50,6 +50,29 @@ export const PAGE_REDIRECTS: Record<string, string> = {
   // October 28, 2026: Honor the flame folded into Honesty as how I practice it.
   '/field-guide/values/honor-the-flame': '/field-guide/values/honesty',
   '/es/guia-de-campo/valores/honrar-la-llama': '/es/guia-de-campo/valores/honestidad',
+  // October 28, 2026: Field Guide entries that said almost the same thing were merged.
+  '/field-guide/concepts/say-do-coherence': '/field-guide/values/integrity',
+  '/es/guia-de-campo/conceptos/coherencia-entre-decir-y-hacer':
+    '/es/guia-de-campo/valores/integridad',
+  '/field-guide/concepts/mastering-laziness': '/field-guide/concepts/efficiency-or-laziness',
+  '/es/guia-de-campo/conceptos/dominar-la-vagancia':
+    '/es/guia-de-campo/conceptos/eficiencia-o-vagancia',
+  '/field-guide/concepts/radical-acceptance': '/field-guide/concepts/savage-acceptance',
+  '/es/guia-de-campo/conceptos/la-aceptacion-radical':
+    '/es/guia-de-campo/conceptos/aceptacion-salvaje',
+  '/field-guide/concepts/the-first-hard-wall': '/field-guide/concepts/hard-and-soft-limits',
+  '/es/guia-de-campo/conceptos/la-primera-pared-dura':
+    '/es/guia-de-campo/conceptos/limites-duros-y-blandos',
+  '/field-guide/concepts/peace-vs-happiness': '/field-guide/concepts/happiness',
+  '/es/guia-de-campo/conceptos/paz-y-felicidad': '/es/guia-de-campo/conceptos/la-felicidad',
+  '/field-guide/concepts/happiness-as-coherence': '/field-guide/concepts/happiness',
+  '/es/guia-de-campo/conceptos/la-felicidad-como-coherencia':
+    '/es/guia-de-campo/conceptos/la-felicidad',
+  '/field-guide/concepts/moments-of-happiness': '/field-guide/concepts/happiness',
+  '/es/guia-de-campo/conceptos/momentos-de-felicidad': '/es/guia-de-campo/conceptos/la-felicidad',
+  '/field-guide/concepts/contempt-as-an-exit-from-grief': '/field-guide/concepts/contempt',
+  '/es/guia-de-campo/conceptos/el-desprecio-como-salida-del-duelo':
+    '/es/guia-de-campo/conceptos/el-desprecio',
 };
 
 /**

@@ -18,6 +18,6 @@ Cuando me di cuenta de que mis nenes se habían aprendido mi precio, me impresio
 
 ## Para seguir
 
-- [Coherencia entre decir y hacer](/es/guia-de-campo/conceptos/coherencia-entre-decir-y-hacer)
+- [Integridad](/es/guia-de-campo/conceptos/integridad)
 - [Disciplina sin drama](/es/guia-de-campo/conceptos/disciplina-sin-drama)
 - [Límites duros y blandos](/es/guia-de-campo/conceptos/limites-duros-y-blandos)

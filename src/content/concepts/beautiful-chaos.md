@@ -18,4 +18,4 @@ The first day home with a newborn taught me this one. Everything was loud and no
 
 - [Accepting uncertainty](/field-guide/concepts/accepting-uncertainty)
 - [Presence](/field-guide/values/presence)
-- [Moments of happiness](/field-guide/concepts/moments-of-happiness)
+- [Happiness](/field-guide/concepts/happiness)

@@ -19,5 +19,5 @@ Así trato de escribir sobre la política y el poder. "Los billonarios" se convi
 ## Para seguir
 
 - [Dignidad desde el nacimiento](/es/guia-de-campo/creencias/dignidad-desde-el-nacimiento)
-- [El desprecio como salida del duelo](/es/guia-de-campo/conceptos/el-desprecio-como-salida-del-duelo)
+- [El desprecio](/es/guia-de-campo/conceptos/el-desprecio)
 - [Primera fila para el fin del mundo](/p/primera-fila-para-el-fin-del-mundo)

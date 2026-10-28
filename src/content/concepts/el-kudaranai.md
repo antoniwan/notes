@@ -18,6 +18,6 @@ Puede pasar por paz, y no lo es. Cuando me pongo kudaranai, no estoy calmado, es
 
 ## Para seguir
 
-- [Paz y felicidad](/es/guia-de-campo/conceptos/paz-y-felicidad)
+- [La felicidad](/es/guia-de-campo/conceptos/la-felicidad)
 - [La disociación](/es/guia-de-campo/conceptos/disociacion)
 - [Presencia](/es/guia-de-campo/valores/presencia)

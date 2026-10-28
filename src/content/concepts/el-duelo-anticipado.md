@@ -20,5 +20,5 @@ Lo he sentido el día antes de que alguien que quiero se montara en un avión. A
 ## Para seguir
 
 - [Duelo limpio](/es/guia-de-campo/conceptos/el-duelo-limpio)
-- [El desprecio como salida del duelo](/es/guia-de-campo/conceptos/el-desprecio-como-salida-del-duelo)
+- [El desprecio](/es/guia-de-campo/conceptos/el-desprecio)
 - [Presencia](/es/guia-de-campo/valores/presencia)

@@ -19,5 +19,5 @@ My instinct is to turn sadness into a project: fix something, blame something, p
 ## Go next
 
 - [Anticipatory grief](/field-guide/concepts/anticipatory-grief)
-- [Contempt as an exit from grief](/field-guide/concepts/contempt-as-an-exit-from-grief)
+- [Contempt](/field-guide/concepts/contempt)
 - [Honesty](/field-guide/values/honesty)
