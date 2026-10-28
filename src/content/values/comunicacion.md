@@ -1,6 +1,6 @@
 ---
 title: 'Comunicación'
-summary: 'La destreza base de toda relación y todo trabajo.'
+summary: 'Casi todos los problemas son problemas de comunicación disfrazados.'
 language: es
 translationGroup: communication
 revised: 2026-10-27

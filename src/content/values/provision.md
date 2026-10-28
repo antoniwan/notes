@@ -1,6 +1,6 @@
 ---
 title: 'Provision'
-summary: 'Making sure the people who depend on me are covered.'
+summary: 'Making sure my people are covered. Cooking dinner counts.'
 language: en
 translationGroup: provision
 revised: 2026-10-27

@@ -1,6 +1,6 @@
 ---
 title: 'Intimidad'
-summary: 'Estar cerca de otra persona de verdad, en vez de actuar que lo estás.'
+summary: 'Estar cerca de alguien de verdad. Mi primer valor, y el más difícil.'
 language: es
 translationGroup: intimidad
 revised: 2026-10-27

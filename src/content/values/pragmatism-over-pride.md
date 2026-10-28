@@ -1,6 +1,6 @@
 ---
 title: 'Pragmatism over pride'
-summary: 'Choosing what works for everyone over what looks good for me.'
+summary: 'At 2 a.m., exploding is the path of least resistance. Helping takes effort.'
 language: en
 translationGroup: pragmatism-over-pride
 revised: 2026-10-27

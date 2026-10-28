@@ -1,6 +1,6 @@
 ---
 title: 'Intimidad'
-summary: 'Being truly near another person, instead of performing nearness.'
+summary: 'Being near someone for real. My first value, and my hardest.'
 language: en
 translationGroup: intimidad
 revised: 2026-10-27

@@ -1,6 +1,6 @@
 ---
 title: 'Eficiencia'
-summary: 'Hacer las cosas sin desperdicio, en los lugares donde eso ayuda.'
+summary: 'Mi superpoder en un escritorio. Un estorbo peinando a mi hija.'
 language: es
 translationGroup: efficiency
 revised: 2026-10-27

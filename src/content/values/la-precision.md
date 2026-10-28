@@ -1,6 +1,6 @@
 ---
 title: 'Precisión'
-summary: 'Decir exactamente lo que quiero decir, y construir exactamente lo que dije.'
+summary: 'No decir "siempre" cuando quiero decir "a veces".'
 language: es
 translationGroup: precision
 revised: 2026-10-27

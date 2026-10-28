@@ -1,6 +1,6 @@
 ---
 title: 'Efficiency'
-summary: 'Doing things without waste, in the places where that helps.'
+summary: "My superpower at a desk. A liability while brushing my daughter's hair."
 language: en
 translationGroup: efficiency
 revised: 2026-10-27

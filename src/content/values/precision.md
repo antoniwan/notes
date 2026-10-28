@@ -1,6 +1,6 @@
 ---
 title: 'Precision'
-summary: 'Saying exactly what I mean, and building exactly what I said.'
+summary: 'Not saying "always" when I mean "sometimes."'
 language: en
 translationGroup: precision
 revised: 2026-10-27

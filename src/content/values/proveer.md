@@ -1,6 +1,6 @@
 ---
 title: 'Proveer'
-summary: 'Asegurarme de que la gente que depende de mí esté cubierta.'
+summary: 'Asegurarme de que los míos estén cubiertos. Cocinar la cena cuenta.'
 language: es
 translationGroup: provision
 revised: 2026-10-27

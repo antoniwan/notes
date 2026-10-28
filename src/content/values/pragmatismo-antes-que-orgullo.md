@@ -1,6 +1,6 @@
 ---
 title: 'Pragmatismo antes que orgullo'
-summary: 'Escoger lo que funciona para todos sobre lo que me hace ver bien a mí.'
+summary: 'A las dos de la mañana, explotar es el camino de menos resistencia. Ayudar cuesta.'
 language: es
 translationGroup: pragmatism-over-pride
 revised: 2026-10-27

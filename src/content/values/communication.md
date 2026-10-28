@@ -1,6 +1,6 @@
 ---
 title: 'Communication'
-summary: 'The foundation skill under every relationship and every job.'
+summary: 'Most problems are communication problems wearing a costume.'
 language: en
 translationGroup: communication
 revised: 2026-10-27
