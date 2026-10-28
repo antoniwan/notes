@@ -1,6 +1,6 @@
 ---
 title: 'Integrity'
-summary: 'When what I say I value and how I actually live line up.'
+summary: 'Keeping the gap small between what I say and what I do.'
 language: en
 translationGroup: integrity
 revised: 2026-10-27

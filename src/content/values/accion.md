@@ -1,6 +1,6 @@
 ---
 title: 'Acción'
-summary: 'Hacer la cosa, poniendo atención a cómo se hace.'
+summary: 'Pensarlo no es lo mismo que hacerlo.'
 language: es
 translationGroup: action
 revised: 2026-10-27

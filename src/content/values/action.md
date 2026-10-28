@@ -1,6 +1,6 @@
 ---
 title: 'Action'
-summary: 'Doing the thing, with attention to how it gets done.'
+summary: 'Thinking about it is not the same as doing it.'
 language: en
 translationGroup: action
 revised: 2026-10-27

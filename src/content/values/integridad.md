@@ -1,6 +1,6 @@
 ---
 title: 'Integridad'
-summary: 'Cuando lo que digo que valoro y como vivo de verdad están alineados.'
+summary: 'Mantener pequeña la distancia entre lo que digo y lo que hago.'
 language: es
 translationGroup: integrity
 revised: 2026-10-27

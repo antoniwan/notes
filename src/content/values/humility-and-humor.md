@@ -1,6 +1,6 @@
 ---
 title: 'Humility and humor'
-summary: "Not taking myself too seriously, especially when it's serious."
+summary: "I might be the one who's wrong. Might as well be able to laugh about it."
 language: en
 translationGroup: humility-and-humor
 revised: 2026-10-27

@@ -1,6 +1,6 @@
 ---
 title: 'Colaboración'
-summary: 'Todos los adultos en el cuarto trabajando en el mismo problema.'
+summary: 'Estoy acostumbrado a cargar solo. Este es el músculo que todavía estoy desarrollando.'
 language: es
 translationGroup: collaboration
 revised: 2026-10-27
