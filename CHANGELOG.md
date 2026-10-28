@@ -19,7 +19,6 @@ Shorter page titles, and no full name in shared links.
 - Share previews (`og:title`, `twitter:title`) use the bare page title, since every app already shows the domain or "Notes" beside it. Shelves keep "· Field Guide" so a shared "Concepts" still makes sense.
 - The home page is "Notes by antoniwan". About is "About · Notes" in the tab and "About Antonio" in shares; the full name stays on the page and in the Person structured data.
 - The native share button sends the share title instead of `document.title`.
-- Spanish posts use `og:locale` `es_PR`, matching the Field Guide and the Spanish home.
 
 ## [7.11.0] — 2026-10-27
 

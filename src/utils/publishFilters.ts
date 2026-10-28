@@ -133,7 +133,7 @@ export function isTopicListed(data: PostData, options: PublishFilterOptions = {}
 export type ContentLanguageMeta = {
   htmlLang: 'en' | 'es';
   contentLanguage: 'en' | 'es';
-  ogLocale: 'en_US' | 'es_PR';
+  ogLocale: 'en_US' | 'es_ES';
   inLanguage: 'en-US' | 'es';
 };
 
@@ -144,7 +144,7 @@ export function resolveContentLanguage(language?: string[]): ContentLanguageMeta
     return {
       htmlLang: 'es',
       contentLanguage: 'es',
-      ogLocale: 'es_PR',
+      ogLocale: 'es_ES',
       inLanguage: 'es',
     };
   }

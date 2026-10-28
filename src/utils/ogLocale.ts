@@ -9,7 +9,7 @@ export function ogLocaleAlternatesFromHreflang(
     if (alt.hreflang === 'x-default') continue;
     const og =
       alt.hreflang === 'es'
-        ? 'es_PR'
+        ? 'es_ES'
         : alt.hreflang === 'en'
           ? 'en_US'
           : alt.hreflang.includes('_')
