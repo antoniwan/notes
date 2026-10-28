@@ -9,7 +9,7 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
-## [7.11.1] — 2026-10-28
+## [7.12.1] — 2026-10-28
 
 A pass over the live site after the Field Guide shipped.
 
@@ -34,6 +34,17 @@ A pass over the live site after the Field Guide shipped.
 ### Docs
 
 - README, `docs/field-guide.md`, roadmap, multilingual setup, frontmatter spec, Cookbook cutover, and the technical audit describe the Field Guide and no longer mention the retired service worker, Letterboxd, or brain-science code.
+
+## [7.12.0] — 2026-10-28
+
+Shorter page titles, and no full name in shared links.
+
+### Changed
+
+- Tab titles end in "· Notes" instead of "| Notes by Antonio Rodriguez Martinez". Field Guide pages end in "· Field Guide" (or "· Guía de campo"). Guide entries over 60 characters drop from 530 of 576 to 3, posts from 77 of 102 to 21.
+- Share previews (`og:title`, `twitter:title`) use the bare page title, since every app already shows the domain or "Notes" beside it. Shelves keep "· Field Guide" so a shared "Concepts" still makes sense.
+- The home page is "Notes by antoniwan". About is "About · Notes" in the tab and "About Antonio" in shares; the full name stays on the page and in the Person structured data.
+- The native share button sends the share title instead of `document.title`.
 
 ## [7.11.0] — 2026-10-28
 

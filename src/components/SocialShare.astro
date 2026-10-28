@@ -264,7 +264,9 @@ const platforms = generateShareUrls(title, currentUrl, description);
         if (navigator.share) {
           try {
             await navigator.share({
-              title: document.title,
+              title:
+                document.querySelector('meta[property="og:title"]')?.getAttribute('content') ||
+                document.title,
               text:
                 document.querySelector('meta[name="description"]')?.getAttribute('content') || '',
               url: getShareUrl(nativeShareButton),

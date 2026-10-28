@@ -23,6 +23,8 @@ const searchIndexUrl = `/search-index.json?v=${encodeURIComponent(pkg.version ??
 
 const {
   title,
+  titleSuffix,
+  ogTitle,
   description = SITE_DESCRIPTION,
   metaDescription,
   pubDate,
@@ -91,6 +93,8 @@ const structuredData = generateStructuredData({
   <head>
     <BaseHead
       title={title}
+      titleSuffix={titleSuffix}
+      ogTitle={ogTitle}
       description={seoDescription}
       path={path}
       heroImage={heroImage}
