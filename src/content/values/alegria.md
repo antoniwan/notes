@@ -1,6 +1,6 @@
 ---
 title: 'Alegría'
-summary: 'Lo que me mantiene saludable. Soy una persona alegre.'
+summary: 'Alegría sin razón. Tengo mucha, como mis hijos.'
 language: es
 translationGroup: joy
 revised: 2026-10-27

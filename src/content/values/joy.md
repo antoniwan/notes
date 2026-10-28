@@ -1,6 +1,6 @@
 ---
 title: 'Joy'
-summary: 'The thing that keeps me healthy. I am a joyful person.'
+summary: 'Gladness without a reason. I have a lot of it, like my children.'
 language: en
 translationGroup: joy
 revised: 2026-10-27
