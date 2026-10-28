@@ -36,10 +36,10 @@ import type { PostMeta } from './publishEligibility.mjs';
 
 export type SitemapLangLink = { url: string; lang: string };
 
-/** Same values as the page head's hreflang links (see hreflangFor): Spanish is es-PR. */
+/** Same values as the page head's hreflang links. No region: es-ES would target Spain. */
 const HREFLANG_BY_LANG: Record<string, string> = {
   en: 'en',
-  es: 'es-PR',
+  es: 'es',
 };
 
 // Relative to this file at config load. Inside a built page this module runs from

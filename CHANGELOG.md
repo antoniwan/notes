@@ -15,7 +15,6 @@ Everything open merged, then one pass to make the docs agree with the site.
 
 ### Changed
 
-- Spanish hreflang is `es-PR` everywhere (page head, language links, Field Guide, sitemap, the Spanish RSS link), through one helper, `hreflangFor()`. Spanish is Puerto Rican Spanish in every locale tag now; only `<html lang>` stays `es`.
 - The Field Guide has its tagline ("A pocket dictionary for modern life. Short, plain, no essay required." / "Un diccionario de bolsillo para la vida moderna. Corto, sencillo, sin ensayos.") and new subtitles for eleven values, EN and ES (#96).
 - Astro 7.4.2, `@astrojs/mdx` 8.1.1, `@astrojs/markdown-remark` 7.3.4, `@astrojs/check` 0.9.12, and `actions/cache` v6 (Dependabot #71, #72). Astro 7.4.2 needs Node 22.23.4, so `.nvmrc` moves there.
 

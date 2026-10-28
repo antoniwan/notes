@@ -1,11 +1,3 @@
-/**
- * hreflang for a content language. Spanish here is Puerto Rican Spanish, so it is
- * always es-PR (never es or es-ES); English stays unregioned.
- */
-export function hreflangFor(lang: string | undefined): string {
-  return lang === 'es' ? 'es-PR' : lang || 'en';
-}
-
 /** Map head hreflang codes to Open Graph locale tags (skip x-default). */
 export function ogLocaleAlternatesFromHreflang(
   alternates: Array<{ hreflang: string; href: string }> | undefined,

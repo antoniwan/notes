@@ -89,7 +89,7 @@ The full name stays on the About page and in the Person structured data, never i
 
 ## Language and locale
 
-Spanish is always Puerto Rican Spanish: `es_PR` for Open Graph, `es-PR` for JSON-LD, dates, feeds, and hreflang. Never `es_ES`. Details: [multilingual-setup.md](./multilingual-setup.md).
+Spanish is always Puerto Rican Spanish: `es_PR` for Open Graph, `es-PR` for JSON-LD, dates, and feeds. Never `es_ES`. hreflang stays a plain `es`, so search engines don't limit the Spanish pages to readers in Puerto Rico. Details: [multilingual-setup.md](./multilingual-setup.md).
 
 ## Accessibility
 

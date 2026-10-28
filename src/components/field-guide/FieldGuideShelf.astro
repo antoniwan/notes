@@ -14,7 +14,6 @@ import {
 } from '../../data/fieldGuide';
 import { fieldGuideDefinition, getFieldGuide, type ShelvedEntry } from '../../utils/fieldGuide';
 import { generateCanonicalUrl } from '../../utils/seo';
-import { hreflangFor } from '../../utils/ogLocale';
 
 interface Props {
   kind: FieldGuideKind;
@@ -59,8 +58,8 @@ if (kind === 'values') {
 const letters = kind === 'concepts' ? groups.map((g) => g.id) : [];
 const other = lang === 'en' ? 'es' : 'en';
 const hreflangAlternates = [
-  { hreflang: hreflangFor(lang), href: generateCanonicalUrl(path) },
-  { hreflang: hreflangFor(other), href: generateCanonicalUrl(fieldGuideShelfPath(kind, other)) },
+  { hreflang: lang, href: generateCanonicalUrl(path) },
+  { hreflang: other, href: generateCanonicalUrl(fieldGuideShelfPath(kind, other)) },
   { hreflang: 'x-default', href: generateCanonicalUrl(fieldGuideShelfPath(kind, 'en')) },
 ];
 const slugify = (id: string) =>

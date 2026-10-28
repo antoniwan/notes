@@ -13,7 +13,6 @@ import {
 } from '../../data/fieldGuide';
 import { getFieldGuide, type ShelvedEntry } from '../../utils/fieldGuide';
 import { generateCanonicalUrl } from '../../utils/seo';
-import { hreflangFor } from '../../utils/ogLocale';
 import { PAGE_META } from '../../data/pageMeta';
 
 interface Props {
@@ -46,7 +45,7 @@ const shelf = (kind: 'concepts' | 'values' | 'beliefs') => FIELD_GUIDE_SHELVES[k
 
 const hreflangAlternates = [
   { hreflang: 'en', href: generateCanonicalUrl(FIELD_GUIDE_ROOT.en) },
-  { hreflang: 'es-PR', href: generateCanonicalUrl(FIELD_GUIDE_ROOT.es) },
+  { hreflang: 'es', href: generateCanonicalUrl(FIELD_GUIDE_ROOT.es) },
   { hreflang: 'x-default', href: generateCanonicalUrl(FIELD_GUIDE_ROOT.en) },
 ];
 const other = lang === 'en' ? 'es' : 'en';
@@ -71,11 +70,7 @@ const [titleFirst, ...titleRest] = copy.title.split(' ');
           {titleFirst} <em>{titleRest.join(' ')}</em>
         </h1>
         <p class="guide-intro__description">{copy.description}</p>
-        <a
-          class="guide-intro__language"
-          href={FIELD_GUIDE_ROOT[other]}
-          hreflang={hreflangFor(other)}
-        >
+        <a class="guide-intro__language" href={FIELD_GUIDE_ROOT[other]} hreflang={other}>
           <span lang={other}>{other === 'es' ? 'En español' : 'In English'}</span>
           <span aria-hidden="true">↗</span>
         </a>

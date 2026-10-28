@@ -10,7 +10,6 @@ import {
   fieldGuideShelfPath,
 } from '../../data/fieldGuide';
 import { generateCanonicalUrl } from '../../utils/seo';
-import { hreflangFor } from '../../utils/ogLocale';
 import { generateBreadcrumbSchema } from '../../utils/structuredData';
 import { getFieldGuide, type ShelvedEntry } from '../../utils/fieldGuide';
 
@@ -48,7 +47,7 @@ const twinLabel = twin?.entry.data.language === 'es' ? 'Español' : 'English';
 const hreflangAlternates = twin
   ? [
       ...[item, twin].map((t) => ({
-        hreflang: hreflangFor(t.entry.data.language),
+        hreflang: t.entry.data.language,
         href: generateCanonicalUrl(t.path),
       })),
       {
@@ -122,7 +121,7 @@ const schemas = [
           {twin && (
             <a
               href={twin.path}
-              hreflang={hreflangFor(twin.entry.data.language)}
+              hreflang={twin.entry.data.language}
               lang={twin.entry.data.language}
               rel="alternate"
             >

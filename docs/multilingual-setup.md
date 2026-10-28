@@ -6,7 +6,7 @@ The Field Guide pairs its EN/ES entries the same way (shared `translationGroup`)
 
 ## Locale
 
-Spanish on this site is Puerto Rican Spanish, always: `es_PR` for Open Graph, `es-PR` for JSON-LD `inLanguage`, dates, and the Spanish RSS feed (`es-pr`). Never `es_ES`. hreflang (page head, language links, sitemap) is `es-PR` too, through `hreflangFor()` in `src/utils/ogLocale.ts`; only the `<html lang>` attribute is a bare `es`. English is `en_US` / `en-US`, with plain `en` for hreflang.
+Spanish on this site is Puerto Rican Spanish, always: `es_PR` for Open Graph, `es-PR` for JSON-LD `inLanguage`, dates, and the Spanish RSS feed (`es-pr`). Never `es_ES`. hreflang stays plain `es` (a region there would tell search engines the page is only for readers in Puerto Rico).
 
 ## Overview
 

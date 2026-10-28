@@ -11,7 +11,7 @@ Antonio's public notebook (Astro 7, pnpm, Vercel). Start with the [README](READM
 
 ## Settled rules
 
-- Spanish is Puerto Rican Spanish: `es_PR` / `es-PR` in every locale tag, hreflang included. Never `es_ES`.
+- Spanish is Puerto Rican Spanish: `es_PR` / `es-PR` in Open Graph, JSON-LD, dates, and feeds. Never `es_ES`. hreflang stays plain `es` on purpose.
 - Purple chrome everywhere; gold only inside the Field Guide. No HRs or boxes on Field Guide shelves.
 - Poem pages: Pond, Tide, and Lantern. Not Ink, not Drift.
 - Titles: `Title · Notes`; never the full name in a tab or share title.

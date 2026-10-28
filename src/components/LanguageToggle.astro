@@ -1,6 +1,4 @@
 ---
-import { hreflangFor } from '../utils/ogLocale';
-
 export interface Translation {
   id: string;
   title: string;
@@ -54,7 +52,7 @@ const languageFlags: Record<string, string> = {
     {otherTranslations.map((translation) => (
       <a
         href={translation.path}
-        hreflang={hreflangFor(translation.language[0])}
+        hreflang={translation.language[0]}
         class="language-link"
         title={
           isSpanish

@@ -12,7 +12,6 @@ import SocialShare from '../components/SocialShare.astro';
 import LanguageToggle from '../components/LanguageToggle.astro';
 import PostTocModal from '../components/post-toc/PostTocModal.astro';
 import { generateCanonicalUrl, normalizeSeoPath } from '../utils/seo';
-import { hreflangFor } from '../utils/ogLocale';
 import { resolveContentLanguage } from '../utils/publishFilters';
 import { localizeReadingTime } from '../utils/readingTime';
 import { generateBreadcrumbSchema } from '../utils/structuredData';
@@ -60,7 +59,7 @@ const estimatedWordCount = (() => {
 const hreflangAlternates = translationData?.hasTranslations
   ? [
       ...translationData.translations.map((translation) => ({
-        hreflang: hreflangFor(translation.language[0]),
+        hreflang: translation.language[0] || 'en',
         href: generateCanonicalUrl(translation.path),
       })),
       {
