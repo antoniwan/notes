@@ -287,6 +287,9 @@
     --color-primary-hover: 220 148 0;
     --color-accent: 88 40 168;
     --color-accent-hover: 68 28 140;
+    /* Field Guide gold, from the cover lettering */
+    --color-gold: 140 100 28;
+    --color-gold-hover: 112 80 20;
     --color-on-primary: 10 10 10;
     --color-on-accent: 255 255 255;
     --color-success: 34 120 70;
@@ -380,6 +383,8 @@
     --color-primary-hover: 255 214 64;
     --color-accent: 186 150 255;
     --color-accent-hover: 208 180 255;
+    --color-gold: 214 170 76;
+    --color-gold-hover: 236 196 110;
     --color-on-primary: 10 10 10;
     --color-on-accent: 10 10 10;
     --color-success: 90 190 130;
@@ -1248,4 +1253,10 @@
     margin: 2rem 0;
     font-size: 1.0625rem;
   }
+}
+
+/* Inside the Field Guide, the accent is the cover's gold. */
+.field-guide {
+  --color-accent: var(--color-gold);
+  --color-accent-hover: var(--color-gold-hover);
 }
