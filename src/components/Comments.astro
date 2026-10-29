@@ -48,7 +48,11 @@ const emailUrl = `mailto:${email}?subject=${encodeURIComponent(copy.subject)}&bo
     <h2 id="comments-heading">{copy.heading}</h2>
     <p>{copy.invitation}</p>
     <p>
-      {copy.email} <a href={emailUrl}>{email}</a>.
+      {copy.email}{' '}
+      <a href={emailUrl} data-umami-event="cta" data-umami-event-label="email">
+        {email}
+      </a>
+      .
     </p>
   </header>
   <div

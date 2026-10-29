@@ -242,6 +242,7 @@ const breadcrumbSchema = generateBreadcrumbSchema(
         >
           <slot />
         </div>
+        <div data-read-end aria-hidden="true"></div>
       </article>
 
       <div class="post-afterword">
@@ -271,7 +272,12 @@ const breadcrumbSchema = generateBreadcrumbSchema(
             </div>
           </details>
           {showComments && (
-            <a class="post-comment-jump" href="#comments">
+            <a
+              class="post-comment-jump"
+              href="#comments"
+              data-umami-event="cta"
+              data-umami-event-label="leave-a-note"
+            >
               {isSpanish ? 'Dejar una nota' : 'Leave a note'}
             </a>
           )}

@@ -54,6 +54,8 @@ const languageFlags: Record<string, string> = {
         href={translation.path}
         hreflang={translation.language[0]}
         class="language-link"
+        data-umami-event="cta"
+        data-umami-event-label="language-switch"
         title={
           isSpanish
             ? `Leer en ${spanishLanguageNames[translation.language[0]]}`

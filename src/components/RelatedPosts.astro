@@ -38,7 +38,12 @@ const isSpanish = currentPost ? isSpanishPrimary(currentPost.data) : false;
       ))}
     </div>
   )}
-  <a href={isSpanish ? '/es' : '/archive'} class="related-browse">
+  <a
+    href={isSpanish ? '/es' : '/archive'}
+    class="related-browse"
+    data-umami-event="cta"
+    data-umami-event-label="browse-all"
+  >
     {isSpanish ? 'Todos los escritos en español' : 'Browse all writings'}
   </a>
 </section>

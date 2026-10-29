@@ -13,5 +13,7 @@ Two counters run side by side, both without cookies:
 - `data-do-not-track="true"`: a browser that sends Do Not Track is not counted.
 - A reader's search (`?q=` on Browse) is removed from the address before it is sent, the same as for Vercel Analytics.
 - A click on a link to another site is recorded as the event `outbound`, with `to` (the host) and `url` (the address without its query).
+- A click on a call to action is the event `cta`, with `label`: `rss`, `json-feed`, `rss-follow`, `source`, `browse-all`, `series-previous`, `series-next`, `series-index`, `leave-a-note`, `email`, `theme-toggle`, `back-to-top`, `contents`, `language-switch`, `image-zoom`, `share-open`, `share-more`, `share-copy-link`, and `share-<platform>`. Add one with `data-umami-event="cta" data-umami-event-label="name"`. One that leaves the site also gets `to` and `url` instead of an `outbound` event, so each click counts once. Tasteless lists every label beside its page's views, to find the ones nobody uses.
+- Reaching the end of a post's text (the `data-read-end` marker in `BlogLayout`) is the event `read-end`, with `post` (the path), once per page view.
 
 Umami sets no cookie and stores no IP address. To keep your own visits out, run `localStorage.setItem('umami.disabled', 1)` in the browser console on notes.antoniwan.online.

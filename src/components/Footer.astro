@@ -59,13 +59,24 @@ const footerGroups = [
 
       <nav class="footer-feeds" aria-label="Site information">
         <a href="/sitemap-index.xml">Sitemap</a>
-        <a href="/rss.xml" title="RSS feed">
+        <a href="/rss.xml" title="RSS feed" data-umami-event="cta" data-umami-event-label="rss">
           RSS
         </a>
-        <a href="/feed.json" title="JSON Feed">
+        <a
+          href="/feed.json"
+          title="JSON Feed"
+          data-umami-event="cta"
+          data-umami-event-label="json-feed"
+        >
           JSON
         </a>
-        <a href="https://github.com/antoniwan/notes" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://github.com/antoniwan/notes"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-umami-event="cta"
+          data-umami-event-label="source"
+        >
           <span class="sr-only">Site source, </span>v{pkg.version}
         </a>
       </nav>

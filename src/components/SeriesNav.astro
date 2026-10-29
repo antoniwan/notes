@@ -20,13 +20,20 @@ const meta = position ? getSeries(position.seriesId) : undefined;
       {isSpanish
         ? `Parte ${position.index + 1} de ${position.total} · `
         : `Part ${position.index + 1} of ${position.total} in `}
-      <a href={`/series/${meta.id}`}>{meta.title}</a>
+      <a href={`/series/${meta.id}`} data-umami-event="cta" data-umami-event-label="series-index">
+        {meta.title}
+      </a>
     </p>
     <ul class="series-nav__links" role="list">
       {position.previous && (
         <li class="series-nav__prev">
           <span>{isSpanish ? 'Anterior' : 'Previous'}</span>
-          <a href={`/p/${position.previous.id}`} rel="prev">
+          <a
+            href={`/p/${position.previous.id}`}
+            rel="prev"
+            data-umami-event="cta"
+            data-umami-event-label="series-previous"
+          >
             {position.previous.data.title}
           </a>
         </li>
@@ -34,7 +41,12 @@ const meta = position ? getSeries(position.seriesId) : undefined;
       {position.next && (
         <li class="series-nav__next">
           <span>{isSpanish ? 'Siguiente' : 'Next'}</span>
-          <a href={`/p/${position.next.id}`} rel="next">
+          <a
+            href={`/p/${position.next.id}`}
+            rel="next"
+            data-umami-event="cta"
+            data-umami-event-label="series-next"
+          >
             {position.next.data.title}
           </a>
         </li>
