@@ -12,6 +12,7 @@ import { generateKeywords, generateImageAlt } from '../utils/seo';
 import { generateStructuredData } from '../utils/structuredData';
 import SpeedInsights from '@vercel/speed-insights/astro';
 import Analytics from '@vercel/analytics/astro';
+import Stats from '../components/Stats.astro';
 import type { BaseLayoutProps } from '../types/layout';
 
 interface Props extends BaseLayoutProps {}
@@ -151,6 +152,7 @@ const structuredData = generateStructuredData({
       };
     </script>
     <Analytics />
+    <Stats />
 
     <!-- Article image lightbox -->
     <dialog

@@ -1,0 +1,46 @@
+---
+/**
+ * Stats: Antonio's self-hosted Umami, shared by all his sites (see docs/analytics.md).
+ * Renders nothing unless the build has PUBLIC_UMAMI_HOST and PUBLIC_UMAMI_WEBSITE_ID,
+ * so local builds and previews stay script-free.
+ */
+const host = import.meta.env.PUBLIC_UMAMI_HOST as string | undefined;
+const websiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID as string | undefined;
+---
+
+{host && websiteId && (
+  <>
+    <script is:inline>
+      // The same rule as BaseLayout's Vercel Analytics hook: a reader's search (?q=) never leaves the page.
+      window.statsBeforeSend = (type, payload) => {
+        if (payload?.url) {
+          const url = new URL(payload.url, location.origin);
+          url.searchParams.delete('q');
+          payload.url = url.href;
+        }
+        return payload;
+      };
+      // Clicks to other sites become an "outbound" event: the host, and the address without its query.
+      document.addEventListener(
+        'click',
+        (event) => {
+          const link = event.target instanceof Element ? event.target.closest('a[href]') : null;
+          if (!link || link.hasAttribute('data-umami-event')) return;
+          const url = new URL(link.href, location.href);
+          if (!/^https?:$/.test(url.protocol) || url.host === location.host) return;
+          window.umami?.track('outbound', { to: url.hostname, url: url.origin + url.pathname });
+        },
+        true,
+      );
+    </script>
+    <script
+      is:inline
+      defer
+      src={`${host}/p.js`}
+      data-website-id={websiteId}
+      data-domains="notes.antoniwan.online"
+      data-do-not-track="true"
+      data-before-send="statsBeforeSend"
+    />
+  </>
+)}
