@@ -9,6 +9,15 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [7.14.0] — 2026-10-29
+
+Every call to action is counted, so the ones nobody uses can go.
+
+### Added
+
+- Each call to action (RSS and JSON links, Follow via RSS, Browse all writings, the series links, Leave a note, the comment email, the share buttons, the theme switch, Back to top, Contents, the language switch, image zoom) sends a `cta` event with a `label`. One that leaves the site carries `to` and `url` instead of a second `outbound` event.
+- Posts send `read-end` once when the reader reaches the end of the text.
+
 ## [7.13.0] — 2026-10-29
 
 Notes joins Stats, the self-hosted Umami that antoniwan.online already uses.

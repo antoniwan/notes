@@ -25,13 +25,32 @@ const websiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID as string | undefined;
         'click',
         (event) => {
           const link = event.target instanceof Element ? event.target.closest('a[href]') : null;
-          if (!link || link.hasAttribute('data-umami-event')) return;
+          if (!link) return;
           const url = new URL(link.href, location.href);
           if (!/^https?:$/.test(url.protocol) || url.host === location.host) return;
+          // A call to action that leaves the site keeps its "cta" event and carries the same two
+          // properties, so the click is counted once and still counts as a click out.
+          if (link.getAttribute('data-umami-event') === 'cta') {
+            link.setAttribute('data-umami-event-to', url.hostname);
+            link.setAttribute('data-umami-event-url', url.origin + url.pathname);
+            return;
+          }
+          if (link.hasAttribute('data-umami-event')) return;
           window.umami?.track('outbound', { to: url.hostname, url: url.origin + url.pathname });
         },
         true,
       );
+      // "read-end": the reader reached the end of a post's text. Sent once per page view.
+      document.addEventListener('DOMContentLoaded', () => {
+        const end = document.querySelector('[data-read-end]');
+        if (!end || !('IntersectionObserver' in window)) return;
+        const watch = new IntersectionObserver((entries) => {
+          if (!entries.some((entry) => entry.isIntersecting)) return;
+          watch.disconnect();
+          window.umami?.track('read-end', { post: location.pathname });
+        });
+        watch.observe(end);
+      });
     </script>
     <script
       is:inline

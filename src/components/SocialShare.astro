@@ -55,6 +55,8 @@ const platforms = generateShareUrls(title, currentUrl, description);
       id="share-fab"
       class="theme-transition flex h-14 w-14 items-center justify-center rounded-full bg-[rgb(var(--color-accent))] text-[rgb(var(--color-on-accent))] shadow-lg hover:bg-[rgb(var(--color-accent-hover))] focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:ring-offset-2 focus:outline-hidden"
       aria-label="Share this writing"
+      data-umami-event="cta"
+      data-umami-event-label="share-open"
     >
       <span class="text-xl">📤</span>
     </button>
@@ -69,6 +71,8 @@ const platforms = generateShareUrls(title, currentUrl, description);
           <button
             class={`theme-transition flex w-full items-center gap-3 rounded-md px-3 py-2 text-left text-sm hover:bg-[rgb(var(--color-bg-alt))] ${platform.color}`}
             data-platform={platform.name.toLowerCase()}
+            data-umami-event="cta"
+            data-umami-event-label={`share-${platform.name.toLowerCase()}`}
             data-url={platform.url}
             data-action={platform.action}
           >
@@ -94,6 +98,8 @@ const platforms = generateShareUrls(title, currentUrl, description);
         type="button"
         class="article-share__copy"
         data-platform="copy link"
+        data-umami-event="cta"
+        data-umami-event-label="share-copy-link"
         data-action="copy"
         data-url={currentUrl}
         aria-label={labels.copyLinkAria}
@@ -119,6 +125,8 @@ const platforms = generateShareUrls(title, currentUrl, description);
         id={`${variant}-share-toggle`}
         class="article-share__toggle"
         aria-label={labels.shareMoreAria}
+        data-umami-event="cta"
+        data-umami-event-label="share-more"
         aria-expanded="false"
         aria-controls={`${variant}-share-menu`}
       >
@@ -147,6 +155,8 @@ const platforms = generateShareUrls(title, currentUrl, description);
             type="button"
             class="article-share__platform"
             data-platform={platform.name.toLowerCase()}
+            data-umami-event="cta"
+            data-umami-event-label={`share-${platform.name.toLowerCase()}`}
             data-url={platform.url}
             aria-label={`${labels.shareOn} ${platform.name === 'Twitter' ? 'X / Twitter' : platform.name}`}
           >
@@ -183,6 +193,8 @@ const platforms = generateShareUrls(title, currentUrl, description);
     data-share-url={currentUrl}
     class={`theme-transition inline-flex items-center gap-2 rounded-lg bg-[rgb(var(--color-bg-alt))] px-4 py-2 text-[rgb(var(--color-text))] hover:bg-[rgb(var(--color-bg-alt))]/80 focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:outline-hidden ${className}`}
     aria-label="Share this writing"
+    data-umami-event="cta"
+    data-umami-event-label="share-open"
   >
     <span class="text-base">📤</span>
     <span class="text-sm font-medium">Share</span>

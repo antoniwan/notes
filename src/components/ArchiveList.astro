@@ -46,7 +46,9 @@ const count = (n: number) =>
           {feedHref && (
             <>
               {' · '}
-              <a href={feedHref}>{es ? 'Seguir por RSS' : 'Follow via RSS'}</a>
+              <a href={feedHref} data-umami-event="cta" data-umami-event-label="rss-follow">
+                {es ? 'Seguir por RSS' : 'Follow via RSS'}
+              </a>
             </>
           )}
           {extraLinks.map((link) => (

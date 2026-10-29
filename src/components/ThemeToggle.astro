@@ -11,6 +11,8 @@ const { class: className = '' } = Astro.props;
   class:list={['theme-control', className]}
   aria-label="Toggle theme"
   id="theme-toggle"
+  data-umami-event="cta"
+  data-umami-event-label="theme-toggle"
 >
   <!-- Sun icon for light mode -->
   <svg

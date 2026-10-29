@@ -72,7 +72,14 @@ const captionsBelow = captionPosition === 'below';
 
       <!-- Clicking the stage opens the full-size view. It sits under the arrows and
            other controls, so those keep working. Hidden until the script runs. -->
-      <button class="rotator-zoom" type="button" aria-haspopup="dialog" hidden>
+      <button
+        class="rotator-zoom"
+        type="button"
+        aria-haspopup="dialog"
+        hidden
+        data-umami-event="cta"
+        data-umami-event-label="image-zoom"
+      >
         <span class="sr-only">View image full size</span>
       </button>
 
