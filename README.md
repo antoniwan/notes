@@ -41,6 +41,7 @@ English is the listing language. Spanish is Puerto Rican Spanish (`es_PR`, never
 - **Comments** — optional [Remark42](https://remark42.com/) when env vars are set (see `docs/comments-setup.md`)
 - **No service worker** — `public/sw.js` only unregisters the old one (see below)
 - On **Vercel**: **Web Analytics** and **Speed Insights** in the base layout (they only send data when those products are enabled)
+- **Stats** — Antonio's self-hosted Umami, shared with his other sites, when `PUBLIC_UMAMI_HOST` and `PUBLIC_UMAMI_WEBSITE_ID` are set (see `docs/analytics.md`)
 
 ## Design rules
 

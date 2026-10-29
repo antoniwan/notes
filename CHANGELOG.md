@@ -9,6 +9,14 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [7.13.0] — 2026-10-29
+
+Notes joins Stats, the self-hosted Umami that antoniwan.online already uses.
+
+### Added
+
+- `Stats.astro` loads Umami next to Vercel Analytics when the build has `PUBLIC_UMAMI_HOST` and `PUBLIC_UMAMI_WEBSITE_ID`: no cookies, no stored IPs, Do Not Track respected, previews not counted, and a reader's `?q=` search removed before sending. Clicks to other sites are recorded as an `outbound` event. See `docs/analytics.md`.
+
 ## [7.12.2] — 2026-10-28
 
 Everything open merged, then one pass to make the docs agree with the site.
