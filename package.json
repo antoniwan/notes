@@ -1,7 +1,7 @@
 {
   "name": "notes blog",
   "type": "module",
-  "version": "7.14.0",
+  "version": "7.14.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/antoniwan/notes.git"
@@ -28,6 +28,8 @@
     "format:check": "prettier --check .",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "lint:css": "stylelint \"src/**/*.{css,astro}\"",
+    "lint:css:fix": "stylelint \"src/**/*.{css,astro}\" --fix",
     "lint:tokens": "node scripts/lint-tokens.mjs",
     "check-image-sizes": "node scripts/check-image-sizes.mjs",
     "share-drafts": "node scripts/share-drafts.mjs",
@@ -72,10 +74,12 @@
     "fast-xml-validator": "^1.4.2",
     "lint-staged": "^17.6.0",
     "playwright": "1.64.1",
+    "postcss-html": "^2.0.0",
     "prettier": "^3.9.10",
     "prettier-plugin-astro": "^1.1.1",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "simple-git-hooks": "^2.14.0",
+    "stylelint": "^17.16.0",
     "terser": "^5.51.2",
     "typescript": "^6.0.3",
     "vitest": "^5.0.5"
@@ -84,6 +88,19 @@
     "pre-commit": "pnpm exec lint-staged"
   },
   "lint-staged": {
-    "*": "prettier --write --ignore-unknown"
+    "*.{js,mjs,cjs,ts,mts,cts}": [
+      "eslint --fix --no-warn-ignored",
+      "prettier --write"
+    ],
+    "*.astro": [
+      "eslint --fix --no-warn-ignored",
+      "stylelint --fix --allow-empty-input",
+      "prettier --write"
+    ],
+    "*.css": [
+      "stylelint --fix --allow-empty-input",
+      "prettier --write"
+    ],
+    "!(*.{js,mjs,cjs,ts,mts,cts,astro,css})": "prettier --write --ignore-unknown"
   }
 }
