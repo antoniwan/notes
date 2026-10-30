@@ -68,6 +68,13 @@ describe('POST_REDIRECTS + PAGE_REDIRECTS + buildSeoRedirects', () => {
     expect(redirects['/tag/notes']).toBe('/browse');
   });
 
+  it('sends retired tag pages where their posts went, unless the tag is built again', () => {
+    const redirects = buildTagAliasRedirects(new Set(['gaming']));
+    expect(redirects['/tag/crimson-desert']).toBe('/tag/gaming');
+    expect(redirects['/tag/psychology']).toBe('/category/psychology');
+    expect(buildTagAliasRedirects(new Set(['discipline']))['/tag/discipline']).toBeUndefined();
+  });
+
   it('sends the old reading pages to Archive and Browse', () => {
     const redirects = buildSeoRedirects();
     expect(redirects['/everything']).toBe('/archive');

@@ -9,6 +9,16 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [7.17.1] — 2026-10-30
+
+SEO follow-up to the retag and the Spanish pass.
+
+### Fixed
+
+- Five tag pages the retag emptied (`crimson-desert`, `dispatch`, `diaspora`, `discipline`, `psychology`) now redirect to where their posts went instead of returning 404. The redirect steps aside if the tag gets a page again.
+- Spanish posts name their category in Spanish in JSON-LD (`articleSection`, `about`), matching the Spanish breadcrumb.
+- Posts set `article:section` to their category instead of the generic "Notes".
+
 ## [7.17.0] — 2026-10-30
 
 Spanish pages get Spanish chrome, so a reader in Spanish never has to switch languages to find their way around.

@@ -76,6 +76,18 @@ export const PAGE_REDIRECTS: Record<string, string> = {
 };
 
 /**
+ * Tag pages that existed until no post carried the tag (October 30, 2026 retag,
+ * 7.15.0). Each goes to where its posts went. Skipped if the tag gets a page again.
+ */
+export const RETIRED_TAG_REDIRECTS: Record<string, string> = {
+  'crimson-desert': '/tag/gaming',
+  dispatch: '/tag/gaming',
+  diaspora: '/tag/puerto-rico',
+  discipline: '/tag/self-control',
+  psychology: '/category/psychology',
+};
+
+/**
  * Build permanent redirects from tag aliases to their canonical tag pages.
  * Keys are normalized URL slugs (spaces → hyphens).
  * If the canonical page is not built, send the alias to `/browse` instead of a 404.
@@ -94,6 +106,10 @@ export function buildTagAliasRedirects(
     if (!aliasSlug || !canonical || aliasSlug === canonical) continue;
     const target = builtTags.has(canonical) ? `/tag/${canonical}` : '/browse';
     redirects[`/tag/${aliasSlug}`] = target;
+  }
+
+  for (const [tag, target] of Object.entries(RETIRED_TAG_REDIRECTS)) {
+    if (!builtTags.has(tag)) redirects[`/tag/${tag}`] = target;
   }
 
   return redirects;
