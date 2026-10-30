@@ -4,27 +4,34 @@ import { readingLinks, contactLinks, localizeReaderLink } from '../data/readerNa
 import Logo from './Logo.astro';
 import Container from './Container.astro';
 import pkg from '../../package.json';
+import { siteStrings } from '../data/siteStrings';
 
 interface Props {
   lang?: 'en' | 'es';
 }
 
 const { lang = 'en' } = Astro.props;
+const t = siteStrings(lang);
 const footerGroups = [
   {
     id: 'reading',
-    label: 'Read',
+    label: t.read,
     links: readingLinks.map((link) => localizeReaderLink(link, lang)),
   },
-  { id: 'connect', label: 'Connect', links: contactLinks },
+  {
+    id: 'connect',
+    label: t.connect,
+    links: contactLinks.map((link) => localizeReaderLink(link, lang)),
+  },
 ];
+const rssHref = lang === 'es' ? '/es/rss.xml' : '/rss.xml';
 ---
 
 <footer class="site-footer" role="contentinfo">
   <Container>
     <div class="footer-directory">
       <div class="footer-identity">
-        <Logo size="xl" alwaysFull class="footer-brand" />
+        <Logo size="xl" alwaysFull class="footer-brand" lang={lang} />
         <p>{AUTHOR.name}</p>
       </div>
       {footerGroups.map((group) => (
@@ -50,16 +57,16 @@ const footerGroups = [
           target="_blank"
           rel="noopener noreferrer"
         >
-          Content: CC BY-NC-SA 4.0
+          {t.contentLicense}
         </a>
         <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">
-          Code: MIT
+          {t.codeLicense}
         </a>
       </div>
 
-      <nav class="footer-feeds" aria-label="Site information">
-        <a href="/sitemap-index.xml">Sitemap</a>
-        <a href="/rss.xml" title="RSS feed" data-umami-event="cta" data-umami-event-label="rss">
+      <nav class="footer-feeds" aria-label={t.siteInformation}>
+        <a href="/sitemap-index.xml">{t.sitemap}</a>
+        <a href={rssHref} title={t.rssFeed} data-umami-event="cta" data-umami-event-label="rss">
           RSS
         </a>
         <a
@@ -77,7 +84,7 @@ const footerGroups = [
           data-umami-event="cta"
           data-umami-event-label="source"
         >
-          <span class="sr-only">Site source, </span>v{pkg.version}
+          <span class="sr-only">{t.siteSource}</span>v{pkg.version}
         </a>
       </nav>
     </div>

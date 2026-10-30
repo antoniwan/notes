@@ -2,6 +2,7 @@
 import { mainNavigation } from '../data/navigation';
 import { localizeReaderLink } from '../data/readerNavigation';
 import { getNavLinkCurrent, isMainNavItemActive } from '../utils/navActive';
+import { siteStrings } from '../data/siteStrings';
 
 interface Props {
   class?: string;
@@ -13,7 +14,11 @@ const items = mainNavigation.map((item) => localizeReaderLink(item, lang));
 const pathname = Astro.url.pathname;
 ---
 
-<nav class:list={['site-navigation', className]} aria-label="Main navigation" data-site-navigation>
+<nav
+  class:list={['site-navigation', className]}
+  aria-label={siteStrings(lang).mainNavigation}
+  data-site-navigation
+>
   {items.map((item) => {
     const isActive = isMainNavItemActive(item.href, pathname);
     if (!item.dropdown) {

@@ -94,19 +94,29 @@ describe('destination active states', () => {
   });
 });
 
-describe('Field Guide link on Spanish pages', () => {
+describe('Reader links on Spanish pages', () => {
   it('goes to the Spanish guide and stays current inside it', () => {
     const link = localizeReaderLink({ href: '/field-guide', label: 'Field Guide' }, 'es');
-    expect(link).toEqual({ href: '/es/guia-de-campo', label: 'Guía de campo', lang: 'es' });
+    expect(link).toEqual({ href: '/es/guia-de-campo', label: 'Guía de campo' });
     expect(getNavLinkCurrent(link.href, '/es/guia-de-campo')).toBe('page');
     expect(getNavLinkCurrent(link.href, '/es/guia-de-campo/valores/integridad')).toBe('location');
   });
 
-  it('leaves English pages and other links alone', () => {
+  it('labels the other links in Spanish and sends RSS readers to the Spanish feed', () => {
+    expect(localizeReaderLink({ href: '/browse', label: 'Browse' }, 'es')).toEqual({
+      href: '/browse',
+      label: 'Explorar',
+    });
+    expect(localizeReaderLink({ href: '/rss.xml', label: 'Follow via RSS' }, 'es')).toEqual({
+      href: '/es/rss.xml',
+      label: 'Seguir por RSS',
+    });
+  });
+
+  it('leaves English pages and unknown links alone', () => {
     const browse = { href: '/browse', label: 'Browse' };
-    expect(localizeReaderLink(browse, 'es')).toBe(browse);
-    expect(localizeReaderLink({ href: '/field-guide', label: 'Field Guide' }).href).toBe(
-      '/field-guide',
-    );
+    expect(localizeReaderLink(browse)).toBe(browse);
+    const other = { href: '/somewhere', label: 'Somewhere' };
+    expect(localizeReaderLink(other, 'es')).toBe(other);
   });
 });

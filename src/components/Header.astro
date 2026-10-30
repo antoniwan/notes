@@ -5,32 +5,34 @@ import ThemeToggle from './ThemeToggle.astro';
 import MobileNav from './MobileNav.astro';
 import SearchBar from './SearchBar.astro';
 import Container from './Container.astro';
+import { siteStrings } from '../data/siteStrings';
 
 interface Props {
   lang?: 'en' | 'es';
 }
 
 const { lang = 'en' } = Astro.props;
+const t = siteStrings(lang);
 ---
 
 <header class="site-header" role="banner">
   <Container>
     <div class="site-header__bar">
       <div class="site-header__navigation">
-        <Logo />
+        <Logo lang={lang} />
         <div class="site-header__desktop-nav">
           <Navigation lang={lang} />
         </div>
       </div>
       <div class="site-header__actions">
         <div class="site-header__desktop-search">
-          <SearchBar placeholder="Search notes…" />
+          <SearchBar placeholder={t.searchPlaceholder} lang={lang} />
         </div>
         <button
           type="button"
           id="mobile-search-toggle"
           class="site-header__search-toggle"
-          aria-label="Search notes"
+          aria-label={t.searchNotes}
           aria-expanded="false"
           aria-controls="mobile-search-container"
         >
@@ -49,16 +51,16 @@ const { lang = 'en' } = Astro.props;
               d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
             ></path>
           </svg>
-          <span>Search</span>
+          <span>{t.search}</span>
         </button>
-        <ThemeToggle />
+        <ThemeToggle lang={lang} />
         <MobileNav class="xl:hidden" lang={lang} />
       </div>
     </div>
   </Container>
   <div id="mobile-search-container" class="site-header__search-panel" hidden>
     <Container>
-      <SearchBar placeholder="Search notes, topics, and pages…" />
+      <SearchBar placeholder={t.searchPlaceholderLong} lang={lang} />
     </Container>
   </div>
 </header>

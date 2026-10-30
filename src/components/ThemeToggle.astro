@@ -1,15 +1,18 @@
 ---
+import { siteStrings, type SiteLanguage } from '../data/siteStrings';
+
 interface Props {
   class?: string;
+  lang?: SiteLanguage;
 }
 
-const { class: className = '' } = Astro.props;
+const { class: className = '', lang = 'en' } = Astro.props;
 ---
 
 <button
   type="button"
   class:list={['theme-control', className]}
-  aria-label="Toggle theme"
+  aria-label={siteStrings(lang).toggleTheme}
   id="theme-toggle"
   data-umami-event="cta"
   data-umami-event-label="theme-toggle"
@@ -55,9 +58,15 @@ const { class: className = '' } = Astro.props;
   const themeToggle = document.getElementById('theme-toggle');
 
   function updateLabel() {
-    const label = document.documentElement.classList.contains('dark')
-      ? 'Switch to light theme'
-      : 'Switch to dark theme';
+    const isDark = document.documentElement.classList.contains('dark');
+    const label =
+      document.documentElement.lang === 'es'
+        ? isDark
+          ? 'Cambiar al tema claro'
+          : 'Cambiar al tema oscuro'
+        : isDark
+          ? 'Switch to light theme'
+          : 'Switch to dark theme';
     themeToggle?.setAttribute('aria-label', label);
     themeToggle?.setAttribute('title', label);
   }

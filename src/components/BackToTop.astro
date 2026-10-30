@@ -1,9 +1,12 @@
 ---
+import { siteStrings, type SiteLanguage } from '../data/siteStrings';
+
 interface Props {
   class?: string;
+  lang?: SiteLanguage;
 }
 
-const { class: className = '' } = Astro.props;
+const { class: className = '', lang = 'en' } = Astro.props;
 ---
 
 <button
@@ -15,7 +18,7 @@ const { class: className = '' } = Astro.props;
     'border border-white/20',
     className,
   ]}
-  aria-label="Back to top"
+  aria-label={siteStrings(lang).backToTop}
   id="back-to-top"
 >
   <!-- Main icon -->
