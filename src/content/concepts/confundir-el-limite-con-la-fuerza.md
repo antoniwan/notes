@@ -20,4 +20,4 @@ Por años traté los límites y la fuerza emocional como la misma cosa. Si un l�
 
 - [El coraje como señal](/es/guia-de-campo/conceptos/el-coraje-como-senal)
 - [Intimidad](/es/guia-de-campo/valores/la-intimidad)
-- [Sobre Límites, Descalibración y Reaprender el Amor Incondicional](/p/boundaries-miscalibration-unconditional-love-es)
+- [Sobre límites, descalibración y reaprender el amor incondicional](/p/boundaries-miscalibration-unconditional-love-es)

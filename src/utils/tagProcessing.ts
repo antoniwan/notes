@@ -102,7 +102,10 @@ export function getTagStatistics(
 }
 
 /**
- * Find public English writings on a shared subject, excluding the current work's translations.
+ * Find public writings on a shared subject, excluding the current work's translations.
+ * English pages recommend English writing. Spanish pages recommend writing in the
+ * reader's language first: a twin is offered as its Spanish version, Spanish writing
+ * earns a bonus worth one shared tag, and English fills whatever is left.
  * Form labels alone are not a subject match; recency and featured status only rank real matches.
  */
 export function findRelatedPosts(
@@ -113,15 +116,25 @@ export function findRelatedPosts(
   if (maxCount <= 0) return [];
 
   const now = new Date();
+  const readsSpanish = isSpanishPrimary(currentPost.data);
   const currentGroup = currentPost.data.translationGroup;
-  const availablePosts = allPosts.filter(
+  const publicPosts = allPosts.filter(
     (post) =>
       post.id !== currentPost.id &&
       (!currentGroup || post.data.translationGroup !== currentGroup) &&
       !isRecipePost(post) &&
-      !isSpanishPrimary(post.data) &&
       isPublicPost(post.data, { now }),
   );
+  const spanishGroups = new Set(
+    publicPosts
+      .filter((post) => isSpanishPrimary(post.data) && post.data.translationGroup)
+      .map((post) => post.data.translationGroup),
+  );
+  const availablePosts = publicPosts.filter((post) => {
+    if (!readsSpanish) return !isSpanishPrimary(post.data);
+    if (isSpanishPrimary(post.data)) return true;
+    return !post.data.translationGroup || !spanishGroups.has(post.data.translationGroup);
+  });
 
   if (availablePosts.length === 0) return [];
 
@@ -161,6 +174,9 @@ export function findRelatedPosts(
 
     // Featured posts get bonus
     if (post.data.featured) score += 3;
+
+    // Spanish readers get Spanish writing first, as long as it is on the subject
+    if (readsSpanish && isSpanishPrimary(post.data)) score += 10;
 
     return { post, score, isRelated };
   });

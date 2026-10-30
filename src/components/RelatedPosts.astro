@@ -12,21 +12,22 @@ interface Props {
 const { currentPost, allPosts } = Astro.props;
 const relatedPosts = currentPost && allPosts ? findRelatedPosts(currentPost, allPosts, 4) : [];
 const isSpanish = currentPost ? isSpanishPrimary(currentPost.data) : false;
+const someInEnglish = isSpanish && relatedPosts.some((post) => !isSpanishPrimary(post.data));
+const allInEnglish = isSpanish && relatedPosts.every((post) => !isSpanishPrimary(post.data));
+const spanishNote = allInEnglish
+  ? 'Más escritos sobre estos temas, en inglés.'
+  : someInEnglish
+    ? 'Más escritos sobre estos temas. Algunos están en inglés.'
+    : 'Más escritos sobre estos temas.';
 ---
 
 <section class="related-posts" aria-labelledby="related-posts-heading">
   <header class="related-heading">
     <h2 id="related-posts-heading">{isSpanish ? 'Seguir leyendo' : 'Continue reading'}</h2>
-    {relatedPosts.length > 0 && (
-      <p>
-        {isSpanish
-          ? 'Más escritos sobre estos temas, en inglés.'
-          : 'More writings on these themes.'}
-      </p>
-    )}
+    {relatedPosts.length > 0 && <p>{isSpanish ? spanishNote : 'More writings on these themes.'}</p>}
   </header>
   {relatedPosts.length > 0 && (
-    <div class="postcards-grid related-grid" lang="en">
+    <div class="postcards-grid related-grid">
       {relatedPosts.map((post) => (
         <PostCard
           post={post}
@@ -34,6 +35,7 @@ const isSpanish = currentPost ? isSpanishPrimary(currentPost.data) : false;
           headingAs="h3"
           idPrefix="related"
           showFeaturedIndicator={false}
+          showLanguage={!isSpanish}
         />
       ))}
     </div>

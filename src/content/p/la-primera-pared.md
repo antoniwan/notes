@@ -1,5 +1,5 @@
 ---
-title: 'La Primera Pared'
+title: 'La primera pared'
 description: >-
   Una reflexión sobre encontrar límites biológicos en la paternidad y cómo los
   límites absolutos desafían las creencias sobre autonomía y capacidad.
