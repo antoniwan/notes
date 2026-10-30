@@ -9,6 +9,16 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [7.17.0] — 2026-10-30
+
+Spanish pages get Spanish chrome, so a reader in Spanish never has to switch languages to find their way around.
+
+### Changed
+
+- Header, menus, search, footer, the theme and back-to-top buttons, and the skip link read in Spanish on Spanish pages (`src/data/siteStrings.ts`). The links keep their English destinations unless a Spanish one exists: the Field Guide goes to the Guía de campo, and RSS goes to the Spanish feed.
+- Tag chips on Spanish posts show Spanish labels (`#paternidad`, `#crianza`), from `src/data/tagLabelsEs.ts`. Slugs and `/tag` URLs stay English, and a test makes sure every tag on a Spanish post has a label. `limits` reads `limitaciones` so it never looks like `boundaries` (`límites`).
+- Post cards say Leído / No leído when the card is in Spanish.
+
 ## [7.16.0] — 2026-10-30
 
 The Spanish side reads as Spanish: next reads, category names, and titles.

@@ -2,6 +2,7 @@
 import Logo from './Logo.astro';
 import { readingLinks, contactLinks, localizeReaderLink } from '../data/readerNavigation';
 import { getNavLinkCurrent } from '../utils/navActive';
+import { siteStrings } from '../data/siteStrings';
 
 interface Props {
   class?: string;
@@ -10,19 +11,29 @@ interface Props {
 
 const { lang = 'en' } = Astro.props;
 const pathname = Astro.url.pathname;
-const entryDescriptions: Record<string, string> = {
-  '/browse': 'Search every writing, or follow a topic.',
-  '/archive': 'Every note, newest first.',
-  '/field-guide': 'Concepts, values, and beliefs, explained.',
-  '/es/guia-de-campo': 'Conceptos, valores y creencias, explicados.',
-};
+const t = siteStrings(lang);
+const entryDescriptions: Record<string, string> =
+  lang === 'es'
+    ? {
+        '/browse': 'Busque cualquier escrito, o siga un tema.',
+        '/archive': 'Todas las notas, de la más nueva a la más vieja.',
+        '/es/guia-de-campo': 'Conceptos, valores y creencias, explicados.',
+      }
+    : {
+        '/browse': 'Search every writing, or follow a topic.',
+        '/archive': 'Every note, newest first.',
+        '/field-guide': 'Concepts, values, and beliefs, explained.',
+      };
 const entryLinks = readingLinks
-  .filter((link) => link.href in entryDescriptions)
-  .map((link) => localizeReaderLink(link, lang));
-const primaryContactLinks = contactLinks.filter(
+  .map((link) => localizeReaderLink(link, lang))
+  .filter((link) => link.href in entryDescriptions);
+const localizedContactLinks = contactLinks.map((link) => localizeReaderLink(link, lang));
+const primaryContactLinks = localizedContactLinks.filter(
   (link) => link.href === '/about' || link.href.startsWith('mailto:'),
 );
-const secondaryContactLinks = contactLinks.filter((link) => !primaryContactLinks.includes(link));
+const secondaryContactLinks = localizedContactLinks.filter(
+  (link) => !primaryContactLinks.includes(link),
+);
 const currentLocation = (href: string) => getNavLinkCurrent(href, pathname);
 ---
 
@@ -30,7 +41,7 @@ const currentLocation = (href: string) => getNavLinkCurrent(href, pathname);
   id="mobile-menu-button"
   type="button"
   class="mobile-menu-trigger"
-  aria-label="Open menu"
+  aria-label={t.openMenu}
   aria-expanded="false"
   aria-controls="mobile-menu"
   aria-haspopup="dialog"
@@ -51,10 +62,15 @@ const currentLocation = (href: string) => getNavLinkCurrent(href, pathname);
 <dialog id="mobile-menu" class="mobile-menu" aria-labelledby="mobile-menu-title">
   <div class="mobile-menu__header">
     <span id="mobile-menu-title" class="sr-only">
-      Menu
+      {t.menu}
     </span>
-    <Logo class="mobile-menu__brand" />
-    <button id="close-mobile-menu" class="mobile-menu__close" type="button" aria-label="Close menu">
+    <Logo class="mobile-menu__brand" lang={lang} />
+    <button
+      id="close-mobile-menu"
+      class="mobile-menu__close"
+      type="button"
+      aria-label={t.closeMenu}
+    >
       <svg
         width="21"
         height="21"
@@ -82,12 +98,12 @@ const currentLocation = (href: string) => getNavLinkCurrent(href, pathname);
         <circle cx="10.5" cy="10.5" r="6.5"></circle>
         <path d="m16 16 4.5 4.5" stroke-linecap="round"></path>
       </svg>
-      Search the notes
+      {t.searchTheNotes}
     </button>
-    <nav class="mobile-menu__navigation" aria-label="Mobile navigation">
+    <nav class="mobile-menu__navigation" aria-label={t.mobileNavigation}>
       <section class="mobile-menu__section" aria-labelledby="mobile-menu-read">
         <h2 id="mobile-menu-read" class="mobile-menu__label">
-          Read
+          {t.read}
         </h2>
         <ul class="mobile-menu__links mobile-menu__entries">
           {entryLinks.map((link) => (
@@ -108,7 +124,7 @@ const currentLocation = (href: string) => getNavLinkCurrent(href, pathname);
 
       <section class="mobile-menu__section" aria-labelledby="mobile-menu-contact">
         <h2 id="mobile-menu-contact" class="mobile-menu__label">
-          About &amp; contact
+          {t.aboutAndContact}
         </h2>
         <ul class="mobile-menu__links mobile-menu__links--paired">
           {primaryContactLinks.map((link) => (

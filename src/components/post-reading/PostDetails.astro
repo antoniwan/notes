@@ -2,6 +2,7 @@
 import type { CategoryDisplayItem } from '../../types/layout';
 import { getTagFamily } from '../../data/tagFamilies';
 import { tagPageHref } from '../../utils/tagPages';
+import { tagLabel } from '../../data/tagLabelsEs';
 import FormattedDate from '../FormattedDate.astro';
 
 interface Props {
@@ -63,11 +64,11 @@ const moreCategories = categoryItems.slice(3);
             <li>
               {href ? (
                 <a class="tag-chip tag-chip--plain" data-tag-family={getTagFamily(tag)} href={href}>
-                  #{tag}
+                  #{tagLabel(tag, language)}
                 </a>
               ) : (
                 <span class="tag-chip tag-chip--plain" data-tag-family={getTagFamily(tag)}>
-                  #{tag}
+                  #{tagLabel(tag, language)}
                 </span>
               )}
             </li>
