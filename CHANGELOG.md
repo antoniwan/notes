@@ -9,6 +9,23 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [7.14.1] — 2026-10-30
+
+The commit hook now catches what CI would, and CSS gets the same correctness checks as the scripts.
+
+### Added
+
+- Stylelint (`pnpm run lint:css`), correctness rules only: unknown properties, units, and selectors, duplicates, invalid hex colors. It reads `src/styles` and the `<style>` blocks in `.astro` files, and runs in CI after ESLint.
+- `.editorconfig`, matching Prettier, for editors that don't format on save.
+
+### Changed
+
+- The pre-commit hook runs ESLint and Stylelint with `--fix` on staged files before Prettier, so a lint error stops the commit instead of the CI run.
+
+### Fixed
+
+- The Field Guide letter rail on phones set `top` twice; the first value was dead and is gone.
+
 ## [7.14.0] — 2026-10-29
 
 Every call to action is counted, so the ones nobody uses can go.

@@ -22,7 +22,7 @@ Antonio's public notebook (Astro 7, pnpm, Vercel). Start with the [README](READM
 ## Before a PR
 
 ```bash
-pnpm test && pnpm run check && pnpm run lint && pnpm run lint:tokens && pnpm run format:check
+pnpm test && pnpm run check && pnpm run lint && pnpm run lint:css && pnpm run lint:tokens && pnpm run format:check
 pnpm run build && pnpm run validate-generated-content && pnpm run validate-feeds
 ```
 
