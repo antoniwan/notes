@@ -21,6 +21,13 @@ tags:
   - responsibility
   - parenting
   - family
+  - fatherhood
+  - emotional-regulation
+  - power
+  - puerto-rico
+  - colonialism
+  - masculinity
+  - work
 draft: false
 featured: true
 published: true

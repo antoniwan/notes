@@ -14,8 +14,7 @@ category:
 tags:
   - self-control
   - mental-health
-  - serenity
-  - discipline
+  - inner-peace
 draft: false
 featured: false
 published: true

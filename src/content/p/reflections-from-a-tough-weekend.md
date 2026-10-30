@@ -14,6 +14,8 @@ tags:
   - reflection
   - healing
   - personal-growth
+  - emotional-regulation
+  - relationships
 draft: false
 featured: false
 published: true

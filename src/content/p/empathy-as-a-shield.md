@@ -14,6 +14,9 @@ tags:
   - empathy
   - emotional-regulation
   - self-reflection
+  - self-control
+  - compassion
+  - inner-peace
 draft: false
 featured: false
 published: true

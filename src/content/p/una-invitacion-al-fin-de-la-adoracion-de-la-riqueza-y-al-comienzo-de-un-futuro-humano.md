@@ -13,10 +13,11 @@ category:
 tags:
   - valores
   - política
-  - cultura
   - justicia-social
   - libertad
   - amor
+  - capitalism
+  - power
 draft: false
 featured: false
 published: true

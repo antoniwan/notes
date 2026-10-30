@@ -17,6 +17,8 @@ tags:
   - technology
   - meaning
   - social-issues
+  - capitalism
+  - power
 draft: false
 featured: false
 published: true

@@ -16,6 +16,10 @@ tags:
   - family
   - limits
   - vulnerability
+  - grief
+  - love
+  - attachment
+  - masculinity
 draft: false
 featured: true
 published: true

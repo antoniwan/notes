@@ -13,6 +13,7 @@ tags:
   - self-reflection
   - authenticity
   - healing
+  - inner-peace
 draft: false
 featured: false
 published: true

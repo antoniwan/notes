@@ -9,6 +9,20 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [7.15.0] — 2026-10-30
+
+Tags on the most-read posts, so the three next reads at the end of a post point somewhere useful.
+
+### Added
+
+- Preferred tags `self-control`, `inner-peace`, `religion`, `atheism`, `capitalism`, `colonialism`, `violence`, `masculinity`, `work`, and `gaming`, each with a Maslow bucket, a chip family, and a one-line description. `self-control` replaces the unused `self-mastery`.
+- Aliases: `self-mastery`, `serenity`, `routine`, `git`, `remote-work`, `god`, `faith`, `war`, and Spanish forms (`colonialismo`, `economia`, `capitalismo`, `poder`, `violencia`, `ateismo`, `masculinidad`, `paternidad`, `familia`, `ninos`, `cocina`, `comida`, `trabajo`, `autocontrol`, `paz-interior`).
+
+### Changed
+
+- Retagged the 32 Highlights and most-linked posts (and their Spanish twins) plus 13 posts that should be reachable from them, from a five-persona reading. Removed catch-all `culture`, `technology`, and personal-sense `power` where they only added noise, and one-off `crimson-desert`, `dispatch`, `diaspora`, and `psychology` tags.
+- A comment in the alias map explains why `límites` maps to `boundaries` while English `limits` stays separate.
+
 ## [7.14.1] — 2026-10-30
 
 The commit hook now catches what CI would, and CSS gets the same correctness checks as the scripts.

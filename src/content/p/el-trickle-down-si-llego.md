@@ -21,6 +21,10 @@ tags:
   - systemic-critique
   - puerto-rico
   - power
+  - capitalism
+  - colonialism
+  - politics
+  - responsibility
 draft: false
 featured: true
 published: true

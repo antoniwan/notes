@@ -13,9 +13,11 @@ category:
   - psychology
 tags:
   - culture
-  - economics
-  - psychology
   - systemic-critique
+  - capitalism
+  - power
+  - freedom
+  - social-media
 draft: false
 featured: false
 published: true
