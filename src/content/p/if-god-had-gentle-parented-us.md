@@ -17,8 +17,13 @@ category:
 tags:
   - parenting
   - fatherhood
-  - culture
   - values
+  - conscious-parenting
+  - religion
+  - atheism
+  - boundaries
+  - power
+  - presence
 draft: false
 featured: true
 published: true

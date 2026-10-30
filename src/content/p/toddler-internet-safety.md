@@ -19,6 +19,7 @@ tags:
   - technology
   - family
   - puerto-rico
+  - sexuality
 draft: false
 featured: false
 published: true

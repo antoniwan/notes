@@ -16,13 +16,13 @@ category:
 tags:
   - ai-agents
   - ai
-  - technology
   - tools
   - productivity
   - learning
   - habits
   - writing
   - systems-strategy
+  - work
 draft: false
 featured: true
 published: true

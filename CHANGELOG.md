@@ -9,6 +9,69 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [7.17.1] — 2026-10-30
+
+SEO follow-up to the retag and the Spanish pass.
+
+### Fixed
+
+- Five tag pages the retag emptied (`crimson-desert`, `dispatch`, `diaspora`, `discipline`, `psychology`) now redirect to where their posts went instead of returning 404. The redirect steps aside if the tag gets a page again.
+- Spanish posts name their category in Spanish in JSON-LD (`articleSection`, `about`), matching the Spanish breadcrumb.
+- Posts set `article:section` to their category instead of the generic "Notes".
+
+## [7.17.0] — 2026-10-30
+
+Spanish pages get Spanish chrome, so a reader in Spanish never has to switch languages to find their way around.
+
+### Changed
+
+- Header, menus, search, footer, the theme and back-to-top buttons, and the skip link read in Spanish on Spanish pages (`src/data/siteStrings.ts`). The links keep their English destinations unless a Spanish one exists: the Field Guide goes to the Guía de campo, and RSS goes to the Spanish feed.
+- Tag chips on Spanish posts show Spanish labels (`#paternidad`, `#crianza`), from `src/data/tagLabelsEs.ts`. Slugs and `/tag` URLs stay English, and a test makes sure every tag on a Spanish post has a label. `limits` reads `limitaciones` so it never looks like `boundaries` (`límites`).
+- Post cards say Leído / No leído when the card is in Spanish.
+
+## [7.16.0] — 2026-10-30
+
+The Spanish side reads as Spanish: next reads, category names, and titles.
+
+### Changed
+
+- "Seguir leyendo" on Spanish pages recommends Spanish writing first. A twin is offered in its Spanish version, Spanish writing gets a bonus worth one shared tag, and English fills the rest. The Spanish-only parenting guides can now show up as next reads. English pages are unchanged.
+- The note under "Seguir leyendo" says whether some or all of the next reads are in English, and every post card declares its own `lang`.
+- Category names show in Spanish on Spanish posts (`nameEs` in `src/data/categories.ts`). The category pages stay English.
+- Spanish titles use Spanish sentence case instead of English Title Case, and the English description on the curiosity guide is now in Spanish.
+- Tags on the Spanish-only parenting guides, from the Puerto Rican reader persona: `boundaries` and `child-development` on the curiosity guide, and `sexuality` on the digital-safety twins.
+
+## [7.15.0] — 2026-10-30
+
+Tags on the most-read posts, so the three next reads at the end of a post point somewhere useful.
+
+### Added
+
+- Preferred tags `self-control`, `inner-peace`, `religion`, `atheism`, `capitalism`, `colonialism`, `violence`, `masculinity`, `work`, and `gaming`, each with a Maslow bucket, a chip family, and a one-line description. `self-control` replaces the unused `self-mastery`.
+- Aliases: `self-mastery`, `serenity`, `routine`, `git`, `remote-work`, `god`, `faith`, `war`, and Spanish forms (`colonialismo`, `economia`, `capitalismo`, `poder`, `violencia`, `ateismo`, `masculinidad`, `paternidad`, `familia`, `ninos`, `cocina`, `comida`, `trabajo`, `autocontrol`, `paz-interior`).
+
+### Changed
+
+- Retagged the 32 Highlights and most-linked posts (and their Spanish twins) plus 13 posts that should be reachable from them, from a five-persona reading. Removed catch-all `culture`, `technology`, and personal-sense `power` where they only added noise, and one-off `crimson-desert`, `dispatch`, `diaspora`, and `psychology` tags.
+- A comment in the alias map explains why `límites` maps to `boundaries` while English `limits` stays separate.
+
+## [7.14.1] — 2026-10-30
+
+The commit hook now catches what CI would, and CSS gets the same correctness checks as the scripts.
+
+### Added
+
+- Stylelint (`pnpm run lint:css`), correctness rules only: unknown properties, units, and selectors, duplicates, invalid hex colors. It reads `src/styles` and the `<style>` blocks in `.astro` files, and runs in CI after ESLint.
+- `.editorconfig`, matching Prettier, for editors that don't format on save.
+
+### Changed
+
+- The pre-commit hook runs ESLint and Stylelint with `--fix` on staged files before Prettier, so a lint error stops the commit instead of the CI run.
+
+### Fixed
+
+- The Field Guide letter rail on phones set `top` twice; the first value was dead and is gone.
+
 ## [7.14.0] — 2026-10-29
 
 Every call to action is counted, so the ones nobody uses can go.

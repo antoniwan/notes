@@ -1,7 +1,7 @@
 ---
 title: >-
-  Cómo Proteger a Nuestros Niños del Peligro Digital: Guía para Padres Boricuas
-  en la Era del Internet
+  Cómo proteger a nuestros niños del peligro digital: guía para padres boricuas
+  en la era del internet
 description: >-
   Una guía sencilla y poderosa para cuidar el corazón y la mente de nuestros
   toddlers en el mundo digital moderno.
@@ -12,7 +12,7 @@ heroImage: /images/guia-padres.jpg
 category:
   - parenting
   - systems-strategy
-subcategory: Seguridad Digital
+subcategory: Seguridad digital
 tags:
   - parenting
   - children
@@ -20,6 +20,7 @@ tags:
   - technology
   - family
   - puerto-rico
+  - sexuality
 draft: false
 featured: false
 published: true

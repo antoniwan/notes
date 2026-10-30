@@ -13,7 +13,6 @@ category:
   - integration-growth
 subcategory: Personal Development
 tags:
-  - power
   - consciousness
   - authenticity
 draft: false

@@ -19,6 +19,22 @@ describe('generateStructuredData articleSection', () => {
     expect(article?.about).toEqual([{ '@type': 'Thing', name: 'Psychology, roughly' }]);
   });
 
+  it('names the category in Spanish on a Spanish post', () => {
+    const schemas = generateStructuredData({
+      title: 'La primera pared',
+      description: 'Desc',
+      path: '/p/la-primera-pared',
+      type: 'article',
+      pubDate: new Date('2026-01-01T00:00:00.000Z'),
+      category: ['parenting'],
+      inLanguage: 'es-PR',
+    });
+    const article = (Array.isArray(schemas) ? schemas : [schemas]).find(
+      (s) => s['@type'] === 'BlogPosting',
+    );
+    expect(article?.articleSection).toBe('Sobre la crianza');
+  });
+
   it('leaves articleSection out when there is no category', () => {
     const schemas = generateStructuredData({
       title: 'Test',

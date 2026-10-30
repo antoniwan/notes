@@ -20,6 +20,8 @@ tags:
   - software-development
   - writing
   - art-expression
+  - gaming
+  - responsibility
 draft: false
 featured: true
 published: true

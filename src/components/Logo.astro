@@ -1,5 +1,6 @@
 ---
 import { SITE_TITLE, SHORT_SITE_TITLE } from '../consts';
+import { siteStrings, type SiteLanguage } from '../data/siteStrings';
 
 interface Props {
   /**
@@ -36,6 +37,11 @@ interface Props {
    * Whether to show a subtle background on hover
    */
   showHoverBg?: boolean;
+
+  /**
+   * The page's language, for the link's accessible name
+   */
+  lang?: SiteLanguage;
 }
 
 const {
@@ -46,6 +52,7 @@ const {
   iconOnly = false,
   useSvg = true,
   showHoverBg = false,
+  lang = 'en',
 } = Astro.props;
 
 const sizeClasses = {
@@ -82,7 +89,7 @@ const paddingClasses = {
     sizeClasses[size],
     className,
   ]}
-  aria-label={`${SITE_TITLE} - Home`}
+  aria-label={`${SITE_TITLE} - ${siteStrings(lang).home}`}
 >
   <!-- Icon Section -->
   <span

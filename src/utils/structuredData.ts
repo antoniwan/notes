@@ -1,6 +1,6 @@
 import type { CollectionEntry } from 'astro:content';
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL, AUTHOR } from '../consts';
-import { categories } from '../data/categories';
+import { getCategoryName } from './categoryUtils';
 import { generateCanonicalUrl, generateImageUrl } from './seo';
 
 // Enhanced structured data options
@@ -42,9 +42,12 @@ export const authorRef = {
   sameAs: AUTHOR.sameAs,
 };
 
-/** A category's display name ("On software and systems"), not its id ("systems-strategy"). */
-function categoryName(id: string): string {
-  return categories.find((category) => category.id === id)?.name ?? id;
+/**
+ * A category's display name ("On software and systems"), not its id ("systems-strategy"),
+ * in the page's language, so it matches the breadcrumb.
+ */
+function categoryName(id: string, inLanguage: string): string {
+  return getCategoryName(id, inLanguage.startsWith('es') ? 'es' : 'en') ?? id;
 }
 
 // Generate enhanced structured data with improved SEO
@@ -104,7 +107,7 @@ export function generateStructuredData(options: StructuredDataOptions) {
       })(),
       url: url,
       inLanguage,
-      ...(category.length > 0 && { articleSection: categoryName(category[0]) }),
+      ...(category.length > 0 && { articleSection: categoryName(category[0], inLanguage) }),
       ...(typeof wordCount === 'number' && wordCount > 0 && { wordCount }),
       // Enhanced article properties
       mainEntityOfPage: {
@@ -120,7 +123,7 @@ export function generateStructuredData(options: StructuredDataOptions) {
       ...(category.length > 0 && {
         about: category.map((cat) => ({
           '@type': 'Thing',
-          name: categoryName(cat),
+          name: categoryName(cat, inLanguage),
         })),
       }),
     };
@@ -149,7 +152,7 @@ export function generateStructuredData(options: StructuredDataOptions) {
             author: authorRef,
             image: generateImageUrl(post.data.heroImage),
             keywords: post.data.tags?.join(', '),
-            articleSection: post.data.category?.map(categoryName).join(', '),
+            articleSection: post.data.category?.map((id) => categoryName(id, 'en-US')).join(', '),
             timeRequired: (() => {
               if (post.data.minutesRead && typeof post.data.minutesRead === 'string') {
                 // Extract minutes from "X min read" format

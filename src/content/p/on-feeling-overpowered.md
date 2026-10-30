@@ -13,6 +13,7 @@ tags:
   - mental-health
   - emotional-regulation
   - mindfulness
+  - self-control
 draft: false
 featured: false
 published: true

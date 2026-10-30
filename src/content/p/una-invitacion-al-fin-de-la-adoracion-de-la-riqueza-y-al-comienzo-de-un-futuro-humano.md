@@ -1,5 +1,5 @@
 ---
-title: Una Invitación al Fin de la Adoración de la Riqueza — y al Comienzo de un Futuro Humano
+title: Una invitación al fin de la adoración de la riqueza — y al comienzo de un futuro humano
 description: >-
   Un llamado a construir una sociedad donde la seguridad, la dignidad y el amor sean no negociables para todos.
 pubDate: '2025-11-07T15:29:00.000Z'
@@ -13,10 +13,11 @@ category:
 tags:
   - valores
   - política
-  - cultura
   - justicia-social
   - libertad
   - amor
+  - capitalism
+  - power
 draft: false
 featured: false
 published: true

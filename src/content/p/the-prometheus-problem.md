@@ -12,11 +12,13 @@ category:
   - psychology
   - systems-strategy
 tags:
-  - technology
   - politics
   - social-justice
   - systemic-critique
   - power
+  - ai
+  - responsibility
+  - digital-safety
 draft: false
 featured: true
 published: true

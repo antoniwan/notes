@@ -19,7 +19,9 @@ tags:
   - philosophy
   - meaning
   - fatherhood
-  - culture
+  - spirituality
+  - limits
+  - consciousness
 draft: false
 featured: false
 published: true

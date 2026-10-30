@@ -53,7 +53,7 @@ const hasSpanishTwin =
     'compact-card': compact,
   }}
   role="article"
-  lang={spanishOnly ? 'es' : undefined}
+  lang={cardLanguage}
   data-post-slug={post.id}
 >
   <div class="read-indicator" data-post-slug={post.id}>
@@ -166,13 +166,15 @@ const hasSpanishTwin =
           `.reading-time-display[data-post-slug="${postSlug}"]`,
         ) as HTMLElement | null;
       const readingTimeSep = readingTimeElement?.previousElementSibling as HTMLElement | null;
+      // Each card declares its language, so a Spanish card says Leído even on an English page.
+      const spanish = indicator.closest('[lang]')?.getAttribute('lang') === 'es';
 
       if (isRead) {
         dot.classList.add('read');
-        indicator.setAttribute('title', 'Read');
+        indicator.setAttribute('title', spanish ? 'Leído' : 'Read');
 
         if (readingTimeElement) {
-          readingTimeElement.textContent = 'Read';
+          readingTimeElement.textContent = spanish ? 'Leído' : 'Read';
           readingTimeElement.hidden = false;
           if (readingTimeSep?.classList.contains('postcard-meta__sep')) {
             readingTimeSep.hidden = false;
@@ -180,7 +182,7 @@ const hasSpanishTwin =
         }
       } else {
         dot.classList.remove('read');
-        indicator.setAttribute('title', 'Unread');
+        indicator.setAttribute('title', spanish ? 'No leído' : 'Unread');
 
         if (readingTimeElement) {
           const originalReadingTime = readingTimeElement.getAttribute('data-original-reading-time');

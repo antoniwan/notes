@@ -15,8 +15,12 @@ tags:
   - memoir
   - puerto-rico
   - economics
-  - diaspora
   - colonialism
+  - politics
+  - power
+  - systemic-critique
+  - social-justice
+  - education
 draft: false
 featured: true
 published: true

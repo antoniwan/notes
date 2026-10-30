@@ -17,11 +17,14 @@ tags:
   - love
   - spirituality
   - philosophy
-  - culture
   - politics
   - power
   - systemic-critique
   - values
+  - religion
+  - colonialism
+  - atheism
+  - violence
 draft: false
 featured: false
 published: true
