@@ -1,11 +1,11 @@
 ---
 title: >-
-  Cómo Redirigir la Curiosidad Sexual Infantil con Amor, Liderazgo y Claridad
+  Cómo redirigir la curiosidad sexual infantil con amor, liderazgo y claridad
   (4–8)
 description: >-
-  Guide for parents on handling childhood sexual curiosity through
-  age-appropriate responses and protective language. Based on attachment theory
-  and developmental psychology.
+  Una guía para madres y padres sobre cómo responder a la curiosidad sexual
+  infantil con respuestas apropiadas para cada edad y un lenguaje que protege.
+  Basada en la teoría del apego y la psicología del desarrollo.
 pubDate: '2025-05-06T16:30:00.000Z'
 language:
   - es
@@ -13,12 +13,14 @@ heroImage: /images/guia-practica-padres-conscientes.avif
 category:
   - parenting
   - psychology
-subcategory: Emotional Education
+subcategory: Educación emocional
 tags:
   - parenting
   - children
   - family
   - sexuality
+  - boundaries
+  - child-development
 draft: false
 featured: false
 published: true

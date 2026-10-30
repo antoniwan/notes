@@ -85,21 +85,48 @@ describe('findRelatedPosts', () => {
     const unpublished = writing('unpublished', { published: false });
     const future = writing('future', { pubDate: new Date('9999-01-01T00:00:00.000Z') });
     const recipe = writing('recipes/example');
-    const spanish = writing('spanish', { language: ['es'] });
     const related = writing('related');
 
     expect(
-      findRelatedPosts(current, [
-        current,
-        twin,
-        draft,
-        unpublished,
-        future,
-        recipe,
-        spanish,
-        related,
-      ]),
+      findRelatedPosts(current, [current, twin, draft, unpublished, future, recipe, related]),
     ).toEqual([related]);
+  });
+
+  it('keeps Spanish writing out of English recommendations', () => {
+    const current = writing('current');
+    const spanish = writing('spanish', { language: ['es'] });
+    const related = writing('related');
+
+    expect(findRelatedPosts(current, [current, spanish, related])).toEqual([related]);
+  });
+
+  it('recommends Spanish writing first on Spanish pages, then fills with English', () => {
+    const current = writing('current-es', { language: ['es'], translationGroup: 'current' });
+    const strongEnglish = writing('strong-en', { tags: ['fatherhood', 'parenting'] });
+    const spanishOnly = writing('spanish-only', { language: ['es'] });
+    const unrelatedSpanish = writing('unrelated-es', { language: ['es'], tags: ['technology'] });
+    const englishTwin = writing('twin-en', { translationGroup: 'twin' });
+    const spanishTwin = writing('twin-es', { language: ['es'], translationGroup: 'twin' });
+
+    expect(
+      findRelatedPosts(
+        current,
+        [current, strongEnglish, spanishOnly, unrelatedSpanish, englishTwin, spanishTwin],
+        4,
+      ),
+    ).toEqual([spanishOnly, spanishTwin, strongEnglish]);
+  });
+
+  it('falls back to the English version when a Spanish twin is not public', () => {
+    const current = writing('current-es', { language: ['es'] });
+    const englishTwin = writing('twin-en', { translationGroup: 'twin' });
+    const draftTwin = writing('twin-es', {
+      language: ['es'],
+      translationGroup: 'twin',
+      draft: true,
+    });
+
+    expect(findRelatedPosts(current, [current, englishTwin, draftTwin])).toEqual([englishTwin]);
   });
 
   it('puts stronger subject matches ahead of a newer featured match', () => {

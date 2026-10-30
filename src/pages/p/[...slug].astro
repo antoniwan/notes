@@ -7,7 +7,7 @@ import { getTranslationData } from '../../utils/translationUtils';
 import { calculateReadingTimeFromMarkdown } from '../../utils/readingTime';
 import { AUTHOR } from '../../consts';
 import { getCategoryDisplayItems, getCategoryNameFromIds } from '../../utils/categoryUtils';
-import { isCollectionPublic } from '../../utils/publishFilters';
+import { isCollectionPublic, isSpanishPrimary } from '../../utils/publishFilters';
 import { tableOfContentsFromHeadings } from '../../utils/postToc';
 
 export const prerender = true;
@@ -39,8 +39,9 @@ const imageAlt = post.data.imageAlt || generateImageAlt(post.data.title);
 const author = post.data.author || AUTHOR.name;
 
 // Get category name from category ID
-const categoryName = getCategoryNameFromIds(post.data.category);
-const categoryItems = getCategoryDisplayItems(post.data.category);
+const categoryLanguage = isSpanishPrimary(post.data) ? 'es' : 'en';
+const categoryName = getCategoryNameFromIds(post.data.category, categoryLanguage);
+const categoryItems = getCategoryDisplayItems(post.data.category, categoryLanguage);
 
 const tableOfContents = tableOfContentsFromHeadings(headings);
 

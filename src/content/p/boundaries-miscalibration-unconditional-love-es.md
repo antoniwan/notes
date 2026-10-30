@@ -1,5 +1,5 @@
 ---
-title: 'Sobre Límites, Descalibración y Reaprender el Amor Incondicional'
+title: 'Sobre límites, descalibración y reaprender el amor incondicional'
 description: 'Una reflexión sencilla sobre el establecimiento de límites, el mal uso de la fuerza emocional y el reaprendizaje de cómo emparejar límites con amor constante.'
 pubDate: '2026-01-16T13:50:00.000Z'
 language:
@@ -9,7 +9,7 @@ category:
   - integration-growth
   - psychology
   - parenting
-subcategory: Reflexión Personal
+subcategory: Reflexión personal
 tags:
   - límites
   - amor

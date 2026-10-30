@@ -1,5 +1,5 @@
 ---
-title: 'Quién Soy Hoy: Un Reporte de Progreso de Recuperación'
+title: 'Quién soy hoy: un reporte de progreso de recuperación'
 description: >-
   Por qué escribo, por qué necesito marcos sistemáticos para funciones humanas
   básicas,  y cómo se ve la recuperación del narcisismo y codependencia en la

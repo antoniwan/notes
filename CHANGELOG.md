@@ -9,6 +9,18 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [7.16.0] — 2026-10-30
+
+The Spanish side reads as Spanish: next reads, category names, and titles.
+
+### Changed
+
+- "Seguir leyendo" on Spanish pages recommends Spanish writing first. A twin is offered in its Spanish version, Spanish writing gets a bonus worth one shared tag, and English fills the rest. The Spanish-only parenting guides can now show up as next reads. English pages are unchanged.
+- The note under "Seguir leyendo" says whether some or all of the next reads are in English, and every post card declares its own `lang`.
+- Category names show in Spanish on Spanish posts (`nameEs` in `src/data/categories.ts`). The category pages stay English.
+- Spanish titles use Spanish sentence case instead of English Title Case, and the English description on the curiosity guide is now in Spanish.
+- Tags on the Spanish-only parenting guides, from the Puerto Rican reader persona: `boundaries` and `child-development` on the curiosity guide, and `sexuality` on the digital-safety twins.
+
 ## [7.15.0] — 2026-10-30
 
 Tags on the most-read posts, so the three next reads at the end of a post point somewhere useful.
