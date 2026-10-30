@@ -11,7 +11,6 @@ category:
   - integration-growth
 tags:
   - self-control
-  - discipline
   - mental-health
 draft: false
 featured: false

@@ -16,6 +16,10 @@ tags:
   - parenting
   - healing
   - values
+  - capitalism
+  - religion
+  - conscious-parenting
+  - violence
 draft: false
 featured: false
 published: true

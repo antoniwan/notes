@@ -19,6 +19,10 @@ subcategory: Emotional Integration
 tags:
   - emotional-regulation
   - authenticity
+  - self-control
+  - boundaries
+  - mental-health
+  - self-reflection
 draft: false
 featured: true
 published: true

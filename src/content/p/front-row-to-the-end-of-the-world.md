@@ -19,14 +19,15 @@ category:
   - culture
 tags:
   - ai
-  - technology
   - power
   - politics
   - systemic-critique
   - education
   - creativity
   - responsibility
-  - culture
+  - art-expression
+  - meaning
+  - work
 draft: false
 featured: true
 published: true

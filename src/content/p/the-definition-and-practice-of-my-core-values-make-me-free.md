@@ -15,6 +15,8 @@ tags:
   - values
   - authenticity
   - freedom
+  - truth
+  - mental-health
 draft: false
 featured: false
 published: true

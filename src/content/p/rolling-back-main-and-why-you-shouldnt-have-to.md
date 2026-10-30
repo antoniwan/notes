@@ -17,9 +17,10 @@ category:
   - metaspace
 tags:
   - technology
-  - git
   - ai-agents
   - critical-thinking
+  - software-development
+  - version-control
 keywords:
   - git
   - branching

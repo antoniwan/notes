@@ -17,6 +17,9 @@ tags:
   - atheism
   - meaning
   - consciousness
+  - religion
+  - philosophy
+  - values
 draft: false
 featured: false
 published: true

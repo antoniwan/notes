@@ -21,6 +21,9 @@ tags:
   - systemic-critique
   - power
   - identity
+  - vulnerability
+  - responsibility
+  - masculinity
 draft: false
 featured: true
 published: true

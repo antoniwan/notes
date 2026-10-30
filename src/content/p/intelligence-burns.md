@@ -13,7 +13,6 @@ category:
 tags:
   - intelligence
   - empathy
-  - power
   - relationships
 draft: false
 featured: false

@@ -21,6 +21,8 @@ tags:
   - puerto-rico
   - personal-growth
   - values
+  - economics
+  - craftsmanship
 draft: false
 featured: true
 published: true
