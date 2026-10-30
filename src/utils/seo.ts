@@ -90,6 +90,12 @@ export function detectOGType(pubDate?: Date, type?: string): 'article' | 'websit
   return pubDate || type === 'article' ? 'article' : 'website';
 }
 
+/**
+ * Search results cut titles at about 60 characters. Past that, the suffix goes so the
+ * post's own title shows in full (or as much of it as fits). The title itself is never cut.
+ */
+export const TITLE_MAX_LENGTH = 60;
+
 // Generate optimized meta tags
 export function generateMetaTags(config: SEOConfig): MetaTags {
   const {
@@ -112,7 +118,7 @@ export function generateMetaTags(config: SEOConfig): MetaTags {
   const isHomepage = path === '/' || path === '';
   const fullTitle = isHomepage
     ? SITE_HOME_TITLE
-    : titleSuffix
+    : titleSuffix && `${title} · ${titleSuffix}`.length <= TITLE_MAX_LENGTH
       ? `${title} · ${titleSuffix}`
       : title;
   const ogTitle = ogTitleOverride ?? (isHomepage ? SITE_HOME_TITLE : title);
