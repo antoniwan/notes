@@ -12,6 +12,7 @@ import { filterPostsByTag, getAllUniqueTags, getTagStatistics } from '../../util
 import { canonicalizeTag } from '../../utils/tagVocabulary';
 import { isThinTag } from '../../utils/sitemapTranslations';
 import { isTagListedPost } from '../../utils/recipes';
+import { categories } from '../../data/categories';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', (entry) => isTagListedPost(entry));
@@ -36,10 +37,14 @@ const posts = await getCollection('blog', (entry) => isTagListedPost(entry));
 const { totalPosts, relatedTags } = getTagStatistics(canonicalTag, posts);
 const tagPosts = filterPostsByTag(posts, canonicalTag);
 const seoDescription = tagMetaDescription(canonicalTag, totalPosts);
+// A tag named like a category (Arts and attempts) would share its title in search results.
+const pageTitle = categories.some((category) => category.name === tagLabel)
+  ? `Topic: ${tagLabel}`
+  : tagLabel;
 ---
 
 <BaseLayout
-  title={tagLabel}
+  title={pageTitle}
   description={tagBlurb ?? seoDescription}
   metaDescription={seoDescription}
   path={`/tag/${canonicalTag}`}

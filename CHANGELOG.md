@@ -9,6 +9,17 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [7.17.2] — 2026-10-30
+
+A tag URL never 404s, and titles fit search results.
+
+### Fixed
+
+- Every tag that has ever had a page is listed in `src/data/tagPageHistory.ts` (gathered from the full git history). When no post carries one any more, it redirects to its successor in `RETIRED_TAG_REDIRECTS`, or else to the topic index, `/browse#topics`. About 185 old tag URLs that returned 404 now land there. Tests fail if a built tag is missing from the history or a retired tag points at a missing page.
+- Stripped tags and aliases whose canonical tag has no page also go to the topic index instead of plain `/browse`.
+- The suffix ` · Notes` drops when it would push a title past 60 characters, so long post titles show in full in search results. Post titles are unchanged.
+- A tag named like a category ("Arts and attempts") is titled "Topic: Arts and attempts", so it no longer shares its title with the category page.
+
 ## [7.17.1] — 2026-10-30
 
 SEO follow-up to the retag and the Spanish pass.

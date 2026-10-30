@@ -1,5 +1,6 @@
 import { STRIPPED_TAGS, TAG_ALIAS_MAP } from '../data/tagVocabulary';
 import { buildCookbookRedirects } from '../data/cookbook';
+import { TAG_PAGE_HISTORY } from '../data/tagPageHistory';
 import { getBuiltTagSlugs } from './sitemapTranslations';
 import { normalizeTagInput } from './tagVocabulary';
 
@@ -76,10 +77,18 @@ export const PAGE_REDIRECTS: Record<string, string> = {
 };
 
 /**
- * Tag pages that existed until no post carried the tag (October 30, 2026 retag,
- * 7.15.0). Each goes to where its posts went. Skipped if the tag gets a page again.
+ * Where a tag goes when it has no page: the A to Z topic index on Browse, which opens
+ * its fold for this hash.
+ */
+export const TAG_INDEX_PATH = '/browse#topics';
+
+/**
+ * Tags no post carries any more, sent to the tag that took their posts. A tag that
+ * empties without an entry here still redirects, to the topic index (see TAG_PAGE_HISTORY).
+ * Each entry steps aside if the tag gets a page again.
  */
 export const RETIRED_TAG_REDIRECTS: Record<string, string> = {
+  // October 30, 2026 retag (7.15.0).
   'crimson-desert': '/tag/gaming',
   dispatch: '/tag/gaming',
   diaspora: '/tag/puerto-rico',
@@ -87,10 +96,19 @@ export const RETIRED_TAG_REDIRECTS: Record<string, string> = {
   psychology: '/category/psychology',
 };
 
+/** A successor tag that has no page itself falls back to the topic index. */
+function liveTagTarget(target: string, builtTags: ReadonlySet<string>): string {
+  const match = target.match(/^\/tag\/([^/#]+)$/);
+  return match && !builtTags.has(match[1]) ? TAG_INDEX_PATH : target;
+}
+
 /**
- * Build permanent redirects from tag aliases to their canonical tag pages.
+ * Redirects for every tag URL without a page, so a tag URL never 404s:
+ * - stripped tags go to the topic index;
+ * - aliases go to their canonical tag;
+ * - tags in TAG_PAGE_HISTORY that no post carries any more go to their successor in
+ *   RETIRED_TAG_REDIRECTS, or else to the topic index.
  * Keys are normalized URL slugs (spaces → hyphens).
- * If the canonical page is not built, send the alias to `/browse` instead of a 404.
  */
 export function buildTagAliasRedirects(
   builtTags: ReadonlySet<string> = getBuiltTagSlugs(),
@@ -98,18 +116,20 @@ export function buildTagAliasRedirects(
   const redirects: Record<string, string> = {};
 
   for (const stripped of STRIPPED_TAGS) {
-    redirects[`/tag/${stripped}`] = '/browse';
+    redirects[`/tag/${stripped}`] = TAG_INDEX_PATH;
   }
 
   for (const [alias, canonical] of Object.entries(TAG_ALIAS_MAP)) {
     const aliasSlug = normalizeTagInput(alias);
     if (!aliasSlug || !canonical || aliasSlug === canonical) continue;
-    const target = builtTags.has(canonical) ? `/tag/${canonical}` : '/browse';
-    redirects[`/tag/${aliasSlug}`] = target;
+    redirects[`/tag/${aliasSlug}`] = liveTagTarget(`/tag/${canonical}`, builtTags);
   }
 
-  for (const [tag, target] of Object.entries(RETIRED_TAG_REDIRECTS)) {
-    if (!builtTags.has(tag)) redirects[`/tag/${tag}`] = target;
+  const retired = new Set([...TAG_PAGE_HISTORY, ...Object.keys(RETIRED_TAG_REDIRECTS)]);
+  for (const tag of retired) {
+    const path = `/tag/${tag}`;
+    if (builtTags.has(tag) || redirects[path]) continue;
+    redirects[path] = liveTagTarget(RETIRED_TAG_REDIRECTS[tag] ?? TAG_INDEX_PATH, builtTags);
   }
 
   return redirects;

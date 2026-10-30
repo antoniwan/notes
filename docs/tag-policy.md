@@ -18,7 +18,7 @@ If (3) wins, drop the tag.
 
 ## Hard rules
 
-- **Never** tag `notes` / `note` / `nota` / `notas`. The pipeline strips them. `/tag/notes` redirects to `/tag`.
+- **Never** tag `notes` / `note` / `nota` / `notas`. The pipeline strips them. `/tag/notes` redirects to the topic index (`/browse#topics`).
 - Do not add form labels (`essays`, `ideas`, `notes`) to satisfy `/tag` prelude code, specs, or analytics.
 - Do not merge tags that mean different things to a reader (`parenting` vs `fatherhood`; English `limits` vs `boundaries`).
 - Do merge true synonyms and language twins (`límites` → `boundaries`, `recuperacion` → `recovery`).
@@ -48,6 +48,14 @@ Maslow buckets and tag weights are **downstream**. They follow the preferred ide
 1. **Keep as signal** — distinct meaning, reusable, helps a reader. Examples: `presence`, `trust`, `vulnerability`, `slow-living`.
 2. **Merge** — same intent, no meaningful distinction. Example: `regulación-emocional` → `emotional-regulation`.
 3. **Strip or alias-only** — site-name collisions (`notes`) are stripped. Historical spellings (`ai-agent` → `ai-agents`) route to canonical.
+
+## Removing a tag
+
+A tag URL never 404s. `src/data/tagPageHistory.ts` lists every tag that has had a page; add new tags there and never remove one (a test fails if a built tag is missing). When a tag is removed or no post carries it any more:
+
+- Renamed or merged into another tag: add it to `TAG_ALIAS_MAP`.
+- Its posts moved to an obvious successor: add it to `RETIRED_TAG_REDIRECTS` in `src/utils/seoRouting.ts` (a tag or a category page).
+- Otherwise do nothing: it redirects to the topic index, `/browse#topics`.
 
 ## Authoring guidelines
 

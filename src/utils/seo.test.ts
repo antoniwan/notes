@@ -57,6 +57,16 @@ describe('page titles', () => {
     expect(tags.ogTitle).toBe('The Vegeta dynamic');
   });
 
+  it('drops the suffix when it would push the title past what search results show', () => {
+    const title = 'On Boundaries, Miscalibration, and Relearning Unconditional Love';
+    const tags = generateMetaTags({
+      title,
+      path: '/p/boundaries-miscalibration-unconditional-love',
+    });
+    expect(tags.title).toBe(title);
+    expect(tags.ogTitle).toBe(title);
+  });
+
   it('names the home page by handle', () => {
     const tags = generateMetaTags({ title: 'Notes', path: '/' });
     expect(tags.title).toBe('Notes by antoniwan');
