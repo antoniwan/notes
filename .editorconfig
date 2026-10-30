@@ -1,0 +1,26 @@
+# Coding standards v1 (antoniwan/ai shared/standards). Copy as .editorconfig at a repo's root.
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+
+# Godot writes GDScript and its scene and resource files with tabs.
+[*.{gd,tscn,tres,godot,cfg}]
+indent_style = tab
+indent_size = 4
+
+# PowerShell and Python read better at 4.
+[*.{ps1,psm1,py}]
+indent_size = 4
+
+# A Markdown line break is two trailing spaces.
+[*.md]
+trim_trailing_whitespace = false
+
+[Makefile]
+indent_style = tab

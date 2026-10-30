@@ -1,0 +1,20 @@
+# Coding standards v1 (antoniwan/ai shared/standards). Copy as .gitattributes at a repo's root.
+# Text is stored with LF on every device, whatever the local core.autocrlf says.
+* text=auto eol=lf
+# Windows scripts keep CRLF so older PowerShell and cmd read them.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+# Binary: git never changes their bytes or shows a diff.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.avif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
