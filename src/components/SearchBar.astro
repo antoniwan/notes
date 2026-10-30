@@ -1,10 +1,18 @@
 ---
+import { siteStrings, type SiteLanguage } from '../data/siteStrings';
+
 interface Props {
   class?: string;
   placeholder?: string;
+  lang?: SiteLanguage;
 }
 
-const { class: className = '', placeholder = 'Search writings, pages...' } = Astro.props;
+const {
+  class: className = '',
+  placeholder = 'Search writings, pages...',
+  lang = 'en',
+} = Astro.props;
+const t = siteStrings(lang);
 
 // Generate unique ID for this search instance
 const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
@@ -33,7 +41,7 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
       aria-controls={`${searchId}-results`}
       class="search-input"
       placeholder={placeholder}
-      aria-label="Search writings"
+      aria-label={t.searchWritings}
     />
 
     <!-- Clear Button -->
@@ -41,7 +49,7 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
       id={`${searchId}-clear`}
       type="button"
       class="search-clear hidden"
-      aria-label="Clear search"
+      aria-label={t.clearSearch}
     >
       <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path
@@ -69,7 +77,7 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
     id={`${searchId}-results`}
     class="search-dropdown hidden"
     role="region"
-    aria-label="Search results"
+    aria-label={t.searchResults}
     aria-busy="false"
   >
     <!-- Loading State -->
@@ -92,7 +100,7 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
             ></path>
           </svg>
         </div>
-        <p class="text-sm font-medium">Searching...</p>
+        <p class="text-sm font-medium">{t.searching}</p>
       </div>
     </div>
 
@@ -100,8 +108,8 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
     <div id={`${searchId}-no-results`} class="text-body-muted hidden p-8 text-center">
       <div class="flex flex-col items-center space-y-4">
         <div class="space-y-2">
-          <p class="text-base font-semibold">No results found</p>
-          <p class="text-sm">Try searching for writings, categories, topics, or pages</p>
+          <p class="text-base font-semibold">{t.noResults}</p>
+          <p class="text-sm">{t.noResultsHint}</p>
         </div>
       </div>
     </div>
@@ -110,10 +118,8 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
     <div id={`${searchId}-error`} class="text-body-muted hidden p-8 text-center">
       <div class="flex flex-col items-center space-y-4">
         <div class="space-y-2">
-          <p class="text-base font-semibold">Search is unavailable</p>
-          <p class="text-sm">
-            The search index could not be loaded. Check your connection and try again.
-          </p>
+          <p class="text-base font-semibold">{t.searchUnavailable}</p>
+          <p class="text-sm">{t.searchUnavailableHint}</p>
         </div>
       </div>
     </div>
@@ -165,6 +171,7 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
     private debounceTimer: ReturnType<typeof setTimeout> | null = null;
     private isSearching = false;
     private searchRequestId = 0;
+    private readonly spanish = document.documentElement.lang === 'es';
 
     constructor(searchId: string) {
       this.input = document.getElementById(searchId) as HTMLInputElement;
@@ -279,7 +286,7 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
       const requestId = this.searchRequestId;
       this.isSearching = true;
       this.showLoading();
-      this.announce('Searching');
+      this.announce(this.spanish ? 'Buscando' : 'Searching');
 
       try {
         // Simulate search - replace with actual search implementation
@@ -458,7 +465,7 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
           langSpan.className =
             'search-result-type text-xs px-3 py-1 rounded-full bg-[rgb(var(--color-accent))]/10 text-[rgb(var(--color-accent))] font-medium flex-shrink-0';
           langSpan.textContent = 'ES';
-          langSpan.setAttribute('aria-label', 'Spanish');
+          langSpan.setAttribute('aria-label', this.spanish ? 'Español' : 'Spanish');
           headerDiv.appendChild(langSpan);
         }
 
@@ -521,14 +528,16 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
 
       this.showResults();
       this.announce(
-        `${results.length} ${results.length === 1 ? 'result' : 'results'}${this.forQuery(query)}. Use the arrow keys to review them.`,
+        this.spanish
+          ? `${results.length} ${results.length === 1 ? 'resultado' : 'resultados'}${this.forQuery(query)}. Use las flechas para revisarlos.`
+          : `${results.length} ${results.length === 1 ? 'result' : 'results'}${this.forQuery(query)}. Use the arrow keys to review them.`,
       );
     }
 
     getTypeConfig(type: string) {
       const configs = {
         post: {
-          label: 'Note',
+          label: this.spanish ? 'Nota' : 'Note',
           icon: `<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
 					</svg>`,
@@ -537,7 +546,7 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
         },
 
         category: {
-          label: 'Category',
+          label: this.spanish ? 'Categoría' : 'Category',
           icon: `<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
 					</svg>`,
@@ -545,7 +554,7 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
           badgeClass: 'bg-purple-100 text-purple-800 dark:bg-purple-900/40 dark:text-purple-200',
         },
         tag: {
-          label: 'Topic',
+          label: this.spanish ? 'Tema' : 'Topic',
           icon: `<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
 					</svg>`,
@@ -553,7 +562,7 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
           badgeClass: 'bg-orange-100 text-orange-800 dark:bg-orange-900/40 dark:text-orange-200',
         },
         guide: {
-          label: 'Field Guide',
+          label: this.spanish ? 'Guía de campo' : 'Field Guide',
           icon: `<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
 					</svg>`,
@@ -561,7 +570,7 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
           badgeClass: 'bg-gray-100 text-gray-800 dark:bg-gray-900/40 dark:text-gray-200',
         },
         page: {
-          label: 'Page',
+          label: this.spanish ? 'Página' : 'Page',
           icon: `<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
 					</svg>`,
@@ -609,7 +618,9 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
       if (this.errorState) this.errorState.classList.add('hidden');
       if (this.resultsList) this.resultsList.replaceChildren();
       this.showResults();
-      this.announce(`No results found${this.forQuery(query)}.`);
+      this.announce(
+        `${this.spanish ? 'No hay resultados' : 'No results found'}${this.forQuery(query)}.`,
+      );
     }
 
     showError() {
@@ -618,7 +629,11 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
       if (this.loading) this.loading.classList.add('hidden');
       if (this.resultsList) this.resultsList.replaceChildren();
       this.showResults();
-      this.announce('Search is unavailable. The search index could not be loaded.');
+      this.announce(
+        this.spanish
+          ? 'La búsqueda no está disponible. No se pudo cargar el índice de búsqueda.'
+          : 'Search is unavailable. The search index could not be loaded.',
+      );
     }
 
     hideNoResults() {
@@ -653,7 +668,8 @@ const searchId = `search-${Math.random().toString(36).slice(2, 11)}`;
 
     forQuery(query: string): string {
       const trimmed = query.trim();
-      return trimmed ? ` for ${trimmed}` : '';
+      if (!trimmed) return '';
+      return this.spanish ? ` para ${trimmed}` : ` for ${trimmed}`;
     }
 
     handleArrowKeys(key: string) {
