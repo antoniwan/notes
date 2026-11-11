@@ -9,6 +9,13 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [7.17.3] — 2026-11-11
+
+### Added
+
+- The home page answers a request for Markdown (`Accept: text/markdown`) with the site's `llms.txt` as `text/markdown`, and both versions of the home page carry `Vary: Accept`. Browsers still get the HTML page.
+- Agents that ask for Markdown (`Accept: text/markdown`) at an address with no page now get a short Markdown 404 that links to `/llms.txt`, the sitemap, and the home page. The status stays 404, and browsers get the same HTML 404 page as before. The page is a small on-demand endpoint (`src/pages/agent-404.md.ts`) that `vercel.json` reaches only after the static files miss.
+
 ## [7.17.2] — 2026-10-30
 
 A tag URL never 404s, and titles fit search results.
