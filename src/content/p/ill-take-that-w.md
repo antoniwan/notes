@@ -2,7 +2,7 @@
 title: "I'll Take That W"
 description: >-
   The day after the 2026 midterms, a concession speech from a state rep in
-  Jacksonville did more for my cynicism than winning Congress did.
+  Jacksonville did more for my cynicism than Democrats winning Congress did.
 pubDate: 2026-11-05T12:00:00-05:00
 language:
   - en
@@ -83,4 +83,4 @@ So I'll hold the Congress that just won to the plainest bar I can come up with:
 
 If they clear it I'll say so here, and if they don't I'll say that too, with dates. And the next time I vote, I'd like it to be for people like her who also deliver, organizers who are doers too, people whose power is kept in their neighbors and who would still be doing the work if nobody ever elected them.
 
-I'll take that W. The speech is what I'm keeping, though, and the last thing she told that room was that they'd be "joyfully resisting." I have the resisting down. The joyful part, and the part where it costs me some evenings, is what I'm still working on.
+I'll take that W, even if it was other people's work that won it and not mine. The speech is what I'm keeping, and the last thing she told that room was that they'd be "joyfully resisting." I have the resisting down. The joyful part, and the part where it costs me some evenings, is what I'm still working on.
