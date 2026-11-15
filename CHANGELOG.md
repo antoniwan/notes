@@ -9,6 +9,12 @@ When bumping `package.json` version, run `pnpm changelog:since` (or follow the p
 
 [6.13.2] through [6.21.0] is one ChatGPT Codex and Astra batch at full power, Max setting. Months of site work, shipped in days.
 
+## [7.17.4] — 2026-11-15
+
+### Added
+
+- Stats now receives the site's uncaught script errors (`data-errors="true"`), shown in its Errors tab (Umami 3.5.0). Umami strips emails, tokens, and query strings from each report, and `statsBeforeSend` still drops `?q=`.
+
 ## [7.17.3] — 2026-11-11
 
 ### Added
